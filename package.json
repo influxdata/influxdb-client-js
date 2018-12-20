@@ -1,0 +1,25 @@
+{
+  "name": "influxdb2-js",
+  "version": "0.0.1",
+  "description": "Influxdb v2 client",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "echo \"PRE\" && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/platform/master/http/cur_swagger.yml",
+    "build": "tsc"
+  },
+  "keywords": [
+    "influxdb",
+    "influxdata"
+  ],
+  "author": "InfluxData",
+  "license": "MIT",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "0.0.7-3.3.4",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
