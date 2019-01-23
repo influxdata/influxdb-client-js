@@ -1,4 +1,4 @@
-import { TasksApi, Task, LabelResponse, User, Label } from "../api";
+import { TasksApi, Task, LabelResponse, User, Label, Organization } from "../api";
 
 export default class {
   private service: TasksApi
@@ -19,9 +19,14 @@ export default class {
     return data
   }
 
+  public async getAllByOrg({name}: Organization): Promise<Task[]> {
+    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, name)
+
+    return tasks || []
+  }
+
   public async getAllByUser(user: User): Promise<Task[]> {
-    const after = ''
-    const { data } = await this.service.tasksGet(after, user.id)
+    const { data } = await this.service.tasksGet(undefined, user.id)
 
     return data.tasks || []
   }
