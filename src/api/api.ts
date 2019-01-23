@@ -70,6 +70,20 @@ export class RequiredError extends Error {
 }
 
 /**
+ * contains the AST for the supplied Flux query
+ * @export
+ * @interface ASTResponse
+ */
+export interface ASTResponse {
+    /**
+     * the AST of the supplied Flux query
+     * @type {any}
+     * @memberof ASTResponse
+     */
+    ast?: any;
+}
+
+/**
  * 
  * @export
  * @interface AnalyzeQueryResponse
@@ -122,29 +136,11 @@ export interface AnalyzeQueryResponseErrors {
  */
 export interface Authorization {
     /**
-     * 
-     * @type {AuthorizationLinks}
-     * @memberof Authorization
-     */
-    links?: AuthorizationLinks;
-    /**
-     * 
+     * ID of org that authorization is scoped to.
      * @type {string}
      * @memberof Authorization
      */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Authorization
-     */
-    user?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Authorization
-     */
-    userID?: string;
+    orgID: string;
     /**
      * if inactive the token is inactive and requests using the token will be rejected.
      * @type {string}
@@ -152,23 +148,53 @@ export interface Authorization {
      */
     status?: Authorization.StatusEnum;
     /**
-     * 
-     * @type {string}
-     * @memberof Authorization
-     */
-    token?: string;
-    /**
-     * user defined description of the authorization
+     * A description of the token.
      * @type {string}
      * @memberof Authorization
      */
     description?: string;
     /**
-     * 
+     * List of permissions for an auth.  An auth must have at least one Permission.
      * @type {Array<Permission>}
      * @memberof Authorization
      */
-    permissions?: Array<Permission>;
+    permissions: Array<Permission>;
+    /**
+     * 
+     * @type {string}
+     * @memberof Authorization
+     */
+    id?: string;
+    /**
+     * Passed via the Authorization Header and Token Authentication type.
+     * @type {string}
+     * @memberof Authorization
+     */
+    token?: string;
+    /**
+     * ID of user that created and owns the token.
+     * @type {string}
+     * @memberof Authorization
+     */
+    userID?: string;
+    /**
+     * Name of user that created and owns the token.
+     * @type {string}
+     * @memberof Authorization
+     */
+    user?: string;
+    /**
+     * Name of the org token is scoped to.
+     * @type {string}
+     * @memberof Authorization
+     */
+    org?: string;
+    /**
+     * 
+     * @type {AuthorizationLinks}
+     * @memberof Authorization
+     */
+    links?: AuthorizationLinks;
 }
 
 /**
@@ -454,12 +480,6 @@ export interface Cell {
      * @memberof Cell
      */
     h?: number;
-    /**
-     * The reference to a view from the views API
-     * @type {string}
-     * @memberof Cell
-     */
-    viewID?: string;
 }
 
 /**
@@ -567,17 +587,25 @@ export interface CreateCell {
      */
     h?: number;
     /**
-     * uses the view provided in the request
-     * @type {string}
-     * @memberof CreateCell
-     */
-    viewID?: string;
-    /**
      * makes a copy of the provided view
      * @type {string}
      * @memberof CreateCell
      */
     usingView?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface CreateProtoResourcesRequest
+ */
+export interface CreateProtoResourcesRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateProtoResourcesRequest
+     */
+    orgID?: string;
 }
 
 /**
@@ -598,6 +626,12 @@ export interface Dashboard {
      * @memberof Dashboard
      */
     id?: string;
+    /**
+     * id of organization that owns dashboard
+     * @type {string}
+     * @memberof Dashboard
+     */
+    orgID?: string;
     /**
      * user-facing name of the dashboard
      * @type {string}
@@ -622,6 +656,12 @@ export interface Dashboard {
      * @memberof Dashboard
      */
     cells?: Array<Cell>;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof Dashboard
+     */
+    labels?: Array<Label>;
 }
 
 /**
@@ -1105,6 +1145,100 @@ export interface IsOnboarding {
 }
 
 /**
+ * 
+ * @export
+ * @interface Label
+ */
+export interface Label {
+    /**
+     * 
+     * @type {string}
+     * @memberof Label
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Label
+     */
+    name?: string;
+    /**
+     * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
+     * @type {any}
+     * @memberof Label
+     */
+    properties?: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface LabelMapping
+ */
+export interface LabelMapping {
+    /**
+     * 
+     * @type {string}
+     * @memberof LabelMapping
+     */
+    labelID?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface LabelResponse
+ */
+export interface LabelResponse {
+    /**
+     * 
+     * @type {Label}
+     * @memberof LabelResponse
+     */
+    label?: Label;
+    /**
+     * 
+     * @type {Links}
+     * @memberof LabelResponse
+     */
+    links?: Links;
+}
+
+/**
+ * 
+ * @export
+ * @interface LabelUpdate
+ */
+export interface LabelUpdate {
+    /**
+     * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
+     * @type {any}
+     * @memberof LabelUpdate
+     */
+    properties?: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface LabelsResponse
+ */
+export interface LabelsResponse {
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof LabelsResponse
+     */
+    labels?: Array<Label>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof LabelsResponse
+     */
+    links?: Links;
+}
+
+/**
  * flux query to be analyzed.
  * @export
  * @interface LanguageRequest
@@ -1395,10 +1529,10 @@ export interface Logs {
 export interface Macro {
     /**
      * 
-     * @type {UserLinks}
+     * @type {ResourceOwnersLinks}
      * @memberof Macro
      */
-    links?: UserLinks;
+    links?: ResourceOwnersLinks;
     /**
      * 
      * @type {string}
@@ -1749,13 +1883,13 @@ export interface Permission {
      * @type {string}
      * @memberof Permission
      */
-    action?: Permission.ActionEnum;
+    action: Permission.ActionEnum;
     /**
      * 
-     * @type {string}
+     * @type {PermissionResource}
      * @memberof Permission
      */
-    resource?: Permission.ResourceEnum;
+    resource: PermissionResource;
 }
 
 /**
@@ -1769,26 +1903,133 @@ export namespace Permission {
      */
     export enum ActionEnum {
         Read = 'read',
-        Write = 'write',
-        Create = 'create',
-        Delete = 'delete'
+        Write = 'write'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface PermissionResource
+ */
+export interface PermissionResource {
+    /**
+     * 
+     * @type {string}
+     * @memberof PermissionResource
+     */
+    type: PermissionResource.TypeEnum;
+    /**
+     * if id is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type.
+     * @type {string}
+     * @memberof PermissionResource
+     */
+    id?: string;
+    /**
+     * optional name of the resource if the resource has a name field.
+     * @type {string}
+     * @memberof PermissionResource
+     */
+    name?: string;
+    /**
+     * if orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type.
+     * @type {string}
+     * @memberof PermissionResource
+     */
+    orgID?: string;
+    /**
+     * optional name of the organization of the organization with orgID.
+     * @type {string}
+     * @memberof PermissionResource
+     */
+    org?: string;
+}
+
+/**
+ * @export
+ * @namespace PermissionResource
+ */
+export namespace PermissionResource {
     /**
      * @export
      * @enum {string}
      */
-    export enum ResourceEnum {
-        User = 'user',
-        Org = 'org',
-        Taskid = 'task/:id',
-        Bucketid = 'bucket/:id',
-        Dashboardid = 'dashboard/:id',
-        Orgid = 'org/:id',
-        Orgidtask = 'org/:id/task',
-        Orgidbucket = 'org/:id/bucket',
-        Orgidsource = 'org/:id/source',
-        Orgiddashboard = 'org/:id/dashboard'
+    export enum TypeEnum {
+        Authorizations = 'authorizations',
+        Buckets = 'buckets',
+        Dashboards = 'dashboards',
+        Orgs = 'orgs',
+        Sources = 'sources',
+        Tasks = 'tasks',
+        Telegrafs = 'telegrafs',
+        Users = 'users'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface Proto
+ */
+export interface Proto {
+    /**
+     * 
+     * @type {ProtoLinks}
+     * @memberof Proto
+     */
+    links?: ProtoLinks;
+    /**
+     * 
+     * @type {string}
+     * @memberof Proto
+     */
+    id?: string;
+    /**
+     * user-facing name of the proto
+     * @type {string}
+     * @memberof Proto
+     */
+    name?: string;
+    /**
+     * 
+     * @type {Array<Dashboard>}
+     * @memberof Proto
+     */
+    dashboards?: Array<Dashboard>;
+    /**
+     * 
+     * @type {{ [key: string]: View; }}
+     * @memberof Proto
+     */
+    views?: { [key: string]: View; };
+}
+
+/**
+ * 
+ * @export
+ * @interface ProtoLinks
+ */
+export interface ProtoLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof ProtoLinks
+     */
+    dashboard?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface Protos
+ */
+export interface Protos {
+    /**
+     * 
+     * @type {Array<Proto>}
+     * @memberof Protos
+     */
+    protos?: Array<Proto>;
 }
 
 /**
@@ -2137,6 +2378,68 @@ export interface RenamableField {
 /**
  * 
  * @export
+ * @interface ResourceOwner
+ */
+export interface ResourceOwner extends User {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResourceOwner
+     */
+    role?: ResourceOwner.RoleEnum;
+}
+
+/**
+ * @export
+ * @namespace ResourceOwner
+ */
+export namespace ResourceOwner {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum RoleEnum {
+        Owner = 'owner'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @interface ResourceOwners
+ */
+export interface ResourceOwners {
+    /**
+     * 
+     * @type {ResourceOwnersLinks}
+     * @memberof ResourceOwners
+     */
+    links?: ResourceOwnersLinks;
+    /**
+     * 
+     * @type {Array<ResourceOwner>}
+     * @memberof ResourceOwners
+     */
+    users?: Array<ResourceOwner>;
+}
+
+/**
+ * 
+ * @export
+ * @interface ResourceOwnersLinks
+ */
+export interface ResourceOwnersLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResourceOwnersLinks
+     */
+    self?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Routes
  */
 export interface Routes {
@@ -2336,6 +2639,111 @@ export namespace Run {
 /**
  * 
  * @export
+ * @interface ScraperTargetRequest
+ */
+export interface ScraperTargetRequest {
+    /**
+     * name of the scraper target
+     * @type {string}
+     * @memberof ScraperTargetRequest
+     */
+    name?: string;
+    /**
+     * type of the metrics to be parsed
+     * @type {string}
+     * @memberof ScraperTargetRequest
+     */
+    type?: ScraperTargetRequest.TypeEnum;
+    /**
+     * url of the metrics endpoint
+     * @type {string}
+     * @memberof ScraperTargetRequest
+     */
+    url?: string;
+    /**
+     * id of the organization
+     * @type {string}
+     * @memberof ScraperTargetRequest
+     */
+    orgID?: string;
+    /**
+     * id of the bucket to be written
+     * @type {string}
+     * @memberof ScraperTargetRequest
+     */
+    bucketID?: string;
+}
+
+/**
+ * @export
+ * @namespace ScraperTargetRequest
+ */
+export namespace ScraperTargetRequest {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum TypeEnum {
+        Prometheus = 'prometheus'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @interface ScraperTargetResponse
+ */
+export interface ScraperTargetResponse extends ScraperTargetRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ScraperTargetResponse
+     */
+    id?: string;
+    /**
+     * name of the organization
+     * @type {string}
+     * @memberof ScraperTargetResponse
+     */
+    organization?: string;
+    /**
+     * name of the bucket
+     * @type {string}
+     * @memberof ScraperTargetResponse
+     */
+    bucket?: string;
+    /**
+     * 
+     * @type {Links}
+     * @memberof ScraperTargetResponse
+     */
+    links?: Links;
+}
+
+/**
+ * @export
+ * @namespace ScraperTargetResponse
+ */
+export namespace ScraperTargetResponse {
+}
+
+/**
+ * 
+ * @export
+ * @interface ScraperTargetResponses
+ */
+export interface ScraperTargetResponses {
+    /**
+     * 
+     * @type {Array<ScraperTargetResponse>}
+     * @memberof ScraperTargetResponses
+     */
+    configurations?: Array<ScraperTargetResponse>;
+}
+
+/**
+ * 
+ * @export
  * @interface Source
  */
 export interface Source {
@@ -2356,7 +2764,7 @@ export interface Source {
      * @type {string}
      * @memberof Source
      */
-    organizationID?: string;
+    orgID?: string;
     /**
      * 
      * @type {string}
@@ -2496,10 +2904,10 @@ export interface SourceLinks {
 export interface Sources {
     /**
      * 
-     * @type {UserLinks}
+     * @type {ResourceOwnersLinks}
      * @memberof Sources
      */
-    links?: UserLinks;
+    links?: ResourceOwnersLinks;
     /**
      * 
      * @type {Array<Source>}
@@ -2525,7 +2933,7 @@ export interface Task {
      * @type {string}
      * @memberof Task
      */
-    organizationId?: string;
+    orgID?: string;
     /**
      * A description of the task.
      * @type {string}
@@ -2545,6 +2953,12 @@ export interface Task {
      */
     owner?: User;
     /**
+     * 
+     * @type {Array<Label>}
+     * @memberof Task
+     */
+    labels?: Array<Label>;
+    /**
      * The Flux script to run for this task.
      * @type {string}
      * @memberof Task
@@ -2563,11 +2977,17 @@ export interface Task {
      */
     cron?: string;
     /**
-     * How long to wait before running the task
+     * Duration to delay after the schedule, before executing the task; parsed from flux.
      * @type {string}
      * @memberof Task
      */
     offset?: string;
+    /**
+     * Timestamp of latest scheduled, completed run, RFC3339.
+     * @type {Date}
+     * @memberof Task
+     */
+    latestCompleted?: Date;
     /**
      * 
      * @type {TaskLinks}
@@ -2602,7 +3022,7 @@ export interface TaskCreateRequest {
      * @type {string}
      * @memberof TaskCreateRequest
      */
-    organizationId: string;
+    orgID: string;
     /**
      * Starting state of the task. 'inactive' tasks are not run until they are updated to 'active'
      * @type {string}
@@ -3546,46 +3966,46 @@ export namespace TelegrafPluginInputNetResponseRequest {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputNgnix
+ * @interface TelegrafPluginInputNginx
  */
-export interface TelegrafPluginInputNgnix {
+export interface TelegrafPluginInputNginx {
     /**
      * 
      * @type {string}
-     * @memberof TelegrafPluginInputNgnix
+     * @memberof TelegrafPluginInputNginx
      */
-    name: TelegrafPluginInputNgnix.NameEnum;
+    name: TelegrafPluginInputNginx.NameEnum;
     /**
      * 
      * @type {string}
-     * @memberof TelegrafPluginInputNgnix
+     * @memberof TelegrafPluginInputNginx
      */
-    type: TelegrafPluginInputNgnix.TypeEnum;
+    type: TelegrafPluginInputNginx.TypeEnum;
     /**
      * 
      * @type {string}
-     * @memberof TelegrafPluginInputNgnix
+     * @memberof TelegrafPluginInputNginx
      */
     comment?: string;
     /**
      * 
      * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputNgnix
+     * @memberof TelegrafPluginInputNginx
      */
     config: TelegrafPluginConfig;
 }
 
 /**
  * @export
- * @namespace TelegrafPluginInputNgnix
+ * @namespace TelegrafPluginInputNginx
  */
-export namespace TelegrafPluginInputNgnix {
+export namespace TelegrafPluginInputNginx {
     /**
      * @export
      * @enum {string}
      */
     export enum NameEnum {
-        Ngnix = 'ngnix'
+        Nginx = 'nginx'
     }
     /**
      * @export
@@ -3599,16 +4019,16 @@ export namespace TelegrafPluginInputNgnix {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputNgnixRequest
+ * @interface TelegrafPluginInputNginxRequest
  */
-export interface TelegrafPluginInputNgnixRequest extends TelegrafRequestPlugin {
+export interface TelegrafPluginInputNginxRequest extends TelegrafRequestPlugin {
 }
 
 /**
  * @export
- * @namespace TelegrafPluginInputNgnixRequest
+ * @namespace TelegrafPluginInputNginxRequest
  */
-export namespace TelegrafPluginInputNgnixRequest {
+export namespace TelegrafPluginInputNginxRequest {
 }
 
 /**
@@ -4458,6 +4878,12 @@ export interface TelegrafRequest {
      * @memberof TelegrafRequest
      */
     plugins?: Array<TelegrafRequestPlugin>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TelegrafRequest
+     */
+    organizationID?: string;
 }
 
 /**
@@ -4536,10 +4962,10 @@ export interface User {
     status?: User.StatusEnum;
     /**
      * 
-     * @type {UserLinks}
+     * @type {ResourceOwnersLinks}
      * @memberof User
      */
-    links?: UserLinks;
+    links?: ResourceOwnersLinks;
 }
 
 /**
@@ -4560,29 +4986,15 @@ export namespace User {
 /**
  * 
  * @export
- * @interface UserLinks
- */
-export interface UserLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserLinks
-     */
-    self?: string;
-}
-
-/**
- * 
- * @export
  * @interface Users
  */
 export interface Users {
     /**
      * 
-     * @type {UserLinks}
+     * @type {ResourceOwnersLinks}
      * @memberof Users
      */
-    links?: UserLinks;
+    links?: ResourceOwnersLinks;
     /**
      * 
      * @type {Array<User>}
@@ -5268,6 +5680,44 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @summary Delete a bucket
+         * @param {string} bucketID ID of bucket to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDDelete.');
+            }
+            const localVarPath = `/buckets/{bucketID}`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
          * @param {*} [options] Override http request option.
@@ -5293,6 +5743,135 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsGet.');
+            }
+            const localVarPath = `/buckets/{bucketID}/labels`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a bucket config
+         * @param {string} bucketID ID of the bucket config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling bucketsBucketIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/buckets/{bucketID}/labels/{labelID}`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling bucketsBucketIDLabelsPost.');
+            }
+            const localVarPath = `/buckets/{bucketID}/labels`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5703,6 +6282,21 @@ export const BucketsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Delete a bucket
+         * @param {string} bucketID ID of bucket to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
          * @param {*} [options] Override http request option.
@@ -5710,6 +6304,53 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          */
         bucketsBucketIDGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDGet(bucketID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a bucket config
+         * @param {string} bucketID ID of the bucket config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5873,6 +6514,17 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Delete a bucket
+         * @param {string} bucketID ID of bucket to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
          * @param {*} [options] Override http request option.
@@ -5880,6 +6532,41 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
          */
         bucketsBucketIDGet(bucketID: string, options?: any) {
             return BucketsApiFp(configuration).bucketsBucketIDGet(bucketID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary list all labels for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a bucket config
+         * @param {string} bucketID ID of the bucket config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -6000,6 +6687,19 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
 export class BucketsApi extends BaseAPI {
     /**
      * 
+     * @summary Delete a bucket
+     * @param {string} bucketID ID of bucket to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Retrieve a bucket
      * @param {string} bucketID ID of bucket to get
      * @param {*} [options] Override http request option.
@@ -6008,6 +6708,47 @@ export class BucketsApi extends BaseAPI {
      */
     public bucketsBucketIDGet(bucketID: string, options?: any) {
         return BucketsApiFp(this.configuration).bucketsBucketIDGet(bucketID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a bucket
+     * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a bucket config
+     * @param {string} bucketID ID of the bucket config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a bucket
+     * @param {string} bucketID ID of the bucket
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6234,6 +6975,93 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'view' is not null or undefined
+            if (view === null || view === undefined) {
+                throw new RequiredError('view','Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(view || {}) : (view || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
@@ -6358,6 +7186,37 @@ export const CellsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
@@ -6420,6 +7279,29 @@ export const CellsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
@@ -6475,6 +7357,33 @@ export class CellsApi extends BaseAPI {
      */
     public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
         return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve the view for a cell in a dashboard
+     * @param {string} dashboardID ID of dashboard
+     * @param {string} cellID ID of cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CellsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update the view for a cell
+     * @param {string} dashboardID ID of dashboard to update
+     * @param {string} cellID ID of cell to update
+     * @param {View} view updates the view for a cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CellsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6592,6 +7501,93 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"CellUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(cellUpdate || {}) : (cellUpdate || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'view' is not null or undefined
+            if (view === null || view === undefined) {
+                throw new RequiredError('view','Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(view || {}) : (view || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6742,6 +7738,182 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/labels`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a dashboard config
+         * @param {string} dashboardID ID of the dashboard config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/labels/{labelID}`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling dashboardsDashboardIDLabelsLabelIDPost.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/labels/{labelID}`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling dashboardsDashboardIDLabelsPost.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/labels`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -7021,13 +8193,14 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Get all dashboards
+         * @param {string} [org] specifies the organization name of the resource
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options: any = {}): RequestArgs {
+        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options: any = {}): RequestArgs {
             const localVarPath = `/dashboards`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -7037,6 +8210,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
+            }
 
             if (owner !== undefined) {
                 localVarQueryParameter['owner'] = owner;
@@ -7063,16 +8240,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Create a dashboard
-         * @param {string} org specifies the organization of the resource
          * @param {Dashboard} dashboard dashboard to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(org: string, dashboard: Dashboard, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling dashboardsPost.');
-            }
+        dashboardsPost(dashboard: Dashboard, options: any = {}): RequestArgs {
             // verify required parameter 'dashboard' is not null or undefined
             if (dashboard === null || dashboard === undefined) {
                 throw new RequiredError('dashboard','Required parameter dashboard was null or undefined when calling dashboardsPost.');
@@ -7086,10 +8258,6 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -7140,6 +8308,37 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          */
         dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
             const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7198,6 +8397,69 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          */
         dashboardsDashboardIDGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
             const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDGet(dashboardID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a dashboard config
+         * @param {string} dashboardID ID of the dashboard config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7309,14 +8571,15 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all dashboards
+         * @param {string} [org] specifies the organization name of the resource
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsGet(owner, sortBy, id, options);
+        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsGet(org, owner, sortBy, id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7325,13 +8588,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a dashboard
-         * @param {string} org specifies the organization of the resource
          * @param {Dashboard} dashboard dashboard to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(org: string, dashboard: Dashboard, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(org, dashboard, options);
+        dashboardsPost(dashboard: Dashboard, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(dashboard, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7368,6 +8630,29 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          */
         dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
             return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
         },
         /**
          * 
@@ -7410,6 +8695,53 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          */
         dashboardsDashboardIDGet(dashboardID: string, options?: any) {
             return DashboardsApiFp(configuration).dashboardsDashboardIDGet(dashboardID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary list all labels for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a dashboard config
+         * @param {string} dashboardID ID of the dashboard config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -7489,25 +8821,25 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Get all dashboards
+         * @param {string} [org] specifies the organization name of the resource
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsGet(owner, sortBy, id, options)(axios, basePath);
+        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsGet(org, owner, sortBy, id, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a dashboard
-         * @param {string} org specifies the organization of the resource
          * @param {Dashboard} dashboard dashboard to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(org: string, dashboard: Dashboard, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsPost(org, dashboard, options)(axios, basePath);
+        dashboardsPost(dashboard: Dashboard, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsPost(dashboard, options)(axios, basePath);
         },
     };
 };
@@ -7544,6 +8876,33 @@ export class DashboardsApi extends BaseAPI {
      */
     public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
         return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve the view for a cell in a dashboard
+     * @param {string} dashboardID ID of dashboard
+     * @param {string} cellID ID of cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update the view for a cell
+     * @param {string} dashboardID ID of dashboard to update
+     * @param {string} cellID ID of cell to update
+     * @param {View} view updates the view for a cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7594,6 +8953,61 @@ export class DashboardsApi extends BaseAPI {
      */
     public dashboardsDashboardIDGet(dashboardID: string, options?: any) {
         return DashboardsApiFp(this.configuration).dashboardsDashboardIDGet(dashboardID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a dashboard config
+     * @param {string} dashboardID ID of the dashboard config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7688,6 +9102,7 @@ export class DashboardsApi extends BaseAPI {
     /**
      * 
      * @summary Get all dashboards
+     * @param {string} [org] specifies the organization name of the resource
      * @param {string} [owner] specifies the owner id to return resources for
      * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
      * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
@@ -7695,21 +9110,20 @@ export class DashboardsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsGet(owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsGet(owner, sortBy, id, options)(this.axios, this.basePath);
+    public dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsGet(org, owner, sortBy, id, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a dashboard
-     * @param {string} org specifies the organization of the resource
      * @param {Dashboard} dashboard dashboard to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsPost(org: string, dashboard: Dashboard, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsPost(org, dashboard, options)(this.axios, this.basePath);
+    public dashboardsPost(dashboard: Dashboard, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsPost(dashboard, options)(this.axios, this.basePath);
     }
 
 }
@@ -8022,6 +9436,417 @@ export class HealthApi extends BaseAPI {
      */
     public healthGet(options?: any) {
         return HealthApiFp(this.configuration).healthGet(options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * LabelsApi - axios parameter creator
+ * @export
+ */
+export const LabelsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get all labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsGet(options: any = {}): RequestArgs {
+            const localVarPath = `/labels`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a label
+         * @param {string} labelID ID of label to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling labelsLabelIDDelete.');
+            }
+            const localVarPath = `/labels/{labelID}`
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a label
+         * @param {string} labelID ID of label to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling labelsLabelIDGet.');
+            }
+            const localVarPath = `/labels/{labelID}`
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a single label
+         * @param {string} labelID ID of label to update
+         * @param {LabelUpdate} labelUpdate label update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling labelsLabelIDPatch.');
+            }
+            // verify required parameter 'labelUpdate' is not null or undefined
+            if (labelUpdate === null || labelUpdate === undefined) {
+                throw new RequiredError('labelUpdate','Required parameter labelUpdate was null or undefined when calling labelsLabelIDPatch.');
+            }
+            const localVarPath = `/labels/{labelID}`
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelUpdate || {}) : (labelUpdate || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a label
+         * @param {Label} label label to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsPost(label: Label, options: any = {}): RequestArgs {
+            // verify required parameter 'label' is not null or undefined
+            if (label === null || label === undefined) {
+                throw new RequiredError('label','Required parameter label was null or undefined when calling labelsPost.');
+            }
+            const localVarPath = `/labels`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Label" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(label || {}) : (label || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * LabelsApi - functional programming interface
+ * @export
+ */
+export const LabelsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get all labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Delete a label
+         * @param {string} labelID ID of label to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get a label
+         * @param {string} labelID ID of label to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsLabelIDGet(labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update a single label
+         * @param {string} labelID ID of label to update
+         * @param {LabelUpdate} labelUpdate label update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Create a label
+         * @param {Label} label label to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsPost(label: Label, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsPost(label, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * LabelsApi - factory interface
+ * @export
+ */
+export const LabelsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Get all labels
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsGet(options?: any) {
+            return LabelsApiFp(configuration).labelsGet(options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Delete a label
+         * @param {string} labelID ID of label to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options?: any) {
+            return LabelsApiFp(configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get a label
+         * @param {string} labelID ID of label to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options?: any) {
+            return LabelsApiFp(configuration).labelsLabelIDGet(labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update a single label
+         * @param {string} labelID ID of label to update
+         * @param {LabelUpdate} labelUpdate label update
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any) {
+            return LabelsApiFp(configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Create a label
+         * @param {Label} label label to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        labelsPost(label: Label, options?: any) {
+            return LabelsApiFp(configuration).labelsPost(label, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * LabelsApi - object-oriented interface
+ * @export
+ * @class LabelsApi
+ * @extends {BaseAPI}
+ */
+export class LabelsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get all labels
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LabelsApi
+     */
+    public labelsGet(options?: any) {
+        return LabelsApiFp(this.configuration).labelsGet(options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Delete a label
+     * @param {string} labelID ID of label to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LabelsApi
+     */
+    public labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options?: any) {
+        return LabelsApiFp(this.configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a label
+     * @param {string} labelID ID of label to update
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LabelsApi
+     */
+    public labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options?: any) {
+        return LabelsApiFp(this.configuration).labelsLabelIDGet(labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a single label
+     * @param {string} labelID ID of label to update
+     * @param {LabelUpdate} labelUpdate label update
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LabelsApi
+     */
+    public labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any) {
+        return LabelsApiFp(this.configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Create a label
+     * @param {Label} label label to create
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LabelsApi
+     */
+    public labelsPost(label: Label, options?: any) {
+        return LabelsApiFp(this.configuration).labelsPost(label, options)(this.axios, this.basePath);
     }
 
 }
@@ -8517,6 +10342,135 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
+         * @summary list all labels for a organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDLabelsGet.');
+            }
+            const localVarPath = `/orgs/{orgID}/labels`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a org config
+         * @param {string} orgID ID of the org config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling orgsOrgIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/orgs/{orgID}/labels/{labelID}`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to an organization
+         * @param {string} orgID ID of the organization
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling orgsOrgIDLabelsPost.');
+            }
+            const localVarPath = `/orgs/{orgID}/labels`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
          * @param {*} [options] Override http request option.
@@ -8873,12 +10827,59 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary list all labels for a organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a org config
+         * @param {string} orgID ID of the org config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to an organization
+         * @param {string} orgID ID of the organization
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
+        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
             const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9028,6 +11029,41 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
+         * @summary list all labels for a organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a org config
+         * @param {string} orgID ID of the org config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to an organization
+         * @param {string} orgID ID of the organization
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
          * @param {*} [options] Override http request option.
@@ -9158,6 +11194,47 @@ export class OrganizationsApi extends BaseAPI {
 
     /**
      * 
+     * @summary list all labels for a organization
+     * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a org config
+     * @param {string} orgID ID of the org config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to an organization
+     * @param {string} orgID ID of the organization
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary List all members of an organization
      * @param {string} orgID ID of the organization
      * @param {*} [options] Override http request option.
@@ -9260,6 +11337,199 @@ export class OrganizationsApi extends BaseAPI {
 }
 
 /**
+ * ProtosApi - axios parameter creator
+ * @export
+ */
+export const ProtosApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary List of available protos (templates of tasks/dashboards/etc)
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/protos`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create instance of a proto dashboard
+         * @param {string} protoID ID of proto
+         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'protoID' is not null or undefined
+            if (protoID === null || protoID === undefined) {
+                throw new RequiredError('protoID','Required parameter protoID was null or undefined when calling protosProtoIDDashboardsPost.');
+            }
+            // verify required parameter 'createProtoResourcesRequest' is not null or undefined
+            if (createProtoResourcesRequest === null || createProtoResourcesRequest === undefined) {
+                throw new RequiredError('createProtoResourcesRequest','Required parameter createProtoResourcesRequest was null or undefined when calling protosProtoIDDashboardsPost.');
+            }
+            const localVarPath = `/protos/{protoID}/dashboards`
+                .replace(`{${"protoID"}}`, encodeURIComponent(String(protoID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CreateProtoResourcesRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createProtoResourcesRequest || {}) : (createProtoResourcesRequest || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ProtosApi - functional programming interface
+ * @export
+ */
+export const ProtosApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary List of available protos (templates of tasks/dashboards/etc)
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Protos> {
+            const localVarAxiosArgs = ProtosApiAxiosParamCreator(configuration).protosGet(zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Create instance of a proto dashboard
+         * @param {string} protoID ID of proto
+         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
+            const localVarAxiosArgs = ProtosApiAxiosParamCreator(configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * ProtosApi - factory interface
+ * @export
+ */
+export const ProtosApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary List of available protos (templates of tasks/dashboards/etc)
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosGet(zapTraceSpan?: string, options?: any) {
+            return ProtosApiFp(configuration).protosGet(zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Create instance of a proto dashboard
+         * @param {string} protoID ID of proto
+         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any) {
+            return ProtosApiFp(configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * ProtosApi - object-oriented interface
+ * @export
+ * @class ProtosApi
+ * @extends {BaseAPI}
+ */
+export class ProtosApi extends BaseAPI {
+    /**
+     * 
+     * @summary List of available protos (templates of tasks/dashboards/etc)
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProtosApi
+     */
+    public protosGet(zapTraceSpan?: string, options?: any) {
+        return ProtosApiFp(this.configuration).protosGet(zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Create instance of a proto dashboard
+     * @param {string} protoID ID of proto
+     * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProtosApi
+     */
+    public protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any) {
+        return ProtosApiFp(this.configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
  * QueryApi - axios parameter creator
  * @export
  */
@@ -9350,66 +11620,16 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary query influx with specified return formatting. The spec and query fields are mutually exclusive.
-         * @param {string} org specifies the organization of the resource
-         * @param {string} query query script to execute.
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        queryGet(org: string, query: string, authorization?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling queryGet.');
-            }
-            // verify required parameter 'query' is not null or undefined
-            if (query === null || query === undefined) {
-                throw new RequiredError('query','Required parameter query was null or undefined when calling queryGet.');
-            }
-            const localVarPath = `/query`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
-            if (query !== undefined) {
-                localVarQueryParameter['query'] = query;
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary query an influx
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
-         * @param {'application/json'} [contentType] 
+         * @param {'application/json' | 'application/vnd.flux'} [contentType] 
          * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json', authorization?: string, org?: string, query?: Query, options: any = {}): RequestArgs {
+        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options: any = {}): RequestArgs {
             const localVarPath = `/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9582,24 +11802,8 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+        queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ASTResponse> {
             const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryAstPost(contentType, authorization, languageRequest, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary query influx with specified return formatting. The spec and query fields are mutually exclusive.
-         * @param {string} org specifies the organization of the resource
-         * @param {string} query query script to execute.
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        queryGet(org: string, query: string, authorization?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryGet(org, query, authorization, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9609,14 +11813,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * 
          * @summary query an influx
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
-         * @param {'application/json'} [contentType] 
+         * @param {'application/json' | 'application/vnd.flux'} [contentType] 
          * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json', authorization?: string, org?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
+        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
             const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryPost(accept, contentType, authorization, org, query, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -9697,28 +11901,16 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary query influx with specified return formatting. The spec and query fields are mutually exclusive.
-         * @param {string} org specifies the organization of the resource
-         * @param {string} query query script to execute.
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        queryGet(org: string, query: string, authorization?: string, options?: any) {
-            return QueryApiFp(configuration).queryGet(org, query, authorization, options)(axios, basePath);
-        },
-        /**
-         * 
          * @summary query an influx
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
-         * @param {'application/json'} [contentType] 
+         * @param {'application/json' | 'application/vnd.flux'} [contentType] 
          * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json', authorization?: string, org?: string, query?: Query, options?: any) {
+        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any) {
             return QueryApiFp(configuration).queryPost(accept, contentType, authorization, org, query, options)(axios, basePath);
         },
         /**
@@ -9788,23 +11980,9 @@ export class QueryApi extends BaseAPI {
 
     /**
      * 
-     * @summary query influx with specified return formatting. The spec and query fields are mutually exclusive.
-     * @param {string} org specifies the organization of the resource
-     * @param {string} query query script to execute.
-     * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QueryApi
-     */
-    public queryGet(org: string, query: string, authorization?: string, options?: any) {
-        return QueryApiFp(this.configuration).queryGet(org, query, authorization, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
      * @summary query an influx
      * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
-     * @param {'application/json'} [contentType] 
+     * @param {'application/json' | 'application/vnd.flux'} [contentType] 
      * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
      * @param {string} [org] specifies the name of the organization executing the query.
      * @param {Query} [query] flux query or specification to execute
@@ -9812,7 +11990,7 @@ export class QueryApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json', authorization?: string, org?: string, query?: Query, options?: any) {
+    public queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any) {
         return QueryApiFp(this.configuration).queryPost(accept, contentType, authorization, org, query, options)(this.axios, this.basePath);
     }
 
@@ -9848,6 +12026,340 @@ export class QueryApi extends BaseAPI {
      */
     public querySuggestionsNameGet(name: string, options?: any) {
         return QueryApiFp(this.configuration).querySuggestionsNameGet(name, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * ScraperTargetsApi - axios parameter creator
+ * @export
+ */
+export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary get all scraper targets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersGet(options: any = {}): RequestArgs {
+            const localVarPath = `/scrapers`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary create a scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetRequest' is not null or undefined
+            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
+                throw new RequiredError('scraperTargetRequest','Required parameter scraperTargetRequest was null or undefined when calling scrapersPost.');
+            }
+            const localVarPath = `/scrapers`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDPatch.');
+            }
+            // verify required parameter 'scraperTargetRequest' is not null or undefined
+            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
+                throw new RequiredError('scraperTargetRequest','Required parameter scraperTargetRequest was null or undefined when calling scrapersScraperTargetIDPatch.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ScraperTargetsApi - functional programming interface
+ * @export
+ */
+export const ScraperTargetsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary get all scraper targets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponses> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary create a scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponse> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary update a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponse> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * ScraperTargetsApi - factory interface
+ * @export
+ */
+export const ScraperTargetsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary get all scraper targets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersGet(options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersGet(options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary create a scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary update a scraper target
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * ScraperTargetsApi - object-oriented interface
+ * @export
+ * @class ScraperTargetsApi
+ * @extends {BaseAPI}
+ */
+export class ScraperTargetsApi extends BaseAPI {
+    /**
+     * 
+     * @summary get all scraper targets
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersGet(options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersGet(options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary create a scraper target
+     * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a scraper target
+     * @param {string} scraperTargetID id of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary update a scraper target
+     * @param {string} scraperTargetID id of the scraper target
+     * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -10733,6 +13245,135 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary list all labels for a task
+         * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'taskID' is not null or undefined
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDLabelsGet.');
+            }
+            const localVarPath = `/tasks/{taskID}/labels`
+                .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a task config
+         * @param {string} taskID ID of the task config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'taskID' is not null or undefined
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling tasksTaskIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/tasks/{taskID}/labels/{labelID}`
+                .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a task
+         * @param {string} taskID ID of the task
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'taskID' is not null or undefined
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling tasksTaskIDLabelsPost.');
+            }
+            const localVarPath = `/tasks/{taskID}/labels`
+                .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
          * @param {*} [options] Override http request option.
@@ -10996,18 +13637,18 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * Update a task. This will cancel all queued runs.
          * @summary Update a task
          * @param {string} taskID ID of task to get
-         * @param {TaskUpdateRequest} taskUpdateRequest task update to apply
+         * @param {Task} task task update to apply
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, options: any = {}): RequestArgs {
+        tasksTaskIDPatch(taskID: string, task: Task, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDPatch.');
             }
-            // verify required parameter 'taskUpdateRequest' is not null or undefined
-            if (taskUpdateRequest === null || taskUpdateRequest === undefined) {
-                throw new RequiredError('taskUpdateRequest','Required parameter taskUpdateRequest was null or undefined when calling tasksTaskIDPatch.');
+            // verify required parameter 'task' is not null or undefined
+            if (task === null || task === undefined) {
+                throw new RequiredError('task','Required parameter task was null or undefined when calling tasksTaskIDPatch.');
             }
             const localVarPath = `/tasks/{taskID}`
                 .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
@@ -11026,8 +13667,8 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"TaskUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(taskUpdateRequest || {}) : (taskUpdateRequest || "");
+            const needsSerialization = (<any>"Task" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(task || {}) : (task || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -11273,6 +13914,53 @@ export const TasksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary list all labels for a task
+         * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a task config
+         * @param {string} taskID ID of the task config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a task
+         * @param {string} taskID ID of the task
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
          * @param {*} [options] Override http request option.
@@ -11377,12 +14065,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * Update a task. This will cancel all queued runs.
          * @summary Update a task
          * @param {string} taskID ID of task to get
-         * @param {TaskUpdateRequest} taskUpdateRequest task update to apply
+         * @param {Task} task task update to apply
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, options);
+        tasksTaskIDPatch(taskID: string, task: Task, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDPatch(taskID, task, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11504,6 +14192,41 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary list all labels for a task
+         * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a task config
+         * @param {string} taskID ID of the task config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a task
+         * @param {string} taskID ID of the task
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
          * @param {*} [options] Override http request option.
@@ -11580,12 +14303,12 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
          * Update a task. This will cancel all queued runs.
          * @summary Update a task
          * @param {string} taskID ID of task to get
-         * @param {TaskUpdateRequest} taskUpdateRequest task update to apply
+         * @param {Task} task task update to apply
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, options)(axios, basePath);
+        tasksTaskIDPatch(taskID: string, task: Task, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDPatch(taskID, task, options)(axios, basePath);
         },
         /**
          * 
@@ -11696,6 +14419,47 @@ export class TasksApi extends BaseAPI {
 
     /**
      * 
+     * @summary list all labels for a task
+     * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TasksApi
+     */
+    public tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a task config
+     * @param {string} taskID ID of the task config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TasksApi
+     */
+    public tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a task
+     * @param {string} taskID ID of the task
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TasksApi
+     */
+    public tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Retrieve all logs for a task
      * @param {string} taskID ID of task to get logs for
      * @param {*} [options] Override http request option.
@@ -11786,13 +14550,13 @@ export class TasksApi extends BaseAPI {
      * Update a task. This will cancel all queued runs.
      * @summary Update a task
      * @param {string} taskID ID of task to get
-     * @param {TaskUpdateRequest} taskUpdateRequest task update to apply
+     * @param {Task} task task update to apply
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, options)(this.axios, this.basePath);
+    public tasksTaskIDPatch(taskID: string, task: Task, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDPatch(taskID, task, options)(this.axios, this.basePath);
     }
 
     /**
@@ -11860,14 +14624,14 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
-         * @param {string} org specifies the organization of the resource
+         * @param {string} orgID specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling telegrafsGet.');
+        telegrafsGet(orgID: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling telegrafsGet.');
             }
             const localVarPath = `/telegrafs`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -11879,8 +14643,8 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -11896,16 +14660,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Create a telegraf config
-         * @param {string} org specifies the organization of the resource
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(org: string, telegrafRequest: TelegrafRequest, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling telegrafsPost.');
-            }
+        telegrafsPost(telegrafRequest: TelegrafRequest, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafRequest' is not null or undefined
             if (telegrafRequest === null || telegrafRequest === undefined) {
                 throw new RequiredError('telegrafRequest','Required parameter telegrafRequest was null or undefined when calling telegrafsPost.');
@@ -11920,10 +14679,6 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -11932,6 +14687,44 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"TelegrafRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(telegrafRequest || {}) : (telegrafRequest || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a telegraf config
+         * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'telegrafID' is not null or undefined
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDDelete.');
+            }
+            const localVarPath = `/telegrafs/{telegrafID}`
+                .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
             return {
                 url: url.format(localVarUrlObj),
@@ -11965,6 +14758,135 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'telegrafID' is not null or undefined
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsGet.');
+            }
+            const localVarPath = `/telegrafs/{telegrafID}/labels`
+                .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'telegrafID' is not null or undefined
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling telegrafsTelegrafIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/telegrafs/{telegrafID}/labels/{labelID}`
+                .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'telegrafID' is not null or undefined
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling telegrafsTelegrafIDLabelsPost.');
+            }
+            const localVarPath = `/telegrafs/{telegrafID}/labels`
+                .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -12252,12 +15174,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} org specifies the organization of the resource
+         * @param {string} orgID specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(org, options);
+        telegrafsGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12266,13 +15188,27 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a telegraf config
-         * @param {string} org specifies the organization of the resource
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(org: string, telegrafRequest: TelegrafRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsPost(org, telegrafRequest, options);
+        telegrafsPost(telegrafRequest: TelegrafRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsPost(telegrafRequest, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a telegraf config
+         * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12287,6 +15223,53 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          */
         telegrafsTelegrafIDGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
             const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12406,23 +15389,33 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @param {string} org specifies the organization of the resource
+         * @param {string} orgID specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(org: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsGet(org, options)(axios, basePath);
+        telegrafsGet(orgID: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsGet(orgID, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a telegraf config
-         * @param {string} org specifies the organization of the resource
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(org: string, telegrafRequest: TelegrafRequest, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsPost(org, telegrafRequest, options)(axios, basePath);
+        telegrafsPost(telegrafRequest: TelegrafRequest, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsPost(telegrafRequest, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a telegraf config
+         * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -12433,6 +15426,41 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
          */
         telegrafsTelegrafIDGet(telegrafID: string, options?: any) {
             return TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary list all labels for a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a telegraf config
+         * @param {string} telegrafID ID of the telegraf config
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -12521,26 +15549,38 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
 export class TelegrafsApi extends BaseAPI {
     /**
      * 
-     * @param {string} org specifies the organization of the resource
+     * @param {string} orgID specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsGet(org: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsGet(org, options)(this.axios, this.basePath);
+    public telegrafsGet(orgID: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsGet(orgID, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a telegraf config
-     * @param {string} org specifies the organization of the resource
      * @param {TelegrafRequest} telegrafRequest telegraf config to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsPost(org: string, telegrafRequest: TelegrafRequest, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsPost(org, telegrafRequest, options)(this.axios, this.basePath);
+    public telegrafsPost(telegrafRequest: TelegrafRequest, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsPost(telegrafRequest, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a telegraf config
+     * @param {string} telegrafID ID of telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TelegrafsApi
+     */
+    public telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -12553,6 +15593,47 @@ export class TelegrafsApi extends BaseAPI {
      */
     public telegrafsTelegrafIDGet(telegrafID: string, options?: any) {
         return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a telegraf config
+     * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TelegrafsApi
+     */
+    public telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a telegraf config
+     * @param {string} telegrafID ID of the telegraf config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TelegrafsApi
+     */
+    public telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a telegraf config
+     * @param {string} telegrafID ID of the telegraf config
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TelegrafsApi
+     */
+    public telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14515,7 +17596,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
+        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
             const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -15990,6 +19071,93 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
     return {
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'cellID' is not null or undefined
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID','Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            // verify required parameter 'view' is not null or undefined
+            if (view === null || view === undefined) {
+                throw new RequiredError('view','Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/cells/{cellID}/view`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)))
+                .replace(`{${"cellID"}}`, encodeURIComponent(String(cellID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(view || {}) : (view || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get all views
          * @param {string} org specifies the organization of the resource
          * @param {*} [options] Override http request option.
@@ -16129,6 +19297,135 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a view
+         * @param {string} viewID ID of the view
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'viewID' is not null or undefined
+            if (viewID === null || viewID === undefined) {
+                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsGet.');
+            }
+            const localVarPath = `/views/{viewID}/labels`
+                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a view config
+         * @param {string} viewID ID of the view config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'viewID' is not null or undefined
+            if (viewID === null || viewID === undefined) {
+                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling viewsViewIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/views/{viewID}/labels/{labelID}`
+                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a view
+         * @param {string} viewID ID of the view
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'viewID' is not null or undefined
+            if (viewID === null || viewID === undefined) {
+                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling viewsViewIDLabelsPost.');
+            }
+            const localVarPath = `/views/{viewID}/labels`
+                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16416,6 +19713,37 @@ export const ViewsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary Get all views
          * @param {string} org specifies the organization of the resource
          * @param {*} [options] Override http request option.
@@ -16466,6 +19794,53 @@ export const ViewsApiFp = function(configuration?: Configuration) {
          */
         viewsViewIDGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
             const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDGet(viewID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a view
+         * @param {string} viewID ID of the view
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a view config
+         * @param {string} viewID ID of the view config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a view
+         * @param {string} viewID ID of the view
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -16585,6 +19960,29 @@ export const ViewsApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
+         * @summary Retrieve the view for a cell in a dashboard
+         * @param {string} dashboardID ID of dashboard
+         * @param {string} cellID ID of cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update the view for a cell
+         * @param {string} dashboardID ID of dashboard to update
+         * @param {string} cellID ID of cell to update
+         * @param {View} view updates the view for a cell
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary Get all views
          * @param {string} org specifies the organization of the resource
          * @param {*} [options] Override http request option.
@@ -16623,6 +20021,41 @@ export const ViewsApiFactory = function (configuration?: Configuration, basePath
          */
         viewsViewIDGet(viewID: string, options?: any) {
             return ViewsApiFp(configuration).viewsViewIDGet(viewID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary list all labels for a view
+         * @param {string} viewID ID of the view
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any) {
+            return ViewsApiFp(configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a view config
+         * @param {string} viewID ID of the view config
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return ViewsApiFp(configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a view
+         * @param {string} viewID ID of the view
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return ViewsApiFp(configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -16711,6 +20144,33 @@ export const ViewsApiFactory = function (configuration?: Configuration, basePath
 export class ViewsApi extends BaseAPI {
     /**
      * 
+     * @summary Retrieve the view for a cell in a dashboard
+     * @param {string} dashboardID ID of dashboard
+     * @param {string} cellID ID of cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ViewsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
+        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update the view for a cell
+     * @param {string} dashboardID ID of dashboard to update
+     * @param {string} cellID ID of cell to update
+     * @param {View} view updates the view for a cell
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ViewsApi
+     */
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
+        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Get all views
      * @param {string} org specifies the organization of the resource
      * @param {*} [options] Override http request option.
@@ -16756,6 +20216,47 @@ export class ViewsApi extends BaseAPI {
      */
     public viewsViewIDGet(viewID: string, options?: any) {
         return ViewsApiFp(this.configuration).viewsViewIDGet(viewID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a view
+     * @param {string} viewID ID of the view
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ViewsApi
+     */
+    public viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any) {
+        return ViewsApiFp(this.configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a view config
+     * @param {string} viewID ID of the view config
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ViewsApi
+     */
+    public viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return ViewsApiFp(this.configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a view
+     * @param {string} viewID ID of the view
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ViewsApi
+     */
+    public viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return ViewsApiFp(this.configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
