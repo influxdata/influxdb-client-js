@@ -6,7 +6,7 @@
   "scripts": {
     "prepublishOnly": "echo \"PRE\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/platform/master/http/cur_swagger.yml",
+    "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/cur_swagger.yml",
     "build": "tsc"
   },
   "keywords": [
