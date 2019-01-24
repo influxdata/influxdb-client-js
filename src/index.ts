@@ -5,6 +5,7 @@ import Labels from "./wrappers/labels"
 import Buckets from "./wrappers/buckets"
 import Organizations from "./wrappers/organizations"
 import Scrapers from "./wrappers/scrapers"
+import TelegrafConfigs from "./wrappers/telegrafConfigs"
 
 export default class Client {
   public links: Links
@@ -14,6 +15,7 @@ export default class Client {
   public buckets: Buckets
   public organizations: Organizations
   public scrapers: Scrapers
+  public telegrafConfigs: TelegrafConfigs
 
   constructor(basePath: string) {
     this.tasks = new Tasks(basePath)
@@ -23,5 +25,6 @@ export default class Client {
     this.buckets = new Buckets(basePath)
     this.organizations = new Organizations(basePath)
     this.scrapers = new Scrapers(basePath)
+    this.telegrafConfigs = new TelegrafConfigs(basePath)
   }
 }
