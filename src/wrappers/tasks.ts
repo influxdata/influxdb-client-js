@@ -1,4 +1,5 @@
-import { Label, LabelResponse, Organization, Task, TasksApi, User } from "../api";
+import { Organization, Task, TasksApi, User } from "../api";
+import { addLabelDefaults, Label } from "./labels";
 
 export default class {
   private service: TasksApi;
@@ -13,7 +14,7 @@ export default class {
     return data;
   }
 
-  public async getByID(id: string): Promise<Task> {
+  public async get(id: string): Promise<Task> {
     const {data} = await this.service.tasksTaskIDGet(id);
 
     return data;
@@ -32,7 +33,7 @@ export default class {
   }
 
   public async update(id: string, updates: Partial<Task>) {
-    const original = await this.getByID(id);
+    const original = await this.get(id);
     const {data: updated} = await this.service.tasksTaskIDPatch(id, {...original, ...updates});
 
     return updated;
@@ -52,14 +53,18 @@ export default class {
     return data;
   }
 
-  public async addLabel(taskID: string, label: Label): Promise<LabelResponse> {
+  public async addLabel(taskID: string, label: Label): Promise<Label> {
     if (!label.id) {
       throw new Error("label must have id");
     }
 
     const {data} = await this.service.tasksTaskIDLabelsPost(taskID, {labelID: label.id});
 
-    return data;
+    if (!data.label) {
+      throw new Error("API did not return a label");
+    }
+
+    return addLabelDefaults(data.label);
   }
 
   public async removeLabel(taskID: string, label: Label): Promise<Response> {
@@ -72,7 +77,7 @@ export default class {
     return data;
   }
 
-  public addLabels(taskID: string, labels: Label[]): Promise<LabelResponse[]> {
+  public addLabels(taskID: string, labels: Label[]): Promise<Label[]> {
     const promises = labels.map((l) => this.addLabel(taskID, l));
 
     return Promise.all(promises);
