@@ -1,4 +1,5 @@
 import Auth from "./wrappers/auth";
+import Authorizations from "./wrappers/authorizations";
 import Buckets from "./wrappers/buckets";
 import Labels from "./wrappers/labels";
 import Links from "./wrappers/links";
@@ -6,21 +7,23 @@ import Organizations from "./wrappers/organizations";
 import Scrapers from "./wrappers/scrapers";
 import Tasks from "./wrappers/tasks";
 import TelegrafConfigs from "./wrappers/telegrafConfigs";
-import Users from "./wrappers/users"
+import Users from "./wrappers/users";
 
 export default class Client {
-  public links: Links;
-  public tasks: Tasks;
   public auth: Auth;
-  public labels: Labels;
+  public authoriziations: Authorizations;
   public buckets: Buckets;
+  public labels: Labels;
+  public links: Links;
   public organizations: Organizations;
   public scrapers: Scrapers;
+  public tasks: Tasks;
   public telegrafConfigs: TelegrafConfigs;
   public users: Users;
 
   constructor(basePath: string) {
     this.auth = new Auth(basePath);
+    this.authoriziations = new Authorizations(basePath);
     this.buckets = new Buckets(basePath);
     this.labels = new Labels(basePath);
     this.links = new Links(basePath);
@@ -28,6 +31,6 @@ export default class Client {
     this.scrapers = new Scrapers(basePath);
     this.tasks = new Tasks(basePath);
     this.telegrafConfigs = new TelegrafConfigs(basePath);
-    this.users = new Users(basePath)
+    this.users = new Users(basePath);
   }
 }
