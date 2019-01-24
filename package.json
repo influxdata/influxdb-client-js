@@ -4,7 +4,7 @@
   "description": "Influxdb v2 client",
   "main": "dist/index.js",
   "scripts": {
-    "prepublishOnly": "echo \"PRE\" && exit 0",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/cur_swagger.yml",
     "build": "tsc",
