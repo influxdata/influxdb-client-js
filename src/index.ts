@@ -3,6 +3,7 @@ import Auth from "./wrappers/auth"
 import Links from "./wrappers/links"
 import Labels from "./wrappers/labels"
 import Buckets from "./wrappers/buckets"
+import Organizations from "./wrappers/organizations"
 
 export default class Client {
   public links: Links
@@ -10,6 +11,7 @@ export default class Client {
   public auth: Auth
   public labels: Labels
   public buckets: Buckets
+  public organizations: Organizations
 
   constructor(basePath: string) {
     this.tasks = new Tasks(basePath)
@@ -17,5 +19,6 @@ export default class Client {
     this.links = new Links(basePath)
     this.labels = new Labels(basePath)
     this.buckets = new Buckets(basePath)
+    this.organizations = new Organizations(basePath)
   }
 }
