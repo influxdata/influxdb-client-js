@@ -46,6 +46,12 @@ export default class {
     return this.update(id, {flux: script});
   }
 
+  public async delete(id: string): Promise<Response> {
+    const {data} = await this.service.tasksTaskIDDelete(id);
+
+    return data;
+  }
+
   public async addLabel(taskID: string, label: Label): Promise<LabelResponse> {
     if (!label.id) {
       throw new Error("label must have id");
