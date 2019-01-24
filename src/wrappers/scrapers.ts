@@ -1,4 +1,4 @@
-import { ScraperTargetResponse, ScraperTargetsApi } from "../api";
+import { ScraperTargetRequest, ScraperTargetResponse, ScraperTargetsApi } from "../api";
 
 export default class {
   private service: ScraperTargetsApi;
@@ -11,6 +11,18 @@ export default class {
     const {data: {configurations}} = await this.service.scrapersGet();
 
     return configurations || [];
+  }
+
+  public async create(request: ScraperTargetRequest): Promise<ScraperTargetResponse> {
+    const {data} = await this.service.scrapersPost(request);
+
+    return data;
+  }
+
+  public async update(id: string, changes: ScraperTargetRequest): Promise<ScraperTargetResponse> {
+    const {data} = await this.service.scrapersScraperTargetIDPatch(id, changes);
+
+    return data;
   }
 
   public async deleteScraper(id: string): Promise<Response> {
