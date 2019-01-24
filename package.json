@@ -7,7 +7,8 @@
     "prepublishOnly": "echo \"PRE\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/cur_swagger.yml",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "tslint --project ."
   },
   "keywords": [
     "influxdb",
@@ -17,7 +18,8 @@
   "license": "MIT",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "0.0.7-3.3.4",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "tslint": "^5.12.1"
   },
   "dependencies": {
     "axios": "^0.18.0"

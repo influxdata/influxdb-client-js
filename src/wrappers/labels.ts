@@ -1,69 +1,69 @@
-import { LabelsApi, Label as APILabel } from "../api";
+import { Label as APILabel, LabelsApi } from "../api";
 
-const DEFAULT_LABEL_COLOR = '#326BBA'
+const DEFAULT_LABEL_COLOR = "#326BBA";
 
-interface LabelProperties {
-  color: string
-  description?: string
+interface ILabelProperties {
+  color: string;
+  description?: string;
 }
 
-const addLabelDefaults = (l: APILabel): Label => ({
+const addLabelDefaults = (l: APILabel): ILabel => ({
   ...l,
   properties: {
     ...l.properties,
     // add defualt color hex if missing
     color: l.properties.color || DEFAULT_LABEL_COLOR,
   },
-})
+});
 
-type Label = APILabel & {properties: LabelProperties}
+type ILabel = APILabel & {properties: ILabelProperties};
 
 export default class {
-  private service: LabelsApi
+  private service: LabelsApi;
 
   constructor(basePath: string) {
-    this.service = new LabelsApi({ basePath })
+    this.service = new LabelsApi({ basePath });
   }
 
-  public async get(id: string): Promise<Label> {
-    const {data: {label}} = await this.service.labelsLabelIDGet(id)
+  public async get(id: string): Promise<ILabel> {
+    const {data: {label}} = await this.service.labelsLabelIDGet(id);
 
     if (!label) {
-      throw new Error('Failed to get label')
+      throw new Error("Failed to get label");
     }
 
-    return addLabelDefaults(label)
+    return addLabelDefaults(label);
   }
 
-  public async getAll(): Promise<Label[]> {
-    const {data: {labels}} = await this.service.labelsGet()
+  public async getAll(): Promise<ILabel[]> {
+    const {data: {labels}} = await this.service.labelsGet();
 
-    return (labels || []).map(addLabelDefaults)
+    return (labels || []).map(addLabelDefaults);
   }
 
-  public async create(name: string, properties: LabelProperties): Promise<Label> {
-    const {data: { label }} = await this.service.labelsPost({name, properties})
+  public async create(name: string, properties: ILabelProperties): Promise<ILabel> {
+    const {data: { label }} = await this.service.labelsPost({name, properties});
 
     if (!label) {
-      throw new Error('Failed to create label')
+      throw new Error("Failed to create label");
     }
 
-    return addLabelDefaults(label)
+    return addLabelDefaults(label);
   }
 
-  public async update(id: string, properties: LabelProperties) {
-    const {data: {label}} = await this.service.labelsLabelIDPatch(id, {properties})
+  public async update(id: string, properties: ILabelProperties) {
+    const {data: {label}} = await this.service.labelsLabelIDPatch(id, {properties});
 
     if (!label) {
-      throw new Error('Failed to update label')
+      throw new Error("Failed to update label");
     }
 
-    return addLabelDefaults(label)
+    return addLabelDefaults(label);
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.labelsLabelIDDelete(id)
+    const {data} = await this.service.labelsLabelIDDelete(id);
 
-    return data
+    return data;
   }
 }

@@ -1,52 +1,52 @@
-import { OrganizationsApi, Organization, ResourceOwner } from "../api";
+import { Organization, OrganizationsApi, ResourceOwner } from "../api";
 
 export default class {
-  private service: OrganizationsApi
+  private service: OrganizationsApi;
 
   constructor(basePath: string) {
-    this.service = new OrganizationsApi({basePath})
+    this.service = new OrganizationsApi({basePath});
   }
 
   public async get(id: string): Promise<Organization> {
-    const {data} = await this.service.orgsOrgIDGet(id)
+    const {data} = await this.service.orgsOrgIDGet(id);
 
-    return data
+    return data;
   }
 
   public async getAll(): Promise<Organization[]> {
-    const {data: {orgs}} = await this.service.orgsGet()
+    const {data: {orgs}} = await this.service.orgsGet();
 
-    return orgs || []
+    return orgs || [];
   }
 
   public async create(org: Organization): Promise<Organization> {
-    const {data} = await this.service.orgsPost(org)
+    const {data} = await this.service.orgsPost(org);
 
-    return data
+    return data;
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.orgsOrgIDDelete(id)
+    const {data} = await this.service.orgsOrgIDDelete(id);
 
-    return data
+    return data;
   }
 
   public async update(id: string, org: Partial<Organization>): Promise<Organization> {
-    const original = await this.get(id)
-    const {data} = await this.service.orgsOrgIDPatch(id, {...original, ...org})
+    const original = await this.get(id);
+    const {data} = await this.service.orgsOrgIDPatch(id, {...original, ...org});
 
-    return data
+    return data;
   }
 
   public async members(id: string): Promise<ResourceOwner[]> {
-    const {data: {users}} = await this.service.orgsOrgIDMembersGet(id)
+    const {data: {users}} = await this.service.orgsOrgIDMembersGet(id);
 
-    return users || []
+    return users || [];
   }
 
   public async owners(id: string): Promise<ResourceOwner[]> {
-    const {data: {users}} = await this.service.orgsOrgIDOwnersGet(id)
+    const {data: {users}} = await this.service.orgsOrgIDOwnersGet(id);
 
-    return users || []
+    return users || [];
   }
 }

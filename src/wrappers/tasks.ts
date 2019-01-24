@@ -1,80 +1,80 @@
-import { TasksApi, Task, LabelResponse, User, Label, Organization } from "../api";
+import { Label, LabelResponse, Organization, Task, TasksApi, User } from "../api";
 
 export default class {
-  private service: TasksApi
+  private service: TasksApi;
 
   constructor(basePath: string) {
-    this.service = new TasksApi({ basePath })
+    this.service = new TasksApi({ basePath });
   }
 
   public async create(org: string, script: string): Promise<Task> {
-    const {data} = await this.service.tasksPost({orgID: org, flux: script})
+    const {data} = await this.service.tasksPost({orgID: org, flux: script});
 
-    return data
+    return data;
   }
 
   public async getByID(id: string): Promise<Task> {
-    const {data} = await this.service.tasksTaskIDGet(id)
+    const {data} = await this.service.tasksTaskIDGet(id);
 
-    return data
+    return data;
   }
 
   public async getAllByOrg({name}: Organization): Promise<Task[]> {
-    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, name)
+    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, name);
 
-    return tasks || []
+    return tasks || [];
   }
 
   public async getAllByUser(user: User): Promise<Task[]> {
-    const { data } = await this.service.tasksGet(undefined, user.id)
+    const { data } = await this.service.tasksGet(undefined, user.id);
 
-    return data.tasks || []
+    return data.tasks || [];
   }
 
   public async update(id: string, updates: Partial<Task>) {
-    const original = await this.getByID(id)
-    const {data: updated} = await this.service.tasksTaskIDPatch(id, {...original, ...updates})
+    const original = await this.getByID(id);
+    const {data: updated} = await this.service.tasksTaskIDPatch(id, {...original, ...updates});
 
-    return updated
+    return updated;
   }
 
   public updateStatus(id: string, status: Task.StatusEnum): Promise<Task> {
-    return this.update(id, {status})
+    return this.update(id, {status});
   }
 
   public updateScript(id: string, script: string): Promise<Task> {
-    return this.update(id, {flux: script})
+    return this.update(id, {flux: script});
   }
 
   public async addLabel(taskID: string, label: Label): Promise<LabelResponse> {
     if (!label.id) {
-      throw new Error("label must have id")
+      throw new Error("label must have id");
     }
 
-    const {data} = await this.service.tasksTaskIDLabelsPost(taskID, {labelID: label.id})
+    const {data} = await this.service.tasksTaskIDLabelsPost(taskID, {labelID: label.id});
 
-    return data
+    return data;
   }
 
   public async removeLabel(taskID: string, label: Label): Promise<Response> {
     if (!label.id) {
-      throw new Error("label must have id")
+      throw new Error("label must have id");
     }
 
-    const {data} = await this.service.tasksTaskIDLabelsLabelIDDelete(taskID, label.id)
+    const {data} = await this.service.tasksTaskIDLabelsLabelIDDelete(taskID, label.id);
 
-    return data
+    return data;
   }
 
   public addLabels(taskID: string, labels: Label[]): Promise<LabelResponse[]> {
-    const promises = labels.map(l => this.addLabel(taskID, l))
+    const promises = labels.map((l) => this.addLabel(taskID, l));
 
-    return Promise.all(promises)
+    return Promise.all(promises);
   }
 
   public removeLabels(taskID: string, labels: Label[]): Promise<Response[]> {
-    const promises = labels.map(l => this.removeLabel(taskID, l))
+    const promises = labels.map((l) => this.removeLabel(taskID, l));
 
-    return Promise.all(promises)
+    return Promise.all(promises);
   }
 }
