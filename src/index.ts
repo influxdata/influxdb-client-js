@@ -12,7 +12,7 @@ import Write from "./wrappers/write";
 
 export default class Client {
   public auth: Auth;
-  public authoriziations: Authorizations;
+  public authorizations: Authorizations;
   public buckets: Buckets;
   public labels: Labels;
   public links: Links;
@@ -25,7 +25,7 @@ export default class Client {
 
   constructor(basePath: string) {
     this.auth = new Auth(basePath);
-    this.authoriziations = new Authorizations(basePath);
+    this.authorizations = new Authorizations(basePath);
     this.buckets = new Buckets(basePath);
     this.labels = new Labels(basePath);
     this.links = new Links(basePath);
