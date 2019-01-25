@@ -1,4 +1,4 @@
-import { Authorization, AuthorizationsApi } from "../api";
+import { Authorization, AuthorizationsApi, User } from "../api";
 
 export default class {
   private service: AuthorizationsApi;
@@ -13,8 +13,24 @@ export default class {
     return data;
   }
 
+  public async getAuthorizationToken(username: string): Promise<string | null> {
+    const authorizations = await this.getAllByUsername(username);
+
+    if (authorizations[0]) {
+      return authorizations[0].token || null;
+    }
+
+    return null;
+  }
+
   public async getAll(): Promise<Authorization[]> {
     const {data: {authorizations}} = await this.service.authorizationsGet();
+
+    return authorizations || [];
+  }
+
+  public async getAllByUsername(username: string): Promise<Authorization[]> {
+    const {data: {authorizations}} = await this.service.authorizationsGet(undefined, username);
 
     return authorizations || [];
   }
