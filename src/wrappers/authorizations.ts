@@ -1,4 +1,4 @@
-import { Authorization, AuthorizationsApi, User } from "../api";
+import { Authorization, AuthorizationsApi } from "../api";
 
 export default class {
   private service: AuthorizationsApi;
