@@ -1,10 +1,16 @@
-import { Organization, TelegrafPluginConfig, TelegrafsApi } from "../api";
+import { Organization, Telegraf, TelegrafPluginConfig, TelegrafsApi } from "../api";
 
 export default class {
+
   private service: TelegrafsApi;
 
   constructor(basePath: string) {
     this.service = new TelegrafsApi({basePath});
+  }
+
+  public async getAll(): Promise<TelegrafPluginConfig[]> {
+    const {data: {configurations}} = await this.service.telegrafsGet("");
+    return configurations || [];
   }
 
   public async getAllByOrg(org: Organization): Promise<TelegrafPluginConfig[]> {
@@ -29,7 +35,26 @@ export default class {
     return data as string;
   }
 
-  public async delete(id: string): Promise<Response> {
+  public async get(id: string): Promise<Telegraf> {
+    const {data} = await this.service.telegrafsTelegrafIDGet(id);
+
+    return data;
+  }
+
+  public async create(props: Telegraf): Promise<Telegraf> {
+    const {data} = await this.service.telegrafsPost(props);
+
+    return data;
+  }
+
+  public async update(id: string, props: Partial<Telegraf>): Promise<Telegraf> {
+    const original = await this.get(id);
+    const {data: updated} = await this.service.telegrafsTelegrafIDPut(id, {...original, ...props});
+
+    return updated;
+  }
+
+  public async delete(id: string): Promise <Response> {
     const {data} = await this.service.telegrafsTelegrafIDDelete(id);
 
     return data as Response;

@@ -25,7 +25,7 @@ export default class {
     return data;
   }
 
-  public async deleteScraper(id: string): Promise<Response> {
+  public async delete(id: string): Promise<Response> {
     const {data} = await this.service.scrapersScraperTargetIDDelete(id);
 
     return data;
