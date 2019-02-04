@@ -6,6 +6,7 @@ import Links from "./wrappers/links";
 import Organizations from "./wrappers/organizations";
 import Scrapers from "./wrappers/scrapers";
 import Setup from "./wrappers/setup";
+import Sources from "./wrappers/sources";
 import Tasks from "./wrappers/tasks";
 import TelegrafConfigs from "./wrappers/telegrafConfigs";
 import Users from "./wrappers/users";
@@ -24,6 +25,7 @@ export default class Client {
   public users: Users;
   public write: Write;
   public setup: Setup;
+  public sources: Sources;
 
   constructor(basePath: string) {
     this.auth = new Auth(basePath);
@@ -38,5 +40,6 @@ export default class Client {
     this.users = new Users(basePath);
     this.write = new Write(basePath);
     this.setup = new Setup(basePath);
+    this.sources = new Sources(basePath);
   }
 }
