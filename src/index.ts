@@ -12,6 +12,8 @@ import TelegrafConfigs from "./wrappers/telegrafConfigs";
 import Users from "./wrappers/users";
 import Write from "./wrappers/write";
 
+export * from "./types";
+
 export default class Client {
   public auth: Auth;
   public authorizations: Authorizations;
