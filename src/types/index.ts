@@ -4,3 +4,5 @@ export interface ISetupParams {
   org: string;
   bucket: string;
 }
+
+export * from "./ast";
