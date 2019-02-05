@@ -1,4 +1,4 @@
-import { Cell, CellsApi, Dashboard, DashboardsApi, LabelResponse, ProtosApi, View } from "../api";
+import { Cell, CellsApi, Dashboard, DashboardsApi, Label, ProtosApi, View } from "../api";
 
 export default class {
   private service: DashboardsApi;
@@ -78,12 +78,16 @@ export default class {
     return data.cells || [];
   }
 
-  public async createLabel(dashboardID: string, labelID: string): Promise<LabelResponse> {
+  public async createLabel(dashboardID: string, labelID: string): Promise<Label> {
     const {data} = await this.service.dashboardsDashboardIDLabelsPost(dashboardID, {
       labelID,
     });
 
-    return data;
+    if (!data.label) {
+      throw new Error("Failed to create label");
+    }
+
+    return data.label;
   }
 
   public async deleteLabel(dashboardID: string, labelID: string): Promise<Response> {
