@@ -5,6 +5,7 @@ import Dashboards from "./wrappers/dashboards";
 import Labels from "./wrappers/labels";
 import Links from "./wrappers/links";
 import Organizations from "./wrappers/organizations";
+import Protos from "./wrappers/protos";
 import Scrapers from "./wrappers/scrapers";
 import Setup from "./wrappers/setup";
 import Sources from "./wrappers/sources";
@@ -23,6 +24,7 @@ export default class Client {
   public labels: Labels;
   public links: Links;
   public organizations: Organizations;
+  public protos: Protos;
   public scrapers: Scrapers;
   public setup: Setup;
   public sources: Sources;
@@ -39,6 +41,7 @@ export default class Client {
     this.labels = new Labels(basePath);
     this.links = new Links(basePath);
     this.organizations = new Organizations(basePath);
+    this.protos = new Protos(basePath);
     this.scrapers = new Scrapers(basePath);
     this.setup = new Setup(basePath);
     this.sources = new Sources(basePath);

@@ -1,10 +1,24 @@
-import { Cell, CellsApi } from "../api";
+import { Cell, CellsApi, Dashboard, ProtosApi } from "../api";
 
 export default class {
   private cellsService: CellsApi;
+  private protosService: ProtosApi;
 
   constructor(basePath: string) {
     this.cellsService = new CellsApi({basePath});
+    this.protosService = new ProtosApi({basePath});
+  }
+
+  public async createFromProto(protoID: string, orgID?: string): Promise<Dashboard[]> {
+    let request = {};
+
+    if (orgID) {
+      request = {orgID};
+    }
+
+    const { data } = await this.protosService.protosProtoIDDashboardsPost(protoID, request);
+
+    return data.dashboards || [];
   }
 
   public async deleteCell(dashboardID: string, cellID: string): Promise<Response> {
