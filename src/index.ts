@@ -16,6 +16,7 @@ import Users from "./wrappers/users";
 import Write from "./wrappers/write";
 
 export * from "./types";
+export * from "./api";
 
 export default class Client {
   public auth: Auth;
