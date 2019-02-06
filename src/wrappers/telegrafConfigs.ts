@@ -30,7 +30,7 @@ export default class {
       },
     };
 
-    const {data} = await this.service.telegrafsTelegrafIDGet(id, options);
+    const {data} = await this.service.telegrafsTelegrafIDGet(id, undefined, options);
 
     return data as string;
   }

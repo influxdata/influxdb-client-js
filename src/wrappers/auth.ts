@@ -14,7 +14,7 @@ export default class {
   }
 
   public async signin(username: string, password: string): Promise<Response> {
-    const {data} = await this.service.signinPost({ auth: { username, password }});
+    const {data} = await this.service.signinPost(undefined, { auth: { username, password }});
 
     return data;
   }

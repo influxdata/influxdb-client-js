@@ -19,8 +19,8 @@ export default class {
     return buckets || [];
   }
 
-  public async create({name}: Organization, bucket: Bucket): Promise<Bucket> {
-    const {data} = await this.service.bucketsPost(name, bucket);
+  public async create(bucket: Bucket): Promise<Bucket> {
+    const {data} = await this.service.bucketsPost(bucket);
 
     return data;
   }

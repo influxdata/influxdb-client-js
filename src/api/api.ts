@@ -17,7 +17,7 @@ import * as url from "url";
 import { Configuration } from "./configuration";
 import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
 
-const BASE_PATH = "http://localhost:9999/api/v2".replace(/\/+$/, "");
+const BASE_PATH = "https://raw.githubusercontent.com/api/v2".replace(/\/+$/, "");
 
 /**
  *
@@ -81,6 +81,26 @@ export interface ASTResponse {
      * @memberof ASTResponse
      */
     ast?: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface AddResourceMemberRequestBody
+ */
+export interface AddResourceMemberRequestBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof AddResourceMemberRequestBody
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AddResourceMemberRequestBody
+     */
+    name?: string;
 }
 
 /**
@@ -316,16 +336,16 @@ export interface Bucket {
     id?: string;
     /**
      * 
-     * @type {Owners}
+     * @type {string}
      * @memberof Bucket
      */
-    owners?: Owners;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof Bucket
      */
-    name: string;
+    organizationID?: string;
     /**
      * 
      * @type {string}
@@ -339,17 +359,17 @@ export interface Bucket {
      */
     rp?: string;
     /**
-     * 
-     * @type {string}
-     * @memberof Bucket
-     */
-    organizationID?: string;
-    /**
      * rules to expire or retain data.  No rules means data never expires.
      * @type {Array<BucketRetentionRules>}
      * @memberof Bucket
      */
     retentionRules: Array<BucketRetentionRules>;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof Bucket
+     */
+    labels?: Array<Label>;
 }
 
 /**
@@ -480,6 +500,12 @@ export interface Cell {
      * @memberof Cell
      */
     h?: number;
+    /**
+     * The reference to a view from the views API
+     * @type {string}
+     * @memberof Cell
+     */
+    viewID?: string;
 }
 
 /**
@@ -514,6 +540,53 @@ export interface CellUpdate {
      * @memberof CellUpdate
      */
     name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface Check
+ */
+export interface Check {
+    /**
+     * 
+     * @type {string}
+     * @memberof Check
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Check
+     */
+    message?: string;
+    /**
+     * 
+     * @type {Array<Check>}
+     * @memberof Check
+     */
+    checks?: Array<Check>;
+    /**
+     * 
+     * @type {string}
+     * @memberof Check
+     */
+    status: Check.StatusEnum;
+}
+
+/**
+ * @export
+ * @namespace Check
+ */
+export namespace Check {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum StatusEnum {
+        Pass = 'pass',
+        Fail = 'fail'
+    }
 }
 
 /**
@@ -587,6 +660,12 @@ export interface CreateCell {
      */
     h?: number;
     /**
+     * uses the view provided in the request
+     * @type {string}
+     * @memberof CreateCell
+     */
+    viewID?: string;
+    /**
      * makes a copy of the provided view
      * @type {string}
      * @memberof CreateCell
@@ -627,7 +706,7 @@ export interface Dashboard {
      */
     id?: string;
     /**
-     * id of organization that owns dashboard
+     * id of the organization that owns the dashboard
      * @type {string}
      * @memberof Dashboard
      */
@@ -696,10 +775,10 @@ export interface DashboardColor {
     name?: string;
     /**
      * Value is the data value mapped to this color
-     * @type {number}
+     * @type {string}
      * @memberof DashboardColor
      */
-    value?: number;
+    value?: string;
 }
 
 /**
@@ -794,12 +873,6 @@ export interface DashboardQuery {
      * @memberof DashboardQuery
      */
     queryConfig?: QueryConfig;
-    /**
-     * An optional word or phrase that refers to the query
-     * @type {string}
-     * @memberof DashboardQuery
-     */
-    name?: string;
 }
 
 /**
@@ -1046,62 +1119,15 @@ export interface FluxSuggestionsFuncs {
 /**
  * 
  * @export
- * @interface Health
- */
-export interface Health {
-    /**
-     * 
-     * @type {string}
-     * @memberof Health
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Health
-     */
-    message?: string;
-    /**
-     * 
-     * @type {Array<Health>}
-     * @memberof Health
-     */
-    checks?: Array<Health>;
-    /**
-     * 
-     * @type {string}
-     * @memberof Health
-     */
-    status?: Health.StatusEnum;
-}
-
-/**
- * @export
- * @namespace Health
- */
-export namespace Health {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum StatusEnum {
-        Unhealthy = 'unhealthy',
-        Healthy = 'healthy'
-    }
-}
-
-/**
- * 
- * @export
  * @interface InlineResponse200
  */
 export interface InlineResponse200 {
     /**
      * 
-     * @type {Array<Task>}
+     * @type {Array<Label>}
      * @memberof InlineResponse200
      */
-    tasks?: Array<Task>;
+    labels?: Array<Label>;
     /**
      * 
      * @type {Links}
@@ -1118,14 +1144,34 @@ export interface InlineResponse200 {
 export interface InlineResponse2001 {
     /**
      * 
-     * @type {Array<Run>}
+     * @type {Array<Task>}
      * @memberof InlineResponse2001
+     */
+    tasks?: Array<Task>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof InlineResponse2001
+     */
+    links?: Links;
+}
+
+/**
+ * 
+ * @export
+ * @interface InlineResponse2002
+ */
+export interface InlineResponse2002 {
+    /**
+     * 
+     * @type {Array<Run>}
+     * @memberof InlineResponse2002
      */
     runs?: Array<Run>;
     /**
      * 
      * @type {Links}
-     * @memberof InlineResponse2001
+     * @memberof InlineResponse2002
      */
     links?: Links;
 }
@@ -1304,7 +1350,8 @@ export namespace LineProtocolError {
         NotFound = 'not found',
         Conflict = 'conflict',
         Invalid = 'invalid',
-        EmptyValue = 'empty value'
+        EmptyValue = 'empty value',
+        Unavailable = 'unavailable'
     }
 }
 
@@ -1349,43 +1396,29 @@ export namespace LineProtocolLengthError {
 }
 
 /**
- * URI of resource.
- * @export
- * @interface Link
- */
-export interface Link {
-    /**
-     * 
-     * @type {string}
-     * @memberof Link
-     */
-    href: string;
-}
-
-/**
  * 
  * @export
  * @interface Links
  */
 export interface Links {
     /**
-     * 
-     * @type {Link}
+     * URI of resource.
+     * @type {string}
      * @memberof Links
      */
-    next?: Link;
+    next?: string;
     /**
-     * 
-     * @type {Link}
+     * URI of resource.
+     * @type {string}
      * @memberof Links
      */
-    self: Link;
+    self: string;
     /**
-     * 
-     * @type {Link}
+     * URI of resource.
+     * @type {string}
      * @memberof Links
      */
-    prev?: Link;
+    prev?: string;
 }
 
 /**
@@ -1529,10 +1562,10 @@ export interface Logs {
 export interface Macro {
     /**
      * 
-     * @type {ResourceOwnersLinks}
+     * @type {UsersLinks}
      * @memberof Macro
      */
-    links?: ResourceOwnersLinks;
+    links?: UsersLinks;
     /**
      * 
      * @type {string}
@@ -1630,13 +1663,13 @@ export interface ModelError {
      * @type {string}
      * @memberof ModelError
      */
-    op: string;
+    op?: string;
     /**
      * err is a stack of errors that occurred during processing of the request. Useful for debugging.
      * @type {string}
      * @memberof ModelError
      */
-    err: string;
+    err?: string;
 }
 
 /**
@@ -1653,7 +1686,8 @@ export namespace ModelError {
         NotFound = 'not found',
         Conflict = 'conflict',
         Invalid = 'invalid',
-        EmptyValue = 'empty value'
+        EmptyValue = 'empty value',
+        Unavailable = 'unavailable'
     }
 }
 
@@ -1797,7 +1831,19 @@ export interface OrganizationLinks {
      * @type {string}
      * @memberof OrganizationLinks
      */
-    users?: string;
+    members?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationLinks
+     */
+    labels?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrganizationLinks
+     */
+    secrets?: string;
     /**
      * 
      * @type {string}
@@ -2378,6 +2424,54 @@ export interface RenamableField {
 /**
  * 
  * @export
+ * @interface ResourceMember
+ */
+export interface ResourceMember extends User {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResourceMember
+     */
+    role?: ResourceMember.RoleEnum;
+}
+
+/**
+ * @export
+ * @namespace ResourceMember
+ */
+export namespace ResourceMember {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum RoleEnum {
+        Member = 'member'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @interface ResourceMembers
+ */
+export interface ResourceMembers {
+    /**
+     * 
+     * @type {UsersLinks}
+     * @memberof ResourceMembers
+     */
+    links?: UsersLinks;
+    /**
+     * 
+     * @type {Array<ResourceMember>}
+     * @memberof ResourceMembers
+     */
+    users?: Array<ResourceMember>;
+}
+
+/**
+ * 
+ * @export
  * @interface ResourceOwner
  */
 export interface ResourceOwner extends User {
@@ -2411,30 +2505,16 @@ export namespace ResourceOwner {
 export interface ResourceOwners {
     /**
      * 
-     * @type {ResourceOwnersLinks}
+     * @type {UsersLinks}
      * @memberof ResourceOwners
      */
-    links?: ResourceOwnersLinks;
+    links?: UsersLinks;
     /**
      * 
      * @type {Array<ResourceOwner>}
      * @memberof ResourceOwners
      */
     users?: Array<ResourceOwner>;
-}
-
-/**
- * 
- * @export
- * @interface ResourceOwnersLinks
- */
-export interface ResourceOwnersLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof ResourceOwnersLinks
-     */
-    self?: string;
 }
 
 /**
@@ -2448,37 +2528,7 @@ export interface Routes {
      * @type {string}
      * @memberof Routes
      */
-    sources?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    dashboards?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    query?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    write?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    orgs?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    auths?: string;
+    authorizations?: string;
     /**
      * 
      * @type {string}
@@ -2490,19 +2540,7 @@ export interface Routes {
      * @type {string}
      * @memberof Routes
      */
-    users?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    tasks?: string;
-    /**
-     * 
-     * @type {RoutesSystem}
-     * @memberof Routes
-     */
-    system?: RoutesSystem;
+    dashboards?: string;
     /**
      * 
      * @type {RoutesExternal}
@@ -2511,10 +2549,94 @@ export interface Routes {
     external?: RoutesExternal;
     /**
      * 
-     * @type {FluxLinks}
+     * @type {string}
      * @memberof Routes
      */
-    flux?: FluxLinks;
+    macros?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    me?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    orgs?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    protos?: string;
+    /**
+     * 
+     * @type {RoutesQuery}
+     * @memberof Routes
+     */
+    query?: RoutesQuery;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    setup?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    signin?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    signout?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    sources?: string;
+    /**
+     * 
+     * @type {RoutesSystem}
+     * @memberof Routes
+     */
+    system?: RoutesSystem;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    tasks?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    telegrafs?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    users?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    write?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Routes
+     */
+    views?: string;
 }
 
 /**
@@ -2529,6 +2651,44 @@ export interface RoutesExternal {
      * @memberof RoutesExternal
      */
     statusFeed?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface RoutesQuery
+ */
+export interface RoutesQuery {
+    /**
+     * 
+     * @type {string}
+     * @memberof RoutesQuery
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoutesQuery
+     */
+    ast?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoutesQuery
+     */
+    analyze?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoutesQuery
+     */
+    spec?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoutesQuery
+     */
+    suggestions?: string;
 }
 
 /**
@@ -2607,16 +2767,10 @@ export interface Run {
     requestedAt?: Date;
     /**
      * 
-     * @type {Error}
+     * @type {RunLinks}
      * @memberof Run
      */
-    error?: Error;
-    /**
-     * Link to the full logs for a run.
-     * @type {string}
-     * @memberof Run
-     */
-    log?: string;
+    links?: RunLinks;
 }
 
 /**
@@ -2630,10 +2784,57 @@ export namespace Run {
      */
     export enum StatusEnum {
         Scheduled = 'scheduled',
-        Executing = 'executing',
+        Started = 'started',
         Failed = 'failed',
-        Success = 'success'
+        Success = 'success',
+        Canceled = 'canceled'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface RunLinks
+ */
+export interface RunLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof RunLinks
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunLinks
+     */
+    task?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunLinks
+     */
+    logs?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunLinks
+     */
+    retry?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface RunManually
+ */
+export interface RunManually {
+    /**
+     * Time used for run's \"now\" option, RFC3339.  Default is the server's now time.
+     * @type {Date}
+     * @memberof RunManually
+     */
+    scheduledFor?: Date;
 }
 
 /**
@@ -2744,15 +2945,55 @@ export interface ScraperTargetResponses {
 /**
  * 
  * @export
+ * @interface SecretKeys
+ */
+export interface SecretKeys {
+    /**
+     * 
+     * @type {SecretKeysLinks}
+     * @memberof SecretKeys
+     */
+    links?: SecretKeysLinks;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SecretKeys
+     */
+    secrets?: Array<string>;
+}
+
+/**
+ * 
+ * @export
+ * @interface SecretKeysLinks
+ */
+export interface SecretKeysLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof SecretKeysLinks
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecretKeysLinks
+     */
+    org?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Source
  */
 export interface Source {
     /**
      * 
-     * @type {SourceLinks}
+     * @type {ViewLinks}
      * @memberof Source
      */
-    links?: SourceLinks;
+    links?: ViewLinks;
     /**
      * 
      * @type {string}
@@ -2765,6 +3006,12 @@ export interface Source {
      * @memberof Source
      */
     orgID?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Source
+     */
+    _default?: boolean;
     /**
      * 
      * @type {string}
@@ -2867,47 +3114,15 @@ export namespace Source {
 /**
  * 
  * @export
- * @interface SourceLinks
- */
-export interface SourceLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof SourceLinks
-     */
-    self?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SourceLinks
-     */
-    query?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SourceLinks
-     */
-    health?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SourceLinks
-     */
-    buckets?: string;
-}
-
-/**
- * 
- * @export
  * @interface Sources
  */
 export interface Sources {
     /**
      * 
-     * @type {ResourceOwnersLinks}
+     * @type {UsersLinks}
      * @memberof Sources
      */
-    links?: ResourceOwnersLinks;
+    links?: UsersLinks;
     /**
      * 
      * @type {Array<Source>}
@@ -2935,23 +3150,29 @@ export interface Task {
      */
     orgID?: string;
     /**
+     * The organization that owns this Task.
+     * @type {string}
+     * @memberof Task
+     */
+    org?: string;
+    /**
      * A description of the task.
      * @type {string}
      * @memberof Task
      */
     name: string;
     /**
-     * The current status of the task. When updated to 'inactive', cancels all queued jobs of this task.
-     * @type {string}
-     * @memberof Task
-     */
-    status?: Task.StatusEnum;
-    /**
      * 
      * @type {User}
      * @memberof Task
      */
     owner?: User;
+    /**
+     * The current status of the task. When updated to 'inactive', cancels all queued jobs of this task.
+     * @type {string}
+     * @memberof Task
+     */
+    status?: Task.StatusEnum;
     /**
      * 
      * @type {Array<Label>}
@@ -3093,41 +3314,6 @@ export interface TaskLinks {
 /**
  * 
  * @export
- * @interface TaskUpdateRequest
- */
-export interface TaskUpdateRequest {
-    /**
-     * Starting state of the task. 'inactive' tasks are not run until they are updated to 'active'
-     * @type {string}
-     * @memberof TaskUpdateRequest
-     */
-    status?: TaskUpdateRequest.StatusEnum;
-    /**
-     * The Flux script to run for this task.
-     * @type {string}
-     * @memberof TaskUpdateRequest
-     */
-    flux?: string;
-}
-
-/**
- * @export
- * @namespace TaskUpdateRequest
- */
-export namespace TaskUpdateRequest {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum StatusEnum {
-        Active = 'active',
-        Inactive = 'inactive'
-    }
-}
-
-/**
- * 
- * @export
  * @interface Telegraf
  */
 export interface Telegraf extends TelegrafRequest {
@@ -3145,10 +3331,10 @@ export interface Telegraf extends TelegrafRequest {
     links?: any;
     /**
      * 
-     * @type {Owners}
+     * @type {Array<Label>}
      * @memberof Telegraf
      */
-    owners?: Owners;
+    labels?: Array<Label>;
 }
 
 /**
@@ -4962,10 +5148,10 @@ export interface User {
     status?: User.StatusEnum;
     /**
      * 
-     * @type {ResourceOwnersLinks}
+     * @type {UserLinks}
      * @memberof User
      */
-    links?: ResourceOwnersLinks;
+    links?: UserLinks;
 }
 
 /**
@@ -4986,21 +5172,55 @@ export namespace User {
 /**
  * 
  * @export
+ * @interface UserLinks
+ */
+export interface UserLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserLinks
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserLinks
+     */
+    log?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface Users
  */
 export interface Users {
     /**
      * 
-     * @type {ResourceOwnersLinks}
+     * @type {UsersLinks}
      * @memberof Users
      */
-    links?: ResourceOwnersLinks;
+    links?: UsersLinks;
     /**
      * 
      * @type {Array<User>}
      * @memberof Users
      */
     users?: Array<User>;
+}
+
+/**
+ * 
+ * @export
+ * @interface UsersLinks
+ */
+export interface UsersLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof UsersLinks
+     */
+    self?: string;
 }
 
 /**
@@ -5279,10 +5499,11 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary Delete a authorization
          * @param {string} authID ID of authorization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDDelete(authID: string, options: any = {}): RequestArgs {
+        authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'authID' is not null or undefined
             if (authID === null || authID === undefined) {
                 throw new RequiredError('authID','Required parameter authID was null or undefined when calling authorizationsAuthIDDelete.');
@@ -5298,6 +5519,10 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -5312,10 +5537,11 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary Retrieve an authorization
          * @param {string} authID ID of authorization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDGet(authID: string, options: any = {}): RequestArgs {
+        authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'authID' is not null or undefined
             if (authID === null || authID === undefined) {
                 throw new RequiredError('authID','Required parameter authID was null or undefined when calling authorizationsAuthIDGet.');
@@ -5330,6 +5556,10 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -5346,10 +5576,11 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
          * @param {Authorization} authorization authorization to update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, options: any = {}): RequestArgs {
+        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'authID' is not null or undefined
             if (authID === null || authID === undefined) {
                 throw new RequiredError('authID','Required parameter authID was null or undefined when calling authorizationsAuthIDPatch.');
@@ -5369,6 +5600,10 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -5386,12 +5621,13 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all authorizations
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(userID?: string, user?: string, options: any = {}): RequestArgs {
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options: any = {}): RequestArgs {
             const localVarPath = `/authorizations`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -5410,6 +5646,10 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
                 localVarQueryParameter['user'] = user;
             }
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -5424,10 +5664,11 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary Create an authorization
          * @param {Authorization} authorization authorization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsPost(authorization: Authorization, options: any = {}): RequestArgs {
+        authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'authorization' is not null or undefined
             if (authorization === null || authorization === undefined) {
                 throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling authorizationsPost.');
@@ -5441,6 +5682,10 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -5469,11 +5714,12 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Delete a authorization
          * @param {string} authID ID of authorization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDDelete(authID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDDelete(authID, options);
+        authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5483,11 +5729,12 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve an authorization
          * @param {string} authID ID of authorization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDGet(authID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDGet(authID, options);
+        authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5498,11 +5745,12 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
          * @param {Authorization} authorization authorization to update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDPatch(authID, authorization, options);
+        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5511,13 +5759,14 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all authorizations
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(userID?: string, user?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(userID, user, options);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5527,11 +5776,12 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create an authorization
          * @param {Authorization} authorization authorization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsPost(authorization: Authorization, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsPost(authorization, options);
+        authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsPost(authorization, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -5550,53 +5800,58 @@ export const AuthorizationsApiFactory = function (configuration?: Configuration,
          * 
          * @summary Delete a authorization
          * @param {string} authID ID of authorization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDDelete(authID: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsAuthIDDelete(authID, options)(axios, basePath);
+        authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve an authorization
          * @param {string} authID ID of authorization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDGet(authID: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsAuthIDGet(authID, options)(axios, basePath);
+        authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
          * @param {Authorization} authorization authorization to update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorization, options)(axios, basePath);
+        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all authorizations
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(userID?: string, user?: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsGet(userID, user, options)(axios, basePath);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create an authorization
          * @param {Authorization} authorization authorization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsPost(authorization: Authorization, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsPost(authorization, options)(axios, basePath);
+        authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsPost(authorization, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -5612,24 +5867,26 @@ export class AuthorizationsApi extends BaseAPI {
      * 
      * @summary Delete a authorization
      * @param {string} authID ID of authorization to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsAuthIDDelete(authID: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDDelete(authID, options)(this.axios, this.basePath);
+    public authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Retrieve an authorization
      * @param {string} authID ID of authorization to get
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsAuthIDGet(authID: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDGet(authID, options)(this.axios, this.basePath);
+    public authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -5637,37 +5894,40 @@ export class AuthorizationsApi extends BaseAPI {
      * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
      * @param {string} authID ID of authorization to update
      * @param {Authorization} authorization authorization to update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsAuthIDPatch(authID: string, authorization: Authorization, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorization, options)(this.axios, this.basePath);
+    public authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all authorizations
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [userID] filter authorizations belonging to a user id
      * @param {string} [user] filter authorizations belonging to a user name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsGet(userID?: string, user?: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsGet(userID, user, options)(this.axios, this.basePath);
+    public authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create an authorization
      * @param {Authorization} authorization authorization to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsPost(authorization: Authorization, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsPost(authorization, options)(this.axios, this.basePath);
+    public authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsPost(authorization, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -5720,10 +5980,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDGet(bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDGet.');
@@ -5738,6 +5999,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -5789,9 +6054,9 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary delete a label from a bucket config
-         * @param {string} bucketID ID of the bucket config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -5882,10 +6147,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersGet.');
@@ -5901,6 +6167,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -5915,18 +6185,19 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling bucketsBucketIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDMembersPost.');
             }
             const localVarPath = `/buckets/{bucketID}/members`
                 .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
@@ -5939,14 +6210,18 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5958,10 +6233,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
@@ -5982,6 +6258,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -5996,10 +6276,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersGet.');
@@ -6015,6 +6296,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -6029,18 +6314,19 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling bucketsBucketIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDOwnersPost.');
             }
             const localVarPath = `/buckets/{bucketID}/owners`
                 .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
@@ -6053,14 +6339,18 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6072,10 +6362,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
@@ -6096,6 +6387,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -6111,10 +6406,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Update a bucket
          * @param {string} bucketID ID of bucket to update
          * @param {Bucket} bucket bucket update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, options: any = {}): RequestArgs {
+        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDPatch.');
@@ -6134,6 +6430,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -6151,15 +6451,16 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary List all buckets
-         * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [name] only returns buckets with the specified name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsGet(org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling bucketsGet.');
-            }
+        bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options: any = {}): RequestArgs {
             const localVarPath = `/buckets`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6170,8 +6471,28 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -6187,16 +6508,12 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create a bucket
-         * @param {string} org specifies the organization of the resource
          * @param {Bucket} bucket bucket to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsPost(org: string, bucket: Bucket, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling bucketsPost.');
-            }
+        bucketsPost(bucket: Bucket, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucket' is not null or undefined
             if (bucket === null || bucket === undefined) {
                 throw new RequiredError('bucket','Required parameter bucket was null or undefined when calling bucketsPost.');
@@ -6211,8 +6528,8 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -6234,10 +6551,11 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options: any = {}): RequestArgs {
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
@@ -6259,6 +6577,10 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
 
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -6299,11 +6621,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDGet(bucketID, options);
+        bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6317,7 +6640,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6326,9 +6649,9 @@ export const BucketsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary delete a label from a bucket config
-         * @param {string} bucketID ID of the bucket config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6349,7 +6672,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -6360,11 +6683,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, options);
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6374,12 +6698,13 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, user, options);
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6390,11 +6715,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options);
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6404,11 +6730,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, options);
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6418,12 +6745,13 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, user, options);
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6434,11 +6762,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options);
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6449,11 +6778,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @summary Update a bucket
          * @param {string} bucketID ID of bucket to update
          * @param {Bucket} bucket bucket update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDPatch(bucketID, bucket, options);
+        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6462,12 +6792,17 @@ export const BucketsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all buckets
-         * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [name] only returns buckets with the specified name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsGet(org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsGet(org, options);
+        bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6476,13 +6811,13 @@ export const BucketsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a bucket
-         * @param {string} org specifies the organization of the resource
          * @param {Bucket} bucket bucket to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsPost(org: string, bucket: Bucket, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsPost(org, bucket, options);
+        bucketsPost(bucket: Bucket, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Bucket> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsPost(bucket, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6493,11 +6828,12 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, options);
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6527,11 +6863,12 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Retrieve a bucket
          * @param {string} bucketID ID of bucket to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDGet(bucketID: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDGet(bucketID, options)(axios, basePath);
+        bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -6546,9 +6883,9 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary delete a label from a bucket config
-         * @param {string} bucketID ID of the bucket config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6572,108 +6909,121 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDMembersGet(bucketID, options)(axios, basePath);
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDMembersPost(bucketID, user, options)(axios, basePath);
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options)(axios, basePath);
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, options)(axios, basePath);
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, user, options)(axios, basePath);
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options)(axios, basePath);
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update a bucket
          * @param {string} bucketID ID of bucket to update
          * @param {Bucket} bucket bucket update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, options?: any) {
-            return BucketsApiFp(configuration).bucketsBucketIDPatch(bucketID, bucket, options)(axios, basePath);
+        bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all buckets
-         * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [name] only returns buckets with the specified name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsGet(org: string, options?: any) {
-            return BucketsApiFp(configuration).bucketsGet(org, options)(axios, basePath);
+        bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a bucket
-         * @param {string} org specifies the organization of the resource
          * @param {Bucket} bucket bucket to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsPost(org: string, bucket: Bucket, options?: any) {
-            return BucketsApiFp(configuration).bucketsPost(org, bucket, options)(axios, basePath);
+        bucketsPost(bucket: Bucket, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).bucketsPost(bucket, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any) {
-            return BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, options)(axios, basePath);
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
+            return BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -6702,12 +7052,13 @@ export class BucketsApi extends BaseAPI {
      * 
      * @summary Retrieve a bucket
      * @param {string} bucketID ID of bucket to get
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDGet(bucketID: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDGet(bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6725,9 +7076,9 @@ export class BucketsApi extends BaseAPI {
 
     /**
      * 
-     * @summary delete a label from a bucket config
-     * @param {string} bucketID ID of the bucket config
-     * @param {string} labelID the label ID
+     * @summary delete a label from a bucket
+     * @param {string} bucketID ID of the bucket
+     * @param {string} labelID the label id to delete
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6755,25 +7106,27 @@ export class BucketsApi extends BaseAPI {
      * 
      * @summary List all users with member privileges for a bucket
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDMembersGet(bucketID: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add bucket member
      * @param {string} bucketID ID of the bucket
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, user, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6781,37 +7134,40 @@ export class BucketsApi extends BaseAPI {
      * @summary removes a member from an bucket
      * @param {string} userID ID of member to remove
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of a bucket
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDOwnersGet(bucketID: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add bucket owner
      * @param {string} bucketID ID of the bucket
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, user, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6819,12 +7175,13 @@ export class BucketsApi extends BaseAPI {
      * @summary removes an owner from a bucket
      * @param {string} userID ID of owner to remove
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6832,37 +7189,43 @@ export class BucketsApi extends BaseAPI {
      * @summary Update a bucket
      * @param {string} bucketID ID of bucket to update
      * @param {Bucket} bucket bucket update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsBucketIDPatch(bucketID: string, bucket: Bucket, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsBucketIDPatch(bucketID, bucket, options)(this.axios, this.basePath);
+    public bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all buckets
-     * @param {string} org specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {string} [org] specifies the organization name of the resource
+     * @param {string} [orgID] specifies the organization id of the resource
+     * @param {string} [name] only returns buckets with the specified name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsGet(org: string, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsGet(org, options)(this.axios, this.basePath);
+    public bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a bucket
-     * @param {string} org specifies the organization of the resource
      * @param {Bucket} bucket bucket to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public bucketsPost(org: string, bucket: Bucket, options?: any) {
-        return BucketsApiFp(this.configuration).bucketsPost(org, bucket, options)(this.axios, this.basePath);
+    public bucketsPost(bucket: Bucket, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsPost(bucket, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -6870,12 +7233,13 @@ export class BucketsApi extends BaseAPI {
      * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
      * @param {string} sourceID ID of the source
      * @param {string} org specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any) {
-        return BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, options)(this.axios, this.basePath);
+    public sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
+        return BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -6891,10 +7255,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
@@ -6915,6 +7280,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -6931,10 +7300,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
@@ -6959,6 +7329,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -6978,10 +7352,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
@@ -7002,6 +7377,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -7018,10 +7397,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
@@ -7046,6 +7426,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7065,10 +7449,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPost.');
@@ -7087,6 +7472,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -7107,10 +7496,11 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPut.');
@@ -7129,6 +7519,10 @@ export const CellsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -7158,11 +7552,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options);
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7174,11 +7569,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options);
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7189,11 +7585,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7205,11 +7602,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7220,11 +7618,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options);
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7235,11 +7634,12 @@ export const CellsApiFp = function(configuration?: Configuration) {
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options);
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7259,11 +7659,12 @@ export const CellsApiFactory = function (configuration?: Configuration, basePath
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -7271,22 +7672,24 @@ export const CellsApiFactory = function (configuration?: Configuration, basePath
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -7294,33 +7697,36 @@ export const CellsApiFactory = function (configuration?: Configuration, basePath
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options)(axios, basePath);
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any) {
-            return CellsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options)(axios, basePath);
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any) {
+            return CellsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -7337,12 +7743,13 @@ export class CellsApi extends BaseAPI {
      * @summary Delete a dashboard cell
      * @param {string} dashboardID ID of dashboard to delte
      * @param {string} cellID ID of cell to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7351,12 +7758,13 @@ export class CellsApi extends BaseAPI {
      * @param {string} dashboardID ID of dashboard to update
      * @param {string} cellID ID of cell to update
      * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7364,12 +7772,13 @@ export class CellsApi extends BaseAPI {
      * @summary Retrieve the view for a cell in a dashboard
      * @param {string} dashboardID ID of dashboard
      * @param {string} cellID ID of cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7378,12 +7787,13 @@ export class CellsApi extends BaseAPI {
      * @param {string} dashboardID ID of dashboard to update
      * @param {string} cellID ID of cell to update
      * @param {View} view updates the view for a cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7391,12 +7801,13 @@ export class CellsApi extends BaseAPI {
      * @summary Create a dashboard cell
      * @param {string} dashboardID ID of dashboard to update
      * @param {CreateCell} createCell cell that will be added
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7404,12 +7815,13 @@ export class CellsApi extends BaseAPI {
      * @summary Replace a dashboards cells
      * @param {string} dashboardID ID of dashboard to update
      * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CellsApi
      */
-    public dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any) {
-        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any) {
+        return CellsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -7425,10 +7837,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
@@ -7449,6 +7862,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -7465,10 +7882,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
@@ -7493,6 +7911,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7512,10 +7934,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
@@ -7536,6 +7959,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -7552,10 +7979,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
@@ -7580,6 +8008,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7599,10 +8031,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPost.');
@@ -7621,6 +8054,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -7641,10 +8078,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPut.');
@@ -7664,6 +8102,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7682,10 +8124,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Delete a dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDDelete(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDDelete.');
@@ -7701,6 +8144,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -7715,10 +8162,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Get a single Dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDGet(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDGet.');
@@ -7733,6 +8181,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -7784,9 +8236,9 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary delete a label from a dashboard config
-         * @param {string} dashboardID ID of the dashboard config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7820,53 +8272,6 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary add a label to a dashboard
-         * @param {string} dashboardID ID of the dashboard
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'dashboardID' is not null or undefined
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDPost.');
-            }
-            // verify required parameter 'labelMapping' is not null or undefined
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling dashboardsDashboardIDLabelsLabelIDPost.');
-            }
-            const localVarPath = `/dashboards/{dashboardID}/labels/{labelID}`
-                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -7924,10 +8329,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersGet.');
@@ -7943,6 +8349,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -7957,18 +8367,19 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling dashboardsDashboardIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDMembersPost.');
             }
             const localVarPath = `/dashboards/{dashboardID}/members`
                 .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
@@ -7981,14 +8392,18 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -8000,10 +8415,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
@@ -8024,6 +8440,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -8038,10 +8458,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersGet.');
@@ -8057,6 +8478,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -8071,18 +8496,19 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling dashboardsDashboardIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDOwnersPost.');
             }
             const localVarPath = `/dashboards/{dashboardID}/owners`
                 .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
@@ -8095,14 +8521,18 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -8114,10 +8544,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
@@ -8138,6 +8569,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -8153,10 +8588,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * @summary Update a single dashboard
          * @param {string} dashboardID ID of dashboard to update
          * @param {Dashboard} dashboard patching of a dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, options: any = {}): RequestArgs {
+        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDPatch.');
@@ -8176,6 +8612,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8193,14 +8633,16 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Get all dashboards
-         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [org] specifies the organization name of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options: any = {}): RequestArgs {
+        dashboardsGet(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options: any = {}): RequestArgs {
             const localVarPath = `/dashboards`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -8210,10 +8652,6 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
 
             if (owner !== undefined) {
                 localVarQueryParameter['owner'] = owner;
@@ -8225,6 +8663,18 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
 
             if (id) {
                 localVarQueryParameter['id'] = id;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -8241,10 +8691,11 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary Create a dashboard
          * @param {Dashboard} dashboard dashboard to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, options: any = {}): RequestArgs {
+        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboard' is not null or undefined
             if (dashboard === null || dashboard === undefined) {
                 throw new RequiredError('dashboard','Required parameter dashboard was null or undefined when calling dashboardsPost.');
@@ -8258,6 +8709,10 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -8287,11 +8742,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options);
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8303,11 +8759,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options);
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8318,11 +8775,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8334,11 +8792,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8349,11 +8808,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options);
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Cell> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8364,11 +8824,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options);
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8378,11 +8839,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Delete a dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDDelete(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDDelete(dashboardID, options);
+        dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8392,11 +8854,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a single Dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDGet(dashboardID, options);
+        dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8419,31 +8882,15 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary delete a label from a dashboard config
-         * @param {string} dashboardID ID of the dashboard config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
             const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary add a label to a dashboard
-         * @param {string} dashboardID ID of the dashboard
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8469,11 +8916,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, options);
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8483,12 +8931,13 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options);
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8499,11 +8948,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options);
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8513,11 +8963,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, options);
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8527,12 +8978,13 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options);
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8543,11 +8995,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options);
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8558,11 +9011,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * @summary Update a single dashboard
          * @param {string} dashboardID ID of dashboard to update
          * @param {Dashboard} dashboard patching of a dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, options);
+        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8571,15 +9025,17 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all dashboards
-         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [org] specifies the organization name of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsGet(org, owner, sortBy, id, options);
+        dashboardsGet(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8589,11 +9045,12 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a dashboard
          * @param {Dashboard} dashboard dashboard to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(dashboard, options);
+        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(dashboard, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -8613,11 +9070,12 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          * @summary Delete a dashboard cell
          * @param {string} dashboardID ID of dashboard to delte
          * @param {string} cellID ID of cell to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -8625,22 +9083,24 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -8648,53 +9108,58 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a dashboard cell
          * @param {string} dashboardID ID of dashboard to update
          * @param {CreateCell} createCell cell that will be added
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options)(axios, basePath);
+        dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Replace a dashboards cells
          * @param {string} dashboardID ID of dashboard to update
          * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options)(axios, basePath);
+        dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Delete a dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDDelete(dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDDelete(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Get a single Dashboard
          * @param {string} dashboardID ID of dashboard to update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDGet(dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDGet(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -8709,27 +9174,15 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @summary delete a label from a dashboard config
-         * @param {string} dashboardID ID of the dashboard config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} labelID the label id to delete
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any) {
             return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary add a label to a dashboard
-         * @param {string} dashboardID ID of the dashboard
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -8747,99 +9200,109 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options)(axios, basePath);
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options)(axios, basePath);
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update a single dashboard
          * @param {string} dashboardID ID of dashboard to update
          * @param {Dashboard} dashboard patching of a dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, options)(axios, basePath);
+        dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Get all dashboards
-         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [owner] specifies the owner id to return resources for
          * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
          * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {string} [org] specifies the organization name of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsGet(org, owner, sortBy, id, options)(axios, basePath);
+        dashboardsGet(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a dashboard
          * @param {Dashboard} dashboard dashboard to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsPost(dashboard, options)(axios, basePath);
+        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsPost(dashboard, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -8856,12 +9319,13 @@ export class DashboardsApi extends BaseAPI {
      * @summary Delete a dashboard cell
      * @param {string} dashboardID ID of dashboard to delte
      * @param {string} cellID ID of cell to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8870,12 +9334,13 @@ export class DashboardsApi extends BaseAPI {
      * @param {string} dashboardID ID of dashboard to update
      * @param {string} cellID ID of cell to update
      * @param {CellUpdate} cellUpdate updates the non positional information related to a cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8883,12 +9348,13 @@ export class DashboardsApi extends BaseAPI {
      * @summary Retrieve the view for a cell in a dashboard
      * @param {string} dashboardID ID of dashboard
      * @param {string} cellID ID of cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8897,12 +9363,13 @@ export class DashboardsApi extends BaseAPI {
      * @param {string} dashboardID ID of dashboard to update
      * @param {string} cellID ID of cell to update
      * @param {View} view updates the view for a cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8910,12 +9377,13 @@ export class DashboardsApi extends BaseAPI {
      * @summary Create a dashboard cell
      * @param {string} dashboardID ID of dashboard to update
      * @param {CreateCell} createCell cell that will be added
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8923,36 +9391,39 @@ export class DashboardsApi extends BaseAPI {
      * @summary Replace a dashboards cells
      * @param {string} dashboardID ID of dashboard to update
      * @param {Array<Cell>} cell batch replaces all of a dashboards cells (this is used primarily to update the positional information of all of the cells)
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Delete a dashboard
      * @param {string} dashboardID ID of dashboard to update
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDDelete(dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDDelete(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Get a single Dashboard
      * @param {string} dashboardID ID of dashboard to update
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDGet(dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDGet(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8970,9 +9441,9 @@ export class DashboardsApi extends BaseAPI {
 
     /**
      * 
-     * @summary delete a label from a dashboard config
-     * @param {string} dashboardID ID of the dashboard config
-     * @param {string} labelID the label ID
+     * @summary delete a label from a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {string} labelID the label id to delete
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8980,20 +9451,6 @@ export class DashboardsApi extends BaseAPI {
      */
     public dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any) {
         return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary add a label to a dashboard
-     * @param {string} dashboardID ID of the dashboard
-     * @param {LabelMapping} labelMapping label to add
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DashboardsApi
-     */
-    public dashboardsDashboardIDLabelsLabelIDPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsLabelIDPost(dashboardID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9014,25 +9471,27 @@ export class DashboardsApi extends BaseAPI {
      * 
      * @summary List all dashboard members
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDMembersGet(dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add dashboard member
      * @param {string} dashboardID ID of the dashboard
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9040,37 +9499,40 @@ export class DashboardsApi extends BaseAPI {
      * @summary removes a member from an dashboard
      * @param {string} userID ID of member to remove
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all dashboard owners
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add dashboard owner
      * @param {string} dashboardID ID of the dashboard
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9078,12 +9540,13 @@ export class DashboardsApi extends BaseAPI {
      * @summary removes an owner from an dashboard
      * @param {string} userID ID of owner to remove
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -9091,39 +9554,43 @@ export class DashboardsApi extends BaseAPI {
      * @summary Update a single dashboard
      * @param {string} dashboardID ID of dashboard to update
      * @param {Dashboard} dashboard patching of a dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Get all dashboards
-     * @param {string} [org] specifies the organization name of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [owner] specifies the owner id to return resources for
      * @param {'ID' | 'CreatedAt' | 'UpdatedAt'} [sortBy] specifies the owner id to return resources for
      * @param {Array<string>} [id] ID list of dashboards to return. If both this and owner are specified, only ids is used.
+     * @param {string} [orgID] specifies the organization id of the resource
+     * @param {string} [org] specifies the organization name of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsGet(org?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsGet(org, owner, sortBy, id, options)(this.axios, this.basePath);
+    public dashboardsGet(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a dashboard
      * @param {Dashboard} dashboard dashboard to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsPost(dashboard: Dashboard, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsPost(dashboard, options)(this.axios, this.basePath);
+    public dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsPost(dashboard, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -9137,10 +9604,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Map of all top level routes available
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rootGet(options: any = {}): RequestArgs {
+        rootGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9150,6 +9618,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -9164,10 +9636,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Exchange basic auth credentials for session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signinPost(options: any = {}): RequestArgs {
+        signinPost(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/signin`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9177,6 +9650,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -9191,10 +9668,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Expire the current session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signoutPost(options: any = {}): RequestArgs {
+        signoutPost(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/signout`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9204,6 +9682,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -9227,11 +9709,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Map of all top level routes available
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rootGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Routes> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).rootGet(options);
+        rootGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Routes> {
+            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).rootGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9240,11 +9723,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Exchange basic auth credentials for session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signinPost(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).signinPost(options);
+        signinPost(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).signinPost(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9253,11 +9737,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Expire the current session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signoutPost(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).signoutPost(options);
+        signoutPost(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = DefaultApiAxiosParamCreator(configuration).signoutPost(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9275,29 +9760,32 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Map of all top level routes available
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rootGet(options?: any) {
-            return DefaultApiFp(configuration).rootGet(options)(axios, basePath);
+        rootGet(zapTraceSpan?: string, options?: any) {
+            return DefaultApiFp(configuration).rootGet(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Exchange basic auth credentials for session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signinPost(options?: any) {
-            return DefaultApiFp(configuration).signinPost(options)(axios, basePath);
+        signinPost(zapTraceSpan?: string, options?: any) {
+            return DefaultApiFp(configuration).signinPost(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Expire the current session
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signoutPost(options?: any) {
-            return DefaultApiFp(configuration).signoutPost(options)(axios, basePath);
+        signoutPost(zapTraceSpan?: string, options?: any) {
+            return DefaultApiFp(configuration).signoutPost(zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -9312,34 +9800,37 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @summary Map of all top level routes available
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public rootGet(options?: any) {
-        return DefaultApiFp(this.configuration).rootGet(options)(this.axios, this.basePath);
+    public rootGet(zapTraceSpan?: string, options?: any) {
+        return DefaultApiFp(this.configuration).rootGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Exchange basic auth credentials for session
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public signinPost(options?: any) {
-        return DefaultApiFp(this.configuration).signinPost(options)(this.axios, this.basePath);
+    public signinPost(zapTraceSpan?: string, options?: any) {
+        return DefaultApiFp(this.configuration).signinPost(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Expire the current session
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public signoutPost(options?: any) {
-        return DefaultApiFp(this.configuration).signoutPost(options)(this.axios, this.basePath);
+    public signoutPost(zapTraceSpan?: string, options?: any) {
+        return DefaultApiFp(this.configuration).signoutPost(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -9352,11 +9843,12 @@ export const HealthApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary Get the health of an instance
+         * @summary Get the health of an instance anytime during execution. Allow us to check if the instance is still healthy.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        healthGet(options: any = {}): RequestArgs {
+        healthGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/health`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9366,6 +9858,10 @@ export const HealthApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -9388,12 +9884,13 @@ export const HealthApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get the health of an instance
+         * @summary Get the health of an instance anytime during execution. Allow us to check if the instance is still healthy.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        healthGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Health> {
-            const localVarAxiosArgs = HealthApiAxiosParamCreator(configuration).healthGet(options);
+        healthGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = HealthApiAxiosParamCreator(configuration).healthGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -9410,12 +9907,13 @@ export const HealthApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @summary Get the health of an instance
+         * @summary Get the health of an instance anytime during execution. Allow us to check if the instance is still healthy.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        healthGet(options?: any) {
-            return HealthApiFp(configuration).healthGet(options)(axios, basePath);
+        healthGet(zapTraceSpan?: string, options?: any) {
+            return HealthApiFp(configuration).healthGet(zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -9429,13 +9927,14 @@ export const HealthApiFactory = function (configuration?: Configuration, basePat
 export class HealthApi extends BaseAPI {
     /**
      * 
-     * @summary Get the health of an instance
+     * @summary Get the health of an instance anytime during execution. Allow us to check if the instance is still healthy.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HealthApi
      */
-    public healthGet(options?: any) {
-        return HealthApiFp(this.configuration).healthGet(options)(this.axios, this.basePath);
+    public healthGet(zapTraceSpan?: string, options?: any) {
+        return HealthApiFp(this.configuration).healthGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -9859,21 +10358,14 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary get all macros
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosGet(authorization: string, org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling macrosGet.');
-            }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling macrosGet.');
-            }
+        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options: any = {}): RequestArgs {
             const localVarPath = `/macros`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -9888,8 +10380,12 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
                 localVarQueryParameter['org'] = org;
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -9904,25 +10400,16 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary delete a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDDelete(authorization: string, macroID: string, org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling macrosMacroIDDelete.');
-            }
+        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'macroID' is not null or undefined
             if (macroID === null || macroID === undefined) {
                 throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDDelete.');
-            }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling macrosMacroIDDelete.');
             }
             const localVarPath = `/macros/{macroID}`
                 .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
@@ -9935,12 +10422,8 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -9955,25 +10438,21 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary update a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {Macro} macro macro update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDPatch(authorization: string, macroID: string, org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling macrosMacroIDPatch.');
-            }
+        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'macroID' is not null or undefined
             if (macroID === null || macroID === undefined) {
                 throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDPatch.');
             }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling macrosMacroIDPatch.');
+            // verify required parameter 'macro' is not null or undefined
+            if (macro === null || macro === undefined) {
+                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosMacroIDPatch.');
             }
             const localVarPath = `/macros/{macroID}`
                 .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
@@ -9986,18 +10465,18 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10006,20 +10485,63 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary replace a macro
+         * @param {string} macroID id of the macro
+         * @param {Macro} macro macro to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosPost(authorization: string, org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling macrosPost.');
+        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'macroID' is not null or undefined
+            if (macroID === null || macroID === undefined) {
+                throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDPut.');
             }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling macrosPost.');
+            // verify required parameter 'macro' is not null or undefined
+            if (macro === null || macro === undefined) {
+                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosMacroIDPut.');
+            }
+            const localVarPath = `/macros/{macroID}`
+                .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary create a macro
+         * @param {Macro} macro macro to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        macrosPost(macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'macro' is not null or undefined
+            if (macro === null || macro === undefined) {
+                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosPost.');
             }
             const localVarPath = `/macros`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -10031,18 +10553,18 @@ export const MacrosApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
-            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10060,14 +10582,15 @@ export const MacrosApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary get all macros
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosGet(authorization: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macros> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosGet(authorization, org, options);
+        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macros> {
+            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosGet(zapTraceSpan, org, orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10075,15 +10598,14 @@ export const MacrosApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary delete a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDDelete(authorization: string, macroID: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDDelete(authorization, macroID, org, options);
+        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10091,15 +10613,15 @@ export const MacrosApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary update a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {Macro} macro macro update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDPatch(authorization: string, macroID: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macros> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDPatch(authorization, macroID, org, options);
+        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
+            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10107,14 +10629,30 @@ export const MacrosApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary replace a macro
+         * @param {string} macroID id of the macro
+         * @param {Macro} macro macro to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosPost(authorization: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macros> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosPost(authorization, org, options);
+        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
+            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary create a macro
+         * @param {Macro} macro macro to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        macrosPost(macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
+            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosPost(macro, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10131,49 +10669,61 @@ export const MacrosApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary get all macros
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosGet(authorization: string, org: string, options?: any) {
-            return MacrosApiFp(configuration).macrosGet(authorization, org, options)(axios, basePath);
+        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+            return MacrosApiFp(configuration).macrosGet(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary delete a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDDelete(authorization: string, macroID: string, org: string, options?: any) {
-            return MacrosApiFp(configuration).macrosMacroIDDelete(authorization, macroID, org, options)(axios, basePath);
+        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any) {
+            return MacrosApiFp(configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+         * @summary update a macro
          * @param {string} macroID id of the macro
-         * @param {string} org filter macros to a specific organization name
+         * @param {Macro} macro macro update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosMacroIDPatch(authorization: string, macroID: string, org: string, options?: any) {
-            return MacrosApiFp(configuration).macrosMacroIDPatch(authorization, macroID, org, options)(axios, basePath);
+        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
+            return MacrosApiFp(configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
-         * @summary keywords that specify how input data gets mapped to a replacement output sequence
-         * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-         * @param {string} org filter macros to a specific organization name
+         * @summary replace a macro
+         * @param {string} macroID id of the macro
+         * @param {Macro} macro macro to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        macrosPost(authorization: string, org: string, options?: any) {
-            return MacrosApiFp(configuration).macrosPost(authorization, org, options)(axios, basePath);
+        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
+            return MacrosApiFp(configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary create a macro
+         * @param {Macro} macro macro to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        macrosPost(macro: Macro, zapTraceSpan?: string, options?: any) {
+            return MacrosApiFp(configuration).macrosPost(macro, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -10187,56 +10737,70 @@ export const MacrosApiFactory = function (configuration?: Configuration, basePat
 export class MacrosApi extends BaseAPI {
     /**
      * 
-     * @summary keywords that specify how input data gets mapped to a replacement output sequence
-     * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-     * @param {string} org filter macros to a specific organization name
+     * @summary get all macros
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the organization name of the resource
+     * @param {string} [orgID] specifies the organization id of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MacrosApi
      */
-    public macrosGet(authorization: string, org: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosGet(authorization, org, options)(this.axios, this.basePath);
+    public macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+        return MacrosApiFp(this.configuration).macrosGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     }
 
     /**
      * 
-     * @summary keywords that specify how input data gets mapped to a replacement output sequence
-     * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+     * @summary delete a macro
      * @param {string} macroID id of the macro
-     * @param {string} org filter macros to a specific organization name
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MacrosApi
      */
-    public macrosMacroIDDelete(authorization: string, macroID: string, org: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosMacroIDDelete(authorization, macroID, org, options)(this.axios, this.basePath);
+    public macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any) {
+        return MacrosApiFp(this.configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
-     * @summary keywords that specify how input data gets mapped to a replacement output sequence
-     * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
+     * @summary update a macro
      * @param {string} macroID id of the macro
-     * @param {string} org filter macros to a specific organization name
+     * @param {Macro} macro macro update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MacrosApi
      */
-    public macrosMacroIDPatch(authorization: string, macroID: string, org: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosMacroIDPatch(authorization, macroID, org, options)(this.axios, this.basePath);
+    public macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
+        return MacrosApiFp(this.configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
-     * @summary keywords that specify how input data gets mapped to a replacement output sequence
-     * @param {string} authorization the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
-     * @param {string} org filter macros to a specific organization name
+     * @summary replace a macro
+     * @param {string} macroID id of the macro
+     * @param {Macro} macro macro to replace
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MacrosApi
      */
-    public macrosPost(authorization: string, org: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosPost(authorization, org, options)(this.axios, this.basePath);
+    public macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
+        return MacrosApiFp(this.configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary create a macro
+     * @param {Macro} macro macro to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MacrosApi
+     */
+    public macrosPost(macro: Macro, zapTraceSpan?: string, options?: any) {
+        return MacrosApiFp(this.configuration).macrosPost(macro, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -10276,12 +10840,13 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @summary delete an organization
-         * @param {string} orgID ID of organization to get
+         * @summary Delete an organization
+         * @param {string} orgID ID of organization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDDelete(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDDelete(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDDelete.');
@@ -10297,6 +10862,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -10311,10 +10880,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Retrieve an organization
          * @param {string} orgID ID of organization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDGet(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDGet.');
@@ -10329,6 +10899,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -10380,9 +10954,9 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @summary delete a label from a org config
-         * @param {string} orgID ID of the org config
-         * @param {string} labelID the label ID
+         * @summary delete a label from an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10473,10 +11047,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDMembersGet.');
@@ -10492,6 +11067,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -10506,18 +11085,19 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options: any = {}): RequestArgs {
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling orgsOrgIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDMembersPost.');
             }
             const localVarPath = `/orgs/{orgID}/members`
                 .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
@@ -10530,14 +11110,18 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10549,10 +11133,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
@@ -10573,6 +11158,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -10587,10 +11176,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDOwnersGet.');
@@ -10606,6 +11196,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -10620,18 +11214,19 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling orgsOrgIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDOwnersPost.');
             }
             const localVarPath = `/orgs/{orgID}/owners`
                 .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
@@ -10644,14 +11239,18 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10663,10 +11262,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
@@ -10687,6 +11287,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -10702,10 +11306,11 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
          * @summary Update an organization
          * @param {string} orgID ID of organization to get
          * @param {Organization} organization organization update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDPatch(orgID: string, organization: Organization, options: any = {}): RequestArgs {
+        orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDPatch.');
@@ -10725,6 +11330,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -10741,12 +11350,145 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @summary Create an organization
-         * @param {Organization} organization organization to create
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsPost(organization: Organization, options: any = {}): RequestArgs {
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsDeletePost.');
+            }
+            // verify required parameter 'secretKeys' is not null or undefined
+            if (secretKeys === null || secretKeys === undefined) {
+                throw new RequiredError('secretKeys','Required parameter secretKeys was null or undefined when calling orgsOrgIDSecretsDeletePost.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets/delete`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsGet.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsPatch.');
+            }
+            // verify required parameter 'requestBody' is not null or undefined
+            if (requestBody === null || requestBody === undefined) {
+                throw new RequiredError('requestBody','Required parameter requestBody was null or undefined when calling orgsOrgIDSecretsPatch.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"{ [key: string]: string; }" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(requestBody || {}) : (requestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create an organization
+         * @param {Organization} organization organization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsPost(organization: Organization, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'organization' is not null or undefined
             if (organization === null || organization === undefined) {
                 throw new RequiredError('organization','Required parameter organization was null or undefined when calling orgsPost.');
@@ -10760,6 +11502,10 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -10799,13 +11545,14 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary delete an organization
-         * @param {string} orgID ID of organization to get
+         * @summary Delete an organization
+         * @param {string} orgID ID of organization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDDelete(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDDelete(orgID, options);
+        orgsOrgIDDelete(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10815,11 +11562,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve an organization
          * @param {string} orgID ID of organization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDGet(orgID, options);
+        orgsOrgIDGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10833,7 +11581,7 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -10842,9 +11590,9 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary delete a label from a org config
-         * @param {string} orgID ID of the org config
-         * @param {string} labelID the label ID
+         * @summary delete a label from an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10876,11 +11624,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, options);
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10890,12 +11639,13 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, user, options);
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10906,11 +11656,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options);
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10920,11 +11671,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, options);
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10934,12 +11686,13 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, user, options);
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10950,11 +11703,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options);
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10965,11 +11719,59 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @summary Update an organization
          * @param {string} orgID ID of organization to get
          * @param {Organization} organization organization update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDPatch(orgID: string, organization: Organization, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDPatch(orgID, organization, options);
+        orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeys> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10979,11 +11781,12 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create an organization
          * @param {Organization} organization organization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsPost(organization: Organization, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
-            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsPost(organization, options);
+        orgsPost(organization: Organization, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organization> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsPost(organization, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11009,23 +11812,25 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @summary delete an organization
-         * @param {string} orgID ID of organization to get
+         * @summary Delete an organization
+         * @param {string} orgID ID of organization to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDDelete(orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDDelete(orgID, options)(axios, basePath);
+        orgsOrgIDDelete(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve an organization
          * @param {string} orgID ID of organization to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDGet(orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDGet(orgID, options)(axios, basePath);
+        orgsOrgIDGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -11040,9 +11845,9 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @summary delete a label from a org config
-         * @param {string} orgID ID of the org config
-         * @param {string} labelID the label ID
+         * @summary delete a label from an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11066,86 +11871,129 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDMembersGet(orgID, options)(axios, basePath);
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDMembersPost(orgID, user, options)(axios, basePath);
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options)(axios, basePath);
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDOwnersGet(orgID, options)(axios, basePath);
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDOwnersPost(orgID, user, options)(axios, basePath);
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options)(axios, basePath);
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update an organization
          * @param {string} orgID ID of organization to get
          * @param {Organization} organization organization update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDPatch(orgID: string, organization: Organization, options?: any) {
-            return OrganizationsApiFp(configuration).orgsOrgIDPatch(orgID, organization, options)(axios, basePath);
+        orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create an organization
          * @param {Organization} organization organization to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsPost(organization: Organization, options?: any) {
-            return OrganizationsApiFp(configuration).orgsPost(organization, options)(axios, basePath);
+        orgsPost(organization: Organization, zapTraceSpan?: string, options?: any) {
+            return OrganizationsApiFp(configuration).orgsPost(organization, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -11170,26 +12018,28 @@ export class OrganizationsApi extends BaseAPI {
 
     /**
      * 
-     * @summary delete an organization
-     * @param {string} orgID ID of organization to get
+     * @summary Delete an organization
+     * @param {string} orgID ID of organization to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDDelete(orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDDelete(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDDelete(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Retrieve an organization
      * @param {string} orgID ID of organization to get
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDGet(orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDGet(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -11207,9 +12057,9 @@ export class OrganizationsApi extends BaseAPI {
 
     /**
      * 
-     * @summary delete a label from a org config
-     * @param {string} orgID ID of the org config
-     * @param {string} labelID the label ID
+     * @summary delete a label from an organization
+     * @param {string} orgID ID of the organization
+     * @param {string} labelID the label id
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11237,25 +12087,27 @@ export class OrganizationsApi extends BaseAPI {
      * 
      * @summary List all members of an organization
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDMembersGet(orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersGet(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add organization member
      * @param {string} orgID ID of the organization
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDMembersPost(orgID: string, user: User, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersPost(orgID, user, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -11263,37 +12115,40 @@ export class OrganizationsApi extends BaseAPI {
      * @summary removes a member from an organization
      * @param {string} userID ID of member to remove
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of an organization
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDOwnersGet(orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add organization owner
      * @param {string} orgID ID of the organization
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDOwnersPost(orgID: string, user: User, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, user, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -11301,12 +12156,13 @@ export class OrganizationsApi extends BaseAPI {
      * @summary removes an owner from an organization
      * @param {string} userID ID of owner to remove
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -11314,24 +12170,67 @@ export class OrganizationsApi extends BaseAPI {
      * @summary Update an organization
      * @param {string} orgID ID of organization to get
      * @param {Organization} organization organization update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsOrgIDPatch(orgID: string, organization: Organization, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsOrgIDPatch(orgID, organization, options)(this.axios, this.basePath);
+    public orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete provided secrets
+     * @param {string} orgID ID of the organization
+     * @param {SecretKeys} secretKeys secret key to deleted
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all secret keys for an organization
+     * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Apply patch to the provided secrets
+     * @param {string} orgID ID of the organization
+     * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create an organization
      * @param {Organization} organization organization to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationsApi
      */
-    public orgsPost(organization: Organization, options?: any) {
-        return OrganizationsApiFp(this.configuration).orgsPost(organization, options)(this.axios, this.basePath);
+    public orgsPost(organization: Organization, zapTraceSpan?: string, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsPost(organization, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -11538,13 +12437,13 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary analyze an influxql or flux query
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {Query} [query] flux or influxql query to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAnalyzePost(contentType?: 'application/json', authorization?: string, query?: Query, options: any = {}): RequestArgs {
+        queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options: any = {}): RequestArgs {
             const localVarPath = `/query/analyze`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11555,12 +12454,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (contentType !== undefined && contentType !== null) {
+                localVarHeaderParameter['Content-Type'] = String(contentType);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -11579,13 +12478,13 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate abstract syntax tree.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options: any = {}): RequestArgs {
+        queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options: any = {}): RequestArgs {
             const localVarPath = `/query/ast`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11596,12 +12495,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (contentType !== undefined && contentType !== null) {
+                localVarHeaderParameter['Content-Type'] = String(contentType);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -11621,15 +12520,16 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary query an influx
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
+         * @param {string} [orgID] specifies the ID of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options: any = {}): RequestArgs {
+        queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options: any = {}): RequestArgs {
             const localVarPath = `/query`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11644,16 +12544,20 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['org'] = org;
             }
 
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             if (accept !== undefined && accept !== null) {
                 localVarHeaderParameter['Accept'] = String(accept);
             }
 
             if (contentType !== undefined && contentType !== null) {
                 localVarHeaderParameter['Content-Type'] = String(contentType);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -11672,13 +12576,13 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySpecPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options: any = {}): RequestArgs {
+        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options: any = {}): RequestArgs {
             const localVarPath = `/query/spec`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11689,12 +12593,12 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['Authorization'] = String(authorization);
+            if (contentType !== undefined && contentType !== null) {
+                localVarHeaderParameter['Content-Type'] = String(contentType);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -11713,10 +12617,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsGet(options: any = {}): RequestArgs {
+        querySuggestionsGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/query/suggestions`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11726,6 +12631,10 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -11740,10 +12649,11 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @param {string} name name of branching suggestion
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsNameGet(name: string, options: any = {}): RequestArgs {
+        querySuggestionsNameGet(name: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'name' is not null or undefined
             if (name === null || name === undefined) {
                 throw new RequiredError('name','Required parameter name was null or undefined when calling querySuggestionsNameGet.');
@@ -11758,6 +12668,10 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -11781,14 +12695,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary analyze an influxql or flux query
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {Query} [query] flux or influxql query to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAnalyzePost(contentType?: 'application/json', authorization?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnalyzeQueryResponse> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryAnalyzePost(contentType, authorization, query, options);
+        queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnalyzeQueryResponse> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11796,14 +12710,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate abstract syntax tree.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ASTResponse> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryAstPost(contentType, authorization, languageRequest, options);
+        queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ASTResponse> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11812,16 +12726,17 @@ export const QueryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary query an influx
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
+         * @param {string} [orgID] specifies the ID of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryPost(accept, contentType, authorization, org, query, options);
+        queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11829,14 +12744,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySpecPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuerySpecification> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySpecPost(contentType, authorization, languageRequest, options);
+        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuerySpecification> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11844,11 +12759,12 @@ export const QueryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FluxSuggestions> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySuggestionsGet(options);
+        querySuggestionsGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FluxSuggestions> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySuggestionsGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11857,11 +12773,12 @@ export const QueryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} name name of branching suggestion
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsNameGet(name: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FluxSuggestions> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySuggestionsNameGet(name, options);
+        querySuggestionsNameGet(name: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FluxSuggestions> {
+            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySuggestionsNameGet(name, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11879,67 +12796,70 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary analyze an influxql or flux query
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {Query} [query] flux or influxql query to analyze
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAnalyzePost(contentType?: 'application/json', authorization?: string, query?: Query, options?: any) {
-            return QueryApiFp(configuration).queryAnalyzePost(contentType, authorization, query, options)(axios, basePath);
+        queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any) {
+            return QueryApiFp(configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options)(axios, basePath);
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate abstract syntax tree.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any) {
-            return QueryApiFp(configuration).queryAstPost(contentType, authorization, languageRequest, options)(axios, basePath);
+        queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
+            return QueryApiFp(configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
         },
         /**
          * 
          * @summary query an influx
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {string} [org] specifies the name of the organization executing the query.
+         * @param {string} [orgID] specifies the ID of the organization executing the query.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any) {
-            return QueryApiFp(configuration).queryPost(accept, contentType, authorization, org, query, options)(axios, basePath);
+        queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any) {
+            return QueryApiFp(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(axios, basePath);
         },
         /**
          * analyzes flux query and generates a query specification.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'application/json'} [contentType] 
-         * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
          * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySpecPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any) {
-            return QueryApiFp(configuration).querySpecPost(contentType, authorization, languageRequest, options)(axios, basePath);
+        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
+            return QueryApiFp(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
         },
         /**
          * 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsGet(options?: any) {
-            return QueryApiFp(configuration).querySuggestionsGet(options)(axios, basePath);
+        querySuggestionsGet(zapTraceSpan?: string, options?: any) {
+            return QueryApiFp(configuration).querySuggestionsGet(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @param {string} name name of branching suggestion
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        querySuggestionsNameGet(name: string, options?: any) {
-            return QueryApiFp(configuration).querySuggestionsNameGet(name, options)(axios, basePath);
+        querySuggestionsNameGet(name: string, zapTraceSpan?: string, options?: any) {
+            return QueryApiFp(configuration).querySuggestionsNameGet(name, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -11954,78 +12874,185 @@ export class QueryApi extends BaseAPI {
     /**
      * 
      * @summary analyze an influxql or flux query
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'application/json'} [contentType] 
-     * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
      * @param {Query} [query] flux or influxql query to analyze
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public queryAnalyzePost(contentType?: 'application/json', authorization?: string, query?: Query, options?: any) {
-        return QueryApiFp(this.configuration).queryAnalyzePost(contentType, authorization, query, options)(this.axios, this.basePath);
+    public queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any) {
+        return QueryApiFp(this.configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options)(this.axios, this.basePath);
     }
 
     /**
      * analyzes flux query and generates a query specification.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'application/json'} [contentType] 
-     * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
      * @param {LanguageRequest} [languageRequest] analyzed flux query to generate abstract syntax tree.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public queryAstPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any) {
-        return QueryApiFp(this.configuration).queryAstPost(contentType, authorization, languageRequest, options)(this.axios, this.basePath);
+    public queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
+        return QueryApiFp(this.configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary query an influx
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
      * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-     * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
      * @param {string} [org] specifies the name of the organization executing the query.
+     * @param {string} [orgID] specifies the ID of the organization executing the query.
      * @param {Query} [query] flux query or specification to execute
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public queryPost(accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', authorization?: string, org?: string, query?: Query, options?: any) {
-        return QueryApiFp(this.configuration).queryPost(accept, contentType, authorization, org, query, options)(this.axios, this.basePath);
+    public queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any) {
+        return QueryApiFp(this.configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(this.axios, this.basePath);
     }
 
     /**
      * analyzes flux query and generates a query specification.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'application/json'} [contentType] 
-     * @param {string} [authorization] the authorization header should be in the format of &#x60;Token &lt;key&gt;&#x60;
      * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public querySpecPost(contentType?: 'application/json', authorization?: string, languageRequest?: LanguageRequest, options?: any) {
-        return QueryApiFp(this.configuration).querySpecPost(contentType, authorization, languageRequest, options)(this.axios, this.basePath);
+    public querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
+        return QueryApiFp(this.configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
     }
 
     /**
      * 
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public querySuggestionsGet(options?: any) {
-        return QueryApiFp(this.configuration).querySuggestionsGet(options)(this.axios, this.basePath);
+    public querySuggestionsGet(zapTraceSpan?: string, options?: any) {
+        return QueryApiFp(this.configuration).querySuggestionsGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @param {string} name name of branching suggestion
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof QueryApi
      */
-    public querySuggestionsNameGet(name: string, options?: any) {
-        return QueryApiFp(this.configuration).querySuggestionsNameGet(name, options)(this.axios, this.basePath);
+    public querySuggestionsNameGet(name: string, zapTraceSpan?: string, options?: any) {
+        return QueryApiFp(this.configuration).querySuggestionsNameGet(name, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * ReadyApi - axios parameter creator
+ * @export
+ */
+export const ReadyApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        readyGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/ready`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ReadyApi - functional programming interface
+ * @export
+ */
+export const ReadyApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        readyGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ReadyApiAxiosParamCreator(configuration).readyGet(zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * ReadyApi - factory interface
+ * @export
+ */
+export const ReadyApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        readyGet(zapTraceSpan?: string, options?: any) {
+            return ReadyApiFp(configuration).readyGet(zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * ReadyApi - object-oriented interface
+ * @export
+ * @class ReadyApi
+ * @extends {BaseAPI}
+ */
+export class ReadyApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReadyApi
+     */
+    public readyGet(zapTraceSpan?: string, options?: any) {
+        return ReadyApiFp(this.configuration).readyGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -12113,6 +13140,446 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
                 throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDDelete.');
             }
             const localVarPath = `/scrapers/{scraperTargetID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary list all labels for a scraper targets
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/labels`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} label the label name
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'label' is not null or undefined
+            if (label === null || label === undefined) {
+                throw new RequiredError('label','Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/labels/{labelID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)))
+                .replace(`{${"label"}}`, encodeURIComponent(String(label)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} labelID the label name
+         * @param {Label} label label update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+            }
+            // verify required parameter 'label' is not null or undefined
+            if (label === null || label === undefined) {
+                throw new RequiredError('label','Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/labels/{labelID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Label" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(label || {}) : (label || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {Label} label label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
+            }
+            // verify required parameter 'label' is not null or undefined
+            if (label === null || label === undefined) {
+                throw new RequiredError('label','Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/labels`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Label" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(label || {}) : (label || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+            }
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+            }
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members/{userID}`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+            }
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+            }
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners/{userID}`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
                 .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -12237,6 +13704,164 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary list all labels for a scraper targets
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} label the label name
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary update a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} labelID the label name
+         * @param {Label} label label update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {Label} label label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary update a scraper target
          * @param {string} scraperTargetID id of the scraper target
          * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
@@ -12289,6 +13914,124 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
          */
         scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
             return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary list all labels for a scraper targets
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} label the label name
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary update a label from a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} labelID the label name
+         * @param {Label} label label update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {Label} label label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -12350,6 +14093,144 @@ export class ScraperTargetsApi extends BaseAPI {
 
     /**
      * 
+     * @summary list all labels for a scraper targets
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} label the label name
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary update a label from a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} labelID the label name
+     * @param {Label} label label update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {Label} label label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all users with member privileges for a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Add scraper target member
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary removes a member from a scraper target
+     * @param {string} userID ID of member to remove
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all owners of a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Add scraper target owner
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary removes an owner from a scraper target
+     * @param {string} userID ID of owner to remove
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary update a scraper target
      * @param {string} scraperTargetID id of the scraper target
      * @param {ScraperTargetRequest} scraperTargetRequest scraper target update to apply
@@ -12365,6 +14246,297 @@ export class ScraperTargetsApi extends BaseAPI {
 }
 
 /**
+ * SecretsApi - axios parameter creator
+ * @export
+ */
+export const SecretsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsDeletePost.');
+            }
+            // verify required parameter 'secretKeys' is not null or undefined
+            if (secretKeys === null || secretKeys === undefined) {
+                throw new RequiredError('secretKeys','Required parameter secretKeys was null or undefined when calling orgsOrgIDSecretsDeletePost.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets/delete`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsGet.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDSecretsPatch.');
+            }
+            // verify required parameter 'requestBody' is not null or undefined
+            if (requestBody === null || requestBody === undefined) {
+                throw new RequiredError('requestBody','Required parameter requestBody was null or undefined when calling orgsOrgIDSecretsPatch.');
+            }
+            const localVarPath = `/orgs/{orgID}/secrets`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"{ [key: string]: string; }" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(requestBody || {}) : (requestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SecretsApi - functional programming interface
+ * @export
+ */
+export const SecretsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeys> {
+            const localVarAxiosArgs = SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * SecretsApi - factory interface
+ * @export
+ */
+export const SecretsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary delete provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {SecretKeys} secretKeys secret key to deleted
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any) {
+            return SecretsApiFp(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all secret keys for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return SecretsApiFp(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Apply patch to the provided secrets
+         * @param {string} orgID ID of the organization
+         * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any) {
+            return SecretsApiFp(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * SecretsApi - object-oriented interface
+ * @export
+ * @class SecretsApi
+ * @extends {BaseAPI}
+ */
+export class SecretsApi extends BaseAPI {
+    /**
+     * 
+     * @summary delete provided secrets
+     * @param {string} orgID ID of the organization
+     * @param {SecretKeys} secretKeys secret key to deleted
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SecretsApi
+     */
+    public orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any) {
+        return SecretsApiFp(this.configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all secret keys for an organization
+     * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SecretsApi
+     */
+    public orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return SecretsApiFp(this.configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Apply patch to the provided secrets
+     * @param {string} orgID ID of the organization
+     * @param {{ [key: string]: string; }} requestBody secret key value pairs to update/add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SecretsApi
+     */
+    public orgsOrgIDSecretsPatch(orgID: string, requestBody: { [key: string]: string; }, zapTraceSpan?: string, options?: any) {
+        return SecretsApiFp(this.configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
  * SetupApi - axios parameter creator
  * @export
  */
@@ -12373,10 +14545,11 @@ export const SetupApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary check if database has default user, org, bucket created, returns true if not.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupGet(options: any = {}): RequestArgs {
+        setupGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/setup`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -12386,6 +14559,10 @@ export const SetupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -12401,10 +14578,11 @@ export const SetupApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary post onboarding request, to setup initial user, org and bucket
          * @param {OnboardingRequest} onboardingRequest source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupPost(onboardingRequest: OnboardingRequest, options: any = {}): RequestArgs {
+        setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'onboardingRequest' is not null or undefined
             if (onboardingRequest === null || onboardingRequest === undefined) {
                 throw new RequiredError('onboardingRequest','Required parameter onboardingRequest was null or undefined when calling setupPost.');
@@ -12418,6 +14596,10 @@ export const SetupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -12445,11 +14627,12 @@ export const SetupApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary check if database has default user, org, bucket created, returns true if not.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<IsOnboarding> {
-            const localVarAxiosArgs = SetupApiAxiosParamCreator(configuration).setupGet(options);
+        setupGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<IsOnboarding> {
+            const localVarAxiosArgs = SetupApiAxiosParamCreator(configuration).setupGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12459,11 +14642,12 @@ export const SetupApiFp = function(configuration?: Configuration) {
          * 
          * @summary post onboarding request, to setup initial user, org and bucket
          * @param {OnboardingRequest} onboardingRequest source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupPost(onboardingRequest: OnboardingRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OnboardingResponse> {
-            const localVarAxiosArgs = SetupApiAxiosParamCreator(configuration).setupPost(onboardingRequest, options);
+        setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OnboardingResponse> {
+            const localVarAxiosArgs = SetupApiAxiosParamCreator(configuration).setupPost(onboardingRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12481,21 +14665,23 @@ export const SetupApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary check if database has default user, org, bucket created, returns true if not.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupGet(options?: any) {
-            return SetupApiFp(configuration).setupGet(options)(axios, basePath);
+        setupGet(zapTraceSpan?: string, options?: any) {
+            return SetupApiFp(configuration).setupGet(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary post onboarding request, to setup initial user, org and bucket
          * @param {OnboardingRequest} onboardingRequest source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setupPost(onboardingRequest: OnboardingRequest, options?: any) {
-            return SetupApiFp(configuration).setupPost(onboardingRequest, options)(axios, basePath);
+        setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any) {
+            return SetupApiFp(configuration).setupPost(onboardingRequest, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -12510,24 +14696,26 @@ export class SetupApi extends BaseAPI {
     /**
      * 
      * @summary check if database has default user, org, bucket created, returns true if not.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SetupApi
      */
-    public setupGet(options?: any) {
-        return SetupApiFp(this.configuration).setupGet(options)(this.axios, this.basePath);
+    public setupGet(zapTraceSpan?: string, options?: any) {
+        return SetupApiFp(this.configuration).setupGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary post onboarding request, to setup initial user, org and bucket
      * @param {OnboardingRequest} onboardingRequest source to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SetupApi
      */
-    public setupPost(onboardingRequest: OnboardingRequest, options?: any) {
-        return SetupApiFp(this.configuration).setupPost(onboardingRequest, options)(this.axios, this.basePath);
+    public setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any) {
+        return SetupApiFp(this.configuration).setupPost(onboardingRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -12542,10 +14730,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get all sources
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, options: any = {}): RequestArgs {
+        sourcesGet(org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'org' is not null or undefined
             if (org === null || org === undefined) {
                 throw new RequiredError('org','Required parameter org was null or undefined when calling sourcesGet.');
@@ -12564,6 +14753,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['org'] = org;
             }
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -12577,16 +14770,12 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Creates a Source
-         * @param {string} org specifies the organization of the resource
          * @param {Source} source source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesPost(org: string, source: Source, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling sourcesPost.');
-            }
+        sourcesPost(source: Source, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'source' is not null or undefined
             if (source === null || source === undefined) {
                 throw new RequiredError('source','Required parameter source was null or undefined when calling sourcesPost.');
@@ -12601,8 +14790,8 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -12624,10 +14813,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options: any = {}): RequestArgs {
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
@@ -12649,6 +14839,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
 
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -12698,10 +14892,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDGet(sourceID: string, options: any = {}): RequestArgs {
+        sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDGet.');
@@ -12717,6 +14912,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -12731,10 +14930,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get a sources health
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDHealthGet(sourceID: string, options: any = {}): RequestArgs {
+        sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDHealthGet.');
@@ -12749,6 +14949,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -12765,10 +14969,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Updates a Source
          * @param {string} sourceID ID of the source
          * @param {Source} source source update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDPatch(sourceID: string, source: Source, options: any = {}): RequestArgs {
+        sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDPatch.');
@@ -12787,6 +14992,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -12815,11 +15024,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get all sources
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Sources> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesGet(org, options);
+        sourcesGet(org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Sources> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesGet(org, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12828,13 +15038,13 @@ export const SourcesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates a Source
-         * @param {string} org specifies the organization of the resource
          * @param {Source} source source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesPost(org: string, source: Source, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesPost(org, source, options);
+        sourcesPost(source: Source, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesPost(source, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12845,11 +15055,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, options);
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12873,11 +15084,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDGet(sourceID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDGet(sourceID, options);
+        sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12887,11 +15099,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a sources health
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDHealthGet(sourceID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDHealthGet(sourceID, options);
+        sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12902,11 +15115,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * @summary Updates a Source
          * @param {string} sourceID ID of the source
          * @param {Source} source source update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDPatch(sourceID: string, source: Source, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDPatch(sourceID, source, options);
+        sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Source> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -12925,33 +15139,35 @@ export const SourcesApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Get all sources
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesGet(org, options)(axios, basePath);
+        sourcesGet(org: string, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesGet(org, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Creates a Source
-         * @param {string} org specifies the organization of the resource
          * @param {Source} source source to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesPost(org: string, source: Source, options?: any) {
-            return SourcesApiFp(configuration).sourcesPost(org, source, options)(axios, basePath);
+        sourcesPost(source: Source, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesPost(source, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
          * @param {string} org specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, options)(axios, basePath);
+        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -12967,32 +15183,35 @@ export const SourcesApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Get a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDGet(sourceID: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDGet(sourceID, options)(axios, basePath);
+        sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Get a sources health
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDHealthGet(sourceID: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDHealthGet(sourceID, options)(axios, basePath);
+        sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Updates a Source
          * @param {string} sourceID ID of the source
          * @param {Source} source source update
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDPatch(sourceID: string, source: Source, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDPatch(sourceID, source, options)(axios, basePath);
+        sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -13008,25 +15227,26 @@ export class SourcesApi extends BaseAPI {
      * 
      * @summary Get all sources
      * @param {string} org specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesGet(org: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesGet(org, options)(this.axios, this.basePath);
+    public sourcesGet(org: string, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Creates a Source
-     * @param {string} org specifies the organization of the resource
      * @param {Source} source source to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesPost(org: string, source: Source, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesPost(org, source, options)(this.axios, this.basePath);
+    public sourcesPost(source: Source, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesPost(source, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13034,12 +15254,13 @@ export class SourcesApi extends BaseAPI {
      * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
      * @param {string} sourceID ID of the source
      * @param {string} org specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDBucketsGet(sourceID: string, org: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, options)(this.axios, this.basePath);
+    public sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13058,24 +15279,26 @@ export class SourcesApi extends BaseAPI {
      * 
      * @summary Get a source
      * @param {string} sourceID ID of the source
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDGet(sourceID: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDGet(sourceID, options)(this.axios, this.basePath);
+    public sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Get a sources health
      * @param {string} sourceID ID of the source
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDHealthGet(sourceID: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDHealthGet(sourceID, options)(this.axios, this.basePath);
+    public sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13083,12 +15306,13 @@ export class SourcesApi extends BaseAPI {
      * @summary Updates a Source
      * @param {string} sourceID ID of the source
      * @param {Source} source source update
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDPatch(sourceID: string, source: Source, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDPatch(sourceID, source, options)(this.axios, this.basePath);
+    public sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -13100,15 +15324,17 @@ export class SourcesApi extends BaseAPI {
 export const TasksApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Lists tasks, limit 100
+         * 
          * @summary List tasks.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
-         * @param {string} [user] filter tasks to a specific user name
-         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [user] filter tasks to a specific user ID
+         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(after?: string, user?: string, org?: string, options: any = {}): RequestArgs {
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options: any = {}): RequestArgs {
             const localVarPath = `/tasks`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -13131,6 +15357,14 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['org'] = org;
             }
 
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13145,10 +15379,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Create a new task
          * @param {TaskCreateRequest} taskCreateRequest task to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksPost(taskCreateRequest: TaskCreateRequest, options: any = {}): RequestArgs {
+        tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskCreateRequest' is not null or undefined
             if (taskCreateRequest === null || taskCreateRequest === undefined) {
                 throw new RequiredError('taskCreateRequest','Required parameter taskCreateRequest was null or undefined when calling tasksPost.');
@@ -13162,6 +15397,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -13181,10 +15420,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * Deletes a task and all associated records
          * @summary Delete a task
          * @param {string} taskID ID of task to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDDelete(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDDelete(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDDelete.');
@@ -13200,6 +15440,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13214,10 +15458,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Retrieve an task
          * @param {string} taskID ID of task to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDGet.');
@@ -13232,6 +15477,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -13283,9 +15532,9 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary delete a label from a task config
-         * @param {string} taskID ID of the task config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a task
+         * @param {string} taskID ID of the task
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -13376,10 +15625,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDLogsGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDLogsGet.');
@@ -13395,6 +15645,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13409,10 +15663,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDMembersGet.');
@@ -13428,6 +15683,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13442,18 +15701,19 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options: any = {}): RequestArgs {
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling tasksTaskIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDMembersPost.');
             }
             const localVarPath = `/tasks/{taskID}/members`
                 .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
@@ -13466,14 +15726,18 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13485,10 +15749,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
@@ -13509,6 +15774,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13523,10 +15792,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDOwnersGet.');
@@ -13542,6 +15812,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13556,18 +15830,19 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling tasksTaskIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDOwnersPost.');
             }
             const localVarPath = `/tasks/{taskID}/owners`
                 .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
@@ -13580,14 +15855,18 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13599,10 +15878,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
@@ -13623,6 +15903,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13638,10 +15922,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Update a task
          * @param {string} taskID ID of task to get
          * @param {Task} task task update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, task: Task, options: any = {}): RequestArgs {
+        tasksTaskIDPatch(taskID: string, task: Task, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDPatch.');
@@ -13661,6 +15946,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -13679,6 +15968,7 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Retrieve list of run records for a task
          * @param {string} taskID ID of task to get runs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns runs after specified ID
          * @param {number} [limit] the number of runs to return
          * @param {Date} [afterTime] filter runs to those scheduled after this time, RFC3339
@@ -13686,7 +15976,7 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsGet(taskID: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options: any = {}): RequestArgs {
+        tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsGet.');
@@ -13718,6 +16008,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['beforeTime'] = (beforeTime as any).toISOString();
             }
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13730,13 +16024,52 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Retrieve a single run record for a task
-         * @param {string} taskID task ID
-         * @param {string} runID run ID
+         * @summary manually start a run of the task now overriding the current schedule.
+         * @param {string} taskID 
+         * @param {RunManually} [runManually] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, options: any = {}): RequestArgs {
+        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options: any = {}): RequestArgs {
+            // verify required parameter 'taskID' is not null or undefined
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsPost.');
+            }
+            const localVarPath = `/tasks/{taskID}/runs`
+                .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"RunManually" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(runManually || {}) : (runManually || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve a single run record for a task
+         * @param {string} taskID task ID
+         * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDGet.');
@@ -13757,6 +16090,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13772,10 +16109,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Retrieve all logs for a run
          * @param {string} taskID ID of task to get logs for.
          * @param {string} runID ID of run to get logs for.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, options: any = {}): RequestArgs {
+        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDLogsGet.');
@@ -13796,6 +16134,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -13811,10 +16153,11 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Retry a task run
          * @param {string} taskID task ID
          * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, options: any = {}): RequestArgs {
+        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDRetryPost.');
@@ -13834,6 +16177,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -13855,16 +16202,18 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
 export const TasksApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * Lists tasks, limit 100
+         * 
          * @summary List tasks.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
-         * @param {string} [user] filter tasks to a specific user name
-         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [user] filter tasks to a specific user ID
+         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(after?: string, user?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksGet(after, user, org, options);
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksGet(zapTraceSpan, after, user, org, limit, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13874,11 +16223,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a new task
          * @param {TaskCreateRequest} taskCreateRequest task to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksPost(taskCreateRequest: TaskCreateRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksPost(taskCreateRequest, options);
+        tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksPost(taskCreateRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13888,11 +16238,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * Deletes a task and all associated records
          * @summary Delete a task
          * @param {string} taskID ID of task to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDDelete(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDDelete(taskID, options);
+        tasksTaskIDDelete(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13902,11 +16253,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve an task
          * @param {string} taskID ID of task to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDGet(taskID, options);
+        tasksTaskIDGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13920,7 +16272,7 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
             const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -13929,9 +16281,9 @@ export const TasksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary delete a label from a task config
-         * @param {string} taskID ID of the task config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a task
+         * @param {string} taskID ID of the task
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -13963,11 +16315,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDLogsGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Logs> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLogsGet(taskID, options);
+        tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Logs> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13977,11 +16330,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, options);
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13991,12 +16345,13 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, user, options);
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14007,11 +16362,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options);
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14021,11 +16377,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, options);
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14035,12 +16392,13 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, user, options);
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14051,11 +16409,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options);
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14066,11 +16425,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary Update a task
          * @param {string} taskID ID of task to get
          * @param {Task} task task update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, task: Task, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDPatch(taskID, task, options);
+        tasksTaskIDPatch(taskID: string, task: Task, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDPatch(taskID, task, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14080,6 +16440,7 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve list of run records for a task
          * @param {string} taskID ID of task to get runs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns runs after specified ID
          * @param {number} [limit] the number of runs to return
          * @param {Date} [afterTime] filter runs to those scheduled after this time, RFC3339
@@ -14087,8 +16448,23 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsGet(taskID: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsGet(taskID, after, limit, afterTime, beforeTime, options);
+        tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2002> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary manually start a run of the task now overriding the current schedule.
+         * @param {string} taskID 
+         * @param {RunManually} [runManually] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, runManually, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14099,11 +16475,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary Retrieve a single run record for a task
          * @param {string} taskID task ID
          * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, options);
+        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14114,11 +16491,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary Retrieve all logs for a run
          * @param {string} taskID ID of task to get logs for.
          * @param {string} runID ID of run to get logs for.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Logs> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, options);
+        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Logs> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14129,11 +16507,12 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @summary Retry a task run
          * @param {string} taskID task ID
          * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, options);
+        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14149,46 +16528,51 @@ export const TasksApiFp = function(configuration?: Configuration) {
 export const TasksApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
-         * Lists tasks, limit 100
+         * 
          * @summary List tasks.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
-         * @param {string} [user] filter tasks to a specific user name
-         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [user] filter tasks to a specific user ID
+         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(after?: string, user?: string, org?: string, options?: any) {
-            return TasksApiFp(configuration).tasksGet(after, user, org, options)(axios, basePath);
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any) {
+            return TasksApiFp(configuration).tasksGet(zapTraceSpan, after, user, org, limit, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a new task
          * @param {TaskCreateRequest} taskCreateRequest task to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksPost(taskCreateRequest: TaskCreateRequest, options?: any) {
-            return TasksApiFp(configuration).tasksPost(taskCreateRequest, options)(axios, basePath);
+        tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksPost(taskCreateRequest, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * Deletes a task and all associated records
          * @summary Delete a task
          * @param {string} taskID ID of task to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDDelete(taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDDelete(taskID, options)(axios, basePath);
+        tasksTaskIDDelete(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve an task
          * @param {string} taskID ID of task to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDGet(taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDGet(taskID, options)(axios, basePath);
+        tasksTaskIDGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -14203,9 +16587,9 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary delete a label from a task config
-         * @param {string} taskID ID of the task config
-         * @param {string} labelID the label ID
+         * @summary delete a label from a task
+         * @param {string} taskID ID of the task
+         * @param {string} labelID the label id
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14229,91 +16613,100 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Retrieve all logs for a task
          * @param {string} taskID ID of task to get logs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDLogsGet(taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDLogsGet(taskID, options)(axios, basePath);
+        tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDMembersGet(taskID, options)(axios, basePath);
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDMembersPost(taskID, user, options)(axios, basePath);
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options)(axios, basePath);
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDOwnersGet(taskID, options)(axios, basePath);
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDOwnersPost(taskID, user, options)(axios, basePath);
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options)(axios, basePath);
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * Update a task. This will cancel all queued runs.
          * @summary Update a task
          * @param {string} taskID ID of task to get
          * @param {Task} task task update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDPatch(taskID: string, task: Task, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDPatch(taskID, task, options)(axios, basePath);
+        tasksTaskIDPatch(taskID: string, task: Task, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDPatch(taskID, task, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve list of run records for a task
          * @param {string} taskID ID of task to get runs for
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns runs after specified ID
          * @param {number} [limit] the number of runs to return
          * @param {Date} [afterTime] filter runs to those scheduled after this time, RFC3339
@@ -14321,41 +16714,55 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsGet(taskID: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDRunsGet(taskID, after, limit, afterTime, beforeTime, options)(axios, basePath);
+        tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary manually start a run of the task now overriding the current schedule.
+         * @param {string} taskID 
+         * @param {RunManually} [runManually] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, runManually, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve a single run record for a task
          * @param {string} taskID task ID
          * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, options)(axios, basePath);
+        tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve all logs for a run
          * @param {string} taskID ID of task to get logs for.
          * @param {string} runID ID of run to get logs for.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, options)(axios, basePath);
+        tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retry a task run
          * @param {string} taskID task ID
          * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, options)(axios, basePath);
+        tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -14368,53 +16775,58 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
  */
 export class TasksApi extends BaseAPI {
     /**
-     * Lists tasks, limit 100
+     * 
      * @summary List tasks.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [after] returns tasks after specified ID
-     * @param {string} [user] filter tasks to a specific user name
-     * @param {string} [org] filter tasks to a specific organization name
+     * @param {string} [user] filter tasks to a specific user ID
+     * @param {string} [org] filter tasks to a specific organization ID
+     * @param {number} [limit] the number of tasks to return
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksGet(after?: string, user?: string, org?: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksGet(after, user, org, options)(this.axios, this.basePath);
+    public tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any) {
+        return TasksApiFp(this.configuration).tasksGet(zapTraceSpan, after, user, org, limit, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a new task
      * @param {TaskCreateRequest} taskCreateRequest task to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksPost(taskCreateRequest: TaskCreateRequest, options?: any) {
-        return TasksApiFp(this.configuration).tasksPost(taskCreateRequest, options)(this.axios, this.basePath);
+    public tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksPost(taskCreateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * Deletes a task and all associated records
      * @summary Delete a task
      * @param {string} taskID ID of task to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDDelete(taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDDelete(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDDelete(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Retrieve an task
      * @param {string} taskID ID of task to get
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDGet(taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14432,9 +16844,9 @@ export class TasksApi extends BaseAPI {
 
     /**
      * 
-     * @summary delete a label from a task config
-     * @param {string} taskID ID of the task config
-     * @param {string} labelID the label ID
+     * @summary delete a label from a task
+     * @param {string} taskID ID of the task
+     * @param {string} labelID the label id
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14462,37 +16874,40 @@ export class TasksApi extends BaseAPI {
      * 
      * @summary Retrieve all logs for a task
      * @param {string} taskID ID of task to get logs for
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDLogsGet(taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDLogsGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all task members
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDMembersGet(taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDMembersGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add task member
      * @param {string} taskID ID of the task
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDMembersPost(taskID: string, user: User, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDMembersPost(taskID, user, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14500,37 +16915,40 @@ export class TasksApi extends BaseAPI {
      * @summary removes a member from an task
      * @param {string} userID ID of member to remove
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all task owners
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDOwnersGet(taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add task owner
      * @param {string} taskID ID of the task
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDOwnersPost(taskID: string, user: User, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, user, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14538,12 +16956,13 @@ export class TasksApi extends BaseAPI {
      * @summary removes an owner from an task
      * @param {string} userID ID of owner to remove
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14551,18 +16970,20 @@ export class TasksApi extends BaseAPI {
      * @summary Update a task
      * @param {string} taskID ID of task to get
      * @param {Task} task task update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDPatch(taskID: string, task: Task, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDPatch(taskID, task, options)(this.axios, this.basePath);
+    public tasksTaskIDPatch(taskID: string, task: Task, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDPatch(taskID, task, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Retrieve list of run records for a task
      * @param {string} taskID ID of task to get runs for
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [after] returns runs after specified ID
      * @param {number} [limit] the number of runs to return
      * @param {Date} [afterTime] filter runs to those scheduled after this time, RFC3339
@@ -14571,8 +16992,21 @@ export class TasksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDRunsGet(taskID: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDRunsGet(taskID, after, limit, afterTime, beforeTime, options)(this.axios, this.basePath);
+    public tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary manually start a run of the task now overriding the current schedule.
+     * @param {string} taskID 
+     * @param {RunManually} [runManually] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TasksApi
+     */
+    public tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, runManually, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14580,12 +17014,13 @@ export class TasksApi extends BaseAPI {
      * @summary Retrieve a single run record for a task
      * @param {string} taskID task ID
      * @param {string} runID run ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDRunsRunIDGet(taskID: string, runID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDGet(taskID, runID, options)(this.axios, this.basePath);
+    public tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14593,12 +17028,13 @@ export class TasksApi extends BaseAPI {
      * @summary Retrieve all logs for a run
      * @param {string} taskID ID of task to get logs for.
      * @param {string} runID ID of run to get logs for.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, options)(this.axios, this.basePath);
+    public tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14606,12 +17042,13 @@ export class TasksApi extends BaseAPI {
      * @summary Retry a task run
      * @param {string} taskID task ID
      * @param {string} runID run ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, options)(this.axios, this.basePath);
+    public tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -14625,10 +17062,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, options: any = {}): RequestArgs {
+        telegrafsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling telegrafsGet.');
@@ -14647,6 +17085,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
                 localVarQueryParameter['orgID'] = orgID;
             }
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -14661,10 +17103,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Create a telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(telegrafRequest: TelegrafRequest, options: any = {}): RequestArgs {
+        telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafRequest' is not null or undefined
             if (telegrafRequest === null || telegrafRequest === undefined) {
                 throw new RequiredError('telegrafRequest','Required parameter telegrafRequest was null or undefined when calling telegrafsPost.');
@@ -14678,6 +17121,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -14735,10 +17182,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDGet.');
@@ -14753,6 +17201,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -14897,10 +17349,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersGet.');
@@ -14916,6 +17369,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -14930,18 +17387,19 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling telegrafsTelegrafIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDMembersPost.');
             }
             const localVarPath = `/telegrafs/{telegrafID}/members`
                 .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
@@ -14954,14 +17412,18 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -14973,10 +17435,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
@@ -14997,6 +17460,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15011,10 +17478,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersGet.');
@@ -15030,6 +17498,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15044,18 +17516,19 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
             }
             const localVarPath = `/telegrafs/{telegrafID}/owners`
                 .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
@@ -15068,14 +17541,18 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -15087,10 +17564,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
@@ -15111,6 +17589,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15126,10 +17608,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * @summary Update a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDPut.');
@@ -15148,6 +17631,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -15175,11 +17662,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(orgID, options);
+        telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15189,11 +17677,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(telegrafRequest: TelegrafRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsPost(telegrafRequest, options);
+        telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15218,11 +17707,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, options);
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15268,7 +17758,7 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+        telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -15279,11 +17769,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, options);
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15293,12 +17784,13 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options);
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15309,11 +17801,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options);
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15323,11 +17816,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options);
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15337,12 +17831,13 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options);
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15353,11 +17848,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options);
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15368,11 +17864,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @summary Update a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, options);
+        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15390,21 +17887,23 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsGet(orgID, options)(axios, basePath);
+        telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Create a telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsPost(telegrafRequest: TelegrafRequest, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsPost(telegrafRequest, options)(axios, basePath);
+        telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -15421,11 +17920,12 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
          * 
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -15466,76 +17966,83 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options)(axios, basePath);
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {TelegrafRequest} telegrafRequest telegraf config update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, options)(axios, basePath);
+        telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -15550,24 +18057,26 @@ export class TelegrafsApi extends BaseAPI {
     /**
      * 
      * @param {string} orgID specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsGet(orgID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsGet(orgID, options)(this.axios, this.basePath);
+    public telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Create a telegraf config
      * @param {TelegrafRequest} telegrafRequest telegraf config to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsPost(telegrafRequest: TelegrafRequest, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsPost(telegrafRequest, options)(this.axios, this.basePath);
+    public telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15587,12 +18096,13 @@ export class TelegrafsApi extends BaseAPI {
      * 
      * @summary Retrieve a telegraf config
      * @param {string} telegrafID ID of telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDGet(telegrafID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15640,25 +18150,27 @@ export class TelegrafsApi extends BaseAPI {
      * 
      * @summary List all users with member privileges for a telegraf config
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add telegraf config member
      * @param {string} telegrafID ID of the telegraf config
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15666,37 +18178,40 @@ export class TelegrafsApi extends BaseAPI {
      * @summary removes a member from a telegraf config
      * @param {string} userID ID of member to remove
      * @param {string} telegrafID ID of the telegraf
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of a telegraf config
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add telegraf config owner
      * @param {string} telegrafID ID of the telegraf config
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15704,12 +18219,13 @@ export class TelegrafsApi extends BaseAPI {
      * @summary removes an owner from a telegraf config
      * @param {string} userID ID of owner to remove
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15717,12 +18233,13 @@ export class TelegrafsApi extends BaseAPI {
      * @summary Update a telegraf config
      * @param {string} telegrafID ID of telegraf config
      * @param {TelegrafRequest} telegrafRequest telegraf config update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -15737,10 +18254,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersGet.');
@@ -15756,6 +18274,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15770,18 +18292,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling bucketsBucketIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDMembersPost.');
             }
             const localVarPath = `/buckets/{bucketID}/members`
                 .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
@@ -15794,14 +18317,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -15813,10 +18340,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
@@ -15837,6 +18365,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15851,10 +18383,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersGet.');
@@ -15870,6 +18403,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15884,18 +18421,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'bucketID' is not null or undefined
             if (bucketID === null || bucketID === undefined) {
                 throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling bucketsBucketIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDOwnersPost.');
             }
             const localVarPath = `/buckets/{bucketID}/owners`
                 .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
@@ -15908,14 +18446,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -15927,10 +18469,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options: any = {}): RequestArgs {
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
@@ -15951,6 +18494,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15965,10 +18512,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersGet.');
@@ -15984,6 +18532,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -15998,18 +18550,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling dashboardsDashboardIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDMembersPost.');
             }
             const localVarPath = `/dashboards/{dashboardID}/members`
                 .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
@@ -16022,14 +18575,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16041,10 +18598,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
@@ -16065,6 +18623,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16079,10 +18641,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersGet.');
@@ -16098,6 +18661,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16112,18 +18679,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling dashboardsDashboardIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDOwnersPost.');
             }
             const localVarPath = `/dashboards/{dashboardID}/owners`
                 .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
@@ -16136,14 +18704,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16155,10 +18727,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
@@ -16179,6 +18752,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16192,10 +18769,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Returns currently authenticated user
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meGet(options: any = {}): RequestArgs {
+        meGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/me`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -16205,6 +18783,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -16220,10 +18802,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Update password
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mePasswordPut(passwordResetBody: PasswordResetBody, options: any = {}): RequestArgs {
+        mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'passwordResetBody' is not null or undefined
             if (passwordResetBody === null || passwordResetBody === undefined) {
                 throw new RequiredError('passwordResetBody','Required parameter passwordResetBody was null or undefined when calling mePasswordPut.');
@@ -16237,6 +18820,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -16256,10 +18843,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDMembersGet.');
@@ -16275,6 +18863,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16289,18 +18881,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options: any = {}): RequestArgs {
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling orgsOrgIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDMembersPost.');
             }
             const localVarPath = `/orgs/{orgID}/members`
                 .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
@@ -16313,14 +18906,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16332,10 +18929,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
@@ -16356,6 +18954,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16370,10 +18972,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDOwnersGet.');
@@ -16389,6 +18992,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16403,18 +19010,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'orgID' is not null or undefined
             if (orgID === null || orgID === undefined) {
                 throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling orgsOrgIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDOwnersPost.');
             }
             const localVarPath = `/orgs/{orgID}/owners`
                 .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
@@ -16427,14 +19035,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16446,10 +19058,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options: any = {}): RequestArgs {
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
@@ -16470,6 +19083,268 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+            }
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+            }
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/members/{userID}`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+            }
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+            }
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}/owners/{userID}`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16484,10 +19359,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDMembersGet.');
@@ -16503,6 +19379,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16517,18 +19397,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options: any = {}): RequestArgs {
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling tasksTaskIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDMembersPost.');
             }
             const localVarPath = `/tasks/{taskID}/members`
                 .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
@@ -16541,14 +19422,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16560,10 +19445,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
@@ -16584,6 +19470,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16598,10 +19488,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDOwnersGet.');
@@ -16617,6 +19508,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16631,18 +19526,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling tasksTaskIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDOwnersPost.');
             }
             const localVarPath = `/tasks/{taskID}/owners`
                 .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)));
@@ -16655,14 +19551,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16674,10 +19574,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options: any = {}): RequestArgs {
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
@@ -16698,6 +19599,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16712,10 +19617,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersGet.');
@@ -16731,6 +19637,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16745,18 +19655,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling telegrafsTelegrafIDMembersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDMembersPost.');
             }
             const localVarPath = `/telegrafs/{telegrafID}/members`
                 .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
@@ -16769,14 +19680,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16788,10 +19703,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
@@ -16812,6 +19728,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16826,10 +19746,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersGet.');
@@ -16845,6 +19766,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16859,18 +19784,19 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
             }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
+            // verify required parameter 'addResourceMemberRequestBody' is not null or undefined
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody','Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
             }
             const localVarPath = `/telegrafs/{telegrafID}/owners`
                 .replace(`{${"telegrafID"}}`, encodeURIComponent(String(telegrafID)));
@@ -16883,14 +19809,18 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            const needsSerialization = (<any>"AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -16902,10 +19832,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
@@ -16926,6 +19857,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -16939,10 +19874,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary List all users
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersGet(options: any = {}): RequestArgs {
+        usersGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/users`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -16952,6 +19888,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -17003,10 +19943,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary deletes a user
          * @param {string} userID ID of user to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDDelete(userID: string, options: any = {}): RequestArgs {
+        usersUserIDDelete(userID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDDelete.');
@@ -17022,6 +19963,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -17036,10 +19981,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Retrieve a user
          * @param {string} userID ID of user to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDGet(userID: string, options: any = {}): RequestArgs {
+        usersUserIDGet(userID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDGet.');
@@ -17054,6 +20000,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -17070,10 +20020,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, options: any = {}): RequestArgs {
+        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDPasswordPut.');
@@ -17092,6 +20043,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -17112,10 +20067,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Update a user
          * @param {string} userID ID of user to update
          * @param {User} user user update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPatch(userID: string, user: User, options: any = {}): RequestArgs {
+        usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'userID' is not null or undefined
             if (userID === null || userID === undefined) {
                 throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDPatch.');
@@ -17135,80 +20091,9 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersGet.');
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
-            const localVarPath = `/views/{viewID}/members`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersPost.');
-            }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling viewsViewIDMembersPost.');
-            }
-            const localVarPath = `/views/{viewID}/members`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -17218,159 +20103,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'userID' is not null or undefined
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID','Required parameter userID was null or undefined when calling viewsViewIDMembersUserIDDelete.');
-            }
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersUserIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}/members/{userID}`
-                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersGet.');
-            }
-            const localVarPath = `/views/{viewID}/owners`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersPost.');
-            }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling viewsViewIDOwnersPost.');
-            }
-            const localVarPath = `/views/{viewID}/owners`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'userID' is not null or undefined
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID','Required parameter userID was null or undefined when calling viewsViewIDOwnersUserIDDelete.');
-            }
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersUserIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}/owners/{userID}`
-                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
             return {
                 url: url.format(localVarUrlObj),
@@ -17390,11 +20122,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, options);
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17404,12 +20137,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, user, options);
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17420,11 +20154,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options);
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17434,11 +20169,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, options);
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17448,12 +20184,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, user, options);
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17464,11 +20201,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options);
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17478,11 +20216,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, options);
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17492,12 +20231,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options);
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17508,11 +20248,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options);
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17522,11 +20263,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, options);
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17536,12 +20278,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options);
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17552,11 +20295,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options);
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17565,11 +20309,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Returns currently authenticated user
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).meGet(options);
+        meGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).meGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17579,11 +20324,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update password
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mePasswordPut(passwordResetBody: PasswordResetBody, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).mePasswordPut(passwordResetBody, options);
+        mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17593,11 +20339,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, options);
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17607,12 +20354,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, user, options);
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17623,11 +20371,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options);
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17637,11 +20386,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, options);
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17651,12 +20401,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, user, options);
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17667,11 +20418,106 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options);
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17681,11 +20527,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, options);
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17695,12 +20542,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, user, options);
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17711,11 +20559,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options);
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17725,11 +20574,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, options);
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17739,12 +20589,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, user, options);
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17755,11 +20606,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options);
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17769,11 +20621,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, options);
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17783,12 +20636,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options);
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMember> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17799,11 +20653,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options);
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17813,11 +20668,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options);
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17827,12 +20683,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options);
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwner> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17843,11 +20700,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options);
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17856,11 +20714,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all users
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersGet(options);
+        usersGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17884,11 +20743,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary deletes a user
          * @param {string} userID ID of user to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDDelete(userID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDDelete(userID, options);
+        usersUserIDDelete(userID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDDelete(userID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17898,11 +20758,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Retrieve a user
          * @param {string} userID ID of user to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDGet(userID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDGet(userID, options);
+        usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDGet(userID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17913,11 +20774,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDPasswordPut(userID, passwordResetBody, options);
+        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17928,99 +20790,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary Update a user
          * @param {string} userID ID of user to update
          * @param {User} user user update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPatch(userID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDPatch(userID, user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDMembersGet(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDMembersPost(viewID, user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDOwnersGet(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDOwnersPost(viewID, user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options);
+        usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDPatch(userID, user, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -18039,349 +20814,452 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDMembersGet(bucketID, options)(axios, basePath);
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add bucket member
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDMembersPost(bucketID, user, options)(axios, basePath);
+        bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an bucket
          * @param {string} userID ID of member to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options)(axios, basePath);
+        bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of a bucket
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, options)(axios, basePath);
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add bucket owner
          * @param {string} bucketID ID of the bucket
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, user, options)(axios, basePath);
+        bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from a bucket
          * @param {string} userID ID of owner to remove
          * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any) {
-            return UsersApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options)(axios, basePath);
+        bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersGet(dashboardID: string, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add dashboard member
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options)(axios, basePath);
+        dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an dashboard
          * @param {string} userID ID of member to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all dashboard owners
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add dashboard owner
          * @param {string} dashboardID ID of the dashboard
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options)(axios, basePath);
+        dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-            return UsersApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options)(axios, basePath);
+        dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Returns currently authenticated user
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meGet(options?: any) {
-            return UsersApiFp(configuration).meGet(options)(axios, basePath);
+        meGet(zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).meGet(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update password
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        mePasswordPut(passwordResetBody: PasswordResetBody, options?: any) {
-            return UsersApiFp(configuration).mePasswordPut(passwordResetBody, options)(axios, basePath);
+        mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersGet(orgID: string, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDMembersGet(orgID, options)(axios, basePath);
+        orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add organization member
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersPost(orgID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDMembersPost(orgID, user, options)(axios, basePath);
+        orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an organization
          * @param {string} userID ID of member to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options)(axios, basePath);
+        orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of an organization
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersGet(orgID: string, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDOwnersGet(orgID, options)(axios, basePath);
+        orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add organization owner
          * @param {string} orgID ID of the organization
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersPost(orgID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDOwnersPost(orgID, user, options)(axios, basePath);
+        orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an organization
          * @param {string} userID ID of owner to remove
          * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any) {
-            return UsersApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options)(axios, basePath);
+        orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all users with member privileges for a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Add scraper target member
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary removes a member from a scraper target
+         * @param {string} userID ID of member to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary List all owners of a scraper target
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Add scraper target owner
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary removes an owner from a scraper target
+         * @param {string} userID ID of owner to remove
+         * @param {string} scraperTargetID ID of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all task members
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersGet(taskID: string, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDMembersGet(taskID, options)(axios, basePath);
+        tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add task member
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersPost(taskID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDMembersPost(taskID, user, options)(axios, basePath);
+        tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from an task
          * @param {string} userID ID of member to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options)(axios, basePath);
+        tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all task owners
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersGet(taskID: string, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDOwnersGet(taskID, options)(axios, basePath);
+        tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add task owner
          * @param {string} taskID ID of the task
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersPost(taskID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDOwnersPost(taskID, user, options)(axios, basePath);
+        tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from an task
          * @param {string} userID ID of owner to remove
          * @param {string} taskID ID of the task
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any) {
-            return UsersApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options)(axios, basePath);
+        tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all users with member privileges for a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add telegraf config member
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as member
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options)(axios, basePath);
+        telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes a member from a telegraf config
          * @param {string} userID ID of member to remove
          * @param {string} telegrafID ID of the telegraf
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all owners of a telegraf config
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Add telegraf config owner
          * @param {string} telegrafID ID of the telegraf config
-         * @param {User} user user to add as owner
+         * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary removes an owner from a telegraf config
          * @param {string} userID ID of owner to remove
          * @param {string} telegrafID ID of the telegraf config
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options)(axios, basePath);
+        telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary List all users
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersGet(options?: any) {
-            return UsersApiFp(configuration).usersGet(options)(axios, basePath);
+        usersGet(zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersGet(zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -18397,107 +21275,47 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary deletes a user
          * @param {string} userID ID of user to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDDelete(userID: string, options?: any) {
-            return UsersApiFp(configuration).usersUserIDDelete(userID, options)(axios, basePath);
+        usersUserIDDelete(userID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersUserIDDelete(userID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Retrieve a user
          * @param {string} userID ID of user to get
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDGet(userID: string, options?: any) {
-            return UsersApiFp(configuration).usersUserIDGet(userID, options)(axios, basePath);
+        usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersUserIDGet(userID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, options?: any) {
-            return UsersApiFp(configuration).usersUserIDPasswordPut(userID, passwordResetBody, options)(axios, basePath);
+        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary Update a user
          * @param {string} userID ID of user to update
          * @param {User} user user update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPatch(userID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).usersUserIDPatch(userID, user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDMembersGet(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDMembersPost(viewID, user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDOwnersGet(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDOwnersPost(viewID, user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any) {
-            return UsersApiFp(configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options)(axios, basePath);
+        usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersUserIDPatch(userID, user, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -18513,25 +21331,27 @@ export class UsersApi extends BaseAPI {
      * 
      * @summary List all users with member privileges for a bucket
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDMembersGet(bucketID: string, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add bucket member
      * @param {string} bucketID ID of the bucket
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDMembersPost(bucketID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, user, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18539,37 +21359,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes a member from an bucket
      * @param {string} userID ID of member to remove
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of a bucket
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDOwnersGet(bucketID: string, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add bucket owner
      * @param {string} bucketID ID of the bucket
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDOwnersPost(bucketID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, user, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18577,37 +21400,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes an owner from a bucket
      * @param {string} userID ID of owner to remove
      * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, options?: any) {
-        return UsersApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, options)(this.axios, this.basePath);
+    public bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all dashboard members
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDMembersGet(dashboardID: string, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add dashboard member
      * @param {string} dashboardID ID of the dashboard
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDMembersPost(dashboardID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, user, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18615,37 +21441,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes a member from an dashboard
      * @param {string} userID ID of member to remove
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all dashboard owners
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDOwnersGet(dashboardID: string, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add dashboard owner
      * @param {string} dashboardID ID of the dashboard
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDOwnersPost(dashboardID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, user, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18653,60 +21482,65 @@ export class UsersApi extends BaseAPI {
      * @summary removes an owner from an dashboard
      * @param {string} userID ID of owner to remove
      * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, options?: any) {
-        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Returns currently authenticated user
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public meGet(options?: any) {
-        return UsersApiFp(this.configuration).meGet(options)(this.axios, this.basePath);
+    public meGet(zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).meGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Update password
      * @param {PasswordResetBody} passwordResetBody new password
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public mePasswordPut(passwordResetBody: PasswordResetBody, options?: any) {
-        return UsersApiFp(this.configuration).mePasswordPut(passwordResetBody, options)(this.axios, this.basePath);
+    public mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all members of an organization
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDMembersGet(orgID: string, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDMembersGet(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add organization member
      * @param {string} orgID ID of the organization
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDMembersPost(orgID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDMembersPost(orgID, user, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18714,37 +21548,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes a member from an organization
      * @param {string} userID ID of member to remove
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of an organization
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDOwnersGet(orgID: string, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add organization owner
      * @param {string} orgID ID of the organization
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDOwnersPost(orgID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, user, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18752,37 +21589,122 @@ export class UsersApi extends BaseAPI {
      * @summary removes an owner from an organization
      * @param {string} userID ID of owner to remove
      * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, options?: any) {
-        return UsersApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, options)(this.axios, this.basePath);
+    public orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all users with member privileges for a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Add scraper target member
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary removes a member from a scraper target
+     * @param {string} userID ID of member to remove
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all owners of a scraper target
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Add scraper target owner
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary removes an owner from a scraper target
+     * @param {string} userID ID of owner to remove
+     * @param {string} scraperTargetID ID of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all task members
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDMembersGet(taskID: string, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDMembersGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add task member
      * @param {string} taskID ID of the task
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDMembersPost(taskID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDMembersPost(taskID, user, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18790,37 +21712,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes a member from an task
      * @param {string} userID ID of member to remove
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all task owners
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDOwnersGet(taskID: string, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add task owner
      * @param {string} taskID ID of the task
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDOwnersPost(taskID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, user, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18828,37 +21753,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes an owner from an task
      * @param {string} userID ID of owner to remove
      * @param {string} taskID ID of the task
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, options?: any) {
-        return UsersApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, options)(this.axios, this.basePath);
+    public tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all users with member privileges for a telegraf config
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDMembersGet(telegrafID: string, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add telegraf config member
      * @param {string} telegrafID ID of the telegraf config
-     * @param {User} user user to add as member
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as member
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDMembersPost(telegrafID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, user, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18866,37 +21794,40 @@ export class UsersApi extends BaseAPI {
      * @summary removes a member from a telegraf config
      * @param {string} userID ID of member to remove
      * @param {string} telegrafID ID of the telegraf
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all owners of a telegraf config
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDOwnersGet(telegrafID: string, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Add telegraf config owner
      * @param {string} telegrafID ID of the telegraf config
-     * @param {User} user user to add as owner
+     * @param {AddResourceMemberRequestBody} addResourceMemberRequestBody user to add as owner
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDOwnersPost(telegrafID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, user, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18904,23 +21835,25 @@ export class UsersApi extends BaseAPI {
      * @summary removes an owner from a telegraf config
      * @param {string} userID ID of owner to remove
      * @param {string} telegrafID ID of the telegraf config
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, options?: any) {
-        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary List all users
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersGet(options?: any) {
-        return UsersApiFp(this.configuration).usersGet(options)(this.axios, this.basePath);
+    public usersGet(zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18939,24 +21872,26 @@ export class UsersApi extends BaseAPI {
      * 
      * @summary deletes a user
      * @param {string} userID ID of user to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersUserIDDelete(userID: string, options?: any) {
-        return UsersApiFp(this.configuration).usersUserIDDelete(userID, options)(this.axios, this.basePath);
+    public usersUserIDDelete(userID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersUserIDDelete(userID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Retrieve a user
      * @param {string} userID ID of user to get
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersUserIDGet(userID: string, options?: any) {
-        return UsersApiFp(this.configuration).usersUserIDGet(userID, options)(this.axios, this.basePath);
+    public usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersUserIDGet(userID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18964,12 +21899,13 @@ export class UsersApi extends BaseAPI {
      * @summary Update password
      * @param {string} userID ID of the user
      * @param {PasswordResetBody} passwordResetBody new password
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, options?: any) {
-        return UsersApiFp(this.configuration).usersUserIDPasswordPut(userID, passwordResetBody, options)(this.axios, this.basePath);
+    public usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18977,88 +21913,13 @@ export class UsersApi extends BaseAPI {
      * @summary Update a user
      * @param {string} userID ID of user to update
      * @param {User} user user update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersUserIDPatch(userID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).usersUserIDPatch(userID, user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary List all view members
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDMembersGet(viewID: string, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDMembersGet(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Add view member
-     * @param {string} viewID ID of the view
-     * @param {User} user user to add as member
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDMembersPost(viewID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDMembersPost(viewID, user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary removes a member from an view
-     * @param {string} userID ID of member to remove
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary List all view owners
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDOwnersGet(viewID: string, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDOwnersGet(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Add view owner
-     * @param {string} viewID ID of the view
-     * @param {User} user user to add as owner
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDOwnersPost(viewID: string, user: User, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDOwnersPost(viewID, user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary removes an owner from a view
-     * @param {string} userID ID of owner to remove
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any) {
-        return UsersApiFp(this.configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options)(this.axios, this.basePath);
+    public usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersUserIDPatch(userID, user, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -19074,10 +21935,11 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
@@ -19098,6 +21960,10 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -19114,10 +21980,11 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options: any = {}): RequestArgs {
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'dashboardID' is not null or undefined
             if (dashboardID === null || dashboardID === undefined) {
                 throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
@@ -19142,551 +22009,9 @@ export const ViewsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(view || {}) : (view || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get all views
-         * @param {string} org specifies the organization of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsGet(org: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling viewsGet.');
-            }
-            const localVarPath = `/views`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary A view contains information about the visual representation of data
-         * @param {string} org specifies the organization of the resource
-         * @param {View} view view to create
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsPost(org: string, view: View, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling viewsPost.');
-            }
-            // verify required parameter 'view' is not null or undefined
-            if (view === null || view === undefined) {
-                throw new RequiredError('view','Required parameter view was null or undefined when calling viewsPost.');
-            }
-            const localVarPath = `/views`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(view || {}) : (view || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Delete a view
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDDelete(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get a single View
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDGet(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDGet.');
-            }
-            const localVarPath = `/views/{viewID}`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary list all labels for a view
-         * @param {string} viewID ID of the view
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsGet.');
-            }
-            const localVarPath = `/views/{viewID}/labels`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary delete a label from a view config
-         * @param {string} viewID ID of the view config
-         * @param {string} labelID the label ID
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsLabelIDDelete.');
-            }
-            // verify required parameter 'labelID' is not null or undefined
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling viewsViewIDLabelsLabelIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}/labels/{labelID}`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)))
-                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary add a label to a view
-         * @param {string} viewID ID of the view
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDLabelsPost.');
-            }
-            // verify required parameter 'labelMapping' is not null or undefined
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling viewsViewIDLabelsPost.');
-            }
-            const localVarPath = `/views/{viewID}/labels`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersGet.');
-            }
-            const localVarPath = `/views/{viewID}/members`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersPost.');
-            }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling viewsViewIDMembersPost.');
-            }
-            const localVarPath = `/views/{viewID}/members`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'userID' is not null or undefined
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID','Required parameter userID was null or undefined when calling viewsViewIDMembersUserIDDelete.');
-            }
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDMembersUserIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}/members/{userID}`
-                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersGet.');
-            }
-            const localVarPath = `/views/{viewID}/owners`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersPost.');
-            }
-            // verify required parameter 'user' is not null or undefined
-            if (user === null || user === undefined) {
-                throw new RequiredError('user','Required parameter user was null or undefined when calling viewsViewIDOwnersPost.');
-            }
-            const localVarPath = `/views/{viewID}/owners`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(user || {}) : (user || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options: any = {}): RequestArgs {
-            // verify required parameter 'userID' is not null or undefined
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID','Required parameter userID was null or undefined when calling viewsViewIDOwnersUserIDDelete.');
-            }
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDOwnersUserIDDelete.');
-            }
-            const localVarPath = `/views/{viewID}/owners/{userID}`
-                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)))
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Update a single view
-         * @param {string} viewID ID of view to update
-         * @param {View} view patching of a view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDPatch(viewID: string, view: View, options: any = {}): RequestArgs {
-            // verify required parameter 'viewID' is not null or undefined
-            if (viewID === null || viewID === undefined) {
-                throw new RequiredError('viewID','Required parameter viewID was null or undefined when calling viewsViewIDPatch.');
-            }
-            // verify required parameter 'view' is not null or undefined
-            if (view === null || view === undefined) {
-                throw new RequiredError('view','Required parameter view was null or undefined when calling viewsViewIDPatch.');
-            }
-            const localVarPath = `/views/{viewID}`
-                .replace(`{${"viewID"}}`, encodeURIComponent(String(viewID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -19716,11 +22041,12 @@ export const ViewsApiFp = function(configuration?: Configuration) {
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -19732,218 +22058,12 @@ export const ViewsApiFp = function(configuration?: Configuration) {
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Get all views
-         * @param {string} org specifies the organization of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsGet(org: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Views> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsGet(org, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary A view contains information about the visual representation of data
-         * @param {string} org specifies the organization of the resource
-         * @param {View} view view to create
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsPost(org: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsPost(org, view, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Delete a view
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDDelete(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDDelete(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Get a single View
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDGet(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary list all labels for a view
-         * @param {string} viewID ID of the view
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary delete a label from a view config
-         * @param {string} viewID ID of the view config
-         * @param {string} labelID the label ID
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary add a label to a view
-         * @param {string} viewID ID of the view
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDMembersGet(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDMembersPost(viewID, user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Users> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDOwnersGet(viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDOwnersPost(viewID, user, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Update a single view
-         * @param {string} viewID ID of view to update
-         * @param {View} view patching of a view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDPatch(viewID: string, view: View, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
-            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).viewsViewIDPatch(viewID, view, options);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<View> {
+            const localVarAxiosArgs = ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -19963,11 +22083,12 @@ export const ViewsApiFactory = function (configuration?: Configuration, basePath
          * @summary Retrieve the view for a cell in a dashboard
          * @param {string} dashboardID ID of dashboard
          * @param {string} cellID ID of cell
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -19975,162 +22096,12 @@ export const ViewsApiFactory = function (configuration?: Configuration, basePath
          * @param {string} dashboardID ID of dashboard to update
          * @param {string} cellID ID of cell to update
          * @param {View} view updates the view for a cell
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Get all views
-         * @param {string} org specifies the organization of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsGet(org: string, options?: any) {
-            return ViewsApiFp(configuration).viewsGet(org, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary A view contains information about the visual representation of data
-         * @param {string} org specifies the organization of the resource
-         * @param {View} view view to create
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsPost(org: string, view: View, options?: any) {
-            return ViewsApiFp(configuration).viewsPost(org, view, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Delete a view
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDDelete(viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDDelete(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Get a single View
-         * @param {string} viewID ID of view to update
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDGet(viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDGet(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary list all labels for a view
-         * @param {string} viewID ID of the view
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary delete a label from a view config
-         * @param {string} viewID ID of the view config
-         * @param {string} labelID the label ID
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary add a label to a view
-         * @param {string} viewID ID of the view
-         * @param {LabelMapping} labelMapping label to add
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary List all view members
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersGet(viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDMembersGet(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Add view member
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as member
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersPost(viewID: string, user: User, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDMembersPost(viewID, user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary removes a member from an view
-         * @param {string} userID ID of member to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary List all view owners
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersGet(viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDOwnersGet(viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Add view owner
-         * @param {string} viewID ID of the view
-         * @param {User} user user to add as owner
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersPost(viewID: string, user: User, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDOwnersPost(viewID, user, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary removes an owner from a view
-         * @param {string} userID ID of owner to remove
-         * @param {string} viewID ID of the view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Update a single view
-         * @param {string} viewID ID of view to update
-         * @param {View} view patching of a view
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        viewsViewIDPatch(viewID: string, view: View, options?: any) {
-            return ViewsApiFp(configuration).viewsViewIDPatch(viewID, view, options)(axios, basePath);
+        dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+            return ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -20147,12 +22118,13 @@ export class ViewsApi extends BaseAPI {
      * @summary Retrieve the view for a cell in a dashboard
      * @param {string} dashboardID ID of dashboard
      * @param {string} cellID ID of cell
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ViewsApi
      */
-    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, options?: any) {
-        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any) {
+        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -20161,191 +22133,13 @@ export class ViewsApi extends BaseAPI {
      * @param {string} dashboardID ID of dashboard to update
      * @param {string} cellID ID of cell to update
      * @param {View} view updates the view for a cell
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, options?: any) {
-        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Get all views
-     * @param {string} org specifies the organization of the resource
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsGet(org: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsGet(org, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary A view contains information about the visual representation of data
-     * @param {string} org specifies the organization of the resource
-     * @param {View} view view to create
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsPost(org: string, view: View, options?: any) {
-        return ViewsApiFp(this.configuration).viewsPost(org, view, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Delete a view
-     * @param {string} viewID ID of view to update
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDDelete(viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDDelete(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Get a single View
-     * @param {string} viewID ID of view to update
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDGet(viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDGet(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary list all labels for a view
-     * @param {string} viewID ID of the view
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ViewsApi
      */
-    public viewsViewIDLabelsGet(viewID: string, zapTraceSpan?: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDLabelsGet(viewID, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary delete a label from a view config
-     * @param {string} viewID ID of the view config
-     * @param {string} labelID the label ID
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDLabelsLabelIDDelete(viewID: string, labelID: string, zapTraceSpan?: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDLabelsLabelIDDelete(viewID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary add a label to a view
-     * @param {string} viewID ID of the view
-     * @param {LabelMapping} labelMapping label to add
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDLabelsPost(viewID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDLabelsPost(viewID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary List all view members
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDMembersGet(viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDMembersGet(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Add view member
-     * @param {string} viewID ID of the view
-     * @param {User} user user to add as member
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDMembersPost(viewID: string, user: User, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDMembersPost(viewID, user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary removes a member from an view
-     * @param {string} userID ID of member to remove
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDMembersUserIDDelete(userID: string, viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDMembersUserIDDelete(userID, viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary List all view owners
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDOwnersGet(viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDOwnersGet(viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Add view owner
-     * @param {string} viewID ID of the view
-     * @param {User} user user to add as owner
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDOwnersPost(viewID: string, user: User, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDOwnersPost(viewID, user, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary removes an owner from a view
-     * @param {string} userID ID of owner to remove
-     * @param {string} viewID ID of the view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDOwnersUserIDDelete(userID: string, viewID: string, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDOwnersUserIDDelete(userID, viewID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Update a single view
-     * @param {string} viewID ID of view to update
-     * @param {View} view patching of a view
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ViewsApi
-     */
-    public viewsViewIDPatch(viewID: string, view: View, options?: any) {
-        return ViewsApiFp(this.configuration).viewsViewIDPatch(viewID, view, options)(this.axios, this.basePath);
+    public dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any) {
+        return ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -20362,6 +22156,7 @@ export const WriteApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} org specifies the destination organization for writes
          * @param {string} bucket specifies the destination bucket for writes
          * @param {string} body line protocol body
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'gzip' | 'identity'} [contentEncoding] when present, its value indicates to the database that compression is applied to the line-protocol body.
          * @param {'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow'} [contentType] Content-Type is used to indicate the format of the data sent to the server.
          * @param {number} [contentLength] Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent.
@@ -20370,7 +22165,7 @@ export const WriteApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        writePost(org: string, bucket: string, body: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options: any = {}): RequestArgs {
+        writePost(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options: any = {}): RequestArgs {
             // verify required parameter 'org' is not null or undefined
             if (org === null || org === undefined) {
                 throw new RequiredError('org','Required parameter org was null or undefined when calling writePost.');
@@ -20403,6 +22198,10 @@ export const WriteApiAxiosParamCreator = function (configuration?: Configuration
 
             if (precision !== undefined) {
                 localVarQueryParameter['precision'] = precision;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
 
             if (contentEncoding !== undefined && contentEncoding !== null) {
@@ -20450,6 +22249,7 @@ export const WriteApiFp = function(configuration?: Configuration) {
          * @param {string} org specifies the destination organization for writes
          * @param {string} bucket specifies the destination bucket for writes
          * @param {string} body line protocol body
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'gzip' | 'identity'} [contentEncoding] when present, its value indicates to the database that compression is applied to the line-protocol body.
          * @param {'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow'} [contentType] Content-Type is used to indicate the format of the data sent to the server.
          * @param {number} [contentLength] Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent.
@@ -20458,8 +22258,8 @@ export const WriteApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        writePost(org: string, bucket: string, body: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = WriteApiAxiosParamCreator(configuration).writePost(org, bucket, body, contentEncoding, contentType, contentLength, accept, precision, options);
+        writePost(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = WriteApiAxiosParamCreator(configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -20480,6 +22280,7 @@ export const WriteApiFactory = function (configuration?: Configuration, basePath
          * @param {string} org specifies the destination organization for writes
          * @param {string} bucket specifies the destination bucket for writes
          * @param {string} body line protocol body
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'gzip' | 'identity'} [contentEncoding] when present, its value indicates to the database that compression is applied to the line-protocol body.
          * @param {'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow'} [contentType] Content-Type is used to indicate the format of the data sent to the server.
          * @param {number} [contentLength] Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent.
@@ -20488,8 +22289,8 @@ export const WriteApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        writePost(org: string, bucket: string, body: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any) {
-            return WriteApiFp(configuration).writePost(org, bucket, body, contentEncoding, contentType, contentLength, accept, precision, options)(axios, basePath);
+        writePost(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any) {
+            return WriteApiFp(configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(axios, basePath);
         },
     };
 };
@@ -20507,6 +22308,7 @@ export class WriteApi extends BaseAPI {
      * @param {string} org specifies the destination organization for writes
      * @param {string} bucket specifies the destination bucket for writes
      * @param {string} body line protocol body
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'gzip' | 'identity'} [contentEncoding] when present, its value indicates to the database that compression is applied to the line-protocol body.
      * @param {'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow'} [contentType] Content-Type is used to indicate the format of the data sent to the server.
      * @param {number} [contentLength] Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent.
@@ -20516,8 +22318,8 @@ export class WriteApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof WriteApi
      */
-    public writePost(org: string, bucket: string, body: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any) {
-        return WriteApiFp(this.configuration).writePost(org, bucket, body, contentEncoding, contentType, contentLength, accept, precision, options)(this.axios, this.basePath);
+    public writePost(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any) {
+        return WriteApiFp(this.configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(this.axios, this.basePath);
     }
 
 }

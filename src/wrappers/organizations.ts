@@ -1,4 +1,4 @@
-import { Organization, OrganizationsApi, ResourceOwner } from "../api";
+import { Organization, OrganizationsApi, ResourceMember, ResourceOwner } from "../api";
 
 export default class {
   private service: OrganizationsApi;
@@ -38,7 +38,7 @@ export default class {
     return data;
   }
 
-  public async members(id: string): Promise<ResourceOwner[]> {
+  public async members(id: string): Promise<ResourceMember[]> {
     const {data: {users}} = await this.service.orgsOrgIDMembersGet(id);
 
     return users || [];

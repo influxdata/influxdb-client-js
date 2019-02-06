@@ -23,8 +23,8 @@ export default class {
     return sources || [];
   }
 
-  public async create(org: string, props: Source): Promise<Source> {
-    const {data} = await this.service.sourcesPost(org, props);
+  public async create(props: Source): Promise<Source> {
+    const {data} = await this.service.sourcesPost(props);
 
     return data;
   }
