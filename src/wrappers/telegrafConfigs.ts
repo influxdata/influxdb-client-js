@@ -1,4 +1,4 @@
-import { Organization, Telegraf, TelegrafPluginConfig, TelegrafsApi } from "../api";
+import { Organization, Telegraf, TelegrafPluginConfig, TelegrafRequest, TelegrafsApi } from "../api";
 
 export default class {
 
@@ -49,7 +49,9 @@ export default class {
 
   public async update(id: string, props: Partial<Telegraf>): Promise<Telegraf> {
     const original = await this.get(id);
-    const {data: updated} = await this.service.telegrafsTelegrafIDPut(id, {...original, ...props});
+    const update = {...original, ...props} as TelegrafRequest;
+
+    const {data: updated} = await this.service.telegrafsTelegrafIDPut(id, update);
 
     return updated;
   }

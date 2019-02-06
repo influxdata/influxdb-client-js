@@ -18,7 +18,7 @@ export default class {
   }
 
   public async getAllByOrg(org: string): Promise<Source[]> {
-    const {data: {sources}} = await this.service.sourcesGet("");
+    const {data: {sources}} = await this.service.sourcesGet(org);
 
     return sources || [];
   }
@@ -30,7 +30,7 @@ export default class {
   }
 
   public async update(id: string, props: Partial<Source>): Promise<Source> {
-    const original = this.get(id);
+    const original = await this.get(id);
     const {data} = await this.service.sourcesSourceIDPatch(id, {...original, ...props});
 
     return data;
