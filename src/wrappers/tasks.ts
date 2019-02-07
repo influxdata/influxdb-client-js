@@ -21,13 +21,13 @@ export default class {
   }
 
   public async getAllByOrg({name}: Organization): Promise<Task[]> {
-    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, name);
+    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, undefined, name);
 
     return tasks || [];
   }
 
   public async getAllByUser(user: User): Promise<Task[]> {
-    const { data } = await this.service.tasksGet(undefined, user.id);
+    const { data } = await this.service.tasksGet(undefined, undefined, user.id);
 
     return data.tasks || [];
   }
