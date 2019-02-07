@@ -2990,10 +2990,10 @@ export interface SecretKeysLinks {
 export interface Source {
     /**
      * 
-     * @type {ViewLinks}
+     * @type {SourceLinks}
      * @memberof Source
      */
-    links?: ViewLinks;
+    links?: SourceLinks;
     /**
      * 
      * @type {string}
@@ -3109,6 +3109,38 @@ export namespace Source {
         Influxql = 'influxql',
         Spec = 'spec'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface SourceLinks
+ */
+export interface SourceLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof SourceLinks
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SourceLinks
+     */
+    query?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SourceLinks
+     */
+    health?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SourceLinks
+     */
+    buckets?: string;
 }
 
 /**
