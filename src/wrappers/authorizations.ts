@@ -30,7 +30,7 @@ export default class {
   }
 
   public async getAllByUsername(username: string): Promise<Authorization[]> {
-    const {data: {authorizations}} = await this.service.authorizationsGet(undefined, username);
+    const {data: {authorizations}} = await this.service.authorizationsGet(undefined, undefined, username);
 
     return authorizations || [];
   }
