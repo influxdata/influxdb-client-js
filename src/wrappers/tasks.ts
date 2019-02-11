@@ -1,4 +1,4 @@
-import { Organization, Task, TasksApi, User } from "../api";
+import { Organization, Task, TasksApi, User, Run } from "../api";
 import { addLabelDefaults, Label } from "./labels";
 
 export default class {
@@ -87,5 +87,11 @@ export default class {
     const promises = labels.map((l) => this.removeLabel(taskID, l));
 
     return Promise.all(promises);
+  }
+
+  public async getRunsByTaskID(taskID: string): Promise<Run[]> {
+    const {data: {runs}} = await this.service.tasksTaskIDRunsGet(taskID);
+
+    return runs || [];
   }
 }
