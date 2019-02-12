@@ -13,6 +13,7 @@ import Sources from "./wrappers/sources";
 import Tasks from "./wrappers/tasks";
 import TelegrafConfigs from "./wrappers/telegrafConfigs";
 import Users from "./wrappers/users";
+import Variables from "./wrappers/variables";
 import Write from "./wrappers/write";
 
 export * from "./types";
@@ -34,6 +35,7 @@ export default class Client {
   public tasks: Tasks;
   public telegrafConfigs: TelegrafConfigs;
   public users: Users;
+  public variables: Variables;
   public write: Write;
 
   constructor(basePath: string) {
@@ -52,6 +54,7 @@ export default class Client {
     this.tasks = new Tasks(basePath);
     this.telegrafConfigs = new TelegrafConfigs(basePath);
     this.users = new Users(basePath);
+    this.variables = new Variables(basePath);
     this.write = new Write(basePath);
   }
 }
