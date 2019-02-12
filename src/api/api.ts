@@ -2914,6 +2914,12 @@ export interface ScraperTargetResponse extends ScraperTargetRequest {
      */
     bucket?: string;
     /**
+     * name of scraper target
+     * @type {string}
+     * @memberof ScraperTargetResponse
+     */
+    name?: string;
+    /**
      * 
      * @type {Links}
      * @memberof ScraperTargetResponse
