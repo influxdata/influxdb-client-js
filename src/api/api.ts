@@ -1600,10 +1600,10 @@ export interface Macro {
 export interface Macros {
     /**
      * 
-     * @type {Macro}
+     * @type {Array<Macro>}
      * @memberof Macros
      */
-    macros?: Macro;
+    macros?: Array<Macro>;
 }
 
 /**
@@ -3247,6 +3247,18 @@ export interface Task {
      * @memberof Task
      */
     latestCompleted?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Task
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Task
+     */
+    updatedAt?: Date;
     /**
      * 
      * @type {TaskLinks}
