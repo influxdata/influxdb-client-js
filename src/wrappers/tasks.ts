@@ -1,4 +1,4 @@
-import { Organization, Task, TasksApi, User, Run } from "../api";
+import { Organization, Run, Task, TasksApi, User } from "../api";
 import { addLabelDefaults, Label } from "./labels";
 
 export default class {
