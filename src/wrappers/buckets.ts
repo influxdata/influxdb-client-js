@@ -13,8 +13,8 @@ export default class {
     return data;
   }
 
-  public async getAllByOrg({name}: Organization): Promise<Bucket[]> {
-    const {data: {buckets}} = await this.service.bucketsGet(name);
+  public async getAllByOrg(org: string): Promise<Bucket[]> {
+    const {data: {buckets}} = await this.service.bucketsGet(undefined, undefined, undefined, org);
 
     return buckets || [];
   }
