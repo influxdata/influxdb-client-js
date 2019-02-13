@@ -7,8 +7,8 @@ export default class {
     this.service = new MacrosApi({basePath});
   }
 
-  public async getAllByOrg(orgName: string): Promise<Macro[]> {
-    const {data: {macros}} = await this.service.macrosGet(undefined, orgName);
+  public async getAllByOrg(org: string): Promise<Macro[]> {
+    const {data: {macros}} = await this.service.macrosGet(undefined, org);
 
     return macros || [];
   }
