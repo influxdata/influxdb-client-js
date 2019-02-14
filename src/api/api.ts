@@ -1577,7 +1577,13 @@ export interface Macro {
      * @type {string}
      * @memberof Macro
      */
-    name?: string;
+    orgID: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Macro
+     */
+    name: string;
     /**
      * 
      * @type {Array<string>}
@@ -1589,7 +1595,7 @@ export interface Macro {
      * @type {any}
      * @memberof Macro
      */
-    arguments?: any;
+    arguments: any;
 }
 
 /**
