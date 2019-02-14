@@ -1577,7 +1577,13 @@ export interface Macro {
      * @type {string}
      * @memberof Macro
      */
-    name?: string;
+    orgID: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Macro
+     */
+    name: string;
     /**
      * 
      * @type {Array<string>}
@@ -1589,7 +1595,7 @@ export interface Macro {
      * @type {any}
      * @memberof Macro
      */
-    arguments?: any;
+    arguments: any;
 }
 
 /**
@@ -2265,16 +2271,10 @@ export interface QueryMacroProperties {
     type?: QueryMacroProperties.TypeEnum;
     /**
      * 
-     * @type {string}
+     * @type {QueryMacroPropertiesValues}
      * @memberof QueryMacroProperties
      */
-    query?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryMacroProperties
-     */
-    queryType?: string;
+    values?: QueryMacroPropertiesValues;
 }
 
 /**
@@ -2289,6 +2289,26 @@ export namespace QueryMacroProperties {
     export enum TypeEnum {
         Query = 'query'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface QueryMacroPropertiesValues
+ */
+export interface QueryMacroPropertiesValues {
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryMacroPropertiesValues
+     */
+    query?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryMacroPropertiesValues
+     */
+    language?: string;
 }
 
 /**
@@ -3293,7 +3313,13 @@ export interface TaskCreateRequest {
      * @type {string}
      * @memberof TaskCreateRequest
      */
-    orgID: string;
+    orgID?: string;
+    /**
+     * The name of the organization that owns this Task.
+     * @type {string}
+     * @memberof TaskCreateRequest
+     */
+    org?: string;
     /**
      * Starting state of the task. 'inactive' tasks are not run until they are updated to 'active'
      * @type {string}
