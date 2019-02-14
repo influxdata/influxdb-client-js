@@ -1,26 +1,26 @@
-import { Macro, MacrosApi } from "../api";
+import { Variable, VariablesApi } from "../api";
 
 export default class {
-  private service: MacrosApi;
+  private service: VariablesApi;
 
   constructor(basePath: string) {
-    this.service = new MacrosApi({basePath});
+    this.service = new VariablesApi({basePath});
   }
 
-  public async getAllByOrg(org: string): Promise<Macro[]> {
-    const {data: {macros}} = await this.service.macrosGet(undefined, org);
+  public async getAllByOrg(org: string): Promise<Variable[]> {
+    const {data: {variables}} = await this.service.variablesGet(undefined, org);
 
-    return macros || [];
+    return variables || [];
   }
 
-  public async create(macro: Macro): Promise<Macro> {
-    const {data} = await this.service.macrosPost(macro);
+  public async create(variable: Variable): Promise<Variable> {
+    const {data} = await this.service.variablesPost(variable);
 
     return data;
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.macrosMacroIDDelete(id);
+    const {data} = await this.service.variablesVariableIDDelete(id);
 
     return data;
   }
