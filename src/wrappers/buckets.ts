@@ -1,4 +1,4 @@
-import { Bucket, BucketsApi, Organization } from "../api";
+import { Bucket, BucketsApi } from "../api";
 
 export default class {
   private service: BucketsApi;
