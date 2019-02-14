@@ -592,28 +592,28 @@ export namespace Check {
 /**
  * 
  * @export
- * @interface ConstantMacroProperties
+ * @interface ConstantVariableProperties
  */
-export interface ConstantMacroProperties {
+export interface ConstantVariableProperties {
     /**
      * 
      * @type {string}
-     * @memberof ConstantMacroProperties
+     * @memberof ConstantVariableProperties
      */
-    type?: ConstantMacroProperties.TypeEnum;
+    type?: ConstantVariableProperties.TypeEnum;
     /**
      * 
      * @type {Array<string>}
-     * @memberof ConstantMacroProperties
+     * @memberof ConstantVariableProperties
      */
     values?: Array<string>;
 }
 
 /**
  * @export
- * @namespace ConstantMacroProperties
+ * @namespace ConstantVariableProperties
  */
-export namespace ConstantMacroProperties {
+export namespace ConstantVariableProperties {
     /**
      * @export
      * @enum {string}
@@ -1557,86 +1557,28 @@ export interface Logs {
 /**
  * 
  * @export
- * @interface Macro
+ * @interface MapVariableProperties
  */
-export interface Macro {
-    /**
-     * 
-     * @type {UsersLinks}
-     * @memberof Macro
-     */
-    links?: UsersLinks;
+export interface MapVariableProperties {
     /**
      * 
      * @type {string}
-     * @memberof Macro
+     * @memberof MapVariableProperties
      */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Macro
-     */
-    orgID: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Macro
-     */
-    name: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof Macro
-     */
-    selected?: Array<string>;
+    type?: MapVariableProperties.TypeEnum;
     /**
      * 
      * @type {any}
-     * @memberof Macro
-     */
-    arguments: any;
-}
-
-/**
- * 
- * @export
- * @interface Macros
- */
-export interface Macros {
-    /**
-     * 
-     * @type {Array<Macro>}
-     * @memberof Macros
-     */
-    macros?: Array<Macro>;
-}
-
-/**
- * 
- * @export
- * @interface MapMacroProperties
- */
-export interface MapMacroProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof MapMacroProperties
-     */
-    type?: MapMacroProperties.TypeEnum;
-    /**
-     * 
-     * @type {any}
-     * @memberof MapMacroProperties
+     * @memberof MapVariableProperties
      */
     values?: any;
 }
 
 /**
  * @export
- * @namespace MapMacroProperties
+ * @namespace MapVariableProperties
  */
-export namespace MapMacroProperties {
+export namespace MapVariableProperties {
     /**
      * @export
      * @enum {string}
@@ -2258,60 +2200,6 @@ export interface QueryConfigRange {
 }
 
 /**
- * 
- * @export
- * @interface QueryMacroProperties
- */
-export interface QueryMacroProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryMacroProperties
-     */
-    type?: QueryMacroProperties.TypeEnum;
-    /**
-     * 
-     * @type {QueryMacroPropertiesValues}
-     * @memberof QueryMacroProperties
-     */
-    values?: QueryMacroPropertiesValues;
-}
-
-/**
- * @export
- * @namespace QueryMacroProperties
- */
-export namespace QueryMacroProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Query = 'query'
-    }
-}
-
-/**
- * 
- * @export
- * @interface QueryMacroPropertiesValues
- */
-export interface QueryMacroPropertiesValues {
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryMacroPropertiesValues
-     */
-    query?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryMacroPropertiesValues
-     */
-    language?: string;
-}
-
-/**
  * consists of a set of operations and a set of edges between those operations to instruct the query engine to operate.
  * @export
  * @interface QuerySpecification
@@ -2413,6 +2301,60 @@ export interface QuerySpecificationResources {
      * @memberof QuerySpecificationResources
      */
     memoryBytesQuota?: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface QueryVariableProperties
+ */
+export interface QueryVariableProperties {
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryVariableProperties
+     */
+    type?: QueryVariableProperties.TypeEnum;
+    /**
+     * 
+     * @type {QueryVariablePropertiesValues}
+     * @memberof QueryVariableProperties
+     */
+    values?: QueryVariablePropertiesValues;
+}
+
+/**
+ * @export
+ * @namespace QueryVariableProperties
+ */
+export namespace QueryVariableProperties {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum TypeEnum {
+        Query = 'query'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @interface QueryVariablePropertiesValues
+ */
+export interface QueryVariablePropertiesValues {
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryVariablePropertiesValues
+     */
+    query?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof QueryVariablePropertiesValues
+     */
+    language?: string;
 }
 
 /**
@@ -2572,7 +2514,7 @@ export interface Routes {
      * @type {string}
      * @memberof Routes
      */
-    macros?: string;
+    variables?: string;
     /**
      * 
      * @type {string}
@@ -3238,6 +3180,12 @@ export interface Task {
      */
     labels?: Array<Label>;
     /**
+     * The ID of the authorization used when this task communicates with the query engine.
+     * @type {string}
+     * @memberof Task
+     */
+    authorizationID?: string;
+    /**
      * The Flux script to run for this task.
      * @type {string}
      * @memberof Task
@@ -3332,6 +3280,12 @@ export interface TaskCreateRequest {
      * @memberof TaskCreateRequest
      */
     flux: string;
+    /**
+     * The token to use for authenticating this task when it executes queries. If omitted, uses the token associated with the request that creates the task.
+     * @type {string}
+     * @memberof TaskCreateRequest
+     */
+    token?: string;
 }
 
 /**
@@ -3385,6 +3339,71 @@ export interface TaskLinks {
      * @memberof TaskLinks
      */
     logs?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface TaskUpdateRequest
+ */
+export interface TaskUpdateRequest {
+    /**
+     * Starting state of the task. 'inactive' tasks are not run until they are updated to 'active'
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    status?: TaskUpdateRequest.StatusEnum;
+    /**
+     * The Flux script to run for this task.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    flux?: string;
+    /**
+     * Override the 'name' option in the flux script.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    name?: string;
+    /**
+     * Override the 'every' option in the flux script.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    every?: string;
+    /**
+     * Override the 'cron' option in the flux script.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    cron?: string;
+    /**
+     * Override the 'offset' option in the flux script.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    offset?: string;
+    /**
+     * Override the existing token associated with the task.
+     * @type {string}
+     * @memberof TaskUpdateRequest
+     */
+    token?: string;
+}
+
+/**
+ * @export
+ * @namespace TaskUpdateRequest
+ */
+export namespace TaskUpdateRequest {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum StatusEnum {
+        Active = 'active',
+        Inactive = 'inactive'
+    }
 }
 
 /**
@@ -5483,6 +5502,64 @@ export namespace V1ViewPropertiesLegend {
         Left = 'left',
         Right = 'right'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface Variable
+ */
+export interface Variable {
+    /**
+     * 
+     * @type {UsersLinks}
+     * @memberof Variable
+     */
+    links?: UsersLinks;
+    /**
+     * 
+     * @type {string}
+     * @memberof Variable
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Variable
+     */
+    orgID: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Variable
+     */
+    name: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Variable
+     */
+    selected?: Array<string>;
+    /**
+     * 
+     * @type {any}
+     * @memberof Variable
+     */
+    arguments: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface Variables
+ */
+export interface Variables {
+    /**
+     * 
+     * @type {Array<Variable>}
+     * @memberof Variables
+     */
+    variables?: Array<Variable>;
 }
 
 /**
@@ -10422,461 +10499,6 @@ export class LabelsApi extends BaseAPI {
      */
     public labelsPost(label: Label, options?: any) {
         return LabelsApiFp(this.configuration).labelsPost(label, options)(this.axios, this.basePath);
-    }
-
-}
-
-/**
- * MacrosApi - axios parameter creator
- * @export
- */
-export const MacrosApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary get all macros
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {string} [org] specifies the organization name of the resource
-         * @param {string} [orgID] specifies the organization id of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/macros`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-
-            if (orgID !== undefined) {
-                localVarQueryParameter['orgID'] = orgID;
-            }
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary delete a macro
-         * @param {string} macroID id of the macro
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'macroID' is not null or undefined
-            if (macroID === null || macroID === undefined) {
-                throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDDelete.');
-            }
-            const localVarPath = `/macros/{macroID}`
-                .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro update to apply
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'macroID' is not null or undefined
-            if (macroID === null || macroID === undefined) {
-                throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDPatch.');
-            }
-            // verify required parameter 'macro' is not null or undefined
-            if (macro === null || macro === undefined) {
-                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosMacroIDPatch.');
-            }
-            const localVarPath = `/macros/{macroID}`
-                .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary replace a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro to replace
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'macroID' is not null or undefined
-            if (macroID === null || macroID === undefined) {
-                throw new RequiredError('macroID','Required parameter macroID was null or undefined when calling macrosMacroIDPut.');
-            }
-            // verify required parameter 'macro' is not null or undefined
-            if (macro === null || macro === undefined) {
-                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosMacroIDPut.');
-            }
-            const localVarPath = `/macros/{macroID}`
-                .replace(`{${"macroID"}}`, encodeURIComponent(String(macroID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary create a macro
-         * @param {Macro} macro macro to create
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosPost(macro: Macro, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'macro' is not null or undefined
-            if (macro === null || macro === undefined) {
-                throw new RequiredError('macro','Required parameter macro was null or undefined when calling macrosPost.');
-            }
-            const localVarPath = `/macros`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Macro" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(macro || {}) : (macro || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * MacrosApi - functional programming interface
- * @export
- */
-export const MacrosApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary get all macros
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {string} [org] specifies the organization name of the resource
-         * @param {string} [orgID] specifies the organization id of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macros> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosGet(zapTraceSpan, org, orgID, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary delete a macro
-         * @param {string} macroID id of the macro
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary update a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro update to apply
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary replace a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro to replace
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary create a macro
-         * @param {Macro} macro macro to create
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosPost(macro: Macro, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Macro> {
-            const localVarAxiosArgs = MacrosApiAxiosParamCreator(configuration).macrosPost(macro, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-    }
-};
-
-/**
- * MacrosApi - factory interface
- * @export
- */
-export const MacrosApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @summary get all macros
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {string} [org] specifies the organization name of the resource
-         * @param {string} [orgID] specifies the organization id of the resource
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
-            return MacrosApiFp(configuration).macrosGet(zapTraceSpan, org, orgID, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary delete a macro
-         * @param {string} macroID id of the macro
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any) {
-            return MacrosApiFp(configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary update a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro update to apply
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
-            return MacrosApiFp(configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary replace a macro
-         * @param {string} macroID id of the macro
-         * @param {Macro} macro macro to replace
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
-            return MacrosApiFp(configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary create a macro
-         * @param {Macro} macro macro to create
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        macrosPost(macro: Macro, zapTraceSpan?: string, options?: any) {
-            return MacrosApiFp(configuration).macrosPost(macro, zapTraceSpan, options)(axios, basePath);
-        },
-    };
-};
-
-/**
- * MacrosApi - object-oriented interface
- * @export
- * @class MacrosApi
- * @extends {BaseAPI}
- */
-export class MacrosApi extends BaseAPI {
-    /**
-     * 
-     * @summary get all macros
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {string} [org] specifies the organization name of the resource
-     * @param {string} [orgID] specifies the organization id of the resource
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MacrosApi
-     */
-    public macrosGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary delete a macro
-     * @param {string} macroID id of the macro
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MacrosApi
-     */
-    public macrosMacroIDDelete(macroID: string, zapTraceSpan?: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosMacroIDDelete(macroID, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary update a macro
-     * @param {string} macroID id of the macro
-     * @param {Macro} macro macro update to apply
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MacrosApi
-     */
-    public macrosMacroIDPatch(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosMacroIDPatch(macroID, macro, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary replace a macro
-     * @param {string} macroID id of the macro
-     * @param {Macro} macro macro to replace
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MacrosApi
-     */
-    public macrosMacroIDPut(macroID: string, macro: Macro, zapTraceSpan?: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosMacroIDPut(macroID, macro, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary create a macro
-     * @param {Macro} macro macro to create
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MacrosApi
-     */
-    public macrosPost(macro: Macro, zapTraceSpan?: string, options?: any) {
-        return MacrosApiFp(this.configuration).macrosPost(macro, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -21996,6 +21618,461 @@ export class UsersApi extends BaseAPI {
      */
     public usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options?: any) {
         return UsersApiFp(this.configuration).usersUserIDPatch(userID, user, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * VariablesApi - axios parameter creator
+ * @export
+ */
+export const VariablesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary get all variables
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesGet(zapTraceSpan?: string, org?: string, orgID?: string, options: any = {}): RequestArgs {
+            const localVarPath = `/variables`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary create a variable
+         * @param {Variable} variable variable to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesPost(variable: Variable, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variable' is not null or undefined
+            if (variable === null || variable === undefined) {
+                throw new RequiredError('variable','Required parameter variable was null or undefined when calling variablesPost.');
+            }
+            const localVarPath = `/variables`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Variable" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(variable || {}) : (variable || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a variable
+         * @param {string} variableID id of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDDelete.');
+            }
+            const localVarPath = `/variables/{variableID}`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDPatch.');
+            }
+            // verify required parameter 'variable' is not null or undefined
+            if (variable === null || variable === undefined) {
+                throw new RequiredError('variable','Required parameter variable was null or undefined when calling variablesVariableIDPatch.');
+            }
+            const localVarPath = `/variables/{variableID}`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Variable" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(variable || {}) : (variable || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary replace a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDPut.');
+            }
+            // verify required parameter 'variable' is not null or undefined
+            if (variable === null || variable === undefined) {
+                throw new RequiredError('variable','Required parameter variable was null or undefined when calling variablesVariableIDPut.');
+            }
+            const localVarPath = `/variables/{variableID}`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Variable" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(variable || {}) : (variable || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * VariablesApi - functional programming interface
+ * @export
+ */
+export const VariablesApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary get all variables
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Variables> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesGet(zapTraceSpan, org, orgID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary create a variable
+         * @param {Variable} variable variable to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesPost(variable: Variable, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Variable> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesPost(variable, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a variable
+         * @param {string} variableID id of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary update a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Variable> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary replace a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Variable> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * VariablesApi - factory interface
+ * @export
+ */
+export const VariablesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary get all variables
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization name of the resource
+         * @param {string} [orgID] specifies the organization id of the resource
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary create a variable
+         * @param {Variable} variable variable to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesPost(variable: Variable, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesPost(variable, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a variable
+         * @param {string} variableID id of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary update a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary replace a variable
+         * @param {string} variableID id of the variable
+         * @param {Variable} variable variable to replace
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * VariablesApi - object-oriented interface
+ * @export
+ * @class VariablesApi
+ * @extends {BaseAPI}
+ */
+export class VariablesApi extends BaseAPI {
+    /**
+     * 
+     * @summary get all variables
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the organization name of the resource
+     * @param {string} [orgID] specifies the organization id of the resource
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary create a variable
+     * @param {Variable} variable variable to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesPost(variable: Variable, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesPost(variable, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a variable
+     * @param {string} variableID id of the variable
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary update a variable
+     * @param {string} variableID id of the variable
+     * @param {Variable} variable variable update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary replace a variable
+     * @param {string} variableID id of the variable
+     * @param {Variable} variable variable to replace
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
