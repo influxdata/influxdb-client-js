@@ -100,4 +100,10 @@ export default class {
 
     return runs || [];
   }
+
+  public async startRunByTaskID(taskID: string): Promise<Run> {
+    const {data} = await this.service.tasksTaskIDRunsPost(taskID);
+
+    return data;
+  }
 }
