@@ -21751,6 +21751,44 @@ export const VariablesApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary get a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDGet.');
+            }
+            const localVarPath = `/variables/{variableID}`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -21900,6 +21938,21 @@ export const VariablesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary get a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Variable> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDGet(variableID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -21975,6 +22028,17 @@ export const VariablesApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary get a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDGet(variableID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -22045,6 +22109,19 @@ export class VariablesApi extends BaseAPI {
      */
     public variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options?: any) {
         return VariablesApiFp(this.configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary get a variable
+     * @param {string} variableID ID of the variable
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDGet(variableID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
