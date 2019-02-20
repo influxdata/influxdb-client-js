@@ -1183,7 +1183,7 @@ export interface InlineResponse2002 {
  */
 export interface IsOnboarding {
     /**
-     * 
+     * true means that the influxdb instance has NOT had initial setup; false means that the database has been setup.
      * @type {boolean}
      * @memberof IsOnboarding
      */
@@ -1707,6 +1707,66 @@ export interface OnboardingResponse {
      * @memberof OnboardingResponse
      */
     auth?: Authorization;
+}
+
+/**
+ * 
+ * @export
+ * @interface OperationLog
+ */
+export interface OperationLog {
+    /**
+     * A description of the event that occurred.
+     * @type {string}
+     * @memberof OperationLog
+     */
+    description?: string;
+    /**
+     * Time event occurred, RFC3339Nano.
+     * @type {Date}
+     * @memberof OperationLog
+     */
+    time?: Date;
+    /**
+     * 
+     * @type {OperationLogLinks}
+     * @memberof OperationLog
+     */
+    links?: OperationLogLinks;
+}
+
+/**
+ * 
+ * @export
+ * @interface OperationLogLinks
+ */
+export interface OperationLogLinks {
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof OperationLogLinks
+     */
+    user?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface OperationLogs
+ */
+export interface OperationLogs {
+    /**
+     * 
+     * @type {Array<OperationLog>}
+     * @memberof OperationLogs
+     */
+    logs?: Array<OperationLog>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof OperationLogs
+     */
+    links?: Links;
 }
 
 /**
@@ -6298,6 +6358,54 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDLogsGet.');
+            }
+            const localVarPath = `/buckets/{bucketID}/logs`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -6834,6 +6942,23 @@ export const BucketsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -7060,6 +7185,19 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return BucketsApiFp(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary List all users with member privileges for a bucket
          * @param {string} bucketID ID of the bucket
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -7253,6 +7391,21 @@ export class BucketsApi extends BaseAPI {
      */
     public bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
         return BucketsApiFp(this.configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for a bucket
+     * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return BucketsApiFp(this.configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     }
 
     /**
@@ -8480,6 +8633,54 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLogsGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/logs`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -8694,7 +8895,7 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9067,6 +9268,23 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9145,7 +9363,7 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9351,6 +9569,19 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary List all dashboard members
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9409,7 +9640,7 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9622,6 +9853,21 @@ export class DashboardsApi extends BaseAPI {
 
     /**
      * 
+     * @summary Retrieve operation logs for a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DashboardsApi
+     */
+    public dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
      * @summary List all dashboard members
      * @param {string} dashboardID ID of the dashboard
      * @param {string} [zapTraceSpan] OpenTracing span context
@@ -9690,7 +9936,7 @@ export class DashboardsApi extends BaseAPI {
 
     /**
      * 
-     * @summary removes an owner from an dashboard
+     * @summary removes an owner from a dashboard
      * @param {string} userID ID of owner to remove
      * @param {string} dashboardID ID of the dashboard
      * @param {string} [zapTraceSpan] OpenTracing span context
@@ -10504,6 +10750,414 @@ export class LabelsApi extends BaseAPI {
 }
 
 /**
+ * OperationLogsApi - axios parameter creator
+ * @export
+ */
+export const OperationLogsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'bucketID' is not null or undefined
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID','Required parameter bucketID was null or undefined when calling bucketsBucketIDLogsGet.');
+            }
+            const localVarPath = `/buckets/{bucketID}/logs`
+                .replace(`{${"bucketID"}}`, encodeURIComponent(String(bucketID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'dashboardID' is not null or undefined
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID','Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLogsGet.');
+            }
+            const localVarPath = `/dashboards/{dashboardID}/logs`
+                .replace(`{${"dashboardID"}}`, encodeURIComponent(String(dashboardID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDLogsGet.');
+            }
+            const localVarPath = `/orgs/{orgID}/logs`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDLogsGet.');
+            }
+            const localVarPath = `/users/{userID}/logs`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * OperationLogsApi - functional programming interface
+ * @export
+ */
+export const OperationLogsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = OperationLogsApiAxiosParamCreator(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = OperationLogsApiAxiosParamCreator(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = OperationLogsApiAxiosParamCreator(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = OperationLogsApiAxiosParamCreator(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * OperationLogsApi - factory interface
+ * @export
+ */
+export const OperationLogsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Retrieve operation logs for a bucket
+         * @param {string} bucketID ID of the bucket
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return OperationLogsApiFp(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a dashboard
+         * @param {string} dashboardID ID of the dashboard
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return OperationLogsApiFp(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return OperationLogsApiFp(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return OperationLogsApiFp(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * OperationLogsApi - object-oriented interface
+ * @export
+ * @class OperationLogsApi
+ * @extends {BaseAPI}
+ */
+export class OperationLogsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Retrieve operation logs for a bucket
+     * @param {string} bucketID ID of the bucket
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationLogsApi
+     */
+    public bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return OperationLogsApiFp(this.configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for a dashboard
+     * @param {string} dashboardID ID of the dashboard
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationLogsApi
+     */
+    public dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return OperationLogsApiFp(this.configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for an organization
+     * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationLogsApi
+     */
+    public orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return OperationLogsApiFp(this.configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for a user
+     * @param {string} userID ID of the user
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationLogsApi
+     */
+    public usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return OperationLogsApiFp(this.configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
  * OrganizationsApi - axios parameter creator
  * @export
  */
@@ -10735,6 +11389,54 @@ export const OrganizationsApiAxiosParamCreator = function (configuration?: Confi
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling orgsOrgIDLogsGet.');
+            }
+            const localVarPath = `/orgs/{orgID}/logs`
+                .replace(`{${"orgID"}}`, encodeURIComponent(String(orgID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
             return {
                 url: url.format(localVarUrlObj),
@@ -11320,6 +12022,23 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -11567,6 +12286,19 @@ export const OrganizationsApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
+         * @summary Retrieve operation logs for an organization
+         * @param {string} orgID ID of the organization
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return OrganizationsApiFp(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary List all members of an organization
          * @param {string} orgID ID of the organization
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -11779,6 +12511,21 @@ export class OrganizationsApi extends BaseAPI {
      */
     public orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
         return OrganizationsApiFp(this.configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for an organization
+     * @param {string} orgID ID of the organization
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OrganizationsApi
+     */
+    public orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return OrganizationsApiFp(this.configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     }
 
     /**
@@ -12904,23 +13651,23 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary delete a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} label the label name
+         * @param {string} labelID ID of the label
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'scraperTargetID' is not null or undefined
             if (scraperTargetID === null || scraperTargetID === undefined) {
                 throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
             }
-            // verify required parameter 'label' is not null or undefined
-            if (label === null || label === undefined) {
-                throw new RequiredError('label','Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
             }
             const localVarPath = `/scrapers/{scraperTargetID}/labels/{labelID}`
                 .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)))
-                .replace(`{${"label"}}`, encodeURIComponent(String(label)));
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
@@ -12948,7 +13695,7 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary update a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} labelID the label name
+         * @param {string} labelID ID of the label
          * @param {Label} label label update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -13419,13 +14166,13 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * 
          * @summary delete a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} label the label name
+         * @param {string} labelID ID of the label
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options);
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13435,7 +14182,7 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * 
          * @summary update a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} labelID the label name
+         * @param {string} labelID ID of the label
          * @param {Label} label label update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -13628,19 +14375,19 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
          * 
          * @summary delete a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} label the label name
+         * @param {string} labelID ID of the label
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any) {
-            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options)(axios, basePath);
+        scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
          * @summary update a label from a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {string} labelID the label name
+         * @param {string} labelID ID of the label
          * @param {Label} label label update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -13806,21 +14553,21 @@ export class ScraperTargetsApi extends BaseAPI {
      * 
      * @summary delete a label from a scraper target
      * @param {string} scraperTargetID ID of the scraper target
-     * @param {string} label the label name
+     * @param {string} labelID ID of the label
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScraperTargetsApi
      */
-    public scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, label: string, zapTraceSpan?: string, options?: any) {
-        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    public scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary update a label from a scraper target
      * @param {string} scraperTargetID ID of the scraper target
-     * @param {string} labelID the label name
+     * @param {string} labelID ID of the label
      * @param {Label} label label update to apply
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
@@ -18422,7 +19169,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -19715,6 +20462,54 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'userID' is not null or undefined
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID','Required parameter userID was null or undefined when calling usersUserIDLogsGet.');
+            }
+            const localVarPath = `/users/{userID}/logs`
+                .replace(`{${"userID"}}`, encodeURIComponent(String(userID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
@@ -19990,7 +20785,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -20469,6 +21264,23 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationLogs> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
@@ -20638,7 +21450,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary removes an owner from an dashboard
+         * @summary removes an owner from a dashboard
          * @param {string} userID ID of owner to remove
          * @param {string} dashboardID ID of the dashboard
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -20993,6 +21805,19 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Retrieve operation logs for a user
+         * @param {string} userID ID of the user
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+            return UsersApiFp(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary Update password
          * @param {string} userID ID of the user
          * @param {PasswordResetBody} passwordResetBody new password
@@ -21177,7 +22002,7 @@ export class UsersApi extends BaseAPI {
 
     /**
      * 
-     * @summary removes an owner from an dashboard
+     * @summary removes an owner from a dashboard
      * @param {string} userID ID of owner to remove
      * @param {string} dashboardID ID of the dashboard
      * @param {string} [zapTraceSpan] OpenTracing span context
@@ -21590,6 +22415,21 @@ export class UsersApi extends BaseAPI {
      */
     public usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any) {
         return UsersApiFp(this.configuration).usersUserIDGet(userID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Retrieve operation logs for a user
+     * @param {string} userID ID of the user
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any) {
+        return UsersApiFp(this.configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     }
 
     /**
