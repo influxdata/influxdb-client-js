@@ -117,27 +117,51 @@ export default class {
       name: cloneName,
     });
 
-    const cells = original.cells || [];
-    const pendingViews = cells.map((c) => this.getView(dashboardID, c.id || ""));
+    if (!createdDashboard || !createdDashboard.id) {
+      throw new Error("Could not create dashboard");
+    }
+
+    await this.cloneViews(original, createdDashboard);
+    await this.cloneLabels(original, createdDashboard);
+
+    return this.get(createdDashboard.id);
+
+  }
+
+  private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<Label[]> {
+    if (!newDashboard || !newDashboard.id) {
+      throw new Error("Cannot create labels on invalid dashboard");
+    }
+
+    const labels = originalDashboard.labels || [];
+    const pendingLabels = labels.map(async (label) => this.createLabel(newDashboard.id || "", label.id || ""));
+
+    const newLabels = await Promise.all(pendingLabels);
+
+    return newLabels.filter((l) => !!l) as Label[];
+  }
+
+  private async cloneViews(originalDashboard: Dashboard, newDashboard: Dashboard ): Promise<View[]>  {
+    if (!newDashboard || !newDashboard.id) {
+      throw new Error("Cannot create views on invalid dashboard");
+    }
+    const cells = originalDashboard.cells || [];
+
+    const pendingViews = cells.map((c) => this.getView(originalDashboard.id || "", c.id || ""));
     const views = await Promise.all(pendingViews);
 
     const pendingUpdatedViews = views.map(async (view) => {
       const cell = cells.find((c) => c.id === view.id);
 
-      if (cell && createdDashboard.id) {
-        const newCell = await this.createCell(createdDashboard.id, cell);
-        if (newCell.id) {
-          return this.updateView(createdDashboard.id, newCell.id, view);
+      if (cell && newDashboard.id) {
+        const newCell = await this.createCell(newDashboard.id, cell);
+        if (newCell && newCell.id) {
+          return this.updateView(newDashboard.id, newCell.id, view);
         }
       }
     });
 
-    await Promise.all(pendingUpdatedViews);
-
-    if (createdDashboard.id) {
-      return await this.get(createdDashboard.id);
-    }
-
-    return null;
+    const newViews = await Promise.all(pendingUpdatedViews);
+    return newViews.filter((v) => !!v) as View[];
   }
 }
