@@ -26,6 +26,12 @@ export default class {
     return variables || [];
   }
 
+  public async getAll(): Promise<Variable[]> {
+    const {data: {variables}} = await this.service.variablesGet();
+
+    return variables || [];
+  }
+
   public async create(variable: Variable): Promise<Variable> {
     const {data} = await this.service.variablesPost(variable);
 
