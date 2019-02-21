@@ -106,4 +106,31 @@ export default class {
 
     return data;
   }
+
+  public async clone(taskID: string): Promise<Task> {
+    const original = await this.get(taskID);
+
+    const createdTask = await this.create(original.org || "", original.flux);
+
+    if (!createdTask || !createdTask.id) {
+      throw new Error("Could not create task");
+    }
+
+    await this.cloneLabels(original, createdTask);
+
+    return this.get(createdTask.id);
+  }
+
+  private async cloneLabels(originalTask: Task, newTask: Task): Promise<Label[]> {
+    if (!newTask || !newTask.id) {
+      throw new Error("Cannot create labels on invalid task");
+    }
+
+    const labels = originalTask.labels || [];
+    const pendingLabels = labels.map(async (label) => this.addLabel(newTask.id || "", addLabelDefaults(label)));
+
+    const newLabels = await Promise.all(pendingLabels);
+
+    return newLabels.filter((l) => !!l);
+  }
 }
