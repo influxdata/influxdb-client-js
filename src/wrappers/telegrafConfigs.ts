@@ -1,4 +1,5 @@
 import { Organization, Telegraf, TelegrafPluginConfig, TelegrafRequest, TelegrafsApi } from "../api";
+import { addLabelDefaults, Label } from "./labels";
 
 export default class {
 
@@ -60,5 +61,35 @@ export default class {
     const {data} = await this.service.telegrafsTelegrafIDDelete(id);
 
     return data as Response;
+  }
+
+  public async addLabel(id: string, label: Label): Promise<Label> {
+    if (!label.id) {
+      throw new Error("label must have id");
+    }
+
+    const {data} = await this.service.telegrafsTelegrafIDLabelsPost(id, {labelID: label.id});
+
+    if (!data.label) {
+      throw new Error("Failed to add label");
+    }
+
+    return addLabelDefaults(data.label);
+  }
+
+  public async addLabels(id: string, labels: Label[]): Promise<Label[]> {
+    const pendingLabels = labels.map((l) => this.addLabel(id, l));
+
+    return Promise.all(pendingLabels);
+  }
+
+  public async removeLabel(id: string, label: Label): Promise<Response> {
+    if (!label.id) {
+      throw new Error("label must have id");
+    }
+
+    const {data} = await this.service.telegrafsTelegrafIDLabelsLabelIDDelete(id, label.id);
+
+    return data;
   }
 }
