@@ -1,4 +1,4 @@
-import { Run, Task, TasksApi, User } from "../api";
+import { LogEvent, Run, Task, TasksApi, User } from "../api";
 import { addLabelDefaults, Label } from "./labels";
 
 export default class {
@@ -21,13 +21,17 @@ export default class {
   }
 
   public async getAll(): Promise<Task[]> {
-    const { data: { tasks } } = await this.service.tasksGet();
+    const {
+      data: { tasks },
+    } = await this.service.tasksGet();
 
     return tasks || [];
   }
 
   public async getAllByOrg(org: string): Promise<Task[]> {
-    const { data: { tasks } } = await this.service.tasksGet(undefined, undefined, undefined, org);
+    const {
+      data: { tasks },
+    } = await this.service.tasksGet(undefined, undefined, undefined, org);
 
     return tasks || [];
   }
@@ -40,7 +44,10 @@ export default class {
 
   public async update(id: string, updates: Partial<Task>) {
     const original = await this.get(id);
-    const { data: updated } = await this.service.tasksTaskIDPatch(id, { ...original, ...updates });
+    const { data: updated } = await this.service.tasksTaskIDPatch(id, {
+      ...original,
+      ...updates,
+    });
 
     return updated;
   }
@@ -64,7 +71,9 @@ export default class {
       throw new Error("label must have id");
     }
 
-    const { data } = await this.service.tasksTaskIDLabelsPost(taskID, { labelID: label.id });
+    const { data } = await this.service.tasksTaskIDLabelsPost(taskID, {
+      labelID: label.id,
+    });
 
     if (!data.label) {
       throw new Error("API did not return a label");
@@ -78,7 +87,10 @@ export default class {
       throw new Error("label must have id");
     }
 
-    const { data } = await this.service.tasksTaskIDLabelsLabelIDDelete(taskID, label.id);
+    const { data } = await this.service.tasksTaskIDLabelsLabelIDDelete(
+      taskID,
+      label.id,
+    );
 
     return data;
   }
@@ -96,7 +108,9 @@ export default class {
   }
 
   public async getRunsByTaskID(taskID: string): Promise<Run[]> {
-    const { data: { runs } } = await this.service.tasksTaskIDRunsGet(taskID);
+    const {
+      data: { runs },
+    } = await this.service.tasksTaskIDRunsGet(taskID);
 
     return runs || [];
   }
@@ -105,6 +119,17 @@ export default class {
     const { data } = await this.service.tasksTaskIDRunsPost(taskID);
 
     return data;
+  }
+
+  public async getLogEventsByRunID(
+    taskID: string,
+    runID: string,
+  ): Promise<LogEvent[]> {
+    const {
+      data: { events },
+    } = await this.service.tasksTaskIDRunsRunIDLogsGet(taskID, runID);
+
+    return events || [];
   }
 
   public async clone(taskID: string): Promise<Task> {
@@ -121,13 +146,18 @@ export default class {
     return this.get(createdTask.id);
   }
 
-  private async cloneLabels(originalTask: Task, newTask: Task): Promise<Label[]> {
+  private async cloneLabels(
+    originalTask: Task,
+    newTask: Task,
+  ): Promise<Label[]> {
     if (!newTask || !newTask.id) {
       throw new Error("Cannot create labels on invalid task");
     }
 
     const labels = originalTask.labels || [];
-    const pendingLabels = labels.map(async (label) => this.addLabel(newTask.id || "", addLabelDefaults(label)));
+    const pendingLabels = labels.map(async (label) =>
+      this.addLabel(newTask.id || "", addLabelDefaults(label)),
+    );
 
     const newLabels = await Promise.all(pendingLabels);
 
