@@ -1,5 +1,6 @@
 import { LogEvent, Run, Task, TasksApi, User } from "../api";
-import { addLabelDefaults, Label } from "./labels";
+import {ILabel} from "../types";
+import {addLabelDefaults} from "./labels";
 
 export default class {
   private service: TasksApi;
@@ -66,7 +67,7 @@ export default class {
     return data;
   }
 
-  public async addLabel(taskID: string, label: Label): Promise<Label> {
+  public async addLabel(taskID: string, label: ILabel): Promise<ILabel> {
     if (!label.id) {
       throw new Error("label must have id");
     }
@@ -82,7 +83,7 @@ export default class {
     return addLabelDefaults(data.label);
   }
 
-  public async removeLabel(taskID: string, label: Label): Promise<Response> {
+  public async removeLabel(taskID: string, label: ILabel): Promise<Response> {
     if (!label.id) {
       throw new Error("label must have id");
     }
@@ -95,13 +96,13 @@ export default class {
     return data;
   }
 
-  public addLabels(taskID: string, labels: Label[]): Promise<Label[]> {
+  public addLabels(taskID: string, labels: ILabel[]): Promise<ILabel[]> {
     const promises = labels.map((l) => this.addLabel(taskID, l));
 
     return Promise.all(promises);
   }
 
-  public removeLabels(taskID: string, labels: Label[]): Promise<Response[]> {
+  public removeLabels(taskID: string, labels: ILabel[]): Promise<Response[]> {
     const promises = labels.map((l) => this.removeLabel(taskID, l));
 
     return Promise.all(promises);
@@ -149,7 +150,7 @@ export default class {
   private async cloneLabels(
     originalTask: Task,
     newTask: Task,
-  ): Promise<Label[]> {
+  ): Promise<ILabel[]> {
     if (!newTask || !newTask.id) {
       throw new Error("Cannot create labels on invalid task");
     }

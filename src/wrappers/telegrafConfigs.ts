@@ -1,5 +1,6 @@
 import { Organization, Telegraf, TelegrafPluginConfig, TelegrafRequest, TelegrafsApi } from "../api";
-import { addLabelDefaults, Label } from "./labels";
+import {ILabel} from "../types";
+import { addLabelDefaults} from "./labels";
 
 export default class {
 
@@ -63,7 +64,7 @@ export default class {
     return data as Response;
   }
 
-  public async addLabel(id: string, label: Label): Promise<Label> {
+  public async addLabel(id: string, label: ILabel): Promise<ILabel> {
     if (!label.id) {
       throw new Error("label must have id");
     }
@@ -77,13 +78,13 @@ export default class {
     return addLabelDefaults(data.label);
   }
 
-  public async addLabels(id: string, labels: Label[]): Promise<Label[]> {
+  public async addLabels(id: string, labels: ILabel[]): Promise<ILabel[]> {
     const pendingLabels = labels.map((l) => this.addLabel(id, l));
 
     return Promise.all(pendingLabels);
   }
 
-  public async removeLabel(id: string, label: Label): Promise<Response> {
+  public async removeLabel(id: string, label: ILabel): Promise<Response> {
     if (!label.id) {
       throw new Error("label must have id");
     }

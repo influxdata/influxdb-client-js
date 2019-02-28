@@ -1,4 +1,5 @@
 import { Label as APILabel, LabelsApi } from "../api";
+import {ILabel} from "../types";
 
 const DEFAULT_LABEL_COLOR = "#326BBA";
 
@@ -7,7 +8,7 @@ interface ILabelProperties {
   description?: string;
 }
 
-export const addLabelDefaults = (l: APILabel): Label => ({
+export const addLabelDefaults = (l: APILabel): ILabel => ({
   ...l,
   properties: {
     ...l.properties,
@@ -16,8 +17,6 @@ export const addLabelDefaults = (l: APILabel): Label => ({
   },
 });
 
-export type Label = APILabel & {properties: ILabelProperties};
-
 export default class {
   private service: LabelsApi;
 
@@ -25,7 +24,7 @@ export default class {
     this.service = new LabelsApi({ basePath });
   }
 
-  public async get(id: string): Promise<Label> {
+  public async get(id: string): Promise<ILabel> {
     const {data: {label}} = await this.service.labelsLabelIDGet(id);
 
     if (!label) {
@@ -35,13 +34,13 @@ export default class {
     return addLabelDefaults(label);
   }
 
-  public async getAll(): Promise<Label[]> {
+  public async getAll(): Promise<ILabel[]> {
     const {data: {labels}} = await this.service.labelsGet();
 
     return (labels || []).map(addLabelDefaults);
   }
 
-  public async create(name: string, properties: ILabelProperties): Promise<Label> {
+  public async create(name: string, properties: ILabelProperties): Promise<ILabel> {
     const {data: { label }} = await this.service.labelsPost({name, properties});
 
     if (!label) {
@@ -51,7 +50,7 @@ export default class {
     return addLabelDefaults(label);
   }
 
-  public async update(id: string, properties: ILabelProperties) {
+  public async update(id: string, properties: ILabelProperties): Promise<ILabel> {
     const {data: {label}} = await this.service.labelsLabelIDPatch(id, {properties});
 
     if (!label) {

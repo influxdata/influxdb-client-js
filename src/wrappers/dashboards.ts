@@ -1,4 +1,23 @@
 import { Cell, CellsApi, Dashboard, DashboardsApi, Label, ProtosApi, View } from "../api";
+import {IDashboard, ILabel} from "../types";
+import {addLabelDefaults} from "./labels";
+
+const addDefaults = (dashboard: Dashboard): IDashboard => {
+  return {
+    ...dashboard,
+    cells: dashboard.cells || [],
+    id: dashboard.id || "",
+    labels: dashboard.labels || [],
+    name: dashboard.name || "",
+    orgID: dashboard.orgID || "",
+  };
+};
+
+const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
+  return dashboards.map((dashboard) => (
+    addDefaults(dashboard)
+  ));
+};
 
 interface IDashboard extends Dashboard {
   orgID: string;
@@ -153,7 +172,7 @@ export default class {
 
   }
 
-  private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<Label[]> {
+  private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<ILabel[]> {
     if (!newDashboard || !newDashboard.id) {
       throw new Error("Cannot create labels on invalid dashboard");
     }
@@ -163,7 +182,7 @@ export default class {
 
     const newLabels = await Promise.all(pendingLabels);
 
-    return newLabels.filter((l) => !!l) as Label[];
+    return newLabels.filter((l) => !!l).map(addLabelDefaults);
   }
 
   private async cloneViews(originalDashboard: Dashboard, newDashboard: Dashboard ): Promise<View[]>  {
@@ -187,6 +206,6 @@ export default class {
     });
 
     const newViews = await Promise.all(pendingUpdatedViews);
-    return newViews.filter((v) => !!v) as View[];
+    return newViews.filter((v): v is View => !!v);
   }
 }
