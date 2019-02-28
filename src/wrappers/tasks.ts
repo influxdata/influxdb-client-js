@@ -1,5 +1,17 @@
 import { LogEvent, Run, Task, TasksApi, User } from "../api";
-import { addLabelDefaults, Label } from "./labels";
+import {ILabel, ITask} from "../types";
+import {addLabelDefaults} from "./labels";
+
+const addDefaults = (task: Task): ITask => {
+  return {
+    ...task,
+    labels: (task.labels || []).map(addLabelDefaults),
+  };
+};
+
+const addDefaultsToAll = (tasks: Task[]): ITask[] => (
+  tasks.map((task) => addDefaults(task))
+);
 
 export default class {
   private service: TasksApi;
@@ -8,55 +20,55 @@ export default class {
     this.service = new TasksApi({ basePath });
   }
 
-  public async create(org: string, script: string): Promise<Task> {
+  public async create(org: string, script: string): Promise<ITask> {
     const { data } = await this.service.tasksPost({ org, flux: script });
 
-    return data;
+    return addDefaults(data);
   }
 
-  public async get(id: string): Promise<Task> {
+  public async get(id: string): Promise<ITask> {
     const { data } = await this.service.tasksTaskIDGet(id);
 
-    return data;
+    return addDefaults(data);
   }
 
-  public async getAll(): Promise<Task[]> {
+  public async getAll(): Promise<ITask[]> {
     const {
       data: { tasks },
     } = await this.service.tasksGet();
 
-    return tasks || [];
+    return addDefaultsToAll(tasks || []);
   }
 
-  public async getAllByOrg(org: string): Promise<Task[]> {
+  public async getAllByOrg(org: string): Promise<ITask[]> {
     const {
       data: { tasks },
     } = await this.service.tasksGet(undefined, undefined, undefined, org);
 
-    return tasks || [];
+    return addDefaultsToAll(tasks || []);
   }
 
-  public async getAllByUser(user: User): Promise<Task[]> {
+  public async getAllByUser(user: User): Promise<ITask[]> {
     const { data } = await this.service.tasksGet(undefined, undefined, user.id);
 
-    return data.tasks || [];
+    return addDefaultsToAll(data.tasks || []);
   }
 
-  public async update(id: string, updates: Partial<Task>) {
+  public async update(id: string, updates: Partial<Task>): Promise<ITask> {
     const original = await this.get(id);
     const { data: updated } = await this.service.tasksTaskIDPatch(id, {
       ...original,
       ...updates,
     });
 
-    return updated;
+    return addDefaults(updated);
   }
 
   public updateStatus(id: string, status: Task.StatusEnum): Promise<Task> {
     return this.update(id, { status });
   }
 
-  public updateScript(id: string, script: string): Promise<Task> {
+  public updateScript(id: string, script: string): Promise<ITask> {
     return this.update(id, { flux: script });
   }
 
@@ -66,7 +78,7 @@ export default class {
     return data;
   }
 
-  public async addLabel(taskID: string, label: Label): Promise<Label> {
+  public async addLabel(taskID: string, label: ILabel): Promise<ILabel> {
     if (!label.id) {
       throw new Error("label must have id");
     }
@@ -82,7 +94,7 @@ export default class {
     return addLabelDefaults(data.label);
   }
 
-  public async removeLabel(taskID: string, label: Label): Promise<Response> {
+  public async removeLabel(taskID: string, label: ILabel): Promise<Response> {
     if (!label.id) {
       throw new Error("label must have id");
     }
@@ -95,13 +107,13 @@ export default class {
     return data;
   }
 
-  public addLabels(taskID: string, labels: Label[]): Promise<Label[]> {
+  public addLabels(taskID: string, labels: ILabel[]): Promise<ILabel[]> {
     const promises = labels.map((l) => this.addLabel(taskID, l));
 
     return Promise.all(promises);
   }
 
-  public removeLabels(taskID: string, labels: Label[]): Promise<Response[]> {
+  public removeLabels(taskID: string, labels: ILabel[]): Promise<Response[]> {
     const promises = labels.map((l) => this.removeLabel(taskID, l));
 
     return Promise.all(promises);
@@ -132,7 +144,7 @@ export default class {
     return events || [];
   }
 
-  public async clone(taskID: string): Promise<Task> {
+  public async clone(taskID: string): Promise<ITask> {
     const original = await this.get(taskID);
 
     const createdTask = await this.create(original.org || "", original.flux);
@@ -149,7 +161,7 @@ export default class {
   private async cloneLabels(
     originalTask: Task,
     newTask: Task,
-  ): Promise<Label[]> {
+  ): Promise<ILabel[]> {
     if (!newTask || !newTask.id) {
       throw new Error("Cannot create labels on invalid task");
     }

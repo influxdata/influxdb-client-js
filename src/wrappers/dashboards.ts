@@ -1,19 +1,13 @@
-import { Cell, CellsApi, Dashboard, DashboardsApi, Label, ProtosApi, View } from "../api";
-
-interface IDashboard extends Dashboard {
-  orgID: string;
-  id: string;
-  name: string;
-  labels: Label[];
-  cells: Cell[];
-}
+import { Cell, CellsApi, Dashboard, DashboardsApi, ProtosApi, View } from "../api";
+import {IDashboard, ILabel} from "../types";
+import {addLabelDefaults} from "./labels";
 
 const addDefaults = (dashboard: Dashboard): IDashboard => {
   return {
     ...dashboard,
     cells: dashboard.cells || [],
     id: dashboard.id || "",
-    labels: dashboard.labels || [],
+    labels: (dashboard.labels || []).map(addLabelDefaults),
     name: dashboard.name || "",
     orgID: dashboard.orgID || "",
   };
@@ -103,7 +97,7 @@ export default class {
     return data.cells || [];
   }
 
-  public async createLabel(dashboardID: string, labelID: string): Promise<Label> {
+  public async createLabel(dashboardID: string, labelID: string): Promise<ILabel> {
     const {data} = await this.service.dashboardsDashboardIDLabelsPost(dashboardID, {
       labelID,
     });
@@ -112,7 +106,7 @@ export default class {
       throw new Error("Failed to create label");
     }
 
-    return data.label;
+    return addLabelDefaults(data.label);
   }
 
   public async deleteLabel(dashboardID: string, labelID: string): Promise<Response> {
@@ -153,7 +147,7 @@ export default class {
 
   }
 
-  private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<Label[]> {
+  private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<ILabel[]> {
     if (!newDashboard || !newDashboard.id) {
       throw new Error("Cannot create labels on invalid dashboard");
     }
@@ -163,7 +157,7 @@ export default class {
 
     const newLabels = await Promise.all(pendingLabels);
 
-    return newLabels.filter((l) => !!l) as Label[];
+    return newLabels.filter((l) => !!l).map(addLabelDefaults);
   }
 
   private async cloneViews(originalDashboard: Dashboard, newDashboard: Dashboard ): Promise<View[]>  {
@@ -187,6 +181,6 @@ export default class {
     });
 
     const newViews = await Promise.all(pendingUpdatedViews);
-    return newViews.filter((v) => !!v) as View[];
+    return newViews.filter((v): v is View => !!v);
   }
 }
