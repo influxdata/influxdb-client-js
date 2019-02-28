@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/swagger.yml",
     "build": "rm -rf dist && tsc",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "vet": "npm run lint && npm run build"
   },
   "types": "index.d.ts",
   "keywords": [
