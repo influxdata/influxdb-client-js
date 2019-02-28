@@ -1,4 +1,4 @@
-import { Cell, CellsApi, Dashboard, DashboardsApi, Label, ProtosApi, View } from "../api";
+import { Cell, CellsApi, Dashboard, DashboardsApi, ProtosApi, View } from "../api";
 import {IDashboard, ILabel} from "../types";
 import {addLabelDefaults} from "./labels";
 
@@ -7,32 +7,7 @@ const addDefaults = (dashboard: Dashboard): IDashboard => {
     ...dashboard,
     cells: dashboard.cells || [],
     id: dashboard.id || "",
-    labels: dashboard.labels || [],
-    name: dashboard.name || "",
-    orgID: dashboard.orgID || "",
-  };
-};
-
-const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
-  return dashboards.map((dashboard) => (
-    addDefaults(dashboard)
-  ));
-};
-
-interface IDashboard extends Dashboard {
-  orgID: string;
-  id: string;
-  name: string;
-  labels: Label[];
-  cells: Cell[];
-}
-
-const addDefaults = (dashboard: Dashboard): IDashboard => {
-  return {
-    ...dashboard,
-    cells: dashboard.cells || [],
-    id: dashboard.id || "",
-    labels: dashboard.labels || [],
+    labels: (dashboard.labels || []).map(addLabelDefaults),
     name: dashboard.name || "",
     orgID: dashboard.orgID || "",
   };
@@ -122,7 +97,7 @@ export default class {
     return data.cells || [];
   }
 
-  public async createLabel(dashboardID: string, labelID: string): Promise<Label> {
+  public async createLabel(dashboardID: string, labelID: string): Promise<ILabel> {
     const {data} = await this.service.dashboardsDashboardIDLabelsPost(dashboardID, {
       labelID,
     });
@@ -131,7 +106,7 @@ export default class {
       throw new Error("Failed to create label");
     }
 
-    return data.label;
+    return addLabelDefaults(data.label);
   }
 
   public async deleteLabel(dashboardID: string, labelID: string): Promise<Response> {

@@ -1,4 +1,4 @@
-import {Bucket, Cell, Dashboard, Label} from "../api";
+import {Bucket, Cell, Dashboard} from "../api";
 import { Label as APILabel } from "../api";
 
 interface ILabelProperties {
@@ -25,7 +25,7 @@ export interface IDashboard extends Dashboard {
   orgID: string;
   id: string;
   name: string;
-  labels: Label[];
+  labels: ILabel[];
   cells: Cell[];
 }
 
