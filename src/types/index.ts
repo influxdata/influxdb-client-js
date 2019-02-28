@@ -1,4 +1,4 @@
-import {Bucket, Cell, Dashboard} from "../api";
+import {Bucket, Cell, Dashboard, Task} from "../api";
 import { Label as APILabel } from "../api";
 
 interface ILabelProperties {
@@ -18,6 +18,10 @@ export interface ISetupParams {
 }
 
 export interface IBucket extends Bucket {
+  labels: ILabel[];
+}
+
+export interface ITask extends Task {
   labels: ILabel[];
 }
 
