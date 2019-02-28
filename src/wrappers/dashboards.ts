@@ -1,5 +1,30 @@
 import { Cell, CellsApi, Dashboard, DashboardsApi, Label, ProtosApi, View } from "../api";
 
+interface IDashboard extends Dashboard {
+  orgID: string;
+  id: string;
+  name: string;
+  labels: Label[];
+  cells: Cell[];
+}
+
+const addDefaults = (dashboard: Dashboard): IDashboard => {
+  return {
+    ...dashboard,
+    cells: dashboard.cells || [],
+    id: dashboard.id || "",
+    labels: dashboard.labels || [],
+    name: dashboard.name || "",
+    orgID: dashboard.orgID || "",
+  };
+};
+
+const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
+  return dashboards.map((dashboard) => (
+    addDefaults(dashboard)
+  ));
+};
+
 export default class {
   private service: DashboardsApi;
   private cellsService: CellsApi;
@@ -20,26 +45,26 @@ export default class {
   public async getAll(): Promise<Dashboard[]> {
     const {data} = await this.service.dashboardsGet(undefined);
 
-    return data.dashboards || [];
+    return addDefaultsToAll(data.dashboards || []);
   }
 
   public async getAllByOrg(org: string): Promise<Dashboard[]> {
     const {data} = await this.service.dashboardsGet(org);
 
-    return data.dashboards || [];
+    return addDefaultsToAll(data.dashboards || []);
   }
 
-  public async create(props: Dashboard): Promise<Dashboard> {
+  public async create(props: Dashboard): Promise<IDashboard> {
     const {data} = await this.service.dashboardsPost(props);
 
-    return data;
+    return addDefaults(data);
   }
 
-  public async update(id: string, props: Partial<Dashboard>): Promise<Dashboard> {
+  public async update(id: string, props: Partial<Dashboard>): Promise<IDashboard> {
     const original = await this.get(id);
     const {data} = await this.service.dashboardsDashboardIDPatch(id, {...original, ...props});
 
-    return data;
+    return addDefaults(data);
   }
 
   public async delete(id: string): Promise<Response> {
