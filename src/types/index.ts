@@ -25,12 +25,12 @@ export interface ITask extends Task {
   labels: ILabel[];
 }
 
-export interface IDashboard extends Dashboard {
-  orgID: string;
-  id: string;
-  name: string;
+type DashboardPicked = Pick<Dashboard, "orgID" | "id" | "name" | "cells">;
+type DashboardOriginal = Pick<Dashboard, Exclude<keyof Dashboard, "orgID" | "id" | "name" | "cells">>;
+type DashboardRequired = {[P in keyof DashboardPicked]-?: DashboardPicked[P]};
+
+export interface IDashboard extends DashboardOriginal, DashboardRequired {
   labels: ILabel[];
-  cells: Cell[];
 }
 
 export * from "./ast";
