@@ -866,6 +866,32 @@ export interface CreateCell {
 /**
  * 
  * @export
+ * @interface CreateDashboardRequest
+ */
+export interface CreateDashboardRequest {
+    /**
+     * id of the organization that owns the dashboard
+     * @type {string}
+     * @memberof CreateDashboardRequest
+     */
+    orgID: string;
+    /**
+     * user-facing name of the dashboard
+     * @type {string}
+     * @memberof CreateDashboardRequest
+     */
+    name: string;
+    /**
+     * user-facing description of the dashboard
+     * @type {string}
+     * @memberof CreateDashboardRequest
+     */
+    description?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface CreateProtoResourcesRequest
  */
 export interface CreateProtoResourcesRequest {
@@ -882,13 +908,13 @@ export interface CreateProtoResourcesRequest {
  * @export
  * @interface Dashboard
  */
-export interface Dashboard {
+export interface Dashboard extends CreateDashboardRequest {
     /**
      * 
-     * @type {DashboardLinks}
+     * @type {any}
      * @memberof Dashboard
      */
-    links?: DashboardLinks;
+    links?: any;
     /**
      * 
      * @type {string}
@@ -896,29 +922,11 @@ export interface Dashboard {
      */
     id?: string;
     /**
-     * id of the organization that owns the dashboard
-     * @type {string}
-     * @memberof Dashboard
-     */
-    orgID?: string;
-    /**
-     * user-facing name of the dashboard
-     * @type {string}
-     * @memberof Dashboard
-     */
-    name?: string;
-    /**
-     * user-facing description of the dashboard
-     * @type {string}
-     * @memberof Dashboard
-     */
-    description?: string;
-    /**
      * 
-     * @type {DashboardMeta}
+     * @type {any}
      * @memberof Dashboard
      */
-    meta?: DashboardMeta;
+    meta?: any;
     /**
      * 
      * @type {Array<Cell>}
@@ -985,46 +993,6 @@ export namespace DashboardColor {
         Max = 'max',
         Threshold = 'threshold'
     }
-}
-
-/**
- * 
- * @export
- * @interface DashboardLinks
- */
-export interface DashboardLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof DashboardLinks
-     */
-    self?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DashboardLinks
-     */
-    cells?: string;
-}
-
-/**
- * 
- * @export
- * @interface DashboardMeta
- */
-export interface DashboardMeta {
-    /**
-     * 
-     * @type {string}
-     * @memberof DashboardMeta
-     */
-    createdAt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DashboardMeta
-     */
-    updatedAt?: string;
 }
 
 /**
@@ -9928,15 +9896,15 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Create a dashboard
-         * @param {Dashboard} dashboard dashboard to create
+         * @param {CreateDashboardRequest} createDashboardRequest dashboard to create
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'dashboard' is not null or undefined
-            if (dashboard === null || dashboard === undefined) {
-                throw new RequiredError('dashboard','Required parameter dashboard was null or undefined when calling dashboardsPost.');
+        dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'createDashboardRequest' is not null or undefined
+            if (createDashboardRequest === null || createDashboardRequest === undefined) {
+                throw new RequiredError('createDashboardRequest','Required parameter createDashboardRequest was null or undefined when calling dashboardsPost.');
             }
             const localVarPath = `/dashboards`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -9958,8 +9926,8 @@ export const DashboardsApiAxiosParamCreator = function (configuration?: Configur
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Dashboard" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(dashboard || {}) : (dashboard || "");
+            const needsSerialization = (<any>"CreateDashboardRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createDashboardRequest || {}) : (createDashboardRequest || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10299,13 +10267,13 @@ export const DashboardsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a dashboard
-         * @param {Dashboard} dashboard dashboard to create
+         * @param {CreateDashboardRequest} createDashboardRequest dashboard to create
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
-            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(dashboard, zapTraceSpan, options);
+        dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboard> {
+            const localVarAxiosArgs = DashboardsApiAxiosParamCreator(configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10564,13 +10532,13 @@ export const DashboardsApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Create a dashboard
-         * @param {Dashboard} dashboard dashboard to create
+         * @param {CreateDashboardRequest} createDashboardRequest dashboard to create
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
-            return DashboardsApiFp(configuration).dashboardsPost(dashboard, zapTraceSpan, options)(axios, basePath);
+        dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options?: any) {
+            return DashboardsApiFp(configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -10866,14 +10834,14 @@ export class DashboardsApi extends BaseAPI {
     /**
      * 
      * @summary Create a dashboard
-     * @param {Dashboard} dashboard dashboard to create
+     * @param {CreateDashboardRequest} createDashboardRequest dashboard to create
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardsApi
      */
-    public dashboardsPost(dashboard: Dashboard, zapTraceSpan?: string, options?: any) {
-        return DashboardsApiFp(this.configuration).dashboardsPost(dashboard, zapTraceSpan, options)(this.axios, this.basePath);
+    public dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options?: any) {
+        return DashboardsApiFp(this.configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }

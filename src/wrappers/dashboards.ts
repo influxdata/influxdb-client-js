@@ -1,4 +1,12 @@
-import { Cell, CellsApi, Dashboard, DashboardsApi, ProtosApi, View } from "../api";
+import {
+  Cell,
+  CellsApi,
+  CreateDashboardRequest,
+  Dashboard,
+  DashboardsApi,
+  ProtosApi,
+  View,
+} from "../api";
 import {IDashboard, ILabel} from "../types";
 import {addLabelDefaults} from "./labels";
 
@@ -48,7 +56,13 @@ export default class {
     return addDefaultsToAll(data.dashboards || []);
   }
 
-  public async create(props: Dashboard): Promise<IDashboard> {
+  public async getAllByOrgID(orgID: string): Promise<Dashboard[]> {
+    const {data} = await this.service.dashboardsGet(undefined, undefined, undefined, undefined, orgID);
+
+    return addDefaultsToAll(data.dashboards || []);
+  }
+
+  public async create(props: CreateDashboardRequest): Promise<IDashboard> {
     const {data} = await this.service.dashboardsPost(props);
 
     return addDefaults(data);
@@ -138,7 +152,6 @@ export default class {
 
     const createdDashboard = await this.create({
       ...original,
-      cells: [],
       name: cloneName,
     });
 
