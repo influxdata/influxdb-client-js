@@ -76,11 +76,11 @@ export class RequiredError extends Error {
  */
 export interface ASTResponse {
     /**
-     * the AST of the supplied Flux query
-     * @type {any}
+     * 
+     * @type {Package}
      * @memberof ASTResponse
      */
-    ast?: any;
+    ast?: Package;
 }
 
 /**
@@ -147,6 +147,26 @@ export interface AnalyzeQueryResponseErrors {
      * @memberof AnalyzeQueryResponseErrors
      */
     message?: string;
+}
+
+/**
+ * used to create and directly specify the elements of an array object
+ * @export
+ * @interface ArrayExpression
+ */
+export interface ArrayExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ArrayExpression
+     */
+    type?: string;
+    /**
+     * elements of the array
+     * @type {Array<Expression>}
+     * @memberof ArrayExpression
+     */
+    elements?: Array<Expression>;
 }
 
 /**
@@ -317,6 +337,98 @@ export interface Axis {
 }
 
 /**
+ * a placeholder for statements for which no correct statement nodes can be created
+ * @export
+ * @interface BadStatement
+ */
+export interface BadStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof BadStatement
+     */
+    type?: string;
+    /**
+     * raw source text
+     * @type {string}
+     * @memberof BadStatement
+     */
+    text?: string;
+}
+
+/**
+ * uses binary operators to act on two operands in an expression
+ * @export
+ * @interface BinaryExpression
+ */
+export interface BinaryExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof BinaryExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BinaryExpression
+     */
+    operator?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof BinaryExpression
+     */
+    left?: Expression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof BinaryExpression
+     */
+    right?: Expression;
+}
+
+/**
+ * a set of statements
+ * @export
+ * @interface Block
+ */
+export interface Block {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof Block
+     */
+    type?: string;
+    /**
+     * block body
+     * @type {Array<Statement>}
+     * @memberof Block
+     */
+    body?: Array<Statement>;
+}
+
+/**
+ * represents boolean values
+ * @export
+ * @interface BooleanLiteral
+ */
+export interface BooleanLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof BooleanLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BooleanLiteral
+     */
+    value?: boolean;
+}
+
+/**
  * 
  * @export
  * @interface Bucket
@@ -450,6 +562,52 @@ export interface Buckets {
      * @memberof Buckets
      */
     buckets?: Array<Bucket>;
+}
+
+/**
+ * declares a builtin identifier and its type
+ * @export
+ * @interface BuiltinStatement
+ */
+export interface BuiltinStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof BuiltinStatement
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Identifier}
+     * @memberof BuiltinStatement
+     */
+    id?: Identifier;
+}
+
+/**
+ * represents a function call
+ * @export
+ * @interface CallExpression
+ */
+export interface CallExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof CallExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof CallExpression
+     */
+    callee?: Expression;
+    /**
+     * function arguments
+     * @type {Array<Expression>}
+     * @memberof CallExpression
+     */
+    arguments?: Array<Expression>;
 }
 
 /**
@@ -587,6 +745,38 @@ export namespace Check {
         Pass = 'pass',
         Fail = 'fail'
     }
+}
+
+/**
+ * selects one of two expressions, `Alternate` or `Consequent`, depending on a third boolean expression, `Test`
+ * @export
+ * @interface ConditionalExpression
+ */
+export interface ConditionalExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ConditionalExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof ConditionalExpression
+     */
+    test?: Expression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof ConditionalExpression
+     */
+    alternate?: Expression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof ConditionalExpression
+     */
+    consequent?: Expression;
 }
 
 /**
@@ -916,6 +1106,26 @@ export interface Dashboards {
 }
 
 /**
+ * represents an instant in time with nanosecond precision using the syntax of golang's RFC3339 Nanosecond variant
+ * @export
+ * @interface DateTimeLiteral
+ */
+export interface DateTimeLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof DateTimeLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DateTimeLiteral
+     */
+    value?: string;
+}
+
+/**
  * dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions
  * @export
  * @interface Dialect
@@ -978,6 +1188,52 @@ export namespace Dialect {
 }
 
 /**
+ * a pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed.
+ * @export
+ * @interface Duration
+ */
+export interface Duration {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof Duration
+     */
+    type?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Duration
+     */
+    magnitude?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Duration
+     */
+    unit?: string;
+}
+
+/**
+ * represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration
+ * @export
+ * @interface DurationLiteral
+ */
+export interface DurationLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof DurationLiteral
+     */
+    type?: string;
+    /**
+     * duration values
+     * @type {Array<Duration>}
+     * @memberof DurationLiteral
+     */
+    values?: Array<Duration>;
+}
+
+/**
  * 
  * @export
  * @interface EmptyViewProperties
@@ -1003,6 +1259,34 @@ export namespace EmptyViewProperties {
     export enum TypeEnum {
         Empty = 'empty'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface Expression
+ */
+export interface Expression {
+}
+
+/**
+ * may consist of an expression that does not return a value and is executed solely for its side-effects
+ * @export
+ * @interface ExpressionStatement
+ */
+export interface ExpressionStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ExpressionStatement
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof ExpressionStatement
+     */
+    expression?: Expression;
 }
 
 /**
@@ -1054,6 +1338,26 @@ export namespace Field {
         Regex = 'regex',
         Wildcard = 'wildcard'
     }
+}
+
+/**
+ * represents floating point numbers according to the double representations defined by the IEEE-754-1985
+ * @export
+ * @interface FloatLiteral
+ */
+export interface FloatLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof FloatLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FloatLiteral
+     */
+    value?: number;
 }
 
 /**
@@ -1117,6 +1421,104 @@ export interface FluxSuggestionsFuncs {
 }
 
 /**
+ * function expression
+ * @export
+ * @interface FunctionExpression
+ */
+export interface FunctionExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof FunctionExpression
+     */
+    type?: string;
+    /**
+     * function parameters
+     * @type {Array<Property>}
+     * @memberof FunctionExpression
+     */
+    params?: Array<Property>;
+    /**
+     * 
+     * @type {Node}
+     * @memberof FunctionExpression
+     */
+    body?: Node;
+}
+
+/**
+ * a valid Flux identifier
+ * @export
+ * @interface Identifier
+ */
+export interface Identifier {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof Identifier
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Identifier
+     */
+    name?: string;
+}
+
+/**
+ * declares a package import
+ * @export
+ * @interface ImportDeclaration
+ */
+export interface ImportDeclaration {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ImportDeclaration
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Identifier}
+     * @memberof ImportDeclaration
+     */
+    as?: Identifier;
+    /**
+     * 
+     * @type {StringLiteral}
+     * @memberof ImportDeclaration
+     */
+    path?: StringLiteral;
+}
+
+/**
+ * represents indexing into an array
+ * @export
+ * @interface IndexExpression
+ */
+export interface IndexExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof IndexExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof IndexExpression
+     */
+    array?: Expression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof IndexExpression
+     */
+    index?: Expression;
+}
+
+/**
  * 
  * @export
  * @interface InlineResponse200
@@ -1174,6 +1576,26 @@ export interface InlineResponse2002 {
      * @memberof InlineResponse2002
      */
     links?: Links;
+}
+
+/**
+ * represents integer numbers
+ * @export
+ * @interface IntegerLiteral
+ */
+export interface IntegerLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof IntegerLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IntegerLiteral
+     */
+    value?: string;
 }
 
 /**
@@ -1541,6 +1963,38 @@ export interface LogViewerColumnSettings {
 }
 
 /**
+ * represents the rule conditions that collectively evaluate to either true or false
+ * @export
+ * @interface LogicalExpression
+ */
+export interface LogicalExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof LogicalExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LogicalExpression
+     */
+    operator?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof LogicalExpression
+     */
+    left?: Expression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof LogicalExpression
+     */
+    right?: Expression;
+}
+
+/**
  * 
  * @export
  * @interface Logs
@@ -1586,6 +2040,58 @@ export namespace MapVariableProperties {
     export enum TypeEnum {
         Map = 'map'
     }
+}
+
+/**
+ * object property assignment
+ * @export
+ * @interface MemberAssignment
+ */
+export interface MemberAssignment {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof MemberAssignment
+     */
+    type?: string;
+    /**
+     * 
+     * @type {MemberExpression}
+     * @memberof MemberAssignment
+     */
+    member?: MemberExpression;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof MemberAssignment
+     */
+    init?: Expression;
+}
+
+/**
+ * represents accessing a property of an object
+ * @export
+ * @interface MemberExpression
+ */
+export interface MemberExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof MemberExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof MemberExpression
+     */
+    object?: Expression;
+    /**
+     * 
+     * @type {PropertyKey}
+     * @memberof MemberExpression
+     */
+    property?: PropertyKey;
 }
 
 /**
@@ -1637,6 +2143,72 @@ export namespace ModelError {
         EmptyValue = 'empty value',
         Unavailable = 'unavailable'
     }
+}
+
+/**
+ * represents a source from a single file
+ * @export
+ * @interface ModelFile
+ */
+export interface ModelFile {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ModelFile
+     */
+    type?: string;
+    /**
+     * name of the file
+     * @type {string}
+     * @memberof ModelFile
+     */
+    name?: string;
+    /**
+     * 
+     * @type {PackageClause}
+     * @memberof ModelFile
+     */
+    _package?: PackageClause;
+    /**
+     * a list of package imports
+     * @type {Array<ImportDeclaration>}
+     * @memberof ModelFile
+     */
+    imports?: Array<ImportDeclaration>;
+    /**
+     * list of Flux statements
+     * @type {Array<Statement>}
+     * @memberof ModelFile
+     */
+    body?: Array<Statement>;
+}
+
+/**
+ * 
+ * @export
+ * @interface Node
+ */
+export interface Node {
+}
+
+/**
+ * allows the declaration of an anonymous object within a declaration
+ * @export
+ * @interface ObjectExpression
+ */
+export interface ObjectExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ObjectExpression
+     */
+    type?: string;
+    /**
+     * object properties
+     * @type {Array<Property>}
+     * @memberof ObjectExpression
+     */
+    properties?: Array<Property>;
 }
 
 /**
@@ -1767,6 +2339,26 @@ export interface OperationLogs {
      * @memberof OperationLogs
      */
     links?: Links;
+}
+
+/**
+ * a single variable declaration
+ * @export
+ * @interface OptionStatement
+ */
+export interface OptionStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof OptionStatement
+     */
+    type?: string;
+    /**
+     * 
+     * @type {any}
+     * @memberof OptionStatement
+     */
+    assignment?: any;
 }
 
 /**
@@ -1913,6 +2505,58 @@ export interface Owners {
 }
 
 /**
+ * represents a complete package source tree
+ * @export
+ * @interface Package
+ */
+export interface Package {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof Package
+     */
+    type?: string;
+    /**
+     * package import path
+     * @type {string}
+     * @memberof Package
+     */
+    path?: string;
+    /**
+     * package name
+     * @type {string}
+     * @memberof Package
+     */
+    _package?: string;
+    /**
+     * package files
+     * @type {Array<any>}
+     * @memberof Package
+     */
+    files?: Array<any>;
+}
+
+/**
+ * defines a package identifier
+ * @export
+ * @interface PackageClause
+ */
+export interface PackageClause {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof PackageClause
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Identifier}
+     * @memberof PackageClause
+     */
+    name?: Identifier;
+}
+
+/**
  * 
  * @export
  * @interface PasswordResetBody
@@ -2021,6 +2665,80 @@ export namespace PermissionResource {
 }
 
 /**
+ * call expression with pipe argument
+ * @export
+ * @interface PipeExpression
+ */
+export interface PipeExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof PipeExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof PipeExpression
+     */
+    argument?: Expression;
+    /**
+     * 
+     * @type {CallExpression}
+     * @memberof PipeExpression
+     */
+    call?: CallExpression;
+}
+
+/**
+ * represents a specialized literal value, indicating the left hand value of a pipe expression
+ * @export
+ * @interface PipeLiteral
+ */
+export interface PipeLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof PipeLiteral
+     */
+    type?: string;
+}
+
+/**
+ * the value associated with a key
+ * @export
+ * @interface Property
+ */
+export interface Property {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof Property
+     */
+    type?: string;
+    /**
+     * 
+     * @type {PropertyKey}
+     * @memberof Property
+     */
+    key?: PropertyKey;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof Property
+     */
+    value?: Expression;
+}
+
+/**
+ * 
+ * @export
+ * @interface PropertyKey
+ */
+export interface PropertyKey {
+}
+
+/**
  * 
  * @export
  * @interface Proto
@@ -2092,6 +2810,12 @@ export interface Protos {
  * @interface Query
  */
 export interface Query {
+    /**
+     * 
+     * @type {any}
+     * @memberof Query
+     */
+    extern?: any;
     /**
      * query script to execute.
      * @type {string}
@@ -2418,6 +3142,26 @@ export interface QueryVariablePropertiesValues {
 }
 
 /**
+ * expressions begin and end with `/` and are regular expressions with syntax accepted by RE2
+ * @export
+ * @interface RegexpLiteral
+ */
+export interface RegexpLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof RegexpLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RegexpLiteral
+     */
+    value?: string;
+}
+
+/**
  * Describes a field that can be renamed and made visible or invisible
  * @export
  * @interface RenamableField
@@ -2537,6 +3281,26 @@ export interface ResourceOwners {
      * @memberof ResourceOwners
      */
     users?: Array<ResourceOwner>;
+}
+
+/**
+ * defines an expression to return
+ * @export
+ * @interface ReturnStatement
+ */
+export interface ReturnStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof ReturnStatement
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof ReturnStatement
+     */
+    argument?: Expression;
 }
 
 /**
@@ -3189,6 +3953,34 @@ export interface Sources {
      * @memberof Sources
      */
     sources?: Array<Source>;
+}
+
+/**
+ * 
+ * @export
+ * @interface Statement
+ */
+export interface Statement {
+}
+
+/**
+ * expressions begin and end with double quote marks
+ * @export
+ * @interface StringLiteral
+ */
+export interface StringLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof StringLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringLiteral
+     */
+    value?: string;
 }
 
 /**
@@ -5278,6 +6070,72 @@ export interface Telegrafs {
 }
 
 /**
+ * declares a Flux test case
+ * @export
+ * @interface TestStatement
+ */
+export interface TestStatement {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof TestStatement
+     */
+    type?: string;
+    /**
+     * 
+     * @type {VariableAssignment}
+     * @memberof TestStatement
+     */
+    assignment?: VariableAssignment;
+}
+
+/**
+ * uses operators to act on a single operand in an expression
+ * @export
+ * @interface UnaryExpression
+ */
+export interface UnaryExpression {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof UnaryExpression
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnaryExpression
+     */
+    operator?: string;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof UnaryExpression
+     */
+    argument?: Expression;
+}
+
+/**
+ * represents integer numbers
+ * @export
+ * @interface UnsignedIntegerLiteral
+ */
+export interface UnsignedIntegerLiteral {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof UnsignedIntegerLiteral
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UnsignedIntegerLiteral
+     */
+    value?: string;
+}
+
+/**
  * 
  * @export
  * @interface User
@@ -5606,6 +6464,32 @@ export interface Variable {
      * @memberof Variable
      */
     arguments: any;
+}
+
+/**
+ * represents the declaration of a variable
+ * @export
+ * @interface VariableAssignment
+ */
+export interface VariableAssignment {
+    /**
+     * type of AST node
+     * @type {string}
+     * @memberof VariableAssignment
+     */
+    type?: string;
+    /**
+     * 
+     * @type {Identifier}
+     * @memberof VariableAssignment
+     */
+    id?: Identifier;
+    /**
+     * 
+     * @type {Expression}
+     * @memberof VariableAssignment
+     */
+    init?: Expression;
 }
 
 /**
@@ -15798,12 +16682,13 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
          * @param {string} [user] filter tasks to a specific user ID
-         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [orgID] filter tasks to a specific organization ID
          * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options: any = {}): RequestArgs {
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options: any = {}): RequestArgs {
             const localVarPath = `/tasks`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -15824,6 +16709,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
 
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
             }
 
             if (limit !== undefined) {
@@ -16676,13 +17565,14 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
          * @param {string} [user] filter tasks to a specific user ID
-         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [orgID] filter tasks to a specific organization ID
          * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksGet(zapTraceSpan, after, user, org, limit, options);
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17002,13 +17892,14 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
          * @param {string} [user] filter tasks to a specific user ID
-         * @param {string} [org] filter tasks to a specific organization ID
+         * @param {string} [org] filter tasks to a specific organization name
+         * @param {string} [orgID] filter tasks to a specific organization ID
          * @param {number} [limit] the number of tasks to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any) {
-            return TasksApiFp(configuration).tasksGet(zapTraceSpan, after, user, org, limit, options)(axios, basePath);
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any) {
+            return TasksApiFp(configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options)(axios, basePath);
         },
         /**
          * 
@@ -17249,14 +18140,15 @@ export class TasksApi extends BaseAPI {
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [after] returns tasks after specified ID
      * @param {string} [user] filter tasks to a specific user ID
-     * @param {string} [org] filter tasks to a specific organization ID
+     * @param {string} [org] filter tasks to a specific organization name
+     * @param {string} [orgID] filter tasks to a specific organization ID
      * @param {number} [limit] the number of tasks to return
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, limit?: number, options?: any) {
-        return TasksApiFp(this.configuration).tasksGet(zapTraceSpan, after, user, org, limit, options)(this.axios, this.basePath);
+    public tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any) {
+        return TasksApiFp(this.configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options)(this.axios, this.basePath);
     }
 
     /**

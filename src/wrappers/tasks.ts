@@ -48,6 +48,12 @@ export default class {
     return addDefaultsToAll(tasks || []);
   }
 
+  public async getAllByOrgID(orgID: string): Promise<ITask[]> {
+    const {data: {tasks}} = await this.service.tasksGet(undefined, undefined, undefined, undefined, orgID);
+
+    return addDefaultsToAll(tasks || []);
+  }
+
   public async getAllByUser(user: User): Promise<ITask[]> {
     const { data } = await this.service.tasksGet(undefined, undefined, user.id);
 
