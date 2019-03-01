@@ -32,5 +32,3 @@ type DashboardRequired = {[P in keyof DashboardPicked]-?: DashboardPicked[P]};
 export interface IDashboard extends DashboardOriginal, DashboardRequired {
   labels: ILabel[];
 }
-
-export * from "./ast";
