@@ -97,7 +97,7 @@ export default class {
     return data.cells || [];
   }
 
-  public async createLabel(dashboardID: string, labelID: string): Promise<ILabel> {
+  public async addLabel(dashboardID: string, labelID: string): Promise<ILabel> {
     const {data} = await this.service.dashboardsDashboardIDLabelsPost(dashboardID, {
       labelID,
     });
@@ -109,7 +109,13 @@ export default class {
     return addLabelDefaults(data.label);
   }
 
-  public async deleteLabel(dashboardID: string, labelID: string): Promise<Response> {
+  public async addLabels(dashboardID: string, labelIDs: string[]): Promise<ILabel[]> {
+    return Promise.all(labelIDs.map((labelID) => {
+      return this.addLabel(dashboardID, labelID);
+    }));
+  }
+
+  public async removeLabel(dashboardID: string, labelID: string): Promise<Response> {
     const {data} = await this.service.dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID);
 
     return data;
@@ -153,9 +159,7 @@ export default class {
     }
 
     const labels = originalDashboard.labels || [];
-    const pendingLabels = labels.map(async (label) => this.createLabel(newDashboard.id || "", label.id || ""));
-
-    const newLabels = await Promise.all(pendingLabels);
+    const newLabels = await this.addLabels(newDashboard.id, labels.map((label) => label.id || ""));
 
     return newLabels.filter((l) => !!l).map(addLabelDefaults);
   }
