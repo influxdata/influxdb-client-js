@@ -3,7 +3,7 @@ import {ILabel} from "../types";
 
 const DEFAULT_LABEL_COLOR = "#326BBA";
 
-interface ILabelProperties {
+export interface ILabelProperties {
   color: string;
   description?: string;
 }

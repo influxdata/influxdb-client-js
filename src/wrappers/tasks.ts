@@ -1,6 +1,7 @@
-import { LogEvent, Run, Task, TasksApi, User } from "../api";
+import {LabelsApi, LogEvent, Run, Task, TasksApi, User} from "../api";
 import {ILabel, ITask} from "../types";
 import {addLabelDefaults} from "./labels";
+import {ITaskTemplate, TemplateType} from "./templates"
 
 const addDefaults = (task: Task): ITask => {
   return {
@@ -15,26 +16,28 @@ const addDefaultsToAll = (tasks: Task[]): ITask[] => (
 
 export default class {
   private service: TasksApi;
+  private labelsService: LabelsApi;
 
   constructor(basePath: string) {
-    this.service = new TasksApi({ basePath });
+    this.service = new TasksApi({basePath});
+    this.labelsService = new LabelsApi({basePath});
   }
 
   public async create(org: string, script: string): Promise<ITask> {
-    const { data } = await this.service.tasksPost({ org, flux: script });
+    const {data} = await this.service.tasksPost({org, flux: script});
 
     return addDefaults(data);
   }
 
   public async get(id: string): Promise<ITask> {
-    const { data } = await this.service.tasksTaskIDGet(id);
+    const {data} = await this.service.tasksTaskIDGet(id);
 
     return addDefaults(data);
   }
 
   public async getAll(): Promise<ITask[]> {
     const {
-      data: { tasks },
+      data: {tasks},
     } = await this.service.tasksGet();
 
     return addDefaultsToAll(tasks || []);
@@ -42,7 +45,7 @@ export default class {
 
   public async getAllByOrg(org: string): Promise<ITask[]> {
     const {
-      data: { tasks },
+      data: {tasks},
     } = await this.service.tasksGet(undefined, undefined, undefined, org);
 
     return addDefaultsToAll(tasks || []);
@@ -55,14 +58,14 @@ export default class {
   }
 
   public async getAllByUser(user: User): Promise<ITask[]> {
-    const { data } = await this.service.tasksGet(undefined, undefined, user.id);
+    const {data} = await this.service.tasksGet(undefined, undefined, user.id);
 
     return addDefaultsToAll(data.tasks || []);
   }
 
   public async update(id: string, updates: Partial<Task>): Promise<ITask> {
     const original = await this.get(id);
-    const { data: updated } = await this.service.tasksTaskIDPatch(id, {
+    const {data: updated} = await this.service.tasksTaskIDPatch(id, {
       ...original,
       ...updates,
     });
@@ -71,15 +74,15 @@ export default class {
   }
 
   public updateStatus(id: string, status: Task.StatusEnum): Promise<Task> {
-    return this.update(id, { status });
+    return this.update(id, {status});
   }
 
   public updateScript(id: string, script: string): Promise<ITask> {
-    return this.update(id, { flux: script });
+    return this.update(id, {flux: script});
   }
 
   public async delete(id: string): Promise<Response> {
-    const { data } = await this.service.tasksTaskIDDelete(id);
+    const {data} = await this.service.tasksTaskIDDelete(id);
 
     return data;
   }
@@ -89,7 +92,7 @@ export default class {
       throw new Error("label must have id");
     }
 
-    const { data } = await this.service.tasksTaskIDLabelsPost(taskID, {
+    const {data} = await this.service.tasksTaskIDLabelsPost(taskID, {
       labelID: label.id,
     });
 
@@ -105,7 +108,7 @@ export default class {
       throw new Error("label must have id");
     }
 
-    const { data } = await this.service.tasksTaskIDLabelsLabelIDDelete(
+    const {data} = await this.service.tasksTaskIDLabelsLabelIDDelete(
       taskID,
       label.id,
     );
@@ -127,14 +130,14 @@ export default class {
 
   public async getRunsByTaskID(taskID: string): Promise<Run[]> {
     const {
-      data: { runs },
+      data: {runs},
     } = await this.service.tasksTaskIDRunsGet(taskID);
 
     return runs || [];
   }
 
   public async startRunByTaskID(taskID: string): Promise<Run> {
-    const { data } = await this.service.tasksTaskIDRunsPost(taskID);
+    const {data} = await this.service.tasksTaskIDRunsPost(taskID);
 
     return data;
   }
@@ -144,7 +147,7 @@ export default class {
     runID: string,
   ): Promise<LogEvent[]> {
     const {
-      data: { events },
+      data: {events},
     } = await this.service.tasksTaskIDRunsRunIDLogsGet(taskID, runID);
 
     return events || [];
@@ -162,6 +165,53 @@ export default class {
     await this.cloneLabels(original, createdTask);
 
     return this.get(createdTask.id);
+  }
+
+  public async createFromTemplate(template: ITaskTemplate, orgID: string): Promise<Task> {
+
+    if (template.data[0].type !== TemplateType.Task) {
+      throw new Error("Can not create task from this template");
+    }
+
+    const flux = template.data[0].attributes.flux;
+
+    const createdTask = await this.create("org", flux);
+    // TODO use create task by orgID here
+
+    if (!createdTask || !createdTask.id) {
+      throw new Error("Could not create task");
+    }
+
+    if (template.data[0].relationships && template.data[0].relationships.label) {
+      const labelRelationships = template.data[0].relationships.label.data;
+
+      const includedResources = template.included || [];
+
+      const labelsToCreate = includedResources.filter(({id, type}) => {
+        labelRelationships.find((lr) => {
+          return lr.type === TemplateType.Label && lr.id === id;
+        });
+      });
+
+      const pendingLabels = labelsToCreate.map((l) => {
+        const name = l.attributes.name;
+        const properties = l.attributes.properties;
+
+        return this.labelsService.labelsPost({name, properties});
+      });
+
+      const labelsResponse = await Promise.all(pendingLabels);
+
+      const createdLabels = labelsResponse.map((lr) => lr.data.label);
+
+      this.addLabels(createdTask.id, createdLabels.filter((cl) => !!cl)); // ????
+
+      const task = await this.get(createdTask.id);
+
+      return task;
+    }
+
+    return createdTask;
   }
 
   private async cloneLabels(
