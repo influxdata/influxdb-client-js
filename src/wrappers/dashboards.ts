@@ -38,19 +38,19 @@ export default class {
     this.service = new DashboardsApi({basePath});
   }
 
-  public async get(id: string): Promise<Dashboard> {
+  public async get(id: string): Promise<IDashboard> {
     const {data} = await this.service.dashboardsDashboardIDGet(id);
 
-    return data;
+    return addDefaults(data);
   }
 
-  public async getAll(): Promise<Dashboard[]> {
+  public async getAll(): Promise<IDashboard[]> {
     const {data} = await this.service.dashboardsGet(undefined);
 
     return addDefaultsToAll(data.dashboards || []);
   }
 
-  public async getAllByOrg(org: string): Promise<Dashboard[]> {
+  public async getAllByOrg(org: string): Promise<IDashboard[]> {
     const {data} = await this.service.dashboardsGet(org);
 
     return addDefaultsToAll(data.dashboards || []);
@@ -81,7 +81,7 @@ export default class {
     return data;
   }
 
-  public async createFromProto(protoID: string, orgID?: string): Promise<Dashboard[]> {
+  public async createFromProto(protoID: string, orgID?: string): Promise<IDashboard[]> {
     let request = {};
 
     if (orgID) {
@@ -90,7 +90,7 @@ export default class {
 
     const { data } = await this.protosService.protosProtoIDDashboardsPost(protoID, request);
 
-    return data.dashboards || [];
+    return addDefaultsToAll(data.dashboards || []);
   }
 
   public async deleteCell(dashboardID: string, cellID: string): Promise<Response> {
@@ -147,7 +147,7 @@ export default class {
     return data;
   }
 
-  public async clone(dashboardID: string, cloneName: string): Promise<Dashboard | null> {
+  public async clone(dashboardID: string, cloneName: string): Promise<IDashboard | null> {
     const original = await this.get(dashboardID);
 
     const createdDashboard = await this.create({
