@@ -1,7 +1,7 @@
 import {Bucket, Dashboard, Task} from "../api";
 import { Label as APILabel } from "../api";
 
-interface ILabelProperties {
+export interface ILabelProperties {
   color: string;
   description?: string;
 }
