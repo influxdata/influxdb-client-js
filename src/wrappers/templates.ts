@@ -5,11 +5,11 @@ export enum TemplateType {
     Task = "task",
 }
 
-interface IKeyValuePairs {[key: string]: any;}
+interface IKeyValuePairs {[key: string]: any; }
 
-interface ITemplate {
+export interface ITemplate {
     meta: ITemplateMeta;
-    data: ITemplateData[];
+    data: ITemplateData;
     included?: ITemplateIncluded[];
 }
 
@@ -35,7 +35,7 @@ interface ITemplateIncluded {
 }
 
 export interface ITaskTemplate extends ITemplate {
-    data: ITaskTemplateData[];
+    data: ITaskTemplateData;
     included?: ITaskTemplateIncluded[];
 }
 

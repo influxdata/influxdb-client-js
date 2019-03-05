@@ -1,7 +1,7 @@
-import {LabelsApi, LogEvent, Run, Task, TasksApi, User} from "../api";
+import {Label, LabelsApi, LogEvent, Run, Task, TasksApi, User} from "../api";
 import {ILabel, ITask} from "../types";
 import {addLabelDefaults} from "./labels";
-import {ITaskTemplate, TemplateType} from "./templates"
+import {ITaskTemplate, ITemplate, TemplateType} from "./templates";
 
 const addDefaults = (task: Task): ITask => {
   return {
@@ -25,6 +25,12 @@ export default class {
 
   public async create(org: string, script: string): Promise<ITask> {
     const {data} = await this.service.tasksPost({org, flux: script});
+
+    return addDefaults(data);
+  }
+
+  public async createByOrgID(orgID: string, script: string): Promise<ITask> {
+    const {data} = await this.service.tasksPost({orgID, flux: script});
 
     return addDefaults(data);
   }
@@ -167,51 +173,59 @@ export default class {
     return this.get(createdTask.id);
   }
 
-  public async createFromTemplate(template: ITaskTemplate, orgID: string): Promise<Task> {
+  public async createFromTemplate(template: ITaskTemplate, orgID: string): Promise<ITask> {
 
-    if (template.data[0].type !== TemplateType.Task) {
+    if (template.data.type !== TemplateType.Task) {
       throw new Error("Can not create task from this template");
     }
 
-    const flux = template.data[0].attributes.flux;
+    const flux = template.data.attributes.flux;
 
-    const createdTask = await this.create("org", flux);
-    // TODO use create task by orgID here
+    const createdTask = await this.createByOrgID(orgID, flux);
 
     if (!createdTask || !createdTask.id) {
       throw new Error("Could not create task");
     }
 
-    if (template.data[0].relationships && template.data[0].relationships.label) {
-      const labelRelationships = template.data[0].relationships.label.data;
+    await this.createIncludedLabelsFromTemplate(template, createdTask);
 
-      const includedResources = template.included || [];
+    const task = await this.get(createdTask.id);
 
-      const labelsToCreate = includedResources.filter(({id, type}) => {
-        labelRelationships.find((lr) => {
-          return lr.type === TemplateType.Label && lr.id === id;
-        });
+    return task;
+  }
+
+  private async createIncludedLabelsFromTemplate(template: ITemplate, createdTask: ITask) {
+    if (!template.data.relationships || !template.data.relationships.label) {return; }
+
+    const labelRelationships = template.data.relationships.label.data;
+
+    const includedResources = template.included || [];
+
+    const labelsToCreate = includedResources.filter(({id, type}) => {
+      labelRelationships.find((lr) => {
+        return lr.type === TemplateType.Label && lr.id === id;
       });
+    });
 
-      const pendingLabels = labelsToCreate.map((l) => {
-        const name = l.attributes.name;
-        const properties = l.attributes.properties;
+    const pendingLabels = labelsToCreate.map((l) => {
+      const name = l.attributes.name;
+      const properties = l.attributes.properties;
 
-        return this.labelsService.labelsPost({name, properties});
-      });
+      return this.labelsService.labelsPost({name, properties});
+    });
 
-      const labelsResponse = await Promise.all(pendingLabels);
+    const labelsResponse = await Promise.all(pendingLabels);
 
-      const createdLabels = labelsResponse.map((lr) => lr.data.label);
+    const createdLabels = labelsResponse
+      .map((lr) => lr.data.label)
+      .filter((cl): cl is Label => !!cl)
+      .map(addLabelDefaults);
 
-      this.addLabels(createdTask.id, createdLabels.filter((cl) => !!cl)); // ????
-
-      const task = await this.get(createdTask.id);
-
-      return task;
+    if (!createdTask || !createdTask.id) {
+      throw new Error("Can not add labels to undefined Task");
     }
 
-    return createdTask;
+    await this.addLabels(createdTask.id, createdLabels);
   }
 
   private async cloneLabels(
