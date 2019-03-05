@@ -1,7 +1,6 @@
 import {Label, LabelsApi, LogEvent, Run, Task, TasksApi, User} from "../api";
-import {ILabel, ITask} from "../types";
+import {ILabel, ITask, ITaskTemplate, ITemplate, TemplateType} from "../types";
 import {addLabelDefaults} from "./labels";
-import {ITaskTemplate, ITemplate, TemplateType} from "./templates";
 
 const addDefaults = (task: Task): ITask => {
   return {
