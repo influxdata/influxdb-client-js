@@ -174,11 +174,13 @@ export default class {
 
   public async createFromTemplate(template: ITaskTemplate, orgID: string): Promise<ITask> {
 
-    if (template.data.type !== TemplateType.Task) {
+    const {content} = template;
+
+    if (content.data.type !== TemplateType.Task) {
       throw new Error("Can not create task from this template");
     }
 
-    const flux = template.data.attributes.flux;
+    const flux = content.data.attributes.flux;
 
     const createdTask = await this.createByOrgID(orgID, flux);
 
@@ -194,11 +196,14 @@ export default class {
   }
 
   private async createIncludedLabelsFromTemplate(template: ITemplate, createdTask: ITask) {
-    if (!template.data.relationships || !template.data.relationships.label) {return; }
 
-    const labelRelationships = template.data.relationships.label.data;
+    const {content} = template;
 
-    const includedResources = template.included || [];
+    if (!content.data.relationships || !content.data.relationships.label) {return; }
+
+    const labelRelationships = content.data.relationships.label.data;
+
+    const includedResources = content.included || [];
 
     const labelsToCreate = includedResources.filter(({id, type}) => {
       labelRelationships.find((lr) => {
