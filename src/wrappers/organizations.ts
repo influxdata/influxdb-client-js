@@ -76,4 +76,13 @@ export default class {
 
     return data;
   }
+
+  public async addMember(
+    id: string,
+    user: AddResourceMemberRequestBody,
+  ): Promise<ResourceMember> {
+    const { data } = await this.service.orgsOrgIDMembersPost(id, user);
+
+    return data;
+  }
 }
