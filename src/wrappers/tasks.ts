@@ -176,7 +176,7 @@ export default class {
 
     const {content} = template;
 
-    if (content.data.type !== TemplateType.Task) {
+    if (content.data.type !== TemplateType.Task || template.meta.version !== "1") {
       throw new Error("Can not create task from this template");
     }
 
