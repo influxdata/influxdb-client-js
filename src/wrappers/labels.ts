@@ -1,12 +1,8 @@
 import { Label as APILabel, LabelsApi } from "../api";
 import {ILabel} from "../types";
+import {ILabelProperties} from "../types";
 
 const DEFAULT_LABEL_COLOR = "#326BBA";
-
-export interface ILabelProperties {
-  color: string;
-  description?: string;
-}
 
 export const addLabelDefaults = (l: APILabel): ILabel => ({
   ...l,

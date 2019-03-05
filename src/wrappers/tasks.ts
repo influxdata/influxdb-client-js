@@ -1,7 +1,6 @@
 import {Label, LabelsApi, LogEvent, Run, Task, TasksApi, User} from "../api";
-import {ILabel, ITask} from "../types";
+import {ILabel, ITask, ITaskTemplate, ITemplate, TemplateType} from "../types";
 import {addLabelDefaults} from "./labels";
-import {ITaskTemplate, ITemplate, TemplateType} from "./templates";
 
 const addDefaults = (task: Task): ITask => {
   return {
@@ -175,11 +174,13 @@ export default class {
 
   public async createFromTemplate(template: ITaskTemplate, orgID: string): Promise<ITask> {
 
-    if (template.data.type !== TemplateType.Task) {
+    const {content} = template;
+
+    if (content.data.type !== TemplateType.Task || template.meta.version !== "1") {
       throw new Error("Can not create task from this template");
     }
 
-    const flux = template.data.attributes.flux;
+    const flux = content.data.attributes.flux;
 
     const createdTask = await this.createByOrgID(orgID, flux);
 
@@ -195,11 +196,14 @@ export default class {
   }
 
   private async createIncludedLabelsFromTemplate(template: ITemplate, createdTask: ITask) {
-    if (!template.data.relationships || !template.data.relationships.label) {return; }
 
-    const labelRelationships = template.data.relationships.label.data;
+    const {content} = template;
 
-    const includedResources = template.included || [];
+    if (!content.data.relationships || !content.data.relationships.label) {return; }
+
+    const labelRelationships = content.data.relationships.label.data;
+
+    const includedResources = content.included || [];
 
     const labelsToCreate = includedResources.filter(({id, type}) => {
       labelRelationships.find((lr) => {
