@@ -117,7 +117,7 @@ interface IViewRelationship {
   id: string;
 }
 
-interface IViewIncluded extends ITemplateIncluded {
+export interface IViewIncluded extends ITemplateIncluded {
   type: TemplateType.View;
   attributes: View;
 }
@@ -127,7 +127,7 @@ interface ICellRelationship {
   id: string;
 }
 
-interface ICellIncluded extends ITemplateIncluded {
+export interface ICellIncluded extends ITemplateIncluded {
   type: TemplateType.Cell;
   attributes: Cell;
   relationships: {

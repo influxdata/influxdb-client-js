@@ -10,6 +10,7 @@ import {
   View,
 } from "../api";
 import {
+  ICellIncluded,
   IDashboard,
   IDashboardTemplate,
   ILabel,
@@ -47,19 +48,19 @@ export default class {
   }
 
   public async get(id: string): Promise<IDashboard> {
-    const {data} = await this.service.dashboardsDashboardIDGet(id);
+    const { data } = await this.service.dashboardsDashboardIDGet(id);
 
     return addDefaults(data);
   }
 
   public async getAll(): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(undefined);
+    const { data } = await this.service.dashboardsGet(undefined);
 
     return addDefaultsToAll(data.dashboards || []);
   }
 
   public async getAllByOrg(org: string): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(org);
+    const { data } = await this.service.dashboardsGet(org);
 
     return addDefaultsToAll(data.dashboards || []);
   }
@@ -257,7 +258,7 @@ export default class {
     const createdDashboard = await this.create({ orgID, name, description });
 
     await this.createIncludedLabelsFromTemplate(template, createdDashboard);
-    // await this.createIncludedCellsFromTemplate(template, createdDashboard);
+    await this.createIncludedCellsFromTemplate(template, createdDashboard);
 
     const dashboard = await this.get(createdDashboard.id);
 
@@ -284,17 +285,17 @@ export default class {
 
     const labelsToCreate = includedResources.reduce((acc, ir) => {
       if (ir.type === TemplateType.Label) {
-        const found = labelRelationships.find((lr) => lr.type === TemplateType.Label && lr.id === ir.id);
-        if (!!found) {
+        const found = labelRelationships.some((lr) => lr.type === TemplateType.Label && lr.id === ir.id);
+        if (found) {
           acc = [...acc, ir];
         }
       }
       return acc;
-    }, [] as ILabelIncluded[] );
+    }, [] as ILabelIncluded[]);
 
     const pendingLabels = labelsToCreate.map((l) => {
-        const {attributes: { name, properties }} = l;
-        return this.labelsService.labelsPost({ name, properties });
+      const { attributes: { name, properties } } = l;
+      return this.labelsService.labelsPost({ name, properties });
     });
 
     const labelsResponse = await Promise.all(pendingLabels);
@@ -305,11 +306,72 @@ export default class {
       .map((l) => l.id)
       .filter((id): id is string => !!id);
 
-    if (! dashboard || !dashboard.id ) {
+    if (!dashboard || !dashboard.id) {
       throw new Error("Can not add labels to undefined Dashboard");
     }
 
     await this.addLabels(dashboard.id, createdLabels);
+  }
+
+  private async createIncludedCellsFromTemplate(template: IDashboardTemplate,
+                                                createdDashboard: IDashboard) {
+
+    const { content } = template;
+
+    if (
+      !content.data.relationships ||
+      !content.data.relationships[TemplateType.Cell]
+    ) {
+      return;
+    }
+
+    const cellRelationships =
+      content.data.relationships[TemplateType.Cell].data;
+
+    const includedResources = content.included || [];
+
+    const cellsToCreate = includedResources.reduce((acc, ir) => {
+      if (ir.type === TemplateType.Cell) {
+        const found = cellRelationships.some((cr) => cr.type === TemplateType.Cell && cr.id === ir.id);
+        if (found) {
+          acc = [...acc, ir];
+        }
+      }
+      return acc;
+    }, [] as ICellIncluded[]);
+
+    const pendingCells = cellsToCreate.map((c) => {
+      const { attributes: { name, x, y, w, h } } = c;
+      return this.createCell(createdDashboard.id, { name, x, y, w, h });
+    });
+
+    const cellResponses = await Promise.all(pendingCells);
+    this.createIncludedViewsFromTemplate(template, cellResponses, cellsToCreate, createdDashboard);
+  }
+
+  private async createIncludedViewsFromTemplate(
+    template: IDashboardTemplate,
+    createdCells: Cell[],
+    originalCellsIncluded: ICellIncluded[],
+    createdDashboard: IDashboard,
+  ) {
+    const pendingViews = createdCells.map((c, i) => {
+      const cellFromTemplate = originalCellsIncluded[i];
+      const viewRelationship = cellFromTemplate.relationships[TemplateType.View].data;
+      const includedResources = template.content.included || [];
+
+      const includedView = includedResources.find((ir) => {
+        return (ir.type === TemplateType.View && ir.id === viewRelationship.id);
+      });
+
+      if (includedView) {
+        return this.updateView(createdDashboard.id, c.id || "", includedView.attributes);
+      }
+    });
+
+    const definedPendingViews = pendingViews.filter((pv): pv is Promise<View> => !!pv);
+
+    await Promise.all(definedPendingViews);
   }
 
   private async cloneLabels(
