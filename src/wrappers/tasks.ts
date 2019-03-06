@@ -205,7 +205,7 @@ export default class {
 
     const includedResources = content.included || [];
 
-    const labelsToCreate = includedResources.filter(({id, type}) => {
+    const labelsToCreate = includedResources.filter(({id}) => {
       labelRelationships.find((lr) => {
         return lr.type === TemplateType.Label && lr.id === id;
       });
