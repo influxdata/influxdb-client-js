@@ -1,4 +1,4 @@
-import {Bucket, Dashboard, Task} from "../api";
+import { Bucket, Cell, Dashboard, Task , View } from "../api";
 import { Label as APILabel } from "../api";
 
 export interface ILabelProperties {
@@ -26,8 +26,11 @@ export interface ITask extends Task {
 }
 
 type DashboardPicked = Pick<Dashboard, "orgID" | "id" | "name" | "cells">;
-type DashboardOriginal = Pick<Dashboard, Exclude<keyof Dashboard, "orgID" | "id" | "name" | "cells">>;
-type DashboardRequired = {[P in keyof DashboardPicked]-?: DashboardPicked[P]};
+type DashboardOriginal = Pick<
+  Dashboard,
+  Exclude<keyof Dashboard, "orgID" | "id" | "name" | "cells">
+>;
+type DashboardRequired = { [P in keyof DashboardPicked]-?: DashboardPicked[P] };
 
 export interface IDashboard extends DashboardOriginal, DashboardRequired {
   labels: ILabel[];
@@ -36,9 +39,14 @@ export interface IDashboard extends DashboardOriginal, DashboardRequired {
 export enum TemplateType {
   Label = "label",
   Task = "task",
+  Dashboard = "dashboard",
+  View = "view",
+  Cell = "cell",
 }
 
-interface IKeyValuePairs {[key: string]: any; }
+interface IKeyValuePairs {
+  [key: string]: any;
+}
 
 export interface ITemplate {
   id?: string;
@@ -60,10 +68,10 @@ interface ITemplateContent {
 interface ITemplateData {
   type: TemplateType;
   attributes: IKeyValuePairs;
-  relationships?: {[key in TemplateType]?: {data: IRelationshipDataItem[]}};
+  relationships?: { [key in TemplateType]?: { data: IRelationship[] } };
 }
 
-interface IRelationshipDataItem {
+interface IRelationship {
   type: TemplateType;
   id: string;
 }
@@ -83,18 +91,67 @@ export interface ITaskTemplate extends ITemplate {
 
 interface ITaskTemplateData extends ITemplateData {
   type: TemplateType.Task;
-  attributes: {name: string, flux: string};
+  attributes: { name: string; flux: string };
   relationships?: {
-    [TemplateType.Label]: {data: ILabelRelationshipDataItem[]};
+    [TemplateType.Label]: { data: ILabelRelationship[] };
   };
-}
-
-interface ILabelRelationshipDataItem {
-  type: TemplateType.Label;
-  id: string;
 }
 
 interface ITaskTemplateIncluded extends ITemplateIncluded {
   type: TemplateType.Label;
-  attributes: {name: string; properties: ILabelProperties};
+  attributes: { name: string; properties: ILabelProperties };
 }
+
+export interface ILabelRelationship {
+  type: TemplateType.Label;
+  id: string;
+}
+
+export interface ILabelIncluded extends ITemplateIncluded {
+  type: TemplateType.Label;
+  attributes: { name: string; properties: ILabelProperties };
+}
+
+interface IViewRelationship {
+  type: TemplateType.View;
+  id: string;
+}
+
+interface IViewIncluded extends ITemplateIncluded {
+  type: TemplateType.View;
+  attributes: View;
+}
+
+interface ICellRelationship {
+  type: TemplateType.Cell;
+  id: string;
+}
+
+interface ICellIncluded extends ITemplateIncluded {
+  type: TemplateType.Cell;
+  attributes: Cell;
+  relationships: {
+    [TemplateType.View]: { data: IViewRelationship };
+  };
+}
+
+export interface IDashboardTemplate extends ITemplate {
+  content: {
+    data: IDashboardTemplateData;
+    included?: IDashboardTemplateIncluded[];
+  };
+}
+
+interface IDashboardTemplateData extends ITemplateData {
+  type: TemplateType.Dashboard;
+  attributes: IDashboard;
+  relationships?: {
+    [TemplateType.Label]: { data: ILabelRelationship[] };
+    [TemplateType.Cell]: { data: ICellRelationship[] };
+  };
+}
+
+type IDashboardTemplateIncluded =
+  | ICellIncluded
+  | IViewIncluded
+  | ILabelIncluded;
