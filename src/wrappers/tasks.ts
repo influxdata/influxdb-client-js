@@ -213,46 +213,36 @@ export default class {
       throw new Error("Can not add labels to undefined Task");
     }
 
-    const { content } = template;
+    const { content: {included} } = template;
 
-    if (!content.data.relationships || !content.data.relationships.label) {
+    if (!included || !included.length) {
       return;
     }
 
-    const labelRelationships = content.data.relationships.label.data;
+    const labelsIncluded = included.filter((r): r is ILabelIncluded => r.type === TemplateType.Label);
 
-    const includedResources = content.included || [];
+    const {data} = await this.labelsService.labelsGet();
+    const existingLabels = data.labels || [];
 
-    const labelsIncluded = includedResources.filter(({ id }) => {
-      return labelRelationships.some((lr) => {
-        return lr.type === TemplateType.Label && lr.id === id;
-      });
-    });
-
-    const {labelsToCreate, labelIDsToAdd} = await this.separateExistingLabels(labelsIncluded);
+    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded);
+    const labelsToCreate = this.findLabelsToCreate(existingLabels, labelsIncluded);
 
     const createdLabels = await this.createLabels(labelsToCreate);
-    const createdLabelIDs = createdLabels.map((l) => l.id).filter((id): id is string => !!id);
+    const createdLabelIDs = createdLabels.map((l) => l.id || "");
 
     await this.addLabels(createdTask.id, [...createdLabelIDs, ...labelIDsToAdd]);
   }
 
-  private async separateExistingLabels(labelsFromTemplate: ILabelIncluded[]) {
-    const {data} = await this.labelsService.labelsGet();
-    const existingLabels = data.labels || [];
+  private findLabelIDsToAdd(currentLabels: Label[], labels: ILabelIncluded[]): string[] {
+    return labels.filter(
+      (l) => !!currentLabels.find((el) => l.attributes.name === el.name),
+    ).map((l) => l.id);
+  }
 
-    return labelsFromTemplate.reduce((acc, l) => {
-      const existingLabel = existingLabels.find((el) => el.name ===  l.attributes.name);
-
-      if (!existingLabel || !existingLabel.id) {
-        acc.labelsToCreate = [...acc.labelsToCreate, l];
-        return acc;
-      }
-
-      acc.labelIDsToAdd = [...acc.labelIDsToAdd, existingLabel.id];
-      return acc;
-
-    }, {labelIDsToAdd: [] as string[], labelsToCreate: [] as ILabelIncluded[]});
+  private findLabelsToCreate(currentLabels: Label[], labels: ILabelIncluded[]): ILabelIncluded[] {
+    return labels.filter(
+      (l) => !currentLabels.find((el) => l.attributes.name === el.name),
+    );
   }
 
   private async createLabels(labelsToCreate: ILabelIncluded[]): Promise<Label[]> {

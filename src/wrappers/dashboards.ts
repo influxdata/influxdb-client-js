@@ -281,13 +281,13 @@ export default class {
       throw new Error("Can not add labels to undefined Dashboard");
     }
 
-    const { content: {data: {relationships}, included} } = template;
+    const { content: {included} } = template;
 
-    if (!relationships || !relationships[TemplateType.Label]) {
+    if (!included || !included.length) {
       return;
     }
 
-    const labelsIncluded = this.findIncludedLabels(included || []);
+    const labelsIncluded = this.findIncludedLabels(included);
 
     const {data: {labels}} = await this.labelsService.labelsGet();
     const existingLabels = labels || [];
