@@ -13,6 +13,7 @@ import {
   ICellIncluded,
   IDashboard,
   IDashboardTemplate,
+  IDashboardTemplateIncluded,
   ILabel,
   ILabelIncluded,
   TemplateType,
@@ -280,36 +281,28 @@ export default class {
       throw new Error("Can not add labels to undefined Dashboard");
     }
 
-    const { content } = template;
+    const { content: {data: {relationships}, included} } = template;
 
-    if (
-      !content.data.relationships ||
-      !content.data.relationships[TemplateType.Label]
-    ) {
+    if (!relationships || !relationships[TemplateType.Label]) {
       return;
     }
 
-    const labelRelationships =
-      content.data.relationships[TemplateType.Label].data;
+    const labelsIncluded = this.findIncludedLabels(included || []);
 
-    const includedResources = content.included || [];
+    const {data: {labels}} = await this.labelsService.labelsGet();
+    const existingLabels = labels || [];
 
-    const labelsIncluded = includedResources.reduce((acc, ir) => {
-      if (ir.type === TemplateType.Label) {
-        const found = labelRelationships.some((lr) => lr.type === TemplateType.Label && lr.id === ir.id);
-        if (found) {
-          acc = [...acc, ir];
-        }
-      }
-      return acc;
-    }, [] as ILabelIncluded[]);
-
-    const {labelsToCreate, labelIDsToAdd} = await this.separateExistingLabels(labelsIncluded);
+    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded);
+    const labelsToCreate = this.findLabelsToCreate(existingLabels, labelsIncluded);
 
     const createdLabels = await this.createLabels(labelsToCreate);
-    const createdLabelIDs = createdLabels.map((l) => l.id).filter((id): id is string => !!id);
+    const createdLabelIDs = createdLabels.map((l) => l.id || "");
 
     await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd]);
+  }
+
+  private findIncludedLabels(resources: IDashboardTemplateIncluded[]) {
+    return resources.filter((r): r is ILabelIncluded => r.type === TemplateType.Label);
   }
 
   private async createLabels(labelsToCreate: ILabelIncluded[]): Promise<Label[]> {
@@ -325,21 +318,16 @@ export default class {
       .filter((cl): cl is Label => !!cl);
   }
 
-  private async separateExistingLabels(labelsFromTemplate: ILabelIncluded[])  {
-    const {data} = await this.labelsService.labelsGet();
-    const existingLabels = data.labels || [];
+  private findLabelIDsToAdd(currentLabels: Label[], labels: ILabelIncluded[]): string[] {
+    return labels.filter(
+      (l) => !!currentLabels.find((el) => el.name === l.attributes.name),
+    ).map((l) => l.id);
+  }
 
-    return labelsFromTemplate.reduce((acc, l) => {
-      const existingLabel = existingLabels.find((el) => el.name === l.attributes.name);
-
-      if (!existingLabel || !existingLabel.id) {
-        acc.labelsToCreate = [...acc.labelsToCreate, l];
-        return acc;
-      }
-
-      acc.labelIDsToAdd = [...acc.labelIDsToAdd, existingLabel.id];
-      return acc;
-    }, {labelIDsToAdd: [] as string[], labelsToCreate: [] as ILabelIncluded[]});
+  private findLabelsToCreate(currentLabels: Label[], labels: ILabelIncluded[]): ILabelIncluded[] {
+    return labels.filter(
+      (l) => !currentLabels.find((el) => el.name === l.attributes.name),
+    );
   }
 
   private async createCellsFromTemplate(template: IDashboardTemplate, createdDashboard: IDashboard) {
