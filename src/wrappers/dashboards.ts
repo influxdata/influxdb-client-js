@@ -150,8 +150,12 @@ export default class {
   public async clone(dashboardID: string, cloneName: string): Promise<IDashboard | null> {
     const original = await this.get(dashboardID);
 
+    const {name, description, orgID} = original;
+
+    const dashboardWithoutCells = {name, description, orgID};
+
     const createdDashboard = await this.create({
-      ...original,
+      ...dashboardWithoutCells,
       name: cloneName,
     });
 
@@ -163,7 +167,6 @@ export default class {
     await this.cloneLabels(original, createdDashboard);
 
     return this.get(createdDashboard.id);
-
   }
 
   private async cloneLabels(originalDashboard: Dashboard, newDashboard: Dashboard): Promise<ILabel[]> {
