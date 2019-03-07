@@ -253,15 +253,21 @@ export default class {
 
     const createdDashboard = await this.create({ orgID, name, description });
 
-    await this.createIncludedLabelsFromTemplate(template, createdDashboard);
-    await this.createIncludedCellsFromTemplate(template, createdDashboard);
+    if (!createdDashboard || !createdDashboard.id) {
+      throw new Error("Could not create dashboard");
+    }
+
+    await Promise.all([
+      await this.createLabelsFromTemplate(template, createdDashboard),
+      await this.createCellsFromTemplate(template, createdDashboard),
+    ]);
 
     const dashboard = await this.get(createdDashboard.id);
 
     return addDefaults(dashboard);
   }
 
-  private async createIncludedLabelsFromTemplate(
+  private async createLabelsFromTemplate(
     template: IDashboardTemplate,
     dashboard: IDashboard,
   ) {
@@ -302,15 +308,10 @@ export default class {
       .map((l) => l.id)
       .filter((id): id is string => !!id);
 
-    if (!dashboard || !dashboard.id) {
-      throw new Error("Can not add labels to undefined Dashboard");
-    }
-
     await this.addLabels(dashboard.id, createdLabels);
   }
 
-  private async createIncludedCellsFromTemplate(template: IDashboardTemplate,
-                                                createdDashboard: IDashboard) {
+  private async createCellsFromTemplate(template: IDashboardTemplate, createdDashboard: IDashboard) {
 
     const { content } = template;
 
@@ -342,10 +343,11 @@ export default class {
     });
 
     const cellResponses = await Promise.all(pendingCells);
-    this.createIncludedViewsFromTemplate(template, cellResponses, cellsToCreate, createdDashboard);
+
+    this.createViewsFromTemplate(template, cellResponses, cellsToCreate, createdDashboard);
   }
 
-  private async createIncludedViewsFromTemplate(
+  private async createViewsFromTemplate(
     template: IDashboardTemplate,
     createdCells: Cell[],
     originalCellsIncluded: ICellIncluded[],
