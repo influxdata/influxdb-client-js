@@ -105,43 +105,35 @@ export default class {
     return data;
   }
 
-  public async addLabel(taskID: string, label: ILabel): Promise<ILabel> {
-    if (!label.id) {
-      throw new Error("label must have id");
-    }
-
+  public async addLabel(taskID: string, labelID: string): Promise<ILabel> {
     const { data } = await this.service.tasksTaskIDLabelsPost(taskID, {
-      labelID: label.id,
+      labelID,
     });
 
     if (!data.label) {
-      throw new Error("API did not return a label");
+      throw new Error("Failed to add label");
     }
 
     return addLabelDefaults(data.label);
   }
 
-  public async removeLabel(taskID: string, label: ILabel): Promise<Response> {
-    if (!label.id) {
-      throw new Error("label must have id");
-    }
-
+  public async removeLabel(taskID: string, labelID: string): Promise<Response> {
     const { data } = await this.service.tasksTaskIDLabelsLabelIDDelete(
       taskID,
-      label.id,
+      labelID,
     );
 
     return data;
   }
 
-  public addLabels(taskID: string, labels: ILabel[]): Promise<ILabel[]> {
-    const promises = labels.map((l) => this.addLabel(taskID, l));
+  public addLabels(taskID: string, labelIDs: string[]): Promise<ILabel[]> {
+    const promises = labelIDs.map((l) => this.addLabel(taskID, l));
 
     return Promise.all(promises);
   }
 
   public removeLabels(taskID: string, labels: ILabel[]): Promise<Response[]> {
-    const promises = labels.map((l) => this.removeLabel(taskID, l));
+    const promises = labels.map((l) => this.removeLabel(taskID, l.id || ""));
 
     return Promise.all(promises);
   }
@@ -217,14 +209,14 @@ export default class {
     template: ITaskTemplate,
     createdTask: ITask,
   ) {
+    if (!createdTask || !createdTask.id) {
+      throw new Error("Can not add labels to undefined Task");
+    }
+
     const { content } = template;
 
     if (!content.data.relationships || !content.data.relationships.label) {
       return;
-    }
-
-    if (!createdTask || !createdTask.id) {
-      throw new Error("Can not add labels to undefined Task");
     }
 
     const labelRelationships = content.data.relationships.label.data;
@@ -237,22 +229,33 @@ export default class {
       });
     });
 
+    const {labelsToCreate, labelIDsToAdd} = await this.separateExistingLabels(labelsIncluded);
+
+    const createdLabels = await this.createLabels(labelsToCreate);
+    const createdLabelIDs = createdLabels.map((l) => l.id).filter((id): id is string => !!id);
+
+    await this.addLabels(createdTask.id, [...createdLabelIDs, ...labelIDsToAdd]);
+  }
+
+  private async separateExistingLabels(labelsFromTemplate: ILabelIncluded[]) {
     const {data} = await this.labelsService.labelsGet();
     const existingLabels = data.labels || [];
 
-    const {labelsToCreate,  labelsToAdd} = labelsIncluded.reduce((acc, l) => {
+    return labelsFromTemplate.reduce((acc, l) => {
       const existingLabel = existingLabels.find((el) => el.name ===  l.attributes.name);
 
-      if (!existingLabel) {
+      if (!existingLabel || !existingLabel.id) {
         acc.labelsToCreate = [...acc.labelsToCreate, l];
         return acc;
       }
 
-      acc.labelsToAdd = [...acc.labelsToAdd, addLabelDefaults(existingLabel)];
+      acc.labelIDsToAdd = [...acc.labelIDsToAdd, existingLabel.id];
       return acc;
 
-    }, {labelsToAdd: [] as ILabel[], labelsToCreate: [] as ILabelIncluded[]});
+    }, {labelIDsToAdd: [] as string[], labelsToCreate: [] as ILabelIncluded[]});
+  }
 
+  private async createLabels(labelsToCreate: ILabelIncluded[]): Promise<Label[]> {
     const pendingLabels = labelsToCreate.map((l) => {
       const name = l.attributes.name;
       const properties = l.attributes.properties;
@@ -262,12 +265,7 @@ export default class {
 
     const labelsResponse = await Promise.all(pendingLabels);
 
-    const createdLabels = labelsResponse
-      .map((lr) => lr.data.label)
-      .filter((cl): cl is Label => !!cl)
-      .map(addLabelDefaults);
-
-    await this.addLabels(createdTask.id, [...createdLabels, ...labelsToAdd]);
+    return labelsResponse.map((lr) => lr.data.label).filter((cl): cl is Label => !!cl);
   }
 
   private async cloneLabels(
@@ -280,7 +278,7 @@ export default class {
 
     const labels = originalTask.labels || [];
     const pendingLabels = labels.map(async (label) =>
-      this.addLabel(newTask.id || "", addLabelDefaults(label)),
+      this.addLabel(newTask.id || "", label.id || ""),
     );
 
     const newLabels = await Promise.all(pendingLabels);

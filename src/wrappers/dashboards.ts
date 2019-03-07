@@ -161,7 +161,7 @@ export default class {
     );
 
     if (!data.label) {
-      throw new Error("Failed to create label");
+      throw new Error("Failed to add label");
     }
 
     return addLabelDefaults(data.label);
