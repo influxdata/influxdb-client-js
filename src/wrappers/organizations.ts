@@ -85,4 +85,12 @@ export default class {
 
     return data;
   }
+
+  public async removeMember(
+    orgID: string,
+    userID: string,
+  ): Promise<Response> {
+    const { data } = await this.service.orgsOrgIDMembersUserIDDelete(userID, orgID);
+    return data;
+  }
 }
