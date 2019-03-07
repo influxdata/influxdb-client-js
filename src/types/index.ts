@@ -1,4 +1,4 @@
-import {Bucket, Cell, Dashboard, Task, View} from '../api'
+import {Bucket, Cell, Dashboard, Task, Telegraf, View} from '../api'
 import {Label as APILabel} from '../api'
 
 export interface ILabelProperties {
@@ -22,6 +22,10 @@ export interface IBucket extends Bucket {
 }
 
 export interface ITask extends Task {
+  labels: ILabel[]
+}
+
+export interface ITelegraf extends Telegraf {
   labels: ILabel[]
 }
 
