@@ -221,8 +221,12 @@ export default class {
 
     const original = await this.get(dashboardID);
 
+    const { name, description, orgID } = original;
+
+    const dashboardWithoutCells = { name, description, orgID };
+
     const createdDashboard = await this.create({
-      ...original,
+      ...dashboardWithoutCells,
       name: cloneName,
     });
 
@@ -254,7 +258,7 @@ export default class {
     const createdDashboard = await this.create({ orgID, name, description });
 
     if (!createdDashboard || !createdDashboard.id) {
-      throw new Error("Could not create dashboard");
+      throw new Error("Failed to create dashboard");
     }
 
     await Promise.all([
@@ -271,6 +275,11 @@ export default class {
     template: IDashboardTemplate,
     dashboard: IDashboard,
   ) {
+
+    if (!dashboard || !dashboard.id) {
+      throw new Error("Can not add labels to undefined Dashboard");
+    }
+
     const { content } = template;
 
     if (
@@ -312,7 +321,6 @@ export default class {
   }
 
   private async createCellsFromTemplate(template: IDashboardTemplate, createdDashboard: IDashboard) {
-
     const { content } = template;
 
     if (
