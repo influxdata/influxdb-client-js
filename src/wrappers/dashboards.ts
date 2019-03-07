@@ -294,7 +294,7 @@ export default class {
 
     const includedResources = content.included || [];
 
-    const labelsToCreate = includedResources.reduce((acc, ir) => {
+    const labelsIncluded = includedResources.reduce((acc, ir) => {
       if (ir.type === TemplateType.Label) {
         const found = labelRelationships.some((lr) => lr.type === TemplateType.Label && lr.id === ir.id);
         if (found) {
@@ -304,6 +304,15 @@ export default class {
       return acc;
     }, [] as ILabelIncluded[]);
 
+    const {labelsToCreate, labelIDsToAdd} = await this.separateExistingLabels(labelsIncluded);
+
+    const createdLabels = await this.createLabels(labelsToCreate);
+    const createdLabelIDs = createdLabels.map((l) => l.id).filter((id): id is string => !!id);
+
+    await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd]);
+  }
+
+  private async createLabels(labelsToCreate: ILabelIncluded[]): Promise<Label[]> {
     const pendingLabels = labelsToCreate.map((l) => {
       const { attributes: { name, properties } } = l;
       return this.labelsService.labelsPost({ name, properties });
@@ -311,13 +320,26 @@ export default class {
 
     const labelsResponse = await Promise.all(pendingLabels);
 
-    const createdLabels = labelsResponse
+    return labelsResponse
       .map((lr) => lr.data.label)
-      .filter((cl): cl is Label => !!cl)
-      .map((l) => l.id)
-      .filter((id): id is string => !!id);
+      .filter((cl): cl is Label => !!cl);
+  }
 
-    await this.addLabels(dashboard.id, createdLabels);
+  private async separateExistingLabels(labelsFromTemplate: ILabelIncluded[])  {
+    const {data} = await this.labelsService.labelsGet();
+    const existingLabels = data.labels || [];
+
+    return labelsFromTemplate.reduce((acc, l) => {
+      const existingLabel = existingLabels.find((el) => el.name === l.attributes.name);
+
+      if (!existingLabel || !existingLabel.id) {
+        acc.labelsToCreate = [...acc.labelsToCreate, l];
+        return acc;
+      }
+
+      acc.labelIDsToAdd = [...acc.labelIDsToAdd, existingLabel.id];
+      return acc;
+    }, {labelIDsToAdd: [] as string[], labelsToCreate: [] as ILabelIncluded[]});
   }
 
   private async createCellsFromTemplate(template: IDashboardTemplate, createdDashboard: IDashboard) {
