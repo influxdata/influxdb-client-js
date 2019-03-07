@@ -1,9 +1,9 @@
 import { Label, LabelsApi, LogEvent, Run, Task, TasksApi, User } from "../api";
 import {
   ILabel,
+  ILabelIncluded,
   ITask,
   ITaskTemplate,
-  ITemplate,
   TemplateType,
 } from "../types";
 import { addLabelDefaults } from "./labels";
@@ -206,15 +206,15 @@ export default class {
       throw new Error("Could not create task");
     }
 
-    await this.createIncludedLabelsFromTemplate(template, createdTask);
+    await this.createLabelsFromTemplate(template, createdTask);
 
     const task = await this.get(createdTask.id);
 
     return task;
   }
 
-  private async createIncludedLabelsFromTemplate(
-    template: ITemplate,
+  private async createLabelsFromTemplate(
+    template: ITaskTemplate,
     createdTask: ITask,
   ) {
     const { content } = template;
@@ -223,15 +223,35 @@ export default class {
       return;
     }
 
+    if (!createdTask || !createdTask.id) {
+      throw new Error("Can not add labels to undefined Task");
+    }
+
     const labelRelationships = content.data.relationships.label.data;
 
     const includedResources = content.included || [];
 
-    const labelsToCreate = includedResources.filter(({ id }) => {
+    const labelsIncluded = includedResources.filter(({ id }) => {
       return labelRelationships.some((lr) => {
         return lr.type === TemplateType.Label && lr.id === id;
       });
     });
+
+    const {data} = await this.labelsService.labelsGet();
+    const existingLabels = data.labels || [];
+
+    const {labelsToCreate,  labelsToAdd} = labelsIncluded.reduce((acc, l) => {
+      const existingLabel = existingLabels.find((el) => el.name ===  l.attributes.name);
+
+      if (!existingLabel) {
+        acc.labelsToCreate = [...acc.labelsToCreate, l];
+        return acc;
+      }
+
+      acc.labelsToAdd = [...acc.labelsToAdd, addLabelDefaults(existingLabel)];
+      return acc;
+
+    }, {labelsToAdd: [] as ILabel[], labelsToCreate: [] as ILabelIncluded[]});
 
     const pendingLabels = labelsToCreate.map((l) => {
       const name = l.attributes.name;
@@ -247,11 +267,7 @@ export default class {
       .filter((cl): cl is Label => !!cl)
       .map(addLabelDefaults);
 
-    if (!createdTask || !createdTask.id) {
-      throw new Error("Can not add labels to undefined Task");
-    }
-
-    await this.addLabels(createdTask.id, createdLabels);
+    await this.addLabels(createdTask.id, [...createdLabels, ...labelsToAdd]);
   }
 
   private async cloneLabels(
