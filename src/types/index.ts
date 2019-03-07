@@ -151,7 +151,7 @@ interface IDashboardTemplateData extends ITemplateData {
   };
 }
 
-type IDashboardTemplateIncluded =
+export type IDashboardTemplateIncluded =
   | ICellIncluded
   | IViewIncluded
   | ILabelIncluded;
