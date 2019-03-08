@@ -132,8 +132,8 @@ export default class {
     return Promise.all(promises);
   }
 
-  public removeLabels(taskID: string, labels: ILabel[]): Promise<Response[]> {
-    const promises = labels.map((l) => this.removeLabel(taskID, l.id || ""));
+  public removeLabels(taskID: string, labelIDs: string[]): Promise<Response[]> {
+    const promises = labelIDs.map((l) => this.removeLabel(taskID, l));
 
     return Promise.all(promises);
   }
