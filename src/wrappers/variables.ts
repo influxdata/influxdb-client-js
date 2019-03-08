@@ -1,46 +1,53 @@
-import { Variable, VariablesApi } from "../api";
+import {Variable, VariablesApi} from '../api'
 
 export default class {
-  private service: VariablesApi;
+  private service: VariablesApi
 
   constructor(basePath: string) {
-    this.service = new VariablesApi({basePath});
+    this.service = new VariablesApi({basePath})
   }
 
   public async get(id: string): Promise<Variable> {
-    const {data: variable} = await this.service.variablesVariableIDGet(id);
+    const {data: variable} = await this.service.variablesVariableIDGet(id)
 
-    return variable;
+    return variable
   }
 
   public async update(id: string, props: Partial<Variable>): Promise<Variable> {
-    const original = await this.get(id);
-    const {data} = await this.service.variablesVariableIDPatch(id, {...original, ...props});
+    const original = await this.get(id)
+    const {data} = await this.service.variablesVariableIDPatch(id, {
+      ...original,
+      ...props,
+    })
 
-    return data;
+    return data
   }
 
   public async getAllByOrg(org: string): Promise<Variable[]> {
-    const {data: {variables}} = await this.service.variablesGet(undefined, org);
+    const {
+      data: {variables},
+    } = await this.service.variablesGet(undefined, org)
 
-    return variables || [];
+    return variables || []
   }
 
   public async getAll(): Promise<Variable[]> {
-    const {data: {variables}} = await this.service.variablesGet();
+    const {
+      data: {variables},
+    } = await this.service.variablesGet()
 
-    return variables || [];
+    return variables || []
   }
 
   public async create(variable: Variable): Promise<Variable> {
-    const {data} = await this.service.variablesPost(variable);
+    const {data} = await this.service.variablesPost(variable)
 
-    return data;
+    return data
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.variablesVariableIDDelete(id);
+    const {data} = await this.service.variablesVariableIDDelete(id)
 
-    return data;
+    return data
   }
 }

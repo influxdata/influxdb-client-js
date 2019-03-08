@@ -1,25 +1,25 @@
-import { OnboardingRequest, OnboardingResponse, SetupApi } from "../api";
+import {OnboardingRequest, OnboardingResponse, SetupApi} from '../api'
 
 interface IStatus {
-  allowed: boolean;
+  allowed: boolean
 }
 
 export default class {
-  private service: SetupApi;
+  private service: SetupApi
 
   constructor(basePath: string) {
-    this.service = new SetupApi({ basePath });
+    this.service = new SetupApi({basePath})
   }
 
   public async create(props: OnboardingRequest): Promise<OnboardingResponse> {
-    const {data: response} = await this.service.setupPost(props);
+    const {data: response} = await this.service.setupPost(props)
 
-    return response;
+    return response
   }
 
   public async status(): Promise<IStatus> {
-    const {data} = await this.service.setupGet();
+    const {data} = await this.service.setupGet()
 
-    return {allowed: !!data.allowed};
+    return {allowed: !!data.allowed}
   }
 }

@@ -8,7 +8,7 @@ import {
   LabelsApi,
   ProtosApi,
   View,
-} from "../api";
+} from '../api'
 import {
   ICellIncluded,
   IDashboard,
@@ -17,422 +17,462 @@ import {
   ILabel,
   ILabelIncluded,
   TemplateType,
-} from "../types";
-import { addLabelDefaults } from "./labels";
+} from '../types'
+import {addLabelDefaults} from './labels'
 
 const addDefaults = (dashboard: Dashboard): IDashboard => {
   return {
     ...dashboard,
     cells: dashboard.cells || [],
-    id: dashboard.id || "",
+    id: dashboard.id || '',
     labels: (dashboard.labels || []).map(addLabelDefaults),
-    name: dashboard.name || "",
-    orgID: dashboard.orgID || "",
-  };
-};
+    name: dashboard.name || '',
+    orgID: dashboard.orgID || '',
+  }
+}
 
 const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
-  return dashboards.map((dashboard) => addDefaults(dashboard));
-};
+  return dashboards.map(dashboard => addDefaults(dashboard))
+}
 
 export default class {
-  private service: DashboardsApi;
-  private cellsService: CellsApi;
-  private protosService: ProtosApi;
-  private labelsService: LabelsApi;
+  private service: DashboardsApi
+  private cellsService: CellsApi
+  private protosService: ProtosApi
+  private labelsService: LabelsApi
 
   constructor(basePath: string) {
-    this.cellsService = new CellsApi({ basePath });
-    this.protosService = new ProtosApi({ basePath });
-    this.service = new DashboardsApi({ basePath });
-    this.labelsService = new LabelsApi({ basePath });
+    this.cellsService = new CellsApi({basePath})
+    this.protosService = new ProtosApi({basePath})
+    this.service = new DashboardsApi({basePath})
+    this.labelsService = new LabelsApi({basePath})
   }
 
   public async get(id: string): Promise<IDashboard> {
-    const { data } = await this.service.dashboardsDashboardIDGet(id);
+    const {data} = await this.service.dashboardsDashboardIDGet(id)
 
-    return addDefaults(data);
+    return addDefaults(data)
   }
 
   public async getAll(): Promise<IDashboard[]> {
-    const { data } = await this.service.dashboardsGet(undefined);
+    const {data} = await this.service.dashboardsGet(undefined)
 
-    return addDefaultsToAll(data.dashboards || []);
+    return addDefaultsToAll(data.dashboards || [])
   }
 
   public async getAllByOrg(org: string): Promise<IDashboard[]> {
-    const { data } = await this.service.dashboardsGet(org);
+    const {data} = await this.service.dashboardsGet(org)
 
-    return addDefaultsToAll(data.dashboards || []);
+    return addDefaultsToAll(data.dashboards || [])
   }
 
   public async getAllByOrgID(orgID: string): Promise<Dashboard[]> {
-    const { data } = await this.service.dashboardsGet(
+    const {data} = await this.service.dashboardsGet(
       undefined,
       undefined,
       undefined,
       undefined,
-      orgID,
-    );
+      orgID
+    )
 
-    return addDefaultsToAll(data.dashboards || []);
+    return addDefaultsToAll(data.dashboards || [])
   }
 
   public async create(props: CreateDashboardRequest): Promise<IDashboard> {
-    const { data } = await this.service.dashboardsPost(props);
+    const {data} = await this.service.dashboardsPost(props)
 
-    return addDefaults(data);
+    return addDefaults(data)
   }
 
   public async update(
     id: string,
-    props: Partial<Dashboard>,
+    props: Partial<Dashboard>
   ): Promise<IDashboard> {
-    const original = await this.get(id);
-    const { data } = await this.service.dashboardsDashboardIDPatch(id, {
+    const original = await this.get(id)
+    const {data} = await this.service.dashboardsDashboardIDPatch(id, {
       ...original,
       ...props,
-    });
+    })
 
-    return addDefaults(data);
+    return addDefaults(data)
   }
 
   public async delete(id: string): Promise<Response> {
-    const { data } = await this.service.dashboardsDashboardIDDelete(id);
+    const {data} = await this.service.dashboardsDashboardIDDelete(id)
 
-    return data;
+    return data
   }
 
-  public async createFromProto(protoID: string, orgID?: string): Promise<IDashboard[]> {
-    let request = {};
+  public async createFromProto(
+    protoID: string,
+    orgID?: string
+  ): Promise<IDashboard[]> {
+    let request = {}
 
     if (orgID) {
-      request = { orgID };
+      request = {orgID}
     }
 
-    const { data } = await this.protosService.protosProtoIDDashboardsPost(
+    const {data} = await this.protosService.protosProtoIDDashboardsPost(
       protoID,
-      request,
-    );
+      request
+    )
 
-    return addDefaultsToAll(data.dashboards || []);
+    return addDefaultsToAll(data.dashboards || [])
   }
 
   public async deleteCell(
     dashboardID: string,
-    cellID: string,
+    cellID: string
   ): Promise<Response> {
     const {
       data: response,
     } = await this.cellsService.dashboardsDashboardIDCellsCellIDDelete(
       dashboardID,
-      cellID,
-    );
+      cellID
+    )
 
-    return response;
+    return response
   }
 
   public async createCell(dashboardID: string, cell: Cell): Promise<Cell> {
-    const { data } = await this.cellsService.dashboardsDashboardIDCellsPost(
+    const {data} = await this.cellsService.dashboardsDashboardIDCellsPost(
       dashboardID,
-      cell,
-    );
+      cell
+    )
 
-    return data;
+    return data
   }
 
   public async updateAllCells(
     dashboardID: string,
-    cells: Cell[],
+    cells: Cell[]
   ): Promise<Cell[]> {
-    const { data } = await this.cellsService.dashboardsDashboardIDCellsPut(
+    const {data} = await this.cellsService.dashboardsDashboardIDCellsPut(
       dashboardID,
-      cells,
-    );
+      cells
+    )
 
-    return data.cells || [];
+    return data.cells || []
   }
 
   public async addLabel(dashboardID: string, labelID: string): Promise<ILabel> {
-    const { data } = await this.service.dashboardsDashboardIDLabelsPost(
+    const {data} = await this.service.dashboardsDashboardIDLabelsPost(
       dashboardID,
       {
         labelID,
-      },
-    );
+      }
+    )
 
     if (!data.label) {
-      throw new Error("Failed to add label");
+      throw new Error('Failed to add label')
     }
 
-    return addLabelDefaults(data.label);
+    return addLabelDefaults(data.label)
   }
 
   public async addLabels(
     dashboardID: string,
-    labelIDs: string[],
+    labelIDs: string[]
   ): Promise<ILabel[]> {
     return Promise.all(
-      labelIDs.map((labelID) => {
-        return this.addLabel(dashboardID, labelID);
-      }),
-    );
+      labelIDs.map(labelID => {
+        return this.addLabel(dashboardID, labelID)
+      })
+    )
   }
 
   public async removeLabel(
     dashboardID: string,
-    labelID: string,
+    labelID: string
   ): Promise<Response> {
-    const {
-      data,
-    } = await this.service.dashboardsDashboardIDLabelsLabelIDDelete(
+    const {data} = await this.service.dashboardsDashboardIDLabelsLabelIDDelete(
       dashboardID,
-      labelID,
-    );
+      labelID
+    )
 
-    return data;
+    return data
   }
 
   public async getView(dashboardID: string, cellID: string): Promise<View> {
-    const { data } = await this.service.dashboardsDashboardIDCellsCellIDViewGet(
+    const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewGet(
       dashboardID,
-      cellID,
-    );
+      cellID
+    )
 
-    return data;
+    return data
   }
 
   public async updateView(
     dashboardID: string,
     cellID: string,
-    view: Partial<View>,
+    view: Partial<View>
   ): Promise<View> {
-    const {
-      data,
-    } = await this.service.dashboardsDashboardIDCellsCellIDViewPatch(
+    const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewPatch(
       dashboardID,
       cellID,
-      view,
-    );
+      view
+    )
 
-    return data;
+    return data
   }
 
-  public async clone(dashboardID: string, cloneName: string): Promise<IDashboard | null> {
+  public async clone(
+    dashboardID: string,
+    cloneName: string
+  ): Promise<IDashboard | null> {
+    const original = await this.get(dashboardID)
 
-    const original = await this.get(dashboardID);
+    const {name, description, orgID} = original
 
-    const { name, description, orgID } = original;
-
-    const dashboardWithoutCells = { name, description, orgID };
+    const dashboardWithoutCells = {name, description, orgID}
 
     const createdDashboard = await this.create({
       ...dashboardWithoutCells,
       name: cloneName,
-    });
+    })
 
     if (!createdDashboard || !createdDashboard.id) {
-      throw new Error("Could not create dashboard");
+      throw new Error('Could not create dashboard')
     }
 
-    await this.cloneViews(original, createdDashboard);
-    await this.cloneLabels(original, createdDashboard);
+    await this.cloneViews(original, createdDashboard)
+    await this.cloneLabels(original, createdDashboard)
 
-    return this.get(createdDashboard.id);
+    return this.get(createdDashboard.id)
   }
 
   public async createFromTemplate(
     template: IDashboardTemplate,
-    orgID: string,
+    orgID: string
   ): Promise<IDashboard> {
-    const { content } = template;
+    const {content} = template
 
     if (
       content.data.type !== TemplateType.Dashboard ||
-      template.meta.version !== "1"
+      template.meta.version !== '1'
     ) {
-      throw new Error("Can not create dashboard from this template");
+      throw new Error('Can not create dashboard from this template')
     }
 
-    const { name, description } = content.data.attributes;
+    const {name, description} = content.data.attributes
 
-    const createdDashboard = await this.create({ orgID, name, description });
+    const createdDashboard = await this.create({orgID, name, description})
 
     if (!createdDashboard || !createdDashboard.id) {
-      throw new Error("Failed to create dashboard");
+      throw new Error('Failed to create dashboard')
     }
 
     await Promise.all([
       await this.createLabelsFromTemplate(template, createdDashboard),
       await this.createCellsFromTemplate(template, createdDashboard),
-    ]);
+    ])
 
-    const dashboard = await this.get(createdDashboard.id);
+    const dashboard = await this.get(createdDashboard.id)
 
-    return addDefaults(dashboard);
+    return addDefaults(dashboard)
   }
 
   private async createLabelsFromTemplate(
     template: IDashboardTemplate,
-    dashboard: IDashboard,
+    dashboard: IDashboard
   ) {
-
     if (!dashboard || !dashboard.id) {
-      throw new Error("Can not add labels to undefined Dashboard");
+      throw new Error('Can not add labels to undefined Dashboard')
     }
 
-    const { content: { included } } = template;
+    const {
+      content: {included},
+    } = template
 
     if (!included || !included.length) {
-      return;
+      return
     }
 
-    const labelsIncluded = this.findIncludedLabels(included);
+    const labelsIncluded = this.findIncludedLabels(included)
 
-    const {data: {labels}} = await this.labelsService.labelsGet();
-    const existingLabels = labels || [];
+    const {
+      data: {labels},
+    } = await this.labelsService.labelsGet()
+    const existingLabels = labels || []
 
-    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded);
-    const labelsToCreate = this.findLabelsToCreate(existingLabels, labelsIncluded);
+    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded)
+    const labelsToCreate = this.findLabelsToCreate(
+      existingLabels,
+      labelsIncluded
+    )
 
-    const createdLabels = await this.createLabels(labelsToCreate);
-    const createdLabelIDs = createdLabels.map((l) => l.id || "");
+    const createdLabels = await this.createLabels(labelsToCreate)
+    const createdLabelIDs = createdLabels.map(l => l.id || '')
 
-    await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd]);
+    await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd])
   }
 
   private findIncludedLabels(resources: IDashboardTemplateIncluded[]) {
-    return resources.filter((r): r is ILabelIncluded => r.type === TemplateType.Label);
+    return resources.filter(
+      (r): r is ILabelIncluded => r.type === TemplateType.Label
+    )
   }
 
-  private async createLabels(labelsToCreate: ILabelIncluded[]): Promise<Label[]> {
-    const pendingLabels = labelsToCreate.map((l) => {
-      const { attributes: { name, properties } } = l;
-      return this.labelsService.labelsPost({ name, properties });
-    });
+  private async createLabels(
+    labelsToCreate: ILabelIncluded[]
+  ): Promise<Label[]> {
+    const pendingLabels = labelsToCreate.map(l => {
+      const {
+        attributes: {name, properties},
+      } = l
+      return this.labelsService.labelsPost({name, properties})
+    })
 
-    const labelsResponse = await Promise.all(pendingLabels);
+    const labelsResponse = await Promise.all(pendingLabels)
 
     return labelsResponse
-      .map((lr) => lr.data.label)
-      .filter((cl): cl is Label => !!cl);
+      .map(lr => lr.data.label)
+      .filter((cl): cl is Label => !!cl)
   }
 
-  private findLabelIDsToAdd(currentLabels: Label[], labels: ILabelIncluded[]): string[] {
+  private findLabelIDsToAdd(
+    currentLabels: Label[],
+    labels: ILabelIncluded[]
+  ): string[] {
+    return labels
+      .filter(l => !!currentLabels.find(el => el.name === l.attributes.name))
+      .map(l => l.id)
+  }
+
+  private findLabelsToCreate(
+    currentLabels: Label[],
+    labels: ILabelIncluded[]
+  ): ILabelIncluded[] {
     return labels.filter(
-      (l) => !!currentLabels.find((el) => el.name === l.attributes.name),
-    ).map((l) => l.id);
+      l => !currentLabels.find(el => el.name === l.attributes.name)
+    )
   }
 
-  private findLabelsToCreate(currentLabels: Label[], labels: ILabelIncluded[]): ILabelIncluded[] {
-    return labels.filter(
-      (l) => !currentLabels.find((el) => el.name === l.attributes.name),
-    );
-  }
-
-  private async createCellsFromTemplate(template: IDashboardTemplate, createdDashboard: IDashboard) {
-    const { content } = template;
+  private async createCellsFromTemplate(
+    template: IDashboardTemplate,
+    createdDashboard: IDashboard
+  ) {
+    const {content} = template
 
     if (
       !content.data.relationships ||
       !content.data.relationships[TemplateType.Cell]
     ) {
-      return;
+      return
     }
 
-    const cellRelationships =
-      content.data.relationships[TemplateType.Cell].data;
+    const cellRelationships = content.data.relationships[TemplateType.Cell].data
 
-    const includedResources = content.included || [];
+    const includedResources = content.included || []
 
-    const cellsToCreate = includedResources.reduce((acc, ir) => {
-      if (ir.type === TemplateType.Cell) {
-        const found = cellRelationships.some((cr) => cr.type === TemplateType.Cell && cr.id === ir.id);
-        if (found) {
-          acc = [...acc, ir];
+    const cellsToCreate = includedResources.reduce(
+      (acc, ir) => {
+        if (ir.type === TemplateType.Cell) {
+          const found = cellRelationships.some(
+            cr => cr.type === TemplateType.Cell && cr.id === ir.id
+          )
+          if (found) {
+            acc = [...acc, ir]
+          }
         }
-      }
-      return acc;
-    }, [] as ICellIncluded[]);
+        return acc
+      },
+      [] as ICellIncluded[]
+    )
 
-    const pendingCells = cellsToCreate.map((c) => {
-      const { attributes: { x, y, w, h } } = c;
-      return this.createCell(createdDashboard.id, { x, y, w, h });
-    });
+    const pendingCells = cellsToCreate.map(c => {
+      const {
+        attributes: {x, y, w, h},
+      } = c
+      return this.createCell(createdDashboard.id, {x, y, w, h})
+    })
 
-    const cellResponses = await Promise.all(pendingCells);
+    const cellResponses = await Promise.all(pendingCells)
 
-    this.createViewsFromTemplate(template, cellResponses, cellsToCreate, createdDashboard);
+    this.createViewsFromTemplate(
+      template,
+      cellResponses,
+      cellsToCreate,
+      createdDashboard
+    )
   }
 
   private async createViewsFromTemplate(
     template: IDashboardTemplate,
     createdCells: Cell[],
     originalCellsIncluded: ICellIncluded[],
-    createdDashboard: IDashboard,
+    createdDashboard: IDashboard
   ) {
     const pendingViews = createdCells.map((c, i) => {
-      const cellFromTemplate = originalCellsIncluded[i];
-      const viewRelationship = cellFromTemplate.relationships[TemplateType.View].data;
-      const includedResources = template.content.included || [];
+      const cellFromTemplate = originalCellsIncluded[i]
+      const viewRelationship =
+        cellFromTemplate.relationships[TemplateType.View].data
+      const includedResources = template.content.included || []
 
-      const includedView = includedResources.find((ir) => {
-        return (ir.type === TemplateType.View && ir.id === viewRelationship.id);
-      });
+      const includedView = includedResources.find(ir => {
+        return ir.type === TemplateType.View && ir.id === viewRelationship.id
+      })
 
       if (includedView) {
-        return this.updateView(createdDashboard.id, c.id || "", includedView.attributes);
+        return this.updateView(
+          createdDashboard.id,
+          c.id || '',
+          includedView.attributes
+        )
       }
-    });
+    })
 
-    const definedPendingViews = pendingViews.filter((pv): pv is Promise<View> => !!pv);
+    const definedPendingViews = pendingViews.filter(
+      (pv): pv is Promise<View> => !!pv
+    )
 
-    await Promise.all(definedPendingViews);
+    await Promise.all(definedPendingViews)
   }
 
   private async cloneLabels(
     originalDashboard: Dashboard,
-    newDashboard: Dashboard,
+    newDashboard: Dashboard
   ): Promise<ILabel[]> {
     if (!newDashboard || !newDashboard.id) {
-      throw new Error("Cannot create labels on invalid dashboard");
+      throw new Error('Cannot create labels on invalid dashboard')
     }
 
-    const labels = originalDashboard.labels || [];
+    const labels = originalDashboard.labels || []
     const newLabels = await this.addLabels(
       newDashboard.id,
-      labels.map((label) => label.id || ""),
-    );
+      labels.map(label => label.id || '')
+    )
 
-    return newLabels.filter((l) => !!l).map(addLabelDefaults);
+    return newLabels.filter(l => !!l).map(addLabelDefaults)
   }
 
   private async cloneViews(
     originalDashboard: Dashboard,
-    newDashboard: Dashboard,
+    newDashboard: Dashboard
   ): Promise<View[]> {
     if (!newDashboard || !newDashboard.id) {
-      throw new Error("Cannot create views on invalid dashboard");
+      throw new Error('Cannot create views on invalid dashboard')
     }
-    const cells = originalDashboard.cells || [];
+    const cells = originalDashboard.cells || []
 
-    const pendingViews = cells.map((c) =>
-      this.getView(originalDashboard.id || "", c.id || ""),
-    );
-    const views = await Promise.all(pendingViews);
+    const pendingViews = cells.map(c =>
+      this.getView(originalDashboard.id || '', c.id || '')
+    )
+    const views = await Promise.all(pendingViews)
 
-    const pendingUpdatedViews = views.map(async (view) => {
-      const cell = cells.find((c) => c.id === view.id);
+    const pendingUpdatedViews = views.map(async view => {
+      const cell = cells.find(c => c.id === view.id)
 
       if (cell && newDashboard.id) {
-        const newCell = await this.createCell(newDashboard.id, cell);
+        const newCell = await this.createCell(newDashboard.id, cell)
         if (newCell && newCell.id) {
-          return this.updateView(newDashboard.id, newCell.id, view);
+          return this.updateView(newDashboard.id, newCell.id, view)
         }
       }
-    });
+    })
 
-    const newViews = await Promise.all(pendingUpdatedViews);
-    return newViews.filter((v): v is View => !!v);
+    const newViews = await Promise.all(pendingUpdatedViews)
+    return newViews.filter((v): v is View => !!v)
   }
 }

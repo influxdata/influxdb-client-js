@@ -1,50 +1,60 @@
-import { Authorization, AuthorizationsApi } from "../api";
+import {Authorization, AuthorizationsApi} from '../api'
 
 export default class {
-  private service: AuthorizationsApi;
+  private service: AuthorizationsApi
 
   constructor(basePath: string) {
-    this.service = new AuthorizationsApi({basePath});
+    this.service = new AuthorizationsApi({basePath})
   }
 
   public async get(id: string): Promise<Authorization> {
-    const {data} = await this.service.authorizationsAuthIDGet(id);
+    const {data} = await this.service.authorizationsAuthIDGet(id)
 
-    return data;
+    return data
   }
 
   public async getAuthorizationToken(username: string): Promise<string | null> {
-    const authorizations = await this.getAllByUsername(username);
+    const authorizations = await this.getAllByUsername(username)
 
     if (authorizations[0]) {
-      return authorizations[0].token || null;
+      return authorizations[0].token || null
     }
 
-    return null;
+    return null
   }
 
   public async getAll(): Promise<Authorization[]> {
-    const {data: {authorizations}} = await this.service.authorizationsGet();
+    const {
+      data: {authorizations},
+    } = await this.service.authorizationsGet()
 
-    return authorizations || [];
+    return authorizations || []
   }
 
   public async getAllByUsername(username: string): Promise<Authorization[]> {
-    const {data: {authorizations}} = await this.service.authorizationsGet(undefined, undefined, username);
+    const {
+      data: {authorizations},
+    } = await this.service.authorizationsGet(undefined, undefined, username)
 
-    return authorizations || [];
+    return authorizations || []
   }
 
-  public async update(id: string, update: Partial<Authorization>): Promise<Authorization> {
-    const original = await this.get(id);
-    const {data} = await this.service.authorizationsAuthIDPatch(id, {...original, ...update});
+  public async update(
+    id: string,
+    update: Partial<Authorization>
+  ): Promise<Authorization> {
+    const original = await this.get(id)
+    const {data} = await this.service.authorizationsAuthIDPatch(id, {
+      ...original,
+      ...update,
+    })
 
-    return data;
+    return data
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.authorizationsAuthIDDelete(id);
+    const {data} = await this.service.authorizationsAuthIDDelete(id)
 
-    return data;
+    return data
   }
 }
