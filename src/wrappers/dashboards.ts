@@ -281,7 +281,7 @@ export default class {
       throw new Error("Can not add labels to undefined Dashboard");
     }
 
-    const { content: {included} } = template;
+    const { content: { included } } = template;
 
     if (!included || !included.length) {
       return;
@@ -356,8 +356,8 @@ export default class {
     }, [] as ICellIncluded[]);
 
     const pendingCells = cellsToCreate.map((c) => {
-      const { attributes: { name, x, y, w, h } } = c;
-      return this.createCell(createdDashboard.id, { name, x, y, w, h });
+      const { attributes: { x, y, w, h } } = c;
+      return this.createCell(createdDashboard.id, { x, y, w, h });
     });
 
     const cellResponses = await Promise.all(pendingCells);
