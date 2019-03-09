@@ -244,9 +244,9 @@ export default class {
     currentLabels: Label[],
     labels: ILabelIncluded[]
   ): string[] {
-    return labels
-      .filter(l => !!currentLabels.find(el => l.attributes.name === el.name))
-      .map(l => l.id)
+    return currentLabels
+      .filter(el => !!labels.find(l => l.attributes.name === el.name))
+      .map(l => l.id || '')
   }
 
   private findLabelsToCreate(
