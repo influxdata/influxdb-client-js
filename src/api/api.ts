@@ -491,23 +491,35 @@ export interface Bucket {
  */
 export interface BucketLinks {
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof BucketLinks
      */
     self?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof BucketLinks
      */
     org?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof BucketLinks
      */
     write?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof BucketLinks
+     */
+    members?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof BucketLinks
+     */
+    owners?: string;
 }
 
 /**
@@ -1153,6 +1165,156 @@ export namespace Dialect {
         RFC3339 = 'RFC3339',
         RFC3339Nano = 'RFC3339Nano'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface Document
+ */
+export interface Document {
+    /**
+     * 
+     * @type {string}
+     * @memberof Document
+     */
+    id?: string;
+    /**
+     * 
+     * @type {DocumentMeta}
+     * @memberof Document
+     */
+    meta?: DocumentMeta;
+    /**
+     * 
+     * @type {any}
+     * @memberof Document
+     */
+    content?: any;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof Document
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * 
+ * @export
+ * @interface DocumentCreate
+ */
+export interface DocumentCreate {
+    /**
+     * 
+     * @type {DocumentMeta}
+     * @memberof DocumentCreate
+     */
+    meta?: DocumentMeta;
+    /**
+     * 
+     * @type {any}
+     * @memberof DocumentCreate
+     */
+    content?: any;
+    /**
+     * must specify one of orgID and org
+     * @type {string}
+     * @memberof DocumentCreate
+     */
+    org?: string;
+    /**
+     * must specify one of orgID and org
+     * @type {string}
+     * @memberof DocumentCreate
+     */
+    orgID?: string;
+    /**
+     * this is an array of label strings that will be added as labels to the document
+     * @type {Array<string>}
+     * @memberof DocumentCreate
+     */
+    labels?: Array<string>;
+}
+
+/**
+ * 
+ * @export
+ * @interface DocumentListEntry
+ */
+export interface DocumentListEntry {
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentListEntry
+     */
+    id?: string;
+    /**
+     * 
+     * @type {DocumentMeta}
+     * @memberof DocumentListEntry
+     */
+    meta?: DocumentMeta;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof DocumentListEntry
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * 
+ * @export
+ * @interface DocumentMeta
+ */
+export interface DocumentMeta {
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentMeta
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentMeta
+     */
+    version?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface DocumentUpdate
+ */
+export interface DocumentUpdate {
+    /**
+     * 
+     * @type {DocumentMeta}
+     * @memberof DocumentUpdate
+     */
+    meta?: DocumentMeta;
+    /**
+     * 
+     * @type {any}
+     * @memberof DocumentUpdate
+     */
+    content?: any;
+}
+
+/**
+ * 
+ * @export
+ * @interface Documents
+ */
+export interface Documents {
+    /**
+     * 
+     * @type {Array<DocumentListEntry>}
+     * @memberof Documents
+     */
+    documents?: Array<DocumentListEntry>;
 }
 
 /**
@@ -2108,8 +2270,12 @@ export namespace ModelError {
         NotFound = 'not found',
         Conflict = 'conflict',
         Invalid = 'invalid',
+        UnprocessableEntity = 'unprocessable entity',
         EmptyValue = 'empty value',
-        Unavailable = 'unavailable'
+        Unavailable = 'unavailable',
+        Forbidden = 'forbidden',
+        Unauthorized = 'unauthorized',
+        MethodNotAllowed = 'method not allowed'
     }
 }
 
@@ -2359,12 +2525,6 @@ export interface Organization {
      * @memberof Organization
      */
     status?: Organization.StatusEnum;
-    /**
-     * 
-     * @type {Owners}
-     * @memberof Organization
-     */
-    owners?: Owners;
 }
 
 /**
@@ -2389,43 +2549,49 @@ export namespace Organization {
  */
 export interface OrganizationLinks {
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     self?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     members?: string;
     /**
-     * 
+     * URI of resource.
+     * @type {string}
+     * @memberof OrganizationLinks
+     */
+    owners?: string;
+    /**
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     labels?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     secrets?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     buckets?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
     tasks?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof OrganizationLinks
      */
@@ -2450,26 +2616,6 @@ export interface Organizations {
      * @memberof Organizations
      */
     orgs?: Array<Organization>;
-}
-
-/**
- * 
- * @export
- * @interface Owners
- */
-export interface Owners {
-    /**
-     * 
-     * @type {Users}
-     * @memberof Owners
-     */
-    users?: Users;
-    /**
-     * 
-     * @type {Organizations}
-     * @memberof Owners
-     */
-    organizations?: Organizations;
 }
 
 /**
@@ -3675,10 +3821,10 @@ export interface ScraperTargetResponse extends ScraperTargetRequest {
     name?: string;
     /**
      * 
-     * @type {Links}
+     * @type {any}
      * @memberof ScraperTargetResponse
      */
-    links?: Links;
+    links?: any;
 }
 
 /**
@@ -3962,15 +4108,15 @@ export interface Task {
      * @type {string}
      * @memberof Task
      */
-    id?: string;
+    id: string;
     /**
      * The ID of the organization that owns this Task.
      * @type {string}
      * @memberof Task
      */
-    orgID?: string;
+    orgID: string;
     /**
-     * The organization that owns this Task.
+     * The name of the organization that owns this Task.
      * @type {string}
      * @memberof Task
      */
@@ -6021,6 +6167,27 @@ export interface TelegrafRequestPlugin {
      * @memberof TelegrafRequestPlugin
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TelegrafRequestPlugin
+     */
+    type: TelegrafRequestPlugin.TypeEnum;
+}
+
+/**
+ * @export
+ * @namespace TelegrafRequestPlugin
+ */
+export namespace TelegrafRequestPlugin {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum TypeEnum {
+        Input = 'input',
+        Output = 'output'
+    }
 }
 
 /**
@@ -6167,7 +6334,7 @@ export interface UserLinks {
      * @type {string}
      * @memberof UserLinks
      */
-    log?: string;
+    logs?: string;
 }
 
 /**
@@ -19569,6 +19736,356 @@ export class TelegrafsApi extends BaseAPI {
      */
     public telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any) {
         return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * TemplatesApi - axios parameter creator
+ * @export
+ */
+export const TemplatesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} org specifies the name of the organization of the template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesGet(org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'org' is not null or undefined
+            if (org === null || org === undefined) {
+                throw new RequiredError('org','Required parameter org was null or undefined when calling documentsTemplatesGet.');
+            }
+            const localVarPath = `/documents/templates`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a template
+         * @param {DocumentCreate} documentCreate template that will be created
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'documentCreate' is not null or undefined
+            if (documentCreate === null || documentCreate === undefined) {
+                throw new RequiredError('documentCreate','Required parameter documentCreate was null or undefined when calling documentsTemplatesPost.');
+            }
+            const localVarPath = `/documents/templates`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"DocumentCreate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(documentCreate || {}) : (documentCreate || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDGet.');
+            }
+            const localVarPath = `/documents/templates/{templateID}`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {DocumentUpdate} documentUpdate template that will be updated
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDPut.');
+            }
+            // verify required parameter 'documentUpdate' is not null or undefined
+            if (documentUpdate === null || documentUpdate === undefined) {
+                throw new RequiredError('documentUpdate','Required parameter documentUpdate was null or undefined when calling documentsTemplatesTemplateIDPut.');
+            }
+            const localVarPath = `/documents/templates/{templateID}`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"DocumentUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(documentUpdate || {}) : (documentUpdate || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TemplatesApi - functional programming interface
+ * @export
+ */
+export const TemplatesApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} org specifies the name of the organization of the template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Documents> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(org, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Create a template
+         * @param {DocumentCreate} documentCreate template that will be created
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {DocumentUpdate} documentUpdate template that will be updated
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * TemplatesApi - factory interface
+ * @export
+ */
+export const TemplatesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @param {string} org specifies the name of the organization of the template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesGet(org, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Create a template
+         * @param {DocumentCreate} documentCreate template that will be created
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @param {string} templateID ID of template
+         * @param {DocumentUpdate} documentUpdate template that will be updated
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * TemplatesApi - object-oriented interface
+ * @export
+ * @class TemplatesApi
+ * @extends {BaseAPI}
+ */
+export class TemplatesApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} org specifies the name of the organization of the template
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Create a template
+     * @param {DocumentCreate} documentCreate template that will be created
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} templateID ID of template
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @param {string} templateID ID of template
+     * @param {DocumentUpdate} documentUpdate template that will be updated
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }

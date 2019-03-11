@@ -15,6 +15,7 @@ import TelegrafConfigs from './wrappers/telegrafConfigs'
 import Users from './wrappers/users'
 import Variables from './wrappers/variables'
 import Write from './wrappers/write'
+import Templates from './wrappers/templates'
 
 export * from './types'
 export * from './api'
@@ -37,6 +38,7 @@ export default class Client {
   public users: Users
   public variables: Variables
   public write: Write
+  public templates: Templates
 
   constructor(basePath: string) {
     this.auth = new Auth(basePath)
@@ -56,5 +58,6 @@ export default class Client {
     this.users = new Users(basePath)
     this.variables = new Variables(basePath)
     this.write = new Write(basePath)
+    this.templates = new Templates(basePath)
   }
 }
