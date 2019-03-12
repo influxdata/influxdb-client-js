@@ -1,12 +1,16 @@
-import {
-  Organization,
-  Telegraf,
-  TelegrafPluginConfig,
-  TelegrafRequest,
-  TelegrafsApi,
-} from '../api'
-import {ILabel} from '../types'
+import {Organization, Telegraf, TelegrafRequest, TelegrafsApi} from '../api'
+import {ILabel, ITelegraf} from '../types'
 import {addLabelDefaults} from './labels'
+
+const addDefaults = (telegraf: Telegraf): ITelegraf => {
+  return {
+    ...telegraf,
+    labels: (telegraf.labels || []).map(addLabelDefaults),
+  }
+}
+
+const addDefaultsToAll = (telegrafs: Telegraf[]): ITelegraf[] =>
+  telegrafs.map(telegraf => addDefaults(telegraf))
 
 export default class {
   private service: TelegrafsApi
@@ -15,14 +19,14 @@ export default class {
     this.service = new TelegrafsApi({basePath})
   }
 
-  public async getAll(): Promise<TelegrafPluginConfig[]> {
+  public async getAll(): Promise<ITelegraf[]> {
     const {
       data: {configurations},
     } = await this.service.telegrafsGet('')
-    return configurations || []
+    return addDefaultsToAll(configurations || [])
   }
 
-  public async getAllByOrg(org: Organization): Promise<TelegrafPluginConfig[]> {
+  public async getAllByOrg(org: Organization): Promise<ITelegraf[]> {
     if (!org.id) {
       throw new Error('organization must have an id')
     }
@@ -31,7 +35,7 @@ export default class {
       data: {configurations},
     } = await this.service.telegrafsGet(org.id)
 
-    return configurations || []
+    return addDefaultsToAll(configurations || [])
   }
 
   public async getTOML(id: string): Promise<string> {
@@ -50,19 +54,22 @@ export default class {
     return data as string
   }
 
-  public async get(id: string): Promise<Telegraf> {
+  public async get(id: string): Promise<ITelegraf> {
     const {data} = await this.service.telegrafsTelegrafIDGet(id)
 
-    return data
+    return addDefaults(data)
   }
 
-  public async create(props: Telegraf): Promise<Telegraf> {
+  public async create(props: Telegraf): Promise<ITelegraf> {
     const {data} = await this.service.telegrafsPost(props)
 
-    return data
+    return addDefaults(data)
   }
 
-  public async update(id: string, props: Partial<Telegraf>): Promise<Telegraf> {
+  public async update(
+    id: string,
+    props: Partial<Telegraf>
+  ): Promise<ITelegraf> {
     const original = await this.get(id)
     const update = {...original, ...props} as TelegrafRequest
 
@@ -71,7 +78,7 @@ export default class {
       update
     )
 
-    return updated
+    return addDefaults(updated)
   }
 
   public async delete(id: string): Promise<Response> {
