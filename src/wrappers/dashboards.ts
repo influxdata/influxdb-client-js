@@ -66,7 +66,7 @@ export default class {
     return addDefaultsToAll(data.dashboards || [])
   }
 
-  public async getAllByOrgID(orgID: string): Promise<Dashboard[]> {
+  public async getAllByOrgID(orgID: string): Promise<IDashboard[]> {
     const {data} = await this.service.dashboardsGet(
       undefined,
       undefined,
