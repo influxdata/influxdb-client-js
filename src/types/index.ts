@@ -52,7 +52,7 @@ export interface ITemplate {
   id?: string
   meta: ITemplateMeta
   content: ITemplateContent
-  labels?: ILabel[]
+  labels?: string[]
 }
 
 interface ITemplateMeta extends IKeyValuePairs {
