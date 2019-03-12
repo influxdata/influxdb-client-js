@@ -13,7 +13,7 @@
     "tsc": "tsc -p ./tsconfig.json --noEmit --pretty",
     "eslint": "eslint 'src/**/*.ts'",
     "eslint:fix": "eslint --fix 'src/**/*.ts'",
-    "release": "release-it minor --git.tagName 'Bump version ${version}'"
+    "release-patch": "release-it patch --git.tagName 'Bump version ${version}'"
   },
   "types": "index.d.ts",
   "keywords": [
