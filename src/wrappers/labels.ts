@@ -9,7 +9,8 @@ export const addLabelDefaults = (l: APILabel): ILabel => ({
   properties: {
     ...l.properties,
     // add defualt color hex if missing
-    color: l.properties.color || DEFAULT_LABEL_COLOR,
+    color: (l.properties || {}).color || DEFAULT_LABEL_COLOR,
+    description: (l.properties || {}).description || '',
   },
 })
 

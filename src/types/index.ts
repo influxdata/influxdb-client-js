@@ -1,9 +1,13 @@
 import {Bucket, Cell, Dashboard, Task, Telegraf, View, Document} from '../api'
 import {Label as APILabel} from '../api'
 
-export interface ILabelProperties {
+interface KV {
+  [x: string]: string
+}
+
+export interface ILabelProperties extends KV {
   color: string
-  description?: string
+  description: string
 }
 
 export interface ILabel extends APILabel {
