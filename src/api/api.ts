@@ -1178,25 +1178,25 @@ export interface Document {
      * @type {string}
      * @memberof Document
      */
-    id?: string;
+    id: string;
     /**
      * 
      * @type {DocumentMeta}
      * @memberof Document
      */
-    meta?: DocumentMeta;
+    meta: DocumentMeta;
     /**
      * 
      * @type {any}
      * @memberof Document
      */
-    content?: any;
+    content: any;
     /**
      * 
      * @type {Array<Label>}
      * @memberof Document
      */
-    labels?: Array<Label>;
+    labels: Array<Label>;
 }
 
 /**
@@ -1210,13 +1210,13 @@ export interface DocumentCreate {
      * @type {DocumentMeta}
      * @memberof DocumentCreate
      */
-    meta?: DocumentMeta;
+    meta: DocumentMeta;
     /**
      * 
      * @type {any}
      * @memberof DocumentCreate
      */
-    content?: any;
+    content: any;
     /**
      * must specify one of orgID and org
      * @type {string}
@@ -1248,19 +1248,19 @@ export interface DocumentListEntry {
      * @type {string}
      * @memberof DocumentListEntry
      */
-    id?: string;
+    id: string;
     /**
      * 
      * @type {DocumentMeta}
      * @memberof DocumentListEntry
      */
-    meta?: DocumentMeta;
+    meta: DocumentMeta;
     /**
      * 
      * @type {Array<Label>}
      * @memberof DocumentListEntry
      */
-    labels?: Array<Label>;
+    labels: Array<Label>;
 }
 
 /**
@@ -1274,13 +1274,13 @@ export interface DocumentMeta {
      * @type {string}
      * @memberof DocumentMeta
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof DocumentMeta
      */
-    version?: string;
+    version: string;
 }
 
 /**
