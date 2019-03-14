@@ -1,4 +1,12 @@
 import {TemplatesApi, DocumentListEntry, Document, DocumentCreate} from '../api'
+import {ITemplate} from '../types'
+import {addLabelDefaults} from './labels'
+
+export const addTemplateDefaults = (d: Document): ITemplate => ({
+  ...d,
+  content: {data: {}, included: [], ...d.content},
+  labels: d.labels.map(addLabelDefaults),
+})
 
 export default class {
   private service: TemplatesApi
@@ -17,17 +25,17 @@ export default class {
     return []
   }
 
-  public async get(templateID: string): Promise<Document> {
+  public async get(templateID: string): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesTemplateIDGet(
       templateID
     )
 
-    return data
+    return addTemplateDefaults(data)
   }
 
-  public async create(templateCreate: DocumentCreate): Promise<Document> {
+  public async create(templateCreate: DocumentCreate): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesPost(templateCreate)
 
-    return data
+    return addTemplateDefaults(data)
   }
 }

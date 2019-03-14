@@ -1,4 +1,4 @@
-import {Bucket, Cell, Dashboard, Task, Telegraf, View} from '../api'
+import {Bucket, Cell, Dashboard, Task, Telegraf, View, Document} from '../api'
 import {Label as APILabel} from '../api'
 
 export interface ILabelProperties {
@@ -52,27 +52,20 @@ interface IKeyValuePairs {
   [key: string]: any
 }
 
-export interface ITemplate {
-  id?: string
-  meta: ITemplateMeta
+export interface ITemplate extends Document {
   content: ITemplateContent
-  labels?: string[]
-}
-
-interface ITemplateMeta extends IKeyValuePairs {
-  name: string
-  version: string
+  labels: ILabel[]
 }
 
 interface ITemplateContent {
   data: ITemplateData
-  included?: ITemplateIncluded[]
+  included: ITemplateIncluded[]
 }
 
 interface ITemplateData {
   type: TemplateType
   attributes: IKeyValuePairs
-  relationships?: {[key in TemplateType]?: {data: IRelationship[]}}
+  relationships: {[key in TemplateType]?: {data: IRelationship[]}}
 }
 
 interface IRelationship {
@@ -89,14 +82,14 @@ interface ITemplateIncluded {
 export interface ITaskTemplate extends ITemplate {
   content: {
     data: ITaskTemplateData
-    included?: ITaskTemplateIncluded[]
+    included: ITaskTemplateIncluded[]
   }
 }
 
 interface ITaskTemplateData extends ITemplateData {
   type: TemplateType.Task
   attributes: {name: string; flux: string}
-  relationships?: {
+  relationships: {
     [TemplateType.Label]: {data: ILabelRelationship[]}
   }
 }
@@ -142,14 +135,14 @@ export interface ICellIncluded extends ITemplateIncluded {
 export interface IDashboardTemplate extends ITemplate {
   content: {
     data: IDashboardTemplateData
-    included?: IDashboardTemplateIncluded[]
+    included: IDashboardTemplateIncluded[]
   }
 }
 
 interface IDashboardTemplateData extends ITemplateData {
   type: TemplateType.Dashboard
   attributes: IDashboard
-  relationships?: {
+  relationships: {
     [TemplateType.Label]: {data: ILabelRelationship[]}
     [TemplateType.Cell]: {data: ICellRelationship[]}
   }
