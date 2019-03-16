@@ -495,19 +495,13 @@ export interface BucketLinks {
      * @type {string}
      * @memberof BucketLinks
      */
-    self?: string;
+    labels?: string;
     /**
      * URI of resource.
      * @type {string}
      * @memberof BucketLinks
      */
-    org?: string;
-    /**
-     * URI of resource.
-     * @type {string}
-     * @memberof BucketLinks
-     */
-    write?: string;
+    logs?: string;
     /**
      * URI of resource.
      * @type {string}
@@ -519,7 +513,25 @@ export interface BucketLinks {
      * @type {string}
      * @memberof BucketLinks
      */
+    org?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof BucketLinks
+     */
     owners?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof BucketLinks
+     */
+    self?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof BucketLinks
+     */
+    write?: string;
 }
 
 /**
@@ -640,12 +652,6 @@ export interface Cell {
      * @memberof Cell
      */
     links?: CellLinks;
-    /**
-     * 
-     * @type {string}
-     * @memberof Cell
-     */
-    name?: string;
     /**
      * 
      * @type {number}
@@ -1762,10 +1768,10 @@ export interface Label {
     name?: string;
     /**
      * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
-     * @type {any}
+     * @type {{ [key: string]: string; }}
      * @memberof Label
      */
-    properties?: any;
+    properties?: { [key: string]: string; };
 }
 
 /**
@@ -2596,6 +2602,12 @@ export interface OrganizationLinks {
      * @memberof OrganizationLinks
      */
     dashboards?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof OrganizationLinks
+     */
+    logs?: string;
 }
 
 /**
@@ -3256,6 +3268,46 @@ export interface QueryVariablePropertiesValues {
 }
 
 /**
+ * 
+ * @export
+ * @interface Ready
+ */
+export interface Ready {
+    /**
+     * 
+     * @type {string}
+     * @memberof Ready
+     */
+    status?: Ready.StatusEnum;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Ready
+     */
+    start?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof Ready
+     */
+    up?: string;
+}
+
+/**
+ * @export
+ * @namespace Ready
+ */
+export namespace Ready {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum StatusEnum {
+        Ready = 'ready'
+    }
+}
+
+/**
  * expressions begin and end with `/` and are regular expressions with syntax accepted by RE2
  * @export
  * @interface RegexpLiteral
@@ -3814,12 +3866,6 @@ export interface ScraperTargetResponse extends ScraperTargetRequest {
      */
     bucket?: string;
     /**
-     * name of scraper target
-     * @type {string}
-     * @memberof ScraperTargetResponse
-     */
-    name?: string;
-    /**
      * 
      * @type {any}
      * @memberof ScraperTargetResponse
@@ -4270,35 +4316,41 @@ export namespace TaskCreateRequest {
  */
 export interface TaskLinks {
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof TaskLinks
      */
     self?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof TaskLinks
      */
     owners?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof TaskLinks
      */
     members?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof TaskLinks
      */
     runs?: string;
     /**
-     * 
+     * URI of resource.
      * @type {string}
      * @memberof TaskLinks
      */
     logs?: string;
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof TaskLinks
+     */
+    labels?: string;
 }
 
 /**
@@ -7920,7 +7972,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+        bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -13018,7 +13070,7 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+        orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -14450,11 +14502,10 @@ export const ReadyApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
-         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
+        readyGet(options: any = {}): RequestArgs {
             const localVarPath = `/ready`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -14464,10 +14515,6 @@ export const ReadyApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -14491,12 +14538,11 @@ export const ReadyApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
-         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
-            const localVarAxiosArgs = ReadyApiAxiosParamCreator(configuration).readyGet(zapTraceSpan, options);
+        readyGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Ready> {
+            const localVarAxiosArgs = ReadyApiAxiosParamCreator(configuration).readyGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14514,12 +14560,11 @@ export const ReadyApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
-         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(zapTraceSpan?: string, options?: any) {
-            return ReadyApiFp(configuration).readyGet(zapTraceSpan, options)(axios, basePath);
+        readyGet(options?: any) {
+            return ReadyApiFp(configuration).readyGet(options)(axios, basePath);
         },
     };
 };
@@ -14534,13 +14579,12 @@ export class ReadyApi extends BaseAPI {
     /**
      * 
      * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
-     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReadyApi
      */
-    public readyGet(zapTraceSpan?: string, options?: any) {
-        return ReadyApiFp(this.configuration).readyGet(zapTraceSpan, options)(this.axios, this.basePath);
+    public readyGet(options?: any) {
+        return ReadyApiFp(this.configuration).readyGet(options)(this.axios, this.basePath);
     }
 
 }
@@ -15198,7 +15242,7 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+        scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -17766,7 +17810,7 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+        tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
