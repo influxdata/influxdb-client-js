@@ -1675,46 +1675,6 @@ export interface InlineResponse200 {
 }
 
 /**
- * 
- * @export
- * @interface InlineResponse2001
- */
-export interface InlineResponse2001 {
-    /**
-     * 
-     * @type {Array<Task>}
-     * @memberof InlineResponse2001
-     */
-    tasks?: Array<Task>;
-    /**
-     * 
-     * @type {Links}
-     * @memberof InlineResponse2001
-     */
-    links?: Links;
-}
-
-/**
- * 
- * @export
- * @interface InlineResponse2002
- */
-export interface InlineResponse2002 {
-    /**
-     * 
-     * @type {Array<Run>}
-     * @memberof InlineResponse2002
-     */
-    runs?: Array<Run>;
-    /**
-     * 
-     * @type {Links}
-     * @memberof InlineResponse2002
-     */
-    links?: Links;
-}
-
-/**
  * represents integer numbers
  * @export
  * @interface IntegerLiteral
@@ -1814,6 +1774,12 @@ export interface LabelResponse {
  * @interface LabelUpdate
  */
 export interface LabelUpdate {
+    /**
+     * 
+     * @type {string}
+     * @memberof LabelUpdate
+     */
+    name?: string;
     /**
      * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
      * @type {any}
@@ -3792,6 +3758,26 @@ export interface RunManually {
 /**
  * 
  * @export
+ * @interface Runs
+ */
+export interface Runs {
+    /**
+     * 
+     * @type {Links}
+     * @memberof Runs
+     */
+    links?: Links;
+    /**
+     * 
+     * @type {Array<Run>}
+     * @memberof Runs
+     */
+    runs?: Array<Run>;
+}
+
+/**
+ * 
+ * @export
  * @interface ScraperTargetRequest
  */
 export interface ScraperTargetRequest {
@@ -4416,6 +4402,26 @@ export namespace TaskUpdateRequest {
         Active = 'active',
         Inactive = 'inactive'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface Tasks
+ */
+export interface Tasks {
+    /**
+     * 
+     * @type {Links}
+     * @memberof Tasks
+     */
+    links?: Links;
+    /**
+     * 
+     * @type {Array<Task>}
+     * @memberof Tasks
+     */
+    tasks?: Array<Task>;
 }
 
 /**
@@ -8036,7 +8042,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -8083,7 +8089,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -17750,7 +17756,7 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001> {
+        tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Tasks> {
             const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -17986,7 +17992,7 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2002> {
+        tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Runs> {
             const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -19236,7 +19242,7 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
+        telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
             const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -22064,7 +22070,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
+        bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
             const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -22111,7 +22117,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceMembers> {
+        bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceOwners> {
             const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
