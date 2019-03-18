@@ -1,5 +1,5 @@
 import {Bucket, Cell, Dashboard, Task, Telegraf, View, Document} from '../api'
-import {Label as APILabel} from '../api'
+import {Label as APILabel, DocumentListEntry} from '../api'
 
 interface KV {
   [x: string]: string
@@ -153,3 +153,7 @@ export interface IDashboardTemplate extends ITemplateBase {
 }
 
 export type ITemplate = ITaskTemplate | IDashboardTemplate
+
+export interface TemplateSummary extends DocumentListEntry {
+  labels: ILabel[]
+}
