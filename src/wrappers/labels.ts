@@ -56,13 +56,10 @@ export default class {
     return addLabelDefaults(label)
   }
 
-  public async update(
-    id: string,
-    properties: ILabelProperties
-  ): Promise<ILabel> {
+  public async update(id: string, l: ILabel): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsLabelIDPatch(id, {properties})
+    } = await this.service.labelsLabelIDPatch(id, l)
 
     if (!label) {
       throw new Error('Failed to update label')
