@@ -59,7 +59,7 @@ interface IKeyValuePairs {
 // Templates
 interface ITemplateBase extends Document {
   content: {data: ITemplateData; included: ITemplateIncluded[]}
-  labels: ILabel[]
+  labels?: ILabel[]
 }
 
 // TODO: be more specific about what attributes can be

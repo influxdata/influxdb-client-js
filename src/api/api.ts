@@ -1202,7 +1202,7 @@ export interface Document {
      * @type {Array<Label>}
      * @memberof Document
      */
-    labels: Array<Label>;
+    labels?: Array<Label>;
 }
 
 /**
@@ -1266,7 +1266,7 @@ export interface DocumentListEntry {
      * @type {Array<Label>}
      * @memberof DocumentListEntry
      */
-    labels: Array<Label>;
+    labels?: Array<Label>;
 }
 
 /**

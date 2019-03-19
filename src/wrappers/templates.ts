@@ -2,16 +2,22 @@ import {TemplatesApi, DocumentListEntry, Document, DocumentCreate} from '../api'
 import {ITemplate, TemplateSummary} from '../types'
 import {addLabelDefaults} from './labels'
 
-const addTemplateDefaults = (d: Document): ITemplate => ({
-  ...d,
-  content: {data: {}, included: [], ...d.content},
-  labels: d.labels.map(addLabelDefaults),
-})
+const addTemplateDefaults = (d: Document): ITemplate => {
+  const labels = d.labels || []
+  return {
+    ...d,
+    content: {data: {}, included: [], ...d.content},
+    labels: labels.map(addLabelDefaults),
+  }
+}
 
-const addTemplateSummaryDefaults = (d: DocumentListEntry): TemplateSummary => ({
-  ...d,
-  labels: d.labels.map(addLabelDefaults),
-})
+const addTemplateSummaryDefaults = (d: DocumentListEntry): TemplateSummary => {
+  const labels = d.labels || []
+  return {
+    ...d,
+    labels: labels.map(addLabelDefaults),
+  }
+}
 
 export default class {
   private service: TemplatesApi
