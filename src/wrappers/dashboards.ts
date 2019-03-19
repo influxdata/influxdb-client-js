@@ -302,7 +302,10 @@ export default class {
       labelsIncluded
     )
 
-    const createdLabels = await this.createLabels(labelsToCreate)
+    const createdLabels = await this.createLabels(
+      dashboard.orgID,
+      labelsToCreate
+    )
     const createdLabelIDs = createdLabels.map(l => l.id || '')
 
     await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd])
@@ -315,13 +318,14 @@ export default class {
   }
 
   private async createLabels(
+    orgID: string,
     labelsToCreate: ILabelIncluded[]
   ): Promise<Label[]> {
     const pendingLabels = labelsToCreate.map(l => {
       const {
         attributes: {name, properties},
       } = l
-      return this.labelsService.labelsPost({name, properties})
+      return this.labelsService.labelsPost({name, properties, orgID})
     })
 
     const labelsResponse = await Promise.all(pendingLabels)

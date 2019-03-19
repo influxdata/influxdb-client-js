@@ -41,13 +41,14 @@ export default class {
     return (labels || []).map(addLabelDefaults)
   }
 
-  public async create(
-    name: string,
+  public async create(request: {
+    orgID: string
+    name: string
     properties: ILabelProperties
-  ): Promise<ILabel> {
+  }): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsPost({name, properties})
+    } = await this.service.labelsPost(request)
 
     if (!label) {
       throw new Error('Failed to create label')

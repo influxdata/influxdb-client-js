@@ -1725,11 +1725,43 @@ export interface Label {
      * @type {string}
      * @memberof Label
      */
+    orgID?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Label
+     */
     name?: string;
     /**
      * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
      * @type {{ [key: string]: string; }}
      * @memberof Label
+     */
+    properties?: { [key: string]: string; };
+}
+
+/**
+ * 
+ * @export
+ * @interface LabelCreateRequest
+ */
+export interface LabelCreateRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof LabelCreateRequest
+     */
+    orgID: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LabelCreateRequest
+     */
+    name?: string;
+    /**
+     * Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
+     * @type {{ [key: string]: string; }}
+     * @memberof LabelCreateRequest
      */
     properties?: { [key: string]: string; };
 }
@@ -2752,7 +2784,13 @@ export namespace PermissionResource {
         Sources = 'sources',
         Tasks = 'tasks',
         Telegrafs = 'telegrafs',
-        Users = 'users'
+        Users = 'users',
+        Variables = 'variables',
+        Scrapers = 'scrapers',
+        Secrets = 'secrets',
+        Labels = 'labels',
+        Views = 'views',
+        Documents = 'documents'
     }
 }
 
@@ -4453,14 +4491,6 @@ export interface Telegraf extends TelegrafRequest {
 /**
  * 
  * @export
- * @interface TelegrafPluginConfig
- */
-export interface TelegrafPluginConfig {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputCpu
  */
 export interface TelegrafPluginInputCpu {
@@ -4482,12 +4512,6 @@ export interface TelegrafPluginInputCpu {
      * @memberof TelegrafPluginInputCpu
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputCpu
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -4514,21 +4538,6 @@ export namespace TelegrafPluginInputCpu {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputCpuRequest
- */
-export interface TelegrafPluginInputCpuRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputCpuRequest
- */
-export namespace TelegrafPluginInputCpuRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputDisk
  */
 export interface TelegrafPluginInputDisk {
@@ -4550,12 +4559,6 @@ export interface TelegrafPluginInputDisk {
      * @memberof TelegrafPluginInputDisk
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputDisk
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -4582,21 +4585,6 @@ export namespace TelegrafPluginInputDisk {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputDiskRequest
- */
-export interface TelegrafPluginInputDiskRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputDiskRequest
- */
-export namespace TelegrafPluginInputDiskRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputDiskio
  */
 export interface TelegrafPluginInputDiskio {
@@ -4618,12 +4606,6 @@ export interface TelegrafPluginInputDiskio {
      * @memberof TelegrafPluginInputDiskio
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputDiskio
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -4645,21 +4627,6 @@ export namespace TelegrafPluginInputDiskio {
     export enum TypeEnum {
         Input = 'input'
     }
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputDiskioRequest
- */
-export interface TelegrafPluginInputDiskioRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputDiskioRequest
- */
-export namespace TelegrafPluginInputDiskioRequest {
 }
 
 /**
@@ -4732,21 +4699,6 @@ export interface TelegrafPluginInputDockerConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputDockerRequest
- */
-export interface TelegrafPluginInputDockerRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputDockerRequest
- */
-export namespace TelegrafPluginInputDockerRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputFile
  */
 export interface TelegrafPluginInputFile {
@@ -4814,21 +4766,6 @@ export interface TelegrafPluginInputFileConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputFileRequest
- */
-export interface TelegrafPluginInputFileRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputFileRequest
- */
-export namespace TelegrafPluginInputFileRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputKernel
  */
 export interface TelegrafPluginInputKernel {
@@ -4850,12 +4787,6 @@ export interface TelegrafPluginInputKernel {
      * @memberof TelegrafPluginInputKernel
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputKernel
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -4877,21 +4808,6 @@ export namespace TelegrafPluginInputKernel {
     export enum TypeEnum {
         Input = 'input'
     }
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputKernelRequest
- */
-export interface TelegrafPluginInputKernelRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputKernelRequest
- */
-export namespace TelegrafPluginInputKernelRequest {
 }
 
 /**
@@ -4964,21 +4880,6 @@ export interface TelegrafPluginInputKubernetesConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputKubernetesRequest
- */
-export interface TelegrafPluginInputKubernetesRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputKubernetesRequest
- */
-export namespace TelegrafPluginInputKubernetesRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputLogParser
  */
 export interface TelegrafPluginInputLogParser {
@@ -5046,21 +4947,6 @@ export interface TelegrafPluginInputLogParserConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputLogParserRequest
- */
-export interface TelegrafPluginInputLogParserRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputLogParserRequest
- */
-export namespace TelegrafPluginInputLogParserRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputMem
  */
 export interface TelegrafPluginInputMem {
@@ -5082,12 +4968,6 @@ export interface TelegrafPluginInputMem {
      * @memberof TelegrafPluginInputMem
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputMem
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5114,21 +4994,6 @@ export namespace TelegrafPluginInputMem {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputMemRequest
- */
-export interface TelegrafPluginInputMemRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputMemRequest
- */
-export namespace TelegrafPluginInputMemRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputNet
  */
 export interface TelegrafPluginInputNet {
@@ -5150,12 +5015,6 @@ export interface TelegrafPluginInputNet {
      * @memberof TelegrafPluginInputNet
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputNet
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5182,21 +5041,6 @@ export namespace TelegrafPluginInputNet {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputNetRequest
- */
-export interface TelegrafPluginInputNetRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputNetRequest
- */
-export namespace TelegrafPluginInputNetRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputNetResponse
  */
 export interface TelegrafPluginInputNetResponse {
@@ -5218,12 +5062,6 @@ export interface TelegrafPluginInputNetResponse {
      * @memberof TelegrafPluginInputNetResponse
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputNetResponse
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5250,21 +5088,6 @@ export namespace TelegrafPluginInputNetResponse {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputNetResponseRequest
- */
-export interface TelegrafPluginInputNetResponseRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputNetResponseRequest
- */
-export namespace TelegrafPluginInputNetResponseRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputNginx
  */
 export interface TelegrafPluginInputNginx {
@@ -5286,12 +5109,6 @@ export interface TelegrafPluginInputNginx {
      * @memberof TelegrafPluginInputNginx
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputNginx
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5318,21 +5135,6 @@ export namespace TelegrafPluginInputNginx {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputNginxRequest
- */
-export interface TelegrafPluginInputNginxRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputNginxRequest
- */
-export namespace TelegrafPluginInputNginxRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputProcesses
  */
 export interface TelegrafPluginInputProcesses {
@@ -5354,12 +5156,6 @@ export interface TelegrafPluginInputProcesses {
      * @memberof TelegrafPluginInputProcesses
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputProcesses
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5381,21 +5177,6 @@ export namespace TelegrafPluginInputProcesses {
     export enum TypeEnum {
         Input = 'input'
     }
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputProcessesRequest
- */
-export interface TelegrafPluginInputProcessesRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputProcessesRequest
- */
-export namespace TelegrafPluginInputProcessesRequest {
 }
 
 /**
@@ -5468,21 +5249,6 @@ export interface TelegrafPluginInputProcstatConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputProcstatRequest
- */
-export interface TelegrafPluginInputProcstatRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputProcstatRequest
- */
-export namespace TelegrafPluginInputProcstatRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputPrometheus
  */
 export interface TelegrafPluginInputPrometheus {
@@ -5545,21 +5311,6 @@ export interface TelegrafPluginInputPrometheusConfig {
      * @memberof TelegrafPluginInputPrometheusConfig
      */
     urls?: Array<string>;
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputPrometheusRequest
- */
-export interface TelegrafPluginInputPrometheusRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputPrometheusRequest
- */
-export namespace TelegrafPluginInputPrometheusRequest {
 }
 
 /**
@@ -5638,21 +5389,6 @@ export interface TelegrafPluginInputRedisConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputRedisRequest
- */
-export interface TelegrafPluginInputRedisRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputRedisRequest
- */
-export namespace TelegrafPluginInputRedisRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputSwap
  */
 export interface TelegrafPluginInputSwap {
@@ -5674,12 +5410,6 @@ export interface TelegrafPluginInputSwap {
      * @memberof TelegrafPluginInputSwap
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputSwap
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5701,21 +5431,6 @@ export namespace TelegrafPluginInputSwap {
     export enum TypeEnum {
         Input = 'input'
     }
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputSwapRequest
- */
-export interface TelegrafPluginInputSwapRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputSwapRequest
- */
-export namespace TelegrafPluginInputSwapRequest {
 }
 
 /**
@@ -5788,21 +5503,6 @@ export interface TelegrafPluginInputSyslogConfig {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputSyslogRequest
- */
-export interface TelegrafPluginInputSyslogRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputSyslogRequest
- */
-export namespace TelegrafPluginInputSyslogRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputSystem
  */
 export interface TelegrafPluginInputSystem {
@@ -5824,12 +5524,6 @@ export interface TelegrafPluginInputSystem {
      * @memberof TelegrafPluginInputSystem
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputSystem
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5856,21 +5550,6 @@ export namespace TelegrafPluginInputSystem {
 /**
  * 
  * @export
- * @interface TelegrafPluginInputSystemRequest
- */
-export interface TelegrafPluginInputSystemRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputSystemRequest
- */
-export namespace TelegrafPluginInputSystemRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginInputTail
  */
 export interface TelegrafPluginInputTail {
@@ -5892,12 +5571,6 @@ export interface TelegrafPluginInputTail {
      * @memberof TelegrafPluginInputTail
      */
     comment?: string;
-    /**
-     * 
-     * @type {TelegrafPluginConfig}
-     * @memberof TelegrafPluginInputTail
-     */
-    config: TelegrafPluginConfig;
 }
 
 /**
@@ -5919,21 +5592,6 @@ export namespace TelegrafPluginInputTail {
     export enum TypeEnum {
         Input = 'input'
     }
-}
-
-/**
- * 
- * @export
- * @interface TelegrafPluginInputTailRequest
- */
-export interface TelegrafPluginInputTailRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginInputTailRequest
- */
-export namespace TelegrafPluginInputTailRequest {
 }
 
 /**
@@ -6041,21 +5699,6 @@ export namespace TelegrafPluginOutputFileConfigFiles {
 /**
  * 
  * @export
- * @interface TelegrafPluginOutputFileRequest
- */
-export interface TelegrafPluginOutputFileRequest extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginOutputFileRequest
- */
-export namespace TelegrafPluginOutputFileRequest {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafPluginOutputInfluxDBV2
  */
 export interface TelegrafPluginOutputInfluxDBV2 {
@@ -6141,21 +5784,6 @@ export interface TelegrafPluginOutputInfluxDBV2Config {
 /**
  * 
  * @export
- * @interface TelegrafPluginOutputInfluxDBV2Request
- */
-export interface TelegrafPluginOutputInfluxDBV2Request extends TelegrafRequestPlugin {
-}
-
-/**
- * @export
- * @namespace TelegrafPluginOutputInfluxDBV2Request
- */
-export namespace TelegrafPluginOutputInfluxDBV2Request {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafRequest
  */
 export interface TelegrafRequest {
@@ -6208,29 +5836,9 @@ export interface TelegrafRequestAgent {
 /**
  * 
  * @export
- * @interface TelegrafRequestConfig
- */
-export interface TelegrafRequestConfig {
-}
-
-/**
- * 
- * @export
  * @interface TelegrafRequestPlugin
  */
 export interface TelegrafRequestPlugin {
-    /**
-     * 
-     * @type {string}
-     * @memberof TelegrafRequestPlugin
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TelegrafRequestPlugin
-     */
-    type: TelegrafRequestPlugin.TypeEnum;
 }
 
 /**
@@ -6238,14 +5846,6 @@ export interface TelegrafRequestPlugin {
  * @namespace TelegrafRequestPlugin
  */
 export namespace TelegrafRequestPlugin {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Input = 'input',
-        Output = 'output'
-    }
 }
 
 /**
@@ -11574,14 +11174,14 @@ export const LabelsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Create a label
-         * @param {Label} label label to create
+         * @param {LabelCreateRequest} labelCreateRequest label to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsPost(label: Label, options: any = {}): RequestArgs {
-            // verify required parameter 'label' is not null or undefined
-            if (label === null || label === undefined) {
-                throw new RequiredError('label','Required parameter label was null or undefined when calling labelsPost.');
+        labelsPost(labelCreateRequest: LabelCreateRequest, options: any = {}): RequestArgs {
+            // verify required parameter 'labelCreateRequest' is not null or undefined
+            if (labelCreateRequest === null || labelCreateRequest === undefined) {
+                throw new RequiredError('labelCreateRequest','Required parameter labelCreateRequest was null or undefined when calling labelsPost.');
             }
             const localVarPath = `/labels`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -11599,8 +11199,8 @@ export const LabelsApiAxiosParamCreator = function (configuration?: Configuratio
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Label" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(label || {}) : (label || "");
+            const needsSerialization = (<any>"LabelCreateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelCreateRequest || {}) : (labelCreateRequest || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -11678,12 +11278,12 @@ export const LabelsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a label
-         * @param {Label} label label to create
+         * @param {LabelCreateRequest} labelCreateRequest label to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsPost(label: Label, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
-            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsPost(label, options);
+        labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsPost(labelCreateRequest, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11744,12 +11344,12 @@ export const LabelsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Create a label
-         * @param {Label} label label to create
+         * @param {LabelCreateRequest} labelCreateRequest label to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsPost(label: Label, options?: any) {
-            return LabelsApiFp(configuration).labelsPost(label, options)(axios, basePath);
+        labelsPost(labelCreateRequest: LabelCreateRequest, options?: any) {
+            return LabelsApiFp(configuration).labelsPost(labelCreateRequest, options)(axios, basePath);
         },
     };
 };
@@ -11815,13 +11415,13 @@ export class LabelsApi extends BaseAPI {
     /**
      * 
      * @summary Create a label
-     * @param {Label} label label to create
+     * @param {LabelCreateRequest} labelCreateRequest label to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LabelsApi
      */
-    public labelsPost(label: Label, options?: any) {
-        return LabelsApiFp(this.configuration).labelsPost(label, options)(this.axios, this.basePath);
+    public labelsPost(labelCreateRequest: LabelCreateRequest, options?: any) {
+        return LabelsApiFp(this.configuration).labelsPost(labelCreateRequest, options)(this.axios, this.basePath);
     }
 
 }

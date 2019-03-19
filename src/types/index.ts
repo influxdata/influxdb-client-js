@@ -2,7 +2,7 @@ import {Bucket, Cell, Dashboard, Task, Telegraf, View, Document} from '../api'
 import {Label as APILabel, DocumentListEntry} from '../api'
 
 interface KV {
-  [x: string]: string
+  [key: string]: string
 }
 
 export interface ILabelProperties extends KV {
