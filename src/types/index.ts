@@ -1,4 +1,13 @@
-import {Bucket, Cell, Dashboard, Task, Telegraf, View, Document} from '../api'
+import {
+  Bucket,
+  Cell,
+  Dashboard,
+  Task,
+  Telegraf,
+  View,
+  Document,
+  Variable,
+} from '../api'
 import {Label as APILabel, DocumentListEntry} from '../api'
 
 interface KV {
@@ -50,6 +59,7 @@ export enum TemplateType {
   Dashboard = 'dashboard',
   View = 'view',
   Cell = 'cell',
+  Variable = 'variable',
 }
 
 interface IKeyValuePairs {
@@ -76,7 +86,11 @@ interface ITemplateIncluded {
 }
 
 // Template Relationships
-type IRelationship = ICellRelationship | ILabelRelationship | IViewRelationship
+type IRelationship =
+  | ICellRelationship
+  | ILabelRelationship
+  | IViewRelationship
+  | IVariableRelationship
 
 interface ICellRelationship {
   type: TemplateType.Cell
@@ -85,6 +99,11 @@ interface ICellRelationship {
 
 export interface ILabelRelationship {
   type: TemplateType.Label
+  id: string
+}
+
+export interface IVariableRelationship {
+  type: TemplateType.Variable
   id: string
 }
 
@@ -112,12 +131,18 @@ export interface ILabelIncluded extends ITemplateIncluded {
   attributes: ILabel
 }
 
+export interface IVariableIncluded extends ITemplateIncluded {
+  type: TemplateType.Variable
+  attributes: Variable
+}
+
 export type ITaskTemplateIncluded = ILabelIncluded
 
 export type IDashboardTemplateIncluded =
   | ICellIncluded
   | IViewIncluded
   | ILabelIncluded
+  | IVariableIncluded
 
 // Template Datas
 interface ITaskTemplateData extends ITemplateData {
@@ -134,6 +159,7 @@ interface IDashboardTemplateData extends ITemplateData {
   relationships: {
     [TemplateType.Label]: {data: ILabelRelationship[]}
     [TemplateType.Cell]: {data: ICellRelationship[]}
+    [TemplateType.Variable]: {data: IVariableRelationship[]}
   }
 }
 
