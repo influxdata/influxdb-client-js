@@ -57,6 +57,17 @@ export default class {
     return addLabelDefaults(label)
   }
 
+  public async createAll(
+    labels: {
+      orgID: string
+      name: string
+      properties: ILabelProperties
+    }[]
+  ): Promise<ILabel[]> {
+    const pendingLabels = labels.map(r => this.create(r))
+    return await Promise.all(pendingLabels)
+  }
+
   public async update(id: string, updates: Partial<ILabel>): Promise<ILabel> {
     const original = await this.get(id)
     const {
