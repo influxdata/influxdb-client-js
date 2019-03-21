@@ -39,6 +39,12 @@ export default class {
     return authorizations || []
   }
 
+  public async create(auth: Authorization): Promise<Authorization> {
+    const {data} = await this.service.authorizationsPost(auth)
+
+    return data
+  }
+
   public async update(
     id: string,
     update: Partial<Authorization>
