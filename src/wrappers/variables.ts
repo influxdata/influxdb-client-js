@@ -45,6 +45,11 @@ export default class {
     return data
   }
 
+  public async createAll(variables: Variable[]): Promise<Variable[]> {
+    const pendingVariables = variables.map(v => this.create(v))
+    return await Promise.all(pendingVariables)
+  }
+
   public async delete(id: string): Promise<Response> {
     const {data} = await this.service.variablesVariableIDDelete(id)
 
