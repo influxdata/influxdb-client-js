@@ -49,4 +49,12 @@ export default class {
 
     return addTemplateDefaults(data)
   }
+
+  public async delete(templateID: string): Promise<Response> {
+    const {data} = await this.service.documentsTemplatesTemplateIDDelete(
+      templateID
+    )
+
+    return data
+  }
 }

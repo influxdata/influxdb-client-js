@@ -1655,26 +1655,6 @@ export interface IndexExpression {
 }
 
 /**
- * 
- * @export
- * @interface InlineResponse200
- */
-export interface InlineResponse200 {
-    /**
-     * 
-     * @type {Array<Label>}
-     * @memberof InlineResponse200
-     */
-    labels?: Array<Label>;
-    /**
-     * 
-     * @type {Links}
-     * @memberof InlineResponse200
-     */
-    links?: Links;
-}
-
-/**
  * represents integer numbers
  * @export
  * @interface IntegerLiteral
@@ -4234,7 +4214,7 @@ export interface Task {
      */
     cron?: string;
     /**
-     * Duration to delay after the schedule, before executing the task; parsed from flux.
+     * Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default.
      * @type {string}
      * @memberof Task
      */
@@ -6374,7 +6354,6 @@ export enum WritePrecision {
     Ms = 'ms',
     S = 's',
     Us = 'us',
-    U = 'u',
     Ns = 'ns'
 }
 
@@ -7610,7 +7589,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -14441,19 +14420,19 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary add a label to a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {Label} label label to add
+         * @param {LabelMapping} labelMapping label to add
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'scraperTargetID' is not null or undefined
             if (scraperTargetID === null || scraperTargetID === undefined) {
                 throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
             }
-            // verify required parameter 'label' is not null or undefined
-            if (label === null || label === undefined) {
-                throw new RequiredError('label','Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
             }
             const localVarPath = `/scrapers/{scraperTargetID}/labels`
                 .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
@@ -14476,8 +14455,8 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Label" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(label || {}) : (label || "");
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -14892,13 +14871,13 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * 
          * @summary add a label to a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {Label} label label to add
+         * @param {LabelMapping} labelMapping label to add
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200> {
-            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options);
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15093,13 +15072,13 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
          * 
          * @summary add a label to a scraper target
          * @param {string} scraperTargetID ID of the scraper target
-         * @param {Label} label label to add
+         * @param {LabelMapping} labelMapping label to add
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any) {
-            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options)(axios, basePath);
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -15275,14 +15254,14 @@ export class ScraperTargetsApi extends BaseAPI {
      * 
      * @summary add a label to a scraper target
      * @param {string} scraperTargetID ID of the scraper target
-     * @param {Label} label label to add
+     * @param {LabelMapping} labelMapping label to add
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScraperTargetsApi
      */
-    public scrapersScraperTargetIDLabelsPost(scraperTargetID: string, label: Label, zapTraceSpan?: string, options?: any) {
-        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    public scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -19479,6 +19458,44 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary delete a template document
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDDelete.');
+            }
+            const localVarPath = `/documents/templates/{templateID}`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -19600,6 +19617,21 @@ export const TemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary delete a template document
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -19659,6 +19691,17 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary delete a template document
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
@@ -19711,6 +19754,19 @@ export class TemplatesApi extends BaseAPI {
      */
     public documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any) {
         return TemplatesApiFp(this.configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a template document
+     * @param {string} templateID ID of template
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
