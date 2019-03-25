@@ -1,6 +1,7 @@
 import {Label as APILabel, LabelsApi} from '../api'
 import {ILabel} from '../types'
 import {ILabelProperties} from '../types'
+import saga from '../utils/sagas'
 
 const DEFAULT_LABEL_COLOR = '#326BBA'
 
@@ -64,8 +65,20 @@ export default class {
       properties: ILabelProperties
     }[]
   ): Promise<ILabel[]> {
-    const pendingLabels = labels.map(r => this.create(r))
-    return await Promise.all(pendingLabels)
+    const pendingLabels = labels.map(r => {
+      return {
+        action: async () => {
+          return await this.create(r)
+        },
+        rollback: async (r?: ILabel) => {
+          if (r && r.id) {
+            this.delete(r.id)
+          }
+        },
+      }
+    })
+
+    return await saga(pendingLabels)
   }
 
   public async update(id: string, updates: Partial<ILabel>): Promise<ILabel> {
