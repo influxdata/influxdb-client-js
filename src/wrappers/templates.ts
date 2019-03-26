@@ -44,6 +44,19 @@ export default class {
     return addTemplateDefaults(data)
   }
 
+  public async update(
+    id: string,
+    props: Partial<ITemplate>
+  ): Promise<ITemplate> {
+    const original = await this.get(id)
+    const {data} = await this.service.documentsTemplatesTemplateIDPut(id, {
+      ...original,
+      ...props,
+    })
+
+    return addTemplateDefaults(data)
+  }
+
   public async create(templateCreate: DocumentCreate): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesPost(templateCreate)
 
