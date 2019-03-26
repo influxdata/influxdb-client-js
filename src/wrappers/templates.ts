@@ -57,4 +57,28 @@ export default class {
 
     return data
   }
+
+  public async clone(templateID: string): Promise<ITemplate> {
+    const {data} = await this.service.documentsTemplatesTemplateIDGet(
+      templateID
+    )
+
+    let labels: string[] = []
+    if (data.labels) {
+      labels = data.labels.map(l => l.name).filter((b): b is string => !!b)
+    }
+
+    const name = `${data.meta.name} (clone)`
+
+    const meta = {...data.meta, name}
+    const templateToCreate = {...data, labels, meta}
+
+    const createdTemplate = await this.create(templateToCreate)
+
+    if (!createdTemplate || !createdTemplate.id) {
+      throw new Error('Could not clone template')
+    }
+
+    return createdTemplate
+  }
 }
