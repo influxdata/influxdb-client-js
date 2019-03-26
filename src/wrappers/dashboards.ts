@@ -4,20 +4,10 @@ import {
   CreateDashboardRequest,
   Dashboard,
   DashboardsApi,
-  Label,
-  LabelsApi,
   ProtosApi,
   View,
 } from '../api'
-import {
-  ICellIncluded,
-  IDashboard,
-  IDashboardTemplate,
-  IDashboardTemplateIncluded,
-  ILabel,
-  ILabelIncluded,
-  TemplateType,
-} from '../types'
+import {IDashboard, ILabel} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addDefaults = (dashboard: Dashboard): IDashboard => {
@@ -39,13 +29,11 @@ export default class {
   private service: DashboardsApi
   private cellsService: CellsApi
   private protosService: ProtosApi
-  private labelsService: LabelsApi
 
   constructor(basePath: string) {
     this.cellsService = new CellsApi({basePath})
     this.protosService = new ProtosApi({basePath})
     this.service = new DashboardsApi({basePath})
-    this.labelsService = new LabelsApi({basePath})
   }
 
   public async get(id: string): Promise<IDashboard> {
@@ -240,198 +228,6 @@ export default class {
     await this.cloneLabels(original, createdDashboard)
 
     return this.get(createdDashboard.id)
-  }
-
-  public async createFromTemplate(
-    template: IDashboardTemplate,
-    orgID: string
-  ): Promise<IDashboard> {
-    const {content} = template
-
-    if (
-      content.data.type !== TemplateType.Dashboard ||
-      template.meta.version !== '1'
-    ) {
-      throw new Error('Can not create dashboard from this template')
-    }
-
-    const {name, description} = content.data.attributes
-
-    const createdDashboard = await this.create({orgID, name, description})
-
-    if (!createdDashboard || !createdDashboard.id) {
-      throw new Error('Failed to create dashboard')
-    }
-
-    await Promise.all([
-      await this.createLabelsFromTemplate(template, createdDashboard),
-      await this.createCellsFromTemplate(template, createdDashboard),
-    ])
-
-    const dashboard = await this.get(createdDashboard.id)
-
-    return addDefaults(dashboard)
-  }
-
-  private async createLabelsFromTemplate(
-    template: IDashboardTemplate,
-    dashboard: IDashboard
-  ) {
-    if (!dashboard || !dashboard.id) {
-      throw new Error('Can not add labels to undefined Dashboard')
-    }
-
-    const {
-      content: {included},
-    } = template
-
-    if (!included || !included.length) {
-      return
-    }
-
-    const labelsIncluded = this.findIncludedLabels(included)
-
-    const {
-      data: {labels},
-    } = await this.labelsService.labelsGet()
-    const existingLabels = labels || []
-
-    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded)
-    const labelsToCreate = this.findLabelsToCreate(
-      existingLabels,
-      labelsIncluded
-    )
-
-    const createdLabels = await this.createLabels(
-      dashboard.orgID,
-      labelsToCreate
-    )
-    const createdLabelIDs = createdLabels.map(l => l.id || '')
-
-    await this.addLabels(dashboard.id, [...createdLabelIDs, ...labelIDsToAdd])
-  }
-
-  private findIncludedLabels(resources: IDashboardTemplateIncluded[]) {
-    return resources.filter(
-      (r): r is ILabelIncluded => r.type === TemplateType.Label
-    )
-  }
-
-  private async createLabels(
-    orgID: string,
-    labelsToCreate: ILabelIncluded[]
-  ): Promise<Label[]> {
-    const pendingLabels = labelsToCreate.map(l => {
-      const {
-        attributes: {name, properties},
-      } = l
-      return this.labelsService.labelsPost({name, properties, orgID})
-    })
-
-    const labelsResponse = await Promise.all(pendingLabels)
-
-    return labelsResponse
-      .map(lr => lr.data.label)
-      .filter((cl): cl is Label => !!cl)
-  }
-
-  private findLabelIDsToAdd(
-    currentLabels: Label[],
-    labels: ILabelIncluded[]
-  ): string[] {
-    return currentLabels
-      .filter(el => !!labels.find(l => el.name === l.attributes.name))
-      .map(l => l.id || '')
-  }
-
-  private findLabelsToCreate(
-    currentLabels: Label[],
-    labels: ILabelIncluded[]
-  ): ILabelIncluded[] {
-    return labels.filter(
-      l => !currentLabels.find(el => el.name === l.attributes.name)
-    )
-  }
-
-  private async createCellsFromTemplate(
-    template: IDashboardTemplate,
-    createdDashboard: IDashboard
-  ) {
-    const {content} = template
-
-    if (
-      !content.data.relationships ||
-      !content.data.relationships[TemplateType.Cell]
-    ) {
-      return
-    }
-
-    const cellRelationships = content.data.relationships[TemplateType.Cell].data
-
-    const includedResources = content.included || []
-
-    const cellsToCreate = includedResources.reduce(
-      (acc, ir) => {
-        if (ir.type === TemplateType.Cell) {
-          const found = cellRelationships.some(
-            cr => cr.type === TemplateType.Cell && cr.id === ir.id
-          )
-          if (found) {
-            acc = [...acc, ir]
-          }
-        }
-        return acc
-      },
-      [] as ICellIncluded[]
-    )
-
-    const pendingCells = cellsToCreate.map(c => {
-      const {
-        attributes: {x, y, w, h},
-      } = c
-      return this.createCell(createdDashboard.id, {x, y, w, h})
-    })
-
-    const cellResponses = await Promise.all(pendingCells)
-
-    this.createViewsFromTemplate(
-      template,
-      cellResponses,
-      cellsToCreate,
-      createdDashboard
-    )
-  }
-
-  private async createViewsFromTemplate(
-    template: IDashboardTemplate,
-    createdCells: Cell[],
-    originalCellsIncluded: ICellIncluded[],
-    createdDashboard: IDashboard
-  ) {
-    const pendingViews = createdCells.map((c, i) => {
-      const cellFromTemplate = originalCellsIncluded[i]
-      const viewRelationship =
-        cellFromTemplate.relationships[TemplateType.View].data
-      const includedResources = template.content.included || []
-
-      const includedView = includedResources.find(ir => {
-        return ir.type === TemplateType.View && ir.id === viewRelationship.id
-      })
-
-      if (includedView) {
-        return this.updateView(
-          createdDashboard.id,
-          c.id || '',
-          includedView.attributes
-        )
-      }
-    })
-
-    const definedPendingViews = pendingViews.filter(
-      (pv): pv is Promise<View> => !!pv
-    )
-
-    await Promise.all(definedPendingViews)
   }
 
   private async cloneLabels(
