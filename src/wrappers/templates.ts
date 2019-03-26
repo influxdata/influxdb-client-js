@@ -58,20 +58,26 @@ export default class {
     return data
   }
 
-  public async clone(templateID: string): Promise<ITemplate> {
+  public async clone(templateID: string, orgID: string): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesTemplateIDGet(
       templateID
     )
 
-    let labels: string[] = []
-    if (data.labels) {
-      labels = data.labels.map(l => l.name).filter((b): b is string => !!b)
+    const {labels, content, meta} = data
+
+    let labelsData: string[] = []
+    if (labels) {
+      labelsData = labels.map(l => l.name).filter((b): b is string => !!b)
     }
 
-    const name = `${data.meta.name} (clone)`
+    const name = `${meta.name} (clone)`
 
-    const meta = {...data.meta, name}
-    const templateToCreate = {...data, labels, meta}
+    const templateToCreate = {
+      meta: {...meta, name},
+      content,
+      orgID,
+      labels: labelsData,
+    }
 
     const createdTemplate = await this.create(templateToCreate)
 
