@@ -1,11 +1,5 @@
-import {Label, LabelsApi, LogEvent, Run, Task, TasksApi, User} from '../api'
-import {
-  ILabel,
-  ILabelIncluded,
-  ITask,
-  ITaskTemplate,
-  TemplateType,
-} from '../types'
+import {LogEvent, Run, Task, TasksApi, User} from '../api'
+import {ILabel, ITask} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addDefaults = (task: Task): ITask => {
@@ -20,11 +14,9 @@ const addDefaultsToAll = (tasks: Task[]): ITask[] =>
 
 export default class {
   private service: TasksApi
-  private labelsService: LabelsApi
 
   constructor(basePath: string) {
     this.service = new TasksApi({basePath})
-    this.labelsService = new LabelsApi({basePath})
   }
 
   public async create(org: string, script: string): Promise<ITask> {
@@ -175,108 +167,6 @@ export default class {
     await this.cloneLabels(original, createdTask)
 
     return this.get(createdTask.id)
-  }
-
-  public async createFromTemplate(
-    template: ITaskTemplate,
-    orgID: string
-  ): Promise<ITask> {
-    const {content} = template
-
-    if (
-      content.data.type !== TemplateType.Task ||
-      template.meta.version !== '1'
-    ) {
-      throw new Error('Can not create task from this template')
-    }
-
-    const flux = content.data.attributes.flux
-
-    const createdTask = await this.createByOrgID(orgID, flux)
-
-    if (!createdTask || !createdTask.id) {
-      throw new Error('Could not create task')
-    }
-
-    await this.createLabelsFromTemplate(template, createdTask)
-
-    const task = await this.get(createdTask.id)
-
-    return task
-  }
-
-  private async createLabelsFromTemplate(
-    template: ITaskTemplate,
-    createdTask: ITask
-  ) {
-    if (!createdTask || !createdTask.id) {
-      throw new Error('Can not add labels to undefined Task')
-    }
-
-    const {
-      content: {included},
-    } = template
-
-    if (!included || !included.length) {
-      return
-    }
-
-    const labelsIncluded = included.filter(
-      (r): r is ILabelIncluded => r.type === TemplateType.Label
-    )
-
-    const {data} = await this.labelsService.labelsGet()
-    const existingLabels = data.labels || []
-
-    const labelIDsToAdd = this.findLabelIDsToAdd(existingLabels, labelsIncluded)
-    const labelsToCreate = this.findLabelsToCreate(
-      existingLabels,
-      labelsIncluded
-    )
-
-    const createdLabels = await this.createLabels(
-      createdTask.orgID,
-      labelsToCreate
-    )
-    const createdLabelIDs = createdLabels.map(l => l.id || '')
-
-    await this.addLabels(createdTask.id, [...createdLabelIDs, ...labelIDsToAdd])
-  }
-
-  private findLabelIDsToAdd(
-    currentLabels: Label[],
-    labels: ILabelIncluded[]
-  ): string[] {
-    return currentLabels
-      .filter(el => !!labels.find(l => l.attributes.name === el.name))
-      .map(l => l.id || '')
-  }
-
-  private findLabelsToCreate(
-    currentLabels: Label[],
-    labels: ILabelIncluded[]
-  ): ILabelIncluded[] {
-    return labels.filter(
-      l => !currentLabels.find(el => l.attributes.name === el.name)
-    )
-  }
-
-  private async createLabels(
-    orgID: string,
-    labelsToCreate: ILabelIncluded[]
-  ): Promise<Label[]> {
-    const pendingLabels = labelsToCreate.map(l => {
-      const name = l.attributes.name
-      const properties = l.attributes.properties
-
-      return this.labelsService.labelsPost({orgID, name, properties})
-    })
-
-    const labelsResponse = await Promise.all(pendingLabels)
-
-    return labelsResponse
-      .map(lr => lr.data.label)
-      .filter((cl): cl is Label => !!cl)
   }
 
   private async cloneLabels(
