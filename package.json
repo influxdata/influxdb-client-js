@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influx",
-  "version": "0.2.52",
+  "version": "0.2.53",
   "description": "Influxdb v2 client",
   "main": "dist/index.js",
   "scripts": {
