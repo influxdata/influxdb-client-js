@@ -1,4 +1,4 @@
-import {User, Users, UsersApi} from '../api'
+import {User, UsersApi} from '../api'
 
 export default class {
   private service: UsersApi
@@ -13,9 +13,15 @@ export default class {
     return data
   }
 
-  public async getAllUsers(): Promise<Users> {
-    const {data} = await this.service.usersGet()
+  public async get(id: string): Promise<User> {
+    const {data} = await this.service.usersUserIDGet(id)
 
     return data
+  }
+
+  public async getAll(): Promise<User[]> {
+    const {data} = await this.service.usersGet()
+
+    return data.users || []
   }
 }
