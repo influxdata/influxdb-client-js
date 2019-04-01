@@ -1,6 +1,7 @@
 import {Organization, Telegraf, TelegrafRequest, TelegrafsApi} from '../api'
 import {ILabel, ITelegraf} from '../types'
 import {addLabelDefaults} from './labels'
+import saga from '../utils/sagas'
 
 const addDefaults = (telegraf: Telegraf): ITelegraf => {
   return {
@@ -117,9 +118,20 @@ export default class {
   }
 
   public async addLabels(id: string, labels: ILabel[]): Promise<ILabel[]> {
-    const pendingLabels = labels.map(l => this.addLabel(id, l))
+    const pendingLabels = labels.map(l => {
+      return {
+        action: async () => {
+          return await this.addLabel(id, l)
+        },
+        rollback: async (r?: ILabel) => {
+          if (r && r.id) {
+            this.delete(r.id)
+          }
+        },
+      }
+    })
 
-    return Promise.all(pendingLabels)
+    return await saga(pendingLabels)
   }
 
   public async removeLabels(id: string, labels: ILabel[]): Promise<Response[]> {

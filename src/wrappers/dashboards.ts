@@ -9,6 +9,7 @@ import {
 } from '../api'
 import {IDashboard, ILabel} from '../types'
 import {addLabelDefaults} from './labels'
+import saga from '../utils/sagas'
 
 const addDefaults = (dashboard: Dashboard): IDashboard => {
   return {
@@ -163,11 +164,20 @@ export default class {
     dashboardID: string,
     labelIDs: string[]
   ): Promise<ILabel[]> {
-    return Promise.all(
-      labelIDs.map(labelID => {
-        return this.addLabel(dashboardID, labelID)
-      })
-    )
+    const pendingLabels = labelIDs.map(l => {
+      return {
+        action: async () => {
+          return await this.addLabel(dashboardID, l)
+        },
+        rollback: async (r?: ILabel) => {
+          if (r && r.id) {
+            this.delete(r.id)
+          }
+        },
+      }
+    })
+
+    return await saga(pendingLabels)
   }
 
   public async removeLabel(
