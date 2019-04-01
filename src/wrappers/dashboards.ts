@@ -182,6 +182,15 @@ export default class {
     return data
   }
 
+  public removeLabels(
+    dashboardID: string,
+    labelIDs: string[]
+  ): Promise<Response[]> {
+    const promises = labelIDs.map(l => this.removeLabel(dashboardID, l))
+
+    return Promise.all(promises)
+  }
+
   public async getView(dashboardID: string, cellID: string): Promise<View> {
     const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewGet(
       dashboardID,

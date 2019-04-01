@@ -103,12 +103,6 @@ export default class {
     return addLabelDefaults(data.label)
   }
 
-  public async addLabels(id: string, labels: ILabel[]): Promise<ILabel[]> {
-    const pendingLabels = labels.map(l => this.addLabel(id, l))
-
-    return Promise.all(pendingLabels)
-  }
-
   public async removeLabel(id: string, label: ILabel): Promise<Response> {
     if (!label.id) {
       throw new Error('label must have id')
@@ -120,5 +114,17 @@ export default class {
     )
 
     return data
+  }
+
+  public async addLabels(id: string, labels: ILabel[]): Promise<ILabel[]> {
+    const pendingLabels = labels.map(l => this.addLabel(id, l))
+
+    return Promise.all(pendingLabels)
+  }
+
+  public async removeLabels(id: string, labels: ILabel[]): Promise<Response[]> {
+    const promises = labels.map(l => this.removeLabel(id, l))
+
+    return Promise.all(promises)
   }
 }
