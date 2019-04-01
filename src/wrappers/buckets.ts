@@ -2,6 +2,11 @@ import {Bucket, BucketsApi} from '../api'
 import {IBucket} from '../types'
 import {addLabelDefaults} from './labels'
 
+type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>
+type BucketRest = Pick<Bucket, Exclude<keyof Bucket, keyof BucketPicked>>
+type BucketRequired = {[P in keyof BucketPicked]-?: BucketPicked[P]}
+type BucketCreate = BucketRequired & BucketRest
+
 const addDefaults = (bucket: Bucket): IBucket => ({
   ...bucket,
   labels: (bucket.labels || []).map(addLabelDefaults),
@@ -23,15 +28,21 @@ export default class {
     return addDefaults(data)
   }
 
-  public async getAllByOrg(org: string): Promise<IBucket[]> {
+  public async getAll(orgID?: string): Promise<IBucket[]> {
     const {
       data: {buckets},
-    } = await this.service.bucketsGet(undefined, undefined, undefined, org)
+    } = await this.service.bucketsGet(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      orgID
+    )
 
     return addDefaultsToAll(buckets || [])
   }
 
-  public async create(bucket: Bucket): Promise<IBucket> {
+  public async create(bucket: BucketCreate): Promise<IBucket> {
     const {data} = await this.service.bucketsPost(bucket)
 
     return addDefaults(data)
