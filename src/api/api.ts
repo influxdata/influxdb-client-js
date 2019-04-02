@@ -2136,10 +2136,10 @@ export interface MapVariableProperties {
     type?: MapVariableProperties.TypeEnum;
     /**
      * 
-     * @type {any}
+     * @type {{ [key: string]: string; }}
      * @memberof MapVariableProperties
      */
-    values?: any;
+    values?: { [key: string]: string; };
 }
 
 /**
@@ -6203,10 +6203,10 @@ export namespace V1ViewPropertiesLegend {
 export interface Variable {
     /**
      * 
-     * @type {UsersLinks}
+     * @type {VariableLinks}
      * @memberof Variable
      */
-    links?: UsersLinks;
+    links?: VariableLinks;
     /**
      * 
      * @type {string}
@@ -6231,6 +6231,12 @@ export interface Variable {
      * @memberof Variable
      */
     selected?: Array<string>;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof Variable
+     */
+    labels?: Array<Label>;
     /**
      * 
      * @type {any}
@@ -6263,6 +6269,32 @@ export interface VariableAssignment {
      * @memberof VariableAssignment
      */
     init?: Expression;
+}
+
+/**
+ * 
+ * @export
+ * @interface VariableLinks
+ */
+export interface VariableLinks {
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableLinks
+     */
+    self?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableLinks
+     */
+    org?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableLinks
+     */
+    labels?: string;
 }
 
 /**
@@ -23736,6 +23768,135 @@ export const VariablesApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary list all labels for a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDLabelsGet.');
+            }
+            const localVarPath = `/variables/{variableID}/labels`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} labelID the label id to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling variablesVariableIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/variables/{variableID}/labels/{labelID}`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a variable
+         * @param {string} variableID ID of the variable
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'variableID' is not null or undefined
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID','Required parameter variableID was null or undefined when calling variablesVariableIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling variablesVariableIDLabelsPost.');
+            }
+            const localVarPath = `/variables/{variableID}/labels`
+                .replace(`{${"variableID"}}`, encodeURIComponent(String(variableID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -23900,6 +24061,53 @@ export const VariablesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary list all labels for a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} labelID the label id to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a variable
+         * @param {string} variableID ID of the variable
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -23986,6 +24194,41 @@ export const VariablesApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary list all labels for a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a variable
+         * @param {string} variableID ID of the variable
+         * @param {string} labelID the label id to delete
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a variable
+         * @param {string} variableID ID of the variable
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return VariablesApiFp(configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary update a variable
          * @param {string} variableID id of the variable
          * @param {Variable} variable variable update to apply
@@ -24069,6 +24312,47 @@ export class VariablesApi extends BaseAPI {
      */
     public variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options?: any) {
         return VariablesApiFp(this.configuration).variablesVariableIDGet(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a variable
+     * @param {string} variableID ID of the variable
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a variable
+     * @param {string} variableID ID of the variable
+     * @param {string} labelID the label id to delete
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a variable
+     * @param {string} variableID ID of the variable
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VariablesApi
+     */
+    public variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return VariablesApiFp(this.configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**

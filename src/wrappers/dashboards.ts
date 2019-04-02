@@ -171,7 +171,7 @@ export default class {
         },
         rollback: async (r?: ILabel) => {
           if (r && r.id) {
-            this.delete(r.id)
+            this.removeLabel(dashboardID, r.id)
           }
         },
       }
