@@ -31,10 +31,10 @@ export default class {
     return variables || []
   }
 
-  public async getAll(): Promise<Variable[]> {
+  public async getAll(orgID?: string): Promise<Variable[]> {
     const {
       data: {variables},
-    } = await this.service.variablesGet()
+    } = await this.service.variablesGet(undefined, undefined, orgID)
 
     return variables || []
   }
