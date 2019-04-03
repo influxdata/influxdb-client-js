@@ -43,19 +43,7 @@ export default class {
     return addDefaults(data)
   }
 
-  public async getAll(): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(undefined)
-
-    return addDefaultsToAll(data.dashboards || [])
-  }
-
-  public async getAllByOrg(org: string): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(org)
-
-    return addDefaultsToAll(data.dashboards || [])
-  }
-
-  public async getAllByOrgID(orgID: string): Promise<IDashboard[]> {
+  public async getAll(orgID?: string): Promise<IDashboard[]> {
     const {data} = await this.service.dashboardsGet(
       undefined,
       undefined,
@@ -63,6 +51,12 @@ export default class {
       undefined,
       orgID
     )
+
+    return addDefaultsToAll(data.dashboards || [])
+  }
+
+  public async getAllByOrg(org: string): Promise<IDashboard[]> {
+    const {data} = await this.service.dashboardsGet(org)
 
     return addDefaultsToAll(data.dashboards || [])
   }
