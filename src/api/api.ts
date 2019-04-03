@@ -174,31 +174,19 @@ export interface ArrayExpression {
  * @export
  * @interface Authorization
  */
-export interface Authorization {
+export interface Authorization extends AuthorizationUpdateRequest {
     /**
      * ID of org that authorization is scoped to.
      * @type {string}
      * @memberof Authorization
      */
-    orgID: string;
-    /**
-     * if inactive the token is inactive and requests using the token will be rejected.
-     * @type {string}
-     * @memberof Authorization
-     */
-    status?: Authorization.StatusEnum;
-    /**
-     * A description of the token.
-     * @type {string}
-     * @memberof Authorization
-     */
-    description?: string;
+    orgID?: string;
     /**
      * List of permissions for an auth.  An auth must have at least one Permission.
      * @type {Array<Permission>}
      * @memberof Authorization
      */
-    permissions: Array<Permission>;
+    permissions?: Array<Permission>;
     /**
      * 
      * @type {string}
@@ -231,10 +219,10 @@ export interface Authorization {
     org?: string;
     /**
      * 
-     * @type {AuthorizationLinks}
+     * @type {any}
      * @memberof Authorization
      */
-    links?: AuthorizationLinks;
+    links?: any;
 }
 
 /**
@@ -242,6 +230,33 @@ export interface Authorization {
  * @namespace Authorization
  */
 export namespace Authorization {
+}
+
+/**
+ * 
+ * @export
+ * @interface AuthorizationUpdateRequest
+ */
+export interface AuthorizationUpdateRequest {
+    /**
+     * if inactive the token is inactive and requests using the token will be rejected.
+     * @type {string}
+     * @memberof AuthorizationUpdateRequest
+     */
+    status?: AuthorizationUpdateRequest.StatusEnum;
+    /**
+     * A description of the token.
+     * @type {string}
+     * @memberof AuthorizationUpdateRequest
+     */
+    description?: string;
+}
+
+/**
+ * @export
+ * @namespace AuthorizationUpdateRequest
+ */
+export namespace AuthorizationUpdateRequest {
     /**
      * @export
      * @enum {string}
@@ -250,26 +265,6 @@ export namespace Authorization {
         Active = 'active',
         Inactive = 'inactive'
     }
-}
-
-/**
- * 
- * @export
- * @interface AuthorizationLinks
- */
-export interface AuthorizationLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorizationLinks
-     */
-    self?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuthorizationLinks
-     */
-    user?: string;
 }
 
 /**
@@ -1203,6 +1198,12 @@ export interface Document {
      * @memberof Document
      */
     labels?: Array<Label>;
+    /**
+     * 
+     * @type {DocumentLinks}
+     * @memberof Document
+     */
+    links?: DocumentLinks;
 }
 
 /**
@@ -1246,6 +1247,20 @@ export interface DocumentCreate {
 /**
  * 
  * @export
+ * @interface DocumentLinks
+ */
+export interface DocumentLinks {
+    /**
+     * URI of resource.
+     * @type {string}
+     * @memberof DocumentLinks
+     */
+    self?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface DocumentListEntry
  */
 export interface DocumentListEntry {
@@ -1267,6 +1282,12 @@ export interface DocumentListEntry {
      * @memberof DocumentListEntry
      */
     labels?: Array<Label>;
+    /**
+     * 
+     * @type {DocumentLinks}
+     * @memberof DocumentListEntry
+     */
+    links?: DocumentLinks;
 }
 
 /**
@@ -3268,7 +3289,7 @@ export interface Ready {
      * @type {Date}
      * @memberof Ready
      */
-    start?: Date;
+    started?: Date;
     /**
      * 
      * @type {string}
@@ -3906,12 +3927,6 @@ export interface ScraperTargetResponses {
 export interface SecretKeys {
     /**
      * 
-     * @type {SecretKeysLinks}
-     * @memberof SecretKeys
-     */
-    links?: SecretKeysLinks;
-    /**
-     * 
      * @type {Array<string>}
      * @memberof SecretKeys
      */
@@ -3921,21 +3936,15 @@ export interface SecretKeys {
 /**
  * 
  * @export
- * @interface SecretKeysLinks
+ * @interface SecretKeysResponse
  */
-export interface SecretKeysLinks {
+export interface SecretKeysResponse extends SecretKeys {
     /**
      * 
-     * @type {string}
-     * @memberof SecretKeysLinks
+     * @type {any}
+     * @memberof SecretKeysResponse
      */
-    self?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretKeysLinks
-     */
-    org?: string;
+    links?: any;
 }
 
 /**
@@ -6476,19 +6485,19 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
-         * @param {Authorization} authorization authorization to update to apply
+         * @param {AuthorizationUpdateRequest} authorizationUpdateRequest authorization to update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'authID' is not null or undefined
             if (authID === null || authID === undefined) {
                 throw new RequiredError('authID','Required parameter authID was null or undefined when calling authorizationsAuthIDPatch.');
             }
-            // verify required parameter 'authorization' is not null or undefined
-            if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization','Required parameter authorization was null or undefined when calling authorizationsAuthIDPatch.');
+            // verify required parameter 'authorizationUpdateRequest' is not null or undefined
+            if (authorizationUpdateRequest === null || authorizationUpdateRequest === undefined) {
+                throw new RequiredError('authorizationUpdateRequest','Required parameter authorizationUpdateRequest was null or undefined when calling authorizationsAuthIDPatch.');
             }
             const localVarPath = `/authorizations/{authID}`
                 .replace(`{${"authID"}}`, encodeURIComponent(String(authID)));
@@ -6511,8 +6520,8 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Authorization" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(authorization || {}) : (authorization || "");
+            const needsSerialization = (<any>"AuthorizationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(authorizationUpdateRequest || {}) : (authorizationUpdateRequest || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6645,13 +6654,13 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * 
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
-         * @param {Authorization} authorization authorization to update to apply
+         * @param {AuthorizationUpdateRequest} authorizationUpdateRequest authorization to update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options);
+        authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorization> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6723,13 +6732,13 @@ export const AuthorizationsApiFactory = function (configuration?: Configuration,
          * 
          * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
          * @param {string} authID ID of authorization to update
-         * @param {Authorization} authorization authorization to update to apply
+         * @param {AuthorizationUpdateRequest} authorizationUpdateRequest authorization to update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options)(axios, basePath);
+        authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -6794,14 +6803,14 @@ export class AuthorizationsApi extends BaseAPI {
      * 
      * @summary update authorization to be active or inactive. requests using an inactive authorization will be rejected.
      * @param {string} authID ID of authorization to update
-     * @param {Authorization} authorization authorization to update to apply
+     * @param {AuthorizationUpdateRequest} authorizationUpdateRequest authorization to update to apply
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsAuthIDPatch(authID: string, authorization: Authorization, zapTraceSpan?: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorization, zapTraceSpan, options)(this.axios, this.basePath);
+    public authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -7621,7 +7630,7 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+        bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
             const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -12877,7 +12886,7 @@ export const OrganizationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeys> {
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeysResponse> {
             const localVarAxiosArgs = OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -14908,7 +14917,7 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+        scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
             const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -15565,7 +15574,7 @@ export const SecretsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeys> {
+        orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretKeysResponse> {
             const localVarAxiosArgs = SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -22427,7 +22436,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+        usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
             const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
