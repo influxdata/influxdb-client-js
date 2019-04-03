@@ -1,7 +1,14 @@
 import {Variable, VariablesApi} from '../api'
-import {ILabel} from '../types'
+import {ILabel, IVariable} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
+
+const addDefaults = (variable: Variable): IVariable => {
+  return {
+    ...variable,
+    labels: (variable.labels || []).map(addLabelDefaults),
+  }
+}
 
 export default class {
   private service: VariablesApi
@@ -10,28 +17,31 @@ export default class {
     this.service = new VariablesApi({basePath})
   }
 
-  public async get(id: string): Promise<Variable> {
+  public async get(id: string): Promise<IVariable> {
     const {data: variable} = await this.service.variablesVariableIDGet(id)
 
-    return variable
+    return addDefaults(variable)
   }
 
-  public async update(id: string, props: Partial<Variable>): Promise<Variable> {
+  public async update(
+    id: string,
+    props: Partial<Variable>
+  ): Promise<IVariable> {
     const original = await this.get(id)
     const {data} = await this.service.variablesVariableIDPatch(id, {
       ...original,
       ...props,
     })
 
-    return data
+    return addDefaults(data)
   }
 
-  public async getAllByOrg(org: string): Promise<Variable[]> {
+  public async getAllByOrg(org: string): Promise<IVariable[]> {
     const {
       data: {variables},
     } = await this.service.variablesGet(undefined, org)
 
-    return variables || []
+    return (variables || []).map(v => addDefaults(v))
   }
 
   public async getAll(orgID?: string): Promise<Variable[]> {
@@ -39,18 +49,20 @@ export default class {
       data: {variables},
     } = await this.service.variablesGet(undefined, undefined, orgID)
 
-    return variables || []
+    return (variables || []).map(v => addDefaults(v))
   }
 
-  public async create(variable: Variable): Promise<Variable> {
+  public async create(variable: Variable): Promise<IVariable> {
     const {data} = await this.service.variablesPost(variable)
 
-    return data
+    return addDefaults(data)
   }
 
-  public async createAll(variables: Variable[]): Promise<Variable[]> {
+  public async createAll(variables: Variable[]): Promise<IVariable[]> {
     const pendingVariables = variables.map(v => this.create(v))
-    return await Promise.all(pendingVariables)
+    const createdVars = await Promise.all(pendingVariables)
+
+    return createdVars.map(v => addDefaults(v))
   }
 
   public async delete(id: string): Promise<Response> {
