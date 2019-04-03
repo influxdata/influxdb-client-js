@@ -42,6 +42,10 @@ export interface ITelegraf extends Telegraf {
   labels: ILabel[]
 }
 
+export interface IVariable extends Variable {
+  labels: ILabel[]
+}
+
 type DashboardPicked = Pick<Dashboard, 'orgID' | 'id' | 'name' | 'cells'>
 type DashboardOriginal = Pick<
   Dashboard,
