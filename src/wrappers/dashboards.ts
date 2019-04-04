@@ -4,7 +4,6 @@ import {
   CreateDashboardRequest,
   Dashboard,
   DashboardsApi,
-  ProtosApi,
   View,
 } from '../api'
 import {IDashboard, ILabel} from '../types'
@@ -29,11 +28,9 @@ const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
 export default class {
   private service: DashboardsApi
   private cellsService: CellsApi
-  private protosService: ProtosApi
 
   constructor(basePath: string) {
     this.cellsService = new CellsApi({basePath})
-    this.protosService = new ProtosApi({basePath})
     this.service = new DashboardsApi({basePath})
   }
 
@@ -84,24 +81,6 @@ export default class {
     const {data} = await this.service.dashboardsDashboardIDDelete(id)
 
     return data
-  }
-
-  public async createFromProto(
-    protoID: string,
-    orgID?: string
-  ): Promise<IDashboard[]> {
-    let request = {}
-
-    if (orgID) {
-      request = {orgID}
-    }
-
-    const {data} = await this.protosService.protosProtoIDDashboardsPost(
-      protoID,
-      request
-    )
-
-    return addDefaultsToAll(data.dashboards || [])
   }
 
   public async deleteCell(

@@ -20,10 +20,10 @@ export default class {
     this.service = new TelegrafsApi({basePath})
   }
 
-  public async getAll(): Promise<ITelegraf[]> {
+  public async getAll(orgID: string = ''): Promise<ITelegraf[]> {
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet('')
+    } = await this.service.telegrafsGet(orgID)
     return addDefaultsToAll(configurations || [])
   }
 

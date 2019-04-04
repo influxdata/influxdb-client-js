@@ -905,20 +905,6 @@ export interface CreateDashboardRequest {
 /**
  * 
  * @export
- * @interface CreateProtoResourcesRequest
- */
-export interface CreateProtoResourcesRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateProtoResourcesRequest
-     */
-    orgID?: string;
-}
-
-/**
- * 
- * @export
  * @interface Dashboard
  */
 export interface Dashboard extends CreateDashboardRequest {
@@ -2870,72 +2856,6 @@ export interface PropertyKey {
 }
 
 /**
- * 
- * @export
- * @interface Proto
- */
-export interface Proto {
-    /**
-     * 
-     * @type {ProtoLinks}
-     * @memberof Proto
-     */
-    links?: ProtoLinks;
-    /**
-     * 
-     * @type {string}
-     * @memberof Proto
-     */
-    id?: string;
-    /**
-     * user-facing name of the proto
-     * @type {string}
-     * @memberof Proto
-     */
-    name?: string;
-    /**
-     * 
-     * @type {Array<Dashboard>}
-     * @memberof Proto
-     */
-    dashboards?: Array<Dashboard>;
-    /**
-     * 
-     * @type {{ [key: string]: View; }}
-     * @memberof Proto
-     */
-    views?: { [key: string]: View; };
-}
-
-/**
- * 
- * @export
- * @interface ProtoLinks
- */
-export interface ProtoLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof ProtoLinks
-     */
-    dashboard?: string;
-}
-
-/**
- * 
- * @export
- * @interface Protos
- */
-export interface Protos {
-    /**
-     * 
-     * @type {Array<Proto>}
-     * @memberof Protos
-     */
-    protos?: Array<Proto>;
-}
-
-/**
  * query influx with specified return formatting. The spec and query fields are mutually exclusive.
  * @export
  * @interface Query
@@ -3522,12 +3442,6 @@ export interface Routes {
      * @memberof Routes
      */
     orgs?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    protos?: string;
     /**
      * 
      * @type {RoutesQuery}
@@ -6234,6 +6148,12 @@ export interface Variable {
      * @memberof Variable
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Variable
+     */
+    description?: string;
     /**
      * 
      * @type {Array<string>}
@@ -11044,10 +10964,16 @@ export const LabelsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Get all labels
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(options: any = {}): RequestArgs {
+        labelsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling labelsGet.');
+            }
             const localVarPath = `/labels`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11057,6 +10983,14 @@ export const LabelsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -11239,11 +11173,13 @@ export const LabelsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all labels
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
-            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsGet(options);
+        labelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11321,11 +11257,13 @@ export const LabelsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Get all labels
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(options?: any) {
-            return LabelsApiFp(configuration).labelsGet(options)(axios, basePath);
+        labelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return LabelsApiFp(configuration).labelsGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -11384,12 +11322,14 @@ export class LabelsApi extends BaseAPI {
     /**
      * 
      * @summary Get all labels
+     * @param {string} orgID specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LabelsApi
      */
-    public labelsGet(options?: any) {
-        return LabelsApiFp(this.configuration).labelsGet(options)(this.axios, this.basePath);
+    public labelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return LabelsApiFp(this.configuration).labelsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13402,199 +13342,6 @@ export class OrganizationsApi extends BaseAPI {
 }
 
 /**
- * ProtosApi - axios parameter creator
- * @export
- */
-export const ProtosApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary List of available protos (templates of tasks/dashboards/etc)
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
-            const localVarPath = `/protos`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Create instance of a proto dashboard
-         * @param {string} protoID ID of proto
-         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'protoID' is not null or undefined
-            if (protoID === null || protoID === undefined) {
-                throw new RequiredError('protoID','Required parameter protoID was null or undefined when calling protosProtoIDDashboardsPost.');
-            }
-            // verify required parameter 'createProtoResourcesRequest' is not null or undefined
-            if (createProtoResourcesRequest === null || createProtoResourcesRequest === undefined) {
-                throw new RequiredError('createProtoResourcesRequest','Required parameter createProtoResourcesRequest was null or undefined when calling protosProtoIDDashboardsPost.');
-            }
-            const localVarPath = `/protos/{protoID}/dashboards`
-                .replace(`{${"protoID"}}`, encodeURIComponent(String(protoID)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"CreateProtoResourcesRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(createProtoResourcesRequest || {}) : (createProtoResourcesRequest || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ProtosApi - functional programming interface
- * @export
- */
-export const ProtosApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary List of available protos (templates of tasks/dashboards/etc)
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Protos> {
-            const localVarAxiosArgs = ProtosApiAxiosParamCreator(configuration).protosGet(zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * 
-         * @summary Create instance of a proto dashboard
-         * @param {string} protoID ID of proto
-         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Dashboards> {
-            const localVarAxiosArgs = ProtosApiAxiosParamCreator(configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-    }
-};
-
-/**
- * ProtosApi - factory interface
- * @export
- */
-export const ProtosApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @summary List of available protos (templates of tasks/dashboards/etc)
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosGet(zapTraceSpan?: string, options?: any) {
-            return ProtosApiFp(configuration).protosGet(zapTraceSpan, options)(axios, basePath);
-        },
-        /**
-         * 
-         * @summary Create instance of a proto dashboard
-         * @param {string} protoID ID of proto
-         * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any) {
-            return ProtosApiFp(configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options)(axios, basePath);
-        },
-    };
-};
-
-/**
- * ProtosApi - object-oriented interface
- * @export
- * @class ProtosApi
- * @extends {BaseAPI}
- */
-export class ProtosApi extends BaseAPI {
-    /**
-     * 
-     * @summary List of available protos (templates of tasks/dashboards/etc)
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProtosApi
-     */
-    public protosGet(zapTraceSpan?: string, options?: any) {
-        return ProtosApiFp(this.configuration).protosGet(zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * 
-     * @summary Create instance of a proto dashboard
-     * @param {string} protoID ID of proto
-     * @param {CreateProtoResourcesRequest} createProtoResourcesRequest organization that the dashboard will be created as
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProtosApi
-     */
-    public protosProtoIDDashboardsPost(protoID: string, createProtoResourcesRequest: CreateProtoResourcesRequest, zapTraceSpan?: string, options?: any) {
-        return ProtosApiFp(this.configuration).protosProtoIDDashboardsPost(protoID, createProtoResourcesRequest, zapTraceSpan, options)(this.axios, this.basePath);
-    }
-
-}
-
-/**
  * QueryApi - axios parameter creator
  * @export
  */
@@ -14224,10 +13971,16 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary get all scraper targets
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(options: any = {}): RequestArgs {
+        scrapersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling scrapersGet.');
+            }
             const localVarPath = `/scrapers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -14237,6 +13990,14 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -14821,11 +14582,13 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary get all scraper targets
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponses> {
-            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(options);
+        scrapersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponses> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(orgID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15046,11 +14809,13 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary get all scraper targets
+         * @param {string} orgID specifies the organization of the resource
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(options?: any) {
-            return ScraperTargetsApiFp(configuration).scrapersGet(options)(axios, basePath);
+        scrapersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersGet(orgID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -15216,12 +14981,14 @@ export class ScraperTargetsApi extends BaseAPI {
     /**
      * 
      * @summary get all scraper targets
+     * @param {string} orgID specifies the organization of the resource
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScraperTargetsApi
      */
-    public scrapersGet(options?: any) {
-        return ScraperTargetsApiFp(this.configuration).scrapersGet(options)(this.axios, this.basePath);
+    public scrapersGet(orgID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**

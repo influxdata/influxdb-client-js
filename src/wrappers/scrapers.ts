@@ -11,10 +11,10 @@ export default class {
     this.service = new ScraperTargetsApi({basePath})
   }
 
-  public async getAll(): Promise<ScraperTargetResponse[]> {
+  public async getAll(orgID: string): Promise<ScraperTargetResponse[]> {
     const {
       data: {configurations},
-    } = await this.service.scrapersGet()
+    } = await this.service.scrapersGet(orgID)
 
     return configurations || []
   }
