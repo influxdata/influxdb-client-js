@@ -34,10 +34,10 @@ export default class {
     return addLabelDefaults(label)
   }
 
-  public async getAll(): Promise<ILabel[]> {
+  public async getAll(orgID: string): Promise<ILabel[]> {
     const {
       data: {labels},
-    } = await this.service.labelsGet()
+    } = await this.service.labelsGet(orgID)
 
     return (labels || []).map(addLabelDefaults)
   }
