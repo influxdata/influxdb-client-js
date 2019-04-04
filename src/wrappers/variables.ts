@@ -44,7 +44,7 @@ export default class {
     return (variables || []).map(v => addDefaults(v))
   }
 
-  public async getAll(orgID?: string): Promise<Variable[]> {
+  public async getAll(orgID?: string): Promise<IVariable[]> {
     const {
       data: {variables},
     } = await this.service.variablesGet(undefined, undefined, orgID)
