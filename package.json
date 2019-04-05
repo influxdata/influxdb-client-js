@@ -38,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run vet"
+      "pre-commit": "npm run vet && git add dist"
     }
   }
 }
