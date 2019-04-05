@@ -19185,16 +19185,13 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling documentsTemplatesGet.');
-            }
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options: any = {}): RequestArgs {
             const localVarPath = `/documents/templates`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -19207,6 +19204,10 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
 
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
             }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -19396,13 +19397,14 @@ export const TemplatesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Documents> {
-            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(org, zapTraceSpan, options);
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Documents> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -19478,13 +19480,14 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
-            return TemplatesApiFp(configuration).documentsTemplatesGet(org, zapTraceSpan, options)(axios, basePath);
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
         /**
          * 
@@ -19541,14 +19544,15 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
 export class TemplatesApi extends BaseAPI {
     /**
      * 
-     * @param {string} org specifies the name of the organization of the template
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the name of the organization of the template
+     * @param {string} [orgID] specifies the organization id of the template
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TemplatesApi
      */
-    public documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
-        return TemplatesApiFp(this.configuration).documentsTemplatesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    public documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     }
 
     /**

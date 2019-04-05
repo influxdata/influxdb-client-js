@@ -26,8 +26,12 @@ export default class {
     this.service = new TemplatesApi({basePath})
   }
 
-  public async getAll(orgName: string): Promise<TemplateSummary[]> {
-    const {data} = await this.service.documentsTemplatesGet(orgName)
+  public async getAll(orgID?: string): Promise<TemplateSummary[]> {
+    const {data} = await this.service.documentsTemplatesGet(
+      undefined,
+      undefined,
+      orgID
+    )
 
     if (data.documents) {
       return data.documents.map(addTemplateSummaryDefaults)
