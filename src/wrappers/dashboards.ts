@@ -199,11 +199,12 @@ export default class {
 
   public async clone(
     dashboardID: string,
-    cloneName: string
+    cloneName: string,
+    orgID: string
   ): Promise<IDashboard | null> {
     const original = await this.get(dashboardID)
 
-    const {name, description, orgID} = original
+    const {name, description} = original
 
     const dashboardWithoutCells = {name, description, orgID}
 
