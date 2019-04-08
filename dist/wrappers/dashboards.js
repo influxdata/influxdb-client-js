@@ -278,15 +278,15 @@ var default_1 = (function () {
             });
         });
     };
-    default_1.prototype.clone = function (dashboardID, cloneName) {
+    default_1.prototype.clone = function (dashboardID, cloneName, orgID) {
         return __awaiter(this, void 0, void 0, function () {
-            var original, name, description, orgID, dashboardWithoutCells, createdDashboard;
+            var original, name, description, dashboardWithoutCells, createdDashboard;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, this.get(dashboardID)];
                     case 1:
                         original = _a.sent();
-                        name = original.name, description = original.description, orgID = original.orgID;
+                        name = original.name, description = original.description;
                         dashboardWithoutCells = { name: name, description: description, orgID: orgID };
                         return [4, this.create(__assign({}, dashboardWithoutCells, { name: cloneName }))];
                     case 2:

@@ -19,7 +19,7 @@ export default class {
     removeLabels(dashboardID: string, labelIDs: string[]): Promise<Response[]>;
     getView(dashboardID: string, cellID: string): Promise<View>;
     updateView(dashboardID: string, cellID: string, view: Partial<View>): Promise<View>;
-    clone(dashboardID: string, cloneName: string): Promise<IDashboard | null>;
+    clone(dashboardID: string, cloneName: string, orgID: string): Promise<IDashboard | null>;
     private cloneLabels;
     private cloneViews;
 }
