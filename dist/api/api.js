@@ -7405,11 +7405,8 @@ var TelegrafsApi = (function (_super) {
 exports.TelegrafsApi = TelegrafsApi;
 exports.TemplatesApiAxiosParamCreator = function (configuration) {
     return {
-        documentsTemplatesGet: function (org, zapTraceSpan, options) {
+        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
             if (options === void 0) { options = {}; }
-            if (org === null || org === undefined) {
-                throw new RequiredError('org', 'Required parameter org was null or undefined when calling documentsTemplatesGet.');
-            }
             var localVarPath = "/documents/templates";
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
@@ -7421,6 +7418,9 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
             var localVarQueryParameter = {};
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
             }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
@@ -7549,8 +7549,8 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
 };
 exports.TemplatesApiFp = function (configuration) {
     return {
-        documentsTemplatesGet: function (org, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(org, zapTraceSpan, options);
+        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7598,8 +7598,8 @@ exports.TemplatesApiFp = function (configuration) {
 };
 exports.TemplatesApiFactory = function (configuration, basePath, axios) {
     return {
-        documentsTemplatesGet: function (org, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesGet(org, zapTraceSpan, options)(axios, basePath);
+        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
+            return exports.TemplatesApiFp(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
         documentsTemplatesPost: function (documentCreate, zapTraceSpan, options) {
             return exports.TemplatesApiFp(configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(axios, basePath);
@@ -7620,8 +7620,8 @@ var TemplatesApi = (function (_super) {
     function TemplatesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TemplatesApi.prototype.documentsTemplatesGet = function (org, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.documentsTemplatesGet = function (zapTraceSpan, org, orgID, options) {
+        return exports.TemplatesApiFp(this.configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     };
     TemplatesApi.prototype.documentsTemplatesPost = function (documentCreate, zapTraceSpan, options) {
         return exports.TemplatesApiFp(this.configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(this.axios, this.basePath);

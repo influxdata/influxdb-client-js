@@ -2188,28 +2188,28 @@ export declare class TelegrafsApi extends BaseAPI {
     telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
 }
 export declare const TemplatesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    documentsTemplatesGet(org: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TemplatesApiFp: (configuration?: Configuration | undefined) => {
-    documentsTemplatesGet(org: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Documents>;
+    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Documents>;
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
 };
 export declare const TemplatesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    documentsTemplatesGet(org: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Documents>;
+    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Documents>;
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
 };
 export declare class TemplatesApi extends BaseAPI {
-    documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any): AxiosPromise<Documents>;
+    documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Documents>;
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
