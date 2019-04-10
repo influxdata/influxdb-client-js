@@ -148,6 +148,8 @@ export type IDashboardTemplateIncluded =
   | ILabelIncluded
   | IVariableIncluded
 
+export type IVariableTemplateIncluded = IVariableIncluded | ILabelIncluded
+
 // Template Datas
 interface ITaskTemplateData extends ITemplateData {
   type: TemplateType.Task
@@ -167,6 +169,15 @@ interface IDashboardTemplateData extends ITemplateData {
   }
 }
 
+interface VariableTemplateData extends ITemplateData {
+  type: TemplateType.Variable
+  attributes: Omit<Variable, 'labels' | 'links'>
+  relationships: {
+    [TemplateType.Label]: {data: ILabelRelationship[]}
+    [TemplateType.Variable]: {data: IVariableRelationship[]}
+  }
+}
+
 // Templates
 export interface ITaskTemplate extends ITemplateBase {
   content: {
@@ -182,8 +193,17 @@ export interface IDashboardTemplate extends ITemplateBase {
   }
 }
 
-export type ITemplate = ITaskTemplate | IDashboardTemplate
+export interface IVariableTemplate extends ITemplateBase {
+  content: {
+    data: VariableTemplateData
+    included: IVariableTemplateIncluded[]
+  }
+}
+
+export type ITemplate = ITaskTemplate | IDashboardTemplate | IVariableTemplate
 
 export interface TemplateSummary extends DocumentListEntry {
   labels: ILabel[]
 }
+
+type Omit<K, V> = Pick<K, Exclude<keyof K, V>>
