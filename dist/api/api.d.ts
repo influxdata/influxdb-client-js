@@ -327,11 +327,6 @@ export interface FloatLiteral {
     type?: string;
     value?: number;
 }
-export interface FluxLinks {
-    ast?: string;
-    self?: string;
-    suggestions?: string;
-}
 export interface FluxSuggestions {
     funcs?: FluxSuggestionsFuncs;
 }
@@ -773,7 +768,6 @@ export interface Routes {
     telegrafs?: string;
     users?: string;
     write?: string;
-    views?: string;
 }
 export interface RoutesExternal {
     statusFeed?: string;
@@ -1440,10 +1434,6 @@ export interface View {
 }
 export interface ViewLinks {
     self?: string;
-}
-export interface Views {
-    links?: ViewLinks;
-    views?: Array<View>;
 }
 export declare enum WritePrecision {
     Ms = "ms",
@@ -2192,6 +2182,9 @@ export declare const TemplatesApiAxiosParamCreator: (configuration?: Configurati
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TemplatesApiFp: (configuration?: Configuration | undefined) => {
@@ -2199,6 +2192,9 @@ export declare const TemplatesApiFp: (configuration?: Configuration | undefined)
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
+    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
 };
 export declare const TemplatesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
@@ -2206,6 +2202,9 @@ export declare const TemplatesApiFactory: (configuration?: Configuration | undef
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
+    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
 };
 export declare class TemplatesApi extends BaseAPI {
@@ -2213,6 +2212,9 @@ export declare class TemplatesApi extends BaseAPI {
     documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
     documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
+    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
     documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
 }
 export declare const UsersApiAxiosParamCreator: (configuration?: Configuration | undefined) => {

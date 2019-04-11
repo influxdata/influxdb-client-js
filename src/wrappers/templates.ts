@@ -1,5 +1,5 @@
 import {TemplatesApi, DocumentListEntry, Document, DocumentCreate} from '../api'
-import {ITemplate, TemplateSummary} from '../types'
+import {ITemplate, TemplateSummary, ILabel} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addTemplateDefaults = (d: Document): ITemplate => {
@@ -73,6 +73,50 @@ export default class {
     )
 
     return data
+  }
+
+  public async addLabel(templateID: string, labelID: string): Promise<ILabel> {
+    const {data} = await this.service.documentsTemplatesTemplateIDLabelsPost(
+      templateID,
+      {
+        labelID,
+      }
+    )
+
+    if (!data.label) {
+      throw new Error('Failed to add label')
+    }
+
+    return addLabelDefaults(data.label)
+  }
+
+  public async removeLabel(
+    templateID: string,
+    labelID: string
+  ): Promise<Response> {
+    const {
+      data,
+    } = await this.service.documentsTemplatesTemplateIDLabelsLabelIDDelete(
+      templateID,
+      labelID
+    )
+
+    return data
+  }
+
+  public addLabels(templateID: string, labelIDs: string[]): Promise<ILabel[]> {
+    const promises = labelIDs.map(l => this.addLabel(templateID, l))
+
+    return Promise.all(promises)
+  }
+
+  public removeLabels(
+    templateID: string,
+    labelIDs: string[]
+  ): Promise<Response[]> {
+    const promises = labelIDs.map(l => this.removeLabel(templateID, l))
+
+    return Promise.all(promises)
   }
 
   public async clone(templateID: string, orgID: string): Promise<ITemplate> {
