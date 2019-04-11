@@ -131,6 +131,47 @@ var default_1 = (function () {
             });
         });
     };
+    default_1.prototype.addLabel = function (templateID, labelID) {
+        return __awaiter(this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4, this.service.documentsTemplatesTemplateIDLabelsPost(templateID, {
+                            labelID: labelID,
+                        })];
+                    case 1:
+                        data = (_a.sent()).data;
+                        if (!data.label) {
+                            throw new Error('Failed to add label');
+                        }
+                        return [2, labels_1.addLabelDefaults(data.label)];
+                }
+            });
+        });
+    };
+    default_1.prototype.removeLabel = function (templateID, labelID) {
+        return __awaiter(this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4, this.service.documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID)];
+                    case 1:
+                        data = (_a.sent()).data;
+                        return [2, data];
+                }
+            });
+        });
+    };
+    default_1.prototype.addLabels = function (templateID, labelIDs) {
+        var _this = this;
+        var promises = labelIDs.map(function (l) { return _this.addLabel(templateID, l); });
+        return Promise.all(promises);
+    };
+    default_1.prototype.removeLabels = function (templateID, labelIDs) {
+        var _this = this;
+        var promises = labelIDs.map(function (l) { return _this.removeLabel(templateID, l); });
+        return Promise.all(promises);
+    };
     default_1.prototype.clone = function (templateID, orgID) {
         return __awaiter(this, void 0, void 0, function () {
             var data, labels, content, meta, labelsData, name, templateToCreate, createdTemplate;

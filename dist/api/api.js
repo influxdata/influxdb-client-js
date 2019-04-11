@@ -7513,6 +7513,94 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsGet.');
+            }
+            var localVarPath = "/documents/templates/{templateID}/labels"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
+            }
+            var localVarPath = "/documents/templates/{templateID}/labels/{labelID}"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+            }
+            var localVarPath = "/documents/templates/{templateID}/labels"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (templateID === null || templateID === undefined) {
@@ -7585,6 +7673,33 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
+        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
         documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
             var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options);
             return function (axios, basePath) {
@@ -7610,6 +7725,15 @@ exports.TemplatesApiFactory = function (configuration, basePath, axios) {
         documentsTemplatesTemplateIDGet: function (templateID, zapTraceSpan, options) {
             return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(axios, basePath);
         },
+        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(axios, basePath);
+        },
+        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
         documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
             return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(axios, basePath);
         },
@@ -7631,6 +7755,15 @@ var TemplatesApi = (function (_super) {
     };
     TemplatesApi.prototype.documentsTemplatesTemplateIDGet = function (templateID, zapTraceSpan, options) {
         return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsGet = function (templateID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsLabelIDDelete = function (templateID, labelID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsPost = function (templateID, labelMapping, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
     TemplatesApi.prototype.documentsTemplatesTemplateIDPut = function (templateID, documentUpdate, zapTraceSpan, options) {
         return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(this.axios, this.basePath);

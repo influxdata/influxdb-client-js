@@ -171,4 +171,10 @@ export interface TemplateSummary extends DocumentListEntry {
     labels: ILabel[];
 }
 declare type Omit<K, V> = Pick<K, Exclude<keyof K, V>>;
+export interface ResourceLabels {
+    addLabel(taskID: string, labelID: string): Promise<ILabel>;
+    removeLabel(taskID: string, labelID: string): Promise<Response>;
+    addLabels(taskID: string, labelIDs: string[]): Promise<ILabel[]>;
+    removeLabels(taskID: string, labelIDs: string[]): Promise<Response[]>;
+}
 export {};
