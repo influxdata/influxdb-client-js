@@ -15,8 +15,9 @@ import Users from './wrappers/users';
 import Variables from './wrappers/variables';
 import Write from './wrappers/write';
 import Templates from './wrappers/templates';
-export * from './types';
 export * from './api';
+export * from './types';
+export { ArrayExpression, BadStatement, BinaryExpression, Block, BooleanLiteral, BuiltinStatement, CallExpression, ConditionalExpression, DateTimeLiteral, Duration, DurationLiteral, Expression, ExpressionStatement, FloatLiteral, FunctionExpression, Identifier, ImportDeclaration, IndexExpression, IntegerLiteral, LogicalExpression, MemberAssignment, MemberExpression, Node, ObjectExpression, OptionStatement, Package, PackageClause, PipeExpression, PipeLiteral, Property, PropertyKey, RegexpLiteral, ReturnStatement, Statement, StringLiteral, UnaryExpression, UnsignedIntegerLiteral, VariableAssignment, } from './types/ast';
 export default class Client {
     auth: Auth;
     authorizations: Authorizations;

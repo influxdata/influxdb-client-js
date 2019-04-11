@@ -23,8 +23,8 @@ var users_1 = __importDefault(require("./wrappers/users"));
 var variables_1 = __importDefault(require("./wrappers/variables"));
 var write_1 = __importDefault(require("./wrappers/write"));
 var templates_1 = __importDefault(require("./wrappers/templates"));
-__export(require("./types"));
 __export(require("./api"));
+__export(require("./types"));
 var Client = (function () {
     function Client(basePath) {
         this.auth = new auth_1.default(basePath);
