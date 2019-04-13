@@ -97,12 +97,12 @@ var default_1 = (function () {
             });
         });
     };
-    default_1.prototype.getAll = function () {
+    default_1.prototype.getAll = function (orgID) {
         return __awaiter(this, void 0, void 0, function () {
             var tasks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksGet()];
+                    case 0: return [4, this.service.tasksGet(undefined, undefined, undefined, undefined, orgID)];
                     case 1:
                         tasks = (_a.sent()).data.tasks;
                         return [2, addDefaultsToAll(tasks || [])];
@@ -116,19 +116,6 @@ var default_1 = (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, this.service.tasksGet(undefined, undefined, undefined, org)];
-                    case 1:
-                        tasks = (_a.sent()).data.tasks;
-                        return [2, addDefaultsToAll(tasks || [])];
-                }
-            });
-        });
-    };
-    default_1.prototype.getAllByOrgID = function (orgID) {
-        return __awaiter(this, void 0, void 0, function () {
-            var tasks;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4, this.service.tasksGet(undefined, undefined, undefined, undefined, orgID)];
                     case 1:
                         tasks = (_a.sent()).data.tasks;
                         return [2, addDefaultsToAll(tasks || [])];
