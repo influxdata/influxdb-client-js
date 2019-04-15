@@ -6,9 +6,8 @@ export default class {
     create(org: string, script: string): Promise<ITask>;
     createByOrgID(orgID: string, script: string): Promise<ITask>;
     get(id: string): Promise<ITask>;
-    getAll(): Promise<ITask[]>;
+    getAll(orgID?: string): Promise<ITask[]>;
     getAllByOrg(org: string): Promise<ITask[]>;
-    getAllByOrgID(orgID: string): Promise<ITask[]>;
     getAllByUser(user: User): Promise<ITask[]>;
     update(id: string, updates: Partial<Task>): Promise<ITask>;
     updateStatus(id: string, status: Task.StatusEnum): Promise<Task>;

@@ -37,23 +37,7 @@ export default class {
     return addDefaults(data)
   }
 
-  public async getAll(): Promise<ITask[]> {
-    const {
-      data: {tasks},
-    } = await this.service.tasksGet()
-
-    return addDefaultsToAll(tasks || [])
-  }
-
-  public async getAllByOrg(org: string): Promise<ITask[]> {
-    const {
-      data: {tasks},
-    } = await this.service.tasksGet(undefined, undefined, undefined, org)
-
-    return addDefaultsToAll(tasks || [])
-  }
-
-  public async getAllByOrgID(orgID: string): Promise<ITask[]> {
+  public async getAll(orgID?: string): Promise<ITask[]> {
     const {
       data: {tasks},
     } = await this.service.tasksGet(
@@ -63,6 +47,14 @@ export default class {
       undefined,
       orgID
     )
+
+    return addDefaultsToAll(tasks || [])
+  }
+
+  public async getAllByOrg(org: string): Promise<ITask[]> {
+    const {
+      data: {tasks},
+    } = await this.service.tasksGet(undefined, undefined, undefined, org)
 
     return addDefaultsToAll(tasks || [])
   }
