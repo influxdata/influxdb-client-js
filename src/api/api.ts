@@ -6402,10 +6402,12 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options: any = {}): RequestArgs {
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options: any = {}): RequestArgs {
             const localVarPath = `/authorizations`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6422,6 +6424,14 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
 
             if (user !== undefined) {
                 localVarQueryParameter['user'] = user;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
             }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -6540,11 +6550,13 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, options);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6614,11 +6626,13 @@ export const AuthorizationsApiFactory = function (configuration?: Configuration,
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, options)(axios, basePath);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(axios, basePath);
         },
         /**
          * 
@@ -6687,12 +6701,14 @@ export class AuthorizationsApi extends BaseAPI {
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [userID] filter authorizations belonging to a user id
      * @param {string} [user] filter authorizations belonging to a user name
+     * @param {string} [orgID] filter authorizations belonging to a org id
+     * @param {string} [org] filter authorizations belonging to a org name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, options)(this.axios, this.basePath);
+    public authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(this.axios, this.basePath);
     }
 
     /**
