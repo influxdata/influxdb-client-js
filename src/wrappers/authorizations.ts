@@ -23,10 +23,15 @@ export default class {
     return null
   }
 
-  public async getAll(): Promise<Authorization[]> {
+  public async getAll(orgID?: string): Promise<Authorization[]> {
     const {
       data: {authorizations},
-    } = await this.service.authorizationsGet()
+    } = await this.service.authorizationsGet(
+      undefined,
+      undefined,
+      undefined,
+      orgID
+    )
 
     return authorizations || []
   }

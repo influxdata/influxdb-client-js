@@ -1445,28 +1445,28 @@ export declare const AuthorizationsApiAxiosParamCreator: (configuration?: Config
     authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, options?: any): RequestArgs;
+    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
     authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const AuthorizationsApiFp: (configuration?: Configuration | undefined) => {
     authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
     authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorizations>;
+    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorizations>;
     authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
 };
 export declare const AuthorizationsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
     authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
     authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, options?: any): AxiosPromise<Authorizations>;
+    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Authorizations>;
     authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
 };
 export declare class AuthorizationsApi extends BaseAPI {
     authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
     authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any): AxiosPromise<Authorizations>;
+    authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any): AxiosPromise<Authorizations>;
     authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
 }
 export declare const BucketsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {

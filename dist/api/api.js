@@ -695,7 +695,7 @@ exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        authorizationsGet: function (zapTraceSpan, userID, user, options) {
+        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/authorizations";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -711,6 +711,12 @@ exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
             }
             if (user !== undefined) {
                 localVarQueryParameter['user'] = user;
+            }
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
             }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
@@ -782,8 +788,8 @@ exports.AuthorizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        authorizationsGet: function (zapTraceSpan, userID, user, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, options);
+        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -813,8 +819,8 @@ exports.AuthorizationsApiFactory = function (configuration, basePath, axios) {
         authorizationsAuthIDPatch: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
             return exports.AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(axios, basePath);
         },
-        authorizationsGet: function (zapTraceSpan, userID, user, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, options)(axios, basePath);
+        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
+            return exports.AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(axios, basePath);
         },
         authorizationsPost: function (authorization, zapTraceSpan, options) {
             return exports.AuthorizationsApiFp(configuration).authorizationsPost(authorization, zapTraceSpan, options)(axios, basePath);
@@ -835,8 +841,8 @@ var AuthorizationsApi = (function (_super) {
     AuthorizationsApi.prototype.authorizationsAuthIDPatch = function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
         return exports.AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    AuthorizationsApi.prototype.authorizationsGet = function (zapTraceSpan, userID, user, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.authorizationsGet = function (zapTraceSpan, userID, user, orgID, org, options) {
+        return exports.AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(this.axios, this.basePath);
     };
     AuthorizationsApi.prototype.authorizationsPost = function (authorization, zapTraceSpan, options) {
         return exports.AuthorizationsApiFp(this.configuration).authorizationsPost(authorization, zapTraceSpan, options)(this.axios, this.basePath);
