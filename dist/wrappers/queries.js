@@ -37,8 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("../api");
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.QueryApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.QueryApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.ast = function (query) {
         return __awaiter(this, void 0, void 0, function () {

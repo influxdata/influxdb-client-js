@@ -1,5 +1,5 @@
 import {Label as APILabel, LabelsApi} from '../api'
-import {ILabel} from '../types'
+import {ILabel, ServiceOptions} from '../types'
 import {ILabelProperties} from '../types'
 import saga from '../utils/sagas'
 
@@ -18,8 +18,8 @@ export const addLabelDefaults = (l: APILabel): ILabel => ({
 export default class {
   private service: LabelsApi
 
-  constructor(basePath: string) {
-    this.service = new LabelsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new LabelsApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<ILabel> {

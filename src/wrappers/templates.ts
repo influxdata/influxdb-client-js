@@ -1,5 +1,5 @@
 import {TemplatesApi, DocumentListEntry, Document, DocumentCreate} from '../api'
-import {ITemplate, TemplateSummary, ILabel} from '../types'
+import {ITemplate, TemplateSummary, ILabel, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addTemplateDefaults = (d: Document): ITemplate => {
@@ -22,8 +22,8 @@ const addTemplateSummaryDefaults = (d: DocumentListEntry): TemplateSummary => {
 export default class {
   private service: TemplatesApi
 
-  constructor(basePath: string) {
-    this.service = new TemplatesApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new TemplatesApi({basePath, baseOptions})
   }
 
   public async getAll(orgID?: string): Promise<TemplateSummary[]> {

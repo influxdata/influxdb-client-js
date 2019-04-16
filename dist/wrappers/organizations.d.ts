@@ -1,7 +1,8 @@
 import { AddResourceMemberRequestBody, Organization, ResourceMember, ResourceOwner } from '../api';
+import { ServiceOptions } from '../types';
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<Organization>;
     getAll(): Promise<Organization[]>;
     create(org: Organization): Promise<Organization>;

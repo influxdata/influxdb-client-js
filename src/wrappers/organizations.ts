@@ -5,12 +5,13 @@ import {
   ResourceMember,
   ResourceOwner,
 } from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: OrganizationsApi
 
-  constructor(basePath: string) {
-    this.service = new OrganizationsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new OrganizationsApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<Organization> {

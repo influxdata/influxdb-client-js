@@ -37,8 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("../api");
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.WriteApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.WriteApi({ basePath: basePath, baseOptions: baseOptions });
     }
     Object.defineProperty(default_1.prototype, "WritePrecision", {
         get: function () {

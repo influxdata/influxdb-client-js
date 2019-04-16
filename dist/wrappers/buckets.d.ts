@@ -1,5 +1,5 @@
 import { Bucket } from '../api';
-import { IBucket } from '../types';
+import { IBucket, ServiceOptions } from '../types';
 declare type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>;
 declare type BucketRest = Pick<Bucket, Exclude<keyof Bucket, keyof BucketPicked>>;
 declare type BucketRequired = {
@@ -8,7 +8,7 @@ declare type BucketRequired = {
 declare type BucketCreate = BucketRequired & BucketRest;
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IBucket>;
     getAll(orgID?: string): Promise<IBucket[]>;
     create(bucket: BucketCreate): Promise<IBucket>;

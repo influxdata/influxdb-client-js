@@ -1,5 +1,5 @@
 import {Organization, Telegraf, TelegrafRequest, TelegrafsApi} from '../api'
-import {ILabel, ITelegraf} from '../types'
+import {ILabel, ITelegraf, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
 
@@ -16,8 +16,8 @@ const addDefaultsToAll = (telegrafs: Telegraf[]): ITelegraf[] =>
 export default class {
   private service: TelegrafsApi
 
-  constructor(basePath: string) {
-    this.service = new TelegrafsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new TelegrafsApi({basePath, baseOptions})
   }
 
   public async getAll(orgID: string = ''): Promise<ITelegraf[]> {

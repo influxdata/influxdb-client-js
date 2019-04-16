@@ -1,5 +1,5 @@
 import {Variable, VariablesApi} from '../api'
-import {ILabel, IVariable} from '../types'
+import {ILabel, IVariable, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
 
@@ -13,8 +13,8 @@ const addDefaults = (variable: Variable): IVariable => {
 export default class {
   private service: VariablesApi
 
-  constructor(basePath: string) {
-    this.service = new VariablesApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new VariablesApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<IVariable> {

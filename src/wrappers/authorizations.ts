@@ -1,10 +1,11 @@
 import {Authorization, AuthorizationsApi} from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: AuthorizationsApi
 
-  constructor(basePath: string) {
-    this.service = new AuthorizationsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new AuthorizationsApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<Authorization> {

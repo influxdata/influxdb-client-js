@@ -1,5 +1,5 @@
 import {LogEvent, Run, Task, TasksApi, User} from '../api'
-import {ILabel, ITask} from '../types'
+import {ILabel, ITask, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addDefaults = (task: Task): ITask => {
@@ -15,8 +15,8 @@ const addDefaultsToAll = (tasks: Task[]): ITask[] =>
 export default class {
   private service: TasksApi
 
-  constructor(basePath: string) {
-    this.service = new TasksApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new TasksApi({basePath, baseOptions})
   }
 
   public async create(org: string, script: string): Promise<ITask> {

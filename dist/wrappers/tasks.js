@@ -55,8 +55,8 @@ var addDefaultsToAll = function (tasks) {
     return tasks.map(function (task) { return addDefaults(task); });
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.TasksApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.TasksApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.create = function (org, script) {
         return __awaiter(this, void 0, void 0, function () {

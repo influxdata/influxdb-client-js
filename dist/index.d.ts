@@ -36,5 +36,5 @@ export default class Client {
     variables: Variables;
     write: Write;
     templates: Templates;
-    constructor(basePath: string);
+    constructor(basePath: string, token?: string);
 }

@@ -54,8 +54,8 @@ var sagas_1 = __importDefault(require("../utils/sagas"));
 var DEFAULT_LABEL_COLOR = '#326BBA';
 exports.addLabelDefaults = function (l) { return (__assign({}, l, { properties: __assign({}, l.properties, { color: (l.properties || {}).color || DEFAULT_LABEL_COLOR, description: (l.properties || {}).description || '' }) })); };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.LabelsApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.LabelsApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {

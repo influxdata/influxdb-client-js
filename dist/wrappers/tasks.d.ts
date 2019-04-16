@@ -1,8 +1,8 @@
 import { LogEvent, Run, Task, User } from '../api';
-import { ILabel, ITask } from '../types';
+import { ILabel, ITask, ServiceOptions } from '../types';
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     create(org: string, script: string): Promise<ITask>;
     createByOrgID(orgID: string, script: string): Promise<ITask>;
     get(id: string): Promise<ITask>;

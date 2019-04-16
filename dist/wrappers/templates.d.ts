@@ -1,8 +1,8 @@
 import { DocumentCreate } from '../api';
-import { ITemplate, TemplateSummary, ILabel } from '../types';
+import { ITemplate, TemplateSummary, ILabel, ServiceOptions } from '../types';
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     getAll(orgID?: string): Promise<TemplateSummary[]>;
     get(templateID: string): Promise<ITemplate>;
     update(id: string, props: Partial<ITemplate>): Promise<ITemplate>;
