@@ -80,23 +80,29 @@ export default class Client {
   public write: Write
   public templates: Templates
 
-  constructor(basePath: string) {
-    this.auth = new Auth(basePath)
-    this.authorizations = new Authorizations(basePath)
-    this.buckets = new Buckets(basePath)
-    this.dashboards = new Dashboards(basePath)
-    this.labels = new Labels(basePath)
-    this.links = new Links(basePath)
-    this.organizations = new Organizations(basePath)
-    this.queries = new Queries(basePath)
-    this.scrapers = new Scrapers(basePath)
-    this.setup = new Setup(basePath)
-    this.sources = new Sources(basePath)
-    this.tasks = new Tasks(basePath)
-    this.telegrafConfigs = new TelegrafConfigs(basePath)
-    this.users = new Users(basePath)
-    this.variables = new Variables(basePath)
-    this.write = new Write(basePath)
-    this.templates = new Templates(basePath)
+  constructor(basePath: string, token?: string) {
+    let options = {}
+
+    if (token) {
+      options = {...options, headers: {Authorization: `token ${token}`}}
+    }
+
+    this.auth = new Auth(basePath, options)
+    this.authorizations = new Authorizations(basePath, options)
+    this.buckets = new Buckets(basePath, options)
+    this.dashboards = new Dashboards(basePath, options)
+    this.labels = new Labels(basePath, options)
+    this.links = new Links(basePath, options)
+    this.organizations = new Organizations(basePath, options)
+    this.queries = new Queries(basePath, options)
+    this.scrapers = new Scrapers(basePath, options)
+    this.setup = new Setup(basePath, options)
+    this.sources = new Sources(basePath, options)
+    this.tasks = new Tasks(basePath, options)
+    this.telegrafConfigs = new TelegrafConfigs(basePath, options)
+    this.users = new Users(basePath, options)
+    this.variables = new Variables(basePath, options)
+    this.write = new Write(basePath, options)
+    this.templates = new Templates(basePath, options)
   }
 }

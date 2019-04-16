@@ -1,5 +1,5 @@
 import {Bucket, BucketsApi} from '../api'
-import {IBucket} from '../types'
+import {IBucket, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
 type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>
@@ -18,8 +18,8 @@ const addDefaultsToAll = (buckets: Bucket[]): IBucket[] =>
 export default class {
   private service: BucketsApi
 
-  constructor(basePath: string) {
-    this.service = new BucketsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new BucketsApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<IBucket> {

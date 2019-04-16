@@ -57,8 +57,8 @@ var addTemplateSummaryDefaults = function (d) {
     return __assign({}, d, { labels: labels.map(labels_1.addLabelDefaults) });
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.TemplatesApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.TemplatesApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.getAll = function (orgID) {
         return __awaiter(this, void 0, void 0, function () {

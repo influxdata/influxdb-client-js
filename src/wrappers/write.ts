@@ -1,4 +1,5 @@
 import {WriteApi, WritePrecision} from '../api'
+import {ServiceOptions} from '../types'
 
 interface ICreateOptions {
   precision: WritePrecision
@@ -7,8 +8,8 @@ interface ICreateOptions {
 export default class {
   private service: WriteApi
 
-  constructor(basePath: string) {
-    this.service = new WriteApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new WriteApi({basePath, baseOptions})
   }
 
   public get WritePrecision(): typeof WritePrecision {

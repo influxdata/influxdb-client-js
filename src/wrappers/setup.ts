@@ -1,4 +1,5 @@
 import {OnboardingRequest, OnboardingResponse, SetupApi} from '../api'
+import {ServiceOptions} from '../types'
 
 interface IStatus {
   allowed: boolean
@@ -7,8 +8,8 @@ interface IStatus {
 export default class {
   private service: SetupApi
 
-  constructor(basePath: string) {
-    this.service = new SetupApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new SetupApi({basePath, baseOptions})
   }
 
   public async create(props: OnboardingRequest): Promise<OnboardingResponse> {

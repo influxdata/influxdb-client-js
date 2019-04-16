@@ -59,9 +59,9 @@ var addDefaultsToAll = function (dashboards) {
     return dashboards.map(function (dashboard) { return addDefaults(dashboard); });
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.cellsService = new api_1.CellsApi({ basePath: basePath });
-        this.service = new api_1.DashboardsApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.cellsService = new api_1.CellsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.service = new api_1.DashboardsApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {

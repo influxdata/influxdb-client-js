@@ -56,8 +56,8 @@ var addDefaults = function (variable) {
     return __assign({}, variable, { labels: (variable.labels || []).map(labels_1.addLabelDefaults) });
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.VariablesApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.VariablesApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {

@@ -53,8 +53,8 @@ var addDefaultsToAll = function (buckets) {
     return buckets.map(addDefaults);
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.BucketsApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.BucketsApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {

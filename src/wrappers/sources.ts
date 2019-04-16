@@ -1,10 +1,11 @@
 import {Source, SourcesApi} from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: SourcesApi
 
-  constructor(basePath: string) {
-    this.service = new SourcesApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new SourcesApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<Source> {

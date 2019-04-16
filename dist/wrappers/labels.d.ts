@@ -1,10 +1,10 @@
 import { Label as APILabel } from '../api';
-import { ILabel } from '../types';
+import { ILabel, ServiceOptions } from '../types';
 import { ILabelProperties } from '../types';
 export declare const addLabelDefaults: (l: APILabel) => ILabel;
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<ILabel>;
     getAll(orgID: string): Promise<ILabel[]>;
     create(request: {

@@ -1,8 +1,8 @@
 import { Variable } from '../api';
-import { ILabel, IVariable } from '../types';
+import { ILabel, IVariable, ServiceOptions } from '../types';
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IVariable>;
     update(id: string, props: Partial<Variable>): Promise<IVariable>;
     getAllByOrg(org: string): Promise<IVariable[]>;

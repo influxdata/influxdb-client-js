@@ -1,9 +1,9 @@
 import { Cell, CreateDashboardRequest, Dashboard, View } from '../api';
-import { IDashboard, ILabel } from '../types';
+import { IDashboard, ILabel, ServiceOptions } from '../types';
 export default class {
     private service;
     private cellsService;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IDashboard>;
     getAll(orgID?: string): Promise<IDashboard[]>;
     getAllByOrg(org: string): Promise<IDashboard[]>;

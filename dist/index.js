@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
@@ -26,24 +37,28 @@ var templates_1 = __importDefault(require("./wrappers/templates"));
 __export(require("./api"));
 __export(require("./types"));
 var Client = (function () {
-    function Client(basePath) {
-        this.auth = new auth_1.default(basePath);
-        this.authorizations = new authorizations_1.default(basePath);
-        this.buckets = new buckets_1.default(basePath);
-        this.dashboards = new dashboards_1.default(basePath);
-        this.labels = new labels_1.default(basePath);
-        this.links = new links_1.default(basePath);
-        this.organizations = new organizations_1.default(basePath);
-        this.queries = new queries_1.default(basePath);
-        this.scrapers = new scrapers_1.default(basePath);
-        this.setup = new setup_1.default(basePath);
-        this.sources = new sources_1.default(basePath);
-        this.tasks = new tasks_1.default(basePath);
-        this.telegrafConfigs = new telegrafConfigs_1.default(basePath);
-        this.users = new users_1.default(basePath);
-        this.variables = new variables_1.default(basePath);
-        this.write = new write_1.default(basePath);
-        this.templates = new templates_1.default(basePath);
+    function Client(basePath, token) {
+        var options = {};
+        if (token) {
+            options = __assign({}, options, { headers: { Authorization: "token " + token } });
+        }
+        this.auth = new auth_1.default(basePath, options);
+        this.authorizations = new authorizations_1.default(basePath, options);
+        this.buckets = new buckets_1.default(basePath, options);
+        this.dashboards = new dashboards_1.default(basePath, options);
+        this.labels = new labels_1.default(basePath, options);
+        this.links = new links_1.default(basePath, options);
+        this.organizations = new organizations_1.default(basePath, options);
+        this.queries = new queries_1.default(basePath, options);
+        this.scrapers = new scrapers_1.default(basePath, options);
+        this.setup = new setup_1.default(basePath, options);
+        this.sources = new sources_1.default(basePath, options);
+        this.tasks = new tasks_1.default(basePath, options);
+        this.telegrafConfigs = new telegrafConfigs_1.default(basePath, options);
+        this.users = new users_1.default(basePath, options);
+        this.variables = new variables_1.default(basePath, options);
+        this.write = new write_1.default(basePath, options);
+        this.templates = new templates_1.default(basePath, options);
     }
     return Client;
 }());

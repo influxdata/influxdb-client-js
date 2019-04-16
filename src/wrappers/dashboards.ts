@@ -6,7 +6,7 @@ import {
   DashboardsApi,
   View,
 } from '../api'
-import {IDashboard, ILabel} from '../types'
+import {IDashboard, ILabel, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
 
@@ -29,9 +29,9 @@ export default class {
   private service: DashboardsApi
   private cellsService: CellsApi
 
-  constructor(basePath: string) {
-    this.cellsService = new CellsApi({basePath})
-    this.service = new DashboardsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.cellsService = new CellsApi({basePath, baseOptions})
+    this.service = new DashboardsApi({basePath, baseOptions})
   }
 
   public async get(id: string): Promise<IDashboard> {

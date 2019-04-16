@@ -1,8 +1,8 @@
 import { Organization, Telegraf } from '../api';
-import { ILabel, ITelegraf } from '../types';
+import { ILabel, ITelegraf, ServiceOptions } from '../types';
 export default class {
     private service;
-    constructor(basePath: string);
+    constructor(basePath: string, baseOptions: ServiceOptions);
     getAll(orgID?: string): Promise<ITelegraf[]>;
     getAllByOrg(org: Organization): Promise<ITelegraf[]>;
     getTOML(id: string): Promise<string>;

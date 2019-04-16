@@ -1,10 +1,11 @@
 import {User, UsersApi} from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: UsersApi
 
-  constructor(basePath: string) {
-    this.service = new UsersApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new UsersApi({basePath, baseOptions})
   }
 
   public async me(): Promise<User> {

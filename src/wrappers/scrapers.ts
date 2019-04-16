@@ -3,12 +3,13 @@ import {
   ScraperTargetResponse,
   ScraperTargetsApi,
 } from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: ScraperTargetsApi
 
-  constructor(basePath: string) {
-    this.service = new ScraperTargetsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new ScraperTargetsApi({basePath, baseOptions})
   }
 
   public async getAll(orgID: string): Promise<ScraperTargetResponse[]> {

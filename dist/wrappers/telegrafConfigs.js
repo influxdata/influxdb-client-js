@@ -59,8 +59,8 @@ var addDefaultsToAll = function (telegrafs) {
     return telegrafs.map(function (telegraf) { return addDefaults(telegraf); });
 };
 var default_1 = (function () {
-    function default_1(basePath) {
-        this.service = new api_1.TelegrafsApi({ basePath: basePath });
+    function default_1(basePath, baseOptions) {
+        this.service = new api_1.TelegrafsApi({ basePath: basePath, baseOptions: baseOptions });
     }
     default_1.prototype.getAll = function (orgID) {
         if (orgID === void 0) { orgID = ''; }
