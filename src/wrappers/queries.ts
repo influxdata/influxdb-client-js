@@ -1,5 +1,5 @@
 import {Package, QueryApi} from '../api'
-import {ServiceOptions} from '../types'
+import {ServiceOptions, File} from '../types'
 import {isInBrowser} from '../utils/platform'
 import {Stream} from 'stream'
 

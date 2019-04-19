@@ -1,4 +1,4 @@
-import {ServiceOptions} from '../../types'
+import {ServiceOptions, File} from '../../types'
 import {PassThrough, Stream} from 'stream'
 
 export class CancellationError extends Error {}
