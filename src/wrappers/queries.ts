@@ -2,6 +2,8 @@ import {Package, QueryApi} from '../api'
 import {ServiceOptions, File} from '../types'
 import {isInBrowser} from '../utils/platform'
 import {Stream} from 'stream'
+import nodeQuery from '../utils/request/node'
+import browserQuery from '../utils/request/browser'
 
 export default class {
   private service: QueryApi
@@ -28,21 +30,9 @@ export default class {
     extern?: File
   ): {stream: Stream; cancel: () => void} {
     if (isInBrowser()) {
-      return require('../utils/request/browser')(
-        orgID,
-        this.basePath,
-        this.baseOptions,
-        query,
-        extern
-      )
+      return browserQuery(orgID, this.basePath, this.baseOptions, query, extern)
     } else {
-      return require('../utils/request/node')(
-        orgID,
-        this.basePath,
-        this.baseOptions,
-        query,
-        extern
-      )
+      return nodeQuery(orgID, this.basePath, this.baseOptions, query, extern)
     }
   }
 }
