@@ -36,9 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("../api");
+var platform_1 = require("../utils/platform");
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.QueryApi({ basePath: basePath, baseOptions: baseOptions });
+        this.basePath = basePath;
+        this.baseOptions = baseOptions;
     }
     default_1.prototype.ast = function (query) {
         return __awaiter(this, void 0, void 0, function () {
@@ -54,6 +57,14 @@ var default_1 = (function () {
                 }
             });
         });
+    };
+    default_1.prototype.execute = function (orgID, query, extern) {
+        if (platform_1.isInBrowser()) {
+            return require('../utils/request/browser')(orgID, this.basePath, this.baseOptions, query, extern);
+        }
+        else {
+            return require('../utils/request/node')(orgID, this.basePath, this.baseOptions, query, extern);
+        }
     };
     return default_1;
 }());
