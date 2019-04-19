@@ -65,7 +65,7 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
     xhr.onerror = handleError;
     var dialect = { annotations: ['group', 'datatype', 'default'] };
     var body = extern ? { query: query, dialect: dialect, extern: extern } : { query: query, dialect: dialect };
-    xhr.open('POST', fullURL + "/query?orgID=" + encodeURIComponent(orgID));
+    xhr.open('POST', fullURL);
     xhr.setRequestHeader('Content-Type', 'application/json');
     if (baseOptions && baseOptions.headers) {
         xhr.setRequestHeader('Authorization', baseOptions.headers.Authorization);
