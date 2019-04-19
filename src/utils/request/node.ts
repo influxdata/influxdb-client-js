@@ -1,4 +1,4 @@
-import {ServiceOptions} from '../../types'
+import {ServiceOptions, File} from '../../types'
 import Axios from 'axios'
 import {PassThrough, Stream} from 'stream'
 

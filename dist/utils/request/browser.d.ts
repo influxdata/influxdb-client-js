@@ -1,4 +1,4 @@
-import { ServiceOptions } from '../../types';
+import { ServiceOptions, File } from '../../types';
 import { Stream } from 'stream';
 export declare class CancellationError extends Error {
 }

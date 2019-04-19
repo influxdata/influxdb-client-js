@@ -1,5 +1,5 @@
 import { Package } from '../api';
-import { ServiceOptions } from '../types';
+import { ServiceOptions, File } from '../types';
 import { Stream } from 'stream';
 export default class {
     private service;
