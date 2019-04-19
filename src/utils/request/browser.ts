@@ -60,7 +60,7 @@ export default function(
   const dialect = {annotations: ['group', 'datatype', 'default']}
   const body = extern ? {query, dialect, extern} : {query, dialect}
 
-  xhr.open('POST', `${fullURL}/query?orgID=${encodeURIComponent(orgID)}`)
+  xhr.open('POST', fullURL)
   xhr.setRequestHeader('Content-Type', 'application/json')
   if (baseOptions && baseOptions.headers) {
     xhr.setRequestHeader('Authorization', baseOptions.headers.Authorization)
