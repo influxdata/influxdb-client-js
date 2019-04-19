@@ -7,4 +7,3 @@ export interface ServiceOptions {
     Authorization: string
   }
 }
-
