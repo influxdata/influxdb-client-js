@@ -34,9 +34,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("../api");
 var platform_1 = require("../utils/platform");
+var node_1 = __importDefault(require("../utils/request/node"));
+var browser_1 = __importDefault(require("../utils/request/browser"));
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.QueryApi({ basePath: basePath, baseOptions: baseOptions });
@@ -60,10 +65,10 @@ var default_1 = (function () {
     };
     default_1.prototype.execute = function (orgID, query, extern) {
         if (platform_1.isInBrowser()) {
-            return require('../utils/request/browser')(orgID, this.basePath, this.baseOptions, query, extern);
+            return browser_1.default(orgID, this.basePath, this.baseOptions, query, extern);
         }
         else {
-            return require('../utils/request/node')(orgID, this.basePath, this.baseOptions, query, extern);
+            return node_1.default(orgID, this.basePath, this.baseOptions, query, extern);
         }
     };
     return default_1;

@@ -9,7 +9,7 @@ export default function(
   basePath: string,
   baseOptions: ServiceOptions,
   query: string,
-  extern: File
+  extern?: File
 ): {stream: Stream; cancel: () => void} {
   const fullURL = `${basePath}/query?orgID=${encodeURIComponent(orgID)}`
   const dialect = {annotations: ['group', 'datatype', 'default']}
