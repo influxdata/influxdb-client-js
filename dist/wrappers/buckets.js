@@ -55,13 +55,14 @@ var addDefaultsToAll = function (buckets) {
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.BucketsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.bucketsBucketIDGet(id)];
+                    case 0: return [4, this.service.bucketsBucketIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -74,7 +75,7 @@ var default_1 = (function () {
             var buckets;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.bucketsGet(undefined, undefined, undefined, undefined, orgID)];
+                    case 0: return [4, this.service.bucketsGet(undefined, undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
                     case 1:
                         buckets = (_a.sent()).data.buckets;
                         return [2, addDefaultsToAll(buckets || [])];
@@ -87,7 +88,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.bucketsPost(bucket)];
+                    case 0: return [4, this.service.bucketsPost(bucket, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -103,7 +104,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.bucketsBucketIDPatch(id, __assign({}, original, bucket))];
+                        return [4, this.service.bucketsBucketIDPatch(id, __assign({}, original, bucket), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -116,7 +117,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.bucketsBucketIDDelete(id)];
+                    case 0: return [4, this.service.bucketsBucketIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

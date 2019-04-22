@@ -2,6 +2,7 @@ import { AddResourceMemberRequestBody, Organization, ResourceMember, ResourceOwn
 import { ServiceOptions } from '../types';
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<Organization>;
     getAll(): Promise<Organization[]>;

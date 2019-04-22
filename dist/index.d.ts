@@ -8,7 +8,6 @@ import Organizations from './wrappers/organizations';
 import Queries from './wrappers/queries';
 import Scrapers from './wrappers/scrapers';
 import Setup from './wrappers/setup';
-import Sources from './wrappers/sources';
 import Tasks from './wrappers/tasks';
 import TelegrafConfigs from './wrappers/telegrafConfigs';
 import Users from './wrappers/users';
@@ -29,7 +28,6 @@ export default class Client {
     queries: Queries;
     scrapers: Scrapers;
     setup: Setup;
-    sources: Sources;
     tasks: Tasks;
     telegrafConfigs: TelegrafConfigs;
     users: Users;

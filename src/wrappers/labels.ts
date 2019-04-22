@@ -17,15 +17,17 @@ export const addLabelDefaults = (l: APILabel): ILabel => ({
 
 export default class {
   private service: LabelsApi
+  private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new LabelsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async get(id: string): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsLabelIDGet(id)
+    } = await this.service.labelsLabelIDGet(id, undefined, this.serviceOptions)
 
     if (!label) {
       throw new Error('Failed to get label')
@@ -37,7 +39,7 @@ export default class {
   public async getAll(orgID: string): Promise<ILabel[]> {
     const {
       data: {labels},
-    } = await this.service.labelsGet(orgID)
+    } = await this.service.labelsGet(orgID, undefined, this.serviceOptions)
 
     return (labels || []).map(addLabelDefaults)
   }
@@ -49,7 +51,7 @@ export default class {
   }): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsPost(request)
+    } = await this.service.labelsPost(request, this.serviceOptions)
 
     if (!label) {
       throw new Error('Failed to create label')
@@ -85,10 +87,15 @@ export default class {
     const original = await this.get(id)
     const {
       data: {label},
-    } = await this.service.labelsLabelIDPatch(id, {
-      ...original,
-      ...updates,
-    })
+    } = await this.service.labelsLabelIDPatch(
+      id,
+      {
+        ...original,
+        ...updates,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     if (!label) {
       throw new Error('Failed to update label')
@@ -98,7 +105,11 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.labelsLabelIDDelete(id)
+    const {data} = await this.service.labelsLabelIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }

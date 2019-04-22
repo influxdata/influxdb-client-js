@@ -58,13 +58,14 @@ var addDefaults = function (variable) {
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.VariablesApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var variable;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDGet(id)];
+                    case 0: return [4, this.service.variablesVariableIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         variable = (_a.sent()).data;
                         return [2, addDefaults(variable)];
@@ -80,7 +81,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.variablesVariableIDPatch(id, __assign({}, original, props))];
+                        return [4, this.service.variablesVariableIDPatch(id, __assign({}, original, props), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -93,7 +94,7 @@ var default_1 = (function () {
             var variables;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesGet(undefined, org)];
+                    case 0: return [4, this.service.variablesGet(undefined, org, undefined, this.serviceOptions)];
                     case 1:
                         variables = (_a.sent()).data.variables;
                         return [2, (variables || []).map(function (v) { return addDefaults(v); })];
@@ -106,7 +107,7 @@ var default_1 = (function () {
             var variables;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesGet(undefined, undefined, orgID)];
+                    case 0: return [4, this.service.variablesGet(undefined, undefined, orgID, this.serviceOptions)];
                     case 1:
                         variables = (_a.sent()).data.variables;
                         return [2, (variables || []).map(function (v) { return addDefaults(v); })];
@@ -119,7 +120,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesPost(variable)];
+                    case 0: return [4, this.service.variablesPost(variable, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -148,7 +149,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDDelete(id)];
+                    case 0: return [4, this.service.variablesVariableIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -163,7 +164,7 @@ var default_1 = (function () {
                 switch (_a.label) {
                     case 0: return [4, this.service.variablesVariableIDLabelsPost(variableID, {
                             labelID: labelID,
-                        })];
+                        }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         if (!data.label) {
@@ -212,7 +213,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDLabelsLabelIDDelete(variableID, labelID)];
+                    case 0: return [4, this.service.variablesVariableIDLabelsLabelIDDelete(variableID, labelID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

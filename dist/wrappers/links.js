@@ -39,13 +39,14 @@ var api_1 = require("../api");
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.DefaultApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.getAll = function () {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.rootGet()];
+                    case 0: return [4, this.service.rootGet(undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

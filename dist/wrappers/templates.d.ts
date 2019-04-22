@@ -2,6 +2,7 @@ import { DocumentCreate } from '../api';
 import { ITemplate, TemplateSummary, ILabel, ServiceOptions } from '../types';
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     getAll(orgID?: string): Promise<TemplateSummary[]>;
     get(templateID: string): Promise<ITemplate>;

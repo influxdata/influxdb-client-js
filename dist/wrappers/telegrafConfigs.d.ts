@@ -2,6 +2,7 @@ import { Organization, Telegraf } from '../api';
 import { ILabel, ITelegraf, ServiceOptions } from '../types';
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     getAll(orgID?: string): Promise<ITelegraf[]>;
     getAllByOrg(org: Organization): Promise<ITelegraf[]>;

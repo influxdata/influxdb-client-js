@@ -7,9 +7,11 @@ interface ICreateOptions {
 
 export default class {
   private service: WriteApi
+  private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new WriteApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public get WritePrecision(): typeof WritePrecision {
@@ -33,7 +35,8 @@ export default class {
       undefined,
       undefined,
       undefined,
-      precision
+      precision,
+      this.serviceOptions
     )
 
     return response

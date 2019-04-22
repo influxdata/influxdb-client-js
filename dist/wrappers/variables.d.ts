@@ -2,6 +2,7 @@ import { Variable } from '../api';
 import { ILabel, IVariable, ServiceOptions } from '../types';
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IVariable>;
     update(id: string, props: Partial<Variable>): Promise<IVariable>;

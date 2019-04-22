@@ -61,6 +61,7 @@ var addDefaultsToAll = function (telegrafs) {
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.TelegrafsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.getAll = function (orgID) {
         if (orgID === void 0) { orgID = ''; }
@@ -68,7 +69,7 @@ var default_1 = (function () {
             var configurations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsGet(orgID)];
+                    case 0: return [4, this.service.telegrafsGet(orgID, undefined, this.serviceOptions)];
                     case 1:
                         configurations = (_a.sent()).data.configurations;
                         return [2, addDefaultsToAll(configurations || [])];
@@ -85,7 +86,7 @@ var default_1 = (function () {
                         if (!org.id) {
                             throw new Error('organization must have an id');
                         }
-                        return [4, this.service.telegrafsGet(org.id)];
+                        return [4, this.service.telegrafsGet(org.id, undefined, this.serviceOptions)];
                     case 1:
                         configurations = (_a.sent()).data.configurations;
                         return [2, addDefaultsToAll(configurations || [])];
@@ -104,7 +105,7 @@ var default_1 = (function () {
                                 Accept: 'application/toml',
                             },
                         };
-                        return [4, this.service.telegrafsTelegrafIDGet(id, undefined, options)];
+                        return [4, this.service.telegrafsTelegrafIDGet(id, undefined, __assign({}, this.serviceOptions, options))];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -117,7 +118,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsTelegrafIDGet(id)];
+                    case 0: return [4, this.service.telegrafsTelegrafIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -130,7 +131,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsPost(props)];
+                    case 0: return [4, this.service.telegrafsPost(props, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -147,7 +148,7 @@ var default_1 = (function () {
                     case 1:
                         original = _a.sent();
                         update = __assign({}, original, props);
-                        return [4, this.service.telegrafsTelegrafIDPut(id, update)];
+                        return [4, this.service.telegrafsTelegrafIDPut(id, update, undefined, this.serviceOptions)];
                     case 2:
                         updated = (_a.sent()).data;
                         return [2, addDefaults(updated)];
@@ -160,7 +161,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsTelegrafIDDelete(id)];
+                    case 0: return [4, this.service.telegrafsTelegrafIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -179,7 +180,7 @@ var default_1 = (function () {
                         }
                         return [4, this.service.telegrafsTelegrafIDLabelsPost(id, {
                                 labelID: label.id,
-                            })];
+                            }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         if (!data.label) {
@@ -199,7 +200,7 @@ var default_1 = (function () {
                         if (!label.id) {
                             throw new Error('label must have id');
                         }
-                        return [4, this.service.telegrafsTelegrafIDLabelsLabelIDDelete(id, label.id)];
+                        return [4, this.service.telegrafsTelegrafIDLabelsLabelIDDelete(id, label.id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

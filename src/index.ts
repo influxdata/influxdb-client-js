@@ -8,7 +8,6 @@ import Organizations from './wrappers/organizations'
 import Queries from './wrappers/queries'
 import Scrapers from './wrappers/scrapers'
 import Setup from './wrappers/setup'
-import Sources from './wrappers/sources'
 import Tasks from './wrappers/tasks'
 import TelegrafConfigs from './wrappers/telegrafConfigs'
 import Users from './wrappers/users'
@@ -72,7 +71,6 @@ export default class Client {
   public queries: Queries
   public scrapers: Scrapers
   public setup: Setup
-  public sources: Sources
   public tasks: Tasks
   public telegrafConfigs: TelegrafConfigs
   public users: Users
@@ -97,7 +95,6 @@ export default class Client {
     this.queries = new Queries(basePath, options)
     this.scrapers = new Scrapers(basePath, options)
     this.setup = new Setup(basePath, options)
-    this.sources = new Sources(basePath, options)
     this.tasks = new Tasks(basePath, options)
     this.telegrafConfigs = new TelegrafConfigs(basePath, options)
     this.users = new Users(basePath, options)

@@ -2,6 +2,7 @@ import { Authorization } from '../api';
 import { ServiceOptions } from '../types';
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<Authorization>;
     getAuthorizationToken(username: string): Promise<string | null>;

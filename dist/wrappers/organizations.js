@@ -50,13 +50,14 @@ var api_1 = require("../api");
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.OrganizationsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDGet(id)];
+                    case 0: return [4, this.service.orgsOrgIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -69,7 +70,7 @@ var default_1 = (function () {
             var orgs;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsGet()];
+                    case 0: return [4, this.service.orgsGet(undefined, undefined, undefined, this.serviceOptions)];
                     case 1:
                         orgs = (_a.sent()).data.orgs;
                         return [2, orgs || []];
@@ -82,7 +83,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsPost(org)];
+                    case 0: return [4, this.service.orgsPost(org, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -95,7 +96,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDDelete(id)];
+                    case 0: return [4, this.service.orgsOrgIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -111,7 +112,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.orgsOrgIDPatch(id, __assign({}, original, org))];
+                        return [4, this.service.orgsOrgIDPatch(id, __assign({}, original, org), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -124,7 +125,7 @@ var default_1 = (function () {
             var users;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDMembersGet(id)];
+                    case 0: return [4, this.service.orgsOrgIDMembersGet(id, undefined, this.serviceOptions)];
                     case 1:
                         users = (_a.sent()).data.users;
                         return [2, users || []];
@@ -137,7 +138,7 @@ var default_1 = (function () {
             var users;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDOwnersGet(id)];
+                    case 0: return [4, this.service.orgsOrgIDOwnersGet(id, undefined, this.serviceOptions)];
                     case 1:
                         users = (_a.sent()).data.users;
                         return [2, users || []];
@@ -150,7 +151,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDOwnersPost(id, user)];
+                    case 0: return [4, this.service.orgsOrgIDOwnersPost(id, user, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -163,7 +164,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDMembersPost(id, user)];
+                    case 0: return [4, this.service.orgsOrgIDMembersPost(id, user, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -176,7 +177,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.orgsOrgIDMembersUserIDDelete(userID, orgID)];
+                    case 0: return [4, this.service.orgsOrgIDMembersUserIDDelete(userID, orgID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

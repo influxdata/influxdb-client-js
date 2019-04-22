@@ -45,8 +45,8 @@ var browser_1 = __importDefault(require("../utils/request/browser"));
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.QueryApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
         this.basePath = basePath;
-        this.baseOptions = baseOptions;
     }
     default_1.prototype.ast = function (query) {
         return __awaiter(this, void 0, void 0, function () {
@@ -55,7 +55,7 @@ var default_1 = (function () {
                 switch (_a.label) {
                     case 0: return [4, this.service.queryAstPost(undefined, undefined, {
                             query: query,
-                        })];
+                        }, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data.ast];
@@ -65,10 +65,10 @@ var default_1 = (function () {
     };
     default_1.prototype.execute = function (orgID, query, extern) {
         if (platform_1.isInBrowser()) {
-            return browser_1.default(orgID, this.basePath, this.baseOptions, query, extern);
+            return browser_1.default(orgID, this.basePath, this.serviceOptions, query, extern);
         }
         else {
-            return node_1.default(orgID, this.basePath, this.baseOptions, query, extern);
+            return node_1.default(orgID, this.basePath, this.serviceOptions, query, extern);
         }
     };
     return default_1;

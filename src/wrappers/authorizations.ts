@@ -3,13 +3,19 @@ import {ServiceOptions} from '../types'
 
 export default class {
   private service: AuthorizationsApi
+  private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new AuthorizationsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async get(id: string): Promise<Authorization> {
-    const {data} = await this.service.authorizationsAuthIDGet(id)
+    const {data} = await this.service.authorizationsAuthIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
@@ -31,7 +37,9 @@ export default class {
       undefined,
       undefined,
       undefined,
-      orgID
+      orgID,
+      undefined,
+      this.serviceOptions
     )
 
     return authorizations || []
@@ -40,13 +48,24 @@ export default class {
   public async getAllByUsername(username: string): Promise<Authorization[]> {
     const {
       data: {authorizations},
-    } = await this.service.authorizationsGet(undefined, undefined, username)
+    } = await this.service.authorizationsGet(
+      undefined,
+      undefined,
+      username,
+      undefined,
+      undefined,
+      this.serviceOptions
+    )
 
     return authorizations || []
   }
 
   public async create(auth: Authorization): Promise<Authorization> {
-    const {data} = await this.service.authorizationsPost(auth)
+    const {data} = await this.service.authorizationsPost(
+      auth,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
@@ -56,16 +75,25 @@ export default class {
     update: Partial<Authorization>
   ): Promise<Authorization> {
     const original = await this.get(id)
-    const {data} = await this.service.authorizationsAuthIDPatch(id, {
-      ...original,
-      ...update,
-    })
+    const {data} = await this.service.authorizationsAuthIDPatch(
+      id,
+      {
+        ...original,
+        ...update,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.authorizationsAuthIDDelete(id)
+    const {data} = await this.service.authorizationsAuthIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
