@@ -7,19 +7,24 @@ import browserQuery from '../utils/request/browser'
 
 export default class {
   private service: QueryApi
+  private serviceOptions: ServiceOptions
   private basePath: string
-  private baseOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new QueryApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
     this.basePath = basePath
-    this.baseOptions = baseOptions
   }
 
   public async ast(query: string): Promise<Package | undefined> {
-    const {data} = await this.service.queryAstPost(undefined, undefined, {
-      query,
-    })
+    const {data} = await this.service.queryAstPost(
+      undefined,
+      undefined,
+      {
+        query,
+      },
+      this.serviceOptions
+    )
 
     return data.ast
   }
@@ -30,9 +35,15 @@ export default class {
     extern?: File
   ): {stream: Stream; cancel: () => void} {
     if (isInBrowser()) {
-      return browserQuery(orgID, this.basePath, this.baseOptions, query, extern)
+      return browserQuery(
+        orgID,
+        this.basePath,
+        this.serviceOptions,
+        query,
+        extern
+      )
     } else {
-      return nodeQuery(orgID, this.basePath, this.baseOptions, query, extern)
+      return nodeQuery(orgID, this.basePath, this.serviceOptions, query, extern)
     }
   }
 }

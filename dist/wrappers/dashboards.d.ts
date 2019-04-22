@@ -3,10 +3,10 @@ import { IDashboard, ILabel, ServiceOptions } from '../types';
 export default class {
     private service;
     private cellsService;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IDashboard>;
     getAll(orgID?: string): Promise<IDashboard[]>;
-    getAllByOrg(org: string): Promise<IDashboard[]>;
     create(props: CreateDashboardRequest): Promise<IDashboard>;
     update(id: string, props: Partial<Dashboard>): Promise<IDashboard>;
     delete(id: string): Promise<Response>;

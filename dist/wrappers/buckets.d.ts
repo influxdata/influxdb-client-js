@@ -8,6 +8,7 @@ declare type BucketRequired = {
 declare type BucketCreate = BucketRequired & BucketRest;
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<IBucket>;
     getAll(orgID?: string): Promise<IBucket[]>;

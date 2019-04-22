@@ -39,6 +39,7 @@ var api_1 = require("../api");
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.WriteApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     Object.defineProperty(default_1.prototype, "WritePrecision", {
         get: function () {
@@ -55,7 +56,7 @@ var default_1 = (function () {
                 switch (_a.label) {
                     case 0:
                         precision = options.precision || api_1.WritePrecision.Ns;
-                        return [4, this.service.writePost(org, bucket, data, undefined, undefined, undefined, undefined, undefined, precision)];
+                        return [4, this.service.writePost(org, bucket, data, undefined, undefined, undefined, undefined, undefined, precision, this.serviceOptions)];
                     case 1:
                         response = (_a.sent()).data;
                         return [2, response];

@@ -50,13 +50,14 @@ var api_1 = require("../api");
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.AuthorizationsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.authorizationsAuthIDGet(id)];
+                    case 0: return [4, this.service.authorizationsAuthIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -85,7 +86,7 @@ var default_1 = (function () {
             var authorizations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.authorizationsGet(undefined, undefined, undefined, orgID)];
+                    case 0: return [4, this.service.authorizationsGet(undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
                     case 1:
                         authorizations = (_a.sent()).data.authorizations;
                         return [2, authorizations || []];
@@ -98,7 +99,7 @@ var default_1 = (function () {
             var authorizations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.authorizationsGet(undefined, undefined, username)];
+                    case 0: return [4, this.service.authorizationsGet(undefined, undefined, username, undefined, undefined, this.serviceOptions)];
                     case 1:
                         authorizations = (_a.sent()).data.authorizations;
                         return [2, authorizations || []];
@@ -111,7 +112,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.authorizationsPost(auth)];
+                    case 0: return [4, this.service.authorizationsPost(auth, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -127,7 +128,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.authorizationsAuthIDPatch(id, __assign({}, original, update))];
+                        return [4, this.service.authorizationsAuthIDPatch(id, __assign({}, original, update), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -140,7 +141,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.authorizationsAuthIDDelete(id)];
+                    case 0: return [4, this.service.authorizationsAuthIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

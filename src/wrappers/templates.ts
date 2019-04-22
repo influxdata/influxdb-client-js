@@ -21,16 +21,19 @@ const addTemplateSummaryDefaults = (d: DocumentListEntry): TemplateSummary => {
 
 export default class {
   private service: TemplatesApi
+  private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new TemplatesApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async getAll(orgID?: string): Promise<TemplateSummary[]> {
     const {data} = await this.service.documentsTemplatesGet(
       undefined,
       undefined,
-      orgID
+      orgID,
+      this.serviceOptions
     )
 
     if (data.documents) {
@@ -42,7 +45,9 @@ export default class {
 
   public async get(templateID: string): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesTemplateIDGet(
-      templateID
+      templateID,
+      undefined,
+      this.serviceOptions
     )
 
     return addTemplateDefaults(data)
@@ -53,23 +58,34 @@ export default class {
     props: Partial<ITemplate>
   ): Promise<ITemplate> {
     const original = await this.get(id)
-    const {data} = await this.service.documentsTemplatesTemplateIDPut(id, {
-      ...original,
-      ...props,
-    })
+    const {data} = await this.service.documentsTemplatesTemplateIDPut(
+      id,
+      {
+        ...original,
+        ...props,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return addTemplateDefaults(data)
   }
 
   public async create(templateCreate: DocumentCreate): Promise<ITemplate> {
-    const {data} = await this.service.documentsTemplatesPost(templateCreate)
+    const {data} = await this.service.documentsTemplatesPost(
+      templateCreate,
+      undefined,
+      this.serviceOptions
+    )
 
     return addTemplateDefaults(data)
   }
 
   public async delete(templateID: string): Promise<Response> {
     const {data} = await this.service.documentsTemplatesTemplateIDDelete(
-      templateID
+      templateID,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -80,7 +96,9 @@ export default class {
       templateID,
       {
         labelID,
-      }
+      },
+      undefined,
+      this.serviceOptions
     )
 
     if (!data.label) {
@@ -98,7 +116,9 @@ export default class {
       data,
     } = await this.service.documentsTemplatesTemplateIDLabelsLabelIDDelete(
       templateID,
-      labelID
+      labelID,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -121,7 +141,9 @@ export default class {
 
   public async clone(templateID: string, orgID: string): Promise<ITemplate> {
     const {data} = await this.service.documentsTemplatesTemplateIDGet(
-      templateID
+      templateID,
+      undefined,
+      this.serviceOptions
     )
 
     const {labels, content, meta} = data

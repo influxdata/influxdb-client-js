@@ -5,6 +5,7 @@ interface IStatus {
 }
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     create(props: OnboardingRequest): Promise<OnboardingResponse>;
     status(): Promise<IStatus>;

@@ -56,13 +56,14 @@ exports.addLabelDefaults = function (l) { return (__assign({}, l, { properties: 
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.LabelsApi({ basePath: basePath, baseOptions: baseOptions });
+        this.serviceOptions = baseOptions;
     }
     default_1.prototype.get = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var label;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.labelsLabelIDGet(id)];
+                    case 0: return [4, this.service.labelsLabelIDGet(id, undefined, this.serviceOptions)];
                     case 1:
                         label = (_a.sent()).data.label;
                         if (!label) {
@@ -78,7 +79,7 @@ var default_1 = (function () {
             var labels;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.labelsGet(orgID)];
+                    case 0: return [4, this.service.labelsGet(orgID, undefined, this.serviceOptions)];
                     case 1:
                         labels = (_a.sent()).data.labels;
                         return [2, (labels || []).map(exports.addLabelDefaults)];
@@ -91,7 +92,7 @@ var default_1 = (function () {
             var label;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.labelsPost(request)];
+                    case 0: return [4, this.service.labelsPost(request, this.serviceOptions)];
                     case 1:
                         label = (_a.sent()).data.label;
                         if (!label) {
@@ -143,7 +144,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.labelsLabelIDPatch(id, __assign({}, original, updates))];
+                        return [4, this.service.labelsLabelIDPatch(id, __assign({}, original, updates), undefined, this.serviceOptions)];
                     case 2:
                         label = (_a.sent()).data.label;
                         if (!label) {
@@ -159,7 +160,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.labelsLabelIDDelete(id)];
+                    case 0: return [4, this.service.labelsLabelIDDelete(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

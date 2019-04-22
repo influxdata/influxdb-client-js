@@ -28,14 +28,20 @@ const addDefaultsToAll = (dashboards: Dashboard[]): IDashboard[] => {
 export default class {
   private service: DashboardsApi
   private cellsService: CellsApi
+  private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.cellsService = new CellsApi({basePath, baseOptions})
     this.service = new DashboardsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async get(id: string): Promise<IDashboard> {
-    const {data} = await this.service.dashboardsDashboardIDGet(id)
+    const {data} = await this.service.dashboardsDashboardIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -46,20 +52,20 @@ export default class {
       undefined,
       undefined,
       undefined,
-      orgID
+      orgID,
+      undefined,
+      this.serviceOptions
     )
 
     return addDefaultsToAll(data.dashboards || [])
   }
 
-  public async getAllByOrg(org: string): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(org)
-
-    return addDefaultsToAll(data.dashboards || [])
-  }
-
   public async create(props: CreateDashboardRequest): Promise<IDashboard> {
-    const {data} = await this.service.dashboardsPost(props)
+    const {data} = await this.service.dashboardsPost(
+      props,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -69,16 +75,25 @@ export default class {
     props: Partial<Dashboard>
   ): Promise<IDashboard> {
     const original = await this.get(id)
-    const {data} = await this.service.dashboardsDashboardIDPatch(id, {
-      ...original,
-      ...props,
-    })
+    const {data} = await this.service.dashboardsDashboardIDPatch(
+      id,
+      {
+        ...original,
+        ...props,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.dashboardsDashboardIDDelete(id)
+    const {data} = await this.service.dashboardsDashboardIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
@@ -91,7 +106,9 @@ export default class {
       data: response,
     } = await this.cellsService.dashboardsDashboardIDCellsCellIDDelete(
       dashboardID,
-      cellID
+      cellID,
+      undefined,
+      this.serviceOptions
     )
 
     return response
@@ -100,7 +117,9 @@ export default class {
   public async createCell(dashboardID: string, cell: Cell): Promise<Cell> {
     const {data} = await this.cellsService.dashboardsDashboardIDCellsPost(
       dashboardID,
-      cell
+      cell,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -112,7 +131,9 @@ export default class {
   ): Promise<Cell[]> {
     const {data} = await this.cellsService.dashboardsDashboardIDCellsPut(
       dashboardID,
-      cells
+      cells,
+      undefined,
+      this.serviceOptions
     )
 
     return data.cells || []
@@ -123,7 +144,9 @@ export default class {
       dashboardID,
       {
         labelID,
-      }
+      },
+      undefined,
+      this.serviceOptions
     )
 
     if (!data.label) {
@@ -159,7 +182,9 @@ export default class {
   ): Promise<Response> {
     const {data} = await this.service.dashboardsDashboardIDLabelsLabelIDDelete(
       dashboardID,
-      labelID
+      labelID,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -177,7 +202,9 @@ export default class {
   public async getView(dashboardID: string, cellID: string): Promise<View> {
     const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewGet(
       dashboardID,
-      cellID
+      cellID,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -191,7 +218,9 @@ export default class {
     const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewPatch(
       dashboardID,
       cellID,
-      view
+      view,
+      undefined,
+      this.serviceOptions
     )
 
     return data

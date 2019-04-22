@@ -4,6 +4,7 @@ import { ILabelProperties } from '../types';
 export declare const addLabelDefaults: (l: APILabel) => ILabel;
 export default class {
     private service;
+    private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     get(id: string): Promise<ILabel>;
     getAll(orgID: string): Promise<ILabel[]>;
