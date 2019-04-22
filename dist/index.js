@@ -40,7 +40,7 @@ var Client = (function () {
     function Client(basePath, token) {
         var options = {};
         if (token) {
-            options = __assign({}, options, { headers: { Authorization: "token " + token } });
+            options = __assign({}, options, { headers: { Authorization: "Token " + token } });
         }
         this.auth = new auth_1.default(basePath, options);
         this.authorizations = new authorizations_1.default(basePath, options);

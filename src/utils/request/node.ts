@@ -34,7 +34,8 @@ export default function(
       })
 
       resp.data.on('error', (err: Error) => {
-        out.emit('error', err)
+        const fullError = {...err, status: resp.status}
+        out.emit('error', fullError)
       })
 
       resp.data.on('end', () => {
@@ -43,6 +44,8 @@ export default function(
     })
     .catch(err => {
       if (!Axios.isCancel(err)) {
+        const {response} = err
+        err.status = (response || {}).status
         out.emit('error', err)
       }
     })

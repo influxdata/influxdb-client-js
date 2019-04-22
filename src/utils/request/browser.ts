@@ -42,6 +42,8 @@ export default function(
       }
     }
 
+    bodyError.status = xhr.status
+
     out.emit('error', bodyError)
   }
 
