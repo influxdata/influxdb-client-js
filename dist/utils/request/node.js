@@ -54,7 +54,8 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
             out.write(d.toString());
         });
         resp.data.on('error', function (err) {
-            out.emit('error', err);
+            var fullError = __assign({}, err, { status: resp.status });
+            out.emit('error', fullError);
         });
         resp.data.on('end', function () {
             out.end();
@@ -62,6 +63,8 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
     })
         .catch(function (err) {
         if (!axios_1.default.isCancel(err)) {
+            var response = err.response;
+            err.status = (response || {}).status;
             out.emit('error', err);
         }
     });

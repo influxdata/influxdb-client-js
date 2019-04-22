@@ -84,7 +84,7 @@ export default class Client {
     let options = {}
 
     if (token) {
-      options = {...options, headers: {Authorization: `token ${token}`}}
+      options = {...options, headers: {Authorization: `Token ${token}`}}
     }
 
     this.auth = new Auth(basePath, options)
