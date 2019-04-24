@@ -1,5 +1,5 @@
 import {Bucket, BucketsApi} from '../api'
-import {IBucket} from '../types'
+import {IBucket, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
 type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>
@@ -17,13 +17,19 @@ const addDefaultsToAll = (buckets: Bucket[]): IBucket[] =>
 
 export default class {
   private service: BucketsApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new BucketsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new BucketsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async get(id: string): Promise<IBucket> {
-    const {data} = await this.service.bucketsBucketIDGet(id)
+    const {data} = await this.service.bucketsBucketIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -36,30 +42,45 @@ export default class {
       undefined,
       undefined,
       undefined,
-      orgID
+      orgID,
+      undefined,
+      this.serviceOptions
     )
 
     return addDefaultsToAll(buckets || [])
   }
 
   public async create(bucket: BucketCreate): Promise<IBucket> {
-    const {data} = await this.service.bucketsPost(bucket)
+    const {data} = await this.service.bucketsPost(
+      bucket,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async update(id: string, bucket: Partial<Bucket>): Promise<IBucket> {
     const original = await this.get(id)
-    const {data} = await this.service.bucketsBucketIDPatch(id, {
-      ...original,
-      ...bucket,
-    })
+    const {data} = await this.service.bucketsBucketIDPatch(
+      id,
+      {
+        ...original,
+        ...bucket,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.bucketsBucketIDDelete(id)
+    const {data} = await this.service.bucketsBucketIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }

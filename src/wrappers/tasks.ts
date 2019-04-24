@@ -1,5 +1,5 @@
 import {LogEvent, Run, Task, TasksApi, User} from '../api'
-import {ILabel, ITask} from '../types'
+import {ILabel, ITask, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
 const addDefaults = (task: Task): ITask => {
@@ -14,46 +14,44 @@ const addDefaultsToAll = (tasks: Task[]): ITask[] =>
 
 export default class {
   private service: TasksApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new TasksApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new TasksApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async create(org: string, script: string): Promise<ITask> {
-    const {data} = await this.service.tasksPost({org, flux: script})
+    const {data} = await this.service.tasksPost(
+      {org, flux: script},
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async createByOrgID(orgID: string, script: string): Promise<ITask> {
-    const {data} = await this.service.tasksPost({orgID, flux: script})
+    const {data} = await this.service.tasksPost(
+      {orgID, flux: script},
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async get(id: string): Promise<ITask> {
-    const {data} = await this.service.tasksTaskIDGet(id)
+    const {data} = await this.service.tasksTaskIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
-  public async getAll(): Promise<ITask[]> {
-    const {
-      data: {tasks},
-    } = await this.service.tasksGet()
-
-    return addDefaultsToAll(tasks || [])
-  }
-
-  public async getAllByOrg(org: string): Promise<ITask[]> {
-    const {
-      data: {tasks},
-    } = await this.service.tasksGet(undefined, undefined, undefined, org)
-
-    return addDefaultsToAll(tasks || [])
-  }
-
-  public async getAllByOrgID(orgID: string): Promise<ITask[]> {
+  public async getAll(orgID?: string): Promise<ITask[]> {
     const {
       data: {tasks},
     } = await this.service.tasksGet(
@@ -61,24 +59,55 @@ export default class {
       undefined,
       undefined,
       undefined,
-      orgID
+      orgID,
+      undefined,
+      this.serviceOptions
+    )
+
+    return addDefaultsToAll(tasks || [])
+  }
+
+  public async getAllByOrg(org: string): Promise<ITask[]> {
+    const {
+      data: {tasks},
+    } = await this.service.tasksGet(
+      undefined,
+      undefined,
+      undefined,
+      org,
+      undefined,
+      undefined,
+      this.serviceOptions
     )
 
     return addDefaultsToAll(tasks || [])
   }
 
   public async getAllByUser(user: User): Promise<ITask[]> {
-    const {data} = await this.service.tasksGet(undefined, undefined, user.id)
+    const {data} = await this.service.tasksGet(
+      undefined,
+      undefined,
+      user.id,
+      undefined,
+      undefined,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaultsToAll(data.tasks || [])
   }
 
   public async update(id: string, updates: Partial<Task>): Promise<ITask> {
     const original = await this.get(id)
-    const {data: updated} = await this.service.tasksTaskIDPatch(id, {
-      ...original,
-      ...updates,
-    })
+    const {data: updated} = await this.service.tasksTaskIDPatch(
+      id,
+      {
+        ...original,
+        ...updates,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(updated)
   }
@@ -92,15 +121,24 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.tasksTaskIDDelete(id)
+    const {data} = await this.service.tasksTaskIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
 
   public async addLabel(taskID: string, labelID: string): Promise<ILabel> {
-    const {data} = await this.service.tasksTaskIDLabelsPost(taskID, {
-      labelID,
-    })
+    const {data} = await this.service.tasksTaskIDLabelsPost(
+      taskID,
+      {
+        labelID,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     if (!data.label) {
       throw new Error('Failed to add label')
@@ -112,7 +150,9 @@ export default class {
   public async removeLabel(taskID: string, labelID: string): Promise<Response> {
     const {data} = await this.service.tasksTaskIDLabelsLabelIDDelete(
       taskID,
-      labelID
+      labelID,
+      undefined,
+      this.serviceOptions
     )
 
     return data
@@ -133,13 +173,25 @@ export default class {
   public async getRunsByTaskID(taskID: string): Promise<Run[]> {
     const {
       data: {runs},
-    } = await this.service.tasksTaskIDRunsGet(taskID)
+    } = await this.service.tasksTaskIDRunsGet(
+      taskID,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      this.serviceOptions
+    )
 
     return runs || []
   }
 
   public async startRunByTaskID(taskID: string): Promise<Run> {
-    const {data} = await this.service.tasksTaskIDRunsPost(taskID)
+    const {data} = await this.service.tasksTaskIDRunsPost(
+      taskID,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
@@ -150,7 +202,12 @@ export default class {
   ): Promise<LogEvent[]> {
     const {
       data: {events},
-    } = await this.service.tasksTaskIDRunsRunIDLogsGet(taskID, runID)
+    } = await this.service.tasksTaskIDRunsRunIDLogsGet(
+      taskID,
+      runID,
+      undefined,
+      this.serviceOptions
+    )
 
     return events || []
   }

@@ -1,5 +1,5 @@
 import {Organization, Telegraf, TelegrafRequest, TelegrafsApi} from '../api'
-import {ILabel, ITelegraf} from '../types'
+import {ILabel, ITelegraf, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
 
@@ -15,15 +15,17 @@ const addDefaultsToAll = (telegrafs: Telegraf[]): ITelegraf[] =>
 
 export default class {
   private service: TelegrafsApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new TelegrafsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new TelegrafsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async getAll(orgID: string = ''): Promise<ITelegraf[]> {
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(orgID)
+    } = await this.service.telegrafsGet(orgID, undefined, this.serviceOptions)
     return addDefaultsToAll(configurations || [])
   }
 
@@ -34,7 +36,7 @@ export default class {
 
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(org.id)
+    } = await this.service.telegrafsGet(org.id, undefined, this.serviceOptions)
 
     return addDefaultsToAll(configurations || [])
   }
@@ -46,23 +48,30 @@ export default class {
       },
     }
 
-    const {data} = await this.service.telegrafsTelegrafIDGet(
-      id,
-      undefined,
-      options
-    )
+    const {data} = await this.service.telegrafsTelegrafIDGet(id, undefined, {
+      ...this.serviceOptions,
+      ...options,
+    })
 
     return data as string
   }
 
   public async get(id: string): Promise<ITelegraf> {
-    const {data} = await this.service.telegrafsTelegrafIDGet(id)
+    const {data} = await this.service.telegrafsTelegrafIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
 
   public async create(props: Telegraf): Promise<ITelegraf> {
-    const {data} = await this.service.telegrafsPost(props)
+    const {data} = await this.service.telegrafsPost(
+      props,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -76,14 +85,20 @@ export default class {
 
     const {data: updated} = await this.service.telegrafsTelegrafIDPut(
       id,
-      update
+      update,
+      undefined,
+      this.serviceOptions
     )
 
     return addDefaults(updated)
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.telegrafsTelegrafIDDelete(id)
+    const {data} = await this.service.telegrafsTelegrafIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data as Response
   }
@@ -93,9 +108,14 @@ export default class {
       throw new Error('label must have id')
     }
 
-    const {data} = await this.service.telegrafsTelegrafIDLabelsPost(id, {
-      labelID: label.id,
-    })
+    const {data} = await this.service.telegrafsTelegrafIDLabelsPost(
+      id,
+      {
+        labelID: label.id,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     if (!data.label) {
       throw new Error('Failed to add label')
@@ -111,7 +131,9 @@ export default class {
 
     const {data} = await this.service.telegrafsTelegrafIDLabelsLabelIDDelete(
       id,
-      label.id
+      label.id,
+      undefined,
+      this.serviceOptions
     )
 
     return data

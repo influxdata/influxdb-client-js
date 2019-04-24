@@ -3,18 +3,21 @@ import {
   ScraperTargetResponse,
   ScraperTargetsApi,
 } from '../api'
+import {ServiceOptions} from '../types'
 
 export default class {
   private service: ScraperTargetsApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new ScraperTargetsApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new ScraperTargetsApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async getAll(orgID: string): Promise<ScraperTargetResponse[]> {
     const {
       data: {configurations},
-    } = await this.service.scrapersGet(orgID)
+    } = await this.service.scrapersGet(orgID, undefined, this.serviceOptions)
 
     return configurations || []
   }
@@ -22,7 +25,7 @@ export default class {
   public async create(
     request: ScraperTargetRequest
   ): Promise<ScraperTargetResponse> {
-    const {data} = await this.service.scrapersPost(request)
+    const {data} = await this.service.scrapersPost(request, this.serviceOptions)
 
     return data
   }
@@ -31,13 +34,22 @@ export default class {
     id: string,
     changes: ScraperTargetRequest
   ): Promise<ScraperTargetResponse> {
-    const {data} = await this.service.scrapersScraperTargetIDPatch(id, changes)
+    const {data} = await this.service.scrapersScraperTargetIDPatch(
+      id,
+      changes,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.scrapersScraperTargetIDDelete(id)
+    const {data} = await this.service.scrapersScraperTargetIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }

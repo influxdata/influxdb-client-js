@@ -1506,32 +1506,6 @@ export interface FloatLiteral {
 /**
  * 
  * @export
- * @interface FluxLinks
- */
-export interface FluxLinks {
-    /**
-     * 
-     * @type {string}
-     * @memberof FluxLinks
-     */
-    ast?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FluxLinks
-     */
-    self?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FluxLinks
-     */
-    suggestions?: string;
-}
-
-/**
- * 
- * @export
  * @interface FluxSuggestions
  */
 export interface FluxSuggestions {
@@ -3502,12 +3476,6 @@ export interface Routes {
      * @memberof Routes
      */
     write?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Routes
-     */
-    views?: string;
 }
 
 /**
@@ -6289,26 +6257,6 @@ export interface ViewLinks {
 /**
  * 
  * @export
- * @interface Views
- */
-export interface Views {
-    /**
-     * 
-     * @type {ViewLinks}
-     * @memberof Views
-     */
-    links?: ViewLinks;
-    /**
-     * 
-     * @type {Array<View>}
-     * @memberof Views
-     */
-    views?: Array<View>;
-}
-
-/**
- * 
- * @export
  * @enum {string}
  */
 export enum WritePrecision {
@@ -6454,10 +6402,12 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options: any = {}): RequestArgs {
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options: any = {}): RequestArgs {
             const localVarPath = `/authorizations`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -6474,6 +6424,14 @@ export const AuthorizationsApiAxiosParamCreator = function (configuration?: Conf
 
             if (user !== undefined) {
                 localVarQueryParameter['user'] = user;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
             }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -6592,11 +6550,13 @@ export const AuthorizationsApiFp = function(configuration?: Configuration) {
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
-            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, options);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Authorizations> {
+            const localVarAxiosArgs = AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -6666,11 +6626,13 @@ export const AuthorizationsApiFactory = function (configuration?: Configuration,
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [userID] filter authorizations belonging to a user id
          * @param {string} [user] filter authorizations belonging to a user name
+         * @param {string} [orgID] filter authorizations belonging to a org id
+         * @param {string} [org] filter authorizations belonging to a org name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
-            return AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, options)(axios, basePath);
+        authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any) {
+            return AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(axios, basePath);
         },
         /**
          * 
@@ -6739,12 +6701,14 @@ export class AuthorizationsApi extends BaseAPI {
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {string} [userID] filter authorizations belonging to a user id
      * @param {string} [user] filter authorizations belonging to a user name
+     * @param {string} [orgID] filter authorizations belonging to a org id
+     * @param {string} [org] filter authorizations belonging to a org name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthorizationsApi
      */
-    public authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, options?: any) {
-        return AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, options)(this.axios, this.basePath);
+    public authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any) {
+        return AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(this.axios, this.basePath);
     }
 
     /**
@@ -19185,16 +19149,13 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling documentsTemplatesGet.');
-            }
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options: any = {}): RequestArgs {
             const localVarPath = `/documents/templates`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -19207,6 +19168,10 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
 
             if (org !== undefined) {
                 localVarQueryParameter['org'] = org;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
             }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -19341,6 +19306,135 @@ export const TemplatesApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary list all labels for a template
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsGet.');
+            }
+            const localVarPath = `/documents/templates/{templateID}/labels`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a template
+         * @param {string} templateID ID of template
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
+            }
+            // verify required parameter 'labelID' is not null or undefined
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID','Required parameter labelID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
+            }
+            const localVarPath = `/documents/templates/{templateID}/labels/{labelID}`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)))
+                .replace(`{${"labelID"}}`, encodeURIComponent(String(labelID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a template
+         * @param {string} templateID ID of template
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'templateID' is not null or undefined
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID','Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+            }
+            // verify required parameter 'labelMapping' is not null or undefined
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping','Required parameter labelMapping was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+            }
+            const localVarPath = `/documents/templates/{templateID}/labels`
+                .replace(`{${"templateID"}}`, encodeURIComponent(String(templateID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {DocumentUpdate} documentUpdate template that will be updated
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -19396,13 +19490,14 @@ export const TemplatesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Documents> {
-            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(org, zapTraceSpan, options);
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Documents> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -19454,6 +19549,53 @@ export const TemplatesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary list all labels for a template
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary delete a label from a template
+         * @param {string} templateID ID of template
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary add a label to a template
+         * @param {string} templateID ID of template
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelResponse> {
+            const localVarAxiosArgs = TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {DocumentUpdate} documentUpdate template that will be updated
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -19478,13 +19620,14 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @param {string} org specifies the name of the organization of the template
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the name of the organization of the template
+         * @param {string} [orgID] specifies the organization id of the template
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
-            return TemplatesApiFp(configuration).documentsTemplatesGet(org, zapTraceSpan, options)(axios, basePath);
+        documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
         /**
          * 
@@ -19520,6 +19663,41 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary list all labels for a template
+         * @param {string} templateID ID of template
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary delete a label from a template
+         * @param {string} templateID ID of template
+         * @param {string} labelID the label ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary add a label to a template
+         * @param {string} templateID ID of template
+         * @param {LabelMapping} labelMapping label to add
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+            return TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @param {string} templateID ID of template
          * @param {DocumentUpdate} documentUpdate template that will be updated
          * @param {string} [zapTraceSpan] OpenTracing span context
@@ -19541,14 +19719,15 @@ export const TemplatesApiFactory = function (configuration?: Configuration, base
 export class TemplatesApi extends BaseAPI {
     /**
      * 
-     * @param {string} org specifies the name of the organization of the template
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the name of the organization of the template
+     * @param {string} [orgID] specifies the organization id of the template
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TemplatesApi
      */
-    public documentsTemplatesGet(org: string, zapTraceSpan?: string, options?: any) {
-        return TemplatesApiFp(this.configuration).documentsTemplatesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    public documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     }
 
     /**
@@ -19587,6 +19766,47 @@ export class TemplatesApi extends BaseAPI {
      */
     public documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any) {
         return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary list all labels for a template
+     * @param {string} templateID ID of template
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary delete a label from a template
+     * @param {string} templateID ID of template
+     * @param {string} labelID the label ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary add a label to a template
+     * @param {string} templateID ID of template
+     * @param {LabelMapping} labelMapping label to add
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplatesApi
+     */
+    public documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any) {
+        return TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**

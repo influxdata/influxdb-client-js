@@ -1,5 +1,5 @@
 import {Variable, VariablesApi} from '../api'
-import {ILabel, IVariable} from '../types'
+import {ILabel, IVariable, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import saga from '../utils/sagas'
 
@@ -12,13 +12,19 @@ const addDefaults = (variable: Variable): IVariable => {
 
 export default class {
   private service: VariablesApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new VariablesApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new VariablesApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public async get(id: string): Promise<IVariable> {
-    const {data: variable} = await this.service.variablesVariableIDGet(id)
+    const {data: variable} = await this.service.variablesVariableIDGet(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(variable)
   }
@@ -28,10 +34,15 @@ export default class {
     props: Partial<Variable>
   ): Promise<IVariable> {
     const original = await this.get(id)
-    const {data} = await this.service.variablesVariableIDPatch(id, {
-      ...original,
-      ...props,
-    })
+    const {data} = await this.service.variablesVariableIDPatch(
+      id,
+      {
+        ...original,
+        ...props,
+      },
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -39,7 +50,12 @@ export default class {
   public async getAllByOrg(org: string): Promise<IVariable[]> {
     const {
       data: {variables},
-    } = await this.service.variablesGet(undefined, org)
+    } = await this.service.variablesGet(
+      undefined,
+      org,
+      undefined,
+      this.serviceOptions
+    )
 
     return (variables || []).map(v => addDefaults(v))
   }
@@ -47,13 +63,22 @@ export default class {
   public async getAll(orgID?: string): Promise<IVariable[]> {
     const {
       data: {variables},
-    } = await this.service.variablesGet(undefined, undefined, orgID)
+    } = await this.service.variablesGet(
+      undefined,
+      undefined,
+      orgID,
+      this.serviceOptions
+    )
 
     return (variables || []).map(v => addDefaults(v))
   }
 
   public async create(variable: Variable): Promise<IVariable> {
-    const {data} = await this.service.variablesPost(variable)
+    const {data} = await this.service.variablesPost(
+      variable,
+      undefined,
+      this.serviceOptions
+    )
 
     return addDefaults(data)
   }
@@ -66,7 +91,11 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.variablesVariableIDDelete(id)
+    const {data} = await this.service.variablesVariableIDDelete(
+      id,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
@@ -76,7 +105,9 @@ export default class {
       variableID,
       {
         labelID,
-      }
+      },
+      undefined,
+      this.serviceOptions
     )
 
     if (!data.label) {
@@ -112,7 +143,9 @@ export default class {
   ): Promise<Response> {
     const {data} = await this.service.variablesVariableIDLabelsLabelIDDelete(
       variableID,
-      labelID
+      labelID,
+      undefined,
+      this.serviceOptions
     )
 
     return data

@@ -1,4 +1,5 @@
 import {WriteApi, WritePrecision} from '../api'
+import {ServiceOptions} from '../types'
 
 interface ICreateOptions {
   precision: WritePrecision
@@ -6,9 +7,11 @@ interface ICreateOptions {
 
 export default class {
   private service: WriteApi
+  private serviceOptions: ServiceOptions
 
-  constructor(basePath: string) {
-    this.service = new WriteApi({basePath})
+  constructor(basePath: string, baseOptions: ServiceOptions) {
+    this.service = new WriteApi({basePath, baseOptions})
+    this.serviceOptions = baseOptions
   }
 
   public get WritePrecision(): typeof WritePrecision {
@@ -16,7 +19,7 @@ export default class {
   }
 
   public async create(
-    org: string,
+    orgID: string,
     bucket: string,
     data: string,
     options: Partial<ICreateOptions> = {}
@@ -24,7 +27,7 @@ export default class {
     const precision = options.precision || WritePrecision.Ns
 
     const {data: response} = await this.service.writePost(
-      org,
+      orgID,
       bucket,
       data,
       undefined,
@@ -32,7 +35,8 @@ export default class {
       undefined,
       undefined,
       undefined,
-      precision
+      precision,
+      this.serviceOptions
     )
 
     return response
