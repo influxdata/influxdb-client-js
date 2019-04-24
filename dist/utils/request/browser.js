@@ -50,8 +50,9 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
                 bodyError = xhr.responseText;
             }
         }
-        bodyError.status = xhr.status;
-        out.emit('error', bodyError);
+        var err = new Error(bodyError);
+        err.status = xhr.status;
+        out.emit('error', err);
     };
     xhr.onload = function () {
         clearInterval(interval);

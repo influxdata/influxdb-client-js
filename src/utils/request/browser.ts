@@ -4,6 +4,10 @@ import {PassThrough, Stream} from 'stream'
 export class CancellationError extends Error {}
 const CHECK_LIMIT_INTERVAL = 200
 
+interface ResponseError extends Error {
+  status?: number
+}
+
 export default function(
   orgID: string,
   basePath: string,
@@ -41,10 +45,10 @@ export default function(
         bodyError = xhr.responseText
       }
     }
+    const err: ResponseError = new Error(bodyError)
+    err.status = xhr.status
 
-    bodyError.status = xhr.status
-
-    out.emit('error', bodyError)
+    out.emit('error', err)
   }
 
   xhr.onload = () => {
