@@ -8,6 +8,6 @@ export default class {
     private serviceOptions;
     constructor(basePath: string, baseOptions: ServiceOptions);
     readonly WritePrecision: typeof WritePrecision;
-    create(org: string, bucket: string, data: string, options?: Partial<ICreateOptions>): Promise<Response>;
+    create(orgID: string, bucket: string, data: string, options?: Partial<ICreateOptions>): Promise<Response>;
 }
 export {};

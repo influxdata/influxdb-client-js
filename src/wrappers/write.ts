@@ -19,7 +19,7 @@ export default class {
   }
 
   public async create(
-    org: string,
+    orgID: string,
     bucket: string,
     data: string,
     options: Partial<ICreateOptions> = {}
@@ -27,7 +27,7 @@ export default class {
     const precision = options.precision || WritePrecision.Ns
 
     const {data: response} = await this.service.writePost(
-      org,
+      orgID,
       bucket,
       data,
       undefined,

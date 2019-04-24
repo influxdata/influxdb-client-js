@@ -48,7 +48,7 @@ var default_1 = (function () {
         enumerable: true,
         configurable: true
     });
-    default_1.prototype.create = function (org, bucket, data, options) {
+    default_1.prototype.create = function (orgID, bucket, data, options) {
         if (options === void 0) { options = {}; }
         return __awaiter(this, void 0, void 0, function () {
             var precision, response;
@@ -56,7 +56,7 @@ var default_1 = (function () {
                 switch (_a.label) {
                     case 0:
                         precision = options.precision || api_1.WritePrecision.Ns;
-                        return [4, this.service.writePost(org, bucket, data, undefined, undefined, undefined, undefined, undefined, precision, this.serviceOptions)];
+                        return [4, this.service.writePost(orgID, bucket, data, undefined, undefined, undefined, undefined, undefined, precision, this.serviceOptions)];
                     case 1:
                         response = (_a.sent()).data;
                         return [2, response];
