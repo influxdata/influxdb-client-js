@@ -179,6 +179,7 @@ var ModelError;
         CodeEnum["EmptyValue"] = "empty value";
         CodeEnum["Unavailable"] = "unavailable";
         CodeEnum["Forbidden"] = "forbidden";
+        CodeEnum["TooManyRequests"] = "too many requests";
         CodeEnum["Unauthorized"] = "unauthorized";
         CodeEnum["MethodNotAllowed"] = "method not allowed";
     })(CodeEnum = ModelError.CodeEnum || (ModelError.CodeEnum = {}));
@@ -285,7 +286,6 @@ var Source;
     (function (LanguagesEnum) {
         LanguagesEnum["Flux"] = "flux";
         LanguagesEnum["Influxql"] = "influxql";
-        LanguagesEnum["Spec"] = "spec";
     })(LanguagesEnum = Source.LanguagesEnum || (Source.LanguagesEnum = {}));
 })(Source = exports.Source || (exports.Source = {}));
 var Task;
@@ -1297,13 +1297,10 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
-            }
-            if (org === null || org === undefined) {
-                throw new RequiredError('org', 'Required parameter org was null or undefined when calling sourcesSourceIDBucketsGet.');
             }
             var localVarPath = "/sources/{sourceID}/buckets"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -1468,8 +1465,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1526,8 +1523,8 @@ exports.BucketsApiFactory = function (configuration, basePath, axios) {
         bucketsPost: function (bucket, zapTraceSpan, options) {
             return exports.BucketsApiFp(configuration).bucketsPost(bucket, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+            return exports.BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
     };
 };
@@ -1581,8 +1578,8 @@ var BucketsApi = (function (_super) {
     BucketsApi.prototype.bucketsPost = function (bucket, zapTraceSpan, options) {
         return exports.BucketsApiFp(this.configuration).bucketsPost(bucket, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, org, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, zapTraceSpan, org, options) {
+        return exports.BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     };
     return BucketsApi;
 }(BaseAPI));
@@ -2904,6 +2901,9 @@ exports.DefaultApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
@@ -3059,11 +3059,8 @@ var HealthApi = (function (_super) {
 exports.HealthApi = HealthApi;
 exports.LabelsApiAxiosParamCreator = function (configuration) {
     return {
-        labelsGet: function (orgID, zapTraceSpan, options) {
+        labelsGet: function (zapTraceSpan, orgID, options) {
             if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling labelsGet.');
-            }
             var localVarPath = "/labels";
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
@@ -3200,8 +3197,8 @@ exports.LabelsApiAxiosParamCreator = function (configuration) {
 };
 exports.LabelsApiFp = function (configuration) {
     return {
-        labelsGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsGet(orgID, zapTraceSpan, options);
+        labelsGet: function (zapTraceSpan, orgID, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsGet(zapTraceSpan, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -3249,8 +3246,8 @@ exports.LabelsApiFp = function (configuration) {
 };
 exports.LabelsApiFactory = function (configuration, basePath, axios) {
     return {
-        labelsGet: function (orgID, zapTraceSpan, options) {
-            return exports.LabelsApiFp(configuration).labelsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        labelsGet: function (zapTraceSpan, orgID, options) {
+            return exports.LabelsApiFp(configuration).labelsGet(zapTraceSpan, orgID, options)(axios, basePath);
         },
         labelsLabelIDDelete: function (labelID, zapTraceSpan, options) {
             return exports.LabelsApiFp(configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(axios, basePath);
@@ -3271,8 +3268,8 @@ var LabelsApi = (function (_super) {
     function LabelsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    LabelsApi.prototype.labelsGet = function (orgID, zapTraceSpan, options) {
-        return exports.LabelsApiFp(this.configuration).labelsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    LabelsApi.prototype.labelsGet = function (zapTraceSpan, orgID, options) {
+        return exports.LabelsApiFp(this.configuration).labelsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
     };
     LabelsApi.prototype.labelsLabelIDDelete = function (labelID, zapTraceSpan, options) {
         return exports.LabelsApiFp(this.configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(this.axios, this.basePath);
@@ -4408,34 +4405,6 @@ exports.QueryApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        querySpecPost: function (zapTraceSpan, contentType, languageRequest, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/query/spec";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LanguageRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(languageRequest || {}) : (languageRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         querySuggestionsGet: function (zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/query/suggestions";
@@ -4515,15 +4484,6 @@ exports.QueryApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        querySpecPost: function (zapTraceSpan, contentType, languageRequest, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
         querySuggestionsGet: function (zapTraceSpan, options) {
             var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).querySuggestionsGet(zapTraceSpan, options);
             return function (axios, basePath) {
@@ -4555,9 +4515,6 @@ exports.QueryApiFactory = function (configuration, basePath, axios) {
         queryPost: function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
             return exports.QueryApiFp(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(axios, basePath);
         },
-        querySpecPost: function (zapTraceSpan, contentType, languageRequest, options) {
-            return exports.QueryApiFp(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
-        },
         querySuggestionsGet: function (zapTraceSpan, options) {
             return exports.QueryApiFp(configuration).querySuggestionsGet(zapTraceSpan, options)(axios, basePath);
         },
@@ -4580,9 +4537,6 @@ var QueryApi = (function (_super) {
     QueryApi.prototype.queryPost = function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
         return exports.QueryApiFp(this.configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(this.axios, this.basePath);
     };
-    QueryApi.prototype.querySpecPost = function (zapTraceSpan, contentType, languageRequest, options) {
-        return exports.QueryApiFp(this.configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
-    };
     QueryApi.prototype.querySuggestionsGet = function (zapTraceSpan, options) {
         return exports.QueryApiFp(this.configuration).querySuggestionsGet(zapTraceSpan, options)(this.axios, this.basePath);
     };
@@ -4594,7 +4548,7 @@ var QueryApi = (function (_super) {
 exports.QueryApi = QueryApi;
 exports.ReadyApiAxiosParamCreator = function (configuration) {
     return {
-        readyGet: function (options) {
+        readyGet: function (zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/ready";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4605,6 +4559,9 @@ exports.ReadyApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
@@ -4617,8 +4574,8 @@ exports.ReadyApiAxiosParamCreator = function (configuration) {
 };
 exports.ReadyApiFp = function (configuration) {
     return {
-        readyGet: function (options) {
-            var localVarAxiosArgs = exports.ReadyApiAxiosParamCreator(configuration).readyGet(options);
+        readyGet: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ReadyApiAxiosParamCreator(configuration).readyGet(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4630,8 +4587,8 @@ exports.ReadyApiFp = function (configuration) {
 };
 exports.ReadyApiFactory = function (configuration, basePath, axios) {
     return {
-        readyGet: function (options) {
-            return exports.ReadyApiFp(configuration).readyGet(options)(axios, basePath);
+        readyGet: function (zapTraceSpan, options) {
+            return exports.ReadyApiFp(configuration).readyGet(zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -4640,19 +4597,16 @@ var ReadyApi = (function (_super) {
     function ReadyApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ReadyApi.prototype.readyGet = function (options) {
-        return exports.ReadyApiFp(this.configuration).readyGet(options)(this.axios, this.basePath);
+    ReadyApi.prototype.readyGet = function (zapTraceSpan, options) {
+        return exports.ReadyApiFp(this.configuration).readyGet(zapTraceSpan, options)(this.axios, this.basePath);
     };
     return ReadyApi;
 }(BaseAPI));
 exports.ReadyApi = ReadyApi;
 exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
     return {
-        scrapersGet: function (orgID, zapTraceSpan, options) {
+        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
             if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling scrapersGet.');
-            }
             var localVarPath = "/scrapers";
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
@@ -4662,8 +4616,17 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+            if (id) {
+                localVarQueryParameter['id'] = id;
+            }
             if (orgID !== undefined) {
                 localVarQueryParameter['orgID'] = orgID;
+            }
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
             }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
@@ -4676,7 +4639,7 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersPost: function (scraperTargetRequest, options) {
+        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
                 throw new RequiredError('scraperTargetRequest', 'Required parameter scraperTargetRequest was null or undefined when calling scrapersPost.');
@@ -4690,6 +4653,9 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
@@ -4714,6 +4680,32 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 baseOptions = configuration.baseOptions;
             }
             var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDGet.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -5063,8 +5055,8 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
 };
 exports.ScraperTargetsApiFp = function (configuration) {
     return {
-        scrapersGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(orgID, zapTraceSpan, options);
+        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5072,8 +5064,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersPost: function (scraperTargetRequest, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, options);
+        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5083,6 +5075,15 @@ exports.ScraperTargetsApiFp = function (configuration) {
         },
         scrapersScraperTargetIDDelete: function (scraperTargetID, zapTraceSpan, options) {
             var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5193,14 +5194,17 @@ exports.ScraperTargetsApiFp = function (configuration) {
 };
 exports.ScraperTargetsApiFactory = function (configuration, basePath, axios) {
     return {
-        scrapersGet: function (orgID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
+            return exports.ScraperTargetsApiFp(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(axios, basePath);
         },
-        scrapersPost: function (scraperTargetRequest, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, options)(axios, basePath);
+        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
         },
         scrapersScraperTargetIDDelete: function (scraperTargetID, zapTraceSpan, options) {
             return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
         scrapersScraperTargetIDLabelsGet: function (scraperTargetID, zapTraceSpan, options) {
             return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
@@ -5242,14 +5246,17 @@ var ScraperTargetsApi = (function (_super) {
     function ScraperTargetsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ScraperTargetsApi.prototype.scrapersGet = function (orgID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.scrapersGet = function (zapTraceSpan, name, id, orgID, org, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersPost = function (scraperTargetRequest, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.scrapersPost = function (scraperTargetRequest, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
     ScraperTargetsApi.prototype.scrapersScraperTargetIDDelete = function (scraperTargetID, zapTraceSpan, options) {
         return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    ScraperTargetsApi.prototype.scrapersScraperTargetIDGet = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
     ScraperTargetsApi.prototype.scrapersScraperTargetIDLabelsGet = function (scraperTargetID, zapTraceSpan, options) {
         return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
@@ -5544,11 +5551,8 @@ var SetupApi = (function (_super) {
 exports.SetupApi = SetupApi;
 exports.SourcesApiAxiosParamCreator = function (configuration) {
     return {
-        sourcesGet: function (org, zapTraceSpan, options) {
+        sourcesGet: function (zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
-            if (org === null || org === undefined) {
-                throw new RequiredError('org', 'Required parameter org was null or undefined when calling sourcesGet.');
-            }
             var localVarPath = "/sources";
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
@@ -5600,13 +5604,10 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
-            }
-            if (org === null || org === undefined) {
-                throw new RequiredError('org', 'Required parameter org was null or undefined when calling sourcesSourceIDBucketsGet.');
             }
             var localVarPath = "/sources/{sourceID}/buckets"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -5632,7 +5633,7 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDDelete: function (sourceID, options) {
+        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDDelete.');
@@ -5647,6 +5648,9 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
@@ -5743,8 +5747,8 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
 };
 exports.SourcesApiFp = function (configuration) {
     return {
-        sourcesGet: function (org, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesGet(org, zapTraceSpan, options);
+        sourcesGet: function (zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesGet(zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5761,8 +5765,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5770,8 +5774,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDDelete: function (sourceID, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDDelete(sourceID, options);
+        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5810,17 +5814,17 @@ exports.SourcesApiFp = function (configuration) {
 };
 exports.SourcesApiFactory = function (configuration, basePath, axios) {
     return {
-        sourcesGet: function (org, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesGet(org, zapTraceSpan, options)(axios, basePath);
+        sourcesGet: function (zapTraceSpan, org, options) {
+            return exports.SourcesApiFp(configuration).sourcesGet(zapTraceSpan, org, options)(axios, basePath);
         },
         sourcesPost: function (source, zapTraceSpan, options) {
             return exports.SourcesApiFp(configuration).sourcesPost(source, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDBucketsGet: function (sourceID, org, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
+        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+            return exports.SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
-        sourcesSourceIDDelete: function (sourceID, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDDelete(sourceID, options)(axios, basePath);
+        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(axios, basePath);
         },
         sourcesSourceIDGet: function (sourceID, zapTraceSpan, options) {
             return exports.SourcesApiFp(configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(axios, basePath);
@@ -5838,17 +5842,17 @@ var SourcesApi = (function (_super) {
     function SourcesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SourcesApi.prototype.sourcesGet = function (org, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.sourcesGet = function (zapTraceSpan, org, options) {
+        return exports.SourcesApiFp(this.configuration).sourcesGet(zapTraceSpan, org, options)(this.axios, this.basePath);
     };
     SourcesApi.prototype.sourcesPost = function (source, zapTraceSpan, options) {
         return exports.SourcesApiFp(this.configuration).sourcesPost(source, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, org, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, zapTraceSpan, org, options) {
+        return exports.SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDDelete = function (sourceID, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDDelete(sourceID, options)(this.axios, this.basePath);
+    SourcesApi.prototype.sourcesSourceIDDelete = function (sourceID, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     };
     SourcesApi.prototype.sourcesSourceIDGet = function (sourceID, zapTraceSpan, options) {
         return exports.SourcesApiFp(this.configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
@@ -6341,7 +6345,7 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDRunsPost: function (taskID, runManually, options) {
+        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsPost.');
@@ -6356,6 +6360,9 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
@@ -6605,8 +6612,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsPost: function (taskID, runManually, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, runManually, options);
+        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6693,8 +6700,8 @@ exports.TasksApiFactory = function (configuration, basePath, axios) {
         tasksTaskIDRunsGet: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
             return exports.TasksApiFp(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(axios, basePath);
         },
-        tasksTaskIDRunsPost: function (taskID, runManually, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, runManually, options)(axios, basePath);
+        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
+            return exports.TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(axios, basePath);
         },
         tasksTaskIDRunsRunIDGet: function (taskID, runID, zapTraceSpan, options) {
             return exports.TasksApiFp(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(axios, basePath);
@@ -6760,8 +6767,8 @@ var TasksApi = (function (_super) {
     TasksApi.prototype.tasksTaskIDRunsGet = function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
         return exports.TasksApiFp(this.configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsPost = function (taskID, runManually, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, runManually, options)(this.axios, this.basePath);
+    TasksApi.prototype.tasksTaskIDRunsPost = function (taskID, zapTraceSpan, runManually, options) {
+        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(this.axios, this.basePath);
     };
     TasksApi.prototype.tasksTaskIDRunsRunIDGet = function (taskID, runID, zapTraceSpan, options) {
         return exports.TasksApiFp(this.configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
@@ -6777,11 +6784,8 @@ var TasksApi = (function (_super) {
 exports.TasksApi = TasksApi;
 exports.TelegrafsApiAxiosParamCreator = function (configuration) {
     return {
-        telegrafsGet: function (orgID, zapTraceSpan, options) {
+        telegrafsGet: function (zapTraceSpan, orgID, options) {
             if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling telegrafsGet.');
-            }
             var localVarPath = "/telegrafs";
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
@@ -6859,7 +6863,7 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, options) {
+        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDGet.');
@@ -6876,6 +6880,9 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            if (accept !== undefined && accept !== null) {
+                localVarHeaderParameter['Accept'] = String(accept);
             }
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
@@ -7185,8 +7192,8 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
 };
 exports.TelegrafsApiFp = function (configuration) {
     return {
-        telegrafsGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(orgID, zapTraceSpan, options);
+        telegrafsGet: function (zapTraceSpan, orgID, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(zapTraceSpan, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7212,8 +7219,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options);
+        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7315,8 +7322,8 @@ exports.TelegrafsApiFp = function (configuration) {
 };
 exports.TelegrafsApiFactory = function (configuration, basePath, axios) {
     return {
-        telegrafsGet: function (orgID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        telegrafsGet: function (zapTraceSpan, orgID, options) {
+            return exports.TelegrafsApiFp(configuration).telegrafsGet(zapTraceSpan, orgID, options)(axios, basePath);
         },
         telegrafsPost: function (telegrafRequest, zapTraceSpan, options) {
             return exports.TelegrafsApiFp(configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(axios, basePath);
@@ -7324,8 +7331,8 @@ exports.TelegrafsApiFactory = function (configuration, basePath, axios) {
         telegrafsTelegrafIDDelete: function (telegrafID, zapTraceSpan, options) {
             return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
+            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(axios, basePath);
         },
         telegrafsTelegrafIDLabelsGet: function (telegrafID, zapTraceSpan, options) {
             return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(axios, basePath);
@@ -7364,8 +7371,8 @@ var TelegrafsApi = (function (_super) {
     function TelegrafsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TelegrafsApi.prototype.telegrafsGet = function (orgID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.telegrafsGet = function (zapTraceSpan, orgID, options) {
+        return exports.TelegrafsApiFp(this.configuration).telegrafsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
     };
     TelegrafsApi.prototype.telegrafsPost = function (telegrafRequest, zapTraceSpan, options) {
         return exports.TelegrafsApiFp(this.configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
@@ -7373,8 +7380,8 @@ var TelegrafsApi = (function (_super) {
     TelegrafsApi.prototype.telegrafsTelegrafIDDelete = function (telegrafID, zapTraceSpan, options) {
         return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.telegrafsTelegrafIDGet = function (telegrafID, zapTraceSpan, accept, options) {
+        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(this.axios, this.basePath);
     };
     TelegrafsApi.prototype.telegrafsTelegrafIDLabelsGet = function (telegrafID, zapTraceSpan, options) {
         return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
@@ -8167,6 +8174,9 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
@@ -8907,7 +8917,7 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersPost: function (user, options) {
+        usersPost: function (user, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (user === null || user === undefined) {
                 throw new RequiredError('user', 'Required parameter user was null or undefined when calling usersPost.');
@@ -8921,6 +8931,9 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
@@ -9034,6 +9047,9 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
             var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
@@ -9435,8 +9451,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersPost: function (user, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersPost(user, options);
+        usersPost: function (user, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersPost(user, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9610,8 +9626,8 @@ exports.UsersApiFactory = function (configuration, basePath, axios) {
         usersGet: function (zapTraceSpan, options) {
             return exports.UsersApiFp(configuration).usersGet(zapTraceSpan, options)(axios, basePath);
         },
-        usersPost: function (user, options) {
-            return exports.UsersApiFp(configuration).usersPost(user, options)(axios, basePath);
+        usersPost: function (user, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).usersPost(user, zapTraceSpan, options)(axios, basePath);
         },
         usersUserIDDelete: function (userID, zapTraceSpan, options) {
             return exports.UsersApiFp(configuration).usersUserIDDelete(userID, zapTraceSpan, options)(axios, basePath);
@@ -9752,8 +9768,8 @@ var UsersApi = (function (_super) {
     UsersApi.prototype.usersGet = function (zapTraceSpan, options) {
         return exports.UsersApiFp(this.configuration).usersGet(zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersPost = function (user, options) {
-        return exports.UsersApiFp(this.configuration).usersPost(user, options)(this.axios, this.basePath);
+    UsersApi.prototype.usersPost = function (user, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).usersPost(user, zapTraceSpan, options)(this.axios, this.basePath);
     };
     UsersApi.prototype.usersUserIDDelete = function (userID, zapTraceSpan, options) {
         return exports.UsersApiFp(this.configuration).usersUserIDDelete(userID, zapTraceSpan, options)(this.axios, this.basePath);

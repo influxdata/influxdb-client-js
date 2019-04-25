@@ -39,7 +39,7 @@ export default class {
   public async getAll(orgID: string): Promise<ILabel[]> {
     const {
       data: {labels},
-    } = await this.service.labelsGet(orgID, undefined, this.serviceOptions)
+    } = await this.service.labelsGet(undefined, orgID, this.serviceOptions)
 
     return (labels || []).map(addLabelDefaults)
   }

@@ -79,7 +79,7 @@ var default_1 = (function () {
             var labels;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.labelsGet(orgID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.labelsGet(undefined, orgID, this.serviceOptions)];
                     case 1:
                         labels = (_a.sent()).data.labels;
                         return [2, (labels || []).map(exports.addLabelDefaults)];

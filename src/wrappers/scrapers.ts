@@ -17,7 +17,14 @@ export default class {
   public async getAll(orgID: string): Promise<ScraperTargetResponse[]> {
     const {
       data: {configurations},
-    } = await this.service.scrapersGet(orgID, undefined, this.serviceOptions)
+    } = await this.service.scrapersGet(
+      undefined,
+      undefined,
+      undefined,
+      orgID,
+      undefined,
+      this.serviceOptions
+    )
 
     return configurations || []
   }
@@ -25,7 +32,11 @@ export default class {
   public async create(
     request: ScraperTargetRequest
   ): Promise<ScraperTargetResponse> {
-    const {data} = await this.service.scrapersPost(request, this.serviceOptions)
+    const {data} = await this.service.scrapersPost(
+      request,
+      undefined,
+      this.serviceOptions
+    )
 
     return data
   }
