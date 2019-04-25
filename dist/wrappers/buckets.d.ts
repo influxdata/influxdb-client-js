@@ -1,6 +1,6 @@
 import { Bucket } from '../api';
 import { IBucket, ServiceOptions } from '../types';
-declare type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>;
+declare type BucketPicked = Pick<Bucket, 'orgID' | 'name'>;
 declare type BucketRest = Pick<Bucket, Exclude<keyof Bucket, keyof BucketPicked>>;
 declare type BucketRequired = {
     [P in keyof BucketPicked]-?: BucketPicked[P];

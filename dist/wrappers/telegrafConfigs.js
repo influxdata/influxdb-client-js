@@ -69,7 +69,7 @@ var default_1 = (function () {
             var configurations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsGet(orgID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.telegrafsGet(undefined, orgID, this.serviceOptions)];
                     case 1:
                         configurations = (_a.sent()).data.configurations;
                         return [2, addDefaultsToAll(configurations || [])];
@@ -86,7 +86,7 @@ var default_1 = (function () {
                         if (!org.id) {
                             throw new Error('organization must have an id');
                         }
-                        return [4, this.service.telegrafsGet(org.id, undefined, this.serviceOptions)];
+                        return [4, this.service.telegrafsGet(undefined, org.id, this.serviceOptions)];
                     case 1:
                         configurations = (_a.sent()).data.configurations;
                         return [2, addDefaultsToAll(configurations || [])];
@@ -96,16 +96,10 @@ var default_1 = (function () {
     };
     default_1.prototype.getTOML = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var options, data;
+            var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        options = {
-                            headers: {
-                                Accept: 'application/toml',
-                            },
-                        };
-                        return [4, this.service.telegrafsTelegrafIDGet(id, undefined, __assign({}, this.serviceOptions, options))];
+                    case 0: return [4, this.service.telegrafsTelegrafIDGet(id, undefined, 'application/toml')];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -118,7 +112,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.telegrafsTelegrafIDGet(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.telegrafsTelegrafIDGet(id, undefined, 'application/json')];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];

@@ -25,7 +25,7 @@ export default class {
   public async getAll(orgID: string = ''): Promise<ITelegraf[]> {
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(orgID, undefined, this.serviceOptions)
+    } = await this.service.telegrafsGet(undefined, orgID, this.serviceOptions)
     return addDefaultsToAll(configurations || [])
   }
 
@@ -36,22 +36,17 @@ export default class {
 
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(org.id, undefined, this.serviceOptions)
+    } = await this.service.telegrafsGet(undefined, org.id, this.serviceOptions)
 
     return addDefaultsToAll(configurations || [])
   }
 
   public async getTOML(id: string): Promise<string> {
-    const options = {
-      headers: {
-        Accept: 'application/toml',
-      },
-    }
-
-    const {data} = await this.service.telegrafsTelegrafIDGet(id, undefined, {
-      ...this.serviceOptions,
-      ...options,
-    })
+    const {data} = await this.service.telegrafsTelegrafIDGet(
+      id,
+      undefined,
+      'application/toml'
+    )
 
     return data as string
   }
@@ -60,10 +55,10 @@ export default class {
     const {data} = await this.service.telegrafsTelegrafIDGet(
       id,
       undefined,
-      this.serviceOptions
+      'application/json'
     )
 
-    return addDefaults(data)
+    return addDefaults(data as Telegraf)
   }
 
   public async create(props: Telegraf): Promise<ITelegraf> {
