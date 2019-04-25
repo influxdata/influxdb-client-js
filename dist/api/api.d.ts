@@ -98,8 +98,8 @@ export interface Bucket {
     links?: BucketLinks;
     id?: string;
     name: string;
-    organizationID?: string;
-    organization?: string;
+    description?: string;
+    orgID?: string;
     rp?: string;
     retentionRules: Array<BucketRetentionRules>;
     labels?: Array<Label>;
@@ -149,7 +149,10 @@ export interface CellLinks {
     view?: string;
 }
 export interface CellUpdate {
-    name?: string;
+    x?: number;
+    y?: number;
+    w?: number;
+    h?: number;
 }
 export interface Check {
     name: string;
@@ -275,6 +278,8 @@ export interface DocumentListEntry {
 }
 export interface DocumentMeta {
     name: string;
+    type?: string;
+    description?: string;
     version: string;
 }
 export interface DocumentUpdate {
@@ -498,6 +503,7 @@ export declare namespace ModelError {
         EmptyValue = "empty value",
         Unavailable = "unavailable",
         Forbidden = "forbidden",
+        TooManyRequests = "too many requests",
         Unauthorized = "unauthorized",
         MethodNotAllowed = "method not allowed"
     }
@@ -531,6 +537,7 @@ export interface OnboardingResponse {
 export interface OperationLog {
     description?: string;
     time?: Date;
+    userID?: string;
     links?: OperationLogLinks;
 }
 export interface OperationLogLinks {
@@ -548,6 +555,7 @@ export interface Organization {
     links?: OrganizationLinks;
     id?: string;
     name: string;
+    description?: string;
     status?: Organization.StatusEnum;
 }
 export declare namespace Organization {
@@ -637,7 +645,6 @@ export interface PropertyKey {
 export interface Query {
     extern?: any;
     query: string;
-    spec?: QuerySpecification;
     type?: Query.TypeEnum;
     db?: string;
     rp?: string;
@@ -669,26 +676,6 @@ export interface QueryConfigGroupBy {
 export interface QueryConfigRange {
     lower: string;
     upper: string;
-}
-export interface QuerySpecification {
-    operations?: Array<QuerySpecificationOperations>;
-    edges?: Array<QuerySpecificationEdges>;
-    resources?: QuerySpecificationResources;
-    dialect?: Dialect;
-}
-export interface QuerySpecificationEdges {
-    parent?: string;
-    child?: string;
-}
-export interface QuerySpecificationOperations {
-    kind?: string;
-    id?: string;
-    spec?: any;
-}
-export interface QuerySpecificationResources {
-    priority?: any;
-    concurrencyQuota?: number;
-    memoryBytesQuota?: number;
 }
 export interface QueryVariableProperties {
     type?: QueryVariableProperties.TypeEnum;
@@ -776,7 +763,6 @@ export interface RoutesQuery {
     self?: string;
     ast?: string;
     analyze?: string;
-    spec?: string;
     suggestions?: string;
 }
 export interface RoutesSystem {
@@ -830,7 +816,7 @@ export declare namespace ScraperTargetRequest {
 }
 export interface ScraperTargetResponse extends ScraperTargetRequest {
     id?: string;
-    organization?: string;
+    org?: string;
     bucket?: string;
     links?: any;
 }
@@ -871,8 +857,7 @@ export declare namespace Source {
     }
     enum LanguagesEnum {
         Flux = "flux",
-        Influxql = "influxql",
-        Spec = "spec"
+        Influxql = "influxql"
     }
 }
 export interface SourceLinks {
@@ -1485,7 +1470,7 @@ export declare const BucketsApiAxiosParamCreator: (configuration?: Configuration
     bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): RequestArgs;
     bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
 };
 export declare const BucketsApiFp: (configuration?: Configuration | undefined) => {
     bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
@@ -1503,7 +1488,7 @@ export declare const BucketsApiFp: (configuration?: Configuration | undefined) =
     bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
     bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
     bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
 };
 export declare const BucketsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
     bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
@@ -1521,7 +1506,7 @@ export declare const BucketsApiFactory: (configuration?: Configuration | undefin
     bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
     bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): AxiosPromise<Buckets>;
     bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
 };
 export declare class BucketsApi extends BaseAPI {
     bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
@@ -1539,7 +1524,7 @@ export declare class BucketsApi extends BaseAPI {
     bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
     bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any): AxiosPromise<Buckets>;
     bucketsPost(bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): AxiosPromise<Buckets>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
 }
 export declare const CellsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
     dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
@@ -1698,28 +1683,28 @@ export declare class HealthApi extends BaseAPI {
     healthGet(zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
 }
 export declare const LabelsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    labelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
     labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): RequestArgs;
 };
 export declare const LabelsApiFp: (configuration?: Configuration | undefined) => {
-    labelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
     labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
     labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
     labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
 };
 export declare const LabelsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    labelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
     labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
     labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
     labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): AxiosPromise<LabelResponse>;
 };
 export declare class LabelsApi extends BaseAPI {
-    labelsGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    labelsGet(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<LabelsResponse>;
     labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
     labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
@@ -1841,7 +1826,6 @@ export declare const QueryApiAxiosParamCreator: (configuration?: Configuration |
     queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): RequestArgs;
     queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): RequestArgs;
     queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): RequestArgs;
-    querySpecPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): RequestArgs;
     querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
@@ -1849,7 +1833,6 @@ export declare const QueryApiFp: (configuration?: Configuration | undefined) => 
     queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AnalyzeQueryResponse>;
     queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ASTResponse>;
     queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
-    querySpecPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<QuerySpecification>;
     querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
     querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
 };
@@ -1857,7 +1840,6 @@ export declare const QueryApiFactory: (configuration?: Configuration | undefined
     queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): AxiosPromise<AnalyzeQueryResponse>;
     queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): AxiosPromise<ASTResponse>;
     queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): AxiosPromise<string>;
-    querySpecPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): AxiosPromise<QuerySpecification>;
     querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
     querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
 };
@@ -1865,26 +1847,26 @@ export declare class QueryApi extends BaseAPI {
     queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any): AxiosPromise<AnalyzeQueryResponse>;
     queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): AxiosPromise<ASTResponse>;
     queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any): AxiosPromise<string>;
-    querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): AxiosPromise<QuerySpecification>;
     querySuggestionsGet(zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
     querySuggestionsNameGet(name: string, zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
 }
 export declare const ReadyApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    readyGet(options?: any): RequestArgs;
+    readyGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const ReadyApiFp: (configuration?: Configuration | undefined) => {
-    readyGet(options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Ready>;
+    readyGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Ready>;
 };
 export declare const ReadyApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    readyGet(options?: any): AxiosPromise<Ready>;
+    readyGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Ready>;
 };
 export declare class ReadyApi extends BaseAPI {
-    readyGet(options?: any): AxiosPromise<Ready>;
+    readyGet(zapTraceSpan?: string, options?: any): AxiosPromise<Ready>;
 }
 export declare const ScraperTargetsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    scrapersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): RequestArgs;
+    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
@@ -1898,9 +1880,10 @@ export declare const ScraperTargetsApiAxiosParamCreator: (configuration?: Config
     scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const ScraperTargetsApiFp: (configuration?: Configuration | undefined) => {
-    scrapersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
+    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponses>;
+    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
     scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
@@ -1914,9 +1897,10 @@ export declare const ScraperTargetsApiFp: (configuration?: Configuration | undef
     scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
 };
 export declare const ScraperTargetsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    scrapersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): AxiosPromise<ScraperTargetResponse>;
+    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponses>;
+    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
     scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
@@ -1930,9 +1914,10 @@ export declare const ScraperTargetsApiFactory: (configuration?: Configuration | 
     scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
 };
 export declare class ScraperTargetsApi extends BaseAPI {
-    scrapersGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): AxiosPromise<ScraperTargetResponse>;
+    scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any): AxiosPromise<ScraperTargetResponses>;
+    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
     scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
     scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
@@ -1990,37 +1975,37 @@ export declare class SetupApi extends BaseAPI {
     setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any): AxiosPromise<OnboardingResponse>;
 }
 export declare const SourcesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    sourcesGet(org: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
     sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDDelete(sourceID: string, options?: any): RequestArgs;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const SourcesApiFp: (configuration?: Configuration | undefined) => {
-    sourcesGet(org: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Sources>;
+    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Sources>;
     sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
     sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Check>;
     sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
 };
 export declare const SourcesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    sourcesGet(org: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Sources>;
+    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Sources>;
     sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, options?: any): AxiosPromise<Response>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
     sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Check>;
     sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
 };
 export declare class SourcesApi extends BaseAPI {
-    sourcesGet(org: string, zapTraceSpan?: string, options?: any): AxiosPromise<Sources>;
+    sourcesGet(zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Sources>;
     sourcesPost(source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, options?: any): AxiosPromise<Response>;
+    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
+    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
     sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
     sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
@@ -2042,7 +2027,7 @@ export declare const TasksApiAxiosParamCreator: (configuration?: Configuration |
     tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsPost(taskID: string, runManually?: RunManually | undefined, options?: any): RequestArgs;
+    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): RequestArgs;
     tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
@@ -2064,7 +2049,7 @@ export declare const TasksApiFp: (configuration?: Configuration | undefined) => 
     tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
     tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, runManually?: RunManually | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
+    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
     tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
     tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Logs>;
     tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
@@ -2086,7 +2071,7 @@ export declare const TasksApiFactory: (configuration?: Configuration | undefined
     tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
     tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, runManually?: RunManually | undefined, options?: any): AxiosPromise<Run>;
+    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): AxiosPromise<Run>;
     tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
     tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Logs>;
     tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
@@ -2108,16 +2093,16 @@ export declare class TasksApi extends BaseAPI {
     tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
     tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any): AxiosPromise<Run>;
+    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any): AxiosPromise<Run>;
     tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
     tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Logs>;
     tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
 }
 export declare const TelegrafsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    telegrafsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
     telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): RequestArgs;
     telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
@@ -2130,10 +2115,10 @@ export declare const TelegrafsApiAxiosParamCreator: (configuration?: Configurati
     telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TelegrafsApiFp: (configuration?: Configuration | undefined) => {
-    telegrafsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegrafs>;
+    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegrafs>;
     telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
     telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
+    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
     telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
     telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
@@ -2146,10 +2131,10 @@ export declare const TelegrafsApiFp: (configuration?: Configuration | undefined)
     telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
 };
 export declare const TelegrafsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    telegrafsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegrafs>;
+    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Telegrafs>;
     telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
     telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
+    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): AxiosPromise<string>;
     telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
     telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
@@ -2162,10 +2147,10 @@ export declare const TelegrafsApiFactory: (configuration?: Configuration | undef
     telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
 };
 export declare class TelegrafsApi extends BaseAPI {
-    telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Telegrafs>;
+    telegrafsGet(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<Telegrafs>;
     telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
     telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
+    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any): AxiosPromise<string>;
     telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
     telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
@@ -2257,7 +2242,7 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration |
     telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     usersGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersPost(user: User, options?: any): RequestArgs;
+    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
     usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
@@ -2304,7 +2289,7 @@ export declare const UsersApiFp: (configuration?: Configuration | undefined) => 
     telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
     telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     usersGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Users>;
-    usersPost(user: User, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
     usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
     usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
     usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
@@ -2351,7 +2336,7 @@ export declare const UsersApiFactory: (configuration?: Configuration | undefined
     telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
     telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     usersGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Users>;
-    usersPost(user: User, options?: any): AxiosPromise<User>;
+    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
     usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
     usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
     usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
@@ -2398,7 +2383,7 @@ export declare class UsersApi extends BaseAPI {
     telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
     telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     usersGet(zapTraceSpan?: string, options?: any): AxiosPromise<Users>;
-    usersPost(user: User, options?: any): AxiosPromise<User>;
+    usersPost(user: User, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
     usersUserIDDelete(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
     usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
     usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;

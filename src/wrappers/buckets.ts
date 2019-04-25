@@ -2,7 +2,7 @@ import {Bucket, BucketsApi} from '../api'
 import {IBucket, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
-type BucketPicked = Pick<Bucket, 'organizationID' | 'name'>
+type BucketPicked = Pick<Bucket, 'orgID' | 'name'>
 type BucketRest = Pick<Bucket, Exclude<keyof Bucket, keyof BucketPicked>>
 type BucketRequired = {[P in keyof BucketPicked]-?: BucketPicked[P]}
 type BucketCreate = BucketRequired & BucketRest

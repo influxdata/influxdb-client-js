@@ -452,13 +452,13 @@ export interface Bucket {
      * @type {string}
      * @memberof Bucket
      */
-    organizationID?: string;
+    description?: string;
     /**
      * 
      * @type {string}
      * @memberof Bucket
      */
-    organization?: string;
+    orgID?: string;
     /**
      * 
      * @type {string}
@@ -707,10 +707,28 @@ export interface CellLinks {
 export interface CellUpdate {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof CellUpdate
      */
-    name?: string;
+    x?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CellUpdate
+     */
+    y?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CellUpdate
+     */
+    w?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CellUpdate
+     */
+    h?: number;
 }
 
 /**
@@ -1223,7 +1241,7 @@ export interface DocumentCreate {
      */
     orgID?: string;
     /**
-     * this is an array of label strings that will be added as labels to the document
+     * this is an array of label IDs that will be added as labels to the document
      * @type {Array<string>}
      * @memberof DocumentCreate
      */
@@ -1288,6 +1306,18 @@ export interface DocumentMeta {
      * @memberof DocumentMeta
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentMeta
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentMeta
+     */
+    description?: string;
     /**
      * 
      * @type {string}
@@ -2239,6 +2269,7 @@ export namespace ModelError {
         EmptyValue = 'empty value',
         Unavailable = 'unavailable',
         Forbidden = 'forbidden',
+        TooManyRequests = 'too many requests',
         Unauthorized = 'unauthorized',
         MethodNotAllowed = 'method not allowed'
     }
@@ -2399,6 +2430,12 @@ export interface OperationLog {
      */
     time?: Date;
     /**
+     * ID of the user who operated the event.
+     * @type {string}
+     * @memberof OperationLog
+     */
+    userID?: string;
+    /**
      * 
      * @type {OperationLogLinks}
      * @memberof OperationLog
@@ -2484,6 +2521,12 @@ export interface Organization {
      * @memberof Organization
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Organization
+     */
+    description?: string;
     /**
      * if inactive the organization is inactive.
      * @type {string}
@@ -2830,7 +2873,7 @@ export interface PropertyKey {
 }
 
 /**
- * query influx with specified return formatting. The spec and query fields are mutually exclusive.
+ * query influx with specified return formatting.
  * @export
  * @interface Query
  */
@@ -2847,12 +2890,6 @@ export interface Query {
      * @memberof Query
      */
     query: string;
-    /**
-     * 
-     * @type {QuerySpecification}
-     * @memberof Query
-     */
-    spec?: QuerySpecification;
     /**
      * type of query
      * @type {string}
@@ -3006,110 +3043,6 @@ export interface QueryConfigRange {
      * @memberof QueryConfigRange
      */
     upper: string;
-}
-
-/**
- * consists of a set of operations and a set of edges between those operations to instruct the query engine to operate.
- * @export
- * @interface QuerySpecification
- */
-export interface QuerySpecification {
-    /**
-     * 
-     * @type {Array<QuerySpecificationOperations>}
-     * @memberof QuerySpecification
-     */
-    operations?: Array<QuerySpecificationOperations>;
-    /**
-     * list of declaring a parent child id relationship between operations
-     * @type {Array<QuerySpecificationEdges>}
-     * @memberof QuerySpecification
-     */
-    edges?: Array<QuerySpecificationEdges>;
-    /**
-     * 
-     * @type {QuerySpecificationResources}
-     * @memberof QuerySpecification
-     */
-    resources?: QuerySpecificationResources;
-    /**
-     * 
-     * @type {Dialect}
-     * @memberof QuerySpecification
-     */
-    dialect?: Dialect;
-}
-
-/**
- * 
- * @export
- * @interface QuerySpecificationEdges
- */
-export interface QuerySpecificationEdges {
-    /**
-     * id of parent node of child within graph of opertions
-     * @type {string}
-     * @memberof QuerySpecificationEdges
-     */
-    parent?: string;
-    /**
-     * id of child node of parent within the graph of operations
-     * @type {string}
-     * @memberof QuerySpecificationEdges
-     */
-    child?: string;
-}
-
-/**
- * 
- * @export
- * @interface QuerySpecificationOperations
- */
-export interface QuerySpecificationOperations {
-    /**
-     * name of the operation to perform
-     * @type {string}
-     * @memberof QuerySpecificationOperations
-     */
-    kind?: string;
-    /**
-     * identifier for this operation; it must be unique per query specification; used in edges
-     * @type {string}
-     * @memberof QuerySpecificationOperations
-     */
-    id?: string;
-    /**
-     * set of properties that specify details of the operation. These vary by the kind of operation.
-     * @type {any}
-     * @memberof QuerySpecificationOperations
-     */
-    spec?: any;
-}
-
-/**
- * optional set of contraints on the resources the query can consume
- * @export
- * @interface QuerySpecificationResources
- */
-export interface QuerySpecificationResources {
-    /**
-     * priority of the query
-     * @type {any}
-     * @memberof QuerySpecificationResources
-     */
-    priority?: any;
-    /**
-     * number of concurrent workers allowed to process this query; 0 indicates the planner can pick the optimal concurrency.
-     * @type {number}
-     * @memberof QuerySpecificationResources
-     */
-    concurrencyQuota?: number;
-    /**
-     * number of bytes of RAM this query may consume; 0 means unlimited.
-     * @type {number}
-     * @memberof QuerySpecificationResources
-     */
-    memoryBytesQuota?: number;
 }
 
 /**
@@ -3521,12 +3454,6 @@ export interface RoutesQuery {
      * @type {string}
      * @memberof RoutesQuery
      */
-    spec?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RoutesQuery
-     */
     suggestions?: string;
 }
 
@@ -3765,7 +3692,7 @@ export interface ScraperTargetResponse extends ScraperTargetRequest {
      * @type {string}
      * @memberof ScraperTargetResponse
      */
-    organization?: string;
+    org?: string;
     /**
      * name of the bucket
      * @type {string}
@@ -3953,8 +3880,7 @@ export namespace Source {
      */
     export enum LanguagesEnum {
         Flux = 'flux',
-        Influxql = 'influxql',
-        Spec = 'spec'
+        Influxql = 'influxql'
     }
 }
 
@@ -7392,19 +7318,15 @@ export const BucketsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
-            }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling sourcesSourceIDBucketsGet.');
             }
             const localVarPath = `/sources/{sourceID}/buckets`
                 .replace(`{${"sourceID"}}`, encodeURIComponent(String(sourceID)));
@@ -7686,13 +7608,13 @@ export const BucketsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
-            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
+            const localVarAxiosArgs = BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -7889,13 +7811,13 @@ export const BucketsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
-            return BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any) {
+            return BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
     };
 };
@@ -8119,14 +8041,14 @@ export class BucketsApi extends BaseAPI {
      * 
      * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
      * @param {string} sourceID ID of the source
-     * @param {string} org specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    public sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
-        return BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
+    public sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any) {
+        return BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     }
 
 }
@@ -10631,6 +10553,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication BasicAuth required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
@@ -10928,16 +10856,12 @@ export const LabelsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Get all labels
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'orgID' is not null or undefined
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling labelsGet.');
-            }
+        labelsGet(zapTraceSpan?: string, orgID?: string, options: any = {}): RequestArgs {
             const localVarPath = `/labels`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -11137,13 +11061,13 @@ export const LabelsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all labels
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
-            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsGet(orgID, zapTraceSpan, options);
+        labelsGet(zapTraceSpan?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<LabelsResponse> {
+            const localVarAxiosArgs = LabelsApiAxiosParamCreator(configuration).labelsGet(zapTraceSpan, orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -11221,13 +11145,13 @@ export const LabelsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Get all labels
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        labelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
-            return LabelsApiFp(configuration).labelsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        labelsGet(zapTraceSpan?: string, orgID?: string, options?: any) {
+            return LabelsApiFp(configuration).labelsGet(zapTraceSpan, orgID, options)(axios, basePath);
         },
         /**
          * 
@@ -11286,14 +11210,14 @@ export class LabelsApi extends BaseAPI {
     /**
      * 
      * @summary Get all labels
-     * @param {string} orgID specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [orgID] specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LabelsApi
      */
-    public labelsGet(orgID: string, zapTraceSpan?: string, options?: any) {
-        return LabelsApiFp(this.configuration).labelsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    public labelsGet(zapTraceSpan?: string, orgID?: string, options?: any) {
+        return LabelsApiFp(this.configuration).labelsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13400,8 +13324,8 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
-         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
+         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
+         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -13445,47 +13369,6 @@ export const QueryApiAxiosParamCreator = function (configuration?: Configuration
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Query" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(query || {}) : (query || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * analyzes flux query and generates a query specification.
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {'application/json'} [contentType] 
-         * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options: any = {}): RequestArgs {
-            const localVarPath = `/query/spec`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"LanguageRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(languageRequest || {}) : (languageRequest || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13606,29 +13489,14 @@ export const QueryApiFp = function(configuration?: Configuration) {
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
-         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
+         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
+         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
             const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
-                return axios.request(axiosRequestArgs);                
-            };
-        },
-        /**
-         * analyzes flux query and generates a query specification.
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {'application/json'} [contentType] 
-         * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuerySpecification> {
-            const localVarAxiosArgs = QueryApiAxiosParamCreator(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13699,25 +13567,14 @@ export const QueryApiFactory = function (configuration?: Configuration, basePath
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
          * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
-         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
+         * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
+         * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
          * @param {Query} [query] flux query or specification to execute
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any) {
             return QueryApiFp(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(axios, basePath);
-        },
-        /**
-         * analyzes flux query and generates a query specification.
-         * @param {string} [zapTraceSpan] OpenTracing span context
-         * @param {'application/json'} [contentType] 
-         * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
-            return QueryApiFp(configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
         },
         /**
          * 
@@ -13781,8 +13638,8 @@ export class QueryApi extends BaseAPI {
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {'text/csv' | 'application/vnd.influx.arrow'} [accept] specifies the return content format. Each response content type will have its own dialect options.
      * @param {'application/json' | 'application/vnd.flux'} [contentType] 
-     * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
-     * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precendence.
+     * @param {string} [org] specifies the name of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
+     * @param {string} [orgID] specifies the ID of the organization executing the query; if both orgID and org are specified, orgID takes precedence.
      * @param {Query} [query] flux query or specification to execute
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13790,19 +13647,6 @@ export class QueryApi extends BaseAPI {
      */
     public queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any) {
         return QueryApiFp(this.configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(this.axios, this.basePath);
-    }
-
-    /**
-     * analyzes flux query and generates a query specification.
-     * @param {string} [zapTraceSpan] OpenTracing span context
-     * @param {'application/json'} [contentType] 
-     * @param {LanguageRequest} [languageRequest] analyzed flux query to generate specification.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof QueryApi
-     */
-    public querySpecPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any) {
-        return QueryApiFp(this.configuration).querySpecPost(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13839,10 +13683,11 @@ export const ReadyApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(options: any = {}): RequestArgs {
+        readyGet(zapTraceSpan?: string, options: any = {}): RequestArgs {
             const localVarPath = `/ready`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -13852,6 +13697,10 @@ export const ReadyApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -13875,11 +13724,12 @@ export const ReadyApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Ready> {
-            const localVarAxiosArgs = ReadyApiAxiosParamCreator(configuration).readyGet(options);
+        readyGet(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Ready> {
+            const localVarAxiosArgs = ReadyApiAxiosParamCreator(configuration).readyGet(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13897,11 +13747,12 @@ export const ReadyApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readyGet(options?: any) {
-            return ReadyApiFp(configuration).readyGet(options)(axios, basePath);
+        readyGet(zapTraceSpan?: string, options?: any) {
+            return ReadyApiFp(configuration).readyGet(zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -13916,12 +13767,13 @@ export class ReadyApi extends BaseAPI {
     /**
      * 
      * @summary Get the readiness of a instance at startup. Allow us to confirm the instance is prepared to accept requests.
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReadyApi
      */
-    public readyGet(options?: any) {
-        return ReadyApiFp(this.configuration).readyGet(options)(this.axios, this.basePath);
+    public readyGet(zapTraceSpan?: string, options?: any) {
+        return ReadyApiFp(this.configuration).readyGet(zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -13935,16 +13787,15 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary get all scraper targets
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [name] specifies the name of the scraper target.
+         * @param {Array<string>} [id] ID list of scraper targets to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the scraper target
+         * @param {string} [org] specifies the organization name of the scraper target
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'orgID' is not null or undefined
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling scrapersGet.');
-            }
+        scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options: any = {}): RequestArgs {
             const localVarPath = `/scrapers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -13955,8 +13806,20 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (id) {
+                localVarQueryParameter['id'] = id;
+            }
+
             if (orgID !== undefined) {
                 localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
             }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -13977,10 +13840,11 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary create a scraper target
          * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options: any = {}): RequestArgs {
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'scraperTargetRequest' is not null or undefined
             if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
                 throw new RequiredError('scraperTargetRequest','Required parameter scraperTargetRequest was null or undefined when calling scrapersPost.');
@@ -13994,6 +13858,10 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -14030,6 +13898,44 @@ export const ScraperTargetsApiAxiosParamCreator = function (configuration?: Conf
                 baseOptions = configuration.baseOptions;
             }
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary get a scraper target by id
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'scraperTargetID' is not null or undefined
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID','Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDGet.');
+            }
+            const localVarPath = `/scrapers/{scraperTargetID}`
+                .replace(`{${"scraperTargetID"}}`, encodeURIComponent(String(scraperTargetID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -14546,13 +14452,16 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary get all scraper targets
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [name] specifies the name of the scraper target.
+         * @param {Array<string>} [id] ID list of scraper targets to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the scraper target
+         * @param {string} [org] specifies the organization name of the scraper target
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponses> {
-            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(orgID, zapTraceSpan, options);
+        scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponses> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14562,11 +14471,12 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          * 
          * @summary create a scraper target
          * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponse> {
-            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, options);
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponse> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14582,6 +14492,21 @@ export const ScraperTargetsApiFp = function(configuration?: Configuration) {
          */
         scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
             const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary get a scraper target by id
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScraperTargetResponse> {
+            const localVarAxiosArgs = ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -14773,23 +14698,27 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary get all scraper targets
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [name] specifies the name of the scraper target.
+         * @param {Array<string>} [id] ID list of scraper targets to return. If both this and owner are specified, only ids is used.
+         * @param {string} [orgID] specifies the organization id of the scraper target
+         * @param {string} [org] specifies the organization name of the scraper target
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersGet(orgID: string, zapTraceSpan?: string, options?: any) {
-            return ScraperTargetsApiFp(configuration).scrapersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(axios, basePath);
         },
         /**
          * 
          * @summary create a scraper target
          * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any) {
-            return ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, options)(axios, basePath);
+        scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -14801,6 +14730,17 @@ export const ScraperTargetsApiFactory = function (configuration?: Configuration,
          */
         scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
             return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary get a scraper target by id
+         * @param {string} scraperTargetID id of the scraper target
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+            return ScraperTargetsApiFp(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -14945,26 +14885,30 @@ export class ScraperTargetsApi extends BaseAPI {
     /**
      * 
      * @summary get all scraper targets
-     * @param {string} orgID specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [name] specifies the name of the scraper target.
+     * @param {Array<string>} [id] ID list of scraper targets to return. If both this and owner are specified, only ids is used.
+     * @param {string} [orgID] specifies the organization id of the scraper target
+     * @param {string} [org] specifies the organization name of the scraper target
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScraperTargetsApi
      */
-    public scrapersGet(orgID: string, zapTraceSpan?: string, options?: any) {
-        return ScraperTargetsApiFp(this.configuration).scrapersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    public scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary create a scraper target
      * @param {ScraperTargetRequest} scraperTargetRequest scraper target to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ScraperTargetsApi
      */
-    public scrapersPost(scraperTargetRequest: ScraperTargetRequest, options?: any) {
-        return ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, options)(this.axios, this.basePath);
+    public scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -14978,6 +14922,19 @@ export class ScraperTargetsApi extends BaseAPI {
      */
     public scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
         return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary get a scraper target by id
+     * @param {string} scraperTargetID id of the scraper target
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ScraperTargetsApi
+     */
+    public scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options?: any) {
+        return ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -15618,16 +15575,12 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get all sources
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling sourcesGet.');
-            }
+        sourcesGet(zapTraceSpan?: string, org?: string, options: any = {}): RequestArgs {
             const localVarPath = `/sources`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -15701,19 +15654,15 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
-            }
-            // verify required parameter 'org' is not null or undefined
-            if (org === null || org === undefined) {
-                throw new RequiredError('org','Required parameter org was null or undefined when calling sourcesSourceIDBucketsGet.');
             }
             const localVarPath = `/sources/{sourceID}/buckets`
                 .replace(`{${"sourceID"}}`, encodeURIComponent(String(sourceID)));
@@ -15748,10 +15697,11 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @summary Delete a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDDelete(sourceID: string, options: any = {}): RequestArgs {
+        sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'sourceID' is not null or undefined
             if (sourceID === null || sourceID === undefined) {
                 throw new RequiredError('sourceID','Required parameter sourceID was null or undefined when calling sourcesSourceIDDelete.');
@@ -15766,6 +15716,10 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -15912,13 +15866,13 @@ export const SourcesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all sources
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Sources> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesGet(org, zapTraceSpan, options);
+        sourcesGet(zapTraceSpan?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Sources> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesGet(zapTraceSpan, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15943,13 +15897,13 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options);
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Buckets> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -15959,11 +15913,12 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Delete a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDDelete(sourceID: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
-            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDDelete(sourceID, options);
+        sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -16027,13 +15982,13 @@ export const SourcesApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get all sources
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesGet(org: string, zapTraceSpan?: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesGet(org, zapTraceSpan, options)(axios, basePath);
+        sourcesGet(zapTraceSpan?: string, org?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesGet(zapTraceSpan, org, options)(axios, basePath);
         },
         /**
          * 
@@ -16050,23 +16005,24 @@ export const SourcesApiFactory = function (configuration?: Configuration, basePa
          * 
          * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
          * @param {string} sourceID ID of the source
-         * @param {string} org specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [org] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(axios, basePath);
+        sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
         /**
          * 
          * @summary Delete a source
          * @param {string} sourceID ID of the source
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sourcesSourceIDDelete(sourceID: string, options?: any) {
-            return SourcesApiFp(configuration).sourcesSourceIDDelete(sourceID, options)(axios, basePath);
+        sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options?: any) {
+            return SourcesApiFp(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -16115,14 +16071,14 @@ export class SourcesApi extends BaseAPI {
     /**
      * 
      * @summary Get all sources
-     * @param {string} org specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesGet(org: string, zapTraceSpan?: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesGet(org, zapTraceSpan, options)(this.axios, this.basePath);
+    public sourcesGet(zapTraceSpan?: string, org?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesGet(zapTraceSpan, org, options)(this.axios, this.basePath);
     }
 
     /**
@@ -16142,26 +16098,27 @@ export class SourcesApi extends BaseAPI {
      * 
      * @summary Get a sources buckets (will return dbrps in the form of buckets if it is a v1 source)
      * @param {string} sourceID ID of the source
-     * @param {string} org specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [org] specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDBucketsGet(sourceID: string, org: string, zapTraceSpan?: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, org, zapTraceSpan, options)(this.axios, this.basePath);
+    public sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     }
 
     /**
      * 
      * @summary Delete a source
      * @param {string} sourceID ID of the source
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SourcesApi
      */
-    public sourcesSourceIDDelete(sourceID: string, options?: any) {
-        return SourcesApiFp(this.configuration).sourcesSourceIDDelete(sourceID, options)(this.axios, this.basePath);
+    public sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options?: any) {
+        return SourcesApiFp(this.configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
@@ -16920,11 +16877,12 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary manually start a run of the task now overriding the current schedule.
          * @param {string} taskID 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {RunManually} [runManually] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options: any = {}): RequestArgs {
+        tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options: any = {}): RequestArgs {
             // verify required parameter 'taskID' is not null or undefined
             if (taskID === null || taskID === undefined) {
                 throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling tasksTaskIDRunsPost.');
@@ -16939,6 +16897,10 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -17354,12 +17316,13 @@ export const TasksApiFp = function(configuration?: Configuration) {
          * 
          * @summary manually start a run of the task now overriding the current schedule.
          * @param {string} taskID 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {RunManually} [runManually] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
-            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, runManually, options);
+        tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Run> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -17617,12 +17580,13 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary manually start a run of the task now overriding the current schedule.
          * @param {string} taskID 
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {RunManually} [runManually] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any) {
-            return TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, runManually, options)(axios, basePath);
+        tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any) {
+            return TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(axios, basePath);
         },
         /**
          * 
@@ -17897,13 +17861,14 @@ export class TasksApi extends BaseAPI {
      * 
      * @summary manually start a run of the task now overriding the current schedule.
      * @param {string} taskID 
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {RunManually} [runManually] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TasksApi
      */
-    public tasksTaskIDRunsPost(taskID: string, runManually?: RunManually, options?: any) {
-        return TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, runManually, options)(this.axios, this.basePath);
+    public tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any) {
+        return TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(this.axios, this.basePath);
     }
 
     /**
@@ -17958,16 +17923,12 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
-            // verify required parameter 'orgID' is not null or undefined
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling telegrafsGet.');
-            }
+        telegrafsGet(zapTraceSpan?: string, orgID?: string, options: any = {}): RequestArgs {
             const localVarPath = `/telegrafs`;
             const localVarUrlObj = url.parse(localVarPath, true);
             let baseOptions;
@@ -18080,10 +18041,11 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {'application/toml' | 'application/json' | 'application/octet-stream'} [accept] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options: any = {}): RequestArgs {
             // verify required parameter 'telegrafID' is not null or undefined
             if (telegrafID === null || telegrafID === undefined) {
                 throw new RequiredError('telegrafID','Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDGet.');
@@ -18101,6 +18063,10 @@ export const TelegrafsApiAxiosParamCreator = function (configuration?: Configura
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            if (accept !== undefined && accept !== null) {
+                localVarHeaderParameter['Accept'] = String(accept);
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -18558,13 +18524,13 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(orgID, zapTraceSpan, options);
+        telegrafsGet(zapTraceSpan?: string, orgID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegrafs> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(zapTraceSpan, orgID, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -18605,11 +18571,12 @@ export const TelegrafsApiFp = function(configuration?: Configuration) {
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {'application/toml' | 'application/json' | 'application/octet-stream'} [accept] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Telegraf> {
-            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options);
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<string> {
+            const localVarAxiosArgs = TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -18783,13 +18750,13 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @param {string} orgID specifies the organization of the resource
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {string} [orgID] specifies the organization of the resource
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        telegrafsGet(zapTraceSpan?: string, orgID?: string, options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsGet(zapTraceSpan, orgID, options)(axios, basePath);
         },
         /**
          * 
@@ -18818,11 +18785,12 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
          * @summary Retrieve a telegraf config
          * @param {string} telegrafID ID of telegraf config
          * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {'application/toml' | 'application/json' | 'application/octet-stream'} [accept] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
-            return TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any) {
+            return TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(axios, basePath);
         },
         /**
          * 
@@ -18953,14 +18921,14 @@ export const TelegrafsApiFactory = function (configuration?: Configuration, base
 export class TelegrafsApi extends BaseAPI {
     /**
      * 
-     * @param {string} orgID specifies the organization of the resource
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {string} [orgID] specifies the organization of the resource
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsGet(orgID: string, zapTraceSpan?: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    public telegrafsGet(zapTraceSpan?: string, orgID?: string, options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
     }
 
     /**
@@ -18994,12 +18962,13 @@ export class TelegrafsApi extends BaseAPI {
      * @summary Retrieve a telegraf config
      * @param {string} telegrafID ID of telegraf config
      * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {'application/toml' | 'application/json' | 'application/octet-stream'} [accept] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TelegrafsApi
      */
-    public telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, options?: any) {
-        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    public telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any) {
+        return TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(this.axios, this.basePath);
     }
 
     /**
@@ -20401,6 +20370,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication BasicAuth required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
@@ -21487,10 +21462,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Create a user
          * @param {User} user user to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPost(user: User, options: any = {}): RequestArgs {
+        usersPost(user: User, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'user' is not null or undefined
             if (user === null || user === undefined) {
                 throw new RequiredError('user','Required parameter user was null or undefined when calling usersPost.');
@@ -21504,6 +21480,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -21671,6 +21651,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication BasicAuth required
+            // http basic authentication required
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
 
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
@@ -22357,11 +22343,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a user
          * @param {User} user user to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPost(user: User, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
-            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersPost(user, options);
+        usersPost(user: User, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User> {
+            const localVarAxiosArgs = UsersApiAxiosParamCreator(configuration).usersPost(user, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -22910,11 +22897,12 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Create a user
          * @param {User} user user to create
+         * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersPost(user: User, options?: any) {
-            return UsersApiFp(configuration).usersPost(user, options)(axios, basePath);
+        usersPost(user: User, zapTraceSpan?: string, options?: any) {
+            return UsersApiFp(configuration).usersPost(user, zapTraceSpan, options)(axios, basePath);
         },
         /**
          * 
@@ -23518,12 +23506,13 @@ export class UsersApi extends BaseAPI {
      * 
      * @summary Create a user
      * @param {User} user user to create
+     * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersPost(user: User, options?: any) {
-        return UsersApiFp(this.configuration).usersPost(user, options)(this.axios, this.basePath);
+    public usersPost(user: User, zapTraceSpan?: string, options?: any) {
+        return UsersApiFp(this.configuration).usersPost(user, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
