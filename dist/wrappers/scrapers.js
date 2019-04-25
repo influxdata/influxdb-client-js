@@ -46,7 +46,7 @@ var default_1 = (function () {
             var configurations;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.scrapersGet(undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getScrapers(undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
                     case 1:
                         configurations = (_a.sent()).data.configurations;
                         return [2, configurations || []];
@@ -59,7 +59,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.scrapersPost(request, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postScrapers(request, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -72,7 +72,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.scrapersScraperTargetIDPatch(id, changes, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.patchScrapersID(id, changes, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -85,7 +85,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.scrapersScraperTargetIDDelete(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteScrapersID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

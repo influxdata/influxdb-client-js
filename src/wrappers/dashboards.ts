@@ -37,7 +37,7 @@ export default class {
   }
 
   public async get(id: string): Promise<IDashboard> {
-    const {data} = await this.service.dashboardsDashboardIDGet(
+    const {data} = await this.service.getDashboardsID(
       id,
       undefined,
       this.serviceOptions
@@ -47,7 +47,7 @@ export default class {
   }
 
   public async getAll(orgID?: string): Promise<IDashboard[]> {
-    const {data} = await this.service.dashboardsGet(
+    const {data} = await this.service.getDashboards(
       undefined,
       undefined,
       undefined,
@@ -61,7 +61,7 @@ export default class {
   }
 
   public async create(props: CreateDashboardRequest): Promise<IDashboard> {
-    const {data} = await this.service.dashboardsPost(
+    const {data} = await this.service.postDashboards(
       props,
       undefined,
       this.serviceOptions
@@ -75,7 +75,7 @@ export default class {
     props: Partial<Dashboard>
   ): Promise<IDashboard> {
     const original = await this.get(id)
-    const {data} = await this.service.dashboardsDashboardIDPatch(
+    const {data} = await this.service.patchDashboardsID(
       id,
       {
         ...original,
@@ -89,7 +89,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.dashboardsDashboardIDDelete(
+    const {data} = await this.service.deleteDashboardsID(
       id,
       undefined,
       this.serviceOptions
@@ -102,9 +102,7 @@ export default class {
     dashboardID: string,
     cellID: string
   ): Promise<Response> {
-    const {
-      data: response,
-    } = await this.cellsService.dashboardsDashboardIDCellsCellIDDelete(
+    const {data: response} = await this.cellsService.deleteDashboardsIDCellsID(
       dashboardID,
       cellID,
       undefined,
@@ -115,7 +113,7 @@ export default class {
   }
 
   public async createCell(dashboardID: string, cell: Cell): Promise<Cell> {
-    const {data} = await this.cellsService.dashboardsDashboardIDCellsPost(
+    const {data} = await this.cellsService.postDashboardsIDCells(
       dashboardID,
       cell,
       undefined,
@@ -129,7 +127,7 @@ export default class {
     dashboardID: string,
     cells: Cell[]
   ): Promise<Cell[]> {
-    const {data} = await this.cellsService.dashboardsDashboardIDCellsPut(
+    const {data} = await this.cellsService.putDashboardsIDCells(
       dashboardID,
       cells,
       undefined,
@@ -140,7 +138,7 @@ export default class {
   }
 
   public async addLabel(dashboardID: string, labelID: string): Promise<ILabel> {
-    const {data} = await this.service.dashboardsDashboardIDLabelsPost(
+    const {data} = await this.service.postDashboardsIDLabels(
       dashboardID,
       {
         labelID,
@@ -180,7 +178,7 @@ export default class {
     dashboardID: string,
     labelID: string
   ): Promise<Response> {
-    const {data} = await this.service.dashboardsDashboardIDLabelsLabelIDDelete(
+    const {data} = await this.service.deleteDashboardsIDLabelsID(
       dashboardID,
       labelID,
       undefined,
@@ -200,7 +198,7 @@ export default class {
   }
 
   public async getView(dashboardID: string, cellID: string): Promise<View> {
-    const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewGet(
+    const {data} = await this.service.getDashboardsIDCellsIDView(
       dashboardID,
       cellID,
       undefined,
@@ -215,7 +213,7 @@ export default class {
     cellID: string,
     view: Partial<View>
   ): Promise<View> {
-    const {data} = await this.service.dashboardsDashboardIDCellsCellIDViewPatch(
+    const {data} = await this.service.patchDashboardsIDCellsIDView(
       dashboardID,
       cellID,
       view,

@@ -46,7 +46,7 @@ var default_1 = (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.setupPost(props, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postSetup(props, undefined, this.serviceOptions)];
                     case 1:
                         response = (_a.sent()).data;
                         return [2, response];
@@ -59,7 +59,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.setupGet(undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getSetup(undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, { allowed: !!data.allowed }];

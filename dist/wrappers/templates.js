@@ -66,7 +66,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesGet(undefined, undefined, orgID, this.serviceOptions)];
+                    case 0: return [4, this.service.getDocumentsTemplates(undefined, undefined, orgID, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         if (data.documents) {
@@ -82,7 +82,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesTemplateIDGet(templateID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getDocumentsTemplatesID(templateID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addTemplateDefaults(data)];
@@ -98,7 +98,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.documentsTemplatesTemplateIDPut(id, __assign({}, original, props), undefined, this.serviceOptions)];
+                        return [4, this.service.putDocumentsTemplatesID(id, __assign({}, original, props), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, addTemplateDefaults(data)];
@@ -111,7 +111,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesPost(templateCreate, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postDocumentsTemplates(templateCreate, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addTemplateDefaults(data)];
@@ -124,7 +124,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesTemplateIDDelete(templateID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteDocumentsTemplatesID(templateID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -137,7 +137,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesTemplateIDLabelsPost(templateID, {
+                    case 0: return [4, this.service.postDocumentsTemplatesIDLabels(templateID, {
                             labelID: labelID,
                         }, undefined, this.serviceOptions)];
                     case 1:
@@ -155,7 +155,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteDocumentsTemplatesIDLabelsID(templateID, labelID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -178,7 +178,7 @@ var default_1 = (function () {
             var data, labels, content, meta, labelsData, name, templateToCreate, createdTemplate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.documentsTemplatesTemplateIDGet(templateID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getDocumentsTemplatesID(templateID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         labels = data.labels, content = data.content, meta = data.meta;

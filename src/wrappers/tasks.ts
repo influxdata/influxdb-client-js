@@ -22,7 +22,7 @@ export default class {
   }
 
   public async create(org: string, script: string): Promise<ITask> {
-    const {data} = await this.service.tasksPost(
+    const {data} = await this.service.postTasks(
       {org, flux: script},
       undefined,
       this.serviceOptions
@@ -32,7 +32,7 @@ export default class {
   }
 
   public async createByOrgID(orgID: string, script: string): Promise<ITask> {
-    const {data} = await this.service.tasksPost(
+    const {data} = await this.service.postTasks(
       {orgID, flux: script},
       undefined,
       this.serviceOptions
@@ -42,7 +42,7 @@ export default class {
   }
 
   public async get(id: string): Promise<ITask> {
-    const {data} = await this.service.tasksTaskIDGet(
+    const {data} = await this.service.getTasksID(
       id,
       undefined,
       this.serviceOptions
@@ -54,7 +54,7 @@ export default class {
   public async getAll(orgID?: string): Promise<ITask[]> {
     const {
       data: {tasks},
-    } = await this.service.tasksGet(
+    } = await this.service.getTasks(
       undefined,
       undefined,
       undefined,
@@ -70,7 +70,7 @@ export default class {
   public async getAllByOrg(org: string): Promise<ITask[]> {
     const {
       data: {tasks},
-    } = await this.service.tasksGet(
+    } = await this.service.getTasks(
       undefined,
       undefined,
       undefined,
@@ -84,7 +84,7 @@ export default class {
   }
 
   public async getAllByUser(user: User): Promise<ITask[]> {
-    const {data} = await this.service.tasksGet(
+    const {data} = await this.service.getTasks(
       undefined,
       undefined,
       user.id,
@@ -107,7 +107,7 @@ export default class {
       delete original.cron
     }
 
-    const {data: updated} = await this.service.tasksTaskIDPatch(
+    const {data: updated} = await this.service.patchTasksID(
       id,
       {
         ...original,
@@ -129,7 +129,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.tasksTaskIDDelete(
+    const {data} = await this.service.deleteTasksID(
       id,
       undefined,
       this.serviceOptions
@@ -139,7 +139,7 @@ export default class {
   }
 
   public async addLabel(taskID: string, labelID: string): Promise<ILabel> {
-    const {data} = await this.service.tasksTaskIDLabelsPost(
+    const {data} = await this.service.postTasksIDLabels(
       taskID,
       {
         labelID,
@@ -156,7 +156,7 @@ export default class {
   }
 
   public async removeLabel(taskID: string, labelID: string): Promise<Response> {
-    const {data} = await this.service.tasksTaskIDLabelsLabelIDDelete(
+    const {data} = await this.service.deleteTasksIDLabelsID(
       taskID,
       labelID,
       undefined,
@@ -181,7 +181,7 @@ export default class {
   public async getRunsByTaskID(taskID: string): Promise<Run[]> {
     const {
       data: {runs},
-    } = await this.service.tasksTaskIDRunsGet(
+    } = await this.service.getTasksIDRuns(
       taskID,
       undefined,
       undefined,
@@ -195,7 +195,7 @@ export default class {
   }
 
   public async startRunByTaskID(taskID: string): Promise<Run> {
-    const {data} = await this.service.tasksTaskIDRunsPost(
+    const {data} = await this.service.postTasksIDRuns(
       taskID,
       undefined,
       undefined,
@@ -211,7 +211,7 @@ export default class {
   ): Promise<LogEvent[]> {
     const {
       data: {events},
-    } = await this.service.tasksTaskIDRunsRunIDLogsGet(
+    } = await this.service.getTasksIDRunsIDLogs(
       taskID,
       runID,
       undefined,

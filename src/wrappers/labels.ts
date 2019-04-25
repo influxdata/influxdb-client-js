@@ -27,7 +27,7 @@ export default class {
   public async get(id: string): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsLabelIDGet(id, undefined, this.serviceOptions)
+    } = await this.service.getLabelsID(id, undefined, this.serviceOptions)
 
     if (!label) {
       throw new Error('Failed to get label')
@@ -39,7 +39,7 @@ export default class {
   public async getAll(orgID: string): Promise<ILabel[]> {
     const {
       data: {labels},
-    } = await this.service.labelsGet(undefined, orgID, this.serviceOptions)
+    } = await this.service.getLabels(undefined, orgID, this.serviceOptions)
 
     return (labels || []).map(addLabelDefaults)
   }
@@ -51,7 +51,7 @@ export default class {
   }): Promise<ILabel> {
     const {
       data: {label},
-    } = await this.service.labelsPost(request, this.serviceOptions)
+    } = await this.service.postLabels(request, this.serviceOptions)
 
     if (!label) {
       throw new Error('Failed to create label')
@@ -87,7 +87,7 @@ export default class {
     const original = await this.get(id)
     const {
       data: {label},
-    } = await this.service.labelsLabelIDPatch(
+    } = await this.service.patchLabelsID(
       id,
       {
         ...original,
@@ -105,7 +105,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.labelsLabelIDDelete(
+    const {data} = await this.service.deleteLabelsID(
       id,
       undefined,
       this.serviceOptions

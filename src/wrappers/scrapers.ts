@@ -17,7 +17,7 @@ export default class {
   public async getAll(orgID: string): Promise<ScraperTargetResponse[]> {
     const {
       data: {configurations},
-    } = await this.service.scrapersGet(
+    } = await this.service.getScrapers(
       undefined,
       undefined,
       undefined,
@@ -32,7 +32,7 @@ export default class {
   public async create(
     request: ScraperTargetRequest
   ): Promise<ScraperTargetResponse> {
-    const {data} = await this.service.scrapersPost(
+    const {data} = await this.service.postScrapers(
       request,
       undefined,
       this.serviceOptions
@@ -45,7 +45,7 @@ export default class {
     id: string,
     changes: ScraperTargetRequest
   ): Promise<ScraperTargetResponse> {
-    const {data} = await this.service.scrapersScraperTargetIDPatch(
+    const {data} = await this.service.patchScrapersID(
       id,
       changes,
       undefined,
@@ -56,7 +56,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.scrapersScraperTargetIDDelete(
+    const {data} = await this.service.deleteScrapersID(
       id,
       undefined,
       this.serviceOptions
