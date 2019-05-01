@@ -145,6 +145,12 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
+                        if (!!updates.cron) {
+                            delete original.every;
+                        }
+                        if (!!updates.every) {
+                            delete original.cron;
+                        }
                         return [4, this.service.tasksTaskIDPatch(id, __assign({}, original, updates), undefined, this.serviceOptions)];
                     case 2:
                         updated = (_a.sent()).data;

@@ -99,6 +99,14 @@ export default class {
 
   public async update(id: string, updates: Partial<Task>): Promise<ITask> {
     const original = await this.get(id)
+    if (!!updates.cron) {
+      delete original.every
+    }
+
+    if (!!updates.every) {
+      delete original.cron
+    }
+
     const {data: updated} = await this.service.tasksTaskIDPatch(
       id,
       {
