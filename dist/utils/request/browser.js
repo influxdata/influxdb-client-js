@@ -27,21 +27,25 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
     var out = new stream_1.PassThrough({ encoding: 'utf8' });
     var fullURL = basePath + "/query?orgID=" + encodeURIComponent(orgID);
     var xhr = new XMLHttpRequest();
-    var rowCountIndex = 0;
+    var currentIndex = 0;
+    var timer = null;
     var row = '';
-    var interval = null;
     var handleData = function () {
-        for (var i = rowCountIndex; i < xhr.responseText.length; i++) {
+        var i0 = currentIndex;
+        var i1 = xhr.responseText.length;
+        for (var i = i0; i < i1; i++) {
             row += xhr.responseText[i];
             if (xhr.responseText[i] === '\n') {
                 out.write(row);
                 row = '';
             }
         }
+        currentIndex = i1;
+        timer = setTimeout(handleData, CHECK_LIMIT_INTERVAL);
     };
     var handleError = function () {
         var bodyError = null;
-        clearInterval(interval);
+        clearTimeout(timer);
         try {
             bodyError = JSON.parse(xhr.responseText).message;
         }
@@ -55,7 +59,7 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
         out.emit('error', err);
     };
     xhr.onload = function () {
-        clearInterval(interval);
+        clearTimeout(timer);
         if (xhr.status === 200) {
             handleData();
             out.end();
@@ -73,7 +77,7 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
         xhr.setRequestHeader('Authorization', baseOptions.headers.Authorization);
     }
     xhr.send(JSON.stringify(body));
-    interval = setInterval(handleData, CHECK_LIMIT_INTERVAL);
+    timer = setTimeout(handleData, CHECK_LIMIT_INTERVAL);
     return {
         stream: out,
         cancel: function () {
