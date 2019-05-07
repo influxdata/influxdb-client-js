@@ -1,5 +1,5 @@
 import {ServiceOptions, File} from '../../types'
-import Axios from 'axios'
+import Axios, {AxiosResponse} from 'axios'
 import {PassThrough, Stream} from 'stream'
 
 export class CancellationError extends Error {}
@@ -44,9 +44,14 @@ export default function(
     })
     .catch(err => {
       if (!Axios.isCancel(err)) {
-        const {response} = err
-        err.status = (response || {}).status
-        out.emit('error', err)
+        const response: AxiosResponse = err.response || {}
+
+        const status = response.status
+        const headers = response.headers
+
+        const error = {...err, status, headers}
+
+        out.emit('error', error)
       }
     })
 

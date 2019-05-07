@@ -63,9 +63,11 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
     })
         .catch(function (err) {
         if (!axios_1.default.isCancel(err)) {
-            var response = err.response;
-            err.status = (response || {}).status;
-            out.emit('error', err);
+            var response = err.response || {};
+            var status_1 = response.status;
+            var headers_1 = response.headers;
+            var error = __assign({}, err, { status: status_1, headers: headers_1 });
+            out.emit('error', error);
         }
     });
     return {
