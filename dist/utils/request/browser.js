@@ -52,7 +52,23 @@ function default_1(orgID, basePath, baseOptions, query, extern) {
         }
         var err = new Error(bodyError);
         err.status = xhr.status;
+        err.headers = extractResponseHeaders(xhr);
         out.emit('error', err);
+    };
+    var extractResponseHeaders = function (xhr) {
+        var headerString = xhr.getAllResponseHeaders();
+        var headerArray = headerString.trim().split(/[\r\n]+/);
+        var headerObj = {};
+        headerArray.reduce(function (acc, line) {
+            var parts = line.split(': ');
+            if (parts.length) {
+                var key = parts[0];
+                var value = parts.slice(1).join(': ');
+                acc[key] = value;
+            }
+            return acc;
+        }, headerObj);
+        return headerObj;
     };
     xhr.onload = function () {
         clearInterval(interval);

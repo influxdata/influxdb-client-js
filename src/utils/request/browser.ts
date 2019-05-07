@@ -6,6 +6,7 @@ const CHECK_LIMIT_INTERVAL = 200
 
 interface ResponseError extends Error {
   status?: number
+  headers?: object
 }
 
 export default function(
@@ -47,8 +48,29 @@ export default function(
     }
     const err: ResponseError = new Error(bodyError)
     err.status = xhr.status
+    err.headers = extractResponseHeaders(xhr)
 
     out.emit('error', err)
+  }
+
+  const extractResponseHeaders = (xhr: XMLHttpRequest) => {
+    const headerString = xhr.getAllResponseHeaders()
+
+    const headerArray = headerString.trim().split(/[\r\n]+/)
+
+    let headerObj: {[key: string]: string} = {}
+
+    headerArray.reduce((acc, line) => {
+      var parts = line.split(': ')
+      if (parts.length) {
+        var key = parts[0]
+        var value = parts.slice(1).join(': ')
+        acc[key] = value
+      }
+      return acc
+    }, headerObj)
+
+    return headerObj
   }
 
   xhr.onload = () => {
