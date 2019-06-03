@@ -65,7 +65,7 @@ var default_1 = (function () {
             var variable;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDGet(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getVariablesID(id, undefined, this.serviceOptions)];
                     case 1:
                         variable = (_a.sent()).data;
                         return [2, addDefaults(variable)];
@@ -81,7 +81,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.variablesVariableIDPatch(id, __assign({}, original, props), undefined, this.serviceOptions)];
+                        return [4, this.service.patchVariablesID(id, __assign({}, original, props), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -94,7 +94,7 @@ var default_1 = (function () {
             var variables;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesGet(undefined, org, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getVariables(undefined, org, undefined, this.serviceOptions)];
                     case 1:
                         variables = (_a.sent()).data.variables;
                         return [2, (variables || []).map(function (v) { return addDefaults(v); })];
@@ -107,7 +107,7 @@ var default_1 = (function () {
             var variables;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesGet(undefined, undefined, orgID, this.serviceOptions)];
+                    case 0: return [4, this.service.getVariables(undefined, undefined, orgID, this.serviceOptions)];
                     case 1:
                         variables = (_a.sent()).data.variables;
                         return [2, (variables || []).map(function (v) { return addDefaults(v); })];
@@ -120,7 +120,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesPost(variable, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postVariables(variable, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -149,7 +149,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDDelete(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteVariablesID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -162,7 +162,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDLabelsPost(variableID, {
+                    case 0: return [4, this.service.postVariablesIDLabels(variableID, {
                             labelID: labelID,
                         }, undefined, this.serviceOptions)];
                     case 1:
@@ -213,7 +213,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.variablesVariableIDLabelsLabelIDDelete(variableID, labelID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteVariablesIDLabelsID(variableID, labelID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

@@ -130,6 +130,41 @@ var Field;
         TypeEnum["Wildcard"] = "wildcard";
     })(TypeEnum = Field.TypeEnum || (Field.TypeEnum = {}));
 })(Field = exports.Field || (exports.Field = {}));
+var GaugeViewProperties;
+(function (GaugeViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Gauge"] = "gauge";
+    })(TypeEnum = GaugeViewProperties.TypeEnum || (GaugeViewProperties.TypeEnum = {}));
+})(GaugeViewProperties = exports.GaugeViewProperties || (exports.GaugeViewProperties = {}));
+var HistogramViewProperties;
+(function (HistogramViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Histogram"] = "histogram";
+    })(TypeEnum = HistogramViewProperties.TypeEnum || (HistogramViewProperties.TypeEnum = {}));
+})(HistogramViewProperties = exports.HistogramViewProperties || (exports.HistogramViewProperties = {}));
+var Legend;
+(function (Legend) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Static"] = "static";
+    })(TypeEnum = Legend.TypeEnum || (Legend.TypeEnum = {}));
+    var OrientationEnum;
+    (function (OrientationEnum) {
+        OrientationEnum["Top"] = "top";
+        OrientationEnum["Bottom"] = "bottom";
+        OrientationEnum["Left"] = "left";
+        OrientationEnum["Right"] = "right";
+    })(OrientationEnum = Legend.OrientationEnum || (Legend.OrientationEnum = {}));
+})(Legend = exports.Legend || (exports.Legend = {}));
+var LinePlusSingleStatProperties;
+(function (LinePlusSingleStatProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["LinePlusSingleStat"] = "line-plus-single-stat";
+    })(TypeEnum = LinePlusSingleStatProperties.TypeEnum || (LinePlusSingleStatProperties.TypeEnum = {}));
+})(LinePlusSingleStatProperties = exports.LinePlusSingleStatProperties || (exports.LinePlusSingleStatProperties = {}));
 var LineProtocolError;
 (function (LineProtocolError) {
     var CodeEnum;
@@ -167,6 +202,13 @@ var MapVariableProperties;
         TypeEnum["Map"] = "map";
     })(TypeEnum = MapVariableProperties.TypeEnum || (MapVariableProperties.TypeEnum = {}));
 })(MapVariableProperties = exports.MapVariableProperties || (exports.MapVariableProperties = {}));
+var MarkdownViewProperties;
+(function (MarkdownViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Markdown"] = "markdown";
+    })(TypeEnum = MarkdownViewProperties.TypeEnum || (MarkdownViewProperties.TypeEnum = {}));
+})(MarkdownViewProperties = exports.MarkdownViewProperties || (exports.MarkdownViewProperties = {}));
 var ModelError;
 (function (ModelError) {
     var CodeEnum;
@@ -274,6 +316,13 @@ var ScraperTargetRequest;
         TypeEnum["Prometheus"] = "prometheus";
     })(TypeEnum = ScraperTargetRequest.TypeEnum || (ScraperTargetRequest.TypeEnum = {}));
 })(ScraperTargetRequest = exports.ScraperTargetRequest || (exports.ScraperTargetRequest = {}));
+var SingleStatViewProperties;
+(function (SingleStatViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["SingleStat"] = "single-stat";
+    })(TypeEnum = SingleStatViewProperties.TypeEnum || (SingleStatViewProperties.TypeEnum = {}));
+})(SingleStatViewProperties = exports.SingleStatViewProperties || (exports.SingleStatViewProperties = {}));
 var Source;
 (function (Source) {
     var TypeEnum;
@@ -288,6 +337,13 @@ var Source;
         LanguagesEnum["Influxql"] = "influxql";
     })(LanguagesEnum = Source.LanguagesEnum || (Source.LanguagesEnum = {}));
 })(Source = exports.Source || (exports.Source = {}));
+var TableViewProperties;
+(function (TableViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Table"] = "table";
+    })(TypeEnum = TableViewProperties.TypeEnum || (TableViewProperties.TypeEnum = {}));
+})(TableViewProperties = exports.TableViewProperties || (exports.TableViewProperties = {}));
 var Task;
 (function (Task) {
     var StatusEnum;
@@ -570,38 +626,6 @@ var User;
         StatusEnum["Inactive"] = "inactive";
     })(StatusEnum = User.StatusEnum || (User.StatusEnum = {}));
 })(User = exports.User || (exports.User = {}));
-var V1ViewProperties;
-(function (V1ViewProperties) {
-    var TypeEnum;
-    (function (TypeEnum) {
-        TypeEnum["ChronografV1"] = "chronograf-v1";
-    })(TypeEnum = V1ViewProperties.TypeEnum || (V1ViewProperties.TypeEnum = {}));
-    var GraphTypeEnum;
-    (function (GraphTypeEnum) {
-        GraphTypeEnum["SingleStat"] = "single-stat";
-        GraphTypeEnum["Line"] = "line";
-        GraphTypeEnum["LinePlusSingleStat"] = "line-plus-single-stat";
-        GraphTypeEnum["LineStacked"] = "line-stacked";
-        GraphTypeEnum["LineStepplot"] = "line-stepplot";
-        GraphTypeEnum["Bar"] = "bar";
-        GraphTypeEnum["Gauge"] = "gauge";
-        GraphTypeEnum["Table"] = "table";
-    })(GraphTypeEnum = V1ViewProperties.GraphTypeEnum || (V1ViewProperties.GraphTypeEnum = {}));
-})(V1ViewProperties = exports.V1ViewProperties || (exports.V1ViewProperties = {}));
-var V1ViewPropertiesLegend;
-(function (V1ViewPropertiesLegend) {
-    var TypeEnum;
-    (function (TypeEnum) {
-        TypeEnum["Static"] = "static";
-    })(TypeEnum = V1ViewPropertiesLegend.TypeEnum || (V1ViewPropertiesLegend.TypeEnum = {}));
-    var OrientationEnum;
-    (function (OrientationEnum) {
-        OrientationEnum["Top"] = "top";
-        OrientationEnum["Bottom"] = "bottom";
-        OrientationEnum["Left"] = "left";
-        OrientationEnum["Right"] = "right";
-    })(OrientationEnum = V1ViewPropertiesLegend.OrientationEnum || (V1ViewPropertiesLegend.OrientationEnum = {}));
-})(V1ViewPropertiesLegend = exports.V1ViewPropertiesLegend || (exports.V1ViewPropertiesLegend = {}));
 var WritePrecision;
 (function (WritePrecision) {
     WritePrecision["Ms"] = "ms";
@@ -609,12 +633,26 @@ var WritePrecision;
     WritePrecision["Us"] = "us";
     WritePrecision["Ns"] = "ns";
 })(WritePrecision = exports.WritePrecision || (exports.WritePrecision = {}));
+var XYViewProperties;
+(function (XYViewProperties) {
+    var TypeEnum;
+    (function (TypeEnum) {
+        TypeEnum["Xy"] = "xy";
+    })(TypeEnum = XYViewProperties.TypeEnum || (XYViewProperties.TypeEnum = {}));
+    var GeomEnum;
+    (function (GeomEnum) {
+        GeomEnum["Line"] = "line";
+        GeomEnum["Step"] = "step";
+        GeomEnum["Stacked"] = "stacked";
+        GeomEnum["Bar"] = "bar";
+    })(GeomEnum = XYViewProperties.GeomEnum || (XYViewProperties.GeomEnum = {}));
+})(XYViewProperties = exports.XYViewProperties || (exports.XYViewProperties = {}));
 exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
     return {
-        authorizationsAuthIDDelete: function (authID, zapTraceSpan, options) {
+        deleteAuthorizationsID: function (authID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (authID === null || authID === undefined) {
-                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling authorizationsAuthIDDelete.');
+                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling deleteAuthorizationsID.');
             }
             var localVarPath = "/authorizations/{authID}"
                 .replace("{" + "authID" + "}", encodeURIComponent(String(authID)));
@@ -637,65 +675,7 @@ exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        authorizationsAuthIDGet: function (authID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (authID === null || authID === undefined) {
-                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling authorizationsAuthIDGet.');
-            }
-            var localVarPath = "/authorizations/{authID}"
-                .replace("{" + "authID" + "}", encodeURIComponent(String(authID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        authorizationsAuthIDPatch: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (authID === null || authID === undefined) {
-                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling authorizationsAuthIDPatch.');
-            }
-            if (authorizationUpdateRequest === null || authorizationUpdateRequest === undefined) {
-                throw new RequiredError('authorizationUpdateRequest', 'Required parameter authorizationUpdateRequest was null or undefined when calling authorizationsAuthIDPatch.');
-            }
-            var localVarPath = "/authorizations/{authID}"
-                .replace("{" + "authID" + "}", encodeURIComponent(String(authID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AuthorizationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(authorizationUpdateRequest || {}) : (authorizationUpdateRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
+        getAuthorizations: function (zapTraceSpan, userID, user, orgID, org, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/authorizations";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -729,10 +709,68 @@ exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        authorizationsPost: function (authorization, zapTraceSpan, options) {
+        getAuthorizationsID: function (authID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (authID === null || authID === undefined) {
+                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling getAuthorizationsID.');
+            }
+            var localVarPath = "/authorizations/{authID}"
+                .replace("{" + "authID" + "}", encodeURIComponent(String(authID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchAuthorizationsID: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (authID === null || authID === undefined) {
+                throw new RequiredError('authID', 'Required parameter authID was null or undefined when calling patchAuthorizationsID.');
+            }
+            if (authorizationUpdateRequest === null || authorizationUpdateRequest === undefined) {
+                throw new RequiredError('authorizationUpdateRequest', 'Required parameter authorizationUpdateRequest was null or undefined when calling patchAuthorizationsID.');
+            }
+            var localVarPath = "/authorizations/{authID}"
+                .replace("{" + "authID" + "}", encodeURIComponent(String(authID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AuthorizationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(authorizationUpdateRequest || {}) : (authorizationUpdateRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postAuthorizations: function (authorization, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (authorization === null || authorization === undefined) {
-                throw new RequiredError('authorization', 'Required parameter authorization was null or undefined when calling authorizationsPost.');
+                throw new RequiredError('authorization', 'Required parameter authorization was null or undefined when calling postAuthorizations.');
             }
             var localVarPath = "/authorizations";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -761,8 +799,8 @@ exports.AuthorizationsApiAxiosParamCreator = function (configuration) {
 };
 exports.AuthorizationsApiFp = function (configuration) {
     return {
-        authorizationsAuthIDDelete: function (authID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options);
+        deleteAuthorizationsID: function (authID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).deleteAuthorizationsID(authID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -770,8 +808,8 @@ exports.AuthorizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        authorizationsAuthIDGet: function (authID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options);
+        getAuthorizations: function (zapTraceSpan, userID, user, orgID, org, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).getAuthorizations(zapTraceSpan, userID, user, orgID, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -779,8 +817,8 @@ exports.AuthorizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        authorizationsAuthIDPatch: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options);
+        getAuthorizationsID: function (authID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).getAuthorizationsID(authID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -788,8 +826,8 @@ exports.AuthorizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options);
+        patchAuthorizationsID: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).patchAuthorizationsID(authID, authorizationUpdateRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -797,8 +835,8 @@ exports.AuthorizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        authorizationsPost: function (authorization, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).authorizationsPost(authorization, zapTraceSpan, options);
+        postAuthorizations: function (authorization, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.AuthorizationsApiAxiosParamCreator(configuration).postAuthorizations(authorization, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -810,20 +848,20 @@ exports.AuthorizationsApiFp = function (configuration) {
 };
 exports.AuthorizationsApiFactory = function (configuration, basePath, axios) {
     return {
-        authorizationsAuthIDDelete: function (authID, zapTraceSpan, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options)(axios, basePath);
+        deleteAuthorizationsID: function (authID, zapTraceSpan, options) {
+            return exports.AuthorizationsApiFp(configuration).deleteAuthorizationsID(authID, zapTraceSpan, options)(axios, basePath);
         },
-        authorizationsAuthIDGet: function (authID, zapTraceSpan, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options)(axios, basePath);
+        getAuthorizations: function (zapTraceSpan, userID, user, orgID, org, options) {
+            return exports.AuthorizationsApiFp(configuration).getAuthorizations(zapTraceSpan, userID, user, orgID, org, options)(axios, basePath);
         },
-        authorizationsAuthIDPatch: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(axios, basePath);
+        getAuthorizationsID: function (authID, zapTraceSpan, options) {
+            return exports.AuthorizationsApiFp(configuration).getAuthorizationsID(authID, zapTraceSpan, options)(axios, basePath);
         },
-        authorizationsGet: function (zapTraceSpan, userID, user, orgID, org, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(axios, basePath);
+        patchAuthorizationsID: function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
+            return exports.AuthorizationsApiFp(configuration).patchAuthorizationsID(authID, authorizationUpdateRequest, zapTraceSpan, options)(axios, basePath);
         },
-        authorizationsPost: function (authorization, zapTraceSpan, options) {
-            return exports.AuthorizationsApiFp(configuration).authorizationsPost(authorization, zapTraceSpan, options)(axios, basePath);
+        postAuthorizations: function (authorization, zapTraceSpan, options) {
+            return exports.AuthorizationsApiFp(configuration).postAuthorizations(authorization, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -832,30 +870,30 @@ var AuthorizationsApi = (function (_super) {
     function AuthorizationsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    AuthorizationsApi.prototype.authorizationsAuthIDDelete = function (authID, zapTraceSpan, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsAuthIDDelete(authID, zapTraceSpan, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.deleteAuthorizationsID = function (authID, zapTraceSpan, options) {
+        return exports.AuthorizationsApiFp(this.configuration).deleteAuthorizationsID(authID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    AuthorizationsApi.prototype.authorizationsAuthIDGet = function (authID, zapTraceSpan, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsAuthIDGet(authID, zapTraceSpan, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.getAuthorizations = function (zapTraceSpan, userID, user, orgID, org, options) {
+        return exports.AuthorizationsApiFp(this.configuration).getAuthorizations(zapTraceSpan, userID, user, orgID, org, options)(this.axios, this.basePath);
     };
-    AuthorizationsApi.prototype.authorizationsAuthIDPatch = function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsAuthIDPatch(authID, authorizationUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.getAuthorizationsID = function (authID, zapTraceSpan, options) {
+        return exports.AuthorizationsApiFp(this.configuration).getAuthorizationsID(authID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    AuthorizationsApi.prototype.authorizationsGet = function (zapTraceSpan, userID, user, orgID, org, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsGet(zapTraceSpan, userID, user, orgID, org, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.patchAuthorizationsID = function (authID, authorizationUpdateRequest, zapTraceSpan, options) {
+        return exports.AuthorizationsApiFp(this.configuration).patchAuthorizationsID(authID, authorizationUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    AuthorizationsApi.prototype.authorizationsPost = function (authorization, zapTraceSpan, options) {
-        return exports.AuthorizationsApiFp(this.configuration).authorizationsPost(authorization, zapTraceSpan, options)(this.axios, this.basePath);
+    AuthorizationsApi.prototype.postAuthorizations = function (authorization, zapTraceSpan, options) {
+        return exports.AuthorizationsApiFp(this.configuration).postAuthorizations(authorization, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return AuthorizationsApi;
 }(BaseAPI));
 exports.AuthorizationsApi = AuthorizationsApi;
 exports.BucketsApiAxiosParamCreator = function (configuration) {
     return {
-        bucketsBucketIDDelete: function (bucketID, zapTraceSpan, options) {
+        deleteBucketsID: function (bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsID.');
             }
             var localVarPath = "/buckets/{bucketID}"
                 .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
@@ -878,65 +916,13 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsBucketIDGet: function (bucketID, zapTraceSpan, options) {
+        deleteBucketsIDLabelsID: function (bucketID, labelID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDLabelsGet: function (bucketID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/labels"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDLabelsLabelIDDelete: function (bucketID, labelID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsLabelIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsIDLabelsID.');
             }
             if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling bucketsBucketIDLabelsLabelIDDelete.');
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteBucketsIDLabelsID.');
             }
             var localVarPath = "/buckets/{bucketID}/labels/{labelID}"
                 .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)))
@@ -960,135 +946,13 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsBucketIDLabelsPost: function (bucketID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDLabelsPost.');
-            }
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling bucketsBucketIDLabelsPost.');
-            }
-            var localVarPath = "/buckets/{bucketID}/labels"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDLogsGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/logs"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
-            }
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/members"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDMembersPost.');
-            }
-            var localVarPath = "/buckets/{bucketID}/members"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteBucketsIDMembersID.');
             }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsIDMembersID.');
             }
             var localVarPath = "/buckets/{bucketID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -1112,71 +976,13 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/owners"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDOwnersPost.');
-            }
-            var localVarPath = "/buckets/{bucketID}/owners"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteBucketsIDOwnersID.');
             }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsIDOwnersID.');
             }
             var localVarPath = "/buckets/{bucketID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -1200,39 +1006,7 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsBucketIDPatch: function (bucketID, bucket, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDPatch.');
-            }
-            if (bucket === null || bucket === undefined) {
-                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling bucketsBucketIDPatch.');
-            }
-            var localVarPath = "/buckets/{bucketID}"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Bucket" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(bucket || {}) : (bucket || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsGet: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
+        getBuckets: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/buckets";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -1269,38 +1043,146 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsPost: function (bucket, zapTraceSpan, options) {
+        getBucketsID: function (bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
-            if (bucket === null || bucket === undefined) {
-                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling bucketsPost.');
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsID.');
             }
-            var localVarPath = "/buckets";
+            var localVarPath = "/buckets/{bucketID}"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Bucket" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(bucket || {}) : (bucket || "");
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+        getBucketsIDLabels: function (bucketID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDLabels.');
+            }
+            var localVarPath = "/buckets/{bucketID}/labels"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDLogs.');
+            }
+            var localVarPath = "/buckets/{bucketID}/logs"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDMembers.');
+            }
+            var localVarPath = "/buckets/{bucketID}/members"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDOwners.');
+            }
+            var localVarPath = "/buckets/{bucketID}/owners"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling getSourcesIDBuckets.');
             }
             var localVarPath = "/sources/{sourceID}/buckets"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -1326,12 +1208,168 @@ exports.BucketsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        patchBucketsID: function (bucketID, bucket, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling patchBucketsID.');
+            }
+            if (bucket === null || bucket === undefined) {
+                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling patchBucketsID.');
+            }
+            var localVarPath = "/buckets/{bucketID}"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Bucket" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(bucket || {}) : (bucket || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBuckets: function (bucket, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucket === null || bucket === undefined) {
+                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling postBuckets.');
+            }
+            var localVarPath = "/buckets";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Bucket" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(bucket || {}) : (bucket || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBucketsIDLabels: function (bucketID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling postBucketsIDLabels.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postBucketsIDLabels.');
+            }
+            var localVarPath = "/buckets/{bucketID}/labels"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling postBucketsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postBucketsIDMembers.');
+            }
+            var localVarPath = "/buckets/{bucketID}/members"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling postBucketsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postBucketsIDOwners.');
+            }
+            var localVarPath = "/buckets/{bucketID}/owners"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     };
 };
 exports.BucketsApiFp = function (configuration) {
     return {
-        bucketsBucketIDDelete: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options);
+        deleteBucketsID: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).deleteBucketsID(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1339,8 +1377,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options);
+        deleteBucketsIDLabelsID: function (bucketID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).deleteBucketsIDLabelsID(bucketID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1348,8 +1386,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDLabelsGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options);
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1357,8 +1395,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDLabelsLabelIDDelete: function (bucketID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options);
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1366,8 +1404,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDLabelsPost: function (bucketID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options);
+        getBuckets: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBuckets(zapTraceSpan, offset, limit, org, orgID, name, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1375,8 +1413,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options);
+        getBucketsID: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBucketsID(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1384,8 +1422,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
+        getBucketsIDLabels: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBucketsIDLabels(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1393,8 +1431,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1402,8 +1440,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options);
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1411,8 +1449,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1420,8 +1458,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1429,8 +1467,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options);
+        patchBucketsID: function (bucketID, bucket, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).patchBucketsID(bucketID, bucket, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1438,8 +1476,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDPatch: function (bucketID, bucket, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options);
+        postBuckets: function (bucket, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).postBuckets(bucket, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1447,8 +1485,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsGet: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options);
+        postBucketsIDLabels: function (bucketID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).postBucketsIDLabels(bucketID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1456,8 +1494,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsPost: function (bucket, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).bucketsPost(bucket, zapTraceSpan, options);
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1465,8 +1503,8 @@ exports.BucketsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
-            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.BucketsApiAxiosParamCreator(configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1478,53 +1516,53 @@ exports.BucketsApiFp = function (configuration) {
 };
 exports.BucketsApiFactory = function (configuration, basePath, axios) {
     return {
-        bucketsBucketIDDelete: function (bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsID: function (bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).deleteBucketsID(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDGet: function (bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsIDLabelsID: function (bucketID, labelID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).deleteBucketsIDLabelsID(bucketID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDLabelsGet: function (bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDLabelsLabelIDDelete: function (bucketID, labelID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDLabelsPost: function (bucketID, labelMapping, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        getBuckets: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
+            return exports.BucketsApiFp(configuration).getBuckets(zapTraceSpan, offset, limit, org, orgID, name, options)(axios, basePath);
         },
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getBucketsID: function (bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).getBucketsID(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDLabels: function (bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).getBucketsIDLabels(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            return exports.BucketsApiFp(configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
+            return exports.BucketsApiFp(configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
+        patchBucketsID: function (bucketID, bucket, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).patchBucketsID(bucketID, bucket, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDPatch: function (bucketID, bucket, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options)(axios, basePath);
+        postBuckets: function (bucket, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).postBuckets(bucket, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsGet: function (zapTraceSpan, offset, limit, org, orgID, name, options) {
-            return exports.BucketsApiFp(configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options)(axios, basePath);
+        postBucketsIDLabels: function (bucketID, labelMapping, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).postBucketsIDLabels(bucketID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsPost: function (bucket, zapTraceSpan, options) {
-            return exports.BucketsApiFp(configuration).bucketsPost(bucket, zapTraceSpan, options)(axios, basePath);
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
-            return exports.BucketsApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.BucketsApiFp(configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -1533,66 +1571,66 @@ var BucketsApi = (function (_super) {
     function BucketsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    BucketsApi.prototype.bucketsBucketIDDelete = function (bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDDelete(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.deleteBucketsID = function (bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).deleteBucketsID(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDGet = function (bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.deleteBucketsIDLabelsID = function (bucketID, labelID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).deleteBucketsIDLabelsID(bucketID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDLabelsGet = function (bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDLabelsGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.deleteBucketsIDMembersID = function (userID, bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDLabelsLabelIDDelete = function (bucketID, labelID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDLabelsLabelIDDelete(bucketID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.deleteBucketsIDOwnersID = function (userID, bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDLabelsPost = function (bucketID, labelMapping, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDLabelsPost(bucketID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBuckets = function (zapTraceSpan, offset, limit, org, orgID, name, options) {
+        return exports.BucketsApiFp(this.configuration).getBuckets(zapTraceSpan, offset, limit, org, orgID, name, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDLogsGet = function (bucketID, zapTraceSpan, offset, limit, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBucketsID = function (bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).getBucketsID(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDMembersGet = function (bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBucketsIDLabels = function (bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).getBucketsIDLabels(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDMembersPost = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBucketsIDLogs = function (bucketID, zapTraceSpan, offset, limit, options) {
+        return exports.BucketsApiFp(this.configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDMembersUserIDDelete = function (userID, bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBucketsIDMembers = function (bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDOwnersGet = function (bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getBucketsIDOwners = function (bucketID, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDOwnersPost = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.getSourcesIDBuckets = function (sourceID, zapTraceSpan, org, options) {
+        return exports.BucketsApiFp(this.configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDOwnersUserIDDelete = function (userID, bucketID, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.patchBucketsID = function (bucketID, bucket, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).patchBucketsID(bucketID, bucket, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsBucketIDPatch = function (bucketID, bucket, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsBucketIDPatch(bucketID, bucket, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.postBuckets = function (bucket, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).postBuckets(bucket, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsGet = function (zapTraceSpan, offset, limit, org, orgID, name, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsGet(zapTraceSpan, offset, limit, org, orgID, name, options)(this.axios, this.basePath);
+    BucketsApi.prototype.postBucketsIDLabels = function (bucketID, labelMapping, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).postBucketsIDLabels(bucketID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.bucketsPost = function (bucket, zapTraceSpan, options) {
-        return exports.BucketsApiFp(this.configuration).bucketsPost(bucket, zapTraceSpan, options)(this.axios, this.basePath);
+    BucketsApi.prototype.postBucketsIDMembers = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    BucketsApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, zapTraceSpan, org, options) {
-        return exports.BucketsApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
+    BucketsApi.prototype.postBucketsIDOwners = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.BucketsApiFp(this.configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return BucketsApi;
 }(BaseAPI));
 exports.BucketsApi = BucketsApi;
 exports.CellsApiAxiosParamCreator = function (configuration) {
     return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDCellsID.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling deleteDashboardsIDCellsID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -1616,16 +1654,46 @@ exports.CellsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDCellsIDView.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling getDashboardsIDCellsIDView.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
+                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsIDCellsID.');
+            }
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling patchDashboardsIDCellsID.');
             }
             if (cellUpdate === null || cellUpdate === undefined) {
-                throw new RequiredError('cellUpdate', 'Required parameter cellUpdate was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
+                throw new RequiredError('cellUpdate', 'Required parameter cellUpdate was null or undefined when calling patchDashboardsIDCellsID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -1652,46 +1720,16 @@ exports.CellsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
-                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
-            }
-            if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             if (view === null || view === undefined) {
-                throw new RequiredError('view', 'Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+                throw new RequiredError('view', 'Required parameter view was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -1718,13 +1756,13 @@ exports.CellsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPost.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDCells.');
             }
             if (createCell === null || createCell === undefined) {
-                throw new RequiredError('createCell', 'Required parameter createCell was null or undefined when calling dashboardsDashboardIDCellsPost.');
+                throw new RequiredError('createCell', 'Required parameter createCell was null or undefined when calling postDashboardsIDCells.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
@@ -1750,13 +1788,13 @@ exports.CellsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPut.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling putDashboardsIDCells.');
             }
             if (cell === null || cell === undefined) {
-                throw new RequiredError('cell', 'Required parameter cell was null or undefined when calling dashboardsDashboardIDCellsPut.');
+                throw new RequiredError('cell', 'Required parameter cell was null or undefined when calling putDashboardsIDCells.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
@@ -1786,8 +1824,8 @@ exports.CellsApiAxiosParamCreator = function (configuration) {
 };
 exports.CellsApiFp = function (configuration) {
     return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options);
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1795,8 +1833,8 @@ exports.CellsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1804,8 +1842,8 @@ exports.CellsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1813,8 +1851,8 @@ exports.CellsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1822,8 +1860,8 @@ exports.CellsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options);
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1831,8 +1869,8 @@ exports.CellsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options);
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.CellsApiAxiosParamCreator(configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1844,23 +1882,23 @@ exports.CellsApiFp = function (configuration) {
 };
 exports.CellsApiFactory = function (configuration, basePath, axios) {
     return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
-            return exports.CellsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
+            return exports.CellsApiFp(configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -1869,36 +1907,62 @@ var CellsApi = (function (_super) {
     function CellsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    CellsApi.prototype.dashboardsDashboardIDCellsCellIDDelete = function (dashboardID, cellID, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.deleteDashboardsIDCellsID = function (dashboardID, cellID, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    CellsApi.prototype.dashboardsDashboardIDCellsCellIDPatch = function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.getDashboardsIDCellsIDView = function (dashboardID, cellID, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    CellsApi.prototype.dashboardsDashboardIDCellsCellIDViewGet = function (dashboardID, cellID, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.patchDashboardsIDCellsID = function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    CellsApi.prototype.dashboardsDashboardIDCellsCellIDViewPatch = function (dashboardID, cellID, view, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.patchDashboardsIDCellsIDView = function (dashboardID, cellID, view, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    CellsApi.prototype.dashboardsDashboardIDCellsPost = function (dashboardID, createCell, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.postDashboardsIDCells = function (dashboardID, createCell, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    CellsApi.prototype.dashboardsDashboardIDCellsPut = function (dashboardID, cell, zapTraceSpan, options) {
-        return exports.CellsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
+    CellsApi.prototype.putDashboardsIDCells = function (dashboardID, cell, zapTraceSpan, options) {
+        return exports.CellsApiFp(this.configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return CellsApi;
 }(BaseAPI));
 exports.CellsApi = CellsApi;
 exports.DashboardsApiAxiosParamCreator = function (configuration) {
     return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
+        deleteDashboardsID: function (dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsID.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDCellsID.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDDelete.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling deleteDashboardsIDCellsID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -1922,257 +1986,13 @@ exports.DashboardsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+        deleteDashboardsIDLabelsID: function (dashboardID, labelID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
-            }
-            if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
-            }
-            if (cellUpdate === null || cellUpdate === undefined) {
-                throw new RequiredError('cellUpdate', 'Required parameter cellUpdate was null or undefined when calling dashboardsDashboardIDCellsCellIDPatch.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
-                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("CellUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(cellUpdate || {}) : (cellUpdate || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
-            }
-            if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
-                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
-            }
-            if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
-            }
-            if (view === null || view === undefined) {
-                throw new RequiredError('view', 'Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
-                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(view || {}) : (view || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPost.');
-            }
-            if (createCell === null || createCell === undefined) {
-                throw new RequiredError('createCell', 'Required parameter createCell was null or undefined when calling dashboardsDashboardIDCellsPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("CreateCell" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(createCell || {}) : (createCell || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsPut.');
-            }
-            if (cell === null || cell === undefined) {
-                throw new RequiredError('cell', 'Required parameter cell was null or undefined when calling dashboardsDashboardIDCellsPut.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/cells"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Array&lt;Cell&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(cell || {}) : (cell || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDDelete: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDDelete.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDLabelsGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/labels"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDLabelsLabelIDDelete: function (dashboardID, labelID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDLabelsID.');
             }
             if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling dashboardsDashboardIDLabelsLabelIDDelete.');
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteDashboardsIDLabelsID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/labels/{labelID}"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -2196,135 +2016,13 @@ exports.DashboardsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDLabelsPost: function (dashboardID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLabelsPost.');
-            }
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling dashboardsDashboardIDLabelsPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/labels"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLogsGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/logs"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
-            }
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/members"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDMembersPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/members"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteDashboardsIDMembersID.');
             }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDMembersID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -2348,71 +2046,13 @@ exports.DashboardsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/owners"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDOwnersPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/owners"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteDashboardsIDOwnersID.');
             }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDOwnersID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -2436,39 +2076,7 @@ exports.DashboardsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDPatch: function (dashboardID, dashboard, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDPatch.');
-            }
-            if (dashboard === null || dashboard === undefined) {
-                throw new RequiredError('dashboard', 'Required parameter dashboard was null or undefined when calling dashboardsDashboardIDPatch.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Dashboard" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(dashboard || {}) : (dashboard || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsGet: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
+        getDashboards: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/dashboards";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -2505,825 +2113,92 @@ exports.DashboardsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsPost: function (createDashboardRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (createDashboardRequest === null || createDashboardRequest === undefined) {
-                throw new RequiredError('createDashboardRequest', 'Required parameter createDashboardRequest was null or undefined when calling dashboardsPost.');
-            }
-            var localVarPath = "/dashboards";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("CreateDashboardRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(createDashboardRequest || {}) : (createDashboardRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    };
-};
-exports.DashboardsApiFp = function (configuration) {
-    return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDDelete: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDLabelsGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDLabelsLabelIDDelete: function (dashboardID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDLabelsPost: function (dashboardID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsDashboardIDPatch: function (dashboardID, dashboard, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsGet: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        dashboardsPost: function (createDashboardRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    };
-};
-exports.DashboardsApiFactory = function (configuration, basePath, axios) {
-    return {
-        dashboardsDashboardIDCellsCellIDDelete: function (dashboardID, cellID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDCellsCellIDPatch: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDCellsPost: function (dashboardID, createCell, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDCellsPut: function (dashboardID, cell, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDDelete: function (dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDLabelsGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDLabelsLabelIDDelete: function (dashboardID, labelID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDLabelsPost: function (dashboardID, labelMapping, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
-        },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsDashboardIDPatch: function (dashboardID, dashboard, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options)(axios, basePath);
-        },
-        dashboardsGet: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options)(axios, basePath);
-        },
-        dashboardsPost: function (createDashboardRequest, zapTraceSpan, options) {
-            return exports.DashboardsApiFp(configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options)(axios, basePath);
-        },
-    };
-};
-var DashboardsApi = (function (_super) {
-    __extends(DashboardsApi, _super);
-    function DashboardsApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    DashboardsApi.prototype.dashboardsDashboardIDCellsCellIDDelete = function (dashboardID, cellID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDCellsCellIDPatch = function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDPatch(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDCellsCellIDViewGet = function (dashboardID, cellID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDCellsCellIDViewPatch = function (dashboardID, cellID, view, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDCellsPost = function (dashboardID, createCell, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPost(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDCellsPut = function (dashboardID, cell, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDCellsPut(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDDelete = function (dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDDelete(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDLabelsGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDLabelsLabelIDDelete = function (dashboardID, labelID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDLabelsPost = function (dashboardID, labelMapping, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDLabelsPost(dashboardID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDLogsGet = function (dashboardID, zapTraceSpan, offset, limit, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDMembersGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDMembersPost = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDMembersUserIDDelete = function (userID, dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDOwnersGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDOwnersPost = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDOwnersUserIDDelete = function (userID, dashboardID, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsDashboardIDPatch = function (dashboardID, dashboard, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsDashboardIDPatch(dashboardID, dashboard, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsGet = function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsGet(zapTraceSpan, owner, sortBy, id, orgID, org, options)(this.axios, this.basePath);
-    };
-    DashboardsApi.prototype.dashboardsPost = function (createDashboardRequest, zapTraceSpan, options) {
-        return exports.DashboardsApiFp(this.configuration).dashboardsPost(createDashboardRequest, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    return DashboardsApi;
-}(BaseAPI));
-exports.DashboardsApi = DashboardsApi;
-exports.DefaultApiAxiosParamCreator = function (configuration) {
-    return {
-        rootGet: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        signinPost: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/signin";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        signoutPost: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/signout";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    };
-};
-exports.DefaultApiFp = function (configuration) {
-    return {
-        rootGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).rootGet(zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        signinPost: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).signinPost(zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        signoutPost: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).signoutPost(zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    };
-};
-exports.DefaultApiFactory = function (configuration, basePath, axios) {
-    return {
-        rootGet: function (zapTraceSpan, options) {
-            return exports.DefaultApiFp(configuration).rootGet(zapTraceSpan, options)(axios, basePath);
-        },
-        signinPost: function (zapTraceSpan, options) {
-            return exports.DefaultApiFp(configuration).signinPost(zapTraceSpan, options)(axios, basePath);
-        },
-        signoutPost: function (zapTraceSpan, options) {
-            return exports.DefaultApiFp(configuration).signoutPost(zapTraceSpan, options)(axios, basePath);
-        },
-    };
-};
-var DefaultApi = (function (_super) {
-    __extends(DefaultApi, _super);
-    function DefaultApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    DefaultApi.prototype.rootGet = function (zapTraceSpan, options) {
-        return exports.DefaultApiFp(this.configuration).rootGet(zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DefaultApi.prototype.signinPost = function (zapTraceSpan, options) {
-        return exports.DefaultApiFp(this.configuration).signinPost(zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    DefaultApi.prototype.signoutPost = function (zapTraceSpan, options) {
-        return exports.DefaultApiFp(this.configuration).signoutPost(zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    return DefaultApi;
-}(BaseAPI));
-exports.DefaultApi = DefaultApi;
-exports.HealthApiAxiosParamCreator = function (configuration) {
-    return {
-        healthGet: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/health";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    };
-};
-exports.HealthApiFp = function (configuration) {
-    return {
-        healthGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.HealthApiAxiosParamCreator(configuration).healthGet(zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    };
-};
-exports.HealthApiFactory = function (configuration, basePath, axios) {
-    return {
-        healthGet: function (zapTraceSpan, options) {
-            return exports.HealthApiFp(configuration).healthGet(zapTraceSpan, options)(axios, basePath);
-        },
-    };
-};
-var HealthApi = (function (_super) {
-    __extends(HealthApi, _super);
-    function HealthApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    HealthApi.prototype.healthGet = function (zapTraceSpan, options) {
-        return exports.HealthApiFp(this.configuration).healthGet(zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    return HealthApi;
-}(BaseAPI));
-exports.HealthApi = HealthApi;
-exports.LabelsApiAxiosParamCreator = function (configuration) {
-    return {
-        labelsGet: function (zapTraceSpan, orgID, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/labels";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (orgID !== undefined) {
-                localVarQueryParameter['orgID'] = orgID;
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        labelsLabelIDDelete: function (labelID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling labelsLabelIDDelete.');
-            }
-            var localVarPath = "/labels/{labelID}"
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        labelsLabelIDGet: function (labelID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling labelsLabelIDGet.');
-            }
-            var localVarPath = "/labels/{labelID}"
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        labelsLabelIDPatch: function (labelID, labelUpdate, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling labelsLabelIDPatch.');
-            }
-            if (labelUpdate === null || labelUpdate === undefined) {
-                throw new RequiredError('labelUpdate', 'Required parameter labelUpdate was null or undefined when calling labelsLabelIDPatch.');
-            }
-            var localVarPath = "/labels/{labelID}"
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelUpdate || {}) : (labelUpdate || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        labelsPost: function (labelCreateRequest, options) {
-            if (options === void 0) { options = {}; }
-            if (labelCreateRequest === null || labelCreateRequest === undefined) {
-                throw new RequiredError('labelCreateRequest', 'Required parameter labelCreateRequest was null or undefined when calling labelsPost.');
-            }
-            var localVarPath = "/labels";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelCreateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelCreateRequest || {}) : (labelCreateRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    };
-};
-exports.LabelsApiFp = function (configuration) {
-    return {
-        labelsGet: function (zapTraceSpan, orgID, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsGet(zapTraceSpan, orgID, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        labelsLabelIDDelete: function (labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        labelsLabelIDGet: function (labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsLabelIDGet(labelID, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        labelsLabelIDPatch: function (labelID, labelUpdate, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        labelsPost: function (labelCreateRequest, options) {
-            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).labelsPost(labelCreateRequest, options);
-            return function (axios, basePath) {
-                if (axios === void 0) { axios = axios_1.default; }
-                if (basePath === void 0) { basePath = BASE_PATH; }
-                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    };
-};
-exports.LabelsApiFactory = function (configuration, basePath, axios) {
-    return {
-        labelsGet: function (zapTraceSpan, orgID, options) {
-            return exports.LabelsApiFp(configuration).labelsGet(zapTraceSpan, orgID, options)(axios, basePath);
-        },
-        labelsLabelIDDelete: function (labelID, zapTraceSpan, options) {
-            return exports.LabelsApiFp(configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(axios, basePath);
-        },
-        labelsLabelIDGet: function (labelID, zapTraceSpan, options) {
-            return exports.LabelsApiFp(configuration).labelsLabelIDGet(labelID, zapTraceSpan, options)(axios, basePath);
-        },
-        labelsLabelIDPatch: function (labelID, labelUpdate, zapTraceSpan, options) {
-            return exports.LabelsApiFp(configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options)(axios, basePath);
-        },
-        labelsPost: function (labelCreateRequest, options) {
-            return exports.LabelsApiFp(configuration).labelsPost(labelCreateRequest, options)(axios, basePath);
-        },
-    };
-};
-var LabelsApi = (function (_super) {
-    __extends(LabelsApi, _super);
-    function LabelsApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    LabelsApi.prototype.labelsGet = function (zapTraceSpan, orgID, options) {
-        return exports.LabelsApiFp(this.configuration).labelsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
-    };
-    LabelsApi.prototype.labelsLabelIDDelete = function (labelID, zapTraceSpan, options) {
-        return exports.LabelsApiFp(this.configuration).labelsLabelIDDelete(labelID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    LabelsApi.prototype.labelsLabelIDGet = function (labelID, zapTraceSpan, options) {
-        return exports.LabelsApiFp(this.configuration).labelsLabelIDGet(labelID, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    LabelsApi.prototype.labelsLabelIDPatch = function (labelID, labelUpdate, zapTraceSpan, options) {
-        return exports.LabelsApiFp(this.configuration).labelsLabelIDPatch(labelID, labelUpdate, zapTraceSpan, options)(this.axios, this.basePath);
-    };
-    LabelsApi.prototype.labelsPost = function (labelCreateRequest, options) {
-        return exports.LabelsApiFp(this.configuration).labelsPost(labelCreateRequest, options)(this.axios, this.basePath);
-    };
-    return LabelsApi;
-}(BaseAPI));
-exports.LabelsApi = LabelsApi;
-exports.OperationLogsApiAxiosParamCreator = function (configuration) {
-    return {
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDLogsGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/logs"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
-            }
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
+        getDashboardsID: function (dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDLogsGet.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsID.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDCellsIDView.');
+            }
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling getDashboardsIDCellsIDView.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
+                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDLabels: function (dashboardID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDLabels.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/labels"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDLogs.');
             }
             var localVarPath = "/dashboards/{dashboardID}/logs"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
@@ -3352,10 +2227,1173 @@ exports.OperationLogsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDMembers.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/members"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDOwners.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/owners"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchDashboardsID: function (dashboardID, dashboard, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsID.');
+            }
+            if (dashboard === null || dashboard === undefined) {
+                throw new RequiredError('dashboard', 'Required parameter dashboard was null or undefined when calling patchDashboardsID.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Dashboard" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(dashboard || {}) : (dashboard || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsIDCellsID.');
+            }
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling patchDashboardsIDCellsID.');
+            }
+            if (cellUpdate === null || cellUpdate === undefined) {
+                throw new RequiredError('cellUpdate', 'Required parameter cellUpdate was null or undefined when calling patchDashboardsIDCellsID.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
+                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("CellUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(cellUpdate || {}) : (cellUpdate || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsIDCellsIDView.');
+            }
+            if (cellID === null || cellID === undefined) {
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling patchDashboardsIDCellsIDView.');
+            }
+            if (view === null || view === undefined) {
+                throw new RequiredError('view', 'Required parameter view was null or undefined when calling patchDashboardsIDCellsIDView.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
+                .replace("{" + "cellID" + "}", encodeURIComponent(String(cellID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("View" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(view || {}) : (view || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboards: function (createDashboardRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (createDashboardRequest === null || createDashboardRequest === undefined) {
+                throw new RequiredError('createDashboardRequest', 'Required parameter createDashboardRequest was null or undefined when calling postDashboards.');
+            }
+            var localVarPath = "/dashboards";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("CreateDashboardRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(createDashboardRequest || {}) : (createDashboardRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDCells.');
+            }
+            if (createCell === null || createCell === undefined) {
+                throw new RequiredError('createCell', 'Required parameter createCell was null or undefined when calling postDashboardsIDCells.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("CreateCell" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(createCell || {}) : (createCell || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDLabels: function (dashboardID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDLabels.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postDashboardsIDLabels.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/labels"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postDashboardsIDMembers.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/members"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postDashboardsIDOwners.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/owners"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling putDashboardsIDCells.');
+            }
+            if (cell === null || cell === undefined) {
+                throw new RequiredError('cell', 'Required parameter cell was null or undefined when calling putDashboardsIDCells.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/cells"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Array&lt;Cell&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(cell || {}) : (cell || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.DashboardsApiFp = function (configuration) {
+    return {
+        deleteDashboardsID: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).deleteDashboardsID(dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        deleteDashboardsIDLabelsID: function (dashboardID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).deleteDashboardsIDLabelsID(dashboardID, labelID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboards: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboards(zapTraceSpan, owner, sortBy, id, orgID, org, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsID: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsID(dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsIDLabels: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsIDLabels(dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        patchDashboardsID: function (dashboardID, dashboard, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).patchDashboardsID(dashboardID, dashboard, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postDashboards: function (createDashboardRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).postDashboards(createDashboardRequest, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postDashboardsIDLabels: function (dashboardID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).postDashboardsIDLabels(dashboardID, labelMapping, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DashboardsApiAxiosParamCreator(configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+    };
+};
+exports.DashboardsApiFactory = function (configuration, basePath, axios) {
+    return {
+        deleteDashboardsID: function (dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).deleteDashboardsID(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        deleteDashboardsIDCellsID: function (dashboardID, cellID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
+        },
+        deleteDashboardsIDLabelsID: function (dashboardID, labelID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).deleteDashboardsIDLabelsID(dashboardID, labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        getDashboards: function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
+            return exports.DashboardsApiFp(configuration).getDashboards(zapTraceSpan, owner, sortBy, id, orgID, org, options)(axios, basePath);
+        },
+        getDashboardsID: function (dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsID(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
+        },
+        getDashboardsIDLabels: function (dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsIDLabels(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        },
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options)(axios, basePath);
+        },
+        patchDashboardsID: function (dashboardID, dashboard, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).patchDashboardsID(dashboardID, dashboard, zapTraceSpan, options)(axios, basePath);
+        },
+        patchDashboardsIDCellsID: function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(axios, basePath);
+        },
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
+        },
+        postDashboards: function (createDashboardRequest, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).postDashboards(createDashboardRequest, zapTraceSpan, options)(axios, basePath);
+        },
+        postDashboardsIDCells: function (dashboardID, createCell, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options)(axios, basePath);
+        },
+        postDashboardsIDLabels: function (dashboardID, labelMapping, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).postDashboardsIDLabels(dashboardID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        },
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        },
+        putDashboardsIDCells: function (dashboardID, cell, zapTraceSpan, options) {
+            return exports.DashboardsApiFp(configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+var DashboardsApi = (function (_super) {
+    __extends(DashboardsApi, _super);
+    function DashboardsApi() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    DashboardsApi.prototype.deleteDashboardsID = function (dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).deleteDashboardsID(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.deleteDashboardsIDCellsID = function (dashboardID, cellID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).deleteDashboardsIDCellsID(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.deleteDashboardsIDLabelsID = function (dashboardID, labelID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).deleteDashboardsIDLabelsID(dashboardID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.deleteDashboardsIDMembersID = function (userID, dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.deleteDashboardsIDOwnersID = function (userID, dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboards = function (zapTraceSpan, owner, sortBy, id, orgID, org, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboards(zapTraceSpan, owner, sortBy, id, orgID, org, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsID = function (dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsID(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsIDCellsIDView = function (dashboardID, cellID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsIDLabels = function (dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsIDLabels(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsIDLogs = function (dashboardID, zapTraceSpan, offset, limit, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsIDMembers = function (dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.getDashboardsIDOwners = function (dashboardID, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.patchDashboardsID = function (dashboardID, dashboard, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).patchDashboardsID(dashboardID, dashboard, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.patchDashboardsIDCellsID = function (dashboardID, cellID, cellUpdate, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).patchDashboardsIDCellsID(dashboardID, cellID, cellUpdate, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.patchDashboardsIDCellsIDView = function (dashboardID, cellID, view, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.postDashboards = function (createDashboardRequest, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).postDashboards(createDashboardRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.postDashboardsIDCells = function (dashboardID, createCell, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).postDashboardsIDCells(dashboardID, createCell, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.postDashboardsIDLabels = function (dashboardID, labelMapping, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).postDashboardsIDLabels(dashboardID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.postDashboardsIDMembers = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.postDashboardsIDOwners = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DashboardsApi.prototype.putDashboardsIDCells = function (dashboardID, cell, zapTraceSpan, options) {
+        return exports.DashboardsApiFp(this.configuration).putDashboardsIDCells(dashboardID, cell, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    return DashboardsApi;
+}(BaseAPI));
+exports.DashboardsApi = DashboardsApi;
+exports.DefaultApiAxiosParamCreator = function (configuration) {
+    return {
+        getRoutes: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postSignin: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/signin";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postSignout: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/signout";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.DefaultApiFp = function (configuration) {
+    return {
+        getRoutes: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).getRoutes(zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postSignin: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).postSignin(zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postSignout: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.DefaultApiAxiosParamCreator(configuration).postSignout(zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+    };
+};
+exports.DefaultApiFactory = function (configuration, basePath, axios) {
+    return {
+        getRoutes: function (zapTraceSpan, options) {
+            return exports.DefaultApiFp(configuration).getRoutes(zapTraceSpan, options)(axios, basePath);
+        },
+        postSignin: function (zapTraceSpan, options) {
+            return exports.DefaultApiFp(configuration).postSignin(zapTraceSpan, options)(axios, basePath);
+        },
+        postSignout: function (zapTraceSpan, options) {
+            return exports.DefaultApiFp(configuration).postSignout(zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+var DefaultApi = (function (_super) {
+    __extends(DefaultApi, _super);
+    function DefaultApi() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    DefaultApi.prototype.getRoutes = function (zapTraceSpan, options) {
+        return exports.DefaultApiFp(this.configuration).getRoutes(zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DefaultApi.prototype.postSignin = function (zapTraceSpan, options) {
+        return exports.DefaultApiFp(this.configuration).postSignin(zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    DefaultApi.prototype.postSignout = function (zapTraceSpan, options) {
+        return exports.DefaultApiFp(this.configuration).postSignout(zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    return DefaultApi;
+}(BaseAPI));
+exports.DefaultApi = DefaultApi;
+exports.HealthApiAxiosParamCreator = function (configuration) {
+    return {
+        getHealth: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/health";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.HealthApiFp = function (configuration) {
+    return {
+        getHealth: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.HealthApiAxiosParamCreator(configuration).getHealth(zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+    };
+};
+exports.HealthApiFactory = function (configuration, basePath, axios) {
+    return {
+        getHealth: function (zapTraceSpan, options) {
+            return exports.HealthApiFp(configuration).getHealth(zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+var HealthApi = (function (_super) {
+    __extends(HealthApi, _super);
+    function HealthApi() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    HealthApi.prototype.getHealth = function (zapTraceSpan, options) {
+        return exports.HealthApiFp(this.configuration).getHealth(zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    return HealthApi;
+}(BaseAPI));
+exports.HealthApi = HealthApi;
+exports.LabelsApiAxiosParamCreator = function (configuration) {
+    return {
+        deleteLabelsID: function (labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteLabelsID.');
+            }
+            var localVarPath = "/labels/{labelID}"
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getLabels: function (zapTraceSpan, orgID, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/labels";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getLabelsID: function (labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling getLabelsID.');
+            }
+            var localVarPath = "/labels/{labelID}"
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchLabelsID: function (labelID, labelUpdate, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling patchLabelsID.');
+            }
+            if (labelUpdate === null || labelUpdate === undefined) {
+                throw new RequiredError('labelUpdate', 'Required parameter labelUpdate was null or undefined when calling patchLabelsID.');
+            }
+            var localVarPath = "/labels/{labelID}"
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelUpdate || {}) : (labelUpdate || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postLabels: function (labelCreateRequest, options) {
+            if (options === void 0) { options = {}; }
+            if (labelCreateRequest === null || labelCreateRequest === undefined) {
+                throw new RequiredError('labelCreateRequest', 'Required parameter labelCreateRequest was null or undefined when calling postLabels.');
+            }
+            var localVarPath = "/labels";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelCreateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelCreateRequest || {}) : (labelCreateRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+exports.LabelsApiFp = function (configuration) {
+    return {
+        deleteLabelsID: function (labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).deleteLabelsID(labelID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getLabels: function (zapTraceSpan, orgID, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).getLabels(zapTraceSpan, orgID, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        getLabelsID: function (labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).getLabelsID(labelID, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        patchLabelsID: function (labelID, labelUpdate, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).patchLabelsID(labelID, labelUpdate, zapTraceSpan, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        postLabels: function (labelCreateRequest, options) {
+            var localVarAxiosArgs = exports.LabelsApiAxiosParamCreator(configuration).postLabels(labelCreateRequest, options);
+            return function (axios, basePath) {
+                if (axios === void 0) { axios = axios_1.default; }
+                if (basePath === void 0) { basePath = BASE_PATH; }
+                var axiosRequestArgs = Object.assign(localVarAxiosArgs.options, { url: basePath + localVarAxiosArgs.url });
+                return axios.request(axiosRequestArgs);
+            };
+        },
+    };
+};
+exports.LabelsApiFactory = function (configuration, basePath, axios) {
+    return {
+        deleteLabelsID: function (labelID, zapTraceSpan, options) {
+            return exports.LabelsApiFp(configuration).deleteLabelsID(labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        getLabels: function (zapTraceSpan, orgID, options) {
+            return exports.LabelsApiFp(configuration).getLabels(zapTraceSpan, orgID, options)(axios, basePath);
+        },
+        getLabelsID: function (labelID, zapTraceSpan, options) {
+            return exports.LabelsApiFp(configuration).getLabelsID(labelID, zapTraceSpan, options)(axios, basePath);
+        },
+        patchLabelsID: function (labelID, labelUpdate, zapTraceSpan, options) {
+            return exports.LabelsApiFp(configuration).patchLabelsID(labelID, labelUpdate, zapTraceSpan, options)(axios, basePath);
+        },
+        postLabels: function (labelCreateRequest, options) {
+            return exports.LabelsApiFp(configuration).postLabels(labelCreateRequest, options)(axios, basePath);
+        },
+    };
+};
+var LabelsApi = (function (_super) {
+    __extends(LabelsApi, _super);
+    function LabelsApi() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    LabelsApi.prototype.deleteLabelsID = function (labelID, zapTraceSpan, options) {
+        return exports.LabelsApiFp(this.configuration).deleteLabelsID(labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    LabelsApi.prototype.getLabels = function (zapTraceSpan, orgID, options) {
+        return exports.LabelsApiFp(this.configuration).getLabels(zapTraceSpan, orgID, options)(this.axios, this.basePath);
+    };
+    LabelsApi.prototype.getLabelsID = function (labelID, zapTraceSpan, options) {
+        return exports.LabelsApiFp(this.configuration).getLabelsID(labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    LabelsApi.prototype.patchLabelsID = function (labelID, labelUpdate, zapTraceSpan, options) {
+        return exports.LabelsApiFp(this.configuration).patchLabelsID(labelID, labelUpdate, zapTraceSpan, options)(this.axios, this.basePath);
+    };
+    LabelsApi.prototype.postLabels = function (labelCreateRequest, options) {
+        return exports.LabelsApiFp(this.configuration).postLabels(labelCreateRequest, options)(this.axios, this.basePath);
+    };
+    return LabelsApi;
+}(BaseAPI));
+exports.LabelsApi = LabelsApi;
+exports.OperationLogsApiAxiosParamCreator = function (configuration) {
+    return {
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDLogs.');
+            }
+            var localVarPath = "/buckets/{bucketID}/logs"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDLogs.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/logs"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDLogsGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDLogs.');
             }
             var localVarPath = "/orgs/{orgID}/logs"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3384,10 +3422,10 @@ exports.OperationLogsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDLogsGet.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling getUsersIDLogs.');
             }
             var localVarPath = "/users/{userID}/logs"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
@@ -3420,8 +3458,8 @@ exports.OperationLogsApiAxiosParamCreator = function (configuration) {
 };
 exports.OperationLogsApiFp = function (configuration) {
     return {
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options);
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -3429,8 +3467,8 @@ exports.OperationLogsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options);
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -3438,8 +3476,8 @@ exports.OperationLogsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options);
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -3447,8 +3485,8 @@ exports.OperationLogsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options);
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.OperationLogsApiAxiosParamCreator(configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -3460,17 +3498,17 @@ exports.OperationLogsApiFp = function (configuration) {
 };
 exports.OperationLogsApiFactory = function (configuration, basePath, axios) {
     return {
-        bucketsBucketIDLogsGet: function (bucketID, zapTraceSpan, offset, limit, options) {
-            return exports.OperationLogsApiFp(configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getBucketsIDLogs: function (bucketID, zapTraceSpan, offset, limit, options) {
+            return exports.OperationLogsApiFp(configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        dashboardsDashboardIDLogsGet: function (dashboardID, zapTraceSpan, offset, limit, options) {
-            return exports.OperationLogsApiFp(configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getDashboardsIDLogs: function (dashboardID, zapTraceSpan, offset, limit, options) {
+            return exports.OperationLogsApiFp(configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
-            return exports.OperationLogsApiFp(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
+            return exports.OperationLogsApiFp(configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
-            return exports.OperationLogsApiFp(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
+            return exports.OperationLogsApiFp(configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
     };
 };
@@ -3479,24 +3517,140 @@ var OperationLogsApi = (function (_super) {
     function OperationLogsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    OperationLogsApi.prototype.bucketsBucketIDLogsGet = function (bucketID, zapTraceSpan, offset, limit, options) {
-        return exports.OperationLogsApiFp(this.configuration).bucketsBucketIDLogsGet(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    OperationLogsApi.prototype.getBucketsIDLogs = function (bucketID, zapTraceSpan, offset, limit, options) {
+        return exports.OperationLogsApiFp(this.configuration).getBucketsIDLogs(bucketID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    OperationLogsApi.prototype.dashboardsDashboardIDLogsGet = function (dashboardID, zapTraceSpan, offset, limit, options) {
-        return exports.OperationLogsApiFp(this.configuration).dashboardsDashboardIDLogsGet(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    OperationLogsApi.prototype.getDashboardsIDLogs = function (dashboardID, zapTraceSpan, offset, limit, options) {
+        return exports.OperationLogsApiFp(this.configuration).getDashboardsIDLogs(dashboardID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    OperationLogsApi.prototype.orgsOrgIDLogsGet = function (orgID, zapTraceSpan, offset, limit, options) {
-        return exports.OperationLogsApiFp(this.configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    OperationLogsApi.prototype.getOrgsIDLogs = function (orgID, zapTraceSpan, offset, limit, options) {
+        return exports.OperationLogsApiFp(this.configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    OperationLogsApi.prototype.usersUserIDLogsGet = function (userID, zapTraceSpan, offset, limit, options) {
-        return exports.OperationLogsApiFp(this.configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    OperationLogsApi.prototype.getUsersIDLogs = function (userID, zapTraceSpan, offset, limit, options) {
+        return exports.OperationLogsApiFp(this.configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
     return OperationLogsApi;
 }(BaseAPI));
 exports.OperationLogsApi = OperationLogsApi;
 exports.OrganizationsApiAxiosParamCreator = function (configuration) {
     return {
-        orgsGet: function (zapTraceSpan, org, orgID, options) {
+        deleteOrgsID: function (orgID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsID.');
+            }
+            var localVarPath = "/orgs/{orgID}"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteOrgsIDLabelsID: function (orgID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteOrgsIDLabelsID.');
+            }
+            var localVarPath = "/orgs/{orgID}/labels/{labelID}"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteOrgsIDMembersID.');
+            }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsIDMembersID.');
+            }
+            var localVarPath = "/orgs/{orgID}/members/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteOrgsIDOwnersID.');
+            }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsIDOwnersID.');
+            }
+            var localVarPath = "/orgs/{orgID}/owners/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getOrgs: function (zapTraceSpan, org, orgID, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/orgs";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -3524,36 +3678,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDDelete: function (orgID, zapTraceSpan, options) {
+        getOrgsID: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDDelete.');
-            }
-            var localVarPath = "/orgs/{orgID}"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsID.');
             }
             var localVarPath = "/orgs/{orgID}"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3576,10 +3704,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDLabelsGet: function (orgID, zapTraceSpan, options) {
+        getOrgsIDLabels: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDLabelsGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDLabels.');
             }
             var localVarPath = "/orgs/{orgID}/labels"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3602,72 +3730,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDLabelsLabelIDDelete: function (orgID, labelID, zapTraceSpan, options) {
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDLabelsLabelIDDelete.');
-            }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling orgsOrgIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/orgs/{orgID}/labels/{labelID}"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDLabelsPost: function (orgID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDLabelsPost.');
-            }
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling orgsOrgIDLabelsPost.');
-            }
-            var localVarPath = "/orgs/{orgID}/labels"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDLogsGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDLogs.');
             }
             var localVarPath = "/orgs/{orgID}/logs"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3696,10 +3762,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDMembers.');
             }
             var localVarPath = "/orgs/{orgID}/members"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3722,72 +3788,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDMembersPost.');
-            }
-            var localVarPath = "/orgs/{orgID}/members"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
-            }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
-            }
-            var localVarPath = "/orgs/{orgID}/members/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDOwners.');
             }
             var localVarPath = "/orgs/{orgID}/owners"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3810,55 +3814,19 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersPost.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDSecrets.');
             }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDOwnersPost.');
-            }
-            var localVarPath = "/orgs/{orgID}/owners"
+            var localVarPath = "/orgs/{orgID}/secrets"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
-            }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
-            }
-            var localVarPath = "/orgs/{orgID}/owners/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -3872,13 +3840,13 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDPatch: function (orgID, organization, zapTraceSpan, options) {
+        patchOrgsID: function (orgID, organization, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDPatch.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling patchOrgsID.');
             }
             if (organization === null || organization === undefined) {
-                throw new RequiredError('organization', 'Required parameter organization was null or undefined when calling orgsOrgIDPatch.');
+                throw new RequiredError('organization', 'Required parameter organization was null or undefined when calling patchOrgsID.');
             }
             var localVarPath = "/orgs/{orgID}"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3904,71 +3872,13 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsDeletePost.');
-            }
-            if (secretKeys === null || secretKeys === undefined) {
-                throw new RequiredError('secretKeys', 'Required parameter secretKeys was null or undefined when calling orgsOrgIDSecretsDeletePost.');
-            }
-            var localVarPath = "/orgs/{orgID}/secrets/delete"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsGet.');
-            }
-            var localVarPath = "/orgs/{orgID}/secrets"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsPatch.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling patchOrgsIDSecrets.');
             }
             if (requestBody === null || requestBody === undefined) {
-                throw new RequiredError('requestBody', 'Required parameter requestBody was null or undefined when calling orgsOrgIDSecretsPatch.');
+                throw new RequiredError('requestBody', 'Required parameter requestBody was null or undefined when calling patchOrgsIDSecrets.');
             }
             var localVarPath = "/orgs/{orgID}/secrets"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -3994,10 +3904,10 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsPost: function (organization, zapTraceSpan, options) {
+        postOrgs: function (organization, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (organization === null || organization === undefined) {
-                throw new RequiredError('organization', 'Required parameter organization was null or undefined when calling orgsPost.');
+                throw new RequiredError('organization', 'Required parameter organization was null or undefined when calling postOrgs.');
             }
             var localVarPath = "/orgs";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4022,12 +3932,140 @@ exports.OrganizationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        postOrgsIDLabels: function (orgID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDLabels.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postOrgsIDLabels.');
+            }
+            var localVarPath = "/orgs/{orgID}/labels"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postOrgsIDMembers.');
+            }
+            var localVarPath = "/orgs/{orgID}/members"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postOrgsIDOwners.');
+            }
+            var localVarPath = "/orgs/{orgID}/owners"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDSecrets.');
+            }
+            if (secretKeys === null || secretKeys === undefined) {
+                throw new RequiredError('secretKeys', 'Required parameter secretKeys was null or undefined when calling postOrgsIDSecrets.');
+            }
+            var localVarPath = "/orgs/{orgID}/secrets/delete"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     };
 };
 exports.OrganizationsApiFp = function (configuration) {
     return {
-        orgsGet: function (zapTraceSpan, org, orgID, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsGet(zapTraceSpan, org, orgID, options);
+        deleteOrgsID: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).deleteOrgsID(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4035,8 +4073,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDDelete: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options);
+        deleteOrgsIDLabelsID: function (orgID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).deleteOrgsIDLabelsID(orgID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4044,8 +4082,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDGet(orgID, zapTraceSpan, options);
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4053,8 +4091,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDLabelsGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options);
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4062,8 +4100,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDLabelsLabelIDDelete: function (orgID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options);
+        getOrgs: function (zapTraceSpan, org, orgID, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgs(zapTraceSpan, org, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4071,8 +4109,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDLabelsPost: function (orgID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options);
+        getOrgsID: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsID(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4080,8 +4118,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options);
+        getOrgsIDLabels: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsIDLabels(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4089,8 +4127,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options);
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4098,8 +4136,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsIDMembers(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4107,8 +4145,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options);
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsIDOwners(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4116,8 +4154,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options);
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4125,8 +4163,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
+        patchOrgsID: function (orgID, organization, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).patchOrgsID(orgID, organization, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4134,8 +4172,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options);
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4143,8 +4181,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDPatch: function (orgID, organization, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options);
+        postOrgs: function (organization, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).postOrgs(organization, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4152,8 +4190,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options);
+        postOrgsIDLabels: function (orgID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).postOrgsIDLabels(orgID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4161,8 +4199,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4170,8 +4208,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options);
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4179,8 +4217,8 @@ exports.OrganizationsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsPost: function (organization, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).orgsPost(organization, zapTraceSpan, options);
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.OrganizationsApiAxiosParamCreator(configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4192,59 +4230,59 @@ exports.OrganizationsApiFp = function (configuration) {
 };
 exports.OrganizationsApiFactory = function (configuration, basePath, axios) {
     return {
-        orgsGet: function (zapTraceSpan, org, orgID, options) {
-            return exports.OrganizationsApiFp(configuration).orgsGet(zapTraceSpan, org, orgID, options)(axios, basePath);
+        deleteOrgsID: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).deleteOrgsID(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDDelete: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options)(axios, basePath);
+        deleteOrgsIDLabelsID: function (orgID, labelID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).deleteOrgsIDLabelsID(orgID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDGet: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDGet(orgID, zapTraceSpan, options)(axios, basePath);
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDLabelsGet: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDLabelsLabelIDDelete: function (orgID, labelID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options)(axios, basePath);
+        getOrgs: function (zapTraceSpan, org, orgID, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgs(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
-        orgsOrgIDLabelsPost: function (orgID, labelMapping, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        getOrgsID: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsID(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDLogsGet: function (orgID, zapTraceSpan, offset, limit, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        getOrgsIDLabels: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsIDLabels(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDLogs: function (orgID, zapTraceSpan, offset, limit, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsIDMembers(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsIDOwners(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        patchOrgsID: function (orgID, organization, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).patchOrgsID(orgID, organization, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDPatch: function (orgID, organization, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options)(axios, basePath);
+        postOrgs: function (organization, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).postOrgs(organization, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDLabels: function (orgID, labelMapping, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).postOrgsIDLabels(orgID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        orgsPost: function (organization, zapTraceSpan, options) {
-            return exports.OrganizationsApiFp(configuration).orgsPost(organization, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            return exports.OrganizationsApiFp(configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -4253,66 +4291,148 @@ var OrganizationsApi = (function (_super) {
     function OrganizationsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    OrganizationsApi.prototype.orgsGet = function (zapTraceSpan, org, orgID, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.deleteOrgsID = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).deleteOrgsID(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDDelete = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDDelete(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.deleteOrgsIDLabelsID = function (orgID, labelID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).deleteOrgsIDLabelsID(orgID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDGet = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.deleteOrgsIDMembersID = function (userID, orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDLabelsGet = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDLabelsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.deleteOrgsIDOwnersID = function (userID, orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDLabelsLabelIDDelete = function (orgID, labelID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDLabelsLabelIDDelete(orgID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgs = function (zapTraceSpan, org, orgID, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgs(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDLabelsPost = function (orgID, labelMapping, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDLabelsPost(orgID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsID = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsID(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDLogsGet = function (orgID, zapTraceSpan, offset, limit, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDLogsGet(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsIDLabels = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsIDLabels(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDMembersGet = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsIDLogs = function (orgID, zapTraceSpan, offset, limit, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsIDLogs(orgID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDMembersPost = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsIDMembers = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsIDMembers(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDMembersUserIDDelete = function (userID, orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsIDOwners = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsIDOwners(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDOwnersGet = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.getOrgsIDSecrets = function (orgID, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDOwnersPost = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.patchOrgsID = function (orgID, organization, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).patchOrgsID(orgID, organization, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDOwnersUserIDDelete = function (userID, orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.patchOrgsIDSecrets = function (orgID, requestBody, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDPatch = function (orgID, organization, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDPatch(orgID, organization, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.postOrgs = function (organization, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).postOrgs(organization, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDSecretsDeletePost = function (orgID, secretKeys, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.postOrgsIDLabels = function (orgID, labelMapping, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).postOrgsIDLabels(orgID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDSecretsGet = function (orgID, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.postOrgsIDMembers = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsOrgIDSecretsPatch = function (orgID, requestBody, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.postOrgsIDOwners = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    OrganizationsApi.prototype.orgsPost = function (organization, zapTraceSpan, options) {
-        return exports.OrganizationsApiFp(this.configuration).orgsPost(organization, zapTraceSpan, options)(this.axios, this.basePath);
+    OrganizationsApi.prototype.postOrgsIDSecrets = function (orgID, secretKeys, zapTraceSpan, options) {
+        return exports.OrganizationsApiFp(this.configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return OrganizationsApi;
 }(BaseAPI));
 exports.OrganizationsApi = OrganizationsApi;
 exports.QueryApiAxiosParamCreator = function (configuration) {
     return {
-        queryAnalyzePost: function (zapTraceSpan, contentType, query, options) {
+        getQuerySuggestions: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/query/suggestions";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getQuerySuggestionsName: function (name, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (name === null || name === undefined) {
+                throw new RequiredError('name', 'Required parameter name was null or undefined when calling getQuerySuggestionsName.');
+            }
+            var localVarPath = "/query/suggestions/{name}"
+                .replace("{" + "name" + "}", encodeURIComponent(String(name)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postQuery: function (zapTraceSpan, contentType, org, orgID, query, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/query";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (org !== undefined) {
+                localVarQueryParameter['org'] = org;
+            }
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            if (contentType !== undefined && contentType !== null) {
+                localVarHeaderParameter['Content-Type'] = String(contentType);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Query" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(query || {}) : (query || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postQueryAnalyze: function (zapTraceSpan, contentType, query, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/query/analyze";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4340,7 +4460,7 @@ exports.QueryApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        queryAstPost: function (zapTraceSpan, contentType, languageRequest, options) {
+        postQueryAst: function (zapTraceSpan, contentType, languageRequest, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/query/ast";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4368,97 +4488,12 @@ exports.QueryApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        queryPost: function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/query";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (org !== undefined) {
-                localVarQueryParameter['org'] = org;
-            }
-            if (orgID !== undefined) {
-                localVarQueryParameter['orgID'] = orgID;
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            if (accept !== undefined && accept !== null) {
-                localVarHeaderParameter['Accept'] = String(accept);
-            }
-            if (contentType !== undefined && contentType !== null) {
-                localVarHeaderParameter['Content-Type'] = String(contentType);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Query" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(query || {}) : (query || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        querySuggestionsGet: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/query/suggestions";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        querySuggestionsNameGet: function (name, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (name === null || name === undefined) {
-                throw new RequiredError('name', 'Required parameter name was null or undefined when calling querySuggestionsNameGet.');
-            }
-            var localVarPath = "/query/suggestions/{name}"
-                .replace("{" + "name" + "}", encodeURIComponent(String(name)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     };
 };
 exports.QueryApiFp = function (configuration) {
     return {
-        queryAnalyzePost: function (zapTraceSpan, contentType, query, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options);
+        getQuerySuggestions: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).getQuerySuggestions(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4466,8 +4501,8 @@ exports.QueryApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        queryAstPost: function (zapTraceSpan, contentType, languageRequest, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options);
+        getQuerySuggestionsName: function (name, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).getQuerySuggestionsName(name, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4475,8 +4510,8 @@ exports.QueryApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        queryPost: function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options);
+        postQuery: function (zapTraceSpan, contentType, org, orgID, query, options) {
+            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).postQuery(zapTraceSpan, contentType, org, orgID, query, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4484,8 +4519,8 @@ exports.QueryApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        querySuggestionsGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).querySuggestionsGet(zapTraceSpan, options);
+        postQueryAnalyze: function (zapTraceSpan, contentType, query, options) {
+            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).postQueryAnalyze(zapTraceSpan, contentType, query, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4493,8 +4528,8 @@ exports.QueryApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        querySuggestionsNameGet: function (name, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).querySuggestionsNameGet(name, zapTraceSpan, options);
+        postQueryAst: function (zapTraceSpan, contentType, languageRequest, options) {
+            var localVarAxiosArgs = exports.QueryApiAxiosParamCreator(configuration).postQueryAst(zapTraceSpan, contentType, languageRequest, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4506,20 +4541,20 @@ exports.QueryApiFp = function (configuration) {
 };
 exports.QueryApiFactory = function (configuration, basePath, axios) {
     return {
-        queryAnalyzePost: function (zapTraceSpan, contentType, query, options) {
-            return exports.QueryApiFp(configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options)(axios, basePath);
+        getQuerySuggestions: function (zapTraceSpan, options) {
+            return exports.QueryApiFp(configuration).getQuerySuggestions(zapTraceSpan, options)(axios, basePath);
         },
-        queryAstPost: function (zapTraceSpan, contentType, languageRequest, options) {
-            return exports.QueryApiFp(configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
+        getQuerySuggestionsName: function (name, zapTraceSpan, options) {
+            return exports.QueryApiFp(configuration).getQuerySuggestionsName(name, zapTraceSpan, options)(axios, basePath);
         },
-        queryPost: function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
-            return exports.QueryApiFp(configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(axios, basePath);
+        postQuery: function (zapTraceSpan, contentType, org, orgID, query, options) {
+            return exports.QueryApiFp(configuration).postQuery(zapTraceSpan, contentType, org, orgID, query, options)(axios, basePath);
         },
-        querySuggestionsGet: function (zapTraceSpan, options) {
-            return exports.QueryApiFp(configuration).querySuggestionsGet(zapTraceSpan, options)(axios, basePath);
+        postQueryAnalyze: function (zapTraceSpan, contentType, query, options) {
+            return exports.QueryApiFp(configuration).postQueryAnalyze(zapTraceSpan, contentType, query, options)(axios, basePath);
         },
-        querySuggestionsNameGet: function (name, zapTraceSpan, options) {
-            return exports.QueryApiFp(configuration).querySuggestionsNameGet(name, zapTraceSpan, options)(axios, basePath);
+        postQueryAst: function (zapTraceSpan, contentType, languageRequest, options) {
+            return exports.QueryApiFp(configuration).postQueryAst(zapTraceSpan, contentType, languageRequest, options)(axios, basePath);
         },
     };
 };
@@ -4528,27 +4563,27 @@ var QueryApi = (function (_super) {
     function QueryApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    QueryApi.prototype.queryAnalyzePost = function (zapTraceSpan, contentType, query, options) {
-        return exports.QueryApiFp(this.configuration).queryAnalyzePost(zapTraceSpan, contentType, query, options)(this.axios, this.basePath);
+    QueryApi.prototype.getQuerySuggestions = function (zapTraceSpan, options) {
+        return exports.QueryApiFp(this.configuration).getQuerySuggestions(zapTraceSpan, options)(this.axios, this.basePath);
     };
-    QueryApi.prototype.queryAstPost = function (zapTraceSpan, contentType, languageRequest, options) {
-        return exports.QueryApiFp(this.configuration).queryAstPost(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
+    QueryApi.prototype.getQuerySuggestionsName = function (name, zapTraceSpan, options) {
+        return exports.QueryApiFp(this.configuration).getQuerySuggestionsName(name, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    QueryApi.prototype.queryPost = function (zapTraceSpan, accept, contentType, org, orgID, query, options) {
-        return exports.QueryApiFp(this.configuration).queryPost(zapTraceSpan, accept, contentType, org, orgID, query, options)(this.axios, this.basePath);
+    QueryApi.prototype.postQuery = function (zapTraceSpan, contentType, org, orgID, query, options) {
+        return exports.QueryApiFp(this.configuration).postQuery(zapTraceSpan, contentType, org, orgID, query, options)(this.axios, this.basePath);
     };
-    QueryApi.prototype.querySuggestionsGet = function (zapTraceSpan, options) {
-        return exports.QueryApiFp(this.configuration).querySuggestionsGet(zapTraceSpan, options)(this.axios, this.basePath);
+    QueryApi.prototype.postQueryAnalyze = function (zapTraceSpan, contentType, query, options) {
+        return exports.QueryApiFp(this.configuration).postQueryAnalyze(zapTraceSpan, contentType, query, options)(this.axios, this.basePath);
     };
-    QueryApi.prototype.querySuggestionsNameGet = function (name, zapTraceSpan, options) {
-        return exports.QueryApiFp(this.configuration).querySuggestionsNameGet(name, zapTraceSpan, options)(this.axios, this.basePath);
+    QueryApi.prototype.postQueryAst = function (zapTraceSpan, contentType, languageRequest, options) {
+        return exports.QueryApiFp(this.configuration).postQueryAst(zapTraceSpan, contentType, languageRequest, options)(this.axios, this.basePath);
     };
     return QueryApi;
 }(BaseAPI));
 exports.QueryApi = QueryApi;
 exports.ReadyApiAxiosParamCreator = function (configuration) {
     return {
-        readyGet: function (zapTraceSpan, options) {
+        getReady: function (zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/ready";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4574,8 +4609,8 @@ exports.ReadyApiAxiosParamCreator = function (configuration) {
 };
 exports.ReadyApiFp = function (configuration) {
     return {
-        readyGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ReadyApiAxiosParamCreator(configuration).readyGet(zapTraceSpan, options);
+        getReady: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ReadyApiAxiosParamCreator(configuration).getReady(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -4587,8 +4622,8 @@ exports.ReadyApiFp = function (configuration) {
 };
 exports.ReadyApiFactory = function (configuration, basePath, axios) {
     return {
-        readyGet: function (zapTraceSpan, options) {
-            return exports.ReadyApiFp(configuration).readyGet(zapTraceSpan, options)(axios, basePath);
+        getReady: function (zapTraceSpan, options) {
+            return exports.ReadyApiFp(configuration).getReady(zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -4597,15 +4632,131 @@ var ReadyApi = (function (_super) {
     function ReadyApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ReadyApi.prototype.readyGet = function (zapTraceSpan, options) {
-        return exports.ReadyApiFp(this.configuration).readyGet(zapTraceSpan, options)(this.axios, this.basePath);
+    ReadyApi.prototype.getReady = function (zapTraceSpan, options) {
+        return exports.ReadyApiFp(this.configuration).getReady(zapTraceSpan, options)(this.axios, this.basePath);
     };
     return ReadyApi;
 }(BaseAPI));
 exports.ReadyApi = ReadyApi;
 exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
     return {
-        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
+        deleteScrapersID: function (scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersID.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteScrapersIDLabelsID: function (scraperTargetID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteScrapersIDLabelsID.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/labels/{labelID}"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteScrapersIDMembersID.');
+            }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersIDMembersID.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/members/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteScrapersIDOwnersID.');
+            }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersIDOwnersID.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/owners/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getScrapers: function (zapTraceSpan, name, id, orgID, org, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/scrapers";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -4639,64 +4790,10 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
-                throw new RequiredError('scraperTargetRequest', 'Required parameter scraperTargetRequest was null or undefined when calling scrapersPost.');
-            }
-            var localVarPath = "/scrapers";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDDelete: function (scraperTargetID, zapTraceSpan, options) {
+        getScrapersID: function (scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDDelete.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDGet.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersID.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
@@ -4719,10 +4816,10 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDLabelsGet: function (scraperTargetID, zapTraceSpan, options) {
+        getScrapersIDLabels: function (scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsGet.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersIDLabels.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/labels"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
@@ -4745,23 +4842,19 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDLabelsLabelIDDelete: function (scraperTargetID, labelID, zapTraceSpan, options) {
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersIDMembers.');
             }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/labels/{labelID}"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarPath = "/scrapers/{scraperTargetID}/members"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -4775,16 +4868,74 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDLabelsLabelIDPatch: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersIDOwners.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/owners"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchScrapersID: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling patchScrapersID.');
+            }
+            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
+                throw new RequiredError('scraperTargetRequest', 'Required parameter scraperTargetRequest was null or undefined when calling patchScrapersID.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchScrapersIDLabelsID: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling patchScrapersIDLabelsID.');
             }
             if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling patchScrapersIDLabelsID.');
             }
             if (label === null || label === undefined) {
-                throw new RequiredError('label', 'Required parameter label was null or undefined when calling scrapersScraperTargetIDLabelsLabelIDPatch.');
+                throw new RequiredError('label', 'Required parameter label was null or undefined when calling patchScrapersIDLabelsID.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/labels/{labelID}"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)))
@@ -4811,13 +4962,41 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDLabelsPost: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
+        postScrapers: function (scraperTargetRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
+                throw new RequiredError('scraperTargetRequest', 'Required parameter scraperTargetRequest was null or undefined when calling postScrapers.');
+            }
+            var localVarPath = "/scrapers";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postScrapersIDLabels: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling postScrapersIDLabels.');
             }
             if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling scrapersScraperTargetIDLabelsPost.');
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postScrapersIDLabels.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/labels"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
@@ -4843,39 +5022,13 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersGet.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/members"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling postScrapersIDMembers.');
             }
             if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDMembersPost.');
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postScrapersIDMembers.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/members"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
@@ -4901,69 +5054,13 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
-            }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/members/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersGet.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/owners"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling postScrapersIDOwners.');
             }
             if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postScrapersIDOwners.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/owners"
                 .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
@@ -4984,68 +5081,6 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
-            }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/owners/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDPatch: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDPatch.');
-            }
-            if (scraperTargetRequest === null || scraperTargetRequest === undefined) {
-                throw new RequiredError('scraperTargetRequest', 'Required parameter scraperTargetRequest was null or undefined when calling scrapersScraperTargetIDPatch.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("ScraperTargetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(scraperTargetRequest || {}) : (scraperTargetRequest || "");
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -5055,8 +5090,8 @@ exports.ScraperTargetsApiAxiosParamCreator = function (configuration) {
 };
 exports.ScraperTargetsApiFp = function (configuration) {
     return {
-        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options);
+        deleteScrapersID: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).deleteScrapersID(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5064,8 +5099,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options);
+        deleteScrapersIDLabelsID: function (scraperTargetID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).deleteScrapersIDLabelsID(scraperTargetID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5073,8 +5108,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDDelete: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options);
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5082,8 +5117,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options);
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5091,8 +5126,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDLabelsGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options);
+        getScrapers: function (zapTraceSpan, name, id, orgID, org, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).getScrapers(zapTraceSpan, name, id, orgID, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5100,8 +5135,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDLabelsLabelIDDelete: function (scraperTargetID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options);
+        getScrapersID: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).getScrapersID(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5109,8 +5144,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDLabelsLabelIDPatch: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options);
+        getScrapersIDLabels: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).getScrapersIDLabels(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5118,8 +5153,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDLabelsPost: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options);
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5127,8 +5162,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options);
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5136,8 +5171,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+        patchScrapersID: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).patchScrapersID(scraperTargetID, scraperTargetRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5145,8 +5180,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+        patchScrapersIDLabelsID: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).patchScrapersIDLabelsID(scraperTargetID, labelID, label, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5154,8 +5189,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options);
+        postScrapers: function (scraperTargetRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).postScrapers(scraperTargetRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5163,8 +5198,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+        postScrapersIDLabels: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).postScrapersIDLabels(scraperTargetID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5172,8 +5207,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5181,8 +5216,8 @@ exports.ScraperTargetsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDPatch: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options);
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ScraperTargetsApiAxiosParamCreator(configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5194,50 +5229,50 @@ exports.ScraperTargetsApiFp = function (configuration) {
 };
 exports.ScraperTargetsApiFactory = function (configuration, basePath, axios) {
     return {
-        scrapersGet: function (zapTraceSpan, name, id, orgID, org, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(axios, basePath);
+        deleteScrapersID: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).deleteScrapersID(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersPost: function (scraperTargetRequest, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
+        deleteScrapersIDLabelsID: function (scraperTargetID, labelID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).deleteScrapersIDLabelsID(scraperTargetID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDDelete: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDLabelsGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getScrapers: function (zapTraceSpan, name, id, orgID, org, options) {
+            return exports.ScraperTargetsApiFp(configuration).getScrapers(zapTraceSpan, name, id, orgID, org, options)(axios, basePath);
         },
-        scrapersScraperTargetIDLabelsLabelIDDelete: function (scraperTargetID, labelID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options)(axios, basePath);
+        getScrapersID: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).getScrapersID(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDLabelsLabelIDPatch: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options)(axios, basePath);
+        getScrapersIDLabels: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).getScrapersIDLabels(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDLabelsPost: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        patchScrapersID: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).patchScrapersID(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        patchScrapersIDLabelsID: function (scraperTargetID, labelID, label, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).patchScrapersIDLabelsID(scraperTargetID, labelID, label, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        postScrapers: function (scraperTargetRequest, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).postScrapers(scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        postScrapersIDLabels: function (scraperTargetID, labelMapping, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).postScrapersIDLabels(scraperTargetID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDPatch: function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
-            return exports.ScraperTargetsApiFp(configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(axios, basePath);
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.ScraperTargetsApiFp(configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -5246,92 +5281,60 @@ var ScraperTargetsApi = (function (_super) {
     function ScraperTargetsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ScraperTargetsApi.prototype.scrapersGet = function (zapTraceSpan, name, id, orgID, org, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersGet(zapTraceSpan, name, id, orgID, org, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.deleteScrapersID = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).deleteScrapersID(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersPost = function (scraperTargetRequest, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersPost(scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.deleteScrapersIDLabelsID = function (scraperTargetID, labelID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).deleteScrapersIDLabelsID(scraperTargetID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDDelete = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDDelete(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.deleteScrapersIDMembersID = function (userID, scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.deleteScrapersIDOwnersID = function (userID, scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDLabelsGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.getScrapers = function (zapTraceSpan, name, id, orgID, org, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).getScrapers(zapTraceSpan, name, id, orgID, org, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDLabelsLabelIDDelete = function (scraperTargetID, labelID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.getScrapersID = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).getScrapersID(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDLabelsLabelIDPatch = function (scraperTargetID, labelID, label, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID, labelID, label, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.getScrapersIDLabels = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).getScrapersIDLabels(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDLabelsPost = function (scraperTargetID, labelMapping, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDLabelsPost(scraperTargetID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.getScrapersIDMembers = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDMembersGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.getScrapersIDOwners = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDMembersPost = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.patchScrapersID = function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).patchScrapersID(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDMembersUserIDDelete = function (userID, scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.patchScrapersIDLabelsID = function (scraperTargetID, labelID, label, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).patchScrapersIDLabelsID(scraperTargetID, labelID, label, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDOwnersGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.postScrapers = function (scraperTargetRequest, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).postScrapers(scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDOwnersPost = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.postScrapersIDLabels = function (scraperTargetID, labelMapping, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).postScrapersIDLabels(scraperTargetID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDOwnersUserIDDelete = function (userID, scraperTargetID, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.postScrapersIDMembers = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ScraperTargetsApi.prototype.scrapersScraperTargetIDPatch = function (scraperTargetID, scraperTargetRequest, zapTraceSpan, options) {
-        return exports.ScraperTargetsApiFp(this.configuration).scrapersScraperTargetIDPatch(scraperTargetID, scraperTargetRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    ScraperTargetsApi.prototype.postScrapersIDOwners = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.ScraperTargetsApiFp(this.configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return ScraperTargetsApi;
 }(BaseAPI));
 exports.ScraperTargetsApi = ScraperTargetsApi;
 exports.SecretsApiAxiosParamCreator = function (configuration) {
     return {
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsDeletePost.');
-            }
-            if (secretKeys === null || secretKeys === undefined) {
-                throw new RequiredError('secretKeys', 'Required parameter secretKeys was null or undefined when calling orgsOrgIDSecretsDeletePost.');
-            }
-            var localVarPath = "/orgs/{orgID}/secrets/delete"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsGet.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDSecrets.');
             }
             var localVarPath = "/orgs/{orgID}/secrets"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -5354,13 +5357,13 @@ exports.SecretsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDSecretsPatch.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling patchOrgsIDSecrets.');
             }
             if (requestBody === null || requestBody === undefined) {
-                throw new RequiredError('requestBody', 'Required parameter requestBody was null or undefined when calling orgsOrgIDSecretsPatch.');
+                throw new RequiredError('requestBody', 'Required parameter requestBody was null or undefined when calling patchOrgsIDSecrets.');
             }
             var localVarPath = "/orgs/{orgID}/secrets"
                 .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
@@ -5386,12 +5389,44 @@ exports.SecretsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDSecrets.');
+            }
+            if (secretKeys === null || secretKeys === undefined) {
+                throw new RequiredError('secretKeys', 'Required parameter secretKeys was null or undefined when calling postOrgsIDSecrets.');
+            }
+            var localVarPath = "/orgs/{orgID}/secrets/delete"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("SecretKeys" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(secretKeys || {}) : (secretKeys || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     };
 };
 exports.SecretsApiFp = function (configuration) {
     return {
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options);
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5399,8 +5434,8 @@ exports.SecretsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options);
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5408,8 +5443,8 @@ exports.SecretsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options);
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SecretsApiAxiosParamCreator(configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5421,14 +5456,14 @@ exports.SecretsApiFp = function (configuration) {
 };
 exports.SecretsApiFactory = function (configuration, basePath, axios) {
     return {
-        orgsOrgIDSecretsDeletePost: function (orgID, secretKeys, zapTraceSpan, options) {
-            return exports.SecretsApiFp(configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDSecrets: function (orgID, zapTraceSpan, options) {
+            return exports.SecretsApiFp(configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDSecretsGet: function (orgID, zapTraceSpan, options) {
-            return exports.SecretsApiFp(configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(axios, basePath);
+        patchOrgsIDSecrets: function (orgID, requestBody, zapTraceSpan, options) {
+            return exports.SecretsApiFp(configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDSecretsPatch: function (orgID, requestBody, zapTraceSpan, options) {
-            return exports.SecretsApiFp(configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDSecrets: function (orgID, secretKeys, zapTraceSpan, options) {
+            return exports.SecretsApiFp(configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -5437,21 +5472,21 @@ var SecretsApi = (function (_super) {
     function SecretsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SecretsApi.prototype.orgsOrgIDSecretsDeletePost = function (orgID, secretKeys, zapTraceSpan, options) {
-        return exports.SecretsApiFp(this.configuration).orgsOrgIDSecretsDeletePost(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
+    SecretsApi.prototype.getOrgsIDSecrets = function (orgID, zapTraceSpan, options) {
+        return exports.SecretsApiFp(this.configuration).getOrgsIDSecrets(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SecretsApi.prototype.orgsOrgIDSecretsGet = function (orgID, zapTraceSpan, options) {
-        return exports.SecretsApiFp(this.configuration).orgsOrgIDSecretsGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    SecretsApi.prototype.patchOrgsIDSecrets = function (orgID, requestBody, zapTraceSpan, options) {
+        return exports.SecretsApiFp(this.configuration).patchOrgsIDSecrets(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SecretsApi.prototype.orgsOrgIDSecretsPatch = function (orgID, requestBody, zapTraceSpan, options) {
-        return exports.SecretsApiFp(this.configuration).orgsOrgIDSecretsPatch(orgID, requestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    SecretsApi.prototype.postOrgsIDSecrets = function (orgID, secretKeys, zapTraceSpan, options) {
+        return exports.SecretsApiFp(this.configuration).postOrgsIDSecrets(orgID, secretKeys, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return SecretsApi;
 }(BaseAPI));
 exports.SecretsApi = SecretsApi;
 exports.SetupApiAxiosParamCreator = function (configuration) {
     return {
-        setupGet: function (zapTraceSpan, options) {
+        getSetup: function (zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/setup";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -5473,10 +5508,10 @@ exports.SetupApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        setupPost: function (onboardingRequest, zapTraceSpan, options) {
+        postSetup: function (onboardingRequest, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (onboardingRequest === null || onboardingRequest === undefined) {
-                throw new RequiredError('onboardingRequest', 'Required parameter onboardingRequest was null or undefined when calling setupPost.');
+                throw new RequiredError('onboardingRequest', 'Required parameter onboardingRequest was null or undefined when calling postSetup.');
             }
             var localVarPath = "/setup";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -5505,8 +5540,8 @@ exports.SetupApiAxiosParamCreator = function (configuration) {
 };
 exports.SetupApiFp = function (configuration) {
     return {
-        setupGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SetupApiAxiosParamCreator(configuration).setupGet(zapTraceSpan, options);
+        getSetup: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SetupApiAxiosParamCreator(configuration).getSetup(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5514,8 +5549,8 @@ exports.SetupApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        setupPost: function (onboardingRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SetupApiAxiosParamCreator(configuration).setupPost(onboardingRequest, zapTraceSpan, options);
+        postSetup: function (onboardingRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SetupApiAxiosParamCreator(configuration).postSetup(onboardingRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5527,11 +5562,11 @@ exports.SetupApiFp = function (configuration) {
 };
 exports.SetupApiFactory = function (configuration, basePath, axios) {
     return {
-        setupGet: function (zapTraceSpan, options) {
-            return exports.SetupApiFp(configuration).setupGet(zapTraceSpan, options)(axios, basePath);
+        getSetup: function (zapTraceSpan, options) {
+            return exports.SetupApiFp(configuration).getSetup(zapTraceSpan, options)(axios, basePath);
         },
-        setupPost: function (onboardingRequest, zapTraceSpan, options) {
-            return exports.SetupApiFp(configuration).setupPost(onboardingRequest, zapTraceSpan, options)(axios, basePath);
+        postSetup: function (onboardingRequest, zapTraceSpan, options) {
+            return exports.SetupApiFp(configuration).postSetup(onboardingRequest, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -5540,18 +5575,44 @@ var SetupApi = (function (_super) {
     function SetupApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SetupApi.prototype.setupGet = function (zapTraceSpan, options) {
-        return exports.SetupApiFp(this.configuration).setupGet(zapTraceSpan, options)(this.axios, this.basePath);
+    SetupApi.prototype.getSetup = function (zapTraceSpan, options) {
+        return exports.SetupApiFp(this.configuration).getSetup(zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SetupApi.prototype.setupPost = function (onboardingRequest, zapTraceSpan, options) {
-        return exports.SetupApiFp(this.configuration).setupPost(onboardingRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    SetupApi.prototype.postSetup = function (onboardingRequest, zapTraceSpan, options) {
+        return exports.SetupApiFp(this.configuration).postSetup(onboardingRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return SetupApi;
 }(BaseAPI));
 exports.SetupApi = SetupApi;
 exports.SourcesApiAxiosParamCreator = function (configuration) {
     return {
-        sourcesGet: function (zapTraceSpan, org, options) {
+        deleteSourcesID: function (sourceID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (sourceID === null || sourceID === undefined) {
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling deleteSourcesID.');
+            }
+            var localVarPath = "/sources/{sourceID}"
+                .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getSources: function (zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/sources";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -5576,38 +5637,36 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesPost: function (source, zapTraceSpan, options) {
+        getSourcesID: function (sourceID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
-            if (source === null || source === undefined) {
-                throw new RequiredError('source', 'Required parameter source was null or undefined when calling sourcesPost.');
+            if (sourceID === null || sourceID === undefined) {
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling getSourcesID.');
             }
-            var localVarPath = "/sources";
+            var localVarPath = "/sources/{sourceID}"
+                .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
                 localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
             }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Source" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(source || {}) : (source || "");
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDBucketsGet.');
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling getSourcesIDBuckets.');
             }
             var localVarPath = "/sources/{sourceID}/buckets"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -5633,62 +5692,10 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
+        getSourcesIDHealth: function (sourceID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDDelete.');
-            }
-            var localVarPath = "/sources/{sourceID}"
-                .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        sourcesSourceIDGet: function (sourceID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDGet.');
-            }
-            var localVarPath = "/sources/{sourceID}"
-                .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        sourcesSourceIDHealthGet: function (sourceID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDHealthGet.');
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling getSourcesIDHealth.');
             }
             var localVarPath = "/sources/{sourceID}/health"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -5711,13 +5718,13 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        sourcesSourceIDPatch: function (sourceID, source, zapTraceSpan, options) {
+        patchSourcesID: function (sourceID, source, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (sourceID === null || sourceID === undefined) {
-                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling sourcesSourceIDPatch.');
+                throw new RequiredError('sourceID', 'Required parameter sourceID was null or undefined when calling patchSourcesID.');
             }
             if (source === null || source === undefined) {
-                throw new RequiredError('source', 'Required parameter source was null or undefined when calling sourcesSourceIDPatch.');
+                throw new RequiredError('source', 'Required parameter source was null or undefined when calling patchSourcesID.');
             }
             var localVarPath = "/sources/{sourceID}"
                 .replace("{" + "sourceID" + "}", encodeURIComponent(String(sourceID)));
@@ -5743,12 +5750,40 @@ exports.SourcesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
+        postSources: function (source, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (source === null || source === undefined) {
+                throw new RequiredError('source', 'Required parameter source was null or undefined when calling postSources.');
+            }
+            var localVarPath = "/sources";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Source" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(source || {}) : (source || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     };
 };
 exports.SourcesApiFp = function (configuration) {
     return {
-        sourcesGet: function (zapTraceSpan, org, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesGet(zapTraceSpan, org, options);
+        deleteSourcesID: function (sourceID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).deleteSourcesID(sourceID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5756,8 +5791,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesPost: function (source, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesPost(source, zapTraceSpan, options);
+        getSources: function (zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).getSources(zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5765,8 +5800,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options);
+        getSourcesID: function (sourceID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).getSourcesID(sourceID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5774,8 +5809,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options);
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5783,8 +5818,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDGet: function (sourceID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options);
+        getSourcesIDHealth: function (sourceID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).getSourcesIDHealth(sourceID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5792,8 +5827,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDHealthGet: function (sourceID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options);
+        patchSourcesID: function (sourceID, source, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).patchSourcesID(sourceID, source, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5801,8 +5836,8 @@ exports.SourcesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        sourcesSourceIDPatch: function (sourceID, source, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options);
+        postSources: function (source, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.SourcesApiAxiosParamCreator(configuration).postSources(source, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -5814,26 +5849,26 @@ exports.SourcesApiFp = function (configuration) {
 };
 exports.SourcesApiFactory = function (configuration, basePath, axios) {
     return {
-        sourcesGet: function (zapTraceSpan, org, options) {
-            return exports.SourcesApiFp(configuration).sourcesGet(zapTraceSpan, org, options)(axios, basePath);
+        deleteSourcesID: function (sourceID, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).deleteSourcesID(sourceID, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesPost: function (source, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesPost(source, zapTraceSpan, options)(axios, basePath);
+        getSources: function (zapTraceSpan, org, options) {
+            return exports.SourcesApiFp(configuration).getSources(zapTraceSpan, org, options)(axios, basePath);
         },
-        sourcesSourceIDBucketsGet: function (sourceID, zapTraceSpan, org, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(axios, basePath);
+        getSourcesID: function (sourceID, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).getSourcesID(sourceID, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDDelete: function (sourceID, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(axios, basePath);
+        getSourcesIDBuckets: function (sourceID, zapTraceSpan, org, options) {
+            return exports.SourcesApiFp(configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options)(axios, basePath);
         },
-        sourcesSourceIDGet: function (sourceID, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(axios, basePath);
+        getSourcesIDHealth: function (sourceID, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).getSourcesIDHealth(sourceID, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDHealthGet: function (sourceID, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options)(axios, basePath);
+        patchSourcesID: function (sourceID, source, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).patchSourcesID(sourceID, source, zapTraceSpan, options)(axios, basePath);
         },
-        sourcesSourceIDPatch: function (sourceID, source, zapTraceSpan, options) {
-            return exports.SourcesApiFp(configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options)(axios, basePath);
+        postSources: function (source, zapTraceSpan, options) {
+            return exports.SourcesApiFp(configuration).postSources(source, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -5842,33 +5877,149 @@ var SourcesApi = (function (_super) {
     function SourcesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SourcesApi.prototype.sourcesGet = function (zapTraceSpan, org, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesGet(zapTraceSpan, org, options)(this.axios, this.basePath);
+    SourcesApi.prototype.deleteSourcesID = function (sourceID, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).deleteSourcesID(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesPost = function (source, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesPost(source, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.getSources = function (zapTraceSpan, org, options) {
+        return exports.SourcesApiFp(this.configuration).getSources(zapTraceSpan, org, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDBucketsGet = function (sourceID, zapTraceSpan, org, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDBucketsGet(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
+    SourcesApi.prototype.getSourcesID = function (sourceID, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).getSourcesID(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDDelete = function (sourceID, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDDelete(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.getSourcesIDBuckets = function (sourceID, zapTraceSpan, org, options) {
+        return exports.SourcesApiFp(this.configuration).getSourcesIDBuckets(sourceID, zapTraceSpan, org, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDGet = function (sourceID, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDGet(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.getSourcesIDHealth = function (sourceID, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).getSourcesIDHealth(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDHealthGet = function (sourceID, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDHealthGet(sourceID, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.patchSourcesID = function (sourceID, source, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).patchSourcesID(sourceID, source, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    SourcesApi.prototype.sourcesSourceIDPatch = function (sourceID, source, zapTraceSpan, options) {
-        return exports.SourcesApiFp(this.configuration).sourcesSourceIDPatch(sourceID, source, zapTraceSpan, options)(this.axios, this.basePath);
+    SourcesApi.prototype.postSources = function (source, zapTraceSpan, options) {
+        return exports.SourcesApiFp(this.configuration).postSources(source, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return SourcesApi;
 }(BaseAPI));
 exports.SourcesApi = SourcesApi;
 exports.TasksApiAxiosParamCreator = function (configuration) {
     return {
-        tasksGet: function (zapTraceSpan, after, user, org, orgID, limit, options) {
+        deleteTasksID: function (taskID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksID.');
+            }
+            var localVarPath = "/tasks/{taskID}"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTasksIDLabelsID: function (taskID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteTasksIDLabelsID.');
+            }
+            var localVarPath = "/tasks/{taskID}/labels/{labelID}"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTasksIDMembersID.');
+            }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksIDMembersID.');
+            }
+            var localVarPath = "/tasks/{taskID}/members/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTasksIDOwnersID.');
+            }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksIDOwnersID.');
+            }
+            var localVarPath = "/tasks/{taskID}/owners/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTasks: function (zapTraceSpan, after, user, org, orgID, limit, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/tasks";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -5905,64 +6056,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksPost: function (taskCreateRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskCreateRequest === null || taskCreateRequest === undefined) {
-                throw new RequiredError('taskCreateRequest', 'Required parameter taskCreateRequest was null or undefined when calling tasksPost.');
-            }
-            var localVarPath = "/tasks";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("TaskCreateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(taskCreateRequest || {}) : (taskCreateRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDDelete: function (taskID, zapTraceSpan, options) {
+        getTasksID: function (taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDDelete.');
-            }
-            var localVarPath = "/tasks/{taskID}"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDGet: function (taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksID.');
             }
             var localVarPath = "/tasks/{taskID}"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -5985,10 +6082,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDLabelsGet: function (taskID, zapTraceSpan, options) {
+        getTasksIDLabels: function (taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDLabelsGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDLabels.');
             }
             var localVarPath = "/tasks/{taskID}/labels"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6011,72 +6108,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDLabelsLabelIDDelete: function (taskID, labelID, zapTraceSpan, options) {
+        getTasksIDLogs: function (taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDLabelsLabelIDDelete.');
-            }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling tasksTaskIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/tasks/{taskID}/labels/{labelID}"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDLabelsPost: function (taskID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDLabelsPost.');
-            }
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling tasksTaskIDLabelsPost.');
-            }
-            var localVarPath = "/tasks/{taskID}/labels"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDLogsGet: function (taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDLogsGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDLogs.');
             }
             var localVarPath = "/tasks/{taskID}/logs"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6099,10 +6134,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDMembers.');
             }
             var localVarPath = "/tasks/{taskID}/members"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6125,72 +6160,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDMembersPost.');
-            }
-            var localVarPath = "/tasks/{taskID}/members"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
-            }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
-            }
-            var localVarPath = "/tasks/{taskID}/members/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDOwners.');
             }
             var localVarPath = "/tasks/{taskID}/owners"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6213,104 +6186,10 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        getTasksIDRuns: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDOwnersPost.');
-            }
-            var localVarPath = "/tasks/{taskID}/owners"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
-            }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
-            }
-            var localVarPath = "/tasks/taskID}/owners/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDPatch: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDPatch.');
-            }
-            if (taskUpdateRequest === null || taskUpdateRequest === undefined) {
-                throw new RequiredError('taskUpdateRequest', 'Required parameter taskUpdateRequest was null or undefined when calling tasksTaskIDPatch.');
-            }
-            var localVarPath = "/tasks/{taskID}"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("TaskUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(taskUpdateRequest || {}) : (taskUpdateRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDRunsGet: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDRuns.');
             }
             var localVarPath = "/tasks/{taskID}/runs"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6345,10 +6224,226 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
+        getTasksIDRunsID: function (taskID, runID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsPost.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDRunsID.');
+            }
+            if (runID === null || runID === undefined) {
+                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling getTasksIDRunsID.');
+            }
+            var localVarPath = "/tasks/{taskID}/runs/{runID}"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
+                .replace("{" + "runID" + "}", encodeURIComponent(String(runID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTasksIDRunsIDLogs: function (taskID, runID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDRunsIDLogs.');
+            }
+            if (runID === null || runID === undefined) {
+                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling getTasksIDRunsIDLogs.');
+            }
+            var localVarPath = "/tasks/{taskID}/runs/{runID}/logs"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
+                .replace("{" + "runID" + "}", encodeURIComponent(String(runID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        patchTasksID: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling patchTasksID.');
+            }
+            if (taskUpdateRequest === null || taskUpdateRequest === undefined) {
+                throw new RequiredError('taskUpdateRequest', 'Required parameter taskUpdateRequest was null or undefined when calling patchTasksID.');
+            }
+            var localVarPath = "/tasks/{taskID}"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("TaskUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(taskUpdateRequest || {}) : (taskUpdateRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasks: function (taskCreateRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskCreateRequest === null || taskCreateRequest === undefined) {
+                throw new RequiredError('taskCreateRequest', 'Required parameter taskCreateRequest was null or undefined when calling postTasks.');
+            }
+            var localVarPath = "/tasks";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("TaskCreateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(taskCreateRequest || {}) : (taskCreateRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDLabels: function (taskID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDLabels.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postTasksIDLabels.');
+            }
+            var localVarPath = "/tasks/{taskID}/labels"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTasksIDMembers.');
+            }
+            var localVarPath = "/tasks/{taskID}/members"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTasksIDOwners.');
+            }
+            var localVarPath = "/tasks/{taskID}/owners"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDRuns: function (taskID, zapTraceSpan, runManually, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDRuns.');
             }
             var localVarPath = "/tasks/{taskID}/runs"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
@@ -6374,73 +6469,13 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDRunsRunIDGet: function (taskID, runID, zapTraceSpan, options) {
+        postTasksIDRunsIDRetry: function (taskID, runID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDGet.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDRunsIDRetry.');
             }
             if (runID === null || runID === undefined) {
-                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling tasksTaskIDRunsRunIDGet.');
-            }
-            var localVarPath = "/tasks/{taskID}/runs/{runID}"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
-                .replace("{" + "runID" + "}", encodeURIComponent(String(runID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDRunsRunIDLogsGet: function (taskID, runID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDLogsGet.');
-            }
-            if (runID === null || runID === undefined) {
-                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling tasksTaskIDRunsRunIDLogsGet.');
-            }
-            var localVarPath = "/tasks/{taskID}/runs/{runID}/logs"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
-                .replace("{" + "runID" + "}", encodeURIComponent(String(runID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDRunsRunIDRetryPost: function (taskID, runID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDRunsRunIDRetryPost.');
-            }
-            if (runID === null || runID === undefined) {
-                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling tasksTaskIDRunsRunIDRetryPost.');
+                throw new RequiredError('runID', 'Required parameter runID was null or undefined when calling postTasksIDRunsIDRetry.');
             }
             var localVarPath = "/tasks/{taskID}/runs/{runID}/retry"
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)))
@@ -6468,8 +6503,8 @@ exports.TasksApiAxiosParamCreator = function (configuration) {
 };
 exports.TasksApiFp = function (configuration) {
     return {
-        tasksGet: function (zapTraceSpan, after, user, org, orgID, limit, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options);
+        deleteTasksID: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).deleteTasksID(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6477,8 +6512,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksPost: function (taskCreateRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksPost(taskCreateRequest, zapTraceSpan, options);
+        deleteTasksIDLabelsID: function (taskID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).deleteTasksIDLabelsID(taskID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6486,8 +6521,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDDelete: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options);
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6495,8 +6530,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDGet(taskID, zapTraceSpan, options);
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6504,8 +6539,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDLabelsGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options);
+        getTasks: function (zapTraceSpan, after, user, org, orgID, limit, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasks(zapTraceSpan, after, user, org, orgID, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6513,8 +6548,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDLabelsLabelIDDelete: function (taskID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options);
+        getTasksID: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksID(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6522,8 +6557,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDLabelsPost: function (taskID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options);
+        getTasksIDLabels: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDLabels(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6531,8 +6566,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDLogsGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options);
+        getTasksIDLogs: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDLogs(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6540,8 +6575,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options);
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDMembers(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6549,8 +6584,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDOwners(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6558,8 +6593,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options);
+        getTasksIDRuns: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDRuns(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6567,8 +6602,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options);
+        getTasksIDRunsID: function (taskID, runID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDRunsID(taskID, runID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6576,8 +6611,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getTasksIDRunsIDLogs: function (taskID, runID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).getTasksIDRunsIDLogs(taskID, runID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6585,8 +6620,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options);
+        patchTasksID: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).patchTasksID(taskID, taskUpdateRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6594,8 +6629,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDPatch: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, zapTraceSpan, options);
+        postTasks: function (taskCreateRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasks(taskCreateRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6603,8 +6638,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsGet: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options);
+        postTasksIDLabels: function (taskID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasksIDLabels(taskID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6612,8 +6647,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options);
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6621,8 +6656,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsRunIDGet: function (taskID, runID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options);
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6630,8 +6665,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsRunIDLogsGet: function (taskID, runID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options);
+        postTasksIDRuns: function (taskID, zapTraceSpan, runManually, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasksIDRuns(taskID, zapTraceSpan, runManually, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6639,8 +6674,8 @@ exports.TasksApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDRunsRunIDRetryPost: function (taskID, runID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options);
+        postTasksIDRunsIDRetry: function (taskID, runID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TasksApiAxiosParamCreator(configuration).postTasksIDRunsIDRetry(taskID, runID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -6652,65 +6687,65 @@ exports.TasksApiFp = function (configuration) {
 };
 exports.TasksApiFactory = function (configuration, basePath, axios) {
     return {
-        tasksGet: function (zapTraceSpan, after, user, org, orgID, limit, options) {
-            return exports.TasksApiFp(configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options)(axios, basePath);
+        deleteTasksID: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).deleteTasksID(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksPost: function (taskCreateRequest, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksPost(taskCreateRequest, zapTraceSpan, options)(axios, basePath);
+        deleteTasksIDLabelsID: function (taskID, labelID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).deleteTasksIDLabelsID(taskID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDDelete: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options)(axios, basePath);
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDGet: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDGet(taskID, zapTraceSpan, options)(axios, basePath);
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDLabelsGet: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options)(axios, basePath);
+        getTasks: function (zapTraceSpan, after, user, org, orgID, limit, options) {
+            return exports.TasksApiFp(configuration).getTasks(zapTraceSpan, after, user, org, orgID, limit, options)(axios, basePath);
         },
-        tasksTaskIDLabelsLabelIDDelete: function (taskID, labelID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options)(axios, basePath);
+        getTasksID: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksID(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDLabelsPost: function (taskID, labelMapping, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        getTasksIDLabels: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDLabels(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDLogsGet: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDLogs: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDLogs(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDMembers(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDOwners(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDRuns: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
+            return exports.TasksApiFp(configuration).getTasksIDRuns(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(axios, basePath);
         },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDRunsID: function (taskID, runID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDRunsID(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getTasksIDRunsIDLogs: function (taskID, runID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).getTasksIDRunsIDLogs(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
+        patchTasksID: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).patchTasksID(taskID, taskUpdateRequest, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDPatch: function (taskID, taskUpdateRequest, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, zapTraceSpan, options)(axios, basePath);
+        postTasks: function (taskCreateRequest, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).postTasks(taskCreateRequest, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDRunsGet: function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(axios, basePath);
+        postTasksIDLabels: function (taskID, labelMapping, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).postTasksIDLabels(taskID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDRunsPost: function (taskID, zapTraceSpan, runManually, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(axios, basePath);
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDRunsRunIDGet: function (taskID, runID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(axios, basePath);
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDRunsRunIDLogsGet: function (taskID, runID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options)(axios, basePath);
+        postTasksIDRuns: function (taskID, zapTraceSpan, runManually, options) {
+            return exports.TasksApiFp(configuration).postTasksIDRuns(taskID, zapTraceSpan, runManually, options)(axios, basePath);
         },
-        tasksTaskIDRunsRunIDRetryPost: function (taskID, runID, zapTraceSpan, options) {
-            return exports.TasksApiFp(configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options)(axios, basePath);
+        postTasksIDRunsIDRetry: function (taskID, runID, zapTraceSpan, options) {
+            return exports.TasksApiFp(configuration).postTasksIDRunsIDRetry(taskID, runID, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -6719,72 +6754,188 @@ var TasksApi = (function (_super) {
     function TasksApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TasksApi.prototype.tasksGet = function (zapTraceSpan, after, user, org, orgID, limit, options) {
-        return exports.TasksApiFp(this.configuration).tasksGet(zapTraceSpan, after, user, org, orgID, limit, options)(this.axios, this.basePath);
+    TasksApi.prototype.deleteTasksID = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).deleteTasksID(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksPost = function (taskCreateRequest, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksPost(taskCreateRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.deleteTasksIDLabelsID = function (taskID, labelID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).deleteTasksIDLabelsID(taskID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDDelete = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDDelete(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.deleteTasksIDMembersID = function (userID, taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDGet = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.deleteTasksIDOwnersID = function (userID, taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDLabelsGet = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDLabelsGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasks = function (zapTraceSpan, after, user, org, orgID, limit, options) {
+        return exports.TasksApiFp(this.configuration).getTasks(zapTraceSpan, after, user, org, orgID, limit, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDLabelsLabelIDDelete = function (taskID, labelID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDLabelsLabelIDDelete(taskID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksID = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksID(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDLabelsPost = function (taskID, labelMapping, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDLabelsPost(taskID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDLabels = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDLabels(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDLogsGet = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDLogsGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDLogs = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDLogs(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDMembersGet = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDMembers = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDMembers(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDMembersPost = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDOwners = function (taskID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDOwners(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDMembersUserIDDelete = function (userID, taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDRuns = function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDRuns(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDOwnersGet = function (taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDRunsID = function (taskID, runID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDRunsID(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDOwnersPost = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.getTasksIDRunsIDLogs = function (taskID, runID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).getTasksIDRunsIDLogs(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDOwnersUserIDDelete = function (userID, taskID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.patchTasksID = function (taskID, taskUpdateRequest, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).patchTasksID(taskID, taskUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDPatch = function (taskID, taskUpdateRequest, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDPatch(taskID, taskUpdateRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasks = function (taskCreateRequest, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).postTasks(taskCreateRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsGet = function (taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsGet(taskID, zapTraceSpan, after, limit, afterTime, beforeTime, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasksIDLabels = function (taskID, labelMapping, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).postTasksIDLabels(taskID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsPost = function (taskID, zapTraceSpan, runManually, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsPost(taskID, zapTraceSpan, runManually, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasksIDMembers = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsRunIDGet = function (taskID, runID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsRunIDGet(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasksIDOwners = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsRunIDLogsGet = function (taskID, runID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsRunIDLogsGet(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasksIDRuns = function (taskID, zapTraceSpan, runManually, options) {
+        return exports.TasksApiFp(this.configuration).postTasksIDRuns(taskID, zapTraceSpan, runManually, options)(this.axios, this.basePath);
     };
-    TasksApi.prototype.tasksTaskIDRunsRunIDRetryPost = function (taskID, runID, zapTraceSpan, options) {
-        return exports.TasksApiFp(this.configuration).tasksTaskIDRunsRunIDRetryPost(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
+    TasksApi.prototype.postTasksIDRunsIDRetry = function (taskID, runID, zapTraceSpan, options) {
+        return exports.TasksApiFp(this.configuration).postTasksIDRunsIDRetry(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return TasksApi;
 }(BaseAPI));
 exports.TasksApi = TasksApi;
 exports.TelegrafsApiAxiosParamCreator = function (configuration) {
     return {
-        telegrafsGet: function (zapTraceSpan, orgID, options) {
+        deleteTelegrafsID: function (telegrafID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsID.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTelegrafsIDLabelsID: function (telegrafID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteTelegrafsIDLabelsID.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/labels/{labelID}"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTelegrafsIDMembersID.');
+            }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsIDMembersID.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/members/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTelegrafsIDOwnersID.');
+            }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsIDOwnersID.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/owners/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTelegrafs: function (zapTraceSpan, orgID, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/telegrafs";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -6809,64 +6960,10 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsPost: function (telegrafRequest, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafRequest === null || telegrafRequest === undefined) {
-                throw new RequiredError('telegrafRequest', 'Required parameter telegrafRequest was null or undefined when calling telegrafsPost.');
-            }
-            var localVarPath = "/telegrafs";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("TelegrafRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(telegrafRequest || {}) : (telegrafRequest || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDDelete: function (telegrafID, zapTraceSpan, options) {
+        getTelegrafsID: function (telegrafID, zapTraceSpan, accept, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDDelete.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDGet.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsID.');
             }
             var localVarPath = "/telegrafs/{telegrafID}"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -6892,10 +6989,10 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDLabelsGet: function (telegrafID, zapTraceSpan, options) {
+        getTelegrafsIDLabels: function (telegrafID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsGet.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsIDLabels.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/labels"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -6918,23 +7015,19 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDLabelsLabelIDDelete: function (telegrafID, labelID, zapTraceSpan, options) {
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsLabelIDDelete.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsIDMembers.');
             }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling telegrafsTelegrafIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/labels/{labelID}"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarPath = "/telegrafs/{telegrafID}/members"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
             var localVarUrlObj = url.parse(localVarPath, true);
             var baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
@@ -6948,13 +7041,67 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDLabelsPost: function (telegrafID, labelMapping, zapTraceSpan, options) {
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDLabelsPost.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsIDOwners.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/owners"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTelegrafs: function (telegrafRequest, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafRequest === null || telegrafRequest === undefined) {
+                throw new RequiredError('telegrafRequest', 'Required parameter telegrafRequest was null or undefined when calling postTelegrafs.');
+            }
+            var localVarPath = "/telegrafs";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("TelegrafRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(telegrafRequest || {}) : (telegrafRequest || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTelegrafsIDLabels: function (telegrafID, labelMapping, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling postTelegrafsIDLabels.');
             }
             if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling telegrafsTelegrafIDLabelsPost.');
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postTelegrafsIDLabels.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/labels"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -6980,39 +7127,13 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersGet.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/members"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersPost.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling postTelegrafsIDMembers.');
             }
             if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDMembersPost.');
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTelegrafsIDMembers.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/members"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -7038,69 +7159,13 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
-            }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/members/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersGet.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/owners"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling postTelegrafsIDOwners.');
             }
             if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTelegrafsIDOwners.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/owners"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -7126,43 +7191,13 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
-            }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/owners/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDPut: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
+        putTelegrafsID: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDPut.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling putTelegrafsID.');
             }
             if (telegrafRequest === null || telegrafRequest === undefined) {
-                throw new RequiredError('telegrafRequest', 'Required parameter telegrafRequest was null or undefined when calling telegrafsTelegrafIDPut.');
+                throw new RequiredError('telegrafRequest', 'Required parameter telegrafRequest was null or undefined when calling putTelegrafsID.');
             }
             var localVarPath = "/telegrafs/{telegrafID}"
                 .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
@@ -7192,8 +7227,8 @@ exports.TelegrafsApiAxiosParamCreator = function (configuration) {
 };
 exports.TelegrafsApiFp = function (configuration) {
     return {
-        telegrafsGet: function (zapTraceSpan, orgID, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsGet(zapTraceSpan, orgID, options);
+        deleteTelegrafsID: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).deleteTelegrafsID(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7201,8 +7236,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsPost: function (telegrafRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options);
+        deleteTelegrafsIDLabelsID: function (telegrafID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).deleteTelegrafsIDLabelsID(telegrafID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7210,8 +7245,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDDelete: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options);
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7219,8 +7254,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options);
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7228,8 +7263,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDLabelsGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options);
+        getTelegrafs: function (zapTraceSpan, orgID, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).getTelegrafs(zapTraceSpan, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7237,8 +7272,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDLabelsLabelIDDelete: function (telegrafID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options);
+        getTelegrafsID: function (telegrafID, zapTraceSpan, accept, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).getTelegrafsID(telegrafID, zapTraceSpan, accept, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7246,8 +7281,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDLabelsPost: function (telegrafID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options);
+        getTelegrafsIDLabels: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).getTelegrafsIDLabels(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7255,8 +7290,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options);
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7264,8 +7299,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7273,8 +7308,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
+        postTelegrafs: function (telegrafRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).postTelegrafs(telegrafRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7282,8 +7317,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options);
+        postTelegrafsIDLabels: function (telegrafID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).postTelegrafsIDLabels(telegrafID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7291,8 +7326,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7300,8 +7335,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7309,8 +7344,8 @@ exports.TelegrafsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDPut: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options);
+        putTelegrafsID: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TelegrafsApiAxiosParamCreator(configuration).putTelegrafsID(telegrafID, telegrafRequest, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7322,47 +7357,47 @@ exports.TelegrafsApiFp = function (configuration) {
 };
 exports.TelegrafsApiFactory = function (configuration, basePath, axios) {
     return {
-        telegrafsGet: function (zapTraceSpan, orgID, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsGet(zapTraceSpan, orgID, options)(axios, basePath);
+        deleteTelegrafsID: function (telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).deleteTelegrafsID(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsPost: function (telegrafRequest, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(axios, basePath);
+        deleteTelegrafsIDLabelsID: function (telegrafID, labelID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).deleteTelegrafsIDLabelsID(telegrafID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDDelete: function (telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(axios, basePath);
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDGet: function (telegrafID, zapTraceSpan, accept, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(axios, basePath);
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDLabelsGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        getTelegrafs: function (zapTraceSpan, orgID, options) {
+            return exports.TelegrafsApiFp(configuration).getTelegrafs(zapTraceSpan, orgID, options)(axios, basePath);
         },
-        telegrafsTelegrafIDLabelsLabelIDDelete: function (telegrafID, labelID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsID: function (telegrafID, zapTraceSpan, accept, options) {
+            return exports.TelegrafsApiFp(configuration).getTelegrafsID(telegrafID, zapTraceSpan, accept, options)(axios, basePath);
         },
-        telegrafsTelegrafIDLabelsPost: function (telegrafID, labelMapping, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsIDLabels: function (telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).getTelegrafsIDLabels(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
+        postTelegrafs: function (telegrafRequest, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).postTelegrafs(telegrafRequest, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        postTelegrafsIDLabels: function (telegrafID, labelMapping, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).postTelegrafsIDLabels(telegrafID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDPut: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
-            return exports.TelegrafsApiFp(configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options)(axios, basePath);
+        putTelegrafsID: function (telegrafID, telegrafRequest, zapTraceSpan, options) {
+            return exports.TelegrafsApiFp(configuration).putTelegrafsID(telegrafID, telegrafRequest, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -7371,54 +7406,110 @@ var TelegrafsApi = (function (_super) {
     function TelegrafsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TelegrafsApi.prototype.telegrafsGet = function (zapTraceSpan, orgID, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsGet(zapTraceSpan, orgID, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.deleteTelegrafsID = function (telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).deleteTelegrafsID(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsPost = function (telegrafRequest, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsPost(telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.deleteTelegrafsIDLabelsID = function (telegrafID, labelID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).deleteTelegrafsIDLabelsID(telegrafID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDDelete = function (telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDDelete(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.deleteTelegrafsIDMembersID = function (userID, telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDGet = function (telegrafID, zapTraceSpan, accept, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDGet(telegrafID, zapTraceSpan, accept, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.deleteTelegrafsIDOwnersID = function (userID, telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDLabelsGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.getTelegrafs = function (zapTraceSpan, orgID, options) {
+        return exports.TelegrafsApiFp(this.configuration).getTelegrafs(zapTraceSpan, orgID, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDLabelsLabelIDDelete = function (telegrafID, labelID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.getTelegrafsID = function (telegrafID, zapTraceSpan, accept, options) {
+        return exports.TelegrafsApiFp(this.configuration).getTelegrafsID(telegrafID, zapTraceSpan, accept, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDLabelsPost = function (telegrafID, labelMapping, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDLabelsPost(telegrafID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.getTelegrafsIDLabels = function (telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).getTelegrafsIDLabels(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDMembersGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.getTelegrafsIDMembers = function (telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDMembersPost = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.getTelegrafsIDOwners = function (telegrafID, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDMembersUserIDDelete = function (userID, telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.postTelegrafs = function (telegrafRequest, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).postTelegrafs(telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDOwnersGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.postTelegrafsIDLabels = function (telegrafID, labelMapping, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).postTelegrafsIDLabels(telegrafID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDOwnersPost = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.postTelegrafsIDMembers = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDOwnersUserIDDelete = function (userID, telegrafID, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.postTelegrafsIDOwners = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TelegrafsApi.prototype.telegrafsTelegrafIDPut = function (telegrafID, telegrafRequest, zapTraceSpan, options) {
-        return exports.TelegrafsApiFp(this.configuration).telegrafsTelegrafIDPut(telegrafID, telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
+    TelegrafsApi.prototype.putTelegrafsID = function (telegrafID, telegrafRequest, zapTraceSpan, options) {
+        return exports.TelegrafsApiFp(this.configuration).putTelegrafsID(telegrafID, telegrafRequest, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return TelegrafsApi;
 }(BaseAPI));
 exports.TelegrafsApi = TelegrafsApi;
 exports.TemplatesApiAxiosParamCreator = function (configuration) {
     return {
-        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
+        deleteDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling deleteDocumentsTemplatesID.');
+            }
+            var localVarPath = "/documents/templates/{templateID}"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteDocumentsTemplatesIDLabelsID: function (templateID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling deleteDocumentsTemplatesIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteDocumentsTemplatesIDLabelsID.');
+            }
+            var localVarPath = "/documents/templates/{templateID}/labels/{labelID}"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDocumentsTemplates: function (zapTraceSpan, org, orgID, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/documents/templates";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -7446,10 +7537,62 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        documentsTemplatesPost: function (documentCreate, zapTraceSpan, options) {
+        getDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling getDocumentsTemplatesID.');
+            }
+            var localVarPath = "/documents/templates/{templateID}"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDocumentsTemplatesIDLabels: function (templateID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (templateID === null || templateID === undefined) {
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling getDocumentsTemplatesIDLabels.');
+            }
+            var localVarPath = "/documents/templates/{templateID}/labels"
+                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDocumentsTemplates: function (documentCreate, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (documentCreate === null || documentCreate === undefined) {
-                throw new RequiredError('documentCreate', 'Required parameter documentCreate was null or undefined when calling documentsTemplatesPost.');
+                throw new RequiredError('documentCreate', 'Required parameter documentCreate was null or undefined when calling postDocumentsTemplates.');
             }
             var localVarPath = "/documents/templates";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -7474,121 +7617,13 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        documentsTemplatesTemplateIDDelete: function (templateID, zapTraceSpan, options) {
+        postDocumentsTemplatesIDLabels: function (templateID, labelMapping, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDDelete.');
-            }
-            var localVarPath = "/documents/templates/{templateID}"
-                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        documentsTemplatesTemplateIDGet: function (templateID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDGet.');
-            }
-            var localVarPath = "/documents/templates/{templateID}"
-                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsGet.');
-            }
-            var localVarPath = "/documents/templates/{templateID}/labels"
-                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
-            }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling documentsTemplatesTemplateIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/documents/templates/{templateID}/labels/{labelID}"
-                .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling postDocumentsTemplatesIDLabels.');
             }
             if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling documentsTemplatesTemplateIDLabelsPost.');
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postDocumentsTemplatesIDLabels.');
             }
             var localVarPath = "/documents/templates/{templateID}/labels"
                 .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
@@ -7614,13 +7649,13 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
+        putDocumentsTemplatesID: function (templateID, documentUpdate, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (templateID === null || templateID === undefined) {
-                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling documentsTemplatesTemplateIDPut.');
+                throw new RequiredError('templateID', 'Required parameter templateID was null or undefined when calling putDocumentsTemplatesID.');
             }
             if (documentUpdate === null || documentUpdate === undefined) {
-                throw new RequiredError('documentUpdate', 'Required parameter documentUpdate was null or undefined when calling documentsTemplatesTemplateIDPut.');
+                throw new RequiredError('documentUpdate', 'Required parameter documentUpdate was null or undefined when calling putDocumentsTemplatesID.');
             }
             var localVarPath = "/documents/templates/{templateID}"
                 .replace("{" + "templateID" + "}", encodeURIComponent(String(templateID)));
@@ -7650,8 +7685,8 @@ exports.TemplatesApiAxiosParamCreator = function (configuration) {
 };
 exports.TemplatesApiFp = function (configuration) {
     return {
-        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options);
+        deleteDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).deleteDocumentsTemplatesID(templateID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7659,8 +7694,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesPost: function (documentCreate, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options);
+        deleteDocumentsTemplatesIDLabelsID: function (templateID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).deleteDocumentsTemplatesIDLabelsID(templateID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7668,8 +7703,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDDelete: function (templateID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options);
+        getDocumentsTemplates: function (zapTraceSpan, org, orgID, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).getDocumentsTemplates(zapTraceSpan, org, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7677,8 +7712,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDGet: function (templateID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options);
+        getDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).getDocumentsTemplatesID(templateID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7686,8 +7721,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options);
+        getDocumentsTemplatesIDLabels: function (templateID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).getDocumentsTemplatesIDLabels(templateID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7695,8 +7730,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options);
+        postDocumentsTemplates: function (documentCreate, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).postDocumentsTemplates(documentCreate, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7704,8 +7739,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options);
+        postDocumentsTemplatesIDLabels: function (templateID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).postDocumentsTemplatesIDLabels(templateID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7713,8 +7748,8 @@ exports.TemplatesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options);
+        putDocumentsTemplatesID: function (templateID, documentUpdate, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.TemplatesApiAxiosParamCreator(configuration).putDocumentsTemplatesID(templateID, documentUpdate, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -7726,29 +7761,29 @@ exports.TemplatesApiFp = function (configuration) {
 };
 exports.TemplatesApiFactory = function (configuration, basePath, axios) {
     return {
-        documentsTemplatesGet: function (zapTraceSpan, org, orgID, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
+        deleteDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).deleteDocumentsTemplatesID(templateID, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesPost: function (documentCreate, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(axios, basePath);
+        deleteDocumentsTemplatesIDLabelsID: function (templateID, labelID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).deleteDocumentsTemplatesIDLabelsID(templateID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDDelete: function (templateID, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options)(axios, basePath);
+        getDocumentsTemplates: function (zapTraceSpan, org, orgID, options) {
+            return exports.TemplatesApiFp(configuration).getDocumentsTemplates(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDGet: function (templateID, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(axios, basePath);
+        getDocumentsTemplatesID: function (templateID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).getDocumentsTemplatesID(templateID, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDLabelsGet: function (templateID, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(axios, basePath);
+        getDocumentsTemplatesIDLabels: function (templateID, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).getDocumentsTemplatesIDLabels(templateID, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDLabelsLabelIDDelete: function (templateID, labelID, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(axios, basePath);
+        postDocumentsTemplates: function (documentCreate, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).postDocumentsTemplates(documentCreate, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDLabelsPost: function (templateID, labelMapping, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        postDocumentsTemplatesIDLabels: function (templateID, labelMapping, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).postDocumentsTemplatesIDLabels(templateID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        documentsTemplatesTemplateIDPut: function (templateID, documentUpdate, zapTraceSpan, options) {
-            return exports.TemplatesApiFp(configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(axios, basePath);
+        putDocumentsTemplatesID: function (templateID, documentUpdate, zapTraceSpan, options) {
+            return exports.TemplatesApiFp(configuration).putDocumentsTemplatesID(templateID, documentUpdate, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -7757,100 +7792,42 @@ var TemplatesApi = (function (_super) {
     function TemplatesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    TemplatesApi.prototype.documentsTemplatesGet = function (zapTraceSpan, org, orgID, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.deleteDocumentsTemplatesID = function (templateID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).deleteDocumentsTemplatesID(templateID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesPost = function (documentCreate, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesPost(documentCreate, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.deleteDocumentsTemplatesIDLabelsID = function (templateID, labelID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).deleteDocumentsTemplatesIDLabelsID(templateID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDDelete = function (templateID, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDDelete(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.getDocumentsTemplates = function (zapTraceSpan, org, orgID, options) {
+        return exports.TemplatesApiFp(this.configuration).getDocumentsTemplates(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDGet = function (templateID, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.getDocumentsTemplatesID = function (templateID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).getDocumentsTemplatesID(templateID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsGet = function (templateID, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsGet(templateID, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.getDocumentsTemplatesIDLabels = function (templateID, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).getDocumentsTemplatesIDLabels(templateID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsLabelIDDelete = function (templateID, labelID, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.postDocumentsTemplates = function (documentCreate, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).postDocumentsTemplates(documentCreate, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDLabelsPost = function (templateID, labelMapping, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDLabelsPost(templateID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.postDocumentsTemplatesIDLabels = function (templateID, labelMapping, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).postDocumentsTemplatesIDLabels(templateID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    TemplatesApi.prototype.documentsTemplatesTemplateIDPut = function (templateID, documentUpdate, zapTraceSpan, options) {
-        return exports.TemplatesApiFp(this.configuration).documentsTemplatesTemplateIDPut(templateID, documentUpdate, zapTraceSpan, options)(this.axios, this.basePath);
+    TemplatesApi.prototype.putDocumentsTemplatesID = function (templateID, documentUpdate, zapTraceSpan, options) {
+        return exports.TemplatesApiFp(this.configuration).putDocumentsTemplatesID(templateID, documentUpdate, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return TemplatesApi;
 }(BaseAPI));
 exports.TemplatesApi = TemplatesApi;
 exports.UsersApiAxiosParamCreator = function (configuration) {
     return {
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/members"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDMembersPost.');
-            }
-            var localVarPath = "/buckets/{bucketID}/members"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteBucketsIDMembersID.');
             }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDMembersUserIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsIDMembersID.');
             }
             var localVarPath = "/buckets/{bucketID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -7874,71 +7851,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersGet.');
-            }
-            var localVarPath = "/buckets/{bucketID}/owners"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling bucketsBucketIDOwnersPost.');
-            }
-            var localVarPath = "/buckets/{bucketID}/owners"
-                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteBucketsIDOwnersID.');
             }
             if (bucketID === null || bucketID === undefined) {
-                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling bucketsBucketIDOwnersUserIDDelete.');
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling deleteBucketsIDOwnersID.');
             }
             var localVarPath = "/buckets/{bucketID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -7962,71 +7881,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/members"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDMembersPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/members"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteDashboardsIDMembersID.');
             }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDMembersUserIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDMembersID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8050,71 +7911,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersGet.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/owners"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling dashboardsDashboardIDOwnersPost.');
-            }
-            var localVarPath = "/dashboards/{dashboardID}/owners"
-                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteDashboardsIDOwnersID.');
             }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDOwnersUserIDDelete.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling deleteDashboardsIDOwnersID.');
             }
             var localVarPath = "/dashboards/{dashboardID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8138,124 +7941,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        meGet: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/me";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        mePasswordPut: function (passwordResetBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (passwordResetBody === null || passwordResetBody === undefined) {
-                throw new RequiredError('passwordResetBody', 'Required parameter passwordResetBody was null or undefined when calling mePasswordPut.');
-            }
-            var localVarPath = "/me/password";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("PasswordResetBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(passwordResetBody || {}) : (passwordResetBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersGet.');
-            }
-            var localVarPath = "/orgs/{orgID}/members"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDMembersPost.');
-            }
-            var localVarPath = "/orgs/{orgID}/members"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteOrgsIDMembersID.');
             }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDMembersUserIDDelete.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsIDMembersID.');
             }
             var localVarPath = "/orgs/{orgID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8279,71 +7971,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersGet.');
-            }
-            var localVarPath = "/orgs/{orgID}/owners"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling orgsOrgIDOwnersPost.');
-            }
-            var localVarPath = "/orgs/{orgID}/owners"
-                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteOrgsIDOwnersID.');
             }
             if (orgID === null || orgID === undefined) {
-                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling orgsOrgIDOwnersUserIDDelete.');
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling deleteOrgsIDOwnersID.');
             }
             var localVarPath = "/orgs/{orgID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8367,71 +8001,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersGet.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/members"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDMembersPost.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/members"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteScrapersIDMembersID.');
             }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDMembersUserIDDelete.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersIDMembersID.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8455,71 +8031,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersGet.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/owners"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling scrapersScraperTargetIDOwnersPost.');
-            }
-            var localVarPath = "/scrapers/{scraperTargetID}/owners"
-                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteScrapersIDOwnersID.');
             }
             if (scraperTargetID === null || scraperTargetID === undefined) {
-                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling scrapersScraperTargetIDOwnersUserIDDelete.');
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling deleteScrapersIDOwnersID.');
             }
             var localVarPath = "/scrapers/{scraperTargetID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8543,71 +8061,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersGet.');
-            }
-            var localVarPath = "/tasks/{taskID}/members"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDMembersPost.');
-            }
-            var localVarPath = "/tasks/{taskID}/members"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTasksIDMembersID.');
             }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDMembersUserIDDelete.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksIDMembersID.');
             }
             var localVarPath = "/tasks/{taskID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8631,73 +8091,15 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersGet.');
-            }
-            var localVarPath = "/tasks/{taskID}/owners"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling tasksTaskIDOwnersPost.');
-            }
-            var localVarPath = "/tasks/{taskID}/owners"
-                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTasksIDOwnersID.');
             }
             if (taskID === null || taskID === undefined) {
-                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling tasksTaskIDOwnersUserIDDelete.');
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling deleteTasksIDOwnersID.');
             }
-            var localVarPath = "/tasks/taskID}/owners/{userID}"
+            var localVarPath = "/tasks/{taskID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
                 .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -8719,71 +8121,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersGet.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/members"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDMembersPost.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/members"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTelegrafsIDMembersID.');
             }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDMembersUserIDDelete.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsIDMembersID.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/members/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8807,71 +8151,13 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersGet.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/owners"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
-            }
-            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
-                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling telegrafsTelegrafIDOwnersPost.');
-            }
-            var localVarPath = "/telegrafs/{telegrafID}/owners"
-                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteTelegrafsIDOwnersID.');
             }
             if (telegrafID === null || telegrafID === undefined) {
-                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling telegrafsTelegrafIDOwnersUserIDDelete.');
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling deleteTelegrafsIDOwnersID.');
             }
             var localVarPath = "/telegrafs/{telegrafID}/owners/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)))
@@ -8895,60 +8181,10 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersGet: function (zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            var localVarPath = "/users";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        usersPost: function (user, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (user === null || user === undefined) {
-                throw new RequiredError('user', 'Required parameter user was null or undefined when calling usersPost.');
-            }
-            var localVarPath = "/users";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(user || {}) : (user || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        usersUserIDDelete: function (userID, zapTraceSpan, options) {
+        deleteUsersID: function (userID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDDelete.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling deleteUsersID.');
             }
             var localVarPath = "/users/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
@@ -8971,10 +8207,366 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersUserIDGet: function (userID, zapTraceSpan, options) {
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDMembers.');
+            }
+            var localVarPath = "/buckets/{bucketID}/members"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling getBucketsIDOwners.');
+            }
+            var localVarPath = "/buckets/{bucketID}/owners"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDMembers.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/members"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDOwners.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/owners"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getMe: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/me";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDMembers.');
+            }
+            var localVarPath = "/orgs/{orgID}/members"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling getOrgsIDOwners.');
+            }
+            var localVarPath = "/orgs/{orgID}/owners"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersIDMembers.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/members"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling getScrapersIDOwners.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/owners"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDMembers.');
+            }
+            var localVarPath = "/tasks/{taskID}/members"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling getTasksIDOwners.');
+            }
+            var localVarPath = "/tasks/{taskID}/owners"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsIDMembers.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/members"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling getTelegrafsIDOwners.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/owners"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getUsers: function (zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            var localVarPath = "/users";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getUsersID: function (userID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDGet.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling getUsersID.');
             }
             var localVarPath = "/users/{userID}"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
@@ -8997,10 +8589,10 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDLogsGet.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling getUsersIDLogs.');
             }
             var localVarPath = "/users/{userID}/logs"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
@@ -9029,13 +8621,488 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersUserIDPasswordPut: function (userID, passwordResetBody, zapTraceSpan, options) {
+        patchUsersID: function (userID, user, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDPasswordPut.');
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling patchUsersID.');
+            }
+            if (user === null || user === undefined) {
+                throw new RequiredError('user', 'Required parameter user was null or undefined when calling patchUsersID.');
+            }
+            var localVarPath = "/users/{userID}"
+                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling postBucketsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postBucketsIDMembers.');
+            }
+            var localVarPath = "/buckets/{bucketID}/members"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (bucketID === null || bucketID === undefined) {
+                throw new RequiredError('bucketID', 'Required parameter bucketID was null or undefined when calling postBucketsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postBucketsIDOwners.');
+            }
+            var localVarPath = "/buckets/{bucketID}/owners"
+                .replace("{" + "bucketID" + "}", encodeURIComponent(String(bucketID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postDashboardsIDMembers.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/members"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (dashboardID === null || dashboardID === undefined) {
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling postDashboardsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postDashboardsIDOwners.');
+            }
+            var localVarPath = "/dashboards/{dashboardID}/owners"
+                .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postOrgsIDMembers.');
+            }
+            var localVarPath = "/orgs/{orgID}/members"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID', 'Required parameter orgID was null or undefined when calling postOrgsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postOrgsIDOwners.');
+            }
+            var localVarPath = "/orgs/{orgID}/owners"
+                .replace("{" + "orgID" + "}", encodeURIComponent(String(orgID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling postScrapersIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postScrapersIDMembers.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/members"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (scraperTargetID === null || scraperTargetID === undefined) {
+                throw new RequiredError('scraperTargetID', 'Required parameter scraperTargetID was null or undefined when calling postScrapersIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postScrapersIDOwners.');
+            }
+            var localVarPath = "/scrapers/{scraperTargetID}/owners"
+                .replace("{" + "scraperTargetID" + "}", encodeURIComponent(String(scraperTargetID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTasksIDMembers.');
+            }
+            var localVarPath = "/tasks/{taskID}/members"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID', 'Required parameter taskID was null or undefined when calling postTasksIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTasksIDOwners.');
+            }
+            var localVarPath = "/tasks/{taskID}/owners"
+                .replace("{" + "taskID" + "}", encodeURIComponent(String(taskID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling postTelegrafsIDMembers.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTelegrafsIDMembers.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/members"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (telegrafID === null || telegrafID === undefined) {
+                throw new RequiredError('telegrafID', 'Required parameter telegrafID was null or undefined when calling postTelegrafsIDOwners.');
+            }
+            if (addResourceMemberRequestBody === null || addResourceMemberRequestBody === undefined) {
+                throw new RequiredError('addResourceMemberRequestBody', 'Required parameter addResourceMemberRequestBody was null or undefined when calling postTelegrafsIDOwners.');
+            }
+            var localVarPath = "/telegrafs/{telegrafID}/owners"
+                .replace("{" + "telegrafID" + "}", encodeURIComponent(String(telegrafID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("AddResourceMemberRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(addResourceMemberRequestBody || {}) : (addResourceMemberRequestBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postUsers: function (user, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (user === null || user === undefined) {
+                throw new RequiredError('user', 'Required parameter user was null or undefined when calling postUsers.');
+            }
+            var localVarPath = "/users";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(user || {}) : (user || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        putMePassword: function (passwordResetBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (passwordResetBody === null || passwordResetBody === undefined) {
+                throw new RequiredError('passwordResetBody', 'Required parameter passwordResetBody was null or undefined when calling putMePassword.');
+            }
+            var localVarPath = "/me/password";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'PUT' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (configuration && (configuration.username || configuration.password)) {
+                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+            }
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("PasswordResetBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(passwordResetBody || {}) : (passwordResetBody || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        putUsersIDPassword: function (userID, passwordResetBody, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (userID === null || userID === undefined) {
+                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling putUsersIDPassword.');
             }
             if (passwordResetBody === null || passwordResetBody === undefined) {
-                throw new RequiredError('passwordResetBody', 'Required parameter passwordResetBody was null or undefined when calling usersUserIDPasswordPut.');
+                throw new RequiredError('passwordResetBody', 'Required parameter passwordResetBody was null or undefined when calling putUsersIDPassword.');
             }
             var localVarPath = "/users/{userID}/password"
                 .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
@@ -9064,44 +9131,12 @@ exports.UsersApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        usersUserIDPatch: function (userID, user, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (userID === null || userID === undefined) {
-                throw new RequiredError('userID', 'Required parameter userID was null or undefined when calling usersUserIDPatch.');
-            }
-            if (user === null || user === undefined) {
-                throw new RequiredError('user', 'Required parameter user was null or undefined when calling usersUserIDPatch.');
-            }
-            var localVarPath = "/users/{userID}"
-                .replace("{" + "userID" + "}", encodeURIComponent(String(userID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("User" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(user || {}) : (user || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     };
 };
 exports.UsersApiFp = function (configuration) {
     return {
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options);
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9109,8 +9144,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9118,8 +9153,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options);
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9127,8 +9162,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options);
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9136,8 +9171,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9145,8 +9180,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options);
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9154,8 +9189,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options);
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9163,8 +9198,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9172,8 +9207,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9181,8 +9216,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options);
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9190,8 +9225,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9199,8 +9234,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options);
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9208,8 +9243,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        meGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).meGet(zapTraceSpan, options);
+        deleteUsersID: function (userID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).deleteUsersID(userID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9217,8 +9252,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        mePasswordPut: function (passwordResetBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options);
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9226,8 +9261,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options);
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9235,8 +9270,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9244,8 +9279,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options);
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9253,8 +9288,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options);
+        getMe: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getMe(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9262,8 +9297,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getOrgsIDMembers(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9271,8 +9306,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options);
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getOrgsIDOwners(orgID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9280,8 +9315,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options);
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9289,8 +9324,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9298,8 +9333,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getTasksIDMembers(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9307,8 +9342,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options);
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getTasksIDOwners(taskID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9316,8 +9351,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9325,8 +9360,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options);
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9334,8 +9369,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options);
+        getUsers: function (zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getUsers(zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9343,8 +9378,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
+        getUsersID: function (userID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getUsersID(userID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9352,8 +9387,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options);
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9361,8 +9396,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options);
+        patchUsersID: function (userID, user, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).patchUsersID(userID, user, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9370,8 +9405,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9379,8 +9414,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options);
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9388,8 +9423,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options);
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9397,8 +9432,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9406,8 +9441,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9415,8 +9450,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options);
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9424,8 +9459,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9433,8 +9468,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options);
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9442,8 +9477,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersGet: function (zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersGet(zapTraceSpan, options);
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9451,8 +9486,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersPost: function (user, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersPost(user, zapTraceSpan, options);
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9460,8 +9495,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDDelete: function (userID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersUserIDDelete(userID, zapTraceSpan, options);
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9469,8 +9504,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDGet: function (userID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersUserIDGet(userID, zapTraceSpan, options);
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9478,8 +9513,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options);
+        postUsers: function (user, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).postUsers(user, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9487,8 +9522,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDPasswordPut: function (userID, passwordResetBody, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options);
+        putMePassword: function (passwordResetBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).putMePassword(passwordResetBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9496,8 +9531,8 @@ exports.UsersApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        usersUserIDPatch: function (userID, user, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).usersUserIDPatch(userID, user, zapTraceSpan, options);
+        putUsersIDPassword: function (userID, passwordResetBody, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.UsersApiAxiosParamCreator(configuration).putUsersIDPassword(userID, passwordResetBody, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -9509,140 +9544,140 @@ exports.UsersApiFp = function (configuration) {
 };
 exports.UsersApiFactory = function (configuration, basePath, axios) {
     return {
-        bucketsBucketIDMembersGet: function (bucketID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsIDMembersID: function (userID, bucketID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDMembersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        deleteBucketsIDOwnersID: function (userID, bucketID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDMembersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteDashboardsIDMembersID: function (userID, dashboardID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersGet: function (bucketID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteDashboardsIDOwnersID: function (userID, dashboardID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersPost: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        deleteOrgsIDMembersID: function (userID, orgID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
-        bucketsBucketIDOwnersUserIDDelete: function (userID, bucketID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(axios, basePath);
+        deleteOrgsIDOwnersID: function (userID, orgID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDMembersGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
+        deleteScrapersIDMembersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDMembersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        deleteScrapersIDOwnersID: function (userID, scraperTargetID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDMembersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
+        deleteTasksIDMembersID: function (userID, taskID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDOwnersGet: function (dashboardID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(axios, basePath);
+        deleteTasksIDOwnersID: function (userID, taskID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDOwnersPost: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        deleteTelegrafsIDMembersID: function (userID, telegrafID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDOwnersUserIDDelete: function (userID, dashboardID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(axios, basePath);
+        deleteTelegrafsIDOwnersID: function (userID, telegrafID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        meGet: function (zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).meGet(zapTraceSpan, options)(axios, basePath);
+        deleteUsersID: function (userID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).deleteUsersID(userID, zapTraceSpan, options)(axios, basePath);
         },
-        mePasswordPut: function (passwordResetBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDMembers: function (bucketID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDMembersGet: function (orgID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        getBucketsIDOwners: function (bucketID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDMembersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getDashboardsIDMembers: function (dashboardID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDMembersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
+        getDashboardsIDOwners: function (dashboardID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersGet: function (orgID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(axios, basePath);
+        getMe: function (zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getMe(zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersPost: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDMembers: function (orgID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getOrgsIDMembers(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        orgsOrgIDOwnersUserIDDelete: function (userID, orgID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(axios, basePath);
+        getOrgsIDOwners: function (orgID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getOrgsIDOwners(orgID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getScrapersIDMembers: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getScrapersIDOwners: function (scraperTargetID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDMembersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDMembers: function (taskID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getTasksIDMembers(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersGet: function (scraperTargetID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getTasksIDOwners: function (taskID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getTasksIDOwners(taskID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersPost: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsIDMembers: function (telegrafID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        scrapersScraperTargetIDOwnersUserIDDelete: function (userID, scraperTargetID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(axios, basePath);
+        getTelegrafsIDOwners: function (telegrafID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersGet: function (taskID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(axios, basePath);
+        getUsers: function (zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getUsers(zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        getUsersID: function (userID, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).getUsersID(userID, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDMembersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
+        getUsersIDLogs: function (userID, zapTraceSpan, offset, limit, options) {
+            return exports.UsersApiFp(configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
         },
-        tasksTaskIDOwnersGet: function (taskID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(axios, basePath);
+        patchUsersID: function (userID, user, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).patchUsersID(userID, user, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDOwnersPost: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        postBucketsIDMembers: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        tasksTaskIDOwnersUserIDDelete: function (userID, taskID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(axios, basePath);
+        postBucketsIDOwners: function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        postDashboardsIDMembers: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        postDashboardsIDOwners: function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDMembersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDMembers: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersGet: function (telegrafID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(axios, basePath);
+        postOrgsIDOwners: function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersPost: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
+        postScrapersIDMembers: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        telegrafsTelegrafIDOwnersUserIDDelete: function (userID, telegrafID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(axios, basePath);
+        postScrapersIDOwners: function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersGet: function (zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersGet(zapTraceSpan, options)(axios, basePath);
+        postTasksIDMembers: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersPost: function (user, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersPost(user, zapTraceSpan, options)(axios, basePath);
+        postTasksIDOwners: function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersUserIDDelete: function (userID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersUserIDDelete(userID, zapTraceSpan, options)(axios, basePath);
+        postTelegrafsIDMembers: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersUserIDGet: function (userID, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersUserIDGet(userID, zapTraceSpan, options)(axios, basePath);
+        postTelegrafsIDOwners: function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersUserIDLogsGet: function (userID, zapTraceSpan, offset, limit, options) {
-            return exports.UsersApiFp(configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(axios, basePath);
+        postUsers: function (user, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).postUsers(user, zapTraceSpan, options)(axios, basePath);
         },
-        usersUserIDPasswordPut: function (userID, passwordResetBody, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options)(axios, basePath);
+        putMePassword: function (passwordResetBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).putMePassword(passwordResetBody, zapTraceSpan, options)(axios, basePath);
         },
-        usersUserIDPatch: function (userID, user, zapTraceSpan, options) {
-            return exports.UsersApiFp(configuration).usersUserIDPatch(userID, user, zapTraceSpan, options)(axios, basePath);
+        putUsersIDPassword: function (userID, passwordResetBody, zapTraceSpan, options) {
+            return exports.UsersApiFp(configuration).putUsersIDPassword(userID, passwordResetBody, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -9651,147 +9686,203 @@ var UsersApi = (function (_super) {
     function UsersApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    UsersApi.prototype.bucketsBucketIDMembersGet = function (bucketID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDMembersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteBucketsIDMembersID = function (userID, bucketID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteBucketsIDMembersID(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.bucketsBucketIDMembersPost = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDMembersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteBucketsIDOwnersID = function (userID, bucketID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteBucketsIDOwnersID(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.bucketsBucketIDMembersUserIDDelete = function (userID, bucketID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDMembersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteDashboardsIDMembersID = function (userID, dashboardID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteDashboardsIDMembersID(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.bucketsBucketIDOwnersGet = function (bucketID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDOwnersGet(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteDashboardsIDOwnersID = function (userID, dashboardID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteDashboardsIDOwnersID(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.bucketsBucketIDOwnersPost = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDOwnersPost(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteOrgsIDMembersID = function (userID, orgID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteOrgsIDMembersID(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.bucketsBucketIDOwnersUserIDDelete = function (userID, bucketID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).bucketsBucketIDOwnersUserIDDelete(userID, bucketID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteOrgsIDOwnersID = function (userID, orgID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteOrgsIDOwnersID(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDMembersGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDMembersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteScrapersIDMembersID = function (userID, scraperTargetID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteScrapersIDMembersID(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDMembersPost = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDMembersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteScrapersIDOwnersID = function (userID, scraperTargetID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteScrapersIDOwnersID(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDMembersUserIDDelete = function (userID, dashboardID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDMembersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteTasksIDMembersID = function (userID, taskID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteTasksIDMembersID(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDOwnersGet = function (dashboardID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDOwnersGet(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteTasksIDOwnersID = function (userID, taskID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDOwnersPost = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDOwnersPost(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteTelegrafsIDMembersID = function (userID, telegrafID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteTelegrafsIDMembersID(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.dashboardsDashboardIDOwnersUserIDDelete = function (userID, dashboardID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).dashboardsDashboardIDOwnersUserIDDelete(userID, dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteTelegrafsIDOwnersID = function (userID, telegrafID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteTelegrafsIDOwnersID(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.meGet = function (zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).meGet(zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.deleteUsersID = function (userID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).deleteUsersID(userID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.mePasswordPut = function (passwordResetBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).mePasswordPut(passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getBucketsIDMembers = function (bucketID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getBucketsIDMembers(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDMembersGet = function (orgID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDMembersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getBucketsIDOwners = function (bucketID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getBucketsIDOwners(bucketID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDMembersPost = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDMembersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getDashboardsIDMembers = function (dashboardID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getDashboardsIDMembers(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDMembersUserIDDelete = function (userID, orgID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDMembersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getDashboardsIDOwners = function (dashboardID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getDashboardsIDOwners(dashboardID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDOwnersGet = function (orgID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDOwnersGet(orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getMe = function (zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getMe(zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDOwnersPost = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDOwnersPost(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getOrgsIDMembers = function (orgID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getOrgsIDMembers(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.orgsOrgIDOwnersUserIDDelete = function (userID, orgID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).orgsOrgIDOwnersUserIDDelete(userID, orgID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getOrgsIDOwners = function (orgID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getOrgsIDOwners(orgID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDMembersGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDMembersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getScrapersIDMembers = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getScrapersIDMembers(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDMembersPost = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDMembersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getScrapersIDOwners = function (scraperTargetID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getScrapersIDOwners(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDMembersUserIDDelete = function (userID, scraperTargetID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDMembersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getTasksIDMembers = function (taskID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getTasksIDMembers(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDOwnersGet = function (scraperTargetID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersGet(scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getTasksIDOwners = function (taskID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getTasksIDOwners(taskID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDOwnersPost = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersPost(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getTelegrafsIDMembers = function (telegrafID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getTelegrafsIDMembers(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.scrapersScraperTargetIDOwnersUserIDDelete = function (userID, scraperTargetID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).scrapersScraperTargetIDOwnersUserIDDelete(userID, scraperTargetID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getTelegrafsIDOwners = function (telegrafID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getTelegrafsIDOwners(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDMembersGet = function (taskID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDMembersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getUsers = function (zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getUsers(zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDMembersPost = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDMembersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getUsersID = function (userID, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).getUsersID(userID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDMembersUserIDDelete = function (userID, taskID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDMembersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.getUsersIDLogs = function (userID, zapTraceSpan, offset, limit, options) {
+        return exports.UsersApiFp(this.configuration).getUsersIDLogs(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDOwnersGet = function (taskID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDOwnersGet(taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.patchUsersID = function (userID, user, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).patchUsersID(userID, user, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDOwnersPost = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDOwnersPost(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postBucketsIDMembers = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postBucketsIDMembers(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.tasksTaskIDOwnersUserIDDelete = function (userID, taskID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).tasksTaskIDOwnersUserIDDelete(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postBucketsIDOwners = function (bucketID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postBucketsIDOwners(bucketID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDMembersGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDMembersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postDashboardsIDMembers = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postDashboardsIDMembers(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDMembersPost = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDMembersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postDashboardsIDOwners = function (dashboardID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postDashboardsIDOwners(dashboardID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDMembersUserIDDelete = function (userID, telegrafID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDMembersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postOrgsIDMembers = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postOrgsIDMembers(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDOwnersGet = function (telegrafID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersGet(telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postOrgsIDOwners = function (orgID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postOrgsIDOwners(orgID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDOwnersPost = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersPost(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postScrapersIDMembers = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postScrapersIDMembers(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.telegrafsTelegrafIDOwnersUserIDDelete = function (userID, telegrafID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).telegrafsTelegrafIDOwnersUserIDDelete(userID, telegrafID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postScrapersIDOwners = function (scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postScrapersIDOwners(scraperTargetID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersGet = function (zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersGet(zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postTasksIDMembers = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postTasksIDMembers(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersPost = function (user, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersPost(user, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postTasksIDOwners = function (taskID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postTasksIDOwners(taskID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersUserIDDelete = function (userID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersUserIDDelete(userID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postTelegrafsIDMembers = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postTelegrafsIDMembers(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersUserIDGet = function (userID, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersUserIDGet(userID, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.postTelegrafsIDOwners = function (telegrafID, addResourceMemberRequestBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postTelegrafsIDOwners(telegrafID, addResourceMemberRequestBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersUserIDLogsGet = function (userID, zapTraceSpan, offset, limit, options) {
-        return exports.UsersApiFp(this.configuration).usersUserIDLogsGet(userID, zapTraceSpan, offset, limit, options)(this.axios, this.basePath);
+    UsersApi.prototype.postUsers = function (user, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).postUsers(user, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersUserIDPasswordPut = function (userID, passwordResetBody, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersUserIDPasswordPut(userID, passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.putMePassword = function (passwordResetBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).putMePassword(passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    UsersApi.prototype.usersUserIDPatch = function (userID, user, zapTraceSpan, options) {
-        return exports.UsersApiFp(this.configuration).usersUserIDPatch(userID, user, zapTraceSpan, options)(this.axios, this.basePath);
+    UsersApi.prototype.putUsersIDPassword = function (userID, passwordResetBody, zapTraceSpan, options) {
+        return exports.UsersApiFp(this.configuration).putUsersIDPassword(userID, passwordResetBody, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return UsersApi;
 }(BaseAPI));
 exports.UsersApi = UsersApi;
 exports.VariablesApiAxiosParamCreator = function (configuration) {
     return {
-        variablesGet: function (zapTraceSpan, org, orgID, options) {
+        deleteVariablesID: function (variableID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling deleteVariablesID.');
+            }
+            var localVarPath = "/variables/{variableID}"
+                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        deleteVariablesIDLabelsID: function (variableID, labelID, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling deleteVariablesIDLabelsID.');
+            }
+            if (labelID === null || labelID === undefined) {
+                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling deleteVariablesIDLabelsID.');
+            }
+            var localVarPath = "/variables/{variableID}/labels/{labelID}"
+                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)))
+                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        getVariables: function (zapTraceSpan, org, orgID, options) {
             if (options === void 0) { options = {}; }
             var localVarPath = "/variables";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -9819,64 +9910,10 @@ exports.VariablesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        variablesPost: function (variable, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (variable === null || variable === undefined) {
-                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling variablesPost.');
-            }
-            var localVarPath = "/variables";
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("Variable" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(variable || {}) : (variable || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        variablesVariableIDDelete: function (variableID, zapTraceSpan, options) {
+        getVariablesID: function (variableID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDDelete.');
-            }
-            var localVarPath = "/variables/{variableID}"
-                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        variablesVariableIDGet: function (variableID, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDGet.');
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling getVariablesID.');
             }
             var localVarPath = "/variables/{variableID}"
                 .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
@@ -9899,10 +9936,10 @@ exports.VariablesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        variablesVariableIDLabelsGet: function (variableID, zapTraceSpan, options) {
+        getVariablesIDLabels: function (variableID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDLabelsGet.');
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling getVariablesIDLabels.');
             }
             var localVarPath = "/variables/{variableID}/labels"
                 .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
@@ -9925,75 +9962,13 @@ exports.VariablesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        variablesVariableIDLabelsLabelIDDelete: function (variableID, labelID, zapTraceSpan, options) {
+        patchVariablesID: function (variableID, variable, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDLabelsLabelIDDelete.');
-            }
-            if (labelID === null || labelID === undefined) {
-                throw new RequiredError('labelID', 'Required parameter labelID was null or undefined when calling variablesVariableIDLabelsLabelIDDelete.');
-            }
-            var localVarPath = "/variables/{variableID}/labels/{labelID}"
-                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)))
-                .replace("{" + "labelID" + "}", encodeURIComponent(String(labelID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        variablesVariableIDLabelsPost: function (variableID, labelMapping, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDLabelsPost.');
-            }
-            if (labelMapping === null || labelMapping === undefined) {
-                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling variablesVariableIDLabelsPost.');
-            }
-            var localVarPath = "/variables/{variableID}/labels"
-                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
-            var localVarUrlObj = url.parse(localVarPath, true);
-            var baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
-            var localVarHeaderParameter = {};
-            var localVarQueryParameter = {};
-            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
-                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
-            }
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        variablesVariableIDPatch: function (variableID, variable, zapTraceSpan, options) {
-            if (options === void 0) { options = {}; }
-            if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDPatch.');
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling patchVariablesID.');
             }
             if (variable === null || variable === undefined) {
-                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling variablesVariableIDPatch.');
+                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling patchVariablesID.');
             }
             var localVarPath = "/variables/{variableID}"
                 .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
@@ -10019,13 +9994,73 @@ exports.VariablesApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        variablesVariableIDPut: function (variableID, variable, zapTraceSpan, options) {
+        postVariables: function (variable, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (variable === null || variable === undefined) {
+                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling postVariables.');
+            }
+            var localVarPath = "/variables";
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("Variable" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(variable || {}) : (variable || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        postVariablesIDLabels: function (variableID, labelMapping, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (variableID === null || variableID === undefined) {
-                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling variablesVariableIDPut.');
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling postVariablesIDLabels.');
+            }
+            if (labelMapping === null || labelMapping === undefined) {
+                throw new RequiredError('labelMapping', 'Required parameter labelMapping was null or undefined when calling postVariablesIDLabels.');
+            }
+            var localVarPath = "/variables/{variableID}/labels"
+                .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
+            var localVarUrlObj = url.parse(localVarPath, true);
+            var baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            var localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            var localVarHeaderParameter = {};
+            var localVarQueryParameter = {};
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ("LabelMapping" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data = needsSerialization ? JSON.stringify(labelMapping || {}) : (labelMapping || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        putVariablesID: function (variableID, variable, zapTraceSpan, options) {
+            if (options === void 0) { options = {}; }
+            if (variableID === null || variableID === undefined) {
+                throw new RequiredError('variableID', 'Required parameter variableID was null or undefined when calling putVariablesID.');
             }
             if (variable === null || variable === undefined) {
-                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling variablesVariableIDPut.');
+                throw new RequiredError('variable', 'Required parameter variable was null or undefined when calling putVariablesID.');
             }
             var localVarPath = "/variables/{variableID}"
                 .replace("{" + "variableID" + "}", encodeURIComponent(String(variableID)));
@@ -10055,8 +10090,8 @@ exports.VariablesApiAxiosParamCreator = function (configuration) {
 };
 exports.VariablesApiFp = function (configuration) {
     return {
-        variablesGet: function (zapTraceSpan, org, orgID, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesGet(zapTraceSpan, org, orgID, options);
+        deleteVariablesID: function (variableID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).deleteVariablesID(variableID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10064,8 +10099,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesPost: function (variable, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesPost(variable, zapTraceSpan, options);
+        deleteVariablesIDLabelsID: function (variableID, labelID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).deleteVariablesIDLabelsID(variableID, labelID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10073,8 +10108,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDDelete: function (variableID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options);
+        getVariables: function (zapTraceSpan, org, orgID, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).getVariables(zapTraceSpan, org, orgID, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10082,8 +10117,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDGet: function (variableID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDGet(variableID, zapTraceSpan, options);
+        getVariablesID: function (variableID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).getVariablesID(variableID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10091,8 +10126,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDLabelsGet: function (variableID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options);
+        getVariablesIDLabels: function (variableID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).getVariablesIDLabels(variableID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10100,8 +10135,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDLabelsLabelIDDelete: function (variableID, labelID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options);
+        patchVariablesID: function (variableID, variable, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).patchVariablesID(variableID, variable, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10109,8 +10144,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDLabelsPost: function (variableID, labelMapping, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options);
+        postVariables: function (variable, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).postVariables(variable, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10118,8 +10153,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDPatch: function (variableID, variable, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options);
+        postVariablesIDLabels: function (variableID, labelMapping, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).postVariablesIDLabels(variableID, labelMapping, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10127,8 +10162,8 @@ exports.VariablesApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        variablesVariableIDPut: function (variableID, variable, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options);
+        putVariablesID: function (variableID, variable, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.VariablesApiAxiosParamCreator(configuration).putVariablesID(variableID, variable, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10140,32 +10175,32 @@ exports.VariablesApiFp = function (configuration) {
 };
 exports.VariablesApiFactory = function (configuration, basePath, axios) {
     return {
-        variablesGet: function (zapTraceSpan, org, orgID, options) {
-            return exports.VariablesApiFp(configuration).variablesGet(zapTraceSpan, org, orgID, options)(axios, basePath);
+        deleteVariablesID: function (variableID, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).deleteVariablesID(variableID, zapTraceSpan, options)(axios, basePath);
         },
-        variablesPost: function (variable, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesPost(variable, zapTraceSpan, options)(axios, basePath);
+        deleteVariablesIDLabelsID: function (variableID, labelID, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).deleteVariablesIDLabelsID(variableID, labelID, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDDelete: function (variableID, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options)(axios, basePath);
+        getVariables: function (zapTraceSpan, org, orgID, options) {
+            return exports.VariablesApiFp(configuration).getVariables(zapTraceSpan, org, orgID, options)(axios, basePath);
         },
-        variablesVariableIDGet: function (variableID, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDGet(variableID, zapTraceSpan, options)(axios, basePath);
+        getVariablesID: function (variableID, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).getVariablesID(variableID, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDLabelsGet: function (variableID, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options)(axios, basePath);
+        getVariablesIDLabels: function (variableID, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).getVariablesIDLabels(variableID, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDLabelsLabelIDDelete: function (variableID, labelID, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options)(axios, basePath);
+        patchVariablesID: function (variableID, variable, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).patchVariablesID(variableID, variable, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDLabelsPost: function (variableID, labelMapping, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options)(axios, basePath);
+        postVariables: function (variable, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).postVariables(variable, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDPatch: function (variableID, variable, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options)(axios, basePath);
+        postVariablesIDLabels: function (variableID, labelMapping, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).postVariablesIDLabels(variableID, labelMapping, zapTraceSpan, options)(axios, basePath);
         },
-        variablesVariableIDPut: function (variableID, variable, zapTraceSpan, options) {
-            return exports.VariablesApiFp(configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options)(axios, basePath);
+        putVariablesID: function (variableID, variable, zapTraceSpan, options) {
+            return exports.VariablesApiFp(configuration).putVariablesID(variableID, variable, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -10174,45 +10209,45 @@ var VariablesApi = (function (_super) {
     function VariablesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    VariablesApi.prototype.variablesGet = function (zapTraceSpan, org, orgID, options) {
-        return exports.VariablesApiFp(this.configuration).variablesGet(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
+    VariablesApi.prototype.deleteVariablesID = function (variableID, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).deleteVariablesID(variableID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesPost = function (variable, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesPost(variable, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.deleteVariablesIDLabelsID = function (variableID, labelID, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).deleteVariablesIDLabelsID(variableID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDDelete = function (variableID, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDDelete(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.getVariables = function (zapTraceSpan, org, orgID, options) {
+        return exports.VariablesApiFp(this.configuration).getVariables(zapTraceSpan, org, orgID, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDGet = function (variableID, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDGet(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.getVariablesID = function (variableID, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).getVariablesID(variableID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDLabelsGet = function (variableID, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDLabelsGet(variableID, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.getVariablesIDLabels = function (variableID, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).getVariablesIDLabels(variableID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDLabelsLabelIDDelete = function (variableID, labelID, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDLabelsLabelIDDelete(variableID, labelID, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.patchVariablesID = function (variableID, variable, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).patchVariablesID(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDLabelsPost = function (variableID, labelMapping, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDLabelsPost(variableID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.postVariables = function (variable, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).postVariables(variable, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDPatch = function (variableID, variable, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDPatch(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.postVariablesIDLabels = function (variableID, labelMapping, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).postVariablesIDLabels(variableID, labelMapping, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    VariablesApi.prototype.variablesVariableIDPut = function (variableID, variable, zapTraceSpan, options) {
-        return exports.VariablesApiFp(this.configuration).variablesVariableIDPut(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
+    VariablesApi.prototype.putVariablesID = function (variableID, variable, zapTraceSpan, options) {
+        return exports.VariablesApiFp(this.configuration).putVariablesID(variableID, variable, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return VariablesApi;
 }(BaseAPI));
 exports.VariablesApi = VariablesApi;
 exports.ViewsApiAxiosParamCreator = function (configuration) {
     return {
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling getDashboardsIDCellsIDView.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewGet.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling getDashboardsIDCellsIDView.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -10236,16 +10271,16 @@ exports.ViewsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
             if (options === void 0) { options = {}; }
             if (dashboardID === null || dashboardID === undefined) {
-                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+                throw new RequiredError('dashboardID', 'Required parameter dashboardID was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             if (cellID === null || cellID === undefined) {
-                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+                throw new RequiredError('cellID', 'Required parameter cellID was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             if (view === null || view === undefined) {
-                throw new RequiredError('view', 'Required parameter view was null or undefined when calling dashboardsDashboardIDCellsCellIDViewPatch.');
+                throw new RequiredError('view', 'Required parameter view was null or undefined when calling patchDashboardsIDCellsIDView.');
             }
             var localVarPath = "/dashboards/{dashboardID}/cells/{cellID}/view"
                 .replace("{" + "dashboardID" + "}", encodeURIComponent(String(dashboardID)))
@@ -10276,8 +10311,8 @@ exports.ViewsApiAxiosParamCreator = function (configuration) {
 };
 exports.ViewsApiFp = function (configuration) {
     return {
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options);
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ViewsApiAxiosParamCreator(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10285,8 +10320,8 @@ exports.ViewsApiFp = function (configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            var localVarAxiosArgs = exports.ViewsApiAxiosParamCreator(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options);
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            var localVarAxiosArgs = exports.ViewsApiAxiosParamCreator(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10298,11 +10333,11 @@ exports.ViewsApiFp = function (configuration) {
 };
 exports.ViewsApiFactory = function (configuration, basePath, axios) {
     return {
-        dashboardsDashboardIDCellsCellIDViewGet: function (dashboardID, cellID, zapTraceSpan, options) {
-            return exports.ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
+        getDashboardsIDCellsIDView: function (dashboardID, cellID, zapTraceSpan, options) {
+            return exports.ViewsApiFp(configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(axios, basePath);
         },
-        dashboardsDashboardIDCellsCellIDViewPatch: function (dashboardID, cellID, view, zapTraceSpan, options) {
-            return exports.ViewsApiFp(configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
+        patchDashboardsIDCellsIDView: function (dashboardID, cellID, view, zapTraceSpan, options) {
+            return exports.ViewsApiFp(configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -10311,27 +10346,27 @@ var ViewsApi = (function (_super) {
     function ViewsApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ViewsApi.prototype.dashboardsDashboardIDCellsCellIDViewGet = function (dashboardID, cellID, zapTraceSpan, options) {
-        return exports.ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
+    ViewsApi.prototype.getDashboardsIDCellsIDView = function (dashboardID, cellID, zapTraceSpan, options) {
+        return exports.ViewsApiFp(this.configuration).getDashboardsIDCellsIDView(dashboardID, cellID, zapTraceSpan, options)(this.axios, this.basePath);
     };
-    ViewsApi.prototype.dashboardsDashboardIDCellsCellIDViewPatch = function (dashboardID, cellID, view, zapTraceSpan, options) {
-        return exports.ViewsApiFp(this.configuration).dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
+    ViewsApi.prototype.patchDashboardsIDCellsIDView = function (dashboardID, cellID, view, zapTraceSpan, options) {
+        return exports.ViewsApiFp(this.configuration).patchDashboardsIDCellsIDView(dashboardID, cellID, view, zapTraceSpan, options)(this.axios, this.basePath);
     };
     return ViewsApi;
 }(BaseAPI));
 exports.ViewsApi = ViewsApi;
 exports.WriteApiAxiosParamCreator = function (configuration) {
     return {
-        writePost: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
+        postWrite: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
             if (options === void 0) { options = {}; }
             if (org === null || org === undefined) {
-                throw new RequiredError('org', 'Required parameter org was null or undefined when calling writePost.');
+                throw new RequiredError('org', 'Required parameter org was null or undefined when calling postWrite.');
             }
             if (bucket === null || bucket === undefined) {
-                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling writePost.');
+                throw new RequiredError('bucket', 'Required parameter bucket was null or undefined when calling postWrite.');
             }
             if (body === null || body === undefined) {
-                throw new RequiredError('body', 'Required parameter body was null or undefined when calling writePost.');
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling postWrite.');
             }
             var localVarPath = "/write";
             var localVarUrlObj = url.parse(localVarPath, true);
@@ -10381,8 +10416,8 @@ exports.WriteApiAxiosParamCreator = function (configuration) {
 };
 exports.WriteApiFp = function (configuration) {
     return {
-        writePost: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
-            var localVarAxiosArgs = exports.WriteApiAxiosParamCreator(configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options);
+        postWrite: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
+            var localVarAxiosArgs = exports.WriteApiAxiosParamCreator(configuration).postWrite(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options);
             return function (axios, basePath) {
                 if (axios === void 0) { axios = axios_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -10394,8 +10429,8 @@ exports.WriteApiFp = function (configuration) {
 };
 exports.WriteApiFactory = function (configuration, basePath, axios) {
     return {
-        writePost: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
-            return exports.WriteApiFp(configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(axios, basePath);
+        postWrite: function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
+            return exports.WriteApiFp(configuration).postWrite(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(axios, basePath);
         },
     };
 };
@@ -10404,8 +10439,8 @@ var WriteApi = (function (_super) {
     function WriteApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    WriteApi.prototype.writePost = function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
-        return exports.WriteApiFp(this.configuration).writePost(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(this.axios, this.basePath);
+    WriteApi.prototype.postWrite = function (org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options) {
+        return exports.WriteApiFp(this.configuration).postWrite(org, bucket, body, zapTraceSpan, contentEncoding, contentType, contentLength, accept, precision, options)(this.axios, this.basePath);
     };
     return WriteApi;
 }(BaseAPI));

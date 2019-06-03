@@ -53,7 +53,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.queryAstPost(undefined, undefined, {
+                    case 0: return [4, this.service.postQueryAst(undefined, undefined, {
                             query: query,
                         }, this.serviceOptions)];
                     case 1:

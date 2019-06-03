@@ -25,7 +25,7 @@ export default class {
   }
 
   public async get(id: string): Promise<IBucket> {
-    const {data} = await this.service.bucketsBucketIDGet(
+    const {data} = await this.service.getBucketsID(
       id,
       undefined,
       this.serviceOptions
@@ -37,7 +37,7 @@ export default class {
   public async getAll(orgID?: string): Promise<IBucket[]> {
     const {
       data: {buckets},
-    } = await this.service.bucketsGet(
+    } = await this.service.getBuckets(
       undefined,
       undefined,
       undefined,
@@ -51,7 +51,7 @@ export default class {
   }
 
   public async create(bucket: BucketCreate): Promise<IBucket> {
-    const {data} = await this.service.bucketsPost(
+    const {data} = await this.service.postBuckets(
       bucket,
       undefined,
       this.serviceOptions
@@ -62,7 +62,7 @@ export default class {
 
   public async update(id: string, bucket: Partial<Bucket>): Promise<IBucket> {
     const original = await this.get(id)
-    const {data} = await this.service.bucketsBucketIDPatch(
+    const {data} = await this.service.patchBucketsID(
       id,
       {
         ...original,
@@ -76,7 +76,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.bucketsBucketIDDelete(
+    const {data} = await this.service.deleteBucketsID(
       id,
       undefined,
       this.serviceOptions

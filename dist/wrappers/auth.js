@@ -57,7 +57,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.signoutPost(undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postSignout(undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -70,7 +70,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.signinPost(undefined, __assign({}, this.serviceOptions, { auth: { username: username, password: password } }))];
+                    case 0: return [4, this.service.postSignin(undefined, __assign({}, this.serviceOptions, { auth: { username: username, password: password } }))];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

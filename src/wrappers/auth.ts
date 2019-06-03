@@ -11,7 +11,7 @@ export default class {
   }
 
   public async signout(): Promise<Response> {
-    const {data} = await this.service.signoutPost(
+    const {data} = await this.service.postSignout(
       undefined,
       this.serviceOptions
     )
@@ -20,7 +20,7 @@ export default class {
   }
 
   public async signin(username: string, password: string): Promise<Response> {
-    const {data} = await this.service.signinPost(undefined, {
+    const {data} = await this.service.postSignin(undefined, {
       ...this.serviceOptions,
       auth: {username, password},
     })

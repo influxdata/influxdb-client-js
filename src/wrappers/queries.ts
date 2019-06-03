@@ -17,7 +17,7 @@ export default class {
   }
 
   public async ast(query: string): Promise<Package | undefined> {
-    const {data} = await this.service.queryAstPost(
+    const {data} = await this.service.postQueryAst(
       undefined,
       undefined,
       {

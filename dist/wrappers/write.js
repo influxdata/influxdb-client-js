@@ -56,7 +56,7 @@ var default_1 = (function () {
                 switch (_a.label) {
                     case 0:
                         precision = options.precision || api_1.WritePrecision.Ns;
-                        return [4, this.service.writePost(orgID, bucket, data, undefined, undefined, undefined, undefined, undefined, precision, this.serviceOptions)];
+                        return [4, this.service.postWrite(orgID, bucket, data, undefined, undefined, undefined, undefined, undefined, precision, this.serviceOptions)];
                     case 1:
                         response = (_a.sent()).data;
                         return [2, response];

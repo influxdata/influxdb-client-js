@@ -68,6 +68,11 @@ export interface Authorizations {
     links?: Links;
     authorizations?: Array<Authorization>;
 }
+export interface Axes {
+    x?: Axis;
+    y?: Axis;
+    y2?: Axis;
+}
 export interface Axis {
     bounds?: Array<number>;
     label?: string;
@@ -101,6 +106,8 @@ export interface Bucket {
     description?: string;
     orgID?: string;
     rp?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     retentionRules: Array<BucketRetentionRules>;
     labels?: Array<Label>;
 }
@@ -187,7 +194,6 @@ export interface CreateCell {
     y?: number;
     w?: number;
     h?: number;
-    viewID?: string;
     usingView?: string;
 }
 export interface CreateDashboardRequest {
@@ -235,6 +241,10 @@ export interface DateTimeLiteral {
     type?: string;
     value?: string;
 }
+export interface DecimalPlaces {
+    isEnforced?: boolean;
+    digits?: number;
+}
 export interface Dialect {
     header?: boolean;
     delimiter?: string;
@@ -281,6 +291,8 @@ export interface DocumentMeta {
     type?: string;
     description?: string;
     version: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 export interface DocumentUpdate {
     meta?: DocumentMeta;
@@ -344,6 +356,32 @@ export interface FunctionExpression {
     params?: Array<Property>;
     body?: Node;
 }
+export interface GaugeViewProperties extends ViewProperties {
+    type?: GaugeViewProperties.TypeEnum;
+    prefix?: string;
+    suffix?: string;
+    legend?: Legend;
+    decimalPlaces?: DecimalPlaces;
+}
+export declare namespace GaugeViewProperties {
+    enum TypeEnum {
+        Gauge = "gauge"
+    }
+}
+export interface HistogramViewProperties extends ViewProperties {
+    type?: HistogramViewProperties.TypeEnum;
+    xColumn?: string;
+    fillColumns?: Array<string>;
+    xDomain?: Array<number>;
+    xAxisLabel?: string;
+    position?: string;
+    binCount?: number;
+}
+export declare namespace HistogramViewProperties {
+    enum TypeEnum {
+        Histogram = "histogram"
+    }
+}
 export interface Identifier {
     type?: string;
     name?: string;
@@ -397,6 +435,34 @@ export interface LabelsResponse {
 }
 export interface LanguageRequest {
     query: string;
+}
+export interface Legend {
+    type?: Legend.TypeEnum;
+    orientation?: Legend.OrientationEnum;
+}
+export declare namespace Legend {
+    enum TypeEnum {
+        Static = "static"
+    }
+    enum OrientationEnum {
+        Top = "top",
+        Bottom = "bottom",
+        Left = "left",
+        Right = "right"
+    }
+}
+export interface LinePlusSingleStatProperties extends ViewProperties {
+    axes?: Axes;
+    type?: LinePlusSingleStatProperties.TypeEnum;
+    legend?: Legend;
+    prefix?: string;
+    suffix?: string;
+    decimalPlaces?: DecimalPlaces;
+}
+export declare namespace LinePlusSingleStatProperties {
+    enum TypeEnum {
+        LinePlusSingleStat = "line-plus-single-stat"
+    }
 }
 export interface LineProtocolError {
     code: LineProtocolError.CodeEnum;
@@ -475,6 +541,15 @@ export interface MapVariableProperties {
 export declare namespace MapVariableProperties {
     enum TypeEnum {
         Map = "map"
+    }
+}
+export interface MarkdownViewProperties {
+    type?: MarkdownViewProperties.TypeEnum;
+    note?: string;
+}
+export declare namespace MarkdownViewProperties {
+    enum TypeEnum {
+        Markdown = "markdown"
     }
 }
 export interface MemberAssignment {
@@ -556,6 +631,8 @@ export interface Organization {
     id?: string;
     name: string;
     description?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     status?: Organization.StatusEnum;
 }
 export declare namespace Organization {
@@ -775,6 +852,7 @@ export interface Run {
     taskID?: string;
     status?: Run.StatusEnum;
     scheduledFor?: Date;
+    log?: Array<RunLog>;
     startedAt?: Date;
     finishedAt?: Date;
     requestedAt?: Date;
@@ -794,6 +872,10 @@ export interface RunLinks {
     task?: string;
     logs?: string;
     retry?: string;
+}
+export interface RunLog {
+    time?: string;
+    message?: string;
 }
 export interface RunManually {
     scheduledFor?: Date;
@@ -830,6 +912,18 @@ export interface SecretKeys {
 }
 export interface SecretKeysResponse extends SecretKeys {
     links?: any;
+}
+export interface SingleStatViewProperties extends ViewProperties {
+    type?: SingleStatViewProperties.TypeEnum;
+    prefix?: string;
+    suffix?: string;
+    legend?: Legend;
+    decimalPlaces?: DecimalPlaces;
+}
+export declare namespace SingleStatViewProperties {
+    enum TypeEnum {
+        SingleStat = "single-stat"
+    }
 }
 export interface Source {
     links?: SourceLinks;
@@ -876,11 +970,24 @@ export interface StringLiteral {
     type?: string;
     value?: string;
 }
+export interface TableViewProperties extends ViewProperties {
+    type?: TableViewProperties.TypeEnum;
+    tableOptions?: any;
+    fieldOptions?: Array<RenamableField>;
+    timeFormat?: string;
+    decimalPlaces?: DecimalPlaces;
+}
+export declare namespace TableViewProperties {
+    enum TypeEnum {
+        Table = "table"
+    }
+}
 export interface Task {
     id: string;
     orgID: string;
     org?: string;
     name: string;
+    description?: string;
     status?: Task.StatusEnum;
     labels?: Array<Label>;
     authorizationID?: string;
@@ -1289,7 +1396,7 @@ export interface TelegrafRequest {
     description?: string;
     agent?: TelegrafRequestAgent;
     plugins?: Array<TelegrafRequestPlugin>;
-    organizationID?: string;
+    orgID?: string;
 }
 export interface TelegrafRequestAgent {
     collectionInterval?: number;
@@ -1337,57 +1444,6 @@ export interface Users {
 export interface UsersLinks {
     self?: string;
 }
-export interface V1ViewProperties {
-    type?: V1ViewProperties.TypeEnum;
-    queries?: Array<DashboardQuery>;
-    axes?: V1ViewPropertiesAxes;
-    graphType?: V1ViewProperties.GraphTypeEnum;
-    colors?: Array<DashboardColor>;
-    legend?: V1ViewPropertiesLegend;
-    tableOptions?: any;
-    fieldOptions?: Array<RenamableField>;
-    timeFormat?: string;
-    decimalPoints?: V1ViewPropertiesDecimalPoints;
-}
-export declare namespace V1ViewProperties {
-    enum TypeEnum {
-        ChronografV1 = "chronograf-v1"
-    }
-    enum GraphTypeEnum {
-        SingleStat = "single-stat",
-        Line = "line",
-        LinePlusSingleStat = "line-plus-single-stat",
-        LineStacked = "line-stacked",
-        LineStepplot = "line-stepplot",
-        Bar = "bar",
-        Gauge = "gauge",
-        Table = "table"
-    }
-}
-export interface V1ViewPropertiesAxes {
-    x?: Axis;
-    y?: Axis;
-    y2?: Axis;
-}
-export interface V1ViewPropertiesDecimalPoints {
-    isEnforced?: boolean;
-    digits?: number;
-}
-export interface V1ViewPropertiesLegend {
-    type?: V1ViewPropertiesLegend.TypeEnum;
-    orientation?: V1ViewPropertiesLegend.OrientationEnum;
-}
-export declare namespace V1ViewPropertiesLegend {
-    enum TypeEnum {
-        Static = "static"
-    }
-    enum OrientationEnum {
-        Top = "top",
-        Bottom = "bottom",
-        Left = "left",
-        Right = "right"
-    }
-}
 export interface Variable {
     links?: VariableLinks;
     id?: string;
@@ -1420,1045 +1476,1072 @@ export interface View {
 export interface ViewLinks {
     self?: string;
 }
+export interface ViewProperties {
+    queries?: Array<DashboardQuery>;
+    colors?: Array<DashboardColor>;
+    note?: string;
+    showNoteWhenEmpty?: boolean;
+}
+export interface Views {
+    links?: ViewLinks;
+    views?: Array<View>;
+}
 export declare enum WritePrecision {
     Ms = "ms",
     S = "s",
     Us = "us",
     Ns = "ns"
 }
+export interface XYViewProperties extends ViewProperties {
+    axes?: Axes;
+    type?: XYViewProperties.TypeEnum;
+    legend?: Legend;
+    geom?: XYViewProperties.GeomEnum;
+}
+export declare namespace XYViewProperties {
+    enum TypeEnum {
+        Xy = "xy"
+    }
+    enum GeomEnum {
+        Line = "line",
+        Step = "step",
+        Stacked = "stacked",
+        Bar = "bar"
+    }
+}
 export declare const AuthorizationsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
-    authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getAuthorizations(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    getAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchAuthorizationsID(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postAuthorizations(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const AuthorizationsApiFp: (configuration?: Configuration | undefined) => {
-    authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
-    authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorizations>;
-    authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
+    deleteAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getAuthorizations(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorizations>;
+    getAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
+    patchAuthorizationsID(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
+    postAuthorizations(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Authorization>;
 };
 export declare const AuthorizationsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    authorizationsAuthIDGet(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
-    authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Authorizations>;
-    authorizationsPost(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
+    deleteAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getAuthorizations(zapTraceSpan?: string | undefined, userID?: string | undefined, user?: string | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Authorizations>;
+    getAuthorizationsID(authID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
+    patchAuthorizationsID(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
+    postAuthorizations(authorization: Authorization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Authorization>;
 };
 export declare class AuthorizationsApi extends BaseAPI {
-    authorizationsAuthIDDelete(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    authorizationsAuthIDGet(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
-    authorizationsAuthIDPatch(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
-    authorizationsGet(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any): AxiosPromise<Authorizations>;
-    authorizationsPost(authorization: Authorization, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
+    deleteAuthorizationsID(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getAuthorizations(zapTraceSpan?: string, userID?: string, user?: string, orgID?: string, org?: string, options?: any): AxiosPromise<Authorizations>;
+    getAuthorizationsID(authID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
+    patchAuthorizationsID(authID: string, authorizationUpdateRequest: AuthorizationUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
+    postAuthorizations(authorization: Authorization, zapTraceSpan?: string, options?: any): AxiosPromise<Authorization>;
 }
 export declare const BucketsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): RequestArgs;
-    bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsIDLabelsID(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBuckets(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): RequestArgs;
+    getBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBucketsIDLabels(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    patchBucketsID(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBuckets(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBucketsIDLabels(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const BucketsApiFp: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
-    bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
-    bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
-    bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    deleteBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteBucketsIDLabelsID(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getBuckets(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    getBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
+    getBucketsIDLabels(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    patchBucketsID(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
+    postBuckets(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Bucket>;
+    postBucketsIDLabels(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
 };
 export declare const BucketsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
-    bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
-    bucketsGet(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): AxiosPromise<Buckets>;
-    bucketsPost(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    deleteBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDLabelsID(bucketID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getBuckets(zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, org?: string | undefined, orgID?: string | undefined, name?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    getBucketsID(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
+    getBucketsIDLabels(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    patchBucketsID(bucketID: string, bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
+    postBuckets(bucket: Bucket, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Bucket>;
+    postBucketsIDLabels(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
 };
 export declare class BucketsApi extends BaseAPI {
-    bucketsBucketIDDelete(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
-    bucketsBucketIDLabelsGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    bucketsBucketIDLabelsLabelIDDelete(bucketID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDLabelsPost(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDPatch(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
-    bucketsGet(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any): AxiosPromise<Buckets>;
-    bucketsPost(bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
+    deleteBucketsID(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDLabelsID(bucketID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getBuckets(zapTraceSpan?: string, offset?: number, limit?: number, org?: string, orgID?: string, name?: string, options?: any): AxiosPromise<Buckets>;
+    getBucketsID(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
+    getBucketsIDLabels(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
+    patchBucketsID(bucketID: string, bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
+    postBuckets(bucket: Bucket, zapTraceSpan?: string, options?: any): AxiosPromise<Bucket>;
+    postBucketsIDLabels(bucketID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
 }
 export declare const CellsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const CellsApiFp: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
 };
 export declare const CellsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
 };
 export declare class CellsApi extends BaseAPI {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
+    putDashboardsIDCells(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
 }
 export declare const DashboardsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsGet(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
-    dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDLabelsID(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboards(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    getDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDLabels(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsID(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboards(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDLabels(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const DashboardsApiFp: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
-    dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
-    dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
-    dashboardsGet(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboards>;
-    dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
+    deleteDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDLabelsID(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getDashboards(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboards>;
+    getDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    getDashboardsIDLabels(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    patchDashboardsID(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    postDashboards(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Cell>;
+    postDashboardsIDLabels(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Dashboard>;
 };
 export declare const DashboardsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
-    dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
-    dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
-    dashboardsGet(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Dashboards>;
-    dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
+    deleteDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDLabelsID(dashboardID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getDashboards(zapTraceSpan?: string | undefined, owner?: string | undefined, sortBy?: "ID" | "CreatedAt" | "UpdatedAt" | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Dashboards>;
+    getDashboardsID(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    getDashboardsIDLabels(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    patchDashboardsID(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    postDashboards(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Cell>;
+    postDashboardsIDLabels(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    putDashboardsIDCells(dashboardID: string, cell: Cell[], zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Dashboard>;
 };
 export declare class DashboardsApi extends BaseAPI {
-    dashboardsDashboardIDCellsCellIDDelete(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDCellsCellIDPatch(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsPost(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
-    dashboardsDashboardIDCellsPut(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
-    dashboardsDashboardIDDelete(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
-    dashboardsDashboardIDLabelsGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    dashboardsDashboardIDLabelsLabelIDDelete(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDLabelsPost(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDPatch(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
-    dashboardsGet(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options?: any): AxiosPromise<Dashboards>;
-    dashboardsPost(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
+    deleteDashboardsID(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDCellsID(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDLabelsID(dashboardID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getDashboards(zapTraceSpan?: string, owner?: string, sortBy?: 'ID' | 'CreatedAt' | 'UpdatedAt', id?: Array<string>, orgID?: string, org?: string, options?: any): AxiosPromise<Dashboards>;
+    getDashboardsID(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    getDashboardsIDLabels(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    patchDashboardsID(dashboardID: string, dashboard: Dashboard, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
+    patchDashboardsIDCellsID(dashboardID: string, cellID: string, cellUpdate: CellUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    postDashboards(createDashboardRequest: CreateDashboardRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
+    postDashboardsIDCells(dashboardID: string, createCell: CreateCell, zapTraceSpan?: string, options?: any): AxiosPromise<Cell>;
+    postDashboardsIDLabels(dashboardID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    putDashboardsIDCells(dashboardID: string, cell: Array<Cell>, zapTraceSpan?: string, options?: any): AxiosPromise<Dashboard>;
 }
 export declare const DefaultApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    rootGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    signinPost(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    signoutPost(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getRoutes(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postSignin(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postSignout(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const DefaultApiFp: (configuration?: Configuration | undefined) => {
-    rootGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Routes>;
-    signinPost(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    signoutPost(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getRoutes(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Routes>;
+    postSignin(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    postSignout(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
 };
 export declare const DefaultApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    rootGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Routes>;
-    signinPost(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    signoutPost(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getRoutes(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Routes>;
+    postSignin(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    postSignout(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
 };
 export declare class DefaultApi extends BaseAPI {
-    rootGet(zapTraceSpan?: string, options?: any): AxiosPromise<Routes>;
-    signinPost(zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    signoutPost(zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getRoutes(zapTraceSpan?: string, options?: any): AxiosPromise<Routes>;
+    postSignin(zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    postSignout(zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
 }
 export declare const HealthApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    healthGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getHealth(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const HealthApiFp: (configuration?: Configuration | undefined) => {
-    healthGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Check>;
+    getHealth(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Check>;
 };
 export declare const HealthApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    healthGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Check>;
+    getHealth(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Check>;
 };
 export declare class HealthApi extends BaseAPI {
-    healthGet(zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
+    getHealth(zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
 }
 export declare const LabelsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
-    labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): RequestArgs;
+    deleteLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getLabels(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
+    getLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchLabelsID(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postLabels(labelCreateRequest: LabelCreateRequest, options?: any): RequestArgs;
 };
 export declare const LabelsApiFp: (configuration?: Configuration | undefined) => {
-    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    deleteLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getLabels(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    patchLabelsID(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postLabels(labelCreateRequest: LabelCreateRequest, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
 };
 export declare const LabelsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    labelsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    labelsLabelIDDelete(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    labelsLabelIDGet(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): AxiosPromise<LabelResponse>;
+    deleteLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getLabels(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getLabelsID(labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    patchLabelsID(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postLabels(labelCreateRequest: LabelCreateRequest, options?: any): AxiosPromise<LabelResponse>;
 };
 export declare class LabelsApi extends BaseAPI {
-    labelsGet(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<LabelsResponse>;
-    labelsLabelIDDelete(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    labelsLabelIDGet(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    labelsLabelIDPatch(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    labelsPost(labelCreateRequest: LabelCreateRequest, options?: any): AxiosPromise<LabelResponse>;
+    deleteLabelsID(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getLabels(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getLabelsID(labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    patchLabelsID(labelID: string, labelUpdate: LabelUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postLabels(labelCreateRequest: LabelCreateRequest, options?: any): AxiosPromise<LabelResponse>;
 }
 export declare const OperationLogsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
 };
 export declare const OperationLogsApiFp: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
 };
 export declare const OperationLogsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
 };
 export declare class OperationLogsApi extends BaseAPI {
-    bucketsBucketIDLogsGet(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    dashboardsDashboardIDLogsGet(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getBucketsIDLogs(bucketID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getDashboardsIDLogs(dashboardID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
 }
 export declare const OrganizationsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    orgsGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDDelete(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    deleteOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteOrgsIDLabelsID(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgs(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
+    getOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDLabels(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchOrgsID(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsPost(organization: Organization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgs(organization: Organization, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDLabels(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const OrganizationsApiFp: (configuration?: Configuration | undefined) => {
-    orgsGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organizations>;
-    orgsOrgIDDelete(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
-    orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    deleteOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteOrgsIDLabelsID(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getOrgs(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organizations>;
+    getOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
+    getOrgsIDLabels(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SecretKeysResponse>;
+    patchOrgsID(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsPost(organization: Organization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
+    postOrgs(organization: Organization, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Organization>;
+    postOrgsIDLabels(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
 };
 export declare const OrganizationsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    orgsGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Organizations>;
-    orgsOrgIDDelete(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
-    orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    deleteOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDLabelsID(orgID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getOrgs(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Organizations>;
+    getOrgsID(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
+    getOrgsIDLabels(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<SecretKeysResponse>;
+    patchOrgsID(orgID: string, organization: Organization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsPost(organization: Organization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
+    postOrgs(organization: Organization, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Organization>;
+    postOrgsIDLabels(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
 };
 export declare class OrganizationsApi extends BaseAPI {
-    orgsGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Organizations>;
-    orgsOrgIDDelete(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
-    orgsOrgIDLabelsGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    orgsOrgIDLabelsLabelIDDelete(orgID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDLabelsPost(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    orgsOrgIDLogsGet(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDPatch(orgID: string, organization: Organization, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    deleteOrgsID(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDLabelsID(orgID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getOrgs(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Organizations>;
+    getOrgsID(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
+    getOrgsIDLabels(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getOrgsIDLogs(orgID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<SecretKeysResponse>;
+    patchOrgsID(orgID: string, organization: Organization, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsPost(organization: Organization, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
+    postOrgs(organization: Organization, zapTraceSpan?: string, options?: any): AxiosPromise<Organization>;
+    postOrgsIDLabels(orgID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
 }
 export declare const QueryApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): RequestArgs;
-    queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): RequestArgs;
-    queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): RequestArgs;
-    querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getQuerySuggestions(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getQuerySuggestionsName(name: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postQuery(zapTraceSpan?: string | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): RequestArgs;
+    postQueryAnalyze(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): RequestArgs;
+    postQueryAst(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): RequestArgs;
 };
 export declare const QueryApiFp: (configuration?: Configuration | undefined) => {
-    queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AnalyzeQueryResponse>;
-    queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ASTResponse>;
-    queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
-    querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
-    querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
+    getQuerySuggestions(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
+    getQuerySuggestionsName(name: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<FluxSuggestions>;
+    postQuery(zapTraceSpan?: string | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
+    postQueryAnalyze(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<AnalyzeQueryResponse>;
+    postQueryAst(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ASTResponse>;
 };
 export declare const QueryApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    queryAnalyzePost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): AxiosPromise<AnalyzeQueryResponse>;
-    queryAstPost(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): AxiosPromise<ASTResponse>;
-    queryPost(zapTraceSpan?: string | undefined, accept?: "text/csv" | "application/vnd.influx.arrow" | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): AxiosPromise<string>;
-    querySuggestionsGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
-    querySuggestionsNameGet(name: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
+    getQuerySuggestions(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
+    getQuerySuggestionsName(name: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<FluxSuggestions>;
+    postQuery(zapTraceSpan?: string | undefined, contentType?: "application/json" | "application/vnd.flux" | undefined, org?: string | undefined, orgID?: string | undefined, query?: Query | undefined, options?: any): AxiosPromise<string>;
+    postQueryAnalyze(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, query?: Query | undefined, options?: any): AxiosPromise<AnalyzeQueryResponse>;
+    postQueryAst(zapTraceSpan?: string | undefined, contentType?: "application/json" | undefined, languageRequest?: LanguageRequest | undefined, options?: any): AxiosPromise<ASTResponse>;
 };
 export declare class QueryApi extends BaseAPI {
-    queryAnalyzePost(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any): AxiosPromise<AnalyzeQueryResponse>;
-    queryAstPost(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): AxiosPromise<ASTResponse>;
-    queryPost(zapTraceSpan?: string, accept?: 'text/csv' | 'application/vnd.influx.arrow', contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any): AxiosPromise<string>;
-    querySuggestionsGet(zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
-    querySuggestionsNameGet(name: string, zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
+    getQuerySuggestions(zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
+    getQuerySuggestionsName(name: string, zapTraceSpan?: string, options?: any): AxiosPromise<FluxSuggestions>;
+    postQuery(zapTraceSpan?: string, contentType?: 'application/json' | 'application/vnd.flux', org?: string, orgID?: string, query?: Query, options?: any): AxiosPromise<string>;
+    postQueryAnalyze(zapTraceSpan?: string, contentType?: 'application/json', query?: Query, options?: any): AxiosPromise<AnalyzeQueryResponse>;
+    postQueryAst(zapTraceSpan?: string, contentType?: 'application/json', languageRequest?: LanguageRequest, options?: any): AxiosPromise<ASTResponse>;
 }
 export declare const ReadyApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    readyGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getReady(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const ReadyApiFp: (configuration?: Configuration | undefined) => {
-    readyGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Ready>;
+    getReady(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Ready>;
 };
 export declare const ReadyApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    readyGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Ready>;
+    getReady(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Ready>;
 };
 export declare class ReadyApi extends BaseAPI {
-    readyGet(zapTraceSpan?: string, options?: any): AxiosPromise<Ready>;
+    getReady(zapTraceSpan?: string, options?: any): AxiosPromise<Ready>;
 }
 export declare const ScraperTargetsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersIDLabelsID(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapers(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    getScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapersIDLabels(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchScrapersID(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchScrapersIDLabelsID(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapers(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapersIDLabels(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const ScraperTargetsApiFp: (configuration?: Configuration | undefined) => {
-    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
+    deleteScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteScrapersIDLabelsID(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getScrapers(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponses>;
+    getScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
+    getScrapersIDLabels(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    patchScrapersID(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
+    patchScrapersIDLabelsID(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    postScrapers(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ScraperTargetResponse>;
+    postScrapersIDLabels(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
 };
 export declare const ScraperTargetsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    scrapersGet(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
+    deleteScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDLabelsID(scraperTargetID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getScrapers(zapTraceSpan?: string | undefined, name?: string | undefined, id?: string[] | undefined, orgID?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponses>;
+    getScrapersID(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
+    getScrapersIDLabels(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    patchScrapersID(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
+    patchScrapersIDLabelsID(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    postScrapers(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ScraperTargetResponse>;
+    postScrapersIDLabels(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
 };
 export declare class ScraperTargetsApi extends BaseAPI {
-    scrapersGet(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any): AxiosPromise<ScraperTargetResponses>;
-    scrapersPost(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDDelete(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
-    scrapersScraperTargetIDLabelsGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    scrapersScraperTargetIDLabelsLabelIDDelete(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsLabelIDPatch(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDLabelsPost(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDPatch(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
+    deleteScrapersID(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDLabelsID(scraperTargetID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getScrapers(zapTraceSpan?: string, name?: string, id?: Array<string>, orgID?: string, org?: string, options?: any): AxiosPromise<ScraperTargetResponses>;
+    getScrapersID(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
+    getScrapersIDLabels(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    patchScrapersID(scraperTargetID: string, scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
+    patchScrapersIDLabelsID(scraperTargetID: string, labelID: string, label: Label, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    postScrapers(scraperTargetRequest: ScraperTargetRequest, zapTraceSpan?: string, options?: any): AxiosPromise<ScraperTargetResponse>;
+    postScrapersIDLabels(scraperTargetID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
 }
 export declare const SecretsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const SecretsApiFp: (configuration?: Configuration | undefined) => {
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<SecretKeysResponse>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
 };
 export declare const SecretsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<SecretKeysResponse>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
 };
 export declare class SecretsApi extends BaseAPI {
-    orgsOrgIDSecretsDeletePost(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDSecretsGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<SecretKeysResponse>;
-    orgsOrgIDSecretsPatch(orgID: string, requestBody: {
+    getOrgsIDSecrets(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<SecretKeysResponse>;
+    patchOrgsIDSecrets(orgID: string, requestBody: {
         [key: string]: string;
     }, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    postOrgsIDSecrets(orgID: string, secretKeys: SecretKeys, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
 }
 export declare const SetupApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    setupGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getSetup(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postSetup(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const SetupApiFp: (configuration?: Configuration | undefined) => {
-    setupGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<IsOnboarding>;
-    setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OnboardingResponse>;
+    getSetup(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<IsOnboarding>;
+    postSetup(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OnboardingResponse>;
 };
 export declare const SetupApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    setupGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<IsOnboarding>;
-    setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<OnboardingResponse>;
+    getSetup(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<IsOnboarding>;
+    postSetup(onboardingRequest: OnboardingRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<OnboardingResponse>;
 };
 export declare class SetupApi extends BaseAPI {
-    setupGet(zapTraceSpan?: string, options?: any): AxiosPromise<IsOnboarding>;
-    setupPost(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any): AxiosPromise<OnboardingResponse>;
+    getSetup(zapTraceSpan?: string, options?: any): AxiosPromise<IsOnboarding>;
+    postSetup(onboardingRequest: OnboardingRequest, zapTraceSpan?: string, options?: any): AxiosPromise<OnboardingResponse>;
 }
 export declare const SourcesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
-    sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getSources(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    getSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): RequestArgs;
+    getSourcesIDHealth(sourceID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchSourcesID(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postSources(source: Source, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const SourcesApiFp: (configuration?: Configuration | undefined) => {
-    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Sources>;
-    sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
-    sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Check>;
-    sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
+    deleteSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getSources(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Sources>;
+    getSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Buckets>;
+    getSourcesIDHealth(sourceID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Check>;
+    patchSourcesID(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
+    postSources(source: Source, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Source>;
 };
 export declare const SourcesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    sourcesGet(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Sources>;
-    sourcesPost(source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Check>;
-    sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
+    deleteSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getSources(zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Sources>;
+    getSourcesID(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string | undefined, org?: string | undefined, options?: any): AxiosPromise<Buckets>;
+    getSourcesIDHealth(sourceID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Check>;
+    patchSourcesID(sourceID: string, source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
+    postSources(source: Source, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Source>;
 };
 export declare class SourcesApi extends BaseAPI {
-    sourcesGet(zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Sources>;
-    sourcesPost(source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDBucketsGet(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
-    sourcesSourceIDDelete(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    sourcesSourceIDGet(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
-    sourcesSourceIDHealthGet(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
-    sourcesSourceIDPatch(sourceID: string, source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
+    deleteSourcesID(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getSources(zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Sources>;
+    getSourcesID(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
+    getSourcesIDBuckets(sourceID: string, zapTraceSpan?: string, org?: string, options?: any): AxiosPromise<Buckets>;
+    getSourcesIDHealth(sourceID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Check>;
+    patchSourcesID(sourceID: string, source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
+    postSources(source: Source, zapTraceSpan?: string, options?: any): AxiosPromise<Source>;
 }
 export declare const TasksApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    tasksGet(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDDelete(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksIDLabelsID(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasks(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    getTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDLabels(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDLogs(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): RequestArgs;
+    getTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDRunsIDLogs(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchTasksID(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasks(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDLabels(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): RequestArgs;
+    postTasksIDRunsIDRetry(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TasksApiFp: (configuration?: Configuration | undefined) => {
-    tasksGet(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Tasks>;
-    tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
-    tasksTaskIDDelete(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
-    tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Logs>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
-    tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Logs>;
-    tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
+    deleteTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTasksIDLabelsID(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getTasks(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Tasks>;
+    getTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
+    getTasksIDLabels(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getTasksIDLogs(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Logs>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Runs>;
+    getTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
+    getTasksIDRunsIDLogs(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Logs>;
+    patchTasksID(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
+    postTasks(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Task>;
+    postTasksIDLabels(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
+    postTasksIDRunsIDRetry(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Run>;
 };
 export declare const TasksApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    tasksGet(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): AxiosPromise<Tasks>;
-    tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
-    tasksTaskIDDelete(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
-    tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Logs>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
-    tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Logs>;
-    tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
+    deleteTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTasksIDLabelsID(taskID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getTasks(zapTraceSpan?: string | undefined, after?: string | undefined, user?: string | undefined, org?: string | undefined, orgID?: string | undefined, limit?: number | undefined, options?: any): AxiosPromise<Tasks>;
+    getTasksID(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
+    getTasksIDLabels(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getTasksIDLogs(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Logs>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, after?: string | undefined, limit?: number | undefined, afterTime?: Date | undefined, beforeTime?: Date | undefined, options?: any): AxiosPromise<Runs>;
+    getTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
+    getTasksIDRunsIDLogs(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Logs>;
+    patchTasksID(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
+    postTasks(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Task>;
+    postTasksIDLabels(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postTasksIDRuns(taskID: string, zapTraceSpan?: string | undefined, runManually?: RunManually | undefined, options?: any): AxiosPromise<Run>;
+    postTasksIDRunsIDRetry(taskID: string, runID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Run>;
 };
 export declare class TasksApi extends BaseAPI {
-    tasksGet(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any): AxiosPromise<Tasks>;
-    tasksPost(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
-    tasksTaskIDDelete(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
-    tasksTaskIDLabelsGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    tasksTaskIDLabelsLabelIDDelete(taskID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDLabelsPost(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    tasksTaskIDLogsGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Logs>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDPatch(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
-    tasksTaskIDRunsGet(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): AxiosPromise<Runs>;
-    tasksTaskIDRunsPost(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any): AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
-    tasksTaskIDRunsRunIDLogsGet(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Logs>;
-    tasksTaskIDRunsRunIDRetryPost(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
+    deleteTasksID(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTasksIDLabelsID(taskID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getTasks(zapTraceSpan?: string, after?: string, user?: string, org?: string, orgID?: string, limit?: number, options?: any): AxiosPromise<Tasks>;
+    getTasksID(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
+    getTasksIDLabels(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getTasksIDLogs(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Logs>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getTasksIDRuns(taskID: string, zapTraceSpan?: string, after?: string, limit?: number, afterTime?: Date, beforeTime?: Date, options?: any): AxiosPromise<Runs>;
+    getTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
+    getTasksIDRunsIDLogs(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Logs>;
+    patchTasksID(taskID: string, taskUpdateRequest: TaskUpdateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
+    postTasks(taskCreateRequest: TaskCreateRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Task>;
+    postTasksIDLabels(taskID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postTasksIDRuns(taskID: string, zapTraceSpan?: string, runManually?: RunManually, options?: any): AxiosPromise<Run>;
+    postTasksIDRunsIDRetry(taskID: string, runID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Run>;
 }
 export declare const TelegrafsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
-    telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsIDLabelsID(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTelegrafs(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
+    getTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): RequestArgs;
+    getTelegrafsIDLabels(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafs(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafsIDLabels(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putTelegrafsID(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TelegrafsApiFp: (configuration?: Configuration | undefined) => {
-    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegrafs>;
-    telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
-    telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
-    telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
+    deleteTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTelegrafsIDLabelsID(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getTelegrafs(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegrafs>;
+    getTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<string>;
+    getTelegrafsIDLabels(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    postTelegrafs(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
+    postTelegrafsIDLabels(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    putTelegrafsID(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Telegraf>;
 };
 export declare const TelegrafsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    telegrafsGet(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Telegrafs>;
-    telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
-    telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): AxiosPromise<string>;
-    telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
+    deleteTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDLabelsID(telegrafID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getTelegrafs(zapTraceSpan?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Telegrafs>;
+    getTelegrafsID(telegrafID: string, zapTraceSpan?: string | undefined, accept?: "application/json" | "application/toml" | "application/octet-stream" | undefined, options?: any): AxiosPromise<string>;
+    getTelegrafsIDLabels(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    postTelegrafs(telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
+    postTelegrafsIDLabels(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    putTelegrafsID(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Telegraf>;
 };
 export declare class TelegrafsApi extends BaseAPI {
-    telegrafsGet(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<Telegrafs>;
-    telegrafsPost(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
-    telegrafsTelegrafIDDelete(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDGet(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any): AxiosPromise<string>;
-    telegrafsTelegrafIDLabelsGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    telegrafsTelegrafIDLabelsLabelIDDelete(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDLabelsPost(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDPut(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
+    deleteTelegrafsID(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDLabelsID(telegrafID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getTelegrafs(zapTraceSpan?: string, orgID?: string, options?: any): AxiosPromise<Telegrafs>;
+    getTelegrafsID(telegrafID: string, zapTraceSpan?: string, accept?: 'application/toml' | 'application/json' | 'application/octet-stream', options?: any): AxiosPromise<string>;
+    getTelegrafsIDLabels(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    postTelegrafs(telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
+    postTelegrafsIDLabels(telegrafID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    putTelegrafsID(telegrafID: string, telegrafRequest: TelegrafRequest, zapTraceSpan?: string, options?: any): AxiosPromise<Telegraf>;
 }
 export declare const TemplatesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDocumentsTemplatesIDLabelsID(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDocumentsTemplates(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
+    getDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDocumentsTemplatesIDLabels(templateID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDocumentsTemplates(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDocumentsTemplatesIDLabels(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putDocumentsTemplatesID(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const TemplatesApiFp: (configuration?: Configuration | undefined) => {
-    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Documents>;
-    documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
-    documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
-    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
+    deleteDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDocumentsTemplatesIDLabelsID(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getDocumentsTemplates(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Documents>;
+    getDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
+    getDocumentsTemplatesIDLabels(templateID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    postDocumentsTemplates(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
+    postDocumentsTemplatesIDLabels(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    putDocumentsTemplatesID(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Document>;
 };
 export declare const TemplatesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    documentsTemplatesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Documents>;
-    documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
-    documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
-    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
+    deleteDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDocumentsTemplatesIDLabelsID(templateID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getDocumentsTemplates(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Documents>;
+    getDocumentsTemplatesID(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
+    getDocumentsTemplatesIDLabels(templateID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    postDocumentsTemplates(documentCreate: DocumentCreate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
+    postDocumentsTemplatesIDLabels(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    putDocumentsTemplatesID(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Document>;
 };
 export declare class TemplatesApi extends BaseAPI {
-    documentsTemplatesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Documents>;
-    documentsTemplatesPost(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
-    documentsTemplatesTemplateIDDelete(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    documentsTemplatesTemplateIDGet(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
-    documentsTemplatesTemplateIDLabelsGet(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    documentsTemplatesTemplateIDLabelsLabelIDDelete(templateID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    documentsTemplatesTemplateIDLabelsPost(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    documentsTemplatesTemplateIDPut(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
+    deleteDocumentsTemplatesID(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDocumentsTemplatesIDLabelsID(templateID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getDocumentsTemplates(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Documents>;
+    getDocumentsTemplatesID(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
+    getDocumentsTemplatesIDLabels(templateID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    postDocumentsTemplates(documentCreate: DocumentCreate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
+    postDocumentsTemplatesIDLabels(templateID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    putDocumentsTemplatesID(templateID: string, documentUpdate: DocumentUpdate, zapTraceSpan?: string, options?: any): AxiosPromise<Document>;
 }
 export declare const UsersApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    meGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersGet(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
-    usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getMe(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getUsers(zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): RequestArgs;
+    patchUsersID(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postUsers(user: User, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putMePassword(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putUsersIDPassword(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const UsersApiFp: (configuration?: Configuration | undefined) => {
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    meGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
-    mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    usersGet(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Users>;
-    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
-    usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
-    usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getMe(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwners>;
+    getUsers(zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Users>;
+    getUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<OperationLogs>;
+    patchUsersID(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<ResourceOwner>;
+    postUsers(user: User, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<User>;
+    putMePassword(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    putUsersIDPassword(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
 };
 export declare const UsersApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    meGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
-    mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    usersGet(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Users>;
-    usersPost(user: User, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
-    usersUserIDDelete(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    usersUserIDGet(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
-    usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getMe(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwners>;
+    getUsers(zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Users>;
+    getUsersID(userID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string | undefined, offset?: number | undefined, limit?: number | undefined, options?: any): AxiosPromise<OperationLogs>;
+    patchUsersID(userID: string, user: User, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<ResourceOwner>;
+    postUsers(user: User, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<User>;
+    putMePassword(passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    putUsersIDPassword(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
 };
 export declare class UsersApi extends BaseAPI {
-    bucketsBucketIDMembersGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    bucketsBucketIDMembersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    bucketsBucketIDMembersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    bucketsBucketIDOwnersGet(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    bucketsBucketIDOwnersPost(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    bucketsBucketIDOwnersUserIDDelete(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDMembersGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    dashboardsDashboardIDMembersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    dashboardsDashboardIDMembersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    dashboardsDashboardIDOwnersGet(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    dashboardsDashboardIDOwnersPost(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    dashboardsDashboardIDOwnersUserIDDelete(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    meGet(zapTraceSpan?: string, options?: any): AxiosPromise<User>;
-    mePasswordPut(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDMembersGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    orgsOrgIDMembersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    orgsOrgIDMembersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    orgsOrgIDOwnersGet(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    orgsOrgIDOwnersPost(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    orgsOrgIDOwnersUserIDDelete(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDMembersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    scrapersScraperTargetIDMembersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    scrapersScraperTargetIDMembersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    scrapersScraperTargetIDOwnersGet(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    scrapersScraperTargetIDOwnersPost(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    scrapersScraperTargetIDOwnersUserIDDelete(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDMembersGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    tasksTaskIDMembersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    tasksTaskIDMembersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    tasksTaskIDOwnersGet(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    tasksTaskIDOwnersPost(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    tasksTaskIDOwnersUserIDDelete(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDMembersGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
-    telegrafsTelegrafIDMembersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
-    telegrafsTelegrafIDMembersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    telegrafsTelegrafIDOwnersGet(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
-    telegrafsTelegrafIDOwnersPost(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
-    telegrafsTelegrafIDOwnersUserIDDelete(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    usersGet(zapTraceSpan?: string, options?: any): AxiosPromise<Users>;
-    usersPost(user: User, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
-    usersUserIDDelete(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    usersUserIDGet(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
-    usersUserIDLogsGet(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
-    usersUserIDPasswordPut(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    usersUserIDPatch(userID: string, user: User, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
+    deleteBucketsIDMembersID(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteBucketsIDOwnersID(userID: string, bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDMembersID(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteDashboardsIDOwnersID(userID: string, dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDMembersID(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteOrgsIDOwnersID(userID: string, orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDMembersID(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteScrapersIDOwnersID(userID: string, scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTasksIDMembersID(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDMembersID(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteTelegrafsIDOwnersID(userID: string, telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteUsersID(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getBucketsIDMembers(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getBucketsIDOwners(bucketID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getDashboardsIDMembers(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getDashboardsIDOwners(dashboardID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getMe(zapTraceSpan?: string, options?: any): AxiosPromise<User>;
+    getOrgsIDMembers(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getOrgsIDOwners(orgID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getScrapersIDMembers(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getScrapersIDOwners(scraperTargetID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getTasksIDMembers(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getTasksIDOwners(taskID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getTelegrafsIDMembers(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMembers>;
+    getTelegrafsIDOwners(telegrafID: string, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwners>;
+    getUsers(zapTraceSpan?: string, options?: any): AxiosPromise<Users>;
+    getUsersID(userID: string, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
+    getUsersIDLogs(userID: string, zapTraceSpan?: string, offset?: number, limit?: number, options?: any): AxiosPromise<OperationLogs>;
+    patchUsersID(userID: string, user: User, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
+    postBucketsIDMembers(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postBucketsIDOwners(bucketID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postDashboardsIDMembers(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postDashboardsIDOwners(dashboardID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postOrgsIDMembers(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postOrgsIDOwners(orgID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postScrapersIDMembers(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postScrapersIDOwners(scraperTargetID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postTasksIDMembers(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postTasksIDOwners(taskID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postTelegrafsIDMembers(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceMember>;
+    postTelegrafsIDOwners(telegrafID: string, addResourceMemberRequestBody: AddResourceMemberRequestBody, zapTraceSpan?: string, options?: any): AxiosPromise<ResourceOwner>;
+    postUsers(user: User, zapTraceSpan?: string, options?: any): AxiosPromise<User>;
+    putMePassword(passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    putUsersIDPassword(userID: string, passwordResetBody: PasswordResetBody, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
 }
 export declare const VariablesApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    variablesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
-    variablesPost(variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDDelete(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    deleteVariablesIDLabelsID(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getVariables(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): RequestArgs;
+    getVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getVariablesIDLabels(variableID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postVariables(variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    postVariablesIDLabels(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    putVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const VariablesApiFp: (configuration?: Configuration | undefined) => {
-    variablesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variables>;
-    variablesPost(variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
-    variablesVariableIDDelete(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    variablesVariableIDGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
-    variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
-    variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
-    variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
-    variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
-    variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
+    deleteVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    deleteVariablesIDLabelsID(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    getVariables(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variables>;
+    getVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
+    getVariablesIDLabels(variableID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelsResponse>;
+    patchVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
+    postVariables(variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
+    postVariablesIDLabels(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<LabelResponse>;
+    putVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Variable>;
 };
 export declare const VariablesApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    variablesGet(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Variables>;
-    variablesPost(variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDDelete(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    variablesVariableIDGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
-    variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
-    variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
-    variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
+    deleteVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    deleteVariablesIDLabelsID(variableID: string, labelID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Response>;
+    getVariables(zapTraceSpan?: string | undefined, org?: string | undefined, orgID?: string | undefined, options?: any): AxiosPromise<Variables>;
+    getVariablesID(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
+    getVariablesIDLabels(variableID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelsResponse>;
+    patchVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
+    postVariables(variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
+    postVariablesIDLabels(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<LabelResponse>;
+    putVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<Variable>;
 };
 export declare class VariablesApi extends BaseAPI {
-    variablesGet(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Variables>;
-    variablesPost(variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDDelete(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    variablesVariableIDGet(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDLabelsGet(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
-    variablesVariableIDLabelsLabelIDDelete(variableID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
-    variablesVariableIDLabelsPost(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
-    variablesVariableIDPatch(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
-    variablesVariableIDPut(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
+    deleteVariablesID(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    deleteVariablesIDLabelsID(variableID: string, labelID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Response>;
+    getVariables(zapTraceSpan?: string, org?: string, orgID?: string, options?: any): AxiosPromise<Variables>;
+    getVariablesID(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
+    getVariablesIDLabels(variableID: string, zapTraceSpan?: string, options?: any): AxiosPromise<LabelsResponse>;
+    patchVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
+    postVariables(variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
+    postVariablesIDLabels(variableID: string, labelMapping: LabelMapping, zapTraceSpan?: string, options?: any): AxiosPromise<LabelResponse>;
+    putVariablesID(variableID: string, variable: Variable, zapTraceSpan?: string, options?: any): AxiosPromise<Variable>;
 }
 export declare const ViewsApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): RequestArgs;
 };
 export declare const ViewsApiFp: (configuration?: Configuration | undefined) => {
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<View>;
 };
 export declare const ViewsApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string | undefined, options?: any): AxiosPromise<View>;
 };
 export declare class ViewsApi extends BaseAPI {
-    dashboardsDashboardIDCellsCellIDViewGet(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
-    dashboardsDashboardIDCellsCellIDViewPatch(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    getDashboardsIDCellsIDView(dashboardID: string, cellID: string, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
+    patchDashboardsIDCellsIDView(dashboardID: string, cellID: string, view: View, zapTraceSpan?: string, options?: any): AxiosPromise<View>;
 }
 export declare const WriteApiAxiosParamCreator: (configuration?: Configuration | undefined) => {
-    writePost(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "application/vnd.influx.arrow" | "text/plain" | "text/plain; charset=utf-8" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): RequestArgs;
+    postWrite(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "text/plain" | "text/plain; charset=utf-8" | "application/vnd.influx.arrow" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): RequestArgs;
 };
 export declare const WriteApiFp: (configuration?: Configuration | undefined) => {
-    writePost(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "application/vnd.influx.arrow" | "text/plain" | "text/plain; charset=utf-8" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
+    postWrite(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "text/plain" | "text/plain; charset=utf-8" | "application/vnd.influx.arrow" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): (axios?: AxiosInstance | undefined, basePath?: string | undefined) => AxiosPromise<Response>;
 };
 export declare const WriteApiFactory: (configuration?: Configuration | undefined, basePath?: string | undefined, axios?: AxiosInstance | undefined) => {
-    writePost(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "application/vnd.influx.arrow" | "text/plain" | "text/plain; charset=utf-8" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): AxiosPromise<Response>;
+    postWrite(org: string, bucket: string, body: string, zapTraceSpan?: string | undefined, contentEncoding?: "gzip" | "identity" | undefined, contentType?: "text/plain" | "text/plain; charset=utf-8" | "application/vnd.influx.arrow" | undefined, contentLength?: number | undefined, accept?: "application/json" | undefined, precision?: WritePrecision | undefined, options?: any): AxiosPromise<Response>;
 };
 export declare class WriteApi extends BaseAPI {
-    writePost(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any): AxiosPromise<Response>;
+    postWrite(org: string, bucket: string, body: string, zapTraceSpan?: string, contentEncoding?: 'gzip' | 'identity', contentType?: 'text/plain' | 'text/plain; charset=utf-8' | 'application/vnd.influx.arrow', contentLength?: number, accept?: 'application/json', precision?: WritePrecision, options?: any): AxiosPromise<Response>;
 }

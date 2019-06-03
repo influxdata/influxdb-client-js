@@ -15,7 +15,7 @@ export default class {
   }
 
   public async create(props: OnboardingRequest): Promise<OnboardingResponse> {
-    const {data: response} = await this.service.setupPost(
+    const {data: response} = await this.service.postSetup(
       props,
       undefined,
       this.serviceOptions
@@ -25,7 +25,7 @@ export default class {
   }
 
   public async status(): Promise<IStatus> {
-    const {data} = await this.service.setupGet(undefined, this.serviceOptions)
+    const {data} = await this.service.getSetup(undefined, this.serviceOptions)
 
     return {allowed: !!data.allowed}
   }

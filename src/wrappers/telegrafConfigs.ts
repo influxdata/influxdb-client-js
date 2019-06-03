@@ -25,7 +25,7 @@ export default class {
   public async getAll(orgID: string = ''): Promise<ITelegraf[]> {
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(undefined, orgID, this.serviceOptions)
+    } = await this.service.getTelegrafs(undefined, orgID, this.serviceOptions)
     return addDefaultsToAll(configurations || [])
   }
 
@@ -36,13 +36,13 @@ export default class {
 
     const {
       data: {configurations},
-    } = await this.service.telegrafsGet(undefined, org.id, this.serviceOptions)
+    } = await this.service.getTelegrafs(undefined, org.id, this.serviceOptions)
 
     return addDefaultsToAll(configurations || [])
   }
 
   public async getTOML(id: string): Promise<string> {
-    const {data} = await this.service.telegrafsTelegrafIDGet(
+    const {data} = await this.service.getTelegrafsID(
       id,
       undefined,
       'application/toml'
@@ -52,7 +52,7 @@ export default class {
   }
 
   public async get(id: string): Promise<ITelegraf> {
-    const {data} = await this.service.telegrafsTelegrafIDGet(
+    const {data} = await this.service.getTelegrafsID(
       id,
       undefined,
       'application/json'
@@ -62,7 +62,7 @@ export default class {
   }
 
   public async create(props: Telegraf): Promise<ITelegraf> {
-    const {data} = await this.service.telegrafsPost(
+    const {data} = await this.service.postTelegrafs(
       props,
       undefined,
       this.serviceOptions
@@ -78,7 +78,7 @@ export default class {
     const original = await this.get(id)
     const update = {...original, ...props} as TelegrafRequest
 
-    const {data: updated} = await this.service.telegrafsTelegrafIDPut(
+    const {data: updated} = await this.service.putTelegrafsID(
       id,
       update,
       undefined,
@@ -89,7 +89,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.telegrafsTelegrafIDDelete(
+    const {data} = await this.service.deleteTelegrafsID(
       id,
       undefined,
       this.serviceOptions
@@ -103,7 +103,7 @@ export default class {
       throw new Error('label must have id')
     }
 
-    const {data} = await this.service.telegrafsTelegrafIDLabelsPost(
+    const {data} = await this.service.postTelegrafsIDLabels(
       id,
       {
         labelID: label.id,
@@ -124,7 +124,7 @@ export default class {
       throw new Error('label must have id')
     }
 
-    const {data} = await this.service.telegrafsTelegrafIDLabelsLabelIDDelete(
+    const {data} = await this.service.deleteTelegrafsIDLabelsID(
       id,
       label.id,
       undefined,

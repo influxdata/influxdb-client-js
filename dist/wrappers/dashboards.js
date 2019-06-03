@@ -69,7 +69,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDGet(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getDashboardsID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -82,7 +82,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsGet(undefined, undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getDashboards(undefined, undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaultsToAll(data.dashboards || [])];
@@ -95,7 +95,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsPost(props, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postDashboards(props, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -111,7 +111,7 @@ var default_1 = (function () {
                     case 0: return [4, this.get(id)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.service.dashboardsDashboardIDPatch(id, __assign({}, original, props), undefined, this.serviceOptions)];
+                        return [4, this.service.patchDashboardsID(id, __assign({}, original, props), undefined, this.serviceOptions)];
                     case 2:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -124,7 +124,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDDelete(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteDashboardsID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -137,7 +137,7 @@ var default_1 = (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cellsService.dashboardsDashboardIDCellsCellIDDelete(dashboardID, cellID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.cellsService.deleteDashboardsIDCellsID(dashboardID, cellID, undefined, this.serviceOptions)];
                     case 1:
                         response = (_a.sent()).data;
                         return [2, response];
@@ -150,7 +150,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cellsService.dashboardsDashboardIDCellsPost(dashboardID, cell, undefined, this.serviceOptions)];
+                    case 0: return [4, this.cellsService.postDashboardsIDCells(dashboardID, cell, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -163,7 +163,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.cellsService.dashboardsDashboardIDCellsPut(dashboardID, cells, undefined, this.serviceOptions)];
+                    case 0: return [4, this.cellsService.putDashboardsIDCells(dashboardID, cells, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data.cells || []];
@@ -176,7 +176,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDLabelsPost(dashboardID, {
+                    case 0: return [4, this.service.postDashboardsIDLabels(dashboardID, {
                             labelID: labelID,
                         }, undefined, this.serviceOptions)];
                     case 1:
@@ -227,7 +227,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDLabelsLabelIDDelete(dashboardID, labelID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteDashboardsIDLabelsID(dashboardID, labelID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -245,7 +245,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDCellsCellIDViewGet(dashboardID, cellID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getDashboardsIDCellsIDView(dashboardID, cellID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -258,7 +258,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.dashboardsDashboardIDCellsCellIDViewPatch(dashboardID, cellID, view, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.patchDashboardsIDCellsIDView(dashboardID, cellID, view, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

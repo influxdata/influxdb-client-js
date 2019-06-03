@@ -11,7 +11,7 @@ export default class {
   }
 
   public async get(id: string): Promise<Authorization> {
-    const {data} = await this.service.authorizationsAuthIDGet(
+    const {data} = await this.service.getAuthorizationsID(
       id,
       undefined,
       this.serviceOptions
@@ -33,7 +33,7 @@ export default class {
   public async getAll(orgID?: string): Promise<Authorization[]> {
     const {
       data: {authorizations},
-    } = await this.service.authorizationsGet(
+    } = await this.service.getAuthorizations(
       undefined,
       undefined,
       undefined,
@@ -48,7 +48,7 @@ export default class {
   public async getAllByUsername(username: string): Promise<Authorization[]> {
     const {
       data: {authorizations},
-    } = await this.service.authorizationsGet(
+    } = await this.service.getAuthorizations(
       undefined,
       undefined,
       username,
@@ -61,7 +61,7 @@ export default class {
   }
 
   public async create(auth: Authorization): Promise<Authorization> {
-    const {data} = await this.service.authorizationsPost(
+    const {data} = await this.service.postAuthorizations(
       auth,
       undefined,
       this.serviceOptions
@@ -75,7 +75,7 @@ export default class {
     update: Partial<Authorization>
   ): Promise<Authorization> {
     const original = await this.get(id)
-    const {data} = await this.service.authorizationsAuthIDPatch(
+    const {data} = await this.service.patchAuthorizationsID(
       id,
       {
         ...original,
@@ -89,7 +89,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.authorizationsAuthIDDelete(
+    const {data} = await this.service.deleteAuthorizationsID(
       id,
       undefined,
       this.serviceOptions
