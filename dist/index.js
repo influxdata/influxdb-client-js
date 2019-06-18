@@ -33,6 +33,9 @@ var users_1 = __importDefault(require("./wrappers/users"));
 var variables_1 = __importDefault(require("./wrappers/variables"));
 var write_1 = __importDefault(require("./wrappers/write"));
 var templates_1 = __importDefault(require("./wrappers/templates"));
+var errors_1 = require("./utils/errors");
+exports.CancellationError = errors_1.CancellationError;
+exports.LargeResponseError = errors_1.LargeResponseError;
 __export(require("./api"));
 __export(require("./types"));
 var Client = (function () {
