@@ -15,6 +15,8 @@ import Variables from './wrappers/variables'
 import Write from './wrappers/write'
 import Templates from './wrappers/templates'
 
+export {CancellationError, LargeResponseError} from './utils/errors'
+
 export * from './api'
 export * from './types'
 // Must locally re-export manually generated ast types to resolve

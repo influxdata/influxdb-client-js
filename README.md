@@ -1,8 +1,8 @@
-# Influxdb version 2.0 javascript client
+# InfluxDB 2.0 browser JavaScript client
 
 ## Disclaimer
 
-This library is a work in progress and should not be considered production ready pre v1.0
+This library is a work in progress and should not be considered production ready pre v1.0.
 
 ## Usage
 
@@ -18,51 +18,22 @@ const client = new Client('basepath', 'token')
 
 ### Querying
 
-Using the client to execute a query
-
-```typescript
-
-const query = `
-  from(bucket:"defbuck")
-  |> range(start: -1d)
-`
-
-const {stream, cancel} = client.queries.execute('someorgid', query)
+Using the client to execute a query:
 
 ```
+const query = 'from(bucket: "my_bucket") |> range(start: -1h)'
 
-The returned stream will emit data on row at a time and follows the convention of a node.js stream
+const {promise, cancel} = client.queries.execute('someorgid', query)
 
-```typescript
-
-stream.on('data', (row) => {
-  console.log(row)
-})
-
-stream.on('error', (err) => {
-  // handler error
-})
-
-stream.on('end', () => {
-  // data done
-})
-
+const csv = await promise
 ```
 
-or
+The returned promise will eventually resolve with a [Flux CSV](https://github.com/influxdata/flux/blob/master/docs/SPEC.md#csv).
 
-```typescript
-
-stream.pipe(process.stdout)
+The request can also be canceled with the returned `cancel` function, in which case the promise will reject with a `CancellationError`:
 
 ```
-
-The returned cancel is a function that when called will cancel the request (it does not cause an error)
-
-```typescript
-
 cancel() // Cancels request
-
 ```
 
 ### Writing

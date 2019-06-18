@@ -34,14 +34,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = require("../api");
-var platform_1 = require("../utils/platform");
-var node_1 = __importDefault(require("../utils/request/node"));
-var browser_1 = __importDefault(require("../utils/request/browser"));
+var Deferred_1 = require("../utils/Deferred");
+var errors_1 = require("../utils/errors");
+var EXECUTE_OPTIONS_DEFAULTS = { limitChars: Infinity };
+var CHECK_LIMIT_INTERVAL = 500;
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.QueryApi({ basePath: basePath, baseOptions: baseOptions });
@@ -63,13 +61,70 @@ var default_1 = (function () {
             });
         });
     };
-    default_1.prototype.execute = function (orgID, query, extern) {
-        if (platform_1.isInBrowser()) {
-            return browser_1.default(orgID, this.basePath, this.serviceOptions, query, extern);
+    default_1.prototype.execute = function (orgID, query, options) {
+        if (options === void 0) { options = EXECUTE_OPTIONS_DEFAULTS; }
+        var xhr = new XMLHttpRequest();
+        var deferred = new Deferred_1.Deferred();
+        var limitChars = options.limitChars, extern = options.extern;
+        var interval;
+        var onError = function () {
+            clearTimeout(interval);
+            var bodyError = null;
+            try {
+                var body_1 = JSON.parse(xhr.responseText);
+                bodyError = body_1.message || body_1.error;
+            }
+            catch (_a) {
+                if (xhr.responseText && xhr.responseText.trim() !== '') {
+                    bodyError = xhr.responseText;
+                }
+            }
+            var statusError = xhr.statusText;
+            var fallbackError = 'failed to execute Flux query';
+            var error = new Error(bodyError || statusError || fallbackError);
+            error.name = 'QueryError';
+            deferred.reject(error);
+        };
+        var handleData = function () {
+            if (xhr.responseText && xhr.responseText.length > limitChars) {
+                xhr.abort();
+                deferred.reject(new errors_1.LargeResponseError());
+            }
+            else {
+                interval = setTimeout(handleData, CHECK_LIMIT_INTERVAL);
+            }
+        };
+        interval = setTimeout(handleData, CHECK_LIMIT_INTERVAL);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                clearTimeout(interval);
+                deferred.resolve(xhr.responseText);
+            }
+            else {
+                onError();
+            }
+        };
+        xhr.onerror = onError;
+        var dialect = { annotations: ['group', 'datatype', 'default'] };
+        var body = extern ? { query: query, dialect: dialect, extern: extern } : { query: query, dialect: dialect };
+        var url = this.basePath + "/query?orgID=" + encodeURIComponent(orgID);
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        if (this.serviceOptions && this.serviceOptions.headers) {
+            for (var _i = 0, _a = Object.entries(this.serviceOptions.headers); _i < _a.length; _i++) {
+                var _b = _a[_i], k = _b[0], v = _b[1];
+                xhr.setRequestHeader(k, v);
+            }
         }
-        else {
-            return node_1.default(orgID, this.basePath, this.serviceOptions, query, extern);
-        }
+        xhr.send(JSON.stringify(body));
+        return {
+            promise: deferred.promise,
+            cancel: function () {
+                clearTimeout(interval);
+                xhr.abort();
+                deferred.reject(new errors_1.CancellationError());
+            },
+        };
     };
     return default_1;
 }());
