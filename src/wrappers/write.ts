@@ -26,7 +26,7 @@ export default class {
   ): Promise<Response> {
     const precision = options.precision || WritePrecision.Ns
 
-    const {data: response} = await this.service.writePost(
+    const {data: response} = await this.service.postWrite(
       orgID,
       bucket,
       data,

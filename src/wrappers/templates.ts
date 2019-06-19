@@ -29,7 +29,7 @@ export default class {
   }
 
   public async getAll(orgID?: string): Promise<TemplateSummary[]> {
-    const {data} = await this.service.documentsTemplatesGet(
+    const {data} = await this.service.getDocumentsTemplates(
       undefined,
       undefined,
       orgID,
@@ -44,7 +44,7 @@ export default class {
   }
 
   public async get(templateID: string): Promise<ITemplate> {
-    const {data} = await this.service.documentsTemplatesTemplateIDGet(
+    const {data} = await this.service.getDocumentsTemplatesID(
       templateID,
       undefined,
       this.serviceOptions
@@ -58,7 +58,7 @@ export default class {
     props: Partial<ITemplate>
   ): Promise<ITemplate> {
     const original = await this.get(id)
-    const {data} = await this.service.documentsTemplatesTemplateIDPut(
+    const {data} = await this.service.putDocumentsTemplatesID(
       id,
       {
         ...original,
@@ -72,7 +72,7 @@ export default class {
   }
 
   public async create(templateCreate: DocumentCreate): Promise<ITemplate> {
-    const {data} = await this.service.documentsTemplatesPost(
+    const {data} = await this.service.postDocumentsTemplates(
       templateCreate,
       undefined,
       this.serviceOptions
@@ -82,7 +82,7 @@ export default class {
   }
 
   public async delete(templateID: string): Promise<Response> {
-    const {data} = await this.service.documentsTemplatesTemplateIDDelete(
+    const {data} = await this.service.deleteDocumentsTemplatesID(
       templateID,
       undefined,
       this.serviceOptions
@@ -92,7 +92,7 @@ export default class {
   }
 
   public async addLabel(templateID: string, labelID: string): Promise<ILabel> {
-    const {data} = await this.service.documentsTemplatesTemplateIDLabelsPost(
+    const {data} = await this.service.postDocumentsTemplatesIDLabels(
       templateID,
       {
         labelID,
@@ -112,9 +112,7 @@ export default class {
     templateID: string,
     labelID: string
   ): Promise<Response> {
-    const {
-      data,
-    } = await this.service.documentsTemplatesTemplateIDLabelsLabelIDDelete(
+    const {data} = await this.service.deleteDocumentsTemplatesIDLabelsID(
       templateID,
       labelID,
       undefined,
@@ -140,7 +138,7 @@ export default class {
   }
 
   public async clone(templateID: string, orgID: string): Promise<ITemplate> {
-    const {data} = await this.service.documentsTemplatesTemplateIDGet(
+    const {data} = await this.service.getDocumentsTemplatesID(
       templateID,
       undefined,
       this.serviceOptions

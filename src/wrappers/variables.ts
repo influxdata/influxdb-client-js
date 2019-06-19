@@ -20,7 +20,7 @@ export default class {
   }
 
   public async get(id: string): Promise<IVariable> {
-    const {data: variable} = await this.service.variablesVariableIDGet(
+    const {data: variable} = await this.service.getVariablesID(
       id,
       undefined,
       this.serviceOptions
@@ -34,7 +34,7 @@ export default class {
     props: Partial<Variable>
   ): Promise<IVariable> {
     const original = await this.get(id)
-    const {data} = await this.service.variablesVariableIDPatch(
+    const {data} = await this.service.patchVariablesID(
       id,
       {
         ...original,
@@ -50,7 +50,7 @@ export default class {
   public async getAllByOrg(org: string): Promise<IVariable[]> {
     const {
       data: {variables},
-    } = await this.service.variablesGet(
+    } = await this.service.getVariables(
       undefined,
       org,
       undefined,
@@ -63,7 +63,7 @@ export default class {
   public async getAll(orgID?: string): Promise<IVariable[]> {
     const {
       data: {variables},
-    } = await this.service.variablesGet(
+    } = await this.service.getVariables(
       undefined,
       undefined,
       orgID,
@@ -74,7 +74,7 @@ export default class {
   }
 
   public async create(variable: Variable): Promise<IVariable> {
-    const {data} = await this.service.variablesPost(
+    const {data} = await this.service.postVariables(
       variable,
       undefined,
       this.serviceOptions
@@ -91,7 +91,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.variablesVariableIDDelete(
+    const {data} = await this.service.deleteVariablesID(
       id,
       undefined,
       this.serviceOptions
@@ -101,7 +101,7 @@ export default class {
   }
 
   public async addLabel(variableID: string, labelID: string): Promise<ILabel> {
-    const {data} = await this.service.variablesVariableIDLabelsPost(
+    const {data} = await this.service.postVariablesIDLabels(
       variableID,
       {
         labelID,
@@ -141,7 +141,7 @@ export default class {
     variableID: string,
     labelID: string
   ): Promise<Response> {
-    const {data} = await this.service.variablesVariableIDLabelsLabelIDDelete(
+    const {data} = await this.service.deleteVariablesIDLabelsID(
       variableID,
       labelID,
       undefined,

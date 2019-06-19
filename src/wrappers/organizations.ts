@@ -17,7 +17,7 @@ export default class {
   }
 
   public async get(id: string): Promise<Organization> {
-    const {data} = await this.service.orgsOrgIDGet(
+    const {data} = await this.service.getOrgsID(
       id,
       undefined,
       this.serviceOptions
@@ -29,7 +29,7 @@ export default class {
   public async getAll(): Promise<Organization[]> {
     const {
       data: {orgs},
-    } = await this.service.orgsGet(
+    } = await this.service.getOrgs(
       undefined,
       undefined,
       undefined,
@@ -40,7 +40,7 @@ export default class {
   }
 
   public async create(org: Organization): Promise<Organization> {
-    const {data} = await this.service.orgsPost(
+    const {data} = await this.service.postOrgs(
       org,
       undefined,
       this.serviceOptions
@@ -50,7 +50,7 @@ export default class {
   }
 
   public async delete(id: string): Promise<Response> {
-    const {data} = await this.service.orgsOrgIDDelete(
+    const {data} = await this.service.deleteOrgsID(
       id,
       undefined,
       this.serviceOptions
@@ -64,7 +64,7 @@ export default class {
     org: Partial<Organization>
   ): Promise<Organization> {
     const original = await this.get(id)
-    const {data} = await this.service.orgsOrgIDPatch(
+    const {data} = await this.service.patchOrgsID(
       id,
       {
         ...original,
@@ -80,11 +80,7 @@ export default class {
   public async members(id: string): Promise<ResourceMember[]> {
     const {
       data: {users},
-    } = await this.service.orgsOrgIDMembersGet(
-      id,
-      undefined,
-      this.serviceOptions
-    )
+    } = await this.service.getOrgsIDMembers(id, undefined, this.serviceOptions)
 
     return users || []
   }
@@ -92,11 +88,7 @@ export default class {
   public async owners(id: string): Promise<ResourceOwner[]> {
     const {
       data: {users},
-    } = await this.service.orgsOrgIDOwnersGet(
-      id,
-      undefined,
-      this.serviceOptions
-    )
+    } = await this.service.getOrgsIDOwners(id, undefined, this.serviceOptions)
 
     return users || []
   }
@@ -105,7 +97,7 @@ export default class {
     id: string,
     user: AddResourceMemberRequestBody
   ): Promise<ResourceOwner> {
-    const {data} = await this.service.orgsOrgIDOwnersPost(
+    const {data} = await this.service.postOrgsIDOwners(
       id,
       user,
       undefined,
@@ -119,7 +111,7 @@ export default class {
     id: string,
     user: AddResourceMemberRequestBody
   ): Promise<ResourceMember> {
-    const {data} = await this.service.orgsOrgIDMembersPost(
+    const {data} = await this.service.postOrgsIDMembers(
       id,
       user,
       undefined,
@@ -130,7 +122,7 @@ export default class {
   }
 
   public async removeMember(orgID: string, userID: string): Promise<Response> {
-    const {data} = await this.service.orgsOrgIDMembersUserIDDelete(
+    const {data} = await this.service.deleteOrgsIDMembersID(
       userID,
       orgID,
       undefined,

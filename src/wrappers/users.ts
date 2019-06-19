@@ -11,13 +11,13 @@ export default class {
   }
 
   public async me(): Promise<User> {
-    const {data} = await this.service.meGet(undefined, this.serviceOptions)
+    const {data} = await this.service.getMe(undefined, this.serviceOptions)
 
     return data
   }
 
   public async get(id: string): Promise<User> {
-    const {data} = await this.service.usersUserIDGet(
+    const {data} = await this.service.getUsersID(
       id,
       undefined,
       this.serviceOptions
@@ -27,7 +27,7 @@ export default class {
   }
 
   public async getAll(): Promise<User[]> {
-    const {data} = await this.service.usersGet(undefined, this.serviceOptions)
+    const {data} = await this.service.getUsers(undefined, this.serviceOptions)
 
     return data.users || []
   }

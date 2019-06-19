@@ -46,7 +46,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.rootGet(undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getRoutes(undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];

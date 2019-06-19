@@ -11,7 +11,7 @@ export default class {
   }
 
   public async getAll(): Promise<Routes> {
-    const {data} = await this.service.rootGet(undefined, this.serviceOptions)
+    const {data} = await this.service.getRoutes(undefined, this.serviceOptions)
 
     return data
   }

@@ -64,7 +64,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksPost({ org: org, flux: script }, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postTasks({ org: org, flux: script }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -77,7 +77,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksPost({ orgID: orgID, flux: script }, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postTasks({ orgID: orgID, flux: script }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -90,7 +90,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDGet(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasksID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -103,7 +103,7 @@ var default_1 = (function () {
             var tasks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksGet(undefined, undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasks(undefined, undefined, undefined, undefined, orgID, undefined, this.serviceOptions)];
                     case 1:
                         tasks = (_a.sent()).data.tasks;
                         return [2, addDefaultsToAll(tasks || [])];
@@ -116,7 +116,7 @@ var default_1 = (function () {
             var tasks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksGet(undefined, undefined, undefined, org, undefined, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasks(undefined, undefined, undefined, org, undefined, undefined, this.serviceOptions)];
                     case 1:
                         tasks = (_a.sent()).data.tasks;
                         return [2, addDefaultsToAll(tasks || [])];
@@ -129,7 +129,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksGet(undefined, undefined, user.id, undefined, undefined, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasks(undefined, undefined, user.id, undefined, undefined, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaultsToAll(data.tasks || [])];
@@ -151,7 +151,7 @@ var default_1 = (function () {
                         if (!!updates.every) {
                             delete original.cron;
                         }
-                        return [4, this.service.tasksTaskIDPatch(id, __assign({}, original, updates), undefined, this.serviceOptions)];
+                        return [4, this.service.patchTasksID(id, __assign({}, original, updates), undefined, this.serviceOptions)];
                     case 2:
                         updated = (_a.sent()).data;
                         return [2, addDefaults(updated)];
@@ -170,7 +170,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDDelete(id, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteTasksID(id, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -183,7 +183,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDLabelsPost(taskID, {
+                    case 0: return [4, this.service.postTasksIDLabels(taskID, {
                             labelID: labelID,
                         }, undefined, this.serviceOptions)];
                     case 1:
@@ -201,7 +201,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDLabelsLabelIDDelete(taskID, labelID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.deleteTasksIDLabelsID(taskID, labelID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -224,7 +224,7 @@ var default_1 = (function () {
             var runs;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDRunsGet(taskID, undefined, undefined, undefined, undefined, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasksIDRuns(taskID, undefined, undefined, undefined, undefined, undefined, this.serviceOptions)];
                     case 1:
                         runs = (_a.sent()).data.runs;
                         return [2, runs || []];
@@ -237,7 +237,7 @@ var default_1 = (function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDRunsPost(taskID, undefined, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postTasksIDRuns(taskID, undefined, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, data];
@@ -250,7 +250,7 @@ var default_1 = (function () {
             var events;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.tasksTaskIDRunsRunIDLogsGet(taskID, runID, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.getTasksIDRunsIDLogs(taskID, runID, undefined, this.serviceOptions)];
                     case 1:
                         events = (_a.sent()).data.events;
                         return [2, events || []];
