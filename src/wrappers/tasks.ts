@@ -1,4 +1,4 @@
-import {LogEvent, Run, Task, TasksApi, User} from '../api'
+import {LogEvent, Run, Task, TasksApi, User, AuthorizationsApi} from '../api'
 import {ILabel, ITask, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 
@@ -14,16 +14,22 @@ const addDefaultsToAll = (tasks: Task[]): ITask[] =>
 
 export default class {
   private service: TasksApi
+  private authService: AuthorizationsApi
   private serviceOptions: ServiceOptions
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new TasksApi({basePath, baseOptions})
+    this.authService = new AuthorizationsApi({basePath, baseOptions})
     this.serviceOptions = baseOptions
   }
 
-  public async create(org: string, script: string): Promise<ITask> {
+  public async create(
+    org: string,
+    script: string,
+    token: string
+  ): Promise<ITask> {
     const {data} = await this.service.postTasks(
-      {org, flux: script},
+      {org, flux: script, token},
       undefined,
       this.serviceOptions
     )
@@ -31,9 +37,13 @@ export default class {
     return addDefaults(data)
   }
 
-  public async createByOrgID(orgID: string, script: string): Promise<ITask> {
+  public async createByOrgID(
+    orgID: string,
+    script: string,
+    token: string
+  ): Promise<ITask> {
     const {data} = await this.service.postTasks(
-      {orgID, flux: script},
+      {orgID, flux: script, token},
       undefined,
       this.serviceOptions
     )
@@ -224,7 +234,15 @@ export default class {
   public async clone(taskID: string): Promise<ITask> {
     const original = await this.get(taskID)
 
-    const createdTask = await this.create(original.org || '', original.flux)
+    const {data} = await this.authService.getAuthorizationsID(
+      original.authorizationID || ''
+    )
+
+    const createdTask = await this.create(
+      original.org || '',
+      original.flux,
+      data.token || ''
+    )
 
     if (!createdTask || !createdTask.id) {
       throw new Error('Could not create task')

@@ -57,14 +57,15 @@ var addDefaultsToAll = function (tasks) {
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.TasksApi({ basePath: basePath, baseOptions: baseOptions });
+        this.authService = new api_1.AuthorizationsApi({ basePath: basePath, baseOptions: baseOptions });
         this.serviceOptions = baseOptions;
     }
-    default_1.prototype.create = function (org, script) {
+    default_1.prototype.create = function (org, script, token) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.postTasks({ org: org, flux: script }, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postTasks({ org: org, flux: script, token: token }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -72,12 +73,12 @@ var default_1 = (function () {
             });
         });
     };
-    default_1.prototype.createByOrgID = function (orgID, script) {
+    default_1.prototype.createByOrgID = function (orgID, script, token) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.service.postTasks({ orgID: orgID, flux: script }, undefined, this.serviceOptions)];
+                    case 0: return [4, this.service.postTasks({ orgID: orgID, flux: script, token: token }, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
                         return [2, addDefaults(data)];
@@ -260,20 +261,23 @@ var default_1 = (function () {
     };
     default_1.prototype.clone = function (taskID) {
         return __awaiter(this, void 0, void 0, function () {
-            var original, createdTask;
+            var original, data, createdTask;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, this.get(taskID)];
                     case 1:
                         original = _a.sent();
-                        return [4, this.create(original.org || '', original.flux)];
+                        return [4, this.authService.getAuthorizationsID(original.authorizationID || '')];
                     case 2:
+                        data = (_a.sent()).data;
+                        return [4, this.create(original.org || '', original.flux, data.token || '')];
+                    case 3:
                         createdTask = _a.sent();
                         if (!createdTask || !createdTask.id) {
                             throw new Error('Could not create task');
                         }
                         return [4, this.cloneLabels(original, createdTask)];
-                    case 3:
+                    case 4:
                         _a.sent();
                         return [2, this.get(createdTask.id)];
                 }
