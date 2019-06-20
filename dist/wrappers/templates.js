@@ -175,23 +175,21 @@ var default_1 = (function () {
     };
     default_1.prototype.clone = function (templateID, orgID) {
         return __awaiter(this, void 0, void 0, function () {
-            var data, labels, content, meta, labelsData, name, templateToCreate, createdTemplate;
+            var data, content, meta, labels, labelIDs, name, templateToCreate, createdTemplate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, this.service.getDocumentsTemplatesID(templateID, undefined, this.serviceOptions)];
                     case 1:
                         data = (_a.sent()).data;
-                        labels = data.labels, content = data.content, meta = data.meta;
-                        labelsData = [];
-                        if (labels) {
-                            labelsData = labels.map(function (l) { return l.name; }).filter(function (b) { return !!b; });
-                        }
+                        content = data.content, meta = data.meta;
+                        labels = data.labels || [];
+                        labelIDs = labels.map(function (label) { return label.id; });
                         name = meta.name + " (clone)";
                         templateToCreate = {
                             meta: __assign({}, meta, { name: name }),
                             content: content,
                             orgID: orgID,
-                            labels: labelsData,
+                            labels: labelIDs,
                         };
                         return [4, this.create(templateToCreate)];
                     case 2:
