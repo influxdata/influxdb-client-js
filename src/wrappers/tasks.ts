@@ -19,6 +19,7 @@ export default class {
 
   constructor(basePath: string, baseOptions: ServiceOptions) {
     this.service = new TasksApi({basePath, baseOptions})
+    this.authService = new AuthorizationsApi({basePath, baseOptions})
     this.serviceOptions = baseOptions
   }
 

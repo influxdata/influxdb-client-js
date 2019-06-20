@@ -57,6 +57,7 @@ var addDefaultsToAll = function (tasks) {
 var default_1 = (function () {
     function default_1(basePath, baseOptions) {
         this.service = new api_1.TasksApi({ basePath: basePath, baseOptions: baseOptions });
+        this.authService = new api_1.AuthorizationsApi({ basePath: basePath, baseOptions: baseOptions });
         this.serviceOptions = baseOptions;
     }
     default_1.prototype.create = function (org, script, token) {
