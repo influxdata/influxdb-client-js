@@ -62,7 +62,7 @@ export {
   VariableAssignment,
 } from './types/ast'
 
-export default class Client {
+export class Client {
   public auth: Auth
   public authorizations: Authorizations
   public buckets: Buckets

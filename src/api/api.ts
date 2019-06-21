@@ -3934,6 +3934,12 @@ export interface RunLog {
      * @type {string}
      * @memberof RunLog
      */
+    runID?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunLog
+     */
     time?: string;
     /**
      * 

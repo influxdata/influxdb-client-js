@@ -144,12 +144,10 @@ export default class {
       this.serviceOptions
     )
 
-    const {labels, content, meta} = data
+    const {content, meta} = data
 
-    let labelsData: string[] = []
-    if (labels) {
-      labelsData = labels.map(l => l.name).filter((b): b is string => !!b)
-    }
+    const labels = data.labels || []
+    const labelIDs = labels.map(label => label.id as string)
 
     const name = `${meta.name} (clone)`
 
@@ -157,7 +155,7 @@ export default class {
       meta: {...meta, name},
       content,
       orgID,
-      labels: labelsData,
+      labels: labelIDs,
     }
 
     const createdTemplate = await this.create(templateToCreate)
