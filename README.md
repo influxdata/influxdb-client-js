@@ -70,5 +70,5 @@ yarn run generate
 ### Releasing a new version
 
 ```
-yarn version
+yarn publish --access=public
 ```

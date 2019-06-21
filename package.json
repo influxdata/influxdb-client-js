@@ -12,7 +12,7 @@
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/swagger.yml",
     "preversion": "yarn install --frozen-lockfile && yarn run test && yarn run build",
-    "postversion": "yarn publish --access public && git push && echo \"Successfully released version $npm_package_version!\""
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "keywords": [
