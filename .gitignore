@@ -4,3 +4,5 @@ src/api/.openapi-generator-ignore
 src/api/git_push.sh
 src/api/.openapi-generator
 .vscode
+dist
+.rpt2_cache
