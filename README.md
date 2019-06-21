@@ -48,19 +48,27 @@ const response = await client.write.create('orgID', 'bucketID', data)
 
 ```
 
-## Development requirements
+## Development
+
+### Requirements
 
 - OpenJDK 8 or higher
 - Node 10.x or higher
 
-## Development
+### Installing dependencies
 
 ```
-npm i
+yarn
 ```
 
-## Generating base from swagger
+### Generating base from swagger
 
 ```
-npm run generate
+yarn run generate
+```
+
+### Releasing a new version
+
+```
+yarn version
 ```
