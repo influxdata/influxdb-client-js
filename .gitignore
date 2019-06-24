@@ -6,3 +6,4 @@ src/api/.openapi-generator
 .vscode
 dist
 .rpt2_cache
+.DS_Store
