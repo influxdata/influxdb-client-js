@@ -1,0 +1,6 @@
+yarn install --frozen-lockfile && \
+  yarn run test && \
+  yarn run build && \
+  yarn publish --minor --access=public && \
+  git push --follow-tags && \
+  echo "Publish successful"
