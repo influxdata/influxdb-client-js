@@ -6212,6 +6212,12 @@ export interface User {
      * @type {string}
      * @memberof User
      */
+    oauthID?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
     name: string;
     /**
      * if inactive the user is inactive.
