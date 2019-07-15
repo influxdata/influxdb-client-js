@@ -775,90 +775,6 @@ export interface CellUpdate {
  * @interface Check
  */
 export interface Check {
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
-    name: string;
-    /**
-     * the ID of the organization that owns this check.
-     * @type {string}
-     * @memberof Check
-     */
-    orgID: string;
-    /**
-     * The ID of the authorization used to create this check.
-     * @type {string}
-     * @memberof Check
-     */
-    authorizationID?: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Check
-     */
-    createdAt?: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Check
-     */
-    updatedAt?: Date;
-    /**
-     * The Flux query to run for this check.
-     * @type {Array<DashboardQuery>}
-     * @memberof Check
-     */
-    queries?: Array<DashboardQuery>;
-    /**
-     * The status of the check task.
-     * @type {string}
-     * @memberof Check
-     */
-    status?: Check.StatusEnum;
-    /**
-     * Check repetition interval
-     * @type {string}
-     * @memberof Check
-     */
-    every?: string;
-    /**
-     * Duration to delay after the schedule, before executing check.
-     * @type {string}
-     * @memberof Check
-     */
-    offset?: string;
-    /**
-     * Check repetition interval in the form '* * * * * *';
-     * @type {string}
-     * @memberof Check
-     */
-    cron?: string;
-    /**
-     * tags to write to each status
-     * @type {Array<CheckTags>}
-     * @memberof Check
-     */
-    tags?: Array<CheckTags>;
-    /**
-     * template that is used to generate and write a status message
-     * @type {string}
-     * @memberof Check
-     */
-    statusMessageTemplate?: string;
-    /**
-     * 
-     * @type {Array<Label>}
-     * @memberof Check
-     */
-    labels?: Array<Label>;
 }
 
 /**
@@ -866,6 +782,105 @@ export interface Check {
  * @namespace Check
  */
 export namespace Check {
+}
+
+/**
+ * 
+ * @export
+ * @interface CheckBase
+ */
+export interface CheckBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBase
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBase
+     */
+    name: string;
+    /**
+     * the ID of the organization that owns this check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    orgID: string;
+    /**
+     * The ID of the authorization used to create this check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    authorizationID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CheckBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CheckBase
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {DashboardQuery}
+     * @memberof CheckBase
+     */
+    query: DashboardQuery;
+    /**
+     * The status of the check task.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    status?: CheckBase.StatusEnum;
+    /**
+     * Check repetition interval
+     * @type {string}
+     * @memberof CheckBase
+     */
+    every?: string;
+    /**
+     * Duration to delay after the schedule, before executing check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    offset?: string;
+    /**
+     * Check repetition interval in the form '* * * * * *';
+     * @type {string}
+     * @memberof CheckBase
+     */
+    cron?: string;
+    /**
+     * tags to write to each status
+     * @type {Array<CheckBaseTags>}
+     * @memberof CheckBase
+     */
+    tags?: Array<CheckBaseTags>;
+    /**
+     * template that is used to generate and write a status message
+     * @type {string}
+     * @memberof CheckBase
+     */
+    statusMessageTemplate?: string;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof CheckBase
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace CheckBase
+ */
+export namespace CheckBase {
     /**
      * @export
      * @enum {string}
@@ -874,6 +889,26 @@ export namespace Check {
         Active = 'active',
         Inactive = 'inactive'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface CheckBaseTags
+ */
+export interface CheckBaseTags {
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBaseTags
+     */
+    key?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBaseTags
+     */
+    value?: string;
 }
 
 /**
@@ -887,26 +922,6 @@ export enum CheckStatusLevel {
     INFO = 'INFO',
     CRIT = 'CRIT',
     WARN = 'WARN'
-}
-
-/**
- * 
- * @export
- * @interface CheckTags
- */
-export interface CheckTags {
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckTags
-     */
-    key?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckTags
-     */
-    value?: string;
 }
 
 /**
@@ -957,10 +972,10 @@ export namespace CheckViewProperties {
 export interface Checks {
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<Check>}
      * @memberof Checks
      */
-    checks?: Array<any>;
+    checks?: Array<Check>;
     /**
      * 
      * @type {Links}
@@ -1300,7 +1315,7 @@ export interface DateTimeLiteral {
  * @export
  * @interface DeadmanCheck
  */
-export interface DeadmanCheck extends Check {
+export interface DeadmanCheck extends CheckBase {
     /**
      * seconds before deadman triggers
      * @type {number}
@@ -2360,8 +2375,8 @@ export namespace LevelRule {
      * @enum {string}
      */
     export enum OperationEnum {
-         = '==',
-        NotEqual = '!='
+        Equal = 'equal',
+        Notequal = 'notequal'
     }
 }
 
@@ -2939,54 +2954,6 @@ export interface Node {
  * @interface NotificationEndpoint
  */
 export interface NotificationEndpoint {
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationEndpoint
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationEndpoint
-     */
-    orgID?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationEndpoint
-     */
-    userID?: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof NotificationEndpoint
-     */
-    createdAt?: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof NotificationEndpoint
-     */
-    updatedAt?: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationEndpoint
-     */
-    name?: string;
-    /**
-     * The status of the endpoint.
-     * @type {string}
-     * @memberof NotificationEndpoint
-     */
-    status?: NotificationEndpoint.StatusEnum;
-    /**
-     * 
-     * @type {Array<Label>}
-     * @memberof NotificationEndpoint
-     */
-    labels?: Array<Label>;
 }
 
 /**
@@ -2994,6 +2961,69 @@ export interface NotificationEndpoint {
  * @namespace NotificationEndpoint
  */
 export namespace NotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationEndpointBase
+ */
+export interface NotificationEndpointBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    orgID?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    userID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationEndpointBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationEndpointBase
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    name?: string;
+    /**
+     * The status of the endpoint.
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    status?: NotificationEndpointBase.StatusEnum;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof NotificationEndpointBase
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace NotificationEndpointBase
+ */
+export namespace NotificationEndpointBase {
     /**
      * @export
      * @enum {string}
@@ -3012,10 +3042,10 @@ export namespace NotificationEndpoint {
 export interface NotificationEndpoints {
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<NotificationEndpoint>}
      * @memberof NotificationEndpoints
      */
-    notificationEndpoints?: Array<any>;
+    notificationEndpoints?: Array<NotificationEndpoint>;
     /**
      * 
      * @type {Links}
@@ -3030,114 +3060,6 @@ export interface NotificationEndpoints {
  * @interface NotificationRule
  */
 export interface NotificationRule {
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    notifyEndpointID?: string;
-    /**
-     * the ID of the organization that owns this notification rule.
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    orgID?: string;
-    /**
-     * The ID of the authorization used to create this notification rule.
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    authorizationID?: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof NotificationRule
-     */
-    createdAt?: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof NotificationRule
-     */
-    updatedAt?: Date;
-    /**
-     * The status of the notification rule task.
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    status?: NotificationRule.StatusEnum;
-    /**
-     * human-readable name describing the notification rule
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    name?: string;
-    /**
-     * the type of notification
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    type?: NotificationRule.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    sleepUntil?: string;
-    /**
-     * notification repetition interval
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    every?: string;
-    /**
-     * Duration to delay after the schedule, before executing check.
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    offset?: string;
-    /**
-     * notification repetition interval in the form '* * * * * *';
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    cron?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NotificationRule
-     */
-    runbookLink?: string;
-    /**
-     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty.
-     * @type {number}
-     * @memberof NotificationRule
-     */
-    limitEvery?: number;
-    /**
-     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty.
-     * @type {number}
-     * @memberof NotificationRule
-     */
-    limit?: number;
-    /**
-     * list of tag rules the notification rule attempts to match
-     * @type {Array<TagRule>}
-     * @memberof NotificationRule
-     */
-    tagRules?: Array<TagRule>;
-    /**
-     * list of status rules the notification rule attempts to match
-     * @type {Array<StatusRule>}
-     * @memberof NotificationRule
-     */
-    statusRules?: Array<StatusRule>;
-    /**
-     * 
-     * @type {Array<Label>}
-     * @memberof NotificationRule
-     */
-    labels?: Array<Label>;
 }
 
 /**
@@ -3145,6 +3067,129 @@ export interface NotificationRule {
  * @namespace NotificationRule
  */
 export namespace NotificationRule {
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationRuleBase
+ */
+export interface NotificationRuleBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    notifyEndpointID?: string;
+    /**
+     * the ID of the organization that owns this notification rule.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    orgID?: string;
+    /**
+     * The ID of the authorization used to create this notification rule.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    authorizationID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationRuleBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationRuleBase
+     */
+    updatedAt?: Date;
+    /**
+     * The status of the notification rule task.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    status?: NotificationRuleBase.StatusEnum;
+    /**
+     * human-readable name describing the notification rule
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    name?: string;
+    /**
+     * the type of notification
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    type?: NotificationRuleBase.TypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    sleepUntil?: string;
+    /**
+     * notification repetition interval
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    every?: string;
+    /**
+     * Duration to delay after the schedule, before executing check.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    offset?: string;
+    /**
+     * notification repetition interval in the form '* * * * * *';
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    cron?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    runbookLink?: string;
+    /**
+     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty.
+     * @type {number}
+     * @memberof NotificationRuleBase
+     */
+    limitEvery?: number;
+    /**
+     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty.
+     * @type {number}
+     * @memberof NotificationRuleBase
+     */
+    limit?: number;
+    /**
+     * list of tag rules the notification rule attempts to match
+     * @type {Array<TagRule>}
+     * @memberof NotificationRuleBase
+     */
+    tagRules?: Array<TagRule>;
+    /**
+     * list of status rules the notification rule attempts to match
+     * @type {Array<StatusRule>}
+     * @memberof NotificationRuleBase
+     */
+    statusRules?: Array<StatusRule>;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof NotificationRuleBase
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace NotificationRuleBase
+ */
+export namespace NotificationRuleBase {
     /**
      * @export
      * @enum {string}
@@ -3172,10 +3217,10 @@ export namespace NotificationRule {
 export interface NotificationRules {
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<NotificationRule>}
      * @memberof NotificationRules
      */
-    notificationRules?: Array<any>;
+    notificationRules?: Array<NotificationRule>;
     /**
      * 
      * @type {Links}
@@ -3564,7 +3609,7 @@ export interface PackageClause {
  * @export
  * @interface PagerDutyNotificationEndpoint
  */
-export interface PagerDutyNotificationEndpoint extends NotificationEndpoint {
+export interface PagerDutyNotificationEndpoint extends NotificationEndpointBase {
 }
 
 /**
@@ -3579,7 +3624,7 @@ export namespace PagerDutyNotificationEndpoint {
  * @export
  * @interface PagerDutyNotificationRule
  */
-export interface PagerDutyNotificationRule extends NotificationRule {
+export interface PagerDutyNotificationRule extends NotificationRuleBase {
     /**
      * 
      * @type {string}
@@ -4597,7 +4642,7 @@ export interface Runs {
  * @export
  * @interface SMTPNotificationEndpoint
  */
-export interface SMTPNotificationEndpoint extends NotificationEndpoint {
+export interface SMTPNotificationEndpoint extends NotificationEndpointBase {
 }
 
 /**
@@ -4612,7 +4657,7 @@ export namespace SMTPNotificationEndpoint {
  * @export
  * @interface SMTPNotificationRule
  */
-export interface SMTPNotificationRule extends NotificationRule {
+export interface SMTPNotificationRule extends NotificationRuleBase {
     /**
      * 
      * @type {string}
@@ -4830,7 +4875,7 @@ export namespace SingleStatViewProperties {
  * @export
  * @interface SlackNotificationEndpoint
  */
-export interface SlackNotificationEndpoint extends NotificationEndpoint {
+export interface SlackNotificationEndpoint extends NotificationEndpointBase {
 }
 
 /**
@@ -4845,7 +4890,7 @@ export namespace SlackNotificationEndpoint {
  * @export
  * @interface SlackNotificationRule
  */
-export interface SlackNotificationRule extends NotificationRule {
+export interface SlackNotificationRule extends NotificationRuleBase {
     /**
      * 
      * @type {string}
@@ -5195,10 +5240,10 @@ export namespace TagRule {
      * @enum {string}
      */
     export enum OperatorEnum {
-         = '==',
-        NotEqual = '!=',
-         = '=~',
-         = '!~'
+        Equal = 'equal',
+        Notequal = 'notequal',
+        Equalregex = 'equalregex',
+        Notequalregex = 'notequalregex'
     }
 }
 
@@ -6928,7 +6973,7 @@ export interface TestStatement {
  * @export
  * @interface ThresholdCheck
  */
-export interface ThresholdCheck extends Check {
+export interface ThresholdCheck extends CheckBase {
     /**
      * 
      * @type {Array<any>}
@@ -7360,7 +7405,7 @@ export interface Views {
  * @export
  * @interface WebhookNotificationEndpoint
  */
-export interface WebhookNotificationEndpoint extends NotificationEndpoint {
+export interface WebhookNotificationEndpoint extends NotificationEndpointBase {
 }
 
 /**
@@ -9890,14 +9935,14 @@ export const ChecksApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Add new check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check to create
+         * @param {Check} check check to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCheck(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options: any = {}): RequestArgs {
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling createCheck.');
+        createCheck(check: Check, options: any = {}): RequestArgs {
+            // verify required parameter 'check' is not null or undefined
+            if (check === null || check === undefined) {
+                throw new RequiredError('check','Required parameter check was null or undefined when calling createCheck.');
             }
             const localVarPath = `/checks`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -9915,8 +9960,8 @@ export const ChecksApiAxiosParamCreator = function (configuration?: Configuratio
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"Check" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(check || {}) : (check || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10049,19 +10094,19 @@ export const ChecksApiAxiosParamCreator = function (configuration?: Configuratio
          * 
          * @summary Update a check
          * @param {string} checkID ID of check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {Check} check check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchChecksID(checkID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'checkID' is not null or undefined
             if (checkID === null || checkID === undefined) {
                 throw new RequiredError('checkID','Required parameter checkID was null or undefined when calling patchChecksID.');
             }
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling patchChecksID.');
+            // verify required parameter 'check' is not null or undefined
+            if (check === null || check === undefined) {
+                throw new RequiredError('check','Required parameter check was null or undefined when calling patchChecksID.');
             }
             const localVarPath = `/checks/{checkID}`
                 .replace(`{${"checkID"}}`, encodeURIComponent(String(checkID)));
@@ -10084,8 +10129,8 @@ export const ChecksApiAxiosParamCreator = function (configuration?: Configuratio
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"Check" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(check || {}) : (check || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -10104,12 +10149,12 @@ export const ChecksApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add new check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check to create
+         * @param {Check} check check to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCheck(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
-            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).createCheck(UNKNOWN_BASE_TYPE, options);
+        createCheck(check: Check, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).createCheck(check, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10154,7 +10199,7 @@ export const ChecksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getChecksID(checkID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
+        getChecksID(checkID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
             const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).getChecksID(checkID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -10165,13 +10210,13 @@ export const ChecksApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update a check
          * @param {string} checkID ID of check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {Check} check check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchChecksID(checkID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
-            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).patchChecksID(checkID, UNKNOWN_BASE_TYPE, zapTraceSpan, options);
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).patchChecksID(checkID, check, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -10189,12 +10234,12 @@ export const ChecksApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Add new check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check to create
+         * @param {Check} check check to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCheck(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-            return ChecksApiFp(configuration).createCheck(UNKNOWN_BASE_TYPE, options)(axios, basePath);
+        createCheck(check: Check, options?: any) {
+            return ChecksApiFp(configuration).createCheck(check, options)(axios, basePath);
         },
         /**
          * 
@@ -10234,13 +10279,13 @@ export const ChecksApiFactory = function (configuration?: Configuration, basePat
          * 
          * @summary Update a check
          * @param {string} checkID ID of check
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {Check} check check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchChecksID(checkID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-            return ChecksApiFp(configuration).patchChecksID(checkID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(axios, basePath);
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any) {
+            return ChecksApiFp(configuration).patchChecksID(checkID, check, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -10255,13 +10300,13 @@ export class ChecksApi extends BaseAPI {
     /**
      * 
      * @summary Add new check
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check to create
+     * @param {Check} check check to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChecksApi
      */
-    public createCheck(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return ChecksApiFp(this.configuration).createCheck(UNKNOWN_BASE_TYPE, options)(this.axios, this.basePath);
+    public createCheck(check: Check, options?: any) {
+        return ChecksApiFp(this.configuration).createCheck(check, options)(this.axios, this.basePath);
     }
 
     /**
@@ -10308,14 +10353,14 @@ export class ChecksApi extends BaseAPI {
      * 
      * @summary Update a check
      * @param {string} checkID ID of check
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+     * @param {Check} check check update to apply
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ChecksApi
      */
-    public patchChecksID(checkID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-        return ChecksApiFp(this.configuration).patchChecksID(checkID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(this.axios, this.basePath);
+    public patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any) {
+        return ChecksApiFp(this.configuration).patchChecksID(checkID, check, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -12968,14 +13013,14 @@ export const NotificationEndpointsApiAxiosParamCreator = function (configuration
         /**
          * 
          * @summary Add new notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationEndpoint to create
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationEndpoint(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options: any = {}): RequestArgs {
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling createNotificationEndpoint.');
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options: any = {}): RequestArgs {
+            // verify required parameter 'notificationEndpoint' is not null or undefined
+            if (notificationEndpoint === null || notificationEndpoint === undefined) {
+                throw new RequiredError('notificationEndpoint','Required parameter notificationEndpoint was null or undefined when calling createNotificationEndpoint.');
             }
             const localVarPath = `/notificationEndpoints`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -12993,8 +13038,8 @@ export const NotificationEndpointsApiAxiosParamCreator = function (configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"NotificationEndpoint" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationEndpoint || {}) : (notificationEndpoint || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13127,19 +13172,19 @@ export const NotificationEndpointsApiAxiosParamCreator = function (configuration
          * 
          * @summary Update a notification endpoint
          * @param {string} endpointID ID of notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationEndpointsID(endpointID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'endpointID' is not null or undefined
             if (endpointID === null || endpointID === undefined) {
                 throw new RequiredError('endpointID','Required parameter endpointID was null or undefined when calling patchNotificationEndpointsID.');
             }
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling patchNotificationEndpointsID.');
+            // verify required parameter 'notificationEndpoint' is not null or undefined
+            if (notificationEndpoint === null || notificationEndpoint === undefined) {
+                throw new RequiredError('notificationEndpoint','Required parameter notificationEndpoint was null or undefined when calling patchNotificationEndpointsID.');
             }
             const localVarPath = `/notificationEndpoints/{endpointID}`
                 .replace(`{${"endpointID"}}`, encodeURIComponent(String(endpointID)));
@@ -13162,8 +13207,8 @@ export const NotificationEndpointsApiAxiosParamCreator = function (configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"NotificationEndpoint" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationEndpoint || {}) : (notificationEndpoint || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13182,12 +13227,12 @@ export const NotificationEndpointsApiFp = function(configuration?: Configuration
         /**
          * 
          * @summary Add new notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationEndpoint to create
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationEndpoint(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
-            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).createNotificationEndpoint(UNKNOWN_BASE_TYPE, options);
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).createNotificationEndpoint(notificationEndpoint, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13232,7 +13277,7 @@ export const NotificationEndpointsApiFp = function(configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
+        getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationEndpoint> {
             const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).getNotificationEndpointsID(endpointID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -13243,13 +13288,13 @@ export const NotificationEndpointsApiFp = function(configuration?: Configuration
          * 
          * @summary Update a notification endpoint
          * @param {string} endpointID ID of notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationEndpointsID(endpointID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
-            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).patchNotificationEndpointsID(endpointID, UNKNOWN_BASE_TYPE, zapTraceSpan, options);
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationEndpoint> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13267,12 +13312,12 @@ export const NotificationEndpointsApiFactory = function (configuration?: Configu
         /**
          * 
          * @summary Add new notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationEndpoint to create
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationEndpoint(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-            return NotificationEndpointsApiFp(configuration).createNotificationEndpoint(UNKNOWN_BASE_TYPE, options)(axios, basePath);
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any) {
+            return NotificationEndpointsApiFp(configuration).createNotificationEndpoint(notificationEndpoint, options)(axios, basePath);
         },
         /**
          * 
@@ -13312,13 +13357,13 @@ export const NotificationEndpointsApiFactory = function (configuration?: Configu
          * 
          * @summary Update a notification endpoint
          * @param {string} endpointID ID of notification endpoint
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationEndpointsID(endpointID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-            return NotificationEndpointsApiFp(configuration).patchNotificationEndpointsID(endpointID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(axios, basePath);
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any) {
+            return NotificationEndpointsApiFp(configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -13333,13 +13378,13 @@ export class NotificationEndpointsApi extends BaseAPI {
     /**
      * 
      * @summary Add new notification endpoint
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationEndpoint to create
+     * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotificationEndpointsApi
      */
-    public createNotificationEndpoint(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return NotificationEndpointsApiFp(this.configuration).createNotificationEndpoint(UNKNOWN_BASE_TYPE, options)(this.axios, this.basePath);
+    public createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).createNotificationEndpoint(notificationEndpoint, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13386,14 +13431,14 @@ export class NotificationEndpointsApi extends BaseAPI {
      * 
      * @summary Update a notification endpoint
      * @param {string} endpointID ID of notification endpoint
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE check update to apply
+     * @param {NotificationEndpoint} notificationEndpoint check update to apply
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotificationEndpointsApi
      */
-    public patchNotificationEndpointsID(endpointID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-        return NotificationEndpointsApiFp(this.configuration).patchNotificationEndpointsID(endpointID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(this.axios, this.basePath);
+    public patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -13407,14 +13452,14 @@ export const NotificationRulesApiAxiosParamCreator = function (configuration?: C
         /**
          * 
          * @summary Add new notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationRule to create
+         * @param {NotificationRule} notificationRule notificationRule to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationRule(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options: any = {}): RequestArgs {
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling createNotificationRule.');
+        createNotificationRule(notificationRule: NotificationRule, options: any = {}): RequestArgs {
+            // verify required parameter 'notificationRule' is not null or undefined
+            if (notificationRule === null || notificationRule === undefined) {
+                throw new RequiredError('notificationRule','Required parameter notificationRule was null or undefined when calling createNotificationRule.');
             }
             const localVarPath = `/notificationRules`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -13432,8 +13477,8 @@ export const NotificationRulesApiAxiosParamCreator = function (configuration?: C
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"NotificationRule" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationRule || {}) : (notificationRule || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13571,19 +13616,19 @@ export const NotificationRulesApiAxiosParamCreator = function (configuration?: C
          * 
          * @summary Update a notification rule
          * @param {string} ruleID ID of notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notification rule update to apply
+         * @param {NotificationRule} notificationRule notification rule update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationRulesID(ruleID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options: any = {}): RequestArgs {
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options: any = {}): RequestArgs {
             // verify required parameter 'ruleID' is not null or undefined
             if (ruleID === null || ruleID === undefined) {
                 throw new RequiredError('ruleID','Required parameter ruleID was null or undefined when calling patchNotificationRulesID.');
             }
-            // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-            if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-                throw new RequiredError('UNKNOWN_BASE_TYPE','Required parameter UNKNOWN_BASE_TYPE was null or undefined when calling patchNotificationRulesID.');
+            // verify required parameter 'notificationRule' is not null or undefined
+            if (notificationRule === null || notificationRule === undefined) {
+                throw new RequiredError('notificationRule','Required parameter notificationRule was null or undefined when calling patchNotificationRulesID.');
             }
             const localVarPath = `/notificationRules/{ruleID}`
                 .replace(`{${"ruleID"}}`, encodeURIComponent(String(ruleID)));
@@ -13606,8 +13651,8 @@ export const NotificationRulesApiAxiosParamCreator = function (configuration?: C
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UNKNOWN_BASE_TYPE" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(UNKNOWN_BASE_TYPE || {}) : (UNKNOWN_BASE_TYPE || "");
+            const needsSerialization = (<any>"NotificationRule" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationRule || {}) : (notificationRule || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -13626,12 +13671,12 @@ export const NotificationRulesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Add new notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationRule to create
+         * @param {NotificationRule} notificationRule notificationRule to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationRule(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
-            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).createNotificationRule(UNKNOWN_BASE_TYPE, options);
+        createNotificationRule(notificationRule: NotificationRule, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).createNotificationRule(notificationRule, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13677,7 +13722,7 @@ export const NotificationRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
+        getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
             const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).getNotificationRulesID(ruleID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -13688,13 +13733,13 @@ export const NotificationRulesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update a notification rule
          * @param {string} ruleID ID of notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notification rule update to apply
+         * @param {NotificationRule} notificationRule notification rule update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationRulesID(ruleID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<any> {
-            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).patchNotificationRulesID(ruleID, UNKNOWN_BASE_TYPE, zapTraceSpan, options);
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
                 return axios.request(axiosRequestArgs);                
@@ -13712,12 +13757,12 @@ export const NotificationRulesApiFactory = function (configuration?: Configurati
         /**
          * 
          * @summary Add new notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationRule to create
+         * @param {NotificationRule} notificationRule notificationRule to create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNotificationRule(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-            return NotificationRulesApiFp(configuration).createNotificationRule(UNKNOWN_BASE_TYPE, options)(axios, basePath);
+        createNotificationRule(notificationRule: NotificationRule, options?: any) {
+            return NotificationRulesApiFp(configuration).createNotificationRule(notificationRule, options)(axios, basePath);
         },
         /**
          * 
@@ -13758,13 +13803,13 @@ export const NotificationRulesApiFactory = function (configuration?: Configurati
          * 
          * @summary Update a notification rule
          * @param {string} ruleID ID of notification rule
-         * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notification rule update to apply
+         * @param {NotificationRule} notificationRule notification rule update to apply
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchNotificationRulesID(ruleID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-            return NotificationRulesApiFp(configuration).patchNotificationRulesID(ruleID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(axios, basePath);
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any) {
+            return NotificationRulesApiFp(configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options)(axios, basePath);
         },
     };
 };
@@ -13779,13 +13824,13 @@ export class NotificationRulesApi extends BaseAPI {
     /**
      * 
      * @summary Add new notification rule
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notificationRule to create
+     * @param {NotificationRule} notificationRule notificationRule to create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotificationRulesApi
      */
-    public createNotificationRule(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, options?: any) {
-        return NotificationRulesApiFp(this.configuration).createNotificationRule(UNKNOWN_BASE_TYPE, options)(this.axios, this.basePath);
+    public createNotificationRule(notificationRule: NotificationRule, options?: any) {
+        return NotificationRulesApiFp(this.configuration).createNotificationRule(notificationRule, options)(this.axios, this.basePath);
     }
 
     /**
@@ -13833,14 +13878,14 @@ export class NotificationRulesApi extends BaseAPI {
      * 
      * @summary Update a notification rule
      * @param {string} ruleID ID of notification rule
-     * @param {UNKNOWN_BASE_TYPE} UNKNOWN_BASE_TYPE notification rule update to apply
+     * @param {NotificationRule} notificationRule notification rule update to apply
      * @param {string} [zapTraceSpan] OpenTracing span context
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof NotificationRulesApi
      */
-    public patchNotificationRulesID(ruleID: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, zapTraceSpan?: string, options?: any) {
-        return NotificationRulesApiFp(this.configuration).patchNotificationRulesID(ruleID, UNKNOWN_BASE_TYPE, zapTraceSpan, options)(this.axios, this.basePath);
+    public patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any) {
+        return NotificationRulesApiFp(this.configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
