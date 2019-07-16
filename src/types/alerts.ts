@@ -7,6 +7,7 @@ import {
   SlackNotificationRule,
   PagerDutyNotificationRule,
   SMTPNotificationRule,
+  Links,
 } from '../api'
 
 export interface ThresholdCheck extends ThresholdCheckGen {
@@ -17,7 +18,17 @@ export interface ThresholdCheck extends ThresholdCheckGen {
 
 export type Check = DeadmanCheck | ThresholdCheck
 
+export interface Checks {
+  checks: Array<Check>
+  links: Links
+}
+
 export type NotificationRule =
   | SlackNotificationRule
   | PagerDutyNotificationRule
   | SMTPNotificationRule
+
+export interface NotificationRules {
+  notificationRules: Array<NotificationRule>
+  links: Links
+}

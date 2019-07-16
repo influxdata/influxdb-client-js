@@ -1,5 +1,5 @@
 import {NotificationRulesApi} from '../api'
-import {NotificationRule, ServiceOptions} from '../types'
+import {NotificationRule, ServiceOptions, NotificationRules} from '../types'
 import {addLabelDefaults} from './labels'
 import {AxiosResponse} from 'axios'
 
@@ -32,30 +32,34 @@ export default class {
   }
 
   public async getAll(orgID: string): Promise<NotificationRule[]> {
-    const {data} = (await this.service.getNotificationRules(
+    const {
+      data: {notificationRules},
+    } = (await this.service.getNotificationRules(
       orgID,
       undefined,
       undefined,
       undefined,
       this.serviceOptions
-    )) as AxiosResponse<Array<NotificationRule>>
+    )) as AxiosResponse<NotificationRules>
 
-    return addDefaultsToAll(data || [])
+    return addDefaultsToAll(notificationRules || [])
   }
 
   public async getAllForCheck(
     orgID: string,
     checkID: string
   ): Promise<NotificationRule[]> {
-    const {data} = (await this.service.getNotificationRules(
+    const {
+      data: {notificationRules},
+    } = (await this.service.getNotificationRules(
       orgID,
       undefined,
       undefined,
       checkID,
       this.serviceOptions
-    )) as AxiosResponse<Array<NotificationRule>>
+    )) as AxiosResponse<NotificationRules>
 
-    return addDefaultsToAll(data || [])
+    return addDefaultsToAll(notificationRules || [])
   }
 
   public async create(

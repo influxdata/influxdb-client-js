@@ -1,5 +1,5 @@
 import {ChecksApi} from '../api'
-import {Check, ServiceOptions} from '../types'
+import {Check, Checks, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import {AxiosResponse} from 'axios'
 
@@ -30,14 +30,16 @@ export default class {
   }
 
   public async getAll(orgID: string): Promise<Check[]> {
-    const {data} = (await this.service.getChecks(
+    const {
+      data: {checks},
+    } = (await this.service.getChecks(
       orgID,
       undefined,
       undefined,
       this.serviceOptions
-    )) as AxiosResponse<Array<Check>>
+    )) as AxiosResponse<Checks>
 
-    return addDefaultsToAll(data || [])
+    return addDefaultsToAll(checks || [])
   }
 
   public async create(check: Check): Promise<Check> {

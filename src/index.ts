@@ -62,7 +62,13 @@ export {
   VariableAssignment,
 } from './types/ast'
 
-export {Check, NotificationRule, ThresholdCheck} from './types/alerts'
+export {
+  Check,
+  NotificationRule,
+  ThresholdCheck,
+  Checks,
+  NotificationRules,
+} from './types/alerts'
 
 export class Client {
   public auth: Auth
