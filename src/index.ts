@@ -19,8 +19,8 @@ export {CancellationError, LargeResponseError} from './utils/errors'
 
 export * from './api'
 export * from './types'
-// Must locally re-export manually generated ast types to resolve
-// ts compiler ambiguity with swagger generated AST types.
+// Must locally re-export manually generated types to resolve
+// ts compiler ambiguity with swagger generated types.
 export {
   ArrayExpression,
   BadStatement,
@@ -61,6 +61,8 @@ export {
   UnsignedIntegerLiteral,
   VariableAssignment,
 } from './types/ast'
+
+export {Check, NotificationRule, ThresholdCheck} from './types/alerts'
 
 export class Client {
   public auth: Auth
