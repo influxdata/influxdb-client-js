@@ -14,6 +14,8 @@ import Users from './wrappers/users'
 import Variables from './wrappers/variables'
 import Write from './wrappers/write'
 import Templates from './wrappers/templates'
+import Checks from './wrappers/checks'
+import NotificationRules from './wrappers/notifications'
 
 export {CancellationError, LargeResponseError} from './utils/errors'
 
@@ -114,6 +116,8 @@ export class Client {
   public variables: Variables
   public write: Write
   public templates: Templates
+  public checks: Checks
+  public notificationRules: NotificationRules
 
   constructor(basePath: string, token?: string) {
     let options = {}
@@ -138,5 +142,7 @@ export class Client {
     this.variables = new Variables(basePath, options)
     this.write = new Write(basePath, options)
     this.templates = new Templates(basePath, options)
+    this.checks = new Checks(basePath, options)
+    this.notificationRules = new NotificationRules(basePath, options)
   }
 }
