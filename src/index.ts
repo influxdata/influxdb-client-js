@@ -14,13 +14,15 @@ import Users from './wrappers/users'
 import Variables from './wrappers/variables'
 import Write from './wrappers/write'
 import Templates from './wrappers/templates'
+import Checks from './wrappers/checks'
+import NotificationRules from './wrappers/notifications'
 
 export {CancellationError, LargeResponseError} from './utils/errors'
 
 export * from './api'
 export * from './types'
-// Must locally re-export manually generated ast types to resolve
-// ts compiler ambiguity with swagger generated AST types.
+// Must locally re-export manually generated types to resolve
+// ts compiler ambiguity with swagger generated types.
 export {
   ArrayExpression,
   BadStatement,
@@ -62,6 +64,41 @@ export {
   VariableAssignment,
 } from './types/ast'
 
+export {
+  Check,
+  NotificationRule,
+  ThresholdCheck,
+  Checks,
+  NotificationRules,
+} from './types/alerts'
+
+export {
+  View,
+  ViewProperties,
+  XYViewProperties,
+  LinePlusSingleStatProperties,
+  SingleStatViewProperties,
+  TableViewProperties,
+  GaugeViewProperties,
+  HistogramViewProperties,
+  HeatmapViewProperties,
+  ScatterViewProperties,
+  CheckViewProperties,
+  EmptyViewProperties,
+  MarkdownViewProperties,
+  XYView,
+  LinePlusSingleStatView,
+  SingleStatView,
+  TableView,
+  GaugeView,
+  HistogramView,
+  HeatmapView,
+  ScatterView,
+  CheckView,
+  EmptyView,
+  MarkdownView,
+} from './types/dashboards'
+
 export class Client {
   public auth: Auth
   public authorizations: Authorizations
@@ -79,6 +116,8 @@ export class Client {
   public variables: Variables
   public write: Write
   public templates: Templates
+  public checks: Checks
+  public notificationRules: NotificationRules
 
   constructor(basePath: string, token?: string) {
     let options = {}
@@ -103,5 +142,7 @@ export class Client {
     this.variables = new Variables(basePath, options)
     this.write = new Write(basePath, options)
     this.templates = new Templates(basePath, options)
+    this.checks = new Checks(basePath, options)
+    this.notificationRules = new NotificationRules(basePath, options)
   }
 }

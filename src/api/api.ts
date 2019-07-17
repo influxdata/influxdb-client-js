@@ -775,30 +775,6 @@ export interface CellUpdate {
  * @interface Check
  */
 export interface Check {
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
-    message?: string;
-    /**
-     * 
-     * @type {Array<Check>}
-     * @memberof Check
-     */
-    checks?: Array<Check>;
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
-    status: Check.StatusEnum;
 }
 
 /**
@@ -806,14 +782,209 @@ export interface Check {
  * @namespace Check
  */
 export namespace Check {
+}
+
+/**
+ * 
+ * @export
+ * @interface CheckBase
+ */
+export interface CheckBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBase
+     */
+    id?: string;
+    /**
+     * 
+     * @type {CheckType}
+     * @memberof CheckBase
+     */
+    type: CheckType;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBase
+     */
+    name: string;
+    /**
+     * the ID of the organization that owns this check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    orgID: string;
+    /**
+     * The ID of the authorization used to create this check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    authorizationID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CheckBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CheckBase
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {DashboardQuery}
+     * @memberof CheckBase
+     */
+    query: DashboardQuery;
+    /**
+     * The status of the check task.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    status?: CheckBase.StatusEnum;
+    /**
+     * Check repetition interval
+     * @type {string}
+     * @memberof CheckBase
+     */
+    every?: string;
+    /**
+     * Duration to delay after the schedule, before executing check.
+     * @type {string}
+     * @memberof CheckBase
+     */
+    offset?: string;
+    /**
+     * Check repetition interval in the form '* * * * * *';
+     * @type {string}
+     * @memberof CheckBase
+     */
+    cron?: string;
+    /**
+     * tags to write to each status
+     * @type {Array<CheckBaseTags>}
+     * @memberof CheckBase
+     */
+    tags?: Array<CheckBaseTags>;
+    /**
+     * template that is used to generate and write a status message
+     * @type {string}
+     * @memberof CheckBase
+     */
+    statusMessageTemplate?: string;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof CheckBase
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace CheckBase
+ */
+export namespace CheckBase {
     /**
      * @export
      * @enum {string}
      */
     export enum StatusEnum {
-        Pass = 'pass',
-        Fail = 'fail'
+        Active = 'active',
+        Inactive = 'inactive'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface CheckBaseTags
+ */
+export interface CheckBaseTags {
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBaseTags
+     */
+    key?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckBaseTags
+     */
+    value?: string;
+}
+
+/**
+ * the state to record if check matches a criteria
+ * @export
+ * @enum {string}
+ */
+export enum CheckStatusLevel {
+    UNKNOWN = 'UNKNOWN',
+    OK = 'OK',
+    INFO = 'INFO',
+    CRIT = 'CRIT',
+    WARN = 'WARN'
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum CheckType {
+    Deadman = 'deadman',
+    Threshold = 'threshold'
+}
+
+/**
+ * 
+ * @export
+ * @interface CheckViewProperties
+ */
+export interface CheckViewProperties extends ViewProperties {
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckViewProperties
+     */
+    checkID?: string;
+    /**
+     * 
+     * @type {Check}
+     * @memberof CheckViewProperties
+     */
+    check?: Check;
+}
+
+/**
+ * @export
+ * @namespace CheckViewProperties
+ */
+export namespace CheckViewProperties {
+}
+
+/**
+ * 
+ * @export
+ * @interface Checks
+ */
+export interface Checks {
+    /**
+     * 
+     * @type {Array<Check>}
+     * @memberof Checks
+     */
+    checks?: Array<Check>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof Checks
+     */
+    links?: Links;
 }
 
 /**
@@ -1140,6 +1311,39 @@ export interface DateTimeLiteral {
      * @memberof DateTimeLiteral
      */
     value?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface DeadmanCheck
+ */
+export interface DeadmanCheck extends CheckBase {
+    /**
+     * seconds before deadman triggers
+     * @type {number}
+     * @memberof DeadmanCheck
+     */
+    timeSince?: number;
+    /**
+     * if only zero values reported since time, trigger alert
+     * @type {boolean}
+     * @memberof DeadmanCheck
+     */
+    reportZero?: boolean;
+    /**
+     * 
+     * @type {CheckStatusLevel}
+     * @memberof DeadmanCheck
+     */
+    level?: CheckStatusLevel;
+}
+
+/**
+ * @export
+ * @namespace DeadmanCheck
+ */
+export namespace DeadmanCheck {
 }
 
 /**
@@ -1668,12 +1872,6 @@ export interface GaugeViewProperties extends ViewProperties {
      * @type {string}
      * @memberof GaugeViewProperties
      */
-    type?: GaugeViewProperties.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof GaugeViewProperties
-     */
     prefix?: string;
     /**
      * 
@@ -1700,13 +1898,148 @@ export interface GaugeViewProperties extends ViewProperties {
  * @namespace GaugeViewProperties
  */
 export namespace GaugeViewProperties {
+}
+
+/**
+ * 
+ * @export
+ * @interface GreaterThreshold
+ */
+export interface GreaterThreshold extends ThresholdBase {
+    /**
+     * 
+     * @type {number}
+     * @memberof GreaterThreshold
+     */
+    value?: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface HealthCheck
+ */
+export interface HealthCheck {
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthCheck
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthCheck
+     */
+    message?: string;
+    /**
+     * 
+     * @type {Array<HealthCheck>}
+     * @memberof HealthCheck
+     */
+    checks?: Array<HealthCheck>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HealthCheck
+     */
+    status: HealthCheck.StatusEnum;
+}
+
+/**
+ * @export
+ * @namespace HealthCheck
+ */
+export namespace HealthCheck {
     /**
      * @export
      * @enum {string}
      */
-    export enum TypeEnum {
-        Gauge = 'gauge'
+    export enum StatusEnum {
+        Pass = 'pass',
+        Fail = 'fail'
     }
+}
+
+/**
+ * 
+ * @export
+ * @interface HeatmapViewProperties
+ */
+export interface HeatmapViewProperties extends ViewProperties {
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof HeatmapViewProperties
+     */
+    xDomain?: Array<number>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof HeatmapViewProperties
+     */
+    yDomain?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xSuffix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    ySuffix?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeatmapViewProperties
+     */
+    binSize?: number;
+}
+
+/**
+ * @export
+ * @namespace HeatmapViewProperties
+ */
+export namespace HeatmapViewProperties {
 }
 
 /**
@@ -1715,12 +2048,6 @@ export namespace GaugeViewProperties {
  * @interface HistogramViewProperties
  */
 export interface HistogramViewProperties extends ViewProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof HistogramViewProperties
-     */
-    type?: HistogramViewProperties.TypeEnum;
     /**
      * 
      * @type {string}
@@ -1764,13 +2091,6 @@ export interface HistogramViewProperties extends ViewProperties {
  * @namespace HistogramViewProperties
  */
 export namespace HistogramViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Histogram = 'histogram'
-    }
 }
 
 /**
@@ -2072,6 +2392,55 @@ export namespace Legend {
 /**
  * 
  * @export
+ * @interface LesserThreshold
+ */
+export interface LesserThreshold extends ThresholdBase {
+    /**
+     * 
+     * @type {number}
+     * @memberof LesserThreshold
+     */
+    value?: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface LevelRule
+ */
+export interface LevelRule {
+    /**
+     * 
+     * @type {CheckStatusLevel}
+     * @memberof LevelRule
+     */
+    level?: CheckStatusLevel;
+    /**
+     * 
+     * @type {string}
+     * @memberof LevelRule
+     */
+    operation?: LevelRule.OperationEnum;
+}
+
+/**
+ * @export
+ * @namespace LevelRule
+ */
+export namespace LevelRule {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum OperationEnum {
+        Equal = 'equal',
+        Notequal = 'notequal'
+    }
+}
+
+/**
+ * 
+ * @export
  * @interface LinePlusSingleStatProperties
  */
 export interface LinePlusSingleStatProperties extends ViewProperties {
@@ -2081,12 +2450,6 @@ export interface LinePlusSingleStatProperties extends ViewProperties {
      * @memberof LinePlusSingleStatProperties
      */
     axes?: Axes;
-    /**
-     * 
-     * @type {string}
-     * @memberof LinePlusSingleStatProperties
-     */
-    type?: LinePlusSingleStatProperties.TypeEnum;
     /**
      * 
      * @type {Legend}
@@ -2118,13 +2481,6 @@ export interface LinePlusSingleStatProperties extends ViewProperties {
  * @namespace LinePlusSingleStatProperties
  */
 export namespace LinePlusSingleStatProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        LinePlusSingleStat = 'line-plus-single-stat'
-    }
 }
 
 /**
@@ -2277,44 +2633,11 @@ export interface LogEvent {
  */
 export interface LogViewProperties {
     /**
-     * 
-     * @type {string}
-     * @memberof LogViewProperties
-     */
-    shape: LogViewProperties.ShapeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof LogViewProperties
-     */
-    type: LogViewProperties.TypeEnum;
-    /**
      * Defines the order, names, and visibility of columns in the log viewer table
      * @type {Array<LogViewerColumn>}
      * @memberof LogViewProperties
      */
     columns: Array<LogViewerColumn>;
-}
-
-/**
- * @export
- * @namespace LogViewProperties
- */
-export namespace LogViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum ShapeEnum {
-        ChronografV2 = 'chronograf-v2'
-    }
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        LogViewer = 'log-viewer'
-    }
 }
 
 /**
@@ -2460,13 +2783,13 @@ export interface MarkdownViewProperties {
      * @type {string}
      * @memberof MarkdownViewProperties
      */
-    type?: MarkdownViewProperties.TypeEnum;
+    note?: string;
     /**
      * 
      * @type {string}
      * @memberof MarkdownViewProperties
      */
-    note?: string;
+    type?: MarkdownViewProperties.TypeEnum;
 }
 
 /**
@@ -2635,6 +2958,307 @@ export interface ModelFile {
  * @interface Node
  */
 export interface Node {
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationEndpoint
+ */
+export interface NotificationEndpoint {
+}
+
+/**
+ * @export
+ * @namespace NotificationEndpoint
+ */
+export namespace NotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationEndpointBase
+ */
+export interface NotificationEndpointBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    orgID?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    userID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationEndpointBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationEndpointBase
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    name?: string;
+    /**
+     * The status of the endpoint.
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    status?: NotificationEndpointBase.StatusEnum;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof NotificationEndpointBase
+     */
+    labels?: Array<Label>;
+    /**
+     * 
+     * @type {NotificationEndpointType}
+     * @memberof NotificationEndpointBase
+     */
+    type: NotificationEndpointType;
+}
+
+/**
+ * @export
+ * @namespace NotificationEndpointBase
+ */
+export namespace NotificationEndpointBase {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum StatusEnum {
+        Active = 'active',
+        Inactive = 'inactive'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum NotificationEndpointType {
+    Slack = 'slack',
+    Smtp = 'smtp',
+    Pagerduty = 'pagerduty',
+    Webhook = 'webhook'
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationEndpoints
+ */
+export interface NotificationEndpoints {
+    /**
+     * 
+     * @type {Array<NotificationEndpoint>}
+     * @memberof NotificationEndpoints
+     */
+    notificationEndpoints?: Array<NotificationEndpoint>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof NotificationEndpoints
+     */
+    links?: Links;
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationRule
+ */
+export interface NotificationRule {
+}
+
+/**
+ * @export
+ * @namespace NotificationRule
+ */
+export namespace NotificationRule {
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationRuleBase
+ */
+export interface NotificationRuleBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    notifyEndpointID?: string;
+    /**
+     * the ID of the organization that owns this notification rule.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    orgID?: string;
+    /**
+     * The ID of the authorization used to create this notification rule.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    authorizationID?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationRuleBase
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof NotificationRuleBase
+     */
+    updatedAt?: Date;
+    /**
+     * The status of the notification rule task.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    status?: NotificationRuleBase.StatusEnum;
+    /**
+     * human-readable name describing the notification rule
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    name?: string;
+    /**
+     * 
+     * @type {NotificationRuleType}
+     * @memberof NotificationRuleBase
+     */
+    type: NotificationRuleType;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    sleepUntil?: string;
+    /**
+     * notification repetition interval
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    every?: string;
+    /**
+     * Duration to delay after the schedule, before executing check.
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    offset?: string;
+    /**
+     * notification repetition interval in the form '* * * * * *';
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    cron?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    runbookLink?: string;
+    /**
+     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty.
+     * @type {number}
+     * @memberof NotificationRuleBase
+     */
+    limitEvery?: number;
+    /**
+     * don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty.
+     * @type {number}
+     * @memberof NotificationRuleBase
+     */
+    limit?: number;
+    /**
+     * list of tag rules the notification rule attempts to match
+     * @type {Array<TagRule>}
+     * @memberof NotificationRuleBase
+     */
+    tagRules?: Array<TagRule>;
+    /**
+     * list of status rules the notification rule attempts to match
+     * @type {Array<StatusRule>}
+     * @memberof NotificationRuleBase
+     */
+    statusRules?: Array<StatusRule>;
+    /**
+     * 
+     * @type {Array<Label>}
+     * @memberof NotificationRuleBase
+     */
+    labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace NotificationRuleBase
+ */
+export namespace NotificationRuleBase {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum StatusEnum {
+        Active = 'active',
+        Inactive = 'inactive'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum NotificationRuleType {
+    Slack = 'slack',
+    Smtp = 'smtp',
+    Pagerduty = 'pagerduty'
+}
+
+/**
+ * 
+ * @export
+ * @interface NotificationRules
+ */
+export interface NotificationRules {
+    /**
+     * 
+     * @type {Array<NotificationRule>}
+     * @memberof NotificationRules
+     */
+    notificationRules?: Array<NotificationRule>;
+    /**
+     * 
+     * @type {Links}
+     * @memberof NotificationRules
+     */
+    links?: Links;
 }
 
 /**
@@ -3010,6 +3634,42 @@ export interface PackageClause {
      * @memberof PackageClause
      */
     name?: Identifier;
+}
+
+/**
+ * 
+ * @export
+ * @interface PagerDutyNotificationEndpoint
+ */
+export interface PagerDutyNotificationEndpoint extends NotificationEndpointBase {
+}
+
+/**
+ * @export
+ * @namespace PagerDutyNotificationEndpoint
+ */
+export namespace PagerDutyNotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
+ * @interface PagerDutyNotificationRule
+ */
+export interface PagerDutyNotificationRule extends NotificationRuleBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof PagerDutyNotificationRule
+     */
+    messageTemplate?: string;
+}
+
+/**
+ * @export
+ * @namespace PagerDutyNotificationRule
+ */
+export namespace PagerDutyNotificationRule {
 }
 
 /**
@@ -3425,6 +4085,32 @@ export interface QueryVariablePropertiesValues {
      * @memberof QueryVariablePropertiesValues
      */
     language?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface RangeThreshold
+ */
+export interface RangeThreshold extends ThresholdBase {
+    /**
+     * 
+     * @type {number}
+     * @memberof RangeThreshold
+     */
+    min?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof RangeThreshold
+     */
+    max?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RangeThreshold
+     */
+    within?: boolean;
 }
 
 /**
@@ -3986,6 +4672,141 @@ export interface Runs {
 /**
  * 
  * @export
+ * @interface SMTPNotificationEndpoint
+ */
+export interface SMTPNotificationEndpoint extends NotificationEndpointBase {
+}
+
+/**
+ * @export
+ * @namespace SMTPNotificationEndpoint
+ */
+export namespace SMTPNotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
+ * @interface SMTPNotificationRule
+ */
+export interface SMTPNotificationRule extends NotificationRuleBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof SMTPNotificationRule
+     */
+    subjectTemplate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SMTPNotificationRule
+     */
+    bodyTemplate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SMTPNotificationRule
+     */
+    to?: string;
+}
+
+/**
+ * @export
+ * @namespace SMTPNotificationRule
+ */
+export namespace SMTPNotificationRule {
+}
+
+/**
+ * 
+ * @export
+ * @interface ScatterViewProperties
+ */
+export interface ScatterViewProperties extends ViewProperties {
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ScatterViewProperties
+     */
+    fillColumns?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ScatterViewProperties
+     */
+    symbolColumns?: Array<string>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof ScatterViewProperties
+     */
+    xDomain?: Array<number>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof ScatterViewProperties
+     */
+    yDomain?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xSuffix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    ySuffix?: string;
+}
+
+/**
+ * @export
+ * @namespace ScatterViewProperties
+ */
+export namespace ScatterViewProperties {
+}
+
+/**
+ * 
+ * @export
  * @interface ScraperTargetRequest
  */
 export interface ScraperTargetRequest {
@@ -4127,12 +4948,6 @@ export interface SingleStatViewProperties extends ViewProperties {
      * @type {string}
      * @memberof SingleStatViewProperties
      */
-    type?: SingleStatViewProperties.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof SingleStatViewProperties
-     */
     prefix?: string;
     /**
      * 
@@ -4159,13 +4974,48 @@ export interface SingleStatViewProperties extends ViewProperties {
  * @namespace SingleStatViewProperties
  */
 export namespace SingleStatViewProperties {
+}
+
+/**
+ * 
+ * @export
+ * @interface SlackNotificationEndpoint
+ */
+export interface SlackNotificationEndpoint extends NotificationEndpointBase {
+}
+
+/**
+ * @export
+ * @namespace SlackNotificationEndpoint
+ */
+export namespace SlackNotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
+ * @interface SlackNotificationRule
+ */
+export interface SlackNotificationRule extends NotificationRuleBase {
     /**
-     * @export
-     * @enum {string}
+     * 
+     * @type {string}
+     * @memberof SlackNotificationRule
      */
-    export enum TypeEnum {
-        SingleStat = 'single-stat'
-    }
+    channel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SlackNotificationRule
+     */
+    messageTemplate?: string;
+}
+
+/**
+ * @export
+ * @namespace SlackNotificationRule
+ */
+export namespace SlackNotificationRule {
 }
 
 /**
@@ -4357,6 +5207,38 @@ export interface Statement {
 }
 
 /**
+ * 
+ * @export
+ * @interface StatusRule
+ */
+export interface StatusRule {
+    /**
+     * 
+     * @type {LevelRule}
+     * @memberof StatusRule
+     */
+    currentLevel?: LevelRule;
+    /**
+     * 
+     * @type {LevelRule}
+     * @memberof StatusRule
+     */
+    previousLevel?: LevelRule;
+    /**
+     * 
+     * @type {number}
+     * @memberof StatusRule
+     */
+    count?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof StatusRule
+     */
+    period?: string;
+}
+
+/**
  * expressions begin and end with double quote marks
  * @export
  * @interface StringLiteral
@@ -4382,12 +5264,6 @@ export interface StringLiteral {
  * @interface TableViewProperties
  */
 export interface TableViewProperties extends ViewProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof TableViewProperties
-     */
-    type?: TableViewProperties.TypeEnum;
     /**
      * 
      * @type {any}
@@ -4419,12 +5295,48 @@ export interface TableViewProperties extends ViewProperties {
  * @namespace TableViewProperties
  */
 export namespace TableViewProperties {
+}
+
+/**
+ * 
+ * @export
+ * @interface TagRule
+ */
+export interface TagRule {
+    /**
+     * 
+     * @type {string}
+     * @memberof TagRule
+     */
+    key?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TagRule
+     */
+    value?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TagRule
+     */
+    operator?: TagRule.OperatorEnum;
+}
+
+/**
+ * @export
+ * @namespace TagRule
+ */
+export namespace TagRule {
     /**
      * @export
      * @enum {string}
      */
-    export enum TypeEnum {
-        Table = 'table'
+    export enum OperatorEnum {
+        Equal = 'equal',
+        Notequal = 'notequal',
+        Equalregex = 'equalregex',
+        Notequalregex = 'notequalregex'
     }
 }
 
@@ -6150,6 +7062,64 @@ export interface TestStatement {
 }
 
 /**
+ * 
+ * @export
+ * @interface ThresholdBase
+ */
+export interface ThresholdBase {
+    /**
+     * 
+     * @type {CheckStatusLevel}
+     * @memberof ThresholdBase
+     */
+    level?: CheckStatusLevel;
+    /**
+     * if true, only alert if all values meet threshold
+     * @type {boolean}
+     * @memberof ThresholdBase
+     */
+    allValues?: boolean;
+    /**
+     * 
+     * @type {ThresholdType}
+     * @memberof ThresholdBase
+     */
+    type: ThresholdType;
+}
+
+/**
+ * 
+ * @export
+ * @interface ThresholdCheck
+ */
+export interface ThresholdCheck extends CheckBase {
+    /**
+     * 
+     * @type {Array<any>}
+     * @memberof ThresholdCheck
+     */
+    thresholds?: Array<any>;
+}
+
+/**
+ * @export
+ * @namespace ThresholdCheck
+ */
+export namespace ThresholdCheck {
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum ThresholdType {
+    Greater = 'greater',
+    Lesser = 'lesser',
+    Range = 'range'
+}
+
+/**
  * uses operators to act on a single operand in an expression
  * @export
  * @interface UnaryExpression
@@ -6207,6 +7177,12 @@ export interface User {
      * @memberof User
      */
     id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    oauthID?: string;
     /**
      * 
      * @type {string}
@@ -6350,6 +7326,18 @@ export interface Variable {
      * @memberof Variable
      */
     arguments: any;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Variable
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Variable
+     */
+    updatedAt?: Date;
 }
 
 /**
@@ -6487,13 +7475,59 @@ export interface ViewProperties {
      * @type {string}
      * @memberof ViewProperties
      */
+    shape?: ViewProperties.ShapeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ViewProperties
+     */
     note?: string;
+    /**
+     * 
+     * @type {ViewType}
+     * @memberof ViewProperties
+     */
+    type: ViewType;
     /**
      * if true, will display note when empty
      * @type {boolean}
      * @memberof ViewProperties
      */
     showNoteWhenEmpty?: boolean;
+}
+
+/**
+ * @export
+ * @namespace ViewProperties
+ */
+export namespace ViewProperties {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum ShapeEnum {
+        ChronografV2 = 'chronograf-v2'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum ViewType {
+    Xy = 'xy',
+    LinePlusSingleStat = 'line-plus-single-stat',
+    SingleStat = 'single-stat',
+    Gauge = 'gauge',
+    Table = 'table',
+    Markdown = 'markdown',
+    LogViewer = 'log-viewer',
+    Histogram = 'histogram',
+    Heatmap = 'heatmap',
+    Scatter = 'scatter',
+    Check = 'check',
+    Empty = 'empty'
 }
 
 /**
@@ -6519,6 +7553,21 @@ export interface Views {
 /**
  * 
  * @export
+ * @interface WebhookNotificationEndpoint
+ */
+export interface WebhookNotificationEndpoint extends NotificationEndpointBase {
+}
+
+/**
+ * @export
+ * @namespace WebhookNotificationEndpoint
+ */
+export namespace WebhookNotificationEndpoint {
+}
+
+/**
+ * 
+ * @export
  * @enum {string}
  */
 export enum WritePrecision {
@@ -6526,6 +7575,19 @@ export enum WritePrecision {
     S = 's',
     Us = 'us',
     Ns = 'ns'
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum XYGeomType {
+    Line = 'line',
+    Step = 'step',
+    Stacked = 'stacked',
+    Bar = 'bar',
+    MonotoneX = 'monotoneX'
 }
 
 /**
@@ -6542,12 +7604,6 @@ export interface XYViewProperties extends ViewProperties {
     axes?: Axes;
     /**
      * 
-     * @type {string}
-     * @memberof XYViewProperties
-     */
-    type?: XYViewProperties.TypeEnum;
-    /**
-     * 
      * @type {Legend}
      * @memberof XYViewProperties
      */
@@ -6557,7 +7613,25 @@ export interface XYViewProperties extends ViewProperties {
      * @type {string}
      * @memberof XYViewProperties
      */
-    geom?: XYViewProperties.GeomEnum;
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XYViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof XYViewProperties
+     */
+    shadeBelow?: boolean;
+    /**
+     * 
+     * @type {XYGeomType}
+     * @memberof XYViewProperties
+     */
+    geom?: XYGeomType;
 }
 
 /**
@@ -6565,23 +7639,6 @@ export interface XYViewProperties extends ViewProperties {
  * @namespace XYViewProperties
  */
 export namespace XYViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Xy = 'xy'
-    }
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum GeomEnum {
-        Line = 'line',
-        Step = 'step',
-        Stacked = 'stacked',
-        Bar = 'bar'
-    }
 }
 
 
@@ -9028,6 +10085,445 @@ export class CellsApi extends BaseAPI {
 }
 
 /**
+ * ChecksApi - axios parameter creator
+ * @export
+ */
+export const ChecksApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new check
+         * @param {Check} check check to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createCheck(check: Check, options: any = {}): RequestArgs {
+            // verify required parameter 'check' is not null or undefined
+            if (check === null || check === undefined) {
+                throw new RequiredError('check','Required parameter check was null or undefined when calling createCheck.');
+            }
+            const localVarPath = `/checks`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Check" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(check || {}) : (check || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteChecksID(checkID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'checkID' is not null or undefined
+            if (checkID === null || checkID === undefined) {
+                throw new RequiredError('checkID','Required parameter checkID was null or undefined when calling deleteChecksID.');
+            }
+            const localVarPath = `/checks/{checkID}`
+                .replace(`{${"checkID"}}`, encodeURIComponent(String(checkID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all checks
+         * @param {string} orgID only show checks belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecks(orgID: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling getChecks.');
+            }
+            const localVarPath = `/checks`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get an check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecksID(checkID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'checkID' is not null or undefined
+            if (checkID === null || checkID === undefined) {
+                throw new RequiredError('checkID','Required parameter checkID was null or undefined when calling getChecksID.');
+            }
+            const localVarPath = `/checks/{checkID}`
+                .replace(`{${"checkID"}}`, encodeURIComponent(String(checkID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a check
+         * @param {string} checkID ID of check
+         * @param {Check} check check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'checkID' is not null or undefined
+            if (checkID === null || checkID === undefined) {
+                throw new RequiredError('checkID','Required parameter checkID was null or undefined when calling patchChecksID.');
+            }
+            // verify required parameter 'check' is not null or undefined
+            if (check === null || check === undefined) {
+                throw new RequiredError('check','Required parameter check was null or undefined when calling patchChecksID.');
+            }
+            const localVarPath = `/checks/{checkID}`
+                .replace(`{${"checkID"}}`, encodeURIComponent(String(checkID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Check" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(check || {}) : (check || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ChecksApi - functional programming interface
+ * @export
+ */
+export const ChecksApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new check
+         * @param {Check} check check to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createCheck(check: Check, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).createCheck(check, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Delete a check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteChecksID(checkID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).deleteChecksID(checkID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get all checks
+         * @param {string} orgID only show checks belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecks(orgID: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Checks> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).getChecks(orgID, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get an check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecksID(checkID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).getChecksID(checkID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update a check
+         * @param {string} checkID ID of check
+         * @param {Check} check check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+            const localVarAxiosArgs = ChecksApiAxiosParamCreator(configuration).patchChecksID(checkID, check, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * ChecksApi - factory interface
+ * @export
+ */
+export const ChecksApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Add new check
+         * @param {Check} check check to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createCheck(check: Check, options?: any) {
+            return ChecksApiFp(configuration).createCheck(check, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Delete a check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteChecksID(checkID: string, zapTraceSpan?: string, options?: any) {
+            return ChecksApiFp(configuration).deleteChecksID(checkID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get all checks
+         * @param {string} orgID only show checks belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecks(orgID: string, offset?: number, limit?: number, options?: any) {
+            return ChecksApiFp(configuration).getChecks(orgID, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get an check
+         * @param {string} checkID ID of check
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getChecksID(checkID: string, zapTraceSpan?: string, options?: any) {
+            return ChecksApiFp(configuration).getChecksID(checkID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update a check
+         * @param {string} checkID ID of check
+         * @param {Check} check check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any) {
+            return ChecksApiFp(configuration).patchChecksID(checkID, check, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * ChecksApi - object-oriented interface
+ * @export
+ * @class ChecksApi
+ * @extends {BaseAPI}
+ */
+export class ChecksApi extends BaseAPI {
+    /**
+     * 
+     * @summary Add new check
+     * @param {Check} check check to create
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChecksApi
+     */
+    public createCheck(check: Check, options?: any) {
+        return ChecksApiFp(this.configuration).createCheck(check, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Delete a check
+     * @param {string} checkID ID of check
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChecksApi
+     */
+    public deleteChecksID(checkID: string, zapTraceSpan?: string, options?: any) {
+        return ChecksApiFp(this.configuration).deleteChecksID(checkID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get all checks
+     * @param {string} orgID only show checks belonging to specified organization
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChecksApi
+     */
+    public getChecks(orgID: string, offset?: number, limit?: number, options?: any) {
+        return ChecksApiFp(this.configuration).getChecks(orgID, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get an check
+     * @param {string} checkID ID of check
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChecksApi
+     */
+    public getChecksID(checkID: string, zapTraceSpan?: string, options?: any) {
+        return ChecksApiFp(this.configuration).getChecksID(checkID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a check
+     * @param {string} checkID ID of check
+     * @param {Check} check check update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ChecksApi
+     */
+    public patchChecksID(checkID: string, check: Check, zapTraceSpan?: string, options?: any) {
+        return ChecksApiFp(this.configuration).patchChecksID(checkID, check, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
  * DashboardsApi - axios parameter creator
  * @export
  */
@@ -11189,7 +12685,7 @@ export const HealthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getHealth(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+        getHealth(zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<HealthCheck> {
             const localVarAxiosArgs = HealthApiAxiosParamCreator(configuration).getHealth(zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
@@ -11662,6 +13158,892 @@ export class LabelsApi extends BaseAPI {
      */
     public postLabels(labelCreateRequest: LabelCreateRequest, options?: any) {
         return LabelsApiFp(this.configuration).postLabels(labelCreateRequest, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * NotificationEndpointsApi - axios parameter creator
+ * @export
+ */
+export const NotificationEndpointsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options: any = {}): RequestArgs {
+            // verify required parameter 'notificationEndpoint' is not null or undefined
+            if (notificationEndpoint === null || notificationEndpoint === undefined) {
+                throw new RequiredError('notificationEndpoint','Required parameter notificationEndpoint was null or undefined when calling createNotificationEndpoint.');
+            }
+            const localVarPath = `/notificationEndpoints`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"NotificationEndpoint" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationEndpoint || {}) : (notificationEndpoint || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'endpointID' is not null or undefined
+            if (endpointID === null || endpointID === undefined) {
+                throw new RequiredError('endpointID','Required parameter endpointID was null or undefined when calling deleteNotificationEndpointsID.');
+            }
+            const localVarPath = `/notificationEndpoints/{endpointID}`
+                .replace(`{${"endpointID"}}`, encodeURIComponent(String(endpointID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all notification endpoints
+         * @param {string} orgID only show notification endpoints belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpoints(orgID: string, offset?: number, limit?: number, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling getNotificationEndpoints.');
+            }
+            const localVarPath = `/notificationEndpoints`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'endpointID' is not null or undefined
+            if (endpointID === null || endpointID === undefined) {
+                throw new RequiredError('endpointID','Required parameter endpointID was null or undefined when calling getNotificationEndpointsID.');
+            }
+            const localVarPath = `/notificationEndpoints/{endpointID}`
+                .replace(`{${"endpointID"}}`, encodeURIComponent(String(endpointID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'endpointID' is not null or undefined
+            if (endpointID === null || endpointID === undefined) {
+                throw new RequiredError('endpointID','Required parameter endpointID was null or undefined when calling patchNotificationEndpointsID.');
+            }
+            // verify required parameter 'notificationEndpoint' is not null or undefined
+            if (notificationEndpoint === null || notificationEndpoint === undefined) {
+                throw new RequiredError('notificationEndpoint','Required parameter notificationEndpoint was null or undefined when calling patchNotificationEndpointsID.');
+            }
+            const localVarPath = `/notificationEndpoints/{endpointID}`
+                .replace(`{${"endpointID"}}`, encodeURIComponent(String(endpointID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"NotificationEndpoint" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationEndpoint || {}) : (notificationEndpoint || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * NotificationEndpointsApi - functional programming interface
+ * @export
+ */
+export const NotificationEndpointsApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).createNotificationEndpoint(notificationEndpoint, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Delete a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).deleteNotificationEndpointsID(endpointID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get all notification endpoints
+         * @param {string} orgID only show notification endpoints belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpoints(orgID: string, offset?: number, limit?: number, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationEndpoints> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).getNotificationEndpoints(orgID, offset, limit, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationEndpoint> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).getNotificationEndpointsID(endpointID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationEndpoint> {
+            const localVarAxiosArgs = NotificationEndpointsApiAxiosParamCreator(configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * NotificationEndpointsApi - factory interface
+ * @export
+ */
+export const NotificationEndpointsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Add new notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any) {
+            return NotificationEndpointsApiFp(configuration).createNotificationEndpoint(notificationEndpoint, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Delete a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any) {
+            return NotificationEndpointsApiFp(configuration).deleteNotificationEndpointsID(endpointID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get all notification endpoints
+         * @param {string} orgID only show notification endpoints belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpoints(orgID: string, offset?: number, limit?: number, options?: any) {
+            return NotificationEndpointsApiFp(configuration).getNotificationEndpoints(orgID, offset, limit, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any) {
+            return NotificationEndpointsApiFp(configuration).getNotificationEndpointsID(endpointID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update a notification endpoint
+         * @param {string} endpointID ID of notification endpoint
+         * @param {NotificationEndpoint} notificationEndpoint check update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any) {
+            return NotificationEndpointsApiFp(configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * NotificationEndpointsApi - object-oriented interface
+ * @export
+ * @class NotificationEndpointsApi
+ * @extends {BaseAPI}
+ */
+export class NotificationEndpointsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Add new notification endpoint
+     * @param {NotificationEndpoint} notificationEndpoint notificationEndpoint to create
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationEndpointsApi
+     */
+    public createNotificationEndpoint(notificationEndpoint: NotificationEndpoint, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).createNotificationEndpoint(notificationEndpoint, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Delete a notification endpoint
+     * @param {string} endpointID ID of notification endpoint
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationEndpointsApi
+     */
+    public deleteNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).deleteNotificationEndpointsID(endpointID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get all notification endpoints
+     * @param {string} orgID only show notification endpoints belonging to specified organization
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationEndpointsApi
+     */
+    public getNotificationEndpoints(orgID: string, offset?: number, limit?: number, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).getNotificationEndpoints(orgID, offset, limit, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a notification endpoint
+     * @param {string} endpointID ID of notification endpoint
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationEndpointsApi
+     */
+    public getNotificationEndpointsID(endpointID: string, zapTraceSpan?: string, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).getNotificationEndpointsID(endpointID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a notification endpoint
+     * @param {string} endpointID ID of notification endpoint
+     * @param {NotificationEndpoint} notificationEndpoint check update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationEndpointsApi
+     */
+    public patchNotificationEndpointsID(endpointID: string, notificationEndpoint: NotificationEndpoint, zapTraceSpan?: string, options?: any) {
+        return NotificationEndpointsApiFp(this.configuration).patchNotificationEndpointsID(endpointID, notificationEndpoint, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+}
+
+/**
+ * NotificationRulesApi - axios parameter creator
+ * @export
+ */
+export const NotificationRulesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new notification rule
+         * @param {NotificationRule} notificationRule notificationRule to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationRule(notificationRule: NotificationRule, options: any = {}): RequestArgs {
+            // verify required parameter 'notificationRule' is not null or undefined
+            if (notificationRule === null || notificationRule === undefined) {
+                throw new RequiredError('notificationRule','Required parameter notificationRule was null or undefined when calling createNotificationRule.');
+            }
+            const localVarPath = `/notificationRules`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"NotificationRule" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationRule || {}) : (notificationRule || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationRulesID(ruleID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'ruleID' is not null or undefined
+            if (ruleID === null || ruleID === undefined) {
+                throw new RequiredError('ruleID','Required parameter ruleID was null or undefined when calling deleteNotificationRulesID.');
+            }
+            const localVarPath = `/notificationRules/{ruleID}`
+                .replace(`{${"ruleID"}}`, encodeURIComponent(String(ruleID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all notification rules
+         * @param {string} orgID only show notification rules belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [checkID] only show notifications that belong to the specified check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRules(orgID: string, offset?: number, limit?: number, checkID?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'orgID' is not null or undefined
+            if (orgID === null || orgID === undefined) {
+                throw new RequiredError('orgID','Required parameter orgID was null or undefined when calling getNotificationRules.');
+            }
+            const localVarPath = `/notificationRules`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (orgID !== undefined) {
+                localVarQueryParameter['orgID'] = orgID;
+            }
+
+            if (checkID !== undefined) {
+                localVarQueryParameter['checkID'] = checkID;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'ruleID' is not null or undefined
+            if (ruleID === null || ruleID === undefined) {
+                throw new RequiredError('ruleID','Required parameter ruleID was null or undefined when calling getNotificationRulesID.');
+            }
+            const localVarPath = `/notificationRules/{ruleID}`
+                .replace(`{${"ruleID"}}`, encodeURIComponent(String(ruleID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {NotificationRule} notificationRule notification rule update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'ruleID' is not null or undefined
+            if (ruleID === null || ruleID === undefined) {
+                throw new RequiredError('ruleID','Required parameter ruleID was null or undefined when calling patchNotificationRulesID.');
+            }
+            // verify required parameter 'notificationRule' is not null or undefined
+            if (notificationRule === null || notificationRule === undefined) {
+                throw new RequiredError('notificationRule','Required parameter notificationRule was null or undefined when calling patchNotificationRulesID.');
+            }
+            const localVarPath = `/notificationRules/{ruleID}`
+                .replace(`{${"ruleID"}}`, encodeURIComponent(String(ruleID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"NotificationRule" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(notificationRule || {}) : (notificationRule || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * NotificationRulesApi - functional programming interface
+ * @export
+ */
+export const NotificationRulesApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new notification rule
+         * @param {NotificationRule} notificationRule notificationRule to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationRule(notificationRule: NotificationRule, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).createNotificationRule(notificationRule, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Delete a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).deleteNotificationRulesID(ruleID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get all notification rules
+         * @param {string} orgID only show notification rules belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [checkID] only show notifications that belong to the specified check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRules(orgID: string, offset?: number, limit?: number, checkID?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRules> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).getNotificationRules(orgID, offset, limit, checkID, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Get a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).getNotificationRulesID(ruleID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
+         * @summary Update a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {NotificationRule} notificationRule notification rule update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<NotificationRule> {
+            const localVarAxiosArgs = NotificationRulesApiAxiosParamCreator(configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+    }
+};
+
+/**
+ * NotificationRulesApi - factory interface
+ * @export
+ */
+export const NotificationRulesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         * 
+         * @summary Add new notification rule
+         * @param {NotificationRule} notificationRule notificationRule to create
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createNotificationRule(notificationRule: NotificationRule, options?: any) {
+            return NotificationRulesApiFp(configuration).createNotificationRule(notificationRule, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Delete a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any) {
+            return NotificationRulesApiFp(configuration).deleteNotificationRulesID(ruleID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get all notification rules
+         * @param {string} orgID only show notification rules belonging to specified organization
+         * @param {number} [offset] 
+         * @param {number} [limit] 
+         * @param {string} [checkID] only show notifications that belong to the specified check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRules(orgID: string, offset?: number, limit?: number, checkID?: string, options?: any) {
+            return NotificationRulesApiFp(configuration).getNotificationRules(orgID, offset, limit, checkID, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Get a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any) {
+            return NotificationRulesApiFp(configuration).getNotificationRulesID(ruleID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
+         * @summary Update a notification rule
+         * @param {string} ruleID ID of notification rule
+         * @param {NotificationRule} notificationRule notification rule update to apply
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any) {
+            return NotificationRulesApiFp(configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options)(axios, basePath);
+        },
+    };
+};
+
+/**
+ * NotificationRulesApi - object-oriented interface
+ * @export
+ * @class NotificationRulesApi
+ * @extends {BaseAPI}
+ */
+export class NotificationRulesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Add new notification rule
+     * @param {NotificationRule} notificationRule notificationRule to create
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationRulesApi
+     */
+    public createNotificationRule(notificationRule: NotificationRule, options?: any) {
+        return NotificationRulesApiFp(this.configuration).createNotificationRule(notificationRule, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Delete a notification rule
+     * @param {string} ruleID ID of notification rule
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationRulesApi
+     */
+    public deleteNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any) {
+        return NotificationRulesApiFp(this.configuration).deleteNotificationRulesID(ruleID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get all notification rules
+     * @param {string} orgID only show notification rules belonging to specified organization
+     * @param {number} [offset] 
+     * @param {number} [limit] 
+     * @param {string} [checkID] only show notifications that belong to the specified check
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationRulesApi
+     */
+    public getNotificationRules(orgID: string, offset?: number, limit?: number, checkID?: string, options?: any) {
+        return NotificationRulesApiFp(this.configuration).getNotificationRules(orgID, offset, limit, checkID, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a notification rule
+     * @param {string} ruleID ID of notification rule
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationRulesApi
+     */
+    public getNotificationRulesID(ruleID: string, zapTraceSpan?: string, options?: any) {
+        return NotificationRulesApiFp(this.configuration).getNotificationRulesID(ruleID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a notification rule
+     * @param {string} ruleID ID of notification rule
+     * @param {NotificationRule} notificationRule notification rule update to apply
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof NotificationRulesApi
+     */
+    public patchNotificationRulesID(ruleID: string, notificationRule: NotificationRule, zapTraceSpan?: string, options?: any) {
+        return NotificationRulesApiFp(this.configuration).patchNotificationRulesID(ruleID, notificationRule, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
 }
@@ -16316,7 +18698,7 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSourcesIDHealth(sourceID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Check> {
+        getSourcesIDHealth(sourceID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<HealthCheck> {
             const localVarAxiosArgs = SourcesApiAxiosParamCreator(configuration).getSourcesIDHealth(sourceID, zapTraceSpan, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
