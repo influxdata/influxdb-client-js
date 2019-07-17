@@ -70,6 +70,33 @@ export {
   NotificationRules,
 } from './types/alerts'
 
+export {
+  View,
+  ViewProperties,
+  XYViewProperties,
+  LinePlusSingleStatProperties,
+  SingleStatViewProperties,
+  TableViewProperties,
+  GaugeViewProperties,
+  HistogramViewProperties,
+  HeatmapViewProperties,
+  ScatterViewProperties,
+  CheckViewProperties,
+  EmptyViewProperties,
+  MarkdownViewProperties,
+  XYView,
+  LinePlusSingleStatView,
+  SingleStatView,
+  TableView,
+  GaugeView,
+  HistogramView,
+  HeatmapView,
+  ScatterView,
+  CheckView,
+  EmptyView,
+  MarkdownView,
+} from './types/dashboards'
+
 export class Client {
   public auth: Auth
   public authorizations: Authorizations
