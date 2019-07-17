@@ -798,6 +798,12 @@ export interface CheckBase {
     id?: string;
     /**
      * 
+     * @type {CheckType}
+     * @memberof CheckBase
+     */
+    type: CheckType;
+    /**
+     * 
      * @type {string}
      * @memberof CheckBase
      */
@@ -927,15 +933,19 @@ export enum CheckStatusLevel {
 /**
  * 
  * @export
+ * @enum {string}
+ */
+export enum CheckType {
+    Deadman = 'deadman',
+    Threshold = 'threshold'
+}
+
+/**
+ * 
+ * @export
  * @interface CheckViewProperties
  */
-export interface CheckViewProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckViewProperties
-     */
-    type?: CheckViewProperties.TypeEnum;
+export interface CheckViewProperties extends ViewProperties {
     /**
      * 
      * @type {string}
@@ -955,13 +965,6 @@ export interface CheckViewProperties {
  * @namespace CheckViewProperties
  */
 export namespace CheckViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Check = 'check'
-    }
 }
 
 /**
@@ -1869,12 +1872,6 @@ export interface GaugeViewProperties extends ViewProperties {
      * @type {string}
      * @memberof GaugeViewProperties
      */
-    type?: GaugeViewProperties.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof GaugeViewProperties
-     */
     prefix?: string;
     /**
      * 
@@ -1901,13 +1898,6 @@ export interface GaugeViewProperties extends ViewProperties {
  * @namespace GaugeViewProperties
  */
 export namespace GaugeViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Gauge = 'gauge'
-    }
 }
 
 /**
@@ -1915,7 +1905,7 @@ export namespace GaugeViewProperties {
  * @export
  * @interface GreaterThreshold
  */
-export interface GreaterThreshold extends ThresholdConfig {
+export interface GreaterThreshold extends ThresholdBase {
     /**
      * 
      * @type {number}
@@ -1974,15 +1964,90 @@ export namespace HealthCheck {
 /**
  * 
  * @export
- * @interface HistogramViewProperties
+ * @interface HeatmapViewProperties
  */
-export interface HistogramViewProperties extends ViewProperties {
+export interface HeatmapViewProperties extends ViewProperties {
     /**
      * 
      * @type {string}
-     * @memberof HistogramViewProperties
+     * @memberof HeatmapViewProperties
      */
-    type?: HistogramViewProperties.TypeEnum;
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof HeatmapViewProperties
+     */
+    xDomain?: Array<number>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof HeatmapViewProperties
+     */
+    yDomain?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    xSuffix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    yPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HeatmapViewProperties
+     */
+    ySuffix?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HeatmapViewProperties
+     */
+    binSize?: number;
+}
+
+/**
+ * @export
+ * @namespace HeatmapViewProperties
+ */
+export namespace HeatmapViewProperties {
+}
+
+/**
+ * 
+ * @export
+ * @interface HistogramViewProperties
+ */
+export interface HistogramViewProperties extends ViewProperties {
     /**
      * 
      * @type {string}
@@ -2026,13 +2091,6 @@ export interface HistogramViewProperties extends ViewProperties {
  * @namespace HistogramViewProperties
  */
 export namespace HistogramViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Histogram = 'histogram'
-    }
 }
 
 /**
@@ -2336,7 +2394,7 @@ export namespace Legend {
  * @export
  * @interface LesserThreshold
  */
-export interface LesserThreshold extends ThresholdConfig {
+export interface LesserThreshold extends ThresholdBase {
     /**
      * 
      * @type {number}
@@ -2394,12 +2452,6 @@ export interface LinePlusSingleStatProperties extends ViewProperties {
     axes?: Axes;
     /**
      * 
-     * @type {string}
-     * @memberof LinePlusSingleStatProperties
-     */
-    type?: LinePlusSingleStatProperties.TypeEnum;
-    /**
-     * 
      * @type {Legend}
      * @memberof LinePlusSingleStatProperties
      */
@@ -2429,13 +2481,6 @@ export interface LinePlusSingleStatProperties extends ViewProperties {
  * @namespace LinePlusSingleStatProperties
  */
 export namespace LinePlusSingleStatProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        LinePlusSingleStat = 'line-plus-single-stat'
-    }
 }
 
 /**
@@ -2588,44 +2633,11 @@ export interface LogEvent {
  */
 export interface LogViewProperties {
     /**
-     * 
-     * @type {string}
-     * @memberof LogViewProperties
-     */
-    shape: LogViewProperties.ShapeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof LogViewProperties
-     */
-    type: LogViewProperties.TypeEnum;
-    /**
      * Defines the order, names, and visibility of columns in the log viewer table
      * @type {Array<LogViewerColumn>}
      * @memberof LogViewProperties
      */
     columns: Array<LogViewerColumn>;
-}
-
-/**
- * @export
- * @namespace LogViewProperties
- */
-export namespace LogViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum ShapeEnum {
-        ChronografV2 = 'chronograf-v2'
-    }
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        LogViewer = 'log-viewer'
-    }
 }
 
 /**
@@ -2771,13 +2783,13 @@ export interface MarkdownViewProperties {
      * @type {string}
      * @memberof MarkdownViewProperties
      */
-    type?: MarkdownViewProperties.TypeEnum;
+    note?: string;
     /**
      * 
      * @type {string}
      * @memberof MarkdownViewProperties
      */
-    note?: string;
+    type?: MarkdownViewProperties.TypeEnum;
 }
 
 /**
@@ -3017,6 +3029,12 @@ export interface NotificationEndpointBase {
      * @memberof NotificationEndpointBase
      */
     labels?: Array<Label>;
+    /**
+     * 
+     * @type {NotificationEndpointType}
+     * @memberof NotificationEndpointBase
+     */
+    type: NotificationEndpointType;
 }
 
 /**
@@ -3032,6 +3050,18 @@ export namespace NotificationEndpointBase {
         Active = 'active',
         Inactive = 'inactive'
     }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum NotificationEndpointType {
+    Slack = 'slack',
+    Smtp = 'smtp',
+    Pagerduty = 'pagerduty',
+    Webhook = 'webhook'
 }
 
 /**
@@ -3118,11 +3148,11 @@ export interface NotificationRuleBase {
      */
     name?: string;
     /**
-     * the type of notification
-     * @type {string}
+     * 
+     * @type {NotificationRuleType}
      * @memberof NotificationRuleBase
      */
-    type?: NotificationRuleBase.TypeEnum;
+    type: NotificationRuleType;
     /**
      * 
      * @type {string}
@@ -3198,15 +3228,17 @@ export namespace NotificationRuleBase {
         Active = 'active',
         Inactive = 'inactive'
     }
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Slack = 'slack',
-        Smtp = 'smtp',
-        Pagerduty = 'pagerduty'
-    }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum NotificationRuleType {
+    Slack = 'slack',
+    Smtp = 'smtp',
+    Pagerduty = 'pagerduty'
 }
 
 /**
@@ -4060,7 +4092,7 @@ export interface QueryVariablePropertiesValues {
  * @export
  * @interface RangeThreshold
  */
-export interface RangeThreshold extends ThresholdConfig {
+export interface RangeThreshold extends ThresholdBase {
     /**
      * 
      * @type {number}
@@ -4688,6 +4720,93 @@ export namespace SMTPNotificationRule {
 /**
  * 
  * @export
+ * @interface ScatterViewProperties
+ */
+export interface ScatterViewProperties extends ViewProperties {
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ScatterViewProperties
+     */
+    fillColumns?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ScatterViewProperties
+     */
+    symbolColumns?: Array<string>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof ScatterViewProperties
+     */
+    xDomain?: Array<number>;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof ScatterViewProperties
+     */
+    yDomain?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yAxisLabel?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    xSuffix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    yPrefix?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ScatterViewProperties
+     */
+    ySuffix?: string;
+}
+
+/**
+ * @export
+ * @namespace ScatterViewProperties
+ */
+export namespace ScatterViewProperties {
+}
+
+/**
+ * 
+ * @export
  * @interface ScraperTargetRequest
  */
 export interface ScraperTargetRequest {
@@ -4829,12 +4948,6 @@ export interface SingleStatViewProperties extends ViewProperties {
      * @type {string}
      * @memberof SingleStatViewProperties
      */
-    type?: SingleStatViewProperties.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof SingleStatViewProperties
-     */
     prefix?: string;
     /**
      * 
@@ -4861,13 +4974,6 @@ export interface SingleStatViewProperties extends ViewProperties {
  * @namespace SingleStatViewProperties
  */
 export namespace SingleStatViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        SingleStat = 'single-stat'
-    }
 }
 
 /**
@@ -5160,12 +5266,6 @@ export interface StringLiteral {
 export interface TableViewProperties extends ViewProperties {
     /**
      * 
-     * @type {string}
-     * @memberof TableViewProperties
-     */
-    type?: TableViewProperties.TypeEnum;
-    /**
-     * 
      * @type {any}
      * @memberof TableViewProperties
      */
@@ -5195,13 +5295,6 @@ export interface TableViewProperties extends ViewProperties {
  * @namespace TableViewProperties
  */
 export namespace TableViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Table = 'table'
-    }
 }
 
 /**
@@ -6971,6 +7064,32 @@ export interface TestStatement {
 /**
  * 
  * @export
+ * @interface ThresholdBase
+ */
+export interface ThresholdBase {
+    /**
+     * 
+     * @type {CheckStatusLevel}
+     * @memberof ThresholdBase
+     */
+    level?: CheckStatusLevel;
+    /**
+     * if true, only alert if all values meet threshold
+     * @type {boolean}
+     * @memberof ThresholdBase
+     */
+    allValues?: boolean;
+    /**
+     * 
+     * @type {ThresholdType}
+     * @memberof ThresholdBase
+     */
+    type: ThresholdType;
+}
+
+/**
+ * 
+ * @export
  * @interface ThresholdCheck
  */
 export interface ThresholdCheck extends CheckBase {
@@ -6992,27 +7111,12 @@ export namespace ThresholdCheck {
 /**
  * 
  * @export
- * @interface ThresholdConfig
+ * @enum {string}
  */
-export interface ThresholdConfig {
-    /**
-     * 
-     * @type {CheckStatusLevel}
-     * @memberof ThresholdConfig
-     */
-    level?: CheckStatusLevel;
-    /**
-     * if true, only alert if all values meet threshold
-     * @type {boolean}
-     * @memberof ThresholdConfig
-     */
-    allValues?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ThresholdConfig
-     */
-    type?: string;
+export enum ThresholdType {
+    Greater = 'greater',
+    Lesser = 'lesser',
+    Range = 'range'
 }
 
 /**
@@ -7371,13 +7475,59 @@ export interface ViewProperties {
      * @type {string}
      * @memberof ViewProperties
      */
+    shape?: ViewProperties.ShapeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ViewProperties
+     */
     note?: string;
+    /**
+     * 
+     * @type {ViewType}
+     * @memberof ViewProperties
+     */
+    type: ViewType;
     /**
      * if true, will display note when empty
      * @type {boolean}
      * @memberof ViewProperties
      */
     showNoteWhenEmpty?: boolean;
+}
+
+/**
+ * @export
+ * @namespace ViewProperties
+ */
+export namespace ViewProperties {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum ShapeEnum {
+        ChronografV2 = 'chronograf-v2'
+    }
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum ViewType {
+    Xy = 'xy',
+    LinePlusSingleStat = 'line-plus-single-stat',
+    SingleStat = 'single-stat',
+    Gauge = 'gauge',
+    Table = 'table',
+    Markdown = 'markdown',
+    LogViewer = 'log-viewer',
+    Histogram = 'histogram',
+    Heatmap = 'heatmap',
+    Scatter = 'scatter',
+    Check = 'check',
+    Empty = 'empty'
 }
 
 /**
@@ -7430,6 +7580,19 @@ export enum WritePrecision {
 /**
  * 
  * @export
+ * @enum {string}
+ */
+export enum XYGeomType {
+    Line = 'line',
+    Step = 'step',
+    Stacked = 'stacked',
+    Bar = 'bar',
+    MonotoneX = 'monotoneX'
+}
+
+/**
+ * 
+ * @export
  * @interface XYViewProperties
  */
 export interface XYViewProperties extends ViewProperties {
@@ -7441,12 +7604,6 @@ export interface XYViewProperties extends ViewProperties {
     axes?: Axes;
     /**
      * 
-     * @type {string}
-     * @memberof XYViewProperties
-     */
-    type?: XYViewProperties.TypeEnum;
-    /**
-     * 
      * @type {Legend}
      * @memberof XYViewProperties
      */
@@ -7456,7 +7613,25 @@ export interface XYViewProperties extends ViewProperties {
      * @type {string}
      * @memberof XYViewProperties
      */
-    geom?: XYViewProperties.GeomEnum;
+    xColumn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof XYViewProperties
+     */
+    yColumn?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof XYViewProperties
+     */
+    shadeBelow?: boolean;
+    /**
+     * 
+     * @type {XYGeomType}
+     * @memberof XYViewProperties
+     */
+    geom?: XYGeomType;
 }
 
 /**
@@ -7464,23 +7639,6 @@ export interface XYViewProperties extends ViewProperties {
  * @namespace XYViewProperties
  */
 export namespace XYViewProperties {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        Xy = 'xy'
-    }
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum GeomEnum {
-        Line = 'line',
-        Step = 'step',
-        Stacked = 'stacked',
-        Bar = 'bar'
-    }
 }
 
 
