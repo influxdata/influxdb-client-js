@@ -350,11 +350,21 @@ export interface Axis {
      */
     base?: string;
     /**
-     * Scale is the axis formatting scale. Supported: \"log\", \"linear\"
-     * @type {string}
+     * 
+     * @type {AxisScaleType}
      * @memberof Axis
      */
-    scale?: string;
+    scale?: AxisScaleType;
+}
+
+/**
+ * Scale is the axis formatting scale. Supported: \"log\", \"linear\"
+ * @export
+ * @enum {string}
+ */
+export enum AxisScaleType {
+    Log = 'log',
+    Linear = 'linear'
 }
 
 /**
@@ -619,6 +629,86 @@ export interface Buckets {
      * @memberof Buckets
      */
     buckets?: Array<Bucket>;
+}
+
+/**
+ * 
+ * @export
+ * @interface BuilderConfig
+ */
+export interface BuilderConfig {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof BuilderConfig
+     */
+    buckets?: Array<string>;
+    /**
+     * 
+     * @type {Array<BuilderTagsType>}
+     * @memberof BuilderConfig
+     */
+    tags?: Array<BuilderTagsType>;
+    /**
+     * 
+     * @type {Array<BuilderFunctionsType>}
+     * @memberof BuilderConfig
+     */
+    functions?: Array<BuilderFunctionsType>;
+    /**
+     * 
+     * @type {BuilderConfigAggregateWindow}
+     * @memberof BuilderConfig
+     */
+    aggregateWindow?: BuilderConfigAggregateWindow;
+}
+
+/**
+ * 
+ * @export
+ * @interface BuilderConfigAggregateWindow
+ */
+export interface BuilderConfigAggregateWindow {
+    /**
+     * 
+     * @type {string}
+     * @memberof BuilderConfigAggregateWindow
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface BuilderFunctionsType
+ */
+export interface BuilderFunctionsType {
+    /**
+     * 
+     * @type {string}
+     * @memberof BuilderFunctionsType
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface BuilderTagsType
+ */
+export interface BuilderTagsType {
+    /**
+     * 
+     * @type {string}
+     * @memberof BuilderTagsType
+     */
+    key?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof BuilderTagsType
+     */
+    values?: Array<string>;
 }
 
 /**
@@ -1193,10 +1283,10 @@ export interface DashboardColor {
     name?: string;
     /**
      * Value is the data value mapped to this color
-     * @type {string}
+     * @type {number}
      * @memberof DashboardColor
      */
-    value?: string;
+    value?: number;
 }
 
 /**
@@ -1222,55 +1312,29 @@ export namespace DashboardColor {
  */
 export interface DashboardQuery {
     /**
-     * Optional Y-axis user-facing label
+     * The text of the flux query
      * @type {string}
      * @memberof DashboardQuery
      */
-    label?: string;
+    text?: string;
     /**
      * 
-     * @type {DashboardQueryRange}
+     * @type {QueryEditMode}
      * @memberof DashboardQuery
      */
-    range?: DashboardQueryRange;
+    editMode?: QueryEditMode;
     /**
      * 
      * @type {string}
      * @memberof DashboardQuery
      */
-    query: string;
-    /**
-     * Optional URI for data source for this query
-     * @type {string}
-     * @memberof DashboardQuery
-     */
-    source?: string;
+    name?: string;
     /**
      * 
-     * @type {QueryConfig}
+     * @type {BuilderConfig}
      * @memberof DashboardQuery
      */
-    queryConfig?: QueryConfig;
-}
-
-/**
- * Optional default range of the Y-axis
- * @export
- * @interface DashboardQueryRange
- */
-export interface DashboardQueryRange {
-    /**
-     * Upper bound of the display range of the Y-axis
-     * @type {number}
-     * @memberof DashboardQueryRange
-     */
-    upper: number;
-    /**
-     * Lower bound of the display range of the Y-axis
-     * @type {number}
-     * @memberof DashboardQueryRange
-     */
-    lower: number;
+    builderConfig?: BuilderConfig;
 }
 
 /**
@@ -3928,109 +3992,11 @@ export namespace Query {
 /**
  * 
  * @export
- * @interface QueryConfig
+ * @enum {string}
  */
-export interface QueryConfig {
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfig
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfig
-     */
-    database: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfig
-     */
-    measurement: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfig
-     */
-    retentionPolicy: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof QueryConfig
-     */
-    areTagsAccepted: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfig
-     */
-    rawText?: string;
-    /**
-     * 
-     * @type {any}
-     * @memberof QueryConfig
-     */
-    tags: any;
-    /**
-     * 
-     * @type {QueryConfigGroupBy}
-     * @memberof QueryConfig
-     */
-    groupBy: QueryConfigGroupBy;
-    /**
-     * 
-     * @type {Array<Field>}
-     * @memberof QueryConfig
-     */
-    fields: Array<Field>;
-    /**
-     * 
-     * @type {QueryConfigRange}
-     * @memberof QueryConfig
-     */
-    range?: QueryConfigRange;
-}
-
-/**
- * 
- * @export
- * @interface QueryConfigGroupBy
- */
-export interface QueryConfigGroupBy {
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfigGroupBy
-     */
-    time: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof QueryConfigGroupBy
-     */
-    tags: Array<string>;
-}
-
-/**
- * 
- * @export
- * @interface QueryConfigRange
- */
-export interface QueryConfigRange {
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfigRange
-     */
-    lower: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryConfigRange
-     */
-    upper: string;
+export enum QueryEditMode {
+    Builder = 'builder',
+    Advanced = 'advanced'
 }
 
 /**
