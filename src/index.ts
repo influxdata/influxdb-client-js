@@ -67,9 +67,16 @@ export {
 export {
   Check,
   NotificationRule,
-  ThresholdCheck,
   Checks,
+  DeadmanCheck,
+  ThresholdCheck,
   NotificationRules,
+  GreaterThresold,
+  LesserThreshold,
+  RangeThreshold,
+  SlackNotificationRule,
+  SMTPNotificationRule,
+  PagerDutyNotificationRule,
 } from './types/alerts'
 
 export {
