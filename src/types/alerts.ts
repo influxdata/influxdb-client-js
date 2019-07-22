@@ -25,9 +25,11 @@ export interface RangeThreshold extends RangeThresholdGen {
   type: ThresholdType.Range
 }
 
+export type CheckThreshold = GreaterThreshold | LesserThreshold | RangeThreshold
+
 export interface ThresholdCheck extends ThresholdCheckGen {
   type: CheckType.Threshold
-  thresholds: Array<GreaterThreshold | LesserThreshold | RangeThreshold>
+  thresholds: Array<CheckThreshold>
 }
 
 export interface DeadmanCheck extends DeadmanCheckGen {
