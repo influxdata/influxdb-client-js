@@ -674,7 +674,7 @@ export interface BuilderConfigAggregateWindow {
      * @type {string}
      * @memberof BuilderConfigAggregateWindow
      */
-    name?: string;
+    period?: string;
 }
 
 /**
