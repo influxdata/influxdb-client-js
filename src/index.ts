@@ -71,7 +71,7 @@ export {
   DeadmanCheck,
   ThresholdCheck,
   NotificationRules,
-  GreaterThresold,
+  GreaterThreshold,
   LesserThreshold,
   RangeThreshold,
   SlackNotificationRule,

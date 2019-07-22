@@ -13,7 +13,7 @@ import {
   Links,
 } from '../api'
 
-export interface GreaterThresold extends GreaterThresholdGen {
+export interface GreaterThreshold extends GreaterThresholdGen {
   type: ThresholdType.Greater
 }
 
@@ -27,7 +27,7 @@ export interface RangeThreshold extends RangeThresholdGen {
 
 export interface ThresholdCheck extends ThresholdCheckGen {
   type: CheckType.Threshold
-  thresholds: Array<GreaterThresold | LesserThreshold | RangeThreshold>
+  thresholds: Array<GreaterThreshold | LesserThreshold | RangeThreshold>
 }
 
 export interface DeadmanCheck extends DeadmanCheckGen {
