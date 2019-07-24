@@ -868,13 +868,6 @@ export interface Check {
 }
 
 /**
- * @export
- * @namespace Check
- */
-export namespace Check {
-}
-
-/**
  * 
  * @export
  * @interface CheckBase
@@ -929,11 +922,11 @@ export interface CheckBase {
      */
     query: DashboardQuery;
     /**
-     * The status of the check task.
-     * @type {string}
+     * 
+     * @type {TaskStatusType}
      * @memberof CheckBase
      */
-    status?: CheckBase.StatusEnum;
+    status?: TaskStatusType;
     /**
      * Check repetition interval
      * @type {string}
@@ -959,6 +952,12 @@ export interface CheckBase {
      */
     tags?: Array<CheckBaseTags>;
     /**
+     * An optional description of the check
+     * @type {string}
+     * @memberof CheckBase
+     */
+    description?: string;
+    /**
      * template that is used to generate and write a status message
      * @type {string}
      * @memberof CheckBase
@@ -970,21 +969,6 @@ export interface CheckBase {
      * @memberof CheckBase
      */
     labels?: Array<Label>;
-}
-
-/**
- * @export
- * @namespace CheckBase
- */
-export namespace CheckBase {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum StatusEnum {
-        Active = 'active',
-        Inactive = 'inactive'
-    }
 }
 
 /**
@@ -1401,13 +1385,6 @@ export interface DeadmanCheck extends CheckBase {
      * @memberof DeadmanCheck
      */
     level?: CheckStatusLevel;
-}
-
-/**
- * @export
- * @namespace DeadmanCheck
- */
-export namespace DeadmanCheck {
 }
 
 /**
@@ -3076,6 +3053,12 @@ export interface NotificationEndpointBase {
      */
     updatedAt?: Date;
     /**
+     * An optional description of the notification endpoint
+     * @type {string}
+     * @memberof NotificationEndpointBase
+     */
+    description?: string;
+    /**
      * 
      * @type {string}
      * @memberof NotificationEndpointBase
@@ -3157,18 +3140,17 @@ export interface NotificationRule {
 }
 
 /**
- * @export
- * @namespace NotificationRule
- */
-export namespace NotificationRule {
-}
-
-/**
  * 
  * @export
  * @interface NotificationRuleBase
  */
 export interface NotificationRuleBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    id?: string;
     /**
      * 
      * @type {string}
@@ -3200,11 +3182,11 @@ export interface NotificationRuleBase {
      */
     updatedAt?: Date;
     /**
-     * The status of the notification rule task.
-     * @type {string}
+     * 
+     * @type {TaskStatusType}
      * @memberof NotificationRuleBase
      */
-    status?: NotificationRuleBase.StatusEnum;
+    status?: TaskStatusType;
     /**
      * human-readable name describing the notification rule
      * @type {string}
@@ -3266,6 +3248,12 @@ export interface NotificationRuleBase {
      */
     tagRules?: Array<TagRule>;
     /**
+     * An optional description of the notification rule
+     * @type {string}
+     * @memberof NotificationRuleBase
+     */
+    description?: string;
+    /**
      * list of status rules the notification rule attempts to match
      * @type {Array<StatusRule>}
      * @memberof NotificationRuleBase
@@ -3277,21 +3265,6 @@ export interface NotificationRuleBase {
      * @memberof NotificationRuleBase
      */
     labels?: Array<Label>;
-}
-
-/**
- * @export
- * @namespace NotificationRuleBase
- */
-export namespace NotificationRuleBase {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum StatusEnum {
-        Active = 'active',
-        Inactive = 'inactive'
-    }
 }
 
 /**
@@ -3727,13 +3700,6 @@ export interface PagerDutyNotificationRule extends NotificationRuleBase {
      * @memberof PagerDutyNotificationRule
      */
     messageTemplate?: string;
-}
-
-/**
- * @export
- * @namespace PagerDutyNotificationRule
- */
-export namespace PagerDutyNotificationRule {
 }
 
 /**
@@ -4677,13 +4643,6 @@ export interface SMTPNotificationRule extends NotificationRuleBase {
 }
 
 /**
- * @export
- * @namespace SMTPNotificationRule
- */
-export namespace SMTPNotificationRule {
-}
-
-/**
  * 
  * @export
  * @interface ScatterViewProperties
@@ -4975,13 +4934,6 @@ export interface SlackNotificationRule extends NotificationRuleBase {
      * @memberof SlackNotificationRule
      */
     messageTemplate?: string;
-}
-
-/**
- * @export
- * @namespace SlackNotificationRule
- */
-export namespace SlackNotificationRule {
 }
 
 /**
@@ -5343,11 +5295,11 @@ export interface Task {
      */
     description?: string;
     /**
-     * The current status of the task. When updated to 'inactive', cancels all queued jobs of this task.
-     * @type {string}
+     * 
+     * @type {TaskStatusType}
      * @memberof Task
      */
-    status?: Task.StatusEnum;
+    status?: TaskStatusType;
     /**
      * 
      * @type {Array<Label>}
@@ -5408,21 +5360,6 @@ export interface Task {
      * @memberof Task
      */
     links?: TaskLinks;
-}
-
-/**
- * @export
- * @namespace Task
- */
-export namespace Task {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum StatusEnum {
-        Active = 'active',
-        Inactive = 'inactive'
-    }
 }
 
 /**
@@ -5520,6 +5457,16 @@ export interface TaskLinks {
      * @memberof TaskLinks
      */
     labels?: string;
+}
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum TaskStatusType {
+    Active = 'active',
+    Inactive = 'inactive'
 }
 
 /**
@@ -7065,13 +7012,6 @@ export interface ThresholdCheck extends CheckBase {
      * @memberof ThresholdCheck
      */
     thresholds?: Array<any>;
-}
-
-/**
- * @export
- * @namespace ThresholdCheck
- */
-export namespace ThresholdCheck {
 }
 
 /**
@@ -19073,6 +19013,50 @@ export const TasksApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Cancel a single running task
+         * @param {string} taskID task ID
+         * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string, options: any = {}): RequestArgs {
+            // verify required parameter 'taskID' is not null or undefined
+            if (taskID === null || taskID === undefined) {
+                throw new RequiredError('taskID','Required parameter taskID was null or undefined when calling deleteTasksIDRunsID.');
+            }
+            // verify required parameter 'runID' is not null or undefined
+            if (runID === null || runID === undefined) {
+                throw new RequiredError('runID','Required parameter runID was null or undefined when calling deleteTasksIDRunsID.');
+            }
+            const localVarPath = `/tasks/{taskID}/runs/{runID}`
+                .replace(`{${"taskID"}}`, encodeURIComponent(String(taskID)))
+                .replace(`{${"runID"}}`, encodeURIComponent(String(runID)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, baseOptions, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (zapTraceSpan !== undefined && zapTraceSpan !== null) {
+                localVarHeaderParameter['Zap-Trace-Span'] = String(zapTraceSpan);
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List tasks.
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
@@ -19854,6 +19838,22 @@ export const TasksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Cancel a single running task
+         * @param {string} taskID task ID
+         * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response> {
+            const localVarAxiosArgs = TasksApiAxiosParamCreator(configuration).deleteTasksIDRunsID(taskID, runID, zapTraceSpan, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = Object.assign(localVarAxiosArgs.options, {url: basePath + localVarAxiosArgs.url})
+                return axios.request(axiosRequestArgs);                
+            };
+        },
+        /**
+         * 
          * @summary List tasks.
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
@@ -20166,6 +20166,18 @@ export const TasksApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Cancel a single running task
+         * @param {string} taskID task ID
+         * @param {string} runID run ID
+         * @param {string} [zapTraceSpan] OpenTracing span context
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+            return TasksApiFp(configuration).deleteTasksIDRunsID(taskID, runID, zapTraceSpan, options)(axios, basePath);
+        },
+        /**
+         * 
          * @summary List tasks.
          * @param {string} [zapTraceSpan] OpenTracing span context
          * @param {string} [after] returns tasks after specified ID
@@ -20419,6 +20431,20 @@ export class TasksApi extends BaseAPI {
      */
     public deleteTasksIDOwnersID(userID: string, taskID: string, zapTraceSpan?: string, options?: any) {
         return TasksApiFp(this.configuration).deleteTasksIDOwnersID(userID, taskID, zapTraceSpan, options)(this.axios, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Cancel a single running task
+     * @param {string} taskID task ID
+     * @param {string} runID run ID
+     * @param {string} [zapTraceSpan] OpenTracing span context
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TasksApi
+     */
+    public deleteTasksIDRunsID(taskID: string, runID: string, zapTraceSpan?: string, options?: any) {
+        return TasksApiFp(this.configuration).deleteTasksIDRunsID(taskID, runID, zapTraceSpan, options)(this.axios, this.basePath);
     }
 
     /**
