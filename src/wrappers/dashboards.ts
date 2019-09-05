@@ -211,7 +211,7 @@ export default class {
   public async updateView(
     dashboardID: string,
     cellID: string,
-    view: Partial<View>
+    view: View
   ): Promise<View> {
     const {data} = await this.service.patchDashboardsIDCellsIDView(
       dashboardID,

@@ -91,7 +91,6 @@ export {
   HeatmapViewProperties,
   ScatterViewProperties,
   CheckViewProperties,
-  EmptyViewProperties,
   MarkdownViewProperties,
   XYView,
   LinePlusSingleStatView,
@@ -102,7 +101,6 @@ export {
   HeatmapView,
   ScatterView,
   CheckView,
-  EmptyView,
   MarkdownView,
 } from './types/dashboards'
 

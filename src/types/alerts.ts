@@ -1,39 +1,39 @@
 import {
   DeadmanCheck as DeadmanCheckGen,
   ThresholdCheck as ThresholdCheckGen,
-  CheckType,
   GreaterThreshold as GreaterThresholdGen,
   LesserThreshold as LesserThresholdGen,
   RangeThreshold as RangeThresholdGen,
-  ThresholdType,
   SlackNotificationRule as SlackNotificationRuleGen,
+  SlackNotificationRuleBase,
   PagerDutyNotificationRule as PagerDutyNotificationRuleGen,
   SMTPNotificationRule as SMTPNotificationRuleGen,
-  NotificationRuleType,
   Links,
+  PagerDutyNotificationRuleBase,
+  SMTPNotificationRuleBase,
 } from '../api'
 
 export interface GreaterThreshold extends GreaterThresholdGen {
-  type: ThresholdType.Greater
+  type: GreaterThresholdGen.TypeEnum.Greater
 }
 
 export interface LesserThreshold extends LesserThresholdGen {
-  type: ThresholdType.Lesser
+  type: LesserThresholdGen.TypeEnum.Lesser
 }
 
 export interface RangeThreshold extends RangeThresholdGen {
-  type: ThresholdType.Range
+  type: RangeThresholdGen.TypeEnum.Range
 }
 
 export type CheckThreshold = GreaterThreshold | LesserThreshold | RangeThreshold
 
 export interface ThresholdCheck extends ThresholdCheckGen {
-  type: CheckType.Threshold
+  type: ThresholdCheckGen.TypeEnum.Threshold
   thresholds: Array<CheckThreshold>
 }
 
 export interface DeadmanCheck extends DeadmanCheckGen {
-  type: CheckType.Deadman
+  type: DeadmanCheckGen.TypeEnum.Deadman
 }
 
 export type Check = DeadmanCheck | ThresholdCheck
@@ -44,16 +44,16 @@ export interface Checks {
 }
 
 export interface SlackNotificationRule extends SlackNotificationRuleGen {
-  type: NotificationRuleType.Slack
+  type: SlackNotificationRuleBase.TypeEnum.Slack
 }
 
 export interface PagerDutyNotificationRule
   extends PagerDutyNotificationRuleGen {
-  type: NotificationRuleType.Pagerduty
+  type: PagerDutyNotificationRuleBase.TypeEnum.Pagerduty
 }
 
 export interface SMTPNotificationRule extends SMTPNotificationRuleGen {
-  type: NotificationRuleType.Smtp
+  type: SMTPNotificationRuleBase.TypeEnum.Smtp
 }
 
 export type NotificationRule =

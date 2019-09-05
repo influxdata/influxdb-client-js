@@ -1,6 +1,5 @@
 import {
   View as ViewGen,
-  ViewType,
   XYViewProperties as XYViewPropertiesGen,
   LinePlusSingleStatProperties as LinePlusSingleStatPropertiesGen,
   SingleStatViewProperties as SingleStatViewPropertiesGen,
@@ -10,12 +9,13 @@ import {
   HeatmapViewProperties as HeatmapViewPropertiesGen,
   ScatterViewProperties as ScatterViewPropertiesGen,
   CheckViewProperties as CheckViewPropertiesGen,
+  MarkdownViewProperties as MarkdownViewPropertiesGen,
   RenamableField,
 } from '../api'
 
 export interface View<T extends ViewProperties = ViewProperties>
   extends ViewGen {
-  properties?: T
+  properties: T
   dashboardID?: string
   cellID?: string
 }
@@ -27,72 +27,64 @@ export type ViewProperties =
   | TableViewProperties
   | GaugeViewProperties
   | MarkdownViewProperties
-  | EmptyViewProperties
   | HistogramViewProperties
   | HeatmapViewProperties
   | ScatterViewProperties
   | CheckViewProperties
 
 export interface XYViewProperties extends XYViewPropertiesGen {
-  type: ViewType.Xy
+  type: XYViewPropertiesGen.TypeEnum.Xy
 }
 export type XYView = View<XYViewProperties>
 
 export interface LinePlusSingleStatProperties
   extends LinePlusSingleStatPropertiesGen {
-  type: ViewType.LinePlusSingleStat
+  type: LinePlusSingleStatPropertiesGen.TypeEnum.LinePlusSingleStat
 }
 export type LinePlusSingleStatView = View<LinePlusSingleStatProperties>
 
 export interface SingleStatViewProperties extends SingleStatViewPropertiesGen {
-  type: ViewType.SingleStat
+  type: SingleStatViewPropertiesGen.TypeEnum.SingleStat
 }
 export type SingleStatView = View<SingleStatViewProperties>
 
 export interface TableViewProperties extends TableViewPropertiesGen {
-  type: ViewType.Table
+  type: TableViewPropertiesGen.TypeEnum.Table
   tableOptions: TableOptions
 }
 export type TableView = View<TableViewProperties>
 
 export interface GaugeViewProperties extends GaugeViewPropertiesGen {
-  type: ViewType.Gauge
+  type: GaugeViewPropertiesGen.TypeEnum.Gauge
 }
 export type GaugeView = View<GaugeViewProperties>
 
 export interface HistogramViewProperties extends HistogramViewPropertiesGen {
-  type: ViewType.Histogram
+  type: HistogramViewPropertiesGen.TypeEnum.Histogram
 }
 export type HistogramView = View<HistogramViewProperties>
 
 export interface HeatmapViewProperties extends HeatmapViewPropertiesGen {
-  type: ViewType.Heatmap
+  type: HeatmapViewPropertiesGen.TypeEnum.Heatmap
 }
 export type HeatmapView = View<HeatmapViewProperties>
 
 export interface ScatterViewProperties extends ScatterViewPropertiesGen {
-  type: ViewType.Scatter
+  type: ScatterViewPropertiesGen.TypeEnum.Scatter
 }
 export type ScatterView = View<ScatterViewProperties>
 
 export interface CheckViewProperties extends CheckViewPropertiesGen {
-  type: ViewType.Check
+  type: CheckViewPropertiesGen.TypeEnum.Check
 }
 export type CheckView = View<CheckViewProperties>
 
 // views which do not extend generated view properties base
 export interface MarkdownViewProperties {
-  type: ViewType.Markdown
+  type: MarkdownViewPropertiesGen.TypeEnum.Markdown
   text: string
 }
 export type MarkdownView = View<MarkdownViewProperties>
-
-export interface EmptyViewProperties {
-  type: ViewType.Empty
-}
-export type EmptyView = View<EmptyViewProperties>
-
-//
 
 export interface TableOptions {
   verticalTimeAxis: boolean

@@ -35,6 +35,7 @@ export default class {
       undefined,
       undefined,
       undefined,
+      undefined,
       precision,
       this.serviceOptions
     )

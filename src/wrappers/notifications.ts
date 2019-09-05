@@ -1,4 +1,4 @@
-import {NotificationRulesApi} from '../api'
+import {NotificationRulesApi, NotificationRuleUpdate} from '../api'
 import {NotificationRule, ServiceOptions, NotificationRules} from '../types'
 import {addLabelDefaults} from './labels'
 import {AxiosResponse} from 'axios'
@@ -39,6 +39,7 @@ export default class {
       undefined,
       undefined,
       undefined,
+      undefined,
       this.serviceOptions
     )) as AxiosResponse<NotificationRules>
 
@@ -56,6 +57,7 @@ export default class {
       undefined,
       undefined,
       checkID,
+      undefined,
       this.serviceOptions
     )) as AxiosResponse<NotificationRules>
 
@@ -75,7 +77,7 @@ export default class {
 
   public async update(
     id: string,
-    notificationRule: Partial<NotificationRule>
+    notificationRule: Partial<NotificationRuleUpdate>
   ): Promise<NotificationRule> {
     const {data} = (await this.service.patchNotificationRulesID(
       id,

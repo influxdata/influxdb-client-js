@@ -1,4 +1,4 @@
-import {ChecksApi} from '../api'
+import {ChecksApi, CheckPatch} from '../api'
 import {Check, Checks, ServiceOptions} from '../types'
 import {addLabelDefaults} from './labels'
 import {AxiosResponse} from 'axios'
@@ -52,6 +52,17 @@ export default class {
   }
 
   public async update(id: string, check: Partial<Check>): Promise<Check> {
+    const {data} = (await this.service.putChecksID(
+      id,
+      check,
+      undefined,
+      this.serviceOptions
+    )) as AxiosResponse<Check>
+
+    return addDefaults(data)
+  }
+
+  public async patch(id: string, check: Partial<CheckPatch>): Promise<Check> {
     const {data} = (await this.service.patchChecksID(
       id,
       check,
