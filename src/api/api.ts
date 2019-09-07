@@ -482,12 +482,6 @@ export interface Bucket {
      * @type {string}
      * @memberof Bucket
      */
-    type?: Bucket.TypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof Bucket
-     */
     name: string;
     /**
      * 
@@ -531,21 +525,6 @@ export interface Bucket {
      * @memberof Bucket
      */
     labels?: Array<Label>;
-}
-
-/**
- * @export
- * @namespace Bucket
- */
-export namespace Bucket {
-    /**
-     * @export
-     * @enum {string}
-     */
-    export enum TypeEnum {
-        User = 'user',
-        System = 'system'
-    }
 }
 
 /**
