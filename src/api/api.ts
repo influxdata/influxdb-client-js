@@ -449,7 +449,7 @@ export interface BooleanLiteral {
     value?: boolean;
 }
 
-/**
+/** 
  * 
  * @export
  * @interface Bucket
@@ -467,6 +467,12 @@ export interface Bucket {
      * @memberof Bucket
      */
     id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Bucket
+     */
+    type?: Bucket.TypeEnum;
     /**
      * 
      * @type {string}
@@ -515,6 +521,21 @@ export interface Bucket {
      * @memberof Bucket
      */
     labels?: Array<Label>;
+}
+
+/**
+ * @export
+ * @namespace Bucket
+ */
+export namespace Bucket {
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum TypeEnum {
+        User = 'user',
+        System = 'system'
+    }
 }
 
 /**
