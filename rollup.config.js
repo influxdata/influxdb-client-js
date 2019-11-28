@@ -13,7 +13,7 @@ let plugins = [
   resolve({}),
   commonjs(),
   builtins(),
-  // sourceMaps(),
+  sourceMaps(),
   typescript({
     typescript: tsc,
     tsconfigDefaults: {
