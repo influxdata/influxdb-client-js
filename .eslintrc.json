@@ -15,5 +15,12 @@
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {"varsIgnorePattern": "^_", "argsIgnorePattern": "^_"}
+    ],
+    "@typescript-eslint/no-empty-function": "off"
+  }
 }
