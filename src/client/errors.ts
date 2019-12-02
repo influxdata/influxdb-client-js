@@ -1,5 +1,9 @@
-interface RetriableDecision {
+export interface RetriableDecision {
   canRetry(): boolean
+  /**
+   * Get the delay in millisecond to retry the action. Can return negative number
+   * to let the implementation decide the delay.
+   */
   retryAfter(): number
 }
 
@@ -58,8 +62,8 @@ const RETRY_CODES = [
 export function canRetryHttpCall(error: Error): boolean {
   if (!error) {
     return false
-  } else if (error instanceof HttpError) {
-    return isStatusCodeRetriable(error.statusCode)
+  } else if (typeof (error as any).canRetry === 'function') {
+    return !!((error as any).retryAfter as () => boolean)()
   } else if ((error as any).code && RETRY_CODES.includes((error as any).code)) {
     return true
   }
@@ -75,7 +79,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
     return true
   }
   retryAfter(): number {
-    return 0
+    return -1
   }
 }
 
@@ -88,6 +92,6 @@ export class ResponseAbortedError extends Error implements RetriableDecision {
     return true
   }
   retryAfter(): number {
-    return 0
+    return -1
   }
 }

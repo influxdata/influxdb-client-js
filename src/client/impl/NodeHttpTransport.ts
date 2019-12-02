@@ -61,6 +61,7 @@ class CancellableImpl implements Cancellable {
  */
 export class NodeHttpTransport {
   private defaultOptions: {[key: string]: any}
+  private retryJitter: number
   private requestApi: (
     options: http.RequestOptions,
     callback: (res: http.IncomingMessage) => void
@@ -79,6 +80,8 @@ export class NodeHttpTransport {
       protocol: url.protocol,
       method: 'POST',
     }
+    this.retryJitter =
+      this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
     if (url.protocol === 'http') {
       this.requestApi = http.request
     } else if (url.protocol === 'https') {
@@ -160,7 +163,7 @@ export class NodeHttpTransport {
       cancellable,
       callbacks
     )
-    if (cancellable.isCancelled) {
+    if (cancellable.isCancelled()) {
       listeners.complete()
       return
     }
@@ -211,7 +214,7 @@ export class NodeHttpTransport {
     callbacks: Partial<CommunicationCallbacks> = {}
   ): CommunicationCallbacks {
     let state = 0
-    return {
+    const retVal = {
       next: (data: any): void => {
         if (state === 0 && callbacks.next) {
           callbacks.next(data)
@@ -219,13 +222,17 @@ export class NodeHttpTransport {
       },
       error: (error: Error): void => {
         if (state === 0 && canRetryHttpCall(error)) {
+          state = 1
           const retries = requestMessage.retries || 0
           if (retries < this.defaultOptions.maxRetries) {
             requestMessage.retries = retries + 1
-            return this.request(requestMessage, cancellable, callbacks)
+            setTimeout(
+              () => this.request(requestMessage, cancellable, callbacks),
+              this.getRetryDelay(error)
+            )
+            return
           }
         }
-        state = 1
         if (callbacks.error) callbacks.error(error)
       },
       complete: (): void => {
@@ -235,5 +242,17 @@ export class NodeHttpTransport {
         }
       },
     }
+    return retVal
+  }
+
+  private getRetryDelay(error: Error): number {
+    let delay = -1
+    if ((error as any).retryAfter) {
+      delay = ((error as any).retryAfter as () => number)()
+    }
+    if (delay < 0) {
+      delay = Math.round(Math.random() * this.retryJitter)
+    }
+    return delay
   }
 }

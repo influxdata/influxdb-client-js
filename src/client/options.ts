@@ -7,7 +7,7 @@ export interface ConnectionOptions {
   timeout?: number
   /** maximum number of retries for HTTP calls that could succeed when called again  */
   maxRetries?: number
-  /** extra jitter delay when retrying HTTP calls */
+  /** include random milliseconds when retrying HTTP calls */
   retryJitter?: number
 }
 
