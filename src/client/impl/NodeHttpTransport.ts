@@ -19,7 +19,7 @@ const DEFAULT_OPTIONS: Partial<ConnectionOptions> = {
 /** Informs about changes in the communication with the server */
 export interface CommunicationCallbacks {
   /**
-   * Data chunk was received, can be called mupliple times.
+   * Data chunk received, can be called mupliple times.
    */
   next(data: any): void
   /**
@@ -30,6 +30,30 @@ export interface CommunicationCallbacks {
    * Response was fully read.
    */
   complete(): void
+}
+
+/**
+ * Cancellation of asynchronous query.
+ */
+export interface Cancellable {
+  /**
+   * Attempt to cancel execution of this query.
+   */
+  cancel(): void
+
+  /**
+   * Is communication canceled.
+   */
+  isCancelled(): boolean
+}
+class CancellableImpl implements Cancellable {
+  private cancelled = false
+  cancel(): void {
+    this.cancelled = true
+  }
+  isCancelled(): boolean {
+    return this.cancelled
+  }
 }
 
 /**
@@ -64,14 +88,27 @@ export class NodeHttpTransport {
     }
   }
 
+  /**
+   * Sends data to server and receive communication events via communication callbacks.
+   *
+   * @param path HTTP path
+   * @param headers HTTP headers
+   * @param method HTTP method
+   * @param body  message body
+   * @param callbacks communication callbacks
+   * @return a handle that can cancel the communication
+   */
   send(
     path: string,
     headers: {[key: string]: string},
+    method = 'POST',
     body = '',
     callbacks?: Partial<CommunicationCallbacks>
-  ): void {
-    const message = this.createRequestMessage(path, headers, body)
-    this.request(message, callbacks)
+  ): Cancellable {
+    const message = this.createRequestMessage(path, headers, method, body)
+    const cancellable = new CancellableImpl()
+    this.request(message, cancellable, callbacks)
+    return cancellable
   }
 
   /**
@@ -80,17 +117,21 @@ export class NodeHttpTransport {
    *
    * @param path API path starting with '/' and containing also query parameters
    * @param headers HTTP headers to use in
+   * @param method HTTP method
+   * @param body request body
    * @return configuration suitable for making the request
    */
   private createRequestMessage(
     path: string,
     headers: {[key: string]: string},
-    body = ''
+    method: string,
+    body: string
   ): {[key: string]: any} {
     const bodyBuffer = body ? Buffer.from(body, 'utf-8') : undefined
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path,
+      method,
       headers: {
         'content-type': 'text/plain; charset=utf-8',
         ...headers,
@@ -111,10 +152,22 @@ export class NodeHttpTransport {
    */
   private request(
     requestMessage: {[key: string]: any},
+    cancellable: Cancellable,
     callbacks?: Partial<CommunicationCallbacks>
   ): void {
-    const listeners = this.createRetriableCallbacks(requestMessage, callbacks)
+    const listeners = this.createRetriableCallbacks(
+      requestMessage,
+      cancellable,
+      callbacks
+    )
+    if (cancellable.isCancelled) {
+      listeners.complete()
+      return
+    }
     const req = this.requestApi(requestMessage, (res: http.IncomingMessage) => {
+      if (cancellable.isCancelled()) {
+        return
+      }
       res.on('aborted', () => {
         listeners.error(new ResponseAbortedError())
       })
@@ -154,6 +207,7 @@ export class NodeHttpTransport {
 
   private createRetriableCallbacks(
     requestMessage: {[key: string]: any},
+    cancellable: Cancellable,
     callbacks: Partial<CommunicationCallbacks> = {}
   ): CommunicationCallbacks {
     let state = 0
@@ -168,7 +222,7 @@ export class NodeHttpTransport {
           const retries = requestMessage.retries || 0
           if (retries < this.defaultOptions.maxRetries) {
             requestMessage.retries = retries + 1
-            return this.request(requestMessage, callbacks)
+            return this.request(requestMessage, cancellable, callbacks)
           }
         }
         state = 1
