@@ -1,5 +1,7 @@
 node_modules
 .vscode
 dist
+coverage
+doc
 .rpt2_cache
 .DS_Store
