@@ -80,7 +80,9 @@ export class NodeHttpTransport {
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions client options
    */
-  constructor(connectionOptions: ConnectionOptions | {[key: string]: any}) {
+  constructor(
+    private connectionOptions: ConnectionOptions | {[key: string]: any}
+  ) {
     const url = parse(connectionOptions.url)
     this.defaultOptions = {
       ...DEFAULT_OPTIONS,
@@ -146,6 +148,7 @@ export class NodeHttpTransport {
       method,
       headers: {
         'content-type': 'text/plain; charset=utf-8',
+        authorization: 'Token ' + this.connectionOptions.token,
         ...headers,
       },
       body: bodyBuffer,
