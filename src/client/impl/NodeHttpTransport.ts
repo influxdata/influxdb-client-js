@@ -48,11 +48,20 @@ export interface Cancellable {
 }
 class CancellableImpl implements Cancellable {
   private cancelled = false
+  timeouts: Array<() => void> = []
   cancel(): void {
     this.cancelled = true
+    if (this.timeouts.length > 0) {
+      this.timeouts.forEach(x => x())
+      this.timeouts = []
+    }
   }
   isCancelled(): boolean {
     return this.cancelled
+  }
+
+  addCancelableAction(action: () => void): void {
+    this.timeouts.push(action)
   }
 }
 
@@ -148,14 +157,9 @@ export class NodeHttpTransport {
     return options
   }
 
-  /**
-   * Sends the
-   * @param requestMessage
-   * @param callbacks
-   */
   private request(
     requestMessage: {[key: string]: any},
-    cancellable: Cancellable,
+    cancellable: CancellableImpl,
     callbacks?: Partial<CommunicationCallbacks>
   ): void {
     const listeners = this.createRetriableCallbacks(
@@ -210,7 +214,7 @@ export class NodeHttpTransport {
 
   private createRetriableCallbacks(
     requestMessage: {[key: string]: any},
-    cancellable: Cancellable,
+    cancellable: CancellableImpl,
     callbacks: Partial<CommunicationCallbacks> = {}
   ): CommunicationCallbacks {
     let state = 0
@@ -226,10 +230,11 @@ export class NodeHttpTransport {
           const retries = requestMessage.retries || 0
           if (retries < this.defaultOptions.maxRetries) {
             requestMessage.retries = retries + 1
-            setTimeout(
+            const cancelHandle = setTimeout(
               () => this.request(requestMessage, cancellable, callbacks),
               this.getRetryDelay(error)
             )
+            cancellable.addCancelableAction(() => clearTimeout(cancelHandle))
             return
           }
         }
