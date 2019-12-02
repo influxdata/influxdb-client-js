@@ -1,5 +1,5 @@
 import {ConnectionOptions} from '../options'
-import {URL} from 'url'
+import {parse} from 'url'
 import * as http from 'http'
 import * as https from 'https'
 import {Buffer} from 'buffer'
@@ -81,7 +81,7 @@ export class NodeHttpTransport {
    * @param connectionOptions client options
    */
   constructor(connectionOptions: ConnectionOptions | {[key: string]: any}) {
-    const url = new URL(connectionOptions.url)
+    const url = parse(connectionOptions.url)
     this.defaultOptions = {
       ...DEFAULT_OPTIONS,
       ...connectionOptions,

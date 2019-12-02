@@ -10,7 +10,7 @@ import tsc from 'typescript'
 const pkg = require('./package.json')
 
 let plugins = [
-  resolve({}),
+  resolve({preferBuiltins: true}),
   commonjs(),
   builtins(),
   sourceMaps(),
