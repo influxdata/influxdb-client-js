@@ -9,6 +9,8 @@ export interface ConnectionOptions {
   maxRetries?: number
   /** include random milliseconds when retrying HTTP calls */
   retryJitter?: number
+  /** extra options for the transport layer */
+  transportOptions?: {[key: string]: any}
 }
 
 // export interface WriteOptions {

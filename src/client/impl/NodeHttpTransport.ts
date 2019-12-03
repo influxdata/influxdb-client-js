@@ -86,10 +86,9 @@ export class NodeHttpTransport {
     const url = parse(connectionOptions.url)
     this.defaultOptions = {
       ...DEFAULT_OPTIONS,
-      ...connectionOptions,
+      ...(connectionOptions.transportOptions || {}),
       port: url.port,
       protocol: url.protocol,
-      method: 'POST',
     }
     this.retryJitter =
       this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
