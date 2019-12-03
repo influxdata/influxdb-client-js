@@ -7,8 +7,12 @@
   "scripts": {
     "build": "yarn run clean && NODE_ENV=production rollup -c",
     "build:doc": "yarn run clean && typedoc --out ./doc ./src",
-    "clean": "rimraf coverage doc dist",
-    "test": "yarn run lint && yarn run typecheck",
+    "clean": "rimraf dist build coverage doc",
+    "coverage": "nyc yarn run test:unit",
+    "coverage:open": "open coverage/index.html",
+    "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
+    "test:unit": "mocha --require ts-node/register test/unit/*.test.ts",
+    "test:watch": "mocha --require ts-node/register test/unit/*.test.ts --watch-extensions ts --watch",
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
@@ -23,11 +27,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^4.2.5",
+    "@types/mocha": "^5.2.7",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "chai": "^4.2.0",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "rollup": "^1.27.5",
@@ -38,6 +47,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.25.2",
+    "ts-node": "^8.5.4",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.2"
   }

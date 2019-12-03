@@ -1,7 +1,8 @@
 node_modules
-.vscode
+build
 dist
 coverage
 doc
 .rpt2_cache
 .DS_Store
+.nyc_output

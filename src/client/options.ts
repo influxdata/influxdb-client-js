@@ -2,7 +2,7 @@ export interface ConnectionOptions {
   /** base URL */
   url: string
   /** authentication token */
-  token: string
+  token?: string
   /** socket timeout */
   timeout?: number
   /** maximum number of retries for HTTP calls that could succeed when called again  */

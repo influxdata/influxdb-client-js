@@ -264,3 +264,4 @@ export class NodeHttpTransport {
     return delay
   }
 }
+export default NodeHttpTransport

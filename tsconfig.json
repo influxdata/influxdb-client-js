@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
     "lib": ["es2015", "es2017"],
     "allowJs": false,
     "declaration": true,
-    "rootDir": "./src",
     "outDir": "./dist",
     "removeComments": true,
     "strict": true,
@@ -16,5 +14,5 @@
     "sourceMap": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": []
+  "exclude": ["dist"]
 }

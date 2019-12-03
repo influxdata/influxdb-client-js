@@ -11,6 +11,12 @@ export function isStatusCodeRetriable(statusCode: number): boolean {
   return statusCode == 429 || statusCode == 503
 }
 
+export class IllegalArgumentError extends Error {
+  constructor(message: string) {
+    super(message)
+  }
+}
+
 /**
  * A general HTTP error.
  */

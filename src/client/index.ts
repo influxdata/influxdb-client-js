@@ -1,7 +1,7 @@
-import {InfluxDBClient} from './InfluxDBClient'
+import InfluxDB from './InfluxDB'
 
-export * from './InfluxDBClient'
+export {default as InfluxDB} from './InfluxDB'
 export * from './options'
 export * from './errors'
-export * from './WriteApi'
-export default InfluxDBClient
+export {default as WriteApi} from './WriteApi'
+export default InfluxDB
