@@ -226,7 +226,7 @@ export class NodeHttpTransport implements Transport {
 
   private getRetryDelay(error: Error): number {
     let delay = -1
-    if ((error as any).retryAfter) {
+    if (typeof (error as any).retryAfter === 'function') {
       delay = ((error as any).retryAfter as () => number)()
     }
     if (delay < 0) {

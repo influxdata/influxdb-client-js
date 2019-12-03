@@ -17,7 +17,7 @@
         "15000",
         "--check-leaks",
         "--colors",
-        "${workspaceRoot}/test/**/*.ts"
+        "${workspaceRoot}/test/**/*.test.ts"
       ]
     }
   ]

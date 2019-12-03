@@ -14,6 +14,7 @@ export function isStatusCodeRetriable(statusCode: number): boolean {
 export class IllegalArgumentError extends Error {
   constructor(message: string) {
     super(message)
+    Object.setPrototypeOf(this, IllegalArgumentError.prototype)
   }
 }
 
@@ -30,8 +31,9 @@ export class HttpError extends Error implements RetriableDecision {
     retryAfter?: string | undefined
   ) {
     super()
+    Object.setPrototypeOf(this, HttpError.prototype)
     if (body) {
-      this.message = `A ${statusCode} ${statusMessage} error occurred: ${body}`
+      this.message = `${statusCode} ${statusMessage} : ${body}`
     } else {
       this.message = `${statusCode} ${statusMessage}`
     }
@@ -42,6 +44,7 @@ export class HttpError extends Error implements RetriableDecision {
       this._retryAfter = NaN
     }
   }
+
   canRetry(): boolean {
     return isStatusCodeRetriable(this.statusCode)
   }
@@ -65,11 +68,11 @@ const RETRY_CODES = [
  * Tests the error to know whether a possible HTTP call can be retried.
  * @param error Test whether the givver e
  */
-export function canRetryHttpCall(error: Error): boolean {
+export function canRetryHttpCall(error: any): boolean {
   if (!error) {
     return false
   } else if (typeof (error as any).canRetry === 'function') {
-    return !!((error as any).retryAfter as () => boolean)()
+    return !!((error as any).canRetry as () => boolean)()
   } else if ((error as any).code && RETRY_CODES.includes((error as any).code)) {
     return true
   }
@@ -79,6 +82,7 @@ export function canRetryHttpCall(error: Error): boolean {
 export class RequestTimedOutError extends Error implements RetriableDecision {
   constructor() {
     super()
+    Object.setPrototypeOf(this, RequestTimedOutError.prototype)
     this.message = 'Request timed out'
   }
   canRetry(): boolean {
@@ -92,6 +96,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
 export class ResponseAbortedError extends Error implements RetriableDecision {
   constructor() {
     super()
+    Object.setPrototypeOf(this, ResponseAbortedError.prototype)
     this.message = 'Response aborted'
   }
   canRetry(): boolean {
