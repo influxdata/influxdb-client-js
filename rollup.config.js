@@ -27,7 +27,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const input = 'src/index.ts'
-
 export default [
   {
     input,

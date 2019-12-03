@@ -3,9 +3,11 @@ import {ClientOptions, WritePrecission} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
 import {parse} from 'url'
 import {IllegalArgumentError} from './errors'
+import {Transport} from './transport'
+import NodeHttpTransport from './impl/NodeHttpTransport'
 
 /**
- * Parses the URL out into into a IClusterConfig object
+ * Fills URL out into into a IClusterConfig object
  */
 function fillOptions(
   url: string | undefined,
@@ -22,10 +24,18 @@ function fillOptions(
 }
 
 /**
+ * Creates default transport using the connection options supplied.
+ */
+function createTransport(options: ClientOptions): Transport {
+  return options.transport || new NodeHttpTransport(options)
+}
+
+/**
  * InfluxDB 2.0 client that uses HTTP API described in https://v2.docs.influxdata.com/v2.0/reference/api/ .
  */
 export default class InfluxDB {
   private _options: ClientOptions
+  private transport: Transport
 
   /* eslint-disable no-dupe-class-members */
   constructor(url: string)
@@ -42,13 +52,15 @@ export default class InfluxDB {
     if (!this._options.url) throw new IllegalArgumentError('No url specified!')
     if (!this._options.token)
       throw new IllegalArgumentError('No token specified!')
+    this.transport = createTransport(this._options)
   }
+
   /* eslint-enable no-dupe-class-members */
   getWriteApi(
     org: string,
     bucket: string,
     precission: WritePrecission = WritePrecission.ms
   ): WriteApi {
-    return new WriteApiImpl(this._options, org, bucket, precission)
+    return new WriteApiImpl(this.transport, org, bucket, precission)
   }
 }

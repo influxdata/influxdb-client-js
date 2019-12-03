@@ -22,11 +22,11 @@ describe('influxdb', () => {
     it('is created from configuration with url and token', () => {
       expect(
         (new InfluxDB({
-          url: 'http://localhost:9999?token=a',
+          url: 'https://localhost:9999?token=a',
           token: 'b',
         }) as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999?token=a',
+        url: 'https://localhost:9999?token=a',
         token: 'b',
       })
     })
@@ -52,6 +52,14 @@ describe('influxdb', () => {
             url: 'http://localhost:9999',
           } as ClientOptions) as ClientOptions)
       ).to.throw('No token specified!')
+    })
+    it('fails on unsupported protocol', () => {
+      expect(
+        () =>
+          new InfluxDB(({
+            url: 'ws://localhost:9999?token=b',
+          } as ClientOptions) as ClientOptions)
+      ).to.throw('Unsupported')
     })
   })
 })

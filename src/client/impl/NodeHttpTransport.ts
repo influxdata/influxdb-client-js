@@ -9,6 +9,7 @@ import {
   canRetryHttpCall,
   HttpError,
 } from '../errors'
+import {Cancellable, CommunicationObserver, Transport} from '../transport'
 
 const DEFAULT_OPTIONS: Partial<ConnectionOptions> = {
   timeout: 10000,
@@ -16,36 +17,6 @@ const DEFAULT_OPTIONS: Partial<ConnectionOptions> = {
   retryJitter: 1000,
 }
 
-/** Informs about changes in the communication with the server */
-export interface CommunicationCallbacks {
-  /**
-   * Data chunk received, can be called mupliple times.
-   */
-  next(data: any): void
-  /**
-   * An error message was received.
-   */
-  error(error: Error): void
-  /**
-   * Response was fully read.
-   */
-  complete(): void
-}
-
-/**
- * Cancellation of asynchronous query.
- */
-export interface Cancellable {
-  /**
-   * Attempt to cancel execution of this query.
-   */
-  cancel(): void
-
-  /**
-   * Is communication canceled.
-   */
-  isCancelled(): boolean
-}
 class CancellableImpl implements Cancellable {
   private cancelled = false
   timeouts: Array<() => void> = []
@@ -68,7 +39,7 @@ class CancellableImpl implements Cancellable {
 /**
  * Transport layer on top of node http or https library.
  */
-export class NodeHttpTransport {
+export class NodeHttpTransport implements Transport {
   private defaultOptions: {[key: string]: any}
   private retryJitter: number
   private requestApi: (
@@ -80,24 +51,25 @@ export class NodeHttpTransport {
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions client options
    */
-  constructor(
-    private connectionOptions: ConnectionOptions | {[key: string]: any}
-  ) {
+  constructor(private connectionOptions: ConnectionOptions) {
     const url = parse(connectionOptions.url)
     this.defaultOptions = {
       ...DEFAULT_OPTIONS,
+      ...connectionOptions,
       ...(connectionOptions.transportOptions || {}),
       port: url.port,
       protocol: url.protocol,
     }
     this.retryJitter =
       this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
-    if (url.protocol === 'http') {
+    if (url.protocol === 'http:') {
       this.requestApi = http.request
-    } else if (url.protocol === 'https') {
+    } else if (url.protocol === 'https' || url.protocol === 'https:') {
       this.requestApi = https.request
     } else {
-      throw new Error('Unsupported URL: ' + connectionOptions.url)
+      throw new Error(
+        `Unsupported protocol "${url.protocol} in URL: "${connectionOptions.url}"`
+      )
     }
   }
 
@@ -116,7 +88,7 @@ export class NodeHttpTransport {
     headers: {[key: string]: string},
     method = 'POST',
     body = '',
-    callbacks?: Partial<CommunicationCallbacks>
+    callbacks?: Partial<CommunicationObserver>
   ): Cancellable {
     const message = this.createRequestMessage(path, headers, method, body)
     const cancellable = new CancellableImpl()
@@ -162,7 +134,7 @@ export class NodeHttpTransport {
   private request(
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
-    callbacks?: Partial<CommunicationCallbacks>
+    callbacks?: Partial<CommunicationObserver>
   ): void {
     const listeners = this.createRetriableCallbacks(
       requestMessage,
@@ -217,8 +189,8 @@ export class NodeHttpTransport {
   private createRetriableCallbacks(
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
-    callbacks: Partial<CommunicationCallbacks> = {}
-  ): CommunicationCallbacks {
+    callbacks: Partial<CommunicationObserver> = {}
+  ): CommunicationObserver {
     let state = 0
     const retVal = {
       next: (data: any): void => {

@@ -1,3 +1,5 @@
+import {Transport} from './transport'
+
 export interface ConnectionOptions {
   /** base URL */
   url: string
@@ -13,14 +15,26 @@ export interface ConnectionOptions {
   transportOptions?: {[key: string]: any}
 }
 
-// export interface WriteOptions {
-//   /** default tags to add to every write */
-//   defaultTags: {[key: string]: string}
-// }
+export interface WriteOptions {
+  /** max number of records to send in a batch   */
+  batchSize: number
+  /** flush interval in milliseconds  */
+  flushInterval: number
+  /** max items to store in the buffer */
+  bufferLimit: number
+}
+export const DEFAULT_WriteOptions: WriteOptions = {
+  batchSize: 1000,
+  flushInterval: 1000,
+  bufferLimit: 1000,
+}
 
-/* eslint-disable @typescript-eslint/no-empty-interface */
-export interface ClientOptions extends ConnectionOptions {}
-/* eslint-enabled @typescript-eslint/no-empty-interface */
+export interface ClientOptions extends ConnectionOptions {
+  /** to override default writing options */
+  writeOptions?: WriteOptions
+  /** to specify custom transport */
+  transport?: Transport
+}
 
 export const enum WritePrecission {
   /** nanosecond */

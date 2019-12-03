@@ -1,25 +1,24 @@
 import WriteApi from '../WriteApi'
-import {WritePrecission, ConnectionOptions} from '..'
-import {NodeHttpTransport} from './NodeHttpTransport'
+import {WritePrecission} from '../options'
+import {Transport} from '../transport'
 
 export default class WriteApiImpl implements WriteApi {
-  private transport: NodeHttpTransport
   private httpPath: string
 
   constructor(
-    connectionOptions: ConnectionOptions,
+    private transport: Transport,
     org: string,
     bucket: string,
     precision: WritePrecission
   ) {
-    this.transport = new NodeHttpTransport(connectionOptions)
     this.httpPath = `/write?org=${org}&bucket=${bucket}&precision=${precision}`
+    // TODO buffer, flush, close
   }
 
   writeRecord(record: string): void {
-    this.transport.send(this.httpPath, {}, record)
+    this.transport.send(this.httpPath, {}, 'POST', record)
   }
   writeRecords(records: string[]): void {
-    this.transport.send(this.httpPath, {}, records.join('\n'))
+    this.transport.send(this.httpPath, {}, 'POST', records.join('\n'))
   }
 }
