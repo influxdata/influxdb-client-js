@@ -59,12 +59,13 @@ export class NodeHttpTransport implements Transport {
       ...connectionOptions.transportOptions,
       port: url.port,
       protocol: url.protocol,
+      hostname: url.hostname,
     }
     this.retryJitter =
       this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
     if (url.protocol === 'http:') {
       this.requestApi = http.request
-    } else if (url.protocol === 'https' || url.protocol === 'https:') {
+    } else if (url.protocol === 'https:') {
       this.requestApi = https.request
     } else {
       throw new Error(
@@ -102,7 +103,7 @@ export class NodeHttpTransport implements Transport {
    * @param path API path starting with '/' and containing also query parameters
    * @param headers HTTP headers to use in
    * @param method HTTP method
-   * @param body request body
+   * @param body request body, will be utf-8 encoded
    * @return configuration suitable for making the request
    */
   private createRequestMessage(
@@ -110,23 +111,23 @@ export class NodeHttpTransport implements Transport {
     body: string,
     sendOptions: SendOptions
   ): {[key: string]: any} {
-    const bodyBuffer = body ? Buffer.from(body, 'utf-8') : undefined
+    const bodyBuffer = Buffer.from(body, 'utf-8')
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path,
       method: sendOptions.method,
       headers: {
         'content-type': 'text/plain; charset=utf-8',
-        authorization: 'Token ' + this.connectionOptions.token,
         ...sendOptions.headers,
       },
       body: bodyBuffer,
     }
+    if (this.connectionOptions.token) {
+      options.headers.authorization = 'Token ' + this.connectionOptions.token
+    }
     if (sendOptions.maxRetries !== undefined)
       options.maxRetries = sendOptions.maxRetries
-    if (bodyBuffer) {
-      options.headers['content-length'] = bodyBuffer.length
-    }
+    options.headers['content-length'] = bodyBuffer.length
 
     return options
   }
@@ -147,6 +148,8 @@ export class NodeHttpTransport implements Transport {
     }
     const req = this.requestApi(requestMessage, (res: http.IncomingMessage) => {
       if (cancellable.isCancelled()) {
+        res.resume()
+        listeners.complete()
         return
       }
       res.on('aborted', () => {
@@ -156,13 +159,30 @@ export class NodeHttpTransport implements Transport {
       if (statusCode >= 300) {
         let body = ''
         res.on('data', s => {
-          if (body.length < 2000) body += s.toString()
+          if (body.length < 2000) {
+            body += s.toString()
+          } else {
+            res.resume()
+          }
         })
         res.on('end', () =>
-          listeners.error(new HttpError(statusCode, res.statusMessage, body))
+          listeners.error(
+            new HttpError(
+              statusCode,
+              res.statusMessage,
+              body,
+              res.headers['retry-after']
+            )
+          )
         )
       } else {
-        res.on('data', listeners.next)
+        res.on('data', data => {
+          if (cancellable.isCancelled()) {
+            res.resume()
+          } else {
+            listeners.next(data)
+          }
+        })
         res.on('end', listeners.complete)
       }
     })
@@ -175,8 +195,8 @@ export class NodeHttpTransport implements Transport {
     req.on('timeout', () => {
       listeners.error(new RequestTimedOutError())
     })
-    req.on('error', () => {
-      listeners.error(new RequestTimedOutError())
+    req.on('error', error => {
+      listeners.error(error)
     })
     req.on('close', listeners.complete)
 

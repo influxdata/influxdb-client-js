@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.5",
     "@types/mocha": "^5.2.7",
+    "@types/sinon": "^7.5.1",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chai": "^4.2.0",
@@ -35,6 +36,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "mocha": "^6.2.2",
+    "nock": "^11.7.0",
     "nyc": "^14.1.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
@@ -46,6 +48,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.25.2",
+    "sinon": "^7.5.0",
     "ts-node": "^8.5.4",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.2"

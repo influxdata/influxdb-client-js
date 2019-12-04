@@ -79,6 +79,9 @@ export default class WriteApiImpl implements WriteApi {
         ? clientOptions.retryJitter
         : (DEFAULT_ConnectionOptions.retryJitter as number)
 
+    /** sendBatch uses scheduleNextSend and vice versa */
+    // eslint-disable-next-line prefer-const
+    let scheduleNextSend: () => void
     const sendBatch = (
       message: string | undefined,
       retryCountdown: number,
@@ -117,7 +120,7 @@ export default class WriteApiImpl implements WriteApi {
       sendBatch(message, maxRetries, false)
     })
     let timeoutHandle: any = undefined
-    const scheduleNextSend = () => {
+    scheduleNextSend = (): void => {
       if (writeOptions.flushInterval > 0) {
         if (timeoutHandle !== undefined) {
           clearTimeout(timeoutHandle)

@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Tests",
+      "name": "Mocha Tests",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/node_modules/mocha/bin/mocha",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "args": [
         "--require",
         "ts-node/register",
@@ -18,7 +18,8 @@
         "--check-leaks",
         "--colors",
         "${workspaceRoot}/test/**/*.test.ts"
-      ]
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ]
 }
