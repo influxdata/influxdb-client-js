@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run Tests",
+      "name": "Tests",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceRoot}",

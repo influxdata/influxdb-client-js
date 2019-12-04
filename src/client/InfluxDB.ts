@@ -61,6 +61,12 @@ export default class InfluxDB {
     bucket: string,
     precission: WritePrecission = WritePrecission.ms
   ): WriteApi {
-    return new WriteApiImpl(this.transport, org, bucket, precission)
+    return new WriteApiImpl(
+      this.transport,
+      org,
+      bucket,
+      precission,
+      this._options
+    )
   }
 }

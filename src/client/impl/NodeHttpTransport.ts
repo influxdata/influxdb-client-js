@@ -1,4 +1,4 @@
-import {ConnectionOptions} from '../options'
+import {ConnectionOptions, DEFAULT_ConnectionOptions} from '../options'
 import {parse} from 'url'
 import * as http from 'http'
 import * as https from 'https'
@@ -7,15 +7,15 @@ import {
   RequestTimedOutError,
   ResponseAbortedError,
   canRetryHttpCall,
+  getRetryDelay,
   HttpError,
 } from '../errors'
-import {Cancellable, CommunicationObserver, Transport} from '../transport'
-
-const DEFAULT_OPTIONS: Partial<ConnectionOptions> = {
-  timeout: 10000,
-  maxRetries: 3,
-  retryJitter: 1000,
-}
+import {
+  Cancellable,
+  CommunicationObserver,
+  Transport,
+  SendOptions,
+} from '../transport'
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
@@ -54,9 +54,9 @@ export class NodeHttpTransport implements Transport {
   constructor(private connectionOptions: ConnectionOptions) {
     const url = parse(connectionOptions.url)
     this.defaultOptions = {
-      ...DEFAULT_OPTIONS,
+      ...DEFAULT_ConnectionOptions,
       ...connectionOptions,
-      ...(connectionOptions.transportOptions || {}),
+      ...connectionOptions.transportOptions,
       port: url.port,
       protocol: url.protocol,
     }
@@ -77,20 +77,19 @@ export class NodeHttpTransport implements Transport {
    * Sends data to server and receive communication events via communication callbacks.
    *
    * @param path HTTP path
+   * @param body  message body
    * @param headers HTTP headers
    * @param method HTTP method
-   * @param body  message body
    * @param callbacks communication callbacks
    * @return a handle that can cancel the communication
    */
   send(
     path: string,
-    headers: {[key: string]: string},
-    method = 'POST',
-    body = '',
+    body: string,
+    options: SendOptions,
     callbacks?: Partial<CommunicationObserver>
   ): Cancellable {
-    const message = this.createRequestMessage(path, headers, method, body)
+    const message = this.createRequestMessage(path, body, options)
     const cancellable = new CancellableImpl()
     this.request(message, cancellable, callbacks)
     return cancellable
@@ -108,22 +107,23 @@ export class NodeHttpTransport implements Transport {
    */
   private createRequestMessage(
     path: string,
-    headers: {[key: string]: string},
-    method: string,
-    body: string
+    body: string,
+    sendOptions: SendOptions
   ): {[key: string]: any} {
     const bodyBuffer = body ? Buffer.from(body, 'utf-8') : undefined
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path,
-      method,
+      method: sendOptions.method,
       headers: {
         'content-type': 'text/plain; charset=utf-8',
         authorization: 'Token ' + this.connectionOptions.token,
-        ...headers,
+        ...sendOptions.headers,
       },
       body: bodyBuffer,
     }
+    if (sendOptions.maxRetries !== undefined)
+      options.maxRetries = sendOptions.maxRetries
     if (bodyBuffer) {
       options.headers['content-length'] = bodyBuffer.length
     }
@@ -202,11 +202,11 @@ export class NodeHttpTransport implements Transport {
         if (state === 0 && canRetryHttpCall(error)) {
           state = 1
           const retries = requestMessage.retries || 0
-          if (retries < this.defaultOptions.maxRetries) {
+          if (retries < requestMessage.maxRetries) {
             requestMessage.retries = retries + 1
             const cancelHandle = setTimeout(
               () => this.request(requestMessage, cancellable, callbacks),
-              this.getRetryDelay(error)
+              getRetryDelay(error, this.retryJitter)
             )
             cancellable.addCancelableAction(() => clearTimeout(cancelHandle))
             return
@@ -222,17 +222,6 @@ export class NodeHttpTransport implements Transport {
       },
     }
     return retVal
-  }
-
-  private getRetryDelay(error: Error): number {
-    let delay = -1
-    if (typeof (error as any).retryAfter === 'function') {
-      delay = ((error as any).retryAfter as () => number)()
-    }
-    if (delay < 0) {
-      delay = Math.round(Math.random() * this.retryJitter)
-    }
-    return delay
   }
 }
 export default NodeHttpTransport

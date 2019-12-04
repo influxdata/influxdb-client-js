@@ -5,11 +5,11 @@ export interface CommunicationObserver {
    */
   next(data: any): void
   /**
-   * An error message was received.
+   * Communication ended with an error.
    */
   error(error: Error): void
   /**
-   * Response was fully read.
+   * Communication was successful.
    */
   complete(): void
 }
@@ -29,6 +29,18 @@ export interface Cancellable {
   isCancelled(): boolean
 }
 
+/**
+ * Options that can be send when sending a message.
+ */
+export interface SendOptions {
+  method: string
+  maxRetries?: number
+  headers?: {[key: string]: string}
+}
+
+/**
+ * Simpified transport layer for communication with influx DB.
+ */
 export interface Transport {
   /**
    * Sends data to server and receive communication events via communication callbacks.
@@ -42,9 +54,8 @@ export interface Transport {
    */
   send(
     path: string,
-    headers: {[key: string]: string},
-    method?: string,
-    body?: string,
+    body: string,
+    options?: Partial<SendOptions>,
     callbacks?: Partial<CommunicationObserver>
   ): Cancellable
 }

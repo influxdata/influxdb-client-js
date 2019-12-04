@@ -7,7 +7,7 @@ export interface ConnectionOptions {
   token?: string
   /** socket timeout */
   timeout?: number
-  /** maximum number of retries for HTTP calls that could succeed when called again  */
+  /** maximum number of retries for repeatable HTTP calls  */
   maxRetries?: number
   /** include random milliseconds when retrying HTTP calls */
   retryJitter?: number
@@ -15,23 +15,26 @@ export interface ConnectionOptions {
   transportOptions?: {[key: string]: any}
 }
 
+export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
+  timeout: 10000,
+  maxRetries: 3,
+  retryJitter: 1000,
+}
+
 export interface WriteOptions {
   /** max number of records to send in a batch   */
   batchSize: number
-  /** flush interval in milliseconds  */
+  /** delay between data flushes in milliseconds, at most batch size records are sent during flush  */
   flushInterval: number
-  /** max items to store in the buffer */
-  bufferLimit: number
 }
-export const DEFAULT_WriteOptions: WriteOptions = {
+export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
-  flushInterval: 1000,
-  bufferLimit: 1000,
-}
+  flushInterval: 60000,
+})
 
 export interface ClientOptions extends ConnectionOptions {
   /** to override default writing options */
-  writeOptions?: WriteOptions
+  writeOptions?: Partial<WriteOptions>
   /** to specify custom transport */
   transport?: Transport
 }
