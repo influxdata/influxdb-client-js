@@ -1,10 +1,41 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
 import NodeHttpTransport from '../../../src/client/impl/NodeHttpTransport'
-import {DEFAULT_ConnectionOptions} from '../../../src/client/options'
+import {
+  DEFAULT_ConnectionOptions,
+  ConnectionOptions,
+} from '../../../src/client/options'
+import {SendOptions, Cancellable} from '../../../src/client/transport'
 import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'
+
+function sendTestData(
+  connectionOptions: ConnectionOptions,
+  sendOptions: SendOptions,
+  setCancellable?: (cancellable: Cancellable) => void
+): Promise<string> {
+  return new Promise<string>((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error('timeouted')), 10000)
+    let data = ''
+    new NodeHttpTransport(connectionOptions).send('/test', '', sendOptions, {
+      next(chunk: any) {
+        data += chunk.toString()
+      },
+      error(error: any) {
+        clearTimeout(timeout)
+        reject(error)
+      },
+      complete(): void {
+        clearTimeout(timeout)
+        resolve(data)
+      },
+      useCancellable(cancellable: Cancellable) {
+        if (setCancellable) setCancellable(cancellable)
+      },
+    })
+  })
+}
 
 describe('NodeHttpTransport', () => {
   describe('constructor', () => {
@@ -58,76 +89,175 @@ describe('NodeHttpTransport', () => {
       nock.cleanAll()
       nock.enableNetConnect()
     })
-    const transportOptions = {
-      url: 'http://localhost',
-      timeout: 100,
-    }
-    const extraOptions = [
-      {},
-      {
-        token: 'a',
-        maxRetries: 0,
-      },
-      {cancel: true},
-      {maxRetries: 2, timeout: 10000},
-    ]
-    for (let i = 0; i < extraOptions.length; i++) {
-      const extras = extraOptions[i]
-      it(`simply works with options ${JSON.stringify(extras)}`, async () => {
-        const nextFn = sinon.fake()
-        await new Promise<void>((resolve, reject) => {
-          const timeout = setTimeout(
-            () => reject(new Error('timeouted')),
-            10000
-          )
-          let attempts = 0
-          const context = nock(transportOptions.url)
-            .post('/test')
-            .reply((uri, requestBody) => {
-              attempts++
-              if (extras.maxRetries && attempts <= extras.maxRetries) {
-                console.log('       ... retrying attempt ' + attempts)
-                return [429, 'yes', {'retry-after': 10}]
-              } else {
-                return [200, 'yes']
-              }
-            })
-            .persist()
-          if (extras.token) {
-            context.matchHeader('authorization', 'Token ' + extras.token)
-          }
-          const cancellable = new NodeHttpTransport({
-            ...extras,
-            ...transportOptions,
-          }).send(
-            '/test',
-            '',
-            {...extras, method: 'POST'},
-            {
-              next(data: any) {
-                nextFn(data)
-              },
-              error(error: any) {
-                clearTimeout(timeout)
-                reject(new Error('No error expected!'))
-              },
-              complete(): void {
-                clearTimeout(timeout)
-                resolve()
-              },
+    describe('positive', () => {
+      const transportOptions = {
+        url: 'http://localhost',
+        timeout: 100,
+      }
+      const extraOptions = [
+        {},
+        {
+          token: 'a',
+          maxRetries: 0,
+        },
+        {cancel: true},
+        {maxRetries: 2, timeout: 10000},
+      ]
+      for (let i = 0; i < extraOptions.length; i++) {
+        const extras = extraOptions[i]
+        it(`works with options ${JSON.stringify(extras)}`, async () => {
+          const nextFn = sinon.fake()
+          await new Promise<void>((resolve, reject) => {
+            const timeout = setTimeout(
+              () => reject(new Error('timeouted')),
+              10000
+            )
+            let attempts = 0
+            const context = nock(transportOptions.url)
+              .post('/test')
+              .reply((_uri, _requestBody) => {
+                attempts++
+                if (extras.maxRetries && attempts <= extras.maxRetries) {
+                  console.log('        ... retrying attempt ' + attempts)
+                  return [429, 'yes', {'retry-after': 10}]
+                } else {
+                  return [200, 'yes']
+                }
+              })
+              .persist()
+            if (extras.token) {
+              context.matchHeader('authorization', 'Token ' + extras.token)
             }
-          )
-          if (extras.cancel) {
-            cancellable.cancel()
-          }
-        }).then(() => {
-          expect(nextFn.called)
-          if (!extras.cancel) {
-            expect(nextFn.args[0][0].toString()).to.equal('yes')
-          }
+            let cancellable: any
+            new NodeHttpTransport({
+              ...extras,
+              ...transportOptions,
+            }).send(
+              '/test',
+              '',
+              {...extras, method: 'POST'},
+              {
+                next(data: any) {
+                  nextFn(data)
+                },
+                error(error: any) {
+                  clearTimeout(timeout)
+                  reject(new Error('No error expected!'))
+                },
+                complete(): void {
+                  clearTimeout(timeout)
+                  resolve()
+                },
+                useCancellable(toUse: Cancellable): void {
+                  cancellable = toUse
+                },
+              }
+            )
+            if (extras.cancel) {
+              cancellable.cancel()
+            }
+          }).then(() => {
+            expect(nextFn.called)
+            if (!extras.cancel) {
+              expect(nextFn.args[0][0].toString()).to.equal('yes')
+            }
+          })
+          // .catch(e => expect.fail(undefined, e, e.toString()))
         })
-        // .catch(e => expect.fail(undefined, e, e.toString()))
+      }
+    })
+    describe('negative', () => {
+      const transportOptions = {
+        url: 'http://localhost',
+        timeout: 100,
+        maxRetries: 0,
+      }
+      it(`fails on server error`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(500, 'not ok')
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch(e => {
+            expect(e)
+              .property('statusCode')
+              .to.equal(500)
+          })
       })
-    }
+      it(`fails on timeout`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .socketDelay(2000)
+          .reply(200, 'ok')
+        await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch(e => {
+            expect(e.toString()).to.include('timed')
+          })
+      })
+      it(`truncates error messages`, async () => {
+        let bigMessage = 'this is a big error message'
+        while (bigMessage.length < 1001) bigMessage += bigMessage
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(500, bigMessage)
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e: any) => {
+            expect(e)
+              .property('body')
+              .to.length(1000)
+          })
+      })
+      it(`is canceled before response arrives`, async () => {
+        let cancellable: any
+        nock(transportOptions.url)
+          .get('/test')
+          .socketDelay(2000)
+          .reply((_uri, _requestBody) => {
+            cancellable.cancel()
+            return [429, 'yes', {'retry-after': 100}]
+          })
+          .persist()
+        await sendTestData(
+          {...transportOptions, timeout: 1000, maxRetries: 3},
+          {method: 'GET'},
+          toSet => (cancellable = toSet)
+        )
+          .then(data => {
+            expect(data).to.equal('')
+          })
+          .catch(e => {
+            throw e
+          })
+      })
+      it(`is canceled while waiting for retry`, async () => {
+        let cancellable: any
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => {
+            setTimeout(() => cancellable.cancel(), 100)
+            return [429, 'yes', {'retry-after': 100000}]
+          })
+          .persist()
+        await sendTestData(
+          {...transportOptions, timeout: 10000, maxRetries: 3},
+          {method: 'GET'},
+          toSet => (cancellable = toSet)
+        )
+          .then(data => {
+            expect(data).to.equal('')
+          })
+          .catch(e => {
+            throw e
+          })
+      })
+    })
   })
 })

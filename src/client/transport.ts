@@ -1,19 +1,4 @@
 /** Informs about changes in the communication  */
-export interface CommunicationObserver {
-  /**
-   * Data chunk received, can be called mupliple times.
-   */
-  next(data: any): void
-  /**
-   * Communication ended with an error.
-   */
-  error(error: Error): void
-  /**
-   * Communication was successful.
-   */
-  complete(): void
-}
-
 /**
  * Cancellation of asynchronous query.
  */
@@ -27,6 +12,28 @@ export interface Cancellable {
    * Is communication canceled.
    */
   isCancelled(): boolean
+}
+
+/**
+ * Let use observe change in the communication.
+ */
+export interface CommunicationObserver {
+  /**
+   * Data chunk received, can be called mupliple times.
+   */
+  next(data: any): void
+  /**
+   * Communication ended with an error.
+   */
+  error(error: Error): void
+  /**
+   * Communication was successful.
+   */
+  complete(): void
+  /**
+   * Setups cancelllable for this communication.
+   */
+  useCancellable?: (cancellable: Cancellable) => void
 }
 
 /**
@@ -50,12 +57,11 @@ export interface Transport {
    * @param method HTTP method
    * @param body  message body
    * @param callbacks communication callbacks
-   * @return a handle that can cancel the communication
    */
   send(
     path: string,
     body: string,
     options?: Partial<SendOptions>,
     callbacks?: Partial<CommunicationObserver>
-  ): Cancellable
+  ): void
 }

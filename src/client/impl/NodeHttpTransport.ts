@@ -89,11 +89,12 @@ export class NodeHttpTransport implements Transport {
     body: string,
     options: SendOptions,
     callbacks?: Partial<CommunicationObserver>
-  ): Cancellable {
+  ): void {
     const message = this.createRequestMessage(path, body, options)
     const cancellable = new CancellableImpl()
+    if (callbacks && callbacks.useCancellable)
+      callbacks.useCancellable(cancellable)
     this.request(message, cancellable, callbacks)
-    return cancellable
   }
 
   /**
@@ -159,9 +160,9 @@ export class NodeHttpTransport implements Transport {
       if (statusCode >= 300) {
         let body = ''
         res.on('data', s => {
-          if (body.length < 2000) {
-            body += s.toString()
-          } else {
+          body += s.toString()
+          if (body.length > 1000) {
+            body = body.slice(0, 1000)
             res.resume()
           }
         })
@@ -228,7 +229,10 @@ export class NodeHttpTransport implements Transport {
               () => this.request(requestMessage, cancellable, callbacks),
               getRetryDelay(error, this.retryJitter)
             )
-            cancellable.addCancelableAction(() => clearTimeout(cancelHandle))
+            cancellable.addCancelableAction(() => {
+              if (callbacks.complete) callbacks.complete()
+              clearTimeout(cancelHandle)
+            })
             return
           }
         }
