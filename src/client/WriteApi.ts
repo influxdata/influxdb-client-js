@@ -6,19 +6,28 @@
  */
 export default interface WriteApi {
   /**
-   * Write Line Protocol record into specified bucket.
+   * Write Line Protocol record.
    *
-   * @param record    specifies the record in InfluxDB Line Protocol.
+   * @param record line in InfluxDB Line Protocol.
    */
   writeRecord(record: string): void
 
   /**
-   * Write Line Protocol record into specified bucket.
+   * Write Line Protocol record.
    *
-   * @param record    specifies the record in InfluxDB Line Protocol.
-   * @param precision specifies the precision for the generated timestamp
-   * @param bucket    specifies the destination bucket for writes
-   * @param org       specifies the destination organization for writes
+   * @param records lines in InfluxDB Line Protocol
    */
   writeRecords(records: Array<string>): void
+
+  /**
+   * Flushes pending writes to the server.
+   * @return completition promise
+   */
+  flush(): Promise<void>
+
+  /**
+   * Closes this writer.
+   * @return completition promise
+   */
+  close(): Promise<void>
 }

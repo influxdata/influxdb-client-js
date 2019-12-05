@@ -7,7 +7,7 @@ import {
 } from '../options'
 import {Transport} from '../transport'
 import Logger from './Logger'
-import {getRetryDelay} from '../errors'
+import {getRetryDelay, canRetryHttpCall} from '../errors'
 
 class WriteBuffer {
   length = 0
@@ -15,12 +15,14 @@ class WriteBuffer {
 
   constructor(
     private maxRecords: number,
-    private flushFn: (message: string) => void
+    private flushFn: (message: string) => Promise<void>,
+    private scheduleSend: () => void
   ) {}
 
   add(record: string): void {
     if (this.length === 0) {
       this.message = record
+      this.scheduleSend()
     } else {
       this.message = this.message + '\n' + record
     }
@@ -29,12 +31,14 @@ class WriteBuffer {
       this.flush()
     }
   }
-  flush(): void {
+  flush(): Promise<void> {
     if (this.message) {
       const message = this.message
       this.message = undefined
       this.length = 0
-      this.flushFn(message)
+      return this.flushFn(message)
+    } else {
+      return Promise.resolve()
     }
   }
   reset(): string | undefined {
@@ -52,6 +56,8 @@ export default class WriteApiImpl implements WriteApi {
   private buffer: WriteBuffer
   private closed = false
 
+  private _timeoutHandle: any = undefined
+
   constructor(
     transport: Transport,
     org: string,
@@ -68,7 +74,7 @@ export default class WriteApiImpl implements WriteApi {
         : (DEFAULT_ConnectionOptions.maxRetries as number)
     const sendOptions = {
       method: 'POST',
-      maxRetries,
+      maxRetries: 0, // we control manual retry attempts
     }
     const writeOptions = {
       ...DEFAULT_WriteOptions,
@@ -80,62 +86,87 @@ export default class WriteApiImpl implements WriteApi {
         : (DEFAULT_ConnectionOptions.retryJitter as number)
 
     /** sendBatch uses scheduleNextSend and vice versa */
-    // eslint-disable-next-line prefer-const
-    let scheduleNextSend: () => void
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this
     const sendBatch = (
       message: string | undefined,
       retryCountdown: number,
       scheduled: boolean
-    ): void => {
-      if (message) {
-        if (!scheduled) scheduleNextSend() // postpone periodic flush
-        transport.send(httpPath, message, sendOptions, {
-          error(error: Error): void {
-            if (retryCountdown > 0) {
-              Logger.warn(
-                `Write to influx DB failed, retrying (attempt=${sendOptions.maxRetries -
-                  retryCountdown})`,
-                error
-              )
-              setTimeout(
-                () => sendBatch(message, retryCountdown - 1, scheduled),
-                getRetryDelay(error, retryJitter)
-              )
-            } else {
-              Logger.error(
-                `Write to influx DB failed after ${sendOptions.maxRetries +
-                  1} attempts`,
-                error
-              )
-              scheduleNextSend() // schedule next periodic flush
-            }
-          },
-          complete(): void {
-            scheduleNextSend() // schedule next periodic flush
-          },
+    ): Promise<void> => {
+      if (!this.closed && message) {
+        return new Promise<void>((resolve, reject) => {
+          // TODO monitor and limit pending writes
+          transport.send(httpPath, message, sendOptions, {
+            error(error: Error): void {
+              if (
+                !self.closed &&
+                retryCountdown > 0 &&
+                canRetryHttpCall(error)
+              ) {
+                Logger.warn(
+                  `Write to influx DB failed, retrying (attempt=${maxRetries -
+                    retryCountdown}).`,
+                  error
+                )
+                self._scheduleRetry(
+                  () =>
+                    sendBatch(message, retryCountdown - 1, scheduled)
+                      .then(resolve)
+                      .catch(reject),
+                  getRetryDelay(error, retryJitter)
+                )
+              } else {
+                Logger.error(
+                  `Write to influx DB failed after ${maxRetries -
+                    retryCountdown +
+                    1} attempts.`,
+                  error
+                )
+                reject(error)
+              }
+            },
+            complete(): void {
+              resolve()
+            },
+          })
         })
+      } else {
+        return Promise.resolve()
       }
     }
-    this.buffer = new WriteBuffer(writeOptions.batchSize, message => {
-      sendBatch(message, maxRetries, false)
-    })
-    let timeoutHandle: any = undefined
-    scheduleNextSend = (): void => {
+    const scheduleNextSend = (): void => {
       if (writeOptions.flushInterval > 0) {
-        if (timeoutHandle !== undefined) {
-          clearTimeout(timeoutHandle)
-          timeoutHandle = undefined
-        }
+        this._clearFlushTimeout()
         if (!this.closed) {
-          timeoutHandle = setTimeout(
+          this._timeoutHandle = setTimeout(
             () => sendBatch(this.buffer.reset(), maxRetries, true),
             writeOptions.flushInterval
           )
         }
       }
     }
+    this.buffer = new WriteBuffer(
+      writeOptions.batchSize,
+      message => {
+        this._clearFlushTimeout()
+        return sendBatch(message, maxRetries, false)
+      },
+      scheduleNextSend
+    )
+  }
 
-    scheduleNextSend()
+  private _clearFlushTimeout(): void {
+    if (this._timeoutHandle !== undefined) {
+      clearTimeout(this._timeoutHandle)
+      this._timeoutHandle = undefined
+    }
+  }
+
+  private _scheduleRetry(fn: () => any, delay: number): void {
+    if (!this.closed) {
+      // TODO monitor and limit retries, cancel them on close
+      setTimeout(fn, delay)
+    }
   }
 
   writeRecord(record: string): void {
@@ -146,11 +177,12 @@ export default class WriteApiImpl implements WriteApi {
       this.buffer.add(records[i])
     }
   }
-  flush(): void {
-    this.buffer.flush()
+  flush(): Promise<void> {
+    return this.buffer.flush()
   }
-  close(): void {
+  close(): Promise<void> {
+    const retVal = this.flush()
     this.closed = true
-    this.flush()
+    return retVal
   }
 }

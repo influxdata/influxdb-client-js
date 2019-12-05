@@ -22,8 +22,10 @@ const instance: Logger = {
   },
 }
 
-export function setLogger(logger: Logger): void {
+export function setLogger(logger: Logger): Logger {
+  const previous = provider
   provider = logger
+  return previous
 }
 
 export default instance

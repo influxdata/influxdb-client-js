@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {InfluxDB, ClientOptions} from '../../src'
+import {InfluxDB, ClientOptions, WritePrecission} from '../../src'
 
 describe('influxdb', () => {
   describe('constructor', () => {
@@ -60,6 +60,13 @@ describe('influxdb', () => {
             url: 'ws://localhost:9999?token=b',
           } as ClientOptions) as ClientOptions)
       ).to.throw('Unsupported')
+    })
+  })
+  describe('apis', () => {
+    const influxDb = new InfluxDB('http://localhost:9999?token=a')
+    it('writeApi can be obtained without a schedule', () => {
+      expect(influxDb.getWriteApi('org', 'bucket')).to.be.ok
+      expect(influxDb.getWriteApi('org', 'bucket', WritePrecission.s)).to.be.ok
     })
   })
 })

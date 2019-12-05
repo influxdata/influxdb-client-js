@@ -48,6 +48,4 @@ export const enum WritePrecission {
   ms = 'ms',
   /* second */
   s = 's',
-  /** don't send timestamp, let server generate timestamp value */
-  none = '',
 }
