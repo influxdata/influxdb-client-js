@@ -9,6 +9,7 @@ import {SendOptions, Cancellable} from '../../../src/client/transport'
 import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'
+import {Readable} from 'stream'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -186,10 +187,36 @@ describe('NodeHttpTransport', () => {
               .to.equal(500)
           })
       })
-      it(`fails on timeout`, async () => {
+      it(`fails on socket timeout`, async () => {
         nock(transportOptions.url)
           .get('/test')
           .socketDelay(2000)
+          .reply(200, 'ok')
+        await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch(e => {
+            expect(e.toString()).to.include('timed')
+          })
+      })
+      it(`fails on connection timeout`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .delayConnection(2000)
+          .reply(200, 'ok')
+        await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch(e => {
+            expect(e.toString()).to.include('timed')
+          })
+      })
+      it(`fails on response timeout`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .delay(2000)
           .reply(200, 'ok')
         await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
           .then(() => {
@@ -215,7 +242,82 @@ describe('NodeHttpTransport', () => {
               .to.length(1000)
           })
       })
-      it(`is canceled before response arrives`, async () => {
+      it(`is aborted before the whole response arrives`, async () => {
+        let remainingChunks = 2
+        let res: any
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read() {
+                remainingChunks--
+                if (!remainingChunks) {
+                  res.emit('aborted')
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+            {
+              'X-Whatever': (_req: any, _res: any, _body: any) => {
+                res = _res
+                return '1'
+              },
+            },
+          ])
+          .persist()
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(data => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e)
+              .property('message')
+              .to.include('aborted')
+          })
+      })
+      it(`signalizes error upon request's error'`, async () => {
+        let remainingChunks = 2
+        let req: any
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read() {
+                remainingChunks--
+                if (!remainingChunks) {
+                  req.emit('error', new Error('request failed'))
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+            {
+              'X-Whatever': (_req: any, _res: any, _body: any) => {
+                req = _req
+                return '1'
+              },
+            },
+          ])
+          .persist()
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(data => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e)
+              .property('message')
+              .to.include('request failed')
+          })
+      })
+    })
+    describe('canceled', () => {
+      const transportOptions = {
+        url: 'http://localhost',
+        timeout: 100,
+        maxRetries: 0,
+      }
+      it(`is canceled before the response arrives`, async () => {
         let cancellable: any
         nock(transportOptions.url)
           .get('/test')
@@ -242,9 +344,40 @@ describe('NodeHttpTransport', () => {
         nock(transportOptions.url)
           .get('/test')
           .reply((_uri, _requestBody) => {
-            setTimeout(() => cancellable.cancel(), 100)
+            setTimeout(() => cancellable.cancel(), 50)
             return [429, 'yes', {'retry-after': 100000}]
           })
+          .persist()
+        await sendTestData(
+          {...transportOptions, timeout: 10000, maxRetries: 3},
+          {method: 'GET'},
+          toSet => (cancellable = toSet)
+        )
+          .then(data => {
+            expect(data).to.equal('')
+          })
+          .catch(e => {
+            throw e
+          })
+      })
+      it(`is canceled after reading the second chunk`, async () => {
+        let cancellable: any
+        let remainingChunks = 2
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(
+            200,
+            (_uri, _requestBody) =>
+              new Readable({
+                read() {
+                  remainingChunks--
+                  if (!remainingChunks) {
+                    cancellable.cancel()
+                  }
+                  this.push(remainingChunks < 0 ? null : '.')
+                },
+              })
+          )
           .persist()
         await sendTestData(
           {...transportOptions, timeout: 10000, maxRetries: 3},
