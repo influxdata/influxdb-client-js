@@ -162,8 +162,8 @@ describe('WriteApiImpl', () => {
       })
     }
     beforeEach(() => {
-      logs = collectLogging.decorate()
-      // logs = collectLogging.replace()
+      // logs = collectLogging.decorate()
+      logs = collectLogging.replace()
     })
     afterEach(async () => {
       subject.close()
@@ -182,10 +182,14 @@ describe('WriteApiImpl', () => {
       subject.writeRecord('test value=1')
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
+      expect(logs.warn).to.length(1)
       subject.writeRecord('test value=2')
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
+      expect(logs.warn).to.length(2)
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush
+      expect(logs.error).to.length(0)
+      expect(logs.warn).to.length(2)
       await subject.flush().then(() => {
         expect(logs.error).to.length(0)
       })
