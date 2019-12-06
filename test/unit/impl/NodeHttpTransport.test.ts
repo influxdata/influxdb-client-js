@@ -1,11 +1,11 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import NodeHttpTransport from '../../../src/client/impl/NodeHttpTransport'
+import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
 import {
   DEFAULT_ConnectionOptions,
   ConnectionOptions,
-} from '../../../src/client/options'
-import {SendOptions, Cancellable} from '../../../src/client/transport'
+} from '../../../src/options'
+import {SendOptions, Cancellable} from '../../../src/transport'
 import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'

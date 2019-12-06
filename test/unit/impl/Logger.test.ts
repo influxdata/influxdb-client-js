@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import Logger, {setLogger, consoleLogger} from '../../../src/client/impl/Logger'
+import Logger, {setLogger, consoleLogger} from '../../../src/impl/Logger'
 
 describe('logger', () => {
   const testSet = {message: '    hey', error: 'you'}

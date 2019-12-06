@@ -1,4 +1,4 @@
-import {setLogger} from '../src/client/impl/Logger'
+import {setLogger} from '../src/impl/Logger'
 
 let previous: any
 

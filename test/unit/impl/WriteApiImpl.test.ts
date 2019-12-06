@@ -1,13 +1,13 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import NodeHttpTransport from '../../../src/client/impl/NodeHttpTransport'
+import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
 import {
   ClientOptions,
   WritePrecission,
   DEFAULT_WriteOptions,
   WriteOptions,
 } from '../../../src'
-import WriteApiImpl from '../../../src/client/impl/WriteApiImpl'
+import WriteApiImpl from '../../../src/impl/WriteApiImpl'
 import {collectLogging, CollectedLogs} from '../../util'
 
 const clientOptions: ClientOptions = {

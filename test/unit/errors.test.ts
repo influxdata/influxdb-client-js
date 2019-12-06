@@ -7,7 +7,7 @@ import {
   ResponseAbortedError,
   IllegalArgumentError,
   RetriableDecision,
-} from '../../src/client/errors'
+} from '../../src/errors'
 
 describe('errors', () => {
   describe('retriable errors', () => {
