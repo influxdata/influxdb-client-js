@@ -64,7 +64,7 @@ describe('influxdb', () => {
   })
   describe('apis', () => {
     const influxDb = new InfluxDB('http://localhost:9999?token=a')
-    it('writeApi can be obtained without a schedule', () => {
+    it('writeApi can be obtained without a pending schedule', () => {
       expect(influxDb.getWriteApi('org', 'bucket')).to.be.ok
       expect(influxDb.getWriteApi('org', 'bucket', WritePrecission.s)).to.be.ok
     })

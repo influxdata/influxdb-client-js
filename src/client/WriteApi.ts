@@ -30,4 +30,10 @@ export default interface WriteApi {
    * @return completition promise
    */
   close(): Promise<void>
+
+  /**
+   * Unlike close, dispose simply quits without trying to send
+   * the buffered data.
+   */
+  dispose(): void
 }

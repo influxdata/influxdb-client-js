@@ -8,7 +8,7 @@ export interface CollectedLogs {
 }
 
 export const collectLogging = {
-  before(): CollectedLogs {
+  replace(): CollectedLogs {
     const retVal: CollectedLogs = {
       error: [],
       warn: [],
@@ -18,6 +18,23 @@ export const collectLogging = {
         retVal.error.push(Array.from(arguments))
       },
       warn: function() {
+        retVal.warn.push(Array.from(arguments))
+      },
+    })
+    return retVal
+  },
+  decorate(): CollectedLogs {
+    const retVal: CollectedLogs = {
+      error: [],
+      warn: [],
+    }
+    const previous = setLogger({
+      error: function() {
+        ;(previous.error as any).apply(previous, Array.from(arguments))
+        retVal.error.push(Array.from(arguments))
+      },
+      warn: function() {
+        ;(previous.warn as any).apply(previous, Array.from(arguments))
         retVal.warn.push(Array.from(arguments))
       },
     })

@@ -5,7 +5,7 @@ import {
   ClientOptions,
   DEFAULT_ConnectionOptions,
 } from '../options'
-import {Transport} from '../transport'
+import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
 import {getRetryDelay, HttpError} from '../errors'
 
@@ -28,7 +28,9 @@ class WriteBuffer {
     }
     this.length++
     if (this.length >= this.maxRecords) {
-      this.flush()
+      this.flush().catch(e => {
+        // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
+      })
     }
   }
   flush(): Promise<void> {
@@ -42,13 +44,12 @@ class WriteBuffer {
     }
   }
   reset(): string | undefined {
-    if (this.message) {
-      const message = this.message
+    const message = this.message
+    if (message) {
       this.message = undefined
       this.length = 0
-      return message
     }
-    return undefined
+    return message
   }
 }
 
@@ -67,14 +68,17 @@ export default class WriteApiImpl implements WriteApi {
   ) {
     const httpPath = `/write?org=${encodeURIComponent(
       org
-    )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
+    )}&bucket=${encodeURIComponent(bucket)}&precission=${precision}`
     const writeOptions = {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
     }
-    const sendOptions = {
+    const sendOptions: Partial<SendOptions> = {
       method: 'POST',
       maxRetries: 0, // we control manual retry attempts
+      headers: {
+        'content-type': 'text/plain; charset=utf-8',
+      },
     }
     const retryJitter =
       clientOptions.retryJitter !== undefined
@@ -100,8 +104,7 @@ export default class WriteApiImpl implements WriteApi {
                   (error as HttpError).statusCode >= 429)
               ) {
                 Logger.warn(
-                  `Write to influx DB failed, retrying (attempt=${writeOptions.maxRetries -
-                    retryCountdown}).`,
+                  `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
                   error
                 )
                 self._scheduleRetry(
@@ -112,12 +115,7 @@ export default class WriteApiImpl implements WriteApi {
                   getRetryDelay(error, retryJitter)
                 )
               } else {
-                Logger.error(
-                  `Write to influx DB failed after ${writeOptions.maxRetries -
-                    retryCountdown +
-                    1} attempts.`,
-                  error
-                )
+                Logger.error(`Write to influx DB failed.`, error)
                 reject(error)
               }
             },
@@ -135,7 +133,12 @@ export default class WriteApiImpl implements WriteApi {
         this._clearFlushTimeout()
         if (!this.closed) {
           this._timeoutHandle = setTimeout(
-            () => sendBatch(this.buffer.reset(), writeOptions.maxRetries),
+            () =>
+              sendBatch(this.buffer.reset(), writeOptions.maxRetries).catch(
+                e => {
+                  // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
+                }
+              ),
             writeOptions.flushInterval
           )
         }
@@ -180,5 +183,9 @@ export default class WriteApiImpl implements WriteApi {
     const retVal = this.flush()
     this.closed = true
     return retVal
+  }
+  dispose(): void {
+    this._clearFlushTimeout()
+    this.closed = true
   }
 }
