@@ -28,7 +28,7 @@ class WriteBuffer {
     }
     this.length++
     if (this.length >= this.maxRecords) {
-      this.flush().catch(e => {
+      this.flush().catch(_e => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
       })
     }
@@ -135,7 +135,7 @@ export default class WriteApiImpl implements WriteApi {
           this._timeoutHandle = setTimeout(
             () =>
               sendBatch(this.buffer.reset(), writeOptions.maxRetries).catch(
-                e => {
+                _e => {
                   // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
                 }
               ),

@@ -49,7 +49,7 @@ export default class Point {
    * @return this
    */
   public addBooleanField(name: string, value: boolean | any): Point {
-    this.fields[name] = !!value ? 'T' : 'F'
+    this.fields[name] = value ? 'T' : 'F'
     return this
   }
 
