@@ -93,7 +93,7 @@ export function getRetryDelay(error: Error, retryJitter: number): number {
       return delay
     }
   } else {
-    return 0
+    return 1 + Math.round(Math.random() * retryJitter)
   }
 }
 

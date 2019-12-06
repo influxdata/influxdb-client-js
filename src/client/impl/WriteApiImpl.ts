@@ -7,7 +7,7 @@ import {
 } from '../options'
 import {Transport} from '../transport'
 import Logger from './Logger'
-import {getRetryDelay, canRetryHttpCall} from '../errors'
+import {getRetryDelay, HttpError} from '../errors'
 
 class WriteBuffer {
   length = 0
@@ -96,7 +96,8 @@ export default class WriteApiImpl implements WriteApi {
               if (
                 !self.closed &&
                 retryCountdown > 0 &&
-                canRetryHttpCall(error)
+                (!(error instanceof HttpError) ||
+                  (error as HttpError).statusCode >= 429)
               ) {
                 Logger.warn(
                   `Write to influx DB failed, retrying (attempt=${writeOptions.maxRetries -

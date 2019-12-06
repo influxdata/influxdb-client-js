@@ -82,7 +82,7 @@ describe('errors', () => {
       ,
       {error: new RequestTimedOutError(), retryAfter: -1},
       {error: new ResponseAbortedError(), retryAfter: -1},
-      {error: new Error(), retryAfter: 0},
+      {error: new Error(), retryAfter: -1},
       {error: '', retryAfter: 0},
       {error: null, retryAfter: 0},
       {error: undefined, retryAfter: 0},
