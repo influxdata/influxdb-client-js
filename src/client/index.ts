@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 import InfluxDB from './InfluxDB'
 
 export {default as InfluxDB} from './InfluxDB'

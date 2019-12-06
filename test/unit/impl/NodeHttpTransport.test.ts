@@ -37,21 +37,22 @@ function sendTestData(
     })
   })
 }
+const TEST_URL = 'http://test:9999'
 
 describe('NodeHttpTransport', () => {
   describe('constructor', () => {
     it('creates the transport from http url', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'http://localhost:9999',
+        url: 'http://test:9999',
       })
       expect(transport.defaultOptions).to.deep.equal({
-        hostname: 'localhost',
+        hostname: 'test',
         maxRetries: 3,
         port: '9999',
         protocol: 'http:',
         retryJitter: 1000,
         timeout: 10000,
-        url: 'http://localhost:9999',
+        url: 'http://test:9999',
       })
       expect(transport.requestApi).to.equal(http.request)
       expect(transport.retryJitter).to.equal(
@@ -60,16 +61,16 @@ describe('NodeHttpTransport', () => {
     })
     it('creates the transport from https url', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'https://localhost:9999',
+        url: 'https://test:9999',
       })
       expect(transport.defaultOptions).to.deep.equal({
-        hostname: 'localhost',
+        hostname: 'test',
         maxRetries: 3,
         port: '9999',
         protocol: 'https:',
         retryJitter: 1000,
         timeout: 10000,
-        url: 'https://localhost:9999',
+        url: 'https://test:9999',
       })
       expect(transport.requestApi).to.equal(https.request)
     })
@@ -77,7 +78,7 @@ describe('NodeHttpTransport', () => {
       expect(
         () =>
           new NodeHttpTransport({
-            url: 'other://localhost:9999',
+            url: 'other://test:9999',
           })
       ).to.throw()
     })
@@ -92,7 +93,7 @@ describe('NodeHttpTransport', () => {
     })
     describe('positive', () => {
       const transportOptions = {
-        url: 'http://localhost',
+        url: TEST_URL,
         timeout: 100,
       }
       const extraOptions = [
@@ -169,7 +170,7 @@ describe('NodeHttpTransport', () => {
     })
     describe('negative', () => {
       const transportOptions = {
-        url: 'http://localhost',
+        url: TEST_URL,
         timeout: 100,
         maxRetries: 0,
       }
@@ -313,7 +314,7 @@ describe('NodeHttpTransport', () => {
     })
     describe('canceled', () => {
       const transportOptions = {
-        url: 'http://localhost',
+        url: TEST_URL,
         timeout: 100,
         maxRetries: 0,
       }
