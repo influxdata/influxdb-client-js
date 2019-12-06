@@ -40,7 +40,8 @@ describe('WriteApiImpl', () => {
       collectLogging.after()
     })
     it('fails on flush without server connection', async () => {
-      subject.writeRecord('cpu value=10.1')
+      subject.writeRecord('test value=1')
+      subject.writeRecords(['test value=2', 'test value=3'])
       await subject
         .close()
         .then(() => expect.fail('failure expected'))
