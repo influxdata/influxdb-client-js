@@ -47,7 +47,7 @@ describe('NodeHttpTransport', () => {
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        maxRetries: 3,
+        maxRetries: DEFAULT_ConnectionOptions.maxRetries,
         port: '9999',
         protocol: 'http:',
         retryJitter: 1000,
@@ -65,7 +65,7 @@ describe('NodeHttpTransport', () => {
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        maxRetries: 3,
+        maxRetries: DEFAULT_ConnectionOptions.maxRetries,
         port: '9999',
         protocol: 'https:',
         retryJitter: 1000,

@@ -68,17 +68,13 @@ export default class WriteApiImpl implements WriteApi {
     const httpPath = `/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
-    const maxRetries =
-      clientOptions.maxRetries !== undefined
-        ? clientOptions.maxRetries
-        : (DEFAULT_ConnectionOptions.maxRetries as number)
-    const sendOptions = {
-      method: 'POST',
-      maxRetries: 0, // we control manual retry attempts
-    }
     const writeOptions = {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
+    }
+    const sendOptions = {
+      method: 'POST',
+      maxRetries: 0, // we control manual retry attempts
     }
     const retryJitter =
       clientOptions.retryJitter !== undefined
@@ -90,8 +86,7 @@ export default class WriteApiImpl implements WriteApi {
     const self = this
     const sendBatch = (
       message: string | undefined,
-      retryCountdown: number,
-      scheduled: boolean
+      retryCountdown: number
     ): Promise<void> => {
       if (!this.closed && message) {
         return new Promise<void>((resolve, reject) => {
@@ -104,20 +99,20 @@ export default class WriteApiImpl implements WriteApi {
                 canRetryHttpCall(error)
               ) {
                 Logger.warn(
-                  `Write to influx DB failed, retrying (attempt=${maxRetries -
+                  `Write to influx DB failed, retrying (attempt=${writeOptions.maxRetries -
                     retryCountdown}).`,
                   error
                 )
                 self._scheduleRetry(
                   () =>
-                    sendBatch(message, retryCountdown - 1, scheduled)
+                    sendBatch(message, retryCountdown - 1)
                       .then(resolve)
                       .catch(reject),
                   getRetryDelay(error, retryJitter)
                 )
               } else {
                 Logger.error(
-                  `Write to influx DB failed after ${maxRetries -
+                  `Write to influx DB failed after ${writeOptions.maxRetries -
                     retryCountdown +
                     1} attempts.`,
                   error
@@ -139,7 +134,7 @@ export default class WriteApiImpl implements WriteApi {
         this._clearFlushTimeout()
         if (!this.closed) {
           this._timeoutHandle = setTimeout(
-            () => sendBatch(this.buffer.reset(), maxRetries, true),
+            () => sendBatch(this.buffer.reset(), writeOptions.maxRetries),
             writeOptions.flushInterval
           )
         }
@@ -149,7 +144,7 @@ export default class WriteApiImpl implements WriteApi {
       writeOptions.batchSize,
       message => {
         this._clearFlushTimeout()
-        return sendBatch(message, maxRetries, false)
+        return sendBatch(message, writeOptions.maxRetries)
       },
       scheduleNextSend
     )
