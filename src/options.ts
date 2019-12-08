@@ -52,3 +52,8 @@ export const enum WritePrecission {
   /* second */
   s = 's',
 }
+
+export interface PointSettings {
+  defaultTags: {[key: string]: string}
+  convertTime?: (value: undefined | string | number) => string | undefined
+}

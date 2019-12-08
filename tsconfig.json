@@ -11,7 +11,8 @@
     "noUnusedLocals": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": ["dist", "rollup.config.js"]

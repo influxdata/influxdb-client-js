@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import Logger, {setLogger, consoleLogger} from '../../../src/impl/Logger'
 
-describe('logger', () => {
+describe('Logger', () => {
   const testSet = {message: '    hey', error: 'you'}
   it("uses custom logger's error", () => {
     let args: Array<any> | undefined

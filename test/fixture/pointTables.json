@@ -1,0 +1,116 @@
+[
+  {
+    "fails": true
+  },
+  {
+    "name": "",
+    "fails": true
+  },
+  {
+    "name": "",
+    "fields": [["a", "n", 9.2]],
+    "fails": true
+  },
+  {
+    "name": "a",
+    "fails": true
+  },
+  {
+    "name": "m0",
+    "fields": [
+      ["a", "n", 9.2],
+      ["b", "i", 9.2],
+      ["", "s", 9.2],
+      ["d", "s", null],
+      ["e", "s"],
+      ["f", "s", "9"]
+    ],
+    "line": "m0 a=9.2,b=9i,f=\"9\""
+  },
+  {
+    "name": "meas, 2",
+    "tags": [
+      ["tag3", "a"],
+      ["tag2", "b"],
+      ["tag1", "c"]
+    ],
+    "fields": [
+      ["f9", "n", 9.2],
+      ["f8", "s", 8.2],
+      ["f7", "b", 7.2],
+      ["f6", "i", 6.2]
+    ],
+    "time": "12345",
+    "line": "meas\\,\\ 2,tag1=c,tag2=b,tag3=a f6=6i,f7=T,f8=\"8.2\",f9=9.2 12345"
+  },
+  {
+    "name": "m3",
+    "fields": [
+      ["a", "i", "9.2"],
+      ["b", "n", "8.2"],
+      ["c", "b", ""],
+      ["", "b", ""]
+    ],
+    "line": "m3 a=9i,b=8.2,c=F"
+  },
+  {
+    "name": "m4",
+    "tags": [["", "whatever"], ["t2"]],
+    "fields": [
+      ["a", "i", "9.2"],
+      ["b", "n", "8.2"],
+      ["c", "b", ""],
+      ["", "b", ""]
+    ],
+    "line": "m4 a=9i,b=8.2,c=F"
+  },
+  {
+    "name": "m6",
+    "fields": [["a", "i"]],
+    "throws": "Expected integer"
+  },
+  {
+    "name": "m7",
+    "fields": [["a", "n"]],
+    "throws": "Expected float"
+  },
+  {
+    "name": "m8",
+    "fields": [["a", "b", true]],
+    "line": "m8,tag1=c,tag2=b,tag3=a a=T",
+    "pointSettings": {
+      "defaultTags": {
+        "tag3": "a",
+        "tag2": "b",
+        "tag1": "c"
+      }
+    }
+  },
+  {
+    "name": "m9",
+    "tags": [["tag2", "x"]],
+    "fields": [["a", "b", true]],
+    "line": "m9,tag1=c,tag2=x,tag3=a a=T",
+    "pointSettings": {
+      "defaultTags": {
+        "tag3": "a",
+        "tag2": "b",
+        "tag1": "c"
+      }
+    }
+  },
+  {
+    "name": "m10",
+    "tags": [["tag1", "x"]],
+    "fields": [["a", "b", true]],
+    "line": "m10,tag1=x,tag2=b,tag3=a a=T 11111",
+    "pointSettings": {
+      "defaultTags": {
+        "tag3": "a",
+        "tag2": "b",
+        "tag1": "c"
+      },
+      "convertTime": "11111"
+    }
+  }
+]
