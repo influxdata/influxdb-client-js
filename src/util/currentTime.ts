@@ -38,4 +38,8 @@ export const currentTimes = Object.freeze({
   [String(WritePrecission.ms)]: millis,
   [String(WritePrecission.us)]: micros,
   [String(WritePrecission.ns)]: nanos,
+  seconds,
+  millis,
+  micros,
+  nanos,
 })
