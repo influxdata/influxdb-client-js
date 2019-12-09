@@ -2,21 +2,21 @@ import {currentTimes, useProcessHrtime} from '../../../src'
 import {expect} from 'chai'
 
 describe('currentTime', () => {
-  let useHrTime: boolean
-  beforeEach(() => {
-    useHrTime = useProcessHrtime(true)
-  })
-  afterEach(() => {
-    useProcessHrtime(useHrTime)
-  })
   ;[true, false].forEach((useProcessApi: boolean) => {
     describe(
       useProcessApi
         ? 'with the help of process.hrtime'
         : 'using just Date.now()',
       () => {
+        let useHrtime: boolean
         beforeEach(() => {
-          useHrTime = useProcessHrtime(useProcessApi)
+          useHrtime = useProcessHrtime(useProcessApi)
+        })
+        afterEach(() => {
+          useProcessHrtime(true)
+        })
+        it('uses the implementation as requested', () => {
+          expect(useProcessApi).to.be.equal(useHrtime)
         })
         it('calculates time in seconds', () => {
           const val = currentTimes['s']()
