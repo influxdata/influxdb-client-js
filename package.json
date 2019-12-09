@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn run clean && NODE_ENV=production rollup -c",
     "build:doc": "yarn run clean && typedoc --out ./doc ./src",
-    "clean": "rimraf dist build coverage .nyc_output doc",
+    "clean": "rimraf dist build coverage .nyc_output doc *.lcov",
     "codecov": "nyc report --reporter=lcov && codecov",
     "coverage": "nyc yarn run test:unit",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
