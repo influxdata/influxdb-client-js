@@ -1,10 +1,10 @@
 # influxdb-client-javascript
 
-[![CircleCI](https://circleci.com/gh/sranka/influxdb-client-java.svg?style=svg)](https://circleci.com/gh/sranka/influxdb-client-java)
-[![codecov](https://codecov.io/gh/sranka/influxdb-client-java/branch/master/graph/badge.svg)](https://codecov.io/gh/sranka/influxdb-client-java)
-[![License](https://img.shields.io/github/license/sranka/influxdb-client-java.svg)](https://github.com/sranka/influxdb-client-java/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues-raw/sranka/influxdb-client-java.svg)](https://github.com/sranka/influxdb-client-java/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/sranka/influxdb-client-java.svg)](https://github.com/sranka/influxdb-client-java/pulls)
+[![CircleCI](https://circleci.com/gh/sranka/influxdb-client-js.svg?style=svg)](https://circleci.com/gh/sranka/influxdb-client-js)
+[![codecov](https://codecov.io/gh/sranka/influxdb-client-js/branch/master/graph/badge.svg)](https://codecov.io/gh/sranka/influxdb-client-js)
+[![License](https://img.shields.io/github/license/sranka/influxdb-client-js.svg)](https://github.com/sranka/influxdb-client-js/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues-raw/sranka/influxdb-client-js.svg)](https://github.com/sranka/influxdb-client-js/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/sranka/influxdb-client-js.svg)](https://github.com/sranka/influxdb-client-js/pulls)
 
 This repository contains the reference javascript client for InfluxDB 2.0.
 
