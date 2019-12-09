@@ -1,5 +1,7 @@
 export * from './options'
 export * from './errors'
+export * from './util/escape'
+export * from './util/currentTime'
 export {default as Point} from './Point'
 export {default as WriteApi} from './WriteApi'
 export {default as InfluxDB} from './InfluxDB'

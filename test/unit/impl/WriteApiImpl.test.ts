@@ -6,6 +6,8 @@ import {
   WritePrecission,
   DEFAULT_WriteOptions,
   WriteOptions,
+  Point,
+  WriteApi,
 } from '../../../src'
 import WriteApiImpl from '../../../src/impl/WriteApiImpl'
 import {collectLogging, CollectedLogs} from '../../util'
@@ -20,7 +22,7 @@ const ORG = 'org'
 const BUCKET = 'bucket'
 const PRECISSION = WritePrecission.s
 
-const WRITE_PATH = `/write?org=${ORG}&bucket=${BUCKET}&precission=${PRECISSION}`
+const WRITE_PATH_NS = `/write?org=${ORG}&bucket=${BUCKET}&precission=ns`
 
 describe('WriteApiImpl', () => {
   beforeEach(() => {
@@ -93,7 +95,7 @@ describe('WriteApiImpl', () => {
       subject.close()
       collectLogging.after()
     })
-    it('flushes the response in specified batchSize', async () => {
+    it('flushes the data in specified batchSize', async () => {
       useSubject({flushInterval: 0, batchSize: 1})
       subject.writeRecord('test value=1')
       subject.writeRecords(['test value=2', 'test value=3'])
@@ -138,7 +140,7 @@ describe('WriteApiImpl', () => {
       subject.close()
       collectLogging.after()
     })
-    it('flushes the response automatically', async () => {
+    it('flushes the records automatically', async () => {
       useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
       subject.writeRecord('test value=1')
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
@@ -153,13 +155,13 @@ describe('WriteApiImpl', () => {
     })
   })
   describe('usage of server API', () => {
-    let subject: WriteApiImpl
+    let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISSION, {
+      subject = new WriteApiImpl(transport, ORG, BUCKET, WritePrecission.ns, {
         ...clientOptions,
         writeOptions,
-      })
+      }).useDefaultTags({xtra: '1'})
     }
     beforeEach(() => {
       // logs = collectLogging.decorate()
@@ -169,27 +171,60 @@ describe('WriteApiImpl', () => {
       subject.close()
       collectLogging.after()
     })
-    it('flushes the response without errors', async () => {
+    it('flushes the records without errors', async () => {
       useSubject({flushInterval: 5, maxRetries: 1, batchSize: 10})
       let requests = 0
+      const messages: string[] = []
       nock(clientOptions.url)
-        .post(WRITE_PATH)
+        .post(WRITE_PATH_NS)
         .reply((_uri, _requestBody) => {
           requests++
-          return [requests % 2 ? 429 : 200, 'yes', {'retry-after': '1'}]
+          if (requests % 2) {
+            return [429, '', {'retry-after': '1'}]
+          } else {
+            messages.push(_requestBody.toString())
+            return [200, '', {'retry-after': '1'}]
+          }
         })
         .persist()
-      subject.writeRecord('test value=1')
+      subject.writePoint(
+        new Point('test')
+          .addTag('t', ' ')
+          .addNumberField('value', 1)
+          .setTime('')
+      )
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(1)
-      subject.writeRecord('test value=2')
+      subject.writePoints([
+        new Point('test').addNumberField('value', 2),
+        new Point('test').addNumberField('value', 3),
+        new Point('test').addNumberField('value', 4).setTime('1'),
+      ])
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(2)
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(2)
+      expect(messages).to.have.length(2)
+      expect(messages[0]).to.equal('test,t=\\ ,xtra=1 value=1')
+      const lines = messages[1].split('\n')
+      expect(lines).has.length(3)
+      expect(lines[0]).to.satisfy((line: string) =>
+        line.startsWith('test,xtra=1 value=2')
+      )
+      expect(lines[0].substring(lines[0].lastIndexOf(' ') + 1)).to.have.length(
+        String(Date.now()).length + 6 // nanosecond precision
+      )
+      expect(lines[1]).to.satisfy((line: string) =>
+        line.startsWith('test,xtra=1 value=3')
+      )
+      expect(lines[0].substring(lines[0].lastIndexOf(' ') + 1)).to.have.length(
+        String(Date.now()).length + 6 // nanosecond precision
+      )
+      expect(lines[2]).to.be.equal('test,xtra=1 value=4 1')
+      lines.forEach(line => {})
       await subject.flush().then(() => {
         expect(logs.error).to.length(0)
       })

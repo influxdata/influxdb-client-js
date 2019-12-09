@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {escape} from '../../../src/grammar/escape'
+import {escape} from '../../../src'
 import escapeTables from '../../fixture/escapeTables.json'
 
 describe('escape', () => {

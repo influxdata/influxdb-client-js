@@ -1,3 +1,5 @@
+import Point from './Point'
+
 /**
  * The asynchronous non-blocking API to Write time-series data into InfluxDB 2.0.
  * <p>
@@ -5,6 +7,13 @@
  * <p>
  */
 export default interface WriteApi {
+  /**
+   * Instructs to use the following default tags  when writing points.
+   * Not applicable for writing records/lines.
+   * @param tags
+   */
+  useDefaultTags(tags: {[key: string]: string}): void
+
   /**
    * Write Line Protocol record.
    *
@@ -18,6 +27,20 @@ export default interface WriteApi {
    * @param records lines in InfluxDB Line Protocol
    */
   writeRecords(records: Array<string>): void
+
+  /**
+   * Write point.
+   *
+   * @param records lines in InfluxDB Line Protocol
+   */
+  writePoint(point: Point): void
+
+  /**
+   * Write point.
+   *
+   * @param records lines in InfluxDB Line Protocol
+   */
+  writePoints(points: Array<Point>): void
 
   /**
    * Flushes pending writes to the server.

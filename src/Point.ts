@@ -1,4 +1,4 @@
-import {escape} from './grammar/escape'
+import {escape} from './util/escape'
 import {PointSettings} from './options'
 /**
  * Point defines the values that will be written to the database.
@@ -8,7 +8,7 @@ export default class Point {
   private name: string
   private tags: {[key: string]: string} = {}
   private fields: {[key: string]: string} = {}
-  private time: number | string | undefined
+  private time: string | undefined
 
   /**
    * Create a new Point with specified a measurement name.
@@ -105,7 +105,7 @@ export default class Point {
     return this
   }
 
-  public setTime(value: number | string | undefined): Point {
+  public setTime(value: string | undefined): Point {
     this.time = value
     return this
   }
@@ -124,7 +124,10 @@ export default class Point {
       })
     if (fieldsLine.length === 0) return undefined // no fields present
     let tagsLine = ''
-    const tags = settings ? {...settings.defaultTags, ...this.tags} : this.tags
+    const tags =
+      settings && settings.defaultTags
+        ? {...settings.defaultTags, ...this.tags}
+        : this.tags
     Object.keys(tags)
       .sort()
       .forEach(x => {

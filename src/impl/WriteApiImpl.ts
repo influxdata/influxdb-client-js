@@ -4,10 +4,14 @@ import {
   DEFAULT_WriteOptions,
   ClientOptions,
   DEFAULT_ConnectionOptions,
+  PointSettings,
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
 import {getRetryDelay, HttpError} from '../errors'
+import Point from '../Point'
+import {escape} from '../util/escape'
+import {currentTimes} from '../util/currentTime'
 
 class WriteBuffer {
   length = 0
@@ -53,11 +57,12 @@ class WriteBuffer {
   }
 }
 
-export default class WriteApiImpl implements WriteApi {
+export default class WriteApiImpl implements WriteApi, PointSettings {
   private buffer: WriteBuffer
   private closed = false
 
   private _timeoutHandle: any = undefined
+  private currentTime: () => string
 
   constructor(
     transport: Transport,
@@ -73,6 +78,7 @@ export default class WriteApiImpl implements WriteApi {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
     }
+    this.currentTime = currentTimes[precision]
     const sendOptions: Partial<SendOptions> = {
       method: 'POST',
       maxRetries: 0, // we control manual retry attempts
@@ -176,6 +182,15 @@ export default class WriteApiImpl implements WriteApi {
       this.buffer.add(records[i])
     }
   }
+  writePoint(point: Point): void {
+    const line = point.toLineProtocol(this)
+    if (line) this.buffer.add(line)
+  }
+  writePoints(points: Point[]): void {
+    for (let i = 0; i < points.length; i++) {
+      this.writePoint(points[i])
+    }
+  }
   flush(): Promise<void> {
     return this.buffer.flush()
   }
@@ -187,5 +202,24 @@ export default class WriteApiImpl implements WriteApi {
   dispose(): void {
     this._clearFlushTimeout()
     this.closed = true
+  }
+
+  // PointSettings
+  defaultTags: {[key: string]: string} | undefined
+  useDefaultTags(tags: {[key: string]: string}): WriteApi {
+    this.defaultTags = undefined
+    Object.keys(tags).forEach((key: string) => {
+      ;(this.defaultTags || (this.defaultTags = {}))[key] = escape.tag(
+        tags[key]
+      )
+    })
+    return this
+  }
+  convertTime(value: string | undefined): string | undefined {
+    if (typeof value === 'string') {
+      return value ? value : undefined
+    } else {
+      return this.currentTime()
+    }
   }
 }

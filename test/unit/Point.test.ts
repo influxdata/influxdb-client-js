@@ -7,7 +7,7 @@ interface PointTest {
   name?: string
   tags?: Array<[string, string]>
   fields?: Array<[string, 'n' | 's' | 'b' | 'i', any]>
-  time?: string | number
+  time?: string
   line: string | undefined
   toString: string | undefined
   index?: number
