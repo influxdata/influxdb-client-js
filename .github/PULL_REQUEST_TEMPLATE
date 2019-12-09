@@ -1,0 +1,13 @@
+Fixes #
+
+## Proposed Changes
+
+_Briefly describe your proposed changes:_
+
+## Checklist
+
+  - [ ] CHANGELOG.md updated
+  - [ ] A test has been added if appropriate
+  - [ ] `yarn test` completes successfully
+  - [ ] Commit messages are in [semantic format](https://seesparkbox.com/foundry/semantic_commit_messages)
+  - [ ] Sign [CLA](https://influxdata.com/community/cla/) (if not already signed)
