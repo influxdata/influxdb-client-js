@@ -459,6 +459,10 @@ clone@~0.1.9:
   version "0.1.19"
   resolved "https://registry.yarnpkg.com/clone/-/clone-0.1.19.tgz#613fb68639b26a494ac53253e15b1a6bd88ada85"
 
+codedoc@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/codedoc/-/codedoc-0.0.0.tgz#44c601a76aa0362aad4232661297b1e42eb46252"
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
