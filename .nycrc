@@ -8,6 +8,7 @@
     "src/**/*.ts"
   ],
   "exclude": [
+    "src/index.ts"
   ],
   "sourceMap": true,
   "reporter": [
