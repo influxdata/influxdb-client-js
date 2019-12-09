@@ -5,13 +5,13 @@ workflows:
     jobs:
       - lint
       - unit-tests:
-          version: '8'
+          version: '12'
       - coverage
 
 jobs:
   lint:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:12
     steps:
       - checkout
       - restore_cache:
@@ -54,10 +54,8 @@ jobs:
           command: yarn test:unit
   coverage:
     parameters:
-      version:
-        type: string
     docker:
-      - image: circleci/node:<< parameters.version >>
+      - image: circleci/node:12
     steps:
       - checkout
       - restore_cache:
