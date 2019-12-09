@@ -10,7 +10,7 @@ This repository contains the reference javascript client for InfluxDB 2.0.
 
 ## Disclaimer
 
-This library is a work in progress and should not be considered production ready.
+This library is a work in progress and should not be considered production ready yet.
 
 ## Usage
 

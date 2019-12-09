@@ -3,32 +3,11 @@ version: 2.1
 workflows:
   build:
     jobs:
-      - lint
       - unit-tests:
           version: '12'
       - coverage
 
 jobs:
-  lint:
-    docker:
-      - image: circleci/node:12
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run:
-          name: Run lint
-          command: yarn lint
   unit-tests:
     parameters:
       version:
@@ -51,7 +30,9 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Run test
-          command: yarn test:unit
+          command: |
+            yarn lint
+            yarn test:unit
   coverage:
     parameters:
     docker:
@@ -71,7 +52,7 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run tests and reports coverage
+          name: Run tests and reports coverage to codecov
           command: |
             yarn coverage
             yarn codecov
