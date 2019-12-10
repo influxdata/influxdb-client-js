@@ -1,21 +1,8 @@
 version: 2.1
 
-workflows:
-  build:
-    jobs:
-      - unit-tests:
-          version: '12'
-      - coverage
-
-jobs:
-  unit-tests:
-    parameters:
-      version:
-        type: string
-    docker:
-      - image: circleci/node:<< parameters.version >>
+commands:
+  init-dependencies:
     steps:
-      - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
@@ -28,7 +15,17 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run: mkdir reports
+
+jobs:
+  unit-tests:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - init-dependencies
       - run:
           name: Run tests
           command: |
@@ -47,18 +44,7 @@ jobs:
       - image: circleci/node:12
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - init-dependencies
       - run:
           name: Runs tests with coverage
           command: |
@@ -71,3 +57,10 @@ jobs:
           path: ./coverage
       # - store_artifacts:
       #     path: ./.nyc_output
+
+workflows:
+  build:
+    jobs:
+      - unit-tests:
+          version: '12'
+      - coverage
