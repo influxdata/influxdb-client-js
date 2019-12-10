@@ -135,6 +135,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     const scheduleNextSend = (): void => {
       if (writeOptions.flushInterval > 0) {
         this._clearFlushTimeout()
+        /* istanbul ignore else manually reviewed, hard to reproduce */
         if (!this.closed) {
           this._timeoutHandle = setTimeout(
             () =>
@@ -166,6 +167,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
 
   private _scheduleRetry(fn: () => any, delay: number): void {
+    /* istanbul ignore else manually reviewed, hard to reproduce */
     if (!this.closed) {
       // TODO monitor and limit retries, cancel them on close
       setTimeout(fn, delay)
