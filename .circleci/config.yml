@@ -68,9 +68,6 @@ jobs:
           name: Report test results to codecov
           command: yarn codecov
       - store_artifacts:
-          path: ./.nyc_output
-      - store_artifacts:
           path: ./coverage
-      # - store_artifacts: # upload test coverage as artifact
-      #     path: ./coverage/coverage.lcov
-      #     prefix: tests
+      # - store_artifacts:
+      #     path: ./.nyc_output
