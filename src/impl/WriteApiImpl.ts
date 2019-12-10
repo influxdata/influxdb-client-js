@@ -38,10 +38,8 @@ class WriteBuffer {
     }
   }
   flush(): Promise<void> {
-    if (this.message) {
-      const message = this.message
-      this.message = undefined
-      this.length = 0
+    const message = this.reset()
+    if (message) {
       return this.flushFn(message)
     } else {
       return Promise.resolve()

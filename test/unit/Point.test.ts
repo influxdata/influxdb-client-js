@@ -33,25 +33,25 @@ function createPoint(test: PointTest): Point {
     (field: [string, 'n' | 's' | 'b' | 'i', any]) => {
       switch (field[1]) {
         case 'n':
-          point.addNumberField(field[0], field[2])
+          point.floatField(field[0], field[2])
           break
         case 's':
-          point.addStringField(field[0], field[2])
+          point.stringField(field[0], field[2])
           break
         case 'b':
-          point.addBooleanField(field[0], field[2])
+          point.booleanField(field[0], field[2])
           break
         case 'i':
-          point.addIntegerField(field[0], field[2])
+          point.intField(field[0], field[2])
           break
       }
     }
   )
   ;(test.tags || []).forEach((tag: [string, string]) => {
-    point.addTag(tag[0], tag[1])
+    point.tag(tag[0], tag[1])
   })
   if (test.time) {
-    point.setTime(test.time)
+    point.timestamp(test.time)
   }
   return point
 }

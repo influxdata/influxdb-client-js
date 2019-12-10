@@ -189,17 +189,18 @@ describe('WriteApiImpl', () => {
         .persist()
       subject.writePoint(
         new Point('test')
-          .addTag('t', ' ')
-          .addNumberField('value', 1)
-          .setTime('')
+          .tag('t', ' ')
+          .floatField('value', 1)
+          .timestamp('')
       )
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(1)
       subject.writePoints([
-        new Point('test').addNumberField('value', 2),
-        new Point('test').addNumberField('value', 3),
-        new Point('test').addNumberField('value', 4).setTime('1'),
+        new Point('test'), // will be ignored
+        new Point('test').floatField('value', 2),
+        new Point('test').floatField('value', 3),
+        new Point('test').floatField('value', 4).timestamp('1'),
       ])
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)

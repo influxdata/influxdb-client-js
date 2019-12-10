@@ -38,7 +38,7 @@ export default class Point {
    * @param value tag value
    * @return this
    */
-  public addTag(name: string, value: string): Point {
+  public tag(name: string, value: string): Point {
     this.tags[name] = value
     return this
   }
@@ -50,7 +50,7 @@ export default class Point {
    * @param value field value
    * @return this
    */
-  public addBooleanField(name: string, value: boolean | any): Point {
+  public booleanField(name: string, value: boolean | any): Point {
     this.fields[name] = value ? 'T' : 'F'
     return this
   }
@@ -62,7 +62,7 @@ export default class Point {
    * @param value field value
    * @return this
    */
-  public addIntegerField(name: string, value: number | any): Point {
+  public intField(name: string, value: number | any): Point {
     if (typeof value !== 'number') {
       let val: number
       if (isNaN((val = parseInt(String(value))))) {
@@ -83,7 +83,7 @@ export default class Point {
    * @param value field value
    * @return this
    */
-  public addNumberField(name: string, value: number | any): Point {
+  public floatField(name: string, value: number | any): Point {
     if (typeof value !== 'number') {
       let val: number
       if (isNaN((val = parseFloat(value)))) {
@@ -97,7 +97,7 @@ export default class Point {
     return this
   }
 
-  public addStringField(name: string, value: string | any): Point {
+  public stringField(name: string, value: string | any): Point {
     if (value !== null && value !== undefined) {
       if (typeof value !== 'string') value = String(value)
       this.fields[name] = escape.quoted(value)
@@ -105,7 +105,7 @@ export default class Point {
     return this
   }
 
-  public setTime(value: string | undefined): Point {
+  public timestamp(value: string | undefined): Point {
     this.time = value
     return this
   }
