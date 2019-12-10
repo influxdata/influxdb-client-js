@@ -12,6 +12,7 @@ export function isStatusCodeRetriable(statusCode: number): boolean {
 }
 
 export class IllegalArgumentError extends Error {
+  /* istanbul ignore next */
   constructor(message: string) {
     super(message)
     Object.setPrototypeOf(this, IllegalArgumentError.prototype)
@@ -24,6 +25,7 @@ export class IllegalArgumentError extends Error {
 export class HttpError extends Error implements RetriableDecision {
   private _retryAfter: number
 
+  /* istanbul ignore next */
   constructor(
     readonly statusCode: number,
     readonly statusMessage: string | undefined,
@@ -37,6 +39,10 @@ export class HttpError extends Error implements RetriableDecision {
     } else {
       this.message = `${statusCode} ${statusMessage}`
     }
+    this.setRetryAfter(retryAfter)
+  }
+
+  private setRetryAfter(retryAfter?: string | undefined) {
     if (typeof retryAfter === 'string') {
       // try to parse the supplied number as milliseconds
       this._retryAfter = parseInt(retryAfter)
@@ -98,6 +104,7 @@ export function getRetryDelay(error: Error, retryJitter: number): number {
 }
 
 export class RequestTimedOutError extends Error implements RetriableDecision {
+  /* istanbul ignore next */
   constructor() {
     super()
     Object.setPrototypeOf(this, RequestTimedOutError.prototype)
@@ -112,6 +119,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
 }
 
 export class ResponseAbortedError extends Error implements RetriableDecision {
+  /* istanbul ignore next */
   constructor() {
     super()
     Object.setPrototypeOf(this, ResponseAbortedError.prototype)
