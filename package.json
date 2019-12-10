@@ -8,7 +8,7 @@
     "build": "yarn run clean && NODE_ENV=production rollup -c",
     "build:doc": "yarn run clean && typedoc --out ./doc ./src",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov",
-    "codecov": "nyc report --reporter=lcov && codecov --disable=gcov",
+    "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "coverage": "nyc yarn run test:unit",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts'",
