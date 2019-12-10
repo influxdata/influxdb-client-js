@@ -7,3 +7,4 @@ doc
 .DS_Store
 .nyc_output
 *.lcov
+reports

@@ -28,11 +28,19 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - run: mkdir reports
       - run:
-          name: Run test
+          name: Run tests
           command: |
-            yarn lint
-            yarn test:unit
+            yarn test:unit:ci
+            yarn lint:ci
+      # Upload results
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports/mocha/test-results.xml
+      - store_artifacts:
+          path: ./reports/eslint/eslint.xml
   coverage:
     parameters:
     docker:
@@ -56,3 +64,6 @@ jobs:
           command: |
             yarn coverage
             yarn codecov
+      - store_artifacts: # upload test coverage as artifact
+          path: ./coverage/coverage.lcov
+          prefix: tests
