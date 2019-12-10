@@ -174,6 +174,16 @@ describe('NodeHttpTransport', () => {
         timeout: 100,
         maxRetries: 0,
       }
+      it(`fails silently on server error`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(500, 'not ok')
+        expect(
+          new NodeHttpTransport(transportOptions).send('/test', '', {
+            method: 'GET',
+          })
+        ).to.not.throw
+      })
       it(`fails on server error`, async () => {
         nock(transportOptions.url)
           .get('/test')

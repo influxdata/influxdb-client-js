@@ -156,7 +156,8 @@ export class NodeHttpTransport implements Transport {
       res.on('aborted', () => {
         listeners.error(new ResponseAbortedError())
       })
-      const statusCode = res.statusCode || 600
+      const statusCode =
+        res.statusCode || /* istanbul ignore next safety check */ 600
       if (statusCode >= 300) {
         let body = ''
         res.on('data', s => {
@@ -189,6 +190,7 @@ export class NodeHttpTransport implements Transport {
     })
     // Support older Nodes which don't allow .timeout() in the
     // request options
+    /* istanbul ignore else support older node versions */
     if (typeof req.setTimeout === 'function') {
       req.setTimeout(requestMessage.timeout)
     }
@@ -201,6 +203,7 @@ export class NodeHttpTransport implements Transport {
     })
     req.on('close', listeners.complete)
 
+    /* istanbul ignore else support older node versions */
     if (requestMessage.body) {
       req.write(requestMessage.body)
     }
@@ -230,17 +233,20 @@ export class NodeHttpTransport implements Transport {
               getRetryDelay(error, this.retryJitter)
             )
             cancellable.addCancelableAction(() => {
+              /* istanbul ignore next safety check */
               if (callbacks.complete) callbacks.complete()
               clearTimeout(cancelHandle)
             })
             return
           }
         }
+        /* istanbul ignore else safety check */
         if (callbacks.error) callbacks.error(error)
       },
       complete: (): void => {
         if (state === 0) {
           state = 2
+          /* istanbul ignore else safety check */
           if (callbacks.complete) callbacks.complete()
         }
       },
