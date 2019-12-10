@@ -61,7 +61,9 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Runs tests with coverage
-          command: yarn coverage
+          command: |
+            yarn --version
+            yarn coverage
       - run:
           name: Report test results to codecov
           command: yarn codecov
