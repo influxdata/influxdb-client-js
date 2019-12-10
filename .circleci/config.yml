@@ -1,0 +1,58 @@
+version: 2.1
+
+workflows:
+  build:
+    jobs:
+      - unit-tests:
+          version: '12'
+      - coverage
+
+jobs:
+  unit-tests:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Run test
+          command: |
+            yarn lint
+            yarn test:unit
+  coverage:
+    parameters:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Run tests and reports coverage to codecov
+          command: |
+            yarn coverage
+            yarn codecov

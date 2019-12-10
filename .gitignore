@@ -6,3 +6,4 @@ doc
 .rpt2_cache
 .DS_Store
 .nyc_output
+*.lcov
