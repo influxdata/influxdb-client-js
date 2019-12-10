@@ -60,10 +60,15 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run tests and reports coverage to codecov
-          command: |
-            yarn coverage
-            yarn codecov
-      - store_artifacts: # upload test coverage as artifact
-          path: ./coverage/coverage.lcov
-          prefix: tests
+          name: Runs tests with coverage
+          command: yarn coverage
+      - run:
+          name: Report test results to codecov
+          command: yarn codecov
+      - store_artifacts:
+          path: ./.nyc_output
+      - store_artifacts:
+          path: ./coverage
+      # - store_artifacts: # upload test coverage as artifact
+      #     path: ./coverage/coverage.lcov
+      #     prefix: tests
