@@ -31,6 +31,7 @@ jobs:
           command: |
             yarn test:unit:ci
             yarn lint:ci
+            yarn typedoc
       # Upload results
       - store_test_results:
           path: reports
@@ -38,6 +39,8 @@ jobs:
           path: ./reports/mocha/test-results.xml
       - store_artifacts:
           path: ./reports/eslint/eslint.xml
+      - store_artifacts:
+          path: ./reports/apidoc
   coverage:
     parameters:
     docker:

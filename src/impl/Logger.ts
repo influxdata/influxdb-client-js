@@ -19,7 +19,7 @@ export const consoleLogger: Logger = Object.freeze({
 })
 let provider: Logger = consoleLogger
 
-const instance: Logger = {
+const Logger: Logger = {
   error(message, error) {
     provider.error(message, error)
   },
@@ -39,4 +39,4 @@ export function setLogger(logger: Logger): Logger {
   return previous
 }
 
-export default instance
+export default Logger
