@@ -88,7 +88,7 @@ export class NodeHttpTransport implements Transport {
     path: string,
     body: string,
     options: SendOptions,
-    callbacks?: Partial<CommunicationObserver>
+    callbacks?: Partial<CommunicationObserver<any>>
   ): void {
     const message = this.createRequestMessage(path, body, options)
     const cancellable = new CancellableImpl()
@@ -136,7 +136,7 @@ export class NodeHttpTransport implements Transport {
   private request(
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
-    callbacks?: Partial<CommunicationObserver>
+    callbacks?: Partial<CommunicationObserver<any>>
   ): void {
     const listeners = this.createRetriableCallbacks(
       requestMessage,
@@ -213,8 +213,8 @@ export class NodeHttpTransport implements Transport {
   private createRetriableCallbacks(
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
-    callbacks: Partial<CommunicationObserver> = {}
-  ): CommunicationObserver {
+    callbacks: Partial<CommunicationObserver<any>> = {}
+  ): CommunicationObserver<any> {
     let state = 0
     const retVal = {
       next: (data: any): void => {

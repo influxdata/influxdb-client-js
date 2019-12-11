@@ -15,13 +15,13 @@ export interface Cancellable {
 }
 
 /**
- * Let use observe change in the communication.
+ * Observes communication with the server.
  */
-export interface CommunicationObserver {
+export interface CommunicationObserver<T> {
   /**
    * Data chunk received, can be called mupliple times.
    */
-  next(data: any): void
+  next(data: T): void
   /**
    * Communication ended with an error.
    */
@@ -55,12 +55,12 @@ export interface Transport {
    * @param path HTTP path
    * @param body  message body
    * @param options  send options
-   * @param callbacks communication callbacks
+   * @param callbacks communication callbacks with chunks of any type
    */
   send(
     path: string,
     body: string,
     options?: Partial<SendOptions>,
-    callbacks?: Partial<CommunicationObserver>
+    callbacks?: Partial<CommunicationObserver<any>>
   ): void
 }
