@@ -46,16 +46,15 @@ export interface SendOptions {
 }
 
 /**
- * Simpified transport layer for communication with influx DB.
+ * Simpified platform-neutral transport layer for communication with influx DB.
  */
 export interface Transport {
   /**
    * Sends data to server and receive communication events via communication callbacks.
    *
    * @param path HTTP path
-   * @param headers HTTP headers
-   * @param method HTTP method
    * @param body  message body
+   * @param options  send options
    * @param callbacks communication callbacks
    */
   send(
