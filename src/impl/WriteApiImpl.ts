@@ -177,7 +177,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   writeRecord(record: string): void {
     this.buffer.add(record)
   }
-  writeRecords(records: string[]): void {
+  writeRecords(records: ArrayLike<string>): void {
     for (let i = 0; i < records.length; i++) {
       this.buffer.add(records[i])
     }
@@ -186,7 +186,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     const line = point.toLineProtocol(this)
     if (line) this.buffer.add(line)
   }
-  writePoints(points: Point[]): void {
+  writePoints(points: ArrayLike<Point>): void {
     for (let i = 0; i < points.length; i++) {
       this.writePoint(points[i])
     }

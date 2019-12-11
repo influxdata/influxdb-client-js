@@ -40,7 +40,7 @@ export default interface WriteApi {
    *
    * @param records lines in InfluxDB Line Protocol
    */
-  writePoints(points: Array<Point>): void
+  writePoints(points: ArrayLike<Point>): void
 
   /**
    * Flushes pending writes to the server.
