@@ -1,0 +1,8 @@
+[
+  ",result,table,_start,_stop,_time,_value,_field,_measurement,location",
+  ",_result,0,1970-01-01T00:00:00Z,2019-12-11T13:01:05.472664621Z,1970-01-01T00:26:15.995033574Z,55,value,temperature,west",
+  ",_result,0,1970-01-01T00:00:00Z,2019-12-11T13:01:05.472664621Z,1970-01-01T00:26:16.063594313Z,55,value,temperature,west",
+  "",
+  ",result,table,_start,_stop,_time,_value,_field,_measurement,location",
+  ",_result,1,1970-01-01T00:00:00Z,2019-12-11T13:01:05.472664621Z,1970-01-01T00:26:16.063594313Z,\"a,b,\n,c\",text,temperature,west"
+]

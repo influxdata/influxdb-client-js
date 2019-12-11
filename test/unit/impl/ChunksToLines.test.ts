@@ -1,31 +1,15 @@
 import {expect} from 'chai'
 import ChunksToLines from '../../../src/impl/ChunksToLines'
 import chunksToLinesTables from '../../fixture/chunksToLinesTables.json'
-import {CommunicationObserver, Cancellable} from '../../../src/transport'
+import {Cancellable} from '../../../src/transport'
 import sinon from 'sinon'
+import {CollectLinesObserver} from '../util/CollectLinesObserver'
 
 interface ChunkTest {
   name: string
   chunks: string[]
   lines: string[]
   withCancellable?: boolean // use observer with cancellable implementation
-}
-
-class CollectLinesObserver implements CommunicationObserver<string> {
-  lines: string[] = []
-  completed = 0
-  failed = 0
-  cancellableSet = false
-
-  next(data: string): void {
-    this.lines.push(data)
-  }
-  error(error: Error): void {
-    this.failed++
-  }
-  complete(): void {
-    this.completed++
-  }
 }
 
 class CollectLinesObserver2 extends CollectLinesObserver {
