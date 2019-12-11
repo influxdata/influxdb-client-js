@@ -21,6 +21,9 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
   retryJitter: 1000,
 }
 
+/**
+ * Options used by [[WriteApi]]
+ */
 export interface WriteOptions {
   /** max number of records to send in a batch   */
   batchSize: number

@@ -38,7 +38,15 @@ export default class InfluxDB {
   private transport: Transport
 
   /* eslint-disable no-dupe-class-members */
+  /**
+   * Creates influxdb client from a string URL
+   * @param url influxDB url, such as http://localhost:9999?token=my-token
+   */
   constructor(url: string)
+  /**
+   * Creates influxdb client options from an options object.
+   * @param options options
+   */
   constructor(options: ClientOptions)
 
   constructor(options?: any) {
@@ -54,8 +62,8 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No token specified!')
     this.transport = createTransport(this._options)
   }
-
   /* eslint-enable no-dupe-class-members */
+
   getWriteApi(
     org: string,
     bucket: string,
