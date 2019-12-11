@@ -1,0 +1,48 @@
+import {expect} from 'chai'
+import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
+import {InfluxDB, ClientOptions} from '../../src'
+import fs from 'fs'
+import {CollectLinesObserver} from './util/CollectLinesObserver'
+import simpleResponseLines from '../fixture/query/simpleResponseLines.json'
+
+const ORG = `my-org`
+const QUERY_PATH = `/api/v2/query?org=${ORG}`
+
+const clientOptions: ClientOptions = {
+  url: 'http://fake:9999',
+  token: 'a',
+  retryJitter: 0, // no retries for tests
+  maxRetries: 0,
+}
+
+describe('QueryApi', () => {
+  beforeEach(() => {
+    nock.disableNetConnect()
+  })
+  afterEach(() => {
+    nock.cleanAll()
+    nock.enableNetConnect()
+  })
+  it('runs raw query', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const target = new CollectLinesObserver()
+    await new Promise((resolve, reject) =>
+      subject.queryRaw(
+        'from(bucket:"my-bucket") |> range(start: 0)',
+        target.attach(resolve, reject)
+      )
+    )
+    expect(target.completed).to.equals(1)
+    expect(target.lines).to.deep.equal(simpleResponseLines)
+  })
+})

@@ -69,7 +69,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     precision: WritePrecission,
     clientOptions: ClientOptions
   ) {
-    const httpPath = `/write?org=${encodeURIComponent(
+    const httpPath = `/api/v2/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precission=${precision}`
     const writeOptions = {

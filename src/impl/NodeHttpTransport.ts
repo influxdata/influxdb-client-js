@@ -118,7 +118,7 @@ export class NodeHttpTransport implements Transport {
       path,
       method: sendOptions.method,
       headers: {
-        'content-type': 'text/plain; charset=utf-8',
+        'content-type': 'application/json; charset=utf-8',
         ...sendOptions.headers,
       },
       body: bodyBuffer,

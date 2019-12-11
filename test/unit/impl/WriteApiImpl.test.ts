@@ -22,7 +22,7 @@ const ORG = 'org'
 const BUCKET = 'bucket'
 const PRECISSION = WritePrecission.s
 
-const WRITE_PATH_NS = `/write?org=${ORG}&bucket=${BUCKET}&precission=ns`
+const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precission=ns`
 
 describe('WriteApiImpl', () => {
   beforeEach(() => {

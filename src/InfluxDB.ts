@@ -5,6 +5,8 @@ import {parse} from 'url'
 import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
 import NodeHttpTransport from './impl/NodeHttpTransport'
+import QueryApi from './QueryApi'
+import QueryApiImpl from './impl/QueryApiImpl'
 
 /**
  * Fills URL out into into a IClusterConfig object
@@ -64,6 +66,13 @@ export default class InfluxDB {
   }
   /* eslint-enable no-dupe-class-members */
 
+  /**
+   * Creates [[WriteApi]] for the supplied organization and bucket.
+   *
+   * @param org Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
+   * @param bucket The destination bucket for writes.
+   * @param precission Timestamp precision for line items.
+   */
   getWriteApi(
     org: string,
     bucket: string,
@@ -76,5 +85,15 @@ export default class InfluxDB {
       precission,
       this._options
     )
+  }
+
+  /**
+   * Creates [[QueryAPI]] for the supplied organization .
+   *
+   * @param org Specifies the organization for queries.
+   * @return query api instance
+   */
+  getQueryApi(org: string): QueryApi {
+    return new QueryApiImpl(this.transport, org)
   }
 }
