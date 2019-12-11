@@ -42,7 +42,7 @@ export class HttpError extends Error implements RetriableDecision {
     this.setRetryAfter(retryAfter)
   }
 
-  private setRetryAfter(retryAfter?: string | undefined) {
+  private setRetryAfter(retryAfter?: string | undefined): void {
     if (typeof retryAfter === 'string') {
       // try to parse the supplied number as milliseconds
       if (/^[0-9]+$/.test(retryAfter)) {
