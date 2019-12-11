@@ -1,5 +1,5 @@
 {
-  "name": "@influxdata/influxdb2-client",
+  "name": "influxdb2-client",
   "version": "0.0.1",
   "description": "InfluxDB 2.0 client",
   "main": "dist/index.js",
