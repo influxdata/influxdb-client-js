@@ -16,7 +16,7 @@ describe('errors', () => {
       new HttpError(429, 'Too Many Requests'),
       new RequestTimedOutError(),
       new ResponseAbortedError(),
-      new HttpError(429, 'Too Many Requests'),
+      new HttpError(429, 'Too Many Requests', '', '2019-11-02'),
       (() => {
         const err = new Error('Connection reset')
         ;(err as any).code = 'ECONNRESET'
@@ -26,6 +26,9 @@ describe('errors', () => {
     testSetOK.forEach(error => {
       it('retries ' + error, () => {
         expect(canRetryHttpCall(error)).to.be.true
+        if (error instanceof HttpError) {
+          expect(error.retryAfter()).to.be.equal(-1)
+        }
       })
     })
     const testSetNotOK = [
