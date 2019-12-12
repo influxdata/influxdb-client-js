@@ -1,31 +1,24 @@
 #!../node_modules/.bin/ts-node
+/*
+This example setups a new INFLUXDB database with user,organization
+and bucket that can be then used in examples. All values that used 
+for onboarding are defined in ./env.ts .
+*/
 
 import NodeHttpTransport from '../src/impl/NodeHttpTransport'
-import {url} from './env'
+import {url, username, password, org, bucket, token} from './env'
 
-// Post onBoarding request is required for a new database to setup initial user (my-user@my-password),
-// org (my-org) and bucketSetup (my-bucket) for next examples.
-//
-// curl -i -X POST http://localhost:9999/api/v2/setup -H 'accept: application/json' \
-//     -d '{
-//             "username": "my-user",
-//             "password": "my-password",
-//             "org": "my-org",
-//             "bucket": "my-bucket",
-//             "token": "my-token"
-//         }'
-
-// TODO use InfluxDB API herein
+// TODO better to use InfluxDB API herein
 new NodeHttpTransport({
   url,
 }).send(
   '/api/v2/setup',
   JSON.stringify({
-    username: 'my-user',
-    password: 'my-password',
-    org: 'my-org',
-    bucket: 'my-bucket',
-    token: 'my-token',
+    username,
+    password,
+    org,
+    bucket,
+    token,
   }),
   {method: 'POST', headers: {accept: 'application/json'}},
   {
@@ -33,8 +26,8 @@ new NodeHttpTransport({
       console.error(error)
       console.log('\nFinished ERROR')
     },
-    next(line: any) {
-      console.log(line)
+    next(data: any) {
+      console.log(Buffer.isBuffer(data) ? data.toString('utf8') : String(data))
     },
     complete() {
       console.log('\nFinished SUCCESS')

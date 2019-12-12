@@ -224,25 +224,28 @@ export class NodeHttpTransport implements Transport {
         }
       },
       error: (error: Error): void => {
-        if (state === 0 && canRetryHttpCall(error)) {
+        /* istanbul ignore else propagate error at most once */
+        if (state === 0) {
           state = 1
-          const retries = requestMessage.retries || 0
-          if (retries < requestMessage.maxRetries) {
-            requestMessage.retries = retries + 1
-            const cancelHandle = setTimeout(
-              () => this.request(requestMessage, cancellable, callbacks),
-              getRetryDelay(error, this.retryJitter)
-            )
-            cancellable.addCancelableAction(() => {
-              /* istanbul ignore next safety check */
-              if (callbacks.complete) callbacks.complete()
-              clearTimeout(cancelHandle)
-            })
-            return
+          if (canRetryHttpCall(error)) {
+            const retries = requestMessage.retries || 0
+            if (retries < requestMessage.maxRetries) {
+              requestMessage.retries = retries + 1
+              const cancelHandle = setTimeout(
+                () => this.request(requestMessage, cancellable, callbacks),
+                getRetryDelay(error, this.retryJitter)
+              )
+              cancellable.addCancelableAction(() => {
+                /* istanbul ignore next safety check */
+                if (callbacks.complete) callbacks.complete()
+                clearTimeout(cancelHandle)
+              })
+              return
+            }
           }
+          /* istanbul ignore else safety check */
+          if (callbacks.error) callbacks.error(error)
         }
-        /* istanbul ignore else safety check */
-        if (callbacks.error) callbacks.error(error)
       },
       complete: (): void => {
         if (state === 0) {

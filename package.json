@@ -20,7 +20,7 @@
     "lint:ci": "yarn run lint --format junit --output-file reports/eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
-  "homepage": "https://github.com/influxdata/influxdb2-client-js",
+  "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
   "keywords": [
     "influxdb",
     "influxdata"

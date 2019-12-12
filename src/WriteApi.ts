@@ -15,14 +15,14 @@ export default interface WriteApi {
   useDefaultTags(tags: {[key: string]: string}): void
 
   /**
-   * Write Line Protocol record.
+   * Write a line of <a href="https://bit.ly/2QL99fu">Line Protocol</a>.
    *
    * @param record line in InfluxDB Line Protocol.
    */
   writeRecord(record: string): void
 
   /**
-   * Write Line Protocol record.
+   * Write lines of <a href="https://bit.ly/2QL99fu">Line Protocol</a>.
    *
    * @param records lines in InfluxDB Line Protocol
    */
@@ -36,7 +36,7 @@ export default interface WriteApi {
   writePoint(point: Point): void
 
   /**
-   * Write point.
+   * Write points.
    *
    * @param records lines in InfluxDB Line Protocol
    */
