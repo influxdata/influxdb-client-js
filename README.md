@@ -12,6 +12,15 @@ This repository contains the reference javascript client for InfluxDB 2.0.
 
 This library is a work in progress and should not be considered production ready yet.
 
+## ToDos
+
+- this documentation
+- all APIs (generated)
+- use node-fetch API
+- write buffer / RX.js
+- monorepo
+- browser client howto
+
 ## Usage
 
 ToDo
@@ -19,18 +28,18 @@ ToDo
 ## Build Requirements
 
 - node v12.13.1
-- yarn 19.4. or higher
+- yarn 1.9.4. or higher
 
-Once these are in place you can run all unit tests with:
+Run all unit tests:
 
 ```bash
 $ yarn test:unit
 ```
 
-If the tests pass, you can build with:
+Check code:
 
 ```bash
-$ yarn build
+$ yarn coverage
 ```
 
 ## Contributing
@@ -39,4 +48,4 @@ If you would like to contribute code you can do through GitHub by forking the re
 
 ## License
 
-The InfluxDB 2.0 JVM Based Clients are released under the [MIT License](https://opensource.org/licenses/MIT).
+The InfluxDB 2.0 javascript client is released under the [MIT License](https://opensource.org/licenses/MIT).
