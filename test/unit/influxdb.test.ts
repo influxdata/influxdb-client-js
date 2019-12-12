@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {InfluxDB, ClientOptions, WritePrecission} from '../../src'
+import {InfluxDB, ClientOptions, WritePrecision} from '../../src'
 
 describe('influxdb', () => {
   describe('constructor', () => {
@@ -66,7 +66,7 @@ describe('influxdb', () => {
     const influxDb = new InfluxDB('http://localhost:9999?token=a')
     it('serves queryApi writeApi without a pending schedule', () => {
       expect(influxDb.getWriteApi('org', 'bucket')).to.be.ok
-      expect(influxDb.getWriteApi('org', 'bucket', WritePrecission.s)).to.be.ok
+      expect(influxDb.getWriteApi('org', 'bucket', WritePrecision.s)).to.be.ok
     })
     it('serves queryApi', () => {
       expect(influxDb.getQueryApi('my-org') as any)

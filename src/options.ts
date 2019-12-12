@@ -45,7 +45,7 @@ export interface ClientOptions extends ConnectionOptions {
   transport?: Transport
 }
 
-export const enum WritePrecission {
+export const enum WritePrecision {
   /** nanosecond */
   ns = 'ns',
   /* microsecond */

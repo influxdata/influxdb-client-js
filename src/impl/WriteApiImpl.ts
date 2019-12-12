@@ -1,6 +1,6 @@
 import WriteApi from '../WriteApi'
 import {
-  WritePrecission,
+  WritePrecision,
   DEFAULT_WriteOptions,
   ClientOptions,
   DEFAULT_ConnectionOptions,
@@ -66,12 +66,12 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     transport: Transport,
     org: string,
     bucket: string,
-    precision: WritePrecission,
+    precision: WritePrecision,
     clientOptions: ClientOptions
   ) {
     const httpPath = `/api/v2/write?org=${encodeURIComponent(
       org
-    )}&bucket=${encodeURIComponent(bucket)}&precission=${precision}`
+    )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
     const writeOptions = {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
@@ -184,6 +184,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
   writePoint(point: Point): void {
     const line = point.toLineProtocol(this)
+    console.log(line)
     if (line) this.buffer.add(line)
   }
   writePoints(points: ArrayLike<Point>): void {

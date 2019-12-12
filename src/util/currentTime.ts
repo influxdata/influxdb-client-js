@@ -1,4 +1,4 @@
-import {WritePrecission} from '../options'
+import {WritePrecision} from '../options'
 
 declare let process: any
 const zeroPadding = '000000000'
@@ -38,10 +38,10 @@ function seconds(): string {
 }
 
 export const currentTimes = Object.freeze({
-  [String(WritePrecission.s)]: seconds,
-  [String(WritePrecission.ms)]: millis,
-  [String(WritePrecission.us)]: micros,
-  [String(WritePrecission.ns)]: nanos,
+  [String(WritePrecision.s)]: seconds,
+  [String(WritePrecision.ms)]: millis,
+  [String(WritePrecision.us)]: micros,
+  [String(WritePrecision.ns)]: nanos,
   seconds,
   millis,
   micros,

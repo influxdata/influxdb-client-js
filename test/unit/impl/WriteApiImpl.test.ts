@@ -3,7 +3,7 @@ import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport,
 import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
 import {
   ClientOptions,
-  WritePrecission,
+  WritePrecision,
   DEFAULT_WriteOptions,
   WriteOptions,
   Point,
@@ -20,9 +20,9 @@ const clientOptions: ClientOptions = {
 const transport = new NodeHttpTransport(clientOptions)
 const ORG = 'org'
 const BUCKET = 'bucket'
-const PRECISSION = WritePrecission.s
+const PRECISION = WritePrecision.s
 
-const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precission=ns`
+const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precision=ns`
 
 describe('WriteApiImpl', () => {
   beforeEach(() => {
@@ -40,7 +40,7 @@ describe('WriteApiImpl', () => {
         transport,
         ORG,
         BUCKET,
-        PRECISSION,
+        PRECISION,
         clientOptions
       )
       // logs = collectLogging.decorate()
@@ -82,7 +82,7 @@ describe('WriteApiImpl', () => {
     let subject: WriteApiImpl
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISSION, {
+      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
         ...clientOptions,
         writeOptions,
       })
@@ -127,7 +127,7 @@ describe('WriteApiImpl', () => {
     let subject: WriteApiImpl
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISSION, {
+      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
         ...clientOptions,
         writeOptions,
       })
@@ -158,7 +158,7 @@ describe('WriteApiImpl', () => {
     let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, WritePrecission.ns, {
+      subject = new WriteApiImpl(transport, ORG, BUCKET, WritePrecision.ns, {
         ...clientOptions,
         writeOptions,
       }).useDefaultTags({xtra: '1'})

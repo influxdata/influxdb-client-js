@@ -1,5 +1,5 @@
 import WriteApi from './WriteApi'
-import {ClientOptions, WritePrecission} from './options'
+import {ClientOptions, WritePrecision} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
 import {parse} from 'url'
 import {IllegalArgumentError} from './errors'
@@ -71,18 +71,18 @@ export default class InfluxDB {
    *
    * @param org Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
    * @param bucket The destination bucket for writes.
-   * @param precission Timestamp precision for line items.
+   * @param precision Timestamp precision for line items.
    */
   getWriteApi(
     org: string,
     bucket: string,
-    precission: WritePrecission = WritePrecission.ms
+    precision: WritePrecision = WritePrecision.ms
   ): WriteApi {
     return new WriteApiImpl(
       this.transport,
       org,
       bucket,
-      precission,
+      precision,
       this._options
     )
   }
