@@ -36,6 +36,7 @@ class CancellableImpl implements Cancellable {
   }
 }
 
+// ToDo consider using fetch API via node-fetch
 /**
  * Transport layer on top of node http or https library.
  */
