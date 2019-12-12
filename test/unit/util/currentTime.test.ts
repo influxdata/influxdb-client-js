@@ -1,4 +1,4 @@
-import {currentTimes, useProcessHrtime} from '../../../src'
+import {currentTime, useProcessHrtime} from '../../../src'
 import {expect} from 'chai'
 
 describe('currentTime', () => {
@@ -19,7 +19,7 @@ describe('currentTime', () => {
           expect(useProcessApi).to.be.equal(useHrtime)
         })
         it('calculates time in seconds', () => {
-          const val = currentTimes['s']()
+          const val = currentTime['s']()
           const ms = Date.now()
           expect(val).to.have.length(
             String(Math.floor(Date.now() / 1000)).length
@@ -27,24 +27,34 @@ describe('currentTime', () => {
           expect(Math.abs(parseInt(val) - ms / 1000)).to.be.lessThan(5)
         })
         it('calculates time in milliseconds', () => {
-          const val = currentTimes['ms']()
+          const val = currentTime['ms']()
           const ms = Date.now()
           expect(val).to.have.length(String(Date.now()).length)
           expect(Math.abs(parseInt(val) - ms)).to.be.lessThan(5000)
         })
         it('calculates time in microseconds', () => {
-          const val = currentTimes['us']()
+          const val = currentTime['us']()
           const ms = Date.now()
           expect(val).to.have.length(String(Date.now()).length + 3)
           expect(Math.abs(parseInt(val) - ms * 1000)).to.be.lessThan(5000000)
         })
         it('calculates time in nanoseconds', () => {
-          const val = currentTimes['ns']()
+          const val = currentTime['ns']()
           const ms = Date.now()
           expect(val).to.have.length(String(Date.now()).length + 6)
           expect(Math.abs(parseInt(val) - ms * 1000000)).to.be.lessThan(
             5000000000
           )
+        })
+        it('returns different nanoseconds even when pushed quickly', () => {
+          const size = 100
+          const data = new Array(size)
+          for (let i = 0; i < size; i++) {
+            data[i] = currentTime.nanos()
+          }
+          for (let i = 1; i < size; i++) {
+            expect(BigInt(data[i - 1]) < BigInt(data[i])).to.be.true
+          }
         })
       }
     )

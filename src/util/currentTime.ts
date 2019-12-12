@@ -9,13 +9,23 @@ export function useProcessHrtime(use: boolean): boolean {
 }
 useProcessHrtime(true) // preffer node
 
+let lastMillis = Date.now()
+let stepsInMillis = 0
 function nanos(): string {
   if (useHrTime) {
     const hrTime = process.hrtime() as [number, number]
     const nanos = String(hrTime[1] % 1000000)
     return String(Date.now()) + zeroPadding.substr(0, 6 - nanos.length) + nanos
   } else {
-    return String(Date.now()) + zeroPadding.substr(0, 6)
+    const millis = Date.now()
+    if (millis !== lastMillis) {
+      lastMillis = millis
+      stepsInMillis = 0
+    } else {
+      stepsInMillis++
+    }
+    const nanos = String(stepsInMillis)
+    return String(Date.now()) + zeroPadding.substr(0, 6 - nanos.length) + nanos
   }
 }
 
@@ -37,7 +47,7 @@ function seconds(): string {
   return String(Math.floor(Date.now() / 1000))
 }
 
-export const currentTimes = Object.freeze({
+export const currentTime = Object.freeze({
   [String(WritePrecision.s)]: seconds,
   [String(WritePrecision.ms)]: millis,
   [String(WritePrecision.us)]: micros,

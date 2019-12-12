@@ -11,7 +11,7 @@ import Logger from './Logger'
 import {getRetryDelay, HttpError} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
-import {currentTimes} from '../util/currentTime'
+import {currentTime} from '../util/currentTime'
 
 class WriteBuffer {
   length = 0
@@ -76,7 +76,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
     }
-    this.currentTime = currentTimes[precision]
+    this.currentTime = currentTime[precision]
     const sendOptions: Partial<SendOptions> = {
       method: 'POST',
       maxRetries: 0, // we control manual retry attempts
