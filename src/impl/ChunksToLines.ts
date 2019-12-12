@@ -47,12 +47,11 @@ export default class ChunksToLines implements CommunicationObserver<any> {
     }
     let quoted = false
     while (index < chunk.length) {
-      const c = chunk.readInt8(index)
+      const c = chunk[index]
       if (c === 10) {
         if (!quoted) {
           /* do not emit CR+LR or LF line ending */
-          const end =
-            index > 0 && chunk.readInt8(index - 1) === 13 ? index - 1 : index
+          const end = index > 0 && chunk[index - 1] === 13 ? index - 1 : index
           this.target.next(chunk.toString('utf8', start, end))
           start = index + 1
         }
