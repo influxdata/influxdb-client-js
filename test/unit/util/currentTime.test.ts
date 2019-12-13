@@ -46,14 +46,28 @@ describe('currentTime', () => {
             5000000000
           )
         })
-        it('returns different nanoseconds even when pushed quickly', () => {
+        it('returns different nanoseconds even when pushed quickly', async () => {
           const size = 100
           const data = new Array(size)
-          for (let i = 0; i < size; i++) {
+          for (let i = 0; i < size / 2; i++) {
             data[i] = currentTime.nanos()
           }
+          await new Promise<void>((resolve, _reject) =>
+            setTimeout(() => resolve(), 1)
+          )
+          for (let i = size / 50; i < size; i++) {
+            data[i] = currentTime.nanos()
+          }
+
           for (let i = 1; i < size; i++) {
-            expect(BigInt(data[i - 1]) < BigInt(data[i])).to.be.true
+            console.log(`useProcessApi=${useProcessApi} ${data[i - 1]}`)
+            if (BigInt(data[i - 1]) >= BigInt(data[i])) {
+              expect.fail(
+                `(${i}) ${data[i - 1]} < ${
+                  data[i]
+                } is not true with useProcessApi=${useProcessApi}`
+              )
+            }
           }
         })
       }

@@ -9,13 +9,27 @@ export function useProcessHrtime(use: boolean): boolean {
 }
 useProcessHrtime(true) // preffer node
 
+let startHrMillis: number | undefined = undefined
+let startHrTime: [number, number] | undefined = undefined
 let lastMillis = Date.now()
 let stepsInMillis = 0
 function nanos(): string {
   if (useHrTime) {
     const hrTime = process.hrtime() as [number, number]
-    const nanos = String(hrTime[1] % 1000000)
-    return String(Date.now()) + zeroPadding.substr(0, 6 - nanos.length) + nanos
+    let millis = Date.now()
+    if (!startHrTime) {
+      startHrTime = hrTime
+      startHrMillis = millis
+    } else {
+      hrTime[0] = hrTime[0] - startHrTime[0]
+      hrTime[1] = hrTime[1] - startHrTime[1]
+      millis =
+        (startHrMillis as number) +
+        hrTime[0] * 1000 +
+        Math.floor(hrTime[1] / 1000_000)
+    }
+    const nanos = String(hrTime[1] % 1000_000)
+    return String(millis) + zeroPadding.substr(0, 6 - nanos.length) + nanos
   } else {
     const millis = Date.now()
     if (millis !== lastMillis) {
@@ -25,7 +39,7 @@ function nanos(): string {
       stepsInMillis++
     }
     const nanos = String(stepsInMillis)
-    return String(Date.now()) + zeroPadding.substr(0, 6 - nanos.length) + nanos
+    return String(millis) + zeroPadding.substr(0, 6 - nanos.length) + nanos
   }
 }
 
