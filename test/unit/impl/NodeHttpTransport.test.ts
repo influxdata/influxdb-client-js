@@ -5,7 +5,8 @@ import {
   DEFAULT_ConnectionOptions,
   ConnectionOptions,
 } from '../../../src/options'
-import {SendOptions, Cancellable} from '../../../src/transport'
+import {SendOptions} from '../../../src/transport'
+import Cancellable from '../../../src/util/Cancellable'
 import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'

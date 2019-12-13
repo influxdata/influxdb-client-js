@@ -1,7 +1,8 @@
-import {CommunicationObserver, Cancellable} from '../transport'
+import {CommunicationObserver} from '../transport'
+import Cancellable from '../util/Cancellable'
 import {Buffer} from 'buffer'
 /**
- * Receives data in chunks and fires just lines
+ * Converts lines to table calls
  */
 export default class ChunksToLines implements CommunicationObserver<any> {
   previous?: Buffer

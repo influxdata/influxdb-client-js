@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import ChunksToLines from '../../../src/impl/ChunksToLines'
 import chunksToLinesTables from '../../fixture/chunksToLinesTables.json'
-import {Cancellable} from '../../../src/transport'
+import Cancellable from '../../../src/util/Cancellable'
 import sinon from 'sinon'
 import {CollectLinesObserver} from '../util/CollectLinesObserver'
 
@@ -40,10 +40,10 @@ describe('ChunksToLines', () => {
         }
       }
       subject.complete()
-      expect(test.lines).to.deep.equal(target.lines)
-      expect(target.cancellableSet).to.equal(!!test.withCancellable)
-      expect(target.failed).to.equal(failed ? 1 : 0)
-      expect(target.completed).to.equal(failed ? 0 : 1)
+      expect(test.lines).deep.equal(target.lines)
+      expect(target.cancellableSet).equal(!!test.withCancellable)
+      expect(target.failed).equal(failed ? 1 : 0)
+      expect(target.completed).equal(failed ? 0 : 1)
     })
   })
   it('fails on unsupported data', () => {

@@ -1,6 +1,8 @@
 import QueryApi, {QueryOptions} from '../QueryApi'
 import {Transport, CommunicationObserver} from '../transport'
 import ChunksToLines from './ChunksToLines'
+import FluxResultObserver from '../query/FluxResultObserver'
+import {toLineObserver} from './linesToTables'
 
 const DEFAULT_dialect: any = {
   header: true,
@@ -21,7 +23,7 @@ export class QueryApiImpl implements QueryApi {
     return this
   }
 
-  queryRaw(query: string, consumer: CommunicationObserver<string>): void {
+  queryLines(query: string, consumer: CommunicationObserver<string>): void {
     this.transport.send(
       `/api/v2/query?org=${encodeURIComponent(this.options.org)}`,
       JSON.stringify({
@@ -37,6 +39,10 @@ export class QueryApiImpl implements QueryApi {
       },
       new ChunksToLines(consumer)
     )
+  }
+
+  queryTables(query: string, consumer: FluxResultObserver<string[]>): void {
+    this.queryLines(query, toLineObserver(consumer))
   }
 }
 

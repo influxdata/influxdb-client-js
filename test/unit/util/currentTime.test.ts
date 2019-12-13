@@ -60,7 +60,7 @@ describe('currentTime', () => {
           }
 
           for (let i = 1; i < size; i++) {
-            console.log(`useProcessApi=${useProcessApi} ${data[i - 1]}`)
+            // console.log(`useProcessApi=${useProcessApi} ${data[i - 1]}`)
             if (BigInt(data[i - 1]) >= BigInt(data[i])) {
               expect.fail(
                 `(${i}) ${data[i - 1]} < ${

@@ -67,7 +67,8 @@ export default class InfluxDB {
   /* eslint-enable no-dupe-class-members */
 
   /**
-   * Creates [[WriteApi]] for the supplied organization and bucket.
+   * Creates [[WriteApi]] for the supplied organization and bucket. BEWARE that returned instances must be closed
+   * in order to flush the remaining data and close already scheduled executions.
    *
    * @param org Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
    * @param bucket The destination bucket for writes.

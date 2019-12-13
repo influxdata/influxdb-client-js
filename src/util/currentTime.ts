@@ -23,6 +23,11 @@ function nanos(): string {
     } else {
       hrTime[0] = hrTime[0] - startHrTime[0]
       hrTime[1] = hrTime[1] - startHrTime[1]
+      // istanbul ignore next "cannot mock system clock, manually reviewed"
+      if (hrTime[1] < 0) {
+        hrTime[0] -= 1
+        hrTime[1] += 1000_000_000
+      }
       millis =
         (startHrMillis as number) +
         hrTime[0] * 1000 +

@@ -1,18 +1,4 @@
-/** Informs about changes in the communication  */
-/**
- * Cancellation of asynchronous query.
- */
-export interface Cancellable {
-  /**
-   * Attempt to cancel execution of this query.
-   */
-  cancel(): void
-
-  /**
-   * Is communication canceled.
-   */
-  isCancelled(): boolean
-}
+import Cancellable from './util/Cancellable'
 
 /**
  * Observes communication with the server.

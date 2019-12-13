@@ -1,4 +1,5 @@
 import {CommunicationObserver} from './transport'
+import FluxResultObserver from './query/FluxResultObserver'
 
 export interface QueryOptions {
   /**
@@ -35,8 +36,19 @@ export default interface QueryApi {
   with(options: Partial<QueryOptions>): QueryApi
 
   /**
-   * Executes the query and asynchronously stream all result lines to consumer.
+   * Executes the query and receives result lines (including empty and annotation lines)
+   * through the supplied consumer. See <a href="https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/">annotated-csv</a>.
+   *
    * @param record single line in the query result
+   * @param consumer data/error consumer
    */
-  queryRaw(query: string, consumer: CommunicationObserver<string>): void
+  queryLines(query: string, consumer: CommunicationObserver<string>): void
+
+  /**
+   * Executes the query and receives table metadata and rows through the supplied consumer.
+   *
+   * @param record single line in the query result
+   * @param consumer data/error consumer
+   */
+  queryTables(query: string, consumer: FluxResultObserver<string[]>): void
 }

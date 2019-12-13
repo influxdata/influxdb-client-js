@@ -10,12 +10,8 @@ import {
   getRetryDelay,
   HttpError,
 } from '../errors'
-import {
-  Cancellable,
-  CommunicationObserver,
-  Transport,
-  SendOptions,
-} from '../transport'
+import {CommunicationObserver, Transport, SendOptions} from '../transport'
+import Cancellable from '../util/Cancellable'
 
 class CancellableImpl implements Cancellable {
   private cancelled = false

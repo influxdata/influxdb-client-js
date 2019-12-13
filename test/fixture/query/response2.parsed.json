@@ -1,0 +1,198 @@
+{
+  "tables": [
+    {
+      "index": 0,
+      "meta": {
+        "columns": [
+          {
+            "dataType": "string",
+            "group": false,
+            "defaultValue": "_result",
+            "label": "result"
+          },
+          {
+            "dataType": "long",
+            "group": false,
+            "defaultValue": "",
+            "label": "table"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": true,
+            "defaultValue": "",
+            "label": "_start"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": true,
+            "defaultValue": "",
+            "label": "_stop"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": false,
+            "defaultValue": "",
+            "label": "_time"
+          },
+          {
+            "dataType": "double",
+            "group": false,
+            "defaultValue": "",
+            "label": "_value"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "_field"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "_measurement"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "location"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "meta": {
+        "columns": [
+          {
+            "dataType": "string",
+            "group": false,
+            "defaultValue": "_result",
+            "label": "result"
+          },
+          {
+            "dataType": "long",
+            "group": false,
+            "defaultValue": "",
+            "label": "table"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": true,
+            "defaultValue": "",
+            "label": "_start"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": true,
+            "defaultValue": "",
+            "label": "_stop"
+          },
+          {
+            "dataType": "dateTime:RFC3339",
+            "group": false,
+            "defaultValue": "",
+            "label": "_time"
+          },
+          {
+            "dataType": "string",
+            "group": false,
+            "defaultValue": "",
+            "label": "_value"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "_field"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "_measurement"
+          },
+          {
+            "dataType": "string",
+            "group": true,
+            "defaultValue": "",
+            "label": "location"
+          }
+        ]
+      }
+    }
+  ],
+  "rows": [
+    {
+      "index": 1,
+      "row": [
+        "",
+        "0",
+        "1970-01-01T00:00:00Z",
+        "2019-12-12T09:05:37.96237406Z",
+        "1970-01-01T00:26:15.995033574Z",
+        "55",
+        "value",
+        "temperature",
+        "west"
+      ]
+    },
+    {
+      "index": 2,
+      "row": [
+        "",
+        "0",
+        "1970-01-01T00:00:00Z",
+        "2019-12-12T09:05:37.96237406Z",
+        "1970-01-01T00:26:16.063594313Z",
+        "55",
+        "value",
+        "temperature",
+        "west"
+      ]
+    },
+    {
+      "index": 3,
+      "row": [
+        "",
+        "0",
+        "1970-01-01T00:00:00Z",
+        "2019-12-12T09:05:37.96237406Z",
+        "1970-01-01T00:26:16.069518557Z",
+        "55",
+        "value",
+        "temperature",
+        "west"
+      ]
+    },
+    {
+      "index": 5,
+      "row": [
+        "",
+        "1",
+        "1970-01-01T00:00:00Z",
+        "2019-12-12T09:05:37.96237406Z",
+        "1970-01-01T00:26:16.063594313Z",
+        "a,b,\n,c",
+        "text",
+        "temperature",
+        "west"
+      ]
+    },
+    {
+      "index": 6,
+      "row": [
+        "",
+        "1",
+        "1970-01-01T00:00:00Z",
+        "2019-12-12T09:05:37.96237406Z",
+        "1970-01-01T00:26:16.069518557Z",
+        "a,b,\n,\"c",
+        "text",
+        "temperature",
+        "west"
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport,
 import {InfluxDB, ClientOptions} from '../../src'
 import fs from 'fs'
 import {CollectLinesObserver} from './util/CollectLinesObserver'
+import {CollectTablesObserver} from './util/CollectTablesObserver'
 import simpleResponseLines from '../fixture/query/simpleResponseLines.json'
 
 const ORG = `my-org`
@@ -23,7 +24,7 @@ describe('QueryApi', () => {
     nock.cleanAll()
     nock.enableNetConnect()
   })
-  it('runs raw query', async () => {
+  it('receives raw lines', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     nock(clientOptions.url)
       .post(QUERY_PATH)
@@ -37,12 +38,37 @@ describe('QueryApi', () => {
       .persist()
     const target = new CollectLinesObserver()
     await new Promise((resolve, reject) =>
-      subject.queryRaw(
+      subject.queryLines(
         'from(bucket:"my-bucket") |> range(start: 0)',
         target.attach(resolve, reject)
       )
     )
     expect(target.completed).to.equals(1)
     expect(target.lines).to.deep.equal(simpleResponseLines)
+  })
+  ;['response2', 'response3'].forEach((name: string) => {
+    it(`receives tables from ${name}`, async () => {
+      const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+      nock(clientOptions.url)
+        .post(QUERY_PATH)
+        .reply((_uri, _requestBody) => {
+          return [200, fs.createReadStream(`test/fixture/query/${name}.txt`)]
+        })
+        .persist()
+      const target = new CollectTablesObserver()
+      await new Promise((resolve, reject) =>
+        subject.queryTables(
+          'from(bucket:"my-bucket") |> range(start: 0)',
+          target.attach(resolve, reject)
+        )
+      )
+      const response = JSON.parse(
+        fs.readFileSync(`test/fixture/query/${name}.parsed.json`, 'utf8')
+      )
+      expect(target.completed).to.equals(1)
+      // console.log(JSON.stringify({tables: target.tables, rows: target.rows}))
+      expect(target.tables).to.deep.equal(response.tables)
+      expect(target.rows).to.deep.equal(response.rows)
+    })
   })
 })
