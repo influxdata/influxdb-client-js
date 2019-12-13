@@ -59,7 +59,7 @@ export function toLineObserver(
             }
           }
         } else {
-          consumer.nextRow(lastMeta, values.slice(firstColumnIndex, size))
+          consumer.next(values.slice(firstColumnIndex, size), lastMeta)
         }
       }
     },

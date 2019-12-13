@@ -8,7 +8,7 @@ export default interface FluxResultObserver<T> {
   /**
    * Inform about a next record in a table.
    */
-  nextRow(tableMeta: FluxTableMetaData, row: T): void
+  next(row: T, tableMeta: FluxTableMetaData): void
   /**
    * Signalizes processing error.
    */
