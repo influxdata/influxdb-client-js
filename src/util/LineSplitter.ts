@@ -14,7 +14,7 @@ export default class LineSplitter {
   /**
    * Reuse returned array between consecutive calls.
    */
-  get reuse() {
+  get reuse(): boolean {
     return this._reuse
   }
   set reuse(val: boolean) {
@@ -28,7 +28,7 @@ export default class LineSplitter {
    * Sets the reuse flag and returns this.
    * @param line
    */
-  withReuse() {
+  withReuse(): LineSplitter {
     this.reuse = true
     return this
   }
@@ -82,7 +82,7 @@ export default class LineSplitter {
     start: number,
     end: number,
     quoteCount: number
-  ) {
+  ): string {
     if (start === line.length) {
       return ''
     } else if (quoteCount === 0) {
@@ -91,7 +91,7 @@ export default class LineSplitter {
       return line.substring(start + 1, end - 1)
     } else {
       // quoteCount >= 4
-      return line.substring(start + 1, end - 1).replace(/\"\"/gi, '"')
+      return line.substring(start + 1, end - 1).replace(/""/gi, '"')
     }
   }
 }

@@ -13,10 +13,10 @@ export function toLineObserver(
   let expectMeta = true
   let firstColumnIndex = 0
   return {
-    error(error: Error) {
+    error(error: Error): void {
       consumer.error(error)
     },
-    next(line: string) {
+    next(line: string): void {
       if (line === '') {
         expectMeta = true
         columns = undefined
@@ -62,10 +62,10 @@ export function toLineObserver(
         }
       }
     },
-    complete() {
+    complete(): void {
       consumer.complete()
     },
-    useCancellable(cancellable: Cancellable) {
+    useCancellable(cancellable: Cancellable): void {
       if (consumer.useCancellable) consumer.useCancellable(cancellable)
     },
   }
