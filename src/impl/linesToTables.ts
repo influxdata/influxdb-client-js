@@ -2,7 +2,7 @@ import {CommunicationObserver} from '../transport'
 import Cancellable from '../util/Cancellable'
 import FluxResultObserver from '../query/FluxResultObserver'
 import LineSplitter from '../util/LineSplitter'
-import {FluxTableColumn, ColumnType} from '../query/FluxTableColumn'
+import FluxTableColumn, {ColumnType} from '../query/FluxTableColumn'
 import FluxTableMetaData from '../query/FluxTableMetaData'
 
 export function toLineObserver(
@@ -12,6 +12,7 @@ export function toLineObserver(
   let columns: FluxTableColumn[] | undefined
   let expectMeta = true
   let firstColumnIndex = 0
+  let lastMeta: FluxTableMetaData
   return {
     error(error: Error): void {
       consumer.error(error)
@@ -42,7 +43,7 @@ export function toLineObserver(
             for (let i = firstColumnIndex; i < size; i++) {
               columns[i - firstColumnIndex].label = values[i]
             }
-            consumer.tableMetaData(new FluxTableMetaData(columns))
+            lastMeta = new FluxTableMetaData(columns)
             expectMeta = false
           } else if (values[0] === '#datatype') {
             for (let i = 1; i < size; i++) {
@@ -58,7 +59,7 @@ export function toLineObserver(
             }
           }
         } else {
-          consumer.nextRow(values.slice(firstColumnIndex, size))
+          consumer.nextRow(lastMeta, values.slice(firstColumnIndex, size))
         }
       }
     },

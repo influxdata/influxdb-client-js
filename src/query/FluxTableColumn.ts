@@ -14,7 +14,7 @@ export type ColumnType =
 /**
  * Represents column metadata of a flux <a href="http://bit.ly/flux-spec#table">table</a>.
  */
-export class FluxTableColumn {
+export default class FluxTableColumn {
   /**
    * Label (e.g., "_start", "_stop", "_time").
    */
@@ -34,4 +34,17 @@ export class FluxTableColumn {
    * Default value to be used for rows whose string value is the empty string.
    */
   defaultValue: string
+
+  /**
+   * Creates a flux table column from an object supplied.
+   * @param object
+   */
+  static from(object: any): FluxTableColumn {
+    const retVal = new FluxTableColumn()
+    retVal.label = object.label
+    retVal.dataType = object.dataType as ColumnType
+    retVal.group = Boolean(object.group)
+    retVal.defaultValue = object.defaultValue
+    return retVal
+  }
 }

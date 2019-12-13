@@ -6,13 +6,9 @@ import FluxTableMetaData from './FluxTableMetaData'
  */
 export default interface FluxResultObserver<T> {
   /**
-   * Informs about table metadata of next rows.
-   */
-  tableMetaData(tableMeta: FluxTableMetaData): void
-  /**
    * Inform about a next record in a table.
    */
-  nextRow(row: T): void
+  nextRow(tableMeta: FluxTableMetaData, row: T): void
   /**
    * Signalizes processing error.
    */

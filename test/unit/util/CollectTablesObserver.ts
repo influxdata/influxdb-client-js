@@ -8,15 +8,16 @@ export class CollectTablesObserver implements FluxResultObserver<string[]> {
   failed = 0
   cancellableSet = false
   index = 0
+  lastMeta: FluxTableMetaData
 
   resolve?: (value?: void) => void
   reject?: (reason?: any) => void
 
-  tableMetaData(meta: FluxTableMetaData): void {
-    this.tables.push({index: this.index++, meta})
-  }
-
-  nextRow(row: string[]): void {
+  nextRow(meta: FluxTableMetaData, row: string[]): void {
+    if (this.lastMeta !== meta) {
+      this.tables.push({index: this.index++, meta})
+      this.lastMeta = meta
+    }
     this.rows.push({index: this.index++, row})
   }
 
