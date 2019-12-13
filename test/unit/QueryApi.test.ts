@@ -57,7 +57,7 @@ describe('QueryApi', () => {
         .persist()
       const target = new CollectTablesObserver()
       await new Promise((resolve, reject) =>
-        subject.queryTables(
+        subject.queryRows(
           'from(bucket:"my-bucket") |> range(start: 0)',
           target.attach(resolve, reject)
         )

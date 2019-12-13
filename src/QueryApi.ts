@@ -50,5 +50,5 @@ export default interface QueryApi {
    * @param record single line in the query result
    * @param consumer data/error consumer
    */
-  queryTables(query: string, consumer: FluxResultObserver<string[]>): void
+  queryRows(query: string, consumer: FluxResultObserver<string[]>): void
 }

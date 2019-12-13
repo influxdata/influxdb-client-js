@@ -41,7 +41,7 @@ export class QueryApiImpl implements QueryApi {
     )
   }
 
-  queryTables(query: string, consumer: FluxResultObserver<string[]>): void {
+  queryRows(query: string, consumer: FluxResultObserver<string[]>): void {
     this.queryLines(query, toLineObserver(consumer))
   }
 }
