@@ -4,7 +4,7 @@ import {IllegalArgumentError} from '../errors'
 /**
  * Represents metadata of a flux <a href="http://bit.ly/flux-spec#table">table</a>.
  */
-export class FluxTableMetaData {
+export default class FluxTableMetaData {
   /**
    * Table columns.
    */
@@ -40,5 +40,3 @@ export class FluxTableMetaData {
     return acc
   }
 }
-
-export default FluxTableMetaData

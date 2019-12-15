@@ -169,7 +169,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   private _scheduleRetry(fn: () => any, delay: number): void {
     /* istanbul ignore else manually reviewed, hard to reproduce */
     if (!this.closed) {
-      // TODO monitor and limit retries, cancel them on close
+      // TODO queue, monitor and limit retries, cancel them on close
       setTimeout(fn, delay)
     }
   }

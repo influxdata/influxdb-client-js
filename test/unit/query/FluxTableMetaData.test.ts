@@ -1,5 +1,5 @@
 import FluxTableColumn from '../../../src/query/FluxTableColumn'
-import {FluxTableMetaData} from '../../../src/query/FluxTableMetaData'
+import FluxTableMetaData from '../../../src/query/FluxTableMetaData'
 import {expect} from 'chai'
 
 describe('FluxTableMetaData', () => {
