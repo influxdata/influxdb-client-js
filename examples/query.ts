@@ -5,7 +5,7 @@
 
 import {InfluxDB} from '../src'
 import {url, token, org} from './env'
-import FluxTableMetaData from '../src/query/FluxTableMetaData'
+import {FluxTableMetaData} from '../src/query'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
