@@ -92,18 +92,26 @@ export function canRetryHttpCall(error: any): boolean {
 /**
  * Gets retry delay from the supplied error, possibly using random number up to retryJitter.
  */
-export function getRetryDelay(error: Error, retryJitter: number): number {
+export function getRetryDelay(error: Error, retryJitter?: number): number {
   if (!error) {
     return 0
-  } else if (typeof (error as any).retryAfter === 'function') {
-    const delay = ((error as any).retryAfter as () => number)()
-    if (delay < 0) {
-      return 1 + Math.round(Math.random() * retryJitter)
-    } else {
-      return delay
-    }
   } else {
-    return 1 + Math.round(Math.random() * retryJitter)
+    let retVal
+    if (typeof (error as any).retryAfter === 'function') {
+      const delay = ((error as any).retryAfter as () => number)()
+      if (delay < 0) {
+        retVal = 1
+      } else {
+        return delay
+      }
+    } else {
+      retVal = 1
+    }
+    if (retryJitter && retryJitter > 0) {
+      return retVal + Math.round(Math.random() * retryJitter)
+    } else {
+      return retVal
+    }
   }
 }
 

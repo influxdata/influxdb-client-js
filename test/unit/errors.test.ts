@@ -94,9 +94,21 @@ describe('errors', () => {
       it(`retries ${entry.error} in ${
         entry.retryAfter === -1 ? '>=1' : entry.retryAfter
       } ms`, () => {
-        const val = getRetryDelay(entry.error, 1000)
+        let val = getRetryDelay(entry.error, 1000)
         if (entry.retryAfter === -1) {
-          expect(val).to.be.greaterThan(1)
+          expect(val).to.not.be.lessThan(1)
+        } else {
+          expect(val).to.be.equal(entry.retryAfter)
+        }
+        val = getRetryDelay(entry.error, 0)
+        if (entry.retryAfter === -1) {
+          expect(val).to.not.be.lessThan(1)
+        } else {
+          expect(val).to.be.equal(entry.retryAfter)
+        }
+        val = getRetryDelay(entry.error)
+        if (entry.retryAfter === -1) {
+          expect(val).to.not.be.lessThan(1)
         } else {
           expect(val).to.be.equal(entry.retryAfter)
         }
