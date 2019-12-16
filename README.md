@@ -15,15 +15,17 @@ This library is a work in progress and should not be considered production ready
 ## ToDos
 
 - this documentation
+- add limited buffer for write retries / RX.js
 - all APIs (generated)
-- use node-fetch API
-- write buffer / RX.js
-- monorepo
+- implement transport for both node and browser, fetch API?
+- monorepo with yarn, separate examples/experiments
 - browser client howto
 
 ## Usage
 
-ToDo
+- [Examples](./tree/master/examples)
+  - [Write to InfluxDB](./blob/master/examples/write.ts)
+  - [Query InfluxDB](./blob/master/examples/examples/query.ts)
 
 ## Build Requirements
 
