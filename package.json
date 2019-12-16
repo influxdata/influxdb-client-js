@@ -1,6 +1,6 @@
 {
   "name": "influxdb2-client",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "InfluxDB 2.0 client",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -57,6 +57,7 @@
     "sinon": "^7.5.0",
     "ts-node": "^8.5.4",
     "typedoc": "^0.15.3",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "version-bump-prompt": "^5.0.6"
   }
 }
