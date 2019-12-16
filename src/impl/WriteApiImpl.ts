@@ -201,7 +201,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     return this.buffer.flush()
   }
   close(): Promise<void> {
-    const retVal = this.flush()
+    const retVal = this.sendBatch(this.buffer.reset(), 0)
     this.closed = true
     return retVal
   }
