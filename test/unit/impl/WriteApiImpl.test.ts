@@ -4,7 +4,6 @@ import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
 import {
   ClientOptions,
   WritePrecision,
-  DEFAULT_WriteOptions,
   WriteOptions,
   Point,
   WriteApi,
@@ -95,14 +94,14 @@ describe('WriteApiImpl', () => {
       collectLogging.after()
     })
     it('flushes the data in specified batchSize', async () => {
-      useSubject({flushInterval: 0, batchSize: 1})
+      useSubject({flushInterval: 0, batchSize: 1, maxRetries: 2})
       subject.writeRecord('test value=1')
       subject.writeRecords(['test value=2', 'test value=3'])
       // wait for http calls to finish
       await new Promise(resolve => setTimeout(resolve, 10))
       await subject.close().then(() => {
         expect(logs.error).to.length(3)
-        expect(logs.warn).to.length(3 * DEFAULT_WriteOptions.maxRetries)
+        expect(logs.warn).to.length(3 * 2)
       })
     })
     it('does not retry write when configured to do so', async () => {
