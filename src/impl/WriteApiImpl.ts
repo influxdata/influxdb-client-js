@@ -16,21 +16,21 @@ import {currentTime} from '../util/currentTime'
 
 class WriteBuffer {
   length = 0
-  message: string[]
+  lines: string[]
 
   constructor(
     private maxChunkRecords: number,
     private flushFn: (lines: string[]) => Promise<void>,
     private scheduleSend: () => void
   ) {
-    this.message = new Array<string>(maxChunkRecords)
+    this.lines = new Array<string>(maxChunkRecords)
   }
 
   add(record: string): void {
     if (this.length === 0) {
       this.scheduleSend()
     }
-    this.message[this.length] = record
+    this.lines[this.length] = record
     this.length++
     if (this.length >= this.maxChunkRecords) {
       this.flush().catch(_e => {
@@ -47,7 +47,7 @@ class WriteBuffer {
     }
   }
   reset(): string[] {
-    const retVal = this.message.slice(0, this.length)
+    const retVal = this.lines.slice(0, this.length)
     this.length = 0
     return retVal
   }
@@ -110,12 +110,13 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
     this.buffer = new WriteBuffer(
       this.writeOptions.batchSize,
-      message => {
+      lines => {
         this._clearFlushTimeout()
-        return this.sendBatch(message, this.writeOptions.maxRetries)
+        return this.sendBatch(lines, this.writeOptions.maxRetries)
       },
       scheduleNextSend
     )
+    this.sendBatch = this.sendBatch.bind(this)
   }
 
   sendBatch(lines: string[], retryCountdown: number): Promise<void> {

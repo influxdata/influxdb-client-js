@@ -27,15 +27,19 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
 export interface WriteOptions {
   /** max number of records to send in a batch   */
   batchSize: number
-  /** delay between data flushes in milliseconds, at most batch size records are sent during flush  */
+  /** delay between data flushes in milliseconds, at most `batch size` records are sent during flush  */
   flushInterval: number
   /** max number of retries when write fails */
   maxRetries: number
+  /** the maximum size of retry-buffer (in lines) */
+  retryBufferLines: number
 }
 export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
   maxRetries: 2,
+  // size of the retry-buffer (in lines)
+  retryBufferLines: 32_000,
 })
 
 export interface ClientOptions extends ConnectionOptions {
