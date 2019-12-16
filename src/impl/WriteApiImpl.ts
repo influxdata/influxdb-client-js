@@ -5,6 +5,7 @@ import {
   ClientOptions,
   DEFAULT_ConnectionOptions,
   PointSettings,
+  WriteOptions,
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
@@ -58,105 +59,109 @@ class WriteBuffer {
 export default class WriteApiImpl implements WriteApi, PointSettings {
   private buffer: WriteBuffer
   private closed = false
-
+  private httpPath: string
+  private writeOptions: WriteOptions
+  private sendOptions: Partial<SendOptions> = {
+    method: 'POST',
+    maxRetries: 0, // we control manual retry attempts
+    headers: {
+      'content-type': 'text/plain; charset=utf-8',
+    },
+  }
+  private retryJitter: number
   private _timeoutHandle: any = undefined
   private currentTime: () => string
 
   constructor(
-    transport: Transport,
+    private transport: Transport,
     org: string,
     bucket: string,
     precision: WritePrecision,
     clientOptions: ClientOptions
   ) {
-    const httpPath = `/api/v2/write?org=${encodeURIComponent(
+    this.httpPath = `/api/v2/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
-    const writeOptions = {
+    this.writeOptions = {
       ...DEFAULT_WriteOptions,
       ...clientOptions.writeOptions,
     }
     this.currentTime = currentTime[precision]
-    const sendOptions: Partial<SendOptions> = {
-      method: 'POST',
-      maxRetries: 0, // we control manual retry attempts
-      headers: {
-        'content-type': 'text/plain; charset=utf-8',
-      },
-    }
-    const retryJitter =
+
+    this.retryJitter =
       clientOptions.retryJitter !== undefined
         ? clientOptions.retryJitter
         : (DEFAULT_ConnectionOptions.retryJitter as number)
 
-    /** sendBatch uses scheduleNextSend and vice versa */
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self = this
-    const sendBatch = (
-      message: string | undefined,
-      retryCountdown: number
-    ): Promise<void> => {
-      if (!this.closed && message) {
-        return new Promise<void>((resolve, reject) => {
-          // TODO monitor and limit pending writes
-          transport.send(httpPath, message, sendOptions, {
-            error(error: Error): void {
-              if (
-                !self.closed &&
-                retryCountdown > 0 &&
-                (!(error instanceof HttpError) ||
-                  (error as HttpError).statusCode >= 429)
-              ) {
-                Logger.warn(
-                  `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
-                  error
-                )
-                self._scheduleRetry(
-                  () =>
-                    sendBatch(message, retryCountdown - 1)
-                      .then(resolve)
-                      .catch(reject),
-                  getRetryDelay(error, retryJitter)
-                )
-              } else {
-                Logger.error(`Write to influx DB failed.`, error)
-                reject(error)
-              }
-            },
-            complete(): void {
-              resolve()
-            },
-          })
-        })
-      } else {
-        return Promise.resolve()
-      }
-    }
     const scheduleNextSend = (): void => {
-      if (writeOptions.flushInterval > 0) {
+      if (this.writeOptions.flushInterval > 0) {
         this._clearFlushTimeout()
         /* istanbul ignore else manually reviewed, hard to reproduce */
         if (!this.closed) {
           this._timeoutHandle = setTimeout(
             () =>
-              sendBatch(this.buffer.reset(), writeOptions.maxRetries).catch(
-                _e => {
-                  // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
-                }
-              ),
-            writeOptions.flushInterval
+              this.sendBatch(
+                this.buffer.reset(),
+                this.writeOptions.maxRetries
+              ).catch(_e => {
+                // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
+              }),
+            this.writeOptions.flushInterval
           )
         }
       }
     }
     this.buffer = new WriteBuffer(
-      writeOptions.batchSize,
+      this.writeOptions.batchSize,
       message => {
         this._clearFlushTimeout()
-        return sendBatch(message, writeOptions.maxRetries)
+        return this.sendBatch(message, this.writeOptions.maxRetries)
       },
       scheduleNextSend
     )
+  }
+
+  sendBatch(
+    message: string | undefined,
+    retryCountdown: number
+  ): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self: WriteApiImpl = this
+    if (!this.closed && message) {
+      return new Promise<void>((resolve, reject) => {
+        this.transport.send(this.httpPath, message, this.sendOptions, {
+          error(error: Error): void {
+            if (
+              !self.closed &&
+              retryCountdown > 0 &&
+              (!(error instanceof HttpError) ||
+                (error as HttpError).statusCode >= 429)
+            ) {
+              Logger.warn(
+                `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
+                error
+              )
+              self._scheduleRetry(
+                () =>
+                  self
+                    .sendBatch(message, retryCountdown - 1)
+                    .then(resolve)
+                    .catch(reject),
+                getRetryDelay(error, self.retryJitter)
+              )
+            } else {
+              Logger.error(`Write to influx DB failed.`, error)
+              reject(error)
+            }
+          },
+          complete(): void {
+            resolve()
+          },
+        })
+      })
+    } else {
+      return Promise.resolve()
+    }
   }
 
   private _clearFlushTimeout(): void {
