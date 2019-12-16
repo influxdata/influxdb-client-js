@@ -24,9 +24,9 @@ This library is a work in progress and should not be considered production ready
 
 ## Usage
 
-- [Examples](./tree/master/examples)
-  - [Write to InfluxDB](./blob/master/examples/write.ts)
-  - [Query InfluxDB](./blob/master/examples/examples/query.ts)
+- [Examples](./examples)
+  - [Write to InfluxDB](./examples/write.ts)
+  - [Query InfluxDB](./examples/query.ts)
 
 ## Build Requirements
 
