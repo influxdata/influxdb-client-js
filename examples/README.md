@@ -10,4 +10,4 @@
   - [write.ts](./write.ts)
     Writes data points to InfluxDB.
   - [query.ts](./query.ts)
-    Query InfluxDB (with flux).
+    Query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
