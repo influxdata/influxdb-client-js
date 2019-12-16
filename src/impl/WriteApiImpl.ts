@@ -18,7 +18,7 @@ class WriteBuffer {
   message?: string = undefined
 
   constructor(
-    private maxRecords: number,
+    private maxChunkRecords: number,
     private flushFn: (message: string) => Promise<void>,
     private scheduleSend: () => void
   ) {}
@@ -31,7 +31,7 @@ class WriteBuffer {
       this.message = this.message + '\n' + record
     }
     this.length++
-    if (this.length >= this.maxRecords) {
+    if (this.length >= this.maxChunkRecords) {
       this.flush().catch(_e => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
       })
