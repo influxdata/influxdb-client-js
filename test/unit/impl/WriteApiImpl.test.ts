@@ -72,8 +72,7 @@ describe('WriteApiImpl', () => {
         .flush()
         .then(() => expect.fail('failure expected'))
         .catch(e => {
-          expect(logs.error).to.length(1)
-          expect(logs.warn).to.length(DEFAULT_WriteOptions.maxRetries)
+          expect([...logs.error, ...logs.warn]).to.length(1)
           expect(e).to.be.ok
         })
     })

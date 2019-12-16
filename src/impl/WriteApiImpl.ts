@@ -16,21 +16,21 @@ import {currentTime} from '../util/currentTime'
 
 class WriteBuffer {
   length = 0
-  message?: string = undefined
+  message: string[]
 
   constructor(
     private maxChunkRecords: number,
-    private flushFn: (message: string) => Promise<void>,
+    private flushFn: (lines: string[]) => Promise<void>,
     private scheduleSend: () => void
-  ) {}
+  ) {
+    this.message = new Array<string>(maxChunkRecords)
+  }
 
   add(record: string): void {
     if (this.length === 0) {
-      this.message = record
       this.scheduleSend()
-    } else {
-      this.message = this.message + '\n' + record
     }
+    this.message[this.length] = record
     this.length++
     if (this.length >= this.maxChunkRecords) {
       this.flush().catch(_e => {
@@ -39,20 +39,17 @@ class WriteBuffer {
     }
   }
   flush(): Promise<void> {
-    const message = this.reset()
-    if (message) {
-      return this.flushFn(message)
+    const lines = this.reset()
+    if (lines.length > 0) {
+      return this.flushFn(lines)
     } else {
       return Promise.resolve()
     }
   }
-  reset(): string | undefined {
-    const message = this.message
-    if (message) {
-      this.message = undefined
-      this.length = 0
-    }
-    return message
+  reset(): string[] {
+    const retVal = this.message.slice(0, this.length)
+    this.length = 0
+    return retVal
   }
 }
 
@@ -121,15 +118,12 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     )
   }
 
-  sendBatch(
-    message: string | undefined,
-    retryCountdown: number
-  ): Promise<void> {
+  sendBatch(lines: string[], retryCountdown: number): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self: WriteApiImpl = this
-    if (!this.closed && message) {
+    if (!this.closed && lines.length > 0) {
       return new Promise<void>((resolve, reject) => {
-        this.transport.send(this.httpPath, message, this.sendOptions, {
+        this.transport.send(this.httpPath, lines.join('\n'), this.sendOptions, {
           error(error: Error): void {
             if (
               !self.closed &&
@@ -141,14 +135,12 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
                 error
               )
-              self._scheduleRetry(
-                () =>
-                  self
-                    .sendBatch(message, retryCountdown - 1)
-                    .then(resolve)
-                    .catch(reject),
+              self._retry(
+                lines,
+                retryCountdown - 1,
                 getRetryDelay(error, self.retryJitter)
               )
+              reject(error)
             } else {
               Logger.error(`Write to influx DB failed.`, error)
               reject(error)
@@ -171,11 +163,19 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
   }
 
-  private _scheduleRetry(fn: () => any, delay: number): void {
+  private _retry(
+    lines: string[],
+    remainingRetries: number,
+    retryDelay: number
+  ): void {
     /* istanbul ignore else manually reviewed, hard to reproduce */
     if (!this.closed) {
       // TODO queue, monitor and limit retries, cancel them on close
-      setTimeout(fn, delay)
+      setTimeout(() => {
+        this.sendBatch(lines, remainingRetries).catch(() => {
+          // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
+        })
+      }, retryDelay)
     }
   }
 
