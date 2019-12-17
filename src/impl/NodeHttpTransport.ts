@@ -7,11 +7,11 @@ import {
   RequestTimedOutError,
   ResponseAbortedError,
   canRetryHttpCall,
-  getRetryDelay,
   HttpError,
 } from '../errors'
 import {CommunicationObserver, Transport, SendOptions} from '../transport'
 import Cancellable from '../util/Cancellable'
+import {RetryStrategy, RetryStrategyImpl} from './retryStrategy'
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
@@ -37,12 +37,11 @@ class CancellableImpl implements Cancellable {
  */
 export class NodeHttpTransport implements Transport {
   private defaultOptions: {[key: string]: any}
-  private retryJitter: number
   private requestApi: (
     options: http.RequestOptions,
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
-
+  retryStrategy: RetryStrategy
   /**
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions client options
@@ -57,8 +56,9 @@ export class NodeHttpTransport implements Transport {
       protocol: url.protocol,
       hostname: url.hostname,
     }
-    this.retryJitter =
+    const retryJitter =
       this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
+    this.retryStrategy = new RetryStrategyImpl({retryJitter})
     if (url.protocol === 'http:') {
       this.requestApi = http.request
     } else if (url.protocol === 'https:') {
@@ -228,7 +228,7 @@ export class NodeHttpTransport implements Transport {
               requestMessage.retries = retries + 1
               const cancelHandle = setTimeout(
                 () => this.request(requestMessage, cancellable, callbacks),
-                getRetryDelay(error, this.retryJitter)
+                this.retryStrategy.nextDelay(error)
               )
               cancellable.addCancelableAction(() => {
                 /* istanbul ignore next safety check */
@@ -244,6 +244,7 @@ export class NodeHttpTransport implements Transport {
       },
       complete: (): void => {
         if (state === 0) {
+          this.retryStrategy.success()
           state = 2
           /* istanbul ignore else safety check */
           if (callbacks.complete) callbacks.complete()

@@ -1,8 +1,21 @@
 import {expect} from 'chai'
-import {RetryStrategyImpl} from '../../../src/impl/RetryStrategy'
+import {
+  RetryStrategyImpl,
+  DEFAULT_BuiltinStrategyConfig,
+} from '../../../src/impl/retryStrategy'
 import {HttpError} from '../../../src'
 
 describe('RetryStrategyImpl', () => {
+  it('has constructor that uses defaults on no DATA', () => {
+    expect(() => new RetryStrategyImpl()).to.not.throw()
+    expect(() => new RetryStrategyImpl({})).to.not.throw()
+    expect(new RetryStrategyImpl())
+      .property('options')
+      .is.deep.equal(DEFAULT_BuiltinStrategyConfig)
+    expect(new RetryStrategyImpl({}))
+      .property('options')
+      .is.deep.equal(DEFAULT_BuiltinStrategyConfig)
+  })
   it('generates exponential data from min to max for unknown delays', () => {
     const subject = new RetryStrategyImpl({
       minDelay: 100,

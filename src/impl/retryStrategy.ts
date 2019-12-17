@@ -3,7 +3,7 @@ import {getRetryDelay} from '../errors'
 /**
  * Represents a strategy for calculating retry delays.
  */
-export default interface RetryStrategy {
+export interface RetryStrategy {
   nextDelay(error?: Error): number
   success(): void
 }

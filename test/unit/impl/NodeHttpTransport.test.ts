@@ -56,9 +56,6 @@ describe('NodeHttpTransport', () => {
         url: 'http://test:9999',
       })
       expect(transport.requestApi).to.equal(http.request)
-      expect(transport.retryJitter).to.equal(
-        DEFAULT_ConnectionOptions.retryJitter
-      )
     })
     it('creates the transport from https url', () => {
       const transport: any = new NodeHttpTransport({
