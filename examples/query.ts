@@ -3,9 +3,8 @@
 // Shows how to use InfluxDB query API. //
 //////////////////////////////////////////
 
-import {InfluxDB} from '../src'
+import {InfluxDB, FluxTableMetaData} from '../src'
 import {url, token, org} from './env'
-import {FluxTableMetaData} from '../src/query'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
