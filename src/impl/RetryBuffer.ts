@@ -1,8 +1,5 @@
 import Logger from './Logger'
 
-// TODO create retry options
-/* minimum time to schedule retry */
-const MIN_RETRY_DELAY = 100
 /* interval between successful retries */
 const RETRY_INTERVAL = 1
 
@@ -15,7 +12,7 @@ interface RetryItem {
 /**
  * Retries lines up to a limit of max buffer size.
  */
-export class RetryBuffer {
+export default class RetryBuffer {
   first?: RetryItem
   last?: RetryItem
   size = 0
@@ -25,7 +22,6 @@ export class RetryBuffer {
 
   constructor(
     private maxLines: number,
-    private jitterDelay: number,
     private retryLines: (
       lines: string[],
       retryCountdown: number
@@ -37,7 +33,7 @@ export class RetryBuffer {
     if (!lines.length) return
     const retryTime = Date.now() + delay
     if (retryTime > this.nextRetryTime) this.nextRetryTime = retryTime
-    // ensure at most maxLines ar in the buffer
+    // ensure at most maxLines are in the Buffer
     while (this.first && this.size + lines.length > this.maxLines) {
       const newFirst = this.first.next
       this.size -= this.first.lines.length
@@ -53,10 +49,9 @@ export class RetryBuffer {
     } else {
       this.first = toAdd
       this.last = toAdd
-      if (!this._timeoutHandle) {
-        this.scheduleRetry(delay)
-      }
+      this.scheduleRetry(delay)
     }
+    this.size += lines.length
   }
 
   removeLines(): RetryItem | undefined {
@@ -86,7 +81,7 @@ export class RetryBuffer {
       } else {
         this._timeoutHandle = undefined
       }
-    }, Math.max(MIN_RETRY_DELAY, delay + Math.random() * this.jitterDelay))
+    }, delay)
   }
 
   async flush(): Promise<void> {
@@ -107,5 +102,6 @@ export class RetryBuffer {
       clearTimeout(this._timeoutHandle)
       this._timeoutHandle = undefined
     }
+    this.closed = true
   }
 }
