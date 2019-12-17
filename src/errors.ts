@@ -1,8 +1,8 @@
 export interface RetriableDecision {
   canRetry(): boolean
   /**
-   * Get the delay in millisecond to retry the action. Can return negative number
-   * to let the implementation decide the delay.
+   * Get the delay in milliseconds to retry the action.
+   * @return  0 to let the implementation decide, miliseconds delay otherwise
    */
   retryAfter(): number
 }
@@ -48,10 +48,10 @@ export class HttpError extends Error implements RetriableDecision {
       if (/^[0-9]+$/.test(retryAfter)) {
         this._retryAfter = parseInt(retryAfter)
       } else {
-        this._retryAfter = -1
+        this._retryAfter = 0
       }
     } else {
-      this._retryAfter = -1
+      this._retryAfter = 0
     }
   }
 
@@ -92,20 +92,15 @@ export function canRetryHttpCall(error: any): boolean {
 /**
  * Gets retry delay from the supplied error, possibly using random number up to retryJitter.
  */
-export function getRetryDelay(error: Error, retryJitter?: number): number {
+export function getRetryDelay(error?: Error, retryJitter?: number): number {
   if (!error) {
     return 0
   } else {
     let retVal
     if (typeof (error as any).retryAfter === 'function') {
-      const delay = ((error as any).retryAfter as () => number)()
-      if (delay < 0) {
-        retVal = 1
-      } else {
-        return delay
-      }
+      return ((error as any).retryAfter as () => number)()
     } else {
-      retVal = 1
+      retVal = 0
     }
     if (retryJitter && retryJitter > 0) {
       return retVal + Math.round(Math.random() * retryJitter)
@@ -126,7 +121,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
     return true
   }
   retryAfter(): number {
-    return -1
+    return 0
   }
 }
 
@@ -141,6 +136,6 @@ export class ResponseAbortedError extends Error implements RetriableDecision {
     return true
   }
   retryAfter(): number {
-    return -1
+    return 0
   }
 }

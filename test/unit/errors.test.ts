@@ -27,7 +27,7 @@ describe('errors', () => {
       it('retries ' + error, () => {
         expect(canRetryHttpCall(error)).to.be.true
         if (error instanceof HttpError) {
-          expect(error.retryAfter()).to.be.equal(-1)
+          expect(error.retryAfter()).to.be.equal(0)
         }
       })
     })
@@ -52,8 +52,8 @@ describe('errors', () => {
         retryAfter: 10,
       },
       ,
-      {error: new RequestTimedOutError(), retryAfter: -1},
-      {error: new ResponseAbortedError(), retryAfter: -1},
+      {error: new RequestTimedOutError(), retryAfter: 0},
+      {error: new ResponseAbortedError(), retryAfter: 0},
     ]
     testSet.forEach(entry => {
       it(`retries ${entry.error} in ${entry.retryAfter} ms`, () => {
@@ -83,9 +83,9 @@ describe('errors', () => {
         retryAfter: 10,
       },
       ,
-      {error: new RequestTimedOutError(), retryAfter: -1},
-      {error: new ResponseAbortedError(), retryAfter: -1},
-      {error: new Error(), retryAfter: -1},
+      {error: new RequestTimedOutError(), retryAfter: 0},
+      {error: new ResponseAbortedError(), retryAfter: 0},
+      {error: new Error(), retryAfter: 0},
       {error: '', retryAfter: 0},
       {error: null, retryAfter: 0},
       {error: undefined, retryAfter: 0},
@@ -95,23 +95,15 @@ describe('errors', () => {
         entry.retryAfter === -1 ? '>=1' : entry.retryAfter
       } ms`, () => {
         let val = getRetryDelay(entry.error, 1000)
-        if (entry.retryAfter === -1) {
-          expect(val).to.not.be.lessThan(1)
+        if (entry.retryAfter === 0) {
+          expect(val).to.not.be.lessThan(0)
         } else {
           expect(val).to.be.equal(entry.retryAfter)
         }
         val = getRetryDelay(entry.error, 0)
-        if (entry.retryAfter === -1) {
-          expect(val).to.not.be.lessThan(1)
-        } else {
-          expect(val).to.be.equal(entry.retryAfter)
-        }
+        expect(val).to.be.equal(entry.retryAfter)
         val = getRetryDelay(entry.error)
-        if (entry.retryAfter === -1) {
-          expect(val).to.not.be.lessThan(1)
-        } else {
-          expect(val).to.be.equal(entry.retryAfter)
-        }
+        expect(val).to.be.equal(entry.retryAfter)
       })
     })
   })
