@@ -38,7 +38,6 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
   maxRetries: 2,
-  // size of the retry-buffer (in lines)
   retryBufferLines: 32_000,
 })
 
