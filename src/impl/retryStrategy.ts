@@ -5,6 +5,15 @@ import {
 } from '../options'
 
 /**
+ * Return a new instance of  [[RetryStrategyImpl]]
+ */
+export function createRetryStrategy(
+  options?: Partial<RetryDelayStrategyOptions>
+) {
+  return new RetryStrategyImpl(options)
+}
+
+/**
  * Applies a variant of exponential backoff with initial and max delay and a random
  * jitter delay. It also respects `retry delay` when specified together with an error.
  */

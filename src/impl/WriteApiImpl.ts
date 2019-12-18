@@ -11,7 +11,7 @@ import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
 import {currentTime} from '../util/currentTime'
-import {RetryStrategyImpl} from './retryStrategy'
+import {createRetryStrategy} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
 
 class WriteBuffer {
@@ -116,7 +116,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     )
     this.sendBatch = this.sendBatch.bind(this)
     // retry buffer
-    this.retryStrategy = new RetryStrategyImpl(this.writeOptions)
+    this.retryStrategy = createRetryStrategy(this.writeOptions)
     this.retryBuffer = new RetryBuffer(
       this.writeOptions.maxBufferLines,
       this.sendBatch
