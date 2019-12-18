@@ -9,11 +9,11 @@ import {
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
-import {HttpError} from '../errors'
+import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
 import {currentTime} from '../util/currentTime'
-import {RetryStrategy, RetryStrategyImpl} from './retryStrategy'
+import {RetryStrategyImpl} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
 
 class WriteBuffer {
@@ -71,7 +71,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   private currentTime: () => string
 
   retryBuffer: RetryBuffer
-  retryStrategy: RetryStrategy
+  retryStrategy: RetryDelayStrategy
 
   constructor(
     private transport: Transport,
@@ -159,6 +159,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
             }
           },
           complete(): void {
+            self.retryStrategy.success()
             resolve()
           },
         })

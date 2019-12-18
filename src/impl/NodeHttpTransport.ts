@@ -8,10 +8,11 @@ import {
   ResponseAbortedError,
   canRetryHttpCall,
   HttpError,
+  RetryDelayStrategy,
 } from '../errors'
 import {CommunicationObserver, Transport, SendOptions} from '../transport'
 import Cancellable from '../util/Cancellable'
-import {RetryStrategy, RetryStrategyImpl} from './retryStrategy'
+import {RetryStrategyImpl} from './retryStrategy'
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
@@ -41,7 +42,7 @@ export class NodeHttpTransport implements Transport {
     options: http.RequestOptions,
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
-  retryStrategy: RetryStrategy
+  retryStrategy: RetryDelayStrategy
   /**
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions client options

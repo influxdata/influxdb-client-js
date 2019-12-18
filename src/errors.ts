@@ -1,4 +1,24 @@
+/**
+ * Strategy for calculating retry delays.
+ */
+export interface RetryDelayStrategy {
+  /**
+   * Returns delay for a next retry
+   * @param error reason for retrying
+   * @return milliseconds
+   */
+  nextDelay(error?: Error): number
+  /** Implementation should reset its state, this is mandatory to call upon success.  */
+  success(): void
+}
+
+/**
+ * Interface for errors to inform that an associated operation can be retried.
+ */
 export interface RetriableDecision {
+  /**
+   * Informs whether this can be retried.
+   */
   canRetry(): boolean
   /**
    * Get the delay in milliseconds to retry the action.

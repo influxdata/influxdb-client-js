@@ -1,34 +1,26 @@
-import {getRetryDelay} from '../errors'
+import {getRetryDelay, RetryDelayStrategy} from '../errors'
 
-/**
- * Represents a strategy for calculating retry delays.
- */
-export interface RetryStrategy {
-  nextDelay(error?: Error): number
-  success(): void
-}
-
-export interface BuiltinStrategyOptions {
+export interface BuiltinRetryStrategyOptions {
   retryJitter: number
   minDelay: number
   maxDelay: number
 }
 
-export const DEFAULT_BuiltinStrategyConfig: BuiltinStrategyOptions = {
+export const DEFAULT_BuiltinStrategyConfig: BuiltinRetryStrategyOptions = {
   retryJitter: 500,
   minDelay: 1000,
   maxDelay: 15000,
 }
 
 /**
- * Applies a variant of exponential backoff with initial max delay with a random
- * jitter delay and repects alsi retry after settings of supplied errors.
+ * Applies a variant of exponential backoff with initial and max delay and a random
+ * jitter delay. It also respects `retry delay` when specified together with an error.
  */
-export class RetryStrategyImpl implements RetryStrategy {
-  options: BuiltinStrategyOptions
+export class RetryStrategyImpl implements RetryDelayStrategy {
+  options: BuiltinRetryStrategyOptions
   currentDelay: number | undefined
 
-  constructor(options?: Partial<BuiltinStrategyOptions>) {
+  constructor(options?: Partial<BuiltinRetryStrategyOptions>) {
     this.options = {...DEFAULT_BuiltinStrategyConfig, ...options}
     this.success()
   }
