@@ -17,7 +17,7 @@ export interface ConnectionOptions {
 
 export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
   timeout: 10000,
-  maxRetries: 2,
+  maxRetries: 0,
   retryJitter: 1000,
 }
 
