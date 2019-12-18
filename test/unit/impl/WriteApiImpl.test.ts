@@ -100,8 +100,12 @@ describe('WriteApiImpl', () => {
       // wait for http calls to finish
       await new Promise(resolve => setTimeout(resolve, 10))
       await subject.close().then(() => {
-        expect(logs.error).to.length(3)
-        expect(logs.warn).to.length(3 * 2)
+        expect(logs.error).to.length(0)
+        expect(logs.warn).length.is.greaterThan(3) // 3 warning about write fail, one about remaining items
+        expect(logs.warn[3][0]).includes(
+          '3',
+          'Warning message informs about count of missing lines'
+        )
       })
     })
     it('does not retry write when configured to do so', async () => {

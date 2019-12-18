@@ -9,10 +9,12 @@ import {
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
-import {getRetryDelay, HttpError} from '../errors'
+import {HttpError} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
 import {currentTime} from '../util/currentTime'
+import {RetryStrategy, RetryStrategyImpl} from './retryStrategy'
+import RetryBuffer from './RetryBuffer'
 
 class WriteBuffer {
   length = 0
@@ -54,7 +56,7 @@ class WriteBuffer {
 }
 
 export default class WriteApiImpl implements WriteApi, PointSettings {
-  private buffer: WriteBuffer
+  private writeBuffer: WriteBuffer
   private closed = false
   private httpPath: string
   private writeOptions: WriteOptions
@@ -65,9 +67,11 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       'content-type': 'text/plain; charset=utf-8',
     },
   }
-  private retryJitter: number
   private _timeoutHandle: any = undefined
   private currentTime: () => string
+
+  retryBuffer: RetryBuffer
+  retryStrategy: RetryStrategy
 
   constructor(
     private transport: Transport,
@@ -85,7 +89,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
     this.currentTime = currentTime[precision]
 
-    this.retryJitter =
+    const retryJitter =
       clientOptions.retryJitter !== undefined
         ? clientOptions.retryJitter
         : (DEFAULT_ConnectionOptions.retryJitter as number)
@@ -98,7 +102,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
           this._timeoutHandle = setTimeout(
             () =>
               this.sendBatch(
-                this.buffer.reset(),
+                this.writeBuffer.reset(),
                 this.writeOptions.maxRetries
               ).catch(_e => {
                 // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
@@ -108,7 +112,8 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
         }
       }
     }
-    this.buffer = new WriteBuffer(
+    // write buffer
+    this.writeBuffer = new WriteBuffer(
       this.writeOptions.batchSize,
       lines => {
         this._clearFlushTimeout()
@@ -117,6 +122,12 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       scheduleNextSend
     )
     this.sendBatch = this.sendBatch.bind(this)
+    // retry buffer
+    this.retryStrategy = new RetryStrategyImpl({retryJitter})
+    this.retryBuffer = new RetryBuffer(
+      this.writeOptions.retryBufferLines,
+      this.sendBatch
+    )
   }
 
   sendBatch(lines: string[], retryCountdown: number): Promise<void> {
@@ -136,10 +147,10 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
                 error
               )
-              self._retry(
+              self.retryBuffer.addLines(
                 lines,
-                retryCountdown - 1,
-                getRetryDelay(error, self.retryJitter)
+                retryCountdown,
+                self.retryStrategy.nextDelay(error)
               )
               reject(error)
             } else {
@@ -164,45 +175,29 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
   }
 
-  private _retry(
-    lines: string[],
-    remainingRetries: number,
-    retryDelay: number
-  ): void {
-    /* istanbul ignore else manually reviewed, hard to reproduce */
-    if (!this.closed) {
-      // TODO queue, monitor and limit retries, cancel them on close
-      setTimeout(() => {
-        this.sendBatch(lines, remainingRetries).catch(() => {
-          // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
-        })
-      }, retryDelay)
-    }
-  }
-
   writeRecord(record: string): void {
-    this.buffer.add(record)
+    this.writeBuffer.add(record)
   }
   writeRecords(records: ArrayLike<string>): void {
     for (let i = 0; i < records.length; i++) {
-      this.buffer.add(records[i])
+      this.writeBuffer.add(records[i])
     }
   }
   writePoint(point: Point): void {
     const line = point.toLineProtocol(this)
     console.log(line)
-    if (line) this.buffer.add(line)
+    if (line) this.writeBuffer.add(line)
   }
   writePoints(points: ArrayLike<Point>): void {
     for (let i = 0; i < points.length; i++) {
       this.writePoint(points[i])
     }
   }
-  flush(): Promise<void> {
-    return this.buffer.flush()
+  async flush(): Promise<void> {
+    return this.writeBuffer.flush().then(() => this.retryBuffer.flush())
   }
-  close(): Promise<void> {
-    const retVal = this.sendBatch(this.buffer.reset(), 0)
+  async close(): Promise<void> {
+    const retVal = this.writeBuffer.flush().then(() => this.retryBuffer.close())
     this.closed = true
     return retVal
   }
