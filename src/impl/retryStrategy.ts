@@ -48,7 +48,7 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
  * Creates a new instance of retry strategy
  * @param options retry options
  */
-export function createRetryStrategy(
+export function createRetryDelayStrategy(
   options?: Partial<RetryDelayStrategyOptions>
 ): RetryDelayStrategy {
   return new RetryStrategyImpl(options)

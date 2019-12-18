@@ -35,11 +35,20 @@ export default class RetryBuffer {
     if (retryTime > this.nextRetryTime) this.nextRetryTime = retryTime
     // ensure at most maxLines are in the Buffer
     if (this.first && this.size + lines.length > this.maxLines) {
+      const origSize = this.size
+      const newSize = origSize * 0.7 // reduce to 70 %
       do {
         const newFirst = this.first.next as RetryItem
         this.size -= this.first.lines.length
         this.first = newFirst
-      } while (this.first && this.size + lines.length > this.maxLines)
+      } while (this.first && this.size + lines.length > newSize)
+      Logger.error(
+        `RetryBuffer: ${origSize -
+          this
+            .size} oldest lines removed to keep buffer size under the limit of ${
+          this.maxLines
+        } lines`
+      )
     }
     const toAdd = {
       lines,
@@ -93,17 +102,12 @@ export default class RetryBuffer {
     }
   }
 
-  close(): void {
-    if (this.size > 0) {
-      Logger.error(
-        `Closing retry buffer, ${this.size} items were not written to InfluxDB!`,
-        null
-      )
-    }
+  close(): number {
     if (this._timeoutHandle) {
       clearTimeout(this._timeoutHandle)
       this._timeoutHandle = undefined
     }
     this.closed = true
+    return this.size
   }
 }

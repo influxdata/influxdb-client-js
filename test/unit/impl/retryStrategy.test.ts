@@ -1,11 +1,15 @@
 import {expect} from 'chai'
-import {RetryStrategyImpl} from '../../../src/impl/retryStrategy'
+import {
+  RetryStrategyImpl,
+  createRetryDelayStrategy,
+} from '../../../src/impl/retryStrategy'
 import {HttpError, DEFAULT_RetryDelayStrategyOptions} from '../../../src'
 
 describe('RetryStrategyImpl', () => {
-  it('has constructor that uses defaults on no DATA', () => {
+  it('has constructor that uses defaults on no options', () => {
     expect(() => new RetryStrategyImpl()).to.not.throw()
     expect(() => new RetryStrategyImpl({})).to.not.throw()
+    expect(() => createRetryDelayStrategy()).to.not.throw()
     expect(new RetryStrategyImpl())
       .property('options')
       .is.deep.equal(DEFAULT_RetryDelayStrategyOptions)

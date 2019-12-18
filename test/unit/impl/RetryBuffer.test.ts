@@ -1,7 +1,16 @@
 import {expect} from 'chai'
 import RetryBuffer from '../../../src/impl/RetryBuffer'
+import {CollectedLogs, collectLogging} from '../../util'
 
 describe('RetryBuffer', () => {
+  let logs: CollectedLogs
+  beforeEach(() => {
+    logs = collectLogging.decorate()
+    // logs = collectLogging.replace()
+  })
+  afterEach(async () => {
+    collectLogging.after()
+  })
   it('stores lines for future retry', async () => {
     const input = [] as Array<[string[], number]>
     const output = [] as Array<[string[], number]>
@@ -23,7 +32,7 @@ describe('RetryBuffer', () => {
     await subject.flush()
     expect(input).deep.equals(output)
   })
-  it('ignores lines on heave load', async () => {
+  it('ignores lines on heavy load', async () => {
     const input = [] as Array<[string[], number]>
     const output = [] as Array<[string[], number]>
     const subject = new RetryBuffer(5, (lines, countdown) => {
@@ -38,10 +47,11 @@ describe('RetryBuffer', () => {
       setTimeout(() => resolve(), 10)
     )
     await subject.flush()
-    subject.close()
-    expect(input).deep.equals(output)
+    expect(subject.close()).equals(0)
+    expect(logs.error).length.is.greaterThan(0) // 5 entries over limit
+    expect(output).length.is.lessThan(6) // at most 5 items will be written
   })
-  it('retries after flush', async () => {
+  it('retries does not fail after flush', async () => {
     const output = [] as Array<[string[], number]>
     const subject = new RetryBuffer(5, (lines, countdown) => {
       output.push([lines, countdown])

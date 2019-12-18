@@ -11,7 +11,7 @@ import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
 import {currentTime} from '../util/currentTime'
-import {createRetryStrategy} from './retryStrategy'
+import {createRetryDelayStrategy} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
 
 class WriteBuffer {
@@ -116,7 +116,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     )
     this.sendBatch = this.sendBatch.bind(this)
     // retry buffer
-    this.retryStrategy = createRetryStrategy(this.writeOptions)
+    this.retryStrategy = createRetryDelayStrategy(this.writeOptions)
     this.retryBuffer = new RetryBuffer(
       this.writeOptions.maxBufferLines,
       this.sendBatch
@@ -193,7 +193,13 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
   async close(): Promise<void> {
     const retVal = this.writeBuffer.flush().finally(() => {
-      this.retryBuffer.close()
+      const remaining = this.retryBuffer.close()
+      if (remaining) {
+        Logger.error(
+          `Retry buffer closed with ${remaining} items that were not written to InfluxDB!`,
+          null
+        )
+      }
       this.closed = true
     })
     return retVal
