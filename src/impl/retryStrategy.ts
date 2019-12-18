@@ -1,27 +1,19 @@
 import {getRetryDelay, RetryDelayStrategy} from '../errors'
-
-export interface BuiltinRetryStrategyOptions {
-  retryJitter: number
-  minDelay: number
-  maxDelay: number
-}
-
-export const DEFAULT_BuiltinStrategyConfig: BuiltinRetryStrategyOptions = {
-  retryJitter: 500,
-  minDelay: 1000,
-  maxDelay: 15000,
-}
+import {
+  RetryDelayStrategyOptions,
+  DEFAULT_RetryDelayStrategyOptions,
+} from '../options'
 
 /**
  * Applies a variant of exponential backoff with initial and max delay and a random
  * jitter delay. It also respects `retry delay` when specified together with an error.
  */
 export class RetryStrategyImpl implements RetryDelayStrategy {
-  options: BuiltinRetryStrategyOptions
+  options: RetryDelayStrategyOptions
   currentDelay: number | undefined
 
-  constructor(options?: Partial<BuiltinRetryStrategyOptions>) {
-    this.options = {...DEFAULT_BuiltinStrategyConfig, ...options}
+  constructor(options?: Partial<RetryDelayStrategyOptions>) {
+    this.options = {...DEFAULT_RetryDelayStrategyOptions, ...options}
     this.success()
   }
 
@@ -30,18 +22,18 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
     if (delay && delay > 0) {
       return Math.min(
         delay + Math.round(Math.random() * this.options.retryJitter),
-        this.options.maxDelay
+        this.options.maxRetryDelay
       )
     } else {
       if (this.currentDelay) {
         this.currentDelay = Math.min(
           Math.max(this.currentDelay * 2, 1) +
             Math.round(Math.random() * this.options.retryJitter),
-          this.options.maxDelay
+          this.options.maxRetryDelay
         )
       } else {
         this.currentDelay =
-          this.options.minDelay +
+          this.options.minRetryDelay +
           Math.round(Math.random() * this.options.retryJitter)
       }
       return this.currentDelay

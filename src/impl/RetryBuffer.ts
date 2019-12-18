@@ -93,7 +93,7 @@ export default class RetryBuffer {
 
   close(): void {
     if (this.size > 0) {
-      Logger.warn(
+      Logger.error(
         `Closing retry buffer, ${this.size} items were not written to InfluxDB!`,
         null
       )

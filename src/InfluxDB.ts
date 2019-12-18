@@ -84,7 +84,7 @@ export default class InfluxDB {
       org,
       bucket,
       precision,
-      this._options
+      this._options.writeOptions
     )
   }
 

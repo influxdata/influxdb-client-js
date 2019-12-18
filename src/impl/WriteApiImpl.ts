@@ -2,8 +2,6 @@ import WriteApi from '../WriteApi'
 import {
   WritePrecision,
   DEFAULT_WriteOptions,
-  ClientOptions,
-  DEFAULT_ConnectionOptions,
   PointSettings,
   WriteOptions,
 } from '../options'
@@ -78,21 +76,16 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     org: string,
     bucket: string,
     precision: WritePrecision,
-    clientOptions: ClientOptions
+    writeOptions?: Partial<WriteOptions>
   ) {
     this.httpPath = `/api/v2/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
     this.writeOptions = {
       ...DEFAULT_WriteOptions,
-      ...clientOptions.writeOptions,
+      ...writeOptions,
     }
     this.currentTime = currentTime[precision]
-
-    const retryJitter =
-      clientOptions.retryJitter !== undefined
-        ? clientOptions.retryJitter
-        : (DEFAULT_ConnectionOptions.retryJitter as number)
 
     const scheduleNextSend = (): void => {
       if (this.writeOptions.flushInterval > 0) {
@@ -103,7 +96,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
             () =>
               this.sendBatch(
                 this.writeBuffer.reset(),
-                this.writeOptions.maxRetries
+                this.writeOptions.maxRetries + 1
               ).catch(_e => {
                 // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
               }),
@@ -117,20 +110,20 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       this.writeOptions.batchSize,
       lines => {
         this._clearFlushTimeout()
-        return this.sendBatch(lines, this.writeOptions.maxRetries)
+        return this.sendBatch(lines, this.writeOptions.maxRetries + 1)
       },
       scheduleNextSend
     )
     this.sendBatch = this.sendBatch.bind(this)
     // retry buffer
-    this.retryStrategy = new RetryStrategyImpl({retryJitter})
+    this.retryStrategy = new RetryStrategyImpl(this.writeOptions)
     this.retryBuffer = new RetryBuffer(
-      this.writeOptions.retryBufferLines,
+      this.writeOptions.maxBufferLines,
       this.sendBatch
     )
   }
 
-  sendBatch(lines: string[], retryCountdown: number): Promise<void> {
+  sendBatch(lines: string[], attempts: number): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self: WriteApiImpl = this
     if (!this.closed && lines.length > 0) {
@@ -139,17 +132,18 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
           error(error: Error): void {
             if (
               !self.closed &&
-              retryCountdown > 0 &&
+              attempts > 1 &&
               (!(error instanceof HttpError) ||
                 (error as HttpError).statusCode >= 429)
             ) {
               Logger.warn(
-                `Write to influx DB failed (remaining attempts: ${retryCountdown}).`,
+                `Write to influx DB failed (remaining attempts: ${attempts -
+                  1}).`,
                 error
               )
               self.retryBuffer.addLines(
                 lines,
-                retryCountdown,
+                attempts - 1,
                 self.retryStrategy.nextDelay(error)
               )
               reject(error)
@@ -198,8 +192,10 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     return this.writeBuffer.flush().then(() => this.retryBuffer.flush())
   }
   async close(): Promise<void> {
-    const retVal = this.writeBuffer.flush().then(() => this.retryBuffer.close())
-    this.closed = true
+    const retVal = this.writeBuffer.flush().finally(() => {
+      this.retryBuffer.close()
+      this.closed = true
+    })
     return retVal
   }
   dispose(): void {

@@ -35,18 +35,14 @@ describe('WriteApiImpl', () => {
     let subject: WriteApiImpl
     let logs: CollectedLogs
     beforeEach(() => {
-      subject = new WriteApiImpl(
-        transport,
-        ORG,
-        BUCKET,
-        PRECISION,
-        clientOptions
-      )
+      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
+        retryJitter: 0,
+      })
       // logs = collectLogging.decorate()
       logs = collectLogging.replace()
     })
     afterEach(async () => {
-      subject.close()
+      await subject.close()
       collectLogging.after()
     })
     it('can be closed and flushed without any data', async () => {
@@ -60,7 +56,7 @@ describe('WriteApiImpl', () => {
         .close()
         .then(() => expect.fail('failure expected'))
         .catch(e => {
-          expect(logs.error).to.length(1)
+          expect(logs.error).length.greaterThan(0)
           expect(e).to.be.ok
         })
     })
@@ -81,8 +77,8 @@ describe('WriteApiImpl', () => {
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
       subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
-        ...clientOptions,
-        writeOptions,
+        retryJitter: 0,
+        ...writeOptions,
       })
     }
     beforeEach(() => {
@@ -90,19 +86,23 @@ describe('WriteApiImpl', () => {
       logs = collectLogging.replace()
     })
     afterEach(async () => {
-      subject.close()
+      await subject.close()
       collectLogging.after()
     })
     it('flushes the data in specified batchSize', async () => {
-      useSubject({flushInterval: 0, batchSize: 1, maxRetries: 2})
+      useSubject({
+        flushInterval: 0,
+        batchSize: 1,
+        maxRetries: 2,
+      })
       subject.writeRecord('test value=1')
       subject.writeRecords(['test value=2', 'test value=3'])
       // wait for http calls to finish
       await new Promise(resolve => setTimeout(resolve, 10))
       await subject.close().then(() => {
-        expect(logs.error).to.length(0)
-        expect(logs.warn).length.is.greaterThan(3) // 3 warning about write fail, one about remaining items
-        expect(logs.warn[3][0]).includes(
+        expect(logs.error).to.length(1)
+        expect(logs.warn).length(3) // 3 warnings about write failure
+        expect(logs.error[0][0]).includes(
           '3',
           'Warning message informs about count of missing lines'
         )
@@ -113,7 +113,7 @@ describe('WriteApiImpl', () => {
       subject.writeRecord('test value=1')
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
-        expect(logs.warn).to.length(0)
+        expect(logs.warn).is.deep.equal([])
       })
     })
     it('uses the pre-configured batchSize', async () => {
@@ -130,8 +130,8 @@ describe('WriteApiImpl', () => {
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
       subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
-        ...clientOptions,
-        writeOptions,
+        retryJitter: 0,
+        ...writeOptions,
       })
     }
     beforeEach(() => {
@@ -139,7 +139,7 @@ describe('WriteApiImpl', () => {
       logs = collectLogging.replace()
     })
     afterEach(async () => {
-      subject.close()
+      await subject.close()
       collectLogging.after()
     })
     it('flushes the records automatically', async () => {
@@ -161,8 +161,9 @@ describe('WriteApiImpl', () => {
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
       subject = new WriteApiImpl(transport, ORG, BUCKET, WritePrecision.ns, {
-        ...clientOptions,
-        writeOptions,
+        retryJitter: 0,
+
+        ...writeOptions,
       }).useDefaultTags({xtra: '1'})
     }
     beforeEach(() => {

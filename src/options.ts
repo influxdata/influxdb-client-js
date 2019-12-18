@@ -21,24 +21,44 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
   retryJitter: 1000,
 }
 
+export interface RetryDelayStrategyOptions {
+  /** include random milliseconds when retrying HTTP calls */
+  retryJitter: number
+  /** minimum delay when retrying write  */
+  minRetryDelay: number
+  /** maximum delay when retrying write  */
+  maxRetryDelay: number
+}
+
+export interface WriteRetryOptions extends RetryDelayStrategyOptions {
+  /** max number of retries when write fails */
+  maxRetries: number
+  /** the maximum size of retry-buffer (in lines) */
+  maxBufferLines: number
+}
+
 /**
  * Options used by [[WriteApi]]
  */
-export interface WriteOptions {
+export interface WriteOptions extends WriteRetryOptions {
   /** max number of records to send in a batch   */
   batchSize: number
   /** delay between data flushes in milliseconds, at most `batch size` records are sent during flush  */
   flushInterval: number
-  /** max number of retries when write fails */
-  maxRetries: number
-  /** the maximum size of retry-buffer (in lines) */
-  retryBufferLines: number
 }
+
+export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
+  retryJitter: 200,
+  minRetryDelay: 1000,
+  maxRetryDelay: 15000,
+})
+
 export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
   maxRetries: 2,
-  retryBufferLines: 32_000,
+  maxBufferLines: 32_000,
+  ...DEFAULT_RetryDelayStrategyOptions,
 })
 
 export interface ClientOptions extends ConnectionOptions {
