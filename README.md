@@ -15,12 +15,11 @@ This library is a work in progress and should not be considered production ready
 ## ToDos
 
 - this documentation
-- serialization of query results
-- add limited buffer for write retries / RX.js
 - all APIs (generated)
 - implement transport for both node and browser, fetch API?
-- monorepo with yarn, separate examples/experiments
-- browser client howto
+- serialization of query results
+- monorepo with yarn, separate examples
+- browser client
 
 ## Usage
 
