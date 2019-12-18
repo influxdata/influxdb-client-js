@@ -5,15 +5,6 @@ import {
 } from '../options'
 
 /**
- * Return a new instance of  [[RetryStrategyImpl]]
- */
-export function createRetryStrategy(
-  options?: Partial<RetryDelayStrategyOptions>
-) {
-  return new RetryStrategyImpl(options)
-}
-
-/**
  * Applies a variant of exponential backoff with initial and max delay and a random
  * jitter delay. It also respects `retry delay` when specified together with an error.
  */
@@ -51,4 +42,14 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
   success(): void {
     this.currentDelay = undefined
   }
+}
+
+/**
+ * Creates a new instance of retry strategy
+ * @param options retry options
+ */
+export function createRetryStrategy(
+  options?: Partial<RetryDelayStrategyOptions>
+): RetryDelayStrategy {
+  return new RetryStrategyImpl(options)
 }

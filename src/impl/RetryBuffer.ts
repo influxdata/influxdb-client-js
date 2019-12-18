@@ -34,10 +34,12 @@ export default class RetryBuffer {
     const retryTime = Date.now() + delay
     if (retryTime > this.nextRetryTime) this.nextRetryTime = retryTime
     // ensure at most maxLines are in the Buffer
-    while (this.first && this.size + lines.length > this.maxLines) {
-      const newFirst = this.first.next
-      this.size -= this.first.lines.length
-      this.first = newFirst
+    if (this.first && this.size + lines.length > this.maxLines) {
+      do {
+        const newFirst = this.first.next as RetryItem
+        this.size -= this.first.lines.length
+        this.first = newFirst
+      } while (this.first && this.size + lines.length > this.maxLines)
     }
     const toAdd = {
       lines,
