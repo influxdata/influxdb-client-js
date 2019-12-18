@@ -189,9 +189,10 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
   }
   async flush(): Promise<void> {
-    return this.writeBuffer.flush().then(() => this.retryBuffer.flush())
+    await this.writeBuffer.flush()
+    return await this.retryBuffer.flush()
   }
-  async close(): Promise<void> {
+  close(): Promise<void> {
     const retVal = this.writeBuffer.flush().finally(() => {
       const remaining = this.retryBuffer.close()
       if (remaining) {

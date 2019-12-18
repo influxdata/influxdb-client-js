@@ -49,7 +49,7 @@ export default interface WriteApi {
   flush(): Promise<void>
 
   /**
-   * Closes this writer.
+   * Closes this writer, cancels retries of writes operations that failed.
    * @return completition promise
    */
   close(): Promise<void>
