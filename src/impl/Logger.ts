@@ -2,8 +2,8 @@
  * Logging interface.
  */
 export interface Logger {
-  error(message: string, err: any): void
-  warn(message: string, err: any): void
+  error(message: string, err?: any): void
+  warn(message: string, err?: any): void
 }
 
 /**
@@ -11,10 +11,10 @@ export interface Logger {
  */
 export const consoleLogger: Logger = Object.freeze({
   error(message, error) {
-    console.error('ERROR: ' + message, error)
+    console.error('ERROR: ' + message, error ? error : '')
   },
   warn(message, error) {
-    console.warn('WARN: ' + message, error)
+    console.warn('WARN: ' + message, error ? error : '')
   },
 })
 let provider: Logger = consoleLogger
