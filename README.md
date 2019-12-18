@@ -2,9 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/bonitoo-io/influxdb-client-js.svg?style=svg)](https://circleci.com/gh/bonitoo-io/influxdb-client-js)
 [![codecov](https://codecov.io/gh/bonitoo-io/influxdb-client-js/branch/master/graph/badge.svg)](https://codecov.io/gh/bonitoo-io/influxdb-client-js)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/github/license/bonitoo-io/influxdb-client-js.svg)](https://github.com/bonitoo-io/influxdb-client-js/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues-raw/bonitoo-io/influxdb-client-js.svg)](https://github.com/bonitoo-io/influxdb-client-js/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/bonitoo-io/influxdb-client-js.svg)](https://github.com/bonitoo-io/influxdb-client-js/pulls)
 
 This repository contains the reference javascript client for InfluxDB 2.0.
 
