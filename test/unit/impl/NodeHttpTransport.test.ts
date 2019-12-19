@@ -402,4 +402,123 @@ describe('NodeHttpTransport', () => {
       })
     })
   })
+
+  describe('request', () => {
+    beforeEach(() => {
+      nock.disableNetConnect()
+    })
+    afterEach(() => {
+      nock.cleanAll()
+      nock.enableNetConnect()
+    })
+    const transportOptions = {
+      url: TEST_URL,
+      timeout: 100,
+      maxRetries: 0,
+    }
+    ;([
+      [null, ''],
+      ['', ''],
+      ['a', 'a'],
+      [{yes: true}, '{"yes":true}'],
+    ] as Array<Array<any>>).forEach((pair, i) => {
+      it(`returns string response ${i}`, async () => {
+        let remainingChunks = 2
+        let body: any = undefined
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(
+            200,
+            (_uri, requestBody) => {
+              body = requestBody
+              return new Readable({
+                read(): any {
+                  remainingChunks--
+                  this.push(remainingChunks < 0 ? null : '.')
+                },
+              })
+            },
+            {
+              'content-type': 'text/plain',
+            }
+          )
+          .persist()
+        const retVal = await new NodeHttpTransport({
+          ...transportOptions,
+          timeout: 10000,
+          maxRetries: 3,
+        }).request('/test', pair[0], {
+          method: 'GET',
+          headers: {'content-type': 'text/plain'},
+        })
+        expect(retVal).equals('..')
+        expect(body).equals(pair[1])
+      })
+    })
+    ;([
+      [{yes: true}, {yes: true}, 'application/json'],
+      // eslint-disable-next-line no-undef
+      ['abcd', Buffer.from('abcd'), 'application/binary'],
+    ] as Array<Array<any>>).forEach(pair => {
+      it(`returns ${pair[2]} response`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(
+            200,
+            (_uri, requestBody) => {
+              return requestBody
+            },
+            {
+              'content-type': pair[2],
+            }
+          )
+          .persist()
+        const retVal = await new NodeHttpTransport({
+          ...transportOptions,
+          timeout: 10000,
+          maxRetries: 3,
+        }).request('/test', pair[0], {
+          method: 'GET',
+          headers: {'content-type': pair[2]},
+        })
+        expect(retVal).deep.equals(pair[1])
+      })
+    })
+    it(`fails on invalid json`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(200, '..', {
+          'content-type': 'application/json',
+        })
+        .persist()
+      try {
+        await new NodeHttpTransport({
+          ...transportOptions,
+          timeout: 10000,
+          maxRetries: 3,
+        }).request('/test', '', {
+          method: 'GET',
+          headers: {'content-type': 'applicaiton/json'},
+        })
+        expect.fail(`exception shall be thrown because of wrong JSON`)
+      } catch (e) {
+        expect(e)
+      }
+    })
+    it(`fails on communication error`, async () => {
+      try {
+        await new NodeHttpTransport({
+          ...transportOptions,
+          timeout: 10000,
+          maxRetries: 3,
+        }).request('/test', '', {
+          method: 'GET',
+          headers: {'content-type': 'applicaiton/json'},
+        })
+        expect.fail(`exception shall be thrown because of wrong JSON`)
+      } catch (e) {
+        expect(e)
+      }
+    })
+  })
 })

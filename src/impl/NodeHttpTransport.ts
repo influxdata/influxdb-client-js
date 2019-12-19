@@ -10,7 +10,12 @@ import {
   HttpError,
   RetryDelayStrategy,
 } from '../errors'
-import {CommunicationObserver, Transport, SendOptions} from '../transport'
+import {
+  CommunicationObserver,
+  Transport,
+  SendOptions,
+  Headers,
+} from '../transport'
 import Cancellable from '../util/Cancellable'
 import {RetryStrategyImpl} from './retryStrategy'
 
@@ -57,8 +62,7 @@ export class NodeHttpTransport implements Transport {
       protocol: url.protocol,
       hostname: url.hostname,
     }
-    const retryJitter =
-      this.defaultOptions.retryJitter > 0 ? this.defaultOptions.retryJitter : 0
+    const retryJitter = this.defaultOptions.retryJitter
     this.retryStrategy = new RetryStrategyImpl({retryJitter})
     if (url.protocol === 'http:') {
       this.requestApi = http.request
@@ -92,6 +96,50 @@ export class NodeHttpTransport implements Transport {
     if (callbacks && callbacks.useCancellable)
       callbacks.useCancellable(cancellable)
     this._request(message, cancellable, callbacks)
+  }
+
+  /**
+   * Sends data to the server and receives decoded result. The type of the result depends on
+   * response's content-type (deserialized json, text).
+  
+   * @param path HTTP path
+   * @param requestBody  request body
+   * @param options  send options
+   */
+  request(path: string, body: any, options: SendOptions): Promise<any> {
+    if (!body) {
+      body = ''
+    } else if (typeof body !== 'string') {
+      body = JSON.stringify(body)
+    }
+    let buffer: Buffer = Buffer.alloc(0)
+    let contentType: string
+    return new Promise((resolve, reject) => {
+      this.send(path, body as string, options, {
+        responseStarted(headers: Headers) {
+          contentType = String(headers['content-type'])
+        },
+        next: (data: any): void => {
+          buffer = Buffer.concat([buffer, data as Buffer])
+        },
+        complete: (): void => {
+          try {
+            if (contentType.includes('json')) {
+              resolve(JSON.parse(buffer.toString('utf8')))
+            } else if (contentType.includes('text')) {
+              resolve(buffer.toString('utf8'))
+            } else {
+              resolve(buffer)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        },
+        error: (e: Error): void => {
+          reject(e)
+        },
+      })
+    })
   }
 
   /**
@@ -153,6 +201,7 @@ export class NodeHttpTransport implements Transport {
       res.on('aborted', () => {
         listeners.error(new ResponseAbortedError())
       })
+      listeners.responseStarted(res.headers)
       const statusCode =
         res.statusCode || /* istanbul ignore next safety check */ 600
       if (statusCode >= 300) {
@@ -211,7 +260,7 @@ export class NodeHttpTransport implements Transport {
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
     callbacks: Partial<CommunicationObserver<any>> = {}
-  ): CommunicationObserver<any> {
+  ): Omit<Required<CommunicationObserver<any>>, 'useCancellable'> {
     let state = 0
     const retVal = {
       next: (data: any): void => {
@@ -250,6 +299,9 @@ export class NodeHttpTransport implements Transport {
           /* istanbul ignore else safety check */
           if (callbacks.complete) callbacks.complete()
         }
+      },
+      responseStarted: (headers: Headers): void => {
+        if (callbacks.responseStarted) callbacks.responseStarted(headers)
       },
     }
     return retVal
