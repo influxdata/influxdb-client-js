@@ -72,7 +72,7 @@ export class NodeHttpTransport implements Transport {
   }
 
   /**
-   * Sends data to server and receive communication events via communication callbacks.
+   * Sends data to server and receives communication events via communication callbacks.
    *
    * @param path HTTP path
    * @param body  message body
@@ -91,7 +91,7 @@ export class NodeHttpTransport implements Transport {
     const cancellable = new CancellableImpl()
     if (callbacks && callbacks.useCancellable)
       callbacks.useCancellable(cancellable)
-    this.request(message, cancellable, callbacks)
+    this._request(message, cancellable, callbacks)
   }
 
   /**
@@ -130,7 +130,7 @@ export class NodeHttpTransport implements Transport {
     return options
   }
 
-  private request(
+  private _request(
     requestMessage: {[key: string]: any},
     cancellable: CancellableImpl,
     callbacks?: Partial<CommunicationObserver<any>>
@@ -228,7 +228,7 @@ export class NodeHttpTransport implements Transport {
             if (retries < requestMessage.maxRetries) {
               requestMessage.retries = retries + 1
               const cancelHandle = setTimeout(
-                () => this.request(requestMessage, cancellable, callbacks),
+                () => this._request(requestMessage, cancellable, callbacks),
                 this.retryStrategy.nextDelay(error)
               )
               cancellable.addCancelableAction(() => {
