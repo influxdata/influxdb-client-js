@@ -16,15 +16,6 @@
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
-  "overrides": [
-    {
-      "files": ["src/**/*.ts"]
-    },
-    {
-      "files": ["**/*.js"],
-      "plugins": ["prettier"]
-    }
-  ],
   "rules": {
     "@typescript-eslint/camelcase": ["error", {"allow": ["^DEFAULT_"]}],
     "@typescript-eslint/no-explicit-any": "off",

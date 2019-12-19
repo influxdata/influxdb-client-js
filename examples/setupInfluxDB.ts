@@ -5,32 +5,29 @@ and bucket that can be then used in examples. All values that used
 for onboarding are defined in ./env.ts .
 */
 
-import NodeHttpTransport from '../src/impl/NodeHttpTransport'
+import {InfluxDB} from '../src'
 import {url, username, password, org, bucket, token} from './env'
 
-// TODO better to use InfluxDB API herein
-new NodeHttpTransport({
-  url,
-}).send(
-  '/api/v2/setup',
-  JSON.stringify({
-    username,
-    password,
-    org,
-    bucket,
-    token,
-  }),
-  {method: 'POST', headers: {accept: 'application/json'}},
-  {
-    error(error: Error) {
-      console.error(error)
-      console.log('\nFinished ERROR')
-    },
-    next(data: any) {
-      console.log(Buffer.isBuffer(data) ? data.toString('utf8') : String(data))
-    },
-    complete() {
-      console.log('\nFinished SUCCESS')
-    },
-  }
-)
+const setupApi = new InfluxDB({url}).getSetupApi()
+
+setupApi
+  .isOnboarded()
+  .then(async ({allowed: allowed}) => {
+    if (allowed) {
+      const response = await setupApi.setup(
+        {org, bucket, username, password},
+        token
+      )
+      console.log(`The database is now onboarded.`)
+      console.log(JSON.stringify(response, null, 2))
+    } else {
+      console.log(
+        `The database exposed at ${url} already has a default user, organization and bucket.`
+      )
+    }
+    console.log('\nFinished SUCCESS')
+  })
+  .catch(error => {
+    console.error(error)
+    console.log('\nFinished ERROR')
+  })

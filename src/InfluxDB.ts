@@ -7,6 +7,8 @@ import {Transport} from './transport'
 import NodeHttpTransport from './impl/NodeHttpTransport'
 import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
+import SetupApi from './SetupApi'
+import SetupApiImpl from './impl/SetupApiImpl'
 
 /**
  * Fills URL out into into a IClusterConfig object
@@ -60,8 +62,6 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
     if (!this._options.url) throw new IllegalArgumentError('No url specified!')
-    if (!this._options.token)
-      throw new IllegalArgumentError('No token specified!')
     this.transport = createTransport(this._options)
   }
   /* eslint-enable no-dupe-class-members */
@@ -96,5 +96,15 @@ export default class InfluxDB {
    */
   getQueryApi(org: string): QueryApi {
     return new QueryApiImpl(this.transport, org)
+  }
+
+  /**
+   * Retruns [[SetupApi]] for the supplied organization .
+   *
+   * @param org Specifies the organization for queries.
+   * @return query api instance
+   */
+  getSetupApi(): SetupApi {
+    return new SetupApiImpl(this.transport)
   }
 }

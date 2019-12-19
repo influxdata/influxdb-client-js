@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import {InfluxDB, ClientOptions, WritePrecision} from '../../src'
 
-describe('influxdb', () => {
+describe('InfluxDB', () => {
   describe('constructor', () => {
     it('is created from string url', () => {
       expect(
@@ -44,14 +44,6 @@ describe('influxdb', () => {
       expect(
         () => new InfluxDB(({} as ClientOptions) as ClientOptions)
       ).to.throw('No url specified!')
-    })
-    it('fails on missing token', () => {
-      expect(
-        () =>
-          new InfluxDB(({
-            url: 'http://localhost:9999',
-          } as ClientOptions) as ClientOptions)
-      ).to.throw('No token specified!')
     })
     it('fails on unsupported protocol', () => {
       expect(
