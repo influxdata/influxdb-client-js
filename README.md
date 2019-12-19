@@ -22,9 +22,7 @@ This library is a work in progress and should not be considered production ready
 
 ## Usage
 
-- [Examples](./examples)
-  - [Write to InfluxDB](./examples/write.ts)
-  - [Query InfluxDB](./examples/query.ts)
+See [Examples](./examples)
 
 ## Build Requirements
 
