@@ -58,7 +58,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   private closed = false
   private httpPath: string
   private writeOptions: WriteOptions
-  private sendOptions: Partial<SendOptions> = {
+  private sendOptions: SendOptions = {
     method: 'POST',
     maxRetries: 0, // we control manual retry attempts
     headers: {
