@@ -65,7 +65,7 @@ describe('RetryStrategyImpl', () => {
       maxRetryDelay: 1000,
       retryJitter: 10,
     })
-    const values = [1, 2, 3, 4, 5, 6].reduce((acc, val) => {
+    const values = [1, 2, 3, 4, 5, 6].reduce((acc, _val) => {
       acc.push(subject.nextDelay())
       return acc
     }, [] as number[])

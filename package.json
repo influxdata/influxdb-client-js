@@ -16,7 +16,7 @@
     "test:watch": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --watch-extensions ts --watch",
     "typecheck": "tsc --noEmit --pretty",
     "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./reports/apidoc --target es6 --tsconfig ./tsconfig.doc.json ./src",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file reports/eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },

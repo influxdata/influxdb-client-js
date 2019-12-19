@@ -17,7 +17,7 @@ describe('errors', () => {
       new RequestTimedOutError(),
       new ResponseAbortedError(),
       new HttpError(429, 'Too Many Requests', '', '2019-11-02'),
-      (() => {
+      ((): Error => {
         const err = new Error('Connection reset')
         ;(err as any).code = 'ECONNRESET'
         return err
@@ -51,7 +51,6 @@ describe('errors', () => {
         error: new HttpError(503, 'Service Unavailable', '', '10'),
         retryAfter: 10,
       },
-      ,
       {error: new RequestTimedOutError(), retryAfter: 0},
       {error: new ResponseAbortedError(), retryAfter: 0},
     ]
@@ -82,7 +81,6 @@ describe('errors', () => {
         error: new HttpError(503, 'Service Unavailable', '', '10'),
         retryAfter: 10,
       },
-      ,
       {error: new RequestTimedOutError(), retryAfter: 0},
       {error: new ResponseAbortedError(), retryAfter: 0},
       {error: new Error(), retryAfter: 0},

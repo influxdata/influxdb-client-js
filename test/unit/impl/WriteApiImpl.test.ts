@@ -228,7 +228,7 @@ describe('WriteApiImpl', () => {
         String(Date.now()).length + 6 // nanosecond precision
       )
       expect(lines[2]).to.be.equal('test,xtra=1 value=4 1')
-      lines.forEach(line => {})
+      lines.forEach(_line => {})
       await subject.flush().then(() => {
         expect(logs.error).to.length(0)
       })

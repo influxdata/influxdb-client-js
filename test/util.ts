@@ -1,3 +1,4 @@
+/* eslint-disable prefer-rest-params */
 import {setLogger} from '../src/impl/Logger'
 
 let previous: any
@@ -40,7 +41,7 @@ export const collectLogging = {
     })
     return retVal
   },
-  after() {
+  after(): void {
     if (previous) {
       setLogger(previous)
       previous = undefined

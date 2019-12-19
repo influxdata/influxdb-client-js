@@ -140,7 +140,7 @@ describe('NodeHttpTransport', () => {
                 next(data: any) {
                   nextFn(data)
                 },
-                error(error: any) {
+                error(_error: any) {
                   clearTimeout(timeout)
                   reject(new Error('No error expected!'))
                 },
@@ -259,7 +259,7 @@ describe('NodeHttpTransport', () => {
           .reply((_uri, _requestBody) => [
             200,
             new Readable({
-              read() {
+              read(): any {
                 remainingChunks--
                 if (!remainingChunks) {
                   res.emit('aborted')
@@ -268,7 +268,7 @@ describe('NodeHttpTransport', () => {
               },
             }),
             {
-              'X-Whatever': (_req: any, _res: any, _body: any) => {
+              'X-Whatever': (_req: any, _res: any, _body: any): string => {
                 res = _res
                 return '1'
               },
@@ -276,7 +276,7 @@ describe('NodeHttpTransport', () => {
           ])
           .persist()
         await sendTestData(transportOptions, {method: 'GET'})
-          .then(data => {
+          .then(_data => {
             expect.fail('not expected!')
           })
           .catch((e: any) => {
@@ -293,7 +293,7 @@ describe('NodeHttpTransport', () => {
           .reply((_uri, _requestBody) => [
             200,
             new Readable({
-              read() {
+              read(): any {
                 remainingChunks--
                 if (!remainingChunks) {
                   req.emit('error', new Error('request failed'))
@@ -302,7 +302,7 @@ describe('NodeHttpTransport', () => {
               },
             }),
             {
-              'X-Whatever': (_req: any, _res: any, _body: any) => {
+              'X-Whatever': (_req: any, _res: any, _body: any): string => {
                 req = _req
                 return '1'
               },
@@ -310,7 +310,7 @@ describe('NodeHttpTransport', () => {
           ])
           .persist()
         await sendTestData(transportOptions, {method: 'GET'})
-          .then(data => {
+          .then(_data => {
             expect.fail('not expected!')
           })
           .catch((e: any) => {
@@ -378,7 +378,7 @@ describe('NodeHttpTransport', () => {
             200,
             (_uri, _requestBody) =>
               new Readable({
-                read() {
+                read(): any {
                   remainingChunks--
                   if (!remainingChunks) {
                     cancellable.cancel()

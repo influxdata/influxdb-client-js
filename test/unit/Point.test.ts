@@ -63,7 +63,7 @@ function createPointSettings(pointSettings: {
   if (pointSettings.convertTime) {
     return {
       defaultTags: pointSettings.defaultTags,
-      convertTime: () => pointSettings.convertTime,
+      convertTime: (): string | undefined => pointSettings.convertTime,
     }
   } else {
     return {

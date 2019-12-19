@@ -61,6 +61,7 @@ describe('currentTime', () => {
 
           for (let i = 1; i < size; i++) {
             // console.log(`useProcessApi=${useProcessApi} ${data[i - 1]}`)
+            // eslint-disable-next-line no-undef
             if (BigInt(data[i - 1]) >= BigInt(data[i])) {
               expect.fail(
                 `(${i}) ${data[i - 1]} < ${

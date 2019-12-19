@@ -7,6 +7,7 @@ describe('Logger', () => {
       let args: Array<any> | undefined
       setLogger({
         error(message, error): void {
+          // eslint-disable-next-line prefer-rest-params
           args = Array.from(arguments)
           consoleLogger.error(message, error)
         },
@@ -24,6 +25,7 @@ describe('Logger', () => {
           consoleLogger.error(message, error)
         },
         warn(message, error): void {
+          // eslint-disable-next-line prefer-rest-params
           args = Array.from(arguments)
           consoleLogger.warn(message, error)
         },

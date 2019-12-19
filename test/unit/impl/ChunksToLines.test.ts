@@ -13,7 +13,7 @@ interface ChunkTest {
 }
 
 class CollectLinesObserver2 extends CollectLinesObserver {
-  useCancellable(cancellable: Cancellable): void {
+  useCancellable(_cancellable: Cancellable): void {
     this.cancellableSet = true
   }
 }
@@ -33,6 +33,7 @@ describe('ChunksToLines', () => {
           failed = true
           subject.error(new Error())
         } else {
+          // eslint-disable-next-line no-undef
           subject.next(Buffer.from(chunk, 'utf8'))
           if (failed) {
             subject.error(new Error())

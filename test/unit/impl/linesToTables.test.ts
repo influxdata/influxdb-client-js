@@ -22,7 +22,7 @@ describe('linesToTables', () => {
   })
   it('notifies about errors', async () => {
     const target = new CollectTablesObserver()
-    ;(target as any).useCancellable = (_x: any) => {}
+    ;(target as any).useCancellable = (_x: any): void => {}
 
     const lineObserver = toLineObserver(target)
     const input = new ChunksToLines(lineObserver)
