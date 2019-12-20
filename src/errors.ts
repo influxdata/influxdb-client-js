@@ -27,8 +27,9 @@ export interface RetriableDecision {
   retryAfter(): number
 }
 
+const retriableStatusCodes = [404, 408, 425, 429, 500, 502, 503, 504]
 export function isStatusCodeRetriable(statusCode: number): boolean {
-  return statusCode === 429 || statusCode === 503
+  return retriableStatusCodes.includes(statusCode)
 }
 
 export class IllegalArgumentError extends Error {

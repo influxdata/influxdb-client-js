@@ -3,13 +3,7 @@ import {parse} from 'url'
 import * as http from 'http'
 import * as https from 'https'
 import {Buffer} from 'buffer'
-import {
-  RequestTimedOutError,
-  ResponseAbortedError,
-  canRetryHttpCall,
-  HttpError,
-  RetryDelayStrategy,
-} from '../errors'
+import {RequestTimedOutError, ResponseAbortedError, HttpError} from '../errors'
 import {
   CommunicationObserver,
   Transport,
@@ -17,24 +11,14 @@ import {
   Headers,
 } from '../transport'
 import Cancellable from '../util/Cancellable'
-import {RetryStrategyImpl} from './retryStrategy'
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
-  timeouts: Array<() => void> = []
   cancel(): void {
     this.cancelled = true
-    if (this.timeouts.length > 0) {
-      this.timeouts.forEach(x => x())
-      this.timeouts = []
-    }
   }
   isCancelled(): boolean {
     return this.cancelled
-  }
-
-  addCancelableAction(action: () => void): void {
-    this.timeouts.push(action)
   }
 }
 
@@ -47,7 +31,6 @@ export class NodeHttpTransport implements Transport {
     options: http.RequestOptions,
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
-  retryStrategy: RetryDelayStrategy
   /**
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions client options
@@ -62,8 +45,6 @@ export class NodeHttpTransport implements Transport {
       protocol: url.protocol,
       hostname: url.hostname,
     }
-    const retryJitter = this.defaultOptions.retryJitter
-    this.retryStrategy = new RetryStrategyImpl({retryJitter})
     if (url.protocol === 'http:') {
       this.requestApi = http.request
     } else if (url.protocol === 'https:') {
@@ -272,29 +253,12 @@ export class NodeHttpTransport implements Transport {
         /* istanbul ignore else propagate error at most once */
         if (state === 0) {
           state = 1
-          if (canRetryHttpCall(error)) {
-            const retries = requestMessage.retries || 0
-            if (retries < requestMessage.maxRetries) {
-              requestMessage.retries = retries + 1
-              const cancelHandle = setTimeout(
-                () => this._request(requestMessage, cancellable, callbacks),
-                this.retryStrategy.nextDelay(error)
-              )
-              cancellable.addCancelableAction(() => {
-                /* istanbul ignore next safety check */
-                if (callbacks.complete) callbacks.complete()
-                clearTimeout(cancelHandle)
-              })
-              return
-            }
-          }
           /* istanbul ignore else safety check */
           if (callbacks.error) callbacks.error(error)
         }
       },
       complete: (): void => {
         if (state === 0) {
-          this.retryStrategy.success()
           state = 2
           /* istanbul ignore else safety check */
           if (callbacks.complete) callbacks.complete()

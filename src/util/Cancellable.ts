@@ -1,13 +1,10 @@
 /**
- * Allows to cancel processing.
+ * Performs cancellation of a running query.
  */
 export default interface Cancellable {
   /**
-   * Attempt to cancel execution of this query.
+   * Attempt to cancel execution.
    */
   cancel(): void
-  /**
-   * Is communication canceled.
-   */
   isCancelled(): boolean
 }

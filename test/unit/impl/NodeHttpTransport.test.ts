@@ -1,10 +1,7 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
 import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
-import {
-  DEFAULT_ConnectionOptions,
-  ConnectionOptions,
-} from '../../../src/options'
+import {ConnectionOptions} from '../../../src/options'
 import {SendOptions} from '../../../src/transport'
 import Cancellable from '../../../src/util/Cancellable'
 import * as http from 'http'
@@ -48,10 +45,8 @@ describe('NodeHttpTransport', () => {
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        maxRetries: DEFAULT_ConnectionOptions.maxRetries,
         port: '9999',
         protocol: 'http:',
-        retryJitter: 1000,
         timeout: 10000,
         url: 'http://test:9999',
       })
@@ -63,10 +58,8 @@ describe('NodeHttpTransport', () => {
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        maxRetries: DEFAULT_ConnectionOptions.maxRetries,
         port: '9999',
         protocol: 'https:',
-        retryJitter: 1000,
         timeout: 10000,
         url: 'https://test:9999',
       })
@@ -98,10 +91,8 @@ describe('NodeHttpTransport', () => {
         {},
         {
           token: 'a',
-          maxRetries: 0,
         },
         {cancel: true},
-        {maxRetries: 2, timeout: 10000},
       ]
       for (let i = 0; i < extraOptions.length; i++) {
         const extras = extraOptions[i]
@@ -112,18 +103,9 @@ describe('NodeHttpTransport', () => {
               () => reject(new Error('timeouted')),
               10000
             )
-            let attempts = 0
             const context = nock(transportOptions.url)
               .post('/test')
-              .reply((_uri, _requestBody) => {
-                attempts++
-                if (extras.maxRetries && attempts <= extras.maxRetries) {
-                  console.log('        ... retrying attempt ' + attempts)
-                  return [429, 'yes', {'retry-after': 10}]
-                } else {
-                  return [200, 'yes']
-                }
-              })
+              .reply(200, 'yes')
               .persist()
             if (extras.token) {
               context.matchHeader('authorization', 'Token ' + extras.token)
@@ -320,47 +302,22 @@ describe('NodeHttpTransport', () => {
           })
       })
     })
-    describe('canceled', () => {
+    describe('cancelled', () => {
       const transportOptions = {
         url: TEST_URL,
         timeout: 100,
         maxRetries: 0,
       }
-      it(`is canceled before the response arrives`, async () => {
-        let cancellable: any
+      it(`is cancelled before the response arrives`, async () => {
         nock(transportOptions.url)
           .get('/test')
           .socketDelay(2000)
-          .reply((_uri, _requestBody) => {
-            cancellable.cancel()
-            return [429, 'yes', {'retry-after': 100}]
-          })
+          .reply(200, 'yes')
           .persist()
         await sendTestData(
-          {...transportOptions, timeout: 1000, maxRetries: 3},
+          {...transportOptions, timeout: 1000},
           {method: 'GET'},
-          toSet => (cancellable = toSet)
-        )
-          .then(data => {
-            expect(data).to.equal('')
-          })
-          .catch(e => {
-            throw e
-          })
-      })
-      it(`is canceled while waiting for retry`, async () => {
-        let cancellable: any
-        nock(transportOptions.url)
-          .get('/test')
-          .reply((_uri, _requestBody) => {
-            setTimeout(() => cancellable.cancel(), 50)
-            return [429, 'yes', {'retry-after': 100000}]
-          })
-          .persist()
-        await sendTestData(
-          {...transportOptions, timeout: 10000, maxRetries: 3},
-          {method: 'GET'},
-          toSet => (cancellable = toSet)
+          cancellable => cancellable.cancel()
         )
           .then(data => {
             expect(data).to.equal('')
@@ -389,7 +346,7 @@ describe('NodeHttpTransport', () => {
           )
           .persist()
         await sendTestData(
-          {...transportOptions, timeout: 10000, maxRetries: 3},
+          {...transportOptions, timeout: 10000},
           {method: 'GET'},
           toSet => (cancellable = toSet)
         )
@@ -446,7 +403,6 @@ describe('NodeHttpTransport', () => {
         const retVal = await new NodeHttpTransport({
           ...transportOptions,
           timeout: 10000,
-          maxRetries: 3,
         }).request('/test', pair[0], {
           method: 'GET',
           headers: {'content-type': 'text/plain'},
@@ -476,7 +432,6 @@ describe('NodeHttpTransport', () => {
         const retVal = await new NodeHttpTransport({
           ...transportOptions,
           timeout: 10000,
-          maxRetries: 3,
         }).request('/test', pair[0], {
           method: 'GET',
           headers: {'content-type': pair[2]},
@@ -495,7 +450,6 @@ describe('NodeHttpTransport', () => {
         await new NodeHttpTransport({
           ...transportOptions,
           timeout: 10000,
-          maxRetries: 3,
         }).request('/test', '', {
           method: 'GET',
           headers: {'content-type': 'applicaiton/json'},
@@ -510,7 +464,6 @@ describe('NodeHttpTransport', () => {
         await new NodeHttpTransport({
           ...transportOptions,
           timeout: 10000,
-          maxRetries: 3,
         }).request('/test', '', {
           method: 'GET',
           headers: {'content-type': 'applicaiton/json'},

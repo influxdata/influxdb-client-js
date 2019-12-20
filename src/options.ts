@@ -7,18 +7,12 @@ export interface ConnectionOptions {
   token?: string
   /** socket timeout */
   timeout?: number
-  /** maximum number of retries for HTTP calls that could succeed when retried  */
-  maxRetries?: number
-  /** include random milliseconds when retrying HTTP calls */
-  retryJitter?: number
   /** extra options for the transport layer */
   transportOptions?: {[key: string]: any}
 }
 
 export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
   timeout: 10000,
-  maxRetries: 0,
-  retryJitter: 1000,
 }
 
 export interface RetryDelayStrategyOptions {

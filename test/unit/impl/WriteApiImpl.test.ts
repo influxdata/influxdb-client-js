@@ -14,7 +14,6 @@ import {collectLogging, CollectedLogs} from '../../util'
 const clientOptions: ClientOptions = {
   url: 'http://fake:9999',
   token: 'a',
-  retryJitter: 0, // minimum delay for tests
 }
 const transport = new NodeHttpTransport(clientOptions)
 const ORG = 'org'

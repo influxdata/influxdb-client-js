@@ -35,7 +35,7 @@ describe('errors', () => {
       null,
       undefined,
       'whatever',
-      new HttpError(500, 'Internal Server Error', 'this is body'),
+      new HttpError(400, 'Bad Request', 'this is body'),
       new IllegalArgumentError('illegal argument'),
       new Error(''),
     ]
@@ -65,7 +65,7 @@ describe('errors', () => {
       null,
       undefined,
       'whatever',
-      new HttpError(500, 'Internal Server Error', 'this is body'),
+      new HttpError(400, 'Bad Request', 'this is body'),
       new IllegalArgumentError('illegal argument'),
       new Error(''),
     ]

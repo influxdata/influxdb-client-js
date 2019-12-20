@@ -12,8 +12,6 @@ const QUERY_PATH = `/api/v2/query?org=${ORG}`
 const clientOptions: ClientOptions = {
   url: 'http://fake:9999',
   token: 'a',
-  retryJitter: 0, // no retries for tests
-  maxRetries: 0,
 }
 
 describe('QueryApi', () => {
