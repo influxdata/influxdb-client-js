@@ -12,7 +12,7 @@ export default interface WriteApi {
    * Not applicable for writing records/lines.
    * @param tags
    */
-  useDefaultTags(tags: {[key: string]: string}): void
+  useDefaultTags(tags: {[key: string]: string}): WriteApi
 
   /**
    * Write a line of <a href="https://bit.ly/2QL99fu">Line Protocol</a>.

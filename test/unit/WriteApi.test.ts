@@ -1,28 +1,38 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
 import {
   ClientOptions,
   WritePrecision,
   WriteOptions,
   Point,
   WriteApi,
-} from '../../../src'
-import WriteApiImpl from '../../../src/impl/WriteApiImpl'
-import {collectLogging, CollectedLogs} from '../../util'
+  InfluxDB,
+} from '../../src'
+import {collectLogging, CollectedLogs} from '../util'
 
 const clientOptions: ClientOptions = {
   url: 'http://fake:9999',
   token: 'a',
 }
-const transport = new NodeHttpTransport(clientOptions)
 const ORG = 'org'
 const BUCKET = 'bucket'
 const PRECISION = WritePrecision.s
 
 const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precision=ns`
 
-describe('WriteApiImpl', () => {
+function createApi(
+  org: string,
+  bucket: string,
+  precision: WritePrecision,
+  options: Partial<WriteOptions>
+): WriteApi {
+  return new InfluxDB({
+    ...clientOptions,
+    ...{writeOptions: options},
+  }).getWriteApi(org, bucket, precision)
+}
+
+describe('WriteApi', () => {
   beforeEach(() => {
     nock.disableNetConnect()
   })
@@ -31,10 +41,10 @@ describe('WriteApiImpl', () => {
     nock.enableNetConnect()
   })
   describe('simple', () => {
-    let subject: WriteApiImpl
+    let subject: WriteApi
     let logs: CollectedLogs
     beforeEach(() => {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
+      subject = createApi(ORG, BUCKET, PRECISION, {
         retryJitter: 0,
       })
       // logs = collectLogging.decorate()
@@ -72,10 +82,10 @@ describe('WriteApiImpl', () => {
     })
   })
   describe('configuration', () => {
-    let subject: WriteApiImpl
+    let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
+      subject = createApi(ORG, BUCKET, PRECISION, {
         retryJitter: 0,
         ...writeOptions,
       })
@@ -125,10 +135,10 @@ describe('WriteApiImpl', () => {
     })
   })
   describe('flush on background', () => {
-    let subject: WriteApiImpl
+    let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, PRECISION, {
+      subject = createApi(ORG, BUCKET, PRECISION, {
         retryJitter: 0,
         ...writeOptions,
       })
@@ -159,7 +169,7 @@ describe('WriteApiImpl', () => {
     let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = new WriteApiImpl(transport, ORG, BUCKET, WritePrecision.ns, {
+      subject = createApi(ORG, BUCKET, WritePrecision.ns, {
         retryJitter: 0,
 
         ...writeOptions,
