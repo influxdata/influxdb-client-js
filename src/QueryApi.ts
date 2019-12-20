@@ -22,6 +22,10 @@ export interface QueryOptions {
    * Required only for "influxql" queries.
    */
   rp?: string
+  /**
+   * Requests gzip encoded response.
+   */
+  gzip?: boolean
 }
 
 /**

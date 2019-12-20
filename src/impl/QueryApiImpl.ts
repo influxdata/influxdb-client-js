@@ -35,6 +35,7 @@ export class QueryApiImpl implements QueryApi {
         method: 'POST',
         headers: {
           'content-type': 'application/json; encoding=utf-8',
+          'accept-encoding': this.options.gzip ? 'gzip' : 'identity',
         },
       },
       new ChunksToLines(consumer)

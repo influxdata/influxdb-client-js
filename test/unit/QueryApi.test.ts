@@ -5,6 +5,7 @@ import fs from 'fs'
 import {CollectLinesObserver} from './util/CollectLinesObserver'
 import {CollectTablesObserver} from './util/CollectTablesObserver'
 import simpleResponseLines from '../fixture/query/simpleResponseLines.json'
+import zlib from 'zlib'
 
 const ORG = `my-org`
 const QUERY_PATH = `/api/v2/query?org=${ORG}`
@@ -44,13 +45,23 @@ describe('QueryApi', () => {
     expect(target.completed).to.equals(1)
     expect(target.lines).to.deep.equal(simpleResponseLines)
   })
-  ;['response2', 'response3'].forEach((name: string) => {
-    it(`receives tables from ${name}`, async () => {
-      const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+  ;[
+    ['response2', undefined],
+    ['response2', true],
+    ['response3', false],
+  ].forEach(([name, gzip]) => {
+    it(`receives tables from ${name} with gzip=${gzip}`, async () => {
+      const subject = new InfluxDB(clientOptions)
+        .getQueryApi(ORG)
+        .with({gzip: gzip as boolean | undefined})
       nock(clientOptions.url)
         .post(QUERY_PATH)
         .reply((_uri, _requestBody) => {
-          return [200, fs.createReadStream(`test/fixture/query/${name}.txt`)]
+          let stream: any = fs.createReadStream(
+            `test/fixture/query/${name}.txt`
+          )
+          if (gzip) stream = stream.pipe(zlib.createGzip())
+          return [200, stream, {'content-encoding': gzip ? 'gzip' : 'identity'}]
         })
         .persist()
       const target = new CollectTablesObserver()
