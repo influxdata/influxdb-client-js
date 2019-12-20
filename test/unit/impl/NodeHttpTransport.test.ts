@@ -8,6 +8,7 @@ import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'
 import {Readable} from 'stream'
+import zlib from 'zlib'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -93,9 +94,15 @@ describe('NodeHttpTransport', () => {
           token: 'a',
         },
         {cancel: true},
+        {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+        },
       ]
       for (let i = 0; i < extraOptions.length; i++) {
         const extras = extraOptions[i]
+        const responseData = 'yes'
         it(`works with options ${JSON.stringify(extras)}`, async () => {
           const nextFn = sinon.fake()
           await new Promise<void>((resolve, reject) => {
@@ -103,9 +110,33 @@ describe('NodeHttpTransport', () => {
               () => reject(new Error('timeouted')),
               10000
             )
+            let responseRead = false
             const context = nock(transportOptions.url)
               .post('/test')
-              .reply(200, 'yes')
+              .reply((_uri, _requestBody) => [
+                200,
+                new Readable({
+                  read(): any {
+                    const encode = !!(extras.headers || {})['accept-encoding']
+                    if (encode) {
+                      this.push(
+                        responseRead ? null : zlib.gzipSync(responseData)
+                      )
+                    } else {
+                      this.push(responseRead ? null : responseData)
+                    }
+                    responseRead = true
+                  },
+                }),
+                {
+                  'content-encoding': (
+                    _req: any,
+                    _res: any,
+                    _body: any
+                  ): string =>
+                    (extras.headers || {})['accept-encoding'] || 'identity',
+                },
+              ])
               .persist()
             if (extras.token) {
               context.matchHeader('authorization', 'Token ' + extras.token)
@@ -122,9 +153,9 @@ describe('NodeHttpTransport', () => {
                 next(data: any) {
                   nextFn(data)
                 },
-                error(_error: any) {
+                error(error: any) {
                   clearTimeout(timeout)
-                  reject(new Error('No error expected!'))
+                  reject(new Error('No error expected!, but: ' + error))
                 },
                 complete(): void {
                   clearTimeout(timeout)
@@ -138,13 +169,16 @@ describe('NodeHttpTransport', () => {
             if (extras.cancel) {
               cancellable.cancel()
             }
-          }).then(() => {
-            expect(nextFn.called)
-            if (!extras.cancel) {
-              expect(nextFn.args[0][0].toString()).to.equal('yes')
-            }
           })
-          // .catch(e => expect.fail(undefined, e, e.toString()))
+            .then(() => {
+              expect(nextFn.called)
+              if (!extras.cancel) {
+                expect(nextFn.args[0][0].toString()).to.equal(responseData)
+              }
+            })
+            .catch(e => {
+              expect.fail(undefined, e, e.toString())
+            })
         })
       }
     })
@@ -170,12 +204,40 @@ describe('NodeHttpTransport', () => {
           .reply(500, 'not ok')
         await sendTestData(transportOptions, {method: 'GET'})
           .then(() => {
-            throw new Error('must not succeed')
+            expect.fail('must not succeed')
           })
           .catch(e => {
             expect(e)
               .property('statusCode')
               .to.equal(500)
+          })
+      })
+      it(`fails on decoding error`, async () => {
+        let responseRead = false
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                this.push(responseRead ? null : 'no')
+                responseRead = true
+              },
+            }),
+            {
+              'content-encoding': 'gzip',
+            },
+          ])
+          .persist()
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            expect.fail('must not succeed')
+          })
+          .catch(e => {
+            expect(e)
+              .property('message')
+              .is.not.equal('must not succeed')
+            expect(e.toString()).does.not.include('time') // not timeout
           })
       })
       it(`fails on socket timeout`, async () => {

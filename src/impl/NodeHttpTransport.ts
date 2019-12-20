@@ -11,6 +11,12 @@ import {
   Headers,
 } from '../transport'
 import Cancellable from '../util/Cancellable'
+import zlib from 'zlib'
+
+const zlibOptions = {
+  flush: zlib.Z_SYNC_FLUSH,
+  finishFlush: zlib.Z_SYNC_FLUSH,
+}
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
@@ -185,16 +191,25 @@ export class NodeHttpTransport implements Transport {
       listeners.responseStarted(res.headers)
       const statusCode =
         res.statusCode || /* istanbul ignore next safety check */ 600
+      const contentEncoding = res.headers['content-encoding']
+      let responseData
+      if (contentEncoding === 'gzip') {
+        responseData = zlib.createGunzip(zlibOptions)
+        res.pipe(responseData)
+      } else {
+        responseData = res
+      }
+      responseData.on('error', listeners.error)
       if (statusCode >= 300) {
         let body = ''
-        res.on('data', s => {
+        responseData.on('data', s => {
           body += s.toString()
           if (body.length > 1000) {
             body = body.slice(0, 1000)
             res.resume()
           }
         })
-        res.on('end', () =>
+        responseData.on('end', () =>
           listeners.error(
             new HttpError(
               statusCode,
@@ -205,14 +220,14 @@ export class NodeHttpTransport implements Transport {
           )
         )
       } else {
-        res.on('data', data => {
+        responseData.on('data', data => {
           if (cancellable.isCancelled()) {
             res.resume()
           } else {
             listeners.next(data)
           }
         })
-        res.on('end', listeners.complete)
+        responseData.on('end', listeners.complete)
       }
     })
     // Support older Nodes which don't allow .timeout() in the
