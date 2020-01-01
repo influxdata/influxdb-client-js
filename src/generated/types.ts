@@ -3,6 +3,7 @@
 // [0]: https://github.com/influxdata/oats
 
 export interface Error {
+  /** Code is the machine-readable error code. */
   readonly code:
     | 'internal error'
     | 'not found'
@@ -15,6 +16,7 @@ export interface Error {
     | 'too many requests'
     | 'unauthorized'
     | 'method not allowed'
+  /** Message is a human-readable message. */
   readonly message: string
 }
 
@@ -50,6 +52,7 @@ export interface Routes {
 }
 
 export interface IsOnboarding {
+  /** True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. */
   allowed?: boolean
 }
 
@@ -72,6 +75,7 @@ export interface User {
   readonly id?: string
   oauthID?: string
   name: string
+  /** If inactive the user is inactive. */
   status?: 'active' | 'inactive'
   readonly links?: {
     self?: string
@@ -96,19 +100,30 @@ export interface Organization {
   description?: string
   readonly createdAt?: string
   readonly updatedAt?: string
+  /** If inactive the organization is inactive. */
   status?: 'active' | 'inactive'
 }
 
+/**
+ * URI of resource.
+ */
 export type Link = string
 
 export interface Bucket {
   readonly links?: {
+    /** URL to retrieve labels for this bucket */
     labels?: Link
+    /** URL to retrieve operation logs for this bucket */
     logs?: Link
+    /** URL to retrieve members that can read this bucket */
     members?: Link
+    /** URL to retrieve parent organization for this bucket */
     org?: Link
+    /** URL to retrieve owners that can read and write to this bucket. */
     owners?: Link
+    /** URL for this bucket */
     self?: Link
+    /** URL to write line protocol for this bucket */
     write?: Link
   }
   readonly id?: string
@@ -123,10 +138,14 @@ export interface Bucket {
   labels?: Labels
 }
 
+/**
+ * Rules to expire or retain data.  No rules means data never expires.
+ */
 export type RetentionRules = RetentionRule[]
 
 export interface RetentionRule {
   type: 'expire'
+  /** Duration in seconds for how long data will be kept in the database. */
   everySeconds: number
 }
 
@@ -136,18 +155,25 @@ export interface Label {
   readonly id?: string
   readonly orgID?: string
   name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
   properties?: any
 }
 
 export type Authorization = AuthorizationUpdateRequest & {
   readonly createdAt?: string
   readonly updatedAt?: string
+  /** ID of org that authorization is scoped to. */
   orgID?: string
+  /** List of permissions for an auth.  An auth must have at least one Permission. */
   permissions?: Permission[]
   readonly id?: string
+  /** Passed via the Authorization Header and Token Authentication type. */
   readonly token?: string
+  /** ID of user that created and owns the token. */
   readonly userID?: string
+  /** Name of user that created and owns the token. */
   readonly user?: string
+  /** Name of the org token is scoped to. */
   readonly org?: string
   readonly links?: {
     readonly self?: Link
@@ -156,7 +182,9 @@ export type Authorization = AuthorizationUpdateRequest & {
 }
 
 export interface AuthorizationUpdateRequest {
+  /** If inactive the token is inactive and requests using the token will be rejected. */
   status?: 'active' | 'inactive'
+  /** A description of the token. */
   description?: string
 }
 
@@ -181,9 +209,13 @@ export interface Permission {
       | 'notificationRules'
       | 'notificationEndpoints'
       | 'checks'
+    /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
     id?: string
+    /** Optional name of the resource if the resource has a name field. */
     name?: string
+    /** If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. */
     orgID?: string
+    /** Optional name of the organization of the organization with orgID. */
     org?: string
   }
 }
@@ -197,6 +229,7 @@ export interface DocumentListEntry {
   meta: DocumentMeta
   labels?: Labels
   readonly links?: {
+    /** The document URL. */
     self?: Link
   }
 }
@@ -214,8 +247,11 @@ export interface DocumentMeta {
 export interface DocumentCreate {
   meta: DocumentMeta
   content: any
+  /** The organization Name. Specify either `orgID` or `org`. */
   org?: string
+  /** The organization Name. Specify either `orgID` or `org`. */
   orgID?: string
+  /** An array of label IDs to be added as labels to the document. */
   labels?: string[]
 }
 
@@ -225,6 +261,7 @@ export interface Document {
   content: any
   labels?: Labels
   readonly links?: {
+    /** The document URL. */
     self?: Link
   }
 }
@@ -462,7 +499,9 @@ export interface ScraperTargetResponses {
 
 export type ScraperTargetResponse = ScraperTargetRequest & {
   readonly id?: string
+  /** The organization name. */
   org?: string
+  /** The bucket name. */
   bucket?: string
   readonly links?: {
     self?: Link
@@ -474,10 +513,15 @@ export type ScraperTargetResponse = ScraperTargetRequest & {
 }
 
 export interface ScraperTargetRequest {
+  /** The name of the scraper target. */
   name?: string
+  /** The type of the metrics to be parsed. */
   type?: 'prometheus'
+  /** The URL of the metrics endpoint. */
   url?: string
+  /** The organization ID. */
   orgID?: string
+  /** The ID of the bucket to write to. */
   bucketID?: string
 }
 
@@ -526,6 +570,7 @@ export interface MapVariableProperties {
 }
 
 export interface LineProtocolError {
+  /** Code is the machine-readable error code. */
   readonly code:
     | 'internal error'
     | 'not found'
@@ -533,21 +578,34 @@ export interface LineProtocolError {
     | 'invalid'
     | 'empty value'
     | 'unavailable'
+  /** Message is a human-readable message. */
   readonly message: string
+  /** Op describes the logical code operation during error. Useful for debugging. */
   readonly op: string
+  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
   readonly err: string
+  /** First line within sent body containing malformed data */
   readonly line?: number
 }
 
 export interface LineProtocolLengthError {
+  /** Code is the machine-readable error code. */
   readonly code: 'invalid'
+  /** Message is a human-readable message. */
   readonly message: string
+  /** Max length in bytes for a body of line-protocol. */
   readonly maxLength: number
 }
 
+/**
+ * The delete predicate request.
+ */
 export interface DeletePredicateRequest {
+  /** RFC3339Nano */
   start: string
+  /** RFC3339Nano */
   stop: string
+  /** InfluxQL-like delete statement */
   predicate?: string
 }
 
@@ -603,11 +661,13 @@ export interface Buckets {
 export interface LabelCreateRequest {
   orgID: string
   name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
   properties?: any
 }
 
 export interface LabelUpdate {
   name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
   properties?: any
 }
 
@@ -636,8 +696,11 @@ export type Dashboard = CreateDashboardRequest & {
 }
 
 export interface CreateDashboardRequest {
+  /** The ID of the organization that owns the dashboard. */
   orgID: string
+  /** The user-facing name of the dashboard. */
   name: string
+  /** The user-facing description of the dashboard. */
   description?: string
 }
 
@@ -653,6 +716,7 @@ export interface Cell {
   y?: number
   w?: number
   h?: number
+  /** The reference to a view from the views API. */
   viewID?: string
 }
 
@@ -697,9 +761,11 @@ export type ViewProperties =
 export interface LinePlusSingleStatProperties {
   type: 'line-plus-single-stat'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
   legend: Legend
@@ -713,6 +779,7 @@ export interface LinePlusSingleStatProperties {
 }
 
 export interface DashboardQuery {
+  /** The text of the Flux query. */
   text?: string
   editMode?: QueryEditMode
   name?: string
@@ -742,37 +809,69 @@ export interface BuilderFunctionsType {
   name?: string
 }
 
+/**
+ * Defines an encoding of data value into color space.
+ */
 export interface DashboardColor {
+  /** The unique ID of the view color. */
   id: string
+  /** Type is how the color is used. */
   type: 'min' | 'max' | 'threshold' | 'scale' | 'text' | 'background'
+  /** The hex number of the color */
   hex: string
+  /** The user-facing name of the hex color. */
   name: string
+  /** The data value mapped to this color. */
   value: number
 }
 
+/**
+ * The viewport for a View's visualizations
+ */
 export interface Axes {
   x: Axis
   y: Axis
 }
 
+/**
+ * The description of a particular axis for a visualization.
+ */
 export interface Axis {
+  /** The extents of an axis in the form [lower, upper]. Clients determine whether bounds are to be inclusive or exclusive of their limits */
   bounds?: string[]
+  /** Label is a description of this Axis */
   label?: string
+  /** Prefix represents a label prefix for formatting axis values. */
   prefix?: string
+  /** Suffix represents a label suffix for formatting axis values. */
   suffix?: string
+  /** Base represents the radix for formatting axis values. */
   base?: '' | '2' | '10'
   scale?: AxisScale
 }
 
+/**
+ * Scale is the axis formatting scale. Supported: "log", "linear"
+ */
 export type AxisScale = 'log' | 'linear'
 
+/**
+ * Legend define encoding of data into a view's legend
+ */
 export interface Legend {
+  /** The style of the legend. */
   type?: 'static'
+  /** orientation is the location of the legend with respect to the view graph */
   orientation?: 'top' | 'bottom' | 'left' | 'right'
 }
 
+/**
+ * Indicates whether decimal places should be enforced, and how many digits it should show.
+ */
 export interface DecimalPlaces {
+  /** Indicates whether decimal point setting should be enforced */
   isEnforced?: boolean
+  /** The number of digits after decimal to display */
   digits?: number
 }
 
@@ -780,9 +879,11 @@ export interface XYViewProperties {
   timeFormat?: string
   type: 'xy'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
   legend: Legend
@@ -798,9 +899,11 @@ export type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX'
 export interface SingleStatViewProperties {
   type: 'single-stat'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   prefix: string
   suffix: string
@@ -811,9 +914,11 @@ export interface SingleStatViewProperties {
 export interface HistogramViewProperties {
   type: 'histogram'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
   fillColumns: string[]
@@ -826,9 +931,11 @@ export interface HistogramViewProperties {
 export interface GaugeViewProperties {
   type: 'gauge'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   prefix: string
   suffix: string
@@ -839,24 +946,37 @@ export interface GaugeViewProperties {
 export interface TableViewProperties {
   type: 'table'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   tableOptions: {
+    /** verticalTimeAxis describes the orientation of the table by indicating whether the time axis will be displayed vertically */
     verticalTimeAxis?: boolean
     sortBy?: RenamableField
+    /** Wrapping describes the text wrapping style to be used in table views */
     wrapping?: 'truncate' | 'wrap' | 'single-line'
+    /** fixFirstColumn indicates whether the first column of the table should be locked */
     fixFirstColumn?: boolean
   }
+  /** fieldOptions represent the fields retrieved by the query with customization options */
   fieldOptions: RenamableField[]
+  /** timeFormat describes the display format for time values according to moment.js date formatting */
   timeFormat: string
   decimalPlaces: DecimalPlaces
 }
 
+/**
+ * Describes a field that can be renamed and made visible or invisible.
+ */
 export interface RenamableField {
+  /** The calculated name of a field. */
   readonly internalName?: string
+  /** The name that a field is renamed to by the user. */
   displayName?: string
+  /** Indicates whether this field should be visible on the table. */
   visible?: boolean
 }
 
@@ -872,6 +992,7 @@ export interface CheckViewProperties {
   checkID: string
   check?: Check
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: string[]
 }
 
@@ -883,8 +1004,11 @@ export type CheckDiscriminator =
 
 export type DeadmanCheck = CheckBase & {
   type?: 'deadman'
+  /** String duration before deadman triggers. */
   timeSince?: string
+  /** String duration for time that a series is considered stale and should not trigger deadman. */
   staleTime?: string
+  /** If only zero values reported since time, trigger an alert */
   reportZero?: boolean
   level?: CheckStatusLevel
 }
@@ -892,32 +1016,47 @@ export type DeadmanCheck = CheckBase & {
 export interface CheckBase {
   readonly id?: string
   name: string
+  /** The ID of the organization that owns this check. */
   orgID: string
+  /** The ID of creator used to create this check. */
   readonly ownerID?: string
   readonly createdAt?: string
   readonly updatedAt?: string
   query: DashboardQuery
   status?: TaskStatusType
+  /** Check repetition interval. */
   every?: string
+  /** Duration to delay after the schedule, before executing check. */
   offset?: string
+  /** List of tags to write to each status. */
   tags?: Array<{
     key?: string
     value?: string
   }>
+  /** An optional description of the check. */
   description?: string
+  /** The template used to generate and write a status message. */
   statusMessageTemplate?: string
   labels?: Labels
   readonly links?: {
+    /** URL for this check */
     self?: Link
+    /** URL to retrieve labels for this check */
     labels?: Link
+    /** URL to retrieve members for this check */
     members?: Link
+    /** URL to retrieve owners for this check */
     owners?: Link
+    /** URL to retrieve flux script for this check */
     query?: Link
   }
 }
 
 export type TaskStatusType = 'active' | 'inactive'
 
+/**
+ * The state to record if check matches a criteria.
+ */
 export type CheckStatusLevel = 'UNKNOWN' | 'OK' | 'INFO' | 'CRIT' | 'WARN'
 
 export type ThresholdCheck = CheckBase & {
@@ -937,6 +1076,7 @@ export type GreaterThreshold = ThresholdBase & {
 
 export interface ThresholdBase {
   level?: CheckStatusLevel
+  /** If true, only alert if all values meet threshold. */
   allValues?: boolean
 }
 
@@ -956,9 +1096,11 @@ export interface ScatterViewProperties {
   timeFormat?: string
   type: 'scatter'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: string[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
   yColumn: string
@@ -978,9 +1120,11 @@ export interface HeatmapViewProperties {
   timeFormat?: string
   type: 'heatmap'
   queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
   colors: string[]
   shape: 'chronograf-v2'
   note: string
+  /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
   yColumn: string
@@ -1001,6 +1145,7 @@ export interface CreateCell {
   y?: number
   w?: number
   h?: number
+  /** Makes a copy of the provided view. */
   usingView?: string
 }
 
@@ -1026,55 +1171,92 @@ export interface OperationLogs {
 }
 
 export interface OperationLog {
+  /** A description of the event that occurred. */
   description?: string
+  /** Time event occurred, RFC3339Nano. */
   time?: string
+  /** ID of the user who operated the event. */
   userID?: string
   links?: {
     user?: Link
   }
 }
 
+/**
+ * Flux query to be analyzed.
+ */
 export interface LanguageRequest {
+  /** Flux query script to be analyzed */
   query: string
 }
 
+/**
+ * Contains the AST for the supplied Flux query
+ */
 export interface ASTResponse {
   ast?: Package
 }
 
+/**
+ * Represents a complete package source tree.
+ */
 export interface Package {
   type?: NodeType
+  /** Package import path */
   path?: string
+  /** Package name */
   package?: string
+  /** Package files */
   files?: File[]
 }
 
+/**
+ * Type of AST node
+ */
 export type NodeType = string
 
+/**
+ * Represents a source from a single file
+ */
 export interface File {
   type?: NodeType
+  /** The name of the file. */
   name?: string
   package?: PackageClause
+  /** A list of package imports */
   imports?: ImportDeclaration[]
+  /** List of Flux statements */
   body?: Statement[]
 }
 
+/**
+ * Defines a package identifier
+ */
 export interface PackageClause {
   type?: NodeType
   name?: Identifier
 }
 
+/**
+ * A valid Flux identifier
+ */
 export interface Identifier {
   type?: NodeType
   name?: string
 }
 
+/**
+ * Declares a package import
+ */
 export interface ImportDeclaration {
   type?: NodeType
   as?: Identifier
   path?: StringLiteral
 }
 
+/**
+ * Expressions begin and end with double quote marks
+ */
 export interface StringLiteral {
   type?: NodeType
   value?: string
@@ -1090,11 +1272,18 @@ export type Statement =
   | BuiltinStatement
   | TestStatement
 
+/**
+ * A placeholder for statements for which no correct statement nodes can be created
+ */
 export interface BadStatement {
   type?: NodeType
+  /** Raw source text */
   text?: string
 }
 
+/**
+ * Represents the declaration of a variable
+ */
 export interface VariableAssignment {
   type?: NodeType
   id?: Identifier
@@ -1125,17 +1314,28 @@ export type Expression =
   | UnsignedIntegerLiteral
   | Identifier
 
+/**
+ * Used to create and directly specify the elements of an array object
+ */
 export interface ArrayExpression {
   type?: NodeType
+  /** Elements of the array */
   elements?: Expression[]
 }
 
+/**
+ * Function expression
+ */
 export interface FunctionExpression {
   type?: NodeType
+  /** Function parameters */
   params?: Property[]
   body?: Node
 }
 
+/**
+ * The value associated with a key
+ */
 export interface Property {
   type?: NodeType
   key?: PropertyKey
@@ -1146,11 +1346,18 @@ export type PropertyKey = Identifier | StringLiteral
 
 export type Node = Expression | Block
 
+/**
+ * A set of statements
+ */
 export interface Block {
   type?: NodeType
+  /** Block body */
   body?: Statement[]
 }
 
+/**
+ * uses binary operators to act on two operands in an expression
+ */
 export interface BinaryExpression {
   type?: NodeType
   operator?: string
@@ -1158,12 +1365,19 @@ export interface BinaryExpression {
   right?: Expression
 }
 
+/**
+ * Represents a function call
+ */
 export interface CallExpression {
   type?: NodeType
   callee?: Expression
+  /** Function arguments */
   arguments?: Expression[]
 }
 
+/**
+ * Selects one of two expressions, `Alternate` or `Consequent`, depending on a third boolean expression, `Test`
+ */
 export interface ConditionalExpression {
   type?: NodeType
   test?: Expression
@@ -1171,6 +1385,9 @@ export interface ConditionalExpression {
   consequent?: Expression
 }
 
+/**
+ * Represents the rule conditions that collectively evaluate to either true or false
+ */
 export interface LogicalExpression {
   type?: NodeType
   operator?: string
@@ -1178,111 +1395,176 @@ export interface LogicalExpression {
   right?: Expression
 }
 
+/**
+ * Represents accessing a property of an object
+ */
 export interface MemberExpression {
   type?: NodeType
   object?: Expression
   property?: PropertyKey
 }
 
+/**
+ * Represents indexing into an array
+ */
 export interface IndexExpression {
   type?: NodeType
   array?: Expression
   index?: Expression
 }
 
+/**
+ * Allows the declaration of an anonymous object within a declaration
+ */
 export interface ObjectExpression {
   type?: NodeType
+  /** Object properties */
   properties?: Property[]
 }
 
+/**
+ * Represents an expression wrapped in parenthesis
+ */
 export interface ParenExpression {
   type?: NodeType
   expression?: Expression
 }
 
+/**
+ * Call expression with pipe argument
+ */
 export interface PipeExpression {
   type?: NodeType
   argument?: Expression
   call?: CallExpression
 }
 
+/**
+ * Uses operators to act on a single operand in an expression
+ */
 export interface UnaryExpression {
   type?: NodeType
   operator?: string
   argument?: Expression
 }
 
+/**
+ * Represents boolean values
+ */
 export interface BooleanLiteral {
   type?: NodeType
   value?: boolean
 }
 
+/**
+ * Represents an instant in time with nanosecond precision using the syntax of golang's RFC3339 Nanosecond variant
+ */
 export interface DateTimeLiteral {
   type?: NodeType
   value?: string
 }
 
+/**
+ * Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration
+ */
 export interface DurationLiteral {
   type?: NodeType
+  /** Duration values */
   values?: Duration[]
 }
 
+/**
+ * A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed.
+ */
 export interface Duration {
   type?: NodeType
   magnitude?: number
   unit?: string
 }
 
+/**
+ * Represents floating point numbers according to the double representations defined by the IEEE-754-1985
+ */
 export interface FloatLiteral {
   type?: NodeType
   value?: number
 }
 
+/**
+ * Represents integer numbers
+ */
 export interface IntegerLiteral {
   type?: NodeType
   value?: string
 }
 
+/**
+ * Represents a specialized literal value, indicating the left hand value of a pipe expression
+ */
 export interface PipeLiteral {
   type?: NodeType
 }
 
+/**
+ * Expressions begin and end with `/` and are regular expressions with syntax accepted by RE2
+ */
 export interface RegexpLiteral {
   type?: NodeType
   value?: string
 }
 
+/**
+ * Represents integer numbers
+ */
 export interface UnsignedIntegerLiteral {
   type?: NodeType
   value?: string
 }
 
+/**
+ * Object property assignment
+ */
 export interface MemberAssignment {
   type?: NodeType
   member?: MemberExpression
   init?: Expression
 }
 
+/**
+ * May consist of an expression that does not return a value and is executed solely for its side-effects
+ */
 export interface ExpressionStatement {
   type?: NodeType
   expression?: Expression
 }
 
+/**
+ * Defines an expression to return
+ */
 export interface ReturnStatement {
   type?: NodeType
   argument?: Expression
 }
 
+/**
+ * A single variable declaration
+ */
 export interface OptionStatement {
   type?: NodeType
   assignment?: VariableAssignment | MemberAssignment
 }
 
+/**
+ * Declares a builtin identifier and its type
+ */
 export interface BuiltinStatement {
   type?: NodeType
   id?: Identifier
 }
 
+/**
+ * Declares a Flux test case
+ */
 export interface TestStatement {
   type?: NodeType
   assignment?: VariableAssignment
@@ -1302,21 +1584,37 @@ export interface Authorizations {
   authorizations?: Authorization[]
 }
 
+/**
+ * Query influx with specific return formatting.
+ */
 export interface Query {
   extern?: File
+  /** Query script to execute. */
   query: string
+  /** The type of query. */
   type?: 'flux' | 'influxql'
+  /** Required for `influxql` type queries. */
   db?: string
+  /** Required for `influxql` type queries. */
   rp?: string
+  /** Required for `influxql` type queries. */
   cluster?: string
   dialect?: Dialect
 }
 
+/**
+ * Dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions
+ */
 export interface Dialect {
+  /** If true, the results will contain a header row */
   header?: boolean
+  /** Separator between cells; the default is , */
   delimiter?: string
+  /** Https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns */
   annotations?: Array<'group' | 'datatype' | 'default'>
+  /** Character prefixed to comment strings */
   commentPrefix?: string
+  /** Format of timestamps */
   dateTimeFormat?: 'RFC3339' | 'RFC3339Nano'
 }
 
@@ -1493,18 +1791,29 @@ export interface Tasks {
 
 export interface Task {
   readonly id: string
+  /** The type of task, this can be used for filtering tasks on list actions. */
   type?: string
+  /** The ID of the organization that owns this Task. */
   orgID: string
+  /** The name of the organization that owns this Task. */
   org?: string
+  /** The name of the task. */
   name: string
+  /** An optional description of the task. */
   description?: string
   status?: TaskStatusType
   labels?: Labels
+  /** The ID of the authorization used when this task communicates with the query engine. */
   authorizationID?: string
+  /** The Flux script to run for this task. */
   flux: string
+  /** A simple task repetition schedule; parsed from Flux. */
   every?: string
+  /** A task repetition schedule in the form '* * * * * *'; parsed from Flux. */
   cron?: string
+  /** Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default. */
   offset?: string
+  /** Timestamp of latest scheduled, completed run, RFC3339. */
   readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
@@ -1521,20 +1830,30 @@ export interface Task {
 }
 
 export interface TaskCreateRequest {
+  /** The ID of the organization that owns this Task. */
   orgID?: string
+  /** The name of the organization that owns this Task. */
   org?: string
   status?: TaskStatusType
+  /** The Flux script to run for this task. */
   flux: string
+  /** An optional description of the task. */
   description?: string
 }
 
 export interface TaskUpdateRequest {
   status?: TaskStatusType
+  /** The Flux script to run for this task. */
   flux?: string
+  /** Override the 'name' option in the flux script. */
   name?: string
+  /** Override the 'every' option in the flux script. */
   every?: string
+  /** Override the 'cron' option in the flux script. */
   cron?: string
+  /** Override the 'offset' option in the flux script. */
   offset?: string
+  /** An optional description of the task. */
   description?: string
 }
 
@@ -1547,14 +1866,19 @@ export interface Run {
   readonly id?: string
   readonly taskID?: string
   readonly status?: 'scheduled' | 'started' | 'failed' | 'success' | 'canceled'
+  /** Time used for run's "now" option, RFC3339. */
   scheduledFor?: string
+  /** An array of logs associated with the run. */
   readonly log?: Array<{
     runID?: string
     time?: string
     message?: string
   }>
+  /** Time run started executing, RFC3339Nano. */
   readonly startedAt?: string
+  /** Time run finished executing, RFC3339Nano. */
   readonly finishedAt?: string
+  /** Time run was manually requested, RFC3339Nano. */
   readonly requestedAt?: string
   readonly links?: {
     self?: string
@@ -1565,6 +1889,7 @@ export interface Run {
 }
 
 export interface RunManually {
+  /** Time used for run's "now" option, RFC3339.  Default is the server's now time. */
   scheduledFor?: string
 }
 
@@ -1573,7 +1898,9 @@ export interface Logs {
 }
 
 export interface LogEvent {
+  /** Time event occurred, RFC3339Nano. */
   readonly time?: string
+  /** A description of the event that occurred. */
   readonly message?: string
 }
 
@@ -1620,27 +1947,42 @@ export type SlackNotificationRule = NotificationRuleBase &
 export interface NotificationRuleBase {
   readonly id: string
   endpointID: string
+  /** The ID of the organization that owns this notification rule. */
   orgID: string
+  /** The ID of creator used to create this notification rule. */
   readonly ownerID?: string
   readonly createdAt?: string
   readonly updatedAt?: string
   status: TaskStatusType
+  /** Human-readable name describing the notification rule. */
   name: string
   sleepUntil?: string
+  /** The notification repetition interval. */
   every?: string
+  /** Duration to delay after the schedule, before executing check. */
   offset?: string
   runbookLink?: string
+  /** Don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty. */
   limitEvery?: number
+  /** Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. */
   limit?: number
+  /** List of tag rules the notification rule attempts to match. */
   tagRules: TagRule[]
+  /** An optional description of the notification rule. */
   description?: string
+  /** List of status rules the notification rule attempts to match. */
   statusRules: StatusRule[]
   labels?: Labels
   readonly links?: {
+    /** URL for this endpoint. */
     self?: Link
+    /** URL to retrieve labels for this notification rule. */
     labels?: Link
+    /** URL to retrieve members for this notification rule. */
     members?: Link
+    /** URL to retrieve owners for this notification rule. */
     owners?: Link
+    /** URL to retrieve flux script for this notification rule. */
     query?: Link
   }
 }
@@ -1658,6 +2000,9 @@ export interface StatusRule {
   period?: string
 }
 
+/**
+ * The state to record if check matches a criteria.
+ */
 export type RuleStatusLevel =
   | 'UNKNOWN'
   | 'OK'
@@ -1700,6 +2045,9 @@ export interface HTTPNotificationRuleBase {
 
 export type PostNotificationRule = NotificationRuleDiscriminator
 
+/**
+ * Rendered flux that backs the check or notification.
+ */
 export interface FluxResponse {
   flux?: string
 }
@@ -1723,7 +2071,9 @@ export type NotificationEndpointDiscrimator =
   | (HTTPNotificationEndpoint & {type: string})
 
 export type SlackNotificationEndpoint = NotificationEndpointBase & {
+  /** Specifies the URL of the Slack endpoint. Specify either `URL` or `Token`. */
   url?: string
+  /** Specifies the API token string. Specify either `URL` or `Token`. */
   token?: string
 }
 
@@ -1733,14 +2083,20 @@ export interface NotificationEndpointBase {
   userID?: string
   readonly createdAt?: string
   readonly updatedAt?: string
+  /** An optional description of the notification endpoint. */
   description?: string
   name: string
+  /** The status of the endpoint. */
   status?: 'active' | 'inactive'
   labels?: Labels
   readonly links?: {
+    /** URL for this endpoint. */
     self?: Link
+    /** URL to retrieve labels for this endpoint. */
     labels?: Link
+    /** URL to retrieve members for this endpoint. */
     members?: Link
+    /** URL to retrieve owners for this endpoint. */
     owners?: Link
   }
   type: NotificationEndpointType
@@ -1761,6 +2117,7 @@ export type HTTPNotificationEndpoint = NotificationEndpointBase & {
   method: 'POST' | 'GET' | 'PUT'
   authMethod: 'none' | 'basic' | 'bearer'
   contentTemplate?: string
+  /** Customized headers. */
   headers?: any
 }
 
