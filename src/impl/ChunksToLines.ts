@@ -1,21 +1,24 @@
-import {CommunicationObserver} from '../transport'
+import {CommunicationObserver, ChunkCombiner} from '../transport'
 import Cancellable from '../util/Cancellable'
-import {Buffer} from 'buffer'
+
 /**
  * Converts lines to table calls
  */
 export default class ChunksToLines implements CommunicationObserver<any> {
-  previous?: Buffer
+  previous?: Uint8Array
   finished = false
 
-  constructor(private target: CommunicationObserver<string>) {}
+  constructor(
+    private target: CommunicationObserver<string>,
+    private chunks: ChunkCombiner
+  ) {}
 
   next(chunk: any): void {
     if (this.finished) return
-    if (Buffer.isBuffer(chunk)) {
+    try {
       this.bufferReceived(chunk)
-    } else {
-      this.error(new Error('Only node buffer chunks are supported!'))
+    } catch (e) {
+      this.error(e)
     }
   }
   error(error: Error): void {
@@ -27,7 +30,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
   complete(): void {
     if (!this.finished) {
       if (this.previous) {
-        this.target.next(this.previous.toString('utf8'))
+        this.target.next(this.chunks.toUtf8String(this.previous))
       }
       this.finished = true
       this.target.complete()
@@ -37,11 +40,11 @@ export default class ChunksToLines implements CommunicationObserver<any> {
     this.target.useCancellable && this.target.useCancellable(cancellable)
   }
 
-  private bufferReceived(chunk: Buffer): void {
+  private bufferReceived(chunk: any): void {
     let index: number
     let start = 0
     if (this.previous) {
-      chunk = Buffer.concat([this.previous as Buffer, chunk])
+      chunk = this.chunks.concat(this.previous, chunk)
       index = (this.previous as Buffer).length
     } else {
       index = 0
@@ -53,7 +56,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
         if (!quoted) {
           /* do not emit CR+LR or LF line ending */
           const end = index > 0 && chunk[index - 1] === 13 ? index - 1 : index
-          this.target.next(chunk.toString('utf8', start, end))
+          this.target.next(this.chunks.toUtf8String(chunk, start, end))
           start = index + 1
         }
       } else if (c === 34 /* " */) {
@@ -62,8 +65,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
       index++
     }
     if (start < index) {
-      this.previous = Buffer.allocUnsafe(index - start)
-      chunk.copy(this.previous, 0, start, index)
+      this.previous = this.chunks.copy(chunk.slice(start, index))
     } else {
       this.previous = undefined
     }

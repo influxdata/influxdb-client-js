@@ -39,6 +39,29 @@ export interface SendOptions {
 }
 
 /**
+ * Simpified platform-neutral data chunk manipulation.
+ */
+export interface ChunkCombiner {
+  /**
+   * Concatenates first and second chunk.
+   * @param first chunk
+   * @param second chunk
+   * @return first + second
+   */
+  concat(first: Uint8Array, second: Uint8Array): Uint8Array
+
+  /**
+   * Converts chunk into a string.
+   */
+  toUtf8String(chunk: Uint8Array, start?: number, end?: number): string
+
+  /**
+   * Creates a new chunk from the supplied chunk.
+   */
+  copy(chunk: Uint8Array): Uint8Array
+}
+
+/**
  * Simpified platform-neutral transport layer for communication with influx DB.
  */
 export interface Transport {
@@ -66,4 +89,9 @@ export interface Transport {
    * @param options  send options
    */
   request(path: string, body: any, options: SendOptions): Promise<any>
+
+  /**
+   * Returns operations for chunks emitted to the {@link send} method communication observer.
+   */
+  readonly chunkCombiner: ChunkCombiner
 }

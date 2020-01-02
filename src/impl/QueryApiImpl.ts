@@ -38,7 +38,7 @@ export class QueryApiImpl implements QueryApi {
           'accept-encoding': this.options.gzip ? 'gzip' : 'identity',
         },
       },
-      new ChunksToLines(consumer)
+      new ChunksToLines(consumer, this.transport.chunkCombiner)
     )
   }
 

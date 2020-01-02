@@ -4,6 +4,8 @@ import chunksToLinesTables from '../../fixture/chunksToLinesTables.json'
 import Cancellable from '../../../src/util/Cancellable'
 import sinon from 'sinon'
 import {CollectLinesObserver} from '../util/CollectLinesObserver'
+import nodeChunkCombiner from '../../../src/impl/nodeChunkCombiner'
+import {Buffer} from 'buffer'
 
 interface ChunkTest {
   name: string
@@ -24,7 +26,7 @@ describe('ChunksToLines', () => {
       const target = test.withCancellable
         ? new CollectLinesObserver2()
         : new CollectLinesObserver()
-      const subject = new ChunksToLines(target)
+      const subject = new ChunksToLines(target, nodeChunkCombiner)
       subject.useCancellable({isCancelled: sinon.mock(), cancel: sinon.mock()})
       let failed = false
       for (let i = 0; i < test.chunks.length; i++) {
@@ -49,7 +51,8 @@ describe('ChunksToLines', () => {
   })
   it('fails on unsupported data', () => {
     const target = new CollectLinesObserver()
-    const subject = new ChunksToLines(target)
+    const subject = new ChunksToLines(target, nodeChunkCombiner)
+    subject.next(Buffer.from('abcd', 'utf8'))
     subject.next(1)
     expect(target.failed).to.be.equal(1)
   })

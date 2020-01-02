@@ -9,14 +9,17 @@ import {
   Transport,
   SendOptions,
   Headers,
+  ChunkCombiner,
 } from '../transport'
 import Cancellable from '../util/Cancellable'
+import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 
 const zlibOptions = {
   flush: zlib.Z_SYNC_FLUSH,
   finishFlush: zlib.Z_SYNC_FLUSH,
 }
+const emptyBuffer = Buffer.allocUnsafe(0)
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
@@ -32,6 +35,9 @@ class CancellableImpl implements Cancellable {
  * Transport layer on top of node http or https library.
  */
 export class NodeHttpTransport implements Transport {
+  /* required transport member */
+  readonly chunkCombiner: ChunkCombiner = nodeChunkCombiner
+
   private defaultOptions: {[key: string]: any}
   private requestApi: (
     options: http.RequestOptions,
@@ -99,7 +105,7 @@ export class NodeHttpTransport implements Transport {
     } else if (typeof body !== 'string') {
       body = JSON.stringify(body)
     }
-    let buffer: Buffer = Buffer.alloc(0)
+    let buffer = emptyBuffer
     let contentType: string
     return new Promise((resolve, reject) => {
       this.send(path, body as string, options, {
