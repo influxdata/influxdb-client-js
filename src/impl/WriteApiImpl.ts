@@ -179,7 +179,6 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
   writePoint(point: Point): void {
     const line = point.toLineProtocol(this)
-    console.log(line)
     if (line) this.writeBuffer.add(line)
   }
   writePoints(points: ArrayLike<Point>): void {
