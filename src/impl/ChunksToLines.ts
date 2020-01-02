@@ -30,7 +30,9 @@ export default class ChunksToLines implements CommunicationObserver<any> {
   complete(): void {
     if (!this.finished) {
       if (this.previous) {
-        this.target.next(this.chunks.toUtf8String(this.previous))
+        this.target.next(
+          this.chunks.toUtf8String(this.previous, 0, this.previous.length)
+        )
       }
       this.finished = true
       this.target.complete()
@@ -65,7 +67,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
       index++
     }
     if (start < index) {
-      this.previous = this.chunks.copy(chunk.slice(start, index))
+      this.previous = this.chunks.copy(chunk, start, index)
     } else {
       this.previous = undefined
     }

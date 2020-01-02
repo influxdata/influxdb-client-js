@@ -53,12 +53,12 @@ export interface ChunkCombiner {
   /**
    * Converts chunk into a string.
    */
-  toUtf8String(chunk: Uint8Array, start?: number, end?: number): string
+  toUtf8String(chunk: Uint8Array, start: number, end: number): string
 
   /**
    * Creates a new chunk from the supplied chunk.
    */
-  copy(chunk: Uint8Array): Uint8Array
+  copy(chunk: Uint8Array, start: number, end: number): Uint8Array
 }
 
 /**
