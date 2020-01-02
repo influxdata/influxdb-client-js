@@ -130,11 +130,10 @@ export class NodeHttpTransport implements Transport {
   }
 
   /**
-   * Creates configuration for a specific request that encapluates everything that is
-   * required to send data.
+   * Creates configuration for a specific request.
    *
    * @param path API path starting with '/' and containing also query parameters
-   * @param headers HTTP headers to use in
+   * @param headers HTTP headers to use
    * @param method HTTP method
    * @param body request body, will be utf-8 encoded
    * @return configuration suitable for making the request
