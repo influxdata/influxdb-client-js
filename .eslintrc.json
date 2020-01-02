@@ -17,6 +17,7 @@
     "prettier/@typescript-eslint"
   ],
   "rules": {
+    "no-console": "warn",
     "@typescript-eslint/camelcase": ["error", {"allow": ["^DEFAULT_"]}],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": [
