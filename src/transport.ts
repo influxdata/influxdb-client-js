@@ -35,7 +35,6 @@ export interface CommunicationObserver<T> {
  */
 export interface SendOptions {
   method: string
-  maxRetries?: number
   headers?: {[key: string]: string}
 }
 

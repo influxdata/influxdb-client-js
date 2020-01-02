@@ -60,7 +60,6 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   private writeOptions: WriteOptions
   private sendOptions: SendOptions = {
     method: 'POST',
-    maxRetries: 0, // we control manual retry attempts
     headers: {
       'content-type': 'text/plain; charset=utf-8',
     },

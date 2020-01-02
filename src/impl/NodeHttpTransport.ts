@@ -158,8 +158,6 @@ export class NodeHttpTransport implements Transport {
     if (this.connectionOptions.token) {
       options.headers.authorization = 'Token ' + this.connectionOptions.token
     }
-    if (sendOptions.maxRetries !== undefined)
-      options.maxRetries = sendOptions.maxRetries
     options.headers['content-length'] = bodyBuffer.length
 
     return options
