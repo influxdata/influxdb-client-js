@@ -12,7 +12,7 @@ const plugins = [
   sourceMaps(),
   typescript({
     typescript: tsc,
-    tsconfigOverride: {
+    tsconfigDefaults: {
       compilerOptions: {
         declaration: true,
         sourceMap: true,
