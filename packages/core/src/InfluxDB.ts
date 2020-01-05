@@ -1,7 +1,6 @@
 import WriteApi from './WriteApi'
 import {ClientOptions, WritePrecision} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
-import {parse} from 'url'
 import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
 import NodeHttpTransport from './impl/NodeHttpTransport'
@@ -11,18 +10,14 @@ import SetupApi from './SetupApi'
 import SetupApiImpl from './impl/SetupApiImpl'
 
 /**
- * Fills URL out into into a IClusterConfig object
+ * Fills URL out into into a configuration object
  */
 function fillOptions(
   url: string | undefined,
   options: {[key: string]: any}
 ): {[key: string]: any} {
   if (url) {
-    const parsed = parse(url, true)
     options.url = url
-    if (!options.token && parsed.query['token']) {
-      options.token = parsed.query['token']
-    }
   }
   return options
 }

@@ -5,18 +5,16 @@ describe('InfluxDB', () => {
   describe('constructor', () => {
     it('is created from string url', () => {
       expect(
-        (new InfluxDB('http://localhost:9999?token=a') as any)._options
+        (new InfluxDB('http://localhost:9999') as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999?token=a',
-        token: 'a',
+        url: 'http://localhost:9999',
       })
     })
     it('is created from configuration with url', () => {
       expect(
-        (new InfluxDB({url: 'http://localhost:9999?token=a'}) as any)._options
+        (new InfluxDB({url: 'http://localhost:9999'}) as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999?token=a',
-        token: 'a',
+        url: 'http://localhost:9999',
       })
     })
     it('is created from configuration with url and token', () => {

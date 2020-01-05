@@ -1,12 +1,12 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
+    "sourceType": "module",
     "ecmaFeatures": {}
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "env": {
-    "browser": true,
+    "node": true,
     "es6": true,
     "mocha": true
   },
@@ -17,7 +17,7 @@
     "prettier/@typescript-eslint"
   ],
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     "@typescript-eslint/camelcase": ["error", {"allow": ["^DEFAULT_"]}],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": [

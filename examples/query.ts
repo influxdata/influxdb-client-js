@@ -3,7 +3,7 @@
 // Shows how to use InfluxDB query API. //
 //////////////////////////////////////////
 
-import {InfluxDB, FluxTableMetaData} from '../src'
+import {InfluxDB, FluxTableMetaData} from '@bonitoo-io/influxdb-client'
 import {url, token, org} from './env'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)

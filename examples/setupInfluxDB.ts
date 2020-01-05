@@ -5,14 +5,14 @@ and bucket that can be then used in examples. All values that used
 for onboarding are defined in ./env.ts .
 */
 
-import {InfluxDB} from '../src'
+import {InfluxDB} from '@bonitoo-io/influxdb-client'
 import {url, username, password, org, bucket, token} from './env'
 
 const setupApi = new InfluxDB({url}).getSetupApi()
 
 setupApi
   .isOnboarding()
-  .then(async allowed => {
+  .then(async (allowed: boolean) => {
     if (allowed) {
       const response = await setupApi.setup(
         {org, bucket, username, password},
