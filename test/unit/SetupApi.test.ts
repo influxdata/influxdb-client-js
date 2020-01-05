@@ -17,16 +17,14 @@ describe('SetupApi', () => {
     nock.cleanAll()
     nock.enableNetConnect()
   })
-  it('isOnboarded', async () => {
+  it('isOnboarding', async () => {
     nock(url)
       .get('/api/v2/setup')
       .reply(200, {allowed: false})
       .persist()
     const subject = new InfluxDB(url).getSetupApi()
-    const val = await subject.isOnboarded()
-    expect(val)
-      .property('allowed')
-      .equals(false)
+    const val = await subject.isOnboarding()
+    expect(val).equals(false)
   })
   it('setup', async () => {
     nock(url)

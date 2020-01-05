@@ -11,8 +11,8 @@ import {url, username, password, org, bucket, token} from './env'
 const setupApi = new InfluxDB({url}).getSetupApi()
 
 setupApi
-  .isOnboarded()
-  .then(async ({allowed: allowed}) => {
+  .isOnboarding()
+  .then(async allowed => {
     if (allowed) {
       const response = await setupApi.setup(
         {org, bucket, username, password},
