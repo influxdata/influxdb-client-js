@@ -1,7 +1,3 @@
-/*
-Exports constants that are used by examples herein.
-*/
-
 /** InfluxDB v2 URL */
 export const url = process.env['INFLUXDB_URL'] || 'http://localhost:9999'
 /** InfluxDB authorization token */
