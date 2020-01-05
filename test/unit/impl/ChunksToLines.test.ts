@@ -53,7 +53,7 @@ describe('ChunksToLines', () => {
     const target = new CollectLinesObserver()
     const subject = new ChunksToLines(target, nodeChunkCombiner)
     subject.next(Buffer.from('abcd', 'utf8'))
-    subject.next(1)
+    subject.next((1 as any) as Uint8Array)
     expect(target.failed).to.be.equal(1)
   })
 })

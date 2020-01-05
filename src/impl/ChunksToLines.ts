@@ -13,7 +13,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
     private chunks: ChunkCombiner
   ) {}
 
-  next(chunk: any): void {
+  next(chunk: Uint8Array): void {
     if (this.finished) return
     try {
       this.bufferReceived(chunk)
@@ -42,7 +42,7 @@ export default class ChunksToLines implements CommunicationObserver<any> {
     this.target.useCancellable && this.target.useCancellable(cancellable)
   }
 
-  private bufferReceived(chunk: any): void {
+  private bufferReceived(chunk: Uint8Array): void {
     let index: number
     let start = 0
     if (this.previous) {

@@ -71,13 +71,13 @@ export interface Transport {
    * @param path HTTP path
    * @param requestBody  request body
    * @param options  send options
-   * @param callbacks communication callbacks with chunks of any type
+   * @param callbacks communication callbacks with chunks Uint8Array
    */
   send(
     path: string,
     requestBody: string,
     options: SendOptions,
-    callbacks?: Partial<CommunicationObserver<any>>
+    callbacks?: Partial<CommunicationObserver<Uint8Array>>
   ): void
 
   /**

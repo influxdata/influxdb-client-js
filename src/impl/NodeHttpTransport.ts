@@ -112,8 +112,8 @@ export class NodeHttpTransport implements Transport {
         responseStarted(headers: Headers) {
           contentType = String(headers['content-type'])
         },
-        next: (data: any): void => {
-          buffer = Buffer.concat([buffer, data as Buffer])
+        next: (data: Uint8Array): void => {
+          buffer = Buffer.concat([buffer, data])
         },
         complete: (): void => {
           try {
