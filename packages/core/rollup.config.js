@@ -3,7 +3,6 @@ import {terser} from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
 import typescript from 'rollup-plugin-typescript2'
 import externalBuiltins from 'builtin-modules'
-import tsc from 'typescript'
 import pkg from './package.json'
 // import builtins from 'rollup-plugin-node-builtins'
 // import globals from 'rollup-plugin-node-globals'
@@ -11,14 +10,7 @@ import pkg from './package.json'
 const plugins = [
   sourceMaps(),
   typescript({
-    typescript: tsc,
-    tsconfigDefaults: {
-      compilerOptions: {
-        declaration: true,
-        sourceMap: true,
-      },
-      include: ['src/**/*.ts'],
-    },
+    tsconfig: './tsconfig.build.json',
   }),
   terser(),
   gzip(),

@@ -13,7 +13,8 @@
     "preinstall": "node ./scripts/require-yarn.js",
     "postinstall": "manypkg check",
     "clean": "yarn worspaces run clean",
-    "build": "cd ./packages/core && yarn run build"
+    "build": "cd ./packages/core && yarn run build",
+    "test": "cd ./packages/core && yarn test"
   },
   "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
   "repository": {
