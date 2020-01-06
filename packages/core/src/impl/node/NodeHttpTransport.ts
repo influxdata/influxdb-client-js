@@ -1,17 +1,21 @@
-import {ConnectionOptions, DEFAULT_ConnectionOptions} from '../options'
+import {ConnectionOptions, DEFAULT_ConnectionOptions} from '../../options'
 import {parse} from 'url'
 import * as http from 'http'
 import * as https from 'https'
 import {Buffer} from 'buffer'
-import {RequestTimedOutError, ResponseAbortedError, HttpError} from '../errors'
+import {
+  RequestTimedOutError,
+  ResponseAbortedError,
+  HttpError,
+} from '../../errors'
 import {
   CommunicationObserver,
   Transport,
   SendOptions,
   Headers,
   ChunkCombiner,
-} from '../transport'
-import Cancellable from '../util/Cancellable'
+} from '../../transport'
+import Cancellable from '../../util/Cancellable'
 import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 

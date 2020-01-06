@@ -1,4 +1,4 @@
-import {ChunkCombiner} from '../transport'
+import {ChunkCombiner} from '../../transport'
 import {Buffer} from 'buffer'
 
 const nodeChunkCombiner: ChunkCombiner = {
