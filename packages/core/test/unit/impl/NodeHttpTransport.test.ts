@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import NodeHttpTransport from '../../../src/impl/NodeHttpTransport'
+import NodeHttpTransport from '../../../src/impl/node/NodeHttpTransport'
 import {ConnectionOptions} from '../../../src/options'
 import {SendOptions} from '../../../src/transport'
 import Cancellable from '../../../src/util/Cancellable'
