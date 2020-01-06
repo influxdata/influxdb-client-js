@@ -52,7 +52,7 @@ jobs:
       - run:
           name: Runs tests with coverage
           command: |
-            cd /packages/core
+            cd ./packages/core
             yarn --version
             yarn coverage
       - run:
