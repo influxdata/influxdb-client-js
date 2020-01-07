@@ -146,11 +146,12 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
   }
 }
 
-export class ResponseAbortedError extends Error implements RetriableDecision {
+export class AbortError extends Error implements RetriableDecision {
   /* istanbul ignore next because of super() not being covered */
   constructor() {
     super()
-    Object.setPrototypeOf(this, ResponseAbortedError.prototype)
+    this.name = 'AbortError'
+    Object.setPrototypeOf(this, AbortError.prototype)
     this.message = 'Response aborted'
   }
   canRetry(): boolean {

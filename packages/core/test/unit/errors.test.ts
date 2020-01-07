@@ -4,7 +4,7 @@ import {
   getRetryDelay,
   HttpError,
   RequestTimedOutError,
-  ResponseAbortedError,
+  AbortError,
   IllegalArgumentError,
   RetriableDecision,
 } from '../../src/errors'
@@ -15,7 +15,7 @@ describe('errors', () => {
       new HttpError(503, 'Service Unavailable'),
       new HttpError(429, 'Too Many Requests'),
       new RequestTimedOutError(),
-      new ResponseAbortedError(),
+      new AbortError(),
       new HttpError(429, 'Too Many Requests', '', '2019-11-02'),
       ((): Error => {
         const err = new Error('Connection reset')
@@ -52,7 +52,7 @@ describe('errors', () => {
         retryAfter: 10,
       },
       {error: new RequestTimedOutError(), retryAfter: 0},
-      {error: new ResponseAbortedError(), retryAfter: 0},
+      {error: new AbortError(), retryAfter: 0},
     ]
     testSet.forEach(entry => {
       it(`retries ${entry.error} in ${entry.retryAfter} ms`, () => {
@@ -82,7 +82,7 @@ describe('errors', () => {
         retryAfter: 10,
       },
       {error: new RequestTimedOutError(), retryAfter: 0},
-      {error: new ResponseAbortedError(), retryAfter: 0},
+      {error: new AbortError(), retryAfter: 0},
       {error: new Error(), retryAfter: 0},
       {error: '', retryAfter: 0},
       {error: null, retryAfter: 0},
