@@ -4,6 +4,7 @@ import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 import replace from '@rollup/plugin-replace'
 
+const tsBuildConfigPath = './tsconfig.build.json'
 const externalNodeModules = ['buffer', 'http', 'https', 'url', 'zlib']
 
 const input = 'src/index.ts'
@@ -20,10 +21,11 @@ function createConfig({browser, format, out, name, target, noTerser}) {
           : {}
       ),
       typescript({
-        tsconfig: './tsconfig.build.json',
+        tsconfig: tsBuildConfigPath,
         tsconfigOverride: {
           compilerOptions: {
             target: target || 'es2015',
+            lib: browser ? ['DOM', 'es2015'] : ['es2015'],
           },
         },
       }),

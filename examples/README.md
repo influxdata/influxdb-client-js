@@ -2,7 +2,7 @@
 
 - Prerequisites
   - [yarn](https://yarnpkg.com/lang/en/docs/install/) installed
-  - Run `yarn install`
+  - Run `yarn --cwd ..` in this directory
   - Change variables in [./env.ts](env.ts) to configure connection to your InfluxDB instance. The file can be used as-is against a [docker influxDB v2.0 installation](https://v2.docs.influxdata.com/v2.0/get-started/)
 - Examples are executable. If it does not work for you, run `yarn ts-node EXAMPLE.ts`.
   - [setupInfluxDB.ts](./setupInfluxDB.ts)
