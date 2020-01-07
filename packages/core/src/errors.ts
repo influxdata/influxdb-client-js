@@ -51,7 +51,7 @@ export class HttpError extends Error implements RetriableDecision {
     readonly statusCode: number,
     readonly statusMessage: string | undefined,
     readonly body?: string,
-    retryAfter?: string | undefined
+    retryAfter?: string | undefined | null
   ) {
     super()
     Object.setPrototypeOf(this, HttpError.prototype)
@@ -63,7 +63,7 @@ export class HttpError extends Error implements RetriableDecision {
     this.setRetryAfter(retryAfter)
   }
 
-  private setRetryAfter(retryAfter?: string | undefined): void {
+  private setRetryAfter(retryAfter?: string | undefined | null): void {
     if (typeof retryAfter === 'string') {
       // try to parse the supplied number as milliseconds
       if (/^[0-9]+$/.test(retryAfter)) {
