@@ -14,16 +14,16 @@ setupApi
   .isOnboarding()
   .then(async (allowed: boolean) => {
     if (allowed) {
-      const response = await setupApi.setup(
-        {org, bucket, username, password},
-        token
-      )
-      console.log(`The database is now onboarded.`)
-      console.log(JSON.stringify(response, null, 2))
+      await setupApi.setup({
+        org,
+        bucket,
+        username,
+        password,
+        token,
+      })
+      console.log(`InfluxDB '${url}' has been onboarded.`)
     } else {
-      console.log(
-        `The database exposed at ${url} already has a default user, organization and bucket.`
-      )
+      console.log(`Influxdb ${url} has been already onboarded.`)
     }
     console.log('\nFinished SUCCESS')
   })
