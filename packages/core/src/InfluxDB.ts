@@ -3,7 +3,8 @@ import {ClientOptions, WritePrecision} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
 import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
-import NodeHttpTransport from './impl/node/NodeHttpTransport'
+// replaced by ./impl/browser/FetchTransport in browser builds
+import TransportImpl from './impl/node/NodeHttpTransport'
 import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
 import SetupApi from './SetupApi'
@@ -26,7 +27,7 @@ function fillOptions(
  * Creates default transport using the connection options supplied.
  */
 function createTransport(options: ClientOptions): Transport {
-  return options.transport || new NodeHttpTransport(options)
+  return new TransportImpl(options)
 }
 
 /**
@@ -57,7 +58,7 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
     if (!this._options.url) throw new IllegalArgumentError('No url specified!')
-    this.transport = createTransport(this._options)
+    this.transport = this._options.transport || createTransport(this._options)
   }
   /* eslint-enable no-dupe-class-members */
 
