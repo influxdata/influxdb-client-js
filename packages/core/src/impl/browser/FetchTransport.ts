@@ -4,16 +4,18 @@ import pureJsChunkCombiner from '../pureJsChunkCombiner'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 
+function normalizeUrl(s: string): string {
+  const match = s.match(/^(https?:\/\/[^:/?#]*(?::[0-9]+)?).*$/i)
+  if (!match) throw new Error(`Unsupported url: ${s}`)
+  return match[1]
+}
 /**
  * Transport layer that use browser fetch.
  */
 export default class FetchTransport implements Transport {
   private defaultHeaders: {[key: string]: string}
   constructor(private connectionOptions: ConnectionOptions) {
-    const url = new URL(this.connectionOptions.url)
-    this.connectionOptions.url = `${url.protocol}://${url.hostname}${
-      url.port ? ':' + url.port : ''
-    }`
+    this.connectionOptions.url = normalizeUrl(connectionOptions.url)
     this.defaultHeaders = {
       'Content-Type': 'application/json; charset=utf-8',
     }
