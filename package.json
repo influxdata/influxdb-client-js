@@ -11,7 +11,7 @@
   "scripts": {
     "preinstall": "node ./scripts/require-yarn.js",
     "postinstall": "manypkg check",
-    "clean": "yarn worspaces run clean",
+    "clean": "yarn workspaces run clean",
     "build": "cd ./packages/core && yarn run build",
     "test": "cd ./packages/core && yarn test"
   },
