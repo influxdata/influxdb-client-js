@@ -4,7 +4,7 @@ import chunksToLinesTables from '../../fixture/chunksToLinesTables.json'
 import Cancellable from '../../../src/util/Cancellable'
 import sinon from 'sinon'
 import {CollectLinesObserver} from '../util/CollectLinesObserver'
-import nodeChunkCombiner from '../../../src/impl/nodeChunkCombiner'
+import nodeChunkCombiner from '../../../src/impl/node/nodeChunkCombiner'
 import {Buffer} from 'buffer'
 
 interface ChunkTest {

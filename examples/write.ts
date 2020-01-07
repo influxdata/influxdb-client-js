@@ -3,7 +3,7 @@
 // Shows how to use InfluxDB write API. //
 //////////////////////////////////////////
 
-import {InfluxDB, Point} from '../src'
+import {InfluxDB, Point} from '@bonitoo-io/influxdb-client'
 import {url, token, org, bucket} from './env'
 
 const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket)
@@ -30,5 +30,5 @@ writeApi
     console.log('FINISHED ... try ./query.ts')
   })
   .catch((e: Error) => {
-    console.log('FAILED ... the data might not send to the server')
+    console.log('FAILED ... the data might not send to the server', e)
   })

@@ -1,28 +1,24 @@
 import WriteApi from './WriteApi'
 import {ClientOptions, WritePrecision} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
-import {parse} from 'url'
 import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
-import NodeHttpTransport from './impl/NodeHttpTransport'
+// replaced by ./impl/browser/FetchTransport in browser builds
+import TransportImpl from './impl/node/NodeHttpTransport'
 import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
 import SetupApi from './SetupApi'
 import SetupApiImpl from './impl/SetupApiImpl'
 
 /**
- * Fills URL out into into a IClusterConfig object
+ * Fills URL out into into a configuration object
  */
 function fillOptions(
   url: string | undefined,
   options: {[key: string]: any}
 ): {[key: string]: any} {
   if (url) {
-    const parsed = parse(url, true)
     options.url = url
-    if (!options.token && parsed.query['token']) {
-      options.token = parsed.query['token']
-    }
   }
   return options
 }
@@ -31,7 +27,7 @@ function fillOptions(
  * Creates default transport using the connection options supplied.
  */
 function createTransport(options: ClientOptions): Transport {
-  return options.transport || new NodeHttpTransport(options)
+  return new TransportImpl(options)
 }
 
 /**
@@ -62,7 +58,7 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
     if (!this._options.url) throw new IllegalArgumentError('No url specified!')
-    this.transport = createTransport(this._options)
+    this.transport = this._options.transport || createTransport(this._options)
   }
   /* eslint-enable no-dupe-class-members */
 

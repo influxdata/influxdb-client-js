@@ -29,18 +29,19 @@ jobs:
       - run:
           name: Run tests
           command: |
+            cd ./packages/core
             yarn test:unit:ci
             yarn lint:ci
-            yarn typedoc
+      #     yarn typedoc
       # Upload results
       - store_test_results:
           path: reports
       - store_artifacts:
-          path: ./reports/mocha/test-results.xml
+          path: ./packages/core/reports/mocha/test-results.xml
       - store_artifacts:
-          path: ./reports/eslint/eslint.xml
+          path: ./packages/core/reports/eslint/eslint.xml
       - store_artifacts:
-          path: ./reports/apidoc
+          path: ./packages/core/reports/apidoc
   coverage:
     parameters:
     docker:
@@ -51,15 +52,16 @@ jobs:
       - run:
           name: Runs tests with coverage
           command: |
+            cd ./packages/core
             yarn --version
             yarn coverage
       - run:
           name: Report test results to codecov
           command: yarn codecov
       - store_artifacts:
-          path: ./coverage
+          path: ./packages/core/coverage
       # - store_artifacts:
-      #     path: ./.nyc_output
+      #     path: ./packages/core/.nyc_output
 
 workflows:
   build:
