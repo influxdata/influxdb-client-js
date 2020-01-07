@@ -34,7 +34,7 @@ describe('SetupApi', () => {
     const subject = new InfluxDB(url).getSetupApi()
     const val = await subject.setup({org, username, password, bucket})
     expect(val).exist
-    const val2 = await subject.setup({org, username, password, bucket}, token)
+    const val2 = await subject.setup({org, username, password, bucket, token})
     expect(val2).exist
   })
 })
