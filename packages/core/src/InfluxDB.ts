@@ -57,7 +57,8 @@ export default class InfluxDB {
     } else {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
-    if (!this._options.url) throw new IllegalArgumentError('No url specified!')
+    if (this._options.url === undefined)
+      throw new IllegalArgumentError('No url specified!')
     this.transport = this._options.transport || createTransport(this._options)
   }
   /* eslint-enable no-dupe-class-members */
