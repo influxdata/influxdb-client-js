@@ -6,7 +6,12 @@ export default function completeCommunicationObserver(
   let state = 0
   const retVal = {
     next: (data: any): void => {
-      if (state === 0 && callbacks.next && data !== null) {
+      if (
+        state === 0 &&
+        callbacks.next &&
+        data !== null &&
+        data !== undefined
+      ) {
         callbacks.next(data)
       }
     },

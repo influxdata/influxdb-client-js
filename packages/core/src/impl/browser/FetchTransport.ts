@@ -9,6 +9,7 @@ import pureJsChunkCombiner from '../pureJsChunkCombiner'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
+import Logger from '../Logger'
 
 /**
  * Transport layer that use browser fetch.
@@ -18,7 +19,7 @@ export default class FetchTransport implements Transport {
   private defaultHeaders: {[key: string]: string}
   constructor(private connectionOptions: ConnectionOptions) {
     this.defaultHeaders = {
-      'Content-Type': 'application/json; charset=utf-8',
+      'content-type': 'application/json; charset=utf-8',
     }
     if (this.connectionOptions.token) {
       this.defaultHeaders['Authorization'] =
@@ -60,21 +61,42 @@ export default class FetchTransport implements Transport {
           })
           observer.responseStarted(headers)
         }
-        if (response.body) {
-          const reader = response.body.getReader()
-          let chunk: ReadableStreamReadResult<Uint8Array>
-          do {
-            chunk = await reader.read()
-            observer.next(chunk)
-          } while (!chunk.done)
-        } else if (response.arrayBuffer) {
-          const buffer = await response.arrayBuffer()
-          observer.next(new Uint8Array(buffer))
+        if (response.status >= 300) {
+          response
+            .text()
+            .then((text: string) => {
+              throw new HttpError(
+                response.status,
+                response.statusText,
+                text,
+                response.headers.get('retry-after')
+              )
+            })
+            .catch((e: Error) => {
+              Logger.warn('Unable to receive error body', e)
+              throw new HttpError(
+                response.status,
+                response.statusText,
+                undefined,
+                response.headers.get('retry-after')
+              )
+            })
         } else {
-          const text = await response.text()
-          observer.next(new TextEncoder().encode(text))
+          if (response.body) {
+            const reader = response.body.getReader()
+            let chunk: ReadableStreamReadResult<Uint8Array>
+            do {
+              chunk = await reader.read()
+              observer.next(chunk.value)
+            } while (!chunk.done)
+          } else if (response.arrayBuffer) {
+            const buffer = await response.arrayBuffer()
+            observer.next(new Uint8Array(buffer))
+          } else {
+            const text = await response.text()
+            observer.next(new TextEncoder().encode(text))
+          }
         }
-        response.body?.getReader
       })
       .catch(e => observer.error(e))
       .finally(() => observer.complete())
@@ -82,7 +104,7 @@ export default class FetchTransport implements Transport {
   async request(path: string, body: any, options: SendOptions): Promise<any> {
     const response = await this.fetch(path, body, options)
     const {status, headers} = response
-    const responseContentType = headers.get('Content-Type') || ''
+    const responseContentType = headers.get('content-type') || ''
 
     let data = undefined
     if (responseContentType.includes('json')) {
@@ -95,7 +117,7 @@ export default class FetchTransport implements Transport {
         status,
         response.statusText,
         data,
-        response.headers.get('Retry-After')
+        response.headers.get('retry-after')
       )
     }
     return data
