@@ -5,10 +5,11 @@
 
 import {InfluxDB, Point} from '@bonitoo-io/influxdb-client'
 import {url, token, org, bucket} from './env'
+import {hostname} from 'os'
 
 const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket)
 // setup default tags for all writes through this API
-writeApi.useDefaultTags({hostname: require('os').hostname()})
+writeApi.useDefaultTags({location: hostname()})
 
 console.log('*** WRITE POINTS ***')
 // writes points
