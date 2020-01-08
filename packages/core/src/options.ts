@@ -1,5 +1,8 @@
 import {Transport} from './transport'
 
+/**
+ * Option for the communication with InfluxDB server.
+ */
 export interface ConnectionOptions {
   /** base URL */
   url: string
@@ -11,10 +14,14 @@ export interface ConnectionOptions {
   transportOptions?: {[key: string]: any}
 }
 
+/** default connection options */
 export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
   timeout: 10000,
 }
 
+/**
+ * Options that configure strategy for retrying failed requests.
+ */
 export interface RetryDelayStrategyOptions {
   /** include random milliseconds when retrying HTTP calls */
   retryJitter: number
@@ -24,6 +31,9 @@ export interface RetryDelayStrategyOptions {
   maxRetryDelay: number
 }
 
+/**
+ * Options that configure strategy for retrying failed InfluxDB write operations.
+ */
 export interface WriteRetryOptions extends RetryDelayStrategyOptions {
   /** max number of retries when write fails */
   maxRetries: number
@@ -32,7 +42,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
 }
 
 /**
- * Options used by [[WriteApi]]
+ * Options used by [[WriteApi]] .
  */
 export interface WriteOptions extends WriteRetryOptions {
   /** max number of records to send in a batch   */
@@ -41,12 +51,14 @@ export interface WriteOptions extends WriteRetryOptions {
   flushInterval: number
 }
 
+/** default RetryDelayStrategyOptions */
 export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
   retryJitter: 200,
   minRetryDelay: 1000,
   maxRetryDelay: 15000,
 })
 
+/** default writeOptions */
 export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
@@ -55,6 +67,9 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   ...DEFAULT_RetryDelayStrategyOptions,
 })
 
+/**
+ * Options used by [[InfluxDB]] .
+ */
 export interface ClientOptions extends ConnectionOptions {
   /** to override default writing options */
   writeOptions?: Partial<WriteOptions>
@@ -62,6 +77,10 @@ export interface ClientOptions extends ConnectionOptions {
   transport?: Transport
 }
 
+/**
+ * Precission for write operations.
+ * @see <a href="https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite">https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite</a>
+ */
 export const enum WritePrecision {
   /** nanosecond */
   ns = 'ns',
@@ -73,6 +92,10 @@ export const enum WritePrecision {
   s = 's',
 }
 
+/**
+ * Settings that control the way of how a [[Point]] is serialized
+ * to a protocol line.
+ */
 export interface PointSettings {
   defaultTags?: {[key: string]: string}
   convertTime?: (value: string | undefined) => string | undefined

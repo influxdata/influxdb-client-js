@@ -1,5 +1,5 @@
 /**
- * Type of the columns, see https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types
+ * Type of query result column, see https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types
  */
 export type ColumnType =
   | 'boolean'
@@ -12,7 +12,7 @@ export type ColumnType =
   | 'duration'
 
 /**
- * Represents column metadata of a flux <a href="http://bit.ly/flux-spec#table">table</a>.
+ * Column metadata of a flux <a href="http://bit.ly/flux-spec#table">table</a>.
  */
 export default class FluxTableColumn {
   /**
@@ -26,7 +26,7 @@ export default class FluxTableColumn {
   dataType: ColumnType
 
   /**
-   * Boolean flag indicating if the column is part of the table's group key.
+   * Boolean flag indicating if the column is a part of the table's group key.
    */
   group: boolean
 

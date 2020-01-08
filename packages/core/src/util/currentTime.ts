@@ -71,6 +71,11 @@ function seconds(): string {
   return String(Math.floor(Date.now() / 1000))
 }
 
+/**
+ * Exposes functions that creates strings that represent a timestamp that
+ * can be used in the line protocol. Micro and nano timestamps are emulated
+ * depending on the js platform in use.
+ */
 export const currentTime = Object.freeze({
   [String(WritePrecision.s)]: seconds,
   [String(WritePrecision.ms)]: millis,

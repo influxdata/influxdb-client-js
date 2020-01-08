@@ -21,9 +21,9 @@ export default class Point {
   }
 
   /**
-   * Setups point's measurement.
+   * Sets point's measurement.
    *
-   * @param name the measurement name
+   * @param name measurement name
    * @return new instance of {@link Point}
    */
   public measurement(name: string): Point {
@@ -97,6 +97,13 @@ export default class Point {
     return this
   }
 
+  /**
+   * Adds a string field.
+   *
+   * @param name field name
+   * @param value field value
+   * @return this
+   */
   public stringField(name: string, value: string | any): Point {
     if (value !== null && value !== undefined) {
       if (typeof value !== 'string') value = String(value)
@@ -105,6 +112,12 @@ export default class Point {
     return this
   }
 
+  /**
+   * Sets point time.
+   *
+   * @param value point time
+   * @return this
+   */
   public timestamp(value: string | undefined): Point {
     this.time = value
     return this

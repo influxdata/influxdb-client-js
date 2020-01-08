@@ -65,20 +65,24 @@ export default class FetchTransport implements Transport {
           response
             .text()
             .then((text: string) => {
-              throw new HttpError(
-                response.status,
-                response.statusText,
-                text,
-                response.headers.get('retry-after')
+              observer.error(
+                new HttpError(
+                  response.status,
+                  response.statusText,
+                  text,
+                  response.headers.get('retry-after')
+                )
               )
             })
             .catch((e: Error) => {
               Logger.warn('Unable to receive error body', e)
-              throw new HttpError(
-                response.status,
-                response.statusText,
-                undefined,
-                response.headers.get('retry-after')
+              observer.error(
+                new HttpError(
+                  response.status,
+                  response.statusText,
+                  undefined,
+                  response.headers.get('retry-after')
+                )
               )
             })
         } else {

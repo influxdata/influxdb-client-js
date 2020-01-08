@@ -29,7 +29,8 @@ export interface QueryOptions {
 }
 
 /**
- * Query InfluxDB 2.0.
+ * Query InfluxDB 2.0. Provides methods that notify abouts result lines of the executed query.
+ * @see <a href="https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery">https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery</a>.
  */
 export default interface QueryApi {
   /**

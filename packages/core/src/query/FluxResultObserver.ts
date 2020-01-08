@@ -2,7 +2,7 @@ import Cancellable from '../util/Cancellable'
 import FluxTableMetaData from './FluxTableMetaData'
 
 /**
- * Observes the results of the flux query.
+ * Observes results of a flux query.
  */
 export default interface FluxResultObserver<T> {
   /**

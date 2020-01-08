@@ -1,5 +1,5 @@
 /**
- * Performs cancellation of a running query.
+ * Allows to cancel a running query.
  */
 export default interface Cancellable {
   /**

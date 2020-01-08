@@ -31,7 +31,7 @@ export interface CommunicationObserver<T> {
 }
 
 /**
- * Options that can be send when sending a message.
+ * Options for sending a request message.
  */
 export interface SendOptions {
   method: string
@@ -39,7 +39,8 @@ export interface SendOptions {
 }
 
 /**
- * Simpified platform-neutral data chunk manipulation.
+ * Simpified platform-neutral data chunk manipulation, it might differ between
+ * target platform (node vs browser).
  */
 export interface ChunkCombiner {
   /**

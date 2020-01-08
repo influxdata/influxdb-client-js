@@ -24,7 +24,7 @@ export default class FluxTableMetaData {
     throw new IllegalArgumentError(`Column ${label} not found!`)
   }
   /**
-   * Creates an object accordin to columns and supplied record.
+   * Creates an object out of the supplied values with the help of columns .
    * @param values values for each column
    */
   toObject(values: string[]): {[key: string]: string} {

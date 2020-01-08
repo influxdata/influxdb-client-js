@@ -31,14 +31,14 @@ export default interface WriteApi {
   /**
    * Write point.
    *
-   * @param records lines in InfluxDB Line Protocol
+   * @param point point to write
    */
   writePoint(point: Point): void
 
   /**
    * Write points.
    *
-   * @param records lines in InfluxDB Line Protocol
+   * @param points points to write
    */
   writePoints(points: ArrayLike<Point>): void
 
@@ -49,13 +49,13 @@ export default interface WriteApi {
   flush(): Promise<void>
 
   /**
-   * Closes this writer, cancels retries of writes operations that failed.
+   * Flushes this writer and cancels retries of write operations that failed.
    * @return completition promise
    */
   close(): Promise<void>
 
   /**
-   * Unlike close, dispose simply quits without trying to send
+   * Unlike close, dispose simply quits without trying to flush
    * the buffered data.
    */
   dispose(): void
