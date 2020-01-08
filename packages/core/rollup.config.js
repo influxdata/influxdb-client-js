@@ -16,9 +16,13 @@ function createConfig({browser, format, out, name, target, noTerser}) {
         browser
           ? {
               './impl/node/NodeHttpTransport': './impl/browser/FetchTransport',
+              'process.env.ROLLUP_BROWSER': 'true',
               delimiters: ['', ''],
             }
-          : {}
+          : {
+              'process.env.ROLLUP_BROWSER': 'false',
+              delimiters: ['', ''],
+            }
       ),
       typescript({
         tsconfig: tsBuildConfigPath,

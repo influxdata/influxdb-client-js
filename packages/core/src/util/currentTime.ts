@@ -5,7 +5,12 @@ const zeroPadding = '000000000'
 let useHrTime = false
 
 export function useProcessHrtime(use: boolean): boolean {
-  return (useHrTime = use && process && typeof process.hrtime === 'function')
+  /* istanbul ignore else */
+  if (!process.env.ROLLUP_BROWSER) {
+    return (useHrTime = use && process && typeof process.hrtime === 'function')
+  } else {
+    return false
+  }
 }
 useProcessHrtime(true) // preffer node
 
@@ -14,7 +19,7 @@ let startHrTime: [number, number] | undefined = undefined
 let lastMillis = Date.now()
 let stepsInMillis = 0
 function nanos(): string {
-  if (useHrTime) {
+  if (!process.env.ROLLUP_BROWSER && useHrTime) {
     const hrTime = process.hrtime() as [number, number]
     let millis = Date.now()
     if (!startHrTime) {
@@ -49,7 +54,7 @@ function nanos(): string {
 }
 
 function micros(): string {
-  if (useHrTime) {
+  if (!process.env.ROLLUP_BROWSER && useHrTime) {
     const hrTime = process.hrtime() as [number, number]
     const micros = String(Math.trunc(hrTime[1] / 1000) % 1000)
     return (
