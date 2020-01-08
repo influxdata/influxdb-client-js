@@ -1,0 +1,41 @@
+{
+  "name": "@bonitoo-io/influxdb-client-apis",
+  "version": "0.5.0",
+  "description": "InfluxDB 2.0 generated APIs",
+  "scripts": {
+    "build": "yarn run clean && yarn run lint && rollup -c",
+    "build:doc": "yarn run clean && typedoc --out ./doc ./src",
+    "clean": "rimraf build doc",
+    "test": "yarn run lint && yarn run typecheck",
+    "typecheck": "tsc --noEmit --pretty",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
+  "keywords": [
+    "influxdb",
+    "influxdata"
+  ],
+  "author": {
+    "name": "Pavel Zavora"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-gzip": "^2.2.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  }
+}

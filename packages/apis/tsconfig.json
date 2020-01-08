@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "lib": ["es2015"]
+  },
+  "include": ["src/**/*.ts", "resources/*.ts"],
+  "exclude": ["**/*.js"]
+}

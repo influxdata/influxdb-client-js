@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "description": "InfluxDB 2.0 client",
   "scripts": {
-    "build": "yarn run clean && NODE_ENV=production rollup -c",
+    "build": "yarn run clean && rollup -c",
     "build:doc": "yarn run clean && typedoc --out ./doc ./src",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
