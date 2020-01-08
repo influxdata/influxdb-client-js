@@ -12,7 +12,6 @@ const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket)
 writeApi.useDefaultTags({location: hostname()})
 
 console.log('*** WRITE POINTS ***')
-// writes points
 const point1 = new Point('temperature')
   .tag('example', 'write.ts')
   .floatField('value', 20 + Math.round(100 * Math.random()) / 10)
