@@ -18,7 +18,6 @@ export default class SetupApiImpl implements SetupApi {
     // token in not documented in open-api description
     return this.transport.request('/api/v2/setup', request, {
       method: 'POST',
-      headers: {'content-type': 'application/json', accept: 'application/json'},
     })
   }
 }
