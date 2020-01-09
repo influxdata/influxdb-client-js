@@ -6,6 +6,7 @@
     "build": "yarn run clean && yarn run lint && rollup -c",
     "build:doc": "yarn run clean && typedoc --out ./doc ./src",
     "clean": "rimraf build doc",
+    "clean:apis": "rimraf build/generated/*API.ts",
     "test": "yarn run lint && yarn run typecheck",
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts'",

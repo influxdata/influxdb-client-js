@@ -15,7 +15,7 @@ import SetupApiImpl from './impl/SetupApiImpl'
  */
 export default class InfluxDB {
   private _options: ClientOptions
-  private transport: Transport
+  readonly transport: Transport
 
   /* eslint-disable no-dupe-class-members */
   /**
