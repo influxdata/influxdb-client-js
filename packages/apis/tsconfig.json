@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "resolveJsonModule": true,
-    "lib": ["es2015"]
+    "lib": ["DOM", "es2015"]
   },
-  "include": ["src/**/*.ts", "resources/*.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["**/*.js"]
 }
