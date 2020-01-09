@@ -4,8 +4,10 @@
   "version": "0.4.0",
   "license": "MIT",
   "scripts": {
+    "browser": "ts-node scripts/server.js",
     "clean": "echo 'nothing to clean'",
-    "browser": "ts-node scripts/server.js"
+    "build": "echo 'nothing to build'",
+    "test": "echo 'run examples to test'"
   },
   "dependencies": {
     "@bonitoo-io/influxdb-client": "*",

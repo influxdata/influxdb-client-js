@@ -32,7 +32,9 @@ jobs:
             cd ./packages/core
             yarn test:unit:ci
             yarn lint:ci
-      #     yarn typedoc
+            yarn build
+            cd ../apis
+            yarn build
       # Upload results
       - store_test_results:
           path: reports

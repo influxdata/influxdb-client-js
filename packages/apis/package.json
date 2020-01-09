@@ -4,17 +4,22 @@
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
     "build": "yarn run clean && yarn run lint && rollup -c",
-    "build:doc": "yarn run clean && typedoc --out ./doc ./src",
-    "clean": "rimraf build doc",
+    "build:doc": "yarn run clean && yarn typedoc",
+    "clean": "rimraf build doc dist",
     "clean:apis": "rimraf src/generated/*API.ts",
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck",
     "typecheck": "tsc --noEmit --pretty",
+    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./doc --target es6 --tsconfig ./tsconfig.build.json ./src",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "browser": {
+    "dist/index.js": "dist/index.browser.js",
+    "dist/index.mjs": "dist/index.browser.mjs"
+  },
   "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
   "keywords": [
     "influxdb",

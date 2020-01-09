@@ -18,8 +18,15 @@ const apis = operations.reduce(
   },
   {} as {[api: string]: Array<Operation>}
 )
+const indexContent = ["export * from './types'"]
 for (const key of Object.keys(apis).sort()) {
   const {apiName, code} = generateApi(key, apis[key])
   logger.info(apiName + '.ts')
+  indexContent.push(`export * from './${apiName}'`)
   fs.writeFileSync(path.join(targetDir, apiName + '.ts'), code)
 }
+logger.info('index.ts')
+fs.writeFileSync(
+  path.join(targetDir, 'index.ts'),
+  indexContent.join('\n') + '\n'
+)

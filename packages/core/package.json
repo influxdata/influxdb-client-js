@@ -4,7 +4,7 @@
   "description": "InfluxDB 2.0 client",
   "scripts": {
     "build": "yarn run clean && rollup -c",
-    "build:doc": "yarn run clean && typedoc --out ./doc ./src",
+    "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "coverage": "nyc mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
