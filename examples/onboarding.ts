@@ -24,7 +24,7 @@ setupApi
       })
       console.log(`InfluxDB '${url}' has been onboarded.`)
     } else {
-      console.log(`Influxdb ${url} has been already onboarded.`)
+      console.log(`InfluxDB '${url}' has been already onboarded.`)
     }
     console.log('\nFinished SUCCESS')
   })
