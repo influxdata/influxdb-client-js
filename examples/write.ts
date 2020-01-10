@@ -7,11 +7,11 @@ import {InfluxDB, Point} from '@bonitoo-io/influxdb-client'
 import {url, token, org, bucket} from './env'
 import {hostname} from 'os'
 
+console.log('*** WRITE POINTS ***')
 const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket)
 // setup default tags for all writes through this API
 writeApi.useDefaultTags({location: hostname()})
 
-console.log('*** WRITE POINTS ***')
 const point1 = new Point('temperature')
   .tag('example', 'write.ts')
   .floatField('value', 20 + Math.round(100 * Math.random()) / 10)

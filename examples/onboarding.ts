@@ -8,6 +8,7 @@ for onboarding are defined in ./env.ts .
 import {InfluxDB} from '@bonitoo-io/influxdb-client'
 import {url, username, password, org, bucket, token} from './env'
 
+console.log('*** ONBOARDING ***')
 const setupApi = new InfluxDB({url}).getSetupApi()
 
 setupApi
