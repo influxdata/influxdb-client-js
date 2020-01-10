@@ -140,7 +140,12 @@ export default class FetchTransport implements Transport {
     const {method, headers, ...other} = options
     return fetch(`${this.connectionOptions.url}${path}`, {
       method: method,
-      body: typeof body === 'string' ? body : JSON.stringify(body),
+      body:
+        method === 'GET' || method === 'HEAD'
+          ? undefined
+          : typeof body === 'string'
+          ? body
+          : JSON.stringify(body),
       headers: {
         ...this.defaultHeaders,
         ...headers,

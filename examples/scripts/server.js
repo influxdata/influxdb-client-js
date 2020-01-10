@@ -5,20 +5,15 @@ import * as open from 'open'
 import {url as influxDBUrl} from '../env'
 
 const port = 3001
+const influxPath = '/influx'
 
 const app = express()
 // serve all files of the git repository
 app.use(express.static(path.join(__dirname, '..', '..'), {index: false}))
-app.use(
-  '/api',
-  proxy(influxDBUrl + '/api', {
-    proxyReqPathResolver: function(req) {
-      return '/api' + req.url
-    },
-  })
-)
+app.use(influxPath, proxy(influxDBUrl))
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`)
+  console.log(`forwarding ${influxPath}/* to ${influxDBUrl}/*`)
   console.log(`opening http://localhost:${port}/examples/index.html`)
   open(`http://localhost:${port}/examples/index.html`)
 })

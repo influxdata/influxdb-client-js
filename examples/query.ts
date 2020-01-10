@@ -18,7 +18,7 @@ queryApi.queryRows(fluxQuery, {
     const o = tableMeta.toObject(row)
     // console.log(JSON.stringify(o, null, 2))
     console.log(
-      `${o._time} ${o._measurement} in '${o.location}': ${o._field}=${o._value}`
+      `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
     )
   },
   error(error: Error) {

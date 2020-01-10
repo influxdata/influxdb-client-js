@@ -3,12 +3,15 @@
     <title>Influx DB JavaScript Client Example</title>
     <script type="module">
       import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
+      import {HealthAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /** InfluxDB v2 URL */
-      const url = '' // rely upon proxy to forward to the target influxDB
+      const url = '/influx' // rely upon proxy to forward to the target influxDB
       const token = 'my-token'
       const org = 'my-org'
       const bucket = 'my-bucket'
+      const username = 'my-user' // onboarding example only
+      const password = 'my-password' // onboarding example only
 
       const influxDB = new InfluxDB({url, token})
 
@@ -47,14 +50,19 @@
       }
       function queryExample(fluxQuery) {
         log('\n*** QUERY ***')
-        const queryApi = new InfluxDB({url, token}).getQueryApi(org)
+        const queryApi = influxDB.getQueryApi(org)
         queryApi.queryRows(fluxQuery, {
           next(row, tableMeta) {
             const o = tableMeta.toObject(row)
-            // log(JSON.stringify(o, null, 2))
-            log(
-              `${o._time} ${o._measurement} at '${o.location}': ${o._field}=${o._value}`
-            )
+            if (o.example){
+              // custom output for example query
+              log(
+                `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
+              )
+            } else {
+              // default output
+              log(JSON.stringify(o, null, 2))
+            }
           },
           error(error) {
             log('QUERY FAILED', error)
@@ -63,6 +71,41 @@
             log('QUERY FINISHED')
           },
         })
+      }
+      function onboardingExample() {
+        log('\n*** ONBOARDING ***')
+        const setupApi = influxDB.getSetupApi()
+        setupApi
+          .isOnboarding()
+          .then(async (allowed) => {
+            if (allowed) {
+              await setupApi.setup({
+                org,
+                bucket,
+                username,
+                password,
+                token,
+              })
+              log(`InfluxDB '${url}' has been onboarded.`)
+            } else {
+              log(`Influxdb ${url} has been already onboarded.`)
+            }
+          })
+          .catch(error => {
+            log('Onboarding FAILED',error)
+          })
+      }
+      function healthExample() {
+        log('\n*** HEALTH ***')
+        const healthApi = new HealthAPI(influxDB)
+        healthApi
+          .getHealth()
+          .then((result) => {
+            log(JSON.stringify(result, null, 2))
+          })
+          .catch(error => {
+            log('Health FAILED', error)
+          })
       }
 
       // initialize page controls
@@ -79,13 +122,24 @@
       queryButton.addEventListener('click', () => {
         queryExample(queryInput.value)
       })
+      document.getElementById('onboardButton').addEventListener('click', () => {
+        onboardingExample()
+      })
+      document.getElementById('healthButton').addEventListener('click', () => {
+        healthExample()
+      })
 
     </script>
   </head>
   <h1>Influx DB JavaScript Client Example</h1>
   <hr>
   <div>
-    <input type="submit" id="writeButton" value='Write to InfluxDB'/>
+    <button id="onboardButton">InfluxDB Onboarding</button>
+    <button id="healthButton">InfluxDB Health</button>
+  </div>
+  <hr>
+  <div>
+    <button id="writeButton">Write to InfluxDB</button>
     <span>Temperature: </span>
     <input type="number" id="temperature" value='20'></input>
   </div>
@@ -94,7 +148,7 @@
     <textarea id="query" style="flex: 1" rows="2"
     >from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
   </div>
-  <input type="submit" id="queryButton" value='Query InfluxDB'/>
+  <button id="queryButton">Query InfluxDB</button>
   <hr>
   <fieldset>
     <legend>Log</legend>

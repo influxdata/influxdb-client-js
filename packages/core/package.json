@@ -3,8 +3,8 @@
   "version": "0.5.0",
   "description": "InfluxDB 2.0 client",
   "scripts": {
-    "build": "yarn run clean && NODE_ENV=production rollup -c",
-    "build:doc": "yarn run clean && typedoc --out ./doc ./src",
+    "build": "yarn run clean && rollup -c",
+    "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "codecov": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "coverage": "nyc mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
@@ -53,7 +53,6 @@
     "rimraf": "^3.0.0",
     "rollup": "^1.27.5",
     "rollup-plugin-gzip": "^2.2.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.25.2",
     "sinon": "^7.5.0",

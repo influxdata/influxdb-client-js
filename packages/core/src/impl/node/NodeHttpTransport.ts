@@ -151,18 +151,21 @@ export class NodeHttpTransport implements Transport {
     sendOptions: SendOptions
   ): {[key: string]: any} {
     const bodyBuffer = Buffer.from(body, 'utf-8')
+    const headers: {[key: string]: any} = {
+      'content-type': 'application/json; charset=utf-8',
+    }
+    if (this.connectionOptions.token) {
+      headers.authorization = 'Token ' + this.connectionOptions.token
+    }
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path,
       method: sendOptions.method,
       headers: {
-        'content-type': 'application/json; charset=utf-8',
+        ...headers,
         ...sendOptions.headers,
       },
       body: bodyBuffer,
-    }
-    if (this.connectionOptions.token) {
-      options.headers.authorization = 'Token ' + this.connectionOptions.token
     }
     options.headers['content-length'] = bodyBuffer.length
 
