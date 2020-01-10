@@ -14,11 +14,7 @@ This library is a work in progress and should not be considered production ready
 ## ToDos
 
 - this documentation
-- all APIs (generated)
-- implement transport for both node and browser, fetch API?
 - serialization of query results
-- monorepo with yarn, separate examples
-- browser client
 
 ## Usage
 
