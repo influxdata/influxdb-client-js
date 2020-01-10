@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Mocha Tests",
+      "name": "Core Tests",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
+      "cwd": "${workspaceRoot}/packages/core",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "args": [
         "--require",
@@ -17,7 +17,7 @@
         "15000",
         "--check-leaks",
         "--colors",
-        "${workspaceRoot}/test/**/*.test.ts"
+        "test/**/*.test.ts"
       ],
       "internalConsoleOptions": "openOnSessionStart"
     }

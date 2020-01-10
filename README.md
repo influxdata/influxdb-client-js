@@ -14,7 +14,6 @@ This library is a work in progress and should not be considered production ready
 ## ToDos
 
 - this documentation
-- serialization of query results
 
 ## Usage
 
