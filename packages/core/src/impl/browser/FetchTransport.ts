@@ -62,7 +62,7 @@ export default class FetchTransport implements Transport {
           observer.responseStarted(headers)
         }
         if (response.status >= 300) {
-          response
+          return response
             .text()
             .then((text: string) => {
               observer.error(
@@ -111,10 +111,15 @@ export default class FetchTransport implements Transport {
     const responseContentType = headers.get('content-type') || ''
 
     let data = undefined
-    if (responseContentType.includes('json')) {
-      data = await response.json()
-    } else if (responseContentType.includes('text')) {
-      data = await response.text()
+    try {
+      if (responseContentType.includes('json')) {
+        data = await response.json()
+      } else if (responseContentType.includes('text')) {
+        data = await response.text()
+      }
+    } catch (_e) {
+      // ignore
+      Logger.warn('Unable to read error body', _e)
     }
     if (status >= 300) {
       throw new HttpError(
