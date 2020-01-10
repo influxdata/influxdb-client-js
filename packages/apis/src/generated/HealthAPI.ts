@@ -22,6 +22,6 @@ export class HealthAPI extends APIBase {
     request?: GetHealthRequest,
     requestOptions?: RequestOptions
   ): Promise<HealthCheck> {
-    return this.request('GET', `/api/v2/health`, request, requestOptions)
+    return this.request('GET', `/health`, request, requestOptions)
   }
 }

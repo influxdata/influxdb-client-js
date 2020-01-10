@@ -22,6 +22,6 @@ export class ReadyAPI extends APIBase {
     request?: GetReadyRequest,
     requestOptions?: RequestOptions
   ): Promise<Ready> {
-    return this.request('GET', `/api/v2/ready`, request, requestOptions)
+    return this.request('GET', `/ready`, request, requestOptions)
   }
 }

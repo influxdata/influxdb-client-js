@@ -12,6 +12,10 @@ const operations: Array<Operation> = _operations
 // reduce operations to apis
 const apis = operations.reduce(
   (acc: {[api: string]: Array<Operation>}, val: Operation) => {
+    if (val.path === '/ready' || val.path === '/health') {
+      // due to a bug in the swagger parser, we don't have correct server path's
+      val.server = ''
+    }
     const apiName = val.path.split('/')[1]
     ;(acc[apiName] || (acc[apiName] = [])).push(val)
     return acc
