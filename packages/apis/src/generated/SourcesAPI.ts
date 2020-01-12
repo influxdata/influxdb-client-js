@@ -2,10 +2,8 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {Buckets, HealthCheck, Source, Sources} from './types'
 
 export interface GetSourcesRequest {
-  query: {
-    /** The organization name. */
-    org?: string
-  }
+  /** The organization name. */
+  org?: string
 }
 export interface PostSourcesRequest {
   /** Source to create */
@@ -32,10 +30,8 @@ export interface GetSourcesIDHealthRequest {
 export interface GetSourcesIDBucketsRequest {
   /** The source ID. */
   sourceID: string
-  query: {
-    /** The organization name. */
-    org?: string
-  }
+  /** The organization name. */
+  org?: string
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
@@ -65,7 +61,7 @@ export class SourcesAPI extends APIBase {
   ): Promise<Sources> {
     return this.request(
       'GET',
-      `/api/v2/sources${this.queryString(request)}`,
+      `/api/v2/sources${this.queryString(request, ['org'])}`,
       request,
       requestOptions
     )
@@ -169,7 +165,9 @@ export class SourcesAPI extends APIBase {
   ): Promise<Buckets> {
     return this.request(
       'GET',
-      `/api/v2/sources/${request.sourceID}/buckets${this.queryString(request)}`,
+      `/api/v2/sources/${request.sourceID}/buckets${this.queryString(request, [
+        'org',
+      ])}`,
       request,
       requestOptions
     )

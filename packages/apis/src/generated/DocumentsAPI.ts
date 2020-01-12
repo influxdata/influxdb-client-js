@@ -10,12 +10,10 @@ import {
 } from './types'
 
 export interface GetDocumentsTemplatesRequest {
-  query: {
-    /** Specifies the name of the organization of the template. */
-    org?: string
-    /** Specifies the organization ID of the template. */
-    orgID?: string
-  }
+  /** Specifies the name of the organization of the template. */
+  org?: string
+  /** Specifies the organization ID of the template. */
+  orgID?: string
 }
 export interface PostDocumentsTemplatesRequest {
   /** Template that will be created */
@@ -79,7 +77,10 @@ export class DocumentsAPI extends APIBase {
   ): Promise<Documents> {
     return this.request(
       'GET',
-      `/api/v2/documents/templates${this.queryString(request)}`,
+      `/api/v2/documents/templates${this.queryString(request, [
+        'org',
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )

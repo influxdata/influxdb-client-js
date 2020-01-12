@@ -18,9 +18,10 @@ export class APIBase {
     this.transport = influxDB.transport
   }
 
-  queryString(request: any): string {
-    if (request && request.query) {
-      return Object.entries(request.query).reduce((acc, [key, val]) => {
+  queryString(request: any, params: string[]): string {
+    if (request && params) {
+      return params.reduce((acc, key) => {
+        const val = request[key]
         if (val !== undefined && val !== null) {
           acc += acc ? '&' : '?'
           acc += encodeURIComponent(key) + '=' + encodeURIComponent(String(val))
@@ -39,9 +40,6 @@ export class APIBase {
     requestOptions?: RequestOptions,
     mediaType?: string
   ): Promise<any> {
-    if (request.query) {
-      path += this.queryString(request.query)
-    }
     const sendOptions: SendOptions = {
       ...requestOptions,
       method,

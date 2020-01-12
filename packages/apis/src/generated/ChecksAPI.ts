@@ -11,12 +11,10 @@ import {
 } from './types'
 
 export interface GetChecksRequest {
-  query: {
-    offset?: number
-    limit?: number
-    /** Only show checks that belong to a specific organization ID. */
-    orgID: string
-  }
+  offset?: number
+  limit?: number
+  /** Only show checks that belong to a specific organization ID. */
+  orgID: string
 }
 export interface CreateCheckRequest {
   /** Check to create */
@@ -93,7 +91,11 @@ export class ChecksAPI extends APIBase {
   ): Promise<Checks> {
     return this.request(
       'GET',
-      `/api/v2/checks${this.queryString(request)}`,
+      `/api/v2/checks${this.queryString(request, [
+        'offset',
+        'limit',
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )

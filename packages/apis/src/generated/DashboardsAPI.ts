@@ -21,18 +21,16 @@ import {
 } from './types'
 
 export interface GetDashboardsRequest {
-  query: {
-    /** The owner ID. */
-    owner?: string
-    /** The column to sort by. */
-    sortBy?: string
-    /** List of dashboard IDs to return. If both `id and `owner` are specified, only `id` is used. */
-    id?: any
-    /** The organization ID. */
-    orgID?: string
-    /** The organization name. */
-    org?: string
-  }
+  /** The owner ID. */
+  owner?: string
+  /** The column to sort by. */
+  sortBy?: string
+  /** List of dashboard IDs to return. If both `id and `owner` are specified, only `id` is used. */
+  id?: any
+  /** The organization ID. */
+  orgID?: string
+  /** The organization name. */
+  org?: string
 }
 export interface PostDashboardsRequest {
   /** Dashboard to create */
@@ -41,10 +39,8 @@ export interface PostDashboardsRequest {
 export interface GetDashboardsIDRequest {
   /** The ID of the dashboard to update. */
   dashboardID: string
-  query: {
-    /** Includes the cell view properties in the response if set to `properties` */
-    include?: string
-  }
+  /** Includes the cell view properties in the response if set to `properties` */
+  include?: string
 }
 export interface PatchDashboardsIDRequest {
   /** The ID of the dashboard to update. */
@@ -144,10 +140,8 @@ export interface DeleteDashboardsIDOwnersIDRequest {
 export interface GetDashboardsIDLogsRequest {
   /** The dashboard ID. */
   dashboardID: string
-  query: {
-    offset?: number
-    limit?: number
-  }
+  offset?: number
+  limit?: number
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
@@ -191,7 +185,13 @@ export class DashboardsAPI extends APIBase {
   ): Promise<Dashboards> {
     return this.request(
       'GET',
-      `/api/v2/dashboards${this.queryString(request)}`,
+      `/api/v2/dashboards${this.queryString(request, [
+        'owner',
+        'sortBy',
+        'id',
+        'orgID',
+        'org',
+      ])}`,
       request,
       requestOptions
     )
@@ -226,7 +226,9 @@ export class DashboardsAPI extends APIBase {
   ): Promise<Dashboard | DashboardWithViewProperties> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${request.dashboardID}${this.queryString(request)}`,
+      `/api/v2/dashboards/${request.dashboardID}${this.queryString(request, [
+        'include',
+      ])}`,
       request,
       requestOptions
     )
@@ -541,7 +543,8 @@ export class DashboardsAPI extends APIBase {
     return this.request(
       'GET',
       `/api/v2/dashboards/${request.dashboardID}/logs${this.queryString(
-        request
+        request,
+        ['offset', 'limit']
       )}`,
       request,
       requestOptions

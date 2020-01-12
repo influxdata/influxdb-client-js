@@ -15,16 +15,14 @@ import {
 } from './types'
 
 export interface GetScrapersRequest {
-  query: {
-    /** Specifies the name of the scraper target. */
-    name?: string
-    /** List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used. */
-    id?: any
-    /** Specifies the organization ID of the scraper target. */
-    orgID?: string
-    /** Specifies the organization name of the scraper target. */
-    org?: string
-  }
+  /** Specifies the name of the scraper target. */
+  name?: string
+  /** List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used. */
+  id?: any
+  /** Specifies the organization ID of the scraper target. */
+  orgID?: string
+  /** Specifies the organization name of the scraper target. */
+  org?: string
 }
 export interface PostScrapersRequest {
   /** Scraper target to create */
@@ -136,7 +134,12 @@ export class ScrapersAPI extends APIBase {
   ): Promise<ScraperTargetResponses> {
     return this.request(
       'GET',
-      `/api/v2/scrapers${this.queryString(request)}`,
+      `/api/v2/scrapers${this.queryString(request, [
+        'name',
+        'id',
+        'orgID',
+        'org',
+      ])}`,
       request,
       requestOptions
     )

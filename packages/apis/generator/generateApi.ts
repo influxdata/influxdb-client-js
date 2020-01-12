@@ -61,16 +61,14 @@ function generateTypes(operation: Operation): string {
     retVal += `  body: ${getBodyType(operation)}\n`
   }
   if (operation.queryParams && operation.queryParams.length) {
-    retVal += `  query: {\n`
     for (const param of operation.queryParams) {
       if (param.description) {
-        retVal += `    /** ${param.description} */\n`
+        retVal += `  /** ${param.description} */\n`
       }
       retVal += `    ${param.name}${param.required ? '' : '?'}: ${
         param.type ? param.type : 'string'
       }\n`
     }
-    retVal += `  }\n`
   }
   retVal += '}'
   return retVal
@@ -140,7 +138,11 @@ export class ${apiName} extends APIBase {
       /\{([^}]*)\}/g,
       (_match, param) => '${request.' + param + '}'
     )}${
-      operation.queryParams.length ? '${this.queryString(request)}' : ''
+      operation.queryParams.length
+        ? '${this.queryString(request,[' +
+          operation.queryParams.map(x => "'" + x.name + "'").join(',') +
+          '])}'
+        : ''
     }\`, request, requestOptions${
       operation.bodyParam && operation.bodyParam.mediaType
         ? ", '" + operation.bodyParam.mediaType + "'"

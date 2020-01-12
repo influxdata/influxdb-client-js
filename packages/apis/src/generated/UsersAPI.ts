@@ -30,10 +30,8 @@ export interface PutUsersIDPasswordRequest {
 export interface GetUsersIDLogsRequest {
   /** The user ID. */
   userID: string
-  query: {
-    offset?: number
-    limit?: number
-  }
+  offset?: number
+  limit?: number
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
@@ -163,7 +161,10 @@ export class UsersAPI extends APIBase {
   ): Promise<OperationLogs> {
     return this.request(
       'GET',
-      `/api/v2/users/${request.userID}/logs${this.queryString(request)}`,
+      `/api/v2/users/${request.userID}/logs${this.queryString(request, [
+        'offset',
+        'limit',
+      ])}`,
       request,
       requestOptions
     )

@@ -6,16 +6,14 @@ import {
 } from './types'
 
 export interface GetAuthorizationsRequest {
-  query: {
-    /** Only show authorizations that belong to a user ID. */
-    userID?: string
-    /** Only show authorizations that belong to a user name. */
-    user?: string
-    /** Only show authorizations that belong to an organization ID. */
-    orgID?: string
-    /** Only show authorizations that belong to a organization name. */
-    org?: string
-  }
+  /** Only show authorizations that belong to a user ID. */
+  userID?: string
+  /** Only show authorizations that belong to a user name. */
+  user?: string
+  /** Only show authorizations that belong to an organization ID. */
+  orgID?: string
+  /** Only show authorizations that belong to a organization name. */
+  org?: string
 }
 export interface PostAuthorizationsRequest {
   /** Authorization to create */
@@ -61,7 +59,12 @@ export class AuthorizationsAPI extends APIBase {
   ): Promise<Authorizations> {
     return this.request(
       'GET',
-      `/api/v2/authorizations${this.queryString(request)}`,
+      `/api/v2/authorizations${this.queryString(request, [
+        'userID',
+        'user',
+        'orgID',
+        'org',
+      ])}`,
       request,
       requestOptions
     )

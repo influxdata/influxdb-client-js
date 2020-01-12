@@ -15,16 +15,14 @@ import {
 } from './types'
 
 export interface GetBucketsRequest {
-  query: {
-    offset?: number
-    limit?: number
-    /** The organization name. */
-    org?: string
-    /** The organization ID. */
-    orgID?: string
-    /** Only returns buckets with a specific name. */
-    name?: string
-  }
+  offset?: number
+  limit?: number
+  /** The organization name. */
+  org?: string
+  /** The organization ID. */
+  orgID?: string
+  /** Only returns buckets with a specific name. */
+  name?: string
 }
 export interface PostBucketsRequest {
   /** Bucket to create */
@@ -95,10 +93,8 @@ export interface DeleteBucketsIDOwnersIDRequest {
 export interface GetBucketsIDLogsRequest {
   /** The bucket ID. */
   bucketID: string
-  query: {
-    offset?: number
-    limit?: number
-  }
+  offset?: number
+  limit?: number
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets
@@ -136,7 +132,13 @@ export class BucketsAPI extends APIBase {
   ): Promise<Buckets> {
     return this.request(
       'GET',
-      `/api/v2/buckets${this.queryString(request)}`,
+      `/api/v2/buckets${this.queryString(request, [
+        'offset',
+        'limit',
+        'org',
+        'orgID',
+        'name',
+      ])}`,
       request,
       requestOptions
     )
@@ -379,7 +381,10 @@ export class BucketsAPI extends APIBase {
   ): Promise<OperationLogs> {
     return this.request(
       'GET',
-      `/api/v2/buckets/${request.bucketID}/logs${this.queryString(request)}`,
+      `/api/v2/buckets/${request.bucketID}/logs${this.queryString(request, [
+        'offset',
+        'limit',
+      ])}`,
       request,
       requestOptions
     )

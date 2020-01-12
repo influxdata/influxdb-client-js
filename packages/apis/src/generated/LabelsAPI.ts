@@ -7,10 +7,8 @@ import {
 } from './types'
 
 export interface GetLabelsRequest {
-  query: {
-    /** The organization ID. */
-    orgID?: string
-  }
+  /** The organization ID. */
+  orgID?: string
 }
 export interface PostLabelsRequest {
   /** Label to create */
@@ -56,7 +54,7 @@ export class LabelsAPI extends APIBase {
   ): Promise<LabelsResponse> {
     return this.request(
       'GET',
-      `/api/v2/labels${this.queryString(request)}`,
+      `/api/v2/labels${this.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )

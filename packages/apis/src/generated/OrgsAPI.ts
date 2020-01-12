@@ -17,12 +17,10 @@ import {
 } from './types'
 
 export interface GetOrgsRequest {
-  query: {
-    /** Filter organizations to a specific organization name. */
-    org?: string
-    /** Filter organizations to a specific organization ID. */
-    orgID?: string
-  }
+  /** Filter organizations to a specific organization name. */
+  org?: string
+  /** Filter organizations to a specific organization ID. */
+  orgID?: string
 }
 export interface PostOrgsRequest {
   /** Organization to create */
@@ -109,10 +107,8 @@ export interface DeleteOrgsIDOwnersIDRequest {
 export interface GetOrgsIDLogsRequest {
   /** The organization ID. */
   orgID: string
-  query: {
-    offset?: number
-    limit?: number
-  }
+  offset?: number
+  limit?: number
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
@@ -153,7 +149,7 @@ export class OrgsAPI extends APIBase {
   ): Promise<Organizations> {
     return this.request(
       'GET',
-      `/api/v2/orgs${this.queryString(request)}`,
+      `/api/v2/orgs${this.queryString(request, ['org', 'orgID'])}`,
       request,
       requestOptions
     )
@@ -449,7 +445,10 @@ export class OrgsAPI extends APIBase {
   ): Promise<OperationLogs> {
     return this.request(
       'GET',
-      `/api/v2/orgs/${request.orgID}/logs${this.queryString(request)}`,
+      `/api/v2/orgs/${request.orgID}/logs${this.queryString(request, [
+        'offset',
+        'limit',
+      ])}`,
       request,
       requestOptions
     )

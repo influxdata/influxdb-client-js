@@ -14,10 +14,8 @@ import {
 } from './types'
 
 export interface GetTelegrafsRequest {
-  query: {
-    /** The organization ID the Telegraf config belongs to. */
-    orgID?: string
-  }
+  /** The organization ID the Telegraf config belongs to. */
+  orgID?: string
 }
 export interface PostTelegrafsRequest {
   /** Telegraf config to create */
@@ -119,7 +117,7 @@ export class TelegrafsAPI extends APIBase {
   ): Promise<Telegrafs> {
     return this.request(
       'GET',
-      `/api/v2/telegrafs${this.queryString(request)}`,
+      `/api/v2/telegrafs${this.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )

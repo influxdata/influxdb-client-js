@@ -11,16 +11,14 @@ import {
 } from './types'
 
 export interface GetNotificationRulesRequest {
-  query: {
-    offset?: number
-    limit?: number
-    /** Only show notification rules that belong to a specific organization ID. */
-    orgID: string
-    /** Only show notifications that belong to the specific check ID. */
-    checkID?: string
-    /** Only return notification rules that "would match" statuses which contain the tag key value pairs provided. */
-    tag?: string
-  }
+  offset?: number
+  limit?: number
+  /** Only show notification rules that belong to a specific organization ID. */
+  orgID: string
+  /** Only show notifications that belong to the specific check ID. */
+  checkID?: string
+  /** Only return notification rules that "would match" statuses which contain the tag key value pairs provided. */
+  tag?: string
 }
 export interface CreateNotificationRuleRequest {
   /** Notification rule to create */
@@ -97,7 +95,13 @@ export class NotificationRulesAPI extends APIBase {
   ): Promise<NotificationRules> {
     return this.request(
       'GET',
-      `/api/v2/notificationRules${this.queryString(request)}`,
+      `/api/v2/notificationRules${this.queryString(request, [
+        'offset',
+        'limit',
+        'orgID',
+        'checkID',
+        'tag',
+      ])}`,
       request,
       requestOptions
     )

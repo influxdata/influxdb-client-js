@@ -10,12 +10,10 @@ import {
 } from './types'
 
 export interface GetNotificationEndpointsRequest {
-  query: {
-    offset?: number
-    limit?: number
-    /** Only show notification endpoints that belong to specific organization ID. */
-    orgID: string
-  }
+  offset?: number
+  limit?: number
+  /** Only show notification endpoints that belong to specific organization ID. */
+  orgID: string
 }
 export interface CreateNotificationEndpointRequest {
   /** Notification endpoint to create */
@@ -87,7 +85,11 @@ export class NotificationEndpointsAPI extends APIBase {
   ): Promise<NotificationEndpoints> {
     return this.request(
       'GET',
-      `/api/v2/notificationEndpoints${this.queryString(request)}`,
+      `/api/v2/notificationEndpoints${this.queryString(request, [
+        'offset',
+        'limit',
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )

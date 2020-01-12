@@ -24,12 +24,10 @@ export interface PostQueryAnalyzeRequest {
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
   body: Query
-  query: {
-    /** Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence. */
-    org?: string
-    /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */
-    orgID?: string
-  }
+  /** Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence. */
+  org?: string
+  /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */
+  orgID?: string
 }
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
@@ -124,7 +122,7 @@ export class QueryAPI extends APIBase {
   ): Promise<string> {
     return this.request(
       'POST',
-      `/api/v2/query${this.queryString(request)}`,
+      `/api/v2/query${this.queryString(request, ['org', 'orgID'])}`,
       request,
       requestOptions,
       'application/json'

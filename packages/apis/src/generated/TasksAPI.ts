@@ -19,22 +19,20 @@ import {
 } from './types'
 
 export interface GetTasksRequest {
-  query: {
-    /** Returns task with a specific name. */
-    name?: string
-    /** Return tasks after a specified ID. */
-    after?: string
-    /** Filter tasks to a specific user ID. */
-    user?: string
-    /** Filter tasks to a specific organization name. */
-    org?: string
-    /** Filter tasks to a specific organization ID. */
-    orgID?: string
-    /** Filter tasks by a status--"inactive" or "active". */
-    status?: string
-    /** The number of tasks to return */
-    limit?: number
-  }
+  /** Returns task with a specific name. */
+  name?: string
+  /** Return tasks after a specified ID. */
+  after?: string
+  /** Filter tasks to a specific user ID. */
+  user?: string
+  /** Filter tasks to a specific organization name. */
+  org?: string
+  /** Filter tasks to a specific organization ID. */
+  orgID?: string
+  /** Filter tasks by a status--"inactive" or "active". */
+  status?: string
+  /** The number of tasks to return */
+  limit?: number
 }
 export interface PostTasksRequest {
   /** Task to create */
@@ -57,16 +55,14 @@ export interface DeleteTasksIDRequest {
 export interface GetTasksIDRunsRequest {
   /** The ID of the task to get runs for. */
   taskID: string
-  query: {
-    /** Returns runs after a specific ID. */
-    after?: string
-    /** The number of runs to return */
-    limit?: number
-    /** Filter runs to those scheduled after this time, RFC3339 */
-    afterTime?: string
-    /** Filter runs to those scheduled before this time, RFC3339 */
-    beforeTime?: string
-  }
+  /** Returns runs after a specific ID. */
+  after?: string
+  /** The number of runs to return */
+  limit?: number
+  /** Filter runs to those scheduled after this time, RFC3339 */
+  afterTime?: string
+  /** Filter runs to those scheduled before this time, RFC3339 */
+  beforeTime?: string
 }
 export interface PostTasksIDRunsRequest {
   taskID: string
@@ -190,7 +186,15 @@ export class TasksAPI extends APIBase {
   ): Promise<Tasks> {
     return this.request(
       'GET',
-      `/api/v2/tasks${this.queryString(request)}`,
+      `/api/v2/tasks${this.queryString(request, [
+        'name',
+        'after',
+        'user',
+        'org',
+        'orgID',
+        'status',
+        'limit',
+      ])}`,
       request,
       requestOptions
     )
@@ -277,7 +281,12 @@ export class TasksAPI extends APIBase {
   ): Promise<Runs> {
     return this.request(
       'GET',
-      `/api/v2/tasks/${request.taskID}/runs${this.queryString(request)}`,
+      `/api/v2/tasks/${request.taskID}/runs${this.queryString(request, [
+        'after',
+        'limit',
+        'afterTime',
+        'beforeTime',
+      ])}`,
       request,
       requestOptions
     )

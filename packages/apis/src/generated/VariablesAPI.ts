@@ -8,12 +8,10 @@ import {
 } from './types'
 
 export interface GetVariablesRequest {
-  query: {
-    /** The organization name. */
-    org?: string
-    /** The organization ID. */
-    orgID?: string
-  }
+  /** The organization name. */
+  org?: string
+  /** The organization ID. */
+  orgID?: string
 }
 export interface PostVariablesRequest {
   /** Variable to create */
@@ -85,7 +83,7 @@ export class VariablesAPI extends APIBase {
   ): Promise<Variables> {
     return this.request(
       'GET',
-      `/api/v2/variables${this.queryString(request)}`,
+      `/api/v2/variables${this.queryString(request, ['org', 'orgID'])}`,
       request,
       requestOptions
     )
