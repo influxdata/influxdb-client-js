@@ -30,7 +30,7 @@ Run all unit tests:
 $ yarn test:unit
 ```
 
-Check code:
+Check code coverage of unit tests:
 
 ```bash
 $ yarn coverage
