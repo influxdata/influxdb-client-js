@@ -58,7 +58,8 @@ function generateTypes(operation: Operation): string {
     if (operation.bodyParam.description) {
       retVal += `  /** ${operation.bodyParam.description} */\n`
     }
-    retVal += `  body: ${getBodyType(operation)}\n`
+    const bodyType = getBodyType(operation)
+    retVal += `  body: ${bodyType}\n`
   }
   if (operation.queryParams && operation.queryParams.length) {
     for (const param of operation.queryParams) {

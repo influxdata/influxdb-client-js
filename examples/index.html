@@ -3,7 +3,7 @@
     <title>InfluxDB JavaScript Client Examples</title>
     <script type="module">
       import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
-      import {HealthAPI} from '../packages/apis/dist/index.browser.mjs'
+      import {HealthAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /** InfluxDB v2 URL */
       const url = '/influx' // rely upon proxy to forward to the target influxDB
@@ -74,19 +74,21 @@
       }
       function onboardingExample() {
         log('\n*** ONBOARDING ***')
-        const setupApi = influxDB.getSetupApi()
+        const setupApi = new SetupAPI(influxDB)
         setupApi
-          .isOnboarding()
-          .then(async (allowed) => {
+          .getSetup()
+          .then(async ({allowed}) => {
             if (allowed) {
-              await setupApi.setup({
-                org,
-                bucket,
-                username,
-                password,
-                token,
+              await setupApi.postSetup({
+                body: {
+                  org,
+                  bucket,
+                  username,
+                  password,
+                  token
+                }
               })
-              log(`InfluxDB '${url}' has been onboarded.`)
+              log(`InfluxDB '${url}' is now onboarded.`)
             } else {
               log(`InfluxDB '${url}' has been already onboarded.`)
             }

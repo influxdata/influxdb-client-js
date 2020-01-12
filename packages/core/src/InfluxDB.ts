@@ -7,8 +7,6 @@ import {Transport} from './transport'
 import TransportImpl from './impl/node/NodeHttpTransport'
 import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
-import SetupApi from './SetupApi'
-import SetupApiImpl from './impl/SetupApiImpl'
 
 /**
  * InfluxDB 2.0 client that uses HTTP API described in https://v2.docs.influxdata.com/v2.0/reference/api/ .
@@ -73,14 +71,5 @@ export default class InfluxDB {
    */
   getQueryApi(org: string): QueryApi {
     return new QueryApiImpl(this.transport, org)
-  }
-
-  /**
-   * Returns [[SetupApi]].
-   *
-   * @return setup api instance
-   */
-  getSetupApi(): SetupApi {
-    return new SetupApiImpl(this.transport)
   }
 }

@@ -6,23 +6,26 @@ for onboarding are defined in ./env.ts .
 */
 
 import {InfluxDB} from '@bonitoo-io/influxdb-client'
+import {SetupAPI, OnboardingRequest} from '@bonitoo-io/influxdb-client-apis'
 import {url, username, password, org, bucket, token} from './env'
 
 console.log('*** ONBOARDING ***')
-const setupApi = new InfluxDB({url}).getSetupApi()
+const setupApi = new SetupAPI(new InfluxDB({url}))
 
 setupApi
-  .isOnboarding()
-  .then(async (allowed: boolean) => {
+  .getSetup()
+  .then(async ({allowed}) => {
     if (allowed) {
-      await setupApi.setup({
-        org,
-        bucket,
-        username,
-        password,
-        token,
+      await setupApi.postSetup({
+        body: ({
+          org,
+          bucket,
+          username,
+          password,
+          token, // token is not documented in open API
+        } as unknown) as OnboardingRequest,
       })
-      console.log(`InfluxDB '${url}' has been onboarded.`)
+      console.log(`InfluxDB '${url}' is now onboarded.`)
     } else {
       console.log(`InfluxDB '${url}' has been already onboarded.`)
     }
