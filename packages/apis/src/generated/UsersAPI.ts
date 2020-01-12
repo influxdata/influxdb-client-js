@@ -6,18 +6,30 @@ export interface PostUsersRequest {
   /** User to create */
   body: User
 }
-export interface GetUsersIDRequest {}
+export interface GetUsersIDRequest {
+  /** The user ID. */
+  userID: string
+}
 export interface PatchUsersIDRequest {
+  /** The ID of the user to update. */
+  userID: string
   /** User update to apply */
   body: User
 }
-export interface DeleteUsersIDRequest {}
+export interface DeleteUsersIDRequest {
+  /** The ID of the user to delete. */
+  userID: string
+}
 export interface PutUsersIDPasswordRequest {
+  /** The user ID. */
+  userID: string
   auth: {user: string; password: string}
   /** New password */
   body: PasswordResetBody
 }
 export interface GetUsersIDLogsRequest {
+  /** The user ID. */
+  userID: string
   query: {
     offset?: number
     limit?: number
@@ -71,38 +83,34 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Retrieve a user.
-   * @param userID The user ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
    */
   getUsersID(
-    userID: string,
-    request?: GetUsersIDRequest,
+    request: GetUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<User> {
     return this.request(
       'GET',
-      `/api/v2/users/${userID}`,
+      `/api/v2/users/${request.userID}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a user.
-   * @param userID The ID of the user to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
    */
   patchUsersID(
-    userID: string,
     request: PatchUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<User> {
     return this.request(
       'PATCH',
-      `/api/v2/users/${userID}`,
+      `/api/v2/users/${request.userID}`,
       request,
       requestOptions,
       'application/json'
@@ -110,38 +118,34 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Delete a user.
-   * @param userID The ID of the user to delete.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
    */
   deleteUsersID(
-    userID: string,
-    request?: DeleteUsersIDRequest,
+    request: DeleteUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/users/${userID}`,
+      `/api/v2/users/${request.userID}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a password.
-   * @param userID The user ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
    */
   putUsersIDPassword(
-    userID: string,
     request: PutUsersIDPasswordRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'PUT',
-      `/api/v2/users/${userID}/password`,
+      `/api/v2/users/${request.userID}/password`,
       request,
       requestOptions,
       'application/json'
@@ -149,19 +153,17 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Retrieve operation logs for a user.
-   * @param userID The user ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
    */
   getUsersIDLogs(
-    userID: string,
-    request?: GetUsersIDLogsRequest,
+    request: GetUsersIDLogsRequest,
     requestOptions?: RequestOptions
   ): Promise<OperationLogs> {
     return this.request(
       'GET',
-      `/api/v2/users/${userID}/logs${this.queryString(request)}`,
+      `/api/v2/users/${request.userID}/logs${this.queryString(request)}`,
       request,
       requestOptions
     )

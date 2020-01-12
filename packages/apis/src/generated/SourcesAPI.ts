@@ -11,14 +11,27 @@ export interface PostSourcesRequest {
   /** Source to create */
   body: Source
 }
-export interface GetSourcesIDRequest {}
+export interface GetSourcesIDRequest {
+  /** The source ID. */
+  sourceID: string
+}
 export interface PatchSourcesIDRequest {
+  /** The source ID. */
+  sourceID: string
   /** Source update */
   body: Source
 }
-export interface DeleteSourcesIDRequest {}
-export interface GetSourcesIDHealthRequest {}
+export interface DeleteSourcesIDRequest {
+  /** The source ID. */
+  sourceID: string
+}
+export interface GetSourcesIDHealthRequest {
+  /** The source ID. */
+  sourceID: string
+}
 export interface GetSourcesIDBucketsRequest {
+  /** The source ID. */
+  sourceID: string
   query: {
     /** The organization name. */
     org?: string
@@ -77,38 +90,34 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Get a source.
-   * @param sourceID The source ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
    */
   getSourcesID(
-    sourceID: string,
-    request?: GetSourcesIDRequest,
+    request: GetSourcesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Source> {
     return this.request(
       'GET',
-      `/api/v2/sources/${sourceID}`,
+      `/api/v2/sources/${request.sourceID}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a Source.
-   * @param sourceID The source ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
    */
   patchSourcesID(
-    sourceID: string,
     request: PatchSourcesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Source> {
     return this.request(
       'PATCH',
-      `/api/v2/sources/${sourceID}`,
+      `/api/v2/sources/${request.sourceID}`,
       request,
       requestOptions,
       'application/json'
@@ -116,57 +125,51 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Delete a source.
-   * @param sourceID The source ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
    */
   deleteSourcesID(
-    sourceID: string,
-    request?: DeleteSourcesIDRequest,
+    request: DeleteSourcesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/sources/${sourceID}`,
+      `/api/v2/sources/${request.sourceID}`,
       request,
       requestOptions
     )
   }
   /**
    * Get the health of a source.
-   * @param sourceID The source ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
    */
   getSourcesIDHealth(
-    sourceID: string,
-    request?: GetSourcesIDHealthRequest,
+    request: GetSourcesIDHealthRequest,
     requestOptions?: RequestOptions
   ): Promise<HealthCheck> {
     return this.request(
       'GET',
-      `/api/v2/sources/${sourceID}/health`,
+      `/api/v2/sources/${request.sourceID}/health`,
       request,
       requestOptions
     )
   }
   /**
    * Get buckets in a source.
-   * @param sourceID The source ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
    */
   getSourcesIDBuckets(
-    sourceID: string,
-    request?: GetSourcesIDBucketsRequest,
+    request: GetSourcesIDBucketsRequest,
     requestOptions?: RequestOptions
   ): Promise<Buckets> {
     return this.request(
       'GET',
-      `/api/v2/sources/${sourceID}/buckets${this.queryString(request)}`,
+      `/api/v2/sources/${request.sourceID}/buckets${this.queryString(request)}`,
       request,
       requestOptions
     )

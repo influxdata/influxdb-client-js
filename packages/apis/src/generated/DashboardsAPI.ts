@@ -39,50 +39,111 @@ export interface PostDashboardsRequest {
   body: CreateDashboardRequest
 }
 export interface GetDashboardsIDRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
   query: {
     /** Includes the cell view properties in the response if set to `properties` */
     include?: string
   }
 }
 export interface PatchDashboardsIDRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
   /** Patching of a dashboard */
   body: Dashboard
 }
-export interface DeleteDashboardsIDRequest {}
+export interface DeleteDashboardsIDRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
+}
 export interface PostDashboardsIDCellsRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
   /** Cell that will be added */
   body: CreateCell
 }
 export interface PutDashboardsIDCellsRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
   body: Cells
 }
 export interface PatchDashboardsIDCellsIDRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
+  /** The ID of the cell to update. */
+  cellID: string
   body: CellUpdate
 }
-export interface DeleteDashboardsIDCellsIDRequest {}
-export interface GetDashboardsIDCellsIDViewRequest {}
+export interface DeleteDashboardsIDCellsIDRequest {
+  /** The ID of the dashboard to delete. */
+  dashboardID: string
+  /** The ID of the cell to delete. */
+  cellID: string
+}
+export interface GetDashboardsIDCellsIDViewRequest {
+  /** The dashboard ID. */
+  dashboardID: string
+  /** The cell ID. */
+  cellID: string
+}
 export interface PatchDashboardsIDCellsIDViewRequest {
+  /** The ID of the dashboard to update. */
+  dashboardID: string
+  /** The ID of the cell to update. */
+  cellID: string
   body: View
 }
-export interface GetDashboardsIDLabelsRequest {}
+export interface GetDashboardsIDLabelsRequest {
+  /** The dashboard ID. */
+  dashboardID: string
+}
 export interface PostDashboardsIDLabelsRequest {
+  /** The dashboard ID. */
+  dashboardID: string
   /** Label to add */
   body: LabelMapping
 }
-export interface DeleteDashboardsIDLabelsIDRequest {}
-export interface GetDashboardsIDMembersRequest {}
+export interface DeleteDashboardsIDLabelsIDRequest {
+  /** The dashboard ID. */
+  dashboardID: string
+  /** The ID of the label to delete. */
+  labelID: string
+}
+export interface GetDashboardsIDMembersRequest {
+  /** The dashboard ID. */
+  dashboardID: string
+}
 export interface PostDashboardsIDMembersRequest {
+  /** The dashboard ID. */
+  dashboardID: string
   /** User to add as member */
   body: AddResourceMemberRequestBody
 }
-export interface DeleteDashboardsIDMembersIDRequest {}
-export interface GetDashboardsIDOwnersRequest {}
+export interface DeleteDashboardsIDMembersIDRequest {
+  /** The ID of the member to remove. */
+  userID: string
+  /** The dashboard ID. */
+  dashboardID: string
+}
+export interface GetDashboardsIDOwnersRequest {
+  /** The dashboard ID. */
+  dashboardID: string
+}
 export interface PostDashboardsIDOwnersRequest {
+  /** The dashboard ID. */
+  dashboardID: string
   /** User to add as owner */
   body: AddResourceMemberRequestBody
 }
-export interface DeleteDashboardsIDOwnersIDRequest {}
+export interface DeleteDashboardsIDOwnersIDRequest {
+  /** The ID of the owner to remove. */
+  userID: string
+  /** The dashboard ID. */
+  dashboardID: string
+}
 export interface GetDashboardsIDLogsRequest {
+  /** The dashboard ID. */
+  dashboardID: string
   query: {
     offset?: number
     limit?: number
@@ -155,38 +216,34 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Get a Dashboard.
-   * @param dashboardID The ID of the dashboard to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID
    */
   getDashboardsID(
-    dashboardID: string,
-    request?: GetDashboardsIDRequest,
+    request: GetDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard | DashboardWithViewProperties> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}${this.queryString(request)}`,
+      `/api/v2/dashboards/${request.dashboardID}${this.queryString(request)}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a dashboard.
-   * @param dashboardID The ID of the dashboard to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID
    */
   patchDashboardsID(
-    dashboardID: string,
     request: PatchDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard> {
     return this.request(
       'PATCH',
-      `/api/v2/dashboards/${dashboardID}`,
+      `/api/v2/dashboards/${request.dashboardID}`,
       request,
       requestOptions,
       'application/json'
@@ -194,38 +251,34 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Delete a dashboard.
-   * @param dashboardID The ID of the dashboard to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID
    */
   deleteDashboardsID(
-    dashboardID: string,
-    request?: DeleteDashboardsIDRequest,
+    request: DeleteDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/dashboards/${dashboardID}`,
+      `/api/v2/dashboards/${request.dashboardID}`,
       request,
       requestOptions
     )
   }
   /**
    * Create a dashboard cell.
-   * @param dashboardID The ID of the dashboard to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells
    */
   postDashboardsIDCells(
-    dashboardID: string,
     request: PostDashboardsIDCellsRequest,
     requestOptions?: RequestOptions
   ): Promise<Cell> {
     return this.request(
       'POST',
-      `/api/v2/dashboards/${dashboardID}/cells`,
+      `/api/v2/dashboards/${request.dashboardID}/cells`,
       request,
       requestOptions,
       'application/json'
@@ -233,19 +286,17 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Replace cells in a dashboard.
-   * @param dashboardID The ID of the dashboard to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells
    */
   putDashboardsIDCells(
-    dashboardID: string,
     request: PutDashboardsIDCellsRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard> {
     return this.request(
       'PUT',
-      `/api/v2/dashboards/${dashboardID}/cells`,
+      `/api/v2/dashboards/${request.dashboardID}/cells`,
       request,
       requestOptions,
       'application/json'
@@ -253,21 +304,17 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Update the non-positional information related to a cell.
-   * @param dashboardID The ID of the dashboard to update.
-   * @param cellID The ID of the cell to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID
    */
   patchDashboardsIDCellsID(
-    dashboardID: string,
-    cellID: string,
     request: PatchDashboardsIDCellsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Cell> {
     return this.request(
       'PATCH',
-      `/api/v2/dashboards/${dashboardID}/cells/${cellID}`,
+      `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}`,
       request,
       requestOptions,
       'application/json'
@@ -275,63 +322,51 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Delete a dashboard cell.
-   * @param dashboardID The ID of the dashboard to delete.
-   * @param cellID The ID of the cell to delete.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID
    */
   deleteDashboardsIDCellsID(
-    dashboardID: string,
-    cellID: string,
-    request?: DeleteDashboardsIDCellsIDRequest,
+    request: DeleteDashboardsIDCellsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/dashboards/${dashboardID}/cells/${cellID}`,
+      `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}`,
       request,
       requestOptions
     )
   }
   /**
    * Retrieve the view for a cell.
-   * @param dashboardID The dashboard ID.
-   * @param cellID The cell ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView
    */
   getDashboardsIDCellsIDView(
-    dashboardID: string,
-    cellID: string,
-    request?: GetDashboardsIDCellsIDViewRequest,
+    request: GetDashboardsIDCellsIDViewRequest,
     requestOptions?: RequestOptions
   ): Promise<View> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}/cells/${cellID}/view`,
+      `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}/view`,
       request,
       requestOptions
     )
   }
   /**
    * Update the view for a cell.
-   * @param dashboardID The ID of the dashboard to update.
-   * @param cellID The ID of the cell to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView
    */
   patchDashboardsIDCellsIDView(
-    dashboardID: string,
-    cellID: string,
     request: PatchDashboardsIDCellsIDViewRequest,
     requestOptions?: RequestOptions
   ): Promise<View> {
     return this.request(
       'PATCH',
-      `/api/v2/dashboards/${dashboardID}/cells/${cellID}/view`,
+      `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}/view`,
       request,
       requestOptions,
       'application/json'
@@ -339,38 +374,34 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * list all labels for a dashboard.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels
    */
   getDashboardsIDLabels(
-    dashboardID: string,
-    request?: GetDashboardsIDLabelsRequest,
+    request: GetDashboardsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}/labels`,
+      `/api/v2/dashboards/${request.dashboardID}/labels`,
       request,
       requestOptions
     )
   }
   /**
    * Add a label to a dashboard.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels
    */
   postDashboardsIDLabels(
-    dashboardID: string,
     request: PostDashboardsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
     return this.request(
       'POST',
-      `/api/v2/dashboards/${dashboardID}/labels`,
+      `/api/v2/dashboards/${request.dashboardID}/labels`,
       request,
       requestOptions,
       'application/json'
@@ -378,59 +409,51 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Delete a label from a dashboard.
-   * @param dashboardID The dashboard ID.
-   * @param labelID The ID of the label to delete.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID
    */
   deleteDashboardsIDLabelsID(
-    dashboardID: string,
-    labelID: string,
-    request?: DeleteDashboardsIDLabelsIDRequest,
+    request: DeleteDashboardsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/dashboards/${dashboardID}/labels/${labelID}`,
+      `/api/v2/dashboards/${request.dashboardID}/labels/${request.labelID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all dashboard members.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers
    */
   getDashboardsIDMembers(
-    dashboardID: string,
-    request?: GetDashboardsIDMembersRequest,
+    request: GetDashboardsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}/members`,
+      `/api/v2/dashboards/${request.dashboardID}/members`,
       request,
       requestOptions
     )
   }
   /**
    * Add a member to a dashboard.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers
    */
   postDashboardsIDMembers(
-    dashboardID: string,
     request: PostDashboardsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
     return this.request(
       'POST',
-      `/api/v2/dashboards/${dashboardID}/members`,
+      `/api/v2/dashboards/${request.dashboardID}/members`,
       request,
       requestOptions,
       'application/json'
@@ -438,59 +461,51 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Remove a member from a dashboard.
-   * @param userID The ID of the member to remove.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID
    */
   deleteDashboardsIDMembersID(
-    userID: string,
-    dashboardID: string,
-    request?: DeleteDashboardsIDMembersIDRequest,
+    request: DeleteDashboardsIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/dashboards/${dashboardID}/members/${userID}`,
+      `/api/v2/dashboards/${request.dashboardID}/members/${request.userID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all dashboard owners.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
    */
   getDashboardsIDOwners(
-    dashboardID: string,
-    request?: GetDashboardsIDOwnersRequest,
+    request: GetDashboardsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}/owners`,
+      `/api/v2/dashboards/${request.dashboardID}/owners`,
       request,
       requestOptions
     )
   }
   /**
    * Add an owner to a dashboard.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
    */
   postDashboardsIDOwners(
-    dashboardID: string,
     request: PostDashboardsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
     return this.request(
       'POST',
-      `/api/v2/dashboards/${dashboardID}/owners`,
+      `/api/v2/dashboards/${request.dashboardID}/owners`,
       request,
       requestOptions,
       'application/json'
@@ -498,40 +513,36 @@ export class DashboardsAPI extends APIBase {
   }
   /**
    * Remove an owner from a dashboard.
-   * @param userID The ID of the owner to remove.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
    */
   deleteDashboardsIDOwnersID(
-    userID: string,
-    dashboardID: string,
-    request?: DeleteDashboardsIDOwnersIDRequest,
+    request: DeleteDashboardsIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/dashboards/${dashboardID}/owners/${userID}`,
+      `/api/v2/dashboards/${request.dashboardID}/owners/${request.userID}`,
       request,
       requestOptions
     )
   }
   /**
    * Retrieve operation logs for a dashboard.
-   * @param dashboardID The dashboard ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLogs
    */
   getDashboardsIDLogs(
-    dashboardID: string,
-    request?: GetDashboardsIDLogsRequest,
+    request: GetDashboardsIDLogsRequest,
     requestOptions?: RequestOptions
   ): Promise<OperationLogs> {
     return this.request(
       'GET',
-      `/api/v2/dashboards/${dashboardID}/logs${this.queryString(request)}`,
+      `/api/v2/dashboards/${request.dashboardID}/logs${this.queryString(
+        request
+      )}`,
       request,
       requestOptions
     )

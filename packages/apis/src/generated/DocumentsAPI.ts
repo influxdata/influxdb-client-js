@@ -21,18 +21,36 @@ export interface PostDocumentsTemplatesRequest {
   /** Template that will be created */
   body: DocumentCreate
 }
-export interface GetDocumentsTemplatesIDRequest {}
+export interface GetDocumentsTemplatesIDRequest {
+  /** The template ID. */
+  templateID: string
+}
 export interface PutDocumentsTemplatesIDRequest {
+  /** The template ID. */
+  templateID: string
   /** Template that will be updated */
   body: DocumentUpdate
 }
-export interface DeleteDocumentsTemplatesIDRequest {}
-export interface GetDocumentsTemplatesIDLabelsRequest {}
+export interface DeleteDocumentsTemplatesIDRequest {
+  /** The template ID. */
+  templateID: string
+}
+export interface GetDocumentsTemplatesIDLabelsRequest {
+  /** The template ID. */
+  templateID: string
+}
 export interface PostDocumentsTemplatesIDLabelsRequest {
+  /** The template ID. */
+  templateID: string
   /** Label to add */
   body: LabelMapping
 }
-export interface DeleteDocumentsTemplatesIDLabelsIDRequest {}
+export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
+  /** The template ID. */
+  templateID: string
+  /** The label ID. */
+  labelID: string
+}
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
@@ -85,37 +103,33 @@ export class DocumentsAPI extends APIBase {
     )
   }
   /**
-   * @param templateID The template ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
    */
   getDocumentsTemplatesID(
-    templateID: string,
-    request?: GetDocumentsTemplatesIDRequest,
+    request: GetDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Document> {
     return this.request(
       'GET',
-      `/api/v2/documents/templates/${templateID}`,
+      `/api/v2/documents/templates/${request.templateID}`,
       request,
       requestOptions
     )
   }
   /**
-   * @param templateID The template ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
    */
   putDocumentsTemplatesID(
-    templateID: string,
     request: PutDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Document> {
     return this.request(
       'PUT',
-      `/api/v2/documents/templates/${templateID}`,
+      `/api/v2/documents/templates/${request.templateID}`,
       request,
       requestOptions,
       'application/json'
@@ -123,57 +137,51 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Delete a template.
-   * @param templateID The template ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
    */
   deleteDocumentsTemplatesID(
-    templateID: string,
-    request?: DeleteDocumentsTemplatesIDRequest,
+    request: DeleteDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/documents/templates/${templateID}`,
+      `/api/v2/documents/templates/${request.templateID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all labels for a template.
-   * @param templateID The template ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
    */
   getDocumentsTemplatesIDLabels(
-    templateID: string,
-    request?: GetDocumentsTemplatesIDLabelsRequest,
+    request: GetDocumentsTemplatesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
     return this.request(
       'GET',
-      `/api/v2/documents/templates/${templateID}/labels`,
+      `/api/v2/documents/templates/${request.templateID}/labels`,
       request,
       requestOptions
     )
   }
   /**
    * Add a label to a template.
-   * @param templateID The template ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
    */
   postDocumentsTemplatesIDLabels(
-    templateID: string,
     request: PostDocumentsTemplatesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
     return this.request(
       'POST',
-      `/api/v2/documents/templates/${templateID}/labels`,
+      `/api/v2/documents/templates/${request.templateID}/labels`,
       request,
       requestOptions,
       'application/json'
@@ -181,21 +189,17 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Delete a label from a template.
-   * @param templateID The template ID.
-   * @param labelID The label ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
    */
   deleteDocumentsTemplatesIDLabelsID(
-    templateID: string,
-    labelID: string,
-    request?: DeleteDocumentsTemplatesIDLabelsIDRequest,
+    request: DeleteDocumentsTemplatesIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/documents/templates/${templateID}/labels/${labelID}`,
+      `/api/v2/documents/templates/${request.templateID}/labels/${request.labelID}`,
       request,
       requestOptions
     )

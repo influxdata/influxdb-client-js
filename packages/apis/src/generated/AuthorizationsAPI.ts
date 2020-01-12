@@ -21,12 +21,20 @@ export interface PostAuthorizationsRequest {
   /** Authorization to create */
   body: Authorization
 }
-export interface GetAuthorizationsIDRequest {}
+export interface GetAuthorizationsIDRequest {
+  /** The ID of the authorization to get. */
+  authID: string
+}
 export interface PatchAuthorizationsIDRequest {
+  /** The ID of the authorization to update. */
+  authID: string
   /** Authorization to update */
   body: AuthorizationUpdateRequest
 }
-export interface DeleteAuthorizationsIDRequest {}
+export interface DeleteAuthorizationsIDRequest {
+  /** The ID of the authorization to delete. */
+  authID: string
+}
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
@@ -78,38 +86,34 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Retrieve an authorization.
-   * @param authID The ID of the authorization to get.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
    */
   getAuthorizationsID(
-    authID: string,
-    request?: GetAuthorizationsIDRequest,
+    request: GetAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorization> {
     return this.request(
       'GET',
-      `/api/v2/authorizations/${authID}`,
+      `/api/v2/authorizations/${request.authID}`,
       request,
       requestOptions
     )
   }
   /**
    * Update an authorization to be active or inactive.
-   * @param authID The ID of the authorization to update.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
    */
   patchAuthorizationsID(
-    authID: string,
     request: PatchAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorization> {
     return this.request(
       'PATCH',
-      `/api/v2/authorizations/${authID}`,
+      `/api/v2/authorizations/${request.authID}`,
       request,
       requestOptions,
       'application/json'
@@ -117,19 +121,17 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Delete a authorization.
-   * @param authID The ID of the authorization to delete.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
    */
   deleteAuthorizationsID(
-    authID: string,
-    request?: DeleteAuthorizationsIDRequest,
+    request: DeleteAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/authorizations/${authID}`,
+      `/api/v2/authorizations/${request.authID}`,
       request,
       requestOptions
     )

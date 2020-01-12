@@ -19,22 +19,42 @@ export interface PostVariablesRequest {
   /** Variable to create */
   body: Variable
 }
-export interface GetVariablesIDRequest {}
+export interface GetVariablesIDRequest {
+  /** The variable ID. */
+  variableID: string
+}
 export interface PutVariablesIDRequest {
+  /** The variable ID. */
+  variableID: string
   /** Variable to replace */
   body: Variable
 }
 export interface PatchVariablesIDRequest {
+  /** The variable ID. */
+  variableID: string
   /** Variable update to apply */
   body: Variable
 }
-export interface DeleteVariablesIDRequest {}
-export interface GetVariablesIDLabelsRequest {}
+export interface DeleteVariablesIDRequest {
+  /** The variable ID. */
+  variableID: string
+}
+export interface GetVariablesIDLabelsRequest {
+  /** The variable ID. */
+  variableID: string
+}
 export interface PostVariablesIDLabelsRequest {
+  /** The variable ID. */
+  variableID: string
   /** Label to add */
   body: LabelMapping
 }
-export interface DeleteVariablesIDLabelsIDRequest {}
+export interface DeleteVariablesIDLabelsIDRequest {
+  /** The variable ID. */
+  variableID: string
+  /** The label ID to delete. */
+  labelID: string
+}
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
@@ -90,38 +110,34 @@ export class VariablesAPI extends APIBase {
   }
   /**
    * Get a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
    */
   getVariablesID(
-    variableID: string,
-    request?: GetVariablesIDRequest,
+    request: GetVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
     return this.request(
       'GET',
-      `/api/v2/variables/${variableID}`,
+      `/api/v2/variables/${request.variableID}`,
       request,
       requestOptions
     )
   }
   /**
    * Replace a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
    */
   putVariablesID(
-    variableID: string,
     request: PutVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
     return this.request(
       'PUT',
-      `/api/v2/variables/${variableID}`,
+      `/api/v2/variables/${request.variableID}`,
       request,
       requestOptions,
       'application/json'
@@ -129,19 +145,17 @@ export class VariablesAPI extends APIBase {
   }
   /**
    * Update a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
    */
   patchVariablesID(
-    variableID: string,
     request: PatchVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
     return this.request(
       'PATCH',
-      `/api/v2/variables/${variableID}`,
+      `/api/v2/variables/${request.variableID}`,
       request,
       requestOptions,
       'application/json'
@@ -149,57 +163,51 @@ export class VariablesAPI extends APIBase {
   }
   /**
    * Delete a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
    */
   deleteVariablesID(
-    variableID: string,
-    request?: DeleteVariablesIDRequest,
+    request: DeleteVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/variables/${variableID}`,
+      `/api/v2/variables/${request.variableID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all labels for a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
    */
   getVariablesIDLabels(
-    variableID: string,
-    request?: GetVariablesIDLabelsRequest,
+    request: GetVariablesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
     return this.request(
       'GET',
-      `/api/v2/variables/${variableID}/labels`,
+      `/api/v2/variables/${request.variableID}/labels`,
       request,
       requestOptions
     )
   }
   /**
    * Add a label to a variable.
-   * @param variableID The variable ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
    */
   postVariablesIDLabels(
-    variableID: string,
     request: PostVariablesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
     return this.request(
       'POST',
-      `/api/v2/variables/${variableID}/labels`,
+      `/api/v2/variables/${request.variableID}/labels`,
       request,
       requestOptions,
       'application/json'
@@ -207,21 +215,17 @@ export class VariablesAPI extends APIBase {
   }
   /**
    * Delete a label from a variable.
-   * @param variableID The variable ID.
-   * @param labelID The label ID to delete.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
    */
   deleteVariablesIDLabelsID(
-    variableID: string,
-    labelID: string,
-    request?: DeleteVariablesIDLabelsIDRequest,
+    request: DeleteVariablesIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/variables/${variableID}/labels/${labelID}`,
+      `/api/v2/variables/${request.variableID}/labels/${request.labelID}`,
       request,
       requestOptions
     )

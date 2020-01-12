@@ -1,23 +1,7 @@
 import {capitalize1, decapitalize1, getOperationId} from './format'
-import {Operation, Parameter, Response} from './operationType'
+import {Operation, Response} from './operationType'
 import TypesCollector from './typesCollector'
 import logger from './logger'
-
-function generatePositionalParamsDoc(params: Parameter[]): string {
-  return params
-    .map(
-      param =>
-        `\n   * @param ${param.name}${
-          param.description ? ' ' + param.description : ''
-        }`
-    )
-    .join('')
-}
-function generatePositionalParams(params: Parameter[]): string {
-  const values = params.map(param => `${param.name}: ${param.type}`)
-  if (values.length) values.push('')
-  return values.join(', ')
-}
 
 function getResponse(operation: Operation): Response {
   const validResponse: Array<Response> = operation.responses.filter(
@@ -56,6 +40,17 @@ function getBodyType(operation: Operation): string {
 function generateTypes(operation: Operation): string {
   const opId = getOperationId(operation)
   let retVal = `export interface ${opId}Request {\n`
+  if (operation.positionalParams && operation.positionalParams.length) {
+    for (const param of operation.positionalParams) {
+      if (param.description) {
+        retVal += `    /** ${param.description} */\n`
+      }
+      retVal += `    ${param.name}${param.required ? '' : '?'}: ${
+        param.type ? param.type : 'string'
+      }\n`
+    }
+  }
+
   if (operation.basicAuth) {
     retVal += '  auth: {user: string, password: string}\n'
   }
@@ -82,6 +77,9 @@ function generateTypes(operation: Operation): string {
 }
 function requestRequired(operation: Operation): boolean {
   if (operation.basicAuth || operation.bodyParam) return true
+  if (operation.positionalParams && operation.positionalParams.length) {
+    return true
+  }
   if (
     operation.queryParams &&
     operation.queryParams.length &&
@@ -126,15 +124,12 @@ export class ${apiName} extends APIBase {
     } else {
       classDef += '\n  /**'
     }
-    classDef += generatePositionalParamsDoc(operation.positionalParams)
     classDef += `
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/${opId}
    */
-  ${decapitalize1(opId)}(${generatePositionalParams(
-      operation.positionalParams
-    )}request${
+  ${decapitalize1(opId)}(request${
       requestRequired(operation) ? '' : '?'
     }: ${opId}Request, requestOptions?: RequestOptions): Promise<${getReturnType(
       operation
@@ -143,7 +138,7 @@ export class ${apiName} extends APIBase {
       operation.server
     }${operation.path.replace(
       /\{([^}]*)\}/g,
-      (_match, param) => '${' + param + '}'
+      (_match, param) => '${request.' + param + '}'
     )}${
       operation.queryParams.length ? '${this.queryString(request)}' : ''
     }\`, request, requestOptions${

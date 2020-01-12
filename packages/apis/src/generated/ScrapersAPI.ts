@@ -30,34 +30,76 @@ export interface PostScrapersRequest {
   /** Scraper target to create */
   body: ScraperTargetRequest
 }
-export interface GetScrapersIDRequest {}
+export interface GetScrapersIDRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
 export interface PatchScrapersIDRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
   /** Scraper target update to apply */
   body: ScraperTargetRequest
 }
-export interface DeleteScrapersIDRequest {}
-export interface GetScrapersIDLabelsRequest {}
+export interface DeleteScrapersIDRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
+export interface GetScrapersIDLabelsRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
 export interface PostScrapersIDLabelsRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
   /** Label to add */
   body: LabelMapping
 }
 export interface PatchScrapersIDLabelsIDRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+  /** The label ID. */
+  labelID: string
   /** Label update to apply */
   body: Label
 }
-export interface DeleteScrapersIDLabelsIDRequest {}
-export interface GetScrapersIDMembersRequest {}
+export interface DeleteScrapersIDLabelsIDRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+  /** The label ID. */
+  labelID: string
+}
+export interface GetScrapersIDMembersRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
 export interface PostScrapersIDMembersRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
   /** User to add as member */
   body: AddResourceMemberRequestBody
 }
-export interface DeleteScrapersIDMembersIDRequest {}
-export interface GetScrapersIDOwnersRequest {}
+export interface DeleteScrapersIDMembersIDRequest {
+  /** The ID of member to remove. */
+  userID: string
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
+export interface GetScrapersIDOwnersRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
 export interface PostScrapersIDOwnersRequest {
+  /** The scraper target ID. */
+  scraperTargetID: string
   /** User to add as owner */
   body: AddResourceMemberRequestBody
 }
-export interface DeleteScrapersIDOwnersIDRequest {}
+export interface DeleteScrapersIDOwnersIDRequest {
+  /** The ID of owner to remove. */
+  userID: string
+  /** The scraper target ID. */
+  scraperTargetID: string
+}
 /**
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
  * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
@@ -119,38 +161,34 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Get a scraper target by ID.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
    */
   getScrapersID(
-    scraperTargetID: string,
-    request?: GetScrapersIDRequest,
+    request: GetScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
     return this.request(
       'GET',
-      `/api/v2/scrapers/${scraperTargetID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
    */
   patchScrapersID(
-    scraperTargetID: string,
     request: PatchScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
     return this.request(
       'PATCH',
-      `/api/v2/scrapers/${scraperTargetID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
       requestOptions,
       'application/json'
@@ -158,57 +196,51 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
    */
   deleteScrapersID(
-    scraperTargetID: string,
-    request?: DeleteScrapersIDRequest,
+    request: DeleteScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/scrapers/${scraperTargetID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all labels for a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
    */
   getScrapersIDLabels(
-    scraperTargetID: string,
-    request?: GetScrapersIDLabelsRequest,
+    request: GetScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
     return this.request(
       'GET',
-      `/api/v2/scrapers/${scraperTargetID}/labels`,
+      `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
       requestOptions
     )
   }
   /**
    * Add a label to a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
    */
   postScrapersIDLabels(
-    scraperTargetID: string,
     request: PostScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
     return this.request(
       'POST',
-      `/api/v2/scrapers/${scraperTargetID}/labels`,
+      `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
       requestOptions,
       'application/json'
@@ -216,21 +248,17 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Update a label on a scraper target.
-   * @param scraperTargetID The scraper target ID.
-   * @param labelID The label ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
    */
   patchScrapersIDLabelsID(
-    scraperTargetID: string,
-    labelID: string,
     request: PatchScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'PATCH',
-      `/api/v2/scrapers/${scraperTargetID}/labels/${labelID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
       requestOptions,
       'application/json'
@@ -238,59 +266,51 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a label from a scraper target.
-   * @param scraperTargetID The scraper target ID.
-   * @param labelID The label ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
    */
   deleteScrapersIDLabelsID(
-    scraperTargetID: string,
-    labelID: string,
-    request?: DeleteScrapersIDLabelsIDRequest,
+    request: DeleteScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/scrapers/${scraperTargetID}/labels/${labelID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all users with member privileges for a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
    */
   getScrapersIDMembers(
-    scraperTargetID: string,
-    request?: GetScrapersIDMembersRequest,
+    request: GetScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
     return this.request(
       'GET',
-      `/api/v2/scrapers/${scraperTargetID}/members`,
+      `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
       requestOptions
     )
   }
   /**
    * Add a member to a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
    */
   postScrapersIDMembers(
-    scraperTargetID: string,
     request: PostScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
     return this.request(
       'POST',
-      `/api/v2/scrapers/${scraperTargetID}/members`,
+      `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
       requestOptions,
       'application/json'
@@ -298,59 +318,51 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove a member from a scraper target.
-   * @param userID The ID of member to remove.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
    */
   deleteScrapersIDMembersID(
-    userID: string,
-    scraperTargetID: string,
-    request?: DeleteScrapersIDMembersIDRequest,
+    request: DeleteScrapersIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/scrapers/${scraperTargetID}/members/${userID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}/members/${request.userID}`,
       request,
       requestOptions
     )
   }
   /**
    * List all owners of a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
    */
   getScrapersIDOwners(
-    scraperTargetID: string,
-    request?: GetScrapersIDOwnersRequest,
+    request: GetScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
     return this.request(
       'GET',
-      `/api/v2/scrapers/${scraperTargetID}/owners`,
+      `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
       requestOptions
     )
   }
   /**
    * Add an owner to a scraper target.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
    */
   postScrapersIDOwners(
-    scraperTargetID: string,
     request: PostScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
     return this.request(
       'POST',
-      `/api/v2/scrapers/${scraperTargetID}/owners`,
+      `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
       requestOptions,
       'application/json'
@@ -358,21 +370,17 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove an owner from a scraper target.
-   * @param userID The ID of owner to remove.
-   * @param scraperTargetID The scraper target ID.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
    */
   deleteScrapersIDOwnersID(
-    userID: string,
-    scraperTargetID: string,
-    request?: DeleteScrapersIDOwnersIDRequest,
+    request: DeleteScrapersIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
       'DELETE',
-      `/api/v2/scrapers/${scraperTargetID}/owners/${userID}`,
+      `/api/v2/scrapers/${request.scraperTargetID}/owners/${request.userID}`,
       request,
       requestOptions
     )

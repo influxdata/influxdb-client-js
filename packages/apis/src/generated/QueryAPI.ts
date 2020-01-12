@@ -13,7 +13,10 @@ export interface PostQueryAstRequest {
   body: LanguageRequest
 }
 export interface GetQuerySuggestionsRequest {}
-export interface GetQuerySuggestionsNameRequest {}
+export interface GetQuerySuggestionsNameRequest {
+  /** The name of the branching suggestion. */
+  name: string
+}
 export interface PostQueryAnalyzeRequest {
   /** Flux or InfluxQL query to analyze */
   body: Query
@@ -76,19 +79,17 @@ export class QueryAPI extends APIBase {
     )
   }
   /**
-   * @param name The name of the branching suggestion.
    * @param request
    * @return promise of response
    * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
    */
   getQuerySuggestionsName(
-    name: string,
-    request?: GetQuerySuggestionsNameRequest,
+    request: GetQuerySuggestionsNameRequest,
     requestOptions?: RequestOptions
   ): Promise<FluxSuggestion> {
     return this.request(
       'GET',
-      `/api/v2/query/suggestions/${name}`,
+      `/api/v2/query/suggestions/${request.name}`,
       request,
       requestOptions
     )
