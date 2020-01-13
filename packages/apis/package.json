@@ -1,6 +1,6 @@
 {
   "name": "@bonitoo-io/influxdb-client-apis",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
     "build": "yarn run clean && yarn run lint && rollup -c",
