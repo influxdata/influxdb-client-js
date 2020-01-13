@@ -29,8 +29,6 @@ InfluxDB 2.0 client consist of two packages
 
 ## Installation
 
-**Note: packages are not published to npm repository yet **
-
 To use Write and Query API in your project:
 
 ```
