@@ -13,7 +13,7 @@
     "postinstall": "manypkg check",
     "clean": "yarn workspaces run clean",
     "build": "cd packages/core && yarn build && cd ../apis && yarn build",
-    "test": "cd packages/core && yarn build && cd ../apis && yarn build",
+    "test": "cd packages/core && yarn test && cd ../apis && yarn test",
     "coverage": "cd packages/core && yarn coverage"
   },
   "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
