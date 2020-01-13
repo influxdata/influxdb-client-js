@@ -11,7 +11,7 @@ This repository contains the reference javascript client for InfluxDB 2.0. Both 
 
 ## Features
 
-InfluxDB 2.0 client consist of two packages
+InfluxDB 2.0 client consists of two packages
 
 - @bonitoo-io/influxdb-client
   - Querying data using the Flux language

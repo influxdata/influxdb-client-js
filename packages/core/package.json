@@ -24,7 +24,12 @@
     "dist/index.js": "dist/index.browser.js",
     "dist/index.mjs": "dist/index.browser.mjs"
   },
-  "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
+  "homepage": "https://github.com/bonitoo-io/influxdb-client-js/packages/core",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonitoo-io/influxdb-client-js",
+    "directory": "packages/core"
+  },
   "keywords": [
     "influxdb",
     "influxdata"

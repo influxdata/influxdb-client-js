@@ -1,8 +1,16 @@
 # influxdb-client-apis
 
-Contains generated client APIs for InfluxDB v2.0
+Contains generated client APIs for InfluxDB v2.0. See https://github.com/bonitoo-io/influxdb-client-js to know more.
 
-## Re-generate APIs code
+## Build
+
+```bash
+$ yarn build
+```
+
+## Development
+
+### Re-generate APIs code
 
 - update local resources/swagger.yml to the latest version
   - `wget -O resources/swagger.yml https://raw.githubusercontent.com/influxdata/influxdb/master/http/swagger.yml`
@@ -13,13 +21,3 @@ Contains generated client APIs for InfluxDB v2.0
   - `yarn generate`
 - validate
   - `yarn test`
-
-## Usage
-
-See [Examples](../../examples/README.md)
-
-## Build
-
-```bash
-$ yarn build
-```
