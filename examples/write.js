@@ -1,11 +1,11 @@
-#!../node_modules/.bin/ts-node
+#!/usr/bin/env node
 //////////////////////////////////////////
 // Shows how to use InfluxDB write API. //
 //////////////////////////////////////////
 
-import {InfluxDB, Point} from '@bonitoo-io/influxdb-client'
-import {url, token, org, bucket} from './env'
-import {hostname} from 'os'
+const {InfluxDB, Point, HttpError} = require('@bonitoo-io/influxdb-client')
+const {url, token, org, bucket} = require('./env')
+const {hostname} = require('os')
 
 console.log('*** WRITE POINTS ***')
 const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket)
@@ -29,6 +29,10 @@ writeApi
   .then(() => {
     console.log('FINISHED ... now try ./query.ts')
   })
-  .catch((e: Error) => {
-    console.log('FAILED ... the data might not send to the server', e)
+  .catch(e => {
+    console.error(e)
+    if (e instanceof HttpError && e.statusCode === 401) {
+      console.log('Run ./onboarding.js to setup a new InfluxDB database.')
+    }
+    console.log('\nFinished ERROR')
   })

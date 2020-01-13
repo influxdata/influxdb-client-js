@@ -1,0 +1,16 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {}
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "env": {
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "no-console": "off",
+    "@typescript-eslint/no-var-requires": "off"
+  }
+}
