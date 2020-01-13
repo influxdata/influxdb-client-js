@@ -3,6 +3,7 @@
 This directory contains javascript and typescript examples for node.js and browser environments.
 
 - Prerequisites
+  - [node](https://nodejs.org/en/) installed
   - [yarn](https://yarnpkg.com/lang/en/docs/install/) installed
   - Run `yarn --cwd ..` in this directory
   - Run `yarn --cwd .. build` in this directory
