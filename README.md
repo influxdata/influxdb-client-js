@@ -29,7 +29,7 @@ InfluxDB 2.0 client consists of two packages
 
 ## Installation
 
-To use Write and Query API in your project:
+To use write or query InfluxDB in your project:
 
 ```
 $npm install --save @bonitoo-io/influxdb-client
@@ -41,7 +41,7 @@ or
 $yarn add @bonitoo-io/influxdb-client
 ```
 
-To use all other APIs in your project:
+To use InfluxDB management APIs in your project:
 
 ```
 $npm install --save @bonitoo-io/influxdb-client-apis
@@ -66,8 +66,8 @@ See [examples](./examples/README.md)
 
 ## Build Requirements
 
-- node v12.13.1
-- yarn 1.9.4. or higher
+- node v12.13.1 or higher (older versions will work as well)
+- yarn 1.9.4. or higher (older versions will work as well)
 
 Run all unit tests:
 
