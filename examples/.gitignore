@@ -1,0 +1,13 @@
+node_modules
+build
+dist
+coverage
+doc
+.rpt2_cache
+.DS_Store
+.nyc_output
+*.lcov
+reports
+yarn-error.log
+package-lock.json
+yarn.lock

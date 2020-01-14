@@ -4,12 +4,10 @@ This directory contains javascript and typescript examples for node.js and brows
 
 - Prerequisites
   - [node](https://nodejs.org/en/) installed
-  - [yarn](https://yarnpkg.com/lang/en/docs/install/) installed
-  - Run `yarn --cwd ..` in this directory
-  - Run `yarn --cwd .. build` in this directory
+  - Run `npm install` in this directory
 - Node.js examples
   - Change variables in [./env.js](env.js) to configure connection to your InfluxDB instance. The file can be used as-is against a new [docker influxDB v2.0 installation](https://v2.docs.influxdata.com/v2.0/get-started/)
-  - Examples are executable. If it does not work for you, run `yarn ts-node EXAMPLE.ts`.
+  - Examples are executable. If it does not work for you, run `npm run ts-node EXAMPLE.ts`.
   - [write.ts](./write.ts)
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
@@ -21,7 +19,7 @@ This directory contains javascript and typescript examples for node.js and brows
 - Browser examples
   - Change `url` in [./env.ts](env.ts) to match your influxDB instance
   - Change `token,org,bucket` variables in [./index.html](index.html) to match your influxDB instance
-  - Run `yarn browser`
+  - Run `npm run browser`
     It starts a local HTTP server and opens [./index.html](index.html) that contains examples.
     The local HTTP server serves all files from this git repository and also proxies requests
     to a configured influxDB database, see [./scripts/server.js](server.js) for details.

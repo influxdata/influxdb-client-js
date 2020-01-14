@@ -4,8 +4,7 @@
   "description": "InfluxDB 2.0 client monorepo",
   "workspaces": {
     "packages": [
-      "packages/*",
-      "examples"
+      "packages/*"
     ]
   },
   "scripts": {
