@@ -10,7 +10,7 @@
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck",
     "typecheck": "tsc --noEmit --pretty",
-    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./doc --target es6 --tsconfig ./tsconfig.build.json ./src",
+    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./doc/apidoc --module es2015 --tsconfig ./tsconfig.json ./src",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
