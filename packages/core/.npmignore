@@ -13,4 +13,5 @@ yarn-error.log
 /.prettierrc.json
 /src
 /test
+.nycrc
 
