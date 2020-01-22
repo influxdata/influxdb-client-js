@@ -15,19 +15,11 @@ export default class InfluxDB {
   private _options: ClientOptions
   readonly transport: Transport
 
-  /* eslint-disable no-dupe-class-members */
   /**
-   * Creates influxdb client from a string URL
-   * @param url influxDB url, such as http://localhost:9999?token=my-token
-   */
-  constructor(url: string)
-  /**
-   * Creates influxdb client options from an options object.
+   * Creates influxdb client options from an options object or url.
    * @param options options
    */
-  constructor(options: ClientOptions)
-
-  constructor(options?: any) {
+  constructor(options: ClientOptions | string) {
     if (typeof options === 'string') {
       this._options = {url: options}
     } else if (options !== null && typeof options === 'object') {
@@ -39,7 +31,6 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url specified!')
     this.transport = this._options.transport || new TransportImpl(this._options)
   }
-  /* eslint-enable no-dupe-class-members */
 
   /**
    * Creates [[WriteApi]] for the supplied organization and bucket. BEWARE that returned instances must be closed
