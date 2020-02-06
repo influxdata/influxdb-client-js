@@ -20,10 +20,7 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "browser": {
-    "dist/index.js": "dist/index.browser.js",
-    "dist/index.mjs": "dist/index.browser.mjs"
-  },
+  "browser": "dist/index.browser.js",
   "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
   "repository": {
     "type": "git",

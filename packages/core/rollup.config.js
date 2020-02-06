@@ -49,11 +49,11 @@ function createConfig({browser, format, out, name, target, noTerser}) {
 export default [
   createConfig({browser: false, format: 'cjs', out: pkg.main}),
   createConfig({browser: false, format: 'esm', out: pkg.module}),
-  createConfig({browser: true, format: 'umd', out: pkg.browser[pkg.main]}),
+  createConfig({browser: true, format: 'umd', out: pkg.browser}),
   createConfig({
     browser: true,
     format: 'esm',
-    out: pkg.browser[pkg.module],
+    out: pkg.browser.replace('.js', '.mjs'),
   }),
   createConfig({
     browser: true,
