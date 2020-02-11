@@ -5,30 +5,39 @@
       "meta": {
         "columns": [
           {
+            "index": 0,
             "label": "result"
           },
           {
+            "index": 1,
             "label": "table"
           },
           {
+            "index": 2,
             "label": "_start"
           },
           {
+            "index": 3,
             "label": "_stop"
           },
           {
+            "index": 4,
             "label": "_time"
           },
           {
+            "index": 5,
             "label": "_value"
           },
           {
+            "index": 6,
             "label": "_field"
           },
           {
+            "index": 7,
             "label": "_measurement"
           },
           {
+            "index": 8,
             "label": "location"
           }
         ]

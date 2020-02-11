@@ -8,55 +8,64 @@
             "dataType": "string",
             "group": false,
             "defaultValue": "_result",
-            "label": "result"
+            "label": "result",
+            "index": 0
           },
           {
             "dataType": "long",
             "group": false,
             "defaultValue": "",
-            "label": "table"
+            "label": "table",
+            "index": 1
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": true,
             "defaultValue": "",
-            "label": "_start"
+            "label": "_start",
+            "index": 2
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": true,
             "defaultValue": "",
-            "label": "_stop"
+            "label": "_stop",
+            "index": 3
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": false,
             "defaultValue": "",
-            "label": "_time"
+            "label": "_time",
+            "index": 4
           },
           {
             "dataType": "double",
             "group": false,
             "defaultValue": "",
-            "label": "_value"
+            "label": "_value",
+            "index": 5
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "_field"
+            "label": "_field",
+            "index": 6
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "_measurement"
+            "label": "_measurement",
+            "index": 7
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "location"
+            "label": "location",
+            "index": 8
           }
         ]
       }
@@ -69,55 +78,64 @@
             "dataType": "string",
             "group": false,
             "defaultValue": "_result",
-            "label": "result"
+            "label": "result",
+            "index": 0
           },
           {
             "dataType": "long",
             "group": false,
             "defaultValue": "",
-            "label": "table"
+            "label": "table",
+            "index": 1
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": true,
             "defaultValue": "",
-            "label": "_start"
+            "label": "_start",
+            "index": 2
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": true,
             "defaultValue": "",
-            "label": "_stop"
+            "label": "_stop",
+            "index": 3
           },
           {
             "dataType": "dateTime:RFC3339",
             "group": false,
             "defaultValue": "",
-            "label": "_time"
+            "label": "_time",
+            "index": 4
           },
           {
             "dataType": "string",
             "group": false,
             "defaultValue": "",
-            "label": "_value"
+            "label": "_value",
+            "index": 5
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "_field"
+            "label": "_field",
+            "index": 6
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "_measurement"
+            "label": "_measurement",
+            "index": 7
           },
           {
             "dataType": "string",
             "group": true,
             "defaultValue": "",
-            "label": "location"
+            "label": "location",
+            "index": 8
           }
         ]
       }
