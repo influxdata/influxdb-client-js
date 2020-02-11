@@ -1,6 +1,6 @@
 {
   "name": "@bonitoo-io/influxdb-client-apis",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
     "build": "yarn run clean && yarn run lint && rollup -c",
@@ -35,7 +35,7 @@
     "@bonitoo-io/influxdb-client": "*"
   },
   "devDependencies": {
-    "@bonitoo-io/influxdb-client": "^0.5.9",
+    "@bonitoo-io/influxdb-client": "^0.6.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chalk": "^3.0.0",
