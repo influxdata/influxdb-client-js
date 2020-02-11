@@ -57,6 +57,12 @@ export default class FluxTableColumn {
   defaultValue: string
 
   /**
+   * Index of this column in the row array
+   * @return index
+   */
+  index: number
+
+  /**
    * Creates a flux table column from an object supplied.
    * @param object
    */

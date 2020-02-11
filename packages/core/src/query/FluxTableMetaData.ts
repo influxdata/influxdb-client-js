@@ -25,6 +25,7 @@ export default class FluxTableMetaData {
    */
   columns: Array<FluxTableColumn>
   constructor(columns: FluxTableColumn[]) {
+    columns.forEach((col, i) => (col.index = i))
     this.columns = columns
   }
   /**
