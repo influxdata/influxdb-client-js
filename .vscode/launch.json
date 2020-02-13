@@ -15,7 +15,6 @@
         "ts-node/register",
         "--timeout",
         "15000",
-        "--check-leaks",
         "--colors",
         "test/**/*.test.ts"
       ],
