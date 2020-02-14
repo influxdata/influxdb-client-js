@@ -2361,7 +2361,7 @@ paths:
           required: true
           description: The ID of the dashboard to update.
       responses:
-        '200':
+        '201':
           description: Replaced dashboard cells
           content:
             application/json:
@@ -3214,7 +3214,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Query"
+                oneOf:
+                  - $ref: "#/components/schemas/Query"
+                  - $ref: "#/components/schemas/InfluxQLQuery"
             application/vnd.flux:
               schema:
                 type: string
@@ -3322,6 +3324,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Bucket"
+        422:
+          description: Request body failed validation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
         default:
           description: Unexpected error
           content:
@@ -4317,6 +4325,9 @@ paths:
         required: true
         content:
           application/json:
+            schema:
+              $ref: "#/components/schemas/PkgApply"
+          application/x-jsonnet:
             schema:
               $ref: "#/components/schemas/PkgApply"
           text/yml:
@@ -6265,7 +6276,7 @@ components:
           description: Flux query script to be analyzed
           type: string
     Query:
-      description: Query influx with specific return formatting.
+      description: Query influx using the Flux language
       type: object
       required:
         - query
@@ -6276,23 +6287,29 @@ components:
           description: Query script to execute.
           type: string
         type:
-          description: The type of query.
+          description: The type of query. Must be "flux".
           type: string
-          default: flux
           enum:
             - flux
-            - influxql
-        db:
-          description: Required for `influxql` type queries.
-          type: string
-        rp:
-          description: Required for `influxql` type queries.
-          type: string
-        cluster:
-          description: Required for `influxql` type queries.
-          type: string
         dialect:
           $ref: "#/components/schemas/Dialect"
+    InfluxQLQuery:
+      description: Query influx using the InfluxQL language
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          description: InfluxQL query execute.
+          type: string
+        type:
+          description: The type of query. Must be "influxql".
+          type: string
+          enum:
+            - influxql
+        bucket:
+          description: Bucket is to be used instead of the database and retention policy specified in the InfluxQL query.
+          type: string
     Package:
       description: Represents a complete package source tree.
       type: object
@@ -7136,19 +7153,31 @@ components:
           type: string
         package:
           $ref: "#/components/schemas/Pkg"
+        packages:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pkg"
         secrets:
           type: object
           additionalProperties:
             type: string
+        remotes:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              contentType:
+                type: string
+            required: ["url"]
     PkgCreate:
       type: object
       properties:
-        pkgName:
-          type: string
-        pkgDescription:
-          type: string
-        pkgVersion:
-          type: string
+        orgIDs:
+          type: array
+          items:
+            type: string
         resources:
           type: object
           properties:
@@ -7170,30 +7199,35 @@ components:
               type: string
           required: [id, kind]
     Pkg:
-      type: object
-      properties:
-        apiVersion:
-          type: string
-        kind:
-          type: string
-          enum:
-            - package
-        meta:
-          type: object
-          properties:
-            description:
-              type: string
-            pkgName:
-              type: string
-            pkgVersion:
-              type: string
-        spec:
-          type: object
-          properties:
-            resources:
-              type: array
-              items:
-                type: object
+      type: array
+      items:
+        type: object
+        properties:
+          apiVersion:
+            type: string
+          kind:
+            type: string
+            enum:
+              - Bucket
+              - CheckDeadman
+              - CheckThreshold
+              - Dashboard
+              - Label
+              - NotificationEndpointHTTP
+              - NotificationEndpointPagerDuty
+              - NotificationEndpointSlack
+              - NotificationRule
+              - NotificationEndpointHTTP
+              - Task
+              - Telegraf
+              - Variable
+          meta:
+            type: object
+            properties:
+              name:
+                type: string
+          spec:
+            type: object
     PkgSummary:
       type: object
       properties:
@@ -7270,6 +7304,10 @@ components:
                     type: string
                   labelID:
                     type: string
+            missingEnvRefs:
+              type: array
+              items:
+                type: string
             missingSecrets:
               type: array
               items:
@@ -8488,7 +8526,9 @@ components:
         - note
         - showNoteWhenEmpty
         - prefix
+        - tickPrefix
         - suffix
+        - tickSuffix
         - legend
         - decimalPlaces
       properties:
@@ -8514,7 +8554,11 @@ components:
           type: boolean
         prefix:
           type: string
+        tickPrefix:
+          type: string
         suffix:
+          type: string
+        tickSuffix:
           type: string
         legend:
           $ref: '#/components/schemas/Legend'
@@ -8576,17 +8620,7 @@ components:
           type: integer
     GaugeViewProperties:
       type: object
-      required:
-        - type
-        - queries
-        - colors
-        - shape
-        - note
-        - showNoteWhenEmpty
-        - prefix
-        - suffix
-        - legend
-        - decimalPlaces
+      required: [type, queries, colors, shape, note, showNoteWhenEmpty, prefix, tickPrefix, suffix, tickSuffix, legend, decimalPlaces]
       properties:
         type:
           type: string
@@ -8610,7 +8644,11 @@ components:
           type: boolean
         prefix:
           type: string
+        tickPrefix:
+          type: string
         suffix:
+          type: string
+        tickSuffix:
           type: string
         legend:
           $ref: '#/components/schemas/Legend'

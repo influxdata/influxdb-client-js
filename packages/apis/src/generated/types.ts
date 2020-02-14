@@ -769,7 +769,9 @@ export interface SingleStatViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   prefix: string
+  tickPrefix: string
   suffix: string
+  tickSuffix: string
   legend: Legend
   decimalPlaces: DecimalPlaces
 }
@@ -801,7 +803,9 @@ export interface GaugeViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   prefix: string
+  tickPrefix: string
   suffix: string
+  tickSuffix: string
   legend: Legend
   decimalPlaces: DecimalPlaces
 }
@@ -1468,20 +1472,14 @@ export interface Authorizations {
 }
 
 /**
- * Query influx with specific return formatting.
+ * Query influx using the Flux language
  */
 export interface Query {
   extern?: File
   /** Query script to execute. */
   query: string
-  /** The type of query. */
-  type?: 'flux' | 'influxql'
-  /** Required for `influxql` type queries. */
-  db?: string
-  /** Required for `influxql` type queries. */
-  rp?: string
-  /** Required for `influxql` type queries. */
-  cluster?: string
+  /** The type of query. Must be "flux". */
+  type?: 'flux'
   dialect?: Dialect
 }
 
@@ -1508,6 +1506,18 @@ export interface AnalyzeQueryResponse {
     character?: number
     message?: string
   }>
+}
+
+/**
+ * Query influx using the InfluxQL language
+ */
+export interface InfluxQLQuery {
+  /** InfluxQL query execute. */
+  query: string
+  /** The type of query. Must be "influxql". */
+  type?: 'influxql'
+  /** Bucket is to be used instead of the database and retention policy specified in the InfluxQL query. */
+  bucket?: string
 }
 
 export interface PostBucketRequest {
@@ -1537,9 +1547,7 @@ export interface SecretKeys {
 export type Secrets = any
 
 export interface PkgCreate {
-  pkgName?: string
-  pkgDescription?: string
-  pkgVersion?: string
+  orgIDs?: string[]
   resources?: {
     id: string
     kind:
@@ -1556,24 +1564,38 @@ export interface PkgCreate {
   }
 }
 
-export interface Pkg {
+export type Pkg = Array<{
   apiVersion?: string
-  kind?: 'package'
+  kind?:
+    | 'Bucket'
+    | 'CheckDeadman'
+    | 'CheckThreshold'
+    | 'Dashboard'
+    | 'Label'
+    | 'NotificationEndpointHTTP'
+    | 'NotificationEndpointPagerDuty'
+    | 'NotificationEndpointSlack'
+    | 'NotificationRule'
+    | 'NotificationEndpointHTTP'
+    | 'Task'
+    | 'Telegraf'
+    | 'Variable'
   meta?: {
-    description?: string
-    pkgName?: string
-    pkgVersion?: string
+    name?: string
   }
-  spec?: {
-    resources?: any[]
-  }
-}
+  spec?: any
+}>
 
 export interface PkgApply {
   dryRun?: boolean
   orgID?: string
   package?: Pkg
+  packages?: Pkg[]
   secrets?: any
+  remotes?: Array<{
+    url: string
+    contentType?: string
+  }>
 }
 
 export interface PkgSummary {
@@ -1607,6 +1629,7 @@ export interface PkgSummary {
       labelName?: string
       labelID?: string
     }>
+    missingEnvRefs?: string[]
     missingSecrets?: string[]
     notificationEndpoints?: Array<
       NotificationEndpointDiscrimator & {

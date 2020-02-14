@@ -4,6 +4,7 @@ import {
   AnalyzeQueryResponse,
   FluxSuggestion,
   FluxSuggestions,
+  InfluxQLQuery,
   LanguageRequest,
   Query,
 } from './types'
@@ -23,7 +24,7 @@ export interface PostQueryAnalyzeRequest {
 }
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
-  body: Query
+  body: Query | InfluxQLQuery
   /** Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence. */
   org?: string
   /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */

@@ -3938,7 +3938,7 @@
     },
     "responses": [
       {
-        "code": "200",
+        "code": "201",
         "description": "Replaced dashboard cells",
         "mediaTypes": [
           {
@@ -5236,7 +5236,7 @@
       "description": "Flux query or specification to execute",
       "required": false,
       "mediaType": "application/json",
-      "type": "Query"
+      "type": "Query | InfluxQLQuery"
     },
     "responses": [
       {
@@ -5368,6 +5368,16 @@
           {
             "mediaType": "application/json",
             "type": "Bucket"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Request body failed validation",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
