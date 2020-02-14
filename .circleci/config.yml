@@ -56,7 +56,7 @@ jobs:
           command: |
             cd ./packages/core
             yarn --version
-            yarn run coverage
+            yarn run coverage:send
       - run:
           name: Report test results to codecov
           command: yarn run codecov
