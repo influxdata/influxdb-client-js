@@ -47,7 +47,9 @@ function createResponse({
   }
   if (body instanceof Uint8Array) {
     retVal.arrayBuffer = function(): Promise<any> {
-      return Promise.resolve(body.buffer)
+      return Promise.resolve(
+        body.buffer.slice(body.byteOffset, body.byteOffset + body.length)
+      )
     }
   }
   if (Array.isArray(body)) {

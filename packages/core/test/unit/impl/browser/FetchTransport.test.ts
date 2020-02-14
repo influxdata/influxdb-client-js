@@ -179,6 +179,16 @@ describe('FetchTransport', () => {
           expect(callbacks.next.callCount).equals(
             isError ? 0 : Array.isArray(body) ? body.length : 1
           )
+          if (!isError) {
+            const vals = callbacks.next.args.map((args: any) =>
+              Buffer.from(args[0])
+            )
+            expect(
+              Array.isArray(body)
+                ? body
+                : [Buffer.isBuffer(body) ? body : Buffer.from(body)]
+            ).is.deep.equal(vals)
+          }
         } else {
           transport.send('/whatever', '', {method: 'POST'}, callbacks)
         }
