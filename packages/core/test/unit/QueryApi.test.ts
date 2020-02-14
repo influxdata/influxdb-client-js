@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import {InfluxDB, ClientOptions} from '../../src'
+import {InfluxDB, ClientOptions, FluxTableMetaData} from '../../src'
 import fs from 'fs'
 import {CollectLinesObserver} from './util/CollectLinesObserver'
 import {CollectTablesObserver} from './util/CollectTablesObserver'
@@ -79,5 +79,37 @@ describe('QueryApi', () => {
       expect(target.tables).to.deep.equal(response.tables)
       expect(target.rows).to.deep.equal(response.rows)
     })
+  })
+  it('receives properly indexed table data', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          `,result,table,_start,_stop,_time,_value,_field,_measurement,location
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:15.995033574Z,55,value,temperature,west
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.063594313Z,55,value,temperature,west
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.069518557Z,55,value,temperature,west`,
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const values: Array<string> = []
+    await new Promise((resolve, reject) =>
+      subject.queryRows('from(bucket:"my-bucket") |> range(start: 0)', {
+        next(row: string[], meta: FluxTableMetaData): void {
+          values.push(row[meta.column('_value').index])
+        },
+
+        error(error: Error): void {
+          reject(error)
+        },
+        complete(): void {
+          resolve()
+        },
+      })
+    )
+    expect(values).to.deep.equal(['55', '55', '55'])
   })
 })
