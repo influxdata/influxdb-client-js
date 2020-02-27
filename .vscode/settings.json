@@ -1,0 +1,4 @@
+{
+  // enforce prettier on save
+  "editor.formatOnSave": true
+}

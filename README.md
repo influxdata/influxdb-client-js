@@ -1,83 +1,90 @@
-# InfluxDB 2.0 browser JavaScript client
+# influxdb-client-javascript
 
-## Disclaimer
+[![CircleCI](https://circleci.com/gh/influxdata/influxdb-client-js.svg?style=svg)](https://circleci.com/gh/influxdata/influxdb-client-js)
+[![codecov](https://codecov.io/gh/influxdata/influxdb-client-js/branch/master/graph/badge.svg)](https://codecov.io/gh/influxdata/influxdb-client-js)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![License](https://img.shields.io/github/license/influxdata/influxdb-client-js.svg)](https://github.com/influxdata/influxdb-client-js/blob/master/LICENSE)
 
-This library is a work in progress and should not be considered production ready pre v1.0.
+This repository contains the reference javascript client for InfluxDB 2.0. Both node and browser environments are supported.
+
+**Note: This library is for use with InfluxDB 2.x. For connecting to InfluxDB 1.x instances, see [node-influx](https://github.com/node-influx/node-influx).**
+
+## Features
+
+InfluxDB 2.0 client consists of two packages
+
+- @influxdata/influxdb-client
+  - Querying data using the Flux language
+  - Writing data
+    - batched in chunks on background
+    - automatic retries on write failures
+- @influxdata/influxdb-client-js-apis
+  - provides all other InfluxDB 2.0 APIs for managing
+    - sources, buckets
+    - tasks
+    - authorizations
+    - health check
+    - ...
+  - built on top of @influxdata/influxdb-client-js
+
+## Installation
+
+To use write or query InfluxDB in your project:
+
+```
+$npm install --save @influxdata/influxdb-client
+```
+
+or
+
+```
+$yarn add @influxdata/influxdb-client
+```
+
+To use InfluxDB management APIs in your project:
+
+```
+$npm install --save @influxdata/influxdb-client-apis
+```
+
+or
+
+```
+$yarn add @influxdata/influxdb-client-apis
+```
 
 ## Usage
 
-Initializing the client
+See [examples](./examples/README.md)
 
-```typescript
+- @influxdata/influxdb-client
+  - [write points or lines](./examples/write.js)
+  - [query data](./examples/query.ts)
+- @influxdata/influxdb-client-apis
+  - [setup / onboarding](./examples/onboarding.js)
+  - [health](./examples/health.js)
 
-import Client from '@influxdata/influx'
+## Build Requirements
 
-const client = new Client('basepath', 'token')
+- node v12.13.1 or higher (older versions will work as well)
+- yarn 1.9.4. or higher (older versions will work as well)
 
+Run all unit tests:
+
+```bash
+$ yarn test:unit
 ```
 
-### Querying
+Check code coverage of unit tests:
 
-Using the client to execute a query:
-
-```
-const query = 'from(bucket: "my_bucket") |> range(start: -1h)'
-
-const {promise, cancel} = client.queries.execute('someorgid', query)
-
-const csv = await promise
+```bash
+$ yarn coverage
 ```
 
-The returned promise will eventually resolve with a [Flux CSV](https://github.com/influxdata/flux/blob/master/docs/SPEC.md#csv).
+## Contributing
 
-The request can also be canceled with the returned `cancel` function, in which case the promise will reject with a `CancellationError`:
+If you would like to contribute code you can do through GitHub by forking the repository and sending a pull request into the `master` branch.
 
-```
-cancel() // Cancels request
-```
+## License
 
-### Writing
-
-Data written to the database should be in line protocol
-
-```typescript
-
-const data = '' // Line protocal string
-
-const response = await client.write.create('orgID', 'bucketID', data)
-
-```
-
-## Development
-
-### Requirements
-
-- OpenJDK 8 or higher
-- Node 10.x or higher
-
-### Installing dependencies
-
-```
-yarn
-```
-
-### Generating base from swagger
-
-```
-yarn run generate
-```
-
-### Releasing a new version
-
-Ensure that:
-
-- You have administrator access to this repo on GitHub
-- You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
-- You are logged into Yarn (`yarn login`)
-- You are on `master` and the working tree is clean
-
-Then run the publish script in the root of the repo:
-
-```
-./publish
-```
+The InfluxDB 2.0 javascript client is released under the [MIT License](https://opensource.org/licenses/MIT).
