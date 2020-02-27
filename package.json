@@ -1,7 +1,7 @@
 {
-  "private": true,
-  "name": "influxdb-client-monorepo",
-  "description": "InfluxDB 2.0 client monorepo",
+  "name": "@influxdata/influx",
+  "version": "0.6.0",
+  "description": "InfluxDB 2.0 client",  
   "workspaces": {
     "packages": [
       "packages/*"
