@@ -1,0 +1,9 @@
+{
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "no-console": "warn"
+  },
+  "ignorePatterns": ["rollup.config.js", "dist/*.js"]
+}

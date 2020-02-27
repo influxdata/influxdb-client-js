@@ -1,0 +1,54 @@
+{
+  "name": "@bonitoo-io/influxdb-client-apis",
+  "version": "0.7.0",
+  "description": "InfluxDB 2.0 generated APIs",
+  "scripts": {
+    "build": "yarn run clean && yarn run lint && rollup -c",
+    "build:doc": "yarn run clean && yarn typedoc",
+    "clean": "rimraf build doc dist",
+    "clean:apis": "rimraf src/generated/*API.ts",
+    "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
+    "test": "yarn run lint && yarn run typecheck",
+    "typecheck": "tsc --noEmit --pretty",
+    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./doc/apidoc --module es2015 --tsconfig ./tsconfig.json ./src",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "browser": "dist/index.browser.js",
+  "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonitoo-io/influxdb-client-js",
+    "directory": "packages/apis"
+  },
+  "keywords": [
+    "influxdb",
+    "influxdata"
+  ],
+  "author": {
+    "name": "Pavel Zavora"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@bonitoo-io/influxdb-client": "*"
+  },
+  "devDependencies": {
+    "@bonitoo-io/influxdb-client": "^0.7.0",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "chalk": "^3.0.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-gzip": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  }
+}

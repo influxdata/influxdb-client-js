@@ -1,0 +1,17 @@
+#datatype,string,long,dateTime:RFC3339,dateTime:RFC3339,dateTime:RFC3339,double,string,string,string
+#group,false,false,true,true,false,false,true,true,true
+#default,_result,,,,,,,,
+,result,table,_start,_stop,_time,_value,_field,_measurement,location
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:15.995033574Z,55,value,temperature,west
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.063594313Z,55,value,temperature,west
+,,0,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.069518557Z,55,value,temperature,west
+
+#datatype,string,long,dateTime:RFC3339,dateTime:RFC3339,dateTime:RFC3339,string,string,string,string
+#group,false,false,true,true,false,false,true,true,true
+#default,_result,,,,,,,,
+#unsupportedAnnotation
+,result,table,_start,_stop,_time,_value,_field,_measurement,location
+,,1,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.063594313Z,"a,b,
+,c",text,temperature,west
+,,1,1970-01-01T00:00:00Z,2019-12-12T09:05:37.96237406Z,1970-01-01T00:26:16.069518557Z,"a,b,
+,""c",text,temperature,west

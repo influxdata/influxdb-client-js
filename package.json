@@ -1,44 +1,41 @@
 {
-  "name": "@influxdata/influx",
-  "version": "0.5.5",
-  "description": "InfluxDB 2.0 client",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "private": true,
+  "name": "influxdb-client-monorepo",
+  "description": "InfluxDB 2.0 client monorepo",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production rollup -c",
-    "test": "yarn run lint && yarn run typecheck",
-    "typecheck": "tsc --noEmit --pretty",
-    "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "eslint --fix 'src/**/*.ts'",
-    "generate": "openapi-generator generate -g typescript-axios -o src/api -i https://raw.githubusercontent.com/influxdata/influxdb/master/http/swagger.yml"
+    "preinstall": "node ./scripts/require-yarn.js",
+    "clean": "yarn workspaces run clean",
+    "build": "cd packages/core && yarn build && cd ../apis && yarn build",
+    "test": "cd packages/core && yarn test && cd ../apis && yarn test",
+    "coverage": "cd packages/core && yarn coverage",
+    "coverage:send": "cd packages/core && yarn coverage:send",
+    "typedoc": "cd packages/core && yarn typedoc && cd ../apis && yarn typedoc"
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/influxdata/influxdb-client-js"
+  },
   "keywords": [
     "influxdb",
     "influxdata"
   ],
-  "author": "InfluxData",
-  "license": "MIT",
-  "devDependencies": {
-    "@openapitools/openapi-generator-cli": "0.0.7-3.3.4",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
-    "eslint": "^5.15.1",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "rollup": "^1.16.0",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-gzip": "^2.2.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^5.0.3",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-terser": "^5.0.0",
-    "rollup-plugin-typescript2": "^0.21.2",
-    "typescript": "^3.2.2",
-    "version-bump-prompt": "^5.0.3"
+  "author": {
+    "name": "InfluxData"
   },
+  "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0"
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "devDependencies": {
+    "generate-changelog": "^1.8.0"
   }
 }

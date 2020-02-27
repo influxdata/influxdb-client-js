@@ -1,6 +1,5 @@
 node_modules
 build
-dist
 coverage
 doc
 .rpt2_cache
@@ -9,3 +8,11 @@ doc
 *.lcov
 reports
 yarn-error.log
+/tsconfig.*
+/rollup.config.js
+/.prettierrc.json
+/generator
+/resources
+/src
+/test
+

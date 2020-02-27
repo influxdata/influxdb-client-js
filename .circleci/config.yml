@@ -1,18 +1,72 @@
-version: 2
+version: 2.1
+
+commands:
+  init-dependencies:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
 jobs:
-  build:
+  unit-tests:
+    parameters:
+      version:
+        type: string
     docker:
-      - image: circleci/node:lts
-    working_directory: ~/repo
+      - image: circleci/node:<< parameters.version >>
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: yarn install --frozen-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn run test
+      - init-dependencies
+      - run:
+          name: Run tests
+          command: |
+            cd ./packages/core
+            yarn test:unit:ci
+            yarn lint:ci
+            yarn build
+            cd ../apis
+            yarn build
+      # Upload results
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./packages/core/reports/mocha/test-results.xml
+      - store_artifacts:
+          path: ./packages/core/reports/eslint/eslint.xml
+      - store_artifacts:
+          path: ./packages/core/reports/apidoc
+  coverage:
+    parameters:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - init-dependencies
+      - run:
+          name: Runs tests with coverage
+          command: |
+            yarn --version
+            yarn run coverage
+      - run:
+          name: Report test results to codecov
+          command: yarn run coverage:send
+      - store_artifacts:
+          path: ./packages/core/coverage
+      # - store_artifacts:
+      #     path: ./packages/core/.nyc_output
+
+workflows:
+  build:
+    jobs:
+      - unit-tests:
+          version: '12'
+      - coverage

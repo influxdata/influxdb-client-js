@@ -1,0 +1,33 @@
+[
+  {
+    "name": "1 chunk, one line",
+    "chunks": ["abdc, efg"],
+    "lines": ["abdc, efg"],
+    "withCancellable": true
+  },
+  {
+    "name": "1 chunk, two lines lf-terminated",
+    "chunks": ["abdc\nefg\n"],
+    "lines": ["abdc", "efg"]
+  },
+  {
+    "name": "1 chunk, two lines cr+lf-terminated",
+    "chunks": ["abdc\r\nefg\r\n"],
+    "lines": ["abdc", "efg"]
+  },
+  {
+    "name": "1 chunk, one line with escaped new line",
+    "chunks": ["\"ab\"\"dc\",\"\nefg\""],
+    "lines": ["\"ab\"\"dc\",\"\nefg\""]
+  },
+  {
+    "name": "2 chunks, 3 lines",
+    "chunks": ["ab\ncd\nef", "gh"],
+    "lines": ["ab", "cd", "efgh"]
+  },
+  {
+    "name": "2 chunks, error after 1st chunk",
+    "chunks": ["ab\ncd", "error", "ef"],
+    "lines": ["ab"]
+  }
+]
