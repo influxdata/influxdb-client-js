@@ -5,8 +5,8 @@ and bucket that can be then used in examples. All values that used
 for onboarding are defined in ./env.ts .
 */
 
-const {InfluxDB} = require('@bonitoo-io/influxdb-client')
-const {SetupAPI} = require('@bonitoo-io/influxdb-client-apis')
+const {InfluxDB} = require('@influxdata/influxdb-client')
+const {SetupAPI} = require('@influxdata/influxdb-client-apis')
 const {url, username, password, org, bucket, token} = require('./env')
 
 console.log('*** ONBOARDING ***')

@@ -1,7 +1,7 @@
 {
+  "private": true,
   "name": "@influxdata/influx",
-  "version": "0.6.0",
-  "description": "InfluxDB 2.0 client",  
+  "description": "InfluxDB 2.0 client",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -30,6 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "ts-node": "^8.5.4",

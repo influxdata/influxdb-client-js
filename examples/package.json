@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@bonitoo-io/influxdb-client-examples",
+  "name": "@influxdata/influxdb-client-examples",
   "version": "0.4.0",
   "license": "MIT",
   "scripts": {
@@ -11,8 +11,8 @@
     "ts-node": "ts-node"
   },
   "dependencies": {
-    "@bonitoo-io/influxdb-client": "*",
-    "@bonitoo-io/influxdb-client-apis": "*"
+    "@influxdata/influxdb-client": "*",
+    "@influxdata/influxdb-client-apis": "*"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
