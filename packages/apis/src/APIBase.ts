@@ -1,5 +1,5 @@
 // this is effectively a clone of
-import {InfluxDB, Transport, SendOptions} from '@bonitoo-io/influxdb-client'
+import {InfluxDB, Transport, SendOptions} from '@influxdata/influxdb-client'
 
 // used only in browser builds
 declare function btoa(plain: string): string

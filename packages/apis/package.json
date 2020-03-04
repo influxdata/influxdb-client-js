@@ -1,6 +1,6 @@
 {
-  "name": "@bonitoo-io/influxdb-client-apis",
-  "version": "0.7.0",
+  "name": "@influxdata/influxdb-client-apis",
+  "version": "0.6.0",
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
     "build": "yarn run clean && yarn run lint && rollup -c",
@@ -17,10 +17,10 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.browser.js",
-  "homepage": "https://github.com/bonitoo-io/influxdb-client-js",
+  "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bonitoo-io/influxdb-client-js",
+    "url": "git+https://github.com/influxdata/influxdb-client-js",
     "directory": "packages/apis"
   },
   "keywords": [
@@ -32,10 +32,10 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@bonitoo-io/influxdb-client": "*"
+    "@influxdata/influxdb-client": "*"
   },
   "devDependencies": {
-    "@bonitoo-io/influxdb-client": "^0.7.0",
+    "@influxdata/influxdb-client": "^0.6.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chalk": "^3.0.0",

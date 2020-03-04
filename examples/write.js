@@ -3,7 +3,7 @@
 // Shows how to use InfluxDB write API. //
 //////////////////////////////////////////
 
-const {InfluxDB, Point, HttpError} = require('@bonitoo-io/influxdb-client')
+const {InfluxDB, Point, HttpError} = require('@influxdata/influxdb-client')
 const {url, token, org, bucket} = require('./env')
 const {hostname} = require('os')
 

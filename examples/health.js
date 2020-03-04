@@ -1,13 +1,13 @@
 #!/usr/bin/node
 /*
 This example shows how to use management/administration InfluxDB APIs
-All InfluxDB APIs are available through '@bonitoo-io/influxdb-client-apis' package.
+All InfluxDB APIs are available through '@influxdata/influxdb-client-apis' package.
 
 See https://v2.docs.influxdata.com/v2.0/api/
 */
 
-const {InfluxDB} = require('@bonitoo-io/influxdb-client')
-const {HealthAPI} = require('@bonitoo-io/influxdb-client-apis')
+const {InfluxDB} = require('@influxdata/influxdb-client')
+const {HealthAPI} = require('@influxdata/influxdb-client-apis')
 const {url, token} = require('./env')
 
 console.log('*** HEALTH CHECK ***')
