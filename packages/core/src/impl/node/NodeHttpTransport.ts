@@ -15,6 +15,7 @@ import Cancellable from '../../util/Cancellable'
 import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'
+import {CLIENT_LIB_VERSION} from '../version'
 
 const zlibOptions = {
   flush: zlib.Z_SYNC_FLUSH,
@@ -153,6 +154,7 @@ export class NodeHttpTransport implements Transport {
     const bodyBuffer = Buffer.from(body, 'utf-8')
     const headers: {[key: string]: any} = {
       'content-type': 'application/json; charset=utf-8',
+      'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
     }
     if (this.connectionOptions.token) {
       headers.authorization = 'Token ' + this.connectionOptions.token

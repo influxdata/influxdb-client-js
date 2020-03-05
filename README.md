@@ -85,6 +85,22 @@ Check code coverage of unit tests:
 $ yarn coverage
 ```
 
+## Development
+
+### Releasing a new version
+
+Ensure that:
+
+- You have administrator access to this repo on GitHub
+- You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
+- You are on `master` and the working tree is clean
+
+Then run the publish script in the root of the repo:
+
+```
+./publish.sh
+```
+
 ## Contributing
 
 If you would like to contribute code you can do through GitHub by forking the repository and sending a pull request into the `master` branch.

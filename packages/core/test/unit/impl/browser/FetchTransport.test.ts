@@ -2,6 +2,7 @@ import FetchTransport from '../../../../src/impl/browser/FetchTransport'
 import {expect} from 'chai'
 import {removeFetchApi, emulateFetchApi} from './emulateBrowser'
 import sinon from 'sinon'
+import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 
 describe('FetchTransport', () => {
   afterEach(() => {
@@ -16,6 +17,7 @@ describe('FetchTransport', () => {
       const transport: any = new FetchTransport(options)
       expect(transport.defaultHeaders).to.deep.equal({
         'content-type': 'application/json; charset=utf-8',
+        'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
       })
       expect(transport.connectionOptions).to.deep.equal(options)
     })
@@ -27,6 +29,7 @@ describe('FetchTransport', () => {
       const transport: any = new FetchTransport(options)
       expect(transport.defaultHeaders).to.deep.equal({
         'content-type': 'application/json; charset=utf-8',
+        'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
         Authorization: 'Token a',
       })
       expect(transport.connectionOptions).to.deep.equal(options)
