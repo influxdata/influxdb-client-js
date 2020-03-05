@@ -1,5 +1,10 @@
 {
-  "version": "independent",
+  "version": "0.6.0",
   "npmClient": "yarn",
-  "packages": ["packages/*"]
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "message": "chore(release): publish %s"
+    }
+  }
 }
