@@ -9,3 +9,4 @@ doc
 *.lcov
 reports
 yarn-error.log
+.idea/
