@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "InfluxDB 2.0 client",
   "scripts": {
     "build": "yarn run clean && rollup -c",
