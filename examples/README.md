@@ -8,7 +8,7 @@ This directory contains javascript and typescript examples for node.js and brows
 - Node.js examples
   - Change variables in [./env.js](env.js) to configure connection to your InfluxDB instance. The file can be used as-is against a new [docker influxDB v2.0 installation](https://v2.docs.influxdata.com/v2.0/get-started/)
   - Examples are executable. If it does not work for you, run `npm run ts-node EXAMPLE.ts`.
-  - [write.ts](./write.ts)
+  - [write.js](./write.js)
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
     Query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
