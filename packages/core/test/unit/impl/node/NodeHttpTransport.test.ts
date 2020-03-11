@@ -9,6 +9,7 @@ import * as https from 'https'
 import sinon from 'sinon'
 import {Readable} from 'stream'
 import zlib from 'zlib'
+import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -141,6 +142,10 @@ describe('NodeHttpTransport', () => {
             if (extras.token) {
               context.matchHeader('authorization', 'Token ' + extras.token)
             }
+            context.matchHeader(
+              'User-Agent',
+              `influxdb-client-js/${CLIENT_LIB_VERSION}`
+            )
             let cancellable: any
             new NodeHttpTransport({
               ...extras,

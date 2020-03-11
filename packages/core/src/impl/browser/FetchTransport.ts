@@ -10,6 +10,7 @@ import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import Logger from '../Logger'
+import {CLIENT_LIB_VERSION} from '../version'
 
 /**
  * Transport layer that use browser fetch.
@@ -20,6 +21,7 @@ export default class FetchTransport implements Transport {
   constructor(private connectionOptions: ConnectionOptions) {
     this.defaultHeaders = {
       'content-type': 'application/json; charset=utf-8',
+      'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
     }
     if (this.connectionOptions.token) {
       this.defaultHeaders['Authorization'] =
