@@ -1,1 +1,1 @@
-export const CLIENT_LIB_VERSION = '0.6.0'
+export const CLIENT_LIB_VERSION = '1.0.0'

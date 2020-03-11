@@ -98,7 +98,7 @@ Ensure that:
 Then run the publish script in the root of the repo:
 
 ```
-./publish.sh
+make publish VERSION=1.1.0
 ```
 
 ## Contributing
