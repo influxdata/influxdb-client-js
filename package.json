@@ -36,7 +36,7 @@
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   },
-  "devDependencies": {
-    "generate-changelog": "^1.8.0"
+  "resolutions": {
+    "minimist": ">=1.2.2"
   }
 }
