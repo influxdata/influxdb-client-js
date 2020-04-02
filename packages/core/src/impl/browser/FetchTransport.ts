@@ -152,7 +152,7 @@ export default class FetchTransport implements Transport {
         ...this.defaultHeaders,
         ...headers,
       },
-      credentials: 'include' as 'include',
+      credentials: 'omit' as 'omit',
       // allow to specify custom options, such as signal, in SendOptions
       ...other,
     })

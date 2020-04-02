@@ -1,4 +1,7 @@
-## 1.2.0
+## 1.2.0 [unreleased]
+
+### Bug
+1. [#160](https://github.com/influxdata/influxdb-client-js/issues/160): Disabled using credentials for CORS 
 
 ### Security
 1. [#157](https://github.com/influxdata/influxdb-client-js/issues/157): [ESLint dependencies are vulnerable (ReDoS and Prototype Pollution)](https://github.com/advisories/GHSA-7fhm-mqm4-2wp7)
