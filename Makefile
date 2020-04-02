@@ -11,10 +11,10 @@ publish:
 	git checkout master
 	git pull
 	yarn install --frozen-lockfile
+	sed -i '' -e "s/CLIENT_LIB_VERSION = '.*'/CLIENT_LIB_VERSION = '$(VERSION)'/" packages/core/src/impl/version.ts
 	yarn run build
 	yarn run test
 	@echo "Publishing $(VERSION)..."
-	sed -i '' -e "s/CLIENT_LIB_VERSION = '.*'/CLIENT_LIB_VERSION = '$(VERSION)'/" packages/core/src/impl/version.ts
 	git commit -am "prepare to release influxdb-client-js-$(VERSION)"
 	lerna publish $(VERSION)
 	@echo "Publish successful"
