@@ -4,6 +4,7 @@ help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo ""
 	@echo "  publish    to publish packages to specified version by VERSION property. make publish VERSION=1.1.0"
+	@echo "  nightly    to publish nightly build"
 	@echo ""
 
 publish:
@@ -21,5 +22,10 @@ publish:
 	@echo ""
 	@echo "Next steps:"
 	@echo " - add new version to CHANGELOG.md"
-	@echo " - push changes to repository by : \"git commit -am 'prepare to next development iteration' && git push\""
+	@echo " - push changes to repository by : \"git commit -am 'chore(release): prepare to next development iteration [skip CI]' && git push\""
 	@echo ""
+
+nightly:
+	yarn install --frozen-lockfile
+	yarn run build
+	yarn lerna publish --canary preminor --no-git-tag-version --force-publish --yes
