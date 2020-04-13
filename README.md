@@ -11,7 +11,7 @@
 
 This repository contains the reference javascript client for InfluxDB 2.0. Both node and browser environments are supported.
 
-**Note: Use this library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.**
+#### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 
 ## Features
 
