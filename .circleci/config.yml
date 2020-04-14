@@ -75,12 +75,14 @@ jobs:
               circleci step halt
             fi
       - checkout
+      - init-dependencies
       - run: npm install lerna
       - run:
           name: Setup npmjs
           command: bash .circleci/setup-npmjs.sh
-      - init-dependencies
-      - run: make nightly
+      - run:
+          name: Build & Deploy nightly version
+          command: bash .circleci/deploy-nightly-version.sh
 
 workflows:
   build:
