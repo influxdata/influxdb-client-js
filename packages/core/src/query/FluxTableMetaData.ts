@@ -17,7 +17,7 @@ export const typeSerializers: {[key: string]: (val: string) => any} = {
   duration: identity,
 }
 /**
- * Represents metadata of a flux [table](http://bit.ly/flux-spec#table).
+ * Represents metadata of a [flux table](http://bit.ly/flux-spec#table).
  */
 export default class FluxTableMetaData {
   /**
