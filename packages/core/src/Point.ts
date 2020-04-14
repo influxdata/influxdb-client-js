@@ -2,7 +2,7 @@ import {escape} from './util/escape'
 import {PointSettings} from './options'
 /**
  * Point defines the values that will be written to the database.
- * <a href="http://bit.ly/influxdata-point">See Go Implementation</a>.
+ * See [Go Implementation](http://bit.ly/influxdata-point)
  */
 export default class Point {
   private name: string

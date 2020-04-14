@@ -84,20 +84,20 @@ export interface DeleteTelegrafsIDOwnersIDRequest {
   telegrafID: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
  */
 export class TelegrafsAPI extends APIBase {
   /**
@@ -107,9 +107,9 @@ export class TelegrafsAPI extends APIBase {
     super(influxDB)
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
    */
   getTelegrafs(
     request?: GetTelegrafsRequest,
@@ -124,9 +124,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Create a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
    */
   postTelegrafs(
     request: PostTelegrafsRequest,
@@ -142,9 +142,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Retrieve a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
    */
   getTelegrafsID(
     request: GetTelegrafsIDRequest,
@@ -159,9 +159,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Update a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
    */
   putTelegrafsID(
     request: PutTelegrafsIDRequest,
@@ -177,9 +177,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Delete a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
    */
   deleteTelegrafsID(
     request: DeleteTelegrafsIDRequest,
@@ -194,9 +194,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * List all labels for a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
    */
   getTelegrafsIDLabels(
     request: GetTelegrafsIDLabelsRequest,
@@ -211,9 +211,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Add a label to a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
    */
   postTelegrafsIDLabels(
     request: PostTelegrafsIDLabelsRequest,
@@ -229,9 +229,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Delete a label from a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
    */
   deleteTelegrafsIDLabelsID(
     request: DeleteTelegrafsIDLabelsIDRequest,
@@ -246,9 +246,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * List all users with member privileges for a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
    */
   getTelegrafsIDMembers(
     request: GetTelegrafsIDMembersRequest,
@@ -263,9 +263,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Add a member to a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
    */
   postTelegrafsIDMembers(
     request: PostTelegrafsIDMembersRequest,
@@ -281,9 +281,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Remove a member from a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
    */
   deleteTelegrafsIDMembersID(
     request: DeleteTelegrafsIDMembersIDRequest,
@@ -298,9 +298,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * List all owners of a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
    */
   getTelegrafsIDOwners(
     request: GetTelegrafsIDOwnersRequest,
@@ -315,9 +315,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Add an owner to a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
    */
   postTelegrafsIDOwners(
     request: PostTelegrafsIDOwnersRequest,
@@ -333,9 +333,9 @@ export class TelegrafsAPI extends APIBase {
   }
   /**
    * Remove an owner from a Telegraf config.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
    */
   deleteTelegrafsIDOwnersID(
     request: DeleteTelegrafsIDOwnersIDRequest,

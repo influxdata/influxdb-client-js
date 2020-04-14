@@ -31,11 +31,11 @@ export interface PostQueryRequest {
   orgID?: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
  */
 export class QueryAPI extends APIBase {
   /**
@@ -45,9 +45,9 @@ export class QueryAPI extends APIBase {
     super(influxDB)
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
    */
   postQueryAst(
     request: PostQueryAstRequest,
@@ -62,9 +62,9 @@ export class QueryAPI extends APIBase {
     )
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
    */
   getQuerySuggestions(
     request?: GetQuerySuggestionsRequest,
@@ -78,9 +78,9 @@ export class QueryAPI extends APIBase {
     )
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
    */
   getQuerySuggestionsName(
     request: GetQuerySuggestionsNameRequest,
@@ -95,9 +95,9 @@ export class QueryAPI extends APIBase {
   }
   /**
    * Analyze an InfluxQL or Flux query.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
    */
   postQueryAnalyze(
     request: PostQueryAnalyzeRequest,
@@ -113,9 +113,9 @@ export class QueryAPI extends APIBase {
   }
   /**
    * Query InfluxDB.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
    */
   postQuery(
     request: PostQueryRequest,

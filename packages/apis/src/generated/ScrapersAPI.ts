@@ -99,21 +99,21 @@ export interface DeleteScrapersIDOwnersIDRequest {
   scraperTargetID: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
  */
 export class ScrapersAPI extends APIBase {
   /**
@@ -124,9 +124,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Get all scraper targets.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
    */
   getScrapers(
     request?: GetScrapersRequest,
@@ -146,9 +146,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Create a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
    */
   postScrapers(
     request: PostScrapersRequest,
@@ -164,9 +164,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Get a scraper target by ID.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
    */
   getScrapersID(
     request: GetScrapersIDRequest,
@@ -181,9 +181,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Update a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
    */
   patchScrapersID(
     request: PatchScrapersIDRequest,
@@ -199,9 +199,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
    */
   deleteScrapersID(
     request: DeleteScrapersIDRequest,
@@ -216,9 +216,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all labels for a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
    */
   getScrapersIDLabels(
     request: GetScrapersIDLabelsRequest,
@@ -233,9 +233,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add a label to a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
    */
   postScrapersIDLabels(
     request: PostScrapersIDLabelsRequest,
@@ -251,9 +251,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Update a label on a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
    */
   patchScrapersIDLabelsID(
     request: PatchScrapersIDLabelsIDRequest,
@@ -269,9 +269,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a label from a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
    */
   deleteScrapersIDLabelsID(
     request: DeleteScrapersIDLabelsIDRequest,
@@ -286,9 +286,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all users with member privileges for a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
    */
   getScrapersIDMembers(
     request: GetScrapersIDMembersRequest,
@@ -303,9 +303,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add a member to a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
    */
   postScrapersIDMembers(
     request: PostScrapersIDMembersRequest,
@@ -321,9 +321,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove a member from a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
    */
   deleteScrapersIDMembersID(
     request: DeleteScrapersIDMembersIDRequest,
@@ -338,9 +338,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all owners of a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
    */
   getScrapersIDOwners(
     request: GetScrapersIDOwnersRequest,
@@ -355,9 +355,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add an owner to a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
    */
   postScrapersIDOwners(
     request: PostScrapersIDOwnersRequest,
@@ -373,9 +373,9 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove an owner from a scraper target.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
    */
   deleteScrapersIDOwnersID(
     request: DeleteScrapersIDOwnersIDRequest,

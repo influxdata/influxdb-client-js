@@ -9,8 +9,8 @@ export interface ApplyPkgRequest {
   body: PkgApply
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
  */
 export class PackagesAPI extends APIBase {
   /**
@@ -21,9 +21,9 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Create a new Influx package.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
    */
   createPkg(
     request: CreatePkgRequest,
@@ -39,9 +39,9 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Apply or dry-run an Influx package.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
    */
   applyPkg(
     request: ApplyPkgRequest,

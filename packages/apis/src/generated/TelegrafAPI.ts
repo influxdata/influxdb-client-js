@@ -6,7 +6,7 @@ export interface GetTelegrafPluginsRequest {
   type?: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
  */
 export class TelegrafAPI extends APIBase {
   /**
@@ -16,9 +16,9 @@ export class TelegrafAPI extends APIBase {
     super(influxDB)
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
    */
   getTelegrafPlugins(
     request?: GetTelegrafPluginsRequest,

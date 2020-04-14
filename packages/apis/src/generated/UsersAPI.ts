@@ -34,13 +34,13 @@ export interface GetUsersIDLogsRequest {
   limit?: number
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
  */
 export class UsersAPI extends APIBase {
   /**
@@ -51,9 +51,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * List all users.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
    */
   getUsers(
     request?: GetUsersRequest,
@@ -63,9 +63,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Create a user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
    */
   postUsers(
     request: PostUsersRequest,
@@ -81,9 +81,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Retrieve a user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
    */
   getUsersID(
     request: GetUsersIDRequest,
@@ -98,9 +98,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Update a user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
    */
   patchUsersID(
     request: PatchUsersIDRequest,
@@ -116,9 +116,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Delete a user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
    */
   deleteUsersID(
     request: DeleteUsersIDRequest,
@@ -133,9 +133,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Update a password.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
    */
   putUsersIDPassword(
     request: PutUsersIDPasswordRequest,
@@ -151,9 +151,9 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Retrieve operation logs for a user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
    */
   getUsersIDLogs(
     request: GetUsersIDLogsRequest,

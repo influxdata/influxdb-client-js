@@ -13,7 +13,7 @@ export interface PostWriteRequest {
   precision?: any
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
  */
 export class WriteAPI extends APIBase {
   /**
@@ -24,9 +24,9 @@ export class WriteAPI extends APIBase {
   }
   /**
    * Write time series data into InfluxDB.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
    */
   postWrite(
     request: PostWriteRequest,

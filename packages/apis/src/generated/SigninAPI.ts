@@ -4,7 +4,7 @@ export interface PostSigninRequest {
   auth: {user: string; password: string}
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
  */
 export class SigninAPI extends APIBase {
   /**
@@ -15,9 +15,9 @@ export class SigninAPI extends APIBase {
   }
   /**
    * Exchange basic auth credentials for session.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
    */
   postSignin(
     request: PostSigninRequest,
