@@ -16,7 +16,7 @@ publish:
 	yarn run build
 	yarn run test
 	@echo "Publishing $(VERSION)..."
-	git commit -am "prepare to release influxdb-client-js-$(VERSION)"
+	git commit -am "chore(release): prepare to release influxdb-client-js-$(VERSION)"
 	lerna publish $(VERSION)
 	@echo "Publish successful"
 	@echo ""
@@ -27,5 +27,8 @@ publish:
 
 nightly:
 	yarn install --frozen-lockfile
+	$(eval VERSION=$(shell cat packages/core/src/impl/version.ts | sed 's/[^0-9.]*//g' | awk -F. '{$$2+=1; OFS="."; print $0}'))
+	sed -i '' -e "s/CLIENT_LIB_VERSION = '.*'/CLIENT_LIB_VERSION = '$(VERSION).nightly'/" packages/core/src/impl/version.ts
+	git commit -am "chore(release): prepare to release influxdb-client-js-$(VERSION).nightly"
 	yarn run build
-	yarn lerna publish --canary preminor --no-git-tag-version --force-publish --yes
+	yarn lerna publish --canary preminor --no-git-tag-version --force-publish --preid nightly --yes
