@@ -113,7 +113,12 @@ export default class Point {
   }
 
   /**
-   * Sets point time.
+   * Sets point time. A string or number value is used
+   * to carry an int64 value of a precision that depends
+   * on WriteApi, nanoseconds by default. An undefined value
+   * generates a local timestamp using the client's clock.
+   * An empty string can be used to let the server assign
+   * the timestamp.
    *
    * @param value point time
    * @return this
