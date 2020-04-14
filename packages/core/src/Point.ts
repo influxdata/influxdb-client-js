@@ -8,7 +8,7 @@ export default class Point {
   private name: string
   private tags: {[key: string]: string} = {}
   private fields: {[key: string]: string} = {}
-  private time: string | undefined
+  private time: string | number | Date | undefined
 
   /**
    * Create a new Point with specified a measurement name.
@@ -118,7 +118,7 @@ export default class Point {
    * @param value point time
    * @return this
    */
-  public timestamp(value: string | undefined): Point {
+  public timestamp(value: string | number | Date | undefined): Point {
     this.time = value
     return this
   }

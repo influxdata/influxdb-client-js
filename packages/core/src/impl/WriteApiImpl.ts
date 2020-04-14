@@ -10,7 +10,7 @@ import Logger from './Logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'
 import {escape} from '../util/escape'
-import {currentTime} from '../util/currentTime'
+import {currentTime, dateToProtocolTimestamp} from '../util/currentTime'
 import {createRetryDelayStrategy} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
 
@@ -66,6 +66,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
   private _timeoutHandle: any = undefined
   private currentTime: () => string
+  private dateToProtocolTimestamp: (d: Date) => string
 
   retryBuffer: RetryBuffer
   retryStrategy: RetryDelayStrategy
@@ -85,6 +86,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       ...writeOptions,
     }
     this.currentTime = currentTime[precision]
+    this.dateToProtocolTimestamp = dateToProtocolTimestamp[precision]
 
     const scheduleNextSend = (): void => {
       if (this.writeOptions.flushInterval > 0) {
@@ -219,11 +221,18 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     })
     return this
   }
-  convertTime(value: string | undefined): string | undefined {
-    if (typeof value === 'string') {
-      return value ? value : undefined
-    } else {
+  convertTime(value: string | number | Date | undefined): string | undefined {
+    if (value === undefined) {
       return this.currentTime()
+    } else if (value instanceof Date) {
+      return this.dateToProtocolTimestamp(value)
+    } else if (typeof value === 'string') {
+      return value.length > 0 ? value : undefined
+    } else if (typeof value === 'number') {
+      return String(value)
+    } else {
+      Logger.error(`unsupported timestamp value: ${value}`)
+      return String(value)
     }
   }
 }

@@ -213,17 +213,19 @@ describe('WriteApi', () => {
         new Point('test').floatField('value', 2),
         new Point('test').floatField('value', 3),
         new Point('test').floatField('value', 4).timestamp('1'),
+        new Point('test').floatField('value', 5).timestamp(2),
+        new Point('test').floatField('value', 6).timestamp(new Date(3)),
+        new Point('test')
+          .floatField('value', 7)
+          .timestamp((false as any) as string), // wrong type from js
       ])
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
-      expect(logs.error).to.length(0)
-      expect(logs.warn).to.length(2)
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush
-      expect(logs.error).to.length(0)
+      expect(logs.error).to.length(1) // true value is not a supported value
       expect(logs.warn).to.length(2)
       expect(messages).to.have.length(2)
       expect(messages[0]).to.equal('test,t=\\ ,xtra=1 value=1')
       const lines = messages[1].split('\n')
-      expect(lines).has.length(3)
+      expect(lines).has.length(6)
       expect(lines[0]).to.satisfy((line: string) =>
         line.startsWith('test,xtra=1 value=2')
       )
@@ -237,10 +239,9 @@ describe('WriteApi', () => {
         String(Date.now()).length + 6 // nanosecond precision
       )
       expect(lines[2]).to.be.equal('test,xtra=1 value=4 1')
-      lines.forEach(_line => {})
-      await subject.flush().then(() => {
-        expect(logs.error).to.length(0)
-      })
+      expect(lines[3]).to.be.equal('test,xtra=1 value=5 2')
+      expect(lines[4]).to.be.equal('test,xtra=1 value=6 3000000')
+      expect(lines[5]).to.be.equal('test,xtra=1 value=7 false')
     })
   })
 })
