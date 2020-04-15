@@ -3,7 +3,7 @@ import {IllegalArgumentError} from '../errors'
 
 const identity = (x: string): any => x
 /**
- * A dictionary of serializers of particular types returned by a flux query
+ * A dictionary of serializers of particular types returned by a flux query.
  * See https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types
  */
 export const typeSerializers: {[key: string]: (val: string) => any} = {

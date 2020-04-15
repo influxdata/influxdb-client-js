@@ -56,15 +56,16 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID
  */
 export class NotificationEndpointsAPI extends APIBase {
   /**

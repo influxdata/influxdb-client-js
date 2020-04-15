@@ -31,11 +31,12 @@ export interface PostQueryRequest {
   orgID?: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
  */
 export class QueryAPI extends APIBase {
   /**

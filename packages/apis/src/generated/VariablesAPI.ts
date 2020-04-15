@@ -54,15 +54,16 @@ export interface DeleteVariablesIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
  */
 export class VariablesAPI extends APIBase {
   /**

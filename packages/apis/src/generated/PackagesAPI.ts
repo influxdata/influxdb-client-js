@@ -9,8 +9,9 @@ export interface ApplyPkgRequest {
   body: PkgApply
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
  */
 export class PackagesAPI extends APIBase {
   /**

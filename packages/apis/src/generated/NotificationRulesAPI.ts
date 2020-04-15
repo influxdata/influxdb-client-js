@@ -65,16 +65,17 @@ export interface GetNotificationRulesIDQueryRequest {
   ruleID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationRule
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationRulesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationRulesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationRuleIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesIDLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationRule
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationRulesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationRulesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationRuleIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery
  */
 export class NotificationRulesAPI extends APIBase {
   /**

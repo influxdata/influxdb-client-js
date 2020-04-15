@@ -29,11 +29,12 @@ export interface DeleteLabelsIDRequest {
   labelID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
  */
 export class LabelsAPI extends APIBase {
   /**

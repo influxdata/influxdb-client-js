@@ -50,14 +50,15 @@ export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
  */
 export class DocumentsAPI extends APIBase {
   /**

@@ -4,7 +4,8 @@ export interface PostSigninRequest {
   auth: {user: string; password: string}
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
  */
 export class SigninAPI extends APIBase {
   /**

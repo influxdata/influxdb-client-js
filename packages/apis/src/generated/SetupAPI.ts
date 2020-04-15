@@ -7,8 +7,9 @@ export interface PostSetupRequest {
   body: OnboardingRequest
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
  */
 export class SetupAPI extends APIBase {
   /**

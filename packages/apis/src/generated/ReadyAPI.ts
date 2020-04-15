@@ -3,7 +3,8 @@ import {Ready} from './types'
 
 export interface GetReadyRequest {}
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady
  */
 export class ReadyAPI extends APIBase {
   /**

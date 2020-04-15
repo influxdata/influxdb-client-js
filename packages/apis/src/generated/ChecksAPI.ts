@@ -61,16 +61,17 @@ export interface GetChecksIDQueryRequest {
   checkID: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery
  */
 export class ChecksAPI extends APIBase {
   /**

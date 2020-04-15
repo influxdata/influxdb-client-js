@@ -94,9 +94,9 @@ function generateClass(
   apiName: string,
   operations: Operation[]
 ): string {
-  let classDef = '/**\n'
+  let classDef = '/**\n * See\n'
   for (const operation of operations) {
-    classDef += ` * See https://v2.docs.influxdata.com/v2.0/api/#operation/${getOperationId(
+    classDef += ` * * https://v2.docs.influxdata.com/v2.0/api/#operation/${getOperationId(
       operation
     )}\n`
   }

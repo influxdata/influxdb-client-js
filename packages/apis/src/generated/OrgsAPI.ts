@@ -111,24 +111,25 @@ export interface GetOrgsIDLogsRequest {
   limit?: number
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
  */
 export class OrgsAPI extends APIBase {
   /**

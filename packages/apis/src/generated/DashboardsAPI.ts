@@ -144,27 +144,28 @@ export interface GetDashboardsIDLogsRequest {
   limit?: number
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLogs
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLogs
  */
 export class DashboardsAPI extends APIBase {
   /**

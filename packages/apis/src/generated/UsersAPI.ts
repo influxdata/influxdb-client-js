@@ -34,13 +34,14 @@ export interface GetUsersIDLogsRequest {
   limit?: number
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
  */
 export class UsersAPI extends APIBase {
   /**

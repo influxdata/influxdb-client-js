@@ -14,7 +14,8 @@ export interface PostDeleteRequest {
   bucketID?: string
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
  */
 export class DeleteAPI extends APIBase {
   /**

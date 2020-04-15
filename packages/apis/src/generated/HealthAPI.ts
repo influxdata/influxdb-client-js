@@ -3,7 +3,8 @@ import {HealthCheck} from './types'
 
 export interface GetHealthRequest {}
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth
  */
 export class HealthAPI extends APIBase {
   /**

@@ -97,21 +97,22 @@ export interface GetBucketsIDLogsRequest {
   limit?: number
 }
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBuckets
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchBucketsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDLabels
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDMembers
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDMembersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLogs
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBuckets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchBucketsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDMembersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLogs
  */
 export class BucketsAPI extends APIBase {
   /**

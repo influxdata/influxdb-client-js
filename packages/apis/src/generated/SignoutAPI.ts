@@ -2,7 +2,8 @@ import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostSignoutRequest {}
 /**
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
  */
 export class SignoutAPI extends APIBase {
   /**
