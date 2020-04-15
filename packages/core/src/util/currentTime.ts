@@ -86,3 +86,11 @@ export const currentTime = Object.freeze({
   micros,
   nanos,
 })
+
+export const dateToProtocolTimestamp = {
+  [String(WritePrecision.s)]: (d: Date): string =>
+    `${Math.floor(d.getTime() / 1000)}`,
+  [String(WritePrecision.ms)]: (d: Date): string => `${d.getTime()}`,
+  [String(WritePrecision.us)]: (d: Date): string => `${d.getTime()}000`,
+  [String(WritePrecision.ns)]: (d: Date): string => `${d.getTime()}000000`,
+}

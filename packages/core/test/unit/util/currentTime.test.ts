@@ -1,4 +1,8 @@
-import {currentTime, useProcessHrtime} from '../../../src'
+import {
+  currentTime,
+  useProcessHrtime,
+  dateToProtocolTimestamp,
+} from '../../../src'
 import {expect} from 'chai'
 
 describe('currentTime', () => {
@@ -74,4 +78,14 @@ describe('currentTime', () => {
       }
     )
   })
+})
+
+describe('dateToProtocolTimestamp', () => {
+  const subject = new Date(1584294154693)
+  expect(dateToProtocolTimestamp['s'](subject)).to.be.equal('1584294154')
+  expect(dateToProtocolTimestamp['ms'](subject)).to.be.equal('1584294154693')
+  expect(dateToProtocolTimestamp['us'](subject)).to.be.equal('1584294154693000')
+  expect(dateToProtocolTimestamp['ns'](subject)).to.be.equal(
+    '1584294154693000000'
+  )
 })

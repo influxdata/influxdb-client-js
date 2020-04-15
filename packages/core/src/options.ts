@@ -98,5 +98,7 @@ export const enum WritePrecision {
  */
 export interface PointSettings {
   defaultTags?: {[key: string]: string}
-  convertTime?: (value: string | undefined) => string | undefined
+  convertTime?: (
+    value: string | number | Date | undefined
+  ) => string | undefined
 }
