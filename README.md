@@ -11,7 +11,7 @@
 
 This repository contains the reference javascript client for InfluxDB 2.0. Both node and browser environments are supported.
 
-#### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
+#### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+ ([see details](#influxdb-18-api-compatibility)). For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 
 ## Features
 
@@ -67,6 +67,20 @@ See [examples](./examples/README.md)
 - @influxdata/influxdb-client-apis
   - [setup / onboarding](./examples/onboarding.js)
   - [health](./examples/health.js)
+  
+#### InfluxDB 1.8 API compatibility
+
+InfluxDB 1.8.0 introduced forward compatibility APIs for InfluxDB 2.0. This allow you to easily move from InfluxDB 1.x to InfluxDB 2.0 Cloud or open source.
+
+The following forward compatible APIs are available:
+
+| API | Endpoint | Description |
+|:----------|:----------|:----------|
+| [QueryApi.ts](packages/core/src/QueryApi.ts) | [/api/v2/query](https://docs.influxdata.com/influxdb/latest/tools/api/#api-v2-query-http-endpoint) | Query data in InfluxDB 1.8.0+ using the InfluxDB 2.0 API and [Flux](https://docs.influxdata.com/flux/latest/) |
+| [WriteApi.ts](packages/core/src/WriteApi.ts) | [/api/v2/write](https://docs.influxdata.com/influxdb/v1.8/tools/api/#api-v2-write-http-endpoint) | Write data to InfluxDB 1.8.0+ using the InfluxDB 2.0 API _(compatible with InfluxDB 2.0 client libraries)_ |
+| [HealthAPI.ts](packages/apis/src/generated/HealthAPI.ts) | [/health](https://docs.influxdata.com/influxdb/v1.8/tools/api/#health-http-endpoint) | Check the health of your InfluxDB instance |    
+
+For detail info see [InfluxDB 1.8 example](examples/influxdb-1.8.ts)
 
 ## Build Requirements
 

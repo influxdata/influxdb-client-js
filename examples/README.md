@@ -16,6 +16,8 @@ This directory contains javascript and typescript examples for node.js and brows
     Check health fo your influx DB.
   - [onboarding.js](./onboarding.js)
     Performs onboarding of a new influxDB database. It creates a new organization, bucket and user that is then used in all examples.
+  - [influxdb-1.8.ts](./influxdb-1.8.ts)
+    How to use forward compatibility APIs from InfluxDB 1.8.
 - Browser examples
   - Change `url` in [env.js](./env.js) to match your influxDB instance
   - Change `token, org, bucket, username, password` variables in [./index.html](index.html) to match your influxDB instance
