@@ -15,11 +15,11 @@ publish:
 	yarn run build
 	yarn run test
 	@echo "Publishing $(VERSION)..."
-	git commit -am "prepare to release influxdb-client-js-$(VERSION)"
+	git commit -am "chore(release): prepare to release influxdb-client-js-$(VERSION)"
 	lerna publish $(VERSION)
 	@echo "Publish successful"
 	@echo ""
 	@echo "Next steps:"
 	@echo " - add new version to CHANGELOG.md"
-	@echo " - push changes to repository by : \"git commit -am 'prepare to next development iteration' && git push\""
+	@echo " - push changes to repository by : \"git commit -am 'chore(release): prepare to next development iteration [skip CI]' && git push\""
 	@echo ""

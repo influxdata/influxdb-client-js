@@ -61,8 +61,28 @@ jobs:
           command: yarn run coverage:send
       - store_artifacts:
           path: ./packages/core/coverage
-      # - store_artifacts:
-      #     path: ./packages/core/.nyc_output
+
+  deploy-preview:
+    parameters:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - run:
+          name: Early return if this build is from a forked repository
+          command: |
+            if [[ $CIRCLE_PROJECT_USERNAME != "influxdata" ]]; then
+              echo "Nothing to do for forked repositories, so marking this step successful"
+              circleci step halt
+            fi
+      - checkout
+      - init-dependencies
+      - run: npm install lerna
+      - run:
+          name: Setup npmjs
+          command: bash .circleci/setup-npmjs.sh
+      - run:
+          name: Build & Deploy nightly version
+          command: bash .circleci/deploy-nightly-version.sh
 
 workflows:
   build:
@@ -70,3 +90,10 @@ workflows:
       - unit-tests:
           version: '12'
       - coverage
+      - deploy-preview:
+          requires:
+            - unit-tests
+            - coverage
+          filters:
+            branches:
+              only: master
