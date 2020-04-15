@@ -209,18 +209,18 @@ describe('WriteApi', () => {
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(1)
       subject.writePoints([
-        new Point('test'), // will be ignored
+        new Point('test'), // will be ignored + warning
         new Point('test').floatField('value', 2),
         new Point('test').floatField('value', 3),
         new Point('test').floatField('value', 4).timestamp('1'),
-        new Point('test').floatField('value', 5).timestamp(2),
+        new Point('test').floatField('value', 5).timestamp(2.1),
         new Point('test').floatField('value', 6).timestamp(new Date(3)),
         new Point('test')
           .floatField('value', 7)
-          .timestamp((false as any) as string), // wrong type from js
+          .timestamp((false as any) as string), // server decides what to do with such values
       ])
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
-      expect(logs.error).to.length(1) // true value is not a supported value
+      expect(logs.error).to.length(0)
       expect(logs.warn).to.length(2)
       expect(messages).to.have.length(2)
       expect(messages[0]).to.equal('test,t=\\ ,xtra=1 value=1')

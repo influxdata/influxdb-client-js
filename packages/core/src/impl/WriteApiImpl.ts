@@ -224,14 +224,14 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   convertTime(value: string | number | Date | undefined): string | undefined {
     if (value === undefined) {
       return this.currentTime()
-    } else if (value instanceof Date) {
-      return this.dateToProtocolTimestamp(value)
     } else if (typeof value === 'string') {
       return value.length > 0 ? value : undefined
+    } else if (value instanceof Date) {
+      return this.dateToProtocolTimestamp(value)
     } else if (typeof value === 'number') {
-      return String(value)
+      return String(Math.floor(value))
     } else {
-      Logger.error(`unsupported timestamp value: ${value}`)
+      // Logger.warn(`unsupported timestamp value: ${value}`)
       return String(value)
     }
   }
