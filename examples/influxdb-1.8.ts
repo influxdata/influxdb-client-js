@@ -20,6 +20,8 @@ const clientOptions: ClientOptions = {
 
 const influxDB = new InfluxDB(clientOptions)
 
+console.log('*** WRITE POINTS ***')
+
 const writeAPI = influxDB.getWriteApi('', bucket)
 const point = new Point('mem')
   .tag('host', 'host1')
@@ -32,12 +34,14 @@ writeAPI
     console.error(error)
   })
 
+console.log('*** QUERY ROWS ***')
+
 const queryAPI = influxDB.getQueryApi('')
 const query = `from(bucket: "${bucket}") |> range(start: -1h)`
 queryAPI.queryRows(query, {
   next(row, tableMeta) {
     const o = tableMeta.toObject(row)
-    console.log(`${o._time} ${o._measurement} in ${o._value}`)
+    console.log(`${o._time} ${o._measurement} : ${o._field}=${o._value}`)
   },
   error(error) {
     console.error(error)
