@@ -34,13 +34,14 @@ export interface GetSourcesIDBucketsRequest {
   org?: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
  */
 export class SourcesAPI extends APIBase {
   /**
@@ -51,9 +52,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Get all sources.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
    */
   getSources(
     request?: GetSourcesRequest,
@@ -68,9 +69,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Creates a source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
    */
   postSources(
     request: PostSourcesRequest,
@@ -86,9 +87,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Get a source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
    */
   getSourcesID(
     request: GetSourcesIDRequest,
@@ -103,9 +104,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Update a Source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
    */
   patchSourcesID(
     request: PatchSourcesIDRequest,
@@ -121,9 +122,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Delete a source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
    */
   deleteSourcesID(
     request: DeleteSourcesIDRequest,
@@ -138,9 +139,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Get the health of a source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
    */
   getSourcesIDHealth(
     request: GetSourcesIDHealthRequest,
@@ -155,9 +156,9 @@ export class SourcesAPI extends APIBase {
   }
   /**
    * Get buckets in a source.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
    */
   getSourcesIDBuckets(
     request: GetSourcesIDBucketsRequest,

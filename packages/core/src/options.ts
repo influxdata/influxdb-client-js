@@ -79,7 +79,7 @@ export interface ClientOptions extends ConnectionOptions {
 
 /**
  * Precission for write operations.
- * @see <a href="https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite">https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite</a>
+ * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
  */
 export const enum WritePrecision {
   /** nanosecond */

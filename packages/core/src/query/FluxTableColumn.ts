@@ -33,7 +33,7 @@ export interface FluxTableColumnLike {
   defaultValue?: string
 }
 /**
- * Column metadata of a flux <a href="http://bit.ly/flux-spec#table">table</a>.
+ * Column metadata of a [flux table](http://bit.ly/flux-spec#table).
  */
 export default class FluxTableColumn {
   /**

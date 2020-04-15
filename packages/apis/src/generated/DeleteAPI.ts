@@ -14,7 +14,8 @@ export interface PostDeleteRequest {
   bucketID?: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
  */
 export class DeleteAPI extends APIBase {
   /**
@@ -25,9 +26,9 @@ export class DeleteAPI extends APIBase {
   }
   /**
    * Delete time series data from InfluxDB.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
    */
   postDelete(
     request: PostDeleteRequest,

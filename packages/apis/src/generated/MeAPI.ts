@@ -8,8 +8,9 @@ export interface PutMePasswordRequest {
   body: PasswordResetBody
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
  */
 export class MeAPI extends APIBase {
   /**
@@ -20,9 +21,9 @@ export class MeAPI extends APIBase {
   }
   /**
    * Return the current authenticated user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
    */
   getMe(
     request?: GetMeRequest,
@@ -32,9 +33,9 @@ export class MeAPI extends APIBase {
   }
   /**
    * Update a password.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
    */
   putMePassword(
     request: PutMePasswordRequest,

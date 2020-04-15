@@ -111,24 +111,25 @@ export interface GetOrgsIDLogsRequest {
   limit?: number
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
  */
 export class OrgsAPI extends APIBase {
   /**
@@ -139,9 +140,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * List all organizations.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
    */
   getOrgs(
     request?: GetOrgsRequest,
@@ -156,9 +157,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Create an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
    */
   postOrgs(
     request: PostOrgsRequest,
@@ -174,9 +175,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Retrieve an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
    */
   getOrgsID(
     request: GetOrgsIDRequest,
@@ -191,9 +192,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Update an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
    */
   patchOrgsID(
     request: PatchOrgsIDRequest,
@@ -209,9 +210,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Delete an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
    */
   deleteOrgsID(
     request: DeleteOrgsIDRequest,
@@ -226,9 +227,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * List all labels for a organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
    */
   getOrgsIDLabels(
     request: GetOrgsIDLabelsRequest,
@@ -243,9 +244,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Add a label to an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
    */
   postOrgsIDLabels(
     request: PostOrgsIDLabelsRequest,
@@ -261,9 +262,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Delete a label from an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
    */
   deleteOrgsIDLabelsID(
     request: DeleteOrgsIDLabelsIDRequest,
@@ -278,9 +279,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * List all secret keys for an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
    */
   getOrgsIDSecrets(
     request: GetOrgsIDSecretsRequest,
@@ -295,9 +296,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Update secrets in an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
    */
   patchOrgsIDSecrets(
     request: PatchOrgsIDSecretsRequest,
@@ -313,9 +314,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Delete secrets from an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
    */
   postOrgsIDSecrets(
     request: PostOrgsIDSecretsRequest,
@@ -331,9 +332,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * List all members of an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
    */
   getOrgsIDMembers(
     request: GetOrgsIDMembersRequest,
@@ -348,9 +349,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Add a member to an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
    */
   postOrgsIDMembers(
     request: PostOrgsIDMembersRequest,
@@ -366,9 +367,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Remove a member from an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
    */
   deleteOrgsIDMembersID(
     request: DeleteOrgsIDMembersIDRequest,
@@ -383,9 +384,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * List all owners of an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
    */
   getOrgsIDOwners(
     request: GetOrgsIDOwnersRequest,
@@ -400,9 +401,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Add an owner to an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
    */
   postOrgsIDOwners(
     request: PostOrgsIDOwnersRequest,
@@ -418,9 +419,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Remove an owner from an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
    */
   deleteOrgsIDOwnersID(
     request: DeleteOrgsIDOwnersIDRequest,
@@ -435,9 +436,9 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Retrieve operation logs for an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
    */
   getOrgsIDLogs(
     request: GetOrgsIDLogsRequest,

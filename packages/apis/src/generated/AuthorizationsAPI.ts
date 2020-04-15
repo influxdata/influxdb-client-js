@@ -34,11 +34,12 @@ export interface DeleteAuthorizationsIDRequest {
   authID: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
  */
 export class AuthorizationsAPI extends APIBase {
   /**
@@ -49,9 +50,9 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * List all authorizations.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
    */
   getAuthorizations(
     request?: GetAuthorizationsRequest,
@@ -71,9 +72,9 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Create an authorization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
    */
   postAuthorizations(
     request: PostAuthorizationsRequest,
@@ -89,9 +90,9 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Retrieve an authorization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
    */
   getAuthorizationsID(
     request: GetAuthorizationsIDRequest,
@@ -106,9 +107,9 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Update an authorization to be active or inactive.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
    */
   patchAuthorizationsID(
     request: PatchAuthorizationsIDRequest,
@@ -124,9 +125,9 @@ export class AuthorizationsAPI extends APIBase {
   }
   /**
    * Delete a authorization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
    */
   deleteAuthorizationsID(
     request: DeleteAuthorizationsIDRequest,

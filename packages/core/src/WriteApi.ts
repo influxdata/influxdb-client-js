@@ -3,7 +3,7 @@ import Point from './Point'
 /**
  * The asynchronous buffering API to Write time-series data into InfluxDB 2.0.
  * <p>
- * The data are formatted in <a href="https://bit.ly/2QL99fu">Line Protocol</a>.
+ * The data are formatted in [Line Protocol](https://bit.ly/2QL99fu).
  * <p>
  */
 export default interface WriteApi {
@@ -15,14 +15,14 @@ export default interface WriteApi {
   useDefaultTags(tags: {[key: string]: string}): WriteApi
 
   /**
-   * Write a line of <a href="https://bit.ly/2QL99fu">Line Protocol</a>.
+   * Write a line of [Line Protocol](https://bit.ly/2QL99fu).
    *
    * @param record line in InfluxDB Line Protocol.
    */
   writeRecord(record: string): void
 
   /**
-   * Write lines of <a href="https://bit.ly/2QL99fu">Line Protocol</a>.
+   * Write lines of [Line Protocol](https://bit.ly/2QL99fu).
    *
    * @param records lines in InfluxDB Line Protocol
    */

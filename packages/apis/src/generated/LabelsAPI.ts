@@ -29,11 +29,12 @@ export interface DeleteLabelsIDRequest {
   labelID: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
  */
 export class LabelsAPI extends APIBase {
   /**
@@ -44,9 +45,9 @@ export class LabelsAPI extends APIBase {
   }
   /**
    * Get all labels.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
    */
   getLabels(
     request?: GetLabelsRequest,
@@ -61,9 +62,9 @@ export class LabelsAPI extends APIBase {
   }
   /**
    * Create a label.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
    */
   postLabels(
     request: PostLabelsRequest,
@@ -79,9 +80,9 @@ export class LabelsAPI extends APIBase {
   }
   /**
    * Get a label.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
    */
   getLabelsID(
     request: GetLabelsIDRequest,
@@ -96,9 +97,9 @@ export class LabelsAPI extends APIBase {
   }
   /**
    * Update a label.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
    */
   patchLabelsID(
     request: PatchLabelsIDRequest,
@@ -114,9 +115,9 @@ export class LabelsAPI extends APIBase {
   }
   /**
    * Delete a label.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
    */
   deleteLabelsID(
     request: DeleteLabelsIDRequest,

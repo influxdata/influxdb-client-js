@@ -7,8 +7,9 @@ export interface PostSetupRequest {
   body: OnboardingRequest
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
  */
 export class SetupAPI extends APIBase {
   /**
@@ -19,9 +20,9 @@ export class SetupAPI extends APIBase {
   }
   /**
    * Check if database has default user, org, bucket.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
    */
   getSetup(
     request?: GetSetupRequest,
@@ -31,9 +32,9 @@ export class SetupAPI extends APIBase {
   }
   /**
    * Set up initial user, org and bucket.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
    */
   postSetup(
     request: PostSetupRequest,

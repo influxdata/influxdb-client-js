@@ -50,14 +50,15 @@ export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
   labelID: string
 }
 /**
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
- * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
+ * See
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
  */
 export class DocumentsAPI extends APIBase {
   /**
@@ -67,9 +68,9 @@ export class DocumentsAPI extends APIBase {
     super(influxDB)
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
    */
   getDocumentsTemplates(
     request?: GetDocumentsTemplatesRequest,
@@ -87,9 +88,9 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Create a template.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates
    */
   postDocumentsTemplates(
     request: PostDocumentsTemplatesRequest,
@@ -104,9 +105,9 @@ export class DocumentsAPI extends APIBase {
     )
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID
    */
   getDocumentsTemplatesID(
     request: GetDocumentsTemplatesIDRequest,
@@ -120,9 +121,9 @@ export class DocumentsAPI extends APIBase {
     )
   }
   /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID
    */
   putDocumentsTemplatesID(
     request: PutDocumentsTemplatesIDRequest,
@@ -138,9 +139,9 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Delete a template.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID
    */
   deleteDocumentsTemplatesID(
     request: DeleteDocumentsTemplatesIDRequest,
@@ -155,9 +156,9 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * List all labels for a template.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels
    */
   getDocumentsTemplatesIDLabels(
     request: GetDocumentsTemplatesIDLabelsRequest,
@@ -172,9 +173,9 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Add a label to a template.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
    */
   postDocumentsTemplatesIDLabels(
     request: PostDocumentsTemplatesIDLabelsRequest,
@@ -190,9 +191,9 @@ export class DocumentsAPI extends APIBase {
   }
   /**
    * Delete a label from a template.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
    * @param request
    * @return promise of response
-   * @see https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
    */
   deleteDocumentsTemplatesIDLabelsID(
     request: DeleteDocumentsTemplatesIDLabelsIDRequest,
