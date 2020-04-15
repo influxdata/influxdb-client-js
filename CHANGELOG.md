@@ -2,10 +2,12 @@
 
 ### Features
 
+1. [#174](https://github.com/influxdata/influxdb-client-js/pull/174): Allow to set Point's timestamp using Date or number
+
 ### Bug Fixes
 
 1. [#160](https://github.com/influxdata/influxdb-client-js/issues/160): Disabled using credentials for CORS
-1. [#173](https://github.com/influxdata/influxdb-client-js/pull/173): use links that are clickable in VSCode
+1. [#173](https://github.com/influxdata/influxdb-client-js/pull/173): Use links that are clickable in VSCode
 
 ### Security
 
