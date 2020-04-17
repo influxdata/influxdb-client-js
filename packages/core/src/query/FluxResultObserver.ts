@@ -18,7 +18,7 @@ export default interface FluxResultObserver<T> {
    */
   complete(): void
   /**
-   * Setups cancelllable that can abort flux result processing.
+   * Setups cancellable that can abort flux result processing.
    */
   useCancellable?: (cancellable: Cancellable) => void
 }
