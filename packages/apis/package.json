@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client-apis",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
     "build": "yarn run clean && yarn run lint && rollup -c",
@@ -35,7 +35,7 @@
     "@influxdata/influxdb-client": "*"
   },
   "devDependencies": {
-    "@influxdata/influxdb-client": "^1.1.0",
+    "@influxdata/influxdb-client": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chalk": "^3.0.0",
