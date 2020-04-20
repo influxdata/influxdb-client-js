@@ -1,5 +1,6 @@
+import {Observable} from './observable'
+import {FluxResultObserver, FluxTableMetaData} from './query'
 import {CommunicationObserver} from './transport'
-import FluxResultObserver from './query/FluxResultObserver'
 
 export interface QueryOptions {
   /**
@@ -28,6 +29,11 @@ export interface QueryOptions {
   gzip?: boolean
 }
 
+export interface Row {
+  values: string[]
+  tableMeta: FluxTableMetaData
+}
+
 /**
  * Query InfluxDB 2.0. Provides methods that notify abouts result lines of the executed query.
  * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
@@ -39,6 +45,20 @@ export default interface QueryApi {
    * @return this
    */
   with(options: Partial<QueryOptions>): QueryApi
+
+  /**
+   * Creates a cold observable of the lines returned by the given query.
+   *
+   * @param query the query text in the format specifed in `QueryOptions.type`
+   */
+  lines(query: string): Observable<string>
+
+  /**
+   * Creates a cold observable of the rows returned by the given query.
+   *
+   * @param query the query text in the format specifed in `QueryOptions.type`
+   */
+  rows(query: string): Observable<Row>
 
   /**
    * Executes the query and receives result lines (including empty and annotation lines)
