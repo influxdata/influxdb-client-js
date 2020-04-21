@@ -1,5 +1,9 @@
 ## 1.3.0 [unreleased]
 
+### Features
+
+1. [#177](https://github.com/influxdata/influxdb-client-js/pull/177): Allow to receive query results as [Observable](https://github.com/tc39/proposal-observable)
+
 ## 1.2.0 [2020-04-17]
 
 ### Features
@@ -20,6 +24,7 @@
 1. [#175](https://github.com/influxdata/influxdb-client-js/pull/175): Clarify how to use a client with InfluxDB 1.8
 
 ### CI
+
 1. [#167](https://github.com/influxdata/influxdb-client-js/pull/167): The CircleCI publish prerelease packages
 
 ## 1.1.0 [2020-03-13]
