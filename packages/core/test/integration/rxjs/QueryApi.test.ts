@@ -44,6 +44,24 @@ describe('RxJS QueryApi integration', () => {
 
     expect(lines).to.deep.equal(simpleResponseLines)
   })
+  it('receives error', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [500, 'Error', {}]
+      })
+      .persist()
+
+    try {
+      await from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)'))
+        .pipe(toArray())
+        .toPromise()
+      expect.fail('Server return 500, but it did not fail!')
+    } catch (_) {
+      // expected failure
+    }
+  })
   ;[
     ['response2', undefined],
     ['response2', true],

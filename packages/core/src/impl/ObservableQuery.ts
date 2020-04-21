@@ -48,6 +48,7 @@ class QuerySubscription implements Subscription {
 
   public unsubscribe(): void {
     this.cancellable?.cancel()
+    this.isClosed = true
   }
 }
 
