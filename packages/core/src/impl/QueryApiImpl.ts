@@ -1,7 +1,8 @@
 import {Observable} from '../observable'
 import FluxResultObserver from '../query/FluxResultObserver'
-import QueryApi, {QueryOptions, Row} from '../QueryApi'
+import QueryApi, {QueryOptions, Row, QueryParameters} from '../QueryApi'
 import {CommunicationObserver, Transport} from '../transport'
+import {buildExtern} from '../util/flux'
 import ChunksToLines from './ChunksToLines'
 import {toLineObserver} from './linesToTables'
 import ObservableQuery, {QueryExecutor} from './ObservableQuery'
@@ -26,36 +27,67 @@ export class QueryApiImpl implements QueryApi {
     return this
   }
 
-  lines(query: string): Observable<string> {
-    return new ObservableQuery(this.createExecutor(query), identity)
+  lines(query: string, parameters?: QueryParameters): Observable<string> {
+    return new ObservableQuery(this.createExecutor(query, parameters), identity)
   }
 
-  rows(query: string): Observable<Row> {
-    return new ObservableQuery(this.createExecutor(query), observer => {
-      return toLineObserver({
-        next(values, tableMeta) {
-          observer.next({values, tableMeta})
-        },
-        error(e) {
-          observer.error(e)
-        },
-        complete() {
-          observer.complete()
-        },
-      })
-    })
+  rows(query: string, parameters?: QueryParameters): Observable<Row> {
+    return new ObservableQuery(
+      this.createExecutor(query, parameters),
+      observer => {
+        return toLineObserver({
+          next(values, tableMeta) {
+            observer.next({values, tableMeta})
+          },
+          error(e) {
+            observer.error(e)
+          },
+          complete() {
+            observer.complete()
+          },
+        })
+      }
+    )
   }
 
-  queryLines(query: string, consumer: CommunicationObserver<string>): void {
-    this.createExecutor(query)(consumer)
+  queryLines(
+    query: string,
+    parametersOrConsumer: QueryParameters | CommunicationObserver<string>,
+    maybeConsumer?: CommunicationObserver<string>
+  ): void {
+    const [parameters, consumer] =
+      arguments.length > 2
+        ? [
+            parametersOrConsumer as QueryParameters,
+            maybeConsumer as CommunicationObserver<string>,
+          ]
+        : [undefined, parametersOrConsumer as CommunicationObserver<string>]
+
+    this.createExecutor(query, parameters)(consumer)
   }
 
-  queryRows(query: string, consumer: FluxResultObserver<string[]>): void {
-    this.createExecutor(query)(toLineObserver(consumer))
+  queryRows(
+    query: string,
+    parametersOrConsumer: QueryParameters | FluxResultObserver<string[]>,
+    maybeConsumer?: FluxResultObserver<string[]>
+  ): void {
+    const [parameters, consumer] =
+      arguments.length > 2
+        ? [
+            parametersOrConsumer as QueryParameters,
+            maybeConsumer as FluxResultObserver<string[]>,
+          ]
+        : [undefined, parametersOrConsumer as FluxResultObserver<string[]>]
+
+    this.createExecutor(query, parameters)(toLineObserver(consumer))
   }
 
-  private createExecutor(query: string): QueryExecutor {
+  private createExecutor(
+    query: string,
+    parameters?: QueryParameters
+  ): QueryExecutor {
     const {org, type, gzip} = this.options
+    const extern = buildExtern({...this.options.parameters, ...parameters})
 
     return (consumer): void => {
       this.transport.send(
@@ -64,6 +96,7 @@ export class QueryApiImpl implements QueryApi {
           query,
           dialect: DEFAULT_dialect,
           type,
+          extern,
         }),
         {
           method: 'POST',
