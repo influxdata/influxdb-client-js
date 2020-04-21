@@ -7,7 +7,7 @@
     "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "coverage:send": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov --root=../..",
-    "coverage": "nyc mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
+    "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
     "test:integration": "mocha --require ts-node/register 'test/integration/**/*.test.ts' --exit",
