@@ -18,6 +18,8 @@ This directory contains javascript and typescript examples for node.js and brows
     Performs onboarding of a new influxDB database. It creates a new organization, bucket and user that is then used in all examples.
   - [influxdb-1.8.ts](./influxdb-1.8.ts)
     How to use forward compatibility APIs from InfluxDB 1.8.
+  - [rxjs-query.ts](./rxjs-query.ts)
+    Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
 - Browser examples
   - Change `url` in [env.js](./env.js) to match your influxDB instance
   - Change `token, org, bucket, username, password` variables in [./index.html](index.html) to match your influxDB instance
