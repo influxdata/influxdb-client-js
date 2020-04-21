@@ -57,7 +57,7 @@ describe('RxJS QueryApi integration', () => {
       await from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)'))
         .pipe(toArray())
         .toPromise()
-      expect.fail('Server return 500, but it did not fail!')
+      expect.fail('Server returned 500!')
     } catch (_) {
       // expected failure
     }
