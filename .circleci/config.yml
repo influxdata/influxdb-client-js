@@ -30,7 +30,7 @@ jobs:
           name: Run tests
           command: |
             cd ./packages/core
-            yarn test:unit:ci
+            yarn test:ci
             yarn lint:ci
             yarn build
             cd ../apis
