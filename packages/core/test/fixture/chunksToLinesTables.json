@@ -29,5 +29,22 @@
     "name": "2 chunks, error after 1st chunk",
     "chunks": ["ab\ncd", "error", "ef"],
     "lines": ["ab"]
+  },
+  {
+    "name": "https://github.com/influxdata/influxdb-client-js/issues/179",
+    "chunks": [
+      "#group,false,false,true,false,false,true\n",
+      "#datatype,string,long,string,double,string,string\n",
+      "#default,_result,,,,,\n",
+      ",result,table,id,st_length,st_linestring,trip_id\n",
+      ",,0,GO506_20_6431,25.463641400535032,\"-73.68691 40.820317, -73.690054 40.815413\",GO506_20_6431\n"
+    ],
+    "lines": [
+      "#group,false,false,true,false,false,true",
+      "#datatype,string,long,string,double,string,string",
+      "#default,_result,,,,,",
+      ",result,table,id,st_length,st_linestring,trip_id",
+      ",,0,GO506_20_6431,25.463641400535032,\"-73.68691 40.820317, -73.690054 40.815413\",GO506_20_6431"
+    ]
   }
 ]

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
 import {InfluxDB, ClientOptions, FluxTableMetaData} from '../../src'
@@ -111,5 +112,56 @@ describe('QueryApi', () => {
       })
     )
     expect(values).to.deep.equal(['55', '55', '55'])
+  })
+  it('https://github.com/influxdata/influxdb-client-js/issues/179', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          `#group,false,false,true,false,false,true
+#datatype,string,long,string,double,string,string
+#default,_result,,,,,
+,result,table,id,st_length,st_linestring,trip_id
+,,0,GO506_20_6431,25.463641400535032,"-73.68691 40.820317, -73.690054 40.815413",GO506_20_6431
+,,1,GO506_20_6431,25.463641400535032,"-73.68691 40.820317, -73.690054 40.815413",GO506_20_6431`,
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const values: Array<any> = []
+    await new Promise((resolve, reject) =>
+      subject.queryRows('from(bucket:"my-bucket") |> range(start: 0)', {
+        next(row: string[], meta: FluxTableMetaData): void {
+          values.push(meta.toObject(row))
+        },
+
+        error(error: Error): void {
+          reject(error)
+        },
+        complete(): void {
+          resolve()
+        },
+      })
+    )
+    expect(values).to.deep.equal([
+      {
+        result: '_result',
+        table: '0',
+        id: 'GO506_20_6431',
+        st_length: 25.463641400535032,
+        st_linestring: '-73.68691 40.820317, -73.690054 40.815413',
+        trip_id: 'GO506_20_6431',
+      },
+      {
+        result: '_result',
+        table: '1',
+        id: 'GO506_20_6431',
+        st_length: 25.463641400535032,
+        st_linestring: '-73.68691 40.820317, -73.690054 40.815413',
+        trip_id: 'GO506_20_6431',
+      },
+    ])
   })
 })
