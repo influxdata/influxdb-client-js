@@ -6,7 +6,7 @@ export default class TypesCollector {
   add(type: string): void {
     if (type && type.charAt(0).toUpperCase() === type.charAt(0)) {
       if (type.startsWith('{')) {
-        // anonymous type, process references inside anonymous types
+        // anonymous type; process references to custom types in it
         // see typesCollector.test.ts
         const customTypeRegExp = / ([A-Z][A-Za-z0-9-_| ]*);\n/g
         let match: RegExpExecArray | null
