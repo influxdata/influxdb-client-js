@@ -5,7 +5,9 @@ export default class TypesCollector {
   types: {[key: string]: boolean} = {}
   add(type: string): void {
     if (type && type.charAt(0).toUpperCase() === type.charAt(0)) {
-      if (type.includes('|')) {
+      if (type.startsWith('{')) {
+        // ignore anonymous types
+      } else if (type.includes('|')) {
         type
           .split('|')
           .map(x => x.trim())
