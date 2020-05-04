@@ -1,4 +1,4 @@
-import FluxTableColumn from './FluxTableColumn'
+import FluxTableColumn, {ColumnType} from './FluxTableColumn'
 import {IllegalArgumentError} from '../errors'
 
 const identity = (x: string): any => x
@@ -6,7 +6,7 @@ const identity = (x: string): any => x
  * A dictionary of serializers of particular types returned by a flux query.
  * See https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types
  */
-export const typeSerializers: {[key: string]: (val: string) => any} = {
+export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   boolean: (x: string): any => x === 'true',
   unsignedLong: identity,
   long: identity,
@@ -51,9 +51,7 @@ export default class FluxTableMetaData {
       if (val === '' && column.defaultValue) {
         val = column.defaultValue
       }
-      acc[column.label] = (
-        typeSerializers[column.dataType as string] || identity
-      )(val)
+      acc[column.label] = (typeSerializers[column.dataType] || identity)(val)
     }
     return acc
   }

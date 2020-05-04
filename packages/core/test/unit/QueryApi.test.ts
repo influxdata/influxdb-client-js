@@ -164,4 +164,49 @@ describe('QueryApi', () => {
       },
     ])
   })
+  it('sends custom now and type', async () => {
+    let body: any
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, requestBody) => {
+        body = requestBody
+        return [200, '', {}]
+      })
+      .persist()
+
+    const query = 'from(bucket:"my-bucket") |> range(start: 0)'
+    const tests: Record<string, string | undefined>[] = [
+      {
+        now: undefined,
+        type: undefined,
+      },
+      {
+        now: '2020-10-05T14:48:00.000Z',
+        type: 'whatever',
+      },
+    ]
+    for (const pair of tests) {
+      let subject = new InfluxDB(clientOptions).getQueryApi(ORG)
+      if (pair.now) {
+        subject = subject.with({now: () => pair.now as string})
+      }
+      if (pair.type) {
+        subject = subject.with({type: pair.type as any})
+      }
+      await new Promise((resolve, reject) =>
+        subject.queryRows(query, {
+          next(_row: string[], _meta: FluxTableMetaData): void {},
+          error(error: Error): void {
+            reject(error)
+          },
+          complete(): void {
+            resolve()
+          },
+        })
+      )
+      expect(body?.type).to.deep.equal(pair.type || 'flux')
+      expect(body?.query).to.deep.equal(query)
+      expect(body?.now).to.deep.equal(pair.now)
+    }
+  })
 })
