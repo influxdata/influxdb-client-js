@@ -27,6 +27,11 @@ export interface QueryOptions {
    * Requests gzip encoded response.
    */
   gzip?: boolean
+  /**
+   * Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned,
+   * for example `new Date().toISOString()`.
+   */
+  now?: () => string
 }
 
 /** Wraps values and associated metadata of a query result row */

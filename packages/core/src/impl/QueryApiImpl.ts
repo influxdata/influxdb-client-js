@@ -60,11 +60,13 @@ export class QueryApiImpl implements QueryApi {
     return (consumer): void => {
       this.transport.send(
         `/api/v2/query?org=${encodeURIComponent(org)}`,
-        JSON.stringify({
-          query,
-          dialect: DEFAULT_dialect,
-          type,
-        }),
+        JSON.stringify(
+          this.decorateRequest({
+            query,
+            dialect: DEFAULT_dialect,
+            type,
+          })
+        ),
         {
           method: 'POST',
           headers: {
@@ -75,6 +77,14 @@ export class QueryApiImpl implements QueryApi {
         new ChunksToLines(consumer, this.transport.chunkCombiner)
       )
     }
+  }
+  private decorateRequest(request: any): any {
+    if (typeof this.options.now === 'function') {
+      request.now = this.options.now()
+    }
+    // https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery requires type
+    request.type = this.options.type || 'flux'
+    return request
   }
 }
 
