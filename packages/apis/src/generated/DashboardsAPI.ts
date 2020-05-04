@@ -3,6 +3,7 @@ import {
   AddResourceMemberRequestBody,
   Cell,
   CellUpdate,
+  CellWithViewProperties,
   Cells,
   CreateCell,
   CreateDashboardRequest,
@@ -46,7 +47,14 @@ export interface PatchDashboardsIDRequest {
   /** The ID of the dashboard to update. */
   dashboardID: string
   /** Patching of a dashboard */
-  body: Dashboard
+  body: {
+    /** optional, when provided will replace the name */
+    name?: string
+    /** optional, when provided will replace the description */
+    description?: string
+    /** optional, when provided will replace all existing cells with the cells provided */
+    cells?: CellWithViewProperties
+  }
 }
 export interface DeleteDashboardsIDRequest {
   /** The ID of the dashboard to update. */

@@ -3756,7 +3756,7 @@
       "description": "Patching of a dashboard",
       "required": true,
       "mediaType": "application/json",
-      "type": "Dashboard"
+      "type": "{\n  /** optional, when provided will replace the name */\n  name?: string;\n  /** optional, when provided will replace the description */\n  description?: string;\n  /** optional, when provided will replace all existing cells with the cells provided */\n  cells?: CellWithViewProperties;\n}"
     },
     "responses": [
       {
@@ -6092,6 +6092,11 @@
         "name": "orgID",
         "description": "Filter organizations to a specific organization ID.",
         "type": "string"
+      },
+      {
+        "name": "userID",
+        "description": "Filter organizations to a specific user ID.",
+        "type": "string"
       }
     ],
     "bodyParam": null,
@@ -7090,6 +7095,45 @@
   },
   {
     "server": "/api/v2",
+    "path": "/packages/stacks",
+    "operation": "post",
+    "operationId": "CreateStack",
+    "basicAuth": false,
+    "summary": "Create a new Influx package",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Influx package to create.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "{\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Influx stack created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  id?: string;\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n  readonly createdAt?: string;\n  readonly updatedAt?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
     "path": "/tasks",
     "operation": "get",
     "operationId": "GetTasks",
@@ -7879,6 +7923,47 @@
           {
             "mediaType": "application/json",
             "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/flags",
+    "operation": "get",
+    "operationId": "GetFlags",
+    "basicAuth": false,
+    "summary": "Return the feature flags for the currently authenticated user",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Feature flags for the currently authenticated user",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Flags"
           }
         ]
       },

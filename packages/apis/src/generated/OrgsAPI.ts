@@ -21,6 +21,8 @@ export interface GetOrgsRequest {
   org?: string
   /** Filter organizations to a specific organization ID. */
   orgID?: string
+  /** Filter organizations to a specific user ID. */
+  userID?: string
 }
 export interface PostOrgsRequest {
   /** Organization to create */
@@ -150,7 +152,7 @@ export class OrgsAPI extends APIBase {
   ): Promise<Organizations> {
     return this.request(
       'GET',
-      `/api/v2/orgs${this.queryString(request, ['org', 'orgID'])}`,
+      `/api/v2/orgs${this.queryString(request, ['org', 'orgID', 'userID'])}`,
       request,
       requestOptions
     )

@@ -29,6 +29,7 @@ export interface Routes {
   }
   variables?: string
   me?: string
+  flags?: string
   orgs?: string
   query?: {
     self?: string
@@ -860,7 +861,7 @@ export interface CheckViewProperties {
   check?: Check
   queries: DashboardQuery[]
   /** Colors define color encoding of data into a visualization */
-  colors: string[]
+  colors: DashboardColor[]
 }
 
 export type Check = CheckDiscriminator
@@ -1481,6 +1482,8 @@ export interface Query {
   /** The type of query. Must be "flux". */
   type?: 'flux'
   dialect?: Dialect
+  /** Specifies the time that should be reported as "now" in the query. Default is the server's now time. */
+  now?: string
 }
 
 /**
@@ -1547,22 +1550,30 @@ export interface SecretKeys {
 export type Secrets = any
 
 export interface PkgCreate {
-  orgIDs?: string[]
+  orgIDs?: Array<{
+    orgID?: string
+    resourceFilters?: {
+      byLabel?: string[]
+      byResourceKind?: PkgCreateKind[]
+    }
+  }>
   resources?: {
     id: string
-    kind:
-      | 'bucket'
-      | 'check'
-      | 'dashboard'
-      | 'label'
-      | 'notification_endpoint'
-      | 'notification_rule'
-      | 'task'
-      | 'telegraf'
-      | 'variable'
+    kind: PkgCreateKind
     name?: string
   }
 }
+
+export type PkgCreateKind =
+  | 'bucket'
+  | 'check'
+  | 'dashboard'
+  | 'label'
+  | 'notification_endpoint'
+  | 'notification_rule'
+  | 'task'
+  | 'telegraf'
+  | 'variable'
 
 export type Pkg = Array<{
   apiVersion?: string
@@ -1576,7 +1587,6 @@ export type Pkg = Array<{
     | 'NotificationEndpointPagerDuty'
     | 'NotificationEndpointSlack'
     | 'NotificationRule'
-    | 'NotificationEndpointHTTP'
     | 'Task'
     | 'Telegraf'
     | 'Variable'
@@ -1589,6 +1599,7 @@ export type Pkg = Array<{
 export interface PkgApply {
   dryRun?: boolean
   orgID?: string
+  stackID?: string
   package?: Pkg
   packages?: Pkg[]
   secrets?: any
@@ -1603,6 +1614,7 @@ export interface PkgSummary {
     buckets?: Array<{
       id?: string
       orgID?: string
+      pkgName?: string
       name?: string
       description?: string
       retentionPeriod?: number
@@ -1610,6 +1622,7 @@ export interface PkgSummary {
     }>
     checks?: Array<
       CheckDiscriminator & {
+        pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
       }
     >
@@ -1617,15 +1630,19 @@ export interface PkgSummary {
     dashboards?: Array<{
       id?: string
       orgID?: string
+      pkgName?: string
       name?: string
       description?: string
       labelAssociations?: PkgSummaryLabel[]
       charts?: PkgChart[]
     }>
     labelMappings?: Array<{
+      status?: string
+      resourcePkgName?: string
       resourceName?: string
       resourceID?: string
       resourceType?: string
+      labelPkgName?: string
       labelName?: string
       labelID?: string
     }>
@@ -1633,13 +1650,15 @@ export interface PkgSummary {
     missingSecrets?: string[]
     notificationEndpoints?: Array<
       NotificationEndpointDiscrimator & {
+        pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
       }
     >
     notificationRules?: Array<{
+      pkgName?: string
       name?: string
       description?: string
-      endpointName?: string
+      endpointPkgName?: string
       endpointID?: string
       endpointType?: string
       every?: string
@@ -1658,6 +1677,7 @@ export interface PkgSummary {
       labelAssociations?: PkgSummaryLabel[]
     }>
     tasks?: Array<{
+      pkgName?: string
       id?: string
       name?: string
       cron?: string
@@ -1669,10 +1689,12 @@ export interface PkgSummary {
     }>
     telegrafConfigs?: Array<
       TelegrafRequest & {
+        pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
       }
     >
     variables?: Array<{
+      pkgName?: string
       id?: string
       orgID?: string
       name?: string
@@ -1683,92 +1705,160 @@ export interface PkgSummary {
   }
   diff?: {
     buckets?: Array<{
+      stateStatus?: string
       id?: string
-      name?: string
+      pkgName?: string
       new?: {
+        name?: string
         description?: string
         retentionRules?: RetentionRules
       }
       old?: {
+        name?: string
         description?: string
         retentionRules?: RetentionRules
       }
     }>
     checks?: Array<{
+      stateStatus?: string
       id?: string
-      name?: string
+      pkgName?: string
       new?: CheckDiscriminator
       old?: CheckDiscriminator
     }>
     dashboards?: Array<{
-      name?: string
-      description?: string
-      charts?: PkgChart[]
+      stateStatus?: string
+      id?: string
+      pkgName?: string
+      new?: {
+        name?: string
+        description?: string
+        charts?: PkgChart[]
+      }
+      old?: {
+        name?: string
+        description?: string
+        charts?: PkgChart[]
+      }
     }>
     labels?: Array<{
+      stateStatus?: string
       id?: string
-      name?: string
+      pkgName?: string
       new?: {
+        name?: string
         color?: string
         description?: string
       }
       old?: {
+        name?: string
         color?: string
         description?: string
       }
     }>
     labelMappings?: Array<{
-      isNew?: boolean
+      status?: string
       resourceType?: string
       resourceID?: string
+      resourcePkgName?: string
       resourceName?: string
       labelID?: string
+      labelPkgName?: string
       labelName?: string
     }>
     notificationEndpoints?: Array<{
+      stateStatus?: string
       id?: string
-      name?: string
+      pkgName?: string
       new?: NotificationEndpointDiscrimator
       old?: NotificationEndpointDiscrimator
     }>
     notificationRules?: Array<{
-      name?: string
-      description?: string
-      endpointName?: string
-      endpointID?: string
-      endpointType?: string
-      every?: string
-      offset?: string
-      messageTemplate?: string
-      status?: string
-      statusRules?: Array<{
-        currentLevel?: string
-        previousLevel?: string
-      }>
-      tagRules?: Array<{
-        key?: string
-        value?: string
-        operator?: string
-      }>
+      stateStatus?: string
+      id?: string
+      pkgName?: string
+      new?: {
+        name?: string
+        description?: string
+        endpointName?: string
+        endpointID?: string
+        endpointType?: string
+        every?: string
+        offset?: string
+        messageTemplate?: string
+        status?: string
+        statusRules?: Array<{
+          currentLevel?: string
+          previousLevel?: string
+        }>
+        tagRules?: Array<{
+          key?: string
+          value?: string
+          operator?: string
+        }>
+      }
+      old?: {
+        name?: string
+        description?: string
+        endpointName?: string
+        endpointID?: string
+        endpointType?: string
+        every?: string
+        offset?: string
+        messageTemplate?: string
+        status?: string
+        statusRules?: Array<{
+          currentLevel?: string
+          previousLevel?: string
+        }>
+        tagRules?: Array<{
+          key?: string
+          value?: string
+          operator?: string
+        }>
+      }
     }>
     tasks?: Array<{
-      name?: string
-      cron?: string
-      description?: string
-      every?: string
-      offset?: string
-      query?: string
-      status?: string
-    }>
-    telegrafConfigs?: TelegrafRequest[]
-    variables?: Array<{
+      stateStatus?: string
       id?: string
-      name?: string
+      pkgName?: string
       new?: {
+        name?: string
+        cron?: string
+        description?: string
+        every?: string
+        offset?: string
+        query?: string
+        status?: string
+      }
+      old?: {
+        name?: string
+        cron?: string
+        description?: string
+        every?: string
+        offset?: string
+        query?: string
+        status?: string
+      }
+    }>
+    telegrafConfigs?: Array<{
+      stateStatus?: string
+      id?: string
+      pkgName?: string
+      new?: TelegrafRequest
+      old?: TelegrafRequest
+    }>
+    variables?: Array<{
+      stateStatus?: string
+      id?: string
+      pkgName?: string
+      new?: {
+        name?: string
         description?: string
         args?: VariableProperties
       }
       old?: {
+        name?: string
         description?: string
         args?: VariableProperties
       }
@@ -1785,6 +1875,7 @@ export interface PkgSummary {
 export interface PkgSummaryLabel {
   id?: string
   orgID?: string
+  pkgName?: string
   name?: string
   description?: string
   retentionPeriod?: string
@@ -1973,6 +2064,8 @@ export interface LogEvent {
   /** A description of the event that occurred. */
   readonly message?: string
 }
+
+export type Flags = any
 
 export interface PasswordResetBody {
   password: string
