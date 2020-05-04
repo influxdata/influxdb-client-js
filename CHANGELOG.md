@@ -4,6 +4,7 @@
 
 1. [#177](https://github.com/influxdata/influxdb-client-js/pull/177): Allow to receive query results as [Observable](https://github.com/tc39/proposal-observable)
 1. [#181](https://github.com/influxdata/influxdb-client-js/pull/181): Update APIs from swagger as of 2020-04-30
+1. [#182](https://github.com/influxdata/influxdb-client-js/pull/182): Allow setting the time that should be reported as "now" in the query
 
 ## 1.2.0 [2020-04-17]
 
