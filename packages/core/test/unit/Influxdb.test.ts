@@ -28,6 +28,20 @@ describe('InfluxDB', () => {
         token: 'b',
       })
     })
+    it('is created from string url with trailing slash', () => {
+      expect(
+        (new InfluxDB('http://localhost:9999/') as any)._options
+      ).to.deep.equal({
+        url: 'http://localhost:9999',
+      })
+    })
+    it('is created from configuration with url with trailing slash', () => {
+      expect(
+        (new InfluxDB({url: 'http://localhost:9999/'}) as any)._options
+      ).to.deep.equal({
+        url: 'http://localhost:9999',
+      })
+    })
     it('fails on null arg', () => {
       expect(() => new InfluxDB((null as unknown) as ClientOptions)).to.throw(
         'No url or configuration specified!'

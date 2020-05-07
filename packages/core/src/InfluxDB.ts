@@ -27,8 +27,10 @@ export default class InfluxDB {
     } else {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
-    if (this._options.url === undefined)
+    const url = this._options.url
+    if (typeof url !== 'string')
       throw new IllegalArgumentError('No url specified!')
+    if (url.endsWith('/')) this._options.url = url.substring(0, url.length - 1)
     this.transport = this._options.transport || new TransportImpl(this._options)
   }
 
