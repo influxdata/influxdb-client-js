@@ -29,6 +29,12 @@ export default class InfluxDB {
     }
     if (this._options.url === undefined)
       throw new IllegalArgumentError('No url specified!')
+    // eslint-disable-next-line prefer-const
+    let [path, query = ''] = this._options.url.split('?')
+    if (path.endsWith('/')) {
+      path = path.slice(0, -1)
+    }
+    this._options.url = `${path}${query ? `?${query}` : ''}`
     this.transport = this._options.transport || new TransportImpl(this._options)
   }
 
