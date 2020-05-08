@@ -41,20 +41,20 @@ export default class InfluxDB {
    * @param org Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
    * @param bucket The destination bucket for writes.
    * @param precision Timestamp precision for line items.
-   * @param options Custom write options.
+   * @param writeOptions Custom write options.
    */
   getWriteApi(
     org: string,
     bucket: string,
     precision: WritePrecision = WritePrecision.ns,
-    options?: Partial<WriteOptions>
+    writeOptions?: Partial<WriteOptions>
   ): WriteApi {
     return new WriteApiImpl(
       this.transport,
       org,
       bucket,
       precision,
-      options || this._options.writeOptions
+      writeOptions || this._options.writeOptions
     )
   }
 
