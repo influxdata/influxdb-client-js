@@ -85,10 +85,9 @@ describe('WriteApi', () => {
     let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = createApi(ORG, BUCKET, PRECISION, {
-        retryJitter: 0,
-        ...writeOptions,
-      })
+      subject = new InfluxDB({
+        ...clientOptions,
+      }).getWriteApi(ORG, BUCKET, PRECISION, writeOptions)
     }
     beforeEach(() => {
       // logs = collectLogging.decorate()

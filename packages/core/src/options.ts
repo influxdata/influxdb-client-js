@@ -71,9 +71,9 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
  * Options used by [[InfluxDB]] .
  */
 export interface ClientOptions extends ConnectionOptions {
-  /** to override default writing options */
+  /** supplies and overrides default writing options */
   writeOptions?: Partial<WriteOptions>
-  /** to specify custom transport */
+  /** specifies custom transport */
   transport?: Transport
 }
 
