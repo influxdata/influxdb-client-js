@@ -1,19 +1,19 @@
-const SANITIZE_FLUX_PARAMETER = Symbol.for('SANITIZE_FLUX_PARAMETER')
+const FLUX_VALUE = Symbol.for('FLUX_VALUE')
 
 /**
- * A flux parameter like can print a sanitized value.
+ * A flux parameter can print its (sanitized) flux value.
  */
 export interface FluxParameterLike {
-  [SANITIZE_FLUX_PARAMETER](): string
+  [FLUX_VALUE](): string
 }
 
 class FluxParameter implements FluxParameterLike {
-  constructor(private value: string) {}
+  constructor(private fluxValue: string) {}
   toString(): string {
-    return this.value
+    return this.fluxValue
   }
-  [SANITIZE_FLUX_PARAMETER](): string {
-    return this.value
+  [FLUX_VALUE](): string {
+    return this.fluxValue
   }
 }
 
@@ -24,14 +24,69 @@ class FluxParameter implements FluxParameterLike {
  * @return sanitized string
  */
 function sanitizeString(value: any): string {
-  // TODO sanitize string
+  if (value === null || value === undefined) return ''
+  value = value.toString()
+  let retVal: any = undefined
+  let i = 0
+  function prepareRetVal(): void {
+    if (retVal === undefined) {
+      retVal = value.substring(0, i)
+    }
+  }
+  for (; i < value.length; i++) {
+    const c = value.charAt(i)
+    switch (c) {
+      case '\r':
+        prepareRetVal()
+        retVal += '\\r'
+        break
+      case '\n':
+        prepareRetVal()
+        retVal += '\\n'
+        break
+      case '\t':
+        prepareRetVal()
+        retVal += '\\t'
+        break
+      case '"':
+      case '\\':
+        prepareRetVal()
+        retVal = retVal + '\\' + c
+        break
+      case '$':
+        // escape ${
+        if (i + 1 < value.length && value.charAt(i + 1) === '{') {
+          prepareRetVal()
+          i++
+          retVal += '\\${'
+          break
+        }
+        // append $
+        if (retVal != undefined) {
+          retVal += c
+        }
+        break
+      default:
+        if (retVal != undefined) {
+          retVal += c
+        }
+    }
+  }
+  if (retVal !== undefined) {
+    return retVal
+  }
   return value
 }
 
 /**
+ * Creates a flux string literal.
+ */
+export function fluxString(value: any): FluxParameterLike {
+  return new FluxParameter(`"${sanitizeString(value)}"`)
+}
+
+/**
  * Creates a flux integer literal.
- * @param value string value
- * @return flux parameter
  */
 export function fluxInteger(value: any): FluxParameterLike {
   const val = String(value)
@@ -82,8 +137,9 @@ export function fluxDuration(value: any): FluxParameterLike {
 function sanitizeRegExp(value: any): string {
   return `regexp.compile(v: "${sanitizeString(value)}")`
 }
+
 /**
- * Creates flux regexp literal
+ * Creates flux regexp literal.
  */
 export function fluxRegExp(value: any): FluxParameterLike {
   // let the server decide if it can be parsed
@@ -91,32 +147,59 @@ export function fluxRegExp(value: any): FluxParameterLike {
 }
 
 /**
+ * Creates flux boolean literal.
+ */
+export function fluxBool(value: any): FluxParameterLike {
+  if (value === 'true' || value === 'false') {
+    return new FluxParameter(value)
+  }
+  return new FluxParameter((!!value).toString())
+}
+
+/**
+ * Assumes that the supplied string is a flux literal value and creates
+ * a parameter out of it.
+ */
+export function fluxLiteral(value: string): FluxParameterLike {
+  // let the server decide if it can be parsed
+  return new FluxParameter(value)
+}
+
+/**
  * Escapes content of the supplied parameter so that it can be safely embedded into flux query.
  * @param value parameter value
- * @return sanitized value
+ * @return sanitized flux value or an empty string if it cannot be converted
  */
-export function sanitizeParameter(value: any): string {
-  if (typeof value === 'string') {
+export function toFluxValue(value: any): string {
+  if (value === undefined) {
+    return ''
+  } else if (value === null) {
+    return 'null'
+  } else if (typeof value === 'boolean') {
+    return value.toString()
+  } else if (typeof value === 'string') {
     return `"${sanitizeString(value)}"`
   } else if (typeof value === 'number') {
     return sanitizeFloat(value)
   } else if (
     typeof value === 'object' &&
-    typeof value[SANITIZE_FLUX_PARAMETER] === 'function'
+    typeof value[FLUX_VALUE] === 'function'
   ) {
-    return value[SANITIZE_FLUX_PARAMETER]()
+    return value[FLUX_VALUE]()
   } else if (value instanceof Date) {
-    return sanitizeDateTime(value)
+    return value.toISOString()
   } else if (value instanceof RegExp) {
     return sanitizeRegExp(value)
   }
-  return ''
+  return toFluxValue(value.toString())
 }
 
 /**
- * Flux is a tagged template that sanitizes parameters in a flux query to avoid injection attacks.
+ * Flux is a tagged template that sanitizes supplied parameters
+ * to avoid injection attacks in flux.
  */
-export function flux(strings: string[], ...values: any): string {
+export function flux(strings: TemplateStringsArray, ...values: any): string {
+  if (strings.length == 1) return strings[0] // the simplest case
   const parts = new Array<string>(strings.length + values.length)
   let partIndex = 0
   for (let i = 0; i < strings.length; i++) {
@@ -124,11 +207,21 @@ export function flux(strings: string[], ...values: any): string {
     parts[partIndex++] = text
     if (i < values.length) {
       const val = values[i]
-      const sanitized = sanitizeParameter(val)
-      if (sanitized === '') {
-        throw new Error(
-          `Unsupported parameter literal '${val}' at index: ${i}, type: ${typeof val}`
-        )
+      let sanitized: string
+      if (
+        text.endsWith('"') &&
+        i + 1 < strings.length &&
+        strings[i + 1].startsWith('"')
+      ) {
+        // parameter is wrapped into flux double quotes
+        sanitized = sanitizeString(val)
+      } else {
+        sanitized = toFluxValue(val)
+        if (sanitized === '') {
+          throw new Error(
+            `Unsupported parameter literal '${val}' at index: ${i}, type: ${typeof val}`
+          )
+        }
       }
       parts[partIndex++] = sanitized
     } else if (i < strings.length - 1) {
