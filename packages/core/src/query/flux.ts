@@ -7,6 +7,16 @@ export interface FluxParameterLike {
   [FLUX_VALUE](): string
 }
 
+/**
+ * Represents a parameterized query.
+ */
+export interface ParameterizedQuery {
+  /**
+   * Returns flux query with sanitized parameters.
+   */
+  toString(): string
+}
+
 class FluxParameter implements FluxParameterLike {
   constructor(private fluxValue: string) {}
   toString(): string {
@@ -198,7 +208,10 @@ export function toFluxValue(value: any): string {
  * Flux is a tagged template that sanitizes supplied parameters
  * to avoid injection attacks in flux.
  */
-export function flux(strings: TemplateStringsArray, ...values: any): string {
+export function flux(
+  strings: TemplateStringsArray,
+  ...values: any
+): ParameterizedQuery {
   if (strings.length == 1) return strings[0] // the simplest case
   const parts = new Array<string>(strings.length + values.length)
   let partIndex = 0

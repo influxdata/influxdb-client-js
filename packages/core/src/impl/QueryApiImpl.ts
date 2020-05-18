@@ -5,6 +5,7 @@ import {CommunicationObserver, Transport} from '../transport'
 import ChunksToLines from './ChunksToLines'
 import {toLineObserver} from './linesToTables'
 import ObservableQuery, {QueryExecutor} from './ObservableQuery'
+import {ParameterizedQuery} from '../query/flux'
 
 const DEFAULT_dialect: any = {
   header: true,
@@ -26,11 +27,11 @@ export class QueryApiImpl implements QueryApi {
     return this
   }
 
-  lines(query: string): Observable<string> {
+  lines(query: string | ParameterizedQuery): Observable<string> {
     return new ObservableQuery(this.createExecutor(query), identity)
   }
 
-  rows(query: string): Observable<Row> {
+  rows(query: string | ParameterizedQuery): Observable<Row> {
     return new ObservableQuery(this.createExecutor(query), observer => {
       return toLineObserver({
         next(values, tableMeta) {
@@ -46,15 +47,21 @@ export class QueryApiImpl implements QueryApi {
     })
   }
 
-  queryLines(query: string, consumer: CommunicationObserver<string>): void {
+  queryLines(
+    query: string | ParameterizedQuery,
+    consumer: CommunicationObserver<string>
+  ): void {
     this.createExecutor(query)(consumer)
   }
 
-  queryRows(query: string, consumer: FluxResultObserver<string[]>): void {
+  queryRows(
+    query: string | ParameterizedQuery,
+    consumer: FluxResultObserver<string[]>
+  ): void {
     this.createExecutor(query)(toLineObserver(consumer))
   }
 
-  private createExecutor(query: string): QueryExecutor {
+  private createExecutor(query: string | ParameterizedQuery): QueryExecutor {
     const {org, type, gzip} = this.options
 
     return (consumer): void => {
@@ -62,7 +69,7 @@ export class QueryApiImpl implements QueryApi {
         `/api/v2/query?org=${encodeURIComponent(org)}`,
         JSON.stringify(
           this.decorateRequest({
-            query,
+            query: query.toString(),
             dialect: DEFAULT_dialect,
             type,
           })

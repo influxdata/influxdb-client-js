@@ -1,5 +1,9 @@
 import {Observable} from './observable'
-import {FluxResultObserver, FluxTableMetaData} from './query'
+import {
+  FluxResultObserver,
+  FluxTableMetaData,
+  ParameterizedQuery,
+} from './query'
 import {CommunicationObserver} from './transport'
 
 export interface QueryOptions {
@@ -57,14 +61,14 @@ export default interface QueryApi {
    *
    * @param query the query text in the format specifed in `QueryOptions.type`
    */
-  lines(query: string): Observable<string>
+  lines(query: string | ParameterizedQuery): Observable<string>
 
   /**
    * Creates a cold observable of the rows returned by the given query.
    *
    * @param query the query text in the format specifed in `QueryOptions.type`
    */
-  rows(query: string): Observable<Row>
+  rows(query: string | ParameterizedQuery): Observable<Row>
 
   /**
    * Executes the query and receives result lines (including empty and annotation lines)
@@ -73,7 +77,10 @@ export default interface QueryApi {
    * @param record single line in the query result
    * @param consumer data/error consumer
    */
-  queryLines(query: string, consumer: CommunicationObserver<string>): void
+  queryLines(
+    query: string | ParameterizedQuery,
+    consumer: CommunicationObserver<string>
+  ): void
 
   /**
    * Executes the query and receives table metadata and rows through the supplied consumer.
@@ -81,5 +88,8 @@ export default interface QueryApi {
    * @param record single line in the query result
    * @param consumer data/error consumer
    */
-  queryRows(query: string, consumer: FluxResultObserver<string[]>): void
+  queryRows(
+    query: string | ParameterizedQuery,
+    consumer: FluxResultObserver<string[]>
+  ): void
 }
