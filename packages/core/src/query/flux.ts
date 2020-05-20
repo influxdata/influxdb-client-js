@@ -1,4 +1,4 @@
-const FLUX_VALUE = Symbol.for('FLUX_VALUE')
+export const FLUX_VALUE = Symbol('FLUX_VALUE')
 
 /**
  * A flux parameter can print its (sanitized) flux value.

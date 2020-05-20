@@ -9,10 +9,9 @@ import {
   toFluxValue,
   fluxBool,
   flux,
+  FLUX_VALUE,
 } from '../../../src'
 import {expect} from 'chai'
-
-const FLUX_VALUE = Symbol.for('FLUX_VALUE')
 
 describe('Flux Values', () => {
   it('creates fluxLiteral', () => {
