@@ -12,6 +12,8 @@ This directory contains javascript and typescript examples for node.js and brows
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
     Query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
+  - [queryWithParams.ts](./queryWithParams.ts)
+    Supply parameters to a [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/) query.
   - [health.js](./health.js)
     Check health fo your influx DB.
   - [onboarding.js](./onboarding.js)
