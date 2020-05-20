@@ -167,12 +167,13 @@ export function fluxBool(value: any): FluxParameterLike {
 }
 
 /**
- * Assumes that the supplied string is a flux literal value and creates
- * a parameter out of it.
+ * Assumes that the supplied value is flux expression or literal that does not need sanitizing.
+ *
+ * @param value any value
+ * @returns the supplied value as-is
  */
-export function fluxLiteral(value: string): FluxParameterLike {
-  // let the server decide if it can be parsed
-  return new FluxParameter(value)
+export function fluxExpression(value: any): FluxParameterLike {
+  return new FluxParameter(String(value))
 }
 
 /**
@@ -212,7 +213,7 @@ export function flux(
   strings: TemplateStringsArray,
   ...values: any
 ): ParameterizedQuery {
-  if (strings.length == 1) return strings[0] // the simplest case
+  if (strings.length == 1 && (!values || values.length === 0)) return strings[0] // the simplest case
   const parts = new Array<string>(strings.length + values.length)
   let partIndex = 0
   for (let i = 0; i < strings.length; i++) {

@@ -1,5 +1,5 @@
 import {
-  fluxLiteral,
+  fluxExpression,
   fluxInteger,
   fluxFloat,
   fluxDuration,
@@ -14,9 +14,9 @@ import {
 import {expect} from 'chai'
 
 describe('Flux Values', () => {
-  it('creates fluxLiteral', () => {
+  it('creates fluxExpression', () => {
     const value = '12345'
-    const subject = fluxLiteral(value)
+    const subject = fluxExpression(value)
     expect(subject.toString()).equals(value)
     expect((subject as any)[FLUX_VALUE]()).equals(value)
   })
@@ -107,7 +107,7 @@ describe('Flux Values', () => {
         },
         flux: '"whatever"',
       },
-      {value: fluxLiteral('1ms'), flux: '1ms'},
+      {value: fluxExpression('1ms'), flux: '1ms'},
       {value: 'abc\n\r\t\\"def', flux: '"abc\\n\\r\\t\\\\\\"def"'},
       {value: 'abc${val}def', flux: '"abc\\${val}def"'},
       {value: 'abc$', flux: '"abc$"'},
