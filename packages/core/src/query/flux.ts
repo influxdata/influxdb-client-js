@@ -17,7 +17,7 @@ export interface ParameterizedQuery {
   toString(): string
 }
 
-class FluxParameter implements FluxParameterLike {
+class FluxParameter implements FluxParameterLike, ParameterizedQuery {
   constructor(private fluxValue: string) {}
   toString(): string {
     return this.fluxValue
@@ -242,5 +242,6 @@ export function flux(
       throw new Error('Too few parameters supplied!')
     }
   }
-  return parts.join('')
+  // return flux expression so that flux can be embedded into another flux as-is
+  return fluxExpression(parts.join(''))
 }

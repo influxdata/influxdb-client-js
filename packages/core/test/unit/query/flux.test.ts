@@ -150,4 +150,11 @@ describe('Flux Tagged Template', () => {
   } catch (_e) {
     // ok expected, too few arguments supplied to a tagged template
   }
+
+  // nested flux templates
+  const flux1 = flux`from(bucket:"my-bucket")`
+  expect(
+    flux`${flux1} |> range(start: ${0})")`.toString(),
+    'from(bucket:"my-bucket") |> range(start: 0)")'
+  )
 })
