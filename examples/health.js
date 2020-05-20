@@ -19,7 +19,8 @@ healthAPI
   .getHealth()
   .then((result /* : HealthCheck */) => {
     console.log(JSON.stringify(result, null, 2))
-    console.log('\nFinished SUCCESS')
+    console.log('\nHealth:', result.status === 'pass' ? 'OK' : 'NOT OK')
+    console.log('\nFinished success')
   })
   .catch(error => {
     console.error(error)
