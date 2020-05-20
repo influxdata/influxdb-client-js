@@ -9,9 +9,10 @@ See https://v2.docs.influxdata.com/v2.0/api/
 const {InfluxDB} = require('@influxdata/influxdb-client')
 const {HealthAPI} = require('@influxdata/influxdb-client-apis')
 const {url, token} = require('./env')
+const timeout = 10 * 1000 // timeout for health check
 
 console.log('*** HEALTH CHECK ***')
-const influxDB = new InfluxDB({url, token})
+const influxDB = new InfluxDB({url, token, timeout})
 const healthAPI = new HealthAPI(influxDB)
 
 healthAPI
