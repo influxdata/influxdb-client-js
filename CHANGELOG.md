@@ -4,6 +4,10 @@
 
 1. [#186](https://github.com/influxdata/influxdb-client-js/pull/186): Allow to create parameterized queries using flux tagged template.
 
+### Documentation
+
+1. [#189](https://github.com/influxdata/influxdb-client-js/pull/189): Add timestamp to write example.
+
 ## 1.3.0 [2020-05-15]
 
 ### Features
