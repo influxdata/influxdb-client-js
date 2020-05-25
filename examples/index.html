@@ -40,7 +40,7 @@
           .tag('example', 'index.html')
           .floatField('value', value)
         writeApi.writePoint(point1)
-        log(` ${point1}`)
+        log(` ${point1.toLineProtocol()}`)
 
         // flush pending writes and close writeApi
         writeApi

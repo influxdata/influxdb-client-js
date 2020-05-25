@@ -113,7 +113,7 @@ export default class Point {
   }
 
   /**
-   * Sets point time. A string or number value is used
+   * Sets point time. A string or number value can be used
    * to carry an int64 value of a precision that depends
    * on WriteApi, nanoseconds by default. An undefined value
    * generates a local timestamp using the client's clock.
@@ -123,7 +123,7 @@ export default class Point {
    * @param value point time
    * @return this
    */
-  public timestamp(value: string | number | Date | undefined): Point {
+  public timestamp(value: Date | number | string | undefined): Point {
     this.time = value
     return this
   }
