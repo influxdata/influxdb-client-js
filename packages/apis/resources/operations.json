@@ -196,6 +196,62 @@
             "type": "OnboardingResponse"
           }
         ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/setup/user",
+    "operation": "post",
+    "operationId": "PostSetupUser",
+    "basicAuth": false,
+    "summary": "Set up a new user, org and bucket",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Source to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "OnboardingRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Created default user, bucket, org",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "OnboardingResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       }
     ]
   },
@@ -579,6 +635,350 @@
       {
         "code": "404",
         "description": "Template not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dbrps",
+    "operation": "get",
+    "operationId": "GetDPRPs",
+    "basicAuth": false,
+    "summary": "List all database retention policy mappings",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID to filter on",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "description": "Specifies the mapping ID to filter on",
+        "type": "string"
+      },
+      {
+        "name": "bucketID",
+        "description": "Specifies the bucket ID to filter on",
+        "type": "string"
+      },
+      {
+        "name": "default",
+        "description": "Specifies filtering on default",
+        "type": "any"
+      },
+      {
+        "name": "db",
+        "description": "Specifies the database to filter on",
+        "type": "string"
+      },
+      {
+        "name": "rp",
+        "description": "Specifies the retention policy to filter on",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of all database retention policy mappings",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "DBRPs"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "if any of the parameter passed is invalid",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dbrps",
+    "operation": "post",
+    "operationId": "PostDBRP",
+    "basicAuth": false,
+    "summary": "Add a database retention policy mapping",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "The database retention policy mapping to add",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "DBRP"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Database retention policy mapping created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "DBRP"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "if any of the IDs in the mapping is invalid",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dprps/{dbrpID}",
+    "operation": "get",
+    "operationId": "GetDBRPsID",
+    "basicAuth": false,
+    "summary": "Retrieve a database retention policy mapping",
+    "positionalParams": [
+      {
+        "name": "dbrpID",
+        "description": "The database retention policy mapping ID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID of the mapping",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The database retention policy requested",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "DBRP"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "if any of the IDs passed is invalid",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dprps/{dbrpID}",
+    "operation": "patch",
+    "operationId": "PatchDBRPID",
+    "basicAuth": false,
+    "summary": "Update a database retention policy mapping",
+    "positionalParams": [
+      {
+        "name": "dbrpID",
+        "description": "The database retention policy mapping.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID of the mapping",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "bodyParam": {
+      "description": "Database retention policy update to apply",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "DBRPUpdate"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "An updated mapping",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "DBRP"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "if any of the IDs passed is invalid",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "The mapping was not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dprps/{dbrpID}",
+    "operation": "delete",
+    "operationId": "DeleteDBRPID",
+    "basicAuth": false,
+    "summary": "Delete a database retention policy",
+    "positionalParams": [
+      {
+        "name": "dbrpID",
+        "description": "The database retention policy mapping",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID of the mapping",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Delete has been accepted",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "if any of the IDs passed is invalid",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -6900,6 +7300,258 @@
   },
   {
     "server": "/api/v2",
+    "path": "/orgs/{orgID}/invites",
+    "operation": "post",
+    "operationId": "PostOrgsIDInvites",
+    "basicAuth": false,
+    "summary": "Creates an invite to an organization",
+    "positionalParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Invite to be sent",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Invite"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Invite sent",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Invite"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/invites/{inviteID}",
+    "operation": "delete",
+    "operationId": "DeleteOrgsIDInviteID",
+    "basicAuth": false,
+    "summary": "Remove an invite to an organization",
+    "positionalParams": [
+      {
+        "name": "inviteID",
+        "description": "The ID of the invite to remove.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Invite removed",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/invites/{inviteID}/resend",
+    "operation": "post",
+    "operationId": "DeleteOrgsIDInviteID",
+    "basicAuth": false,
+    "summary": "Resends an invite",
+    "positionalParams": [
+      {
+        "name": "inviteID",
+        "description": "The ID of the invite to resend.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Invite resent",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Invite"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/users",
+    "operation": "get",
+    "operationId": "GetCloudUsers",
+    "basicAuth": false,
+    "positionalParams": [
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID of the CloudUser.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of cloud users",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "CloudUsers"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/users/{userID}",
+    "operation": "delete",
+    "operationId": "DeleteOrgsIDCloudUserID",
+    "basicAuth": false,
+    "summary": "Deletes a cloud user",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of the user to remove.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "User removed",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
     "path": "/orgs/{orgID}/owners/{userID}",
     "operation": "delete",
     "operationId": "DeleteOrgsIDOwnersID",
@@ -7096,6 +7748,57 @@
   {
     "server": "/api/v2",
     "path": "/packages/stacks",
+    "operation": "get",
+    "operationId": "ListStacks",
+    "basicAuth": false,
+    "summary": "Grab a list of installed Influx packages",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization id of the stacks",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "description": "A collection of names to filter the list by.",
+        "type": "string"
+      },
+      {
+        "name": "stackID",
+        "description": "A collection of stackIDs to filter the list by.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Influx stacks found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Array<{\n  id?: string;\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n  readonly createdAt?: string;\n  readonly updatedAt?: string;\n  resources?: {\n  apiVersion?: string;\n  resourceID?: string;\n  kind?: string;\n  pkgName?: string;\n  associations?: Array<{\n  kind?: string;\n  pkgName?: string;\n}>;\n};\n}>"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/packages/stacks",
     "operation": "post",
     "operationId": "CreateStack",
     "basicAuth": false,
@@ -7119,6 +7822,49 @@
             "type": "{\n  id?: string;\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n  readonly createdAt?: string;\n  readonly updatedAt?: string;\n}"
           }
         ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/packages/stacks/{stack_id}",
+    "operation": "delete",
+    "operationId": "DeleteStack",
+    "basicAuth": false,
+    "summary": "Delete a stack and remove all its associated resources",
+    "positionalParams": [
+      {
+        "name": "stack_id",
+        "description": "The stack id to be removed",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization id of the user",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Stack and all its associated resources are deleted",
+        "mediaTypes": []
       },
       {
         "code": "default",
@@ -8595,8 +9341,8 @@
   {
     "server": "/api/v2",
     "path": "/users/{userID}/password",
-    "operation": "put",
-    "operationId": "PutUsersIDPassword",
+    "operation": "post",
+    "operationId": "PostUsersIDPassword",
     "basicAuth": true,
     "summary": "Update a password",
     "positionalParams": [

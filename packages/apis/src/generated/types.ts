@@ -191,34 +191,37 @@ export interface AuthorizationUpdateRequest {
 
 export interface Permission {
   action: 'read' | 'write'
-  resource: {
-    type:
-      | 'authorizations'
-      | 'buckets'
-      | 'dashboards'
-      | 'orgs'
-      | 'sources'
-      | 'tasks'
-      | 'telegrafs'
-      | 'users'
-      | 'variables'
-      | 'scrapers'
-      | 'secrets'
-      | 'labels'
-      | 'views'
-      | 'documents'
-      | 'notificationRules'
-      | 'notificationEndpoints'
-      | 'checks'
-    /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
-    id?: string
-    /** Optional name of the resource if the resource has a name field. */
-    name?: string
-    /** If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. */
-    orgID?: string
-    /** Optional name of the organization of the organization with orgID. */
-    org?: string
-  }
+  resource: Resource
+}
+
+export interface Resource {
+  type:
+    | 'authorizations'
+    | 'buckets'
+    | 'dashboards'
+    | 'orgs'
+    | 'sources'
+    | 'tasks'
+    | 'telegrafs'
+    | 'users'
+    | 'variables'
+    | 'scrapers'
+    | 'secrets'
+    | 'labels'
+    | 'views'
+    | 'documents'
+    | 'notificationRules'
+    | 'notificationEndpoints'
+    | 'checks'
+    | 'dbrp'
+  /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
+  id?: string
+  /** Optional name of the resource if the resource has a name field. */
+  name?: string
+  /** If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. */
+  orgID?: string
+  /** Optional name of the organization of the organization with orgID. */
+  org?: string
 }
 
 export interface Documents {
@@ -289,6 +292,36 @@ export interface LabelMapping {
 
 export interface LabelResponse {
   label?: Label
+  links?: Links
+}
+
+export interface DBRPs {
+  notificationEndpoints?: DBRP[]
+  links?: Links
+}
+
+export interface DBRP {
+  /** the mapping identifier */
+  readonly id?: string
+  /** the organization ID that owns this mapping. */
+  orgID: string
+  /** the bucket ID used as target for the translation. */
+  bucketID: string
+  /** InfluxDB v1 database */
+  database: string
+  /** InfluxDB v1 retention policy */
+  retention_policy: string
+  /** Specify if this mapping represents the default retention policy for the database specificed. */
+  default?: boolean
+  links?: Links
+}
+
+export interface DBRPUpdate {
+  /** InfluxDB v1 database */
+  database?: string
+  /** InfluxDB v1 retention policy */
+  retention_policy?: string
+  default?: boolean
   links?: Links
 }
 
@@ -484,6 +517,8 @@ export interface HealthCheck {
   message?: string
   checks?: HealthCheck[]
   status: 'pass' | 'fail'
+  version?: string
+  commit?: string
 }
 
 export interface Sources {
@@ -623,6 +658,7 @@ export type ViewProperties =
   | HeatmapViewProperties
 
 export interface LinePlusSingleStatProperties {
+  timeFormat?: string
   type: 'line-plus-single-stat'
   queries: DashboardQuery[]
   /** Colors define color encoding of data into a visualization */
@@ -1549,6 +1585,36 @@ export interface SecretKeys {
 
 export type Secrets = any
 
+export interface Invite {
+  /** the idpe id of the invite */
+  readonly id: string
+  email: string
+  role: 'member' | 'owner'
+  expiresAt?: string
+  readonly links?: {
+    self?: string
+  }
+}
+
+export interface CloudUsers {
+  links?: {
+    self?: string
+  }
+  users?: CloudUser[]
+}
+
+export interface CloudUser {
+  /** the idpe id of the user */
+  readonly id: string
+  firstName?: string
+  lastName?: string
+  email: string
+  role: 'member' | 'owner'
+  readonly links?: {
+    self?: string
+  }
+}
+
 export interface PkgCreate {
   orgIDs?: Array<{
     orgID?: string
@@ -1610,6 +1676,7 @@ export interface PkgApply {
 }
 
 export interface PkgSummary {
+  stackID?: string
   summary?: {
     buckets?: Array<{
       id?: string

@@ -6,10 +6,15 @@ export interface PostSetupRequest {
   /** Source to create */
   body: OnboardingRequest
 }
+export interface PostSetupUserRequest {
+  /** Source to create */
+  body: OnboardingRequest
+}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
  */
 export class SetupAPI extends APIBase {
   /**
@@ -43,6 +48,24 @@ export class SetupAPI extends APIBase {
     return this.request(
       'POST',
       `/api/v2/setup`,
+      request,
+      requestOptions,
+      'application/json'
+    )
+  }
+  /**
+   * Set up a new user, org and bucket.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
+   * @param request
+   * @return promise of response
+   */
+  postSetupUser(
+    request: PostSetupUserRequest,
+    requestOptions?: RequestOptions
+  ): Promise<OnboardingResponse> {
+    return this.request(
+      'POST',
+      `/api/v2/setup/user`,
       request,
       requestOptions,
       'application/json'
