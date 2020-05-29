@@ -43,6 +43,16 @@ describe('TypesCollector', () => {
       ],
       result: 'A, C, D',
     },
+    {
+      name: 'collect ListItem[]',
+      toAdd: ['ListItem[]'],
+      result: 'ListItem',
+    },
+    {
+      name: 'collect string[]',
+      toAdd: ['string[]'],
+      result: '',
+    },
   ]
   tests.forEach(test => {
     it(test.name, () => {

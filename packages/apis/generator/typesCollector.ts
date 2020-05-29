@@ -14,6 +14,8 @@ export default class TypesCollector {
           // console.log('match[1]', match[1], customTypeRegExp.lastIndex)
           this.add(match[1])
         }
+      } else if (type.endsWith('[]')) {
+        this.types[type.substring(0, type.length - 2)] = true
       } else if (type.includes('|')) {
         type
           .split('|')
