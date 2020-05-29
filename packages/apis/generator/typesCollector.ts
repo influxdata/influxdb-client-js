@@ -5,7 +5,7 @@ export default class TypesCollector {
   types: {[key: string]: boolean} = {}
   add(type: string): void {
     if (type && type.charAt(0).toUpperCase() === type.charAt(0)) {
-      if (type.startsWith('{')) {
+      if (type.startsWith('{') || type.startsWith('Array<{')) {
         // anonymous type; process references to custom types in it
         // see typesCollector.test.ts
         const customTypeRegExp = / ([A-Z][A-Za-z0-9-_| ]*);\n/g

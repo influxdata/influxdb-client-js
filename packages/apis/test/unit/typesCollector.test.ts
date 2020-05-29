@@ -36,6 +36,13 @@ describe('TypesCollector', () => {
       toAdd: ['{\n  d?: D | C;\n  description?: A;\n  name?: string;\n}'],
       result: 'A, C, D',
     },
+    {
+      name: 'collect anonymous type 2',
+      toAdd: [
+        'Array<{\n  d?: D | C;\n  description?: A;\n  name?: string;\n}>',
+      ],
+      result: 'A, C, D',
+    },
   ]
   tests.forEach(test => {
     it(test.name, () => {
