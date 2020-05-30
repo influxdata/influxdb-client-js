@@ -7404,7 +7404,7 @@
     "server": "/api/v2",
     "path": "/orgs/{orgID}/invites/{inviteID}/resend",
     "operation": "post",
-    "operationId": "DeleteOrgsIDInviteID",
+    "operationId": "ResendOrgsIDInviteID",
     "basicAuth": false,
     "summary": "Resends an invite",
     "positionalParams": [

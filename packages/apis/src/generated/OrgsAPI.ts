@@ -114,7 +114,7 @@ export interface DeleteOrgsIDInviteIDRequest {
   /** The organization ID. */
   orgID: string
 }
-export interface DeleteOrgsIDInviteIDRequest {
+export interface ResendOrgsIDInviteIDRequest {
   /** The ID of the invite to resend. */
   inviteID: string
   /** The organization ID. */
@@ -162,7 +162,7 @@ export interface GetOrgsIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/ResendOrgsIDInviteID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
@@ -491,12 +491,12 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * Resends an invite.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ResendOrgsIDInviteID
    * @param request
    * @return promise of response
    */
-  deleteOrgsIDInviteID(
-    request: DeleteOrgsIDInviteIDRequest,
+  resendOrgsIDInviteID(
+    request: ResendOrgsIDInviteIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Invite> {
     return this.request(
