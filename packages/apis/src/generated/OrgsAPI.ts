@@ -1,6 +1,8 @@
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
+  CloudUsers,
+  Invite,
   LabelMapping,
   LabelResponse,
   LabelsResponse,
@@ -100,6 +102,34 @@ export interface PostOrgsIDOwnersRequest {
   /** User to add as owner */
   body: AddResourceMemberRequestBody
 }
+export interface PostOrgsIDInvitesRequest {
+  /** The organization ID. */
+  orgID: string
+  /** Invite to be sent */
+  body: Invite
+}
+export interface DeleteOrgsIDInviteIDRequest {
+  /** The ID of the invite to remove. */
+  inviteID: string
+  /** The organization ID. */
+  orgID: string
+}
+export interface ResendOrgsIDInviteIDRequest {
+  /** The ID of the invite to resend. */
+  inviteID: string
+  /** The organization ID. */
+  orgID: string
+}
+export interface GetCloudUsersRequest {
+  /** Specifies the organization ID of the CloudUser. */
+  orgID: string
+}
+export interface DeleteOrgsIDCloudUserIDRequest {
+  /** The ID of the user to remove. */
+  userID: string
+  /** The organization ID. */
+  orgID: string
+}
 export interface DeleteOrgsIDOwnersIDRequest {
   /** The ID of the owner to remove. */
   userID: string
@@ -130,6 +160,11 @@ export interface GetOrgsIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/ResendOrgsIDInviteID
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
  */
@@ -417,6 +452,91 @@ export class OrgsAPI extends APIBase {
       request,
       requestOptions,
       'application/json'
+    )
+  }
+  /**
+   * Creates an invite to an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
+   * @param request
+   * @return promise of response
+   */
+  postOrgsIDInvites(
+    request: PostOrgsIDInvitesRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Invite> {
+    return this.request(
+      'POST',
+      `/api/v2/orgs/${request.orgID}/invites`,
+      request,
+      requestOptions,
+      'application/json'
+    )
+  }
+  /**
+   * Remove an invite to an organization.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
+   * @param request
+   * @return promise of response
+   */
+  deleteOrgsIDInviteID(
+    request: DeleteOrgsIDInviteIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.request(
+      'DELETE',
+      `/api/v2/orgs/${request.orgID}/invites/${request.inviteID}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Resends an invite.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ResendOrgsIDInviteID
+   * @param request
+   * @return promise of response
+   */
+  resendOrgsIDInviteID(
+    request: ResendOrgsIDInviteIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Invite> {
+    return this.request(
+      'POST',
+      `/api/v2/orgs/${request.orgID}/invites/${request.inviteID}/resend`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
+   * @param request
+   * @return promise of response
+   */
+  getCloudUsers(
+    request: GetCloudUsersRequest,
+    requestOptions?: RequestOptions
+  ): Promise<CloudUsers> {
+    return this.request(
+      'GET',
+      `/api/v2/orgs/${request.orgID}/users`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Deletes a cloud user.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
+   * @param request
+   * @return promise of response
+   */
+  deleteOrgsIDCloudUserID(
+    request: DeleteOrgsIDCloudUserIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.request(
+      'DELETE',
+      `/api/v2/orgs/${request.orgID}/users/${request.userID}`,
+      request,
+      requestOptions
     )
   }
   /**

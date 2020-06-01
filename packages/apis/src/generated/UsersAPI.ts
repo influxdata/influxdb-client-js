@@ -20,7 +20,7 @@ export interface DeleteUsersIDRequest {
   /** The ID of the user to delete. */
   userID: string
 }
-export interface PutUsersIDPasswordRequest {
+export interface PostUsersIDPasswordRequest {
   /** The user ID. */
   userID: string
   auth: {user: string; password: string}
@@ -40,7 +40,7 @@ export interface GetUsersIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
  */
 export class UsersAPI extends APIBase {
@@ -134,16 +134,16 @@ export class UsersAPI extends APIBase {
   }
   /**
    * Update a password.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutUsersIDPassword
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
    * @param request
    * @return promise of response
    */
-  putUsersIDPassword(
-    request: PutUsersIDPasswordRequest,
+  postUsersIDPassword(
+    request: PostUsersIDPasswordRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
     return this.request(
-      'PUT',
+      'POST',
       `/api/v2/users/${request.userID}/password`,
       request,
       requestOptions,
