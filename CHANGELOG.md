@@ -8,6 +8,7 @@
 ### Documentation
 
 1. [#189](https://github.com/influxdata/influxdb-client-js/pull/189): Add timestamp to write example.
+1. [#193](https://github.com/influxdata/influxdb-client-js/pull/193): Explain write API buffering in the write example and API docs.
 
 ## 1.3.0 [2020-05-15]
 
