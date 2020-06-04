@@ -14,19 +14,7 @@ export interface QueryOptions {
   /**
    * Type of the query, default is "flux"
    */
-  type?: 'influxql' | 'flux'
-  /**
-   * Required only for "influxql" queries.
-   */
-  cluster?: string
-  /**
-   * Required only for "influxql" queries.
-   */
-  db?: string
-  /**
-   * Required only for "influxql" queries.
-   */
-  rp?: string
+  type?: 'flux'
   /**
    * Requests gzip encoded response.
    */
