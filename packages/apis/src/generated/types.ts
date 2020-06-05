@@ -305,6 +305,8 @@ export interface DBRP {
   readonly id?: string
   /** the organization ID that owns this mapping. */
   orgID: string
+  /** the organization that owns this mapping. */
+  org: string
   /** the bucket ID used as target for the translation. */
   bucketID: string
   /** InfluxDB v1 database */

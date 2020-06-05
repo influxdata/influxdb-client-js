@@ -375,7 +375,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /dbrps:
     get:
-      operationId: GetDPRPs
+      operationId: GetDBRPs
       tags:
         - DBRPs
       summary: List all database retention policy mappings
@@ -464,7 +464,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  '/dprps/{dbrpID}':
+  '/dbrps/{dbrpID}':
     get:
       operationId: GetDBRPsID
       tags:
@@ -4560,7 +4560,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/orgs/{orgID}/invites/{inviteID}/resend':
     post:
-      operationId: ResendOrgsIDInviteID
+      operationId: PostOrgsIDInviteID
       tags:
         - Invites
         - Organizations
@@ -4726,6 +4726,9 @@ paths:
           description: Influx package created
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/Pkg'
+            application/x-yaml:
               schema:
                 $ref: '#/components/schemas/Pkg'
         default:
@@ -4936,6 +4939,41 @@ paths:
       responses:
         '204':
           description: Stack and all its associated resources are deleted
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /packages/stacks/{stack_id}/export:
+    delete:
+      operationId: ExportStack
+      tags:
+        - InfluxPackages
+      summary: Export a stack's resources in the form of a package
+      parameters:
+        - in: path
+          name: stack_id
+          required: true
+          schema:
+            type: string
+          description: The stack id to be removed
+        - in: query
+          name: orgID
+          required: true
+          schema:
+            type: string
+          description: The organization id of the user
+      responses:
+        '200':
+          description: Stack and all its associated resources are deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pkg'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Pkg'
         default:
           description: Unexpected error
           content:
@@ -10971,6 +11009,8 @@ components:
           type: string
         properties:
           type: object
+          additionalProperties:
+            type: string
           description: Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
           example: {'color': 'ffb3b3', 'description': 'this is a description'}
     LabelMapping:
@@ -11681,6 +11721,7 @@ components:
     DBRP:
       required:
         - orgID
+        - org
         - bucketID
         - database
         - retention_policy
@@ -11692,6 +11733,9 @@ components:
         orgID:
           type: string
           description: the organization ID that owns this mapping.
+        org:
+          type: string
+          description: the organization that owns this mapping.
         bucketID:
           type: string
           description: the bucket ID used as target for the translation.

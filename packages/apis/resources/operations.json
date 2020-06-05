@@ -658,7 +658,7 @@
     "server": "/api/v2",
     "path": "/dbrps",
     "operation": "get",
-    "operationId": "GetDPRPs",
+    "operationId": "GetDBRPs",
     "basicAuth": false,
     "summary": "List all database retention policy mappings",
     "positionalParams": [],
@@ -795,7 +795,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/dprps/{dbrpID}",
+    "path": "/dbrps/{dbrpID}",
     "operation": "get",
     "operationId": "GetDBRPsID",
     "basicAuth": false,
@@ -860,7 +860,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/dprps/{dbrpID}",
+    "path": "/dbrps/{dbrpID}",
     "operation": "patch",
     "operationId": "PatchDBRPID",
     "basicAuth": false,
@@ -940,7 +940,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/dprps/{dbrpID}",
+    "path": "/dbrps/{dbrpID}",
     "operation": "delete",
     "operationId": "DeleteDBRPID",
     "basicAuth": false,
@@ -7404,7 +7404,7 @@
     "server": "/api/v2",
     "path": "/orgs/{orgID}/invites/{inviteID}/resend",
     "operation": "post",
-    "operationId": "ResendOrgsIDInviteID",
+    "operationId": "PostOrgsIDInviteID",
     "basicAuth": false,
     "summary": "Resends an invite",
     "positionalParams": [
@@ -7682,6 +7682,10 @@
           {
             "mediaType": "application/json",
             "type": "Pkg"
+          },
+          {
+            "mediaType": "application/x-yaml",
+            "type": "Pkg"
           }
         ]
       },
@@ -7865,6 +7869,58 @@
         "code": "204",
         "description": "Stack and all its associated resources are deleted",
         "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/packages/stacks/{stack_id}/export",
+    "operation": "delete",
+    "operationId": "ExportStack",
+    "basicAuth": false,
+    "summary": "Export a stack's resources in the form of a package",
+    "positionalParams": [
+      {
+        "name": "stack_id",
+        "description": "The stack id to be removed",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization id of the user",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Stack and all its associated resources are deleted",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Pkg"
+          },
+          {
+            "mediaType": "application/x-yaml",
+            "type": "Pkg"
+          }
+        ]
       },
       {
         "code": "default",

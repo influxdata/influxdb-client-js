@@ -31,6 +31,12 @@ export interface DeleteStackRequest {
   /** The organization id of the user */
   orgID: string
 }
+export interface ExportStackRequest {
+  /** The stack id to be removed */
+  stack_id: string
+  /** The organization id of the user */
+  orgID: string
+}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
@@ -38,6 +44,7 @@ export interface DeleteStackRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
  */
 export class PackagesAPI extends APIBase {
   /**
@@ -164,6 +171,25 @@ export class PackagesAPI extends APIBase {
       `/api/v2/packages/stacks/${request.stack_id}${this.queryString(request, [
         'orgID',
       ])}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Export a stack's resources in the form of a package.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
+   * @param request
+   * @return promise of response
+   */
+  exportStack(
+    request: ExportStackRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Pkg> {
+    return this.request(
+      'DELETE',
+      `/api/v2/packages/stacks/${
+        request.stack_id
+      }/export${this.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )
