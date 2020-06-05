@@ -3,7 +3,7 @@
 ### Features
 
 1. [#186](https://github.com/influxdata/influxdb-client-js/pull/186): Allow to create parameterized queries using flux tagged template.
-1. [#191](https://github.com/influxdata/influxdb-client-js/pull/191): Update APIs from swagger as of 2020-05-27
+1. [#191](https://github.com/influxdata/influxdb-client-js/pull/191): Regenerate APIs from swagger
 1. [#196](https://github.com/influxdata/influxdb-client-js/pull/196): Remove influxql option from Query API
 
 ### Documentation
