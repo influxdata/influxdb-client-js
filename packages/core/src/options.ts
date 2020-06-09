@@ -1,4 +1,5 @@
 import {Transport} from './transport'
+import WriteApi from './WriteApi'
 
 /**
  * Option for the communication with InfluxDB server.
@@ -35,6 +36,20 @@ export interface RetryDelayStrategyOptions {
  * Options that configure strategy for retrying failed InfluxDB write operations.
  */
 export interface WriteRetryOptions extends RetryDelayStrategyOptions {
+  /*
+   * writeFailed is called to inform about write error
+   * @param this the instance of the API that failed
+   * @param error write error
+   * @param lines failed lines
+   * @param attempts a number of failed attempts to write the lines
+   * @return `true` forces the API to not retry again
+   */
+  writeFailed(
+    this: WriteApi,
+    error: Error,
+    lines: Array<string>,
+    attempts: number
+  ): boolean | void
   /** max number of retries when write fails */
   maxRetries: number
   /** the maximum size of retry-buffer (in lines) */
@@ -62,6 +77,7 @@ export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
 export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
+  writeFailed: function() {},
   maxRetries: 2,
   maxBufferLines: 32_000,
   ...DEFAULT_RetryDelayStrategyOptions,

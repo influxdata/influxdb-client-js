@@ -9,6 +9,7 @@ import {
   InfluxDB,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
+import Logger from '../../src/impl/Logger'
 
 const clientOptions: ClientOptions = {
   url: 'http://fake:9999',
@@ -122,6 +123,26 @@ describe('WriteApi', () => {
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).is.deep.equal([])
+      })
+    })
+    it('does not retry write when writeFailed handler returns true', async () => {
+      useSubject({
+        maxRetries: 3,
+        batchSize: 1,
+        writeFailed: (error: Error, lines: string[], attempts: number) => {
+          Logger.warn(
+            `CUSTOMERRORHANDLING ${!!error} ${lines.length} ${attempts}`,
+            undefined
+          )
+          return true
+        },
+      })
+      subject.writeRecord('test value=1')
+      await subject.close().then(() => {
+        expect(logs.error).length(0)
+        expect(logs.warn).is.deep.equal([
+          ['CUSTOMERRORHANDLING true 1 1', undefined],
+        ])
       })
     })
     it('uses the pre-configured batchSize', async () => {

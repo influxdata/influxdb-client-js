@@ -131,6 +131,18 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       return new Promise<void>((resolve, reject) => {
         this.transport.send(this.httpPath, lines.join('\n'), this.sendOptions, {
           error(error: Error): void {
+            // call the writeFailed listener and check if we can retry
+            if (
+              self.writeOptions.writeFailed.call(
+                self,
+                error,
+                lines,
+                self.writeOptions.maxRetries + 2 - attempts
+              ) === true
+            ) {
+              resolve()
+              return
+            }
             if (
               !self.closed &&
               attempts > 1 &&
@@ -148,6 +160,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 self.retryStrategy.nextDelay(error)
               )
               reject(error)
+              return
             } else {
               Logger.error(`Write to influx DB failed.`, error)
               reject(error)
