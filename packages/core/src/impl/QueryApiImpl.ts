@@ -1,11 +1,12 @@
 import {Observable} from '../observable'
 import FluxResultObserver from '../query/FluxResultObserver'
-import QueryApi, {QueryOptions, Row} from '../QueryApi'
+import QueryApi, {QueryOptions, Row, defaultRowMapping} from '../QueryApi'
 import {CommunicationObserver, Transport} from '../transport'
 import ChunksToLines from './ChunksToLines'
 import {toLineObserver} from './linesToTables'
 import ObservableQuery, {QueryExecutor} from './ObservableQuery'
 import {ParameterizedQuery} from '../query/flux'
+import {FluxTableMetaData} from '../query'
 
 const DEFAULT_dialect: any = {
   header: true,
@@ -59,6 +60,52 @@ export class QueryApiImpl implements QueryApi {
     consumer: FluxResultObserver<string[]>
   ): void {
     this.createExecutor(query)(toLineObserver(consumer))
+  }
+
+  collectRows<T>(
+    query: string | ParameterizedQuery,
+    rowMapper: (
+      values: string[],
+      tableMeta: FluxTableMetaData
+    ) => T | undefined = defaultRowMapping as (
+      values: string[],
+      tableMeta: FluxTableMetaData
+    ) => T | undefined
+  ): Promise<Array<T>> {
+    const retVal: Array<T> = []
+    return new Promise((resolve, reject) => {
+      this.queryRows(query, {
+        next(values: string[], tableMeta: FluxTableMetaData): void {
+          const toAdd = rowMapper.call(this, values, tableMeta)
+          if (toAdd !== undefined) {
+            retVal.push(toAdd)
+          }
+        },
+        error(error: Error): void {
+          reject(error)
+        },
+        complete(): void {
+          resolve(retVal)
+        },
+      })
+    })
+  }
+
+  collectLines(query: string | ParameterizedQuery): Promise<Array<string>> {
+    const retVal: Array<string> = []
+    return new Promise((resolve, reject) => {
+      this.queryLines(query, {
+        next(line: string): void {
+          retVal.push(line)
+        },
+        error(error: Error): void {
+          reject(error)
+        },
+        complete(): void {
+          resolve(retVal)
+        },
+      })
+    })
   }
 
   private createExecutor(query: string | ParameterizedQuery): QueryExecutor {

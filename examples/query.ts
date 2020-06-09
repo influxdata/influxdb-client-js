@@ -3,7 +3,7 @@
 // Shows how to use InfluxDB query API. //
 //////////////////////////////////////////
 
-import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
+import {InfluxDB, FluxTableMetaData} from '../packages/core'
 import {url, token, org} from './env'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
@@ -29,6 +29,19 @@ queryApi.queryRows(fluxQuery, {
     console.log('\nFinished SUCCESS')
   },
 })
+
+// // executes query and wait for all results in a Promise
+// // use with caution, it copies the whole stream of results into memory
+// queryApi
+//   .collectRows(fluxQuery /*, you can specify a row mapper as a second arg */)
+//   .then(data => {
+//     data.forEach(x => console.log(JSON.stringify(x)))
+//     console.log('\nCollect ROWS SUCCESS')
+//   })
+//   .catch(error => {
+//     console.error(error)
+//     console.log('\nCollect ROWS ERROR')
+//   })
 
 // performs query and receive line results in annotated csv format
 // https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/

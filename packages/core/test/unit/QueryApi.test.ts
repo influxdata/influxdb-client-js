@@ -113,7 +113,7 @@ describe('QueryApi', () => {
     )
     expect(values).to.deep.equal(['55', '55', '55'])
   })
-  it('https://github.com/influxdata/influxdb-client-js/issues/179', async () => {
+  it('processes quoted lines properly influxdata/influxdb-client-js#179', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     nock(clientOptions.url)
       .post(QUERY_PATH)
@@ -207,6 +207,101 @@ describe('QueryApi', () => {
       expect(body?.type).to.deep.equal(pair.type || 'flux')
       expect(body?.query).to.deep.equal(query)
       expect(body?.now).to.deep.equal(pair.now)
+    }
+  })
+  it('collectLines collects raw lines', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const data = await subject.collectLines(
+      'from(bucket:"my-bucket") |> range(start: 0)'
+    )
+    expect(data).to.deep.equal(simpleResponseLines)
+  })
+  it('collectLines fails on server error', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          500,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    try {
+      await subject.collectLines('from(bucket:"my-bucket") |> range(start: 0)')
+      expect.fail('client error expected on server error')
+    } catch (e) {
+      // OK error is expected
+    }
+  })
+  it('collectRows collects rows', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const data = await subject.collectRows(
+      'from(bucket:"my-bucket") |> range(start: 0)'
+    )
+    expect(data.length).equals(5)
+    expect(data).to.be.an('array')
+    expect(data[1]).to.be.an('object')
+  })
+  it('collectRows can collect every second row as string', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    let i = 0
+    const data = await subject.collectRows(
+      'from(bucket:"my-bucket") |> range(start: 0)',
+      () => (i++ % 2 === 1 ? undefined : String(i))
+    )
+    expect(data.length).equals(3)
+    expect(data).to.be.an('array')
+    expect(data[2]).equals('5')
+  })
+  it('collectRows fails on server error', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          500,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    try {
+      await subject.collectRows('from(bucket:"my-bucket") |> range(start: 0)')
+      expect.fail('client error expected on server error')
+    } catch (e) {
+      // OK error is expected
     }
   })
 })
