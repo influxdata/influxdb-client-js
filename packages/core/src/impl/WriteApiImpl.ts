@@ -160,10 +160,9 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
               )
               reject(error)
               return
-            } else {
-              Logger.error(`Write to influx DB failed.`, error)
-              reject(error)
             }
+            Logger.error(`Write to influx DB failed.`, error)
+            reject(error)
           },
           complete(): void {
             self.retryStrategy.success()
