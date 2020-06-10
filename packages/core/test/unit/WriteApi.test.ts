@@ -125,7 +125,7 @@ describe('WriteApi', () => {
         expect(logs.warn).is.deep.equal([])
       })
     })
-    it('does not retry write when writeFailed handler returns true', async () => {
+    it('does not retry write when writeFailed handler returns a Promise', async () => {
       useSubject({
         maxRetries: 3,
         batchSize: 1,
@@ -134,7 +134,7 @@ describe('WriteApi', () => {
             `CUSTOMERRORHANDLING ${!!error} ${lines.length} ${attempts}`,
             undefined
           )
-          return true
+          return Promise.resolve()
         },
       })
       subject.writeRecord('test value=1')

@@ -132,15 +132,14 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
         this.transport.send(this.httpPath, lines.join('\n'), this.sendOptions, {
           error(error: Error): void {
             // call the writeFailed listener and check if we can retry
-            if (
-              self.writeOptions.writeFailed.call(
-                self,
-                error,
-                lines,
-                self.writeOptions.maxRetries + 2 - attempts
-              ) === true
-            ) {
-              resolve()
+            const onRetry = self.writeOptions.writeFailed.call(
+              self,
+              error,
+              lines,
+              self.writeOptions.maxRetries + 2 - attempts
+            )
+            if (onRetry) {
+              onRetry.then(resolve, reject)
               return
             }
             if (

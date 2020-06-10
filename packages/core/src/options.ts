@@ -42,14 +42,15 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    * @param error write error
    * @param lines failed lines
    * @param attempts a number of failed attempts to write the lines
-   * @return `true` forces the API to not retry again
+   * @return a Promise to force the API to not retry again and use the promise as a result of the flush operation,
+   * void/undefined to continue with default retry mechanism
    */
   writeFailed(
     this: WriteApi,
     error: Error,
     lines: Array<string>,
     attempts: number
-  ): boolean | void
+  ): Promise<void> | void
   /** max number of retries when write fails */
   maxRetries: number
   /** the maximum size of retry-buffer (in lines) */
