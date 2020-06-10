@@ -11,7 +11,7 @@ const fluxQuery =
   'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
 
 console.log('*** QUERY ROWS ***')
-// performs query and receive line table metadata and rows
+// Execute query and receive table metadata and rows.
 // https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/
 queryApi.queryRows(fluxQuery, {
   next(row: string[], tableMeta: FluxTableMetaData) {
@@ -30,8 +30,20 @@ queryApi.queryRows(fluxQuery, {
   },
 })
 
-// performs query and receive line results in annotated csv format
-// https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/
+// // Execute query and collect all results in a Promise.
+// // Use with caution, it copies the whole stream of results into memory.
+// queryApi
+//   .collectRows(fluxQuery /*, you can specify a row mapper as a second arg */)
+//   .then(data => {
+//     data.forEach(x => console.log(JSON.stringify(x)))
+//     console.log('\nCollect ROWS SUCCESS')
+//   })
+//   .catch(error => {
+//     console.error(error)
+//     console.log('\nCollect ROWS ERROR')
+//   })
+
+// Execute query and receive result lines in annotated csv format
 // queryApi.queryLines(
 //   fluxQuery,
 //   {
