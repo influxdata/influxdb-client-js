@@ -12,7 +12,7 @@
     "test:all": "mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
     "test:integration": "mocha --require ts-node/register 'test/integration/**/*.test.ts' --exit",
-    "test:ci": "yarn run test:all --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml",
+    "test:ci": "yarn run lint && yarn run test:all --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml",
     "test:watch": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --watch-extensions ts --watch",
     "typecheck": "tsc --noEmit --pretty",
     "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./reports/apidoc --module es2015 --tsconfig ./tsconfig.json ./src",

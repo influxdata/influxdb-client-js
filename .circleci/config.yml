@@ -34,6 +34,7 @@ jobs:
             yarn lint:ci
             yarn build
             cd ../apis
+            yarn test
             yarn build
       # Upload results
       - store_test_results:
