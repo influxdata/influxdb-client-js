@@ -3,10 +3,11 @@
 ### Features
 
 1. [#186](https://github.com/influxdata/influxdb-client-js/pull/186): Allow to create parameterized queries using flux tagged template.
-1. [#191](https://github.com/influxdata/influxdb-client-js/pull/191): Regenerate APIs from swagger.
+1. [#191](https://github.com/influxdata/influxdb-client-js/pull/191): Enhance API generator, regenerate APIs from swagger.
 1. [#196](https://github.com/influxdata/influxdb-client-js/pull/196): Remove influxql option from Query API.
 1. [#200](https://github.com/influxdata/influxdb-client-js/pull/200): Enhance Query API with collectRows and collectLines.
 1. [#201](https://github.com/influxdata/influxdb-client-js/pull/201): Allow to supply listener for write failures.
+1. [#203](https://github.com/influxdata/influxdb-client-js/pull/203): Regenerate APIs from swagger.
 
 ### Documentation
 

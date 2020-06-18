@@ -5090,65 +5090,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/dashboards/{dashboardID}/logs",
-    "operation": "get",
-    "operationId": "GetDashboardsIDLogs",
-    "basicAuth": false,
-    "summary": "Retrieve operation logs for a dashboard",
-    "positionalParams": [
-      {
-        "name": "dashboardID",
-        "description": "The dashboard ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "offset",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "limit",
-        "required": false,
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Operation logs for the dashboard",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OperationLogs"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/query/ast",
     "operation": "post",
     "operationId": "PostQueryAst",
@@ -6409,65 +6350,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/buckets/{bucketID}/logs",
-    "operation": "get",
-    "operationId": "GetBucketsIDLogs",
-    "basicAuth": false,
-    "summary": "Retrieve operation logs for a bucket",
-    "positionalParams": [
-      {
-        "name": "bucketID",
-        "description": "The bucket ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "offset",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "limit",
-        "required": false,
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Operation logs for the bucket",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OperationLogs"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/orgs",
     "operation": "get",
     "operationId": "GetOrgs",
@@ -7601,65 +7483,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/orgs/{orgID}/logs",
-    "operation": "get",
-    "operationId": "GetOrgsIDLogs",
-    "basicAuth": false,
-    "summary": "Retrieve operation logs for an organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "offset",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "limit",
-        "required": false,
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Operation logs for the organization",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OperationLogs"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/packages",
     "operation": "post",
     "operationId": "CreatePkg",
@@ -7784,7 +7607,7 @@
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Array<{\n  id?: string;\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n  readonly createdAt?: string;\n  readonly updatedAt?: string;\n  resources?: {\n  apiVersion?: string;\n  resourceID?: string;\n  kind?: string;\n  pkgName?: string;\n  associations?: Array<{\n  kind?: string;\n  pkgName?: string;\n}>;\n};\n}>"
+            "type": "{\n  stacks?: Stack[];\n}"
           }
         ]
       },
@@ -7806,12 +7629,12 @@
     "operation": "post",
     "operationId": "CreateStack",
     "basicAuth": false,
-    "summary": "Create a new Influx package",
+    "summary": "Create a new stack",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Influx package to create.",
+      "description": "Influx stack to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "{\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
@@ -7823,7 +7646,94 @@
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "{\n  id?: string;\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n  readonly createdAt?: string;\n  readonly updatedAt?: string;\n}"
+            "type": "Stack"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/packages/stacks/{stack_id}",
+    "operation": "get",
+    "operationId": "ReadStack",
+    "basicAuth": false,
+    "summary": "Grab a stack by its ID",
+    "positionalParams": [
+      {
+        "name": "stack_id",
+        "description": "The stack id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Read an influx stack by ID",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Stack"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/packages/stacks/{stack_id}",
+    "operation": "patch",
+    "operationId": "UpdateStack",
+    "basicAuth": false,
+    "summary": "Update a an Influx Stack",
+    "positionalParams": [
+      {
+        "name": "stack_id",
+        "description": "The stack id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Influx stack to update.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "{\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Influx stack updated",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Stack"
           }
         ]
       },
@@ -7849,7 +7759,7 @@
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id to be removed",
+        "description": "The stack id",
         "required": true,
         "type": "string"
       }
@@ -9433,65 +9343,6 @@
       {
         "code": "default",
         "description": "Unsuccessful authentication",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users/{userID}/logs",
-    "operation": "get",
-    "operationId": "GetUsersIDLogs",
-    "basicAuth": false,
-    "summary": "Retrieve operation logs for a user",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The user ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "offset",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "limit",
-        "required": false,
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Operation logs for the user",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OperationLogs"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
         "mediaTypes": [
           {
             "mediaType": "application/json",

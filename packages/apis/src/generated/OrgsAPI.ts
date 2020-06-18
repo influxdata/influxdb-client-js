@@ -6,7 +6,6 @@ import {
   LabelMapping,
   LabelResponse,
   LabelsResponse,
-  OperationLogs,
   Organization,
   Organizations,
   ResourceMember,
@@ -136,12 +135,6 @@ export interface DeleteOrgsIDOwnersIDRequest {
   /** The organization ID. */
   orgID: string
 }
-export interface GetOrgsIDLogsRequest {
-  /** The organization ID. */
-  orgID: string
-  offset?: number
-  limit?: number
-}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
@@ -166,7 +159,6 @@ export interface GetOrgsIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
  */
 export class OrgsAPI extends APIBase {
   /**
@@ -552,26 +544,6 @@ export class OrgsAPI extends APIBase {
     return this.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/owners/${request.userID}`,
-      request,
-      requestOptions
-    )
-  }
-  /**
-   * Retrieve operation logs for an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLogs
-   * @param request
-   * @return promise of response
-   */
-  getOrgsIDLogs(
-    request: GetOrgsIDLogsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<OperationLogs> {
-    return this.request(
-      'GET',
-      `/api/v2/orgs/${request.orgID}/logs${this.queryString(request, [
-        'offset',
-        'limit',
-      ])}`,
       request,
       requestOptions
     )

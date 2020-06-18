@@ -1,5 +1,5 @@
 import {APIBase, RequestOptions} from '../APIBase'
-import {OperationLogs, PasswordResetBody, User, Users} from './types'
+import {PasswordResetBody, User, Users} from './types'
 
 export interface GetUsersRequest {}
 export interface PostUsersRequest {
@@ -27,12 +27,6 @@ export interface PostUsersIDPasswordRequest {
   /** New password */
   body: PasswordResetBody
 }
-export interface GetUsersIDLogsRequest {
-  /** The user ID. */
-  userID: string
-  offset?: number
-  limit?: number
-}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
@@ -41,7 +35,6 @@ export interface GetUsersIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
  */
 export class UsersAPI extends APIBase {
   /**
@@ -148,26 +141,6 @@ export class UsersAPI extends APIBase {
       request,
       requestOptions,
       'application/json'
-    )
-  }
-  /**
-   * Retrieve operation logs for a user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersIDLogs
-   * @param request
-   * @return promise of response
-   */
-  getUsersIDLogs(
-    request: GetUsersIDLogsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<OperationLogs> {
-    return this.request(
-      'GET',
-      `/api/v2/users/${request.userID}/logs${this.queryString(request, [
-        'offset',
-        'limit',
-      ])}`,
-      request,
-      requestOptions
     )
   }
 }

@@ -1,5 +1,5 @@
 import {APIBase, RequestOptions} from '../APIBase'
-import {Pkg, PkgApply, PkgCreate, PkgSummary} from './types'
+import {Pkg, PkgApply, PkgCreate, PkgSummary, Stack} from './types'
 
 export interface CreatePkgRequest {
   /** Influx package to create. */
@@ -17,7 +17,7 @@ export interface ListStacksRequest {
   stackID?: string
 }
 export interface CreateStackRequest {
-  /** Influx package to create. */
+  /** Influx stack to create. */
   body: {
     orgID?: string
     name?: string
@@ -25,8 +25,22 @@ export interface CreateStackRequest {
     urls?: string[]
   }
 }
+export interface ReadStackRequest {
+  /** The stack id */
+  stack_id: string
+}
+export interface UpdateStackRequest {
+  /** The stack id */
+  stack_id: string
+  /** Influx stack to update. */
+  body: {
+    name?: string
+    description?: string
+    urls?: string[]
+  }
+}
 export interface DeleteStackRequest {
-  /** The stack id to be removed */
+  /** The stack id */
   stack_id: string
   /** The organization id of the user */
   orgID: string
@@ -43,6 +57,8 @@ export interface ExportStackRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
+ * * https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
  */
@@ -98,27 +114,9 @@ export class PackagesAPI extends APIBase {
   listStacks(
     request: ListStacksRequest,
     requestOptions?: RequestOptions
-  ): Promise<
-    Array<{
-      id?: string
-      orgID?: string
-      name?: string
-      description?: string
-      urls?: string[]
-      readonly createdAt?: string
-      readonly updatedAt?: string
-      resources?: {
-        apiVersion?: string
-        resourceID?: string
-        kind?: string
-        pkgName?: string
-        associations?: Array<{
-          kind?: string
-          pkgName?: string
-        }>
-      }
-    }>
-  > {
+  ): Promise<{
+    stacks?: Stack[]
+  }> {
     return this.request(
       'GET',
       `/api/v2/packages/stacks${this.queryString(request, [
@@ -131,7 +129,7 @@ export class PackagesAPI extends APIBase {
     )
   }
   /**
-   * Create a new Influx package.
+   * Create a new stack.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
    * @param request
    * @return promise of response
@@ -139,18 +137,45 @@ export class PackagesAPI extends APIBase {
   createStack(
     request: CreateStackRequest,
     requestOptions?: RequestOptions
-  ): Promise<{
-    id?: string
-    orgID?: string
-    name?: string
-    description?: string
-    urls?: string[]
-    readonly createdAt?: string
-    readonly updatedAt?: string
-  }> {
+  ): Promise<Stack> {
     return this.request(
       'POST',
       `/api/v2/packages/stacks`,
+      request,
+      requestOptions,
+      'application/json'
+    )
+  }
+  /**
+   * Grab a stack by its ID.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
+   * @param request
+   * @return promise of response
+   */
+  readStack(
+    request: ReadStackRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Stack> {
+    return this.request(
+      'GET',
+      `/api/v2/packages/stacks/${request.stack_id}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Update a an Influx Stack.
+   * See https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
+   * @param request
+   * @return promise of response
+   */
+  updateStack(
+    request: UpdateStackRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Stack> {
+    return this.request(
+      'PATCH',
+      `/api/v2/packages/stacks/${request.stack_id}`,
       request,
       requestOptions,
       'application/json'
