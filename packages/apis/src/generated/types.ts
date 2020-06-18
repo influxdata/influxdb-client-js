@@ -80,7 +80,6 @@ export interface User {
   status?: 'active' | 'inactive'
   readonly links?: {
     self?: string
-    logs?: string
   }
 }
 
@@ -94,7 +93,6 @@ export interface Organization {
     buckets?: Link
     tasks?: Link
     dashboards?: Link
-    logs?: Link
   }
   readonly id?: string
   name: string
@@ -114,8 +112,6 @@ export interface Bucket {
   readonly links?: {
     /** URL to retrieve labels for this bucket */
     labels?: Link
-    /** URL to retrieve operation logs for this bucket */
-    logs?: Link
     /** URL to retrieve members that can read this bucket */
     members?: Link
     /** URL to retrieve parent organization for this bucket */
@@ -583,7 +579,6 @@ export type Dashboard = CreateDashboardRequest & {
     cells?: Link
     members?: Link
     owners?: Link
-    logs?: Link
     labels?: Link
     org?: Link
   }
@@ -627,7 +622,6 @@ export type DashboardWithViewProperties = CreateDashboardRequest & {
     cells?: Link
     members?: Link
     owners?: Link
-    logs?: Link
     labels?: Link
     org?: Link
   }
@@ -1089,23 +1083,6 @@ export interface View {
   readonly id?: string
   name: string
   properties: ViewProperties
-}
-
-export interface OperationLogs {
-  logs?: OperationLog[]
-  links?: Links
-}
-
-export interface OperationLog {
-  /** A description of the event that occurred. */
-  description?: string
-  /** Time event occurred, RFC3339Nano. */
-  time?: string
-  /** ID of the user who operated the event. */
-  userID?: string
-  links?: {
-    user?: Link
-  }
 }
 
 /**
@@ -1668,16 +1645,32 @@ export interface PkgApply {
   dryRun?: boolean
   orgID?: string
   stackID?: string
-  package?: Pkg
-  packages?: Pkg[]
+  template?: {
+    contentType?: string
+    sources?: string[]
+    package?: Pkg
+  }
+  templates?: Array<{
+    contentType?: string
+    sources?: string[]
+    package?: Pkg
+  }>
   secrets?: any
   remotes?: Array<{
     url: string
     contentType?: string
   }>
+  actions?: Array<{
+    action?: 'skipResource'
+    properties?: {
+      kind: string
+      resourceTemplateName: string
+    }
+  }>
 }
 
 export interface PkgSummary {
+  sources?: string[]
   stackID?: string
   summary?: {
     buckets?: Array<{
@@ -1688,11 +1681,13 @@ export interface PkgSummary {
       description?: string
       retentionPeriod?: number
       labelAssociations?: PkgSummaryLabel[]
+      envReferences?: PkgEnvReferences
     }>
     checks?: Array<
       CheckDiscriminator & {
         pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
+        envReferences?: PkgEnvReferences
       }
     >
     labels?: PkgSummaryLabel[]
@@ -1704,6 +1699,7 @@ export interface PkgSummary {
       description?: string
       labelAssociations?: PkgSummaryLabel[]
       charts?: PkgChart[]
+      envReferences?: PkgEnvReferences
     }>
     labelMappings?: Array<{
       status?: string
@@ -1721,6 +1717,7 @@ export interface PkgSummary {
       NotificationEndpointDiscrimator & {
         pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
+        envReferences?: PkgEnvReferences
       }
     >
     notificationRules?: Array<{
@@ -1744,6 +1741,7 @@ export interface PkgSummary {
         operator?: string
       }>
       labelAssociations?: PkgSummaryLabel[]
+      envReferences?: PkgEnvReferences
     }>
     tasks?: Array<{
       pkgName?: string
@@ -1755,11 +1753,13 @@ export interface PkgSummary {
       offset?: string
       query?: string
       status?: string
+      envReferences?: PkgEnvReferences
     }>
     telegrafConfigs?: Array<
       TelegrafRequest & {
         pkgName?: string
         labelAssociations?: PkgSummaryLabel[]
+        envReferences?: PkgEnvReferences
       }
     >
     variables?: Array<{
@@ -1770,6 +1770,7 @@ export interface PkgSummary {
       description?: string
       arguments?: VariableProperties
       labelAssociations?: PkgSummaryLabel[]
+      envReferences?: PkgEnvReferences
     }>
   }
   diff?: {
@@ -1946,9 +1947,23 @@ export interface PkgSummaryLabel {
   orgID?: string
   pkgName?: string
   name?: string
-  description?: string
-  retentionPeriod?: string
+  properties?: {
+    color?: string
+    description?: string
+  }
+  envReferences?: PkgEnvReferences
 }
+
+export type PkgEnvReferences = Array<{
+  /** Field the environment reference corresponds too */
+  resourceField: string
+  /** Key identified as environment reference and is the key identified in the template */
+  envRefKey: string
+  /** Value provided to fulfill reference */
+  value?: string
+  /** Default value that will be provided for the reference when no value is provided */
+  defaultValue: string
+}>
 
 export interface PkgChart {
   xPos?: number
@@ -2012,6 +2027,27 @@ export type HTTPNotificationEndpoint = NotificationEndpointBase & {
   contentTemplate?: string
   /** Customized headers. */
   headers?: any
+}
+
+export interface Stack {
+  id?: string
+  orgID?: string
+  name?: string
+  description?: string
+  sources?: string[]
+  resources?: Array<{
+    apiVersion?: string
+    resourceID?: string
+    kind?: string
+    pkgName?: string
+    associations?: Array<{
+      kind?: string
+      pkgName?: string
+    }>
+  }>
+  urls?: string[]
+  readonly createdAt?: string
+  readonly updatedAt?: string
 }
 
 export interface Tasks {
@@ -2113,7 +2149,6 @@ export interface Run {
   readonly links?: {
     self?: string
     task?: string
-    logs?: string
     retry?: string
   }
 }

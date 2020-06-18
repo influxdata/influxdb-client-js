@@ -6,7 +6,6 @@ import {
   LabelMapping,
   LabelResponse,
   LabelsResponse,
-  OperationLogs,
   PostBucketRequest,
   ResourceMember,
   ResourceMembers,
@@ -90,12 +89,6 @@ export interface DeleteBucketsIDOwnersIDRequest {
   /** The bucket ID. */
   bucketID: string
 }
-export interface GetBucketsIDLogsRequest {
-  /** The bucket ID. */
-  bucketID: string
-  offset?: number
-  limit?: number
-}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets
@@ -112,7 +105,6 @@ export interface GetBucketsIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLogs
  */
 export class BucketsAPI extends APIBase {
   /**
@@ -366,26 +358,6 @@ export class BucketsAPI extends APIBase {
     return this.request(
       'DELETE',
       `/api/v2/buckets/${request.bucketID}/owners/${request.userID}`,
-      request,
-      requestOptions
-    )
-  }
-  /**
-   * Retrieve operation logs for a bucket.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLogs
-   * @param request
-   * @return promise of response
-   */
-  getBucketsIDLogs(
-    request: GetBucketsIDLogsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<OperationLogs> {
-    return this.request(
-      'GET',
-      `/api/v2/buckets/${request.bucketID}/logs${this.queryString(request, [
-        'offset',
-        'limit',
-      ])}`,
       request,
       requestOptions
     )

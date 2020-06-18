@@ -13,7 +13,6 @@ import {
   LabelMapping,
   LabelResponse,
   LabelsResponse,
-  OperationLogs,
   ResourceMember,
   ResourceMembers,
   ResourceOwner,
@@ -145,12 +144,6 @@ export interface DeleteDashboardsIDOwnersIDRequest {
   /** The dashboard ID. */
   dashboardID: string
 }
-export interface GetDashboardsIDLogsRequest {
-  /** The dashboard ID. */
-  dashboardID: string
-  offset?: number
-  limit?: number
-}
 /**
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
@@ -173,7 +166,6 @@ export interface GetDashboardsIDLogsRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLogs
  */
 export class DashboardsAPI extends APIBase {
   /**
@@ -535,26 +527,6 @@ export class DashboardsAPI extends APIBase {
     return this.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}/owners/${request.userID}`,
-      request,
-      requestOptions
-    )
-  }
-  /**
-   * Retrieve operation logs for a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLogs
-   * @param request
-   * @return promise of response
-   */
-  getDashboardsIDLogs(
-    request: GetDashboardsIDLogsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<OperationLogs> {
-    return this.request(
-      'GET',
-      `/api/v2/dashboards/${request.dashboardID}/logs${this.queryString(
-        request,
-        ['offset', 'limit']
-      )}`,
       request,
       requestOptions
     )
