@@ -65,6 +65,8 @@ export interface WriteOptions extends WriteRetryOptions {
   batchSize: number
   /** delay between data flushes in milliseconds, at most `batch size` records are sent during flush  */
   flushInterval: number
+  /** default tags, unescaped */
+  defaultTags?: Record<string, string>
 }
 
 /** default RetryDelayStrategyOptions */
