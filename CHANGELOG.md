@@ -1,5 +1,9 @@
 ## 1.5.0 [unreleased]
 
+### Features
+
+1. [#204](https://github.com/influxdata/influxdb-client-js/pull/204): Allow to supply default tags in WriteOptions.
+
 ## 1.4.0 [2020-06-19]
 
 ### Features
