@@ -191,9 +191,9 @@ describe('WriteApi', () => {
     function useSubject(writeOptions: Partial<WriteOptions>): void {
       subject = createApi(ORG, BUCKET, WritePrecision.ns, {
         retryJitter: 0,
-
+        defaultTags: {xtra: '1'},
         ...writeOptions,
-      }).useDefaultTags({xtra: '1'})
+      })
     }
     beforeEach(() => {
       // logs = collectLogging.decorate()

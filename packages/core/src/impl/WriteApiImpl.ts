@@ -87,6 +87,9 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     }
     this.currentTime = currentTime[precision]
     this.dateToProtocolTimestamp = dateToProtocolTimestamp[precision]
+    if (this.writeOptions.defaultTags) {
+      this.useDefaultTags(this.writeOptions.defaultTags)
+    }
 
     const scheduleNextSend = (): void => {
       if (this.writeOptions.flushInterval > 0) {
