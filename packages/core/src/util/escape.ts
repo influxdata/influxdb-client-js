@@ -35,8 +35,13 @@ const escapeChar = '\\'
 class Escaper {
   private _re: RegExp
 
-  constructor(chars: string[], private wrap: string = '') {
-    const patterns = chars.join('').replace(reEscape, '\\$&')
+  constructor(
+    private config: {[p: string]: EscaperConfig} = {},
+    private wrap: string = ''
+  ) {
+    const patterns = Object.keys(config)
+      .join('|')
+      .replace(reEscape, '\\$&')
     this._re = new RegExp('[' + patterns + ']', 'g')
   }
 
@@ -51,7 +56,11 @@ class Escaper {
     let match = this._re.exec(val)
 
     while (match) {
-      escapedVal += val.slice(chunkIndex, match.index) + escapeChar + match[0]
+      const matched = match[0]
+      const toEscape = this.config[matched].escapeChar
+      const toReplace = this.config[matched].replaceChar
+      escapedVal += val.slice(chunkIndex, match.index)
+      escapedVal += toReplace != undefined ? toReplace : toEscape + matched
       chunkIndex = this._re.lastIndex
       match = this._re.exec(val)
     }
@@ -68,21 +77,58 @@ class Escaper {
   }
 }
 
+class EscaperConfig {
+  escapeChar?: string
+  replaceChar?: string
+
+  constructor(escapeChar?: string, replaceChar?: string) {
+    this.escapeChar = escapeChar
+    this.replaceChar = replaceChar
+  }
+}
+
+const escaperConfig = new EscaperConfig(escapeChar)
+
 const bindEsc = (e: Escaper): ((val: string) => string) => e.escape.bind(e)
 
 export const escape = {
   /**
    * Measurement escapes measurement names.
    */
-  measurement: bindEsc(new Escaper([',', ' '])),
+  measurement: bindEsc(
+    new Escaper({
+      ',': escaperConfig,
+      ' ': escaperConfig,
+      '\n': new EscaperConfig(undefined, '\\n'),
+      '\r': new EscaperConfig(undefined, '\\r'),
+      '\t': new EscaperConfig(undefined, '\\t'),
+    })
+  ),
 
   /**
    * Quoted escapes quoted values, such as database names.
    */
-  quoted: bindEsc(new Escaper(['"', '\\\\'], '"')),
+  quoted: bindEsc(
+    new Escaper(
+      {
+        '"': escaperConfig,
+        '\\\\': escaperConfig,
+      },
+      '"'
+    )
+  ),
 
   /**
    * TagEscaper escapes tag keys, tag values, and field keys.
    */
-  tag: bindEsc(new Escaper([',', '=', ' '])),
+  tag: bindEsc(
+    new Escaper({
+      ',': escaperConfig,
+      '=': escaperConfig,
+      ' ': escaperConfig,
+      '\n': new EscaperConfig(undefined, '\\n'),
+      '\r': new EscaperConfig(undefined, '\\r'),
+      '\t': new EscaperConfig(undefined, '\\t'),
+    })
+  ),
 }
