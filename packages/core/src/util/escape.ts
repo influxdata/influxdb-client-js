@@ -36,7 +36,7 @@ class Escaper {
   private _re: RegExp
 
   constructor(
-    private config: {[p: string]: EscaperConfig} = {},
+    private config: {[p: string]: EscaperConfig},
     private wrap: string = ''
   ) {
     const patterns = Object.keys(config)
