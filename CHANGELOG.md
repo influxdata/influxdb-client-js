@@ -4,6 +4,10 @@
 
 1. [#204](https://github.com/influxdata/influxdb-client-js/pull/204): Allow to supply default tags in WriteOptions.
 
+### Documentation
+
+1. [#207](https://github.com/influxdata/influxdb-client-js/pull/207): Explain the significance of the precision argument in write example.
+
 ## 1.4.0 [2020-06-19]
 
 ### Features

@@ -8,6 +8,7 @@ const {url, token, org, bucket} = require('./env')
 const {hostname} = require('os')
 
 console.log('*** WRITE POINTS ***')
+// create a write API, expecting point timestamps in nanoseconds (can be also 's', 'ms', 'us')
 const writeApi = new InfluxDB({url, token}).getWriteApi(org, bucket, 'ns')
 // setup default tags for all writes through this API
 writeApi.useDefaultTags({location: hostname()})
