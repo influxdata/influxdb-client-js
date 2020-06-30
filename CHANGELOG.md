@@ -3,6 +3,7 @@
 ### Features
 
 1. [#204](https://github.com/influxdata/influxdb-client-js/pull/204): Allow to supply default tags in WriteOptions.
+1. [#209](https://github.com/influxdata/influxdb-client-js/pull/209): Better report errors when InfluxDB 1.8 returns empty body
 
 ### Documentation
 
