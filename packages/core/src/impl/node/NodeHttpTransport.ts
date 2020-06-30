@@ -214,7 +214,10 @@ export class NodeHttpTransport implements Transport {
             res.resume()
           }
         })
-        responseData.on('end', () =>
+        responseData.on('end', () => {
+          if (body === '' && !!res.headers['x-influxdb-error']) {
+            body = res.headers['x-influxdb-error'].toString()
+          }
           listeners.error(
             new HttpError(
               statusCode,
@@ -223,7 +226,7 @@ export class NodeHttpTransport implements Transport {
               res.headers['retry-after']
             )
           )
-        )
+        })
       } else {
         responseData.on('data', data => {
           if (cancellable.isCancelled()) {

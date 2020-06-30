@@ -97,6 +97,44 @@ describe('FetchTransport', () => {
         // console.log(`        OK, received ${_e}`)
       }
     })
+    it('throws error with X-Influxdb-Error header body', async () => {
+      const message = 'this is a header message'
+      emulateFetchApi({
+        headers: {
+          'content-type': 'application/json',
+          'x-influxdb-error': message,
+        },
+        body: '',
+        status: 500,
+      })
+      try {
+        await transport.request('/whatever', '', {
+          method: 'GET',
+        })
+        expect.fail()
+      } catch (e) {
+        expect(e)
+          .property('body')
+          .equals(message)
+      }
+    })
+    it('throws error with empty body', async () => {
+      emulateFetchApi({
+        headers: {'content-type': 'text/plain'},
+        body: '',
+        status: 500,
+      })
+      try {
+        await transport.request('/whatever', '', {
+          method: 'GET',
+        })
+        expect.fail()
+      } catch (e) {
+        expect(e)
+          .property('body')
+          .equals('')
+      }
+    })
   })
   describe('send', () => {
     const transport = new FetchTransport({url: 'http://test:9999'})
