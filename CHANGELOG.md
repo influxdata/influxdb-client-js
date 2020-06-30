@@ -4,6 +4,14 @@
 
 1. [#204](https://github.com/influxdata/influxdb-client-js/pull/204): Allow to supply default tags in WriteOptions.
 
+### Documentation
+
+1. [#207](https://github.com/influxdata/influxdb-client-js/pull/207): Explain the significance of the precision argument in write example.
+
+### Bug Fixes
+
+1. [#205](https://github.com/influxdata/influxdb-client-js/pull/205): Fixed serialization of `\n`, `\r` and `\t` to Line Protocol
+
 ## 1.4.0 [2020-06-19]
 
 ### Features

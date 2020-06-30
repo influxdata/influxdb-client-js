@@ -8,14 +8,21 @@
     ["a=b", "a\\=b"],
     ["a b", "a\\ b"],
     ["a b=c", "a\\ b\\=c"],
-    ["'a' \\b=c\\,\\\\\"d\"", "'a'\\ \\b\\=c\\\\,\\\\\"d\""]
+    ["'a' \\b=c\\,\\\\\"d\"", "'a'\\ \\b\\=c\\\\,\\\\\"d\""],
+    ["new\nline", "new\\nline"],
+    ["carriage\rreturn", "carriage\\rreturn"],
+    ["t\tab", "t\\tab"]
   ],
   "measurement": [
     ["ab", "ab"],
     ["a,", "a\\,"],
     ["a,b", "a\\,b"],
     ["a b", "a\\ b"],
-    ["a b,c", "a\\ b\\,c"]
+    ["a b,c", "a\\ b\\,c"],
+    ["new\nline", "new\\nline"],
+    ["carriage\rreturn", "carriage\\rreturn"],
+    ["t\tab", "t\\tab"],
+    ["equ=al", "equ=al"]
   ],
   "quoted": [
     ["ab", "\"ab\""],
