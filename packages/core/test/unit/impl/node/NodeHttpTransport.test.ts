@@ -300,6 +300,21 @@ describe('NodeHttpTransport', () => {
               .to.length(1000)
           })
       })
+      it(`uses X-Influxdb-Error header when no body is returned`, async () => {
+        const errorMessage = 'this is a header error message'
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(500, '', {'X-Influxdb-Error': errorMessage})
+        await sendTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e: any) => {
+            expect(e)
+              .property('body')
+              .equals(errorMessage)
+          })
+      })
       it(`is aborted before the whole response arrives`, async () => {
         let remainingChunks = 2
         let res: any
