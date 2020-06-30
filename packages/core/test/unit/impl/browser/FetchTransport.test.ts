@@ -179,61 +179,94 @@ describe('FetchTransport', () => {
         callbacks: fakeCallbacks(),
         status: 501,
       },
-    ].forEach(({body, callbacks, url = '/whatever', status = 200}, i) => {
-      it(`receives data in chunks ${i}`, async () => {
-        emulateFetchApi({
-          headers: {'content-type': 'text/plain', duplicate: 'ok'},
-          status,
+      {
+        body: '',
+        callbacks: fakeCallbacks(),
+        status: 500,
+        headers: {'x-influxdb-error': 'header error'},
+        errorBody: 'header error',
+      },
+      {
+        body: '',
+        callbacks: fakeCallbacks(),
+        status: 500,
+        errorBody: '',
+      },
+    ].forEach(
+      (
+        {
           body,
+          callbacks,
+          url = '/whatever',
+          status = 200,
+          headers = {},
+          errorBody,
+        },
+        i
+      ) => {
+        it(`receives data in chunks ${i}`, async () => {
+          emulateFetchApi({
+            headers: {
+              'content-type': 'text/plain',
+              duplicate: 'ok',
+              ...headers,
+            },
+            status,
+            body,
+          })
+          if (callbacks) {
+            await new Promise((resolve: any) =>
+              transport.send(
+                url,
+                '',
+                {method: 'POST'},
+                {
+                  ...callbacks,
+                  complete() {
+                    callbacks.complete && callbacks.complete()
+                    resolve()
+                  },
+                  error(e: Error) {
+                    callbacks.error && callbacks.error(e)
+                    resolve()
+                  },
+                }
+              )
+            )
+            if (callbacks.useCancellable) {
+              expect(callbacks.useCancellable.callCount).equals(1)
+              const cancellable = callbacks.useCancellable.args[0][0]
+              cancellable.cancel()
+              expect(cancellable.isCancelled()).is.equal(true)
+            }
+            const isError = url === 'error' || status !== 200
+            expect(callbacks.responseStarted.callCount).equals(
+              url === 'error' ? 0 : 1
+            )
+            expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
+            expect(callbacks.error.callCount).equals(isError ? 1 : 0)
+            expect(callbacks.next.callCount).equals(
+              isError ? 0 : Array.isArray(body) ? body.length : 1
+            )
+            if (!isError) {
+              const vals = callbacks.next.args.map((args: any) =>
+                Buffer.from(args[0])
+              )
+              expect(
+                Array.isArray(body)
+                  ? body
+                  : [Buffer.isBuffer(body) ? body : Buffer.from(body)]
+              ).is.deep.equal(vals)
+            } else if (errorBody) {
+              expect(callbacks.error.args[0][0])
+                .property('body')
+                .equals(errorBody)
+            }
+          } else {
+            transport.send('/whatever', '', {method: 'POST'}, callbacks)
+          }
         })
-        if (callbacks) {
-          await new Promise((resolve: any) =>
-            transport.send(
-              url,
-              '',
-              {method: 'POST'},
-              {
-                ...callbacks,
-                complete() {
-                  callbacks.complete && callbacks.complete()
-                  resolve()
-                },
-                error(e: Error) {
-                  callbacks.error && callbacks.error(e)
-                  resolve()
-                },
-              }
-            )
-          )
-          if (callbacks.useCancellable) {
-            expect(callbacks.useCancellable.callCount).equals(1)
-            const cancellable = callbacks.useCancellable.args[0][0]
-            cancellable.cancel()
-            expect(cancellable.isCancelled()).is.equal(true)
-          }
-          const isError = url === 'error' || status !== 200
-          expect(callbacks.responseStarted.callCount).equals(
-            url === 'error' ? 0 : 1
-          )
-          expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
-          expect(callbacks.error.callCount).equals(isError ? 1 : 0)
-          expect(callbacks.next.callCount).equals(
-            isError ? 0 : Array.isArray(body) ? body.length : 1
-          )
-          if (!isError) {
-            const vals = callbacks.next.args.map((args: any) =>
-              Buffer.from(args[0])
-            )
-            expect(
-              Array.isArray(body)
-                ? body
-                : [Buffer.isBuffer(body) ? body : Buffer.from(body)]
-            ).is.deep.equal(vals)
-          }
-        } else {
-          transport.send('/whatever', '', {method: 'POST'}, callbacks)
-        }
-      })
-    })
+      }
+    )
   })
 })
