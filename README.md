@@ -22,14 +22,14 @@ InfluxDB 2.0 client consists of two packages
   - Writing data
     - batched in chunks on background
     - automatic retries on write failures
-- @influxdata/influxdb-client-js-apis
+- @influxdata/influxdb-client-apis
   - provides all other InfluxDB 2.0 APIs for managing
     - sources, buckets
     - tasks
     - authorizations
     - health check
     - ...
-  - built on top of @influxdata/influxdb-client-js
+  - built on top of @influxdata/influxdb-client
 
 ## Installation
 
