@@ -14,7 +14,7 @@
     "test": "cd packages/core && yarn test && cd ../apis && yarn test",
     "coverage": "cd packages/core && yarn coverage",
     "coverage:send": "cd packages/core && yarn coverage:send",
-    "typedoc": "cd packages/core && yarn typedoc && cd ../apis && yarn typedoc"
+    "typedoc": "cd packages/core && yarn build && yarn typedoc && cd ../apis && yarn typedoc"
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
