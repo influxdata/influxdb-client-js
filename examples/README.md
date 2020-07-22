@@ -16,6 +16,8 @@ This directory contains javascript and typescript examples for node.js and brows
     Supply parameters to a [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/) query.
   - [health.js](./health.js)
     Check health of InfluxDB server.
+  - [createBucket.js](./createBucket.js)
+    Creates an example bucket.
   - [onboarding.js](./onboarding.js)
     Performs onboarding of a new influxDB database. It creates a new organization, bucket and user that is then used in all examples.
   - [influxdb-1.8.ts](./influxdb-1.8.ts)
