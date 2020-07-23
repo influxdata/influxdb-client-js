@@ -192,16 +192,18 @@ export function toFluxValue(value: any): string {
     return `"${sanitizeString(value)}"`
   } else if (typeof value === 'number') {
     return sanitizeFloat(value)
-  } else if (
-    typeof value === 'object' &&
-    typeof value[FLUX_VALUE] === 'function'
-  ) {
-    return value[FLUX_VALUE]()
-  } else if (value instanceof Date) {
-    return value.toISOString()
-  } else if (value instanceof RegExp) {
-    return sanitizeRegExp(value)
+  } else if (typeof value === 'object') {
+    if (typeof value[FLUX_VALUE] === 'function') {
+      return value[FLUX_VALUE]()
+    } else if (value instanceof Date) {
+      return value.toISOString()
+    } else if (value instanceof RegExp) {
+      return sanitizeRegExp(value)
+    } else if (Array.isArray(value)) {
+      return `[${value.map(toFluxValue).join(',')}]`
+    }
   }
+  // use toString value for unrecognized object, bigint, symbol
   return toFluxValue(value.toString())
 }
 
