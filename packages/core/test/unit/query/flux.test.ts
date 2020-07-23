@@ -112,6 +112,8 @@ describe('Flux Values', () => {
       {value: 'abc${val}def', flux: '"abc\\${val}def"'},
       {value: 'abc$', flux: '"abc$"'},
       {value: 'a"$d', flux: '"a\\"$d"'},
+      {value: [], flux: '[]'},
+      {value: ['a"$d'], flux: '["a\\"$d"]'},
     ]
     pairs.forEach(pair => {
       it(`converts ${JSON.stringify(String(pair.value))} to '${

@@ -201,6 +201,8 @@ export function toFluxValue(value: any): string {
     return value.toISOString()
   } else if (value instanceof RegExp) {
     return sanitizeRegExp(value)
+  } else if (Array.isArray(value)) {
+    return `[${value.map(toFluxValue).join(',')}]`
   }
   return toFluxValue(value.toString())
 }
