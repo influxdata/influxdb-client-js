@@ -1,5 +1,10 @@
 ## 1.6.0 [unreleased]
 
+### Documentation
+
+1. [#215](https://github.com/influxdata/influxdb-client-js/pull/215): Add createBucket.js example
+1. [#218](https://github.com/influxdata/influxdb-client-js/pull/218): Add default documentation to body property in generated APIs
+
 ## 1.5.0 [2020-07-17]
 
 ### Features

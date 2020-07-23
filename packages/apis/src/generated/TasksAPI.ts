@@ -66,6 +66,7 @@ export interface GetTasksIDRunsRequest {
 }
 export interface PostTasksIDRunsRequest {
   taskID: string
+  /** entity body */
   body: RunManually
 }
 export interface GetTasksIDRunsIDRequest {

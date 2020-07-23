@@ -6,6 +6,7 @@ export interface CreatePkgRequest {
   body: PkgCreate
 }
 export interface ApplyPkgRequest {
+  /** entity body */
   body: PkgApply
 }
 export interface ListStacksRequest {

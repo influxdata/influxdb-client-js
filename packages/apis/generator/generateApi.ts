@@ -57,6 +57,8 @@ function generateTypes(operation: Operation): string {
   if (operation.bodyParam) {
     if (operation.bodyParam.description) {
       retVal += `  /** ${operation.bodyParam.description} */\n`
+    } else {
+      retVal += `  /** entity body */\n`
     }
     const bodyType = getBodyType(operation)
     retVal += `  body: ${bodyType}\n`
