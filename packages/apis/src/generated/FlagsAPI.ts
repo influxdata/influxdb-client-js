@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {Flags} from './types'
 
@@ -8,9 +9,10 @@ export interface GetFlagsRequest {}
  */
 export class FlagsAPI extends APIBase {
   /**
-   * Creates FlagsAPI from an influxDB object.
+   * Creates FlagsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

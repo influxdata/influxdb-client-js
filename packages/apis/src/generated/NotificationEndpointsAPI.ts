@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   LabelMapping,
@@ -69,9 +70,10 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest {
  */
 export class NotificationEndpointsAPI extends APIBase {
   /**
-   * Creates NotificationEndpointsAPI from an influxDB object.
+   * Creates NotificationEndpointsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

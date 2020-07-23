@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   Authorization,
@@ -43,9 +44,10 @@ export interface DeleteAuthorizationsIDRequest {
  */
 export class AuthorizationsAPI extends APIBase {
   /**
-   * Creates AuthorizationsAPI from an influxDB object.
+   * Creates AuthorizationsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

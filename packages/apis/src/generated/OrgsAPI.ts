@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -162,9 +163,10 @@ export interface DeleteOrgsIDOwnersIDRequest {
  */
 export class OrgsAPI extends APIBase {
   /**
-   * Creates OrgsAPI from an influxDB object.
+   * Creates OrgsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

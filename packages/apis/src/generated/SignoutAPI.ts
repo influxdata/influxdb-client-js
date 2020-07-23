@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostSignoutRequest {}
@@ -7,9 +8,10 @@ export interface PostSignoutRequest {}
  */
 export class SignoutAPI extends APIBase {
   /**
-   * Creates SignoutAPI from an influxDB object.
+   * Creates SignoutAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

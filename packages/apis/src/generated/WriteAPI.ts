@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostWriteRequest {
@@ -18,9 +19,10 @@ export interface PostWriteRequest {
  */
 export class WriteAPI extends APIBase {
   /**
-   * Creates WriteAPI from an influxDB object.
+   * Creates WriteAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

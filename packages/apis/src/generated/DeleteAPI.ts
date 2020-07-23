@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {DeletePredicateRequest} from './types'
 
@@ -19,9 +20,10 @@ export interface PostDeleteRequest {
  */
 export class DeleteAPI extends APIBase {
   /**
-   * Creates DeleteAPI from an influxDB object.
+   * Creates DeleteAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

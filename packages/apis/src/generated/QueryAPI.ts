@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   ASTResponse,
@@ -40,9 +41,10 @@ export interface PostQueryRequest {
  */
 export class QueryAPI extends APIBase {
   /**
-   * Creates QueryAPI from an influxDB object.
+   * Creates QueryAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {Pkg, PkgApply, PkgCreate, PkgSummary, Stack} from './types'
 
@@ -65,9 +66,10 @@ export interface ExportStackRequest {
  */
 export class PackagesAPI extends APIBase {
   /**
-   * Creates PackagesAPI from an influxDB object.
+   * Creates PackagesAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

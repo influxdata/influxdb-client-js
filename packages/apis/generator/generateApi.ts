@@ -105,9 +105,10 @@ function generateClass(
   classDef += ` */
 export class ${apiName} extends APIBase {
   /**
-   * Creates ${apiName} from an influxDB object.
+   * Creates ${apiName}
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }`
 
@@ -164,7 +165,8 @@ export function generateApi(
   operations: Operation[]
 ): {apiName: string; code: string} {
   const apiName = (apiKey ? capitalize1(apiKey) : 'Root') + 'API'
-  let code = `import {APIBase, RequestOptions} from '../APIBase'\n`
+  let code = `import {InfluxDB} from '@influxdata/influxdb-client'\n`
+  code += `import {APIBase, RequestOptions} from '../APIBase'\n`
   const typesCollector = new TypesCollector()
   for (const operation of operations) {
     typesCollector.add(getReturnType(operation))

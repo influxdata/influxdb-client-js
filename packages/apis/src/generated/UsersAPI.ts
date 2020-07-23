@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {PasswordResetBody, User, Users} from './types'
 
@@ -38,9 +39,10 @@ export interface PostUsersIDPasswordRequest {
  */
 export class UsersAPI extends APIBase {
   /**
-   * Creates UsersAPI from an influxDB object.
+   * Creates UsersAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

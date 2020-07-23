@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -118,9 +119,10 @@ export interface DeleteScrapersIDOwnersIDRequest {
  */
 export class ScrapersAPI extends APIBase {
   /**
-   * Creates ScrapersAPI from an influxDB object.
+   * Creates ScrapersAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

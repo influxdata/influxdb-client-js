@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {Ready} from './types'
 
@@ -8,9 +9,10 @@ export interface GetReadyRequest {}
  */
 export class ReadyAPI extends APIBase {
   /**
-   * Creates ReadyAPI from an influxDB object.
+   * Creates ReadyAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

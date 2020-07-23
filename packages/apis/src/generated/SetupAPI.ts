@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {IsOnboarding, OnboardingRequest, OnboardingResponse} from './types'
 
@@ -18,9 +19,10 @@ export interface PostSetupUserRequest {
  */
 export class SetupAPI extends APIBase {
   /**
-   * Creates SetupAPI from an influxDB object.
+   * Creates SetupAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**
