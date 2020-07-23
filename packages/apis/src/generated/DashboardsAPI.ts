@@ -68,6 +68,7 @@ export interface PostDashboardsIDCellsRequest {
 export interface PutDashboardsIDCellsRequest {
   /** The ID of the dashboard to update. */
   dashboardID: string
+  /** entity body */
   body: Cells
 }
 export interface PatchDashboardsIDCellsIDRequest {
@@ -75,6 +76,7 @@ export interface PatchDashboardsIDCellsIDRequest {
   dashboardID: string
   /** The ID of the cell to update. */
   cellID: string
+  /** entity body */
   body: CellUpdate
 }
 export interface DeleteDashboardsIDCellsIDRequest {
@@ -94,6 +96,7 @@ export interface PatchDashboardsIDCellsIDViewRequest {
   dashboardID: string
   /** The ID of the cell to update. */
   cellID: string
+  /** entity body */
   body: View
 }
 export interface GetDashboardsIDLabelsRequest {
