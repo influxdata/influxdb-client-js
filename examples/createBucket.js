@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-This example creates a new bucket or a supplied name. If a bucket of a supplied name already exists, 
+This example creates a new bucket. If a bucket of the same name already exists, 
 it is deleted and then created again.
 */
 
