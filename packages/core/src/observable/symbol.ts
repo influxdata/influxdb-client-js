@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-/** Symbol.observable or a string "@@observable". Used for interop */
+/** Symbol.observable or a string "\@\@observable". Used for interop */
 export const symbolObservable = (():
   | typeof Symbol.observable
   | '@@observable' =>

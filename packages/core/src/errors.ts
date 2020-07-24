@@ -4,8 +4,8 @@
 export interface RetryDelayStrategy {
   /**
    * Returns delay for a next retry
-   * @param error reason for retrying
-   * @return milliseconds
+   * @param error - reason for retrying
+   * @returns milliseconds to wait before retrying
    */
   nextDelay(error?: Error): number
   /** Implementation should reset its state, this is mandatory to call upon success.  */
@@ -22,7 +22,7 @@ export interface RetriableDecision {
   canRetry(): boolean
   /**
    * Get the delay in milliseconds to retry the action.
-   * @return  0 to let the implementation decide, miliseconds delay otherwise
+   * @returns 0 to let the implementation decide, miliseconds delay otherwise
    */
   retryAfter(): number
 }
@@ -96,8 +96,9 @@ const RETRY_CODES = [
 ]
 
 /**
- * Tests the error to know whether a possible HTTP call can be retried.
- * @param error Test whether the givver e
+ * Tests the error in order to know if an HTTP call can be retried.
+ * @param error - error to test
+ * @returns true for a retriable error
  */
 export function canRetryHttpCall(error: any): boolean {
   if (!error) {

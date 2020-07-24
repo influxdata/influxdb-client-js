@@ -58,13 +58,13 @@ export default class FluxTableColumn {
 
   /**
    * Index of this column in the row array
-   * @return index
    */
   index: number
 
   /**
    * Creates a flux table column from an object supplied.
-   * @param object
+   * @param object - source object
+   * @returns column instance
    */
   static from(object: FluxTableColumnLike): FluxTableColumn {
     const retVal = new FluxTableColumn()

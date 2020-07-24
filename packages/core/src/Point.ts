@@ -13,8 +13,7 @@ export default class Point {
   /**
    * Create a new Point with specified a measurement name.
    *
-   * @param measurementName the measurement name
-   * @return new instance of {@link Point}
+   * @param measurementName - the measurement name
    */
   constructor(measurementName?: string) {
     if (measurementName) this.name = measurementName
@@ -23,8 +22,8 @@ export default class Point {
   /**
    * Sets point's measurement.
    *
-   * @param name measurement name
-   * @return new instance of {@link Point}
+   * @param name - measurement name
+   * @returns this
    */
   public measurement(name: string): Point {
     this.name = name
@@ -34,9 +33,9 @@ export default class Point {
   /**
    * Adds a tag.
    *
-   * @param name  tag name
-   * @param value tag value
-   * @return this
+   * @param name - tag name
+   * @param value - tag value
+   * @returns this
    */
   public tag(name: string, value: string): Point {
     this.tags[name] = value
@@ -46,9 +45,9 @@ export default class Point {
   /**
    * Adds a boolean field.
    *
-   * @param field field name
-   * @param value field value
-   * @return this
+   * @param field - field name
+   * @param value - field value
+   * @returns this
    */
   public booleanField(name: string, value: boolean | any): Point {
     this.fields[name] = value ? 'T' : 'F'
@@ -58,9 +57,9 @@ export default class Point {
   /**
    * Adds an integer field.
    *
-   * @param name field name
-   * @param value field value
-   * @return this
+   * @param name - field name
+   * @param value - field value
+   * @returns this
    */
   public intField(name: string, value: number | any): Point {
     if (typeof value !== 'number') {
@@ -79,9 +78,9 @@ export default class Point {
   /**
    * Adds a number field.
    *
-   * @param name field name
-   * @param value field value
-   * @return this
+   * @param name - field name
+   * @param value - field value
+   * @returns this
    */
   public floatField(name: string, value: number | any): Point {
     if (typeof value !== 'number') {
@@ -100,9 +99,9 @@ export default class Point {
   /**
    * Adds a string field.
    *
-   * @param name field name
-   * @param value field value
-   * @return this
+   * @param name - field name
+   * @param value - field value
+   * @returns this
    */
   public stringField(name: string, value: string | any): Point {
     if (value !== null && value !== undefined) {
@@ -120,14 +119,19 @@ export default class Point {
    * An empty string can be used to let the server assign
    * the timestamp.
    *
-   * @param value point time
-   * @return this
+   * @param value - point time
+   * @returns this
    */
   public timestamp(value: Date | number | string | undefined): Point {
     this.time = value
     return this
   }
 
+  /**
+   * Creates an InfluxDB protocol line out of this instance.
+   * @param settings - settings define the exact representation of point time and can also add default tags
+   * @returns an InfxluDB protocol line out of this instance
+   */
   public toLineProtocol(settings?: PointSettings): string | undefined {
     if (!this.name) return undefined
     let fieldsLine = ''
@@ -166,6 +170,7 @@ export default class Point {
       time !== undefined ? ' ' + time : ''
     }`
   }
+
   toString(): string {
     const line = this.toLineProtocol(undefined)
     return line ? line : `invalid point: ${JSON.stringify(this, undefined)}`

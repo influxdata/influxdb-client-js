@@ -46,22 +46,24 @@ export interface Row {
 export default interface QueryApi {
   /**
    * Adds extra options for this query API.
-   * @param options
-   * @return this
+   * @param options - query options to use
+   * @returns this
    */
   with(options: Partial<QueryOptions>): QueryApi
 
   /**
    * Creates a cold observable of the lines returned by the given query.
    *
-   * @param query query
+   * @param query - query
+   * @returns observable of CSV result lines
    */
   lines(query: string | ParameterizedQuery): Observable<string>
 
   /**
    * Creates a cold observable of the rows returned by the given query.
    *
-   * @param query query
+   * @param query - query
+   * @returns observable of result rows
    */
   rows(query: string | ParameterizedQuery): Observable<Row>
 
@@ -69,8 +71,8 @@ export default interface QueryApi {
    * Executes the query and receives result lines (including empty and annotation lines)
    * through the supplied consumer. See [annotated-csv](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/).
    *
-   * @param query query
-   * @param consumer data/error consumer
+   * @param query - query
+   * @param consumer - csv result lines and error consumer
    */
   queryLines(
     query: string | ParameterizedQuery,
@@ -80,8 +82,8 @@ export default interface QueryApi {
   /**
    * Executes the query and receives table metadata and rows through the supplied consumer.
    *
-   * @param query query
-   * @param consumer data/error consumer
+   * @param query - query
+   * @param consumer - result rows and error consumer
    */
   queryRows(
     query: string | ParameterizedQuery,
@@ -93,10 +95,11 @@ export default interface QueryApi {
    * This method is suitable to collect simple results. Use with caution,
    * a possibly huge stream of results is copied to memory.
    *
-   * @param query query
-   * @param rowMapper maps the supplied row to an item that is then collected,
+   * @param query - query
+   * @param rowMapper - maps the supplied row to an item that is then collected,
    *  undefined return values are not collected. If no rowMapper is supplied,
    *  `row => row.tableMeta.toObject(row.values)` is used.
+   * @returns Promise of mapped results
    */
   collectRows<T>(
     query: string | ParameterizedQuery,
@@ -111,7 +114,8 @@ export default interface QueryApi {
    * This method is suitable to collect simple results. Use with caution,
    * a possibly huge stream of lines is copied to memory.
    *
-   * @param query query
+   * @param query - query
+   * @returns Promise of returned csv lines
    */
   collectLines(query: string | ParameterizedQuery): Promise<Array<string>>
 }

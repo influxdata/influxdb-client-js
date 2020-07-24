@@ -30,8 +30,10 @@ export default class FluxTableMetaData {
   }
   /**
    * Gets columns by name
-   * @param label table column or [[invalidColumn]]
-   */
+   * @param label - column label
+   * @returns table column
+   * @throws IllegalArgumentError if column is not found
+   **/
   column(label: string): FluxTableColumn {
     for (let i = 0; i < this.columns.length; i++) {
       const col = this.columns[i]
@@ -41,7 +43,7 @@ export default class FluxTableMetaData {
   }
   /**
    * Creates an object out of the supplied values with the help of columns .
-   * @param values values for each column
+   * @param values - a row with data for each column
    */
   toObject(values: string[]): {[key: string]: any} {
     const acc: any = {}
