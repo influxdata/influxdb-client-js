@@ -1,6 +1,6 @@
 #!/usr/bin/node
 /*
-This example shows how to use management/administration InfluxDB APIs
+This example shows how to use management/administration InfluxDB APIs.
 All InfluxDB APIs are available through '@influxdata/influxdb-client-apis' package.
 
 See https://v2.docs.influxdata.com/v2.0/api/
