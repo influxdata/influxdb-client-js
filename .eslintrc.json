@@ -30,6 +30,6 @@
     ],
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
-    "tsdoc/syntax": "warn"
+    "tsdoc/syntax": "error"
   }
 }
