@@ -45,7 +45,7 @@ export interface DeleteAuthorizationsIDRequest {
 export class AuthorizationsAPI extends APIBase {
   /**
    * Creates AuthorizationsAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -53,8 +53,8 @@ export class AuthorizationsAPI extends APIBase {
   /**
    * List all authorizations.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getAuthorizations(
     request?: GetAuthorizationsRequest,
@@ -75,8 +75,8 @@ export class AuthorizationsAPI extends APIBase {
   /**
    * Create an authorization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postAuthorizations(
     request: PostAuthorizationsRequest,
@@ -93,8 +93,8 @@ export class AuthorizationsAPI extends APIBase {
   /**
    * Retrieve an authorization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getAuthorizationsID(
     request: GetAuthorizationsIDRequest,
@@ -110,8 +110,8 @@ export class AuthorizationsAPI extends APIBase {
   /**
    * Update an authorization to be active or inactive.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchAuthorizationsID(
     request: PatchAuthorizationsIDRequest,
@@ -128,8 +128,8 @@ export class AuthorizationsAPI extends APIBase {
   /**
    * Delete a authorization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteAuthorizationsID(
     request: DeleteAuthorizationsIDRequest,

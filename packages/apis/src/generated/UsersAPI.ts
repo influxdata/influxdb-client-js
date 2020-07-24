@@ -40,7 +40,7 @@ export interface PostUsersIDPasswordRequest {
 export class UsersAPI extends APIBase {
   /**
    * Creates UsersAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -48,8 +48,8 @@ export class UsersAPI extends APIBase {
   /**
    * List all users.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getUsers(
     request?: GetUsersRequest,
@@ -60,8 +60,8 @@ export class UsersAPI extends APIBase {
   /**
    * Create a user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postUsers(
     request: PostUsersRequest,
@@ -78,8 +78,8 @@ export class UsersAPI extends APIBase {
   /**
    * Retrieve a user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getUsersID(
     request: GetUsersIDRequest,
@@ -95,8 +95,8 @@ export class UsersAPI extends APIBase {
   /**
    * Update a user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchUsersID(
     request: PatchUsersIDRequest,
@@ -113,8 +113,8 @@ export class UsersAPI extends APIBase {
   /**
    * Delete a user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteUsersID(
     request: DeleteUsersIDRequest,
@@ -130,8 +130,8 @@ export class UsersAPI extends APIBase {
   /**
    * Update a password.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postUsersIDPassword(
     request: PostUsersIDPasswordRequest,

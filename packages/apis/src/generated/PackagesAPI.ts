@@ -67,7 +67,7 @@ export interface ExportStackRequest {
 export class PackagesAPI extends APIBase {
   /**
    * Creates PackagesAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -75,8 +75,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Create a new Influx package.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   createPkg(
     request: CreatePkgRequest,
@@ -93,8 +93,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Apply or dry-run an Influx package.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   applyPkg(
     request: ApplyPkgRequest,
@@ -111,8 +111,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Grab a list of installed Influx packages.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   listStacks(
     request: ListStacksRequest,
@@ -134,8 +134,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Create a new stack.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   createStack(
     request: CreateStackRequest,
@@ -152,8 +152,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Grab a stack by its ID.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   readStack(
     request: ReadStackRequest,
@@ -169,8 +169,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Update a an Influx Stack.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   updateStack(
     request: UpdateStackRequest,
@@ -187,8 +187,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Delete a stack and remove all its associated resources.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteStack(
     request: DeleteStackRequest,
@@ -206,8 +206,8 @@ export class PackagesAPI extends APIBase {
   /**
    * Export a stack's resources in the form of a package.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   exportStack(
     request: ExportStackRequest,

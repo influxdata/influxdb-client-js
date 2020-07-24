@@ -40,7 +40,7 @@ export interface DeleteLabelsIDRequest {
 export class LabelsAPI extends APIBase {
   /**
    * Creates LabelsAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -48,8 +48,8 @@ export class LabelsAPI extends APIBase {
   /**
    * Get all labels.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getLabels(
     request?: GetLabelsRequest,
@@ -65,8 +65,8 @@ export class LabelsAPI extends APIBase {
   /**
    * Create a label.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postLabels(
     request: PostLabelsRequest,
@@ -83,8 +83,8 @@ export class LabelsAPI extends APIBase {
   /**
    * Get a label.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getLabelsID(
     request: GetLabelsIDRequest,
@@ -100,8 +100,8 @@ export class LabelsAPI extends APIBase {
   /**
    * Update a label.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchLabelsID(
     request: PatchLabelsIDRequest,
@@ -118,8 +118,8 @@ export class LabelsAPI extends APIBase {
   /**
    * Delete a label.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteLabelsID(
     request: DeleteLabelsIDRequest,

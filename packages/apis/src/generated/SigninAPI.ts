@@ -11,7 +11,7 @@ export interface PostSigninRequest {
 export class SigninAPI extends APIBase {
   /**
    * Creates SigninAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -19,8 +19,8 @@ export class SigninAPI extends APIBase {
   /**
    * Exchange basic auth credentials for session.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postSignin(
     request: PostSigninRequest,

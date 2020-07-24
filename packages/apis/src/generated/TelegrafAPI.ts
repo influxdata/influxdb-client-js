@@ -13,15 +13,15 @@ export interface GetTelegrafPluginsRequest {
 export class TelegrafAPI extends APIBase {
   /**
    * Creates TelegrafAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTelegrafPlugins(
     request?: GetTelegrafPluginsRequest,
