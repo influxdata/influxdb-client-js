@@ -4,7 +4,11 @@
     "sourceType": "module",
     "ecmaFeatures": {}
   },
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "prettier",
+    "eslint-plugin-tsdoc"
+  ],
   "env": {
     "node": true,
     "es6": true,
@@ -25,6 +29,7 @@
       {"varsIgnorePattern": "^_", "argsIgnorePattern": "^_"}
     ],
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-empty-interface": "off"
+    "@typescript-eslint/no-empty-interface": "off",
+    "tsdoc/syntax": "warn"
   }
 }
