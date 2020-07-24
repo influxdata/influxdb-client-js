@@ -2,8 +2,9 @@
 
 ### Documentation
 
-1. [#215](https://github.com/influxdata/influxdb-client-js/pull/215): Add createBucket.js example
-1. [#218](https://github.com/influxdata/influxdb-client-js/pull/218): Add default documentation to body property in generated APIs
+1. [#215](https://github.com/influxdata/influxdb-client-js/pull/215): Add createBucket.js example.
+1. [#218](https://github.com/influxdata/influxdb-client-js/pull/218): Add default documentation to body property in generated APIs.
+1. [#220](https://github.com/influxdata/influxdb-client-js/pull/220): Generate API constructor with InfluxDB parameter.
 
 ## 1.5.0 [2020-07-17]
 

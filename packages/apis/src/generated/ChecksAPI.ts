@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   Check,
@@ -75,9 +76,10 @@ export interface GetChecksIDQueryRequest {
  */
 export class ChecksAPI extends APIBase {
   /**
-   * Creates ChecksAPI from an influxDB object.
+   * Creates ChecksAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

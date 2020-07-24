@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {HealthCheck} from './types'
 
@@ -8,9 +9,10 @@ export interface GetHealthRequest {}
  */
 export class HealthAPI extends APIBase {
   /**
-   * Creates HealthAPI from an influxDB object.
+   * Creates HealthAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

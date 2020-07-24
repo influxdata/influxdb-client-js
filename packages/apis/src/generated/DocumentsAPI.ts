@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   Document,
@@ -62,9 +63,10 @@ export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
  */
 export class DocumentsAPI extends APIBase {
   /**
-   * Creates DocumentsAPI from an influxDB object.
+   * Creates DocumentsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

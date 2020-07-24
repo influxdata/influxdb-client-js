@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {Routes} from './types'
 
@@ -8,9 +9,10 @@ export interface GetRoutesRequest {}
  */
 export class RootAPI extends APIBase {
   /**
-   * Creates RootAPI from an influxDB object.
+   * Creates RootAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

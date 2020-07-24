@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   LabelCreateRequest,
@@ -38,9 +39,10 @@ export interface DeleteLabelsIDRequest {
  */
 export class LabelsAPI extends APIBase {
   /**
-   * Creates LabelsAPI from an influxDB object.
+   * Creates LabelsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

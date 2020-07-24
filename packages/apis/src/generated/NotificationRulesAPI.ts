@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   FluxResponse,
@@ -79,9 +80,10 @@ export interface GetNotificationRulesIDQueryRequest {
  */
 export class NotificationRulesAPI extends APIBase {
   /**
-   * Creates NotificationRulesAPI from an influxDB object.
+   * Creates NotificationRulesAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   LabelMapping,
@@ -67,9 +68,10 @@ export interface DeleteVariablesIDLabelsIDRequest {
  */
 export class VariablesAPI extends APIBase {
   /**
-   * Creates VariablesAPI from an influxDB object.
+   * Creates VariablesAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

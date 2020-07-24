@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -172,9 +173,10 @@ export interface DeleteDashboardsIDOwnersIDRequest {
  */
 export class DashboardsAPI extends APIBase {
   /**
-   * Creates DashboardsAPI from an influxDB object.
+   * Creates DashboardsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

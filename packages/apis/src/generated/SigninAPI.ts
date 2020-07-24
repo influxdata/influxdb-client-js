@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostSigninRequest {
@@ -9,9 +10,10 @@ export interface PostSigninRequest {
  */
 export class SigninAPI extends APIBase {
   /**
-   * Creates SigninAPI from an influxDB object.
+   * Creates SigninAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

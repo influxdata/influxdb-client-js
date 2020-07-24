@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {TelegrafPlugins} from './types'
 
@@ -11,9 +12,10 @@ export interface GetTelegrafPluginsRequest {
  */
 export class TelegrafAPI extends APIBase {
   /**
-   * Creates TelegrafAPI from an influxDB object.
+   * Creates TelegrafAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

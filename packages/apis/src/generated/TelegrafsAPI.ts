@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -102,9 +103,10 @@ export interface DeleteTelegrafsIDOwnersIDRequest {
  */
 export class TelegrafsAPI extends APIBase {
   /**
-   * Creates TelegrafsAPI from an influxDB object.
+   * Creates TelegrafsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

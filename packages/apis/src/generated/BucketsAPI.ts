@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -108,9 +109,10 @@ export interface DeleteBucketsIDOwnersIDRequest {
  */
 export class BucketsAPI extends APIBase {
   /**
-   * Creates BucketsAPI from an influxDB object.
+   * Creates BucketsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

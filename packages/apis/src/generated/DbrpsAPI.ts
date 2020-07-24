@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {DBRP, DBRPUpdate, DBRPs} from './types'
 
@@ -49,9 +50,10 @@ export interface DeleteDBRPIDRequest {
  */
 export class DbrpsAPI extends APIBase {
   /**
-   * Creates DbrpsAPI from an influxDB object.
+   * Creates DbrpsAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

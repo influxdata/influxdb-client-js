@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
@@ -171,9 +172,10 @@ export interface DeleteTasksIDOwnersIDRequest {
  */
 export class TasksAPI extends APIBase {
   /**
-   * Creates TasksAPI from an influxDB object.
+   * Creates TasksAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**

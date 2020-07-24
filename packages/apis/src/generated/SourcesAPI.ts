@@ -1,3 +1,4 @@
+import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {Buckets, HealthCheck, Source, Sources} from './types'
 
@@ -45,9 +46,10 @@ export interface GetSourcesIDBucketsRequest {
  */
 export class SourcesAPI extends APIBase {
   /**
-   * Creates SourcesAPI from an influxDB object.
+   * Creates SourcesAPI
+   * @param influxDB InfluxDB
    */
-  constructor(influxDB: any) {
+  constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**
