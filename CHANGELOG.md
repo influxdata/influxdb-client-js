@@ -1,5 +1,9 @@
 ## 1.6.0 [unreleased]
 
+### Features
+
+1. [#219](https://github.com/influxdata/influxdb-client-js/pull/219): Sanitize arrays in parameterized flux queries.
+
 ### Documentation
 
 1. [#215](https://github.com/influxdata/influxdb-client-js/pull/215): Add createBucket.js example.
