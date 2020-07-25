@@ -33,46 +33,41 @@ InfluxDB 2.0 client consists of two packages
 
 ## Installation
 
-To use write or query InfluxDB in your project:
+To write or query InfluxDB, add `@influxdata/influxdb-client` dependency to your project using your favourite package manager.
 
 ```
 $npm install --save @influxdata/influxdb-client
-```
-
-or
-
-```
 $yarn add @influxdata/influxdb-client
+$pnpm add @influxdata/influxdb-client
 ```
 
-To use InfluxDB management APIs in your project:
+To use InfluxDB management APIs in your project, add also `@influxdata/influxdb-client-apis` dependency to your project.
 
 ```
 $npm install --save @influxdata/influxdb-client-apis
-```
-
-or
-
-```
 $yarn add @influxdata/influxdb-client-apis
+$pnpm add @influxdata/influxdb-client-apis
 ```
 
 ## Usage
 
-See [examples](./examples/README.md)
+The following examples helps to start quickly with this client:
 
 - @influxdata/influxdb-client
-  - [write points or lines](./examples/write.js)
+  - [write points](./examples/write.js)
   - [query data](./examples/query.ts)
 - @influxdata/influxdb-client-apis
   - [setup / onboarding](./examples/onboarding.js)
+  - [create bucket](./examples/createBucket.js)
   - [health](./examples/health.js)
-  
-[InfluxDB 2.0 API compatibility endpoints](https://docs.influxdata.com/influxdb/v1.8/tools/api/#influxdb-2-0-api-compatibility-endpoints) are part of the InfluxDB 1.x line since InfluxDB 1.8.0.
-This allows you to leverage InfluxDB 2.0 client libraries for both writing and querying data with Flux. For more details, see
 
-- [InfluxDB 1.8 example](examples/influxdb-1.8.ts)
-- https://docs.influxdata.com/influxdb/v1.8/about_the_project/releasenotes-changelog/#forward-compatibility
+There are also more advanced [examples](./examples/README.md) that shows
+
+- how to create a bucket
+- how to execute parameterized queries
+- how to use this client with InfluxDB 1.8+
+- how to use this client in the browser
+- how to process InfluxDB query results with RX Observables
 
 ## Build Requirements
 
