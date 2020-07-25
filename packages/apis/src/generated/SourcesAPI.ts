@@ -47,7 +47,7 @@ export interface GetSourcesIDBucketsRequest {
 export class SourcesAPI extends APIBase {
   /**
    * Creates SourcesAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -55,8 +55,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Get all sources.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getSources(
     request?: GetSourcesRequest,
@@ -72,8 +72,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Creates a source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postSources(
     request: PostSourcesRequest,
@@ -90,8 +90,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Get a source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getSourcesID(
     request: GetSourcesIDRequest,
@@ -107,8 +107,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Update a Source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchSourcesID(
     request: PatchSourcesIDRequest,
@@ -125,8 +125,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Delete a source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteSourcesID(
     request: DeleteSourcesIDRequest,
@@ -142,8 +142,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Get the health of a source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getSourcesIDHealth(
     request: GetSourcesIDHealthRequest,
@@ -159,8 +159,8 @@ export class SourcesAPI extends APIBase {
   /**
    * Get buckets in a source.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getSourcesIDBuckets(
     request: GetSourcesIDBucketsRequest,

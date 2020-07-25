@@ -164,7 +164,7 @@ export interface DeleteOrgsIDOwnersIDRequest {
 export class OrgsAPI extends APIBase {
   /**
    * Creates OrgsAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -172,8 +172,8 @@ export class OrgsAPI extends APIBase {
   /**
    * List all organizations.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgs(
     request?: GetOrgsRequest,
@@ -189,8 +189,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Create an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgs(
     request: PostOrgsRequest,
@@ -207,8 +207,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Retrieve an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgsID(
     request: GetOrgsIDRequest,
@@ -224,8 +224,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Update an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchOrgsID(
     request: PatchOrgsIDRequest,
@@ -242,8 +242,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Delete an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsID(
     request: DeleteOrgsIDRequest,
@@ -259,8 +259,8 @@ export class OrgsAPI extends APIBase {
   /**
    * List all labels for a organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgsIDLabels(
     request: GetOrgsIDLabelsRequest,
@@ -276,8 +276,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Add a label to an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDLabels(
     request: PostOrgsIDLabelsRequest,
@@ -294,8 +294,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Delete a label from an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsIDLabelsID(
     request: DeleteOrgsIDLabelsIDRequest,
@@ -311,8 +311,8 @@ export class OrgsAPI extends APIBase {
   /**
    * List all secret keys for an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgsIDSecrets(
     request: GetOrgsIDSecretsRequest,
@@ -328,8 +328,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Update secrets in an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchOrgsIDSecrets(
     request: PatchOrgsIDSecretsRequest,
@@ -346,8 +346,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Delete secrets from an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDSecrets(
     request: PostOrgsIDSecretsRequest,
@@ -364,8 +364,8 @@ export class OrgsAPI extends APIBase {
   /**
    * List all members of an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgsIDMembers(
     request: GetOrgsIDMembersRequest,
@@ -381,8 +381,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Add a member to an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDMembers(
     request: PostOrgsIDMembersRequest,
@@ -399,8 +399,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Remove a member from an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsIDMembersID(
     request: DeleteOrgsIDMembersIDRequest,
@@ -416,8 +416,8 @@ export class OrgsAPI extends APIBase {
   /**
    * List all owners of an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getOrgsIDOwners(
     request: GetOrgsIDOwnersRequest,
@@ -433,8 +433,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Add an owner to an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDOwners(
     request: PostOrgsIDOwnersRequest,
@@ -451,8 +451,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Creates an invite to an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDInvites(
     request: PostOrgsIDInvitesRequest,
@@ -469,8 +469,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Remove an invite to an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsIDInviteID(
     request: DeleteOrgsIDInviteIDRequest,
@@ -486,8 +486,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Resends an invite.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postOrgsIDInviteID(
     request: PostOrgsIDInviteIDRequest,
@@ -502,8 +502,8 @@ export class OrgsAPI extends APIBase {
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getCloudUsers(
     request: GetCloudUsersRequest,
@@ -519,8 +519,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Deletes a cloud user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsIDCloudUserID(
     request: DeleteOrgsIDCloudUserIDRequest,
@@ -536,8 +536,8 @@ export class OrgsAPI extends APIBase {
   /**
    * Remove an owner from an organization.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteOrgsIDOwnersID(
     request: DeleteOrgsIDOwnersIDRequest,

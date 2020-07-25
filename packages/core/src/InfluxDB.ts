@@ -17,7 +17,7 @@ export default class InfluxDB {
 
   /**
    * Creates influxdb client options from an options object or url.
-   * @param options options
+   * @param options - client options
    */
   constructor(options: ClientOptions | string) {
     if (typeof options === 'string') {
@@ -38,10 +38,11 @@ export default class InfluxDB {
    * Creates [[WriteApi]] for the supplied organization and bucket. BEWARE that returned instances must be closed
    * in order to flush the remaining data and close already scheduled retry executions.
    *
-   * @param org Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
-   * @param bucket The destination bucket for writes.
-   * @param precision Timestamp precision for line items.
-   * @param writeOptions Custom write options.
+   * @param org - Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
+   * @param bucket - The destination bucket for writes.
+   * @param precision - Timestamp precision for line items.
+   * @param writeOptions - Custom write options.
+   * @returns WriteAPI instance
    */
   getWriteApi(
     org: string,
@@ -61,8 +62,8 @@ export default class InfluxDB {
   /**
    * Creates [[QueryAPI]] for the supplied organization .
    *
-   * @param org organization
-   * @return query api instance
+   * @param org - organization
+   * @returns query api instance
    */
   getQueryApi(org: string): QueryApi {
     return new QueryApiImpl(this.transport, org)

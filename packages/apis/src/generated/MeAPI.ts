@@ -16,7 +16,7 @@ export interface PutMePasswordRequest {
 export class MeAPI extends APIBase {
   /**
    * Creates MeAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -24,8 +24,8 @@ export class MeAPI extends APIBase {
   /**
    * Return the current authenticated user.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getMe(
     request?: GetMeRequest,
@@ -36,8 +36,8 @@ export class MeAPI extends APIBase {
   /**
    * Update a password.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   putMePassword(
     request: PutMePasswordRequest,

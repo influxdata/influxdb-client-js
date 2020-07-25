@@ -13,47 +13,47 @@ export default interface WriteApi {
   /**
    * Instructs to use the following default tags  when writing points.
    * Not applicable for writing records/lines.
-   * @param tags
+   * @param tags - default tags
    */
   useDefaultTags(tags: {[key: string]: string}): WriteApi
 
   /**
    * Write a line of [Line Protocol](https://bit.ly/2QL99fu).
    *
-   * @param record line in InfluxDB Line Protocol.
+   * @param record - line of InfluxDB Line Protocol
    */
   writeRecord(record: string): void
 
   /**
    * Write lines of [Line Protocol](https://bit.ly/2QL99fu).
    *
-   * @param records lines in InfluxDB Line Protocol
+   * @param records - lines in InfluxDB Line Protocol
    */
   writeRecords(records: Array<string>): void
 
   /**
    * Write point.
    *
-   * @param point point to write
+   * @param point - point to write
    */
   writePoint(point: Point): void
 
   /**
    * Write points.
    *
-   * @param points points to write
+   * @param points - points to write
    */
   writePoints(points: ArrayLike<Point>): void
 
   /**
    * Flushes pending writes to the server.
-   * @return completition promise
+   * @returns completition promise
    */
   flush(): Promise<void>
 
   /**
    * Flushes this writer and cancels retries of write operations that failed.
-   * @return completition promise
+   * @returns completition promise
    */
   close(): Promise<void>
 

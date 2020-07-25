@@ -106,7 +106,7 @@ function generateClass(
 export class ${apiName} extends APIBase {
   /**
    * Creates ${apiName}
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -128,8 +128,8 @@ export class ${apiName} extends APIBase {
     }
     classDef += `
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/${opId}
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   ${decapitalize1(opId)}(request${
       requestRequired(operation) ? '' : '?'

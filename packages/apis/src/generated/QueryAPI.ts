@@ -42,15 +42,15 @@ export interface PostQueryRequest {
 export class QueryAPI extends APIBase {
   /**
    * Creates QueryAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postQueryAst(
     request: PostQueryAstRequest,
@@ -66,8 +66,8 @@ export class QueryAPI extends APIBase {
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getQuerySuggestions(
     request?: GetQuerySuggestionsRequest,
@@ -82,8 +82,8 @@ export class QueryAPI extends APIBase {
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getQuerySuggestionsName(
     request: GetQuerySuggestionsNameRequest,
@@ -99,8 +99,8 @@ export class QueryAPI extends APIBase {
   /**
    * Analyze an InfluxQL or Flux query.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postQueryAnalyze(
     request: PostQueryAnalyzeRequest,
@@ -117,8 +117,8 @@ export class QueryAPI extends APIBase {
   /**
    * Query InfluxDB.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postQuery(
     request: PostQueryRequest,

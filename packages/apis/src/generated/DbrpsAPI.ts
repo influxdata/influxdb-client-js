@@ -51,7 +51,7 @@ export interface DeleteDBRPIDRequest {
 export class DbrpsAPI extends APIBase {
   /**
    * Creates DbrpsAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -59,8 +59,8 @@ export class DbrpsAPI extends APIBase {
   /**
    * List all database retention policy mappings.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getDBRPs(
     request: GetDBRPsRequest,
@@ -83,8 +83,8 @@ export class DbrpsAPI extends APIBase {
   /**
    * Add a database retention policy mapping.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postDBRP(
     request: PostDBRPRequest,
@@ -101,8 +101,8 @@ export class DbrpsAPI extends APIBase {
   /**
    * Retrieve a database retention policy mapping.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getDBRPsID(
     request: GetDBRPsIDRequest,
@@ -118,8 +118,8 @@ export class DbrpsAPI extends APIBase {
   /**
    * Update a database retention policy mapping.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchDBRPID(
     request: PatchDBRPIDRequest,
@@ -136,8 +136,8 @@ export class DbrpsAPI extends APIBase {
   /**
    * Delete a database retention policy.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteDBRPID(
     request: DeleteDBRPIDRequest,

@@ -20,7 +20,7 @@ export interface PostSetupUserRequest {
 export class SetupAPI extends APIBase {
   /**
    * Creates SetupAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -28,8 +28,8 @@ export class SetupAPI extends APIBase {
   /**
    * Check if database has default user, org, bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getSetup(
     request?: GetSetupRequest,
@@ -40,8 +40,8 @@ export class SetupAPI extends APIBase {
   /**
    * Set up initial user, org and bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postSetup(
     request: PostSetupRequest,
@@ -58,8 +58,8 @@ export class SetupAPI extends APIBase {
   /**
    * Set up a new user, org and bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postSetupUser(
     request: PostSetupUserRequest,

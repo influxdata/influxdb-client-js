@@ -9,7 +9,7 @@ export interface PostSignoutRequest {}
 export class SignoutAPI extends APIBase {
   /**
    * Creates SignoutAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -17,8 +17,8 @@ export class SignoutAPI extends APIBase {
   /**
    * Expire the current session.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postSignout(
     request?: PostSignoutRequest,

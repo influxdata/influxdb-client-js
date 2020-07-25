@@ -12,6 +12,10 @@ export interface RequestOptions {
  */
 export class APIBase {
   transport: Transport
+  /**
+   * Initializes transport to communicate with InfluxDB.
+   * @param influxDB - the main InfluxDB client object
+   */
   constructor(influxDB: InfluxDB) {
     if (!influxDB) throw new Error('No influxDB supplied!')
     if (!influxDB.transport) throw new Error('No transport supplied!')

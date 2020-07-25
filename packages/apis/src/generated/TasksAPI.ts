@@ -173,7 +173,7 @@ export interface DeleteTasksIDOwnersIDRequest {
 export class TasksAPI extends APIBase {
   /**
    * Creates TasksAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -181,8 +181,8 @@ export class TasksAPI extends APIBase {
   /**
    * List all tasks.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasks
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasks(
     request?: GetTasksRequest,
@@ -206,8 +206,8 @@ export class TasksAPI extends APIBase {
   /**
    * Create a new task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasks
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasks(
     request: PostTasksRequest,
@@ -224,8 +224,8 @@ export class TasksAPI extends APIBase {
   /**
    * Retrieve a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksID(
     request: GetTasksIDRequest,
@@ -241,8 +241,8 @@ export class TasksAPI extends APIBase {
   /**
    * Update a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchTasksID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchTasksID(
     request: PatchTasksIDRequest,
@@ -259,8 +259,8 @@ export class TasksAPI extends APIBase {
   /**
    * Delete a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteTasksID(
     request: DeleteTasksIDRequest,
@@ -276,8 +276,8 @@ export class TasksAPI extends APIBase {
   /**
    * List runs for a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRuns
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDRuns(
     request: GetTasksIDRunsRequest,
@@ -298,8 +298,8 @@ export class TasksAPI extends APIBase {
   /**
    * Manually start a task run, overriding the current schedule.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRuns
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasksIDRuns(
     request: PostTasksIDRunsRequest,
@@ -316,8 +316,8 @@ export class TasksAPI extends APIBase {
   /**
    * Retrieve a single run for a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDRunsID(
     request: GetTasksIDRunsIDRequest,
@@ -333,8 +333,8 @@ export class TasksAPI extends APIBase {
   /**
    * Cancel a running task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDRunsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteTasksIDRunsID(
     request: DeleteTasksIDRunsIDRequest,
@@ -350,8 +350,8 @@ export class TasksAPI extends APIBase {
   /**
    * Retry a task run.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRunsIDRetry
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasksIDRunsIDRetry(
     request: PostTasksIDRunsIDRetryRequest,
@@ -367,8 +367,8 @@ export class TasksAPI extends APIBase {
   /**
    * Retrieve all logs for a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDLogs
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDLogs(
     request: GetTasksIDLogsRequest,
@@ -384,8 +384,8 @@ export class TasksAPI extends APIBase {
   /**
    * Retrieve all logs for a run.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsIDLogs
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDRunsIDLogs(
     request: GetTasksIDRunsIDLogsRequest,
@@ -401,8 +401,8 @@ export class TasksAPI extends APIBase {
   /**
    * List all labels for a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDLabels(
     request: GetTasksIDLabelsRequest,
@@ -418,8 +418,8 @@ export class TasksAPI extends APIBase {
   /**
    * Add a label to a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasksIDLabels(
     request: PostTasksIDLabelsRequest,
@@ -436,8 +436,8 @@ export class TasksAPI extends APIBase {
   /**
    * Delete a label from a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteTasksIDLabelsID(
     request: DeleteTasksIDLabelsIDRequest,
@@ -453,8 +453,8 @@ export class TasksAPI extends APIBase {
   /**
    * List all task members.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDMembers(
     request: GetTasksIDMembersRequest,
@@ -470,8 +470,8 @@ export class TasksAPI extends APIBase {
   /**
    * Add a member to a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasksIDMembers(
     request: PostTasksIDMembersRequest,
@@ -488,8 +488,8 @@ export class TasksAPI extends APIBase {
   /**
    * Remove a member from a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDMembersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteTasksIDMembersID(
     request: DeleteTasksIDMembersIDRequest,
@@ -505,8 +505,8 @@ export class TasksAPI extends APIBase {
   /**
    * List all owners of a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getTasksIDOwners(
     request: GetTasksIDOwnersRequest,
@@ -522,8 +522,8 @@ export class TasksAPI extends APIBase {
   /**
    * Add an owner to a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postTasksIDOwners(
     request: PostTasksIDOwnersRequest,
@@ -540,8 +540,8 @@ export class TasksAPI extends APIBase {
   /**
    * Remove an owner from a task.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDOwnersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteTasksIDOwnersID(
     request: DeleteTasksIDOwnersIDRequest,

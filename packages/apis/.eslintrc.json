@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": ["src/generated/*.ts"],
+      "excludedFiles": "*.test.js",
+      "rules": {
+        "tsdoc/syntax": "warn"
+      }
+    }
+  ]
+}

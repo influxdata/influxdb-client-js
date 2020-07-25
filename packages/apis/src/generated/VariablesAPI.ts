@@ -69,7 +69,7 @@ export interface DeleteVariablesIDLabelsIDRequest {
 export class VariablesAPI extends APIBase {
   /**
    * Creates VariablesAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -77,8 +77,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Get all variables.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getVariables(
     request?: GetVariablesRequest,
@@ -94,8 +94,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Create a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postVariables(
     request: PostVariablesRequest,
@@ -112,8 +112,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Get a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getVariablesID(
     request: GetVariablesIDRequest,
@@ -129,8 +129,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Replace a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   putVariablesID(
     request: PutVariablesIDRequest,
@@ -147,8 +147,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Update a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchVariablesID(
     request: PatchVariablesIDRequest,
@@ -165,8 +165,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Delete a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteVariablesID(
     request: DeleteVariablesIDRequest,
@@ -182,8 +182,8 @@ export class VariablesAPI extends APIBase {
   /**
    * List all labels for a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getVariablesIDLabels(
     request: GetVariablesIDLabelsRequest,
@@ -199,8 +199,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Add a label to a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postVariablesIDLabels(
     request: PostVariablesIDLabelsRequest,
@@ -217,8 +217,8 @@ export class VariablesAPI extends APIBase {
   /**
    * Delete a label from a variable.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteVariablesIDLabelsID(
     request: DeleteVariablesIDLabelsIDRequest,

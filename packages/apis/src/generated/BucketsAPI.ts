@@ -110,7 +110,7 @@ export interface DeleteBucketsIDOwnersIDRequest {
 export class BucketsAPI extends APIBase {
   /**
    * Creates BucketsAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -118,8 +118,8 @@ export class BucketsAPI extends APIBase {
   /**
    * List all buckets.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getBuckets(
     request?: GetBucketsRequest,
@@ -141,8 +141,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Create a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBuckets
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postBuckets(
     request: PostBucketsRequest,
@@ -159,8 +159,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Retrieve a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getBucketsID(
     request: GetBucketsIDRequest,
@@ -176,8 +176,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Update a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchBucketsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   patchBucketsID(
     request: PatchBucketsIDRequest,
@@ -194,8 +194,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Delete a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteBucketsID(
     request: DeleteBucketsIDRequest,
@@ -211,8 +211,8 @@ export class BucketsAPI extends APIBase {
   /**
    * List all labels for a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getBucketsIDLabels(
     request: GetBucketsIDLabelsRequest,
@@ -228,8 +228,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Add a label to a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDLabels
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postBucketsIDLabels(
     request: PostBucketsIDLabelsRequest,
@@ -246,8 +246,8 @@ export class BucketsAPI extends APIBase {
   /**
    * delete a label from a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteBucketsIDLabelsID(
     request: DeleteBucketsIDLabelsIDRequest,
@@ -263,8 +263,8 @@ export class BucketsAPI extends APIBase {
   /**
    * List all users with member privileges for a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getBucketsIDMembers(
     request: GetBucketsIDMembersRequest,
@@ -280,8 +280,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Add a member to a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDMembers
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postBucketsIDMembers(
     request: PostBucketsIDMembersRequest,
@@ -298,8 +298,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Remove a member from a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDMembersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteBucketsIDMembersID(
     request: DeleteBucketsIDMembersIDRequest,
@@ -315,8 +315,8 @@ export class BucketsAPI extends APIBase {
   /**
    * List all owners of a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   getBucketsIDOwners(
     request: GetBucketsIDOwnersRequest,
@@ -332,8 +332,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Add an owner to a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postBucketsIDOwners(
     request: PostBucketsIDOwnersRequest,
@@ -350,8 +350,8 @@ export class BucketsAPI extends APIBase {
   /**
    * Remove an owner from a bucket.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   deleteBucketsIDOwnersID(
     request: DeleteBucketsIDOwnersIDRequest,

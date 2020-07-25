@@ -20,7 +20,7 @@ export interface PostWriteRequest {
 export class WriteAPI extends APIBase {
   /**
    * Creates WriteAPI
-   * @param influxDB InfluxDB
+   * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
     super(influxDB)
@@ -28,8 +28,8 @@ export class WriteAPI extends APIBase {
   /**
    * Write time series data into InfluxDB.
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
-   * @param request
-   * @return promise of response
+   * @param request - request parameters and body (if supported)
+   * @returns promise of response
    */
   postWrite(
     request: PostWriteRequest,

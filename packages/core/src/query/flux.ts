@@ -30,8 +30,8 @@ class FluxParameter implements FluxParameterLike, ParameterizedQuery {
 /**
  * Escapes content of the supplied string so it can be wrapped into double qoutes
  * to become a [flux string literal](https://docs.influxdata.com/flux/v0.65/language/lexical-elements/#string-literals).
- * @param value string value
- * @return sanitized string
+ * @param value - string value
+ * @returns sanitized string
  */
 function sanitizeString(value: any): string {
   if (value === null || value === undefined) return ''
@@ -169,7 +169,7 @@ export function fluxBool(value: any): FluxParameterLike {
 /**
  * Assumes that the supplied value is flux expression or literal that does not need sanitizing.
  *
- * @param value any value
+ * @param value - any value
  * @returns the supplied value as-is
  */
 export function fluxExpression(value: any): FluxParameterLike {
@@ -178,8 +178,8 @@ export function fluxExpression(value: any): FluxParameterLike {
 
 /**
  * Escapes content of the supplied parameter so that it can be safely embedded into flux query.
- * @param value parameter value
- * @return sanitized flux value or an empty string if it cannot be converted
+ * @param value - parameter value
+ * @returns sanitized flux value or an empty string if it cannot be converted
  */
 export function toFluxValue(value: any): string {
   if (value === undefined) {
