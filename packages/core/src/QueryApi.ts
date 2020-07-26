@@ -13,6 +13,7 @@ export function defaultRowMapping(
   return tableMeta.toObject(values)
 }
 
+/** QueryOptions contains QueryApi configuration options. */
 export interface QueryOptions {
   /**
    * Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably.

@@ -2,6 +2,7 @@ export type ObserverNext<T> = (value: T) => void
 export type ObserverError = (e: any) => void
 export type ObserverComplete = () => void
 
+/** Observer mimics Observer from ECMAScript TC39 Observable proposal */
 export interface Observer<T> {
   next: ObserverNext<T>
   error: ObserverError
@@ -28,6 +29,7 @@ export interface Observable<T> {
   /* [Symbol.observable](): Observable<T> */
 }
 
+/** Subscription mimics Subscription from ECMAScript TC39 Observable proposal */
 export interface Subscription {
   readonly closed: boolean
   unsubscribe(): void

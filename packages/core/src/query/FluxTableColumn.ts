@@ -11,6 +11,9 @@ export type ColumnType =
   | 'dateTime'
   | 'duration'
 
+/**
+ * FluxTableColumnLike provides metadata of a flux table column.
+ */
 export interface FluxTableColumnLike {
   /**
    * Label (e.g., "_start", "_stop", "_time").
@@ -33,7 +36,7 @@ export interface FluxTableColumnLike {
   defaultValue?: string
 }
 /**
- * Column metadata of a [flux table](http://bit.ly/flux-spec#table).
+ * Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column.
  */
 export default class FluxTableColumn {
   /**

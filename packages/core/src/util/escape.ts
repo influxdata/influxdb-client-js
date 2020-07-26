@@ -91,6 +91,9 @@ const escaperConfig = new EscaperConfig(escapeChar)
 
 const bindEsc = (e: Escaper): ((val: string) => string) => e.escape.bind(e)
 
+/**
+ * Provides functions escape specific parts in InfluxDB line protocol.
+ */
 export const escape = {
   /**
    * Measurement escapes measurement names.
