@@ -100,7 +100,7 @@ export interface Transport {
   request(path: string, body: any, options: SendOptions): Promise<any>
 
   /**
-   * Returns operations for chunks emitted to the {@link send} method communication observer.
+   * Combines response chunks to create a single response object.
    */
   readonly chunkCombiner: ChunkCombiner
 }
