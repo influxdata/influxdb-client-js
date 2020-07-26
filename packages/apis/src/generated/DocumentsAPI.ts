@@ -61,13 +61,16 @@ export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID
  */
-export class DocumentsAPI extends APIBase {
+export class DocumentsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates DocumentsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates
@@ -78,9 +81,9 @@ export class DocumentsAPI extends APIBase {
     request?: GetDocumentsTemplatesRequest,
     requestOptions?: RequestOptions
   ): Promise<Documents> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/documents/templates${this.queryString(request, [
+      `/api/v2/documents/templates${this.base.queryString(request, [
         'org',
         'orgID',
       ])}`,
@@ -98,7 +101,7 @@ export class DocumentsAPI extends APIBase {
     request: PostDocumentsTemplatesRequest,
     requestOptions?: RequestOptions
   ): Promise<Document> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/documents/templates`,
       request,
@@ -115,7 +118,7 @@ export class DocumentsAPI extends APIBase {
     request: GetDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Document> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/documents/templates/${request.templateID}`,
       request,
@@ -131,7 +134,7 @@ export class DocumentsAPI extends APIBase {
     request: PutDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Document> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/documents/templates/${request.templateID}`,
       request,
@@ -149,7 +152,7 @@ export class DocumentsAPI extends APIBase {
     request: DeleteDocumentsTemplatesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/documents/templates/${request.templateID}`,
       request,
@@ -166,7 +169,7 @@ export class DocumentsAPI extends APIBase {
     request: GetDocumentsTemplatesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/documents/templates/${request.templateID}/labels`,
       request,
@@ -183,7 +186,7 @@ export class DocumentsAPI extends APIBase {
     request: PostDocumentsTemplatesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/documents/templates/${request.templateID}/labels`,
       request,
@@ -201,7 +204,7 @@ export class DocumentsAPI extends APIBase {
     request: DeleteDocumentsTemplatesIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/documents/templates/${request.templateID}/labels/${request.labelID}`,
       request,

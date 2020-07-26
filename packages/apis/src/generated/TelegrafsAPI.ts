@@ -101,13 +101,16 @@ export interface DeleteTelegrafsIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
  */
-export class TelegrafsAPI extends APIBase {
+export class TelegrafsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates TelegrafsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
@@ -118,9 +121,9 @@ export class TelegrafsAPI extends APIBase {
     request?: GetTelegrafsRequest,
     requestOptions?: RequestOptions
   ): Promise<Telegrafs> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/telegrafs${this.queryString(request, ['orgID'])}`,
+      `/api/v2/telegrafs${this.base.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )
@@ -135,7 +138,7 @@ export class TelegrafsAPI extends APIBase {
     request: PostTelegrafsRequest,
     requestOptions?: RequestOptions
   ): Promise<Telegraf> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/telegrafs`,
       request,
@@ -153,7 +156,7 @@ export class TelegrafsAPI extends APIBase {
     request: GetTelegrafsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<string> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/telegrafs/${request.telegrafID}`,
       request,
@@ -170,7 +173,7 @@ export class TelegrafsAPI extends APIBase {
     request: PutTelegrafsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Telegraf> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/telegrafs/${request.telegrafID}`,
       request,
@@ -188,7 +191,7 @@ export class TelegrafsAPI extends APIBase {
     request: DeleteTelegrafsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/telegrafs/${request.telegrafID}`,
       request,
@@ -205,7 +208,7 @@ export class TelegrafsAPI extends APIBase {
     request: GetTelegrafsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/telegrafs/${request.telegrafID}/labels`,
       request,
@@ -222,7 +225,7 @@ export class TelegrafsAPI extends APIBase {
     request: PostTelegrafsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/telegrafs/${request.telegrafID}/labels`,
       request,
@@ -240,7 +243,7 @@ export class TelegrafsAPI extends APIBase {
     request: DeleteTelegrafsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/telegrafs/${request.telegrafID}/labels/${request.labelID}`,
       request,
@@ -257,7 +260,7 @@ export class TelegrafsAPI extends APIBase {
     request: GetTelegrafsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/telegrafs/${request.telegrafID}/members`,
       request,
@@ -274,7 +277,7 @@ export class TelegrafsAPI extends APIBase {
     request: PostTelegrafsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/telegrafs/${request.telegrafID}/members`,
       request,
@@ -292,7 +295,7 @@ export class TelegrafsAPI extends APIBase {
     request: DeleteTelegrafsIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/telegrafs/${request.telegrafID}/members/${request.userID}`,
       request,
@@ -309,7 +312,7 @@ export class TelegrafsAPI extends APIBase {
     request: GetTelegrafsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/telegrafs/${request.telegrafID}/owners`,
       request,
@@ -326,7 +329,7 @@ export class TelegrafsAPI extends APIBase {
     request: PostTelegrafsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/telegrafs/${request.telegrafID}/owners`,
       request,
@@ -344,7 +347,7 @@ export class TelegrafsAPI extends APIBase {
     request: DeleteTelegrafsIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/telegrafs/${request.telegrafID}/owners/${request.userID}`,
       request,

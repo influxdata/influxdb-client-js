@@ -66,13 +66,16 @@ export interface DeleteVariablesIDLabelsIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
  */
-export class VariablesAPI extends APIBase {
+export class VariablesAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates VariablesAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all variables.
@@ -84,9 +87,9 @@ export class VariablesAPI extends APIBase {
     request?: GetVariablesRequest,
     requestOptions?: RequestOptions
   ): Promise<Variables> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/variables${this.queryString(request, ['org', 'orgID'])}`,
+      `/api/v2/variables${this.base.queryString(request, ['org', 'orgID'])}`,
       request,
       requestOptions
     )
@@ -101,7 +104,7 @@ export class VariablesAPI extends APIBase {
     request: PostVariablesRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/variables`,
       request,
@@ -119,7 +122,7 @@ export class VariablesAPI extends APIBase {
     request: GetVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/variables/${request.variableID}`,
       request,
@@ -136,7 +139,7 @@ export class VariablesAPI extends APIBase {
     request: PutVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/variables/${request.variableID}`,
       request,
@@ -154,7 +157,7 @@ export class VariablesAPI extends APIBase {
     request: PatchVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Variable> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/variables/${request.variableID}`,
       request,
@@ -172,7 +175,7 @@ export class VariablesAPI extends APIBase {
     request: DeleteVariablesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/variables/${request.variableID}`,
       request,
@@ -189,7 +192,7 @@ export class VariablesAPI extends APIBase {
     request: GetVariablesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/variables/${request.variableID}/labels`,
       request,
@@ -206,7 +209,7 @@ export class VariablesAPI extends APIBase {
     request: PostVariablesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/variables/${request.variableID}/labels`,
       request,
@@ -224,7 +227,7 @@ export class VariablesAPI extends APIBase {
     request: DeleteVariablesIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/variables/${request.variableID}/labels/${request.labelID}`,
       request,

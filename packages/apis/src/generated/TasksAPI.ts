@@ -170,13 +170,16 @@ export interface DeleteTasksIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDOwnersID
  */
-export class TasksAPI extends APIBase {
+export class TasksAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates TasksAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all tasks.
@@ -188,9 +191,9 @@ export class TasksAPI extends APIBase {
     request?: GetTasksRequest,
     requestOptions?: RequestOptions
   ): Promise<Tasks> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/tasks${this.queryString(request, [
+      `/api/v2/tasks${this.base.queryString(request, [
         'name',
         'after',
         'user',
@@ -213,7 +216,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksRequest,
     requestOptions?: RequestOptions
   ): Promise<Task> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks`,
       request,
@@ -231,7 +234,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Task> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}`,
       request,
@@ -248,7 +251,7 @@ export class TasksAPI extends APIBase {
     request: PatchTasksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Task> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/tasks/${request.taskID}`,
       request,
@@ -266,7 +269,7 @@ export class TasksAPI extends APIBase {
     request: DeleteTasksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/tasks/${request.taskID}`,
       request,
@@ -283,9 +286,9 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDRunsRequest,
     requestOptions?: RequestOptions
   ): Promise<Runs> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/tasks/${request.taskID}/runs${this.queryString(request, [
+      `/api/v2/tasks/${request.taskID}/runs${this.base.queryString(request, [
         'after',
         'limit',
         'afterTime',
@@ -305,7 +308,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksIDRunsRequest,
     requestOptions?: RequestOptions
   ): Promise<Run> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks/${request.taskID}/runs`,
       request,
@@ -323,7 +326,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDRunsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Run> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/runs/${request.runID}`,
       request,
@@ -340,7 +343,7 @@ export class TasksAPI extends APIBase {
     request: DeleteTasksIDRunsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/tasks/${request.taskID}/runs/${request.runID}`,
       request,
@@ -357,7 +360,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksIDRunsIDRetryRequest,
     requestOptions?: RequestOptions
   ): Promise<Run> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks/${request.taskID}/runs/${request.runID}/retry`,
       request,
@@ -374,7 +377,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDLogsRequest,
     requestOptions?: RequestOptions
   ): Promise<Logs> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/logs`,
       request,
@@ -391,7 +394,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDRunsIDLogsRequest,
     requestOptions?: RequestOptions
   ): Promise<Logs> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/runs/${request.runID}/logs`,
       request,
@@ -408,7 +411,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/labels`,
       request,
@@ -425,7 +428,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks/${request.taskID}/labels`,
       request,
@@ -443,7 +446,7 @@ export class TasksAPI extends APIBase {
     request: DeleteTasksIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/tasks/${request.taskID}/labels/${request.labelID}`,
       request,
@@ -460,7 +463,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/members`,
       request,
@@ -477,7 +480,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks/${request.taskID}/members`,
       request,
@@ -495,7 +498,7 @@ export class TasksAPI extends APIBase {
     request: DeleteTasksIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/tasks/${request.taskID}/members/${request.userID}`,
       request,
@@ -512,7 +515,7 @@ export class TasksAPI extends APIBase {
     request: GetTasksIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/tasks/${request.taskID}/owners`,
       request,
@@ -529,7 +532,7 @@ export class TasksAPI extends APIBase {
     request: PostTasksIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/tasks/${request.taskID}/owners`,
       request,
@@ -547,7 +550,7 @@ export class TasksAPI extends APIBase {
     request: DeleteTasksIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/tasks/${request.taskID}/owners/${request.userID}`,
       request,

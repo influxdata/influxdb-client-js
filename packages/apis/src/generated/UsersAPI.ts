@@ -37,13 +37,16 @@ export interface PostUsersIDPasswordRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
  */
-export class UsersAPI extends APIBase {
+export class UsersAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates UsersAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all users.
@@ -55,7 +58,7 @@ export class UsersAPI extends APIBase {
     request?: GetUsersRequest,
     requestOptions?: RequestOptions
   ): Promise<Users> {
-    return this.request('GET', `/api/v2/users`, request, requestOptions)
+    return this.base.request('GET', `/api/v2/users`, request, requestOptions)
   }
   /**
    * Create a user.
@@ -67,7 +70,7 @@ export class UsersAPI extends APIBase {
     request: PostUsersRequest,
     requestOptions?: RequestOptions
   ): Promise<User> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/users`,
       request,
@@ -85,7 +88,7 @@ export class UsersAPI extends APIBase {
     request: GetUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<User> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/users/${request.userID}`,
       request,
@@ -102,7 +105,7 @@ export class UsersAPI extends APIBase {
     request: PatchUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<User> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/users/${request.userID}`,
       request,
@@ -120,7 +123,7 @@ export class UsersAPI extends APIBase {
     request: DeleteUsersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/users/${request.userID}`,
       request,
@@ -137,7 +140,7 @@ export class UsersAPI extends APIBase {
     request: PostUsersIDPasswordRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/users/${request.userID}/password`,
       request,

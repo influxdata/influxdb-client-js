@@ -18,13 +18,16 @@ export interface PostDeleteRequest {
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete
  */
-export class DeleteAPI extends APIBase {
+export class DeleteAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates DeleteAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Delete time series data from InfluxDB.
@@ -36,9 +39,9 @@ export class DeleteAPI extends APIBase {
     request: PostDeleteRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'POST',
-      `/api/v2/delete${this.queryString(request, [
+      `/api/v2/delete${this.base.queryString(request, [
         'org',
         'bucket',
         'orgID',

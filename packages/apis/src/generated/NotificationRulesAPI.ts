@@ -78,13 +78,16 @@ export interface GetNotificationRulesIDQueryRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesIDLabelsID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery
  */
-export class NotificationRulesAPI extends APIBase {
+export class NotificationRulesAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates NotificationRulesAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all notification rules.
@@ -96,9 +99,9 @@ export class NotificationRulesAPI extends APIBase {
     request: GetNotificationRulesRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationRules> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/notificationRules${this.queryString(request, [
+      `/api/v2/notificationRules${this.base.queryString(request, [
         'offset',
         'limit',
         'orgID',
@@ -119,7 +122,7 @@ export class NotificationRulesAPI extends APIBase {
     request: CreateNotificationRuleRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationRule> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/notificationRules`,
       request,
@@ -137,7 +140,7 @@ export class NotificationRulesAPI extends APIBase {
     request: GetNotificationRulesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationRule> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/notificationRules/${request.ruleID}`,
       request,
@@ -154,7 +157,7 @@ export class NotificationRulesAPI extends APIBase {
     request: PutNotificationRulesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationRule> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/notificationRules/${request.ruleID}`,
       request,
@@ -172,7 +175,7 @@ export class NotificationRulesAPI extends APIBase {
     request: PatchNotificationRulesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationRule> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/notificationRules/${request.ruleID}`,
       request,
@@ -190,7 +193,7 @@ export class NotificationRulesAPI extends APIBase {
     request: DeleteNotificationRulesIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/notificationRules/${request.ruleID}`,
       request,
@@ -207,7 +210,7 @@ export class NotificationRulesAPI extends APIBase {
     request: GetNotificationRulesIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/notificationRules/${request.ruleID}/labels`,
       request,
@@ -224,7 +227,7 @@ export class NotificationRulesAPI extends APIBase {
     request: PostNotificationRuleIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/notificationRules/${request.ruleID}/labels`,
       request,
@@ -242,7 +245,7 @@ export class NotificationRulesAPI extends APIBase {
     request: DeleteNotificationRulesIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/notificationRules/${request.ruleID}/labels/${request.labelID}`,
       request,
@@ -259,7 +262,7 @@ export class NotificationRulesAPI extends APIBase {
     request: GetNotificationRulesIDQueryRequest,
     requestOptions?: RequestOptions
   ): Promise<FluxResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/notificationRules/${request.ruleID}/query`,
       request,

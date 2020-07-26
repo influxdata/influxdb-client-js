@@ -39,13 +39,16 @@ export interface PostQueryRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
  */
-export class QueryAPI extends APIBase {
+export class QueryAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates QueryAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst
@@ -56,7 +59,7 @@ export class QueryAPI extends APIBase {
     request: PostQueryAstRequest,
     requestOptions?: RequestOptions
   ): Promise<ASTResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/query/ast`,
       request,
@@ -73,7 +76,7 @@ export class QueryAPI extends APIBase {
     request?: GetQuerySuggestionsRequest,
     requestOptions?: RequestOptions
   ): Promise<FluxSuggestions> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/query/suggestions`,
       request,
@@ -89,7 +92,7 @@ export class QueryAPI extends APIBase {
     request: GetQuerySuggestionsNameRequest,
     requestOptions?: RequestOptions
   ): Promise<FluxSuggestion> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/query/suggestions/${request.name}`,
       request,
@@ -106,7 +109,7 @@ export class QueryAPI extends APIBase {
     request: PostQueryAnalyzeRequest,
     requestOptions?: RequestOptions
   ): Promise<AnalyzeQueryResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/query/analyze`,
       request,
@@ -124,9 +127,9 @@ export class QueryAPI extends APIBase {
     request: PostQueryRequest,
     requestOptions?: RequestOptions
   ): Promise<string> {
-    return this.request(
+    return this.base.request(
       'POST',
-      `/api/v2/query${this.queryString(request, ['org', 'orgID'])}`,
+      `/api/v2/query${this.base.queryString(request, ['org', 'orgID'])}`,
       request,
       requestOptions,
       'application/json'

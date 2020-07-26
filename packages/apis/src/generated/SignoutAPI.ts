@@ -6,13 +6,16 @@ export interface PostSignoutRequest {}
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
  */
-export class SignoutAPI extends APIBase {
+export class SignoutAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates SignoutAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Expire the current session.
@@ -24,6 +27,6 @@ export class SignoutAPI extends APIBase {
     request?: PostSignoutRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request('POST', `/api/v2/signout`, request, requestOptions)
+    return this.base.request('POST', `/api/v2/signout`, request, requestOptions)
   }
 }

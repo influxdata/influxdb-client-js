@@ -103,13 +103,16 @@ function generateClass(
     )}\n`
   }
   classDef += ` */
-export class ${apiName} extends APIBase {
+export class ${apiName} {
+  // internal
+  private base: APIBase
+
   /**
    * Creates ${apiName}
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }`
 
   for (const operation of operations) {
@@ -136,14 +139,14 @@ export class ${apiName} extends APIBase {
     }: ${opId}Request, requestOptions?: RequestOptions): Promise<${getReturnType(
       operation
     )}> {
-    return this.request('${operation.operation.toUpperCase()}', \`${
+    return this.base.request('${operation.operation.toUpperCase()}', \`${
       operation.server
     }${operation.path.replace(
       /\{([^}]*)\}/g,
       (_match, param) => '${request.' + param + '}'
     )}${
       operation.queryParams.length
-        ? '${this.queryString(request,[' +
+        ? '${this.base.queryString(request,[' +
           operation.queryParams.map(x => "'" + x.name + "'").join(',') +
           '])}'
         : ''

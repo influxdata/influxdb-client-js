@@ -117,13 +117,16 @@ export interface DeleteScrapersIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
  */
-export class ScrapersAPI extends APIBase {
+export class ScrapersAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates ScrapersAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all scraper targets.
@@ -135,9 +138,9 @@ export class ScrapersAPI extends APIBase {
     request?: GetScrapersRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponses> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/scrapers${this.queryString(request, [
+      `/api/v2/scrapers${this.base.queryString(request, [
         'name',
         'id',
         'orgID',
@@ -157,7 +160,7 @@ export class ScrapersAPI extends APIBase {
     request: PostScrapersRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers`,
       request,
@@ -175,7 +178,7 @@ export class ScrapersAPI extends APIBase {
     request: GetScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -192,7 +195,7 @@ export class ScrapersAPI extends APIBase {
     request: PatchScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -210,7 +213,7 @@ export class ScrapersAPI extends APIBase {
     request: DeleteScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -227,7 +230,7 @@ export class ScrapersAPI extends APIBase {
     request: GetScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
@@ -244,7 +247,7 @@ export class ScrapersAPI extends APIBase {
     request: PostScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
@@ -262,7 +265,7 @@ export class ScrapersAPI extends APIBase {
     request: PatchScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
@@ -280,7 +283,7 @@ export class ScrapersAPI extends APIBase {
     request: DeleteScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
@@ -297,7 +300,7 @@ export class ScrapersAPI extends APIBase {
     request: GetScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
@@ -314,7 +317,7 @@ export class ScrapersAPI extends APIBase {
     request: PostScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
@@ -332,7 +335,7 @@ export class ScrapersAPI extends APIBase {
     request: DeleteScrapersIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/members/${request.userID}`,
       request,
@@ -349,7 +352,7 @@ export class ScrapersAPI extends APIBase {
     request: GetScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
@@ -366,7 +369,7 @@ export class ScrapersAPI extends APIBase {
     request: PostScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
@@ -384,7 +387,7 @@ export class ScrapersAPI extends APIBase {
     request: DeleteScrapersIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/owners/${request.userID}`,
       request,

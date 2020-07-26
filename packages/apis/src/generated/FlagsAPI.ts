@@ -7,13 +7,16 @@ export interface GetFlagsRequest {}
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags
  */
-export class FlagsAPI extends APIBase {
+export class FlagsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates FlagsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Return the feature flags for the currently authenticated user.
@@ -25,6 +28,6 @@ export class FlagsAPI extends APIBase {
     request?: GetFlagsRequest,
     requestOptions?: RequestOptions
   ): Promise<Flags> {
-    return this.request('GET', `/api/v2/flags`, request, requestOptions)
+    return this.base.request('GET', `/api/v2/flags`, request, requestOptions)
   }
 }

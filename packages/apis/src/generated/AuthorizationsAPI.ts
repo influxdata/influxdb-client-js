@@ -42,13 +42,16 @@ export interface DeleteAuthorizationsIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID
  */
-export class AuthorizationsAPI extends APIBase {
+export class AuthorizationsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates AuthorizationsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all authorizations.
@@ -60,9 +63,9 @@ export class AuthorizationsAPI extends APIBase {
     request?: GetAuthorizationsRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorizations> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/authorizations${this.queryString(request, [
+      `/api/v2/authorizations${this.base.queryString(request, [
         'userID',
         'user',
         'orgID',
@@ -82,7 +85,7 @@ export class AuthorizationsAPI extends APIBase {
     request: PostAuthorizationsRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorization> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/authorizations`,
       request,
@@ -100,7 +103,7 @@ export class AuthorizationsAPI extends APIBase {
     request: GetAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorization> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/authorizations/${request.authID}`,
       request,
@@ -117,7 +120,7 @@ export class AuthorizationsAPI extends APIBase {
     request: PatchAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Authorization> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/authorizations/${request.authID}`,
       request,
@@ -135,7 +138,7 @@ export class AuthorizationsAPI extends APIBase {
     request: DeleteAuthorizationsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/authorizations/${request.authID}`,
       request,

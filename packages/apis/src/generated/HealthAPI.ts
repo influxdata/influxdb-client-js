@@ -7,13 +7,16 @@ export interface GetHealthRequest {}
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth
  */
-export class HealthAPI extends APIBase {
+export class HealthAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates HealthAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get the health of an instance.
@@ -25,6 +28,6 @@ export class HealthAPI extends APIBase {
     request?: GetHealthRequest,
     requestOptions?: RequestOptions
   ): Promise<HealthCheck> {
-    return this.request('GET', `/health`, request, requestOptions)
+    return this.base.request('GET', `/health`, request, requestOptions)
   }
 }

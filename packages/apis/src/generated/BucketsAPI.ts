@@ -107,13 +107,16 @@ export interface DeleteBucketsIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID
  */
-export class BucketsAPI extends APIBase {
+export class BucketsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates BucketsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all buckets.
@@ -125,9 +128,9 @@ export class BucketsAPI extends APIBase {
     request?: GetBucketsRequest,
     requestOptions?: RequestOptions
   ): Promise<Buckets> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/buckets${this.queryString(request, [
+      `/api/v2/buckets${this.base.queryString(request, [
         'offset',
         'limit',
         'org',
@@ -148,7 +151,7 @@ export class BucketsAPI extends APIBase {
     request: PostBucketsRequest,
     requestOptions?: RequestOptions
   ): Promise<Bucket> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/buckets`,
       request,
@@ -166,7 +169,7 @@ export class BucketsAPI extends APIBase {
     request: GetBucketsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Bucket> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/buckets/${request.bucketID}`,
       request,
@@ -183,7 +186,7 @@ export class BucketsAPI extends APIBase {
     request: PatchBucketsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Bucket> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/buckets/${request.bucketID}`,
       request,
@@ -201,7 +204,7 @@ export class BucketsAPI extends APIBase {
     request: DeleteBucketsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/buckets/${request.bucketID}`,
       request,
@@ -218,7 +221,7 @@ export class BucketsAPI extends APIBase {
     request: GetBucketsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/buckets/${request.bucketID}/labels`,
       request,
@@ -235,7 +238,7 @@ export class BucketsAPI extends APIBase {
     request: PostBucketsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/buckets/${request.bucketID}/labels`,
       request,
@@ -253,7 +256,7 @@ export class BucketsAPI extends APIBase {
     request: DeleteBucketsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/buckets/${request.bucketID}/labels/${request.labelID}`,
       request,
@@ -270,7 +273,7 @@ export class BucketsAPI extends APIBase {
     request: GetBucketsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/buckets/${request.bucketID}/members`,
       request,
@@ -287,7 +290,7 @@ export class BucketsAPI extends APIBase {
     request: PostBucketsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/buckets/${request.bucketID}/members`,
       request,
@@ -305,7 +308,7 @@ export class BucketsAPI extends APIBase {
     request: DeleteBucketsIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/buckets/${request.bucketID}/members/${request.userID}`,
       request,
@@ -322,7 +325,7 @@ export class BucketsAPI extends APIBase {
     request: GetBucketsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/buckets/${request.bucketID}/owners`,
       request,
@@ -339,7 +342,7 @@ export class BucketsAPI extends APIBase {
     request: PostBucketsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/buckets/${request.bucketID}/owners`,
       request,
@@ -357,7 +360,7 @@ export class BucketsAPI extends APIBase {
     request: DeleteBucketsIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/buckets/${request.bucketID}/owners/${request.userID}`,
       request,

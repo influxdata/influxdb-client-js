@@ -17,13 +17,16 @@ export interface PostSetupUserRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
  */
-export class SetupAPI extends APIBase {
+export class SetupAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates SetupAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Check if database has default user, org, bucket.
@@ -35,7 +38,7 @@ export class SetupAPI extends APIBase {
     request?: GetSetupRequest,
     requestOptions?: RequestOptions
   ): Promise<IsOnboarding> {
-    return this.request('GET', `/api/v2/setup`, request, requestOptions)
+    return this.base.request('GET', `/api/v2/setup`, request, requestOptions)
   }
   /**
    * Set up initial user, org and bucket.
@@ -47,7 +50,7 @@ export class SetupAPI extends APIBase {
     request: PostSetupRequest,
     requestOptions?: RequestOptions
   ): Promise<OnboardingResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/setup`,
       request,
@@ -65,7 +68,7 @@ export class SetupAPI extends APIBase {
     request: PostSetupUserRequest,
     requestOptions?: RequestOptions
   ): Promise<OnboardingResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/setup/user`,
       request,

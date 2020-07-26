@@ -48,13 +48,16 @@ export interface DeleteDBRPIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
  */
-export class DbrpsAPI extends APIBase {
+export class DbrpsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates DbrpsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all database retention policy mappings.
@@ -66,9 +69,9 @@ export class DbrpsAPI extends APIBase {
     request: GetDBRPsRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRPs> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dbrps${this.queryString(request, [
+      `/api/v2/dbrps${this.base.queryString(request, [
         'orgID',
         'id',
         'bucketID',
@@ -90,7 +93,7 @@ export class DbrpsAPI extends APIBase {
     request: PostDBRPRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dbrps`,
       request,
@@ -108,9 +111,11 @@ export class DbrpsAPI extends APIBase {
     request: GetDBRPsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )
@@ -125,9 +130,11 @@ export class DbrpsAPI extends APIBase {
     request: PatchDBRPIDRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'PATCH',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions,
       'application/json'
@@ -143,9 +150,11 @@ export class DbrpsAPI extends APIBase {
     request: DeleteDBRPIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )

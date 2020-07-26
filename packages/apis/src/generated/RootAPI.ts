@@ -7,13 +7,16 @@ export interface GetRoutesRequest {}
  * See
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes
  */
-export class RootAPI extends APIBase {
+export class RootAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates RootAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Map of all top level routes available.
@@ -25,6 +28,6 @@ export class RootAPI extends APIBase {
     request?: GetRoutesRequest,
     requestOptions?: RequestOptions
   ): Promise<Routes> {
-    return this.request('GET', `/api/v2/`, request, requestOptions)
+    return this.base.request('GET', `/api/v2/`, request, requestOptions)
   }
 }

@@ -68,13 +68,16 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID
  */
-export class NotificationEndpointsAPI extends APIBase {
+export class NotificationEndpointsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates NotificationEndpointsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all notification endpoints.
@@ -86,9 +89,9 @@ export class NotificationEndpointsAPI extends APIBase {
     request: GetNotificationEndpointsRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationEndpoints> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/notificationEndpoints${this.queryString(request, [
+      `/api/v2/notificationEndpoints${this.base.queryString(request, [
         'offset',
         'limit',
         'orgID',
@@ -107,7 +110,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: CreateNotificationEndpointRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationEndpoint> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/notificationEndpoints`,
       request,
@@ -125,7 +128,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: GetNotificationEndpointsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationEndpoint> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/notificationEndpoints/${request.endpointID}`,
       request,
@@ -142,7 +145,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: PutNotificationEndpointsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationEndpoint> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/notificationEndpoints/${request.endpointID}`,
       request,
@@ -160,7 +163,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: PatchNotificationEndpointsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<NotificationEndpoint> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/notificationEndpoints/${request.endpointID}`,
       request,
@@ -178,7 +181,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: DeleteNotificationEndpointsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/notificationEndpoints/${request.endpointID}`,
       request,
@@ -195,7 +198,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: GetNotificationEndpointsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/notificationEndpoints/${request.endpointID}/labels`,
       request,
@@ -212,7 +215,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: PostNotificationEndpointIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/notificationEndpoints/${request.endpointID}/labels`,
       request,
@@ -230,7 +233,7 @@ export class NotificationEndpointsAPI extends APIBase {
     request: DeleteNotificationEndpointsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/notificationEndpoints/${request.endpointID}/labels/${request.labelID}`,
       request,

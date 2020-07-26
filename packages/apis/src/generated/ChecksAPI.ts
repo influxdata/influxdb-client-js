@@ -74,13 +74,16 @@ export interface GetChecksIDQueryRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery
  */
-export class ChecksAPI extends APIBase {
+export class ChecksAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates ChecksAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all checks.
@@ -92,9 +95,9 @@ export class ChecksAPI extends APIBase {
     request: GetChecksRequest,
     requestOptions?: RequestOptions
   ): Promise<Checks> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/checks${this.queryString(request, [
+      `/api/v2/checks${this.base.queryString(request, [
         'offset',
         'limit',
         'orgID',
@@ -113,7 +116,7 @@ export class ChecksAPI extends APIBase {
     request: CreateCheckRequest,
     requestOptions?: RequestOptions
   ): Promise<Check> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/checks`,
       request,
@@ -131,7 +134,7 @@ export class ChecksAPI extends APIBase {
     request: GetChecksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Check> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/checks/${request.checkID}`,
       request,
@@ -148,7 +151,7 @@ export class ChecksAPI extends APIBase {
     request: PutChecksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Check> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/checks/${request.checkID}`,
       request,
@@ -166,7 +169,7 @@ export class ChecksAPI extends APIBase {
     request: PatchChecksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Check> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/checks/${request.checkID}`,
       request,
@@ -184,7 +187,7 @@ export class ChecksAPI extends APIBase {
     request: DeleteChecksIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/checks/${request.checkID}`,
       request,
@@ -201,7 +204,7 @@ export class ChecksAPI extends APIBase {
     request: GetChecksIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/checks/${request.checkID}/labels`,
       request,
@@ -218,7 +221,7 @@ export class ChecksAPI extends APIBase {
     request: PostChecksIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/checks/${request.checkID}/labels`,
       request,
@@ -236,7 +239,7 @@ export class ChecksAPI extends APIBase {
     request: DeleteChecksIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/checks/${request.checkID}/labels/${request.labelID}`,
       request,
@@ -253,7 +256,7 @@ export class ChecksAPI extends APIBase {
     request: GetChecksIDQueryRequest,
     requestOptions?: RequestOptions
   ): Promise<FluxResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/checks/${request.checkID}/query`,
       request,

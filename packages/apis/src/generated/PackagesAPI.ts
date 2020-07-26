@@ -64,13 +64,16 @@ export interface ExportStackRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
  */
-export class PackagesAPI extends APIBase {
+export class PackagesAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates PackagesAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Create a new Influx package.
@@ -82,7 +85,7 @@ export class PackagesAPI extends APIBase {
     request: CreatePkgRequest,
     requestOptions?: RequestOptions
   ): Promise<Pkg> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages`,
       request,
@@ -100,7 +103,7 @@ export class PackagesAPI extends APIBase {
     request: ApplyPkgRequest,
     requestOptions?: RequestOptions
   ): Promise<PkgSummary> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages/apply`,
       request,
@@ -120,9 +123,9 @@ export class PackagesAPI extends APIBase {
   ): Promise<{
     stacks?: Stack[]
   }> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/packages/stacks${this.queryString(request, [
+      `/api/v2/packages/stacks${this.base.queryString(request, [
         'orgID',
         'name',
         'stackID',
@@ -141,7 +144,7 @@ export class PackagesAPI extends APIBase {
     request: CreateStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages/stacks`,
       request,
@@ -159,7 +162,7 @@ export class PackagesAPI extends APIBase {
     request: ReadStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/packages/stacks/${request.stack_id}`,
       request,
@@ -176,7 +179,7 @@ export class PackagesAPI extends APIBase {
     request: UpdateStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/packages/stacks/${request.stack_id}`,
       request,
@@ -194,11 +197,11 @@ export class PackagesAPI extends APIBase {
     request: DeleteStackRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
-      `/api/v2/packages/stacks/${request.stack_id}${this.queryString(request, [
-        'orgID',
-      ])}`,
+      `/api/v2/packages/stacks/${
+        request.stack_id
+      }${this.base.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )
@@ -213,11 +216,11 @@ export class PackagesAPI extends APIBase {
     request: ExportStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Pkg> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/packages/stacks/${
         request.stack_id
-      }/export${this.queryString(request, ['orgID'])}`,
+      }/export${this.base.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )

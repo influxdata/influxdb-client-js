@@ -26,7 +26,7 @@ export interface GetDashboardsRequest {
   owner?: string
   /** The column to sort by. */
   sortBy?: string
-  /** List of dashboard IDs to return. If both `id and `owner` are specified, only `id` is used. */
+  /** List of dashboard IDs to return. If both `id` and `owner` are specified, only `id` is used. */
   id?: any
   /** The organization ID. */
   orgID?: string
@@ -171,13 +171,16 @@ export interface DeleteDashboardsIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
  */
-export class DashboardsAPI extends APIBase {
+export class DashboardsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates DashboardsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all dashboards.
@@ -189,9 +192,9 @@ export class DashboardsAPI extends APIBase {
     request?: GetDashboardsRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboards> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dashboards${this.queryString(request, [
+      `/api/v2/dashboards${this.base.queryString(request, [
         'owner',
         'sortBy',
         'id',
@@ -212,7 +215,7 @@ export class DashboardsAPI extends APIBase {
     request: PostDashboardsRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard | DashboardWithViewProperties> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dashboards`,
       request,
@@ -230,11 +233,12 @@ export class DashboardsAPI extends APIBase {
     request: GetDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard | DashboardWithViewProperties> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dashboards/${request.dashboardID}${this.queryString(request, [
-        'include',
-      ])}`,
+      `/api/v2/dashboards/${request.dashboardID}${this.base.queryString(
+        request,
+        ['include']
+      )}`,
       request,
       requestOptions
     )
@@ -249,7 +253,7 @@ export class DashboardsAPI extends APIBase {
     request: PatchDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/dashboards/${request.dashboardID}`,
       request,
@@ -267,7 +271,7 @@ export class DashboardsAPI extends APIBase {
     request: DeleteDashboardsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}`,
       request,
@@ -284,7 +288,7 @@ export class DashboardsAPI extends APIBase {
     request: PostDashboardsIDCellsRequest,
     requestOptions?: RequestOptions
   ): Promise<Cell> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dashboards/${request.dashboardID}/cells`,
       request,
@@ -302,7 +306,7 @@ export class DashboardsAPI extends APIBase {
     request: PutDashboardsIDCellsRequest,
     requestOptions?: RequestOptions
   ): Promise<Dashboard> {
-    return this.request(
+    return this.base.request(
       'PUT',
       `/api/v2/dashboards/${request.dashboardID}/cells`,
       request,
@@ -320,7 +324,7 @@ export class DashboardsAPI extends APIBase {
     request: PatchDashboardsIDCellsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Cell> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}`,
       request,
@@ -338,7 +342,7 @@ export class DashboardsAPI extends APIBase {
     request: DeleteDashboardsIDCellsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}`,
       request,
@@ -355,7 +359,7 @@ export class DashboardsAPI extends APIBase {
     request: GetDashboardsIDCellsIDViewRequest,
     requestOptions?: RequestOptions
   ): Promise<View> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}/view`,
       request,
@@ -372,7 +376,7 @@ export class DashboardsAPI extends APIBase {
     request: PatchDashboardsIDCellsIDViewRequest,
     requestOptions?: RequestOptions
   ): Promise<View> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/dashboards/${request.dashboardID}/cells/${request.cellID}/view`,
       request,
@@ -390,7 +394,7 @@ export class DashboardsAPI extends APIBase {
     request: GetDashboardsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/dashboards/${request.dashboardID}/labels`,
       request,
@@ -407,7 +411,7 @@ export class DashboardsAPI extends APIBase {
     request: PostDashboardsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dashboards/${request.dashboardID}/labels`,
       request,
@@ -425,7 +429,7 @@ export class DashboardsAPI extends APIBase {
     request: DeleteDashboardsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}/labels/${request.labelID}`,
       request,
@@ -442,7 +446,7 @@ export class DashboardsAPI extends APIBase {
     request: GetDashboardsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/dashboards/${request.dashboardID}/members`,
       request,
@@ -459,7 +463,7 @@ export class DashboardsAPI extends APIBase {
     request: PostDashboardsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dashboards/${request.dashboardID}/members`,
       request,
@@ -477,7 +481,7 @@ export class DashboardsAPI extends APIBase {
     request: DeleteDashboardsIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}/members/${request.userID}`,
       request,
@@ -494,7 +498,7 @@ export class DashboardsAPI extends APIBase {
     request: GetDashboardsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/dashboards/${request.dashboardID}/owners`,
       request,
@@ -511,7 +515,7 @@ export class DashboardsAPI extends APIBase {
     request: PostDashboardsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dashboards/${request.dashboardID}/owners`,
       request,
@@ -529,7 +533,7 @@ export class DashboardsAPI extends APIBase {
     request: DeleteDashboardsIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/dashboards/${request.dashboardID}/owners/${request.userID}`,
       request,

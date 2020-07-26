@@ -161,13 +161,16 @@ export interface DeleteOrgsIDOwnersIDRequest {
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
  * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
  */
-export class OrgsAPI extends APIBase {
+export class OrgsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates OrgsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all organizations.
@@ -179,9 +182,13 @@ export class OrgsAPI extends APIBase {
     request?: GetOrgsRequest,
     requestOptions?: RequestOptions
   ): Promise<Organizations> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/orgs${this.queryString(request, ['org', 'orgID', 'userID'])}`,
+      `/api/v2/orgs${this.base.queryString(request, [
+        'org',
+        'orgID',
+        'userID',
+      ])}`,
       request,
       requestOptions
     )
@@ -196,7 +203,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsRequest,
     requestOptions?: RequestOptions
   ): Promise<Organization> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs`,
       request,
@@ -214,7 +221,7 @@ export class OrgsAPI extends APIBase {
     request: GetOrgsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Organization> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}`,
       request,
@@ -231,7 +238,7 @@ export class OrgsAPI extends APIBase {
     request: PatchOrgsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Organization> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/orgs/${request.orgID}`,
       request,
@@ -249,7 +256,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}`,
       request,
@@ -266,7 +273,7 @@ export class OrgsAPI extends APIBase {
     request: GetOrgsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}/labels`,
       request,
@@ -283,7 +290,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/labels`,
       request,
@@ -301,7 +308,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/labels/${request.labelID}`,
       request,
@@ -318,7 +325,7 @@ export class OrgsAPI extends APIBase {
     request: GetOrgsIDSecretsRequest,
     requestOptions?: RequestOptions
   ): Promise<SecretKeysResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}/secrets`,
       request,
@@ -335,7 +342,7 @@ export class OrgsAPI extends APIBase {
     request: PatchOrgsIDSecretsRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/orgs/${request.orgID}/secrets`,
       request,
@@ -353,7 +360,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDSecretsRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/secrets/delete`,
       request,
@@ -371,7 +378,7 @@ export class OrgsAPI extends APIBase {
     request: GetOrgsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}/members`,
       request,
@@ -388,7 +395,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/members`,
       request,
@@ -406,7 +413,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/members/${request.userID}`,
       request,
@@ -423,7 +430,7 @@ export class OrgsAPI extends APIBase {
     request: GetOrgsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}/owners`,
       request,
@@ -440,7 +447,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/owners`,
       request,
@@ -458,7 +465,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDInvitesRequest,
     requestOptions?: RequestOptions
   ): Promise<Invite> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/invites`,
       request,
@@ -476,7 +483,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDInviteIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/invites/${request.inviteID}`,
       request,
@@ -493,7 +500,7 @@ export class OrgsAPI extends APIBase {
     request: PostOrgsIDInviteIDRequest,
     requestOptions?: RequestOptions
   ): Promise<Invite> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/orgs/${request.orgID}/invites/${request.inviteID}/resend`,
       request,
@@ -509,7 +516,7 @@ export class OrgsAPI extends APIBase {
     request: GetCloudUsersRequest,
     requestOptions?: RequestOptions
   ): Promise<CloudUsers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/orgs/${request.orgID}/users`,
       request,
@@ -526,7 +533,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDCloudUserIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/users/${request.userID}`,
       request,
@@ -543,7 +550,7 @@ export class OrgsAPI extends APIBase {
     request: DeleteOrgsIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/owners/${request.userID}`,
       request,
