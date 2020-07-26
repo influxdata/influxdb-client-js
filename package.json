@@ -8,8 +8,11 @@
     ]
   },
   "scripts": {
+    "apidoc": "yarn clean && yarn build && yarn apidoc:extract && yarn apidoc:generate",
+    "apidoc:extract": "yarn workspaces run apidoc:extract",
+    "apidoc:generate": "api-documenter markdown -i docs -o docs/dist",
     "preinstall": "node ./scripts/require-yarn.js",
-    "clean": "yarn workspaces run clean",
+    "clean": "rimraf temp docs && yarn workspaces run clean",
     "build": "cd packages/core && yarn build && cd ../apis && yarn build",
     "test": "cd packages/core && yarn test && cd ../apis && yarn test",
     "coverage": "cd packages/core && yarn coverage",
@@ -30,6 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@microsoft/api-documenter": "^7.8.21",
     "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",

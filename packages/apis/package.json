@@ -3,6 +3,7 @@
   "version": "1.5.0",
   "description": "InfluxDB 2.0 generated APIs",
   "scripts": {
+    "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && yarn run lint && rollup -c",
     "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf build doc dist",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@influxdata/influxdb-client": "^1.5.0",
+    "@microsoft/api-extractor": "^7.9.2",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chai": "^4.2.0",

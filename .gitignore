@@ -10,4 +10,5 @@ doc
 reports
 yarn-error.log
 .idea/
-temp
+/temp
+/docs

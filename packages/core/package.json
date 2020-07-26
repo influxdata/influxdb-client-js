@@ -3,6 +3,7 @@
   "version": "1.5.0",
   "description": "InfluxDB 2.0 client",
   "scripts": {
+    "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && rollup -c",
     "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
@@ -38,6 +39,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.9.2",
     "@rollup/plugin-replace": "^2.3.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^5.2.7",
