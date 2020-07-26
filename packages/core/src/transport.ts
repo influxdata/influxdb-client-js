@@ -1,7 +1,6 @@
 import Cancellable from './util/Cancellable'
 
 export type Headers = {[header: string]: string | string[] | undefined}
-
 /**
  * Observes communication with the server.
  */
