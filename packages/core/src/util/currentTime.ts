@@ -77,14 +77,14 @@ function seconds(): string {
  * depending on the js platform in use.
  */
 export const currentTime = Object.freeze({
-  [String(WritePrecision.s)]: seconds,
-  [String(WritePrecision.ms)]: millis,
-  [String(WritePrecision.us)]: micros,
-  [String(WritePrecision.ns)]: nanos,
-  seconds,
-  millis,
-  micros,
-  nanos,
+  [String(WritePrecision.s)]: seconds as () => string,
+  [String(WritePrecision.ms)]: millis as () => string,
+  [String(WritePrecision.us)]: micros as () => string,
+  [String(WritePrecision.ns)]: nanos as () => string,
+  seconds: seconds as () => string,
+  millis: millis as () => string,
+  micros: micros as () => string,
+  nanos: nanos as () => string,
 })
 
 export const dateToProtocolTimestamp = {
