@@ -11,6 +11,7 @@
     "apidoc": "yarn clean && yarn build && yarn apidoc:extract && yarn apidoc:generate",
     "apidoc:extract": "yarn workspaces run apidoc:extract",
     "apidoc:generate": "api-documenter markdown -i docs -o docs/dist",
+    "apidoc:gh-pages": "gh-pages -d docs/dist",
     "preinstall": "node ./scripts/require-yarn.js",
     "clean": "rimraf temp docs && yarn workspaces run clean",
     "build": "cd packages/core && yarn build && cd ../apis && yarn build",
@@ -34,6 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@microsoft/api-documenter": "^7.8.21",
+    "gh-pages": "^3.1.0",
     "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
