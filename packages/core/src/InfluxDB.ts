@@ -9,7 +9,7 @@ import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
 
 /**
- * InfluxDB 2.0 client that uses HTTP API described in https://v2.docs.influxdata.com/v2.0/reference/api/ .
+ * InfluxDB 2.0 client that uses HTTP API described in {@link https://v2.docs.influxdata.com/v2.0/reference/api/ }.
  */
 export default class InfluxDB {
   private _options: ClientOptions
