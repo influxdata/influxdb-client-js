@@ -3979,7 +3979,7 @@
       },
       {
         "name": "id",
-        "description": "List of dashboard IDs to return. If both `id and `owner` are specified, only `id` is used.",
+        "description": "List of dashboard IDs to return. If both `id` and `owner` are specified, only `id` is used.",
         "type": "any"
       },
       {
