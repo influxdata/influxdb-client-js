@@ -1,5 +1,8 @@
 import Cancellable from './util/Cancellable'
 
+/**
+ * Type of HTTP headers.
+ */
 export type Headers = {[header: string]: string | string[] | undefined}
 /**
  * Observes communication with the server.
@@ -70,7 +73,7 @@ export interface ChunkCombiner {
 }
 
 /**
- * Simpified platform-neutral transport layer for communication with influx DB.
+ * Simpified platform-neutral transport layer for communication with InfluxDB.
  */
 export interface Transport {
   /**
