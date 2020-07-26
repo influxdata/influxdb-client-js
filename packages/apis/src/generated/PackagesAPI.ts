@@ -55,14 +55,14 @@ export interface ExportStackRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack }
  */
 export class PackagesAPI {
   // internal
@@ -77,8 +77,9 @@ export class PackagesAPI {
   }
   /**
    * Create a new Influx package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createPkg(
@@ -95,8 +96,9 @@ export class PackagesAPI {
   }
   /**
    * Apply or dry-run an Influx package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   applyPkg(
@@ -113,8 +115,9 @@ export class PackagesAPI {
   }
   /**
    * Grab a list of installed Influx packages.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   listStacks(
@@ -136,8 +139,9 @@ export class PackagesAPI {
   }
   /**
    * Create a new stack.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createStack(
@@ -154,8 +158,9 @@ export class PackagesAPI {
   }
   /**
    * Grab a stack by its ID.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   readStack(
@@ -171,8 +176,9 @@ export class PackagesAPI {
   }
   /**
    * Update a an Influx Stack.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   updateStack(
@@ -189,8 +195,9 @@ export class PackagesAPI {
   }
   /**
    * Delete a stack and remove all its associated resources.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteStack(
@@ -208,8 +215,9 @@ export class PackagesAPI {
   }
   /**
    * Export a stack's resources in the form of a package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   exportStack(

@@ -98,9 +98,9 @@ function generateClass(
 ): string {
   let classDef = '/**\n * See\n'
   for (const operation of operations) {
-    classDef += ` * * https://v2.docs.influxdata.com/v2.0/api/#operation/${getOperationId(
+    classDef += ` *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/${getOperationId(
       operation
-    )}\n`
+    )} } \n`
   }
   classDef += ` */
 export class ${apiName} {
@@ -130,8 +130,9 @@ export class ${apiName} {
       classDef += '\n  /**'
     }
     classDef += `
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/${opId}
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/${opId} }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   ${decapitalize1(opId)}(request${

@@ -5,7 +5,7 @@ import {Flags} from './types'
 export interface GetFlagsRequest {}
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags }
  */
 export class FlagsAPI {
   // internal
@@ -20,8 +20,9 @@ export class FlagsAPI {
   }
   /**
    * Return the feature flags for the currently authenticated user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getFlags(

@@ -6,7 +6,7 @@ export interface PostSigninRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin }
  */
 export class SigninAPI {
   // internal
@@ -21,8 +21,9 @@ export class SigninAPI {
   }
   /**
    * Exchange basic auth credentials for session.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postSignin(

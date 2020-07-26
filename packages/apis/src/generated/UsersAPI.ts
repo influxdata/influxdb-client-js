@@ -30,12 +30,12 @@ export interface PostUsersIDPasswordRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword }
  */
 export class UsersAPI {
   // internal
@@ -50,8 +50,9 @@ export class UsersAPI {
   }
   /**
    * List all users.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getUsers(
@@ -62,8 +63,9 @@ export class UsersAPI {
   }
   /**
    * Create a user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postUsers(
@@ -80,8 +82,9 @@ export class UsersAPI {
   }
   /**
    * Retrieve a user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getUsersID(
@@ -97,8 +100,9 @@ export class UsersAPI {
   }
   /**
    * Update a user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchUsersID(
@@ -115,8 +119,9 @@ export class UsersAPI {
   }
   /**
    * Delete a user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteUsersID(
@@ -132,8 +137,9 @@ export class UsersAPI {
   }
   /**
    * Update a password.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postUsersIDPassword(

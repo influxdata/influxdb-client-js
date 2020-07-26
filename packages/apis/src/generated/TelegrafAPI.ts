@@ -8,7 +8,7 @@ export interface GetTelegrafPluginsRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins }
  */
 export class TelegrafAPI {
   // internal
@@ -22,8 +22,9 @@ export class TelegrafAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafPlugins(

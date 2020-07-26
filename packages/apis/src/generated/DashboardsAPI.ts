@@ -150,26 +150,26 @@ export interface DeleteDashboardsIDOwnersIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID }
  */
 export class DashboardsAPI {
   // internal
@@ -184,8 +184,9 @@ export class DashboardsAPI {
   }
   /**
    * Get all dashboards.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboards(
@@ -207,8 +208,9 @@ export class DashboardsAPI {
   }
   /**
    * Create a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDashboards(
@@ -225,8 +227,9 @@ export class DashboardsAPI {
   }
   /**
    * Get a Dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboardsID(
@@ -245,8 +248,9 @@ export class DashboardsAPI {
   }
   /**
    * Update a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchDashboardsID(
@@ -263,8 +267,9 @@ export class DashboardsAPI {
   }
   /**
    * Delete a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDashboardsID(
@@ -280,8 +285,9 @@ export class DashboardsAPI {
   }
   /**
    * Create a dashboard cell.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDashboardsIDCells(
@@ -298,8 +304,9 @@ export class DashboardsAPI {
   }
   /**
    * Replace cells in a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putDashboardsIDCells(
@@ -316,8 +323,9 @@ export class DashboardsAPI {
   }
   /**
    * Update the non-positional information related to a cell.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchDashboardsIDCellsID(
@@ -334,8 +342,9 @@ export class DashboardsAPI {
   }
   /**
    * Delete a dashboard cell.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDashboardsIDCellsID(
@@ -351,8 +360,9 @@ export class DashboardsAPI {
   }
   /**
    * Retrieve the view for a cell.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboardsIDCellsIDView(
@@ -368,8 +378,9 @@ export class DashboardsAPI {
   }
   /**
    * Update the view for a cell.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchDashboardsIDCellsIDView(
@@ -386,8 +397,9 @@ export class DashboardsAPI {
   }
   /**
    * list all labels for a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboardsIDLabels(
@@ -403,8 +415,9 @@ export class DashboardsAPI {
   }
   /**
    * Add a label to a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDashboardsIDLabels(
@@ -421,8 +434,9 @@ export class DashboardsAPI {
   }
   /**
    * Delete a label from a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDashboardsIDLabelsID(
@@ -438,8 +452,9 @@ export class DashboardsAPI {
   }
   /**
    * List all dashboard members.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboardsIDMembers(
@@ -455,8 +470,9 @@ export class DashboardsAPI {
   }
   /**
    * Add a member to a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDashboardsIDMembers(
@@ -473,8 +489,9 @@ export class DashboardsAPI {
   }
   /**
    * Remove a member from a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDashboardsIDMembersID(
@@ -490,8 +507,9 @@ export class DashboardsAPI {
   }
   /**
    * List all dashboard owners.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDashboardsIDOwners(
@@ -507,8 +525,9 @@ export class DashboardsAPI {
   }
   /**
    * Add an owner to a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDashboardsIDOwners(
@@ -525,8 +544,9 @@ export class DashboardsAPI {
   }
   /**
    * Remove an owner from a dashboard.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDashboardsIDOwnersID(

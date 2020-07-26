@@ -15,7 +15,7 @@ export interface PostWriteRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
  */
 export class WriteAPI {
   // internal
@@ -30,8 +30,9 @@ export class WriteAPI {
   }
   /**
    * Write time series data into InfluxDB.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postWrite(

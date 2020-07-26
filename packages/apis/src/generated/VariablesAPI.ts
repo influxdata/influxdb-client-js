@@ -56,15 +56,15 @@ export interface DeleteVariablesIDLabelsIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID }
  */
 export class VariablesAPI {
   // internal
@@ -79,8 +79,9 @@ export class VariablesAPI {
   }
   /**
    * Get all variables.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getVariables(
@@ -96,8 +97,9 @@ export class VariablesAPI {
   }
   /**
    * Create a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postVariables(
@@ -114,8 +116,9 @@ export class VariablesAPI {
   }
   /**
    * Get a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getVariablesID(
@@ -131,8 +134,9 @@ export class VariablesAPI {
   }
   /**
    * Replace a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putVariablesID(
@@ -149,8 +153,9 @@ export class VariablesAPI {
   }
   /**
    * Update a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchVariablesID(
@@ -167,8 +172,9 @@ export class VariablesAPI {
   }
   /**
    * Delete a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteVariablesID(
@@ -184,8 +190,9 @@ export class VariablesAPI {
   }
   /**
    * List all labels for a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getVariablesIDLabels(
@@ -201,8 +208,9 @@ export class VariablesAPI {
   }
   /**
    * Add a label to a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postVariablesIDLabels(
@@ -219,8 +227,9 @@ export class VariablesAPI {
   }
   /**
    * Delete a label from a variable.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteVariablesIDLabelsID(

@@ -36,13 +36,13 @@ export interface GetSourcesIDBucketsRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets }
  */
 export class SourcesAPI {
   // internal
@@ -57,8 +57,9 @@ export class SourcesAPI {
   }
   /**
    * Get all sources.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getSources(
@@ -74,8 +75,9 @@ export class SourcesAPI {
   }
   /**
    * Creates a source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postSources(
@@ -92,8 +94,9 @@ export class SourcesAPI {
   }
   /**
    * Get a source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getSourcesID(
@@ -109,8 +112,9 @@ export class SourcesAPI {
   }
   /**
    * Update a Source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchSourcesID(
@@ -127,8 +131,9 @@ export class SourcesAPI {
   }
   /**
    * Delete a source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteSourcesID(
@@ -144,8 +149,9 @@ export class SourcesAPI {
   }
   /**
    * Get the health of a source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getSourcesIDHealth(
@@ -161,8 +167,9 @@ export class SourcesAPI {
   }
   /**
    * Get buckets in a source.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getSourcesIDBuckets(

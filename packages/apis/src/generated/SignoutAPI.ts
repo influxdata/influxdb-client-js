@@ -4,7 +4,7 @@ import {APIBase, RequestOptions} from '../APIBase'
 export interface PostSignoutRequest {}
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout }
  */
 export class SignoutAPI {
   // internal
@@ -19,8 +19,9 @@ export class SignoutAPI {
   }
   /**
    * Expire the current session.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postSignout(

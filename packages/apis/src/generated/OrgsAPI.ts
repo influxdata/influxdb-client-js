@@ -138,28 +138,28 @@ export interface DeleteOrgsIDOwnersIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID }
  */
 export class OrgsAPI {
   // internal
@@ -174,8 +174,9 @@ export class OrgsAPI {
   }
   /**
    * List all organizations.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgs(
@@ -195,8 +196,9 @@ export class OrgsAPI {
   }
   /**
    * Create an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgs(
@@ -213,8 +215,9 @@ export class OrgsAPI {
   }
   /**
    * Retrieve an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgsID(
@@ -230,8 +233,9 @@ export class OrgsAPI {
   }
   /**
    * Update an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchOrgsID(
@@ -248,8 +252,9 @@ export class OrgsAPI {
   }
   /**
    * Delete an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsID(
@@ -265,8 +270,9 @@ export class OrgsAPI {
   }
   /**
    * List all labels for a organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgsIDLabels(
@@ -282,8 +288,9 @@ export class OrgsAPI {
   }
   /**
    * Add a label to an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDLabels(
@@ -300,8 +307,9 @@ export class OrgsAPI {
   }
   /**
    * Delete a label from an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsIDLabelsID(
@@ -317,8 +325,9 @@ export class OrgsAPI {
   }
   /**
    * List all secret keys for an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgsIDSecrets(
@@ -334,8 +343,9 @@ export class OrgsAPI {
   }
   /**
    * Update secrets in an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchOrgsIDSecrets(
@@ -352,8 +362,9 @@ export class OrgsAPI {
   }
   /**
    * Delete secrets from an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDSecrets(
@@ -370,8 +381,9 @@ export class OrgsAPI {
   }
   /**
    * List all members of an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgsIDMembers(
@@ -387,8 +399,9 @@ export class OrgsAPI {
   }
   /**
    * Add a member to an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDMembers(
@@ -405,8 +418,9 @@ export class OrgsAPI {
   }
   /**
    * Remove a member from an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsIDMembersID(
@@ -422,8 +436,9 @@ export class OrgsAPI {
   }
   /**
    * List all owners of an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getOrgsIDOwners(
@@ -439,8 +454,9 @@ export class OrgsAPI {
   }
   /**
    * Add an owner to an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDOwners(
@@ -457,8 +473,9 @@ export class OrgsAPI {
   }
   /**
    * Creates an invite to an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDInvites(
@@ -475,8 +492,9 @@ export class OrgsAPI {
   }
   /**
    * Remove an invite to an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsIDInviteID(
@@ -492,8 +510,9 @@ export class OrgsAPI {
   }
   /**
    * Resends an invite.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postOrgsIDInviteID(
@@ -508,8 +527,9 @@ export class OrgsAPI {
     )
   }
   /**
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getCloudUsers(
@@ -525,8 +545,9 @@ export class OrgsAPI {
   }
   /**
    * Deletes a cloud user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsIDCloudUserID(
@@ -542,8 +563,9 @@ export class OrgsAPI {
   }
   /**
    * Remove an owner from an organization.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteOrgsIDOwnersID(

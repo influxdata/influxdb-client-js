@@ -101,21 +101,21 @@ export interface DeleteScrapersIDOwnersIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID }
  */
 export class ScrapersAPI {
   // internal
@@ -130,8 +130,9 @@ export class ScrapersAPI {
   }
   /**
    * Get all scraper targets.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapers(
@@ -152,8 +153,9 @@ export class ScrapersAPI {
   }
   /**
    * Create a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapers(
@@ -170,8 +172,9 @@ export class ScrapersAPI {
   }
   /**
    * Get a scraper target by ID.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersID(
@@ -187,8 +190,9 @@ export class ScrapersAPI {
   }
   /**
    * Update a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchScrapersID(
@@ -205,8 +209,9 @@ export class ScrapersAPI {
   }
   /**
    * Delete a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersID(
@@ -222,8 +227,9 @@ export class ScrapersAPI {
   }
   /**
    * List all labels for a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDLabels(
@@ -239,8 +245,9 @@ export class ScrapersAPI {
   }
   /**
    * Add a label to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDLabels(
@@ -257,8 +264,9 @@ export class ScrapersAPI {
   }
   /**
    * Update a label on a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchScrapersIDLabelsID(
@@ -275,8 +283,9 @@ export class ScrapersAPI {
   }
   /**
    * Delete a label from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDLabelsID(
@@ -292,8 +301,9 @@ export class ScrapersAPI {
   }
   /**
    * List all users with member privileges for a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDMembers(
@@ -309,8 +319,9 @@ export class ScrapersAPI {
   }
   /**
    * Add a member to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDMembers(
@@ -327,8 +338,9 @@ export class ScrapersAPI {
   }
   /**
    * Remove a member from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDMembersID(
@@ -344,8 +356,9 @@ export class ScrapersAPI {
   }
   /**
    * List all owners of a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDOwners(
@@ -361,8 +374,9 @@ export class ScrapersAPI {
   }
   /**
    * Add an owner to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDOwners(
@@ -379,8 +393,9 @@ export class ScrapersAPI {
   }
   /**
    * Remove an owner from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDOwnersID(

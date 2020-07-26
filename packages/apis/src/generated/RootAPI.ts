@@ -5,7 +5,7 @@ import {Routes} from './types'
 export interface GetRoutesRequest {}
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes }
  */
 export class RootAPI {
   // internal
@@ -20,8 +20,9 @@ export class RootAPI {
   }
   /**
    * Map of all top level routes available.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getRoutes(

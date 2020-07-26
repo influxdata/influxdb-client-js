@@ -63,16 +63,16 @@ export interface GetChecksIDQueryRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery }
  */
 export class ChecksAPI {
   // internal
@@ -87,8 +87,9 @@ export class ChecksAPI {
   }
   /**
    * Get all checks.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getChecks(
@@ -108,8 +109,9 @@ export class ChecksAPI {
   }
   /**
    * Add new check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createCheck(
@@ -126,8 +128,9 @@ export class ChecksAPI {
   }
   /**
    * Get a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getChecksID(
@@ -143,8 +146,9 @@ export class ChecksAPI {
   }
   /**
    * Update a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putChecksID(
@@ -161,8 +165,9 @@ export class ChecksAPI {
   }
   /**
    * Update a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchChecksID(
@@ -179,8 +184,9 @@ export class ChecksAPI {
   }
   /**
    * Delete a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteChecksID(
@@ -196,8 +202,9 @@ export class ChecksAPI {
   }
   /**
    * List all labels for a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getChecksIDLabels(
@@ -213,8 +220,9 @@ export class ChecksAPI {
   }
   /**
    * Add a label to a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postChecksIDLabels(
@@ -231,8 +239,9 @@ export class ChecksAPI {
   }
   /**
    * Delete label from a check.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteChecksIDLabelsID(
@@ -248,8 +257,9 @@ export class ChecksAPI {
   }
   /**
    * Get a check query.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getChecksIDQuery(

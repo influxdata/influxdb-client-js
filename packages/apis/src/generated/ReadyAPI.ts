@@ -5,7 +5,7 @@ import {Ready} from './types'
 export interface GetReadyRequest {}
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady }
  */
 export class ReadyAPI {
   // internal
@@ -20,8 +20,9 @@ export class ReadyAPI {
   }
   /**
    * Get the readiness of an instance at startup.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getReady(

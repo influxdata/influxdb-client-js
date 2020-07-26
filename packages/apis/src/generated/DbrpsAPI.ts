@@ -42,11 +42,11 @@ export interface DeleteDBRPIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID }
  */
 export class DbrpsAPI {
   // internal
@@ -61,8 +61,9 @@ export class DbrpsAPI {
   }
   /**
    * List all database retention policy mappings.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDBRPs(
@@ -85,8 +86,9 @@ export class DbrpsAPI {
   }
   /**
    * Add a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDBRP(
@@ -103,8 +105,9 @@ export class DbrpsAPI {
   }
   /**
    * Retrieve a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDBRPsID(
@@ -122,8 +125,9 @@ export class DbrpsAPI {
   }
   /**
    * Update a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchDBRPID(
@@ -142,8 +146,9 @@ export class DbrpsAPI {
   }
   /**
    * Delete a database retention policy.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDBRPID(

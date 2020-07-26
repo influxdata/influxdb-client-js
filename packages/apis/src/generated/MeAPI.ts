@@ -10,8 +10,8 @@ export interface PutMePasswordRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword }
  */
 export class MeAPI {
   // internal
@@ -26,8 +26,9 @@ export class MeAPI {
   }
   /**
    * Return the current authenticated user.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getMe(
@@ -38,8 +39,9 @@ export class MeAPI {
   }
   /**
    * Update a password.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putMePassword(

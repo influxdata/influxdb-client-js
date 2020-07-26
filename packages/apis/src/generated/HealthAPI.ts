@@ -5,7 +5,7 @@ import {HealthCheck} from './types'
 export interface GetHealthRequest {}
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth }
  */
 export class HealthAPI {
   // internal
@@ -20,8 +20,9 @@ export class HealthAPI {
   }
   /**
    * Get the health of an instance.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getHealth(

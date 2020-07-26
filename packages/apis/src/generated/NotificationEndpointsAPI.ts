@@ -58,15 +58,15 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID }
  */
 export class NotificationEndpointsAPI {
   // internal
@@ -81,8 +81,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Get all notification endpoints.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getNotificationEndpoints(
@@ -102,8 +103,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Add a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createNotificationEndpoint(
@@ -120,8 +122,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Get a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getNotificationEndpointsID(
@@ -137,8 +140,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Update a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putNotificationEndpointsID(
@@ -155,8 +159,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Update a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchNotificationEndpointsID(
@@ -173,8 +178,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Delete a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteNotificationEndpointsID(
@@ -190,8 +196,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * List all labels for a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getNotificationEndpointsIDLabels(
@@ -207,8 +214,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Add a label to a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postNotificationEndpointIDLabels(
@@ -225,8 +233,9 @@ export class NotificationEndpointsAPI {
   }
   /**
    * Delete a label from a notification endpoint.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteNotificationEndpointsIDLabelsID(

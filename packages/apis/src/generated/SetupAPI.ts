@@ -13,9 +13,9 @@ export interface PostSetupUserRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser }
  */
 export class SetupAPI {
   // internal
@@ -30,8 +30,9 @@ export class SetupAPI {
   }
   /**
    * Check if database has default user, org, bucket.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getSetup(
@@ -42,8 +43,9 @@ export class SetupAPI {
   }
   /**
    * Set up initial user, org and bucket.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postSetup(
@@ -60,8 +62,9 @@ export class SetupAPI {
   }
   /**
    * Set up a new user, org and bucket.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postSetupUser(

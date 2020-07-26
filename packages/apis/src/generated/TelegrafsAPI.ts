@@ -86,20 +86,20 @@ export interface DeleteTelegrafsIDOwnersIDRequest {
 }
 /**
  * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners }
+ *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID }
  */
 export class TelegrafsAPI {
   // internal
@@ -113,8 +113,9 @@ export class TelegrafsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafs(
@@ -130,8 +131,9 @@ export class TelegrafsAPI {
   }
   /**
    * Create a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postTelegrafs(
@@ -148,8 +150,9 @@ export class TelegrafsAPI {
   }
   /**
    * Retrieve a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafsID(
@@ -165,8 +168,9 @@ export class TelegrafsAPI {
   }
   /**
    * Update a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   putTelegrafsID(
@@ -183,8 +187,9 @@ export class TelegrafsAPI {
   }
   /**
    * Delete a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteTelegrafsID(
@@ -200,8 +205,9 @@ export class TelegrafsAPI {
   }
   /**
    * List all labels for a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafsIDLabels(
@@ -217,8 +223,9 @@ export class TelegrafsAPI {
   }
   /**
    * Add a label to a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postTelegrafsIDLabels(
@@ -235,8 +242,9 @@ export class TelegrafsAPI {
   }
   /**
    * Delete a label from a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteTelegrafsIDLabelsID(
@@ -252,8 +260,9 @@ export class TelegrafsAPI {
   }
   /**
    * List all users with member privileges for a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafsIDMembers(
@@ -269,8 +278,9 @@ export class TelegrafsAPI {
   }
   /**
    * Add a member to a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postTelegrafsIDMembers(
@@ -287,8 +297,9 @@ export class TelegrafsAPI {
   }
   /**
    * Remove a member from a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteTelegrafsIDMembersID(
@@ -304,8 +315,9 @@ export class TelegrafsAPI {
   }
   /**
    * List all owners of a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafsIDOwners(
@@ -321,8 +333,9 @@ export class TelegrafsAPI {
   }
   /**
    * Add an owner to a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postTelegrafsIDOwners(
@@ -339,8 +352,9 @@ export class TelegrafsAPI {
   }
   /**
    * Remove an owner from a Telegraf config.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteTelegrafsIDOwnersID(
