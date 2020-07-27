@@ -12,7 +12,10 @@ The entry point of this package is the [InfluxDB](./influxdb-client.influxdb.md)
 
 ```
 import {InfluxDB} = from('@influxdata/influxdb-client')
-const influxDB = new InfluxDB({url: "http://localhost:9999", token: "your-api-token"})
+const influxDB = new InfluxDB({
+  url: "http://localhost:9999",
+  token: "your-api-token"
+})
 
 ```
 The influxDB object let you create two essential API instances, [InfluxDB.getWriteApi()](./influxdb-client.influxdb.getwriteapi.md) and [InfluxDB.getQueryApi()](./influxdb-client.influxdb.getqueryapi.md)<!-- -->. The [WriteApi](./influxdb-client.writeapi.md) asynchronously writes measurement points on background, in batches to optimize network traffic, and with retries upon failures. The [QueryApi](./influxdb-client.queryapi.md) let you execute a flux query against InfluxDB and offers several ways to stream query results.
