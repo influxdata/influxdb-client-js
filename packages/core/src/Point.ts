@@ -1,8 +1,7 @@
 import {escape} from './util/escape'
 import {PointSettings} from './options'
 /**
- * Point defines the values that will be written to the database.
- * See [Go Implementation](http://bit.ly/influxdata-point)
+ * Point defines values of a single measurement.
  */
 export default class Point {
   private name: string

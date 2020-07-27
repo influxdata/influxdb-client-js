@@ -17,7 +17,7 @@ export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   duration: identity,
 }
 /**
- * Represents metadata of a [flux table](http://bit.ly/flux-spec#table).
+ * Represents metadata of a {@link http://bit.ly/flux-spec#table | flux table}.
  */
 export default class FluxTableMetaData {
   /**
