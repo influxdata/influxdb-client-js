@@ -1,3 +1,4 @@
+/** Property that offers a function that returns flux-sanitized value of an object.  */
 export const FLUX_VALUE = Symbol('FLUX_VALUE')
 
 /**
@@ -106,6 +107,12 @@ export function fluxInteger(value: any): FluxParameterLike {
   return new FluxParameter(val)
 }
 
+/**
+ * Sanitizes float value to avoid injections.
+ * @param value - InfluxDB float literal
+ * @returns sanitized float value
+ * @throws Error if the the value cannot be sanitized
+ */
 export function sanitizeFloat(value: any): string {
   const val = String(value)
   let dot = false

@@ -7,29 +7,32 @@ export interface GetTelegrafPluginsRequest {
   type?: string
 }
 /**
- * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
+ * Telegraf API
  */
-export class TelegrafAPI extends APIBase {
+export class TelegrafAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates TelegrafAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getTelegrafPlugins(
     request?: GetTelegrafPluginsRequest,
     requestOptions?: RequestOptions
   ): Promise<TelegrafPlugins> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/telegraf/plugins${this.queryString(request, ['type'])}`,
+      `/api/v2/telegraf/plugins${this.base.queryString(request, ['type'])}`,
       request,
       requestOptions
     )

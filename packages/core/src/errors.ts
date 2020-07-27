@@ -28,10 +28,12 @@ export interface RetriableDecision {
 }
 
 const retriableStatusCodes = [404, 408, 425, 429, 500, 502, 503, 504]
+/** isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. */
 export function isStatusCodeRetriable(statusCode: number): boolean {
   return retriableStatusCodes.includes(statusCode)
 }
 
+/** IllegalArgumentError is thrown when illegal argument is supplied. */
 export class IllegalArgumentError extends Error {
   /* istanbul ignore next */
   constructor(message: string) {
@@ -132,6 +134,7 @@ export function getRetryDelay(error?: Error, retryJitter?: number): number {
   }
 }
 
+/** RequestTimedOutError indicates request timeout in the communication with the server */
 export class RequestTimedOutError extends Error implements RetriableDecision {
   /* istanbul ignore next because of super() not being covered */
   constructor() {
@@ -147,6 +150,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
   }
 }
 
+/** AbortError indicates that the communication with the server was aborted */
 export class AbortError extends Error implements RetriableDecision {
   /* istanbul ignore next because of super() not being covered */
   constructor() {

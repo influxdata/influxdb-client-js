@@ -100,44 +100,33 @@ export interface DeleteScrapersIDOwnersIDRequest {
   scraperTargetID: string
 }
 /**
- * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
+ * Scrapers API
  */
-export class ScrapersAPI extends APIBase {
+export class ScrapersAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates ScrapersAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Get all scraper targets.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapers(
     request?: GetScrapersRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponses> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/scrapers${this.queryString(request, [
+      `/api/v2/scrapers${this.base.queryString(request, [
         'name',
         'id',
         'orgID',
@@ -149,15 +138,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Create a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapers(
     request: PostScrapersRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers`,
       request,
@@ -167,15 +157,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Get a scraper target by ID.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersID(
     request: GetScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -184,15 +175,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Update a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchScrapersID(
     request: PatchScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<ScraperTargetResponse> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -202,15 +194,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersID(
     request: DeleteScrapersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}`,
       request,
@@ -219,15 +212,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all labels for a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDLabels(
     request: GetScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelsResponse> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
@@ -236,15 +230,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add a label to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDLabels(
     request: PostScrapersIDLabelsRequest,
     requestOptions?: RequestOptions
   ): Promise<LabelResponse> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/labels`,
       request,
@@ -254,15 +249,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Update a label on a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchScrapersIDLabelsID(
     request: PatchScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
@@ -272,15 +268,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Delete a label from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDLabelsID(
     request: DeleteScrapersIDLabelsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
@@ -289,15 +286,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all users with member privileges for a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDMembers(
     request: GetScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMembers> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
@@ -306,15 +304,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add a member to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDMembers(
     request: PostScrapersIDMembersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceMember> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/members`,
       request,
@@ -324,15 +323,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove a member from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDMembersID(
     request: DeleteScrapersIDMembersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/members/${request.userID}`,
       request,
@@ -341,15 +341,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * List all owners of a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getScrapersIDOwners(
     request: GetScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwners> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
@@ -358,15 +359,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Add an owner to a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postScrapersIDOwners(
     request: PostScrapersIDOwnersRequest,
     requestOptions?: RequestOptions
   ): Promise<ResourceOwner> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/owners`,
       request,
@@ -376,15 +378,16 @@ export class ScrapersAPI extends APIBase {
   }
   /**
    * Remove an owner from a scraper target.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteScrapersIDOwnersID(
     request: DeleteScrapersIDOwnersIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/scrapers/${request.scraperTargetID}/owners/${request.userID}`,
       request,

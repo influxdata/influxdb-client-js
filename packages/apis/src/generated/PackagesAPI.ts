@@ -54,35 +54,31 @@ export interface ExportStackRequest {
   orgID: string
 }
 /**
- * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
+ * Packages API
  */
-export class PackagesAPI extends APIBase {
+export class PackagesAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates PackagesAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Create a new Influx package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createPkg(
     request: CreatePkgRequest,
     requestOptions?: RequestOptions
   ): Promise<Pkg> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages`,
       request,
@@ -92,15 +88,16 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Apply or dry-run an Influx package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   applyPkg(
     request: ApplyPkgRequest,
     requestOptions?: RequestOptions
   ): Promise<PkgSummary> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages/apply`,
       request,
@@ -110,8 +107,9 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Grab a list of installed Influx packages.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   listStacks(
@@ -120,9 +118,9 @@ export class PackagesAPI extends APIBase {
   ): Promise<{
     stacks?: Stack[]
   }> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/packages/stacks${this.queryString(request, [
+      `/api/v2/packages/stacks${this.base.queryString(request, [
         'orgID',
         'name',
         'stackID',
@@ -133,15 +131,16 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Create a new stack.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   createStack(
     request: CreateStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/packages/stacks`,
       request,
@@ -151,15 +150,16 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Grab a stack by its ID.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   readStack(
     request: ReadStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'GET',
       `/api/v2/packages/stacks/${request.stack_id}`,
       request,
@@ -168,15 +168,16 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Update a an Influx Stack.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   updateStack(
     request: UpdateStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Stack> {
-    return this.request(
+    return this.base.request(
       'PATCH',
       `/api/v2/packages/stacks/${request.stack_id}`,
       request,
@@ -186,38 +187,40 @@ export class PackagesAPI extends APIBase {
   }
   /**
    * Delete a stack and remove all its associated resources.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteStack(
     request: DeleteStackRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
-      `/api/v2/packages/stacks/${request.stack_id}${this.queryString(request, [
-        'orgID',
-      ])}`,
+      `/api/v2/packages/stacks/${
+        request.stack_id
+      }${this.base.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )
   }
   /**
    * Export a stack's resources in the form of a package.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   exportStack(
     request: ExportStackRequest,
     requestOptions?: RequestOptions
   ): Promise<Pkg> {
-    return this.request(
+    return this.base.request(
       'DELETE',
       `/api/v2/packages/stacks/${
         request.stack_id
-      }/export${this.queryString(request, ['orgID'])}`,
+      }/export${this.base.queryString(request, ['orgID'])}`,
       request,
       requestOptions
     )

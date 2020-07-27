@@ -58,7 +58,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
 }
 
 /**
- * Options used by [[WriteApi]] .
+ * Options used by {@link WriteApi} .
  */
 export interface WriteOptions extends WriteRetryOptions {
   /** max number of records to send in a batch   */
@@ -87,7 +87,7 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
 })
 
 /**
- * Options used by [[InfluxDB]] .
+ * Options used by {@link InfluxDB} .
  */
 export interface ClientOptions extends ConnectionOptions {
   /** supplies and overrides default writing options */
@@ -98,7 +98,7 @@ export interface ClientOptions extends ConnectionOptions {
 
 /**
  * Precission for write operations.
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+ * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
  */
 export const enum WritePrecision {
   /** nanosecond */
@@ -112,7 +112,7 @@ export const enum WritePrecision {
 }
 
 /**
- * Settings that control the way of how a [[Point]] is serialized
+ * Settings that control the way of how a {@link Point} is serialized
  * to a protocol line.
  */
 export interface PointSettings {

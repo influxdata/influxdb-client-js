@@ -13,6 +13,7 @@ export function defaultRowMapping(
   return tableMeta.toObject(values)
 }
 
+/** QueryOptions contains QueryApi configuration options. */
 export interface QueryOptions {
   /**
    * Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably.
@@ -41,7 +42,7 @@ export interface Row {
 
 /**
  * Query InfluxDB 2.0. Provides methods that notify abouts result lines of the executed query.
- * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery
+ * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery }
  */
 export default interface QueryApi {
   /**

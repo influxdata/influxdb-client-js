@@ -9,7 +9,8 @@ import QueryApi from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
 
 /**
- * InfluxDB 2.0 client that uses HTTP API described in https://v2.docs.influxdata.com/v2.0/reference/api/ .
+ * InfluxDB 2.0 entry point that configures communication with InfluxDB server
+ * and provide APIs to write and query data.
  */
 export default class InfluxDB {
   private _options: ClientOptions
@@ -35,14 +36,21 @@ export default class InfluxDB {
   }
 
   /**
-   * Creates [[WriteApi]] for the supplied organization and bucket. BEWARE that returned instances must be closed
+   * Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed
    * in order to flush the remaining data and close already scheduled retry executions.
+   *
+   * @remarks
+   * Inspect the {@link WriteOptions} to control also advanced options, such retries of failure, retry strategy options, data chunking
+   * and flushing windows. See {@link DEFAULT_WriteOptions} to see the defaults.
+   *
+   * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js | write.js example},
+   * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example}.
    *
    * @param org - Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
    * @param bucket - The destination bucket for writes.
    * @param precision - Timestamp precision for line items.
    * @param writeOptions - Custom write options.
-   * @returns WriteAPI instance
+   * @returns WriteApi instance
    */
   getWriteApi(
     org: string,
@@ -60,10 +68,16 @@ export default class InfluxDB {
   }
 
   /**
-   * Creates [[QueryAPI]] for the supplied organization .
+   * Creates QueryApi for the supplied organization .
+   *
+   * @remarks
+   * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts | query.ts example},
+   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.ts | queryWithParams.ts example},
+   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example},
+   * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts | rxjs-query.ts example}.
    *
    * @param org - organization
-   * @returns query api instance
+   * @returns QueryApi instance
    */
   getQueryApi(org: string): QueryApi {
     return new QueryApiImpl(this.transport, org)

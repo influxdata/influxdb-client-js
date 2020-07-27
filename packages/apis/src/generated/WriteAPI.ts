@@ -14,30 +14,33 @@ export interface PostWriteRequest {
   precision?: any
 }
 /**
- * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+ * Write API
  */
-export class WriteAPI extends APIBase {
+export class WriteAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates WriteAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * Write time series data into InfluxDB.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postWrite(
     request: PostWriteRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'POST',
-      `/api/v2/write${this.queryString(request, [
+      `/api/v2/write${this.base.queryString(request, [
         'org',
         'orgID',
         'bucket',

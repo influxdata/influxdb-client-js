@@ -41,34 +41,33 @@ export interface DeleteDBRPIDRequest {
   orgID: string
 }
 /**
- * See
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
- * * https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
+ * Dbrps API
  */
-export class DbrpsAPI extends APIBase {
+export class DbrpsAPI {
+  // internal
+  private base: APIBase
+
   /**
    * Creates DbrpsAPI
    * @param influxDB - an instance that knows how to communicate with InfluxDB server
    */
   constructor(influxDB: InfluxDB) {
-    super(influxDB)
+    this.base = new APIBase(influxDB)
   }
   /**
    * List all database retention policy mappings.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDBRPs(
     request: GetDBRPsRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRPs> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dbrps${this.queryString(request, [
+      `/api/v2/dbrps${this.base.queryString(request, [
         'orgID',
         'id',
         'bucketID',
@@ -82,15 +81,16 @@ export class DbrpsAPI extends APIBase {
   }
   /**
    * Add a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   postDBRP(
     request: PostDBRPRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'POST',
       `/api/v2/dbrps`,
       request,
@@ -100,34 +100,40 @@ export class DbrpsAPI extends APIBase {
   }
   /**
    * Retrieve a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   getDBRPsID(
     request: GetDBRPsIDRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'GET',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )
   }
   /**
    * Update a database retention policy mapping.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   patchDBRPID(
     request: PatchDBRPIDRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRP> {
-    return this.request(
+    return this.base.request(
       'PATCH',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions,
       'application/json'
@@ -135,17 +141,20 @@ export class DbrpsAPI extends APIBase {
   }
   /**
    * Delete a database retention policy.
-   * See https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID }
    * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
    * @returns promise of response
    */
   deleteDBRPID(
     request: DeleteDBRPIDRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.request(
+    return this.base.request(
       'DELETE',
-      `/api/v2/dbrps/${request.dbrpID}${this.queryString(request, ['orgID'])}`,
+      `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
+        'orgID',
+      ])}`,
       request,
       requestOptions
     )

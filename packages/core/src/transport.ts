@@ -1,7 +1,9 @@
 import Cancellable from './util/Cancellable'
 
+/**
+ * Type of HTTP headers.
+ */
 export type Headers = {[header: string]: string | string[] | undefined}
-
 /**
  * Observes communication with the server.
  */
@@ -71,7 +73,7 @@ export interface ChunkCombiner {
 }
 
 /**
- * Simpified platform-neutral transport layer for communication with influx DB.
+ * Simpified platform-neutral transport layer for communication with InfluxDB.
  */
 export interface Transport {
   /**
@@ -100,7 +102,7 @@ export interface Transport {
   request(path: string, body: any, options: SendOptions): Promise<any>
 
   /**
-   * Returns operations for chunks emitted to the {@link send} method communication observer.
+   * Combines response chunks to create a single response object.
    */
   readonly chunkCombiner: ChunkCombiner
 }
