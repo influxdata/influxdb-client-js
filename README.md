@@ -69,6 +69,8 @@ There are also more advanced [examples](./examples/README.md) that shows
 - how to use this client in the browser
 - how to process InfluxDB query results with RX Observables
 
+The client API documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
+
 ## Build Requirements
 
 - node v12.13.1 or higher (older versions will work as well)
