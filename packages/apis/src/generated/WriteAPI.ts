@@ -14,8 +14,7 @@ export interface PostWriteRequest {
   precision?: any
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
+ * Write API
  */
 export class WriteAPI {
   // internal

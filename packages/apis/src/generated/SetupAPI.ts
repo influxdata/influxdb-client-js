@@ -12,10 +12,7 @@ export interface PostSetupUserRequest {
   body: OnboardingRequest
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetupUser }
+ * Setup API
  */
 export class SetupAPI {
   // internal

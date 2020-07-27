@@ -91,21 +91,7 @@ export interface DeleteBucketsIDOwnersIDRequest {
   bucketID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostBuckets }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchBucketsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDOwnersID }
+ * Buckets API
  */
 export class BucketsAPI {
   // internal

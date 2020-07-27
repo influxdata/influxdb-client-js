@@ -29,13 +29,7 @@ export interface PostUsersIDPasswordRequest {
   body: PasswordResetBody
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword }
+ * Users API
  */
 export class UsersAPI {
   // internal

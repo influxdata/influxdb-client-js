@@ -9,9 +9,7 @@ export interface PutMePasswordRequest {
   body: PasswordResetBody
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword }
+ * Me API
  */
 export class MeAPI {
   // internal

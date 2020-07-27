@@ -51,15 +51,7 @@ export interface DeleteDocumentsTemplatesIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplates }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplatesIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDocumentsTemplatesIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDocumentsTemplatesIDLabelsID }
+ * Documents API
  */
 export class DocumentsAPI {
   // internal

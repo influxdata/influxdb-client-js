@@ -4,8 +4,7 @@ import {Flags} from './types'
 
 export interface GetFlagsRequest {}
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags }
+ * Flags API
  */
 export class FlagsAPI {
   // internal

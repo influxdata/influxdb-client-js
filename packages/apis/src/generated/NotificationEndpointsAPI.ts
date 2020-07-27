@@ -57,16 +57,7 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationEndpointsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsIDLabelsID }
+ * NotificationEndpoints API
  */
 export class NotificationEndpointsAPI {
   // internal

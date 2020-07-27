@@ -66,17 +66,7 @@ export interface GetNotificationRulesIDQueryRequest {
   ruleID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationRule }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationRulesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationRulesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationRuleIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationRulesIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery }
+ * NotificationRules API
  */
 export class NotificationRulesAPI {
   // internal

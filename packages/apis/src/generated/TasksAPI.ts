@@ -147,28 +147,7 @@ export interface DeleteTasksIDOwnersIDRequest {
   taskID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasks }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasks }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchTasksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRuns }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRuns }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDRunsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRunsIDRetry }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDLogs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsIDLogs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDOwnersID }
+ * Tasks API
  */
 export class TasksAPI {
   // internal

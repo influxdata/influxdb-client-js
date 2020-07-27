@@ -85,21 +85,7 @@ export interface DeleteTelegrafsIDOwnersIDRequest {
   telegrafID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDOwnersID }
+ * Telegrafs API
  */
 export class TelegrafsAPI {
   // internal

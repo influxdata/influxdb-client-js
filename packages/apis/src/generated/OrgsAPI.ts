@@ -137,29 +137,7 @@ export interface DeleteOrgsIDOwnersIDRequest {
   orgID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInvites }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDInviteID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDInviteID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetCloudUsers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDCloudUserID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID }
+ * Orgs API
  */
 export class OrgsAPI {
   // internal

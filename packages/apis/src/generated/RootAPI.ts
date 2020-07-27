@@ -4,8 +4,7 @@ import {Routes} from './types'
 
 export interface GetRoutesRequest {}
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes }
+ * Root API
  */
 export class RootAPI {
   // internal

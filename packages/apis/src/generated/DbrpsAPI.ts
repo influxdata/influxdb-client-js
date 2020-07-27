@@ -41,12 +41,7 @@ export interface DeleteDBRPIDRequest {
   orgID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID }
+ * Dbrps API
  */
 export class DbrpsAPI {
   // internal

@@ -4,8 +4,7 @@ import {HealthCheck} from './types'
 
 export interface GetHealthRequest {}
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth }
+ * Health API
  */
 export class HealthAPI {
   // internal

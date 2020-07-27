@@ -4,8 +4,7 @@ import {Ready} from './types'
 
 export interface GetReadyRequest {}
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady }
+ * Ready API
  */
 export class ReadyAPI {
   // internal

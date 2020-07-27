@@ -55,16 +55,7 @@ export interface DeleteVariablesIDLabelsIDRequest {
   labelID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutVariablesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariablesIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID }
+ * Variables API
  */
 export class VariablesAPI {
   // internal

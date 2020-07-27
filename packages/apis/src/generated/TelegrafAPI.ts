@@ -7,8 +7,7 @@ export interface GetTelegrafPluginsRequest {
   type?: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins }
+ * Telegraf API
  */
 export class TelegrafAPI {
   // internal

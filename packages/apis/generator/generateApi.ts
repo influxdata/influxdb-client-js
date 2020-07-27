@@ -94,15 +94,12 @@ function requestRequired(operation: Operation): boolean {
 function generateClass(
   apiKey: string,
   apiName: string,
-  operations: Operation[]
+  operations: Operation[],
+  apiLabel: string
 ): string {
-  let classDef = '/**\n * See\n'
-  for (const operation of operations) {
-    classDef += ` *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/${getOperationId(
-      operation
-    )} } \n`
-  }
-  classDef += ` */
+  let classDef = `/**
+ * ${apiLabel} API
+ */
 export class ${apiName} {
   // internal
   private base: APIBase
@@ -168,7 +165,8 @@ export function generateApi(
   apiKey: string,
   operations: Operation[]
 ): {apiName: string; code: string} {
-  const apiName = (apiKey ? capitalize1(apiKey) : 'Root') + 'API'
+  const apiLabel = apiKey ? capitalize1(apiKey) : 'Root'
+  const apiName = apiLabel + 'API'
   let code = `import {InfluxDB} from '@influxdata/influxdb-client'\n`
   code += `import {APIBase, RequestOptions} from '../APIBase'\n`
   const typesCollector = new TypesCollector()
@@ -184,6 +182,6 @@ export function generateApi(
     code += generateTypes(operation)
     code += '\n'
   }
-  code += generateClass(apiKey, apiName, operations)
+  code += generateClass(apiKey, apiName, operations, apiLabel)
   return {apiName, code}
 }

@@ -149,27 +149,7 @@ export interface DeleteDashboardsIDOwnersIDRequest {
   dashboardID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDOwnersID }
+ * Dashboards API
  */
 export class DashboardsAPI {
   // internal

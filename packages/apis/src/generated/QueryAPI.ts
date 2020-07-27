@@ -32,12 +32,7 @@ export interface PostQueryRequest {
   orgID?: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery }
+ * Query API
  */
 export class QueryAPI {
   // internal

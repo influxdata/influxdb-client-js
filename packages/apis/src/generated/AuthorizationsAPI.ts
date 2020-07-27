@@ -35,12 +35,7 @@ export interface DeleteAuthorizationsIDRequest {
   authID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID }
+ * Authorizations API
  */
 export class AuthorizationsAPI {
   // internal

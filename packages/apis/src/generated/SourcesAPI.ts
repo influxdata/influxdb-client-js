@@ -35,14 +35,7 @@ export interface GetSourcesIDBucketsRequest {
   org?: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets }
+ * Sources API
  */
 export class SourcesAPI {
   // internal

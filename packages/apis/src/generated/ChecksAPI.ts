@@ -62,17 +62,7 @@ export interface GetChecksIDQueryRequest {
   checkID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery }
+ * Checks API
  */
 export class ChecksAPI {
   // internal

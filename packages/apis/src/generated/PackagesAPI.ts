@@ -54,15 +54,7 @@ export interface ExportStackRequest {
   orgID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreatePkg }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyPkg }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ExportStack }
+ * Packages API
  */
 export class PackagesAPI {
   // internal

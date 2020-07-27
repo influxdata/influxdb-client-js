@@ -100,22 +100,7 @@ export interface DeleteScrapersIDOwnersIDRequest {
   scraperTargetID: string
 }
 /**
- * See
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDLabels }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDMembersID }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners }
- *- {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID }
+ * Scrapers API
  */
 export class ScrapersAPI {
   // internal
