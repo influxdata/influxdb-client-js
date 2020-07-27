@@ -17,7 +17,7 @@ const influxDB = new InfluxDB({url: "http://localhost:9999", token: "your-api-to
 ```
 The influxDB object let you create two essential API instances, [InfluxDB.getWriteApi()](./influxdb-client.influxdb.getwriteapi.md) and [InfluxDB.getQueryApi()](./influxdb-client.influxdb.getqueryapi.md)<!-- -->. The [WriteApi](./influxdb-client.writeapi.md) asynchronously writes measurement points on background, in batches to optimize network traffic, and with retries upon failures. The [QueryApi](./influxdb-client.queryapi.md) let you execute a flux query against InfluxDB and offers several ways to stream query results.
 
-The influxDB object is also used to create more specialized InfluxDB management API instances in 
+The influxDB object is also used to create more specialized InfluxDB management API instances in [@influxdata/influxdb-client-apis](./influxdb-client-apis.md)
 
 See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master/examples) to know more.
 

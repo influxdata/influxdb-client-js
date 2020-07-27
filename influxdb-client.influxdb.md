@@ -28,6 +28,6 @@ export default class InfluxDB
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getQueryApi(org)](./influxdb-client.influxdb.getqueryapi.md) |  | Creates \[\[QueryAPI\]\] for the supplied organization . |
-|  [getWriteApi(org, bucket, precision, writeOptions)](./influxdb-client.influxdb.getwriteapi.md) |  | Creates \[\[WriteApi\]\] for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions. |
+|  [getQueryApi(org)](./influxdb-client.influxdb.getqueryapi.md) |  | Creates QueryApi for the supplied organization . |
+|  [getWriteApi(org, bucket, precision, writeOptions)](./influxdb-client.influxdb.getwriteapi.md) |  | Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions. |
 

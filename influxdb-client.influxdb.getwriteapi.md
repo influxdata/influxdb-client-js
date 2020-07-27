@@ -4,7 +4,7 @@
 
 ## InfluxDB.getWriteApi() method
 
-Creates \[\[WriteApi\]\] for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions.
+Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions.
 
 <b>Signature:</b>
 
@@ -25,5 +25,11 @@ getWriteApi(org: string, bucket: string, precision?: WritePrecision, writeOption
 
 [WriteApi](./influxdb-client.writeapi.md)
 
-WriteAPI instance
+WriteApi instance
+
+## Remarks
+
+Inspect the [WriteOptions](./influxdb-client.writeoptions.md) to control also advanced options, such retries of failure, retry strategy options, data chunking and flushing windows. See [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) to see the defaults.
+
+See also [write.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->.
 

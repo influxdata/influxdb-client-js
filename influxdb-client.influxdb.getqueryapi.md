@@ -4,7 +4,7 @@
 
 ## InfluxDB.getQueryApi() method
 
-Creates \[\[QueryAPI\]\] for the supplied organization .
+Creates QueryApi for the supplied organization .
 
 <b>Signature:</b>
 
@@ -22,5 +22,9 @@ getQueryApi(org: string): QueryApi;
 
 [QueryApi](./influxdb-client.queryapi.md)
 
-query api instance
+QueryApi instance
+
+## Remarks
+
+See also [query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts)<!-- -->, [queryWithParams.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.ts)<!-- -->, [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->, and [rxjs-query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts)<!-- -->.
 
