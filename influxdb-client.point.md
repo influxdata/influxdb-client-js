@@ -4,7 +4,7 @@
 
 ## Point class
 
-Point defines the values that will be written to the database. See \[Go Implementation\](http://bit.ly/influxdata-point)
+Point defines values of a single measurement.
 
 <b>Signature:</b>
 

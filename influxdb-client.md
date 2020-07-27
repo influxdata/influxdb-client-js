@@ -29,12 +29,12 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  Class | Description |
 |  --- | --- |
 |  [AbortError](./influxdb-client.aborterror.md) | AbortError indicates that the communication with the server was aborted |
-|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a \[flux table\](http://bit.ly/flux-spec\#table) column. |
-|  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a \[flux table\](http://bit.ly/flux-spec\#table). |
+|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column. |
+|  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
 |  [HttpError](./influxdb-client.httperror.md) | A general HTTP error. |
 |  [IllegalArgumentError](./influxdb-client.illegalargumenterror.md) | IllegalArgumentError is thrown when illegal argument is supplied. |
-|  [InfluxDB](./influxdb-client.influxdb.md) | InfluxDB 2.0 client that uses HTTP API described in [https://v2.docs.influxdata.com/v2.0/reference/api/](https://v2.docs.influxdata.com/v2.0/reference/api/)<!-- -->. |
-|  [Point](./influxdb-client.point.md) | Point defines the values that will be written to the database. See \[Go Implementation\](http://bit.ly/influxdata-point) |
+|  [InfluxDB](./influxdb-client.influxdb.md) | InfluxDB 2.0 entry point that configures communication with InfluxDB server and provide APIs to write and query data. |
+|  [Point](./influxdb-client.point.md) | Point defines values of a single measurement. |
 |  [RequestTimedOutError](./influxdb-client.requesttimedouterror.md) | RequestTimedOutError indicates request timeout in the communication with the server |
 
 ## Enumerations
@@ -69,16 +69,16 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  --- | --- |
 |  [Cancellable](./influxdb-client.cancellable.md) | Allows to cancel a running query. |
 |  [ChunkCombiner](./influxdb-client.chunkcombiner.md) | Simpified platform-neutral data chunk manipulation, it might differ between target platform (node vs browser). |
-|  [ClientOptions](./influxdb-client.clientoptions.md) | Options used by \[\[InfluxDB\]\] . |
+|  [ClientOptions](./influxdb-client.clientoptions.md) | Options used by [InfluxDB](./influxdb-client.influxdb.md) . |
 |  [CommunicationObserver](./influxdb-client.communicationobserver.md) | Observes communication with the server. |
 |  [ConnectionOptions](./influxdb-client.connectionoptions.md) | Option for the communication with InfluxDB server. |
 |  [FluxParameterLike](./influxdb-client.fluxparameterlike.md) | A flux parameter can print its (sanitized) flux value. |
 |  [FluxResultObserver](./influxdb-client.fluxresultobserver.md) | Observes results of a flux query. |
 |  [FluxTableColumnLike](./influxdb-client.fluxtablecolumnlike.md) | FluxTableColumnLike provides metadata of a flux table column. |
-|  [Observable](./influxdb-client.observable.md) | An observable that aligns with the \[TC39 observable proposal\](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like \[rxjs\](https://github.com/ReactiveX/rxjs) or \[zen-observable\](https://github.com/zenparsing/zen-observable). |
+|  [Observable](./influxdb-client.observable.md) | An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->. |
 |  [Observer](./influxdb-client.observer.md) | Observer mimics Observer from ECMAScript TC39 Observable proposal |
 |  [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | Represents a parameterized query. |
-|  [PointSettings](./influxdb-client.pointsettings.md) | Settings that control the way of how a \[\[Point\]\] is serialized to a protocol line. |
+|  [PointSettings](./influxdb-client.pointsettings.md) | Settings that control the way of how a [Point](./influxdb-client.point.md) is serialized to a protocol line. |
 |  [QueryApi](./influxdb-client.queryapi.md) | Query InfluxDB 2.0. Provides methods that notify abouts result lines of the executed query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery) |
 |  [QueryOptions](./influxdb-client.queryoptions.md) | QueryOptions contains QueryApi configuration options. |
 |  [RetriableDecision](./influxdb-client.retriabledecision.md) | Interface for errors to inform that an associated operation can be retried. |
@@ -89,7 +89,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Subscription](./influxdb-client.subscription.md) | Subscription mimics Subscription from ECMAScript TC39 Observable proposal |
 |  [Transport\_2](./influxdb-client.transport_2.md) | Simpified platform-neutral transport layer for communication with InfluxDB. |
 |  [WriteApi](./influxdb-client.writeapi.md) | The asynchronous buffering API to Write time-series data into InfluxDB 2.0. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use <code>flush</code> to send the buffered data to InfluxDB immediately. <p> The data are formatted in \[Line Protocol\](https://bit.ly/2QL99fu). <p> |
-|  [WriteOptions](./influxdb-client.writeoptions.md) | Options used by \[\[WriteApi\]\] . |
+|  [WriteOptions](./influxdb-client.writeoptions.md) | Options used by [WriteApi](./influxdb-client.writeapi.md) . |
 |  [WriteRetryOptions](./influxdb-client.writeretryoptions.md) | Options that configure strategy for retrying failed InfluxDB write operations. |
 
 ## Variables
@@ -112,7 +112,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  --- | --- |
 |  [ColumnType](./influxdb-client.columntype.md) | Type of query result column, see [https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/\#valid-data-types](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types) |
 |  [Headers\_2](./influxdb-client.headers_2.md) | Type of HTTP headers. |
-|  [ObserverComplete](./influxdb-client.observercomplete.md) |  |
-|  [ObserverError](./influxdb-client.observererror.md) |  |
-|  [ObserverNext](./influxdb-client.observernext.md) |  |
+|  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
+|  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
+|  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |
 

@@ -4,7 +4,7 @@
 
 ## PointSettings interface
 
-Settings that control the way of how a \[\[Point\]\] is serialized to a protocol line.
+Settings that control the way of how a [Point](./influxdb-client.point.md) is serialized to a protocol line.
 
 <b>Signature:</b>
 

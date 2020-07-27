@@ -4,6 +4,8 @@
 
 ## ObserverNext type
 
+Type of [Observer.next](./influxdb-client.observer.next.md)
+
 <b>Signature:</b>
 
 ```typescript

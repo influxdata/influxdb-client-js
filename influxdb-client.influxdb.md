@@ -4,7 +4,7 @@
 
 ## InfluxDB class
 
-InfluxDB 2.0 client that uses HTTP API described in [https://v2.docs.influxdata.com/v2.0/reference/api/](https://v2.docs.influxdata.com/v2.0/reference/api/)<!-- -->.
+InfluxDB 2.0 entry point that configures communication with InfluxDB server and provide APIs to write and query data.
 
 <b>Signature:</b>
 

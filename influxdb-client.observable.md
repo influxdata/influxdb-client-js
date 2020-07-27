@@ -4,7 +4,7 @@
 
 ## Observable interface
 
-An observable that aligns with the \[TC39 observable proposal\](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like \[rxjs\](https://github.com/ReactiveX/rxjs) or \[zen-observable\](https://github.com/zenparsing/zen-observable).
+An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->.
 
 <b>Signature:</b>
 

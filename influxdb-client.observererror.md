@@ -4,6 +4,8 @@
 
 ## ObserverError type
 
+Type of [Observer.error](./influxdb-client.observer.error.md)
+
 <b>Signature:</b>
 
 ```typescript

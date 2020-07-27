@@ -4,7 +4,7 @@
 
 ## ClientOptions interface
 
-Options used by \[\[InfluxDB\]\] .
+Options used by [InfluxDB](./influxdb-client.influxdb.md) .
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## WriteOptions interface
 
-Options used by \[\[WriteApi\]\] .
+Options used by [WriteApi](./influxdb-client.writeapi.md) .
 
 <b>Signature:</b>
 

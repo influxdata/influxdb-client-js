@@ -4,7 +4,7 @@
 
 ## FluxTableMetaData class
 
-Represents metadata of a \[flux table\](http://bit.ly/flux-spec\#table).
+Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
 
 <b>Signature:</b>
 

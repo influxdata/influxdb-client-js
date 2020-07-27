@@ -4,7 +4,7 @@
 
 ## FluxTableColumn class
 
-Column metadata class of a \[flux table\](http://bit.ly/flux-spec\#table) column.
+Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column.
 
 <b>Signature:</b>
 
