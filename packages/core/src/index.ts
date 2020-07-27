@@ -7,7 +7,10 @@
  *
  * ```
  * import {InfluxDB} = from('@influxdata/influxdb-client')
- * const influxDB = new InfluxDB({url: "http://localhost:9999", token: "your-api-token"})
+ * const influxDB = new InfluxDB({
+ *   url: "http://localhost:9999",
+ *   token: "your-api-token"
+ * })
  * ```
  *
  * The influxDB object let you create two essential API instances, {@link @influxdata/influxdb-client#InfluxDB.getWriteApi }

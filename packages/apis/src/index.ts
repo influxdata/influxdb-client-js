@@ -12,11 +12,16 @@
  * ...
  * const {InfluxDB} = require('@influxdata/influxdb-client')
  * const {OrgsAPI} = require('@influxdata/influxdb-client-apis')
- * const influxDB = new InfluxDB({url: "http://localhost:9999", token: "my-token"})
+ * const influxDB = new InfluxDB({
+ *   url: "http://localhost:9999", 
+ *   token: "my-token"
+ * })
  * ...
  * async function getOrg(name) {
  *   const orgsAPI = new OrgsAPI(influxDB)
- *   const organizations = await orgsAPI.getOrgs({org: "my-org"})
+ *   const organizations = await orgsAPI.getOrgs({
+ *     org: "my-org"
+ *   })
  * ...
  * ```
  
