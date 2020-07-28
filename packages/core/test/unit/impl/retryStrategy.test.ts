@@ -59,6 +59,26 @@ describe('RetryStrategyImpl', () => {
       expect(x).to.not.be.greaterThan(1000)
     })
   })
+  it('generates exponential delays with failedAttempts', () => {
+    const subject = new RetryStrategyImpl({
+      minRetryDelay: 100,
+      maxRetryDelay: 1000,
+      retryJitter: 10,
+    })
+    const values = [1, 2, 3, 4, 5, 6].reduce((acc, val) => {
+      acc.push(subject.nextDelay(new Error(), val))
+      return acc
+    }, [] as number[])
+    expect(values).to.have.length(6)
+    values.forEach((x, i) => {
+      if (i > 0) {
+        expect(Math.max(Math.trunc(x / 100), 10)).to.not.be.lessThan(
+          Math.max(Math.trunc(values[i - 1] / 100), 10)
+        )
+      }
+      expect(x).to.not.be.greaterThan(1000 + 10)
+    })
+  })
   it('generates default jittered delays', () => {
     const subject = new RetryStrategyImpl({
       minRetryDelay: 100,
