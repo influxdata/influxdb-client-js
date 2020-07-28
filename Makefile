@@ -20,6 +20,7 @@ publish:
 	@echo "Publish successful"
 	@echo ""
 	@echo "Next steps:"
+	@echo " - publish updated API documentation by: \"yarn apidoc && yarn apidoc:gh-pages\""
 	@echo " - add new version to CHANGELOG.md"
 	@echo " - push changes to repository by : \"git commit -am 'chore(release): prepare to next development iteration [skip CI]' && git push\""
 	@echo ""

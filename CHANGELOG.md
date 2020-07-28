@@ -11,6 +11,7 @@
 1. [#220](https://github.com/influxdata/influxdb-client-js/pull/220): Generate API constructor with InfluxDB parameter.
 1. [#222](https://github.com/influxdata/influxdb-client-js/pull/222): Improve and validate code documentation.
 1. [#224](https://github.com/influxdata/influxdb-client-js/pull/224): Generate API documentation for gh-pages.
+1. [#224](https://github.com/influxdata/influxdb-client-js/pull/224): Include doc generation into CI and release process
 
 ## 1.5.0 [2020-07-17]
 

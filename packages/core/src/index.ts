@@ -20,7 +20,7 @@
  * and offers several ways to stream query results.
  *
  * The influxDB object is also used to create more specialized InfluxDB management API instances in
- * {@link @influxdata/influxdb-client-apis# | @influxdata/influxdb-client-apis}
+ * {@link @influxdata/influxdb-client-apis# | @influxdata/influxdb-client-apis} .
  *
  * See also {@link https://github.com/influxdata/influxdb-client-js/tree/master/examples | examples} to know more.
  *

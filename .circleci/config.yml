@@ -17,7 +17,7 @@ commands:
             - ~/.cache/yarn
 
 jobs:
-  unit-tests:
+  tests:
     parameters:
       version:
         type: string
@@ -29,13 +29,15 @@ jobs:
       - run:
           name: Run tests
           command: |
+            yarn build
             cd ./packages/core
             yarn test:ci
             yarn lint:ci
             yarn build
             cd ../apis
             yarn test
-            yarn build
+            cd ../..
+            yarn apidoc:ci
       # Upload results
       - store_test_results:
           path: reports
@@ -87,12 +89,12 @@ jobs:
 workflows:
   build:
     jobs:
-      - unit-tests:
+      - tests:
           version: '12'
       - coverage
       - deploy-preview:
           requires:
-            - unit-tests
+            - tests
             - coverage
           filters:
             branches:
