@@ -94,7 +94,7 @@ workflows:
       - coverage
       - deploy-preview:
           requires:
-            - unit-tests
+            - tests
             - coverage
           filters:
             branches:
