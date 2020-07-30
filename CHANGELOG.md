@@ -4,6 +4,11 @@
 
 1. [#219](https://github.com/influxdata/influxdb-client-js/pull/219): Sanitize arrays in parameterized flux queries.
 
+### Breaking Changes
+
+1. [#227](https://github.com/influxdata/influxdb-client-js/pull/227): Change default number serializers to return null when no value is found.
+   This change affects the output of `tableMeta.toObject(row)`, see [#227](https://github.com/influxdata/influxdb-client-js/pull/227) for details and backward compatibility notes.
+
 ### Documentation
 
 1. [#215](https://github.com/influxdata/influxdb-client-js/pull/215): Add createBucket.js example.
