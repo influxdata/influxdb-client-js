@@ -148,7 +148,7 @@ describe('QueryApi', () => {
     expect(values).to.deep.equal([
       {
         result: '_result',
-        table: '0',
+        table: 0,
         id: 'GO506_20_6431',
         st_length: 25.463641400535032,
         st_linestring: '-73.68691 40.820317, -73.690054 40.815413',
@@ -156,7 +156,7 @@ describe('QueryApi', () => {
       },
       {
         result: '_result',
-        table: '1',
+        table: 1,
         id: 'GO506_20_6431',
         st_length: 25.463641400535032,
         st_linestring: '-73.68691 40.820317, -73.690054 40.815413',

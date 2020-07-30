@@ -8,13 +8,13 @@ const identity = (x: string): any => x
  */
 export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   boolean: (x: string): any => x === 'true',
-  unsignedLong: identity,
-  long: identity,
-  double: (x: string): any => +x,
+  unsignedLong: (x: string): any => (x === '' ? null : +x),
+  long: (x: string): any => (x === '' ? null : +x),
+  double: (x: string): any => (x === '' ? null : +x),
   string: identity,
   base64Binary: identity,
-  dateTime: identity,
-  duration: identity,
+  dateTime: (x: string): any => (x === '' ? null : x),
+  duration: (x: string): any => (x === '' ? null : x),
 }
 /**
  * Represents metadata of a {@link http://bit.ly/flux-spec#table | flux table}.
