@@ -36,13 +36,13 @@ export interface RetryDelayStrategyOptions {
  * Options that configure strategy for retrying failed InfluxDB write operations.
  */
 export interface WriteRetryOptions extends RetryDelayStrategyOptions {
-  /*
+  /**
    * writeFailed is called to inform about write error
-   * @param this the instance of the API that failed
-   * @param error write error
-   * @param lines failed lines
-   * @param attempts a number of failed attempts to write the lines
-   * @return a Promise to force the API to not retry again and use the promise as a result of the flush operation,
+   * @param this - the instance of the API that failed
+   * @param error - write error
+   * @param lines - failed lines
+   * @param attempts - a number of failed attempts to write the lines
+   * @returns a Promise to force the API to use it as a result of the flush operation,
    * void/undefined to continue with default retry mechanism
    */
   writeFailed(
