@@ -153,7 +153,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 (error as HttpError).statusCode >= 429)
             ) {
               Logger.warn(
-                `Write to influx DB failed (remaining attempts: ${attempts -
+                `Write to InfluxDB failed (remaining attempts: ${attempts -
                   1}).`,
                 error
               )
@@ -165,7 +165,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
               reject(error)
               return
             }
-            Logger.error(`Write to influx DB failed.`, error)
+            Logger.error(`Write to InfluxDB failed.`, error)
             reject(error)
           },
           complete(): void {
