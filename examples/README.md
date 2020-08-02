@@ -25,7 +25,7 @@ This directory contains javascript and typescript examples for node.js and brows
   - [rxjs-query.ts](./rxjs-query.ts)
     Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
   - [writeAdvanced.js](./writeAdvanced.js)
-    Shows how to control the way of how data points are imported to InfluxDB.
+    Shows how to control the way of how data points are written to InfluxDB.
 - Browser examples
   - Change `url` in [env.js](./env.js) to match your influxDB instance
   - Change `token, org, bucket, username, password` variables in [./index.html](index.html) to match your influxDB instance
