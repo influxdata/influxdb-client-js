@@ -24,5 +24,5 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions
 
 |  Method | Description |
 |  --- | --- |
-|  [writeFailed(this, error, lines, attempts)](./influxdb-client.writeretryoptions.writefailed.md) |  |
+|  [writeFailed(this, error, lines, attempts)](./influxdb-client.writeretryoptions.writefailed.md) | writeFailed is called to inform about write error |
 

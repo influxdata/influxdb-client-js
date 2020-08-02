@@ -18,7 +18,7 @@ export default interface WriteApi
 |  --- | --- |
 |  [close()](./influxdb-client.writeapi.close.md) | Flushes this writer and cancels retries of write operations that failed. |
 |  [dispose()](./influxdb-client.writeapi.dispose.md) | Unlike close, dispose simply quits without trying to flush the buffered data. |
-|  [flush()](./influxdb-client.writeapi.flush.md) | Flushes pending writes to the server. |
+|  [flush(withRetryBuffer)](./influxdb-client.writeapi.flush.md) | Flushes pending writes to the server. |
 |  [useDefaultTags(tags)](./influxdb-client.writeapi.usedefaulttags.md) | Instructs to use the following default tags when writing points. Not applicable for writing records/lines. |
 |  [writePoint(point)](./influxdb-client.writeapi.writepoint.md) | Write point. |
 |  [writePoints(points)](./influxdb-client.writeapi.writepoints.md) | Write points. |

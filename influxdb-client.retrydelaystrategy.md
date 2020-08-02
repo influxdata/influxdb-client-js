@@ -16,6 +16,6 @@ export interface RetryDelayStrategy
 
 |  Method | Description |
 |  --- | --- |
-|  [nextDelay(error)](./influxdb-client.retrydelaystrategy.nextdelay.md) | Returns delay for a next retry |
+|  [nextDelay(error, failedAttempts)](./influxdb-client.retrydelaystrategy.nextdelay.md) | Returns delay for a next retry |
 |  [success()](./influxdb-client.retrydelaystrategy.success.md) | Implementation should reset its state, this is mandatory to call upon success. |
 

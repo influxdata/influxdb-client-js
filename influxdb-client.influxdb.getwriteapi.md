@@ -31,5 +31,5 @@ WriteApi instance
 
 Inspect the [WriteOptions](./influxdb-client.writeoptions.md) to control also advanced options, such retries of failure, retry strategy options, data chunking and flushing windows. See [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) to see the defaults.
 
-See also [write.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->.
+See also [write.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js)<!-- -->, [writeAdvanced.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.js)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->.
 

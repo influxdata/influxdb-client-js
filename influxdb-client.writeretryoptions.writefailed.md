@@ -4,6 +4,8 @@
 
 ## WriteRetryOptions.writeFailed() method
 
+writeFailed is called to inform about write error
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,12 +16,14 @@ writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempts: number
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | [WriteApi](./influxdb-client.writeapi.md) |  |
-|  error | Error |  |
-|  lines | Array&lt;string&gt; |  |
-|  attempts | number |  |
+|  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API that failed |
+|  error | Error | write error |
+|  lines | Array&lt;string&gt; | failed lines |
+|  attempts | number | a number of failed attempts to write the lines |
 
 <b>Returns:</b>
 
 Promise&lt;void&gt; \| void
+
+a Promise to force the API to use it as a result of the flush operation, void/undefined to continue with default retry mechanism
 

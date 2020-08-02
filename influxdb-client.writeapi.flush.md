@@ -9,8 +9,15 @@ Flushes pending writes to the server.
 <b>Signature:</b>
 
 ```typescript
-flush(): Promise<void>;
+flush(withRetryBuffer?: boolean): Promise<void>;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  withRetryBuffer | boolean | flush also all the scheduled retries |
+
 <b>Returns:</b>
 
 Promise&lt;void&gt;

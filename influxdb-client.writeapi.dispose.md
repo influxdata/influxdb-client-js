@@ -9,9 +9,11 @@ Unlike close, dispose simply quits without trying to flush the buffered data.
 <b>Signature:</b>
 
 ```typescript
-dispose(): void;
+dispose(): number;
 ```
 <b>Returns:</b>
 
-void
+number
+
+count of points that were not written to InfluxDB
 
