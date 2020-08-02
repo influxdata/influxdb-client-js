@@ -69,7 +69,7 @@ There are also more advanced [examples](./examples/README.md) that shows
 - how to use this client in the browser
 - how to process InfluxDB query results with RX Observables
 
-The client API documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
+The client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
 ## Build Requirements
 
