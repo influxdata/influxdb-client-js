@@ -5,14 +5,12 @@
   "scripts": {
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && yarn run lint && rollup -c",
-    "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf build doc dist",
     "clean:apis": "rimraf src/generated/*API.ts",
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
     "typecheck": "tsc --noEmit --pretty",
-    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./doc/apidoc --module es2015 --tsconfig ./tsconfig.json ./src",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
