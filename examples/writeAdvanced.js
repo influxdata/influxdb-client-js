@@ -29,6 +29,8 @@ console.log('*** WRITE POINTS ***')
 const flushBatchSize = DEFAULT_WriteOptions.batchSize
 /* count of demo data to import */
 const demoCount = 10_000
+/* name of demo measurement */
+const demoMeasurement = 'temperature2'
 
 // explains all write options
 const writeOptions = {
@@ -58,7 +60,7 @@ async function importData() {
   const writeApi = influxDB.getWriteApi(org, bucket, 'ns', writeOptions)
   // import a bigger count of items
   for (let i = 0; i < demoCount; i++) {
-    const point = new Point('temperature2')
+    const point = new Point(demoMeasurement)
       .tag('example', 'writeAdvanced.ts')
       .floatField('value', 20 + Math.round(100 * Math.random()) / 10)
     writeApi.writePoint(point)
@@ -73,24 +75,23 @@ async function importData() {
     }
   }
 
-  // console.log('close writeApi: flush unwritten points, wait for retries')
-  // await writeApi.flush()
-  console.log('close writeApi: flush unwritten points, close retry buffer')
+  console.log(
+    'close writeApi: flush unwritten points, cancel scheduled retries'
+  )
   await writeApi.close()
 
   // print the count of items in the last 5 minutes
   const start = fluxDuration('-5m')
   const countQuery = flux`from(bucket: ${bucket})
      |> range(start: ${start})
-     |> filter(fn: (r) => r._measurement == "temperature2") 
+     |> filter(fn: (r) => r._measurement == ${demoMeasurement}) 
      |> count(column: "_value")`
   const count = await influxDB
     .getQueryApi(org)
-    .collectRows(
-      countQuery,
-      (row, tableMeta) => row[tableMeta.column('_value').index]
+    .collectRows(countQuery, (row, tableMeta) =>
+      Number.parseInt(row[tableMeta.column('_value').index])
     )
-    .then(results => results.reduce((acc, val) => acc + +val, 0))
+    .then(results => results.reduce((acc, val) => acc + val, 0))
   console.log(`Size of temperature2 measurement since '${start}': `, count)
 }
 

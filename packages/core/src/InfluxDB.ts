@@ -44,8 +44,8 @@ export default class InfluxDB {
    * and flushing windows. See {@link DEFAULT_WriteOptions} to see the defaults.
    *
    * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js | write.js example},
-   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.js | writeAdvanced.js example}
-   * , and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example}.
+   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.js | writeAdvanced.js example},
+   * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example}.
    *
    * @param org - Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
    * @param bucket - The destination bucket for writes.
@@ -74,8 +74,8 @@ export default class InfluxDB {
    * @remarks
    * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts | query.ts example},
    * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.ts | queryWithParams.ts example},
-   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example},
-   * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts | rxjs-query.ts example}.
+   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts | rxjs-query.ts example},
+   * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example},
    *
    * @param org - organization
    * @returns QueryApi instance
