@@ -57,7 +57,7 @@ describe('WriteApi', () => {
     })
     it('can be closed and flushed without any data', async () => {
       await subject.close().catch(e => expect.fail('should not happen', e))
-      await subject.flush().catch(e => expect.fail('should not happen', e))
+      await subject.flush(true).catch(e => expect.fail('should not happen', e))
     })
     it('fails on close without server connection', async () => {
       subject.writeRecord('test value=1')
@@ -149,9 +149,14 @@ describe('WriteApi', () => {
       useSubject({flushInterval: 0, maxRetries: 0, batchSize: 2})
       subject.writeRecords(['test value=1', 'test value=2', 'test value=3'])
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for HTTP to finish
-      subject.dispose()
+      let count = subject.dispose()
       expect(logs.error).to.length(1)
       expect(logs.warn).to.length(0)
+      expect(count).equals(1)
+      count = subject.dispose() // dispose is idempotent
+      expect(logs.error).to.length(1) // no more errorrs
+      expect(logs.warn).to.length(0)
+      expect(count).equals(1)
     })
   })
   describe('flush on background', () => {

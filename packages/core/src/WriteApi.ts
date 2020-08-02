@@ -47,9 +47,10 @@ export default interface WriteApi {
 
   /**
    * Flushes pending writes to the server.
+   * @param withRetryBuffer - flush also all the scheduled retries
    * @returns completition promise
    */
-  flush(): Promise<void>
+  flush(withRetryBuffer?: boolean): Promise<void>
 
   /**
    * Flushes this writer and cancels retries of write operations that failed.
@@ -60,6 +61,7 @@ export default interface WriteApi {
   /**
    * Unlike close, dispose simply quits without trying to flush
    * the buffered data.
+   * @returns count of points that were not written to InfluxDB
    */
-  dispose(): void
+  dispose(): number
 }
