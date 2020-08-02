@@ -56,7 +56,9 @@ describe('FluxTableMetaData', () => {
     ['string', '1', '1'],
     ['base64Binary', '1', '1'],
     ['dateTime', '1', '1'],
+    ['dateTime', '', null],
     ['duration', '1', '1'],
+    ['duration', '', null],
     [undefined, '1', '1'],
   ]
   for (const entry of serializationTable) {
