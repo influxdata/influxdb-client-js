@@ -5,7 +5,6 @@
   "scripts": {
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && rollup -c",
-    "build:doc": "yarn run clean && yarn typedoc",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "coverage:send": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov --root=../..",
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
@@ -16,7 +15,6 @@
     "test:ci": "yarn run lint && yarn run test:all --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml",
     "test:watch": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --watch-extensions ts --watch",
     "typecheck": "tsc --noEmit --pretty",
-    "typedoc": "typedoc --excludePrivate --excludeNotExported --mode file --out ./reports/apidoc --module es2015 --tsconfig ./tsconfig.json ./src",
     "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file reports/eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
@@ -65,7 +63,6 @@
     "rxjs": "^6.5.5",
     "sinon": "^7.5.0",
     "ts-node": "^8.5.4",
-    "typedoc": "^0.17.6",
     "typescript": "^3.7.4",
     "version-bump-prompt": "^5.0.6"
   }
