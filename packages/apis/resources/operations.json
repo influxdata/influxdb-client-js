@@ -6607,166 +6607,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/orgs/{orgID}/labels",
-    "operation": "get",
-    "operationId": "GetOrgsIDLabels",
-    "basicAuth": false,
-    "summary": "List all labels for a organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of all labels for an organization",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelsResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/labels",
-    "operation": "post",
-    "operationId": "PostOrgsIDLabels",
-    "basicAuth": false,
-    "summary": "Add a label to an organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Label to add",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "LabelMapping"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Returns the created label",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/labels/{labelID}",
-    "operation": "delete",
-    "operationId": "DeleteOrgsIDLabelsID",
-    "basicAuth": false,
-    "summary": "Delete a label from an organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "labelID",
-        "description": "The label ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Delete has been accepted",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Organization not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/orgs/{orgID}/secrets",
     "operation": "get",
     "operationId": "GetOrgsIDSecrets",
@@ -7182,403 +7022,11 @@
   },
   {
     "server": "/api/v2",
-    "path": "/orgs/{orgID}/invites",
-    "operation": "post",
-    "operationId": "PostOrgsIDInvites",
-    "basicAuth": false,
-    "summary": "Creates an invite to an organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Invite to be sent",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Invite"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Invite sent",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Invite"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/invites/{inviteID}",
-    "operation": "delete",
-    "operationId": "DeleteOrgsIDInviteID",
-    "basicAuth": false,
-    "summary": "Remove an invite to an organization",
-    "positionalParams": [
-      {
-        "name": "inviteID",
-        "description": "The ID of the invite to remove.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Invite removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/invites/{inviteID}/resend",
-    "operation": "post",
-    "operationId": "PostOrgsIDInviteID",
-    "basicAuth": false,
-    "summary": "Resends an invite",
-    "positionalParams": [
-      {
-        "name": "inviteID",
-        "description": "The ID of the invite to resend.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Invite resent",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Invite"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/users",
-    "operation": "get",
-    "operationId": "GetCloudUsers",
-    "basicAuth": false,
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "Specifies the organization ID of the CloudUser.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of cloud users",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "CloudUsers"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/users/{userID}",
-    "operation": "delete",
-    "operationId": "DeleteOrgsIDCloudUserID",
-    "basicAuth": false,
-    "summary": "Deletes a cloud user",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of the user to remove.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "User removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/orgs/{orgID}/owners/{userID}",
-    "operation": "delete",
-    "operationId": "DeleteOrgsIDOwnersID",
-    "basicAuth": false,
-    "summary": "Remove an owner from an organization",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of the owner to remove.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Owner removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/packages",
-    "operation": "post",
-    "operationId": "CreatePkg",
-    "basicAuth": false,
-    "summary": "Create a new Influx package",
-    "positionalParams": [],
-    "headerParams": [],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Influx package to create.",
-      "required": false,
-      "mediaType": "application/json",
-      "type": "PkgCreate"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Influx package created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Pkg"
-          },
-          {
-            "mediaType": "application/x-yaml",
-            "type": "Pkg"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/packages/apply",
-    "operation": "post",
-    "operationId": "ApplyPkg",
-    "basicAuth": false,
-    "summary": "Apply or dry-run an Influx package",
-    "positionalParams": [],
-    "headerParams": [],
-    "queryParams": [],
-    "bodyParam": {
-      "required": true,
-      "mediaType": "application/json",
-      "type": "PkgApply"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Influx package dry-run successful, no new resources created. The provided diff and summary will not have IDs for resources that do not exist at the time of the dry run.\n",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "PkgSummary"
-          }
-        ]
-      },
-      {
-        "code": "201",
-        "description": "Influx package applied successfully. Newly created resources created available in summary. The diff compares the state of the world before the package is applied with the changes the application will impose. This corresponds to `\"dryRun\": true`\n",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "PkgSummary"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/packages/stacks",
+    "path": "/stacks",
     "operation": "get",
     "operationId": "ListStacks",
     "basicAuth": false,
-    "summary": "Grab a list of installed Influx packages",
+    "summary": "Grab a list of installed InfluxDB Templates",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
@@ -7625,7 +7073,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/packages/stacks",
+    "path": "/stacks",
     "operation": "post",
     "operationId": "CreateStack",
     "basicAuth": false,
@@ -7634,7 +7082,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Influx stack to create.",
+      "description": "Stack to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "{\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
@@ -7642,7 +7090,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Influx stack created",
+        "description": "InfluxDB Stack created",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -7664,7 +7112,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/packages/stacks/{stack_id}",
+    "path": "/stacks/{stack_id}",
     "operation": "get",
     "operationId": "ReadStack",
     "basicAuth": false,
@@ -7705,11 +7153,11 @@
   },
   {
     "server": "/api/v2",
-    "path": "/packages/stacks/{stack_id}",
+    "path": "/stacks/{stack_id}",
     "operation": "patch",
     "operationId": "UpdateStack",
     "basicAuth": false,
-    "summary": "Update a an Influx Stack",
+    "summary": "Update an InfluxDB Stack",
     "positionalParams": [
       {
         "name": "stack_id",
@@ -7724,7 +7172,7 @@
       "description": "Influx stack to update.",
       "required": true,
       "mediaType": "application/json",
-      "type": "{\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
+      "type": "{\n  name?: string;\n  description?: string;\n  templateURLs?: string[];\n  additionalResources?: Array<{\n  resourceID: string;\n  kind: string;\n  templateMetaName?: string;\n}>;\n}"
     },
     "responses": [
       {
@@ -7751,7 +7199,7 @@
   },
   {
     "server": "/api/v2",
-    "path": "/packages/stacks/{stack_id}",
+    "path": "/stacks/{stack_id}",
     "operation": "delete",
     "operationId": "DeleteStack",
     "basicAuth": false,
@@ -7794,41 +7242,121 @@
   },
   {
     "server": "/api/v2",
-    "path": "/packages/stacks/{stack_id}/export",
-    "operation": "delete",
-    "operationId": "ExportStack",
+    "path": "/stacks/{stack_id}/uninstall",
+    "operation": "post",
+    "operationId": "UninstallStack",
     "basicAuth": false,
-    "summary": "Export a stack's resources in the form of a package",
+    "summary": "Uninstall an InfluxDB Stack",
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id to be removed",
+        "description": "The stack id",
         "required": true,
         "type": "string"
       }
     ],
     "headerParams": [],
-    "queryParams": [
-      {
-        "name": "orgID",
-        "description": "The organization id of the user",
-        "required": true,
-        "type": "string"
-      }
-    ],
+    "queryParams": [],
     "bodyParam": null,
     "responses": [
       {
         "code": "200",
-        "description": "Stack and all its associated resources are deleted",
+        "description": "Influx stack uninstalled",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Pkg"
+            "type": "Stack"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/templates/apply",
+    "operation": "post",
+    "operationId": "ApplyTemplate",
+    "basicAuth": false,
+    "summary": "Apply or dry-run an InfluxDB Template",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "TemplateApply"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Influx package dry-run successful, no new resources created. The provided diff and summary will not have IDs for resources that do not exist at the time of the dry run.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "TemplateSummary"
+          }
+        ]
+      },
+      {
+        "code": "201",
+        "description": "Influx package applied successfully. Newly created resources created available in summary. The diff compares the state of the world before the package is applied with the changes the application will impose. This corresponds to `\"dryRun\": true`\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "TemplateSummary"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/templates/export",
+    "operation": "post",
+    "operationId": "ExportTemplate",
+    "basicAuth": false,
+    "summary": "Export a new Influx Template",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Export resources as an InfluxDB template.",
+      "required": false,
+      "mediaType": "application/json",
+      "type": "TemplateExport"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "InfluxDB template created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Template"
           },
           {
             "mediaType": "application/x-yaml",
-            "type": "Pkg"
+            "type": "Template"
           }
         ]
       },
