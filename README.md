@@ -63,13 +63,13 @@ The following examples helps to start quickly with this client:
 
 There are also more advanced [examples](./examples/README.md) that shows
 
-- how to create a bucket
 - how to execute parameterized queries
 - how to use this client with InfluxDB 1.8+
 - how to use this client in the browser
 - how to process InfluxDB query results with RX Observables
+- how to customize the way of how measurement points are written to InfluxDB
 
-The client API documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
+The client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
 ## Build Requirements
 

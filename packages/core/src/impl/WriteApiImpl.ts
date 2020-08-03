@@ -153,7 +153,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 (error as HttpError).statusCode >= 429)
             ) {
               Logger.warn(
-                `Write to influx DB failed (remaining attempts: ${attempts -
+                `Write to InfluxDB failed (remaining attempts: ${attempts -
                   1}).`,
                 error
               )
@@ -165,7 +165,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
               reject(error)
               return
             }
-            Logger.error(`Write to influx DB failed.`, error)
+            Logger.error(`Write to InfluxDB failed.`, error)
             reject(error)
           },
           complete(): void {
@@ -203,9 +203,11 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       this.writePoint(points[i])
     }
   }
-  async flush(): Promise<void> {
+  async flush(withRetryBuffer?: boolean): Promise<void> {
     await this.writeBuffer.flush()
-    return await this.retryBuffer.flush()
+    if (withRetryBuffer) {
+      return await this.retryBuffer.flush()
+    }
   }
   close(): Promise<void> {
     const retVal = this.writeBuffer.flush().finally(() => {
@@ -220,9 +222,10 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     })
     return retVal
   }
-  dispose(): void {
+  dispose(): number {
     this._clearFlushTimeout()
     this.closed = true
+    return this.retryBuffer.close() + this.writeBuffer.length
   }
 
   // PointSettings
