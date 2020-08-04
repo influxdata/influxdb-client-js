@@ -4,6 +4,7 @@
 
 1. [#219](https://github.com/influxdata/influxdb-client-js/pull/219): Sanitize arrays in parameterized flux queries.
 1. [#226](https://github.com/influxdata/influxdb-client-js/pull/226): Improve retry strategy.
+1. [#231](https://github.com/influxdata/influxdb-client-js/pull/231): Regenerate APIs from swagger.
 
 ### Breaking Changes
 

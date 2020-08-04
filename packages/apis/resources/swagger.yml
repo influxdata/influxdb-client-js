@@ -4083,101 +4083,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/labels":
-    get:
-      operationId: GetOrgsIDLabels
-      tags:
-        - Organizations
-      summary: List all labels for a organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      responses:
-        "200":
-          description: A list of all labels for an organization
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LabelsResponse"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-    post:
-      operationId: PostOrgsIDLabels
-      tags:
-        - Organizations
-      summary: Add a label to an organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      requestBody:
-        description: Label to add
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LabelMapping"
-      responses:
-        "201":
-          description: Returns the created label
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LabelResponse"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/labels/{labelID}":
-    delete:
-      operationId: DeleteOrgsIDLabelsID
-      tags:
-        - Organizations
-      summary: Delete a label from an organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-        - in: path
-          name: labelID
-          schema:
-            type: string
-          required: true
-          description: The label ID.
-      responses:
-        "204":
-          description: Delete has been accepted
-        "404":
-          description: Organization not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
   "/orgs/{orgID}/secrets":
     get:
       operationId: GetOrgsIDSecrets
@@ -4433,270 +4338,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/invites":
-    post:
-      operationId: PostOrgsIDInvites
-      tags:
-        - Invites
-        - Organizations
-      summary: Creates an invite to an organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      requestBody:
-        description: Invite to be sent
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Invite"
-      responses:
-        "201":
-          description: Invite sent
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Invite"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/invites/{inviteID}":
-    delete:
-      operationId: DeleteOrgsIDInviteID
-      tags:
-        - Invites
-        - Organizations
-      summary: Remove an invite to an organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: inviteID
-          schema:
-            type: string
-          required: true
-          description: The ID of the invite to remove.
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      responses:
-        "204":
-          description: Invite removed
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/invites/{inviteID}/resend":
-    post:
-      operationId: PostOrgsIDInviteID
-      tags:
-        - Invites
-        - Organizations
-      summary: Resends an invite
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: inviteID
-          schema:
-            type: string
-          required: true
-          description: The ID of the invite to resend.
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      responses:
-        "200":
-          description: Invite resent
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Invite"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/users":
-    get:
-      operationId: GetCloudUsers
-      tags:
-        - CloudUsers
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: orgID
-          description: Specifies the organization ID of the CloudUser.
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: A list of cloud users
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CloudUsers"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/users/{userID}":
-    delete:
-      operationId: DeleteOrgsIDCloudUserID
-      tags:
-        - CloudUsers
-        - Organizations
-      summary: Deletes a cloud user
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: userID
-          schema:
-            type: string
-          required: true
-          description: The ID of the user to remove.
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      responses:
-        "204":
-          description: User removed
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  "/orgs/{orgID}/owners/{userID}":
-    delete:
-      operationId: DeleteOrgsIDOwnersID
-      tags:
-        - Users
-        - Organizations
-      summary: Remove an owner from an organization
-      parameters:
-        - $ref: "#/components/parameters/TraceSpan"
-        - in: path
-          name: userID
-          schema:
-            type: string
-          required: true
-          description: The ID of the owner to remove.
-        - in: path
-          name: orgID
-          schema:
-            type: string
-          required: true
-          description: The organization ID.
-      responses:
-        "204":
-          description: Owner removed
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /packages:
-    post:
-      operationId: CreatePkg
-      tags:
-        - InfluxPackages
-      summary: Create a new Influx package
-      requestBody:
-        description: Influx package to create.
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PkgCreate"
-      responses:
-        "200":
-          description: Influx package created
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Pkg"
-            application/x-yaml:
-              schema:
-                $ref: "#/components/schemas/Pkg"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /packages/apply:
-    post:
-      operationId: ApplyPkg
-      tags:
-        - InfluxPackages
-      summary: Apply or dry-run an Influx package
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PkgApply"
-          application/x-jsonnet:
-            schema:
-              $ref: "#/components/schemas/PkgApply"
-          text/yml:
-            schema:
-              $ref: "#/components/schemas/PkgApply"
-      responses:
-        "200":
-          description: >
-            Influx package dry-run successful, no new resources created.
-            The provided diff and summary will not have IDs for resources
-            that do not exist at the time of the dry run.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PkgSummary"
-        "201":
-          description: >
-            Influx package applied successfully. Newly created resources created
-            available in summary. The diff compares the state of the world before
-            the package is applied with the changes the application will impose.
-            This corresponds to `"dryRun": true`
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PkgSummary"
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /packages/stacks:
+  /stacks:
     get:
       operationId: ListStacks
       tags:
-        - InfluxPackages
-      summary: Grab a list of installed Influx packages
+        - InfluxDB Templates
+      summary: Grab a list of installed InfluxDB Templates
       parameters:
         - in: query
           name: orgID
@@ -4735,10 +4382,10 @@ paths:
     post:
       operationId: CreateStack
       tags:
-        - InfluxPackages
+        - InfluxDB Templates
       summary: Create a new stack
       requestBody:
-        description: Influx stack to create.
+        description: Stack to create.
         required: true
         content:
           application/json:
@@ -4757,7 +4404,7 @@ paths:
                     type: string
       responses:
         "201":
-          description: Influx stack created
+          description: InfluxDB Stack created
           content:
             application/json:
               schema:
@@ -4768,11 +4415,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /packages/stacks/{stack_id}:
+  /stacks/{stack_id}:
     get:
       operationId: ReadStack
       tags:
-        - InfluxPackages
+        - InfluxDB Templates
       summary: Grab a stack by its ID
       parameters:
         - in: path
@@ -4797,8 +4444,8 @@ paths:
     patch:
       operationId: UpdateStack
       tags:
-        - InfluxPackages
-      summary: Update a an Influx Stack
+        - InfluxDB Templates
+      summary: Update an InfluxDB Stack
       parameters:
         - in: path
           name: stack_id
@@ -4816,12 +4463,27 @@ paths:
               properties:
                 name:
                   type: string
+                  nullable: true
                 description:
                   type: string
-                urls:
+                  nullable: true
+                templateURLs:
                   type: array
                   items:
                     type: string
+                  nullable: true
+                additionalResources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      resourceID:
+                        type: string
+                      kind:
+                        type: string
+                      templateMetaName:
+                        type: string
+                    required: ["kind","resourceID"]
       responses:
         "200":
           description: Influx stack updated
@@ -4838,7 +4500,7 @@ paths:
     delete:
       operationId: DeleteStack
       tags:
-        - InfluxPackages
+        - InfluxDB Templates
       summary: Delete a stack and remove all its associated resources
       parameters:
         - in: path
@@ -4862,35 +4524,99 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /packages/stacks/{stack_id}/export:
-    delete:
-      operationId: ExportStack
+  /stacks/{stack_id}/uninstall:
+    post:
+      operationId: UninstallStack
       tags:
-        - InfluxPackages
-      summary: Export a stack's resources in the form of a package
+        - InfluxDB Templates
+      summary: Uninstall an InfluxDB Stack
       parameters:
         - in: path
           name: stack_id
           required: true
           schema:
             type: string
-          description: The stack id to be removed
-        - in: query
-          name: orgID
-          required: true
-          schema:
-            type: string
-          description: The organization id of the user
+          description: The stack id
       responses:
         "200":
-          description: Stack and all its associated resources are deleted
+          description: Influx stack uninstalled
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pkg"
+                $ref: "#/components/schemas/Stack"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /templates/apply:
+    post:
+      operationId: ApplyTemplate
+      tags:
+        - InfluxDB Templates
+      summary: Apply or dry-run an InfluxDB Template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TemplateApply"
+          application/x-jsonnet:
+            schema:
+              $ref: "#/components/schemas/TemplateApply"
+          text/yml:
+            schema:
+              $ref: "#/components/schemas/TemplateApply"
+      responses:
+        "200":
+          description: >
+            Influx package dry-run successful, no new resources created.
+            The provided diff and summary will not have IDs for resources
+            that do not exist at the time of the dry run.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateSummary"
+        "201":
+          description: >
+            Influx package applied successfully. Newly created resources created
+            available in summary. The diff compares the state of the world before
+            the package is applied with the changes the application will impose.
+            This corresponds to `"dryRun": true`
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateSummary"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /templates/export:
+    post:
+      operationId: ExportTemplate
+      tags:
+        - InfluxDB Templates
+      summary: Export a new Influx Template
+      requestBody:
+        description: Export resources as an InfluxDB template.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TemplateExport"
+      responses:
+        "200":
+          description: InfluxDB template created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Template"
             application/x-yaml:
               schema:
-                $ref: "#/components/schemas/Pkg"
+                $ref: "#/components/schemas/Template"
         default:
           description: Unexpected error
           content:
@@ -7453,7 +7179,7 @@ components:
           type: string
         retentionRules:
           $ref: "#/components/schemas/RetentionRules"
-      required: [name, retentionRules]
+      required: [orgID, name, retentionRules]
     Bucket:
       properties:
         links:
@@ -7644,7 +7370,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Organization"
-    PkgApply:
+    TemplateApply:
       type: object
       properties:
         dryRun:
@@ -7662,8 +7388,8 @@ components:
               type: array
               items:
                 type: string
-            package:
-              $ref: "#/components/schemas/Pkg"
+            contents:
+              $ref: "#/components/schemas/Template"
         templates:
           type: array
           items:
@@ -7675,8 +7401,16 @@ components:
                 type: array
                 items:
                   type: string
-              package:
-                $ref: "#/components/schemas/Pkg"
+              contents:
+                $ref: "#/components/schemas/Template"
+        envRefs:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: integer
+              - type: number
+              - type: boolean
         secrets:
           type: object
           additionalProperties:
@@ -7699,30 +7433,48 @@ components:
                 properties:
                   action:
                     type: string
+                    enum: ["skipKind"]
+                  properties:
+                    type: object
+                    properties:
+                      kind:
+                        $ref: "#/components/schemas/TemplateKind"
+                    required: ["kind"]
+              - type: object
+                properties:
+                  action:
+                    type: string
                     enum: ["skipResource"]
                   properties:
                     type: object
                     properties:
                       kind:
-                        type: string
+                        $ref: "#/components/schemas/TemplateKind"
                       resourceTemplateName:
                         type: string
                     required: ["kind", "resourceTemplateName"]
-    PkgCreateKind:
+    TemplateKind:
       type: string
       enum:
-        - bucket
-        - check
-        - dashboard
-        - label
-        - notification_endpoint
-        - notification_rule
-        - task
-        - telegraf
-        - variable
-    PkgCreate:
+        - Bucket
+        - Check
+        - CheckDeadman
+        - CheckThreshold
+        - Dashboard
+        - Label
+        - NotificationEndpoint
+        - NotificationEndpointHTTP
+        - NotificationEndpointPagerDuty
+        - NotificationEndpointSlack
+        - NotificationRule
+        - Task
+        - Telegraf
+        - Variable
+    TemplateExport:
       type: object
       properties:
+        stackID:
+          type: string
         orgIDs:
           type: array
           items:
@@ -7740,18 +7492,18 @@ components:
                   byResourceKind:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgCreateKind"
+                      $ref: "#/components/schemas/TemplateKind"
         resources:
           type: object
           properties:
             id:
               type: string
             kind:
-              $ref: "#/components/schemas/PkgCreateKind"
+              $ref: "#/components/schemas/TemplateKind"
             name:
               type: string
           required: [id, kind]
-    Pkg:
+    Template:
       type: array
       items:
         type: object
@@ -7759,20 +7511,7 @@ components:
           apiVersion:
             type: string
           kind:
-            type: string
-            enum:
-              - Bucket
-              - CheckDeadman
-              - CheckThreshold
-              - Dashboard
-              - Label
-              - NotificationEndpointHTTP
-              - NotificationEndpointPagerDuty
-              - NotificationEndpointSlack
-              - NotificationRule
-              - Task
-              - Telegraf
-              - Variable
+            $ref: "#/components/schemas/TemplateKind"
           meta:
             type: object
             properties:
@@ -7780,7 +7519,7 @@ components:
                 type: string
           spec:
             type: object
-    PkgEnvReferences:
+    TemplateEnvReferences:
       type: array
       items:
         type: object
@@ -7795,10 +7534,15 @@ components:
             type: string
             description: Value provided to fulfill reference
           defaultValue:
-            type: string
             description: Default value that will be provided for the reference when no value is provided
-        required: [resourceField, envRefKey, defaultValue]
-    PkgSummary:
+            nullable: true
+            oneOf:
+              - type: string
+              - type: integer
+              - type: number
+              - type: boolean
+        required: [resourceField, envRefKey]
+    TemplateSummary:
       type: object
       properties:
         sources:
@@ -7819,7 +7563,9 @@ components:
                     type: string
                   orgID:
                     type: string
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   name:
                     type: string
@@ -7830,9 +7576,9 @@ components:
                   labelAssociations:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgSummaryLabel"
+                      $ref: "#/components/schemas/TemplateSummaryLabel"
                   envReferences:
-                    $ref: "#/components/schemas/PkgEnvReferences"
+                    $ref: "#/components/schemas/TemplateEnvReferences"
             checks:
               type: array
               items:
@@ -7840,18 +7586,16 @@ components:
                   - $ref: "#/components/schemas/CheckDiscriminator"
                   - type: object
                     properties:
-                      pkgName:
+                      kind:
+                        $ref: "#/components/schemas/TemplateKind"
+                      templateMetaName:
                         type: string
                       labelAssociations:
                         type: array
                         items:
-                          $ref: "#/components/schemas/PkgSummaryLabel"
+                          $ref: "#/components/schemas/TemplateSummaryLabel"
                       envReferences:
-                        $ref: "#/components/schemas/PkgEnvReferences"
-            labels:
-              type: array
-              items:
-                $ref: "#/components/schemas/PkgSummaryLabel"
+                        $ref: "#/components/schemas/TemplateEnvReferences"
             dashboards:
               type: array
               items:
@@ -7861,7 +7605,9 @@ components:
                     type: "string"
                   orgID:
                     type: "string"
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   name:
                     type: "string"
@@ -7870,13 +7616,17 @@ components:
                   labelAssociations:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgSummaryLabel"
+                      $ref: "#/components/schemas/TemplateSummaryLabel"
                   charts:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgChart"
+                      $ref: "#/components/schemas/TemplateChart"
                   envReferences:
-                    $ref: "#/components/schemas/PkgEnvReferences"
+                    $ref: "#/components/schemas/TemplateEnvReferences"
+            labels:
+              type: array
+              items:
+                $ref: "#/components/schemas/TemplateSummaryLabel"
             labelMappings:
               type: array
               items:
@@ -7884,7 +7634,7 @@ components:
                 properties:
                   status:
                     type: string
-                  resourcePkgName:
+                  resourceTemplateMetaName:
                     type: string
                   resourceName:
                     type: string
@@ -7892,7 +7642,7 @@ components:
                     type: string
                   resourceType:
                     type: string
-                  labelPkgName:
+                  labelTemplateMetaName:
                     type: string
                   labelName:
                     type: string
@@ -7913,26 +7663,30 @@ components:
                   - $ref: "#/components/schemas/NotificationEndpointDiscrimator"
                   - type: object
                     properties:
-                      pkgName:
+                      kind:
+                        $ref: "#/components/schemas/TemplateKind"
+                      templateMetaName:
                         type: string
                       labelAssociations:
                         type: array
                         items:
-                          $ref: "#/components/schemas/PkgSummaryLabel"
+                          $ref: "#/components/schemas/TemplateSummaryLabel"
                       envReferences:
-                        $ref: "#/components/schemas/PkgEnvReferences"
+                        $ref: "#/components/schemas/TemplateEnvReferences"
             notificationRules:
               type: array
               items:
                 type: object
                 properties:
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   name:
                     type: string
                   description:
                     type: string
-                  endpointPkgName:
+                  endpointTemplateMetaName:
                     type: string
                   endpointID:
                     type: string
@@ -7969,15 +7723,17 @@ components:
                   labelAssociations:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgSummaryLabel"
+                      $ref: "#/components/schemas/TemplateSummaryLabel"
                   envReferences:
-                    $ref: "#/components/schemas/PkgEnvReferences"
+                    $ref: "#/components/schemas/TemplateEnvReferences"
             tasks:
               type: array
               items:
                 type: object
                 properties:
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   id:
                     type: string
@@ -7996,7 +7752,7 @@ components:
                   status:
                     type: string
                   envReferences:
-                    $ref: "#/components/schemas/PkgEnvReferences"
+                    $ref: "#/components/schemas/TemplateEnvReferences"
             telegrafConfigs:
               type: array
               items:
@@ -8004,20 +7760,24 @@ components:
                   - $ref: "#/components/schemas/TelegrafRequest"
                   - type: object
                     properties:
-                      pkgName:
+                      kind:
+                        $ref: "#/components/schemas/TemplateKind"
+                      templateMetaName:
                         type: string
                       labelAssociations:
                         type: array
                         items:
-                          $ref: "#/components/schemas/PkgSummaryLabel"
+                          $ref: "#/components/schemas/TemplateSummaryLabel"
                       envReferences:
-                        $ref: "#/components/schemas/PkgEnvReferences"
+                        $ref: "#/components/schemas/TemplateEnvReferences"
             variables:
               type: array
               items:
                 type: object
                 properties:
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   id:
                     type: string
@@ -8032,9 +7792,9 @@ components:
                   labelAssociations:
                     type: array
                     items:
-                      $ref: "#/components/schemas/PkgSummaryLabel"
+                      $ref: "#/components/schemas/TemplateSummaryLabel"
                   envReferences:
-                    $ref: "#/components/schemas/PkgEnvReferences"
+                    $ref: "#/components/schemas/TemplateEnvReferences"
         diff:
           type: object
           properties:
@@ -8043,11 +7803,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8072,11 +7834,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     $ref: "#/components/schemas/CheckDiscriminator"
@@ -8091,7 +7855,9 @@ components:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8103,7 +7869,7 @@ components:
                       charts:
                         type: array
                         items:
-                          $ref: "#/components/schemas/PkgChart"
+                          $ref: "#/components/schemas/TemplateChart"
                   old:
                     type: object
                     properties:
@@ -8114,7 +7880,7 @@ components:
                       charts:
                         type: array
                         items:
-                          $ref: "#/components/schemas/PkgChart"
+                          $ref: "#/components/schemas/TemplateChart"
             labels:
               type: array
               items:
@@ -8122,9 +7888,11 @@ components:
                 properties:
                   stateStatus:
                     type: string
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8155,13 +7923,13 @@ components:
                     type: string
                   resourceID:
                     type: string
-                  resourcePkgName:
+                  resourceTemplateMetaName:
                     type: string
                   resourceName:
                     type: string
                   labelID:
                     type: string
-                  labelPkgName:
+                  labelTemplateMetaName:
                     type: string
                   labelName:
                     type: string
@@ -8170,11 +7938,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     $ref: "#/components/schemas/NotificationEndpointDiscrimator"
@@ -8185,11 +7955,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8278,11 +8050,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8323,11 +8097,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     $ref: "#/components/schemas/TelegrafRequest"
@@ -8338,11 +8114,13 @@ components:
               items:
                 type: object
                 properties:
+                  kind:
+                    $ref: "#/components/schemas/TemplateKind"
                   stateStatus:
                     type: string
                   id:
                     type: string
-                  pkgName:
+                  templateMetaName:
                     type: string
                   new:
                     type: object
@@ -8368,7 +8146,7 @@ components:
             type: object
             properties:
               kind:
-                type: string
+                $ref: "#/components/schemas/TemplateKind"
               reason:
                 type: string
               fields:
@@ -8379,14 +8157,16 @@ components:
                 type: array
                 items:
                   type: integer
-    PkgSummaryLabel:
+    TemplateSummaryLabel:
       type: object
       properties:
         id:
           type: string
         orgID:
           type: string
-        pkgName:
+        kind:
+          $ref: "#/components/schemas/TemplateKind"
+        templateMetaName:
           type: string
         name:
           type: string
@@ -8398,8 +8178,8 @@ components:
             description:
               type: string
         envReferences:
-          $ref: "#/components/schemas/PkgEnvReferences"
-    PkgChart:
+          $ref: "#/components/schemas/TemplateEnvReferences"
+    TemplateChart:
       type: object
       properties:
         xPos:
@@ -8419,48 +8199,60 @@ components:
           type: string
         orgID:
           type: string
-        name:
-          type: string
-        description:
-          type: string
-        sources:
-          type: array
-          items:
-            type: string
-        resources:
-          type: array
-          items:
-            type: object
-            properties:
-              apiVersion:
-                type: string
-              resourceID:
-                type: string
-              kind:
-                type: string
-              pkgName:
-                type: string
-              associations:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    kind:
-                      type: string
-                    pkgName:
-                      type: string
-        urls:
-          type: array
-          items:
-            type: string
         createdAt:
           type: string
           format: date-time
           readOnly: true
-        updatedAt:
-          type: string
-          format: date-time
-          readOnly: true
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              eventType:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              sources:
+                type: array
+                items:
+                  type: string
+              resources:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    apiVersion:
+                      type: string
+                    resourceID:
+                      type: string
+                    kind:
+                      $ref: "#/components/schemas/TemplateKind"
+                    templateMetaName:
+                      type: string
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          kind:
+                            $ref: "#/components/schemas/TemplateKind"
+                          metaName:
+                            type: string
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          type: string
+              urls:
+                type: array
+                items:
+                  type: string
+              updatedAt:
+                type: string
+                format: date-time
+                readOnly: true
     Runs:
       type: object
       properties:
@@ -8682,46 +8474,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Invite"
-    CloudUser:
-      properties:
-        id:
-          description: the idpe id of the user
-          readOnly: true
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        role:
-          type: string
-          enum:
-            - member
-            - owner
-        links:
-          type: object
-          readOnly: true
-          example:
-            self: "/api/v2/cloud_users/1"
-          properties:
-            self:
-              type: string
-              format: uri
-      required: [id, email, role]
-    CloudUsers:
-      type: object
-      properties:
-        links:
-          type: object
-          properties:
-            self:
-              type: string
-              format: uri
-        users:
-          type: array
-          items:
-            $ref: "#/components/schemas/CloudUser"
     User:
       properties:
         id:
@@ -9028,6 +8780,8 @@ components:
           properties:
             period:
               type: string
+            fillValues:
+              type: boolean
     BuilderTagsType:
       type: object
       properties:
@@ -9184,6 +8938,9 @@ components:
           type: string
         shadeBelow:
           type: boolean
+        hoverDimension:
+          type: string
+          enum: [auto, x, y, xy]
         position:
           type: string
           enum: [overlaid, stacked]
@@ -9240,6 +8997,9 @@ components:
           type: string
         shadeBelow:
           type: boolean
+        hoverDimension:
+          type: string
+          enum: [auto, x, y, xy]
         position:
           type: string
           enum: [overlaid, stacked]

@@ -668,6 +668,7 @@ export interface LinePlusSingleStatProperties {
   xColumn?: string
   yColumn?: string
   shadeBelow?: boolean
+  hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   position: 'overlaid' | 'stacked'
   prefix: string
   suffix: string
@@ -690,6 +691,7 @@ export interface BuilderConfig {
   functions?: BuilderFunctionsType[]
   aggregateWindow?: {
     period?: string
+    fillValues?: boolean
   }
 }
 
@@ -786,6 +788,7 @@ export interface XYViewProperties {
   xColumn?: string
   yColumn?: string
   shadeBelow?: boolean
+  hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   position: 'overlaid' | 'stacked'
   geom: XYGeom
 }
@@ -1539,7 +1542,7 @@ export interface InfluxQLQuery {
 }
 
 export interface PostBucketRequest {
-  orgID?: string
+  orgID: string
   name: string
   description?: string
   rp?: string
@@ -1564,150 +1567,137 @@ export interface SecretKeys {
 
 export type Secrets = any
 
-export interface Invite {
-  /** the idpe id of the invite */
-  readonly id: string
-  email: string
-  role: 'member' | 'owner'
-  expiresAt?: string
-  readonly links?: {
-    self?: string
-  }
-}
-
-export interface CloudUsers {
-  links?: {
-    self?: string
-  }
-  users?: CloudUser[]
-}
-
-export interface CloudUser {
-  /** the idpe id of the user */
-  readonly id: string
-  firstName?: string
-  lastName?: string
-  email: string
-  role: 'member' | 'owner'
-  readonly links?: {
-    self?: string
-  }
-}
-
-export interface PkgCreate {
-  orgIDs?: Array<{
-    orgID?: string
-    resourceFilters?: {
-      byLabel?: string[]
-      byResourceKind?: PkgCreateKind[]
-    }
+export interface Stack {
+  id?: string
+  orgID?: string
+  readonly createdAt?: string
+  events?: Array<{
+    eventType?: string
+    name?: string
+    description?: string
+    sources?: string[]
+    resources?: Array<{
+      apiVersion?: string
+      resourceID?: string
+      kind?: TemplateKind
+      templateMetaName?: string
+      associations?: Array<{
+        kind?: TemplateKind
+        metaName?: string
+      }>
+      links?: {
+        self?: string
+      }
+    }>
+    urls?: string[]
+    readonly updatedAt?: string
   }>
-  resources?: {
-    id: string
-    kind: PkgCreateKind
-    name?: string
-  }
 }
 
-export type PkgCreateKind =
-  | 'bucket'
-  | 'check'
-  | 'dashboard'
-  | 'label'
-  | 'notification_endpoint'
-  | 'notification_rule'
-  | 'task'
-  | 'telegraf'
-  | 'variable'
+export type TemplateKind =
+  | 'Bucket'
+  | 'Check'
+  | 'CheckDeadman'
+  | 'CheckThreshold'
+  | 'Dashboard'
+  | 'Label'
+  | 'NotificationEndpoint'
+  | 'NotificationEndpointHTTP'
+  | 'NotificationEndpointPagerDuty'
+  | 'NotificationEndpointSlack'
+  | 'NotificationRule'
+  | 'Task'
+  | 'Telegraf'
+  | 'Variable'
 
-export type Pkg = Array<{
-  apiVersion?: string
-  kind?:
-    | 'Bucket'
-    | 'CheckDeadman'
-    | 'CheckThreshold'
-    | 'Dashboard'
-    | 'Label'
-    | 'NotificationEndpointHTTP'
-    | 'NotificationEndpointPagerDuty'
-    | 'NotificationEndpointSlack'
-    | 'NotificationRule'
-    | 'Task'
-    | 'Telegraf'
-    | 'Variable'
-  meta?: {
-    name?: string
-  }
-  spec?: any
-}>
-
-export interface PkgApply {
+export interface TemplateApply {
   dryRun?: boolean
   orgID?: string
   stackID?: string
   template?: {
     contentType?: string
     sources?: string[]
-    package?: Pkg
+    contents?: Template
   }
   templates?: Array<{
     contentType?: string
     sources?: string[]
-    package?: Pkg
+    contents?: Template
   }>
+  envRefs?: any
   secrets?: any
   remotes?: Array<{
     url: string
     contentType?: string
   }>
-  actions?: Array<{
-    action?: 'skipResource'
-    properties?: {
-      kind: string
-      resourceTemplateName: string
-    }
-  }>
+  actions?: Array<
+    | {
+        action?: 'skipKind'
+        properties?: {
+          kind: TemplateKind
+        }
+      }
+    | {
+        action?: 'skipResource'
+        properties?: {
+          kind: TemplateKind
+          resourceTemplateName: string
+        }
+      }
+  >
 }
 
-export interface PkgSummary {
+export type Template = Array<{
+  apiVersion?: string
+  kind?: TemplateKind
+  meta?: {
+    name?: string
+  }
+  spec?: any
+}>
+
+export interface TemplateSummary {
   sources?: string[]
   stackID?: string
   summary?: {
     buckets?: Array<{
       id?: string
       orgID?: string
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       name?: string
       description?: string
       retentionPeriod?: number
-      labelAssociations?: PkgSummaryLabel[]
-      envReferences?: PkgEnvReferences
+      labelAssociations?: TemplateSummaryLabel[]
+      envReferences?: TemplateEnvReferences
     }>
     checks?: Array<
       CheckDiscriminator & {
-        pkgName?: string
-        labelAssociations?: PkgSummaryLabel[]
-        envReferences?: PkgEnvReferences
+        kind?: TemplateKind
+        templateMetaName?: string
+        labelAssociations?: TemplateSummaryLabel[]
+        envReferences?: TemplateEnvReferences
       }
     >
-    labels?: PkgSummaryLabel[]
     dashboards?: Array<{
       id?: string
       orgID?: string
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       name?: string
       description?: string
-      labelAssociations?: PkgSummaryLabel[]
-      charts?: PkgChart[]
-      envReferences?: PkgEnvReferences
+      labelAssociations?: TemplateSummaryLabel[]
+      charts?: TemplateChart[]
+      envReferences?: TemplateEnvReferences
     }>
+    labels?: TemplateSummaryLabel[]
     labelMappings?: Array<{
       status?: string
-      resourcePkgName?: string
+      resourceTemplateMetaName?: string
       resourceName?: string
       resourceID?: string
       resourceType?: string
-      labelPkgName?: string
+      labelTemplateMetaName?: string
       labelName?: string
       labelID?: string
     }>
@@ -1715,16 +1705,18 @@ export interface PkgSummary {
     missingSecrets?: string[]
     notificationEndpoints?: Array<
       NotificationEndpointDiscrimator & {
-        pkgName?: string
-        labelAssociations?: PkgSummaryLabel[]
-        envReferences?: PkgEnvReferences
+        kind?: TemplateKind
+        templateMetaName?: string
+        labelAssociations?: TemplateSummaryLabel[]
+        envReferences?: TemplateEnvReferences
       }
     >
     notificationRules?: Array<{
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       name?: string
       description?: string
-      endpointPkgName?: string
+      endpointTemplateMetaName?: string
       endpointID?: string
       endpointType?: string
       every?: string
@@ -1740,11 +1732,12 @@ export interface PkgSummary {
         value?: string
         operator?: string
       }>
-      labelAssociations?: PkgSummaryLabel[]
-      envReferences?: PkgEnvReferences
+      labelAssociations?: TemplateSummaryLabel[]
+      envReferences?: TemplateEnvReferences
     }>
     tasks?: Array<{
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       id?: string
       name?: string
       cron?: string
@@ -1753,31 +1746,34 @@ export interface PkgSummary {
       offset?: string
       query?: string
       status?: string
-      envReferences?: PkgEnvReferences
+      envReferences?: TemplateEnvReferences
     }>
     telegrafConfigs?: Array<
       TelegrafRequest & {
-        pkgName?: string
-        labelAssociations?: PkgSummaryLabel[]
-        envReferences?: PkgEnvReferences
+        kind?: TemplateKind
+        templateMetaName?: string
+        labelAssociations?: TemplateSummaryLabel[]
+        envReferences?: TemplateEnvReferences
       }
     >
     variables?: Array<{
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       id?: string
       orgID?: string
       name?: string
       description?: string
       arguments?: VariableProperties
-      labelAssociations?: PkgSummaryLabel[]
-      envReferences?: PkgEnvReferences
+      labelAssociations?: TemplateSummaryLabel[]
+      envReferences?: TemplateEnvReferences
     }>
   }
   diff?: {
     buckets?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: {
         name?: string
         description?: string
@@ -1790,31 +1786,34 @@ export interface PkgSummary {
       }
     }>
     checks?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: CheckDiscriminator
       old?: CheckDiscriminator
     }>
     dashboards?: Array<{
       stateStatus?: string
       id?: string
-      pkgName?: string
+      kind?: TemplateKind
+      templateMetaName?: string
       new?: {
         name?: string
         description?: string
-        charts?: PkgChart[]
+        charts?: TemplateChart[]
       }
       old?: {
         name?: string
         description?: string
-        charts?: PkgChart[]
+        charts?: TemplateChart[]
       }
     }>
     labels?: Array<{
       stateStatus?: string
+      kind?: TemplateKind
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: {
         name?: string
         color?: string
@@ -1830,23 +1829,25 @@ export interface PkgSummary {
       status?: string
       resourceType?: string
       resourceID?: string
-      resourcePkgName?: string
+      resourceTemplateMetaName?: string
       resourceName?: string
       labelID?: string
-      labelPkgName?: string
+      labelTemplateMetaName?: string
       labelName?: string
     }>
     notificationEndpoints?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: NotificationEndpointDiscrimator
       old?: NotificationEndpointDiscrimator
     }>
     notificationRules?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: {
         name?: string
         description?: string
@@ -1889,9 +1890,10 @@ export interface PkgSummary {
       }
     }>
     tasks?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: {
         name?: string
         cron?: string
@@ -1912,16 +1914,18 @@ export interface PkgSummary {
       }
     }>
     telegrafConfigs?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: TelegrafRequest
       old?: TelegrafRequest
     }>
     variables?: Array<{
+      kind?: TemplateKind
       stateStatus?: string
       id?: string
-      pkgName?: string
+      templateMetaName?: string
       new?: {
         name?: string
         description?: string
@@ -1935,26 +1939,27 @@ export interface PkgSummary {
     }>
   }
   errors?: Array<{
-    kind?: string
+    kind?: TemplateKind
     reason?: string
     fields?: string[]
     indexes?: number[]
   }>
 }
 
-export interface PkgSummaryLabel {
+export interface TemplateSummaryLabel {
   id?: string
   orgID?: string
-  pkgName?: string
+  kind?: TemplateKind
+  templateMetaName?: string
   name?: string
   properties?: {
     color?: string
     description?: string
   }
-  envReferences?: PkgEnvReferences
+  envReferences?: TemplateEnvReferences
 }
 
-export type PkgEnvReferences = Array<{
+export type TemplateEnvReferences = Array<{
   /** Field the environment reference corresponds too */
   resourceField: string
   /** Key identified as environment reference and is the key identified in the template */
@@ -1962,10 +1967,10 @@ export type PkgEnvReferences = Array<{
   /** Value provided to fulfill reference */
   value?: string
   /** Default value that will be provided for the reference when no value is provided */
-  defaultValue: string
+  defaultValue?: string | number | number | boolean
 }>
 
-export interface PkgChart {
+export interface TemplateChart {
   xPos?: number
   yPos?: number
   height?: number
@@ -2029,25 +2034,20 @@ export type HTTPNotificationEndpoint = NotificationEndpointBase & {
   headers?: any
 }
 
-export interface Stack {
-  id?: string
-  orgID?: string
-  name?: string
-  description?: string
-  sources?: string[]
-  resources?: Array<{
-    apiVersion?: string
-    resourceID?: string
-    kind?: string
-    pkgName?: string
-    associations?: Array<{
-      kind?: string
-      pkgName?: string
-    }>
+export interface TemplateExport {
+  stackID?: string
+  orgIDs?: Array<{
+    orgID?: string
+    resourceFilters?: {
+      byLabel?: string[]
+      byResourceKind?: TemplateKind[]
+    }
   }>
-  urls?: string[]
-  readonly createdAt?: string
-  readonly updatedAt?: string
+  resources?: {
+    id: string
+    kind: TemplateKind
+    name?: string
+  }
 }
 
 export interface Tasks {
