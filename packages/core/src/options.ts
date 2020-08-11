@@ -72,8 +72,8 @@ export interface WriteOptions extends WriteRetryOptions {
 /** default RetryDelayStrategyOptions */
 export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
   retryJitter: 200,
-  minRetryDelay: 1000,
-  maxRetryDelay: 15000,
+  minRetryDelay: 5000,
+  maxRetryDelay: 180000,
 })
 
 /** default writeOptions */
