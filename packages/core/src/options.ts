@@ -81,7 +81,7 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
   writeFailed: function() {},
-  maxRetries: 2,
+  maxRetries: 3,
   maxBufferLines: 32_000,
   ...DEFAULT_RetryDelayStrategyOptions,
 })
