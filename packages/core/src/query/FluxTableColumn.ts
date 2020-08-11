@@ -74,7 +74,7 @@ export default class FluxTableColumn {
     retVal.label = object.label
     retVal.dataType = object.dataType as ColumnType
     retVal.group = Boolean(object.group)
-    retVal.defaultValue = object.defaultValue || ''
+    retVal.defaultValue = object.defaultValue ?? ''
     return retVal
   }
 }

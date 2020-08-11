@@ -118,7 +118,7 @@ describe('NodeHttpTransport', () => {
                 200,
                 new Readable({
                   read(): any {
-                    const encode = !!(extras.headers || {})['accept-encoding']
+                    const encode = !!(extras.headers ?? {})['accept-encoding']
                     if (encode) {
                       this.push(
                         responseRead ? null : zlib.gzipSync(responseData)
@@ -135,7 +135,7 @@ describe('NodeHttpTransport', () => {
                     _res: any,
                     _body: any
                   ): string =>
-                    (extras.headers || {})['accept-encoding'] || 'identity',
+                    (extras.headers ?? {})['accept-encoding'] ?? 'identity',
                 },
               ])
               .persist()

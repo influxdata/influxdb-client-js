@@ -29,7 +29,7 @@ function createPoint(test: PointTest): Point {
       : test.name
       ? new Point().measurement(test.name)
       : new Point()
-  ;(test.fields || []).forEach(
+  ;(test.fields ?? []).forEach(
     (field: [string, 'n' | 's' | 'b' | 'i', any]) => {
       switch (field[1]) {
         case 'n':

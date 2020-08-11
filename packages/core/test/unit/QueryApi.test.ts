@@ -204,7 +204,7 @@ describe('QueryApi', () => {
           },
         })
       )
-      expect(body?.type).to.deep.equal(pair.type || 'flux')
+      expect(body?.type).to.deep.equal(pair.type ?? 'flux')
       expect(body?.query).to.deep.equal(query)
       expect(body?.now).to.deep.equal(pair.now)
     }

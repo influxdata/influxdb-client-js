@@ -53,7 +53,7 @@ export default class FluxTableMetaData {
       if (val === '' && column.defaultValue) {
         val = column.defaultValue
       }
-      acc[column.label] = (typeSerializers[column.dataType] || identity)(val)
+      acc[column.label] = (typeSerializers[column.dataType] ?? identity)(val)
     }
     return acc
   }

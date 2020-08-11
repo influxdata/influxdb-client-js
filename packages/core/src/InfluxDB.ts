@@ -32,7 +32,7 @@ export default class InfluxDB {
     if (typeof url !== 'string')
       throw new IllegalArgumentError('No url specified!')
     if (url.endsWith('/')) this._options.url = url.substring(0, url.length - 1)
-    this.transport = this._options.transport || new TransportImpl(this._options)
+    this.transport = this._options.transport ?? new TransportImpl(this._options)
   }
 
   /**
@@ -64,7 +64,7 @@ export default class InfluxDB {
       org,
       bucket,
       precision,
-      writeOptions || this._options.writeOptions
+      writeOptions ?? this._options.writeOptions
     )
   }
 

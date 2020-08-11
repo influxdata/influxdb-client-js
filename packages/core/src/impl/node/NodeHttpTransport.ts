@@ -195,7 +195,7 @@ export class NodeHttpTransport implements Transport {
       })
       listeners.responseStarted(res.headers)
       const statusCode =
-        res.statusCode || /* istanbul ignore next safety check */ 600
+        res.statusCode ?? /* istanbul ignore next safety check */ 600
       const contentEncoding = res.headers['content-encoding']
       let responseData
       if (contentEncoding === 'gzip') {

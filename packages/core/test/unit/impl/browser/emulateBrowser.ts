@@ -14,7 +14,7 @@ function createResponse({
     statusText: `X${status}X`,
     headers: {
       get(key: string): string | undefined {
-        return headers[key] || headers[key.toLowerCase()]
+        return headers[key] ?? headers[key.toLowerCase()]
       },
       forEach(fn: (value: string, key: string) => void): void {
         Object.keys(headers).forEach((key: string) => {
