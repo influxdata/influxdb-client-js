@@ -36,17 +36,17 @@ InfluxDB 2.0 client consists of two packages
 To write or query InfluxDB, add `@influxdata/influxdb-client` dependency to your project using your favourite package manager.
 
 ```
-$npm install --save @influxdata/influxdb-client
-$yarn add @influxdata/influxdb-client
-$pnpm add @influxdata/influxdb-client
+$ npm install --save @influxdata/influxdb-client
+$ yarn add @influxdata/influxdb-client
+$ pnpm add @influxdata/influxdb-client
 ```
 
 To use InfluxDB management APIs in your project, add also `@influxdata/influxdb-client-apis` dependency to your project.
 
 ```
-$npm install --save @influxdata/influxdb-client-apis
-$yarn add @influxdata/influxdb-client-apis
-$pnpm add @influxdata/influxdb-client-apis
+$ npm install --save @influxdata/influxdb-client-apis
+$ yarn add @influxdata/influxdb-client-apis
+$ pnpm add @influxdata/influxdb-client-apis
 ```
 
 ## Usage
