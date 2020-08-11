@@ -22,6 +22,7 @@ describe('RetryStrategyImpl', () => {
       minRetryDelay: 100,
       maxRetryDelay: 1000,
       retryJitter: 0,
+      exponentialBase: 2,
     })
     const values = [1, 2, 3, 4, 5, 6].reduce((acc, _val) => {
       acc.push(subject.nextDelay())
@@ -30,6 +31,29 @@ describe('RetryStrategyImpl', () => {
     expect(values).to.be.deep.equal([100, 200, 400, 800, 1000, 1000])
     subject.success()
     expect(subject.nextDelay()).equals(100)
+  })
+  it('generates exponential data from min to max for unknown delays', () => {
+    const subject = new RetryStrategyImpl({
+      minRetryDelay: 100,
+      maxRetryDelay: 2000,
+      retryJitter: 20,
+      // exponentialBase: 5, 5 by default
+    })
+    const values = [1, 2, 3, 4, 5, 6].reduce((acc, _val, index) => {
+      acc.push(subject.nextDelay(undefined, index + 1))
+      return acc
+    }, [] as number[])
+    // truncate values to ignore jittering
+    expect(values.map(x => Math.trunc(x / 100) * 100)).to.be.deep.equal([
+      100,
+      500,
+      2000,
+      2000,
+      2000,
+      2000,
+    ])
+    subject.success()
+    expect(Math.trunc(subject.nextDelay() / 100) * 100).equals(100)
   })
   it('generates the delays according to errors', () => {
     const subject = new RetryStrategyImpl({
