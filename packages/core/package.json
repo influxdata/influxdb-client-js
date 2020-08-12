@@ -58,7 +58,7 @@
     "rimraf": "^3.0.0",
     "rollup": "^1.27.5",
     "rollup-plugin-gzip": "^2.2.0",
-    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.25.2",
     "rxjs": "^6.5.5",
     "sinon": "^7.5.0",
