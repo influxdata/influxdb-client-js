@@ -60,10 +60,29 @@ describe('InfluxDB', () => {
     it('fails on unsupported protocol', () => {
       expect(
         () =>
-          new InfluxDB(({
+          new InfluxDB({
             url: 'ws://localhost:9999?token=b',
-          } as ClientOptions) as ClientOptions)
+          })
       ).to.throw('Unsupported')
+    })
+    it('creates instance with transport initialized', () => {
+      expect(
+        new InfluxDB({
+          url: 'http://localhost:9999',
+        })
+      ).has.property('transport')
+      expect(
+        new InfluxDB(({
+          url: 'http://localhost:9999',
+          transport: null,
+        } as any) as ClientOptions)
+      ).has.property('transport')
+      expect(
+        new InfluxDB(({
+          url: 'http://localhost:9999',
+          transport: {} as Transport,
+        } as any) as ClientOptions)
+      ).has.property('transport')
     })
   })
   describe('apis', () => {

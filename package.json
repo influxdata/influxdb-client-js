@@ -16,7 +16,7 @@
     "preinstall": "node ./scripts/require-yarn.js",
     "clean": "rimraf temp docs && yarn workspaces run clean",
     "build": "cd packages/core && yarn build && cd ../apis && yarn build",
-    "test": "cd packages/core && yarn test && cd ../apis && yarn test",
+    "test": "cd packages/core && yarn test && yarn build && cd ../apis && yarn test",
     "coverage": "cd packages/core && yarn coverage",
     "coverage:send": "cd packages/core && yarn coverage:send"
   },
