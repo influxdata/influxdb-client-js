@@ -20,10 +20,7 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
   nextDelay(error?: Error, failedAttempts?: number): number {
     const delay = getRetryDelay(error)
     if (delay && delay > 0) {
-      return Math.min(
-        delay + Math.round(Math.random() * this.options.retryJitter),
-        this.options.maxRetryDelay
-      )
+      return delay + Math.round(Math.random() * this.options.retryJitter)
     } else {
       let delay = this.currentDelay
       if (failedAttempts && failedAttempts > 0) {
