@@ -26,10 +26,12 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
 export interface RetryDelayStrategyOptions {
   /** include random milliseconds when retrying HTTP calls */
   retryJitter: number
-  /** minimum delay when retrying write  */
+  /** minimum delay when retrying write (milliseconds) */
   minRetryDelay: number
-  /** maximum delay when retrying write  */
+  /** maximum delay when retrying write (milliseconds) */
   maxRetryDelay: number
+  /** base for the exponential retry delay, the next delay is computed as `minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)` */
+  exponentialBase: number
 }
 
 /**
@@ -72,8 +74,9 @@ export interface WriteOptions extends WriteRetryOptions {
 /** default RetryDelayStrategyOptions */
 export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
   retryJitter: 200,
-  minRetryDelay: 1000,
-  maxRetryDelay: 15000,
+  minRetryDelay: 5000,
+  maxRetryDelay: 180000,
+  exponentialBase: 5,
 })
 
 /** default writeOptions */
@@ -81,7 +84,7 @@ export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
   batchSize: 1000,
   flushInterval: 60000,
   writeFailed: function() {},
-  maxRetries: 2,
+  maxRetries: 3,
   maxBufferLines: 32_000,
   ...DEFAULT_RetryDelayStrategyOptions,
 })
