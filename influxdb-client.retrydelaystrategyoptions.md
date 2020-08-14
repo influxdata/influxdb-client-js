@@ -16,7 +16,8 @@ export interface RetryDelayStrategyOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [maxRetryDelay](./influxdb-client.retrydelaystrategyoptions.maxretrydelay.md) | number | maximum delay when retrying write |
-|  [minRetryDelay](./influxdb-client.retrydelaystrategyoptions.minretrydelay.md) | number | minimum delay when retrying write |
+|  [exponentialBase](./influxdb-client.retrydelaystrategyoptions.exponentialbase.md) | number | base for the exponential retry delay, the next delay is computed as <code>minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)</code> |
+|  [maxRetryDelay](./influxdb-client.retrydelaystrategyoptions.maxretrydelay.md) | number | maximum delay when retrying write (milliseconds) |
+|  [minRetryDelay](./influxdb-client.retrydelaystrategyoptions.minretrydelay.md) | number | minimum delay when retrying write (milliseconds) |
 |  [retryJitter](./influxdb-client.retrydelaystrategyoptions.retryjitter.md) | number | include random milliseconds when retrying HTTP calls |
 

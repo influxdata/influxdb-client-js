@@ -13,5 +13,6 @@ DEFAULT_RetryDelayStrategyOptions: Readonly<{
     retryJitter: number;
     minRetryDelay: number;
     maxRetryDelay: number;
+    exponentialBase: number;
 }>
 ```

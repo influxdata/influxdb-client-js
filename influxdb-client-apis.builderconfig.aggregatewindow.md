@@ -9,5 +9,6 @@
 ```typescript
 aggregateWindow?: {
         period?: string;
+        fillValues?: boolean;
     };
 ```

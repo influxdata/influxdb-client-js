@@ -4,7 +4,7 @@
 
 ## RetryDelayStrategyOptions.minRetryDelay property
 
-minimum delay when retrying write
+minimum delay when retrying write (milliseconds)
 
 <b>Signature:</b>
 

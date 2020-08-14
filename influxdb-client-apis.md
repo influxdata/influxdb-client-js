@@ -49,7 +49,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [NotificationEndpointsAPI](./influxdb-client-apis.notificationendpointsapi.md) | NotificationEndpoints API |
 |  [NotificationRulesAPI](./influxdb-client-apis.notificationrulesapi.md) | NotificationRules API |
 |  [OrgsAPI](./influxdb-client-apis.orgsapi.md) | Orgs API |
-|  [PackagesAPI](./influxdb-client-apis.packagesapi.md) | Packages API |
 |  [QueryAPI](./influxdb-client-apis.queryapi.md) | Query API |
 |  [ReadyAPI](./influxdb-client-apis.readyapi.md) | Ready API |
 |  [RootAPI](./influxdb-client-apis.rootapi.md) | Root API |
@@ -58,9 +57,11 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [SigninAPI](./influxdb-client-apis.signinapi.md) | Signin API |
 |  [SignoutAPI](./influxdb-client-apis.signoutapi.md) | Signout API |
 |  [SourcesAPI](./influxdb-client-apis.sourcesapi.md) | Sources API |
+|  [StacksAPI](./influxdb-client-apis.stacksapi.md) | Stacks API |
 |  [TasksAPI](./influxdb-client-apis.tasksapi.md) | Tasks API |
 |  [TelegrafAPI](./influxdb-client-apis.telegrafapi.md) | Telegraf API |
 |  [TelegrafsAPI](./influxdb-client-apis.telegrafsapi.md) | Telegrafs API |
+|  [TemplatesAPI](./influxdb-client-apis.templatesapi.md) | Templates API |
 |  [UsersAPI](./influxdb-client-apis.usersapi.md) | Users API |
 |  [VariablesAPI](./influxdb-client-apis.variablesapi.md) | Variables API |
 |  [WriteAPI](./influxdb-client-apis.writeapi.md) | Write API |
@@ -71,7 +72,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  --- | --- |
 |  [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) |  |
 |  [AnalyzeQueryResponse](./influxdb-client-apis.analyzequeryresponse.md) |  |
-|  [ApplyPkgRequest](./influxdb-client-apis.applypkgrequest.md) |  |
+|  [ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md) |  |
 |  [ArrayExpression](./influxdb-client-apis.arrayexpression.md) | Used to create and directly specify the elements of an array object |
 |  [ASTResponse](./influxdb-client-apis.astresponse.md) | Contains the AST for the supplied Flux query |
 |  [Authorizations](./influxdb-client-apis.authorizations.md) |  |
@@ -95,8 +96,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [CheckPatch](./influxdb-client-apis.checkpatch.md) |  |
 |  [Checks](./influxdb-client-apis.checks.md) |  |
 |  [CheckViewProperties](./influxdb-client-apis.checkviewproperties.md) |  |
-|  [CloudUser](./influxdb-client-apis.clouduser.md) |  |
-|  [CloudUsers](./influxdb-client-apis.cloudusers.md) |  |
 |  [ConditionalExpression](./influxdb-client-apis.conditionalexpression.md) | Selects one of two expressions, <code>Alternate</code> or <code>Consequent</code>, depending on a third boolean expression, <code>Test</code> |
 |  [ConstantVariableProperties](./influxdb-client-apis.constantvariableproperties.md) |  |
 |  [CreateCell](./influxdb-client-apis.createcell.md) |  |
@@ -104,7 +103,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) |  |
 |  [CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md) |  |
 |  [CreateNotificationRuleRequest](./influxdb-client-apis.createnotificationrulerequest.md) |  |
-|  [CreatePkgRequest](./influxdb-client-apis.createpkgrequest.md) |  |
 |  [CreateStackRequest](./influxdb-client-apis.createstackrequest.md) |  |
 |  [DashboardColor](./influxdb-client-apis.dashboardcolor.md) | Defines an encoding of data value into color space. |
 |  [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
@@ -134,11 +132,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteNotificationEndpointsIDRequest](./influxdb-client-apis.deletenotificationendpointsidrequest.md) |  |
 |  [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) |  |
 |  [DeleteNotificationRulesIDRequest](./influxdb-client-apis.deletenotificationrulesidrequest.md) |  |
-|  [DeleteOrgsIDCloudUserIDRequest](./influxdb-client-apis.deleteorgsidclouduseridrequest.md) |  |
-|  [DeleteOrgsIDInviteIDRequest](./influxdb-client-apis.deleteorgsidinviteidrequest.md) |  |
-|  [DeleteOrgsIDLabelsIDRequest](./influxdb-client-apis.deleteorgsidlabelsidrequest.md) |  |
 |  [DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md) |  |
-|  [DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md) |  |
 |  [DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md) |  |
 |  [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | The delete predicate request. |
 |  [DeleteScrapersIDLabelsIDRequest](./influxdb-client-apis.deletescrapersidlabelsidrequest.md) |  |
@@ -169,7 +163,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Duration](./influxdb-client-apis.duration.md) | A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed. |
 |  [DurationLiteral](./influxdb-client-apis.durationliteral.md) | Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration |
 |  [Error\_2](./influxdb-client-apis.error_2.md) |  |
-|  [ExportStackRequest](./influxdb-client-apis.exportstackrequest.md) |  |
+|  [ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md) |  |
 |  [ExpressionStatement](./influxdb-client-apis.expressionstatement.md) | May consist of an expression that does not return a value and is executed solely for its side-effects |
 |  [File](./influxdb-client-apis.file.md) | Represents a source from a single file |
 |  [FloatLiteral](./influxdb-client-apis.floatliteral.md) | Represents floating point numbers according to the double representations defined by the IEEE-754-1985 |
@@ -189,7 +183,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetChecksIDQueryRequest](./influxdb-client-apis.getchecksidqueryrequest.md) |  |
 |  [GetChecksIDRequest](./influxdb-client-apis.getchecksidrequest.md) |  |
 |  [GetChecksRequest](./influxdb-client-apis.getchecksrequest.md) |  |
-|  [GetCloudUsersRequest](./influxdb-client-apis.getcloudusersrequest.md) |  |
 |  [GetDashboardsIDCellsIDViewRequest](./influxdb-client-apis.getdashboardsidcellsidviewrequest.md) |  |
 |  [GetDashboardsIDLabelsRequest](./influxdb-client-apis.getdashboardsidlabelsrequest.md) |  |
 |  [GetDashboardsIDMembersRequest](./influxdb-client-apis.getdashboardsidmembersrequest.md) |  |
@@ -213,7 +206,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetNotificationRulesIDQueryRequest](./influxdb-client-apis.getnotificationrulesidqueryrequest.md) |  |
 |  [GetNotificationRulesIDRequest](./influxdb-client-apis.getnotificationrulesidrequest.md) |  |
 |  [GetNotificationRulesRequest](./influxdb-client-apis.getnotificationrulesrequest.md) |  |
-|  [GetOrgsIDLabelsRequest](./influxdb-client-apis.getorgsidlabelsrequest.md) |  |
 |  [GetOrgsIDMembersRequest](./influxdb-client-apis.getorgsidmembersrequest.md) |  |
 |  [GetOrgsIDOwnersRequest](./influxdb-client-apis.getorgsidownersrequest.md) |  |
 |  [GetOrgsIDRequest](./influxdb-client-apis.getorgsidrequest.md) |  |
@@ -262,7 +254,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [IndexExpression](./influxdb-client-apis.indexexpression.md) | Represents indexing into an array |
 |  [InfluxQLQuery](./influxdb-client-apis.influxqlquery.md) | Query influx using the InfluxQL language |
 |  [IntegerLiteral](./influxdb-client-apis.integerliteral.md) | Represents integer numbers |
-|  [Invite](./influxdb-client-apis.invite.md) |  |
 |  [IsOnboarding](./influxdb-client-apis.isonboarding.md) |  |
 |  [Label](./influxdb-client-apis.label.md) |  |
 |  [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) |  |
@@ -322,11 +313,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Permission](./influxdb-client-apis.permission.md) |  |
 |  [PipeExpression](./influxdb-client-apis.pipeexpression.md) | Call expression with pipe argument |
 |  [PipeLiteral](./influxdb-client-apis.pipeliteral.md) | Represents a specialized literal value, indicating the left hand value of a pipe expression |
-|  [PkgApply](./influxdb-client-apis.pkgapply.md) |  |
-|  [PkgChart](./influxdb-client-apis.pkgchart.md) |  |
-|  [PkgCreate](./influxdb-client-apis.pkgcreate.md) |  |
-|  [PkgSummary](./influxdb-client-apis.pkgsummary.md) |  |
-|  [PkgSummaryLabel](./influxdb-client-apis.pkgsummarylabel.md) |  |
 |  [PostAuthorizationsRequest](./influxdb-client-apis.postauthorizationsrequest.md) |  |
 |  [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) |  |
 |  [PostBucketsIDLabelsRequest](./influxdb-client-apis.postbucketsidlabelsrequest.md) |  |
@@ -346,9 +332,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) |  |
 |  [PostNotificationEndpointIDLabelsRequest](./influxdb-client-apis.postnotificationendpointidlabelsrequest.md) |  |
 |  [PostNotificationRuleIDLabelsRequest](./influxdb-client-apis.postnotificationruleidlabelsrequest.md) |  |
-|  [PostOrgsIDInviteIDRequest](./influxdb-client-apis.postorgsidinviteidrequest.md) |  |
-|  [PostOrgsIDInvitesRequest](./influxdb-client-apis.postorgsidinvitesrequest.md) |  |
-|  [PostOrgsIDLabelsRequest](./influxdb-client-apis.postorgsidlabelsrequest.md) |  |
 |  [PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md) |  |
 |  [PostOrgsIDOwnersRequest](./influxdb-client-apis.postorgsidownersrequest.md) |  |
 |  [PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md) |  |
@@ -427,9 +410,15 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [TelegrafPlugins](./influxdb-client-apis.telegrafplugins.md) |  |
 |  [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) |  |
 |  [Telegrafs](./influxdb-client-apis.telegrafs.md) |  |
+|  [TemplateApply](./influxdb-client-apis.templateapply.md) |  |
+|  [TemplateChart](./influxdb-client-apis.templatechart.md) |  |
+|  [TemplateExport](./influxdb-client-apis.templateexport.md) |  |
+|  [TemplateSummary](./influxdb-client-apis.templatesummary.md) |  |
+|  [TemplateSummaryLabel](./influxdb-client-apis.templatesummarylabel.md) |  |
 |  [TestStatement](./influxdb-client-apis.teststatement.md) | Declares a Flux test case |
 |  [ThresholdBase](./influxdb-client-apis.thresholdbase.md) |  |
 |  [UnaryExpression](./influxdb-client-apis.unaryexpression.md) | Uses operators to act on a single operand in an expression |
+|  [UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md) |  |
 |  [UnsignedIntegerLiteral](./influxdb-client-apis.unsignedintegerliteral.md) | Represents integer numbers |
 |  [UpdateStackRequest](./influxdb-client-apis.updatestackrequest.md) |  |
 |  [User](./influxdb-client-apis.user.md) |  |
@@ -474,9 +463,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md) |  |
 |  [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md) |  |
 |  [PagerDutyNotificationRule](./influxdb-client-apis.pagerdutynotificationrule.md) |  |
-|  [Pkg](./influxdb-client-apis.pkg.md) |  |
-|  [PkgCreateKind](./influxdb-client-apis.pkgcreatekind.md) |  |
-|  [PkgEnvReferences](./influxdb-client-apis.pkgenvreferences.md) |  |
 |  [PostCheck](./influxdb-client-apis.postcheck.md) |  |
 |  [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) |  |
 |  [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) |  |
@@ -496,6 +482,9 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Statement](./influxdb-client-apis.statement.md) |  |
 |  [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
 |  [Telegraf](./influxdb-client-apis.telegraf.md) |  |
+|  [Template](./influxdb-client-apis.template.md) |  |
+|  [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) |  |
+|  [TemplateKind](./influxdb-client-apis.templatekind.md) |  |
 |  [Threshold](./influxdb-client-apis.threshold.md) |  |
 |  [ThresholdCheck](./influxdb-client-apis.thresholdcheck.md) |  |
 |  [VariableProperties](./influxdb-client-apis.variableproperties.md) |  |

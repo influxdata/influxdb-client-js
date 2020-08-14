@@ -15,12 +15,7 @@ export interface Stack
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [createdAt](./influxdb-client-apis.stack.createdat.md) | string |  |
-|  [description](./influxdb-client-apis.stack.description.md) | string |  |
+|  [events](./influxdb-client-apis.stack.events.md) | Array&lt;{ eventType?: string; name?: string; description?: string; sources?: string\[\]; resources?: Array&lt;{ apiVersion?: string; resourceID?: string; kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; templateMetaName?: string; associations?: Array&lt;{ kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; metaName?: string; }&gt;; links?: { self?: string; }; }&gt;; urls?: string\[\]; readonly updatedAt?: string; }&gt; |  |
 |  [id](./influxdb-client-apis.stack.id.md) | string |  |
-|  [name](./influxdb-client-apis.stack.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.stack.orgid.md) | string |  |
-|  [resources](./influxdb-client-apis.stack.resources.md) | Array&lt;{ apiVersion?: string; resourceID?: string; kind?: string; pkgName?: string; associations?: Array&lt;{ kind?: string; pkgName?: string; }&gt;; }&gt; |  |
-|  [sources](./influxdb-client-apis.stack.sources.md) | string\[\] |  |
-|  [updatedAt](./influxdb-client-apis.stack.updatedat.md) | string |  |
-|  [urls](./influxdb-client-apis.stack.urls.md) | string\[\] |  |
 

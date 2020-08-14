@@ -17,6 +17,7 @@ export interface LinePlusSingleStatProperties
 |  [axes](./influxdb-client-apis.lineplussinglestatproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
 |  [colors](./influxdb-client-apis.lineplussinglestatproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [decimalPlaces](./influxdb-client-apis.lineplussinglestatproperties.decimalplaces.md) | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
+|  [hoverDimension](./influxdb-client-apis.lineplussinglestatproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' |  |
 |  [legend](./influxdb-client-apis.lineplussinglestatproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
 |  [note](./influxdb-client-apis.lineplussinglestatproperties.note.md) | string |  |
 |  [position](./influxdb-client-apis.lineplussinglestatproperties.position.md) | 'overlaid' \| 'stacked' |  |

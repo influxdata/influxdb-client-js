@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-orgID?: string;
+orgID: string;
 ```

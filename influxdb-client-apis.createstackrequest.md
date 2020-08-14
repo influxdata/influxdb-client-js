@@ -14,5 +14,5 @@ export interface CreateStackRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.createstackrequest.body.md) | { orgID?: string; name?: string; description?: string; urls?: string\[\]; } | Influx stack to create. |
+|  [body](./influxdb-client-apis.createstackrequest.body.md) | { orgID?: string; name?: string; description?: string; urls?: string\[\]; } | Stack to create. |
 

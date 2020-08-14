@@ -4,7 +4,7 @@
 
 ## CreateStackRequest.body property
 
-Influx stack to create.
+Stack to create.
 
 <b>Signature:</b>
 

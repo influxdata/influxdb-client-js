@@ -17,6 +17,7 @@ export interface XYViewProperties
 |  [axes](./influxdb-client-apis.xyviewproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
 |  [colors](./influxdb-client-apis.xyviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [geom](./influxdb-client-apis.xyviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
+|  [hoverDimension](./influxdb-client-apis.xyviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' |  |
 |  [legend](./influxdb-client-apis.xyviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
 |  [note](./influxdb-client-apis.xyviewproperties.note.md) | string |  |
 |  [position](./influxdb-client-apis.xyviewproperties.position.md) | 'overlaid' \| 'stacked' |  |

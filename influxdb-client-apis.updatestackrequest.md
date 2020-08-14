@@ -14,6 +14,6 @@ export interface UpdateStackRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.updatestackrequest.body.md) | { name?: string; description?: string; urls?: string\[\]; } | Influx stack to update. |
+|  [body](./influxdb-client-apis.updatestackrequest.body.md) | { name?: string; description?: string; templateURLs?: string\[\]; additionalResources?: Array&lt;{ resourceID: string; kind: string; templateMetaName?: string; }&gt;; } | Influx stack to update. |
 |  [stack\_id](./influxdb-client-apis.updatestackrequest.stack_id.md) | string | The stack id |
 

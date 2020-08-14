@@ -14,7 +14,7 @@ export interface BuilderConfig
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [aggregateWindow](./influxdb-client-apis.builderconfig.aggregatewindow.md) | { period?: string; } |  |
+|  [aggregateWindow](./influxdb-client-apis.builderconfig.aggregatewindow.md) | { period?: string; fillValues?: boolean; } |  |
 |  [buckets](./influxdb-client-apis.builderconfig.buckets.md) | string\[\] |  |
 |  [functions](./influxdb-client-apis.builderconfig.functions.md) | [BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)<!-- -->\[\] |  |
 |  [tags](./influxdb-client-apis.builderconfig.tags.md) | [BuilderTagsType](./influxdb-client-apis.buildertagstype.md)<!-- -->\[\] |  |

@@ -4,7 +4,7 @@
 
 ## RetryDelayStrategyOptions.maxRetryDelay property
 
-maximum delay when retrying write
+maximum delay when retrying write (milliseconds)
 
 <b>Signature:</b>
 

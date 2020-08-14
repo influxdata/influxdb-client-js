@@ -12,6 +12,11 @@ Influx stack to update.
 body: {
         name?: string;
         description?: string;
-        urls?: string[];
+        templateURLs?: string[];
+        additionalResources?: Array<{
+            resourceID: string;
+            kind: string;
+            templateMetaName?: string;
+        }>;
     };
 ```
