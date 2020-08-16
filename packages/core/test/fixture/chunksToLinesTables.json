@@ -46,5 +46,15 @@
       ",result,table,id,st_length,st_linestring,trip_id",
       ",,0,GO506_20_6431,25.463641400535032,\"-73.68691 40.820317, -73.690054 40.815413\",GO506_20_6431"
     ]
+  },
+  {
+    "name": "2 chunks breaks quoted data, 1 line",
+    "chunks": ["ab\"\ncd\nef", "g\"h"],
+    "lines": ["ab\"\ncd\nefg\"h"]
+  },
+  {
+    "name": "2 chunks breaks quoted data, 2 lines",
+    "chunks": ["ab\"", "c\"\nd"],
+    "lines": ["ab\"c\"", "d"]
   }
 ]
