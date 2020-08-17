@@ -45,6 +45,7 @@ export class NodeHttpTransport implements Transport {
     options: http.RequestOptions,
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
+  private contextPath: string
   /**
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions - connection options
@@ -58,6 +59,13 @@ export class NodeHttpTransport implements Transport {
       port: url.port,
       protocol: url.protocol,
       hostname: url.hostname,
+    }
+    this.contextPath = url.path ?? ''
+    if (this.contextPath.endsWith('/')) {
+      this.contextPath = this.contextPath.substring(
+        0,
+        this.contextPath.length - 1
+      )
     }
     if (url.protocol === 'http:') {
       this.requestApi = http.request
@@ -161,7 +169,7 @@ export class NodeHttpTransport implements Transport {
     }
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
-      path,
+      path: this.contextPath + path,
       method: sendOptions.method,
       headers: {
         ...headers,
