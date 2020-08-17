@@ -1,5 +1,9 @@
 ## 1.7.0 [unreleased]
 
+### Bug Fixes
+
+1. [#237](https://github.com/influxdata/influxdb-client-js/pull/237): Fixed line splitter of query results that might have produced wrong results for query responses with quoted data.
+
 ## 1.6.0 [2020-08-14]
 
 ### Features

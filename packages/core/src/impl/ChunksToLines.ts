@@ -7,6 +7,7 @@ import Cancellable from '../util/Cancellable'
 export default class ChunksToLines implements CommunicationObserver<any> {
   previous?: Uint8Array
   finished = false
+  quoted = false
 
   constructor(
     private target: CommunicationObserver<string>,
@@ -51,18 +52,17 @@ export default class ChunksToLines implements CommunicationObserver<any> {
     } else {
       index = 0
     }
-    let quoted = false
     while (index < chunk.length) {
       const c = chunk[index]
       if (c === 10) {
-        if (!quoted) {
+        if (!this.quoted) {
           /* do not emit CR+LR or LF line ending */
           const end = index > 0 && chunk[index - 1] === 13 ? index - 1 : index
           this.target.next(this.chunks.toUtf8String(chunk, start, end))
           start = index + 1
         }
       } else if (c === 34 /* " */) {
-        quoted = !quoted
+        this.quoted = !this.quoted
       }
       index++
     }
