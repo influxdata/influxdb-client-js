@@ -115,7 +115,7 @@ export const escape = {
     new Escaper(
       {
         '"': escaperConfig,
-        '\\\\': escaperConfig,
+        '\\': escaperConfig,
       },
       '"'
     )
