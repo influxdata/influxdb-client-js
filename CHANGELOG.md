@@ -3,6 +3,7 @@
 ### Features
 
 1. [#238](https://github.com/influxdata/influxdb-client-js/pull/238): Respect context path in client's url option.
+1. [#240](https://github.com/influxdata/influxdb-client-js/pull/240): Add helpers to let users choose how to deserialize dateTime:RFC3339 query response data type
 
 ### Bug Fixes
 
