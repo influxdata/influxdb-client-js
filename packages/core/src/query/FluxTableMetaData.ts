@@ -13,9 +13,41 @@ export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   double: (x: string): any => (x === '' ? null : +x),
   string: identity,
   base64Binary: identity,
-  dateTime: (x: string): any => (x === '' ? null : x),
   duration: (x: string): any => (x === '' ? null : x),
+  'dateTime:RFC3339': (x: string): any => (x === '' ? null : x),
 }
+
+/**
+ * serializeDateTimeAsDate changes type serializers to return JavaScript Date instances
+ * for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
+ * @remarks
+ * Please note that the result has millisecond precision whereas InfluxDB returns dateTime
+ * in nanosecond precision.
+ */
+export function serializeDateTimeAsDate(): void {
+  typeSerializers['dateTime:RFC3339'] = (x: string): any =>
+    x === '' ? null : new Date(Date.parse(x))
+}
+/**
+ * serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch
+ * for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
+ * @remarks
+ * Please note that the result has millisecond precision whereas InfluxDB returns dateTime
+ * in nanosecond precision.
+ */
+export function serializeDateTimeAsNumber(): void {
+  typeSerializers['dateTime:RFC3339'] = (x: string): any =>
+    x === '' ? null : Date.parse(x)
+}
+/**
+ * serializeDateTimeAsString changes type serializers to return string values
+ * for `dateTime:RFC3339` query result data type.  Empty value is converted to null.
+ */
+export function serializeDateTimeAsString(): void {
+  typeSerializers['dateTime:RFC3339'] = (x: string): any =>
+    x === '' ? null : x
+}
+
 /**
  * Represents metadata of a {@link http://bit.ly/flux-spec#table | flux table}.
  */
