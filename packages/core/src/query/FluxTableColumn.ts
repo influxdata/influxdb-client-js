@@ -8,8 +8,9 @@ export type ColumnType =
   | 'double'
   | 'string'
   | 'base64Binary'
-  | 'dateTime'
+  | 'dateTime:RFC3339'
   | 'duration'
+  | string
 
 /**
  * FluxTableColumnLike provides metadata of a flux table column.
