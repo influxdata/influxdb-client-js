@@ -96,5 +96,13 @@ describe('Point', () => {
         })
       }
     })
+    it('creates line with JSON double encoded field #241', () => {
+      const fieldValue = JSON.stringify({prop: JSON.stringify({str: 'test'})})
+      const point = new Point('tst')
+      point.stringField('a', fieldValue)
+      expect(point.toLineProtocol()).equals(
+        'tst a="{X"propX":X"{XXX"strXXX":XXX"testXXX"}X"}"'.replace(/X/g, '\\')
+      )
+    })
   })
 })
