@@ -187,18 +187,30 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   }
 
   writeRecord(record: string): void {
+    if (this.closed) {
+      throw new Error('writeApi: already closed!')
+    }
     this.writeBuffer.add(record)
   }
   writeRecords(records: ArrayLike<string>): void {
+    if (this.closed) {
+      throw new Error('writeApi: already closed!')
+    }
     for (let i = 0; i < records.length; i++) {
       this.writeBuffer.add(records[i])
     }
   }
   writePoint(point: Point): void {
+    if (this.closed) {
+      throw new Error('writeApi: already closed!')
+    }
     const line = point.toLineProtocol(this)
     if (line) this.writeBuffer.add(line)
   }
   writePoints(points: ArrayLike<Point>): void {
+    if (this.closed) {
+      throw new Error('writeApi: already closed!')
+    }
     for (let i = 0; i < points.length; i++) {
       this.writePoint(points[i])
     }

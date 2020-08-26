@@ -81,6 +81,21 @@ describe('WriteApi', () => {
           expect(e).to.be.ok
         })
     })
+    it('fails on write if it is closed already', async () => {
+      await subject.close()
+      expect(() => subject.writeRecord('text value=1')).to.throw(
+        'writeApi: already closed!'
+      )
+      expect(() =>
+        subject.writeRecords(['text value=1', 'text value=2'])
+      ).to.throw('writeApi: already closed!')
+      expect(() =>
+        subject.writePoint(new Point('test').floatField('value', 1))
+      ).to.throw('writeApi: already closed!')
+      expect(() =>
+        subject.writePoints([new Point('test').floatField('value', 1)])
+      ).to.throw('writeApi: already closed!')
+    })
   })
   describe('configuration', () => {
     let subject: WriteApi
