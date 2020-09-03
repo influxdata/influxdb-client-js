@@ -5,41 +5,41 @@ describe('InfluxDB', () => {
   describe('constructor', () => {
     it('is created from string url', () => {
       expect(
-        (new InfluxDB('http://localhost:9999') as any)._options
+        (new InfluxDB('http://localhost:8086') as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999',
+        url: 'http://localhost:8086',
       })
     })
     it('is created from configuration with url', () => {
       expect(
-        (new InfluxDB({url: 'http://localhost:9999'}) as any)._options
+        (new InfluxDB({url: 'http://localhost:8086'}) as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999',
+        url: 'http://localhost:8086',
       })
     })
     it('is created from configuration with url and token', () => {
       expect(
         (new InfluxDB({
-          url: 'https://localhost:9999?token=a',
+          url: 'https://localhost:8086?token=a',
           token: 'b',
         }) as any)._options
       ).to.deep.equal({
-        url: 'https://localhost:9999?token=a',
+        url: 'https://localhost:8086?token=a',
         token: 'b',
       })
     })
     it('is created from string url with trailing slash', () => {
       expect(
-        (new InfluxDB('http://localhost:9999/') as any)._options
+        (new InfluxDB('http://localhost:8086/') as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999',
+        url: 'http://localhost:8086',
       })
     })
     it('is created from configuration with url with trailing slash', () => {
       expect(
-        (new InfluxDB({url: 'http://localhost:9999/'}) as any)._options
+        (new InfluxDB({url: 'http://localhost:8086/'}) as any)._options
       ).to.deep.equal({
-        url: 'http://localhost:9999',
+        url: 'http://localhost:8086',
       })
     })
     it('fails on null arg', () => {
@@ -61,32 +61,32 @@ describe('InfluxDB', () => {
       expect(
         () =>
           new InfluxDB({
-            url: 'ws://localhost:9999?token=b',
+            url: 'ws://localhost:8086?token=b',
           })
       ).to.throw('Unsupported')
     })
     it('creates instance with transport initialized', () => {
       expect(
         new InfluxDB({
-          url: 'http://localhost:9999',
+          url: 'http://localhost:8086',
         })
       ).has.property('transport')
       expect(
         new InfluxDB(({
-          url: 'http://localhost:9999',
+          url: 'http://localhost:8086',
           transport: null,
         } as any) as ClientOptions)
       ).has.property('transport')
       expect(
         new InfluxDB(({
-          url: 'http://localhost:9999',
+          url: 'http://localhost:8086',
           transport: {} as Transport,
         } as any) as ClientOptions)
       ).has.property('transport')
     })
   })
   describe('apis', () => {
-    const influxDb = new InfluxDB('http://localhost:9999?token=a')
+    const influxDb = new InfluxDB('http://localhost:8086?token=a')
     it('serves queryApi writeApi without a pending schedule', () => {
       expect(influxDb.getWriteApi('org', 'bucket')).to.be.ok
       expect(influxDb.getWriteApi('org', 'bucket', WritePrecision.s)).to.be.ok

@@ -37,59 +37,59 @@ function sendTestData(
     })
   })
 }
-const TEST_URL = 'http://test:9999'
+const TEST_URL = 'http://test:8086'
 
 describe('NodeHttpTransport', () => {
   describe('constructor', () => {
     it('creates the transport from http url', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'http://test:9999',
+        url: 'http://test:8086',
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        port: '9999',
+        port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:9999',
+        url: 'http://test:8086',
       })
       expect(transport.requestApi).to.equal(http.request)
     })
     it('creates the transport from https url', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'https://test:9999',
+        url: 'https://test:8086',
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        port: '9999',
+        port: '8086',
         protocol: 'https:',
         timeout: 10000,
-        url: 'https://test:9999',
+        url: 'https://test:8086',
       })
       expect(transport.requestApi).to.equal(https.request)
     })
     it('creates the transport with contextPath', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'http://test:9999/influx',
+        url: 'http://test:8086/influx',
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        port: '9999',
+        port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:9999/influx',
+        url: 'http://test:8086/influx',
       })
       expect(transport.contextPath).equals('/influx')
     })
     it('creates the transport with contextPath/', () => {
       const transport: any = new NodeHttpTransport({
-        url: 'http://test:9999/influx/',
+        url: 'http://test:8086/influx/',
       })
       expect(transport.defaultOptions).to.deep.equal({
         hostname: 'test',
-        port: '9999',
+        port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:9999/influx/',
+        url: 'http://test:8086/influx/',
       })
       expect(transport.contextPath).equals('/influx')
     })
@@ -97,7 +97,7 @@ describe('NodeHttpTransport', () => {
       expect(
         () =>
           new NodeHttpTransport({
-            url: 'other://test:9999',
+            url: 'other://test:8086',
           })
       ).to.throw()
     })

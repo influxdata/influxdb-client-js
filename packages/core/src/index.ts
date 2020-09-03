@@ -8,7 +8,7 @@
  * ```
  * import {InfluxDB} = from('@influxdata/influxdb-client')
  * const influxDB = new InfluxDB({
- *   url: "http://localhost:9999",
+ *   url: "http://localhost:8086",
  *   token: "your-api-token"
  * })
  * ```

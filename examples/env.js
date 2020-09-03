@@ -1,5 +1,5 @@
 /** InfluxDB v2 URL */
-const url = process.env['INFLUX_URL'] || 'http://localhost:9999'
+const url = process.env['INFLUX_URL'] || 'http://localhost:8086'
 /** InfluxDB authorization token */
 const token = process.env['INFLUX_TOKEN'] || 'my-token'
 /** Organization within InfluxDB  */
