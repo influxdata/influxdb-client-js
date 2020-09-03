@@ -38,7 +38,7 @@ async function recreateBucket(name) {
   }
 
   console.log(`*** Create Bucket "${name}" ***`)
-  // creates a bucket, entity properties are specified in the "body" property 
+  // creates a bucket, entity properties are specified in the "body" property
   const bucket = await bucketsAPI.postBuckets({body: {orgID, name}})
   console.log(
     JSON.stringify(
