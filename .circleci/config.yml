@@ -33,9 +33,9 @@ jobs:
             cd ./packages/core
             yarn test:ci
             yarn lint:ci
-            yarn build
             cd ../apis
             yarn test
+            yarn eslint ../../examples
             cd ../..
             yarn apidoc:ci
       # Upload results
