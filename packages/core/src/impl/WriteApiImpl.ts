@@ -1,9 +1,9 @@
 import WriteApi from '../WriteApi'
 import {
-  WritePrecision,
   DEFAULT_WriteOptions,
   PointSettings,
   WriteOptions,
+  WritePrecisionType,
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import Logger from './Logger'
@@ -75,7 +75,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     private transport: Transport,
     org: string,
     bucket: string,
-    precision: WritePrecision,
+    precision: WritePrecisionType,
     writeOptions?: Partial<WriteOptions>
   ) {
     this.httpPath = `/api/v2/write?org=${encodeURIComponent(

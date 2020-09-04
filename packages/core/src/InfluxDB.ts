@@ -1,5 +1,10 @@
 import WriteApi from './WriteApi'
-import {ClientOptions, WritePrecision, WriteOptions} from './options'
+import {
+  ClientOptions,
+  WritePrecision,
+  WriteOptions,
+  WritePrecisionType,
+} from './options'
 import WriteApiImpl from './impl/WriteApiImpl'
 import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
@@ -56,7 +61,7 @@ export default class InfluxDB {
   getWriteApi(
     org: string,
     bucket: string,
-    precision: WritePrecision = WritePrecision.ns,
+    precision: WritePrecisionType = WritePrecision.ns,
     writeOptions?: Partial<WriteOptions>
   ): WriteApi {
     return new WriteApiImpl(
