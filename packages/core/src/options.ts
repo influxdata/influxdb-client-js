@@ -113,6 +113,7 @@ export const enum WritePrecision {
   /* second */
   s = 's',
 }
+export type WritePrecisionType = keyof typeof WritePrecision | WritePrecision
 
 /**
  * Settings that control the way of how a {@link Point} is serialized

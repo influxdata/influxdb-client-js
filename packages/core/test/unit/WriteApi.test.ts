@@ -7,6 +7,7 @@ import {
   Point,
   WriteApi,
   InfluxDB,
+  WritePrecisionType,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
 import Logger from '../../src/impl/Logger'
@@ -24,7 +25,7 @@ const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precision=ns`
 function createApi(
   org: string,
   bucket: string,
-  precision: WritePrecision,
+  precision: WritePrecisionType,
   options: Partial<WriteOptions>
 ): WriteApi {
   return new InfluxDB({
@@ -209,7 +210,7 @@ describe('WriteApi', () => {
     let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = createApi(ORG, BUCKET, WritePrecision.ns, {
+      subject = createApi(ORG, BUCKET, 'ns', {
         retryJitter: 0,
         defaultTags: {xtra: '1'},
         ...writeOptions,
