@@ -127,7 +127,7 @@ describe('Flux Values', () => {
 })
 
 describe('Flux Tagged Template', () => {
-  it('creates a string from string', () => {
+  it('creates a string from a simple string', () => {
     expect(
       flux`from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`.toString()
     ).equals(
@@ -165,9 +165,16 @@ describe('Flux Tagged Template', () => {
     }
   })
 
-  it('processes a nested flux template', () => {
+  it('processes a simple nested flux template', () => {
     // nested flux templates
     const flux1 = flux`from(bucket:"my-bucket")`
+    expect(flux`${flux1} |> range(start: ${0})")`.toString()).equals(
+      'from(bucket:"my-bucket") |> range(start: 0)")'
+    )
+  })
+  it('processes a simple nested flux template', () => {
+    // nested flux templates
+    const flux1 = flux`from(bucket:${'my-bucket'})`
     expect(flux`${flux1} |> range(start: ${0})")`.toString()).equals(
       'from(bucket:"my-bucket") |> range(start: 0)")'
     )
