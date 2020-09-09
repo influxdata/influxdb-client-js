@@ -121,7 +121,7 @@ export default interface QueryApi {
   collectLines(query: string | ParameterizedQuery): Promise<Array<string>>
 
   /**
-   * Text executes the query and returns the full response body as a string.
+   * Text executes a query and returns the full response as a string.
    * Use with caution, a possibly huge stream is copied to memory.
    *
    * @param query - query
