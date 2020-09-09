@@ -549,6 +549,21 @@ describe('NodeHttpTransport', () => {
         expect(retVal).deep.equals(pair[1])
       })
     })
+    it(`return text even without explicit request headers `, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(200, '..', {
+          'content-type': 'application/text',
+        })
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+    })
     it(`fails on invalid json`, async () => {
       nock(transportOptions.url)
         .get('/test')
@@ -556,32 +571,35 @@ describe('NodeHttpTransport', () => {
           'content-type': 'application/json',
         })
         .persist()
-      try {
-        await new NodeHttpTransport({
-          ...transportOptions,
-          timeout: 10000,
-        }).request('/test', '', {
+      await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      })
+        .request('/test', '', {
           method: 'GET',
-          headers: {'content-type': 'applicaiton/json'},
+          headers: {'content-type': 'application/json'},
         })
-        expect.fail(`exception shall be thrown because of wrong JSON`)
-      } catch (e) {
-        expect(e)
-      }
+        .then(
+          () => expect.fail(`exception shall be thrown because of wrong JSON`),
+          () => true // OK that it fails
+        )
     })
     it(`fails on communication error`, async () => {
-      try {
-        await new NodeHttpTransport({
-          ...transportOptions,
-          timeout: 10000,
-        }).request('/test', '', {
+      await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      })
+        .request('/test', '', {
           method: 'GET',
-          headers: {'content-type': 'applicaiton/json'},
+          headers: {'content-type': 'application/json'},
         })
-        expect.fail(`exception shall be thrown because of wrong JSON`)
-      } catch (e) {
-        expect(e)
-      }
+        .then(
+          () =>
+            expect.fail(
+              `exception shall be thrown because of communication error`
+            ),
+          () => true // OK that it fails
+        )
     })
   })
 })

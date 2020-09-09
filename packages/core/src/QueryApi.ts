@@ -119,4 +119,13 @@ export default interface QueryApi {
    * @returns Promise of returned csv lines
    */
   collectLines(query: string | ParameterizedQuery): Promise<Array<string>>
+
+  /**
+   * Text executes the query and returns the full response body as a string.
+   * Use with caution, a possibly huge stream is copied to memory.
+   *
+   * @param query - query
+   * @returns Promise of response text
+   */
+  text(query: string | ParameterizedQuery): Promise<string>
 }

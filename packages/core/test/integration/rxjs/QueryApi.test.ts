@@ -53,14 +53,13 @@ describe('RxJS QueryApi integration', () => {
       })
       .persist()
 
-    try {
-      await from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)'))
-        .pipe(toArray())
-        .toPromise()
-      expect.fail('Server returned 500!')
-    } catch (_) {
-      // expected failure
-    }
+    await from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)'))
+      .pipe(toArray())
+      .toPromise()
+      .then(
+        () => expect.fail('Server returned 500!'),
+        () => true // failure is expected
+      )
   })
   ;[
     ['response2', undefined],

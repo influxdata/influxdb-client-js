@@ -118,18 +118,8 @@ export default class FetchTransport implements Transport {
     const {status, headers} = response
     const responseContentType = headers.get('content-type') || ''
 
-    let data = undefined
-    try {
-      if (responseContentType.includes('json')) {
-        data = await response.json()
-      } else if (responseContentType.includes('text')) {
-        data = await response.text()
-      }
-    } catch (_e) {
-      // ignore
-      Logger.warn('Unable to read error body', _e)
-    }
     if (status >= 300) {
+      let data = await response.text()
       if (!data) {
         const headerError = headers.get('x-influxdb-error')
         if (headerError) {
@@ -143,7 +133,12 @@ export default class FetchTransport implements Transport {
         response.headers.get('retry-after')
       )
     }
-    return data
+    const responseType = options.headers?.accept ?? responseContentType
+    if (responseType.includes('json')) {
+      return await response.json()
+    } else if (responseType.includes('text')) {
+      return await response.text()
+    }
   }
 
   private fetch(

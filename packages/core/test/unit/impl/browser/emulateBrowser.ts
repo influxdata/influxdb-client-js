@@ -39,12 +39,8 @@ function createResponse({
   }
   if (typeof body === 'string') {
     retVal.text = function(): Promise<string> {
-      if (typeof body === 'string') {
-        if (body === 'error') return Promise.reject(new Error('error data'))
-        return Promise.resolve(body)
-      } else {
-        return Promise.reject(new Error('String body expected, but ' + body))
-      }
+      if (body === 'error') return Promise.reject(new Error('error data'))
+      return Promise.resolve(body)
     }
   }
   if (body instanceof Uint8Array) {

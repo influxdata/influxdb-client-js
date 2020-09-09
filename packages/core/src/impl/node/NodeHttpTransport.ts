@@ -126,10 +126,11 @@ export class NodeHttpTransport implements Transport {
           buffer = Buffer.concat([buffer, data])
         },
         complete: (): void => {
+          const responseType = options.headers?.accept ?? contentType
           try {
-            if (contentType.includes('json')) {
+            if (responseType.includes('json')) {
               resolve(JSON.parse(buffer.toString('utf8')))
-            } else if (contentType.includes('text')) {
+            } else if (responseType.includes('text')) {
               resolve(buffer.toString('utf8'))
             } else {
               resolve(buffer)
