@@ -222,7 +222,9 @@ export function flux(
   strings: TemplateStringsArray,
   ...values: any
 ): ParameterizedQuery {
-  if (strings.length == 1 && (!values || values.length === 0)) return strings[0] // the simplest case
+  if (strings.length == 1 && (!values || values.length === 0)) {
+    return fluxExpression(strings[0]) // the simplest case
+  }
   const parts = new Array<string>(strings.length + values.length)
   let partIndex = 0
   for (let i = 0; i < strings.length; i++) {

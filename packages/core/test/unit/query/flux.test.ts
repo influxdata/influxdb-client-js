@@ -127,37 +127,49 @@ describe('Flux Values', () => {
 })
 
 describe('Flux Tagged Template', () => {
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == "${'temperature'}")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
+  it('creates a string from string', () => {
+    expect(
+      flux`from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('interpolates a number', () => {
+    expect(
+      flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('interpolates a string', () => {
+    expect(
+      flux`from(bucket:${'my-bucket'}) |> range(start: 0) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('fails on undefined', () => {
+    try {
+      flux`${undefined}`
+      expect.fail()
+    } catch (_e) {
+      // ok expected, undefined is not supported
+    }
+  })
+  it('fails on wrong usage of template', () => {
+    try {
+      flux((['1', '2'] as any) as TemplateStringsArray)
+      expect.fail()
+    } catch (_e) {
+      // ok expected, too few arguments supplied to a tagged template
+    }
+  })
 
-  try {
-    flux`${undefined}`
-    expect.fail()
-  } catch (_e) {
-    // ok expected, undefined is not supported
-  }
-
-  try {
-    flux((['1', '2'] as any) as TemplateStringsArray)
-    expect.fail()
-  } catch (_e) {
-    // ok expected, too few arguments supplied to a tagged template
-  }
-
-  // nested flux templates
-  const flux1 = flux`from(bucket:"my-bucket")`
-  expect(
-    flux`${flux1} |> range(start: ${0})")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0)")'
-  )
+  it('processes a nested flux template', () => {
+    // nested flux templates
+    const flux1 = flux`from(bucket:"my-bucket")`
+    expect(flux`${flux1} |> range(start: ${0})")`.toString()).equals(
+      'from(bucket:"my-bucket") |> range(start: 0)")'
+    )
+  })
 })
