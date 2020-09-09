@@ -108,7 +108,7 @@ export class QueryApiImpl implements QueryApi {
     })
   }
 
-  text(query: string | ParameterizedQuery): Promise<string> {
+  queryRaw(query: string | ParameterizedQuery): Promise<string> {
     const {org, type, gzip} = this.options
     return this.transport.request(
       `/api/v2/query?org=${encodeURIComponent(org)}`,

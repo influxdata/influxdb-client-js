@@ -24,7 +24,7 @@ describe('QueryApi', () => {
     nock.cleanAll()
     nock.enableNetConnect()
   })
-  it('receives raw lines', async () => {
+  it('receives lines', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     nock(clientOptions.url)
       .post(QUERY_PATH)
@@ -209,7 +209,7 @@ describe('QueryApi', () => {
       expect(body?.now).to.deep.equal(pair.now)
     }
   })
-  it('collectLines collects raw lines', async () => {
+  it('collectLines collects lines', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     nock(clientOptions.url)
       .post(QUERY_PATH)
@@ -304,24 +304,7 @@ describe('QueryApi', () => {
         () => true // error is expected
       )
   })
-  it('collectLines collects raw lines', async () => {
-    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
-    nock(clientOptions.url)
-      .post(QUERY_PATH)
-      .reply((_uri, _requestBody) => {
-        return [
-          200,
-          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
-          {'retry-after': '1'},
-        ]
-      })
-      .persist()
-    const data = await subject.collectLines(
-      'from(bucket:"my-bucket") |> range(start: 0)'
-    )
-    expect(data).to.deep.equal(simpleResponseLines)
-  })
-  it('text returns the whole response text', async () => {
+  it('queryRaw returns the whole response text', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     const expected = fs
       .readFileSync('test/fixture/query/simpleResponse.txt')
@@ -332,12 +315,12 @@ describe('QueryApi', () => {
         return [200, expected, {'retry-after': '1', 'content-type': 'text/csv'}]
       })
       .persist()
-    const data = await subject.text(
+    const data = await subject.queryRaw(
       'from(bucket:"my-bucket") |> range(start: 0)'
     )
     expect(data).equals(expected)
   })
-  it('text returns the whole response even if response content type is not text', async () => {
+  it('queryRaw returns the whole response even if response content type is not text', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     const expected = fs
       .readFileSync('test/fixture/query/simpleResponse.txt')
@@ -348,12 +331,12 @@ describe('QueryApi', () => {
         return [200, expected, {'retry-after': '1'}]
       })
       .persist()
-    const data = await subject.text(
+    const data = await subject.queryRaw(
       'from(bucket:"my-bucket") |> range(start: 0)'
     )
     expect(data).equals(expected)
   })
-  it('text returns the plain response text even it is gzip encoded', async () => {
+  it('queryRaw returns the plain response text even it is gzip encoded', async () => {
     const subject = new InfluxDB(clientOptions)
       .getQueryApi(ORG)
       .with({gzip: true})
@@ -369,7 +352,7 @@ describe('QueryApi', () => {
         ]
       })
       .persist()
-    const data = await subject.text(
+    const data = await subject.queryRaw(
       'from(bucket:"my-bucket") |> range(start: 0)'
     )
     const expected = fs
@@ -377,7 +360,7 @@ describe('QueryApi', () => {
       .toString()
     expect(data).equals(expected)
   })
-  it('text fails on server error', async () => {
+  it('queryRaw fails on server error', async () => {
     const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
     nock(clientOptions.url)
       .post(QUERY_PATH)
@@ -389,7 +372,7 @@ describe('QueryApi', () => {
         ]
       })
       .persist()
-    await subject.text('from(bucket:"my-bucket") |> range(start: 0)').then(
+    await subject.queryRaw('from(bucket:"my-bucket") |> range(start: 0)').then(
       () => expect.fail('client error expected on server error'),
       () => true // error is expected
     )
