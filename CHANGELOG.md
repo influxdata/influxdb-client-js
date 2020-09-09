@@ -12,6 +12,7 @@
 1. [#237](https://github.com/influxdata/influxdb-client-js/pull/237): Fixed line splitter of query results that might have produced wrong results for query responses with quoted data.
 1. [#242](https://github.com/influxdata/influxdb-client-js/pull/242): Repair escaping of backslash in line protocol string field.
 1. [#246](https://github.com/influxdata/influxdb-client-js/pull/246): Throw error on attempt to write points using a closed WriteApi instance.
+1. [#252](https://github.com/influxdata/influxdb-client-js/pull/252): Repair nesting of flux expressions.
 
 ## 1.6.0 [2020-08-14]
 

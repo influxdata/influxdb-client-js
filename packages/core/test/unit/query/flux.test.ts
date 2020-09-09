@@ -24,12 +24,7 @@ describe('Flux Values', () => {
     const subject = fluxInteger(123)
     expect(subject.toString()).equals('123')
     expect((subject as any)[FLUX_VALUE]()).equals('123')
-    try {
-      fluxInteger('123a')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
+    expect(() => fluxInteger('123a')).to.throw()
   })
   it('creates fluxBool', () => {
     expect(fluxBool('true').toString()).equals('true')
@@ -49,18 +44,8 @@ describe('Flux Values', () => {
     const subject = fluxFloat(123.456)
     expect(subject.toString()).equals('123.456')
     expect((subject as any)[FLUX_VALUE]()).equals('123.456')
-    try {
-      fluxFloat('123..')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
-    try {
-      fluxFloat('123.a')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
+    expect(() => fluxFloat('123..')).to.throw()
+    expect(() => fluxFloat('123.a')).to.throw()
   })
   it('creates fluxDuration', () => {
     const subject = fluxDuration('1ms')
@@ -127,37 +112,68 @@ describe('Flux Values', () => {
 })
 
 describe('Flux Tagged Template', () => {
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
-  expect(
-    flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == "${'temperature'}")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
-  )
+  it('creates a string from a simple string', () => {
+    expect(
+      flux`from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('interpolates a number', () => {
+    expect(
+      flux`from(bucket:"my-bucket") |> range(start: ${0}) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('interpolates a string', () => {
+    expect(
+      flux`from(bucket:${'my-bucket'}) |> range(start: 0) |> filter(fn: (r) => r._measurement == ${'temperature'})`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+    )
+  })
+  it('interpolates a wrapped string', () => {
+    expect(flux`from(bucket:"${'my-bucket'}")`.toString()).equals(
+      'from(bucket:"my-bucket")'
+    )
+  })
+  it('fails on undefined', () => {
+    expect(() => flux`${undefined}`).to.throw()
+  })
+  it('converts object with empty toString to ""', () => {
+    const x = {
+      toString(): string {
+        return ''
+      },
+    }
+    expect(flux`${x}`.toString()).equals('""')
+  })
+  it('fails on wrong usage of template', () => {
+    try {
+      flux((['1', '2'] as any) as TemplateStringsArray)
+      expect.fail()
+    } catch (_e) {
+      // ok expected, too few arguments supplied to a tagged template
+    }
+  })
 
-  try {
-    flux`${undefined}`
-    expect.fail()
-  } catch (_e) {
-    // ok expected, undefined is not supported
-  }
-
-  try {
-    flux((['1', '2'] as any) as TemplateStringsArray)
-    expect.fail()
-  } catch (_e) {
-    // ok expected, too few arguments supplied to a tagged template
-  }
-
-  // nested flux templates
-  const flux1 = flux`from(bucket:"my-bucket")`
-  expect(
-    flux`${flux1} |> range(start: ${0})")`.toString(),
-    'from(bucket:"my-bucket") |> range(start: 0)")'
-  )
+  it('processes a simple nested flux template', () => {
+    const flux1 = flux`from(bucket:"my-bucket")`
+    expect(flux`${flux1} |> range(start: ${0})")`.toString()).equals(
+      'from(bucket:"my-bucket") |> range(start: 0)")'
+    )
+  })
+  it('processes a parameterized nested flux template', () => {
+    const flux1 = flux`from(bucket:${'my-bucket'})`
+    expect(flux`${flux1} |> range(start: ${0})")`.toString()).equals(
+      'from(bucket:"my-bucket") |> range(start: 0)")'
+    )
+  })
+  it('processes an empty nested flux template', () => {
+    const empty = flux``
+    expect(flux`from(bucket:"my-bucket")${empty}`.toString()).equals(
+      'from(bucket:"my-bucket")'
+    )
+  })
 })

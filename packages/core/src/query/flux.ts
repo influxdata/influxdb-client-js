@@ -29,6 +29,15 @@ class FluxParameter implements FluxParameterLike, ParameterizedQuery {
 }
 
 /**
+ * Checks if the supplied object is FluxParameterLike
+ * @param value - any value
+ * @returns true if it is
+ */
+function isFluxParameterLike(value: any): boolean {
+  return typeof value === 'object' && typeof value[FLUX_VALUE] === 'function'
+}
+
+/**
  * Escapes content of the supplied string so it can be wrapped into double qoutes
  * to become a [flux string literal](https://docs.influxdata.com/flux/v0.65/language/lexical-elements/#string-literals).
  * @param value - string value
@@ -222,7 +231,9 @@ export function flux(
   strings: TemplateStringsArray,
   ...values: any
 ): ParameterizedQuery {
-  if (strings.length == 1 && (!values || values.length === 0)) return strings[0] // the simplest case
+  if (strings.length == 1 && (!values || values.length === 0)) {
+    return fluxExpression(strings[0]) // the simplest case
+  }
   const parts = new Array<string>(strings.length + values.length)
   let partIndex = 0
   for (let i = 0; i < strings.length; i++) {
@@ -241,9 +252,12 @@ export function flux(
       } else {
         sanitized = toFluxValue(val)
         if (sanitized === '') {
-          throw new Error(
-            `Unsupported parameter literal '${val}' at index: ${i}, type: ${typeof val}`
-          )
+          // do not allow to insert empty strings, unless it is FluxParameterLike
+          if (!isFluxParameterLike(val)) {
+            throw new Error(
+              `Unsupported parameter literal '${val}' at index: ${i}, type: ${typeof val}`
+            )
+          }
         }
       }
       parts[partIndex++] = sanitized
