@@ -24,12 +24,7 @@ describe('Flux Values', () => {
     const subject = fluxInteger(123)
     expect(subject.toString()).equals('123')
     expect((subject as any)[FLUX_VALUE]()).equals('123')
-    try {
-      fluxInteger('123a')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
+    expect(() => fluxInteger('123a')).to.throw()
   })
   it('creates fluxBool', () => {
     expect(fluxBool('true').toString()).equals('true')
@@ -49,18 +44,8 @@ describe('Flux Values', () => {
     const subject = fluxFloat(123.456)
     expect(subject.toString()).equals('123.456')
     expect((subject as any)[FLUX_VALUE]()).equals('123.456')
-    try {
-      fluxFloat('123..')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
-    try {
-      fluxFloat('123.a')
-      expect.fail()
-    } catch (_e) {
-      // OK, this must happen
-    }
+    expect(() => fluxFloat('123..')).to.throw()
+    expect(() => fluxFloat('123.a')).to.throw()
   })
   it('creates fluxDuration', () => {
     const subject = fluxDuration('1ms')
@@ -154,25 +139,15 @@ describe('Flux Tagged Template', () => {
     )
   })
   it('fails on undefined', () => {
-    try {
-      flux`${undefined}`
-      expect.fail()
-    } catch (_e) {
-      // ok expected, undefined is not supported
-    }
+    expect(() => flux`${undefined}`).to.throw()
   })
-  it('fails on empty toString', () => {
-    try {
-      const x = {
-        toString(): string {
-          return ''
-        },
-      }
-      flux`${x}`
-      expect.fail()
-    } catch (_e) {
-      // ok expected, undefined is not supported
+  it('converts object with empty toString to ""', () => {
+    const x = {
+      toString(): string {
+        return ''
+      },
     }
+    expect(flux`${x}`.toString()).equals('""')
   })
   it('fails on wrong usage of template', () => {
     try {
