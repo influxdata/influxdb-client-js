@@ -61,7 +61,18 @@ describe('FetchTransport', () => {
       })
       expect(response).is.deep.equal('{}')
     })
-    it('receives no data', async () => {
+    it('receives text data even if response is application/json', async () => {
+      emulateFetchApi({
+        headers: {'content-type': 'application/json; charset=utf-8'},
+        body: '{}',
+      })
+      const response = await transport.request('/whatever', '', {
+        method: 'GET',
+        headers: {accept: 'text/plain'},
+      })
+      expect(response).is.deep.equal('{}')
+    })
+    it('receives no data for HEAD method', async () => {
       emulateFetchApi({
         headers: {},
         body: '{}',
@@ -71,15 +82,22 @@ describe('FetchTransport', () => {
       })
       expect(response).is.equal(undefined)
     })
-    it('receives no data', async () => {
+    it('throws error when unable to read response body', async () => {
       emulateFetchApi({
         headers: {'content-type': 'text/plain'},
         body: 'error',
       })
-      const response = await transport.request('/whatever', '', {
-        method: 'POST',
-      })
-      expect(response).is.equal(undefined)
+      await transport
+        .request('/whatever', '', {
+          method: 'POST',
+        })
+        .then(
+          () => Promise.reject('client error expected'),
+          (e: any) =>
+            expect(e)
+              .property('message')
+              .equals('error data') //thrown by emulator
+        )
     })
     it('throws error', async () => {
       emulateFetchApi({
@@ -87,15 +105,14 @@ describe('FetchTransport', () => {
         body: '{}',
         status: 500,
       })
-      try {
-        await transport.request('/whatever', '', {
+      await transport
+        .request('/whatever', '', {
           method: 'GET',
         })
-        expect.fail()
-      } catch (_e) {
-        // eslint-disable-next-line no-console
-        // console.log(`        OK, received ${_e}`)
-      }
+        .then(
+          () => Promise.reject('client error expected'),
+          () => true // OK error
+        )
     })
     it('throws error with X-Influxdb-Error header body', async () => {
       const message = 'this is a header message'
@@ -107,16 +124,17 @@ describe('FetchTransport', () => {
         body: '',
         status: 500,
       })
-      try {
-        await transport.request('/whatever', '', {
+      await transport
+        .request('/whatever', '', {
           method: 'GET',
         })
-        expect.fail()
-      } catch (e) {
-        expect(e)
-          .property('body')
-          .equals(message)
-      }
+        .then(
+          () => Promise.reject('client error expected'),
+          (e: any) =>
+            expect(e)
+              .property('body')
+              .equals(message)
+        )
     })
     it('throws error with empty body', async () => {
       emulateFetchApi({
@@ -124,16 +142,17 @@ describe('FetchTransport', () => {
         body: '',
         status: 500,
       })
-      try {
-        await transport.request('/whatever', '', {
+      await transport
+        .request('/whatever', '', {
           method: 'GET',
         })
-        expect.fail()
-      } catch (e) {
-        expect(e)
-          .property('body')
-          .equals('')
-      }
+        .then(
+          () => Promise.reject('client error expected'),
+          (e: any) =>
+            expect(e)
+              .property('body')
+              .equals('')
+        )
     })
   })
   describe('send', () => {

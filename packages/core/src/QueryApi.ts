@@ -92,6 +92,15 @@ export default interface QueryApi {
   ): void
 
   /**
+   * QueryRaw executes a query and returns the full response as a string.
+   * Use with caution, a possibly huge stream is copied to memory.
+   *
+   * @param query - query
+   * @returns Promise of response text
+   */
+  queryRaw(query: string | ParameterizedQuery): Promise<string>
+
+  /**
    * CollectRows executes the query and collects all the results in the returned Promise.
    * This method is suitable to collect simple results. Use with caution,
    * a possibly huge stream of results is copied to memory.

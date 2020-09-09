@@ -108,6 +108,28 @@ export class QueryApiImpl implements QueryApi {
     })
   }
 
+  queryRaw(query: string | ParameterizedQuery): Promise<string> {
+    const {org, type, gzip} = this.options
+    return this.transport.request(
+      `/api/v2/query?org=${encodeURIComponent(org)}`,
+      JSON.stringify(
+        this.decorateRequest({
+          query: query.toString(),
+          dialect: DEFAULT_dialect,
+          type,
+        })
+      ),
+      {
+        method: 'POST',
+        headers: {
+          accept: 'text/csv',
+          'accept-encoding': gzip ? 'gzip' : 'identity',
+          'content-type': 'application/json; encoding=utf-8',
+        },
+      }
+    )
+  }
+
   private createExecutor(query: string | ParameterizedQuery): QueryExecutor {
     const {org, type, gzip} = this.options
 
