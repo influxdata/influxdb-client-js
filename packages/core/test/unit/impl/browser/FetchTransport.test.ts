@@ -61,6 +61,16 @@ describe('FetchTransport', () => {
       })
       expect(response).is.deep.equal('{}')
     })
+    it('receives text data for application/csv', async () => {
+      emulateFetchApi({
+        headers: {'content-type': 'application/csv'},
+        body: '{}',
+      })
+      const response = await transport.request('/whatever', '', {
+        method: 'GET',
+      })
+      expect(response).is.deep.equal('{}')
+    })
     it('receives text data even if response is application/json', async () => {
       emulateFetchApi({
         headers: {'content-type': 'application/json; charset=utf-8'},
