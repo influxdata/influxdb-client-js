@@ -564,6 +564,21 @@ describe('NodeHttpTransport', () => {
       })
       expect(data).equals('..')
     })
+    it(`return text for CSV response`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(200, '..', {
+          'content-type': 'application/csv',
+        })
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+    })
     it(`fails on invalid json`, async () => {
       nock(transportOptions.url)
         .get('/test')

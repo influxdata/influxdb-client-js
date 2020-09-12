@@ -136,7 +136,10 @@ export default class FetchTransport implements Transport {
     const responseType = options.headers?.accept ?? responseContentType
     if (responseType.includes('json')) {
       return await response.json()
-    } else if (responseType.includes('text')) {
+    } else if (
+      responseType.includes('text') ||
+      responseType.startsWith('application/csv')
+    ) {
       return await response.text()
     }
   }

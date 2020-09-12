@@ -130,7 +130,10 @@ export class NodeHttpTransport implements Transport {
           try {
             if (responseType.includes('json')) {
               resolve(JSON.parse(buffer.toString('utf8')))
-            } else if (responseType.includes('text')) {
+            } else if (
+              responseType.includes('text') ||
+              responseType.startsWith('application/csv')
+            ) {
               resolve(buffer.toString('utf8'))
             } else {
               resolve(buffer)
