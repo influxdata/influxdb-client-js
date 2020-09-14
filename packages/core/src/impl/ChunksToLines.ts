@@ -4,7 +4,8 @@ import Cancellable from '../util/Cancellable'
 /**
  * Converts lines to table calls
  */
-export default class ChunksToLines implements CommunicationObserver<any> {
+export default class ChunksToLines
+  implements CommunicationObserver<Uint8Array> {
   previous?: Uint8Array
   finished = false
   quoted = false
