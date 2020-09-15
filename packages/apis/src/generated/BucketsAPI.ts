@@ -17,6 +17,9 @@ import {
 export interface GetBucketsRequest {
   offset?: number
   limit?: number
+  /** The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.
+   */
+  after?: string
   /** The organization name. */
   org?: string
   /** The organization ID. */
@@ -120,6 +123,7 @@ export class BucketsAPI {
       `/api/v2/buckets${this.base.queryString(request, [
         'offset',
         'limit',
+        'after',
         'org',
         'orgID',
         'name',

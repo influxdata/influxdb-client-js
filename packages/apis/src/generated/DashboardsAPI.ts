@@ -22,6 +22,9 @@ import {
 } from './types'
 
 export interface GetDashboardsRequest {
+  offset?: number
+  limit?: number
+  descending?: any
   /** The owner ID. */
   owner?: string
   /** The column to sort by. */
@@ -176,6 +179,9 @@ export class DashboardsAPI {
     return this.base.request(
       'GET',
       `/api/v2/dashboards${this.base.queryString(request, [
+        'offset',
+        'limit',
+        'descending',
         'owner',
         'sortBy',
         'id',

@@ -14,6 +14,9 @@ import {
 } from './types'
 
 export interface GetOrgsRequest {
+  offset?: number
+  limit?: number
+  descending?: any
   /** Filter organizations to a specific organization name. */
   org?: string
   /** Filter organizations to a specific organization ID. */
@@ -81,6 +84,12 @@ export interface PostOrgsIDOwnersRequest {
   /** User to add as owner */
   body: AddResourceMemberRequestBody
 }
+export interface DeleteOrgsIDOwnersIDRequest {
+  /** The ID of the owner to remove. */
+  userID: string
+  /** The organization ID. */
+  orgID: string
+}
 /**
  * Orgs API
  */
@@ -109,6 +118,9 @@ export class OrgsAPI {
     return this.base.request(
       'GET',
       `/api/v2/orgs${this.base.queryString(request, [
+        'offset',
+        'limit',
+        'descending',
         'org',
         'orgID',
         'userID',
@@ -337,6 +349,24 @@ export class OrgsAPI {
       request,
       requestOptions,
       'application/json'
+    )
+  }
+  /**
+   * Remove an owner from an organization.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  deleteOrgsIDOwnersID(
+    request: DeleteOrgsIDOwnersIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.base.request(
+      'DELETE',
+      `/api/v2/orgs/${request.orgID}/owners/${request.userID}`,
+      request,
+      requestOptions
     )
   }
 }
