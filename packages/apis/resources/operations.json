@@ -2099,70 +2099,6 @@
   {
     "server": "/api/v2",
     "path": "/scrapers/{scraperTargetID}/labels/{labelID}",
-    "operation": "patch",
-    "operationId": "PatchScrapersIDLabelsID",
-    "basicAuth": false,
-    "summary": "Update a label on a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "labelID",
-        "description": "The label ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Label update to apply",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Label"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Updated successfully",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Scraper target not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/labels/{labelID}",
     "operation": "delete",
     "operationId": "DeleteScrapersIDLabelsID",
     "basicAuth": false,
@@ -3968,6 +3904,21 @@
     ],
     "queryParams": [
       {
+        "name": "offset",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "descending",
+        "required": false,
+        "type": "any"
+      },
+      {
         "name": "owner",
         "description": "The owner ID.",
         "type": "string"
@@ -5639,6 +5590,12 @@
         "type": "number"
       },
       {
+        "name": "after",
+        "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n",
+        "required": false,
+        "type": "string"
+      },
+      {
         "name": "org",
         "description": "The organization name.",
         "type": "string"
@@ -6366,6 +6323,21 @@
     ],
     "queryParams": [
       {
+        "name": "offset",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "descending",
+        "required": false,
+        "type": "any"
+      },
+      {
         "name": "org",
         "description": "Filter organizations to a specific organization name.",
         "type": "string"
@@ -7007,6 +6979,55 @@
             "type": "ResourceOwner"
           }
         ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/owners/{userID}",
+    "operation": "delete",
+    "operationId": "DeleteOrgsIDOwnersID",
+    "basicAuth": false,
+    "summary": "Remove an owner from an organization",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of the owner to remove.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Owner removed",
+        "mediaTypes": []
       },
       {
         "code": "default",

@@ -6,6 +6,7 @@
 1. [#240](https://github.com/influxdata/influxdb-client-js/pull/240): Add helpers to let users choose how to deserialize dateTime:RFC3339 query response data type
 1. [#250](https://github.com/influxdata/influxdb-client-js/pull/250): Simplify precision for WriteApi retrieval.
 1. [#253](https://github.com/influxdata/influxdb-client-js/pull/253): Allow to simply receive the whole query response as a string.
+1. [#257](https://github.com/influxdata/influxdb-client-js/pull/257): Regenerate APIs from swagger.
 
 ### Bug Fixes
 

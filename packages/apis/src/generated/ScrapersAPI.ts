@@ -2,7 +2,6 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   AddResourceMemberRequestBody,
-  Label,
   LabelMapping,
   LabelResponse,
   LabelsResponse,
@@ -52,14 +51,6 @@ export interface PostScrapersIDLabelsRequest {
   scraperTargetID: string
   /** Label to add */
   body: LabelMapping
-}
-export interface PatchScrapersIDLabelsIDRequest {
-  /** The scraper target ID. */
-  scraperTargetID: string
-  /** The label ID. */
-  labelID: string
-  /** Label update to apply */
-  body: Label
 }
 export interface DeleteScrapersIDLabelsIDRequest {
   /** The scraper target ID. */
@@ -242,25 +233,6 @@ export class ScrapersAPI {
     return this.base.request(
       'POST',
       `/api/v2/scrapers/${request.scraperTargetID}/labels`,
-      request,
-      requestOptions,
-      'application/json'
-    )
-  }
-  /**
-   * Update a label on a scraper target.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersIDLabelsID }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  patchScrapersIDLabelsID(
-    request: PatchScrapersIDLabelsIDRequest,
-    requestOptions?: RequestOptions
-  ): Promise<void> {
-    return this.base.request(
-      'PATCH',
-      `/api/v2/scrapers/${request.scraperTargetID}/labels/${request.labelID}`,
       request,
       requestOptions,
       'application/json'

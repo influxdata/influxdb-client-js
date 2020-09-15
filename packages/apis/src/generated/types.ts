@@ -59,7 +59,7 @@ export interface IsOnboarding {
 
 export interface OnboardingRequest {
   username: string
-  password: string
+  password?: string
   org: string
   bucket: string
   retentionPeriodHrs?: number
@@ -652,6 +652,8 @@ export type ViewProperties =
   | CheckViewProperties
   | ScatterViewProperties
   | HeatmapViewProperties
+  | MosaicViewProperties
+  | BandViewProperties
 
 export interface LinePlusSingleStatProperties {
   timeFormat?: string
@@ -1060,6 +1062,50 @@ export interface HeatmapViewProperties {
   yPrefix: string
   ySuffix: string
   binSize: number
+}
+
+export interface MosaicViewProperties {
+  timeFormat?: string
+  type: 'mosaic'
+  queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
+  colors: string[]
+  shape: 'chronograf-v2'
+  note: string
+  /** If true, will display note when empty */
+  showNoteWhenEmpty: boolean
+  xColumn: string
+  ySeriesColumns: string[]
+  fillColumns: string[]
+  xDomain: number[]
+  yDomain: number[]
+  xAxisLabel: string
+  yAxisLabel: string
+  xPrefix: string
+  xSuffix: string
+  yPrefix: string
+  ySuffix: string
+}
+
+export interface BandViewProperties {
+  timeFormat?: string
+  type: 'band'
+  queries: DashboardQuery[]
+  /** Colors define color encoding of data into a visualization */
+  colors: DashboardColor[]
+  shape: 'chronograf-v2'
+  note: string
+  /** If true, will display note when empty */
+  showNoteWhenEmpty: boolean
+  axes: Axes
+  legend: Legend
+  xColumn?: string
+  yColumn?: string
+  upperColumn?: string
+  mainColumn?: string
+  lowerColumn?: string
+  hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
+  geom: XYGeom
 }
 
 export interface CreateCell {
@@ -1965,7 +2011,7 @@ export type TemplateEnvReferences = Array<{
   /** Key identified as environment reference and is the key identified in the template */
   envRefKey: string
   /** Value provided to fulfill reference */
-  value?: string
+  value?: string | number | number | boolean
   /** Default value that will be provided for the reference when no value is provided */
   defaultValue?: string | number | number | boolean
 }>
@@ -1982,6 +2028,7 @@ export type NotificationEndpointDiscrimator =
   | (SlackNotificationEndpoint & {type: string})
   | (PagerDutyNotificationEndpoint & {type: string})
   | (HTTPNotificationEndpoint & {type: string})
+  | (TelegramNotificationEndpoint & {type: string})
 
 export type SlackNotificationEndpoint = NotificationEndpointBase & {
   /** Specifies the URL of the Slack endpoint. Specify either `URL` or `Token`. */
@@ -2015,7 +2062,11 @@ export interface NotificationEndpointBase {
   type: NotificationEndpointType
 }
 
-export type NotificationEndpointType = 'slack' | 'pagerduty' | 'http'
+export type NotificationEndpointType =
+  | 'slack'
+  | 'pagerduty'
+  | 'http'
+  | 'telegram'
 
 export type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
   clientURL?: string
@@ -2032,6 +2083,13 @@ export type HTTPNotificationEndpoint = NotificationEndpointBase & {
   contentTemplate?: string
   /** Customized headers. */
   headers?: any
+}
+
+export type TelegramNotificationEndpoint = NotificationEndpointBase & {
+  /** Specifies the Telegram bot token. See https://core.telegram.org/bots#creating-a-new-bot . */
+  token: string
+  /** ID of the telegram channel, a chat_id in https://core.telegram.org/bots/api#sendmessage . */
+  channel: string
 }
 
 export interface TemplateExport {
@@ -2207,6 +2265,7 @@ export type NotificationRuleDiscriminator =
   | (SMTPNotificationRule & {type: string})
   | (PagerDutyNotificationRule & {type: string})
   | (HTTPNotificationRule & {type: string})
+  | (TelegramNotificationRule & {type: string})
 
 export type SlackNotificationRule = NotificationRuleBase &
   SlackNotificationRuleBase
@@ -2312,6 +2371,20 @@ export type HTTPNotificationRule = NotificationRuleBase &
 export interface HTTPNotificationRuleBase {
   type: 'http'
   url?: string
+}
+
+export type TelegramNotificationRule = NotificationRuleBase &
+  TelegramNotificationRuleBase
+
+export interface TelegramNotificationRuleBase {
+  /** The discriminator between other types of notification rules is "telegram". */
+  type: 'telegram'
+  /** The message template as a flux interpolated string. */
+  messageTemplate: string
+  /** Parse mode of the message text per https://core.telegram.org/bots/api#formatting-options . Defaults to "MarkdownV2" . */
+  parseMode?: 'MarkdownV2' | 'HTML' | 'Markdown'
+  /** Disables preview of web links in the sent messages when "true". Defaults to "false" . */
+  disableWebPagePreview?: boolean
 }
 
 export type PostNotificationRule = NotificationRuleDiscriminator
