@@ -13,33 +13,9 @@ export type ColumnType =
   | string
 
 /**
- * FluxTableColumnLike provides metadata of a flux table column.
- */
-export interface FluxTableColumnLike {
-  /**
-   * Label (e.g., "_start", "_stop", "_time").
-   */
-  label: string
-
-  /**
-   * The data type of column (e.g., "string", "long", "dateTime:RFC3339").
-   */
-  dataType?: ColumnType
-
-  /**
-   * Boolean flag indicating if the column is a part of the table's group key.
-   */
-  group?: boolean
-
-  /**
-   * Default value to be used for rows whose string value is the empty string.
-   */
-  defaultValue?: string
-}
-/**
  * Column metadata class of a {@link http://bit.ly/flux-spec#table | flux table} column.
  */
-export default class FluxTableColumn {
+export default interface FluxTableColumn {
   /**
    * Label (e.g., "_start", "_stop", "_time").
    */
@@ -64,18 +40,40 @@ export default class FluxTableColumn {
    * Index of this column in the row array
    */
   index: number
+}
 
-  /**
-   * Creates a flux table column from an object supplied.
-   * @param object - source object
-   * @returns column instance
-   */
-  static from(object: FluxTableColumnLike): FluxTableColumn {
-    const retVal = new FluxTableColumn()
-    retVal.label = object.label
-    retVal.dataType = object.dataType as ColumnType
-    retVal.group = Boolean(object.group)
-    retVal.defaultValue = object.defaultValue ?? ''
-    return retVal
-  }
+/**
+ * FluxTableColumn implementation.
+ */
+class FluxTableColumnImpl implements FluxTableColumn {
+  label: string
+  dataType: ColumnType
+  group: boolean
+  defaultValue: string
+  index: number
+}
+
+/**
+ * Creates a new flux table column.
+ * @returns column instance
+ */
+export function newFluxTableColumn(): FluxTableColumn {
+  return new FluxTableColumnImpl()
+}
+
+/**
+ * Creates a flux table column from a partial FluxTableColumn.
+ * @param object - source object
+ * @returns column instance
+ */
+export function createFluxTableColumn(
+  object: Partial<FluxTableColumn>
+): FluxTableColumn {
+  const retVal = new FluxTableColumnImpl()
+  retVal.label = String(object.label)
+  retVal.dataType = object.dataType as ColumnType
+  retVal.group = Boolean(object.group)
+  retVal.defaultValue = object.defaultValue ?? ''
+  retVal.index = object.index ?? 0
+  return retVal
 }

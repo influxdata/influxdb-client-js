@@ -1,28 +1,29 @@
 import {
   FluxTableColumn,
-  FluxTableMetaData,
+  createFluxTableMetaData,
   ColumnType,
   typeSerializers,
   serializeDateTimeAsDate,
   serializeDateTimeAsNumber,
   serializeDateTimeAsString,
+  createFluxTableColumn,
 } from '../../../src'
 import {expect} from 'chai'
 
 describe('FluxTableMetaData', () => {
   it('returns columns by name or id', () => {
     const columns: FluxTableColumn[] = [
-      FluxTableColumn.from({
+      createFluxTableColumn({
         label: 'a',
         defaultValue: 'def',
         dataType: 'long',
         group: false,
       }),
-      FluxTableColumn.from({
+      createFluxTableColumn({
         label: 'b',
       }),
     ]
-    const subject = new FluxTableMetaData(columns)
+    const subject = createFluxTableMetaData(columns)
     expect(subject.column('a')).to.equals(columns[0])
     expect(subject.column('b')).to.equals(columns[1])
     expect(subject.columns[0]).to.equals(columns[0])
@@ -31,17 +32,17 @@ describe('FluxTableMetaData', () => {
   })
   it('creates objects', () => {
     const columns: FluxTableColumn[] = [
-      FluxTableColumn.from({
+      createFluxTableColumn({
         label: 'a',
         defaultValue: '1',
         dataType: 'long',
         group: false,
       }),
-      FluxTableColumn.from({
+      createFluxTableColumn({
         label: 'b',
       }),
     ]
-    const subject = new FluxTableMetaData(columns)
+    const subject = createFluxTableMetaData(columns)
     expect(subject.toObject(['', ''])).to.deep.equal({a: 1, b: ''})
     expect(subject.toObject(['2', 'y'])).to.deep.equal({a: 2, b: 'y'})
     expect(subject.toObject(['3', 'y', 'z'])).to.deep.equal({a: 3, b: 'y'})
@@ -67,12 +68,12 @@ describe('FluxTableMetaData', () => {
   for (const entry of serializationTable) {
     it(`serializes ${entry[0]}/${entry[1]}`, () => {
       const columns: FluxTableColumn[] = [
-        FluxTableColumn.from({
+        createFluxTableColumn({
           label: 'a',
           dataType: entry[0],
         }),
       ]
-      const subject = new FluxTableMetaData(columns)
+      const subject = createFluxTableMetaData(columns)
       expect(subject.toObject([entry[1]])).to.deep.equal({a: entry[2]})
     })
   }
@@ -90,25 +91,25 @@ describe('FluxTableMetaData', () => {
     it('customizes serialization of long datatype', () => {
       typeSerializers['long'] = (_x: string): any => []
       const columns: FluxTableColumn[] = [
-        FluxTableColumn.from({
+        createFluxTableColumn({
           label: 'a',
           dataType: 'long',
           group: false,
         }),
       ]
-      const subject = new FluxTableMetaData(columns)
+      const subject = createFluxTableMetaData(columns)
       expect(subject.toObject([''])).to.deep.equal({a: []})
     })
     it('customizes serialization using serializeDateTimeAsDate', () => {
       serializeDateTimeAsDate()
       const columns: FluxTableColumn[] = [
-        FluxTableColumn.from({
+        createFluxTableColumn({
           label: 'a',
           dataType: 'dateTime:RFC3339',
           group: false,
         }),
       ]
-      const subject = new FluxTableMetaData(columns)
+      const subject = createFluxTableMetaData(columns)
       expect(subject.toObject([''])).to.deep.equal({a: null})
       expect(
         subject.toObject(['2020-08-19T09:14:23.798594313Z'])
@@ -117,13 +118,13 @@ describe('FluxTableMetaData', () => {
     it('customizes serialization using serializeDateTimeAsNumber', () => {
       serializeDateTimeAsNumber()
       const columns: FluxTableColumn[] = [
-        FluxTableColumn.from({
+        createFluxTableColumn({
           label: 'a',
           dataType: 'dateTime:RFC3339',
           group: false,
         }),
       ]
-      const subject = new FluxTableMetaData(columns)
+      const subject = createFluxTableMetaData(columns)
       expect(subject.toObject([''])).to.deep.equal({a: null})
       expect(
         subject.toObject(['2020-08-19T09:14:23.798594313Z'])
@@ -133,13 +134,13 @@ describe('FluxTableMetaData', () => {
       serializeDateTimeAsDate()
       serializeDateTimeAsString()
       const columns: FluxTableColumn[] = [
-        FluxTableColumn.from({
+        createFluxTableColumn({
           label: 'a',
           dataType: 'dateTime:RFC3339',
           group: false,
         }),
       ]
-      const subject = new FluxTableMetaData(columns)
+      const subject = createFluxTableMetaData(columns)
       expect(subject.toObject([''])).to.deep.equal({a: null})
       expect(
         subject.toObject(['1970-01-01T00:26:16.063594313Z'])

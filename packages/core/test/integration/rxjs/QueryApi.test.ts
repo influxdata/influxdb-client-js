@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
-import {InfluxDB, ClientOptions, FluxTableMetaData} from '../../../src'
+import {InfluxDB, ClientOptions} from '../../../src'
 import fs from 'fs'
 import simpleResponseLines from '../../fixture/query/simpleResponseLines.json'
 import zlib from 'zlib'
@@ -90,9 +90,7 @@ describe('RxJS QueryApi integration', () => {
             concat(of(group.key), group.pipe(map(({values}) => values)))
           ),
           map((data, index) =>
-            data instanceof FluxTableMetaData
-              ? {index, meta: data}
-              : {index, row: data}
+            Array.isArray(data) ? {index, row: data} : {index, meta: data}
           ),
           groupBy(value => 'meta' in value),
           flatMap(group => group.pipe(toArray())),
