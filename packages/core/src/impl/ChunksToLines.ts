@@ -44,16 +44,14 @@ export default class ChunksToLines
     if (this.target.useCancellable) {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       const self = this
-      let cancelled = false
       this.target.useCancellable({
         cancel(): void {
           cancellable.cancel()
           self.previous = undefined // do not emit more lines
-          cancelled = true
           self.complete()
         },
         isCancelled(): boolean {
-          return cancelled
+          return cancellable.isCancelled()
         },
       })
     }
