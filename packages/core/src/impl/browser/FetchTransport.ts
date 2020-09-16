@@ -113,9 +113,7 @@ export default class FetchTransport implements Transport {
         }
       })
       .catch(e => {
-        if (cancelled) {
-          observer.complete()
-        } else {
+        if (!cancelled) {
           observer.error(e)
         }
       })

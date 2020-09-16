@@ -56,4 +56,34 @@ describe('ChunksToLines', () => {
     subject.next((1 as any) as Uint8Array)
     expect(target.failed).to.be.equal(1)
   })
+  it('do not emit lines after being cancelled', () => {
+    let cancellable: Cancellable | undefined = undefined
+    const lines: string[] = []
+    const target = {
+      next(line: string): void {
+        if (line === 'cancel') {
+          cancellable?.cancel()
+        } else {
+          lines.push(line)
+        }
+      },
+      error: sinon.fake(),
+      complete: sinon.fake(),
+      useCancellable(c: Cancellable): void {
+        cancellable = c
+      },
+    }
+    const subject = new ChunksToLines(target, nodeChunkCombiner)
+    const cancel = sinon.mock()
+    subject.useCancellable({
+      isCancelled: () => cancel.callCount > 0,
+      cancel,
+    })
+    subject.next(Buffer.from('a\ncancel\nc\nd', 'utf8'))
+    subject.next(Buffer.from('gh', 'utf8'))
+    expect(lines).deep.equals(['a'])
+    expect(target.error.callCount).equals(0)
+    expect((cancellable as any)?.isCancelled()).equals(true)
+    expect(target.complete.callCount).equals(1)
+  })
 })
