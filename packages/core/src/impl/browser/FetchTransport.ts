@@ -36,16 +36,20 @@ export default class FetchTransport implements Transport {
   ): void {
     const observer = completeCommunicationObserver(callbacks)
     let cancelled = false
-    if (callbacks && callbacks.useCancellable && !(options as any).signal) {
+    let signal = (options as any).signal
+    if (callbacks && callbacks.useCancellable) {
       const controller = new AbortController()
-      const signal = controller.signal
+      if (!signal) {
+        signal = controller.signal
+        options = {...(options as object), ...signal} as SendOptions
+      }
       callbacks.useCancellable({
         cancel() {
           cancelled = true
           controller.abort()
         },
         isCancelled() {
-          return signal.aborted
+          return cancelled || signal.aborted
         },
       })
     }
