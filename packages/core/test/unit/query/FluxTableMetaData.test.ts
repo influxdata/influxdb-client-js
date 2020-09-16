@@ -40,6 +40,7 @@ describe('FluxTableMetaData', () => {
       }),
       createFluxTableColumn({
         label: 'b',
+        index: 2, // index can be possibly set, but it gets overriden during createFluxTableMetaData
       }),
     ]
     const subject = createFluxTableMetaData(columns)
