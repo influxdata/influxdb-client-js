@@ -201,7 +201,37 @@ describe('FetchTransport', () => {
       {
         body: 'a',
         callbacks: fakeCallbacks(),
-        status: 500,
+      },
+      {
+        url: 'customNext_canceled',
+        body: [Buffer.from('a'), Buffer.from('b')],
+        callbacks: ((): void => {
+          const overriden = fakeCallbacks()
+          return {
+            ...overriden,
+            next(...args: any): void {
+              overriden.next.call(overriden, args)
+              const cancellable = overriden.useCancellable.args[0][0]
+              cancellable.cancel()
+              throw new Error()
+            },
+          }
+        })(),
+      },
+      {
+        url: 'customNext_nextError',
+        body: 'a',
+        callbacks: ((): void => {
+          const overriden = fakeCallbacks()
+          return {
+            ...overriden,
+            next(...args: any): void {
+              overriden.next.call(overriden, args)
+              throw new Error('unexpected error')
+            },
+          }
+        })(),
+        status: 222, // value other than 200 instructs the test to check for error
       },
       {
         body: 'error',
@@ -220,6 +250,12 @@ describe('FetchTransport', () => {
         callbacks: fakeCallbacks(),
         status: 500,
         errorBody: '',
+      },
+      {
+        body: 'this is error message',
+        callbacks: fakeCallbacks(),
+        status: 500,
+        errorBody: 'this is error message',
       },
     ].forEach(
       (
@@ -274,10 +310,13 @@ describe('FetchTransport', () => {
             )
             expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
             expect(callbacks.error.callCount).equals(isError ? 1 : 0)
-            expect(callbacks.next.callCount).equals(
-              isError ? 0 : Array.isArray(body) ? body.length : 1
-            )
-            if (!isError) {
+            const customNext = url.startsWith('customNext')
+            if (!customNext) {
+              expect(callbacks.next.callCount).equals(
+                isError ? 0 : Array.isArray(body) ? body.length : 1
+              )
+            }
+            if (!customNext && !isError) {
               const vals = callbacks.next.args.map((args: any) =>
                 Buffer.from(args[0])
               )
