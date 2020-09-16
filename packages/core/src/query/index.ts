@@ -4,11 +4,12 @@ export {
   serializeDateTimeAsDate,
   serializeDateTimeAsNumber,
   serializeDateTimeAsString,
+  createFluxTableMetaData,
 } from './FluxTableMetaData'
 export {default as FluxResultObserver} from './FluxResultObserver'
 export {
   default as FluxTableColumn,
   ColumnType,
-  FluxTableColumnLike,
+  createFluxTableColumn,
 } from './FluxTableColumn'
 export * from './flux'

@@ -51,21 +51,36 @@ export function serializeDateTimeAsString(): void {
 /**
  * Represents metadata of a {@link http://bit.ly/flux-spec#table | flux table}.
  */
-export default class FluxTableMetaData {
+export default interface FluxTableMetaData {
   /**
    * Table columns.
    */
   columns: Array<FluxTableColumn>
-  constructor(columns: FluxTableColumn[]) {
-    columns.forEach((col, i) => (col.index = i))
-    this.columns = columns
-  }
+
   /**
    * Gets columns by name
    * @param label - column label
    * @returns table column
    * @throws IllegalArgumentError if column is not found
    **/
+  column(label: string): FluxTableColumn
+
+  /**
+   * Creates an object out of the supplied values with the help of columns .
+   * @param values - a row with data for each column
+   */
+  toObject(values: string[]): {[key: string]: any}
+}
+
+/**
+ * FluxTableMetaData Implementation.
+ */
+class FluxTableMetaDataImpl implements FluxTableMetaData {
+  columns: Array<FluxTableColumn>
+  constructor(columns: FluxTableColumn[]) {
+    columns.forEach((col, i) => (col.index = i))
+    this.columns = columns
+  }
   column(label: string): FluxTableColumn {
     for (let i = 0; i < this.columns.length; i++) {
       const col = this.columns[i]
@@ -73,10 +88,6 @@ export default class FluxTableMetaData {
     }
     throw new IllegalArgumentError(`Column ${label} not found!`)
   }
-  /**
-   * Creates an object out of the supplied values with the help of columns .
-   * @param values - a row with data for each column
-   */
   toObject(values: string[]): {[key: string]: any} {
     const acc: any = {}
     for (let i = 0; i < this.columns.length && i < values.length; i++) {
@@ -89,4 +100,15 @@ export default class FluxTableMetaData {
     }
     return acc
   }
+}
+
+/**
+ * Created FluxTableMetaData from the columns supplied.
+ * @param columns -  columns
+ * @returns - instance
+ */
+export function createFluxTableMetaData(
+  columns: FluxTableColumn[]
+): FluxTableMetaData {
+  return new FluxTableMetaDataImpl(columns)
 }

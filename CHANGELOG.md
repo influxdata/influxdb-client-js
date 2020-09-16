@@ -8,6 +8,13 @@
 1. [#253](https://github.com/influxdata/influxdb-client-js/pull/253): Allow to simply receive the whole query response as a string.
 1. [#257](https://github.com/influxdata/influxdb-client-js/pull/257): Regenerate APIs from swagger.
 
+### Breaking Changes
+
+1. [#258](https://github.com/influxdata/influxdb-client-js/pull/258): Convert FluxTableColumn and FluxTableMetaData to interface.
+   This change is unlikely to cause any harm, since the clients are expected to use only FluxTableColumn/FluxTableMetaData
+   fields or methods that didn't change. See [#258](https://github.com/influxdata/influxdb-client-js/pull/258) for details
+   and backward compatibility notes.
+
 ### Bug Fixes
 
 1. [#237](https://github.com/influxdata/influxdb-client-js/pull/237): Fixed line splitter of query results that might have produced wrong results for query responses with quoted data.
