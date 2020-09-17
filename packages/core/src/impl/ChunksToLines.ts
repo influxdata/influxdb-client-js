@@ -41,7 +41,20 @@ export default class ChunksToLines
     }
   }
   useCancellable(cancellable: Cancellable): void {
-    this.target.useCancellable && this.target.useCancellable(cancellable)
+    if (this.target.useCancellable) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const self = this
+      this.target.useCancellable({
+        cancel(): void {
+          cancellable.cancel()
+          self.previous = undefined // do not emit more lines
+          self.complete()
+        },
+        isCancelled(): boolean {
+          return cancellable.isCancelled()
+        },
+      })
+    }
   }
 
   private bufferReceived(chunk: Uint8Array): void {
@@ -59,6 +72,10 @@ export default class ChunksToLines
         if (!this.quoted) {
           /* do not emit CR+LR or LF line ending */
           const end = index > 0 && chunk[index - 1] === 13 ? index - 1 : index
+          // do not emmit more lines if the processing is already finished
+          if (this.finished) {
+            return
+          }
           this.target.next(this.chunks.toUtf8String(chunk, start, end))
           start = index + 1
         }

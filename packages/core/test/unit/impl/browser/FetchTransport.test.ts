@@ -3,6 +3,7 @@ import {expect} from 'chai'
 import {removeFetchApi, emulateFetchApi} from './emulateBrowser'
 import sinon from 'sinon'
 import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
+import {SendOptions, Cancellable} from '../../../../src'
 
 describe('FetchTransport', () => {
   afterEach(() => {
@@ -172,7 +173,9 @@ describe('FetchTransport', () => {
         next: sinon.fake(),
         error: sinon.fake(),
         complete: sinon.fake(),
-        useCancellable: sinon.fake(),
+        useCancellable: sinon.spy((c: Cancellable): void => {
+          expect(c.isCancelled()).is.equal(false) // not cancelled
+        }),
         responseStarted: sinon.fake(),
       }
     }
@@ -201,7 +204,57 @@ describe('FetchTransport', () => {
       {
         body: 'a',
         callbacks: fakeCallbacks(),
-        status: 500,
+      },
+      {
+        url: 'customNext_cancelledAndThenError',
+        body: [Buffer.from('a'), Buffer.from('b')],
+        callbacks: ((): void => {
+          const overriden = fakeCallbacks()
+          return {
+            ...overriden,
+            next(...args: any): void {
+              overriden.next.call(overriden, args)
+              const cancellable = overriden.useCancellable.args[0][0]
+              cancellable.cancel()
+              throw new Error()
+            },
+          }
+        })(),
+      },
+      {
+        url: 'customNext_cancelledWithSignal',
+        body: [Buffer.from('a'), Buffer.from('b')],
+        signal: {aborted: true},
+        callbacks: ((): void => {
+          const overriden = fakeCallbacks()
+          overriden.useCancellable = sinon.spy((c: Cancellable): void => {
+            expect(c.isCancelled()).is.equal(true) // cancelled because of aborted signal
+          })
+          return {
+            ...overriden,
+            next(...args: any): void {
+              overriden.next.call(overriden, args)
+              const cancellable = overriden.useCancellable.args[0][0]
+              cancellable.cancel()
+              throw new Error()
+            },
+          }
+        })(),
+      },
+      {
+        url: 'customNext_nextError',
+        body: 'a',
+        callbacks: ((): void => {
+          const overriden = fakeCallbacks()
+          return {
+            ...overriden,
+            next(...args: any): void {
+              overriden.next.call(overriden, args)
+              throw new Error('unexpected error')
+            },
+          }
+        })(),
+        status: 222, // value other than 200 instructs the test to check for error
       },
       {
         body: 'error',
@@ -221,6 +274,12 @@ describe('FetchTransport', () => {
         status: 500,
         errorBody: '',
       },
+      {
+        body: 'this is error message',
+        callbacks: fakeCallbacks(),
+        status: 500,
+        errorBody: 'this is error message',
+      },
     ].forEach(
       (
         {
@@ -230,10 +289,11 @@ describe('FetchTransport', () => {
           status = 200,
           headers = {},
           errorBody,
+          signal,
         },
         i
       ) => {
-        it(`receives data in chunks ${i}`, async () => {
+        it(`receives data in chunks ${i} (${url})`, async () => {
           emulateFetchApi({
             headers: {
               'content-type': 'text/plain',
@@ -245,22 +305,17 @@ describe('FetchTransport', () => {
           })
           if (callbacks) {
             await new Promise((resolve: any) =>
-              transport.send(
-                url,
-                '',
-                {method: 'POST'},
-                {
-                  ...callbacks,
-                  complete() {
-                    callbacks.complete && callbacks.complete()
-                    resolve()
-                  },
-                  error(e: Error) {
-                    callbacks.error && callbacks.error(e)
-                    resolve()
-                  },
-                }
-              )
+              transport.send(url, '', {method: 'POST', signal} as SendOptions, {
+                ...callbacks,
+                complete() {
+                  callbacks.complete && callbacks.complete()
+                  resolve()
+                },
+                error(e: Error) {
+                  callbacks.error && callbacks.error(e)
+                  resolve()
+                },
+              })
             )
             if (callbacks.useCancellable) {
               expect(callbacks.useCancellable.callCount).equals(1)
@@ -272,12 +327,15 @@ describe('FetchTransport', () => {
             expect(callbacks.responseStarted.callCount).equals(
               url === 'error' ? 0 : 1
             )
-            expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
             expect(callbacks.error.callCount).equals(isError ? 1 : 0)
-            expect(callbacks.next.callCount).equals(
-              isError ? 0 : Array.isArray(body) ? body.length : 1
-            )
-            if (!isError) {
+            expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
+            const customNext = url.startsWith('customNext')
+            if (!customNext) {
+              expect(callbacks.next.callCount).equals(
+                isError ? 0 : Array.isArray(body) ? body.length : 1
+              )
+            }
+            if (!customNext && !isError) {
               const vals = callbacks.next.args.map((args: any) =>
                 Buffer.from(args[0])
               )
