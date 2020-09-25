@@ -51,7 +51,7 @@ $ pnpm add @influxdata/influxdb-client-apis
 
 ## Usage
 
-The following examples helps to start quickly with this client:
+The following examples help to start quickly with this client:
 
 - @influxdata/influxdb-client
   - [write points](./examples/write.js)
@@ -101,7 +101,7 @@ Ensure that:
 Then run the publish script in the root of the repo:
 
 ```
-make publish VERSION=1.1.0
+make publish VERSION=1.7.0
 ```
 
 ## Contributing
