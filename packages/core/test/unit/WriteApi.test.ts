@@ -13,7 +13,7 @@ import {collectLogging, CollectedLogs} from '../util'
 import Logger from '../../src/impl/Logger'
 
 const clientOptions: ClientOptions = {
-  url: 'http://fake:9999',
+  url: 'http://fake:8086',
   token: 'a',
 }
 const ORG = 'org'

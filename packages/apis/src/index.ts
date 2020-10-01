@@ -13,7 +13,7 @@
  * const {InfluxDB} = require('@influxdata/influxdb-client')
  * const {OrgsAPI} = require('@influxdata/influxdb-client-apis')
  * const influxDB = new InfluxDB({
- *   url: "http://localhost:9999", 
+ *   url: "http://localhost:8086", 
  *   token: "my-token"
  * })
  * ...

@@ -12,7 +12,7 @@ const ORG = `my-org`
 const QUERY_PATH = `/api/v2/query?org=${ORG}`
 
 const clientOptions: ClientOptions = {
-  url: 'http://fake:9999',
+  url: 'http://fake:8086',
   token: 'a',
 }
 
