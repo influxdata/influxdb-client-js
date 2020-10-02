@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "InfluxDB 2.0 client",
   "scripts": {
     "apidoc:extract": "api-extractor run",
