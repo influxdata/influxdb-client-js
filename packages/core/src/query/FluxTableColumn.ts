@@ -32,12 +32,12 @@ export default interface FluxTableColumn {
   group: boolean
 
   /**
-   * Default value to be used for rows whose string value is the empty string.
+   * Default value to be used for rows whose string value is an empty string.
    */
   defaultValue: string
 
   /**
-   * Index of this column in the row array
+   * Index of this column in a row array.
    */
   index: number
 }
