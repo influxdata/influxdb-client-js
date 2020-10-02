@@ -15,7 +15,7 @@ These APIs allow to manage the domain objects of InfluxDB (such as buckets, sour
 const {InfluxDB} = require('@influxdata/influxdb-client')
 const {OrgsAPI} = require('@influxdata/influxdb-client-apis')
 const influxDB = new InfluxDB({
-  url: "http://localhost:9999",
+  url: "http://localhost:8086",
   token: "my-token"
 })
 ...
@@ -80,6 +80,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Axes](./influxdb-client-apis.axes.md) | The viewport for a View's visualizations |
 |  [Axis](./influxdb-client-apis.axis.md) | The description of a particular axis for a visualization. |
 |  [BadStatement](./influxdb-client-apis.badstatement.md) | A placeholder for statements for which no correct statement nodes can be created |
+|  [BandViewProperties](./influxdb-client-apis.bandviewproperties.md) |  |
 |  [BinaryExpression](./influxdb-client-apis.binaryexpression.md) | uses binary operators to act on two operands in an expression |
 |  [Block](./influxdb-client-apis.block.md) | A set of statements |
 |  [BooleanLiteral](./influxdb-client-apis.booleanliteral.md) | Represents boolean values |
@@ -133,6 +134,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) |  |
 |  [DeleteNotificationRulesIDRequest](./influxdb-client-apis.deletenotificationrulesidrequest.md) |  |
 |  [DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md) |  |
+|  [DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md) |  |
 |  [DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md) |  |
 |  [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | The delete predicate request. |
 |  [DeleteScrapersIDLabelsIDRequest](./influxdb-client-apis.deletescrapersidlabelsidrequest.md) |  |
@@ -275,6 +277,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [MarkdownViewProperties](./influxdb-client-apis.markdownviewproperties.md) |  |
 |  [MemberAssignment](./influxdb-client-apis.memberassignment.md) | Object property assignment |
 |  [MemberExpression](./influxdb-client-apis.memberexpression.md) | Represents accessing a property of an object |
+|  [MosaicViewProperties](./influxdb-client-apis.mosaicviewproperties.md) |  |
 |  [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md) |  |
 |  [NotificationEndpoints](./influxdb-client-apis.notificationendpoints.md) |  |
 |  [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) |  |
@@ -304,7 +307,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md) |  |
 |  [PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md) |  |
 |  [PatchOrgsIDSecretsRequest](./influxdb-client-apis.patchorgsidsecretsrequest.md) |  |
-|  [PatchScrapersIDLabelsIDRequest](./influxdb-client-apis.patchscrapersidlabelsidrequest.md) |  |
 |  [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) |  |
 |  [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) |  |
 |  [PatchTasksIDRequest](./influxdb-client-apis.patchtasksidrequest.md) |  |
@@ -410,6 +412,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [TelegrafPlugins](./influxdb-client-apis.telegrafplugins.md) |  |
 |  [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) |  |
 |  [Telegrafs](./influxdb-client-apis.telegrafs.md) |  |
+|  [TelegramNotificationRuleBase](./influxdb-client-apis.telegramnotificationrulebase.md) |  |
 |  [TemplateApply](./influxdb-client-apis.templateapply.md) |  |
 |  [TemplateChart](./influxdb-client-apis.templatechart.md) |  |
 |  [TemplateExport](./influxdb-client-apis.templateexport.md) |  |
@@ -482,6 +485,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Statement](./influxdb-client-apis.statement.md) |  |
 |  [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
 |  [Telegraf](./influxdb-client-apis.telegraf.md) |  |
+|  [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md) |  |
+|  [TelegramNotificationRule](./influxdb-client-apis.telegramnotificationrule.md) |  |
 |  [Template](./influxdb-client-apis.template.md) |  |
 |  [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) |  |
 |  [TemplateKind](./influxdb-client-apis.templatekind.md) |  |

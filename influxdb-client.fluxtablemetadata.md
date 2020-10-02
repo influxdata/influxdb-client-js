@@ -2,32 +2,26 @@
 
 [Home](./index.md) &gt; [@influxdata/influxdb-client](./influxdb-client.md) &gt; [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
 
-## FluxTableMetaData class
+## FluxTableMetaData interface
 
 Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
 
 <b>Signature:</b>
 
 ```typescript
-export default class FluxTableMetaData 
+export default interface FluxTableMetaData 
 ```
-
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(columns)](./influxdb-client.fluxtablemetadata._constructor_.md) |  | Constructs a new instance of the <code>FluxTableMetaData</code> class |
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | Table columns. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [columns](./influxdb-client.fluxtablemetadata.columns.md) | Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | Table columns. |
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [column(label)](./influxdb-client.fluxtablemetadata.column.md) |  | Gets columns by name |
-|  [toObject(values)](./influxdb-client.fluxtablemetadata.toobject.md) |  | Creates an object out of the supplied values with the help of columns . |
+|  Method | Description |
+|  --- | --- |
+|  [column(label)](./influxdb-client.fluxtablemetadata.column.md) | Gets columns by name |
+|  [toObject(values)](./influxdb-client.fluxtablemetadata.toobject.md) | Creates an object out of the supplied values with the help of columns . |
 

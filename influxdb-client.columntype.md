@@ -9,5 +9,5 @@ Type of query result column, see [https://v2.docs.influxdata.com/v2.0/reference/
 <b>Signature:</b>
 
 ```typescript
-export declare type ColumnType = 'boolean' | 'unsignedLong' | 'long' | 'double' | 'string' | 'base64Binary' | 'dateTime' | 'duration';
+export declare type ColumnType = 'boolean' | 'unsignedLong' | 'long' | 'double' | 'string' | 'base64Binary' | 'dateTime:RFC3339' | 'duration' | string;
 ```

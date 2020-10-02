@@ -14,7 +14,10 @@ export interface GetDashboardsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [descending](./influxdb-client-apis.getdashboardsrequest.descending.md) | any |  |
 |  [id](./influxdb-client-apis.getdashboardsrequest.id.md) | any | List of dashboard IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
+|  [limit](./influxdb-client-apis.getdashboardsrequest.limit.md) | number |  |
+|  [offset](./influxdb-client-apis.getdashboardsrequest.offset.md) | number |  |
 |  [org](./influxdb-client-apis.getdashboardsrequest.org.md) | string | The organization name. |
 |  [orgID](./influxdb-client-apis.getdashboardsrequest.orgid.md) | string | The organization ID. |
 |  [owner](./influxdb-client-apis.getdashboardsrequest.owner.md) | string | The owner ID. |

@@ -20,6 +20,7 @@ export default interface QueryApi
 |  [collectRows(query, rowMapper)](./influxdb-client.queryapi.collectrows.md) | CollectRows executes the query and collects all the results in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of results is copied to memory. |
 |  [lines(query)](./influxdb-client.queryapi.lines.md) | Creates a cold observable of the lines returned by the given query. |
 |  [queryLines(query, consumer)](./influxdb-client.queryapi.querylines.md) | Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/). |
+|  [queryRaw(query)](./influxdb-client.queryapi.queryraw.md) | QueryRaw executes a query and returns the full response as a string. Use with caution, a possibly huge stream is copied to memory. |
 |  [queryRows(query, consumer)](./influxdb-client.queryapi.queryrows.md) | Executes the query and receives table metadata and rows through the supplied consumer. |
 |  [rows(query)](./influxdb-client.queryapi.rows.md) | Creates a cold observable of the rows returned by the given query. |
 |  [with(options)](./influxdb-client.queryapi.with.md) | Adds extra options for this query API. |

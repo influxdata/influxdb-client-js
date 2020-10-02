@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type NotificationEndpointType = 'slack' | 'pagerduty' | 'http';
+export declare type NotificationEndpointType = 'slack' | 'pagerduty' | 'http' | 'telegram';
 ```

@@ -13,5 +13,7 @@ export declare type NotificationEndpointDiscrimator = (SlackNotificationEndpoint
     type: string;
 }) | (HTTPNotificationEndpoint & {
     type: string;
+}) | (TelegramNotificationEndpoint & {
+    type: string;
 });
 ```

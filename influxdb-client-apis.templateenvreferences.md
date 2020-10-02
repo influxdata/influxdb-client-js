@@ -10,7 +10,7 @@
 export declare type TemplateEnvReferences = Array<{
     resourceField: string;
     envRefKey: string;
-    value?: string;
+    value?: string | number | number | boolean;
     defaultValue?: string | number | number | boolean;
 }>;
 ```

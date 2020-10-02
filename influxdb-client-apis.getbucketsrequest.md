@@ -14,6 +14,7 @@ export interface GetBucketsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [after](./influxdb-client-apis.getbucketsrequest.after.md) | string | The last resource ID from which to seek from (but not including). This is to be used instead of <code>offset</code>. |
 |  [limit](./influxdb-client-apis.getbucketsrequest.limit.md) | number |  |
 |  [name](./influxdb-client-apis.getbucketsrequest.name.md) | string | Only returns buckets with a specific name. |
 |  [offset](./influxdb-client-apis.getbucketsrequest.offset.md) | number |  |

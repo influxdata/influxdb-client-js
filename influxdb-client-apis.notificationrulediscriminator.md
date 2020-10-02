@@ -15,5 +15,7 @@ export declare type NotificationRuleDiscriminator = (SlackNotificationRule & {
     type: string;
 }) | (HTTPNotificationRule & {
     type: string;
+}) | (TelegramNotificationRule & {
+    type: string;
 });
 ```

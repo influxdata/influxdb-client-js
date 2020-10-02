@@ -9,7 +9,7 @@ Creates WriteApi for the supplied organization and bucket. BEWARE that returned 
 <b>Signature:</b>
 
 ```typescript
-getWriteApi(org: string, bucket: string, precision?: WritePrecision, writeOptions?: Partial<WriteOptions>): WriteApi;
+getWriteApi(org: string, bucket: string, precision?: WritePrecisionType, writeOptions?: Partial<WriteOptions>): WriteApi;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ getWriteApi(org: string, bucket: string, precision?: WritePrecision, writeOption
 |  --- | --- | --- |
 |  org | string | Specifies the destination organization for writes. Takes either the ID or Name interchangeably. |
 |  bucket | string | The destination bucket for writes. |
-|  precision | [WritePrecision](./influxdb-client.writeprecision.md) | Timestamp precision for line items. |
+|  precision | [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | Timestamp precision for line items. |
 |  writeOptions | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | Custom write options. |
 
 <b>Returns:</b>

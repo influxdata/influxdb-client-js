@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ViewProperties = LinePlusSingleStatProperties | XYViewProperties | SingleStatViewProperties | HistogramViewProperties | GaugeViewProperties | TableViewProperties | MarkdownViewProperties | CheckViewProperties | ScatterViewProperties | HeatmapViewProperties;
+export declare type ViewProperties = LinePlusSingleStatProperties | XYViewProperties | SingleStatViewProperties | HistogramViewProperties | GaugeViewProperties | TableViewProperties | MarkdownViewProperties | CheckViewProperties | ScatterViewProperties | HeatmapViewProperties | MosaicViewProperties | BandViewProperties;
 ```

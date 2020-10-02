@@ -13,7 +13,7 @@ The entry point of this package is the [InfluxDB](./influxdb-client.influxdb.md)
 ```
 import {InfluxDB} = from('@influxdata/influxdb-client')
 const influxDB = new InfluxDB({
-  url: "http://localhost:9999",
+  url: "http://localhost:8086",
   token: "your-api-token"
 })
 
@@ -29,8 +29,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  Class | Description |
 |  --- | --- |
 |  [AbortError](./influxdb-client.aborterror.md) | AbortError indicates that the communication with the server was aborted |
-|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column. |
-|  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
 |  [HttpError](./influxdb-client.httperror.md) | A general HTTP error. |
 |  [IllegalArgumentError](./influxdb-client.illegalargumenterror.md) | IllegalArgumentError is thrown when illegal argument is supplied. |
 |  [InfluxDB](./influxdb-client.influxdb.md) | InfluxDB 2.0 entry point that configures communication with InfluxDB server and provide APIs to write and query data. |
@@ -48,6 +46,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  Function | Description |
 |  --- | --- |
 |  [canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md) | Tests the error in order to know if an HTTP call can be retried. |
+|  [createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md) | Creates a flux table column from a partial FluxTableColumn. |
+|  [createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md) | Created FluxTableMetaData from the columns supplied. |
 |  [flux(strings, values)](./influxdb-client.flux.md) | Flux is a tagged template that sanitizes supplied parameters to avoid injection attacks in flux. |
 |  [fluxBool(value)](./influxdb-client.fluxbool.md) | Creates flux boolean literal. |
 |  [fluxDateTime(value)](./influxdb-client.fluxdatetime.md) | Creates flux date-time literal. |
@@ -60,6 +60,9 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md) | Gets retry delay from the supplied error, possibly using random number up to retryJitter. |
 |  [isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md) | isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. |
 |  [sanitizeFloat(value)](./influxdb-client.sanitizefloat.md) | Sanitizes float value to avoid injections. |
+|  [serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md) | serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
+|  [serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md) | serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
+|  [serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md) | serializeDateTimeAsString changes type serializers to return string values for <code>dateTime:RFC3339</code> query result data type. Empty value is converted to null. |
 |  [toFluxValue(value)](./influxdb-client.tofluxvalue.md) | Escapes content of the supplied parameter so that it can be safely embedded into flux query. |
 |  [useProcessHrtime(use)](./influxdb-client.useprocesshrtime.md) |  |
 
@@ -74,7 +77,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ConnectionOptions](./influxdb-client.connectionoptions.md) | Option for the communication with InfluxDB server. |
 |  [FluxParameterLike](./influxdb-client.fluxparameterlike.md) | A flux parameter can print its (sanitized) flux value. |
 |  [FluxResultObserver](./influxdb-client.fluxresultobserver.md) | Observes results of a flux query. |
-|  [FluxTableColumnLike](./influxdb-client.fluxtablecolumnlike.md) | FluxTableColumnLike provides metadata of a flux table column. |
+|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column. |
+|  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
 |  [Observable](./influxdb-client.observable.md) | An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->. |
 |  [Observer](./influxdb-client.observer.md) | Observer mimics Observer from ECMAScript TC39 Observable proposal |
 |  [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | Represents a parameterized query. |
@@ -115,4 +119,5 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
 |  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
 |  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |
+|  [WritePrecisionType](./influxdb-client.writeprecisiontype.md) |  |
 
