@@ -2,6 +2,7 @@ import {expect} from 'chai'
 import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport, since it modifies node's http
 import {
   ClientOptions,
+  HttpError,
   WritePrecision,
   WriteOptions,
   Point,
@@ -123,7 +124,7 @@ describe('WriteApi', () => {
       subject.writeRecord('test value=1')
       subject.writeRecords(['test value=2', 'test value=3'])
       // wait for http calls to finish
-      await new Promise(resolve => setTimeout(resolve, 10))
+      await new Promise(resolve => setTimeout(resolve, 20))
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).length(3) // 3 warnings about write failure
@@ -164,7 +165,7 @@ describe('WriteApi', () => {
     it('uses the pre-configured batchSize', async () => {
       useSubject({flushInterval: 0, maxRetries: 0, batchSize: 2})
       subject.writeRecords(['test value=1', 'test value=2', 'test value=3'])
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for HTTP to finish
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for HTTP to finish
       let count = subject.dispose()
       expect(logs.error).to.length(1)
       expect(logs.warn).to.length(0)
@@ -236,7 +237,7 @@ describe('WriteApi', () => {
             return [429, '', {'retry-after': '1'}]
           } else {
             messages.push(_requestBody.toString())
-            return [200, '', {'retry-after': '1'}]
+            return [204, '', {'retry-after': '1'}]
           }
         })
         .persist()
@@ -249,6 +250,7 @@ describe('WriteApi', () => {
       await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(1)
+      subject.writePoint(new Point()) // ignored, since it generates no line
       subject.writePoints([
         new Point('test'), // will be ignored + warning
         new Point('test').floatField('value', 2),
@@ -283,6 +285,26 @@ describe('WriteApi', () => {
       expect(lines[3]).to.be.equal('test,xtra=1 value=5 2')
       expect(lines[4]).to.be.equal('test,xtra=1 value=6 3000000')
       expect(lines[5]).to.be.equal('test,xtra=1 value=7 false')
+    })
+    it('fails on write response status not being exactly 204', async () => {
+      // required because of https://github.com/influxdata/influxdb-client-js/issues/263
+      useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
+      nock(clientOptions.url)
+        .post(WRITE_PATH_NS)
+        .reply((_uri, _requestBody) => {
+          return [200, '', {}]
+        })
+        .persist()
+      subject.writePoint(new Point('test').floatField('value', 1))
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
+      expect(logs.error).has.length(1)
+      expect(logs.error[0][0]).equals('Write to InfluxDB failed.')
+      expect(logs.error[0][1]).instanceOf(HttpError)
+      expect(logs.error[0][1].statusCode).equals(200)
+      expect(logs.error[0][1].statusMessage).equals(
+        `204 HTTP response status code expected, but 200 returned`
+      )
+      expect(logs.warn).deep.equals([])
     })
   })
 })
