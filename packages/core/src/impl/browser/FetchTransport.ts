@@ -18,6 +18,7 @@ import {CLIENT_LIB_VERSION} from '../version'
 export default class FetchTransport implements Transport {
   chunkCombiner = pureJsChunkCombiner
   private defaultHeaders: {[key: string]: string}
+  private url: string
   constructor(private connectionOptions: ConnectionOptions) {
     this.defaultHeaders = {
       'content-type': 'application/json; charset=utf-8',
@@ -26,6 +27,18 @@ export default class FetchTransport implements Transport {
     if (this.connectionOptions.token) {
       this.defaultHeaders['Authorization'] =
         'Token ' + this.connectionOptions.token
+    }
+    this.url = String(this.connectionOptions.url)
+    if (this.url.endsWith('/')) {
+      this.url = this.url.substring(0, this.url.length - 1)
+    }
+    // https://github.com/influxdata/influxdb-client-js/issues/263
+    // don't allow /api/v2 suffix to avoid future problems
+    if (this.url.endsWith('/api/v2')) {
+      this.url = this.url.substring(0, this.url.length - '/api/v2'.length)
+      Logger.warn(
+        `Please remove '/api/v2' context path from InfluxDB base url, using ${this.url} !`
+      )
     }
   }
   send(
@@ -67,7 +80,7 @@ export default class FetchTransport implements Transport {
               headers[key] = [previous, value]
             }
           })
-          observer.responseStarted(headers)
+          observer.responseStarted(headers, response.status)
         }
         if (response.status >= 300) {
           return response
@@ -160,7 +173,7 @@ export default class FetchTransport implements Transport {
     options: SendOptions
   ): Promise<Response> {
     const {method, headers, ...other} = options
-    return fetch(`${this.connectionOptions.url}${path}`, {
+    return fetch(`${this.url}${path}`, {
       method: method,
       body:
         method === 'GET' || method === 'HEAD'

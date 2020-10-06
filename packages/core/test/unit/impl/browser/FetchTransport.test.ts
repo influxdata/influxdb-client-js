@@ -4,6 +4,7 @@ import {removeFetchApi, emulateFetchApi} from './emulateBrowser'
 import sinon from 'sinon'
 import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 import {SendOptions, Cancellable} from '../../../../src'
+import {CollectedLogs, collectLogging} from '../../../util'
 
 describe('FetchTransport', () => {
   afterEach(() => {
@@ -11,6 +12,13 @@ describe('FetchTransport', () => {
   })
 
   describe('constructor', () => {
+    let logs: CollectedLogs
+    beforeEach(() => {
+      logs = collectLogging.replace()
+    })
+    afterEach(async () => {
+      collectLogging.after()
+    })
     it('creates the transport with url', () => {
       const options = {
         url: 'http://test:8086',
@@ -34,6 +42,28 @@ describe('FetchTransport', () => {
         Authorization: 'Token a',
       })
       expect(transport.connectionOptions).to.deep.equal(options)
+    })
+    it('ignore last slash / in url', () => {
+      const options = {
+        url: 'http://test:8086/',
+        token: 'a',
+      }
+      const transport: any = new FetchTransport(options)
+      expect(transport.url).equals('http://test:8086')
+    })
+    it('ignore /api/v2 suffix in url', () => {
+      const options = {
+        url: 'http://test:8086/api/v2',
+        token: 'a',
+      }
+      const transport: any = new FetchTransport(options)
+      expect(transport.url).equals('http://test:8086')
+      expect(logs.warn).is.deep.equal([
+        [
+          "Please remove '/api/v2' context path from InfluxDB base url, using http://test:8086 !",
+          undefined,
+        ],
+      ])
     })
   })
   describe('request', () => {
@@ -323,10 +353,13 @@ describe('FetchTransport', () => {
               cancellable.cancel()
               expect(cancellable.isCancelled()).is.equal(true)
             }
+            if (url === 'error') {
+              expect(callbacks.responseStarted.callCount).equals(0)
+            } else {
+              expect(callbacks.responseStarted.callCount).equals(1)
+              expect(callbacks.responseStarted.args[0][1]).equals(status)
+            }
             const isError = url === 'error' || status !== 200
-            expect(callbacks.responseStarted.callCount).equals(
-              url === 'error' ? 0 : 1
-            )
             expect(callbacks.error.callCount).equals(isError ? 1 : 0)
             expect(callbacks.complete.callCount).equals(isError ? 0 : 1)
             const customNext = url.startsWith('customNext')

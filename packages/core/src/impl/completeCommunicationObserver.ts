@@ -30,8 +30,9 @@ export default function completeCommunicationObserver(
         if (callbacks.complete) callbacks.complete()
       }
     },
-    responseStarted: (headers: Headers): void => {
-      if (callbacks.responseStarted) callbacks.responseStarted(headers)
+    responseStarted: (headers: Headers, statusCode?: number): void => {
+      if (callbacks.responseStarted)
+        callbacks.responseStarted(headers, statusCode)
     },
   }
   return retVal

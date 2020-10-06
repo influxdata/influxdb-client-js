@@ -24,8 +24,9 @@ export interface CommunicationObserver<T> {
   /**
    * Informs about a start of response processing.
    * @param headers - response HTTP headers
+   * @param statusCode - response status code
    */
-  responseStarted?: (headers: Headers) => void
+  responseStarted?: (headers: Headers, statusCode?: number) => void
   /**
    * Setups cancelllable for this communication.
    */
