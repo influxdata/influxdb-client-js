@@ -19,13 +19,12 @@ const identity = <T>(value: T): T => value
 
 export class QueryApiImpl implements QueryApi {
   private options: QueryOptions
-  constructor(private transport: Transport, org: string) {
-    this.options = {org}
+  constructor(private transport: Transport, org: string | QueryOptions) {
+    this.options = typeof org === 'string' ? {org} : org
   }
 
   with(options: Partial<QueryOptions>): QueryApi {
-    this.options = {...this.options, ...options}
-    return this
+    return new QueryApiImpl(this.transport, {...this.options, ...options})
   }
 
   lines(query: string | ParameterizedQuery): Observable<string> {

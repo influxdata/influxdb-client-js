@@ -14,6 +14,7 @@ export default interface WriteApi {
    * Instructs to use the following default tags  when writing points.
    * Not applicable for writing records/lines.
    * @param tags - default tags
+   * @returns this
    */
   useDefaultTags(tags: {[key: string]: string}): WriteApi
 

@@ -24,8 +24,13 @@ describe('QueryApi', () => {
     nock.cleanAll()
     nock.enableNetConnect()
   })
+  it('with function does not mutate this', () => {
+    const first = new InfluxDB(clientOptions).getQueryApi(ORG)
+    const second = first.with({gzip: true})
+    expect(first).is.not.equal(second)
+  })
   it('receives lines', async () => {
-    const subject = new InfluxDB(clientOptions).getQueryApi(ORG).with({})
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG)
     nock(clientOptions.url)
       .post(QUERY_PATH)
       .reply((_uri, _requestBody) => {
