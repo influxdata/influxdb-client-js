@@ -10,6 +10,7 @@ import sinon from 'sinon'
 import {Readable} from 'stream'
 import zlib from 'zlib'
 import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
+import {CollectedLogs, collectLogging} from '../../../util'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -41,6 +42,13 @@ const TEST_URL = 'http://test:8086'
 
 describe('NodeHttpTransport', () => {
   describe('constructor', () => {
+    let logs: CollectedLogs
+    beforeEach(() => {
+      logs = collectLogging.replace()
+    })
+    afterEach(async () => {
+      collectLogging.after()
+    })
     it('creates the transport from http url', () => {
       const transport: any = new NodeHttpTransport({
         url: 'http://test:8086',
@@ -101,6 +109,19 @@ describe('NodeHttpTransport', () => {
           })
       ).to.throw()
     })
+    it('warn about unsupported /api/v2 context path', () => {
+      const transport: any = new NodeHttpTransport({
+        url: 'http://test:8086/api/v2',
+      })
+      // don;t use context path at all
+      expect(transport.contextPath).equals('')
+      expect(logs.warn).is.deep.equal([
+        [
+          "Please remove '/api/v2' context path from InfluxDB base url, using http://test:8086 !",
+          undefined,
+        ],
+      ])
+    })
   })
   describe('send', () => {
     beforeEach(() => {
@@ -133,6 +154,7 @@ describe('NodeHttpTransport', () => {
         const responseData = 'yes'
         it(`works with options ${JSON.stringify(extras)}`, async () => {
           const nextFn = sinon.fake()
+          const responseStartedFn = sinon.fake()
           await new Promise<void>((resolve, reject) => {
             const timeout = setTimeout(
               () => reject(new Error('timeouted')),
@@ -183,9 +205,8 @@ describe('NodeHttpTransport', () => {
               '',
               {...extras, method: 'POST'},
               {
-                next(data: any) {
-                  nextFn(data)
-                },
+                responseStarted: responseStartedFn,
+                next: nextFn,
                 error(error: any) {
                   clearTimeout(timeout)
                   reject(new Error('No error expected!, but: ' + error))
@@ -202,16 +223,22 @@ describe('NodeHttpTransport', () => {
             if (extras.cancel) {
               cancellable.cancel()
             }
-          })
-            .then(() => {
-              expect(nextFn.called)
+          }).then(
+            () => {
               if (!extras.cancel) {
+                expect(nextFn.callCount).equals(1)
+                expect(responseStartedFn.callCount).equals(1)
+                expect(responseStartedFn.args[0][1]).equals(200)
                 expect(nextFn.args[0][0].toString()).to.equal(responseData)
+              } else {
+                expect(nextFn.callCount).equals(0)
+                expect(responseStartedFn.callCount).equals(0)
               }
-            })
-            .catch(e => {
+            },
+            e => {
               expect.fail(undefined, e, e.toString())
-            })
+            }
+          )
         })
       }
     })

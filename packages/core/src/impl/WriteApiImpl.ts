@@ -5,7 +5,7 @@ import {
   WriteOptions,
   WritePrecisionType,
 } from '../options'
-import {Transport, SendOptions} from '../transport'
+import {Transport, SendOptions, Headers} from '../transport'
 import Logger from './Logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'
@@ -132,7 +132,11 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     const self: WriteApiImpl = this
     if (!this.closed && lines.length > 0) {
       return new Promise<void>((resolve, reject) => {
+        let responseStatusCode: number | undefined
         this.transport.send(this.httpPath, lines.join('\n'), this.sendOptions, {
+          responseStarted(_headers: Headers, statusCode?: number): void {
+            responseStatusCode = statusCode
+          },
           error(error: Error): void {
             const failedAttempts = self.writeOptions.maxRetries + 2 - attempts
             // call the writeFailed listener and check if we can retry
@@ -170,7 +174,19 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
           },
           complete(): void {
             self.retryStrategy.success()
-            resolve()
+            // older implementations of transport do not report status code
+            if (responseStatusCode == 204 || responseStatusCode == undefined) {
+              resolve()
+            } else {
+              const error = new HttpError(
+                responseStatusCode,
+                `204 HTTP response status code expected, but ${responseStatusCode} returned`,
+                undefined,
+                '0'
+              )
+              Logger.error(`Write to InfluxDB failed.`, error)
+              reject(error)
+            }
           },
         })
       })
@@ -212,7 +228,8 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
       throw new Error('writeApi: already closed!')
     }
     for (let i = 0; i < points.length; i++) {
-      this.writePoint(points[i])
+      const line = points[i].toLineProtocol(this)
+      if (line) this.writeBuffer.add(line)
     }
   }
   async flush(withRetryBuffer?: boolean): Promise<void> {

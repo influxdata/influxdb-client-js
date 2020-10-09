@@ -16,6 +16,7 @@ import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import {CLIENT_LIB_VERSION} from '../version'
+import Logger from '../Logger'
 
 const zlibOptions = {
   flush: zlib.Z_SYNC_FLUSH,
@@ -67,6 +68,15 @@ export class NodeHttpTransport implements Transport {
         this.contextPath.length - 1
       )
     }
+    // https://github.com/influxdata/influxdb-client-js/issues/263
+    // don't allow /api/v2 suffix to avoid future problems
+    if (this.contextPath == '/api/v2') {
+      Logger.warn(
+        `Please remove '/api/v2' context path from InfluxDB base url, using ${url.protocol}//${url.hostname}:${url.port} !`
+      )
+      this.contextPath = ''
+    }
+
     if (url.protocol === 'http:') {
       this.requestApi = http.request
     } else if (url.protocol === 'https:') {
@@ -205,7 +215,7 @@ export class NodeHttpTransport implements Transport {
       res.on('aborted', () => {
         listeners.error(new AbortError())
       })
-      listeners.responseStarted(res.headers)
+      listeners.responseStarted(res.headers, res.statusCode)
       /* istanbul ignore next statusCode is optional in http.IncomingMessage */
       const statusCode = res.statusCode ?? 600
       const contentEncoding = res.headers['content-encoding']
