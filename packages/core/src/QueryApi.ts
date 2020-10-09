@@ -46,9 +46,9 @@ export interface Row {
  */
 export default interface QueryApi {
   /**
-   * Adds extra options for this query API.
+   * Returns a new query API with extra options applied.
    * @param options - query options to use
-   * @returns this
+   * @returns queryApi instance with the supplied options
    */
   with(options: Partial<QueryOptions>): QueryApi
 
