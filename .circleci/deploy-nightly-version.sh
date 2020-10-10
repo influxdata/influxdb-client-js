@@ -10,11 +10,7 @@ git config user.email "noreply@influxdata.com"
 git commit -am "chore(release): prepare to release influxdb-client-js-${VERSION}.nightly"
 
 # Build Core
-cd "${SCRIPT_PATH}"/../packages/core
-yarn build
-
-# Build Apis
-cd "${SCRIPT_PATH}"/../packages/apis
+cd "${SCRIPT_PATH}"/..
 yarn build
 
 # Publish
