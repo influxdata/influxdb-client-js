@@ -15,7 +15,7 @@
     "apidoc:gh-pages": "gh-pages -d docs/dist -m 'Updates [skip CI]'",
     "preinstall": "node ./scripts/require-yarn.js",
     "clean": "rimraf temp docs && yarn workspaces run clean",
-    "build": "cd packages/core && yarn build && cd ../apis && yarn build",
+    "build": "cd packages/core && yarn build && cd ../core-browser && yarn build && cd ../apis && yarn build",
     "test": "cd packages/core && yarn test && yarn build && cd ../apis && yarn test && yarn eslint ../../examples",
     "coverage": "cd packages/core && yarn coverage",
     "coverage:send": "cd packages/core && yarn coverage:send"

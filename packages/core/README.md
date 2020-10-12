@@ -6,7 +6,7 @@ The reference javascript client for InfluxDB 2.0. Both node and browser environm
 - **module** points to node.js ESM distribution
 - **browser** points to browser (UMD) distribution
 
-Node distributions do not work in browser and vice versa, because different platform APIs are used. See `@influxdata/influxdb-client-browser` that targets only browser.
+Node.js distributions do not work in browser and vice versa, because different platform APIs are used. See `@influxdata/influxdb-client-browser` that targets only browser.
 
 See https://github.com/influxdata/influxdb-client-js to know more.
 
