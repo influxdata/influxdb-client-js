@@ -7,6 +7,12 @@ declare function btoa(plain: string): string
 export interface RequestOptions {
   headers?: {[key: string]: string}
 }
+
+function base64(value: string): string {
+  return typeof btoa === 'function' // browser (window,worker) environment
+    ? btoa(value)
+    : Buffer.from(value, 'binary').toString('base64')
+}
 /**
  * Base class for all apis.
  */
@@ -57,9 +63,7 @@ export class APIBase {
       const value = `${request.auth.user}:${request.auth.password}`
       ;(sendOptions.headers || (sendOptions.headers = {}))[
         'authorization'
-      ] = process.env.ROLLUP_BROWSER
-        ? btoa(value)
-        : Buffer.from(value, 'binary').toString('base64')
+      ] = base64(value)
     }
     return this.transport.request(
       path,
