@@ -41,6 +41,8 @@ $ yarn add @influxdata/influxdb-client
 $ pnpm add @influxdata/influxdb-client
 ```
 
+[@influxdata/influxdb-client](./packages/core/README.md) module primarily works in Node.js (main CJS and module ESM), but a browser (browser UMD) distribution is also available therein. If you need only a browser distribution, use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md) that targets browser environment (main UMD and module ESM).
+
 To use InfluxDB management APIs in your project, add also `@influxdata/influxdb-client-apis` dependency to your project.
 
 ```

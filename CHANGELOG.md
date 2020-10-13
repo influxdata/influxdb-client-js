@@ -1,5 +1,9 @@
 ## 1.8.0 [unreleased]
 
+### Features
+
+1. [#267](https://github.com/influxdata/influxdb-client-js/pull/267): Introduce `@influxdata/influxdb-client-browser` module.
+
 ### Bug Fixes
 
 1. [#264](https://github.com/influxdata/influxdb-client-js/pull/264): Require 204 status code in a write response.
