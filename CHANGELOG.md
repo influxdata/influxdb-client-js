@@ -8,6 +8,7 @@
 
 1. [#264](https://github.com/influxdata/influxdb-client-js/pull/264): Require 204 status code in a write response.
 1. [#265](https://github.com/influxdata/influxdb-client-js/pull/265): Make QueryApi instance immutable.
+1. [#270](https://github.com/influxdata/influxdb-client-js/pull/270): Do not set User-Agent header in browser.
 
 ## 1.7.0 [2020-10-02]
 
