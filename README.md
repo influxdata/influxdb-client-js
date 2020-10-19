@@ -73,42 +73,32 @@ There are also more advanced [examples](./examples/README.md) that shows
 
 The client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
-## Build Requirements
+## Contributing
 
-- node v12.13.1 or higher (older versions will work as well)
-- yarn 1.9.4. or higher (older versions will work as well)
+If you would like to contribute code you can do through GitHub by forking the repository and sending a pull request into the `master` branch.
 
-Run all unit tests:
+Build Requirements:
+
+- node v12.13.1 or higher
+- yarn 1.9.4. or higher
+
+Run tests:
 
 ```bash
-$ yarn test:unit
+$ yarn test
 ```
 
-Check code coverage of unit tests:
+Check code coverage:
 
 ```bash
 $ yarn coverage
 ```
 
-## Development
+Build distributions:
 
-### Releasing a new version
-
-Ensure that:
-
-- You have administrator access to this repo on GitHub
-- You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
-- You are on `master` and the working tree is clean
-
-Then run the publish script in the root of the repo:
-
+```bash
+$ yarn build
 ```
-make publish VERSION=1.7.0
-```
-
-## Contributing
-
-If you would like to contribute code you can do through GitHub by forking the repository and sending a pull request into the `master` branch.
 
 ## License
 

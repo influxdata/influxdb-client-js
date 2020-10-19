@@ -1,3 +1,12 @@
+# **Releasing a new version**
+# Ensure that:
+# - You have administrator access to this repo on GitHub
+# - You have permissions to publish to the [influxdata](https://www.npmjs.com/org/influxdata) organization on npm
+# - You are on `master` and the working tree is clean
+# Then run the publish target with VERSION specified:
+# ```
+# make publish VERSION=1.8.0
+# ```
 .DEFAULT_GOAL := help
 
 help:
