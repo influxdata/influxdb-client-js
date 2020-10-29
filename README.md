@@ -63,7 +63,7 @@ The following examples help to start quickly with this client:
   - [create bucket](./examples/createBucket.js)
   - [health](./examples/health.js)
 
-There are also more advanced [examples](./examples/README.md) that shows
+There are also more advanced [examples](./examples/README.md) that show
 
 - how to execute parameterized queries
 - how to use this client with InfluxDB 1.8+
