@@ -46,7 +46,8 @@ jobs:
           name: Runs tests with coverage
           command: |
             yarn --version
-            yarn run coverage
+            yarn run coverage:ci
+            yarn run coverage:send
       - run:
           name: Report test results to codecov
           command: yarn run coverage:send

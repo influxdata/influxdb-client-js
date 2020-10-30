@@ -7,6 +7,8 @@
     "build": "yarn run clean && rollup -c",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
+    "coverage:ci": "yarn run coverage && yarn run coverage:lcov",
+    "coverage:lcov": "yarn run --silent nyc report --reporter=text-lcov > coverage/coverage.lcov",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
     "test:ci": "yarn run lint:ci && yarn run test:unit --exit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/giraffe_mocha/test-results.xml",
