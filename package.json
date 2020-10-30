@@ -4,7 +4,10 @@
   "description": "InfluxDB 2.0 client",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/core",
+      "packages/core-browser",
+      "packages/apis",
+      "packages/giraffe"
     ]
   },
   "scripts": {
@@ -15,10 +18,13 @@
     "apidoc:gh-pages": "gh-pages -d docs/dist -m 'Updates [skip CI]'",
     "preinstall": "node ./scripts/require-yarn.js",
     "clean": "rimraf temp docs && yarn workspaces run clean",
-    "build": "cd packages/core && yarn build && cd ../core-browser && yarn build && cd ../apis && yarn build",
-    "test": "cd packages/core && yarn test && yarn build && cd ../apis && yarn test && yarn eslint --ignore-pattern node_modules ../../examples",
+    "build": "yarn workspaces run build",
+    "test": "yarn --cwd packages/core build && yarn workspaces run test && yarn lint:examples",
+    "test:ci": "yarn workspaces run test:ci && yarn lint:examples:ci",
     "coverage": "cd packages/core && yarn coverage",
-    "coverage:send": "cd packages/core && yarn coverage:send"
+    "coverage:send": "cd packages/core && yarn coverage:send",
+    "lint:examples": "yarn eslint --ignore-pattern node_modules ./examples",
+    "lint:examples:ci": "yarn lint:examples --format junit --output-file ./reports/examples_eslint/eslint.xml"
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {

@@ -3,7 +3,7 @@ import gzip from 'rollup-plugin-gzip'
 import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 
-const tsBuildConfigPath = './tsconfig.json'
+const tsBuildConfigPath = './tsconfig.build.json'
 const externalNodeModules = ['buffer', 'http', 'https', 'url', 'zlib']
 
 const input = 'src/index.ts'
