@@ -23,5 +23,5 @@ export default interface QueryApi
 |  [queryRaw(query)](./influxdb-client.queryapi.queryraw.md) | QueryRaw executes a query and returns the full response as a string. Use with caution, a possibly huge stream is copied to memory. |
 |  [queryRows(query, consumer)](./influxdb-client.queryapi.queryrows.md) | Executes the query and receives table metadata and rows through the supplied consumer. |
 |  [rows(query)](./influxdb-client.queryapi.rows.md) | Creates a cold observable of the rows returned by the given query. |
-|  [with(options)](./influxdb-client.queryapi.with.md) | Adds extra options for this query API. |
+|  [with(options)](./influxdb-client.queryapi.with.md) | Returns a new query API with extra options applied. |
 

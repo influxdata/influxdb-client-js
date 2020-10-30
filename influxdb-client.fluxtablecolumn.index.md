@@ -4,7 +4,7 @@
 
 ## FluxTableColumn.index property
 
-Index of this column in the row array
+Index of this column in a row array.
 
 <b>Signature:</b>
 

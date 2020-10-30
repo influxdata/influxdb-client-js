@@ -16,7 +16,7 @@ export interface CommunicationObserver<T>
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [responseStarted](./influxdb-client.communicationobserver.responsestarted.md) | (headers: Headers) =&gt; void | Informs about a start of response processing. |
+|  [responseStarted](./influxdb-client.communicationobserver.responsestarted.md) | (headers: Headers, statusCode?: number) =&gt; void | Informs about a start of response processing. |
 |  [useCancellable](./influxdb-client.communicationobserver.usecancellable.md) | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | Setups cancelllable for this communication. |
 
 ## Methods

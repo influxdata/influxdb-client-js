@@ -17,8 +17,8 @@ export default interface FluxTableColumn
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [dataType](./influxdb-client.fluxtablecolumn.datatype.md) | [ColumnType](./influxdb-client.columntype.md) | The data type of column (e.g., "string", "long", "dateTime:RFC3339"). |
-|  [defaultValue](./influxdb-client.fluxtablecolumn.defaultvalue.md) | string | Default value to be used for rows whose string value is the empty string. |
+|  [defaultValue](./influxdb-client.fluxtablecolumn.defaultvalue.md) | string | Default value to be used for rows whose string value is an empty string. |
 |  [group](./influxdb-client.fluxtablecolumn.group.md) | boolean | Boolean flag indicating if the column is a part of the table's group key. |
-|  [index](./influxdb-client.fluxtablecolumn.index.md) | number | Index of this column in the row array |
+|  [index](./influxdb-client.fluxtablecolumn.index.md) | number | Index of this column in a row array. |
 |  [label](./influxdb-client.fluxtablecolumn.label.md) | string | Label (e.g., "\_start", "\_stop", "\_time"). |
 

@@ -4,7 +4,7 @@
 
 ## FluxTableColumn.defaultValue property
 
-Default value to be used for rows whose string value is the empty string.
+Default value to be used for rows whose string value is an empty string.
 
 <b>Signature:</b>
 

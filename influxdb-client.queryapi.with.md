@@ -4,7 +4,7 @@
 
 ## QueryApi.with() method
 
-Adds extra options for this query API.
+Returns a new query API with extra options applied.
 
 <b>Signature:</b>
 
@@ -22,5 +22,5 @@ with(options: Partial<QueryOptions>): QueryApi;
 
 [QueryApi](./influxdb-client.queryapi.md)
 
-this
+queryApi instance with the supplied options
 
