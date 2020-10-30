@@ -6,7 +6,7 @@
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && rollup -c",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
-    "coverage:send": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov --root=../..",
+    "coverage:send": "yarn run --silent nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov --root=../..",
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "test": "yarn run lint && yarn run typecheck && yarn run test:all",
     "test:all": "mocha --require ts-node/register 'test/**/*.test.ts' --exit",
