@@ -4,6 +4,7 @@ import {
   SendOptions,
   CommunicationObserver,
   Headers,
+  ChunkCombiner,
 } from '../../transport'
 import pureJsChunkCombiner from '../pureJsChunkCombiner'
 import {ConnectionOptions} from '../../options'
@@ -11,11 +12,21 @@ import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import Logger from '../Logger'
 
+function createTextDecoderCombiner(): ChunkCombiner {
+  const decoder = new TextDecoder('utf-8')
+  return {
+    concat: pureJsChunkCombiner.concat,
+    copy: pureJsChunkCombiner.copy,
+    toUtf8String(chunk: Uint8Array, start: number, end: number): string {
+      return decoder.decode(chunk.subarray(start, end))
+    },
+  }
+}
 /**
  * Transport layer that use browser fetch.
  */
 export default class FetchTransport implements Transport {
-  chunkCombiner = pureJsChunkCombiner
+  chunkCombiner: ChunkCombiner = createTextDecoderCombiner()
   private defaultHeaders: {[key: string]: string}
   private url: string
   constructor(private connectionOptions: ConnectionOptions) {

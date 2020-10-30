@@ -386,4 +386,24 @@ describe('FetchTransport', () => {
       }
     )
   })
+  describe('chunkCombiner', () => {
+    const options = {url: 'http://test:8086'}
+    const chunkCombiner = new FetchTransport(options).chunkCombiner
+    it('concatenates UInt8Arrays', () => {
+      const a1 = Uint8Array.from([1])
+      const a2 = Uint8Array.from([2])
+      expect(chunkCombiner.concat(a1, a2)).deep.equals(Uint8Array.from([1, 2]))
+    })
+    it('copies UInt8Arrays', () => {
+      const a1 = Uint8Array.from([1, 2, 3])
+      const copy = chunkCombiner.copy(a1, 1, 2)
+      expect(copy).to.deep.equal(Uint8Array.from([2]))
+      a1[1] = 3
+      expect(copy[0]).equals(2)
+    })
+    it('creates UTF-8 strings', () => {
+      const a1 = Uint8Array.from([97, 104, 111, 106])
+      expect(chunkCombiner.toUtf8String(a1, 2, 3)).equals('o')
+    })
+  })
 })
