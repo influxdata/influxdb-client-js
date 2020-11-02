@@ -4,10 +4,9 @@ import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 
 const tsBuildConfigPath = './tsconfig.build.json'
-const externalNodeModules = ['buffer', 'http', 'https', 'url', 'zlib']
 
 const input = 'src/index.ts'
-function createConfig({browser, format, out, name, target, noTerser}) {
+function createConfig({format, out, name, target, noTerser}) {
   return {
     input,
     plugins: [
@@ -29,26 +28,10 @@ function createConfig({browser, format, out, name, target, noTerser}) {
       format: format,
       sourcemap: true,
     },
-    external: browser ? undefined : externalNodeModules,
   }
 }
 
 export default [
-  createConfig({browser: false, format: 'umd', out: pkg.main}),
-  createConfig({browser: false, format: 'esm', out: pkg.module}),
-  createConfig({
-    browser: true,
-    format: 'iife',
-    name: 'influxdbToGiraffe',
-    out: 'dist/influxdbToGiraffe.min.js',
-    target: 'es5',
-  }),
-  createConfig({
-    browser: true,
-    format: 'iife',
-    name: 'influxdbToGiraffe',
-    out: 'dist/influxdbToGiraffe.js',
-    target: 'es5',
-    noTerser: true,
-  }),
+  createConfig({format: 'umd', out: pkg.main}),
+  createConfig({format: 'esm', out: pkg.module}),
 ]

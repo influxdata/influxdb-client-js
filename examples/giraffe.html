@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>InfluxDB JavaScript Client - Giraffe Integration Example</title>
+    <title>Example: Flux Query Results visualized with Giraffe</title>
     <script>
       // required by react
       window.process = {
@@ -13,18 +13,24 @@
     <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@influxdata/giraffe@0.41.0/dist/index.js"></script>
     <script src="https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.js"></script>
-    <!-- TODO switch to https://unpkg.com/@influxdata/influxdb-client-giraffe/dist/index.js after the new client is released -->
+    <!-- TODO switch to https://unpkg.com/@influxdata/influxdb-client-giraffe/dist/index.js after the package is released -->
     <script src="../packages/giraffe/dist/index.js"></script>
     <script src="./env_browser.js"></script>
   </head>
   <body>
-    <h1>InfluxDB JavaScript Client - Giraffe Integration Example (since 1.9.0)</h1>
-    <div style="display:flex; margin-bottom: 10px;">
-      <textarea id="fluxQuery" style="flex: 1" rows="2"
-      >from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
-    </div>
+    <h1>Example: Flux Query Results visualized with Giraffe</h1>
+    <fieldset>
+      <legend>Flux Query</legend>
+      <div style="display:flex; margin-bottom: 10px;">
+        <textarea id="fluxQuery" style="flex: 1" rows="2"
+        >from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Giraffe Visualization</legend>
       <div style="width: 100%;height: 200px; border: 1px solid grey; margin-bottom: 10px;" id="renderArea">
-    </div>    
+      </div>    
+    </fieldset>
     <button id="reloadButton">Reload</button>
     <button id="clientExamples">Open InfluxDB JavaScript Client Examples</button>
     <script>
