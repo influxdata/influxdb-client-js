@@ -19,3 +19,4 @@ const table = await queryTable(
 ```
 
 See https://github.com/influxdata/influxdb-client-js to know more.
+This package is **experimental**, `@influxdata/giraffe` package may change until its first GA release.

@@ -23,6 +23,7 @@
  * ```
  *
  * See also {@link https://github.com/influxdata/influxdb-client-js/tree/master/examples | examples} to know more.
+ * This package is **experimental**, the dependant `@influxdata/giraffe` package may change until its first GA release.
  *
  * @packageDocumentation
  */
