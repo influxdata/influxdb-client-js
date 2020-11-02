@@ -1,5 +1,9 @@
 ## 1.9.0 [unreleased]
 
+### Features
+
+1. [#272](https://github.com/influxdata/influxdb-client-js/pull/272): Optimize UTF8 processing in the browser.
+
 ## 1.8.0 [2020-10-30]
 
 ### Features
