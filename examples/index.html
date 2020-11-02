@@ -9,14 +9,9 @@
       // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
       // import {HealthAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
-      // rely upon proxy to forward to the target influxDB 
-      const url = '/influx' 
-      // example constants  
-      const token = 'my-token'
-      const org = 'my-org'
-      const bucket = 'my-bucket'
-      const username = 'my-user' // onboarding example only
-      const password = 'my-password' // onboarding example only
+      // import configuration from ./env_browser.js
+      import './env_browser.js'
+      const {url, token, org, bucket, username, password} = window.INFLUX_ENV
 
       const influxDB = new InfluxDB({url, token})
 
@@ -125,8 +120,11 @@
         else writeExample(number)
       })
       const queryInput = document.getElementById('query');
-      const queryButton = document.getElementById('queryButton')
-      queryButton.addEventListener('click', () => {
+      const fluxQueryParam = new URLSearchParams(window.location.search).get('fluxQuery');
+      if (fluxQueryParam){
+        queryInput.value = fluxQueryParam
+      }
+      document.getElementById('queryButton').addEventListener('click', () => {
         queryExample(queryInput.value)
       })
       document.getElementById('onboardButton').addEventListener('click', () => {
@@ -135,7 +133,11 @@
       document.getElementById('healthButton').addEventListener('click', () => {
         healthExample()
       })
-
+      const visualizeInGiraffe = document.getElementById('visualizeInGiraffe')
+      visualizeInGiraffe.addEventListener('click', e => {
+        const target = "./giraffe.html?fluxQuery="+encodeURIComponent(queryInput.value)
+        window.open(target, "_blank")
+      })
     </script>
   </head>
   <h1>InfluxDB JavaScript Client Examples</h1>
@@ -153,9 +155,10 @@
   <hr>
   <div style="display:flex; margin-bottom: 10px;">
     <textarea id="query" style="flex: 1" rows="2"
-    >from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
+    >from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
   </div>
   <button id="queryButton">Query InfluxDB</button>
+  <button id="visualizeInGiraffe">Visualize with Giraffe Line Chart</button>
   <hr>
   <fieldset>
     <legend>Log</legend>
