@@ -30,3 +30,4 @@
  * @packageDocumentation
  */
 export * from './queryTable'
+export * from './csvToTable'

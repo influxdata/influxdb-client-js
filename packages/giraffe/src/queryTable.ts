@@ -335,6 +335,7 @@ export function createCollector(
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
+ * @param tableFactory - creates a new Giraffe table
  * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect.
  * @returns Promise with query results
  */
@@ -358,6 +359,7 @@ export async function queryToTable(
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
+ * @param tableFactory - creates a new Giraffe table
  * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect
  * @returns a Promise with query results
  */
