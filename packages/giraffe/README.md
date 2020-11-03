@@ -10,7 +10,7 @@ import {queryTable} from '@influxdata/influxdb-client-giraffe'
 import {newTable, Plot} from '@influxdata/giraffe'
 ...
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
-const table = await queryTable(
+const table = await queryToTable(
   api,
   'from(bucket: "my-bucket") |> range(start: -30d)',
   newTable,

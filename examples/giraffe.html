@@ -79,18 +79,18 @@
       }
       const influxDBClientGiraffe = window['@influxdata/influxdb-client-giraffe']
       function queryAndVisualize() {
-        influxDBClientGiraffe.queryTable(
+        influxDBClientGiraffe.queryToTable(
           queryApi,
           fluxQueryInput.value,
           giraffe.newTable
         ). then(table => {
-          console.log('queryTable returns', table)
+          console.log('queryToTable returns', table)
           ReactDOM.render(
               React.createElement(RenderResults, {table}),
               document.getElementById('renderArea')
           );
         }). catch(error => {
-          console.log('queryTable fails', error)
+          console.log('queryToTable fails', error)
           ReactDOM.render(
               React.createElement(RenderResults, {error}),
               document.getElementById('renderArea')
