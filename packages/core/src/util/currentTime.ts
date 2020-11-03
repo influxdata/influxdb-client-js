@@ -74,7 +74,7 @@ function seconds(): string {
  * can be used in the line protocol. Micro and nano timestamps are emulated
  * depending on the js platform in use.
  */
-export const currentTime = Object.freeze({
+export const currentTime = {
   s: seconds as () => string,
   ms: millis as () => string,
   us: micros as () => string,
@@ -83,7 +83,7 @@ export const currentTime = Object.freeze({
   millis: millis as () => string,
   micros: micros as () => string,
   nanos: nanos as () => string,
-})
+}
 
 /**
  * dateToProtocolTimestamp provides converters for JavaScript Date to InfluxDB Write Protocol Timestamp. Keys are supported precisions.

@@ -1,6 +1,3 @@
-const SEPARATOR = ','
-const WRAPPER = '"'
-
 /**
  * Optimized tokenizer of a single CSV line.
  */
@@ -49,7 +46,7 @@ export class LineSplitter {
     let count = 0
     for (let i = 0; i < line.length; i++) {
       const c = line[i]
-      if (c === SEPARATOR) {
+      if (c === ',') {
         if (quoteCount % 2 === 0) {
           const val = this.getValue(line, startIndex, i, quoteCount)
           if (this._reuse) {
@@ -60,7 +57,7 @@ export class LineSplitter {
           startIndex = i + 1
           quoteCount = 0
         }
-      } else if (c === WRAPPER) {
+      } else if (c === '"') {
         quoteCount++
       }
     }
