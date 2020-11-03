@@ -1,5 +1,5 @@
-import {ChunkCombiner} from '../../transport'
 import {Buffer} from 'buffer'
+import {ChunkCombiner} from '../../results'
 
 const nodeChunkCombiner: ChunkCombiner = {
   concat(first: Uint8Array, second: Uint8Array): Uint8Array {

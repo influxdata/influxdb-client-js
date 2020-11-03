@@ -1,10 +1,10 @@
-import Cancellable from '../util/Cancellable'
-import FluxTableMetaData from './FluxTableMetaData'
+import {Cancellable} from '../results'
+import {FluxTableMetaData} from './FluxTableMetaData'
 
 /**
  * Observes results of a flux query.
  */
-export default interface FluxResultObserver<T> {
+export interface FluxResultObserver<T> {
   /**
    * Inform about a next record in a table.
    */

@@ -4,7 +4,7 @@ const WRAPPER = '"'
 /**
  * Optimized tokenizer of a single CSV line.
  */
-export default class LineSplitter {
+export class LineSplitter {
   /** returned value when reused  */
   reusedValues: string[]
   /** last length of elements in */

@@ -15,7 +15,7 @@ export type ColumnType =
 /**
  * Column metadata class of a {@link http://bit.ly/flux-spec#table | flux table} column.
  */
-export default interface FluxTableColumn {
+export interface FluxTableColumn {
   /**
    * Label (e.g., "_start", "_stop", "_time").
    */

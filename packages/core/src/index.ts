@@ -26,11 +26,11 @@
  *
  * @packageDocumentation
  */
+export * from './results'
 export * from './options'
 export * from './errors'
 export * from './util/escape'
 export * from './util/currentTime'
-export {default as Cancellable} from './util/Cancellable'
 export * from './query'
 export * from './transport'
 export * from './observable'

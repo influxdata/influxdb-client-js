@@ -7,8 +7,7 @@ import {
   Subscription,
   symbolObservable,
 } from '../observable'
-import {CommunicationObserver} from '../transport'
-import Cancellable from '../util/Cancellable'
+import {Cancellable, CommunicationObserver} from '../results'
 
 export type QueryExecutor = (consumer: CommunicationObserver<string>) => void
 

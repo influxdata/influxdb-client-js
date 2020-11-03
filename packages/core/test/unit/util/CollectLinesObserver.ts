@@ -1,4 +1,4 @@
-import {CommunicationObserver} from '../../../src/transport'
+import {CommunicationObserver} from '../../../src/results'
 
 export class CollectLinesObserver implements CommunicationObserver<string> {
   lines: string[] = []
