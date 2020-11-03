@@ -2,6 +2,7 @@ import {terser} from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
 import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
+import resolve from '@rollup/plugin-node-resolve'
 
 const tsBuildConfigPath = './tsconfig.build.json'
 
@@ -19,6 +20,9 @@ function createConfig({format, out, name, target, noTerser}) {
           },
         },
       }),
+      // @influxdata/influxdb-client (core) package uses `module:browser`
+      // property in its package.json to point to a ES module build created for the browser
+      resolve({mainFields: ['module:browser']}),
       noTerser ? undefined : terser(),
       gzip(),
     ],
