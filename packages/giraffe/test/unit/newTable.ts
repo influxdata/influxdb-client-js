@@ -1,5 +1,5 @@
-// WARNING: this simple table definition was taken from giraffe to ease testing that
-// is not feasible (inevitably complex) with a real giraffe (as of 0.41.0)
+// WARNING: this simple table definition was taken from Giraffe to ease testing that
+// is not feasible (inevitably complex) with a real Giraffe (as of 0.41.0)
 import {ColumnType, ColumnData, Table, FluxDataType} from '@influxdata/giraffe'
 
 // Don't export me!

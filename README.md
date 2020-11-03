@@ -70,7 +70,7 @@ There are also more advanced [examples](./examples/README.md) that show
 - how to use this client in the browser
 - how to process InfluxDB query results with RX Observables
 - how to customize the way of how measurement points are written to InfluxDB
-- how to visualize query results in giraffe
+- how to visualize query results in [Giraffe](https://github.com/influxdata/giraffe)
 
 The client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 

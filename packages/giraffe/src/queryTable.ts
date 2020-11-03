@@ -291,7 +291,7 @@ export function createCollector(
       }
       for (let i = 0; i < dataColumns.length; i++) {
         const column = dataColumns[i]
-        // cast is required because of wrong type definition in giraffe
+        // cast is required because of wrong type definition in Giraffe
         column.data[tableSize] = column.toValue(row) as
           | string
           | number
@@ -331,7 +331,7 @@ export function createCollector(
 }
 
 /**
- * Executes a flux query and collects results into a giraffe's Table.
+ * Executes a flux query and collects results into a Giraffe's Table.
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
@@ -354,7 +354,7 @@ export async function queryToTable(
 }
 
 /**
- * Executes a flux query and iterrativelly collects results into a giraffe's FromFluxResult.
+ * Executes a flux query and iterrativelly collects results into a Giraffe's FromFluxResult.
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
