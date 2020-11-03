@@ -339,19 +339,18 @@ export function createCollector(
  * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect.
  * @returns Promise with query results
  */
-export async function queryToTable(
+export function queryToTable(
   queryApi: QueryApi,
   query: string | ParameterizedQuery,
   tableFactory: GiraffeTableFactory,
   tableOptions?: TableOptions
 ): Promise<Table> {
-  const result = await new Promise<FromFluxResult>((resolve, reject) => {
+  return new Promise<FromFluxResult>((resolve, reject) => {
     queryApi.queryRows(
       query,
       createCollector(resolve, reject, tableFactory, tableOptions)
     )
-  })
-  return result.table
+  }).then(result => result.table)
 }
 
 /**
