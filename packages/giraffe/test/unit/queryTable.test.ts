@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {queryTable, DEFAULT_TABLE_OPTIONS, queryFromFluxResult} from '../../src'
+import {queryToTable, queryToFromFluxResult} from '../../src'
 // @influxdata/influxdb-client uses node transport in tests (tests run in node), therefore nock is used to mock HTTP
 import nock from 'nock'
 import {Readable} from 'stream'
@@ -8,7 +8,7 @@ import {newTable} from './newTable'
 const url = 'http://test'
 const queryApi = new InfluxDB({url}).getQueryApi('whatever')
 
-describe('queryTable', () => {
+describe('queryToTable', () => {
   beforeEach(() => {
     nock.disableNetConnect()
   })
@@ -39,7 +39,7 @@ describe('queryTable', () => {
     nock(url)
       .post(/.*/)
       .reply(200, CSV)
-    const table = await queryTable(queryApi, 'ignored', newTable)
+    const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('result', 'string')).deep.equals([
       '_result',
@@ -129,7 +129,7 @@ describe('queryTable', () => {
     nock(url)
       .post(/.*/)
       .reply(200, CSV)
-    const actual = await queryTable(queryApi, 'ignored', newTable)
+    const actual = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(actual.getColumn('result')).deep.equals(['_result', '_result'])
     expect(actual.getColumn('a')).deep.equals(['usage_guest', 'usage_guest'])
@@ -150,7 +150,7 @@ describe('queryTable', () => {
     nock(url)
       .post(/.*/)
       .reply(200, CSV)
-    const table = await queryTable(queryApi, 'ignored', newTable)
+    const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('_value')).deep.equals([10, null])
   })
@@ -179,7 +179,7 @@ there",5
     nock(url)
       .post(/.*/)
       .reply(200, CSV)
-    const table = await queryTable(queryApi, 'ignored', newTable)
+    const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('value')).deep.equals([5, 5, 6, 5, 5, 6])
 
@@ -193,31 +193,19 @@ there",5
     ])
   })
   describe('tableOptions', () => {
-    let defaultMaxTableLength: number | undefined
-    beforeEach(() => {
-      defaultMaxTableLength = DEFAULT_TABLE_OPTIONS.maxTableLength
-    })
-    afterEach(() => {
-      DEFAULT_TABLE_OPTIONS.maxTableLength = defaultMaxTableLength
-    })
-    ;[
-      [0, undefined],
-      [1, 1],
-      [undefined, 3],
-    ].forEach(([length, wants]) => {
+    ;[[1, 1]].forEach(([length, wants]) => {
       it(`uses default maxTableLength ${length}`, async () => {
         const CSV = `#group,false
 #datatype,long
 #default,
 ,result
-,1
-,2
-,3`
+,1`
         nock(url)
           .post(/.*/)
           .reply(200, CSV)
-        DEFAULT_TABLE_OPTIONS.maxTableLength = length
-        const actual = await queryTable(queryApi, 'ignored', newTable)
+        const actual = await queryToTable(queryApi, 'ignored', newTable, {
+          maxTableLength: length,
+        })
 
         expect(actual.getColumn('result')?.length).deep.equals(wants)
       })
@@ -225,7 +213,7 @@ there",5
     ;[
       [0, undefined],
       [1, 1],
-      [undefined, 2 /* because the default is set to 2 */],
+      [undefined, 3 /* because the default is higher */],
     ].forEach(([length, wants]) => {
       it(`uses custom maxTableLength ${length}`, async () => {
         const CSV = `#group,false
@@ -238,8 +226,7 @@ there",5
         nock(url)
           .post(/.*/)
           .reply(200, CSV)
-        DEFAULT_TABLE_OPTIONS.maxTableLength = 2
-        const actual = await queryTable(queryApi, 'ignored', newTable, {
+        const actual = await queryToTable(queryApi, 'ignored', newTable, {
           maxTableLength: length,
         })
 
@@ -257,9 +244,9 @@ there",5
       nock(url)
         .post(/.*/)
         .reply(200, CSV)
-      DEFAULT_TABLE_OPTIONS.maxTableLength = 2
-      const actual = await queryTable(queryApi, 'ignored', newTable, {
+      const actual = await queryToTable(queryApi, 'ignored', newTable, {
         accept: (row: string[]) => row[0] === '2',
+        maxTableLength: 2,
       })
 
       expect(actual.getColumn('result')).deep.equals([2])
@@ -275,7 +262,7 @@ there",5
       nock(url)
         .post(/.*/)
         .reply(200, CSV)
-      const actual = await queryTable(queryApi, 'ignored', newTable, {
+      const actual = await queryToTable(queryApi, 'ignored', newTable, {
         accept: [
           (row: string[]): boolean => Number(row[0]) < 3,
           (row: string[]): boolean => row[0] !== '1',
@@ -295,7 +282,7 @@ there",5
       nock(url)
         .post(/.*/)
         .reply(200, CSV)
-      const actual = await queryTable(queryApi, 'ignored', newTable, {
+      const actual = await queryToTable(queryApi, 'ignored', newTable, {
         maxTableLength: 1,
         accept: (row: string[]) => Number(row[0]) > 1,
       })
@@ -313,7 +300,7 @@ there",5
       nock(url)
         .post(/.*/)
         .reply(200, CSV)
-      const actual = await queryTable(queryApi, 'ignored', newTable, {
+      const actual = await queryToTable(queryApi, 'ignored', newTable, {
         columns: ['a'],
       })
 
@@ -323,7 +310,7 @@ there",5
       nock(url)
         .post(/.*/)
         .reply(500, 'not ok')
-      await queryTable(queryApi, 'ignored', newTable)
+      await queryToTable(queryApi, 'ignored', newTable)
         .then(() => {
           expect.fail('must not succeed')
         })
@@ -365,13 +352,13 @@ there",5
             },
           },
         ])
-      const actual = await queryTable(queryApi, 'ignored', newTable)
+      const actual = await queryToTable(queryApi, 'ignored', newTable)
       expect(actual.getColumn('result')).deep.equals([1, 2, 3])
     })
   })
 })
 
-describe('queryFromFluxResult', () => {
+describe('queryToFromFluxResult', () => {
   beforeEach(() => {
     nock.disableNetConnect()
   })
@@ -395,8 +382,8 @@ describe('queryFromFluxResult', () => {
     nock(url)
       .post(/.*/)
       .reply(200, CSV)
-    typeof queryFromFluxResult === 'function'
-    const {fluxGroupKeyUnion} = await queryFromFluxResult(
+    typeof queryToFromFluxResult === 'function'
+    const {fluxGroupKeyUnion} = await queryToFromFluxResult(
       queryApi,
       'ignored',
       newTable

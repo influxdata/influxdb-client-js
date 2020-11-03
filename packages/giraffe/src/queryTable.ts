@@ -20,26 +20,26 @@ export type GiraffeTableFactory = (length: number) => Table
 /**
  * Stores data and metadata of a result column.
  */
-interface ColumnStore {
+interface Column {
   /** column name */
   name: string
-  /** column type */
+  /** giraffe column type */
   type: ColumnType
   /** flux data type */
   fluxDataType: FluxDataType
   /** column data */
   data: ColumnData
-  /** converts string to column value */
+  /** convert result row to column value */
   toValue: (row: string[]) => number | string | boolean | null
-  /** marker to indicate that this column can have multiple keys  */
+  /** when true, it is a no-data column to indicate that multiple columns of the same label exist (distinguished also by column type) */
   multipleTypes?: true
-  /** it this column part of the group key */
+  /** group key membership of this column */
   group?: boolean
 }
 
 function createResult(
   tableLength: number,
-  columns: Record<string, ColumnStore>,
+  columns: Record<string, Column>,
   tableFactory: GiraffeTableFactory,
   computeFluxGroupKeyUnion = false
 ): FromFluxResult {
@@ -71,7 +71,7 @@ function createResult(
 /**
  * AcceptRowFunction allows to accept/reject specific rows or terminate processing.
  * @param row - CSV result data row
- * @param tableMeta - CSV table metadata including column definition
+ * @param tableMeta - CSV table metadata with column descriptors
  * @returns true to accept row, false to skip row, undefined means stop processing
  **/
 export type AcceptRowFunction = (
@@ -100,22 +100,16 @@ export interface TableOptions {
 }
 
 /**
- * QUERY_MAX_TABLE_LENGTH is a default max table length.
+ * QUERY_MAX_TABLE_LENGTH is a default max table length,
+ * it can be overriden in TableOptions.
  */
 export const QUERY_MAX_TABLE_LENGTH = 100_000
 
 /**
- * DEFAULT_TABLE_OPTIONS allows to setup default maxTableLength.
- */
-export const DEFAULT_TABLE_OPTIONS: Pick<TableOptions, 'maxTableLength'> = {
-  maxTableLength: QUERY_MAX_TABLE_LENGTH,
-}
-
-/**
- * Create an accept function that stops processing
+ * Creates an accept function that stops processing
  * if the table reaches the specified max rows.
  * @param size - maximum processed rows
- * @returns AcceptRowFunction that enforces maximum
+ * @returns AcceptRowFunction that enforces that most max rows are processed
  */
 export function acceptMaxTableLength(max: number): AcceptRowFunction {
   let size = 0
@@ -140,7 +134,7 @@ export function acceptMaxTableLength(max: number): AcceptRowFunction {
 function createAcceptRowFunction(options: TableOptions): AcceptRowFunction {
   const maxTableLength =
     options.maxTableLength === undefined
-      ? DEFAULT_TABLE_OPTIONS.maxTableLength
+      ? QUERY_MAX_TABLE_LENGTH
       : options.maxTableLength
   const acceptors: AcceptRowFunction[] = []
   if (options.accept) {
@@ -150,9 +144,7 @@ function createAcceptRowFunction(options: TableOptions): AcceptRowFunction {
       acceptors.push(options.accept)
     }
   }
-  if (maxTableLength !== undefined) {
-    acceptors.push(acceptMaxTableLength(maxTableLength))
-  }
+  acceptors.push(acceptMaxTableLength(maxTableLength))
 
   return (
     row: string[],
@@ -225,9 +217,9 @@ function toGiraffeColumnType(clientType: ClientColumnType): ColumnType {
  * @param resolve - called when the Table is collected
  * @param reject - called upon error
  * @param tableOptions - tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect
- * @returns FluxResultObserver that collects rows to a table instance
+ * @returns FluxResultObserver that collects table data from result rows
  */
-export function createFluxResultObserver(
+export function createCollector(
   resolve: (value: FromFluxResult) => void,
   reject: (reason?: any) => void,
   tableFactory: GiraffeTableFactory,
@@ -235,8 +227,8 @@ export function createFluxResultObserver(
 ): FluxResultObserver<string[]> {
   const {columns: onlyColumns} = tableOptions
   const accept = createAcceptRowFunction(tableOptions)
-  const columns: Record<string, ColumnStore> = {}
-  let dataColumns: ColumnStore[]
+  const columns: Record<string, Column> = {}
+  let dataColumns: Column[]
   let lastTableMeta: FluxTableMetaData | undefined = undefined
   let tableSize = 0
   let cancellable: Cancellable
@@ -273,16 +265,12 @@ export function createFluxResultObserver(
               columns[
                 `${existingColumn.name} (${existingColumn.type})`
               ] = existingColumn
-              // occupy the column by a multiType virtual column
+              // create a multiType (virtual) column
               columns[metaCol.label] = {
                 name: metaCol.label,
-                type: existingColumn.type,
-                fluxDataType: existingColumn.fluxDataType,
-                data: [],
                 multipleTypes: true,
-                toValue: existingColumn.toValue, // not used
-              }
-              //
+                // other values are not used
+              } as Column
               columnKey = `${metaCol.label} (${type})`
               existingColumn = columns[columnKey]
             }
@@ -303,10 +291,11 @@ export function createFluxResultObserver(
       }
       for (let i = 0; i < dataColumns.length; i++) {
         const column = dataColumns[i]
+        // cast is required because of wrong type definition in giraffe
         column.data[tableSize] = column.toValue(row) as
           | string
           | number
-          | boolean // TODO wrong type definition in giraffe
+          | boolean
       }
       tableSize++
     },
@@ -342,14 +331,14 @@ export function createFluxResultObserver(
 }
 
 /**
- * Executes a flux query and iterrativelly collects results into a giraffe's Table considering the TableOptions supplied.
+ * Executes a flux query and collects results into a giraffe's Table.
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
- * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, or restrict the columns to collect
+ * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect.
  * @returns Promise with query results
  */
-export async function queryTable(
+export async function queryToTable(
   queryApi: QueryApi,
   query: string | ParameterizedQuery,
   tableFactory: GiraffeTableFactory,
@@ -358,21 +347,21 @@ export async function queryTable(
   const result = await new Promise<FromFluxResult>((resolve, reject) => {
     queryApi.queryRows(
       query,
-      createFluxResultObserver(resolve, reject, tableFactory, tableOptions)
+      createCollector(resolve, reject, tableFactory, tableOptions)
     )
   })
   return result.table
 }
 
 /**
- * Executes a flux query and iterrativelly collects results into a giraffe's FromFluxResult considering the TableOptions supplied.
+ * Executes a flux query and iterrativelly collects results into a giraffe's FromFluxResult.
  *
  * @param queryApi - InfluxDB client's QueryApi instance
  * @param query - query to execute
- * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, or restrict the columns to collect
+ * @param tableOptions - tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect
  * @returns a Promise with query results
  */
-export function queryFromFluxResult(
+export function queryToFromFluxResult(
   queryApi: QueryApi,
   query: string | ParameterizedQuery,
   tableFactory: GiraffeTableFactory,
@@ -381,7 +370,7 @@ export function queryFromFluxResult(
   return new Promise<FromFluxResult>((resolve, reject) => {
     queryApi.queryRows(
       query,
-      createFluxResultObserver(resolve, reject, tableFactory, {
+      createCollector(resolve, reject, tableFactory, {
         ...tableOptions,
         computeFluxGroupKeyUnion: true,
       })

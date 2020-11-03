@@ -34,4 +34,4 @@ This directory contains javascript and typescript examples for node.js and brows
     The local HTTP server serves all files from this git repository and also proxies requests
     to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
   - Click `Visualize with Giraffe Line Chart` to open [giraffe.html](./giraffe.html) that
-    shows how to integrate with `@influxdata/giraffe`.
+    shows how visualize query results with [@influxdata/giraffe](https://github.com/influxdata/giraffe).
