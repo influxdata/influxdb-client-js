@@ -1,7 +1,7 @@
 {
-  "name": "@influxdata/influxdb-client",
+  "name": "@influxdata/influxdb-client-giraffe",
   "version": "1.8.0",
-  "description": "InfluxDB 2.0 client",
+  "description": "InfluxDB 2.0 client - giraffe integration",
   "scripts": {
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && rollup -c",
@@ -9,25 +9,22 @@
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "coverage:ci": "yarn run coverage && yarn run coverage:lcov",
     "coverage:lcov": "yarn run --silent nyc report --reporter=text-lcov > coverage/coverage.lcov",
-    "test": "yarn run lint && yarn run typecheck && yarn run test:all",
-    "test:all": "mocha --require ts-node/register 'test/**/*.test.ts' --exit",
+    "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
-    "test:integration": "mocha --require ts-node/register 'test/integration/**/*.test.ts' --exit",
-    "test:ci": "yarn run lint:ci && yarn run test:all --exit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/core_mocha/test-results.xml",
+    "test:ci": "yarn run lint:ci && yarn run test:unit --exit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/giraffe_mocha/test-results.xml",
     "test:watch": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --watch-extensions ts --watch",
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
-    "lint:ci": "yarn run lint --format junit --output-file ../../reports/core_eslint/eslint.xml",
+    "lint:ci": "yarn run lint --format junit --output-file ../../reports/giraffe_eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "browser": "dist/index.browser.js",
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/influxdata/influxdb-client-js",
-    "directory": "packages/core"
+    "directory": "packages/giraffe"
   },
   "keywords": [
     "influxdb",
@@ -38,14 +35,18 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@influxdata/giraffe": "*",
+    "@influxdata/influxdb-client": "1.8.0",
     "@microsoft/api-extractor": "^7.9.2",
     "@rollup/plugin-replace": "^2.3.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^5.2.7",
+    "@types/react": "^16.9.55",
     "@types/sinon": "^7.5.1",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "chai": "^4.2.0",
+    "codecov": "^3.6.1",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -55,6 +56,8 @@
     "nock": "^11.7.0",
     "nyc": "^15.1.0",
     "prettier": "^1.19.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "rimraf": "^3.0.0",
     "rollup": "^2.23.1",
     "rollup-plugin-gzip": "^2.2.0",
@@ -63,7 +66,6 @@
     "rxjs": "^6.5.5",
     "sinon": "^7.5.0",
     "ts-node": "^8.5.4",
-    "typescript": "^3.7.4",
-    "version-bump-prompt": "^5.0.6"
+    "typescript": "^3.7.4"
   }
 }

@@ -28,8 +28,10 @@ This directory contains javascript and typescript examples for node.js and brows
     Shows how to control the way of how data points are written to InfluxDB.
 - Browser examples
   - Change `url` in [env.js](./env.js) to match your influxDB instance
-  - Change `token, org, bucket, username, password` variables in [./index.html](index.html) to match your influxDB instance
+  - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your influxDB instance
   - Run `npm run browser`
-    It starts a local HTTP server and opens [index.html](./index.html) that contains examples.
+    It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests
     to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
+  - Click `Visualize with Giraffe Line Chart` to open [giraffe.html](./giraffe.html) that
+    shows how visualize query results with [@influxdata/giraffe](https://github.com/influxdata/giraffe).

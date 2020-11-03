@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>Example: Flux Query Results visualized with Giraffe</title>
+    <script>
+      // required by react
+      window.process = {
+        env : 'development'
+      }
+      // required by giraffe
+      global = window
+    </script>
+    <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@influxdata/giraffe@0.41.0/dist/index.js"></script>
+    <script src="https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.js"></script>
+    <!-- TODO switch to https://unpkg.com/@influxdata/influxdb-client-giraffe/dist/index.js after the package is released -->
+    <script src="../packages/giraffe/dist/index.js"></script>
+    <script src="./env_browser.js"></script>
+  </head>
+  <body>
+    <h1>Example: Flux Query Results visualized with Giraffe</h1>
+    <fieldset>
+      <legend>Flux Query</legend>
+      <div style="display:flex; margin-bottom: 10px;">
+        <textarea id="fluxQuery" style="flex: 1" rows="2"
+        >from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Giraffe Visualization</legend>
+      <div style="width: 100%;height: 200px; border: 1px solid grey; margin-bottom: 10px;" id="renderArea">
+      </div>    
+    </fieldset>
+    <button id="reloadButton">Reload</button>
+    <button id="clientExamples">Open InfluxDB JavaScript Client Examples</button>
+    <script>
+      // get query from request parameter or use default
+      fluxQuery = new URLSearchParams(window.location.search).get('fluxQuery');
+      if (!fluxQuery){
+        fluxQuery = `from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")`
+      }
+      const fluxQueryInput = document.getElementById('fluxQuery')
+      fluxQueryInput.value =  fluxQuery
+
+      // create query API
+      const {url, token, org} = window.INFLUX_ENV // loaded in ./env_browser.js
+      const influxDBClient = window['@influxdata/influxdb-client']
+      const influxDB = new influxDBClient.InfluxDB({url, token})
+      const queryApi = influxDB.getQueryApi(org)
+
+      // execute query and fill query data into giraffe table
+      const giraffe = window['@influxdata/giraffe']
+      // React functional component that renders query results or an error
+      function RenderResults({error, table}){
+        if (error){
+          // render error message
+          return React.createElement('center', null, error.toString())
+        } else if (table.length) {
+          // render giraffe plot
+          const plotConfig = { 
+            table: table,
+            layers: [{
+              type: 'line',
+              x: '_time',
+              y: '_value'
+            }],
+            valueFormatters: {
+              _time: giraffe.timeFormatter({
+                timeZone: 'UTC',
+                format: 'YYYY-MM-DD HH:mm:ss ZZ',
+              }),
+            }
+          };
+          return React.createElement(giraffe.Plot, {config: plotConfig})
+        } else {
+          // render empty table recevied
+          return React.createElement('center', null, "Empty Table Received")
+        }
+      }
+      const influxDBClientGiraffe = window['@influxdata/influxdb-client-giraffe']
+      function queryAndVisualize() {
+        influxDBClientGiraffe.queryTable(
+          queryApi,
+          fluxQueryInput.value,
+          giraffe.newTable
+        ). then(table => {
+          console.log('queryTable returns', table)
+          ReactDOM.render(
+              React.createElement(RenderResults, {table}),
+              document.getElementById('renderArea')
+          );
+        }). catch(error => {
+          console.log('queryTable fails', error)
+          ReactDOM.render(
+              React.createElement(RenderResults, {error}),
+              document.getElementById('renderArea')
+          );
+        })
+      }
+      queryAndVisualize()
+      document.getElementById('reloadButton').addEventListener('click', () => {
+        queryAndVisualize()
+      })
+      const clientExamples = document.getElementById('clientExamples')
+      clientExamples.addEventListener('click', e => {
+        const target = "./index.html?fluxQuery="+encodeURIComponent(fluxQueryInput.value)
+        window.open(target, "_blank")
+      })
+    </script>
+  </body>
+</html>

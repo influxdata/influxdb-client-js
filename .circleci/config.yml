@@ -30,23 +30,11 @@ jobs:
           name: Run tests
           command: |
             yarn build
-            cd ./packages/core
             yarn test:ci
-            yarn lint:ci
-            cd ../apis
-            yarn test
-            yarn eslint ../../examples
-            cd ../..
             yarn apidoc:ci
       # Upload results
       - store_test_results:
-          path: reports
-      - store_artifacts:
-          path: ./packages/core/reports/mocha/test-results.xml
-      - store_artifacts:
-          path: ./packages/core/reports/eslint/eslint.xml
-      - store_artifacts:
-          path: ./packages/core/reports/apidoc
+          path: ./reports
   coverage:
     parameters:
     docker:
@@ -58,7 +46,8 @@ jobs:
           name: Runs tests with coverage
           command: |
             yarn --version
-            yarn run coverage
+            yarn run coverage:ci
+            yarn run coverage:send
       - run:
           name: Report test results to codecov
           command: yarn run coverage:send

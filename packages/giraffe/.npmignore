@@ -1,0 +1,17 @@
+node_modules
+build
+coverage
+doc
+.rpt2_cache
+.DS_Store
+.nyc_output
+*.lcov
+reports
+yarn-error.log
+/tsconfig.*
+/rollup.config.js
+/.prettierrc.json
+/src
+/test
+.nycrc
+

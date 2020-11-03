@@ -4,6 +4,8 @@
   "description": "InfluxDB 2.0 client for browser",
   "scripts": {
     "apidoc:extract": "echo \"Nothing to do\"",
+    "test": "echo \"Nothing to do\"",
+    "test:ci": "echo \"Nothing to do\"",
     "build": "yarn run clean && cpr ../core/dist ./dist",
     "clean": "rimraf dist"
   },
