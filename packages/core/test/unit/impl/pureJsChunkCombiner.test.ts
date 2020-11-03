@@ -33,7 +33,7 @@ describe('pureJsChunkCombiner', () => {
     ['\u{10348}', Uint8Array.from([0xf0, 0x90, 0x8d, 0x88])],
   ]
   chunks.forEach(([str, chunk]) => {
-    it(`utf-8 encodes chunk ${str}`, () => {
+    it(`utf-8 encodes chunk ${JSON.stringify(str)}`, () => {
       // console.log(Buffer.from(str as string, 'utf8'))
       const encoded = pureJsChunkCombiner.toUtf8String(
         chunk as Uint8Array,
