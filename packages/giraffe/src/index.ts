@@ -9,7 +9,7 @@
  *
  * ```js
  * import {InfluxDB} from '@influxdata/influxdb-client'
- * import {queryTable} from '@influxdata/influxdb-client-giraffe'
+ * import {queryToTable} from '@influxdata/influxdb-client-giraffe'
  * import {newTable, Plot} from '@influxdata/giraffe'
  * ...
  * const queryApi = new InfluxDB({url, token}).getQueryApi(org)
