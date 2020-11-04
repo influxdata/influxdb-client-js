@@ -21,7 +21,7 @@ function createConfig({format, out, name, target, noTerser}) {
         },
       }),
       // @influxdata/influxdb-client (core) package uses `module:browser`
-      // property in its package.json to point to a ES module build created for the browser
+      // property in its package.json to point to an ES module created for the browser
       resolve({mainFields: ['module:browser']}),
       noTerser ? undefined : terser(),
       gzip(),
