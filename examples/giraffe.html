@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@influxdata/giraffe@0.41.0/dist/index.js"></script>
     <script src="https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.js"></script>
     <script src="https://unpkg.com/@influxdata/influxdb-client-giraffe/dist/index.js"></script>
+    <!-- <script src="../packages/giraffe/dist/index.js"></script> -->
     <script src="./env_browser.js"></script>
   </head>
   <body>
@@ -31,6 +32,7 @@
       </div>    
     </fieldset>
     <button id="reloadButton">Reload</button>
+    <button id="sampleButton">Show Sample Data</button>
     <button id="clientExamples">Open InfluxDB JavaScript Client Examples</button>
     <script>
       // get query from request parameter or use default
@@ -73,7 +75,7 @@
           return React.createElement(giraffe.Plot, {config: plotConfig})
         } else {
           // render empty table recevied
-          return React.createElement('center', null, "Empty Table Received")
+          return React.createElement('center', null, 'Empty Table Received')
         }
       }
       const influxDBClientGiraffe = window['@influxdata/influxdb-client-giraffe']
@@ -102,8 +104,34 @@
       })
       const clientExamples = document.getElementById('clientExamples')
       clientExamples.addEventListener('click', e => {
-        const target = "./index.html?fluxQuery="+encodeURIComponent(fluxQueryInput.value)
-        window.open(target, "_blank")
+        const target = './index.html?fluxQuery='+encodeURIComponent(fluxQueryInput.value)
+        window.open(target, '_blank')
+      })
+      function sampleAndVisualize(){
+        // create sample query response
+        let queryResponseData = '#datatype,string,long,string,string,dateTime:RFC3339,dateTime:RFC3339,dateTime:RFC3339,double\n'
+        queryResponseData += '#group,false,false,true,true,true,true,false,false\n'
+        queryResponseData += '#default,_result,,,,,,,\n'
+        queryResponseData += ',result,table,_measurement,_field,_start,_stop,_time,_value\n'
+        const time = Math.trunc(Date.now()/60000) // start this second
+        const sampleStart = ',,0,temperature,value,2010-01-01T00:00:00Z,2030-01-01T00:00:00Z,'
+        const value = Math.random() * Math.PI
+        for(let i=0; i<1000; i++){
+          const _time = new Date((time + i) * 60000).toISOString()
+          const _value = 20 + 15*Math.sin(value+(i/1000)*Math.PI)
+          queryResponseData += sampleStart
+          queryResponseData += `${_time},${_value}\n`
+        }
+        // transform response to giraffe table and visualize
+        const table = influxDBClientGiraffe.csvToTable(queryResponseData,giraffe.newTable)
+        console.log('csvToTable returns', table)
+        ReactDOM.render(
+            React.createElement(RenderResults, {table}),
+            document.getElementById('renderArea')
+        );
+      }
+      document.getElementById('sampleButton').addEventListener('click', () => {
+        sampleAndVisualize()
       })
     </script>
   </body>
