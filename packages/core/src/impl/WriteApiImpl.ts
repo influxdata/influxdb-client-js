@@ -5,7 +5,8 @@ import {
   WriteOptions,
   WritePrecisionType,
 } from '../options'
-import {Transport, SendOptions, Headers} from '../transport'
+import {Transport, SendOptions} from '../transport'
+import {Headers} from '../results'
 import Logger from './Logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import Point from '../Point'

@@ -1,10 +1,10 @@
 import {Observable} from './observable'
+import {ParameterizedQuery} from './query'
 import {
+  CommunicationObserver,
   FluxResultObserver,
   FluxTableMetaData,
-  ParameterizedQuery,
-} from './query'
-import {CommunicationObserver} from './transport'
+} from './results'
 
 export function defaultRowMapping(
   values: string[],

@@ -1,7 +1,6 @@
 import {expect} from 'chai'
-import ChunksToLines from '../../../src/impl/ChunksToLines'
+import {chunksToLines, Cancellable} from '../../../src/results'
 import chunksToLinesTables from '../../fixture/chunksToLinesTables.json'
-import Cancellable from '../../../src/util/Cancellable'
 import sinon from 'sinon'
 import {CollectLinesObserver} from '../util/CollectLinesObserver'
 import nodeChunkCombiner from '../../../src/impl/node/nodeChunkCombiner'
@@ -20,14 +19,17 @@ class CollectLinesObserver2 extends CollectLinesObserver {
   }
 }
 
-describe('ChunksToLines', () => {
+describe('chunksToLines', () => {
   ;(chunksToLinesTables as Array<ChunkTest>).forEach((test: ChunkTest) => {
     it(`creates correct lines from test set '${test.name}'`, () => {
       const target = test.withCancellable
         ? new CollectLinesObserver2()
         : new CollectLinesObserver()
-      const subject = new ChunksToLines(target, nodeChunkCombiner)
-      subject.useCancellable({isCancelled: sinon.mock(), cancel: sinon.mock()})
+      const subject = chunksToLines(target, nodeChunkCombiner)
+      subject.useCancellable?.({
+        isCancelled: sinon.mock(),
+        cancel: sinon.mock(),
+      })
       let failed = false
       for (let i = 0; i < test.chunks.length; i++) {
         const chunk = test.chunks[i]
@@ -51,7 +53,7 @@ describe('ChunksToLines', () => {
   })
   it('fails on unsupported data', () => {
     const target = new CollectLinesObserver()
-    const subject = new ChunksToLines(target, nodeChunkCombiner)
+    const subject = chunksToLines(target, nodeChunkCombiner)
     subject.next(Buffer.from('abcd', 'utf8'))
     subject.next((1 as any) as Uint8Array)
     expect(target.failed).to.be.equal(1)
@@ -73,9 +75,9 @@ describe('ChunksToLines', () => {
         cancellable = c
       },
     }
-    const subject = new ChunksToLines(target, nodeChunkCombiner)
+    const subject = chunksToLines(target, nodeChunkCombiner)
     const cancel = sinon.mock()
-    subject.useCancellable({
+    subject.useCancellable?.({
       isCancelled: () => cancel.callCount > 0,
       cancel,
     })

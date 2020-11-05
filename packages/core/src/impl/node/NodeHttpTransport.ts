@@ -4,14 +4,13 @@ import * as http from 'http'
 import * as https from 'https'
 import {Buffer} from 'buffer'
 import {RequestTimedOutError, AbortError, HttpError} from '../../errors'
+import {Transport, SendOptions} from '../../transport'
 import {
-  CommunicationObserver,
-  Transport,
-  SendOptions,
-  Headers,
+  Cancellable,
   ChunkCombiner,
-} from '../../transport'
-import Cancellable from '../../util/Cancellable'
+  CommunicationObserver,
+  Headers,
+} from '../../results'
 import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'

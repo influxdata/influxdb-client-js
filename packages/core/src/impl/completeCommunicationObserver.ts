@@ -1,4 +1,4 @@
-import {CommunicationObserver, Headers} from '../transport'
+import {CommunicationObserver, Headers} from '../results'
 
 export default function completeCommunicationObserver(
   callbacks: Partial<CommunicationObserver<any>> = {}

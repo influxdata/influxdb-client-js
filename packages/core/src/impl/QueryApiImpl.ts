@@ -1,12 +1,15 @@
 import {Observable} from '../observable'
-import FluxResultObserver from '../query/FluxResultObserver'
 import QueryApi, {QueryOptions, Row, defaultRowMapping} from '../QueryApi'
-import {CommunicationObserver, Transport} from '../transport'
-import ChunksToLines from './ChunksToLines'
-import {toLineObserver} from './linesToTables'
+import {Transport} from '../transport'
+import {chunksToLines} from '../results'
+import {
+  CommunicationObserver,
+  FluxResultObserver,
+  FluxTableMetaData,
+  linesToTables,
+} from '../results'
 import ObservableQuery, {QueryExecutor} from './ObservableQuery'
 import {ParameterizedQuery} from '../query/flux'
-import {FluxTableMetaData} from '../query'
 
 const DEFAULT_dialect: any = {
   header: true,
@@ -33,7 +36,7 @@ export class QueryApiImpl implements QueryApi {
 
   rows(query: string | ParameterizedQuery): Observable<Row> {
     return new ObservableQuery(this.createExecutor(query), observer => {
-      return toLineObserver({
+      return linesToTables({
         next(values, tableMeta) {
           observer.next({values, tableMeta})
         },
@@ -58,7 +61,7 @@ export class QueryApiImpl implements QueryApi {
     query: string | ParameterizedQuery,
     consumer: FluxResultObserver<string[]>
   ): void {
-    this.createExecutor(query)(toLineObserver(consumer))
+    this.createExecutor(query)(linesToTables(consumer))
   }
 
   collectRows<T>(
@@ -149,7 +152,7 @@ export class QueryApiImpl implements QueryApi {
             'accept-encoding': gzip ? 'gzip' : 'identity',
           },
         },
-        new ChunksToLines(consumer, this.transport.chunkCombiner)
+        chunksToLines(consumer, this.transport.chunkCombiner)
       )
     }
   }

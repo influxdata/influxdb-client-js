@@ -1,4 +1,4 @@
-import FluxTableColumn, {ColumnType} from './FluxTableColumn'
+import {FluxTableColumn, ColumnType} from './FluxTableColumn'
 import {IllegalArgumentError} from '../errors'
 
 const identity = (x: string): any => x
@@ -51,7 +51,7 @@ export function serializeDateTimeAsString(): void {
 /**
  * Represents metadata of a {@link http://bit.ly/flux-spec#table | flux table}.
  */
-export default interface FluxTableMetaData {
+export interface FluxTableMetaData {
   /**
    * Table columns.
    */

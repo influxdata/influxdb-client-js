@@ -1,27 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  Transport,
-  SendOptions,
-  CommunicationObserver,
-  Headers,
-  ChunkCombiner,
-} from '../../transport'
-import pureJsChunkCombiner from '../pureJsChunkCombiner'
+import {Transport, SendOptions} from '../../transport'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import Logger from '../Logger'
+import {
+  ChunkCombiner,
+  CommunicationObserver,
+  createTextDecoderCombiner,
+  Headers,
+} from '../../results'
 
-function createTextDecoderCombiner(): ChunkCombiner {
-  const decoder = new TextDecoder('utf-8')
-  return {
-    concat: pureJsChunkCombiner.concat,
-    copy: pureJsChunkCombiner.copy,
-    toUtf8String(chunk: Uint8Array, start: number, end: number): string {
-      return decoder.decode(chunk.subarray(start, end))
-    },
-  }
-}
 /**
  * Transport layer that use browser fetch.
  */

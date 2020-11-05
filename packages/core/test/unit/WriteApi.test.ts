@@ -196,12 +196,12 @@ describe('WriteApi', () => {
     it('flushes the records automatically', async () => {
       useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
       subject.writeRecord('test value=1')
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(1)
       subject.writeRecord('test value=2')
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(2)
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush
       await subject.flush().then(() => {
         expect(logs.error).to.length(2)
       })
@@ -247,7 +247,7 @@ describe('WriteApi', () => {
           .floatField('value', 1)
           .timestamp('')
       )
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(1)
       subject.writePoint(new Point()) // ignored, since it generates no line
@@ -262,7 +262,7 @@ describe('WriteApi', () => {
           .floatField('value', 7)
           .timestamp((false as any) as string), // server decides what to do with such values
       ])
-      await new Promise(resolve => setTimeout(resolve, 10)) // wait for background flush and HTTP to finish
+      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(2)
       expect(messages).to.have.length(2)
@@ -288,7 +288,7 @@ describe('WriteApi', () => {
     })
     it('fails on write response status not being exactly 204', async () => {
       // required because of https://github.com/influxdata/influxdb-client-js/issues/263
-      useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
+      useSubject({flushInterval: 2, maxRetries: 0, batchSize: 10})
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
         .reply((_uri, _requestBody) => {

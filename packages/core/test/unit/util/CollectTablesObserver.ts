@@ -1,5 +1,4 @@
-import FluxResultObserver from '../../../src/query/FluxResultObserver'
-import FluxTableMetaData from '../../../src/query/FluxTableMetaData'
+import {FluxResultObserver, FluxTableMetaData} from '../../../src/results'
 
 export class CollectTablesObserver implements FluxResultObserver<string[]> {
   tables: Array<{index: number; meta: FluxTableMetaData}> = []

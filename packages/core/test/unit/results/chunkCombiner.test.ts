@@ -1,7 +1,8 @@
 import {expect} from 'chai'
-import pureJsChunkCombiner from '../../../src/impl/pureJsChunkCombiner'
+import {createTextDecoderCombiner} from '../../../src/results'
 
-describe('pureJsChunkCombiner', () => {
+describe('createTextDecoderCombiner', () => {
+  const pureJsChunkCombiner = createTextDecoderCombiner()
   it('concatenates chunks', () => {
     expect(
       pureJsChunkCombiner.concat(

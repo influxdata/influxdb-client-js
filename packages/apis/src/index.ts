@@ -17,11 +17,13 @@
  *   token: "my-token"
  * })
  * ...
- * async function getOrg(name) {
+ * async function getOrg() {
  *   const orgsAPI = new OrgsAPI(influxDB)
  *   const organizations = await orgsAPI.getOrgs({
  *     org: "my-org"
  *   })
+ *   ...
+ * }
  * ...
  * ```
  

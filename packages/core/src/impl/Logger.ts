@@ -9,7 +9,7 @@ export interface Logger {
 /**
  * Logger that logs to console.out
  */
-export const consoleLogger: Logger = Object.freeze({
+export const consoleLogger: Logger = {
   error(message, error) {
     // eslint-disable-next-line no-console
     console.error('ERROR: ' + message, error ? error : '')
@@ -18,7 +18,7 @@ export const consoleLogger: Logger = Object.freeze({
     // eslint-disable-next-line no-console
     console.warn('WARN: ' + message, error ? error : '')
   },
-})
+}
 let provider: Logger = consoleLogger
 
 const Logger: Logger = {

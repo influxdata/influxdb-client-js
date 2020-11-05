@@ -72,22 +72,26 @@ export interface WriteOptions extends WriteRetryOptions {
 }
 
 /** default RetryDelayStrategyOptions */
-export const DEFAULT_RetryDelayStrategyOptions = Object.freeze({
+export const DEFAULT_RetryDelayStrategyOptions = {
   retryJitter: 200,
   minRetryDelay: 5000,
   maxRetryDelay: 180000,
   exponentialBase: 5,
-})
+}
 
 /** default writeOptions */
-export const DEFAULT_WriteOptions: WriteOptions = Object.freeze({
+export const DEFAULT_WriteOptions: WriteOptions = {
   batchSize: 1000,
   flushInterval: 60000,
   writeFailed: function() {},
   maxRetries: 3,
   maxBufferLines: 32_000,
-  ...DEFAULT_RetryDelayStrategyOptions,
-})
+  // a copy of DEFAULT_RetryDelayStrategyOptions, so that DEFAULT_WriteOptions could be tree-shaken
+  retryJitter: 200,
+  minRetryDelay: 5000,
+  maxRetryDelay: 180000,
+  exponentialBase: 5,
+}
 
 /**
  * Options used by {@link InfluxDB} .

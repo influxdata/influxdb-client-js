@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import LineSplitter from '../../../src/util/LineSplitter'
+import {LineSplitter} from '../../../src/results'
 import lineSplitterTables from '../../fixture/lineSplitterTables.json'
 
 interface LineSplitterTest {

@@ -1,22 +1,10 @@
 import {expect} from 'chai'
-import {queryToTable, queryToFromFluxResult} from '../../src'
+import {csvToTable, csvToFromFluxResult} from '../../src'
 // @influxdata/influxdb-client uses node transport in tests (tests run in node), therefore nock is used to mock HTTP
-import nock from 'nock'
-import {Readable} from 'stream'
-import {InfluxDB} from '@influxdata/influxdb-client'
 import {newTable} from './newTable'
-const url = 'http://test'
-const queryApi = new InfluxDB({url}).getQueryApi('whatever')
 
-describe('queryToTable', () => {
-  beforeEach(() => {
-    nock.disableNetConnect()
-  })
-  afterEach(() => {
-    nock.cleanAll()
-    nock.enableNetConnect()
-  })
-  it('can parse a Flux CSV with mismatched schemas', async () => {
+describe('csvToTable', () => {
+  it('can parse a Flux CSV with mismatched schemas', () => {
     const CSV = `#group,false,false,true,true,false,true,true,true,true,true
 #datatype,string,long,dateTime:RFC3339,dateTime:RFC3339,dateTime:RFC3339,double,string,string,string,string
 #default,_result,,,,,,,,,
@@ -36,10 +24,7 @@ describe('queryToTable', () => {
 ,result,table,_start,_stop,_time,_value,_field,_measurement,cpu,host
 ,,3,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:43Z,fourty,usage_guest,cpu,cpu0,oox4k.local`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
-    const table = await queryToTable(queryApi, 'ignored', newTable)
+    const table = csvToTable(CSV, newTable)
 
     expect(table.getColumn('result', 'string')).deep.equals([
       '_result',
@@ -118,7 +103,7 @@ describe('queryToTable', () => {
     expect(table.getColumnName('_value (string)')).deep.equals('_value')
   })
 
-  it('uses the default annotation to fill in empty values', async () => {
+  it('uses the default annotation to fill in empty values', () => {
     const CSV = `#group,false,false,true,true,true,true,false
 #datatype,string,unsignedLong,string,string,boolean,long,dateTime:RFC3339
 #default,_result,,,cpu,false,6,1970-01-01T00:00:00.001000Z
@@ -126,10 +111,7 @@ describe('queryToTable', () => {
 ,,1,usage_guest,,true,,1970-01-01T00:00:00.002000Z
 ,,1,usage_guest,,,,`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
-    const actual = await queryToTable(queryApi, 'ignored', newTable)
+    const actual = csvToTable(CSV, newTable)
 
     expect(actual.getColumn('result')).deep.equals(['_result', '_result'])
     expect(actual.getColumn('a')).deep.equals(['usage_guest', 'usage_guest'])
@@ -139,7 +121,7 @@ describe('queryToTable', () => {
     expect(actual.getColumn('time')).deep.equals([2, 1])
   })
 
-  it('parses empty numeric values as null', async () => {
+  it('parses empty numeric values as null', () => {
     const CSV = `#group,false,false,true,true,false,true,true,true,true,true
 #datatype,string,long,dateTime:RFC3339,dateTime:RFC3339,dateTime:RFC3339,double,string,string,string,string
 #default,_result,,,,,,,,,
@@ -147,15 +129,12 @@ describe('queryToTable', () => {
 ,,0,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:33Z,10,usage_guest,cpu,cpu-total,oox4k.local
 ,,1,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:43Z,,usage_guest,cpu,cpu-total,oox4k.local`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
-    const table = await queryToTable(queryApi, 'ignored', newTable)
+    const table = csvToTable(CSV, newTable)
 
     expect(table.getColumn('_value')).deep.equals([10, null])
   })
 
-  it('handles newlines inside string values', async () => {
+  it('handles newlines inside string values', () => {
     const CSV = `#group,false,false,false,false
 #datatype,string,long,string,long
 #default,_result,,,
@@ -176,10 +155,7 @@ there",5
 there",5
 ,,1,hi,6`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
-    const table = await queryToTable(queryApi, 'ignored', newTable)
+    const table = csvToTable(CSV, newTable)
 
     expect(table.getColumn('value')).deep.equals([5, 5, 6, 5, 5, 6])
 
@@ -194,16 +170,13 @@ there",5
   })
   describe('tableOptions', () => {
     ;[[1, 1]].forEach(([length, wants]) => {
-      it(`uses default maxTableLength ${length}`, async () => {
+      it(`uses default maxTableLength ${length}`, () => {
         const CSV = `#group,false
 #datatype,long
 #default,
 ,result
 ,1`
-        nock(url)
-          .post(/.*/)
-          .reply(200, CSV)
-        const actual = await queryToTable(queryApi, 'ignored', newTable, {
+        const actual = csvToTable(CSV, newTable, {
           maxTableLength: length,
         })
 
@@ -215,7 +188,7 @@ there",5
       [1, 1],
       [undefined, 3 /* because the default is higher */],
     ].forEach(([length, wants]) => {
-      it(`uses custom maxTableLength ${length}`, async () => {
+      it(`uses custom maxTableLength ${length}`, () => {
         const CSV = `#group,false
 #datatype,long
 #default,
@@ -223,17 +196,14 @@ there",5
 ,1
 ,2
 ,3`
-        nock(url)
-          .post(/.*/)
-          .reply(200, CSV)
-        const actual = await queryToTable(queryApi, 'ignored', newTable, {
+        const actual = csvToTable(CSV, newTable, {
           maxTableLength: length,
         })
 
         expect(actual.getColumn('result')?.length).deep.equals(wants)
       })
     })
-    it(`uses custom accept filter`, async () => {
+    it(`uses custom accept filter`, () => {
       const CSV = `#group,false
 #datatype,long
 #default,
@@ -241,17 +211,14 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
-      const actual = await queryToTable(queryApi, 'ignored', newTable, {
+      const actual = csvToTable(CSV, newTable, {
         accept: (row: string[]) => row[0] === '2',
         maxTableLength: 2,
       })
 
       expect(actual.getColumn('result')).deep.equals([2])
     })
-    it(`uses custom accept filters`, async () => {
+    it(`uses custom accept filters`, () => {
       const CSV = `#group,false
 #datatype,long
 #default,
@@ -259,10 +226,7 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
-      const actual = await queryToTable(queryApi, 'ignored', newTable, {
+      const actual = csvToTable(CSV, newTable, {
         accept: [
           (row: string[]): boolean => Number(row[0]) < 3,
           (row: string[]): boolean => row[0] !== '1',
@@ -271,7 +235,7 @@ there",5
 
       expect(actual.getColumn('result')).deep.equals([2])
     })
-    it(`uses custom accept filters and maxTableLength`, async () => {
+    it(`uses custom accept filters and maxTableLength`, () => {
       const CSV = `#group,false
 #datatype,long
 #default,
@@ -279,17 +243,14 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
-      const actual = await queryToTable(queryApi, 'ignored', newTable, {
+      const actual = csvToTable(CSV, newTable, {
         maxTableLength: 1,
         accept: (row: string[]) => Number(row[0]) > 1,
       })
 
       expect(actual.getColumn('result')).deep.equals([2])
     })
-    it(`uses custom columns`, async () => {
+    it(`uses custom columns`, () => {
       const CSV = `#group,false
 #datatype,long
 #default,
@@ -297,76 +258,17 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
-      const actual = await queryToTable(queryApi, 'ignored', newTable, {
+      const actual = csvToTable(CSV, newTable, {
         columns: ['a'],
       })
 
       expect(actual.getColumn('result')).is.null
     })
-    it(`handles server error`, async () => {
-      nock(url)
-        .post(/.*/)
-        .reply(500, 'not ok')
-      await queryToTable(queryApi, 'ignored', newTable)
-        .then(() => {
-          expect.fail('must not succeed')
-        })
-        .catch(e => {
-          expect(e)
-            .property('statusCode')
-            .to.equal(500)
-        })
-    })
-    it(`handles client abort error with success`, async () => {
-      const chunks = `#group,false
-#datatype,long
-#default,
-,result
-,1
-,2
-,3
-`.split('\n')
-      let chunkIndex = 0
-      let res: any
-      nock(url)
-        .post(/.*/)
-        .reply((_uri, _requestBody) => [
-          200,
-          new Readable({
-            read(): any {
-              if (chunkIndex === chunks.length) {
-                res.emit('aborted')
-                return
-              }
-              this.push(chunks[chunkIndex] + '\n')
-              chunkIndex++
-            },
-          }),
-          {
-            'X-Whatever': (_req: any, _res: any, _body: any): string => {
-              res = _res
-              return '1'
-            },
-          },
-        ])
-      const actual = await queryToTable(queryApi, 'ignored', newTable)
-      expect(actual.getColumn('result')).deep.equals([1, 2, 3])
-    })
   })
 })
 
-describe('queryToFromFluxResult', () => {
-  beforeEach(() => {
-    nock.disableNetConnect()
-  })
-  afterEach(() => {
-    nock.cleanAll()
-    nock.enableNetConnect()
-  })
-  it('returns a group key union', async () => {
+describe('csvToFromFluxResult', () => {
+  it('returns a group key union', () => {
     const CSV = `#group,true,false,false,true
 #datatype,string,string,string,string
 #default,,,,
@@ -379,14 +281,7 @@ describe('queryToFromFluxResult', () => {
 ,a,b,c,d
 ,1,2,3,4`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
-    const {fluxGroupKeyUnion} = await queryToFromFluxResult(
-      queryApi,
-      'ignored',
-      newTable
-    )
+    const {fluxGroupKeyUnion} = csvToFromFluxResult(CSV, newTable)
     expect(fluxGroupKeyUnion).deep.equals(['a', 'c', 'd'])
   })
 })

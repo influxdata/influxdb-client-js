@@ -1,16 +1,19 @@
-import {CommunicationObserver} from '../transport'
-import Cancellable from '../util/Cancellable'
-import FluxResultObserver from '../query/FluxResultObserver'
-import LineSplitter from '../util/LineSplitter'
-import FluxTableColumn, {
+import {CommunicationObserver} from './CommunicationObserver'
+import {Cancellable} from './Cancellable'
+import {LineSplitter} from './LineSplitter'
+import {FluxResultObserver} from './FluxResultObserver'
+import {
+  FluxTableColumn,
   ColumnType,
   newFluxTableColumn,
-} from '../query/FluxTableColumn'
-import FluxTableMetaData, {
-  createFluxTableMetaData,
-} from '../query/FluxTableMetaData'
+} from './FluxTableColumn'
+import {FluxTableMetaData, createFluxTableMetaData} from './FluxTableMetaData'
 
-export function toLineObserver(
+/**
+ * linesToTables creates a transformationthat accepts (flux) annotated CSV lines
+ * and emits rows together with table metadata.
+ */
+export function linesToTables(
   consumer: FluxResultObserver<string[]>
 ): CommunicationObserver<string> {
   const splitter = new LineSplitter().withReuse()
