@@ -6,6 +6,7 @@
 1. [#275](https://github.com/influxdata/influxdb-client-js/pull/275): Export CSV results parser.
 1. [#275](https://github.com/influxdata/influxdb-client-js/pull/275): Export fuction to transform CSV string to giraffe table.
 1. [#275](https://github.com/influxdata/influxdb-client-js/pull/275): Add tree shaking optimizations.
+1. [#276](https://github.com/influxdata/influxdb-client-js/pull/276): Allow to notify about write success.
 
 ## 1.8.0 [2020-10-30]
 
