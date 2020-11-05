@@ -9,9 +9,11 @@ import {
   WriteApi,
   InfluxDB,
   WritePrecisionType,
+  DEFAULT_WriteOptions,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
 import Logger from '../../src/impl/Logger'
+import {waitForCondition} from './util/waitForCondition'
 
 const clientOptions: ClientOptions = {
   url: 'http://fake:8086',
@@ -33,6 +35,26 @@ function createApi(
     ...clientOptions,
     ...{writeOptions: options},
   }).getWriteApi(org, bucket, precision)
+}
+
+interface WriteListeners {
+  successLineCount: number
+  failedLineCount: number
+  writeFailed(error: Error, lines: string[]): void
+  writeSuccess(lines: string[]): void
+}
+function createWriteCounters(): WriteListeners {
+  const retVal = {
+    successLineCount: 0,
+    failedLineCount: 0,
+    writeFailed(_error: Error, lines: string[]): void {
+      retVal.failedLineCount += lines.length
+    },
+    writeSuccess(lines: string[]): void {
+      retVal.successLineCount += lines.length
+    },
+  }
+  return retVal
 }
 
 describe('WriteApi', () => {
@@ -119,12 +141,11 @@ describe('WriteApi', () => {
       useSubject({
         flushInterval: 0,
         batchSize: 1,
-        maxRetries: 2,
       })
       subject.writeRecord('test value=1')
       subject.writeRecords(['test value=2', 'test value=3'])
       // wait for http calls to finish
-      await new Promise(resolve => setTimeout(resolve, 20))
+      await waitForCondition(() => logs.warn.length >= 3)
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).length(3) // 3 warnings about write failure
@@ -165,15 +186,25 @@ describe('WriteApi', () => {
     it('uses the pre-configured batchSize', async () => {
       useSubject({flushInterval: 0, maxRetries: 0, batchSize: 2})
       subject.writeRecords(['test value=1', 'test value=2', 'test value=3'])
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for HTTP to finish
+      await waitForCondition(() => logs.error.length > 0) // wait for HTTP call to fail
       let count = subject.dispose()
-      expect(logs.error).to.length(1)
-      expect(logs.warn).to.length(0)
+      expect(logs.error).has.length(1)
+      expect(logs.warn).has.length(0)
       expect(count).equals(1)
       count = subject.dispose() // dispose is idempotent
-      expect(logs.error).to.length(1) // no more errorrs
-      expect(logs.warn).to.length(0)
+      expect(logs.error).has.length(1) // no more errorrs
+      expect(logs.warn).has.length(0)
       expect(count).equals(1)
+    })
+    it('implementation uses default notifiers', () => {
+      useSubject({})
+      const writeOptions = (subject as any).writeOptions as WriteOptions
+      expect(writeOptions.writeFailed).equals(DEFAULT_WriteOptions.writeFailed)
+      expect(writeOptions.writeSuccess).equals(
+        DEFAULT_WriteOptions.writeSuccess
+      )
+      expect(writeOptions.writeSuccess).to.not.throw()
+      expect(writeOptions.writeFailed).to.not.throw()
     })
   })
   describe('flush on background', () => {
@@ -196,14 +227,13 @@ describe('WriteApi', () => {
     it('flushes the records automatically', async () => {
       useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
       subject.writeRecord('test value=1')
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
-      expect(logs.error).to.length(1)
+      await waitForCondition(() => logs.error.length >= 1) // wait for HTTP call to fail
+      expect(logs.error).has.length(1)
       subject.writeRecord('test value=2')
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
-      expect(logs.error).to.length(2)
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush
+      await waitForCondition(() => logs.error.length >= 2)
+      expect(logs.error).has.length(2)
       await subject.flush().then(() => {
-        expect(logs.error).to.length(2)
+        expect(logs.error).has.length(2)
       })
     })
   })
@@ -226,7 +256,13 @@ describe('WriteApi', () => {
       collectLogging.after()
     })
     it('flushes the records without errors', async () => {
-      useSubject({flushInterval: 5, maxRetries: 1, batchSize: 10})
+      const writeCounters = createWriteCounters()
+      useSubject({
+        flushInterval: 5,
+        maxRetries: 1,
+        batchSize: 10,
+        writeSuccess: writeCounters.writeSuccess,
+      })
       let requests = 0
       const messages: string[] = []
       nock(clientOptions.url)
@@ -247,9 +283,9 @@ describe('WriteApi', () => {
           .floatField('value', 1)
           .timestamp('')
       )
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
-      expect(logs.error).to.length(0)
-      expect(logs.warn).to.length(1)
+      await waitForCondition(() => writeCounters.successLineCount == 1)
+      expect(logs.error).has.length(0)
+      expect(logs.warn).has.length(1) // request was retried once
       subject.writePoint(new Point()) // ignored, since it generates no line
       subject.writePoints([
         new Point('test'), // will be ignored + warning
@@ -262,7 +298,7 @@ describe('WriteApi', () => {
           .floatField('value', 7)
           .timestamp((false as any) as string), // server decides what to do with such values
       ])
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
+      await waitForCondition(() => writeCounters.successLineCount == 7)
       expect(logs.error).to.length(0)
       expect(logs.warn).to.length(2)
       expect(messages).to.have.length(2)
@@ -287,8 +323,14 @@ describe('WriteApi', () => {
       expect(lines[5]).to.be.equal('test,xtra=1 value=7 false')
     })
     it('fails on write response status not being exactly 204', async () => {
+      const writeCounters = createWriteCounters()
       // required because of https://github.com/influxdata/influxdb-client-js/issues/263
-      useSubject({flushInterval: 2, maxRetries: 0, batchSize: 10})
+      useSubject({
+        flushInterval: 2,
+        maxRetries: 0,
+        batchSize: 10,
+        writeFailed: writeCounters.writeFailed,
+      })
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
         .reply((_uri, _requestBody) => {
@@ -296,7 +338,7 @@ describe('WriteApi', () => {
         })
         .persist()
       subject.writePoint(new Point('test').floatField('value', 1))
-      await new Promise(resolve => setTimeout(resolve, 20)) // wait for background flush and HTTP to finish
+      await waitForCondition(() => writeCounters.failedLineCount == 1)
       expect(logs.error).has.length(1)
       expect(logs.error[0][0]).equals('Write to InfluxDB failed.')
       expect(logs.error[0][1]).instanceOf(HttpError)

@@ -39,7 +39,7 @@ export interface RetryDelayStrategyOptions {
  */
 export interface WriteRetryOptions extends RetryDelayStrategyOptions {
   /**
-   * writeFailed is called to inform about write error
+   * WriteFailed is called to inform about write errors.
    * @param this - the instance of the API that failed
    * @param error - write error
    * @param lines - failed lines
@@ -53,6 +53,14 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
     lines: Array<string>,
     attempts: number
   ): Promise<void> | void
+
+  /**
+   * WriteSuccess is informed about successfully written lines.
+   * @param this - the instance of the API in use
+   * @param lines - written lines
+   */
+  writeSuccess(this: WriteApi, lines: Array<string>): void
+
   /** max number of retries when write fails */
   maxRetries: number
   /** the maximum size of retry-buffer (in lines) */
@@ -84,6 +92,7 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   batchSize: 1000,
   flushInterval: 60000,
   writeFailed: function() {},
+  writeSuccess: function() {},
   maxRetries: 3,
   maxBufferLines: 32_000,
   // a copy of DEFAULT_RetryDelayStrategyOptions, so that DEFAULT_WriteOptions could be tree-shaken

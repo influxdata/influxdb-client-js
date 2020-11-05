@@ -134,7 +134,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     if (!this.closed && lines.length > 0) {
       return new Promise<void>((resolve, reject) => {
         let responseStatusCode: number | undefined
-        this.transport.send(this.httpPath, lines.join('\n'), this.sendOptions, {
+        const callbacks = {
           responseStarted(_headers: Headers, statusCode?: number): void {
             responseStatusCode = statusCode
           },
@@ -174,9 +174,10 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
             reject(error)
           },
           complete(): void {
-            self.retryStrategy.success()
             // older implementations of transport do not report status code
             if (responseStatusCode == 204 || responseStatusCode == undefined) {
+              self.writeOptions.writeSuccess.call(self, lines)
+              self.retryStrategy.success()
               resolve()
             } else {
               const error = new HttpError(
@@ -185,11 +186,16 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
                 undefined,
                 '0'
               )
-              Logger.error(`Write to InfluxDB failed.`, error)
-              reject(error)
+              callbacks.error(error)
             }
           },
-        })
+        }
+        this.transport.send(
+          this.httpPath,
+          lines.join('\n'),
+          this.sendOptions,
+          callbacks
+        )
       })
     } else {
       return Promise.resolve()

@@ -1,6 +1,7 @@
 import {expect} from 'chai'
 import RetryBuffer from '../../../src/impl/RetryBuffer'
 import {CollectedLogs, collectLogging} from '../../util'
+import {waitForCondition} from '../util/waitForCondition'
 
 describe('RetryBuffer', () => {
   let logs: CollectedLogs
@@ -22,9 +23,7 @@ describe('RetryBuffer', () => {
       input.push([['a' + i], i])
       subject.addLines(['a' + i], i, 2)
     }
-    await new Promise<void>((resolve, _reject) =>
-      setTimeout(() => resolve(), 10)
-    )
+    await waitForCondition(() => output.length >= 10)
     expect(output).length.is.greaterThan(0)
     subject.addLines([], 1, 1) // shall be ignored
     subject.close()
@@ -43,9 +42,6 @@ describe('RetryBuffer', () => {
       if (i >= 5) input.push([['a' + i], i])
       subject.addLines(['a' + i], i, 100)
     }
-    await new Promise<void>((resolve, _reject) =>
-      setTimeout(() => resolve(), 10)
-    )
     await subject.flush()
     expect(subject.close()).equals(0)
     expect(logs.error).length.is.greaterThan(0) // 5 entries over limit
