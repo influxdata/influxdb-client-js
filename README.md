@@ -80,7 +80,7 @@ If you would like to contribute code you can do through GitHub by forking the re
 
 Build Requirements:
 
-- node v12.13.1 or higher
+- node v14 LTS
 - yarn 1.9.4. or higher
 
 Run tests:
