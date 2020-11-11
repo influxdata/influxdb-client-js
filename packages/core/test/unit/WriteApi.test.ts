@@ -224,8 +224,20 @@ describe('WriteApi', () => {
       await subject.close()
       collectLogging.after()
     })
-    it('flushes the records automatically', async () => {
+    it('flushes the records automatically in intervals', async () => {
       useSubject({flushInterval: 5, maxRetries: 0, batchSize: 10})
+      subject.writeRecord('test value=1')
+      await waitForCondition(() => logs.error.length >= 1) // wait for HTTP call to fail
+      expect(logs.error).has.length(1)
+      subject.writeRecord('test value=2')
+      await waitForCondition(() => logs.error.length >= 2)
+      expect(logs.error).has.length(2)
+      await subject.flush().then(() => {
+        expect(logs.error).has.length(2)
+      })
+    })
+    it('flushes the records automatically in batches', async () => {
+      useSubject({flushInterval: 0, maxRetries: 0, batchSize: 1})
       subject.writeRecord('test value=1')
       await waitForCondition(() => logs.error.length >= 1) // wait for HTTP call to fail
       expect(logs.error).has.length(1)
