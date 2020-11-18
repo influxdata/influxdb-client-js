@@ -32,6 +32,10 @@ export interface QueryOptions {
    * for example `new Date().toISOString()`.
    */
   now?: () => string
+  /**
+   * HTTP headers that will be sent with every query request.
+   */
+  headers?: {[key: string]: string}
 }
 
 /** Wraps values and associated metadata of a query result row */

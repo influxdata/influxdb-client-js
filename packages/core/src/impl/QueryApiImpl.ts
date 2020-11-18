@@ -111,7 +111,7 @@ export class QueryApiImpl implements QueryApi {
   }
 
   queryRaw(query: string | ParameterizedQuery): Promise<string> {
-    const {org, type, gzip} = this.options
+    const {org, type, gzip, headers} = this.options
     return this.transport.request(
       `/api/v2/query?org=${encodeURIComponent(org)}`,
       JSON.stringify(
@@ -127,13 +127,14 @@ export class QueryApiImpl implements QueryApi {
           accept: 'text/csv',
           'accept-encoding': gzip ? 'gzip' : 'identity',
           'content-type': 'application/json; encoding=utf-8',
+          ...headers,
         },
       }
     )
   }
 
   private createExecutor(query: string | ParameterizedQuery): QueryExecutor {
-    const {org, type, gzip} = this.options
+    const {org, type, gzip, headers} = this.options
 
     return (consumer): void => {
       this.transport.send(
@@ -150,6 +151,7 @@ export class QueryApiImpl implements QueryApi {
           headers: {
             'content-type': 'application/json; encoding=utf-8',
             'accept-encoding': gzip ? 'gzip' : 'identity',
+            ...headers,
           },
         },
         chunksToLines(consumer, this.transport.chunkCombiner)

@@ -169,34 +169,44 @@ describe('QueryApi', () => {
       },
     ])
   })
-  it('sends custom now and type', async () => {
+  it('sends custom now, type, or header', async () => {
     let body: any
+    let authorization: any
     nock(clientOptions.url)
       .post(QUERY_PATH)
-      .reply((_uri, requestBody) => {
+      .reply(function(_uri, requestBody) {
         body = requestBody
+        authorization = this.req.headers.authorization
         return [200, '', {}]
       })
       .persist()
 
     const query = 'from(bucket:"my-bucket") |> range(start: 0)'
-    const tests: Record<string, string | undefined>[] = [
+    const tests: Record<string, any>[] = [
       {
         now: undefined,
         type: undefined,
+      },
+      {
+        now: undefined,
+        type: undefined,
+        headers: {authorization: 'Token customToken'},
       },
       {
         now: '2020-10-05T14:48:00.000Z',
         type: 'whatever',
       },
     ]
-    for (const pair of tests) {
-      let subject = new InfluxDB(clientOptions).getQueryApi(ORG)
-      if (pair.now) {
-        subject = subject.with({now: () => pair.now as string})
+    for (const tc of tests) {
+      let subject = new InfluxDB(clientOptions).getQueryApi({
+        org: ORG,
+        headers: {...tc.headers},
+      })
+      if (tc.now) {
+        subject = subject.with({now: () => tc.now as string})
       }
-      if (pair.type) {
-        subject = subject.with({type: pair.type as any})
+      if (tc.type) {
+        subject = subject.with({type: tc.type as any})
       }
       await new Promise((resolve, reject) =>
         subject.queryRows(query, {
@@ -209,9 +219,12 @@ describe('QueryApi', () => {
           },
         })
       )
-      expect(body?.type).to.deep.equal(pair.type ?? 'flux')
-      expect(body?.query).to.deep.equal(query)
-      expect(body?.now).to.deep.equal(pair.now)
+      expect(body?.type).equals(tc.type ?? 'flux')
+      expect(body?.query).deep.equals(query)
+      expect(body?.now).equals(tc.now)
+      expect(authorization).equals(
+        tc.headers?.authorization || `Token ${clientOptions.token}`
+      )
     }
   })
   it('collectLines collects lines', async () => {

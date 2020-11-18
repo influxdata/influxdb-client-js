@@ -77,6 +77,8 @@ export interface WriteOptions extends WriteRetryOptions {
   flushInterval: number
   /** default tags, unescaped */
   defaultTags?: Record<string, string>
+  /** HTTP headers that will be sent with every write request */
+  headers?: {[key: string]: string}
 }
 
 /** default RetryDelayStrategyOptions */

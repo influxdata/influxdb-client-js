@@ -59,12 +59,7 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
   private closed = false
   private httpPath: string
   private writeOptions: WriteOptions
-  private sendOptions: SendOptions = {
-    method: 'POST',
-    headers: {
-      'content-type': 'text/plain; charset=utf-8',
-    },
-  }
+  private sendOptions: SendOptions
   private _timeoutHandle: any = undefined
   private currentTime: () => string
   private dateToProtocolTimestamp: (d: Date) => string
@@ -90,6 +85,13 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
     this.dateToProtocolTimestamp = dateToProtocolTimestamp[precision]
     if (this.writeOptions.defaultTags) {
       this.useDefaultTags(this.writeOptions.defaultTags)
+    }
+    this.sendOptions = {
+      method: 'POST',
+      headers: {
+        'content-type': 'text/plain; charset=utf-8',
+        ...writeOptions?.headers,
+      },
     }
 
     const scheduleNextSend = (): void => {
