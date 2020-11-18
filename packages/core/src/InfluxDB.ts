@@ -10,7 +10,7 @@ import {IllegalArgumentError} from './errors'
 import {Transport} from './transport'
 // replaced by ./impl/browser/FetchTransport in browser builds
 import TransportImpl from './impl/node/NodeHttpTransport'
-import QueryApi from './QueryApi'
+import QueryApi, {QueryOptions} from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
 
 /**
@@ -82,10 +82,10 @@ export default class InfluxDB {
    * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts | rxjs-query.ts example},
    * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example},
    *
-   * @param org - organization
+   * @param org - organization or query options
    * @returns QueryApi instance
    */
-  getQueryApi(org: string): QueryApi {
+  getQueryApi(org: string | QueryOptions): QueryApi {
     return new QueryApiImpl(this.transport, org)
   }
 }
