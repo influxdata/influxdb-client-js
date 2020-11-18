@@ -33,7 +33,7 @@ export interface QueryOptions {
    */
   now?: () => string
   /**
-   * Extra HTTP headers that will be sent with every query request.
+   * HTTP headers that will be sent with every query request.
    */
   headers?: {[key: string]: string}
 }

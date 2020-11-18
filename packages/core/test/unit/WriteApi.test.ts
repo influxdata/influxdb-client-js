@@ -343,9 +343,11 @@ describe('WriteApi', () => {
         batchSize: 10,
         writeFailed: writeCounters.writeFailed,
       })
+      let authorization: any
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
-        .reply((_uri, _requestBody) => {
+        .reply(function(_uri, _requestBody) {
+          authorization = this.req.headers.authorization
           return [200, '', {}]
         })
         .persist()
@@ -359,6 +361,25 @@ describe('WriteApi', () => {
         `204 HTTP response status code expected, but 200 returned`
       )
       expect(logs.warn).deep.equals([])
+      expect(authorization).equals(`Token ${clientOptions.token}`)
+    })
+    it('sends custom http header', async () => {
+      useSubject({
+        headers: {authorization: 'Token customToken'},
+      })
+      let authorization: any
+      nock(clientOptions.url)
+        .post(WRITE_PATH_NS)
+        .reply(function(_uri, _requestBody) {
+          authorization = this.req.headers.authorization
+          return [204, '', {}]
+        })
+        .persist()
+      subject.writePoint(new Point('test').floatField('value', 1))
+      await subject.close()
+      expect(logs.error).has.length(0)
+      expect(logs.warn).deep.equals([])
+      expect(authorization).equals(`Token customToken`)
     })
   })
 })
