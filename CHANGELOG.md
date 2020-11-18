@@ -2,6 +2,7 @@
 
 ### Features
 
+1. [#271](https://github.com/influxdata/influxdb-client-js/pull/271): Introduce `@influxdata/giraffe` package.
 1. [#272](https://github.com/influxdata/influxdb-client-js/pull/272): Optimize UTF8 processing in the browser.
 1. [#275](https://github.com/influxdata/influxdb-client-js/pull/275): Export CSV results parser.
 1. [#275](https://github.com/influxdata/influxdb-client-js/pull/275): Export fuction to transform CSV string to giraffe table.
@@ -13,7 +14,7 @@
 
 ### Features
 
-1. [#267](https://github.com/influxdata/influxdb-client-js/pull/267): Introduce `@influxdata/influxdb-client-browser` module.
+1. [#267](https://github.com/influxdata/influxdb-client-js/pull/267): Introduce `@influxdata/influxdb-client-browser` package.
 
 ### Bug Fixes
 
