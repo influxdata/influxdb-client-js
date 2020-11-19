@@ -39,6 +39,7 @@ export class IllegalArgumentError extends Error {
   /* istanbul ignore next */
   constructor(message: string) {
     super(message)
+    this.name = 'IllegalArgumentError'
     Object.setPrototypeOf(this, IllegalArgumentError.prototype)
   }
 }
@@ -63,6 +64,7 @@ export class HttpError extends Error implements RetriableDecision {
     } else {
       this.message = `${statusCode} ${statusMessage}`
     }
+    this.name = 'HttpError'
     this.setRetryAfter(retryAfter)
   }
 
@@ -141,6 +143,7 @@ export class RequestTimedOutError extends Error implements RetriableDecision {
   constructor() {
     super()
     Object.setPrototypeOf(this, RequestTimedOutError.prototype)
+    this.name = 'RequestTimedOutError'
     this.message = 'Request timed out'
   }
   canRetry(): boolean {
