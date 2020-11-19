@@ -228,9 +228,12 @@ export class NodeHttpTransport implements Transport {
       responseData.on('error', listeners.error)
       if (statusCode >= 300) {
         let body = ''
+        const isJson = String(res.headers['content-type']).startsWith(
+          'application/json'
+        )
         responseData.on('data', s => {
           body += s.toString()
-          if (body.length > 1000) {
+          if (!isJson && body.length > 1000) {
             body = body.slice(0, 1000)
             res.resume()
           }
@@ -244,7 +247,8 @@ export class NodeHttpTransport implements Transport {
               statusCode,
               res.statusMessage,
               body,
-              res.headers['retry-after']
+              res.headers['retry-after'],
+              res.headers['content-type']
             )
           )
         })

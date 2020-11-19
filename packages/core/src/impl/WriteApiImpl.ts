@@ -182,12 +182,14 @@ export default class WriteApiImpl implements WriteApi, PointSettings {
               self.retryStrategy.success()
               resolve()
             } else {
+              const message = `204 HTTP response status code expected, but ${responseStatusCode} returned`
               const error = new HttpError(
                 responseStatusCode,
-                `204 HTTP response status code expected, but ${responseStatusCode} returned`,
+                message,
                 undefined,
                 '0'
               )
+              error.message = message
               callbacks.error(error)
             }
           },

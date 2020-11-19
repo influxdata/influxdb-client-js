@@ -192,6 +192,35 @@ describe('FetchTransport', () => {
               .equals('')
         )
     })
+    it('throws error with json body', async () => {
+      const body = '{"code":"mycode","message":"mymsg"}'
+      emulateFetchApi({
+        headers: {'content-type': 'application/json'},
+        body,
+        status: 500,
+      })
+      await transport
+        .request('/whatever', '', {
+          method: 'GET',
+        })
+        .then(
+          () => Promise.reject('client error expected'),
+          (e: any) => {
+            expect(e)
+              .property('body')
+              .equals(body)
+            expect(e)
+              .property('json')
+              .deep.equals(JSON.parse(body))
+            expect(e)
+              .property('message')
+              .equals('mymsg')
+            expect(e)
+              .property('code')
+              .equals('mycode')
+          }
+        )
+    })
   })
   describe('send', () => {
     const transport = new FetchTransport({url: 'http://test:8086'})
