@@ -49,7 +49,7 @@ export class IllegalArgumentError extends Error {
 export class HttpError extends Error implements RetriableDecision {
   private _retryAfter: number
   /** application error code, when available */
-  public code: string | undefined // application-specific code
+  public code: string | undefined
   /** json error response */
   public json: any
 
@@ -73,7 +73,7 @@ export class HttpError extends Error implements RetriableDecision {
           this.message = this.json.message
           this.code = this.json.code
         } catch (e) {
-          // never mind silently ignore
+          // silently ignore, body string is still available
         }
       }
       if (!this.message) {
