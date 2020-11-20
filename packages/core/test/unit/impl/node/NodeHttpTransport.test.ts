@@ -355,6 +355,33 @@ describe('NodeHttpTransport', () => {
               .to.length(1000)
           })
       })
+      it(`parses error responses`, async () => {
+        let bigMessage = ',"this is a big error message"'
+        while (bigMessage.length < 1001) bigMessage += bigMessage
+        bigMessage = `{"code":"mc","message":"mymsg","details":[""${bigMessage}]}`
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(400, bigMessage, {'content-type': 'application/json'})
+        await sendTestData(transportOptions, {method: 'GET'}).then(
+          () => {
+            throw new Error('must not succeed')
+          },
+          (e: any) => {
+            expect(e)
+              .property('body')
+              .to.length(bigMessage.length)
+            expect(e)
+              .property('json')
+              .deep.equals(JSON.parse(bigMessage))
+            expect(e)
+              .property('code')
+              .equals('mc')
+            expect(e)
+              .property('message')
+              .equals('mymsg')
+          }
+        )
+      })
       it(`uses X-Influxdb-Error header when no body is returned`, async () => {
         const errorMessage = 'this is a header error message'
         nock(transportOptions.url)

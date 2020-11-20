@@ -96,7 +96,8 @@ export default class FetchTransport implements Transport {
                   response.status,
                   response.statusText,
                   text,
-                  response.headers.get('retry-after')
+                  response.headers.get('retry-after'),
+                  response.headers.get('content-type')
                 )
               )
             })
@@ -107,7 +108,8 @@ export default class FetchTransport implements Transport {
                   response.status,
                   response.statusText,
                   undefined,
-                  response.headers.get('retry-after')
+                  response.headers.get('retry-after'),
+                  response.headers.get('content-type')
                 )
               )
             })
@@ -152,7 +154,8 @@ export default class FetchTransport implements Transport {
         status,
         response.statusText,
         data,
-        response.headers.get('retry-after')
+        response.headers.get('retry-after'),
+        response.headers.get('content-type')
       )
     }
     const responseType = options.headers?.accept ?? responseContentType

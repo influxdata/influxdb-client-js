@@ -49,18 +49,37 @@ export class IllegalArgumentError extends Error {
  */
 export class HttpError extends Error implements RetriableDecision {
   private _retryAfter: number
+  /** application error code, when available */
+  public code: string | undefined
+  /** json error response */
+  public json: any
 
   /* istanbul ignore next because of super() not being covered*/
   constructor(
     readonly statusCode: number,
     readonly statusMessage: string | undefined,
     readonly body?: string,
-    retryAfter?: string | undefined | null
+    retryAfter?: string | undefined | null,
+    readonly contentType?: string | undefined | null,
+    message?: string
   ) {
     super()
     Object.setPrototypeOf(this, HttpError.prototype)
-    if (body) {
-      this.message = `${statusCode} ${statusMessage} : ${body}`
+    if (message) {
+      this.message = message
+    } else if (body) {
+      if (contentType?.startsWith('application/json')) {
+        try {
+          this.json = JSON.parse(body)
+          this.message = this.json.message
+          this.code = this.json.code
+        } catch (e) {
+          // silently ignore, body string is still available
+        }
+      }
+      if (!this.message) {
+        this.message = `${statusCode} ${statusMessage} : ${body}`
+      }
     } else {
       this.message = `${statusCode} ${statusMessage}`
     }

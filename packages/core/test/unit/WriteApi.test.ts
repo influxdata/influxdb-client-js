@@ -357,7 +357,7 @@ describe('WriteApi', () => {
       expect(logs.error[0][0]).equals('Write to InfluxDB failed.')
       expect(logs.error[0][1]).instanceOf(HttpError)
       expect(logs.error[0][1].statusCode).equals(200)
-      expect(logs.error[0][1].statusMessage).equals(
+      expect(logs.error[0][1].message).equals(
         `204 HTTP response status code expected, but 200 returned`
       )
       expect(logs.warn).deep.equals([])
