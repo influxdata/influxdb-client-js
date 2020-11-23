@@ -1,7 +1,6 @@
 import WriteApi from '../WriteApi'
 import {
   DEFAULT_WriteOptions,
-  PointSettings,
   WriteOptions,
   WritePrecisionType,
 } from '../options'
@@ -9,7 +8,7 @@ import {Transport, SendOptions} from '../transport'
 import {Headers} from '../results'
 import Logger from './Logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
-import Point from '../Point'
+import {Point, PointSettings} from '../Point'
 import {escape} from '../util/escape'
 import {currentTime, dateToProtocolTimestamp} from '../util/currentTime'
 import {createRetryDelayStrategy} from './retryStrategy'

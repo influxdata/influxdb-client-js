@@ -1,9 +1,20 @@
 import {escape} from './util/escape'
-import {PointSettings} from './options'
+
+/**
+ * Settings that control the way of how a {@link Point} is serialized
+ * to a protocol line.
+ */
+export interface PointSettings {
+  defaultTags?: {[key: string]: string}
+  convertTime?: (
+    value: string | number | Date | undefined
+  ) => string | undefined
+}
+
 /**
  * Point defines values of a single measurement.
  */
-export default class Point {
+export class Point {
   private name: string
   private tags: {[key: string]: string} = {}
   private fields: {[key: string]: string} = {}

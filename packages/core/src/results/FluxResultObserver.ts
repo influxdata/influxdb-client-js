@@ -1,4 +1,4 @@
-import {Cancellable} from '../results'
+import {Cancellable} from '../results/Cancellable'
 import {FluxTableMetaData} from './FluxTableMetaData'
 
 /**
