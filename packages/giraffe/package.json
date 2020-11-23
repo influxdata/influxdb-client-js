@@ -60,7 +60,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "rimraf": "^3.0.0",
-    "rollup": "^2.23.1",
+    "rollup": "^2.33.3",
     "rollup-plugin-gzip": "^2.2.0",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.27.2",
