@@ -20,6 +20,19 @@
   "module": "dist/index.mjs",
   "browser": "dist/index.browser.js",
   "types": "dist/all.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "deno": "./dist/index.mjs",
+      "browser": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js",
+        "umd": "./dist/index.browser.js",
+        "script": "./dist/influxdbApis.js"
+      }
+    }
+  },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
     "type": "git",
