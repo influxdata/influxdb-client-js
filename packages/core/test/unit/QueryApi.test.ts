@@ -112,7 +112,7 @@ describe('QueryApi', () => {
           reject(error)
         },
         complete(): void {
-          resolve()
+          resolve(undefined)
         },
       })
     )
@@ -146,7 +146,7 @@ describe('QueryApi', () => {
           reject(error)
         },
         complete(): void {
-          resolve()
+          resolve(undefined)
         },
       })
     )
@@ -215,7 +215,7 @@ describe('QueryApi', () => {
             reject(error)
           },
           complete(): void {
-            resolve()
+            resolve(undefined)
           },
         })
       )
