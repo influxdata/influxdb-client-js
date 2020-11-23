@@ -19,6 +19,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.browser.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
     "type": "git",
