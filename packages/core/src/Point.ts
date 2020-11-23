@@ -129,7 +129,7 @@ export default class Point {
   /**
    * Creates an InfluxDB protocol line out of this instance.
    * @param settings - settings define the exact representation of point time and can also add default tags
-   * @returns an InfxluDB protocol line out of this instance
+   * @returns an InfluxDB protocol line out of this instance
    */
   public toLineProtocol(settings?: PointSettings): string | undefined {
     if (!this.name) return undefined
