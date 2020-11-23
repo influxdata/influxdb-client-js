@@ -3,6 +3,7 @@ import gzip from 'rollup-plugin-gzip'
 import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 import replace from '@rollup/plugin-replace'
+import dts from 'rollup-plugin-dts'
 
 const tsBuildConfigPath = './tsconfig.build.json'
 const externalNodeModules = ['buffer', 'http', 'https', 'url', 'zlib']
@@ -70,4 +71,9 @@ export default [
     target: 'es5',
     noTerser: true,
   }),
+  {
+    input: './dist/index.d.ts',
+    output: [{file: './dist/all.d.ts', format: 'es'}],
+    plugins: [dts()],
+  },
 ]
