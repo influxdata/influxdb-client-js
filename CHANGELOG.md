@@ -13,6 +13,12 @@
 1. [#287](https://github.com/influxdata/influxdb-client-js/pull/287): Throw HttpError with code and message from response body.
 1. [#289](https://github.com/influxdata/influxdb-client-js/pull/289): Improve distributions, support deno.
 
+### Breaking Changes
+
+1. [#291](https://github.com/influxdata/influxdb-client-js/pull/291): Remove WritePrecision const enum. A typescript code
+   has to be changed to use the precision value directly ('ns' in place of WritePrecision.ns). No changes are required
+   for a javascript code or a typescript code that already uses the precision value directly.
+
 ## 1.8.0 [2020-10-30]
 
 ### Features

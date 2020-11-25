@@ -3,7 +3,6 @@ import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport,
 import {
   ClientOptions,
   HttpError,
-  WritePrecision,
   WriteOptions,
   Point,
   WriteApi,
@@ -21,7 +20,7 @@ const clientOptions: ClientOptions = {
 }
 const ORG = 'org'
 const BUCKET = 'bucket'
-const PRECISION = WritePrecision.s
+const PRECISION: WritePrecisionType = 's'
 
 const WRITE_PATH_NS = `/api/v2/write?org=${ORG}&bucket=${BUCKET}&precision=ns`
 
