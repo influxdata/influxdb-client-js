@@ -129,14 +129,3 @@ export const enum WritePrecision {
   s = 's',
 }
 export type WritePrecisionType = keyof typeof WritePrecision | WritePrecision
-
-/**
- * Settings that control the way of how a {@link Point} is serialized
- * to a protocol line.
- */
-export interface PointSettings {
-  defaultTags?: {[key: string]: string}
-  convertTime?: (
-    value: string | number | Date | undefined
-  ) => string | undefined
-}

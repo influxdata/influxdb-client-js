@@ -1,6 +1,6 @@
 # @influxdata/influxdb-client-browser
 
-The reference javascript browser client for InfluxDB 2.0. The package.json
+The reference InfluxDB 2.0 javascript client for browser and [deno](https://deno.land/) environments. The package.json
 
 - **main** points to browser UMD distribution of @influxdata/influxdb-client
 - **module** points to browser ESM distribution of @influxdata/influxdb-client

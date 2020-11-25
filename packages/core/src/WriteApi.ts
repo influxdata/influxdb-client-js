@@ -1,4 +1,4 @@
-import Point from './Point'
+import {Point} from './Point'
 
 /**
  * The asynchronous buffering API to Write time-series data into InfluxDB 2.0.

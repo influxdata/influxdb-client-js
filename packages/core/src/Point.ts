@@ -1,9 +1,20 @@
 import {escape} from './util/escape'
-import {PointSettings} from './options'
+
+/**
+ * Settings that control the way of how a {@link Point} is serialized
+ * to a protocol line.
+ */
+export interface PointSettings {
+  defaultTags?: {[key: string]: string}
+  convertTime?: (
+    value: string | number | Date | undefined
+  ) => string | undefined
+}
+
 /**
  * Point defines values of a single measurement.
  */
-export default class Point {
+export class Point {
   private name: string
   private tags: {[key: string]: string} = {}
   private fields: {[key: string]: string} = {}
@@ -129,7 +140,7 @@ export default class Point {
   /**
    * Creates an InfluxDB protocol line out of this instance.
    * @param settings - settings define the exact representation of point time and can also add default tags
-   * @returns an InfxluDB protocol line out of this instance
+   * @returns an InfluxDB protocol line out of this instance
    */
   public toLineProtocol(settings?: PointSettings): string | undefined {
     if (!this.name) return undefined

@@ -1,7 +1,6 @@
 import {expect} from 'chai'
-import Point from '../../src/Point'
 import pointTables from '../fixture/pointTables.json'
-import {PointSettings} from '../../src'
+import {Point, PointSettings} from '../../src'
 
 interface PointTest {
   name?: string

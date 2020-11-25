@@ -19,6 +19,20 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.browser.js",
+  "types": "dist/all.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "deno": "./dist/index.mjs",
+      "browser": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js",
+        "umd": "./dist/index.browser.js",
+        "script": "./dist/influxdbApis.js"
+      }
+    }
+  },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
   "repository": {
     "type": "git",
@@ -50,11 +64,12 @@
     "mocha": "^6.2.2",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "rollup": "^2.23.1",
+    "rollup": "^2.33.3",
+    "rollup-plugin-dts": "^2.0.0",
     "rollup-plugin-gzip": "^2.2.0",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.27.2",
     "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "typescript": "^4.1.2"
   }
 }

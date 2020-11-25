@@ -3,6 +3,7 @@ import gzip from 'rollup-plugin-gzip'
 import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 import resolve from '@rollup/plugin-node-resolve'
+import dts from 'rollup-plugin-dts'
 
 const tsBuildConfigPath = './tsconfig.build.json'
 
@@ -38,4 +39,9 @@ function createConfig({format, out, name, target, noTerser}) {
 export default [
   createConfig({format: 'umd', out: pkg.main}),
   createConfig({format: 'esm', out: pkg.module}),
+  {
+    input: './dist/index.d.ts',
+    output: [{file: './dist/all.d.ts', format: 'es'}],
+    plugins: [dts()],
+  },
 ]
