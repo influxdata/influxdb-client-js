@@ -115,17 +115,7 @@ export interface ClientOptions extends ConnectionOptions {
 }
 
 /**
- * Precission for write operations.
+ * Timestamp precision used in write operations.
  * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
  */
-export const enum WritePrecision {
-  /** nanosecond */
-  ns = 'ns',
-  /* microsecond */
-  us = 'us',
-  /** millisecond */
-  ms = 'ms',
-  /* second */
-  s = 's',
-}
-export type WritePrecisionType = keyof typeof WritePrecision | WritePrecision
+export type WritePrecisionType = 'ns' | 'us' | 'ms' | 's'
