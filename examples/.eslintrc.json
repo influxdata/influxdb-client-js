@@ -19,6 +19,12 @@
       "rules": {
         "@typescript-eslint/explicit-function-return-type": "off"
       }
+    },
+    {
+      "files": ["query.deno.ts"],
+      "rules": {
+        "prettier/prettier": "off"
+      }
     }
   ]
 }
