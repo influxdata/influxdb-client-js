@@ -11,7 +11,7 @@
 1. [#280](https://github.com/influxdata/influxdb-client-js/pull/280): Upgrade to the latest node v14 LTS.
 1. [#283](https://github.com/influxdata/influxdb-client-js/pull/283): Allow to specify custom HTTP headers in WriteApi or QueryApi.
 1. [#287](https://github.com/influxdata/influxdb-client-js/pull/287): Throw HttpError with code and message from response body.
-1. [#289](https://github.com/influxdata/influxdb-client-js/pull/289): Improve distributions, support deno.
+1. [#289](https://github.com/influxdata/influxdb-client-js/pull/289): Support `deno`.
 
 ### Breaking Changes
 
