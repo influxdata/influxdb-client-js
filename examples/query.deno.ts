@@ -6,30 +6,30 @@
 import {
   FluxTableMetaData,
   InfluxDB,
-} from "https://cdn.skypack.dev/@influxdata/influxdb-client-browser@1.9.0-nightly.1044?dts";
+} from 'https://cdn.skypack.dev/@influxdata/influxdb-client-browser@1.9.0-nightly.1044?dts'
 
-const url = "http://localhost:8086";
-const token = "my-token";
-const org = "my-org";
+const url = 'http://localhost:8086'
+const token = 'my-token'
+const org = 'my-org'
 
-const queryApi = new InfluxDB({ url, token }).getQueryApi(org);
+const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
-  'from(bucket:"my-bucket" ) |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")';
+  'from(bucket:"my-bucket" ) |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
 
-console.log("** QUERY ROWS ***");
+console.log('** QUERY ROWS ***')
 queryApi.queryRows(fluxQuery, {
   next(row: string[], tableMeta: FluxTableMetaData) {
-    const o = tableMeta.toObject(row);
+    const o = tableMeta.toObject(row)
     // console.log(JSON.stringify(o, null, 2))
     console.log(
-      `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`,
-    );
+      `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
+    )
   },
   error(error: Error) {
-    console.error(error);
-    console.log("\nFinished ERROR");
+    console.error(error)
+    console.log('\nFinished ERROR')
   },
   complete() {
-    console.log("\nFinished SUCCESS");
+    console.log('\nFinished SUCCESS')
   },
-});
+})
