@@ -1,6 +1,6 @@
 # InfluxDB Client Examples
 
-This directory contains javascript and typescript examples for node.js and browser environments.
+This directory contains javascript and typescript examples for node.js, browser, and deno.
 
 - Node.js examples
   - Prerequisites
