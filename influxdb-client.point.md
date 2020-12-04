@@ -9,7 +9,7 @@ Point defines values of a single measurement.
 <b>Signature:</b>
 
 ```typescript
-export default class Point 
+export declare class Point 
 ```
 
 ## Constructors

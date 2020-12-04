@@ -4,8 +4,10 @@
 
 ## WritePrecisionType type
 
+Timestamp precision used in write operations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite)
+
 <b>Signature:</b>
 
 ```typescript
-export declare type WritePrecisionType = keyof typeof WritePrecision | WritePrecision;
+export declare type WritePrecisionType = 'ns' | 'us' | 'ms' | 's';
 ```

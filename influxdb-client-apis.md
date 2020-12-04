@@ -19,11 +19,13 @@ const influxDB = new InfluxDB({
   token: "my-token"
 })
 ...
-async function getOrg(name) {
+async function getOrg() {
   const orgsAPI = new OrgsAPI(influxDB)
   const organizations = await orgsAPI.getOrgs({
     org: "my-org"
   })
+  ...
+}
 ...
 
 ```
@@ -156,7 +158,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md) |  |
 |  [DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md) |  |
 |  [Dialect](./influxdb-client-apis.dialect.md) | Dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/\#dialect-descriptions |
-|  [Document](./influxdb-client-apis.document.md) |  |
+|  [Document\_2](./influxdb-client-apis.document_2.md) |  |
 |  [DocumentCreate](./influxdb-client-apis.documentcreate.md) |  |
 |  [DocumentListEntry](./influxdb-client-apis.documentlistentry.md) |  |
 |  [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |

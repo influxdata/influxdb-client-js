@@ -4,7 +4,7 @@
 
 ## Cancellable.cancel() method
 
-Attempt to cancel execution.
+Cancels execution.
 
 <b>Signature:</b>
 

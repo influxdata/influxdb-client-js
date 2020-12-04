@@ -19,13 +19,16 @@ export declare class HttpError extends Error implements RetriableDecision
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(statusCode, statusMessage, body, retryAfter)](./influxdb-client.httperror._constructor_.md) |  | Constructs a new instance of the <code>HttpError</code> class |
+|  [(constructor)(statusCode, statusMessage, body, retryAfter, contentType, message)](./influxdb-client.httperror._constructor_.md) |  | Constructs a new instance of the <code>HttpError</code> class |
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [body](./influxdb-client.httperror.body.md) |  | string \| undefined |  |
+|  [code](./influxdb-client.httperror.code.md) |  | string \| undefined | application error code, when available |
+|  [contentType](./influxdb-client.httperror.contenttype.md) |  | string \| null \| undefined |  |
+|  [json](./influxdb-client.httperror.json.md) |  | any | json error response |
 |  [statusCode](./influxdb-client.httperror.statuscode.md) |  | number |  |
 |  [statusMessage](./influxdb-client.httperror.statusmessage.md) |  | string \| undefined |  |
 

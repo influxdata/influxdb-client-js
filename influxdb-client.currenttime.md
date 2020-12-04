@@ -9,7 +9,7 @@ Exposes functions that creates strings that represent a timestamp that can be us
 <b>Signature:</b>
 
 ```typescript
-currentTime: Readonly<{
+currentTime: {
     s: () => string;
     ms: () => string;
     us: () => string;
@@ -18,5 +18,5 @@ currentTime: Readonly<{
     millis: () => string;
     micros: () => string;
     nanos: () => string;
-}>
+}
 ```

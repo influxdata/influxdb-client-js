@@ -10,8 +10,8 @@ Provides functions escape specific parts in InfluxDB line protocol.
 
 ```typescript
 escape: {
-    measurement: (val: string) => string;
-    quoted: (val: string) => string;
-    tag: (val: string) => string;
+    measurement: (value: string) => string;
+    quoted: (value: string) => string;
+    tag: (value: string) => string;
 }
 ```

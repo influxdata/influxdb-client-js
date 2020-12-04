@@ -4,7 +4,7 @@
 
 ## WriteRetryOptions.writeFailed() method
 
-writeFailed is called to inform about write error
+WriteFailed is called to inform about write errors.
 
 <b>Signature:</b>
 

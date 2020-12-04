@@ -9,7 +9,7 @@ Constructs a new instance of the `HttpError` class
 <b>Signature:</b>
 
 ```typescript
-constructor(statusCode: number, statusMessage: string | undefined, body?: string | undefined, retryAfter?: string | undefined | null);
+constructor(statusCode: number, statusMessage: string | undefined, body?: string | undefined, retryAfter?: string | undefined | null, contentType?: string | null | undefined, message?: string);
 ```
 
 ## Parameters
@@ -20,4 +20,6 @@ constructor(statusCode: number, statusMessage: string | undefined, body?: string
 |  statusMessage | string \| undefined |  |
 |  body | string \| undefined |  |
 |  retryAfter | string \| undefined \| null |  |
+|  contentType | string \| null \| undefined |  |
+|  message | string |  |
 

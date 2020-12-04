@@ -4,7 +4,7 @@
 
 ## ChunkCombiner interface
 
-Simpified platform-neutral data chunk manipulation, it might differ between target platform (node vs browser).
+ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that allows to process text data on the fly. The implementation can be optimized for the target platform (node vs browser).
 
 <b>Signature:</b>
 

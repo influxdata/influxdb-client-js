@@ -9,7 +9,7 @@ Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
 <b>Signature:</b>
 
 ```typescript
-export default interface FluxTableMetaData 
+export interface FluxTableMetaData 
 ```
 
 ## Properties

@@ -9,7 +9,7 @@ Observes results of a flux query.
 <b>Signature:</b>
 
 ```typescript
-export default interface FluxResultObserver<T> 
+export interface FluxResultObserver<T> 
 ```
 
 ## Properties

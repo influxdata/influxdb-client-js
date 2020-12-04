@@ -21,7 +21,7 @@ getDocumentsTemplatesID(request: GetDocumentsTemplatesIDRequest, requestOptions?
 
 <b>Returns:</b>
 
-Promise&lt;[Document](./influxdb-client-apis.document.md)<!-- -->&gt;
+Promise&lt;Document&gt;
 
 promise of response
 

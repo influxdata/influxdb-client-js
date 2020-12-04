@@ -9,10 +9,10 @@ default RetryDelayStrategyOptions
 <b>Signature:</b>
 
 ```typescript
-DEFAULT_RetryDelayStrategyOptions: Readonly<{
+DEFAULT_RetryDelayStrategyOptions: {
     retryJitter: number;
     minRetryDelay: number;
     maxRetryDelay: number;
     exponentialBase: number;
-}>
+}
 ```

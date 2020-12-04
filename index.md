@@ -5,7 +5,7 @@
 
 ## API Reference
 
-Welcome to the API Reference Documentation of InfluxDB v2 JavaScript Client (version 1.8.0 _2020-10-30T07:24:01.326Z_).
+Welcome to the API Reference Documentation of InfluxDB v2 JavaScript Client (version 1.9.0 _2020-12-04T06:30:22.739Z_).
 Use this client library with InfluxDB 2.x and InfluxDB 1.8+.
 For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 
@@ -15,4 +15,5 @@ For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https
 |  --- | --- |
 |  [@influxdata/influxdb-client](./influxdb-client.md) | The <code>@influxdata/influxdb-client</code> package provides optimized APIs that write or query InfluxDB v2. |
 |  [@influxdata/influxdb-client-apis](./influxdb-client-apis.md) | The <code>@influxdata/influxdb-client-apis</code> package provides all InfluxDB v2 APIs generated from its [OpenAPI specification](https://v2.docs.influxdata.com/v2.0/api/)<!-- -->. |
+|  [@influxdata/influxdb-client-giraffe](./influxdb-client-giraffe.md) | The <code>@influxdata/influxdb-client-giraffe</code> package transforms InfluxDB (Flux) query results to a format that is used by [Giraffe](https://github.com/influxdata/giraffe) to visualize the data. |
 

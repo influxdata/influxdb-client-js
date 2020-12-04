@@ -9,14 +9,14 @@ Creates QueryApi for the supplied organization .
 <b>Signature:</b>
 
 ```typescript
-getQueryApi(org: string): QueryApi;
+getQueryApi(org: string | QueryOptions): QueryApi;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  org | string | organization |
+|  org | string \| [QueryOptions](./influxdb-client.queryoptions.md) | organization or query options |
 
 <b>Returns:</b>
 

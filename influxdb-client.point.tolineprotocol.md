@@ -22,5 +22,5 @@ toLineProtocol(settings?: PointSettings): string | undefined;
 
 string \| undefined
 
-an InfxluDB protocol line out of this instance
+an InfluxDB protocol line out of this instance
 

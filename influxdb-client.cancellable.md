@@ -4,18 +4,18 @@
 
 ## Cancellable interface
 
-Allows to cancel a running query.
+Allows to cancel a running execution.
 
 <b>Signature:</b>
 
 ```typescript
-export default interface Cancellable 
+export interface Cancellable 
 ```
 
 ## Methods
 
 |  Method | Description |
 |  --- | --- |
-|  [cancel()](./influxdb-client.cancellable.cancel.md) | Attempt to cancel execution. |
+|  [cancel()](./influxdb-client.cancellable.cancel.md) | Cancels execution. |
 |  [isCancelled()](./influxdb-client.cancellable.iscancelled.md) |  |
 

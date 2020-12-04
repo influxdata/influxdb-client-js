@@ -32,22 +32,19 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [HttpError](./influxdb-client.httperror.md) | A general HTTP error. |
 |  [IllegalArgumentError](./influxdb-client.illegalargumenterror.md) | IllegalArgumentError is thrown when illegal argument is supplied. |
 |  [InfluxDB](./influxdb-client.influxdb.md) | InfluxDB 2.0 entry point that configures communication with InfluxDB server and provide APIs to write and query data. |
+|  [LineSplitter](./influxdb-client.linesplitter.md) | Optimized tokenizer of a single CSV line. |
 |  [Point](./influxdb-client.point.md) | Point defines values of a single measurement. |
 |  [RequestTimedOutError](./influxdb-client.requesttimedouterror.md) | RequestTimedOutError indicates request timeout in the communication with the server |
-
-## Enumerations
-
-|  Enumeration | Description |
-|  --- | --- |
-|  [WritePrecision](./influxdb-client.writeprecision.md) | Precission for write operations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite) |
 
 ## Functions
 
 |  Function | Description |
 |  --- | --- |
 |  [canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md) | Tests the error in order to know if an HTTP call can be retried. |
+|  [chunksToLines(target, chunkCombiner)](./influxdb-client.chunkstolines.md) | ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines. |
 |  [createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md) | Creates a flux table column from a partial FluxTableColumn. |
 |  [createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md) | Created FluxTableMetaData from the columns supplied. |
+|  [createTextDecoderCombiner()](./influxdb-client.createtextdecodercombiner.md) | Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arrays into strings. |
 |  [flux(strings, values)](./influxdb-client.flux.md) | Flux is a tagged template that sanitizes supplied parameters to avoid injection attacks in flux. |
 |  [fluxBool(value)](./influxdb-client.fluxbool.md) | Creates flux boolean literal. |
 |  [fluxDateTime(value)](./influxdb-client.fluxdatetime.md) | Creates flux date-time literal. |
@@ -59,10 +56,13 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [fluxString(value)](./influxdb-client.fluxstring.md) | Creates a flux string literal. |
 |  [getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md) | Gets retry delay from the supplied error, possibly using random number up to retryJitter. |
 |  [isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md) | isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. |
+|  [linesToTables(consumer)](./influxdb-client.linestotables.md) | linesToTables creates a transformationthat accepts (flux) annotated CSV lines and emits rows together with table metadata. |
+|  [newFluxTableColumn()](./influxdb-client.newfluxtablecolumn.md) | Creates a new flux table column. |
 |  [sanitizeFloat(value)](./influxdb-client.sanitizefloat.md) | Sanitizes float value to avoid injections. |
 |  [serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md) | serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md) | serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md) | serializeDateTimeAsString changes type serializers to return string values for <code>dateTime:RFC3339</code> query result data type. Empty value is converted to null. |
+|  [stringToLines(source, target)](./influxdb-client.stringtolines.md) | StringToLines is a transformation that emmits strings for each CSV line in the supplied source string. |
 |  [toFluxValue(value)](./influxdb-client.tofluxvalue.md) | Escapes content of the supplied parameter so that it can be safely embedded into flux query. |
 |  [useProcessHrtime(use)](./influxdb-client.useprocesshrtime.md) |  |
 
@@ -70,8 +70,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 
 |  Interface | Description |
 |  --- | --- |
-|  [Cancellable](./influxdb-client.cancellable.md) | Allows to cancel a running query. |
-|  [ChunkCombiner](./influxdb-client.chunkcombiner.md) | Simpified platform-neutral data chunk manipulation, it might differ between target platform (node vs browser). |
+|  [Cancellable](./influxdb-client.cancellable.md) | Allows to cancel a running execution. |
+|  [ChunkCombiner](./influxdb-client.chunkcombiner.md) | ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that allows to process text data on the fly. The implementation can be optimized for the target platform (node vs browser). |
 |  [ClientOptions](./influxdb-client.clientoptions.md) | Options used by [InfluxDB](./influxdb-client.influxdb.md) . |
 |  [CommunicationObserver](./influxdb-client.communicationobserver.md) | Observes communication with the server. |
 |  [ConnectionOptions](./influxdb-client.connectionoptions.md) | Option for the communication with InfluxDB server. |
@@ -119,5 +119,5 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
 |  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
 |  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |
-|  [WritePrecisionType](./influxdb-client.writeprecisiontype.md) |  |
+|  [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | Timestamp precision used in write operations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite) |
 
