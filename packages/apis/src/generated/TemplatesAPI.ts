@@ -1,6 +1,12 @@
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
-import {Template, TemplateApply, TemplateExport, TemplateSummary} from './types'
+import {
+  Template,
+  TemplateApply,
+  TemplateExportByID,
+  TemplateExportByName,
+  TemplateSummary,
+} from './types'
 
 export interface ApplyTemplateRequest {
   /** entity body */
@@ -8,7 +14,7 @@ export interface ApplyTemplateRequest {
 }
 export interface ExportTemplateRequest {
   /** Export resources as an InfluxDB template. */
-  body: TemplateExport
+  body: TemplateExportByID | TemplateExportByName
 }
 /**
  * Templates API

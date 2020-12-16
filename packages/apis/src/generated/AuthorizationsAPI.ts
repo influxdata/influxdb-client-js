@@ -128,7 +128,7 @@ export class AuthorizationsAPI {
     )
   }
   /**
-   * Delete a authorization.
+   * Delete an authorization.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

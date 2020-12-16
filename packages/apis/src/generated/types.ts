@@ -300,9 +300,9 @@ export interface DBRP {
   /** the mapping identifier */
   readonly id?: string
   /** the organization ID that owns this mapping. */
-  orgID: string
+  orgID?: string
   /** the organization that owns this mapping. */
-  org: string
+  org?: string
   /** the bucket ID used as target for the translation. */
   bucketID: string
   /** InfluxDB v1 database */
@@ -418,6 +418,8 @@ export interface ScraperTargetRequest {
   orgID?: string
   /** The ID of the bucket to write to. */
   bucketID?: string
+  /** Skip TLS verification on endpoint. */
+  allowInsecure?: boolean
 }
 
 export interface Variables {
@@ -557,7 +559,7 @@ export interface Buckets {
 
 export interface LabelCreateRequest {
   orgID: string
-  name?: string
+  name: string
   /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
   properties?: any
 }
@@ -668,13 +670,24 @@ export interface LinePlusSingleStatProperties {
   axes: Axes
   legend: Legend
   xColumn?: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   yColumn?: string
+  generateYAxisTicks?: string[]
+  yTotalTicks?: number
+  yTickStart?: number
+  yTickStep?: number
   shadeBelow?: boolean
   hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   position: 'overlaid' | 'stacked'
   prefix: string
   suffix: string
   decimalPlaces: DecimalPlaces
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface DashboardQuery {
@@ -788,11 +801,22 @@ export interface XYViewProperties {
   axes: Axes
   legend: Legend
   xColumn?: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   yColumn?: string
+  generateYAxisTicks?: string[]
+  yTotalTicks?: number
+  yTickStart?: number
+  yTickStep?: number
   shadeBelow?: boolean
   hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   position: 'overlaid' | 'stacked'
   geom: XYGeom
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX'
@@ -829,6 +853,9 @@ export interface HistogramViewProperties {
   xAxisLabel: string
   position: 'overlaid' | 'stacked'
   binCount: number
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface GaugeViewProperties {
@@ -899,6 +926,9 @@ export interface CheckViewProperties {
   queries: DashboardQuery[]
   /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export type Check = CheckDiscriminator
@@ -1028,7 +1058,15 @@ export interface ScatterViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   yColumn: string
+  generateYAxisTicks?: string[]
+  yTotalTicks?: number
+  yTickStart?: number
+  yTickStep?: number
   fillColumns: string[]
   symbolColumns: string[]
   xDomain: number[]
@@ -1039,6 +1077,9 @@ export interface ScatterViewProperties {
   xSuffix: string
   yPrefix: string
   ySuffix: string
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface HeatmapViewProperties {
@@ -1052,7 +1093,15 @@ export interface HeatmapViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   yColumn: string
+  generateYAxisTicks?: string[]
+  yTotalTicks?: number
+  yTickStart?: number
+  yTickStep?: number
   xDomain: number[]
   yDomain: number[]
   xAxisLabel: string
@@ -1062,6 +1111,9 @@ export interface HeatmapViewProperties {
   yPrefix: string
   ySuffix: string
   binSize: number
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface MosaicViewProperties {
@@ -1075,6 +1127,10 @@ export interface MosaicViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   xColumn: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   ySeriesColumns: string[]
   fillColumns: string[]
   xDomain: number[]
@@ -1085,6 +1141,9 @@ export interface MosaicViewProperties {
   xSuffix: string
   yPrefix: string
   ySuffix: string
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface BandViewProperties {
@@ -1100,12 +1159,23 @@ export interface BandViewProperties {
   axes: Axes
   legend: Legend
   xColumn?: string
+  generateXAxisTicks?: string[]
+  xTotalTicks?: number
+  xTickStart?: number
+  xTickStep?: number
   yColumn?: string
+  generateYAxisTicks?: string[]
+  yTotalTicks?: number
+  yTickStart?: number
+  yTickStep?: number
   upperColumn?: string
   mainColumn?: string
   lowerColumn?: string
   hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   geom: XYGeom
+  legendColorizeRows?: boolean
+  legendOpacity?: number
+  legendOrientationThreshold?: number
 }
 
 export interface CreateCell {
@@ -1558,7 +1628,7 @@ export interface Dialect {
   header?: boolean
   /** Separator between cells; the default is , */
   delimiter?: string
-  /** Https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns */
+  /** https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns */
   annotations?: Array<'group' | 'datatype' | 'default'>
   /** Character prefixed to comment strings */
   commentPrefix?: string
@@ -2092,7 +2162,7 @@ export type TelegramNotificationEndpoint = NotificationEndpointBase & {
   channel: string
 }
 
-export interface TemplateExport {
+export interface TemplateExportByID {
   stackID?: string
   orgIDs?: Array<{
     orgID?: string
@@ -2104,7 +2174,23 @@ export interface TemplateExport {
   resources?: {
     id: string
     kind: TemplateKind
+    /** if defined with id, name is used for resource exported by id. if defined independently, resources strictly matching name are exported */
     name?: string
+  }
+}
+
+export interface TemplateExportByName {
+  stackID?: string
+  orgIDs?: Array<{
+    orgID?: string
+    resourceFilters?: {
+      byLabel?: string[]
+      byResourceKind?: TemplateKind[]
+    }
+  }>
+  resources?: {
+    kind: TemplateKind
+    name: string
   }
 }
 
