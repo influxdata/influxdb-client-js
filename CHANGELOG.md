@@ -1,5 +1,9 @@
 ## 1.10.0 [unreleased]
 
+### Features
+
+1. [#296](https://github.com/influxdata/influxdb-client-js/pull/296): Allow to specify escaped field values.
+
 ## 1.9.0 [2020-12-04]
 
 ### Features

@@ -8,7 +8,7 @@ import {Transport, SendOptions} from '../transport'
 import {Headers} from '../results'
 import Logger from './Logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
-import {Point, PointSettings} from '../Point'
+import {Point} from '../Point'
 import {escape} from '../util/escape'
 import {currentTime, dateToProtocolTimestamp} from '../util/currentTime'
 import {createRetryDelayStrategy} from './retryStrategy'
@@ -53,7 +53,7 @@ class WriteBuffer {
   }
 }
 
-export default class WriteApiImpl implements WriteApi, PointSettings {
+export default class WriteApiImpl implements WriteApi {
   private writeBuffer: WriteBuffer
   private closed = false
   private httpPath: string

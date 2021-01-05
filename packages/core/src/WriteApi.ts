@@ -1,4 +1,4 @@
-import {Point} from './Point'
+import {Point, PointSettings} from './Point'
 
 /**
  * The asynchronous buffering API to Write time-series data into InfluxDB 2.0.
@@ -9,7 +9,7 @@ import {Point} from './Point'
  * The data are formatted in [Line Protocol](https://bit.ly/2QL99fu).
  * <p>
  */
-export default interface WriteApi {
+export default interface WriteApi extends PointSettings {
   /**
    * Instructs to use the following default tags  when writing points.
    * Not applicable for writing records/lines.
