@@ -17,7 +17,8 @@ export interface PointSettings {
 export class Point {
   private name: string
   private tags: {[key: string]: string} = {}
-  private fields: {[key: string]: string} = {}
+  /** escaped field values */
+  public fields: {[key: string]: string} = {}
   private time: string | number | Date | undefined
 
   /**
