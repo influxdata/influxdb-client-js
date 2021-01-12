@@ -67,7 +67,7 @@ export class SourcesAPI {
     )
   }
   /**
-   * Creates a source.
+   * Create a source.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

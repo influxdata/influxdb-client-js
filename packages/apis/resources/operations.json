@@ -3068,6 +3068,7 @@
     "server": "/api/v2",
     "path": "/delete",
     "operation": "post",
+    "operationId": "PostDelete",
     "basicAuth": false,
     "summary": "Delete time series data from InfluxDB",
     "positionalParams": [],
@@ -3300,7 +3301,7 @@
     "operation": "post",
     "operationId": "PostSources",
     "basicAuth": false,
-    "summary": "Creates a source",
+    "summary": "Create a source",
     "positionalParams": [],
     "headerParams": [
       {
@@ -4585,7 +4586,7 @@
     "operation": "get",
     "operationId": "GetDashboardsIDLabels",
     "basicAuth": false,
-    "summary": "list all labels for a dashboard",
+    "summary": "List all labels for a dashboard",
     "positionalParams": [
       {
         "name": "dashboardID",
@@ -5400,7 +5401,7 @@
     "operation": "delete",
     "operationId": "DeleteAuthorizationsID",
     "basicAuth": false,
-    "summary": "Delete a authorization",
+    "summary": "Delete an authorization",
     "positionalParams": [
       {
         "name": "authID",
@@ -5952,7 +5953,7 @@
     "operation": "delete",
     "operationId": "DeleteBucketsIDLabelsID",
     "basicAuth": false,
-    "summary": "delete a label from a bucket",
+    "summary": "Delete a label from a bucket",
     "positionalParams": [
       {
         "name": "bucketID",
@@ -7364,7 +7365,7 @@
       "description": "Export resources as an InfluxDB template.",
       "required": false,
       "mediaType": "application/json",
-      "type": "TemplateExport"
+      "type": "TemplateExportByID | TemplateExportByName"
     },
     "responses": [
       {

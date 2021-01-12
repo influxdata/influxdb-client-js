@@ -244,7 +244,7 @@ export class BucketsAPI {
     )
   }
   /**
-   * delete a label from a bucket.
+   * Delete a label from a bucket.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
