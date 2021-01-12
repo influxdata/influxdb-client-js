@@ -4,18 +4,14 @@ import {yellow} from 'chalk'
 const logger = {
   warn(message: string, ...otherParameters: any[]): void {
     message = yellow(message)
-    if (otherParameters && otherParameters.length) {
-      console.warn(message)
-    } else {
+    if (otherParameters.length) {
       console.warn(message, ...otherParameters)
+    } else {
+      console.warn(message)
     }
   },
   info(message: string, ...otherParameters: any[]): void {
-    if (otherParameters && otherParameters.length) {
-      console.info(message)
-    } else {
-      console.info(message, ...otherParameters)
-    }
+    console.info(message, ...otherParameters)
   },
 }
 
