@@ -22,10 +22,9 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
     if (delay && delay > 0) {
       return delay + Math.round(Math.random() * this.options.retryJitter)
     } else {
-      let delay = this.currentDelay
       if (failedAttempts && failedAttempts > 0) {
         // compute delay
-        delay = this.options.minRetryDelay
+        let delay = this.options.minRetryDelay
         for (let i = 1; i < failedAttempts; i++) {
           delay = delay * this.options.exponentialBase
           if (delay >= this.options.maxRetryDelay) {
