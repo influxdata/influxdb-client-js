@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@influxdata/influxdb-client)](https://www.npmjs.com/package/@influxdata/influxdb-client)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://www.influxdata.com/slack)
 
-This repository contains the reference javascript client for InfluxDB 2.0. Both node and browser environments are supported.
+This repository contains the reference javascript client for InfluxDB 2.0. Node, browser and deno environments are supported.
 
 #### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 
@@ -66,7 +66,7 @@ There are also more advanced [examples](./examples/README.md) that show
 
 - how to execute parameterized queries
 - how to use this client with InfluxDB 1.8+
-- how to use this client in the browser
+- how to use this client in the browser or deno
 - how to process InfluxDB query results with RX Observables
 - how to customize the way of how measurement points are written to InfluxDB
 - how to visualize query results in [Giraffe](https://github.com/influxdata/giraffe)
