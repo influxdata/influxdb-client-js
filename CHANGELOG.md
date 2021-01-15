@@ -4,6 +4,7 @@
 
 1. [#296](https://github.com/influxdata/influxdb-client-js/pull/296): Allow to specify escaped field values.
 1. [#295](https://github.com/influxdata/influxdb-client-js/pull/295): Regenerate APIs from InfluxDB 2.0.3 swagger.
+1. [#298](https://github.com/influxdata/influxdb-client-js/pull/295): Add example node.js application monitoring.
 
 ## 1.9.0 [2020-12-04]
 
