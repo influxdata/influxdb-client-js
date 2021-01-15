@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "open": "^7.0.0",
+    "response-time": "^2.3.2",
     "rxjs": "^6.5.5",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
