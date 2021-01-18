@@ -17,10 +17,11 @@
  *   api,
  *   'from(bucket: "my-bucket") |> range(start: -30d)',
  *   newTable,
- *   {maxTableRows: 5000}
+ *   {maxTableLength: 5000}
  * )
  * ...
- * <Plot config={{table, ...}}></Plot>
+ * const config = {table, ...}
+ * <Plot config={config}></Plot>
  * ...
  * ```
  *
