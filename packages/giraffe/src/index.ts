@@ -7,7 +7,7 @@
  * function that executes a Flux query against InfluxDB (v2) and returns a Table that is then directly suitable
  * as a data input of various Giraffe visualizations.
  *
- * ```js
+ * ```jsx
  * import {InfluxDB} from '@influxdata/influxdb-client'
  * import {queryToTable} from '@influxdata/influxdb-client-giraffe'
  * import {newTable, Plot} from '@influxdata/giraffe'
@@ -20,7 +20,7 @@
  * )
  * ...
  * const config = {table, ...}
- * <Plot config={config} />
+ * <Plot config={config} >
  * ...
  * ```
  *
