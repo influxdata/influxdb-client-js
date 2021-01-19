@@ -24,7 +24,7 @@ const table = await queryToTable(
   newTable
 )
 ...
-<Plot config={{table, ...}} />
+<Plot config={{table, ...}} >
 ...
 
 ```
