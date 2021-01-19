@@ -23,7 +23,7 @@ const table = await queryToTable(
 )
 ...
 const config = {table, ...}
-<Plot config={config}></Plot>
+<Plot config={config} />
 ...
 
 ```
