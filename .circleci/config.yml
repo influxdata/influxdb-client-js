@@ -80,7 +80,13 @@ workflows:
     jobs:
       - tests:
           version: '14'
-      - coverage
+          filters:
+            branches:
+              ignore: gh-pages
+      - coverage:
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy-preview:
           requires:
             - tests
