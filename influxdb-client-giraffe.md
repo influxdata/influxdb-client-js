@@ -12,7 +12,7 @@ The main goal of this package is to provide an efficient [queryToTable()](./infl
 
 {% raw %}
 
-```js
+```jsx
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {queryToTable} from '@influxdata/influxdb-client-giraffe'
 import {newTable, Plot} from '@influxdata/giraffe'
@@ -24,7 +24,7 @@ const table = await queryToTable(
   newTable
 )
 ...
-<Plot config={{table, ...}} >
+<Plot config={{table, ...}} />
 ...
 
 ```
