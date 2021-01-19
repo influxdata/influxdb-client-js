@@ -19,8 +19,7 @@ const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const table = await queryToTable(
   api,
   'from(bucket: "my-bucket") |> range(start: -30d)',
-  newTable,
-  {maxTableLength: 5000}
+  newTable
 )
 ...
 const config = {table, ...}
