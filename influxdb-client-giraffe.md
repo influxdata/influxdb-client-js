@@ -10,6 +10,8 @@ The `@influxdata/influxdb-client-giraffe` package transforms InfluxDB (Flux) que
 
 The main goal of this package is to provide an efficient [queryToTable()](./influxdb-client-giraffe.querytotable.md) function that executes a Flux query against InfluxDB (v2) and returns a Table that is then directly suitable as a data input of various Giraffe visualizations.
 
+{% raw %}
+
 ```js
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {queryToTable} from '@influxdata/influxdb-client-giraffe'
@@ -22,11 +24,12 @@ const table = await queryToTable(
   newTable
 )
 ...
-const config = {table, ...}
-<Plot config={config} />
+<Plot config={{table, ...}} />
 ...
 
 ```
+{% endraw %}
+
 See also [InfluxDB v2 client examples](https://github.com/influxdata/influxdb-client-js/tree/master/examples) and [Giraffe storybook](https://influxdata.github.io/giraffe/)<!-- -->.
 
 ## Functions
