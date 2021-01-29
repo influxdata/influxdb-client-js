@@ -9,5 +9,5 @@ the organization that owns this mapping.
 <b>Signature:</b>
 
 ```typescript
-org: string;
+org?: string;
 ```

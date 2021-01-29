@@ -16,7 +16,7 @@ export interface Dialect
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [annotations](./influxdb-client-apis.dialect.annotations.md) | Array&lt;'group' \| 'datatype' \| 'default'&gt; | Https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns |
+|  [annotations](./influxdb-client-apis.dialect.annotations.md) | Array&lt;'group' \| 'datatype' \| 'default'&gt; | https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns |
 |  [commentPrefix](./influxdb-client-apis.dialect.commentprefix.md) | string | Character prefixed to comment strings |
 |  [dateTimeFormat](./influxdb-client-apis.dialect.datetimeformat.md) | 'RFC3339' \| 'RFC3339Nano' | Format of timestamps |
 |  [delimiter](./influxdb-client-apis.dialect.delimiter.md) | string | Separator between cells; the default is , |

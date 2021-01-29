@@ -4,7 +4,7 @@
 
 ## Dialect.annotations property
 
-Https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns
+https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns
 
 <b>Signature:</b>
 

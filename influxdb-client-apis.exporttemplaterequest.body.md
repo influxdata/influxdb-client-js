@@ -9,5 +9,5 @@ Export resources as an InfluxDB template.
 <b>Signature:</b>
 
 ```typescript
-body: TemplateExport;
+body: TemplateExportByID | TemplateExportByName;
 ```

@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsIDLabelsID() method
 
-delete a label from a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteBucketsIDLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID)
+Delete a label from a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteBucketsIDLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsIDLabelsID)
 
 <b>Signature:</b>
 

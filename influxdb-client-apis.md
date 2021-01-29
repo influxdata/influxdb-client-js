@@ -417,7 +417,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [TelegramNotificationRuleBase](./influxdb-client-apis.telegramnotificationrulebase.md) |  |
 |  [TemplateApply](./influxdb-client-apis.templateapply.md) |  |
 |  [TemplateChart](./influxdb-client-apis.templatechart.md) |  |
-|  [TemplateExport](./influxdb-client-apis.templateexport.md) |  |
+|  [TemplateExportByID](./influxdb-client-apis.templateexportbyid.md) |  |
+|  [TemplateExportByName](./influxdb-client-apis.templateexportbyname.md) |  |
 |  [TemplateSummary](./influxdb-client-apis.templatesummary.md) |  |
 |  [TemplateSummaryLabel](./influxdb-client-apis.templatesummarylabel.md) |  |
 |  [TestStatement](./influxdb-client-apis.teststatement.md) | Declares a Flux test case |

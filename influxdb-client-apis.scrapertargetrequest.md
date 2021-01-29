@@ -14,6 +14,7 @@ export interface ScraperTargetRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [allowInsecure](./influxdb-client-apis.scrapertargetrequest.allowinsecure.md) | boolean | Skip TLS verification on endpoint. |
 |  [bucketID](./influxdb-client-apis.scrapertargetrequest.bucketid.md) | string | The ID of the bucket to write to. |
 |  [name](./influxdb-client-apis.scrapertargetrequest.name.md) | string | The name of the scraper target. |
 |  [orgID](./influxdb-client-apis.scrapertargetrequest.orgid.md) | string | The organization ID. |

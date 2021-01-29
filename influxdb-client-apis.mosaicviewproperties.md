@@ -16,6 +16,10 @@ export interface MosaicViewProperties
 |  --- | --- | --- |
 |  [colors](./influxdb-client-apis.mosaicviewproperties.colors.md) | string\[\] | Colors define color encoding of data into a visualization |
 |  [fillColumns](./influxdb-client-apis.mosaicviewproperties.fillcolumns.md) | string\[\] |  |
+|  [generateXAxisTicks](./influxdb-client-apis.mosaicviewproperties.generatexaxisticks.md) | string\[\] |  |
+|  [legendColorizeRows](./influxdb-client-apis.mosaicviewproperties.legendcolorizerows.md) | boolean |  |
+|  [legendOpacity](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) | number |  |
+|  [legendOrientationThreshold](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) | number |  |
 |  [note](./influxdb-client-apis.mosaicviewproperties.note.md) | string |  |
 |  [queries](./influxdb-client-apis.mosaicviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.mosaicviewproperties.shape.md) | 'chronograf-v2' |  |
@@ -27,6 +31,9 @@ export interface MosaicViewProperties
 |  [xDomain](./influxdb-client-apis.mosaicviewproperties.xdomain.md) | number\[\] |  |
 |  [xPrefix](./influxdb-client-apis.mosaicviewproperties.xprefix.md) | string |  |
 |  [xSuffix](./influxdb-client-apis.mosaicviewproperties.xsuffix.md) | string |  |
+|  [xTickStart](./influxdb-client-apis.mosaicviewproperties.xtickstart.md) | number |  |
+|  [xTickStep](./influxdb-client-apis.mosaicviewproperties.xtickstep.md) | number |  |
+|  [xTotalTicks](./influxdb-client-apis.mosaicviewproperties.xtotalticks.md) | number |  |
 |  [yAxisLabel](./influxdb-client-apis.mosaicviewproperties.yaxislabel.md) | string |  |
 |  [yDomain](./influxdb-client-apis.mosaicviewproperties.ydomain.md) | number\[\] |  |
 |  [yPrefix](./influxdb-client-apis.mosaicviewproperties.yprefix.md) | string |  |

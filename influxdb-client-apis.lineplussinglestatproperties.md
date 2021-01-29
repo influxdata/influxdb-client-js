@@ -17,8 +17,13 @@ export interface LinePlusSingleStatProperties
 |  [axes](./influxdb-client-apis.lineplussinglestatproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
 |  [colors](./influxdb-client-apis.lineplussinglestatproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [decimalPlaces](./influxdb-client-apis.lineplussinglestatproperties.decimalplaces.md) | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
+|  [generateXAxisTicks](./influxdb-client-apis.lineplussinglestatproperties.generatexaxisticks.md) | string\[\] |  |
+|  [generateYAxisTicks](./influxdb-client-apis.lineplussinglestatproperties.generateyaxisticks.md) | string\[\] |  |
 |  [hoverDimension](./influxdb-client-apis.lineplussinglestatproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' |  |
 |  [legend](./influxdb-client-apis.lineplussinglestatproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
+|  [legendColorizeRows](./influxdb-client-apis.lineplussinglestatproperties.legendcolorizerows.md) | boolean |  |
+|  [legendOpacity](./influxdb-client-apis.lineplussinglestatproperties.legendopacity.md) | number |  |
+|  [legendOrientationThreshold](./influxdb-client-apis.lineplussinglestatproperties.legendorientationthreshold.md) | number |  |
 |  [note](./influxdb-client-apis.lineplussinglestatproperties.note.md) | string |  |
 |  [position](./influxdb-client-apis.lineplussinglestatproperties.position.md) | 'overlaid' \| 'stacked' |  |
 |  [prefix](./influxdb-client-apis.lineplussinglestatproperties.prefix.md) | string |  |
@@ -30,5 +35,11 @@ export interface LinePlusSingleStatProperties
 |  [timeFormat](./influxdb-client-apis.lineplussinglestatproperties.timeformat.md) | string |  |
 |  [type](./influxdb-client-apis.lineplussinglestatproperties.type.md) | 'line-plus-single-stat' |  |
 |  [xColumn](./influxdb-client-apis.lineplussinglestatproperties.xcolumn.md) | string |  |
+|  [xTickStart](./influxdb-client-apis.lineplussinglestatproperties.xtickstart.md) | number |  |
+|  [xTickStep](./influxdb-client-apis.lineplussinglestatproperties.xtickstep.md) | number |  |
+|  [xTotalTicks](./influxdb-client-apis.lineplussinglestatproperties.xtotalticks.md) | number |  |
 |  [yColumn](./influxdb-client-apis.lineplussinglestatproperties.ycolumn.md) | string |  |
+|  [yTickStart](./influxdb-client-apis.lineplussinglestatproperties.ytickstart.md) | number |  |
+|  [yTickStep](./influxdb-client-apis.lineplussinglestatproperties.ytickstep.md) | number |  |
+|  [yTotalTicks](./influxdb-client-apis.lineplussinglestatproperties.ytotalticks.md) | number |  |
 

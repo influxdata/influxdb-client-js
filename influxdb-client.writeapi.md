@@ -9,8 +9,9 @@ The asynchronous buffering API to Write time-series data into InfluxDB 2.0. This
 <b>Signature:</b>
 
 ```typescript
-export default interface WriteApi 
+export default interface WriteApi extends PointSettings 
 ```
+<b>Extends:</b> [PointSettings](./influxdb-client.pointsettings.md)
 
 ## Methods
 

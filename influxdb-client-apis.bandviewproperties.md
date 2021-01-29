@@ -16,9 +16,14 @@ export interface BandViewProperties
 |  --- | --- | --- |
 |  [axes](./influxdb-client-apis.bandviewproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
 |  [colors](./influxdb-client-apis.bandviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
+|  [generateXAxisTicks](./influxdb-client-apis.bandviewproperties.generatexaxisticks.md) | string\[\] |  |
+|  [generateYAxisTicks](./influxdb-client-apis.bandviewproperties.generateyaxisticks.md) | string\[\] |  |
 |  [geom](./influxdb-client-apis.bandviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension](./influxdb-client-apis.bandviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' |  |
 |  [legend](./influxdb-client-apis.bandviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
+|  [legendColorizeRows](./influxdb-client-apis.bandviewproperties.legendcolorizerows.md) | boolean |  |
+|  [legendOpacity](./influxdb-client-apis.bandviewproperties.legendopacity.md) | number |  |
+|  [legendOrientationThreshold](./influxdb-client-apis.bandviewproperties.legendorientationthreshold.md) | number |  |
 |  [lowerColumn](./influxdb-client-apis.bandviewproperties.lowercolumn.md) | string |  |
 |  [mainColumn](./influxdb-client-apis.bandviewproperties.maincolumn.md) | string |  |
 |  [note](./influxdb-client-apis.bandviewproperties.note.md) | string |  |
@@ -29,5 +34,11 @@ export interface BandViewProperties
 |  [type](./influxdb-client-apis.bandviewproperties.type.md) | 'band' |  |
 |  [upperColumn](./influxdb-client-apis.bandviewproperties.uppercolumn.md) | string |  |
 |  [xColumn](./influxdb-client-apis.bandviewproperties.xcolumn.md) | string |  |
+|  [xTickStart](./influxdb-client-apis.bandviewproperties.xtickstart.md) | number |  |
+|  [xTickStep](./influxdb-client-apis.bandviewproperties.xtickstep.md) | number |  |
+|  [xTotalTicks](./influxdb-client-apis.bandviewproperties.xtotalticks.md) | number |  |
 |  [yColumn](./influxdb-client-apis.bandviewproperties.ycolumn.md) | string |  |
+|  [yTickStart](./influxdb-client-apis.bandviewproperties.ytickstart.md) | number |  |
+|  [yTickStep](./influxdb-client-apis.bandviewproperties.ytickstep.md) | number |  |
+|  [yTotalTicks](./influxdb-client-apis.bandviewproperties.ytotalticks.md) | number |  |
 

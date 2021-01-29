@@ -5,7 +5,7 @@
 
 ## API Reference
 
-Welcome to the API Reference Documentation of InfluxDB v2 JavaScript Client (version 1.9.0 _2020-12-04T06:30:22.739Z_).
+Welcome to the API Reference Documentation of InfluxDB v2 JavaScript Client (version 1.10.0 _2021-01-29T06:46:19.217Z_).
 Use this client library with InfluxDB 2.x and InfluxDB 1.8+.
 For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 

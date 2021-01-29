@@ -28,5 +28,5 @@ export declare class SourcesAPI
 |  [getSourcesIDBuckets(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidbuckets.md) |  | Get buckets in a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSourcesIDBuckets](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets) |
 |  [getSourcesIDHealth(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidhealth.md) |  | Get the health of a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSourcesIDHealth](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth) |
 |  [patchSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.patchsourcesid.md) |  | Update a Source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchSourcesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID) |
-|  [postSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.postsources.md) |  | Creates a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSources](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources) |
+|  [postSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.postsources.md) |  | Create a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSources](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources) |
 

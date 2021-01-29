@@ -18,6 +18,12 @@ export declare class Point
 |  --- | --- | --- |
 |  [(constructor)(measurementName)](./influxdb-client.point._constructor_.md) |  | Create a new Point with specified a measurement name. |
 
+## Properties
+
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [fields](./influxdb-client.point.fields.md) |  | { \[key: string\]: string; } | escaped field values |
+
 ## Methods
 
 |  Method | Modifiers | Description |
