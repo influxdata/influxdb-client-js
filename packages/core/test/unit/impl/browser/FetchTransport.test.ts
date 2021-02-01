@@ -89,6 +89,28 @@ describe('FetchTransport', () => {
       })
       expect(response).is.deep.equal('{}')
     })
+    it('receives also response headers', async () => {
+      emulateFetchApi({
+        headers: {'content-type': 'application/json'},
+        body: '{}',
+      })
+      let responseMeta: any
+      const response = await transport.request(
+        '/whatever',
+        {anything: 'here'},
+        {
+          method: 'POST',
+        },
+        function(headers, status) {
+          responseMeta = [headers, status]
+        }
+      )
+      expect(response).is.deep.equal({})
+      expect(responseMeta).is.deep.equal([
+        {'content-type': 'application/json'},
+        200,
+      ])
+    })
     it('receives text data for application/csv', async () => {
       emulateFetchApi({
         headers: {'content-type': 'application/csv'},

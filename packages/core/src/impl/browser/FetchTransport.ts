@@ -9,7 +9,23 @@ import {
   CommunicationObserver,
   createTextDecoderCombiner,
   Headers,
+  ResponseStartedFn,
 } from '../../results'
+
+function getResponseHeaders(response: Response): Headers {
+  const headers: Headers = {}
+  response.headers.forEach((value: string, key: string) => {
+    const previous = headers[key]
+    if (previous === undefined) {
+      headers[key] = value
+    } else if (Array.isArray(previous)) {
+      previous.push(value)
+    } else {
+      headers[key] = [previous, value]
+    }
+  })
+  return headers
+}
 
 /**
  * Transport layer that use browser fetch.
@@ -68,18 +84,10 @@ export default class FetchTransport implements Transport {
     this.fetch(path, body, options)
       .then(async response => {
         if (callbacks?.responseStarted) {
-          const headers: Headers = {}
-          response.headers.forEach((value: string, key: string) => {
-            const previous = headers[key]
-            if (previous === undefined) {
-              headers[key] = value
-            } else if (Array.isArray(previous)) {
-              previous.push(value)
-            } else {
-              headers[key] = [previous, value]
-            }
-          })
-          observer.responseStarted(headers, response.status)
+          observer.responseStarted(
+            getResponseHeaders(response),
+            response.status
+          )
         }
         if (response.status >= 300) {
           return response
@@ -137,10 +145,18 @@ export default class FetchTransport implements Transport {
       })
       .finally(() => observer.complete())
   }
-  async request(path: string, body: any, options: SendOptions): Promise<any> {
+  async request(
+    path: string,
+    body: any,
+    options: SendOptions,
+    responseStarted?: ResponseStartedFn
+  ): Promise<any> {
     const response = await this.fetch(path, body, options)
     const {status, headers} = response
     const responseContentType = headers.get('content-type') || ''
+    if (responseStarted) {
+      responseStarted(getResponseHeaders(response), response.status)
+    }
 
     if (status >= 300) {
       let data = await response.text()

@@ -10,6 +10,7 @@ import {
   ChunkCombiner,
   CommunicationObserver,
   Headers,
+  ResponseStartedFn,
 } from '../../results'
 import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
@@ -118,7 +119,12 @@ export class NodeHttpTransport implements Transport {
    * @param options - send options
    * @returns Promise of response body
    */
-  request(path: string, body: any, options: SendOptions): Promise<any> {
+  request(
+    path: string,
+    body: any,
+    options: SendOptions,
+    responseStarted?: ResponseStartedFn
+  ): Promise<any> {
     if (!body) {
       body = ''
     } else if (typeof body !== 'string') {
@@ -128,7 +134,10 @@ export class NodeHttpTransport implements Transport {
     let contentType: string
     return new Promise((resolve, reject) => {
       this.send(path, body as string, options, {
-        responseStarted(headers: Headers) {
+        responseStarted(headers: Headers, statusCode?: number) {
+          if (responseStarted) {
+            responseStarted(headers, statusCode)
+          }
           contentType = String(headers['content-type'])
         },
         next: (data: Uint8Array): void => {
