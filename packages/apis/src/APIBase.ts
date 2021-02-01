@@ -63,7 +63,7 @@ export class APIBase {
       const value = `${request.auth.user}:${request.auth.password}`
       ;(sendOptions.headers || (sendOptions.headers = {}))[
         'authorization'
-      ] = base64(value)
+      ] = `Basic ${base64(value)}`
     }
     return this.transport.request(
       path,
