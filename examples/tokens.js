@@ -1,20 +1,21 @@
 #!/usr/bin/env node
 /*
 This example shows how to use `username + password` authentication 
-against InfluxDB v2 OSS. This type of authentication shall be avoided 
-in favor of a token authentication, which is preferred for programmatic 
-access to InfluxDB v2, tokens can be easily managed in InfluxDB UI.
-`username + password` authentication might be required for creating
-a first token.
+against InfluxDB v2 OSS in order to get/create authorization tokens.
+
+All other examples use token authentication, which is preferred 
+for programmatic access to InfluxDB v2. `username + password` 
+authentication might be used to automate management of tokens.
 */
 
 const {InfluxDB} = require('@influxdata/influxdb-client')
 const {
   AuthorizationsAPI,
+  OrgsAPI,
   SigninAPI,
   SignoutAPI,
 } = require('@influxdata/influxdb-client-apis')
-const {url, username, password} = require('./env')
+const {url, username, password, org} = require('./env')
 
 async function signInDemo() {
   const influxDB = new InfluxDB({url})
@@ -44,10 +45,43 @@ async function signInDemo() {
   const authorizationAPI = new AuthorizationsAPI(influxDB)
   const authorizations = await authorizationAPI.getAuthorizations({}, session)
   // console.log(JSON.stringify(authorizations?.authorizations, null, 2))
+  let hasMyToken = false
   ;(authorizations.authorizations || []).forEach(auth => {
     console.log(auth.token)
     console.log(' ', auth.description)
+    hasMyToken = hasMyToken || auth.description === 'example token'
   })
+  if (!hasMyToken) {
+    console.log('*** GetOrganization ***')
+    const orgsResponse = await new OrgsAPI(influxDB).getOrgs({org}, session)
+    if (!orgsResponse.orgs || orgsResponse.orgs.length === 0) {
+      throw new Error(`No organization named ${org} found!`)
+    }
+    const orgID = orgsResponse.orgs[0].id
+    console.log(' ', org, orgID)
+    console.log('*** CreateAuthorization ***')
+    const auth = await authorizationAPI.postAuthorizations(
+      {
+        body: {
+          description: 'example token',
+          orgID,
+          permissions: [
+            {
+              action: 'read',
+              resource: {type: 'buckets', orgID},
+            },
+            {
+              action: 'write',
+              resource: {type: 'buckets', orgID},
+            },
+          ],
+        },
+      },
+      session
+    )
+    console.log(auth.token)
+    console.log(' ', auth.description)
+  }
   console.log('\nFinished SUCCESS')
   // invalidate the session
   const signoutAPI = new SignoutAPI(influxDB)
