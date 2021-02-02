@@ -618,6 +618,34 @@ describe('NodeHttpTransport', () => {
       })
       expect(data).equals('..')
     })
+    it(`returns response headers and status code `, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(202, '', {
+          'content-type': 'application/text',
+          'custom-header': 'custom-val',
+        })
+        .persist()
+      let responseCustomHeader: string | undefined
+      let responseStatus: number | undefined
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      }).request(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        (headers, status) => {
+          responseCustomHeader = String(headers['custom-header'])
+          responseStatus = status
+        }
+      )
+      expect(data).equals('')
+      expect(responseCustomHeader).equals('custom-val')
+      expect(responseStatus).equals(202)
+    })
     it(`return text for CSV response`, async () => {
       nock(transportOptions.url)
         .get('/test')

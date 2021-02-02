@@ -1,10 +1,12 @@
-import {CommunicationObserver} from './results'
+import {CommunicationObserver, ResponseStartedFn} from './results'
 import {ChunkCombiner} from './results/chunkCombiner'
 /**
  * Options for sending a request message.
  */
 export interface SendOptions {
+  /** HTTP method (POST, PUT, GET, PATCH ...) */
   method: string
+  /** Request HTTP headers. */
   headers?: {[key: string]: string}
 }
 
@@ -35,7 +37,12 @@ export interface Transport {
    * @param requestBody - request body
    * @param options - send options
    */
-  request(path: string, body: any, options: SendOptions): Promise<any>
+  request(
+    path: string,
+    body: any,
+    options: SendOptions,
+    responseStarted?: ResponseStartedFn
+  ): Promise<any>
 
   /**
    * Combines response chunks to create a single response object.

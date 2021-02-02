@@ -3,6 +3,14 @@ import {Cancellable} from './Cancellable'
  * Type of HTTP headers.
  */
 export type Headers = {[header: string]: string | string[] | undefined}
+
+/**
+ * Informs about a start of response processing.
+ * @param headers - response HTTP headers
+ * @param statusCode - response status code
+ */
+export type ResponseStartedFn = (headers: Headers, statusCode?: number) => void
+
 /**
  * Observes communication with the server.
  */
@@ -22,10 +30,8 @@ export interface CommunicationObserver<T> {
   complete(): void
   /**
    * Informs about a start of response processing.
-   * @param headers - response HTTP headers
-   * @param statusCode - response status code
    */
-  responseStarted?: (headers: Headers, statusCode?: number) => void
+  responseStarted?: ResponseStartedFn
   /**
    * Setups cancelllable for this communication.
    */

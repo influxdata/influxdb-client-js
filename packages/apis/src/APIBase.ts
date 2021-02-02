@@ -1,11 +1,23 @@
 // this is effectively a clone of
-import {InfluxDB, Transport, SendOptions} from '@influxdata/influxdb-client'
+import {
+  InfluxDB,
+  Transport,
+  SendOptions,
+  Headers,
+} from '@influxdata/influxdb-client'
 
 // used only in browser builds
 declare function btoa(plain: string): string
 
 export interface RequestOptions {
+  /** HTTP request headers */
   headers?: {[key: string]: string}
+  /**
+   * Informs about a start of response processing.
+   * @param headers - response HTTP headers
+   * @param statusCode - response status code
+   */
+  responseStarted?: (headers: Headers, statusCode?: number) => void
 }
 
 function base64(value: string): string {
@@ -63,12 +75,13 @@ export class APIBase {
       const value = `${request.auth.user}:${request.auth.password}`
       ;(sendOptions.headers || (sendOptions.headers = {}))[
         'authorization'
-      ] = base64(value)
+      ] = `Basic ${base64(value)}`
     }
     return this.transport.request(
       path,
       request.body ? request.body : '',
-      sendOptions
+      sendOptions,
+      requestOptions?.responseStarted
     )
   }
 }
