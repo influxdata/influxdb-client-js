@@ -6,7 +6,7 @@
 import {
   FluxTableMetaData,
   InfluxDB,
-} from 'https://cdn.skypack.dev/@influxdata/influxdb-client-browser@1.9.0-nightly.1044?dts'
+} from 'https://cdn.skypack.dev/@influxdata/influxdb-client-browser?dts'
 
 const url = 'http://localhost:8086'
 const token = 'my-token'

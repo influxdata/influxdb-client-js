@@ -7,6 +7,7 @@
 
 ### Bug Fixes
 
+1. [#304](https://github.com/influxdata/influxdb-client-js/pull/304): Use the latest client in query.deno.ts example.
 1. [#305](https://github.com/influxdata/influxdb-client-js/pull/305): Remove deprecated zlib constants.
 
 ## 1.10.0 [2021-01-29]
