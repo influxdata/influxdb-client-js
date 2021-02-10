@@ -19,8 +19,8 @@ import {CLIENT_LIB_VERSION} from '../version'
 import Logger from '../Logger'
 
 const zlibOptions = {
-  flush: zlib.Z_SYNC_FLUSH,
-  finishFlush: zlib.Z_SYNC_FLUSH,
+  flush: zlib.constants.Z_SYNC_FLUSH,
+  finishFlush: zlib.constants.Z_SYNC_FLUSH,
 }
 const emptyBuffer = Buffer.allocUnsafe(0)
 
