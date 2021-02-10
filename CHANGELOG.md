@@ -5,6 +5,10 @@
 1. [#302](https://github.com/influxdata/influxdb-client-js/pull/302): Expose response headers in all APIs.
 1. [#302](https://github.com/influxdata/influxdb-client-js/pull/302): Add `tokens.js` example.
 
+### Bug Fixes
+
+1. [#305](https://github.com/influxdata/influxdb-client-js/pull/305): Remove deprecated zlib constants.
+
 ## 1.10.0 [2021-01-29]
 
 ### Features
