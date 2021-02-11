@@ -292,8 +292,7 @@ export interface LabelResponse {
 }
 
 export interface DBRPs {
-  notificationEndpoints?: DBRP[]
-  links?: Links
+  content?: DBRP[]
 }
 
 export interface DBRP {
@@ -656,6 +655,7 @@ export type ViewProperties =
   | HeatmapViewProperties
   | MosaicViewProperties
   | BandViewProperties
+  | GeoViewProperties
 
 export interface LinePlusSingleStatProperties {
   timeFormat?: string
@@ -1178,6 +1178,92 @@ export interface BandViewProperties {
   legendOrientationThreshold?: number
 }
 
+export interface GeoViewProperties {
+  type: 'geo'
+  queries: DashboardQuery[]
+  shape: 'chronograf-v2'
+  /** Coordinates of the center of the map */
+  center: {
+    /** Latitude of the center of the map */
+    lat: number
+    /** Longitude of the center of the map */
+    lon: number
+  }
+  /** Zoom level used for initial display of the map */
+  zoom: number
+  /** If true, map zoom and pan controls are enabled on the dashboard view */
+  allowPanAndZoom: boolean
+  /** If true, search results get automatically regroupped so that lon,lat and value are treated as columns */
+  detectCoordinateFields: boolean
+  /** Define map type - regular, satellite etc. */
+  mapStyle?: string
+  note: string
+  /** If true, will display note when empty */
+  showNoteWhenEmpty: boolean
+  /** Colors define color encoding of data into a visualization */
+  colors?: DashboardColor[]
+  /** List of individual layers shown in the map */
+  layers: GeoViewLayer[]
+}
+
+export type GeoViewLayer =
+  | GeoCircleViewLayer
+  | GeoHeatMapViewLayer
+  | GeoPointMapViewLayer
+  | GeoTrackMapViewLayer
+
+export type GeoCircleViewLayer = GeoViewLayerProperties & {
+  /** Radius field */
+  radiusField: string
+  radiusDimension: Axis
+  /** Circle color field */
+  colorField: string
+  colorDimension: Axis
+  /** Colors define color encoding of data into a visualization */
+  colors: DashboardColor[]
+  /** Maximum radius size in pixels */
+  radius?: number
+  /** Interpolate circle color based on displayed value */
+  interpolateColors?: boolean
+}
+
+export interface GeoViewLayerProperties {
+  type: 'heatmap' | 'circleMap' | 'pointMap' | 'trackMap'
+}
+
+export type GeoHeatMapViewLayer = GeoViewLayerProperties & {
+  /** Intensity field */
+  intensityField: string
+  intensityDimension: Axis
+  /** Radius size in pixels */
+  radius: number
+  /** Blur for heatmap points */
+  blur: number
+  /** Colors define color encoding of data into a visualization */
+  colors: DashboardColor[]
+}
+
+export type GeoPointMapViewLayer = GeoViewLayerProperties & {
+  /** Marker color field */
+  colorField: string
+  colorDimension: Axis
+  /** Colors define color encoding of data into a visualization */
+  colors: DashboardColor[]
+  /** Cluster close markers together */
+  isClustered?: boolean
+}
+
+export interface GeoTrackMapViewLayer {
+  /** Width of the track */
+  trackWidth?: number
+  /** Speed of the track animation */
+  speed?: number
+  /** Assign different colors to different tracks */
+  randomColors?: boolean
+  /** Colors define color encoding of data into a visualization */
+  colors?: DashboardColor[]
+}
+
 export interface CreateCell {
   name?: string
   x?: number
@@ -1314,6 +1400,7 @@ export interface VariableAssignment {
 
 export type Expression =
   | ArrayExpression
+  | DictExpression
   | FunctionExpression
   | BinaryExpression
   | CallExpression
@@ -1343,6 +1430,24 @@ export interface ArrayExpression {
   type?: NodeType
   /** Elements of the array */
   elements?: Expression[]
+}
+
+/**
+ * Used to create and directly specify the elements of a dictionary
+ */
+export interface DictExpression {
+  type?: NodeType
+  /** Elements of the dictionary */
+  elements?: DictItem[]
+}
+
+/**
+ * A key/value pair in a dictionary
+ */
+export interface DictItem {
+  type?: NodeType
+  key?: Expression
+  val?: Expression
 }
 
 /**

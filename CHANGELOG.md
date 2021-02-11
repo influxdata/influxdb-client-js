@@ -4,6 +4,7 @@
 
 1. [#302](https://github.com/influxdata/influxdb-client-js/pull/302): Expose response headers in all APIs.
 1. [#302](https://github.com/influxdata/influxdb-client-js/pull/302): Add `tokens.js` example.
+1. [#306](https://github.com/influxdata/influxdb-client-js/pull/306): Regenerate APIs from swagger.
 
 ### Bug Fixes
 
