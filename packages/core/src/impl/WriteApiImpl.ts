@@ -6,7 +6,7 @@ import {
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import {Headers} from '../results'
-import Logger from './Logger'
+import {Logger} from '../util/logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import {Point} from '../Point'
 import {escape} from '../util/escape'

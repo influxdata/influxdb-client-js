@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import Logger, {setLogger, consoleLogger} from '../../../src/impl/Logger'
+import {Logger, setLogger, consoleLogger} from '../../../src/util/logger'
 
 describe('Logger', () => {
   ;[{message: '    hey', error: 'you'}, {message: '    hey'}].forEach(data => {

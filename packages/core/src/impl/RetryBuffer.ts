@@ -1,4 +1,4 @@
-import Logger from './Logger'
+import {Logger} from '../util/logger'
 
 /* interval between successful retries */
 const RETRY_INTERVAL = 1
