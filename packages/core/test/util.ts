@@ -1,4 +1,3 @@
-/* eslint-disable prefer-rest-params */
 import {setLogger} from '../src/util/logger'
 
 let previous: any
@@ -15,11 +14,11 @@ export const collectLogging = {
       warn: [],
     }
     previous = setLogger({
-      error: function() {
-        retVal.error.push(Array.from(arguments))
+      error: function(...args) {
+        retVal.error.push(args)
       },
-      warn: function() {
-        retVal.warn.push(Array.from(arguments))
+      warn: function(...args) {
+        retVal.warn.push(args)
       },
     })
     return retVal
@@ -30,13 +29,13 @@ export const collectLogging = {
       warn: [],
     }
     const previous = setLogger({
-      error: function() {
-        ;(previous.error as any).apply(previous, Array.from(arguments))
-        retVal.error.push(Array.from(arguments))
+      error: function(...args) {
+        ;(previous.error as any).apply(previous, args)
+        retVal.error.push(args)
       },
-      warn: function() {
-        ;(previous.warn as any).apply(previous, Array.from(arguments))
-        retVal.warn.push(Array.from(arguments))
+      warn: function(...args) {
+        ;(previous.warn as any).apply(previous, args)
+        retVal.warn.push(args)
       },
     })
     return retVal
