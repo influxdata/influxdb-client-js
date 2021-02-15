@@ -11,7 +11,7 @@ import {
   DEFAULT_WriteOptions,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
-import Logger from '../../src/impl/Logger'
+import {Logger} from '../../src/util/logger'
 import {waitForCondition} from './util/waitForCondition'
 
 const clientOptions: ClientOptions = {

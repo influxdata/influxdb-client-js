@@ -1,5 +1,5 @@
 /* eslint-disable prefer-rest-params */
-import {setLogger} from '../src/impl/Logger'
+import {setLogger} from '../src/util/logger'
 
 let previous: any
 

@@ -16,7 +16,7 @@ import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import {CLIENT_LIB_VERSION} from '../version'
-import Logger from '../Logger'
+import {Logger} from '../../util/logger'
 
 const zlibOptions = {
   flush: zlib.constants.Z_SYNC_FLUSH,

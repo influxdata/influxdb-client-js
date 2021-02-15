@@ -21,7 +21,7 @@ export const consoleLogger: Logger = {
 }
 let provider: Logger = consoleLogger
 
-const Logger: Logger = {
+export const Logger: Logger = {
   error(message, error) {
     provider.error(message, error)
   },
@@ -40,5 +40,3 @@ export function setLogger(logger: Logger): Logger {
   provider = logger
   return previous
 }
-
-export default Logger

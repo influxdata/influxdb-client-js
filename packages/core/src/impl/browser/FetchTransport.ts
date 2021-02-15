@@ -3,7 +3,7 @@ import {Transport, SendOptions} from '../../transport'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
-import Logger from '../Logger'
+import {Logger} from '../../util/logger'
 import {
   ChunkCombiner,
   CommunicationObserver,
