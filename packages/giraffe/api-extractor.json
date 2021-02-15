@@ -9,6 +9,6 @@
     /*
      * A lot of warnings are issued from giraffe, they must be suppressed.
      */
-    "skipLibCheck": true
+    "skipLibCheck": false
   }
 }

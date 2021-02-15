@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const fs = require('fs')
-const marker = '<!-- enhaced with enhance-doc-index.md.js -->'
+const marker = '<!-- enhanced with enhance-doc-index.md.js -->'
 const version = require('../lerna.json').version
 
 function enhanceIndexMD(file) {
