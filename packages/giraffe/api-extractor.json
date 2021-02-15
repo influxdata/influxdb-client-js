@@ -4,11 +4,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
   "extends": "../../scripts/api-extractor-base.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/index.d.ts",
-  "compiler": {
-    /*
-     * A lot of warnings are issued from giraffe, they must be suppressed.
-     */
-    "skipLibCheck": false
-  }
+  "mainEntryPointFilePath": "<projectFolder>/dist/index.d.ts"
+  // "compiler": {
+  //   /*
+  //    * A lot of warnings are issued from giraffe, they must be suppressed.
+  //    */
+  //   "skipLibCheck": true
+  // }
 }
