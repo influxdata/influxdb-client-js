@@ -30,7 +30,20 @@ queryApi.queryRows(fluxQuery, {
   },
 })
 
-// // Execute query and collect all results in a Promise.
+// // Execute query and return the whole result as a string.
+// // Use with caution, it copies the whole stream of results into memory.
+// queryApi
+//   .queryRaw(fluxQuery)
+//   .then(result => {
+//     console.log(result)
+//     console.log('\nQueryRaw SUCCESS')
+//   })
+//   .catch(error => {
+//     console.error(error)
+//     console.log('\nQueryRaw ERROR')
+//   })
+
+// // Execute query and collect result rows in a Promise.
 // // Use with caution, it copies the whole stream of results into memory.
 // queryApi
 //   .collectRows(fluxQuery /*, you can specify a row mapper as a second arg */)
