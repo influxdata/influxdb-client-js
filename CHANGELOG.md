@@ -6,6 +6,7 @@
 1. [#302](https://github.com/influxdata/influxdb-client-js/pull/302): Add `tokens.js` example.
 1. [#306](https://github.com/influxdata/influxdb-client-js/pull/306): Regenerate APIs from swagger.
 1. [#309](https://github.com/influxdata/influxdb-client-js/pull/309): Allow to customize logger.
+1. [#313](https://github.com/influxdata/influxdb-client-js/pull/313): Add queryRaw example.
 
 ### Bug Fixes
 
