@@ -17,3 +17,5 @@ export declare type NotificationEndpointDiscrimator = (SlackNotificationEndpoint
     type: string;
 });
 ```
+<b>References:</b> [SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md)<!-- -->, [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md)<!-- -->, [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md)<!-- -->, [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md)
+

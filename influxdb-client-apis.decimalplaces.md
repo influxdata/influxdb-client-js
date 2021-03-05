@@ -16,6 +16,6 @@ export interface DecimalPlaces
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [digits](./influxdb-client-apis.decimalplaces.digits.md) | number | The number of digits after decimal to display |
-|  [isEnforced](./influxdb-client-apis.decimalplaces.isenforced.md) | boolean | Indicates whether decimal point setting should be enforced |
+|  [digits?](./influxdb-client-apis.decimalplaces.digits.md) | number | <i>(Optional)</i> The number of digits after decimal to display |
+|  [isEnforced?](./influxdb-client-apis.decimalplaces.isenforced.md) | boolean | <i>(Optional)</i> Indicates whether decimal point setting should be enforced |
 

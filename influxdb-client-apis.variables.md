@@ -14,5 +14,5 @@ export interface Variables
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [variables](./influxdb-client-apis.variables.variables.md) | [Variable](./influxdb-client-apis.variable.md)<!-- -->\[\] |  |
+|  [variables?](./influxdb-client-apis.variables.variables.md) | [Variable](./influxdb-client-apis.variable.md)<!-- -->\[\] | <i>(Optional)</i> |
 

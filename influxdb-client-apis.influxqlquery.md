@@ -16,7 +16,7 @@ export interface InfluxQLQuery
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [bucket](./influxdb-client-apis.influxqlquery.bucket.md) | string | Bucket is to be used instead of the database and retention policy specified in the InfluxQL query. |
+|  [bucket?](./influxdb-client-apis.influxqlquery.bucket.md) | string | <i>(Optional)</i> Bucket is to be used instead of the database and retention policy specified in the InfluxQL query. |
 |  [query](./influxdb-client-apis.influxqlquery.query.md) | string | InfluxQL query execute. |
-|  [type](./influxdb-client-apis.influxqlquery.type.md) | 'influxql' | The type of query. Must be "influxql". |
+|  [type?](./influxdb-client-apis.influxqlquery.type.md) | 'influxql' | <i>(Optional)</i> The type of query. Must be "influxql". |
 

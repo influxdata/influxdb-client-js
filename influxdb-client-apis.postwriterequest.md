@@ -17,6 +17,6 @@ export interface PostWriteRequest
 |  [body](./influxdb-client-apis.postwriterequest.body.md) | string | Line protocol body |
 |  [bucket](./influxdb-client-apis.postwriterequest.bucket.md) | string | The destination bucket for writes. |
 |  [org](./influxdb-client-apis.postwriterequest.org.md) | string | Specifies the destination organization for writes. Takes either the ID or Name interchangeably. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |
-|  [orgID](./influxdb-client-apis.postwriterequest.orgid.md) | string | Specifies the ID of the destination organization for writes. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |
-|  [precision](./influxdb-client-apis.postwriterequest.precision.md) | any | The precision for the unix timestamps within the body line-protocol. |
+|  [orgID?](./influxdb-client-apis.postwriterequest.orgid.md) | string | <i>(Optional)</i> Specifies the ID of the destination organization for writes. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |
+|  [precision?](./influxdb-client-apis.postwriterequest.precision.md) | any | <i>(Optional)</i> The precision for the unix timestamps within the body line-protocol. |
 

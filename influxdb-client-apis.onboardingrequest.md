@@ -16,7 +16,7 @@ export interface OnboardingRequest
 |  --- | --- | --- |
 |  [bucket](./influxdb-client-apis.onboardingrequest.bucket.md) | string |  |
 |  [org](./influxdb-client-apis.onboardingrequest.org.md) | string |  |
-|  [password](./influxdb-client-apis.onboardingrequest.password.md) | string |  |
-|  [retentionPeriodHrs](./influxdb-client-apis.onboardingrequest.retentionperiodhrs.md) | number |  |
+|  [password?](./influxdb-client-apis.onboardingrequest.password.md) | string | <i>(Optional)</i> |
+|  [retentionPeriodHrs?](./influxdb-client-apis.onboardingrequest.retentionperiodhrs.md) | number | <i>(Optional)</i> |
 |  [username](./influxdb-client-apis.onboardingrequest.username.md) | string |  |
 

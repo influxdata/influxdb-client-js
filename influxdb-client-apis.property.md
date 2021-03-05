@@ -16,7 +16,7 @@ export interface Property
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [key](./influxdb-client-apis.property.key.md) | PropertyKey |  |
-|  [type](./influxdb-client-apis.property.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
-|  [value](./influxdb-client-apis.property.value.md) | [Expression](./influxdb-client-apis.expression.md) |  |
+|  [key?](./influxdb-client-apis.property.key.md) | PropertyKey | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.property.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.property.value.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
 

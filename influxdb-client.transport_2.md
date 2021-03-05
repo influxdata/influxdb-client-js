@@ -22,6 +22,6 @@ export interface Transport
 
 |  Method | Description |
 |  --- | --- |
-|  [request(path, body, options)](./influxdb-client.transport_2.request.md) | Sends data to the server and receives decoded result. The type of the result depends on response's content-type (deserialized json, text). |
+|  [request(path, body, options, responseStarted)](./influxdb-client.transport_2.request.md) | Sends data to the server and receives decoded result. The type of the result depends on response's content-type (deserialized json, text). |
 |  [send(path, requestBody, options, callbacks)](./influxdb-client.transport_2.send.md) | Send data to the server and receive communication events via callbacks. |
 

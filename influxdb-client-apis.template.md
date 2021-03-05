@@ -16,3 +16,5 @@ export declare type Template = Array<{
     spec?: any;
 }>;
 ```
+<b>References:</b> [TemplateKind](./influxdb-client-apis.templatekind.md)
+

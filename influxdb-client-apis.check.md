@@ -9,3 +9,5 @@
 ```typescript
 export declare type Check = CheckDiscriminator;
 ```
+<b>References:</b> [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
+

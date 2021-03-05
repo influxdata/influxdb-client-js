@@ -9,3 +9,5 @@
 ```typescript
 export declare type Labels = Label[];
 ```
+<b>References:</b> [Label](./influxdb-client-apis.label.md)
+

@@ -14,5 +14,5 @@ export interface BuilderFunctionsType
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [name](./influxdb-client-apis.builderfunctionstype.name.md) | string |  |
+|  [name?](./influxdb-client-apis.builderfunctionstype.name.md) | string | <i>(Optional)</i> |
 

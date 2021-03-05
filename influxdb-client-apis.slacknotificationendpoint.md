@@ -12,3 +12,5 @@ export declare type SlackNotificationEndpoint = NotificationEndpointBase & {
     token?: string;
 };
 ```
+<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+

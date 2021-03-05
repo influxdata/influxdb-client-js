@@ -16,5 +16,5 @@ export interface ASTResponse
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [ast](./influxdb-client-apis.astresponse.ast.md) | [Package](./influxdb-client-apis.package.md) |  |
+|  [ast?](./influxdb-client-apis.astresponse.ast.md) | [Package](./influxdb-client-apis.package.md) | <i>(Optional)</i> |
 

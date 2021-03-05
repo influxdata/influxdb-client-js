@@ -14,5 +14,5 @@ export interface FluxSuggestions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [funcs](./influxdb-client-apis.fluxsuggestions.funcs.md) | [FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->\[\] |  |
+|  [funcs?](./influxdb-client-apis.fluxsuggestions.funcs.md) | [FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->\[\] | <i>(Optional)</i> |
 

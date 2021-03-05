@@ -16,6 +16,6 @@ export interface ParenExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [expression](./influxdb-client-apis.parenexpression.expression.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [type](./influxdb-client-apis.parenexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [expression?](./influxdb-client-apis.parenexpression.expression.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.parenexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

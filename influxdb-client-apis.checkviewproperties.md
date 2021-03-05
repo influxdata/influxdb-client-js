@@ -14,12 +14,12 @@ export interface CheckViewProperties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [check](./influxdb-client-apis.checkviewproperties.check.md) | [Check](./influxdb-client-apis.check.md) |  |
+|  [check?](./influxdb-client-apis.checkviewproperties.check.md) | [Check](./influxdb-client-apis.check.md) | <i>(Optional)</i> |
 |  [checkID](./influxdb-client-apis.checkviewproperties.checkid.md) | string |  |
 |  [colors](./influxdb-client-apis.checkviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [legendColorizeRows](./influxdb-client-apis.checkviewproperties.legendcolorizerows.md) | boolean |  |
-|  [legendOpacity](./influxdb-client-apis.checkviewproperties.legendopacity.md) | number |  |
-|  [legendOrientationThreshold](./influxdb-client-apis.checkviewproperties.legendorientationthreshold.md) | number |  |
+|  [legendColorizeRows?](./influxdb-client-apis.checkviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendOpacity?](./influxdb-client-apis.checkviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
+|  [legendOrientationThreshold?](./influxdb-client-apis.checkviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [queries](./influxdb-client-apis.checkviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.checkviewproperties.shape.md) | 'chronograf-v2' |  |
 |  [type](./influxdb-client-apis.checkviewproperties.type.md) | 'check' |  |

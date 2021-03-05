@@ -158,6 +158,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md) |  |
 |  [DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md) |  |
 |  [Dialect](./influxdb-client-apis.dialect.md) | Dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/\#dialect-descriptions |
+|  [DictExpression](./influxdb-client-apis.dictexpression.md) | Used to create and directly specify the elements of a dictionary |
+|  [DictItem](./influxdb-client-apis.dictitem.md) | A key/value pair in a dictionary |
 |  [Document\_2](./influxdb-client-apis.document_2.md) |  |
 |  [DocumentCreate](./influxdb-client-apis.documentcreate.md) |  |
 |  [DocumentListEntry](./influxdb-client-apis.documentlistentry.md) |  |
@@ -176,6 +178,9 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [FluxSuggestions](./influxdb-client-apis.fluxsuggestions.md) |  |
 |  [FunctionExpression](./influxdb-client-apis.functionexpression.md) | Function expression |
 |  [GaugeViewProperties](./influxdb-client-apis.gaugeviewproperties.md) |  |
+|  [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md) |  |
+|  [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md) |  |
+|  [GeoViewProperties](./influxdb-client-apis.geoviewproperties.md) |  |
 |  [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) |  |
 |  [GetAuthorizationsRequest](./influxdb-client-apis.getauthorizationsrequest.md) |  |
 |  [GetBucketsIDLabelsRequest](./influxdb-client-apis.getbucketsidlabelsrequest.md) |  |
@@ -454,6 +459,10 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeadmanCheck](./influxdb-client-apis.deadmancheck.md) |  |
 |  [Expression](./influxdb-client-apis.expression.md) |  |
 |  [Flags](./influxdb-client-apis.flags.md) |  |
+|  [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md) |  |
+|  [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md) |  |
+|  [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md) |  |
+|  [GeoViewLayer](./influxdb-client-apis.geoviewlayer.md) |  |
 |  [GreaterThreshold](./influxdb-client-apis.greaterthreshold.md) |  |
 |  [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md) |  |
 |  [HTTPNotificationRule](./influxdb-client-apis.httpnotificationrule.md) |  |

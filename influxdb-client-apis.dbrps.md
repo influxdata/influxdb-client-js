@@ -14,6 +14,5 @@ export interface DBRPs
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [links](./influxdb-client-apis.dbrps.links.md) | [Links](./influxdb-client-apis.links.md) |  |
-|  [notificationEndpoints](./influxdb-client-apis.dbrps.notificationendpoints.md) | [DBRP](./influxdb-client-apis.dbrp.md)<!-- -->\[\] |  |
+|  [content?](./influxdb-client-apis.dbrps.content.md) | [DBRP](./influxdb-client-apis.dbrp.md)<!-- -->\[\] | <i>(Optional)</i> |
 

@@ -14,11 +14,11 @@ export interface Organization
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [createdAt](./influxdb-client-apis.organization.createdat.md) | string |  |
-|  [description](./influxdb-client-apis.organization.description.md) | string |  |
-|  [id](./influxdb-client-apis.organization.id.md) | string |  |
-|  [links](./influxdb-client-apis.organization.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; secrets?: [Link](./influxdb-client-apis.link.md)<!-- -->; buckets?: [Link](./influxdb-client-apis.link.md)<!-- -->; tasks?: [Link](./influxdb-client-apis.link.md)<!-- -->; dashboards?: [Link](./influxdb-client-apis.link.md)<!-- -->; } |  |
+|  [createdAt?](./influxdb-client-apis.organization.createdat.md) | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.organization.description.md) | string | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.organization.id.md) | string | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.organization.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; secrets?: [Link](./influxdb-client-apis.link.md)<!-- -->; buckets?: [Link](./influxdb-client-apis.link.md)<!-- -->; tasks?: [Link](./influxdb-client-apis.link.md)<!-- -->; dashboards?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.organization.name.md) | string |  |
-|  [status](./influxdb-client-apis.organization.status.md) | 'active' \| 'inactive' | If inactive the organization is inactive. |
-|  [updatedAt](./influxdb-client-apis.organization.updatedat.md) | string |  |
+|  [status?](./influxdb-client-apis.organization.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the organization is inactive. |
+|  [updatedAt?](./influxdb-client-apis.organization.updatedat.md) | string | <i>(Optional)</i> |
 

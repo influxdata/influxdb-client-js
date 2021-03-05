@@ -16,10 +16,10 @@ export interface DBRP
 |  --- | --- | --- |
 |  [bucketID](./influxdb-client-apis.dbrp.bucketid.md) | string | the bucket ID used as target for the translation. |
 |  [database](./influxdb-client-apis.dbrp.database.md) | string | InfluxDB v1 database |
-|  [default](./influxdb-client-apis.dbrp.default.md) | boolean | Specify if this mapping represents the default retention policy for the database specificed. |
-|  [id](./influxdb-client-apis.dbrp.id.md) | string | the mapping identifier |
-|  [links](./influxdb-client-apis.dbrp.links.md) | [Links](./influxdb-client-apis.links.md) |  |
-|  [org](./influxdb-client-apis.dbrp.org.md) | string | the organization that owns this mapping. |
-|  [orgID](./influxdb-client-apis.dbrp.orgid.md) | string | the organization ID that owns this mapping. |
+|  [default?](./influxdb-client-apis.dbrp.default.md) | boolean | <i>(Optional)</i> Specify if this mapping represents the default retention policy for the database specificed. |
+|  [id?](./influxdb-client-apis.dbrp.id.md) | string | <i>(Optional)</i> the mapping identifier |
+|  [links?](./influxdb-client-apis.dbrp.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [org?](./influxdb-client-apis.dbrp.org.md) | string | <i>(Optional)</i> the organization that owns this mapping. |
+|  [orgID?](./influxdb-client-apis.dbrp.orgid.md) | string | <i>(Optional)</i> the organization ID that owns this mapping. |
 |  [retention\_policy](./influxdb-client-apis.dbrp.retention_policy.md) | string | InfluxDB v1 retention policy |
 

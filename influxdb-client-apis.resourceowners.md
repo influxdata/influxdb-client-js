@@ -14,6 +14,6 @@ export interface ResourceOwners
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [links](./influxdb-client-apis.resourceowners.links.md) | { self?: string; } |  |
-|  [users](./influxdb-client-apis.resourceowners.users.md) | [ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->\[\] |  |
+|  [links?](./influxdb-client-apis.resourceowners.links.md) | { self?: string; } | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.resourceowners.users.md) | [ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->\[\] | <i>(Optional)</i> |
 

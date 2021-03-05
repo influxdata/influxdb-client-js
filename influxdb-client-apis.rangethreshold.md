@@ -14,3 +14,5 @@ export declare type RangeThreshold = ThresholdBase & {
     within: boolean;
 };
 ```
+<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
+

@@ -9,3 +9,5 @@
 ```typescript
 export declare type PostNotificationRule = NotificationRuleDiscriminator;
 ```
+<b>References:</b> [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
+

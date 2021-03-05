@@ -16,32 +16,32 @@ export interface ScatterViewProperties
 |  --- | --- | --- |
 |  [colors](./influxdb-client-apis.scatterviewproperties.colors.md) | string\[\] | Colors define color encoding of data into a visualization |
 |  [fillColumns](./influxdb-client-apis.scatterviewproperties.fillcolumns.md) | string\[\] |  |
-|  [generateXAxisTicks](./influxdb-client-apis.scatterviewproperties.generatexaxisticks.md) | string\[\] |  |
-|  [generateYAxisTicks](./influxdb-client-apis.scatterviewproperties.generateyaxisticks.md) | string\[\] |  |
-|  [legendColorizeRows](./influxdb-client-apis.scatterviewproperties.legendcolorizerows.md) | boolean |  |
-|  [legendOpacity](./influxdb-client-apis.scatterviewproperties.legendopacity.md) | number |  |
-|  [legendOrientationThreshold](./influxdb-client-apis.scatterviewproperties.legendorientationthreshold.md) | number |  |
+|  [generateXAxisTicks?](./influxdb-client-apis.scatterviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
+|  [generateYAxisTicks?](./influxdb-client-apis.scatterviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
+|  [legendColorizeRows?](./influxdb-client-apis.scatterviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendOpacity?](./influxdb-client-apis.scatterviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
+|  [legendOrientationThreshold?](./influxdb-client-apis.scatterviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.scatterviewproperties.note.md) | string |  |
 |  [queries](./influxdb-client-apis.scatterviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.scatterviewproperties.shape.md) | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.scatterviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
 |  [symbolColumns](./influxdb-client-apis.scatterviewproperties.symbolcolumns.md) | string\[\] |  |
-|  [timeFormat](./influxdb-client-apis.scatterviewproperties.timeformat.md) | string |  |
+|  [timeFormat?](./influxdb-client-apis.scatterviewproperties.timeformat.md) | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.scatterviewproperties.type.md) | 'scatter' |  |
 |  [xAxisLabel](./influxdb-client-apis.scatterviewproperties.xaxislabel.md) | string |  |
 |  [xColumn](./influxdb-client-apis.scatterviewproperties.xcolumn.md) | string |  |
 |  [xDomain](./influxdb-client-apis.scatterviewproperties.xdomain.md) | number\[\] |  |
 |  [xPrefix](./influxdb-client-apis.scatterviewproperties.xprefix.md) | string |  |
 |  [xSuffix](./influxdb-client-apis.scatterviewproperties.xsuffix.md) | string |  |
-|  [xTickStart](./influxdb-client-apis.scatterviewproperties.xtickstart.md) | number |  |
-|  [xTickStep](./influxdb-client-apis.scatterviewproperties.xtickstep.md) | number |  |
-|  [xTotalTicks](./influxdb-client-apis.scatterviewproperties.xtotalticks.md) | number |  |
+|  [xTickStart?](./influxdb-client-apis.scatterviewproperties.xtickstart.md) | number | <i>(Optional)</i> |
+|  [xTickStep?](./influxdb-client-apis.scatterviewproperties.xtickstep.md) | number | <i>(Optional)</i> |
+|  [xTotalTicks?](./influxdb-client-apis.scatterviewproperties.xtotalticks.md) | number | <i>(Optional)</i> |
 |  [yAxisLabel](./influxdb-client-apis.scatterviewproperties.yaxislabel.md) | string |  |
 |  [yColumn](./influxdb-client-apis.scatterviewproperties.ycolumn.md) | string |  |
 |  [yDomain](./influxdb-client-apis.scatterviewproperties.ydomain.md) | number\[\] |  |
 |  [yPrefix](./influxdb-client-apis.scatterviewproperties.yprefix.md) | string |  |
 |  [ySuffix](./influxdb-client-apis.scatterviewproperties.ysuffix.md) | string |  |
-|  [yTickStart](./influxdb-client-apis.scatterviewproperties.ytickstart.md) | number |  |
-|  [yTickStep](./influxdb-client-apis.scatterviewproperties.ytickstep.md) | number |  |
-|  [yTotalTicks](./influxdb-client-apis.scatterviewproperties.ytotalticks.md) | number |  |
+|  [yTickStart?](./influxdb-client-apis.scatterviewproperties.ytickstart.md) | number | <i>(Optional)</i> |
+|  [yTickStep?](./influxdb-client-apis.scatterviewproperties.ytickstep.md) | number | <i>(Optional)</i> |
+|  [yTotalTicks?](./influxdb-client-apis.scatterviewproperties.ytotalticks.md) | number | <i>(Optional)</i> |
 

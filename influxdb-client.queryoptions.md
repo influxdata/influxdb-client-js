@@ -16,9 +16,9 @@ export interface QueryOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [gzip](./influxdb-client.queryoptions.gzip.md) | boolean | Requests gzip encoded response. |
-|  [headers](./influxdb-client.queryoptions.headers.md) | { \[key: string\]: string; } | HTTP headers that will be sent with every query request. |
-|  [now](./influxdb-client.queryoptions.now.md) | () =&gt; string | Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned, for example <code>new Date().toISOString()</code>. |
+|  [gzip?](./influxdb-client.queryoptions.gzip.md) | boolean | <i>(Optional)</i> Requests gzip encoded response. |
+|  [headers?](./influxdb-client.queryoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every query request. |
+|  [now?](./influxdb-client.queryoptions.now.md) | () =&gt; string | <i>(Optional)</i> Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned, for example <code>new Date().toISOString()</code>. |
 |  [org](./influxdb-client.queryoptions.org.md) | string | Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. |
-|  [type](./influxdb-client.queryoptions.type.md) | 'flux' | Type of the query, default is "flux" |
+|  [type?](./influxdb-client.queryoptions.type.md) | 'flux' | <i>(Optional)</i> Type of the query, default is "flux" |
 

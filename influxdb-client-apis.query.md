@@ -16,9 +16,9 @@ export interface Query
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [dialect](./influxdb-client-apis.query.dialect.md) | [Dialect](./influxdb-client-apis.dialect.md) |  |
-|  [extern](./influxdb-client-apis.query.extern.md) | [File](./influxdb-client-apis.file.md) |  |
-|  [now](./influxdb-client-apis.query.now.md) | string | Specifies the time that should be reported as "now" in the query. Default is the server's now time. |
+|  [dialect?](./influxdb-client-apis.query.dialect.md) | [Dialect](./influxdb-client-apis.dialect.md) | <i>(Optional)</i> |
+|  [extern?](./influxdb-client-apis.query.extern.md) | [File](./influxdb-client-apis.file.md) | <i>(Optional)</i> |
+|  [now?](./influxdb-client-apis.query.now.md) | string | <i>(Optional)</i> Specifies the time that should be reported as "now" in the query. Default is the server's now time. |
 |  [query](./influxdb-client-apis.query.query.md) | string | Query script to execute. |
-|  [type](./influxdb-client-apis.query.type.md) | 'flux' | The type of query. Must be "flux". |
+|  [type?](./influxdb-client-apis.query.type.md) | 'flux' | <i>(Optional)</i> The type of query. Must be "flux". |
 

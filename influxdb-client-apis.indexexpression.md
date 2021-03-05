@@ -16,7 +16,7 @@ export interface IndexExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [array](./influxdb-client-apis.indexexpression.array.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [index](./influxdb-client-apis.indexexpression.index.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [type](./influxdb-client-apis.indexexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [array?](./influxdb-client-apis.indexexpression.array.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [index?](./influxdb-client-apis.indexexpression.index.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.indexexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

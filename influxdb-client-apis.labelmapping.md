@@ -14,5 +14,5 @@ export interface LabelMapping
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.labelmapping.labelid.md) | string |  |
+|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) | string | <i>(Optional)</i> |
 

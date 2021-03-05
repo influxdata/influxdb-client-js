@@ -14,6 +14,6 @@ export interface Runs
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [links](./influxdb-client-apis.runs.links.md) | [Links](./influxdb-client-apis.links.md) |  |
-|  [runs](./influxdb-client-apis.runs.runs.md) | [Run](./influxdb-client-apis.run.md)<!-- -->\[\] |  |
+|  [links?](./influxdb-client-apis.runs.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [runs?](./influxdb-client-apis.runs.runs.md) | [Run](./influxdb-client-apis.run.md)<!-- -->\[\] | <i>(Optional)</i> |
 

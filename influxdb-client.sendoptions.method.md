@@ -4,6 +4,8 @@
 
 ## SendOptions.method property
 
+HTTP method (POST, PUT, GET, PATCH ...)
+
 <b>Signature:</b>
 
 ```typescript

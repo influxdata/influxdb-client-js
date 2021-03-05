@@ -15,3 +15,5 @@ export declare type Threshold = (GreaterThreshold & {
     type: string;
 });
 ```
+<b>References:</b> [GreaterThreshold](./influxdb-client-apis.greaterthreshold.md)<!-- -->, [LesserThreshold](./influxdb-client-apis.lesserthreshold.md)<!-- -->, [RangeThreshold](./influxdb-client-apis.rangethreshold.md)
+

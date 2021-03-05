@@ -14,6 +14,6 @@ export interface ThresholdBase
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [allValues](./influxdb-client-apis.thresholdbase.allvalues.md) | boolean | If true, only alert if all values meet threshold. |
-|  [level](./influxdb-client-apis.thresholdbase.level.md) | [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md) |  |
+|  [allValues?](./influxdb-client-apis.thresholdbase.allvalues.md) | boolean | <i>(Optional)</i> If true, only alert if all values meet threshold. |
+|  [level?](./influxdb-client-apis.thresholdbase.level.md) | [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md) | <i>(Optional)</i> |
 

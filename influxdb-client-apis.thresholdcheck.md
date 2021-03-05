@@ -19,3 +19,5 @@ export declare type ThresholdCheck = CheckBase & {
     statusMessageTemplate?: string;
 };
 ```
+<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [Threshold](./influxdb-client-apis.threshold.md)
+

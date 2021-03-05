@@ -16,6 +16,6 @@ export interface ObjectExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [properties](./influxdb-client-apis.objectexpression.properties.md) | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | Object properties |
-|  [type](./influxdb-client-apis.objectexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [properties?](./influxdb-client-apis.objectexpression.properties.md) | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Object properties |
+|  [type?](./influxdb-client-apis.objectexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

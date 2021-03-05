@@ -18,7 +18,7 @@ export interface WriteOptions extends WriteRetryOptions
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [batchSize](./influxdb-client.writeoptions.batchsize.md) | number | max number of records to send in a batch |
-|  [defaultTags](./influxdb-client.writeoptions.defaulttags.md) | Record&lt;string, string&gt; | default tags, unescaped |
+|  [defaultTags?](./influxdb-client.writeoptions.defaulttags.md) | Record&lt;string, string&gt; | <i>(Optional)</i> default tags, unescaped |
 |  [flushInterval](./influxdb-client.writeoptions.flushinterval.md) | number | delay between data flushes in milliseconds, at most <code>batch size</code> records are sent during flush |
-|  [headers](./influxdb-client.writeoptions.headers.md) | { \[key: string\]: string; } | HTTP headers that will be sent with every write request |
+|  [headers?](./influxdb-client.writeoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every write request |
 

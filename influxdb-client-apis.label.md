@@ -14,8 +14,8 @@ export interface Label
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [id](./influxdb-client-apis.label.id.md) | string |  |
-|  [name](./influxdb-client-apis.label.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.label.orgid.md) | string |  |
-|  [properties](./influxdb-client-apis.label.properties.md) | any | Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
+|  [id?](./influxdb-client-apis.label.id.md) | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.label.name.md) | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.label.orgid.md) | string | <i>(Optional)</i> |
+|  [properties?](./influxdb-client-apis.label.properties.md) | any | <i>(Optional)</i> Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
 

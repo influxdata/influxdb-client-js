@@ -14,5 +14,5 @@ export interface GetTelegrafsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.gettelegrafsrequest.orgid.md) | string | The organization ID the Telegraf config belongs to. |
+|  [orgID?](./influxdb-client-apis.gettelegrafsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID the Telegraf config belongs to. |
 

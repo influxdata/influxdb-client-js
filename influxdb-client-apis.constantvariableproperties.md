@@ -14,6 +14,6 @@ export interface ConstantVariableProperties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [type](./influxdb-client-apis.constantvariableproperties.type.md) | 'constant' |  |
-|  [values](./influxdb-client-apis.constantvariableproperties.values.md) | string\[\] |  |
+|  [type?](./influxdb-client-apis.constantvariableproperties.type.md) | 'constant' | <i>(Optional)</i> |
+|  [values?](./influxdb-client-apis.constantvariableproperties.values.md) | string\[\] | <i>(Optional)</i> |
 

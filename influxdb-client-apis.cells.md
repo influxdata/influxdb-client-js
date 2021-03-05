@@ -9,3 +9,5 @@
 ```typescript
 export declare type Cells = Cell[];
 ```
+<b>References:</b> [Cell](./influxdb-client-apis.cell.md)
+

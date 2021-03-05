@@ -4,6 +4,8 @@
 
 ## RequestOptions.headers property
 
+HTTP request headers
+
 <b>Signature:</b>
 
 ```typescript

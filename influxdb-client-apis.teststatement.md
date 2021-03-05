@@ -16,6 +16,6 @@ export interface TestStatement
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [assignment](./influxdb-client-apis.teststatement.assignment.md) | [VariableAssignment](./influxdb-client-apis.variableassignment.md) |  |
-|  [type](./influxdb-client-apis.teststatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [assignment?](./influxdb-client-apis.teststatement.assignment.md) | [VariableAssignment](./influxdb-client-apis.variableassignment.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.teststatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

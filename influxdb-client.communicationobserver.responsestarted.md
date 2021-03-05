@@ -9,5 +9,5 @@ Informs about a start of response processing.
 <b>Signature:</b>
 
 ```typescript
-responseStarted?: (headers: Headers, statusCode?: number) => void;
+responseStarted?: ResponseStartedFn;
 ```

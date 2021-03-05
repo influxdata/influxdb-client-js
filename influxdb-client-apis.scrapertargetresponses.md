@@ -14,5 +14,5 @@ export interface ScraperTargetResponses
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [configurations](./influxdb-client-apis.scrapertargetresponses.configurations.md) | [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\] |  |
+|  [configurations?](./influxdb-client-apis.scrapertargetresponses.configurations.md) | [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
 

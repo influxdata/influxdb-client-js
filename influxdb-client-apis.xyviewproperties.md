@@ -16,28 +16,28 @@ export interface XYViewProperties
 |  --- | --- | --- |
 |  [axes](./influxdb-client-apis.xyviewproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
 |  [colors](./influxdb-client-apis.xyviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [generateXAxisTicks](./influxdb-client-apis.xyviewproperties.generatexaxisticks.md) | string\[\] |  |
-|  [generateYAxisTicks](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) | string\[\] |  |
+|  [generateXAxisTicks?](./influxdb-client-apis.xyviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
+|  [generateYAxisTicks?](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [geom](./influxdb-client-apis.xyviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
-|  [hoverDimension](./influxdb-client-apis.xyviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' |  |
+|  [hoverDimension?](./influxdb-client-apis.xyviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
 |  [legend](./influxdb-client-apis.xyviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
-|  [legendColorizeRows](./influxdb-client-apis.xyviewproperties.legendcolorizerows.md) | boolean |  |
-|  [legendOpacity](./influxdb-client-apis.xyviewproperties.legendopacity.md) | number |  |
-|  [legendOrientationThreshold](./influxdb-client-apis.xyviewproperties.legendorientationthreshold.md) | number |  |
+|  [legendColorizeRows?](./influxdb-client-apis.xyviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendOpacity?](./influxdb-client-apis.xyviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
+|  [legendOrientationThreshold?](./influxdb-client-apis.xyviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.xyviewproperties.note.md) | string |  |
 |  [position](./influxdb-client-apis.xyviewproperties.position.md) | 'overlaid' \| 'stacked' |  |
 |  [queries](./influxdb-client-apis.xyviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shadeBelow](./influxdb-client-apis.xyviewproperties.shadebelow.md) | boolean |  |
+|  [shadeBelow?](./influxdb-client-apis.xyviewproperties.shadebelow.md) | boolean | <i>(Optional)</i> |
 |  [shape](./influxdb-client-apis.xyviewproperties.shape.md) | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.xyviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
-|  [timeFormat](./influxdb-client-apis.xyviewproperties.timeformat.md) | string |  |
+|  [timeFormat?](./influxdb-client-apis.xyviewproperties.timeformat.md) | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.xyviewproperties.type.md) | 'xy' |  |
-|  [xColumn](./influxdb-client-apis.xyviewproperties.xcolumn.md) | string |  |
-|  [xTickStart](./influxdb-client-apis.xyviewproperties.xtickstart.md) | number |  |
-|  [xTickStep](./influxdb-client-apis.xyviewproperties.xtickstep.md) | number |  |
-|  [xTotalTicks](./influxdb-client-apis.xyviewproperties.xtotalticks.md) | number |  |
-|  [yColumn](./influxdb-client-apis.xyviewproperties.ycolumn.md) | string |  |
-|  [yTickStart](./influxdb-client-apis.xyviewproperties.ytickstart.md) | number |  |
-|  [yTickStep](./influxdb-client-apis.xyviewproperties.ytickstep.md) | number |  |
-|  [yTotalTicks](./influxdb-client-apis.xyviewproperties.ytotalticks.md) | number |  |
+|  [xColumn?](./influxdb-client-apis.xyviewproperties.xcolumn.md) | string | <i>(Optional)</i> |
+|  [xTickStart?](./influxdb-client-apis.xyviewproperties.xtickstart.md) | number | <i>(Optional)</i> |
+|  [xTickStep?](./influxdb-client-apis.xyviewproperties.xtickstep.md) | number | <i>(Optional)</i> |
+|  [xTotalTicks?](./influxdb-client-apis.xyviewproperties.xtotalticks.md) | number | <i>(Optional)</i> |
+|  [yColumn?](./influxdb-client-apis.xyviewproperties.ycolumn.md) | string | <i>(Optional)</i> |
+|  [yTickStart?](./influxdb-client-apis.xyviewproperties.ytickstart.md) | number | <i>(Optional)</i> |
+|  [yTickStep?](./influxdb-client-apis.xyviewproperties.ytickstep.md) | number | <i>(Optional)</i> |
+|  [yTotalTicks?](./influxdb-client-apis.xyviewproperties.ytotalticks.md) | number | <i>(Optional)</i> |
 

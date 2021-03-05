@@ -14,26 +14,26 @@ export interface NotificationRuleBase
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [createdAt](./influxdb-client-apis.notificationrulebase.createdat.md) | string |  |
-|  [description](./influxdb-client-apis.notificationrulebase.description.md) | string | An optional description of the notification rule. |
+|  [createdAt?](./influxdb-client-apis.notificationrulebase.createdat.md) | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.notificationrulebase.description.md) | string | <i>(Optional)</i> An optional description of the notification rule. |
 |  [endpointID](./influxdb-client-apis.notificationrulebase.endpointid.md) | string |  |
-|  [every](./influxdb-client-apis.notificationrulebase.every.md) | string | The notification repetition interval. |
+|  [every?](./influxdb-client-apis.notificationrulebase.every.md) | string | <i>(Optional)</i> The notification repetition interval. |
 |  [id](./influxdb-client-apis.notificationrulebase.id.md) | string |  |
-|  [labels](./influxdb-client-apis.notificationrulebase.labels.md) | [Labels](./influxdb-client-apis.labels.md) |  |
-|  [lastRunError](./influxdb-client-apis.notificationrulebase.lastrunerror.md) | string |  |
-|  [lastRunStatus](./influxdb-client-apis.notificationrulebase.lastrunstatus.md) | 'failed' \| 'success' \| 'canceled' |  |
-|  [latestCompleted](./influxdb-client-apis.notificationrulebase.latestcompleted.md) | string | Timestamp of latest scheduled, completed run, RFC3339. |
-|  [limit](./influxdb-client-apis.notificationrulebase.limit.md) | number | Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. |
-|  [limitEvery](./influxdb-client-apis.notificationrulebase.limitevery.md) | number | Don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty. |
-|  [links](./influxdb-client-apis.notificationrulebase.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } |  |
+|  [labels?](./influxdb-client-apis.notificationrulebase.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [lastRunError?](./influxdb-client-apis.notificationrulebase.lastrunerror.md) | string | <i>(Optional)</i> |
+|  [lastRunStatus?](./influxdb-client-apis.notificationrulebase.lastrunstatus.md) | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
+|  [latestCompleted?](./influxdb-client-apis.notificationrulebase.latestcompleted.md) | string | <i>(Optional)</i> Timestamp of latest scheduled, completed run, RFC3339. |
+|  [limit?](./influxdb-client-apis.notificationrulebase.limit.md) | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. |
+|  [limitEvery?](./influxdb-client-apis.notificationrulebase.limitevery.md) | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty. |
+|  [links?](./influxdb-client-apis.notificationrulebase.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.notificationrulebase.name.md) | string | Human-readable name describing the notification rule. |
-|  [offset](./influxdb-client-apis.notificationrulebase.offset.md) | string | Duration to delay after the schedule, before executing check. |
+|  [offset?](./influxdb-client-apis.notificationrulebase.offset.md) | string | <i>(Optional)</i> Duration to delay after the schedule, before executing check. |
 |  [orgID](./influxdb-client-apis.notificationrulebase.orgid.md) | string | The ID of the organization that owns this notification rule. |
-|  [ownerID](./influxdb-client-apis.notificationrulebase.ownerid.md) | string | The ID of creator used to create this notification rule. |
-|  [runbookLink](./influxdb-client-apis.notificationrulebase.runbooklink.md) | string |  |
-|  [sleepUntil](./influxdb-client-apis.notificationrulebase.sleepuntil.md) | string |  |
+|  [ownerID?](./influxdb-client-apis.notificationrulebase.ownerid.md) | string | <i>(Optional)</i> The ID of creator used to create this notification rule. |
+|  [runbookLink?](./influxdb-client-apis.notificationrulebase.runbooklink.md) | string | <i>(Optional)</i> |
+|  [sleepUntil?](./influxdb-client-apis.notificationrulebase.sleepuntil.md) | string | <i>(Optional)</i> |
 |  [status](./influxdb-client-apis.notificationrulebase.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
 |  [statusRules](./influxdb-client-apis.notificationrulebase.statusrules.md) | [StatusRule](./influxdb-client-apis.statusrule.md)<!-- -->\[\] | List of status rules the notification rule attempts to match. |
 |  [tagRules](./influxdb-client-apis.notificationrulebase.tagrules.md) | [TagRule](./influxdb-client-apis.tagrule.md)<!-- -->\[\] | List of tag rules the notification rule attempts to match. |
-|  [updatedAt](./influxdb-client-apis.notificationrulebase.updatedat.md) | string |  |
+|  [updatedAt?](./influxdb-client-apis.notificationrulebase.updatedat.md) | string | <i>(Optional)</i> |
 

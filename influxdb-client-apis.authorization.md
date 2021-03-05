@@ -23,3 +23,5 @@ export declare type Authorization = AuthorizationUpdateRequest & {
     };
 };
 ```
+<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
+

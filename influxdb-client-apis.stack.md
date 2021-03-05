@@ -14,8 +14,8 @@ export interface Stack
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [createdAt](./influxdb-client-apis.stack.createdat.md) | string |  |
-|  [events](./influxdb-client-apis.stack.events.md) | Array&lt;{ eventType?: string; name?: string; description?: string; sources?: string\[\]; resources?: Array&lt;{ apiVersion?: string; resourceID?: string; kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; templateMetaName?: string; associations?: Array&lt;{ kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; metaName?: string; }&gt;; links?: { self?: string; }; }&gt;; urls?: string\[\]; readonly updatedAt?: string; }&gt; |  |
-|  [id](./influxdb-client-apis.stack.id.md) | string |  |
-|  [orgID](./influxdb-client-apis.stack.orgid.md) | string |  |
+|  [createdAt?](./influxdb-client-apis.stack.createdat.md) | string | <i>(Optional)</i> |
+|  [events?](./influxdb-client-apis.stack.events.md) | Array&lt;{ eventType?: string; name?: string; description?: string; sources?: string\[\]; resources?: Array&lt;{ apiVersion?: string; resourceID?: string; kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; templateMetaName?: string; associations?: Array&lt;{ kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; metaName?: string; }&gt;; links?: { self?: string; }; }&gt;; urls?: string\[\]; readonly updatedAt?: string; }&gt; | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.stack.id.md) | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.stack.orgid.md) | string | <i>(Optional)</i> |
 

@@ -14,6 +14,6 @@ export interface Users
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [links](./influxdb-client-apis.users.links.md) | { self?: string; } |  |
-|  [users](./influxdb-client-apis.users.users.md) | [User](./influxdb-client-apis.user.md)<!-- -->\[\] |  |
+|  [links?](./influxdb-client-apis.users.links.md) | { self?: string; } | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.users.users.md) | [User](./influxdb-client-apis.user.md)<!-- -->\[\] | <i>(Optional)</i> |
 

@@ -14,5 +14,5 @@ export interface SecretKeys
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [secrets](./influxdb-client-apis.secretkeys.secrets.md) | string\[\] |  |
+|  [secrets?](./influxdb-client-apis.secretkeys.secrets.md) | string\[\] | <i>(Optional)</i> |
 

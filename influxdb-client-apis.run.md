@@ -14,13 +14,13 @@ export interface Run
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [finishedAt](./influxdb-client-apis.run.finishedat.md) | string | Time run finished executing, RFC3339Nano. |
-|  [id](./influxdb-client-apis.run.id.md) | string |  |
-|  [links](./influxdb-client-apis.run.links.md) | { self?: string; task?: string; retry?: string; } |  |
-|  [log](./influxdb-client-apis.run.log.md) | Array&lt;{ runID?: string; time?: string; message?: string; }&gt; | An array of logs associated with the run. |
-|  [requestedAt](./influxdb-client-apis.run.requestedat.md) | string | Time run was manually requested, RFC3339Nano. |
-|  [scheduledFor](./influxdb-client-apis.run.scheduledfor.md) | string | Time used for run's "now" option, RFC3339. |
-|  [startedAt](./influxdb-client-apis.run.startedat.md) | string | Time run started executing, RFC3339Nano. |
-|  [status](./influxdb-client-apis.run.status.md) | 'scheduled' \| 'started' \| 'failed' \| 'success' \| 'canceled' |  |
-|  [taskID](./influxdb-client-apis.run.taskid.md) | string |  |
+|  [finishedAt?](./influxdb-client-apis.run.finishedat.md) | string | <i>(Optional)</i> Time run finished executing, RFC3339Nano. |
+|  [id?](./influxdb-client-apis.run.id.md) | string | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.run.links.md) | { self?: string; task?: string; retry?: string; } | <i>(Optional)</i> |
+|  [log?](./influxdb-client-apis.run.log.md) | Array&lt;{ runID?: string; time?: string; message?: string; }&gt; | <i>(Optional)</i> An array of logs associated with the run. |
+|  [requestedAt?](./influxdb-client-apis.run.requestedat.md) | string | <i>(Optional)</i> Time run was manually requested, RFC3339Nano. |
+|  [scheduledFor?](./influxdb-client-apis.run.scheduledfor.md) | string | <i>(Optional)</i> Time used for run's "now" option, RFC3339. |
+|  [startedAt?](./influxdb-client-apis.run.startedat.md) | string | <i>(Optional)</i> Time run started executing, RFC3339Nano. |
+|  [status?](./influxdb-client-apis.run.status.md) | 'scheduled' \| 'started' \| 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
+|  [taskID?](./influxdb-client-apis.run.taskid.md) | string | <i>(Optional)</i> |
 

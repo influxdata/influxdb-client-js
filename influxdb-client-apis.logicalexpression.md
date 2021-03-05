@@ -16,8 +16,8 @@ export interface LogicalExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [left](./influxdb-client-apis.logicalexpression.left.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [operator](./influxdb-client-apis.logicalexpression.operator.md) | string |  |
-|  [right](./influxdb-client-apis.logicalexpression.right.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [type](./influxdb-client-apis.logicalexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [left?](./influxdb-client-apis.logicalexpression.left.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [operator?](./influxdb-client-apis.logicalexpression.operator.md) | string | <i>(Optional)</i> |
+|  [right?](./influxdb-client-apis.logicalexpression.right.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.logicalexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

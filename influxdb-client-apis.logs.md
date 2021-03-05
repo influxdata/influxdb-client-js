@@ -14,5 +14,5 @@ export interface Logs
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [events](./influxdb-client-apis.logs.events.md) | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] |  |
+|  [events?](./influxdb-client-apis.logs.events.md) | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> |
 

@@ -14,3 +14,5 @@ export declare type SecretKeysResponse = SecretKeys & {
     };
 };
 ```
+<b>References:</b> [SecretKeys](./influxdb-client-apis.secretkeys.md)
+

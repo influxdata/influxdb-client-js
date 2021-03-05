@@ -16,7 +16,7 @@ export interface PipeExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [argument](./influxdb-client-apis.pipeexpression.argument.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [call](./influxdb-client-apis.pipeexpression.call.md) | [CallExpression](./influxdb-client-apis.callexpression.md) |  |
-|  [type](./influxdb-client-apis.pipeexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [argument?](./influxdb-client-apis.pipeexpression.argument.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [call?](./influxdb-client-apis.pipeexpression.call.md) | [CallExpression](./influxdb-client-apis.callexpression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.pipeexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

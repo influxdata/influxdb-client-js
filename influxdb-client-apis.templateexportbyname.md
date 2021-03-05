@@ -14,7 +14,7 @@ export interface TemplateExportByName
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [orgIDs](./influxdb-client-apis.templateexportbyname.orgids.md) | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; |  |
-|  [resources](./influxdb-client-apis.templateexportbyname.resources.md) | { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name: string; } |  |
-|  [stackID](./influxdb-client-apis.templateexportbyname.stackid.md) | string |  |
+|  [orgIDs?](./influxdb-client-apis.templateexportbyname.orgids.md) | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
+|  [resources?](./influxdb-client-apis.templateexportbyname.resources.md) | { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name: string; } | <i>(Optional)</i> |
+|  [stackID?](./influxdb-client-apis.templateexportbyname.stackid.md) | string | <i>(Optional)</i> |
 

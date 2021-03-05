@@ -14,12 +14,12 @@ export interface GetDashboardsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [descending](./influxdb-client-apis.getdashboardsrequest.descending.md) | any |  |
-|  [id](./influxdb-client-apis.getdashboardsrequest.id.md) | any | List of dashboard IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
-|  [limit](./influxdb-client-apis.getdashboardsrequest.limit.md) | number |  |
-|  [offset](./influxdb-client-apis.getdashboardsrequest.offset.md) | number |  |
-|  [org](./influxdb-client-apis.getdashboardsrequest.org.md) | string | The organization name. |
-|  [orgID](./influxdb-client-apis.getdashboardsrequest.orgid.md) | string | The organization ID. |
-|  [owner](./influxdb-client-apis.getdashboardsrequest.owner.md) | string | The owner ID. |
-|  [sortBy](./influxdb-client-apis.getdashboardsrequest.sortby.md) | string | The column to sort by. |
+|  [descending?](./influxdb-client-apis.getdashboardsrequest.descending.md) | any | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.getdashboardsrequest.id.md) | any | <i>(Optional)</i> List of dashboard IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
+|  [limit?](./influxdb-client-apis.getdashboardsrequest.limit.md) | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getdashboardsrequest.offset.md) | number | <i>(Optional)</i> |
+|  [org?](./influxdb-client-apis.getdashboardsrequest.org.md) | string | <i>(Optional)</i> The organization name. |
+|  [orgID?](./influxdb-client-apis.getdashboardsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
+|  [owner?](./influxdb-client-apis.getdashboardsrequest.owner.md) | string | <i>(Optional)</i> The owner ID. |
+|  [sortBy?](./influxdb-client-apis.getdashboardsrequest.sortby.md) | string | <i>(Optional)</i> The column to sort by. |
 

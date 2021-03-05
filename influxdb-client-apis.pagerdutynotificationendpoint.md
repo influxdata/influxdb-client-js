@@ -12,3 +12,5 @@ export declare type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
     routingKey: string;
 };
 ```
+<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+

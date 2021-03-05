@@ -14,6 +14,6 @@ export interface Authorizations
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [authorizations](./influxdb-client-apis.authorizations.authorizations.md) | [Authorization](./influxdb-client-apis.authorization.md)<!-- -->\[\] |  |
-|  [links](./influxdb-client-apis.authorizations.links.md) | [Links](./influxdb-client-apis.links.md) |  |
+|  [authorizations?](./influxdb-client-apis.authorizations.authorizations.md) | [Authorization](./influxdb-client-apis.authorization.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.authorizations.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 

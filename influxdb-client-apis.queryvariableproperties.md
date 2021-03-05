@@ -14,6 +14,6 @@ export interface QueryVariableProperties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [type](./influxdb-client-apis.queryvariableproperties.type.md) | 'query' |  |
-|  [values](./influxdb-client-apis.queryvariableproperties.values.md) | { query?: string; language?: string; } |  |
+|  [type?](./influxdb-client-apis.queryvariableproperties.type.md) | 'query' | <i>(Optional)</i> |
+|  [values?](./influxdb-client-apis.queryvariableproperties.values.md) | { query?: string; language?: string; } | <i>(Optional)</i> |
 

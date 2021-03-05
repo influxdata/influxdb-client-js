@@ -14,7 +14,7 @@ export interface GetChecksRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [limit](./influxdb-client-apis.getchecksrequest.limit.md) | number |  |
-|  [offset](./influxdb-client-apis.getchecksrequest.offset.md) | number |  |
+|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) | number | <i>(Optional)</i> |
 |  [orgID](./influxdb-client-apis.getchecksrequest.orgid.md) | string | Only show checks that belong to a specific organization ID. |
 

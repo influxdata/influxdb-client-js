@@ -16,6 +16,6 @@ export interface SendOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [headers](./influxdb-client.sendoptions.headers.md) | { \[key: string\]: string; } |  |
-|  [method](./influxdb-client.sendoptions.method.md) | string |  |
+|  [headers?](./influxdb-client.sendoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> Request HTTP headers. |
+|  [method](./influxdb-client.sendoptions.method.md) | string | HTTP method (POST, PUT, GET, PATCH ...) |
 

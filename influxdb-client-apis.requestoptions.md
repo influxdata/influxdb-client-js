@@ -14,5 +14,6 @@ export interface RequestOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [headers](./influxdb-client-apis.requestoptions.headers.md) | { \[key: string\]: string; } |  |
+|  [headers?](./influxdb-client-apis.requestoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP request headers |
+|  [responseStarted?](./influxdb-client-apis.requestoptions.responsestarted.md) | (headers: Headers, statusCode?: number) =&gt; void | <i>(Optional)</i> Informs about a start of response processing. |
 

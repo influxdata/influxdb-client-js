@@ -16,7 +16,7 @@ export interface Document
 |  --- | --- | --- |
 |  [content](./influxdb-client-apis.document_2.content.md) | any |  |
 |  [id](./influxdb-client-apis.document_2.id.md) | string |  |
-|  [labels](./influxdb-client-apis.document_2.labels.md) | [Labels](./influxdb-client-apis.labels.md) |  |
-|  [links](./influxdb-client-apis.document_2.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; } |  |
+|  [labels?](./influxdb-client-apis.document_2.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.document_2.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [meta](./influxdb-client-apis.document_2.meta.md) | [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |
 

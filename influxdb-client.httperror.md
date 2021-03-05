@@ -25,9 +25,9 @@ export declare class HttpError extends Error implements RetriableDecision
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client.httperror.body.md) |  | string \| undefined |  |
+|  [body?](./influxdb-client.httperror.body.md) |  | string \| undefined | <i>(Optional)</i> |
 |  [code](./influxdb-client.httperror.code.md) |  | string \| undefined | application error code, when available |
-|  [contentType](./influxdb-client.httperror.contenttype.md) |  | string \| null \| undefined |  |
+|  [contentType?](./influxdb-client.httperror.contenttype.md) |  | string \| null \| undefined | <i>(Optional)</i> |
 |  [json](./influxdb-client.httperror.json.md) |  | any | json error response |
 |  [statusCode](./influxdb-client.httperror.statuscode.md) |  | number |  |
 |  [statusMessage](./influxdb-client.httperror.statusmessage.md) |  | string \| undefined |  |

@@ -16,8 +16,8 @@ export interface ConnectionOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [timeout](./influxdb-client.connectionoptions.timeout.md) | number | socket timeout |
-|  [token](./influxdb-client.connectionoptions.token.md) | string | authentication token |
-|  [transportOptions](./influxdb-client.connectionoptions.transportoptions.md) | { \[key: string\]: any; } | extra options for the transport layer |
+|  [timeout?](./influxdb-client.connectionoptions.timeout.md) | number | <i>(Optional)</i> socket timeout |
+|  [token?](./influxdb-client.connectionoptions.token.md) | string | <i>(Optional)</i> authentication token |
+|  [transportOptions?](./influxdb-client.connectionoptions.transportoptions.md) | { \[key: string\]: any; } | <i>(Optional)</i> extra options for the transport layer |
 |  [url](./influxdb-client.connectionoptions.url.md) | string | base URL |
 

@@ -14,7 +14,7 @@ export interface Ready
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [started](./influxdb-client-apis.ready.started.md) | string |  |
-|  [status](./influxdb-client-apis.ready.status.md) | 'ready' |  |
-|  [up](./influxdb-client-apis.ready.up.md) | string |  |
+|  [started?](./influxdb-client-apis.ready.started.md) | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.ready.status.md) | 'ready' | <i>(Optional)</i> |
+|  [up?](./influxdb-client-apis.ready.up.md) | string | <i>(Optional)</i> |
 

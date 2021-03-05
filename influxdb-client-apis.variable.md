@@ -15,13 +15,13 @@ export interface Variable
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [arguments](./influxdb-client-apis.variable.arguments.md) | [VariableProperties](./influxdb-client-apis.variableproperties.md) |  |
-|  [createdAt](./influxdb-client-apis.variable.createdat.md) | string |  |
-|  [description](./influxdb-client-apis.variable.description.md) | string |  |
-|  [id](./influxdb-client-apis.variable.id.md) | string |  |
-|  [labels](./influxdb-client-apis.variable.labels.md) | [Labels](./influxdb-client-apis.labels.md) |  |
-|  [links](./influxdb-client-apis.variable.links.md) | { self?: string; org?: string; labels?: string; } |  |
+|  [createdAt?](./influxdb-client-apis.variable.createdat.md) | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.variable.description.md) | string | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.variable.id.md) | string | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.variable.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.variable.links.md) | { self?: string; org?: string; labels?: string; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.variable.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.variable.orgid.md) | string |  |
-|  [selected](./influxdb-client-apis.variable.selected.md) | string\[\] |  |
-|  [updatedAt](./influxdb-client-apis.variable.updatedat.md) | string |  |
+|  [selected?](./influxdb-client-apis.variable.selected.md) | string\[\] | <i>(Optional)</i> |
+|  [updatedAt?](./influxdb-client-apis.variable.updatedat.md) | string | <i>(Optional)</i> |
 

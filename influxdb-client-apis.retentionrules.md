@@ -11,3 +11,5 @@ Rules to expire or retain data. No rules means data never expires.
 ```typescript
 export declare type RetentionRules = RetentionRule[];
 ```
+<b>References:</b> [RetentionRule](./influxdb-client-apis.retentionrule.md)
+

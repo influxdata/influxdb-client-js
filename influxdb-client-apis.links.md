@@ -14,7 +14,7 @@ export interface Links
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [next](./influxdb-client-apis.links.next.md) | [Link](./influxdb-client-apis.link.md) |  |
-|  [prev](./influxdb-client-apis.links.prev.md) | [Link](./influxdb-client-apis.link.md) |  |
+|  [next?](./influxdb-client-apis.links.next.md) | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
+|  [prev?](./influxdb-client-apis.links.prev.md) | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
 |  [self](./influxdb-client-apis.links.self.md) | [Link](./influxdb-client-apis.link.md) |  |
 

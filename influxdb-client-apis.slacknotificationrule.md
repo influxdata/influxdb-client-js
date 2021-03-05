@@ -9,3 +9,5 @@
 ```typescript
 export declare type SlackNotificationRule = NotificationRuleBase & SlackNotificationRuleBase;
 ```
+<b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md)
+

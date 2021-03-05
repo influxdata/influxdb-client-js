@@ -14,11 +14,11 @@ export interface DocumentMeta
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [createdAt](./influxdb-client-apis.documentmeta.createdat.md) | string |  |
-|  [description](./influxdb-client-apis.documentmeta.description.md) | string |  |
+|  [createdAt?](./influxdb-client-apis.documentmeta.createdat.md) | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.documentmeta.description.md) | string | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.documentmeta.name.md) | string |  |
-|  [templateID](./influxdb-client-apis.documentmeta.templateid.md) | string |  |
-|  [type](./influxdb-client-apis.documentmeta.type.md) | string |  |
-|  [updatedAt](./influxdb-client-apis.documentmeta.updatedat.md) | string |  |
+|  [templateID?](./influxdb-client-apis.documentmeta.templateid.md) | string | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.documentmeta.type.md) | string | <i>(Optional)</i> |
+|  [updatedAt?](./influxdb-client-apis.documentmeta.updatedat.md) | string | <i>(Optional)</i> |
 |  [version](./influxdb-client-apis.documentmeta.version.md) | string |  |
 

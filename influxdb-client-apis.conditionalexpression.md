@@ -16,8 +16,8 @@ export interface ConditionalExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [alternate](./influxdb-client-apis.conditionalexpression.alternate.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [consequent](./influxdb-client-apis.conditionalexpression.consequent.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [test](./influxdb-client-apis.conditionalexpression.test.md) | [Expression](./influxdb-client-apis.expression.md) |  |
-|  [type](./influxdb-client-apis.conditionalexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [alternate?](./influxdb-client-apis.conditionalexpression.alternate.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [consequent?](./influxdb-client-apis.conditionalexpression.consequent.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [test?](./influxdb-client-apis.conditionalexpression.test.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.conditionalexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

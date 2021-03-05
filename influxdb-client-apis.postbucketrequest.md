@@ -14,9 +14,9 @@ export interface PostBucketRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [description](./influxdb-client-apis.postbucketrequest.description.md) | string |  |
+|  [description?](./influxdb-client-apis.postbucketrequest.description.md) | string | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.postbucketrequest.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) | string |  |
 |  [retentionRules](./influxdb-client-apis.postbucketrequest.retentionrules.md) | [RetentionRules](./influxdb-client-apis.retentionrules.md) |  |
-|  [rp](./influxdb-client-apis.postbucketrequest.rp.md) | string |  |
+|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) | string | <i>(Optional)</i> |
 

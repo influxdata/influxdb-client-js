@@ -14,6 +14,6 @@ export interface DocumentUpdate
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [content](./influxdb-client-apis.documentupdate.content.md) | any |  |
-|  [meta](./influxdb-client-apis.documentupdate.meta.md) | [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |
+|  [content?](./influxdb-client-apis.documentupdate.content.md) | any | <i>(Optional)</i> |
+|  [meta?](./influxdb-client-apis.documentupdate.meta.md) | [DocumentMeta](./influxdb-client-apis.documentmeta.md) | <i>(Optional)</i> |
 

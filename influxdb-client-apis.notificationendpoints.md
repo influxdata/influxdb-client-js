@@ -14,6 +14,6 @@ export interface NotificationEndpoints
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [links](./influxdb-client-apis.notificationendpoints.links.md) | [Links](./influxdb-client-apis.links.md) |  |
-|  [notificationEndpoints](./influxdb-client-apis.notificationendpoints.notificationendpoints.md) | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->\[\] |  |
+|  [links?](./influxdb-client-apis.notificationendpoints.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [notificationEndpoints?](./influxdb-client-apis.notificationendpoints.notificationendpoints.md) | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->\[\] | <i>(Optional)</i> |
 

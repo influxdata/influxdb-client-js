@@ -16,7 +16,7 @@ export interface Duration
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [magnitude](./influxdb-client-apis.duration.magnitude.md) | number |  |
-|  [type](./influxdb-client-apis.duration.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
-|  [unit](./influxdb-client-apis.duration.unit.md) | string |  |
+|  [magnitude?](./influxdb-client-apis.duration.magnitude.md) | number | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.duration.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [unit?](./influxdb-client-apis.duration.unit.md) | string | <i>(Optional)</i> |
 

@@ -14,8 +14,8 @@ export interface View
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [id](./influxdb-client-apis.view.id.md) | string |  |
-|  [links](./influxdb-client-apis.view.links.md) | { self?: string; } |  |
+|  [id?](./influxdb-client-apis.view.id.md) | string | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.view.links.md) | { self?: string; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.view.name.md) | string |  |
 |  [properties](./influxdb-client-apis.view.properties.md) | [ViewProperties](./influxdb-client-apis.viewproperties.md) |  |
 

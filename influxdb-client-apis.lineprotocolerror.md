@@ -16,7 +16,7 @@ export interface LineProtocolError
 |  --- | --- | --- |
 |  [code](./influxdb-client-apis.lineprotocolerror.code.md) | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'empty value' \| 'unavailable' | Code is the machine-readable error code. |
 |  [err](./influxdb-client-apis.lineprotocolerror.err.md) | string | Err is a stack of errors that occurred during processing of the request. Useful for debugging. |
-|  [line](./influxdb-client-apis.lineprotocolerror.line.md) | number | First line within sent body containing malformed data |
+|  [line?](./influxdb-client-apis.lineprotocolerror.line.md) | number | <i>(Optional)</i> First line within sent body containing malformed data |
 |  [message](./influxdb-client-apis.lineprotocolerror.message.md) | string | Message is a human-readable message. |
 |  [op](./influxdb-client-apis.lineprotocolerror.op.md) | string | Op describes the logical code operation during error. Useful for debugging. |
 

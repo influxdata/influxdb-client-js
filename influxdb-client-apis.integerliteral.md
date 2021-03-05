@@ -16,6 +16,6 @@ export interface IntegerLiteral
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [type](./influxdb-client-apis.integerliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
-|  [value](./influxdb-client-apis.integerliteral.value.md) | string |  |
+|  [type?](./influxdb-client-apis.integerliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.integerliteral.value.md) | string | <i>(Optional)</i> |
 

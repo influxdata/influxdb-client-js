@@ -62,6 +62,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md) | serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md) | serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md) | serializeDateTimeAsString changes type serializers to return string values for <code>dateTime:RFC3339</code> query result data type. Empty value is converted to null. |
+|  [setLogger(logger)](./influxdb-client.setlogger.md) | Sets custom logger. |
 |  [stringToLines(source, target)](./influxdb-client.stringtolines.md) | StringToLines is a transformation that emmits strings for each CSV line in the supplied source string. |
 |  [toFluxValue(value)](./influxdb-client.tofluxvalue.md) | Escapes content of the supplied parameter so that it can be safely embedded into flux query. |
 |  [useProcessHrtime(use)](./influxdb-client.useprocesshrtime.md) |  |
@@ -79,6 +80,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [FluxResultObserver](./influxdb-client.fluxresultobserver.md) | Observes results of a flux query. |
 |  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column. |
 |  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
+|  [Logger](./influxdb-client.logger.md) | Logging interface. |
 |  [Observable](./influxdb-client.observable.md) | An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->. |
 |  [Observer](./influxdb-client.observer.md) | Observer mimics Observer from ECMAScript TC39 Observable proposal |
 |  [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | Represents a parameterized query. |
@@ -100,6 +102,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 
 |  Variable | Description |
 |  --- | --- |
+|  [consoleLogger](./influxdb-client.consolelogger.md) | Logger that logs to console.out |
 |  [currentTime](./influxdb-client.currenttime.md) | Exposes functions that creates strings that represent a timestamp that can be used in the line protocol. Micro and nano timestamps are emulated depending on the js platform in use. |
 |  [dateToProtocolTimestamp](./influxdb-client.datetoprotocoltimestamp.md) | dateToProtocolTimestamp provides converters for JavaScript Date to InfluxDB Write Protocol Timestamp. Keys are supported precisions. |
 |  [DEFAULT\_ConnectionOptions](./influxdb-client.default_connectionoptions.md) | default connection options |
@@ -107,6 +110,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) | default writeOptions |
 |  [escape\_2](./influxdb-client.escape_2.md) | Provides functions escape specific parts in InfluxDB line protocol. |
 |  [FLUX\_VALUE](./influxdb-client.flux_value.md) | Property that offers a function that returns flux-sanitized value of an object. |
+|  [Logger](./influxdb-client.logger.md) |  |
 |  [symbolObservable](./influxdb-client.symbolobservable.md) | Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for interop |
 |  [typeSerializers](./influxdb-client.typeserializers.md) | A dictionary of serializers of particular types returned by a flux query. See [https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/\#valid-data-types](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types) |
 
@@ -119,5 +123,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
 |  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
 |  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |
+|  [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | Informs about a start of response processing. |
 |  [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | Timestamp precision used in write operations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite) |
 

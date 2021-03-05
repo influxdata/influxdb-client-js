@@ -16,7 +16,7 @@ export interface ImportDeclaration
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [as](./influxdb-client-apis.importdeclaration.as.md) | [Identifier](./influxdb-client-apis.identifier.md) |  |
-|  [path](./influxdb-client-apis.importdeclaration.path.md) | [StringLiteral](./influxdb-client-apis.stringliteral.md) |  |
-|  [type](./influxdb-client-apis.importdeclaration.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [as?](./influxdb-client-apis.importdeclaration.as.md) | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
+|  [path?](./influxdb-client-apis.importdeclaration.path.md) | [StringLiteral](./influxdb-client-apis.stringliteral.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.importdeclaration.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

@@ -15,3 +15,5 @@ export declare type CheckDiscriminator = (DeadmanCheck & {
     type: string;
 });
 ```
+<b>References:</b> [DeadmanCheck](./influxdb-client-apis.deadmancheck.md)<!-- -->, [ThresholdCheck](./influxdb-client-apis.thresholdcheck.md)<!-- -->, [CustomCheck](./influxdb-client-apis.customcheck.md)
+

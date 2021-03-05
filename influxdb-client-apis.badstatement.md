@@ -16,6 +16,6 @@ export interface BadStatement
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [text](./influxdb-client-apis.badstatement.text.md) | string | Raw source text |
-|  [type](./influxdb-client-apis.badstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [text?](./influxdb-client-apis.badstatement.text.md) | string | <i>(Optional)</i> Raw source text |
+|  [type?](./influxdb-client-apis.badstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

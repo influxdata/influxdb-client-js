@@ -14,7 +14,7 @@ export interface CheckPatch
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [description](./influxdb-client-apis.checkpatch.description.md) | string |  |
-|  [name](./influxdb-client-apis.checkpatch.name.md) | string |  |
-|  [status](./influxdb-client-apis.checkpatch.status.md) | 'active' \| 'inactive' |  |
+|  [description?](./influxdb-client-apis.checkpatch.description.md) | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.checkpatch.name.md) | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.checkpatch.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> |
 

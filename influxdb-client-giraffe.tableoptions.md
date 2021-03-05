@@ -16,8 +16,8 @@ export interface TableOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [accept](./influxdb-client-giraffe.tableoptions.accept.md) | [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) \| [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)<!-- -->\[\] | Accept allows to accept/reject specific rows or terminate processing. |
-|  [columns](./influxdb-client-giraffe.tableoptions.columns.md) | string\[\] | column keys to collect in the table, undefined means all columns |
-|  [computeFluxGroupKeyUnion](./influxdb-client-giraffe.tableoptions.computefluxgroupkeyunion.md) | boolean | compute also fluxGroupKeyUnion |
-|  [maxTableLength](./influxdb-client-giraffe.tableoptions.maxtablelength.md) | number | Sets maximum table length, QUERY\_MAX\_TABLE\_LENGTH when undefined. |
+|  [accept?](./influxdb-client-giraffe.tableoptions.accept.md) | [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) \| [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)<!-- -->\[\] | <i>(Optional)</i> Accept allows to accept/reject specific rows or terminate processing. |
+|  [columns?](./influxdb-client-giraffe.tableoptions.columns.md) | string\[\] | <i>(Optional)</i> column keys to collect in the table, undefined means all columns |
+|  [computeFluxGroupKeyUnion?](./influxdb-client-giraffe.tableoptions.computefluxgroupkeyunion.md) | boolean | <i>(Optional)</i> compute also fluxGroupKeyUnion |
+|  [maxTableLength?](./influxdb-client-giraffe.tableoptions.maxtablelength.md) | number | <i>(Optional)</i> Sets maximum table length, QUERY\_MAX\_TABLE\_LENGTH when undefined. |
 

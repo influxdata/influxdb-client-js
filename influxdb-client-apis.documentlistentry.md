@@ -15,7 +15,7 @@ export interface DocumentListEntry
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [id](./influxdb-client-apis.documentlistentry.id.md) | string |  |
-|  [labels](./influxdb-client-apis.documentlistentry.labels.md) | [Labels](./influxdb-client-apis.labels.md) |  |
-|  [links](./influxdb-client-apis.documentlistentry.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; } |  |
+|  [labels?](./influxdb-client-apis.documentlistentry.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.documentlistentry.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [meta](./influxdb-client-apis.documentlistentry.meta.md) | [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |
 

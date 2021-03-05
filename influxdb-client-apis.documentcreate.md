@@ -15,8 +15,8 @@ export interface DocumentCreate
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [content](./influxdb-client-apis.documentcreate.content.md) | any |  |
-|  [labels](./influxdb-client-apis.documentcreate.labels.md) | string\[\] | An array of label IDs to be added as labels to the document. |
+|  [labels?](./influxdb-client-apis.documentcreate.labels.md) | string\[\] | <i>(Optional)</i> An array of label IDs to be added as labels to the document. |
 |  [meta](./influxdb-client-apis.documentcreate.meta.md) | [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |
-|  [org](./influxdb-client-apis.documentcreate.org.md) | string | The organization Name. Specify either <code>orgID</code> or <code>org</code>. |
-|  [orgID](./influxdb-client-apis.documentcreate.orgid.md) | string | The organization Name. Specify either <code>orgID</code> or <code>org</code>. |
+|  [org?](./influxdb-client-apis.documentcreate.org.md) | string | <i>(Optional)</i> The organization Name. Specify either <code>orgID</code> or <code>org</code>. |
+|  [orgID?](./influxdb-client-apis.documentcreate.orgid.md) | string | <i>(Optional)</i> The organization Name. Specify either <code>orgID</code> or <code>org</code>. |
 

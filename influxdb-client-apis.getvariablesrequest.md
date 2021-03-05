@@ -14,6 +14,6 @@ export interface GetVariablesRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [org](./influxdb-client-apis.getvariablesrequest.org.md) | string | The organization name. |
-|  [orgID](./influxdb-client-apis.getvariablesrequest.orgid.md) | string | The organization ID. |
+|  [org?](./influxdb-client-apis.getvariablesrequest.org.md) | string | <i>(Optional)</i> The organization name. |
+|  [orgID?](./influxdb-client-apis.getvariablesrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
 

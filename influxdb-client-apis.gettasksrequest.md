@@ -14,11 +14,11 @@ export interface GetTasksRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [after](./influxdb-client-apis.gettasksrequest.after.md) | string | Return tasks after a specified ID. |
-|  [limit](./influxdb-client-apis.gettasksrequest.limit.md) | number | The number of tasks to return |
-|  [name](./influxdb-client-apis.gettasksrequest.name.md) | string | Returns task with a specific name. |
-|  [org](./influxdb-client-apis.gettasksrequest.org.md) | string | Filter tasks to a specific organization name. |
-|  [orgID](./influxdb-client-apis.gettasksrequest.orgid.md) | string | Filter tasks to a specific organization ID. |
-|  [status](./influxdb-client-apis.gettasksrequest.status.md) | string | Filter tasks by a status--"inactive" or "active". |
-|  [user](./influxdb-client-apis.gettasksrequest.user.md) | string | Filter tasks to a specific user ID. |
+|  [after?](./influxdb-client-apis.gettasksrequest.after.md) | string | <i>(Optional)</i> Return tasks after a specified ID. |
+|  [limit?](./influxdb-client-apis.gettasksrequest.limit.md) | number | <i>(Optional)</i> The number of tasks to return |
+|  [name?](./influxdb-client-apis.gettasksrequest.name.md) | string | <i>(Optional)</i> Returns task with a specific name. |
+|  [org?](./influxdb-client-apis.gettasksrequest.org.md) | string | <i>(Optional)</i> Filter tasks to a specific organization name. |
+|  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) | string | <i>(Optional)</i> Filter tasks to a specific organization ID. |
+|  [status?](./influxdb-client-apis.gettasksrequest.status.md) | string | <i>(Optional)</i> Filter tasks by a status--"inactive" or "active". |
+|  [user?](./influxdb-client-apis.gettasksrequest.user.md) | string | <i>(Optional)</i> Filter tasks to a specific user ID. |
 

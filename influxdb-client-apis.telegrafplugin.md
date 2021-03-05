@@ -14,8 +14,8 @@ export interface TelegrafPlugin
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [config](./influxdb-client-apis.telegrafplugin.config.md) | string |  |
-|  [description](./influxdb-client-apis.telegrafplugin.description.md) | string |  |
-|  [name](./influxdb-client-apis.telegrafplugin.name.md) | string |  |
-|  [type](./influxdb-client-apis.telegrafplugin.type.md) | string |  |
+|  [config?](./influxdb-client-apis.telegrafplugin.config.md) | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.telegrafplugin.description.md) | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.telegrafplugin.name.md) | string | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.telegrafplugin.type.md) | string | <i>(Optional)</i> |
 

@@ -9,3 +9,5 @@
 ```typescript
 export declare type CellsWithViewProperties = CellWithViewProperties[];
 ```
+<b>References:</b> [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)
+

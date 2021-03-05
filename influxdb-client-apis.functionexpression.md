@@ -16,7 +16,7 @@ export interface FunctionExpression
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.functionexpression.body.md) | [Node](./influxdb-client-apis.node.md) |  |
-|  [params](./influxdb-client-apis.functionexpression.params.md) | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | Function parameters |
-|  [type](./influxdb-client-apis.functionexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [body?](./influxdb-client-apis.functionexpression.body.md) | [Node](./influxdb-client-apis.node.md) | <i>(Optional)</i> |
+|  [params?](./influxdb-client-apis.functionexpression.params.md) | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Function parameters |
+|  [type?](./influxdb-client-apis.functionexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

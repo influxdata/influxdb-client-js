@@ -14,9 +14,9 @@ export interface User
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [id](./influxdb-client-apis.user.id.md) | string |  |
-|  [links](./influxdb-client-apis.user.links.md) | { self?: string; } |  |
+|  [id?](./influxdb-client-apis.user.id.md) | string | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.user.links.md) | { self?: string; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.user.name.md) | string |  |
-|  [oauthID](./influxdb-client-apis.user.oauthid.md) | string |  |
-|  [status](./influxdb-client-apis.user.status.md) | 'active' \| 'inactive' | If inactive the user is inactive. |
+|  [oauthID?](./influxdb-client-apis.user.oauthid.md) | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.user.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the user is inactive. |
 

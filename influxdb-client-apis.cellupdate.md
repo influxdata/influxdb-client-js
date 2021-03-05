@@ -14,8 +14,8 @@ export interface CellUpdate
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [h](./influxdb-client-apis.cellupdate.h.md) | number |  |
-|  [w](./influxdb-client-apis.cellupdate.w.md) | number |  |
-|  [x](./influxdb-client-apis.cellupdate.x.md) | number |  |
-|  [y](./influxdb-client-apis.cellupdate.y.md) | number |  |
+|  [h?](./influxdb-client-apis.cellupdate.h.md) | number | <i>(Optional)</i> |
+|  [w?](./influxdb-client-apis.cellupdate.w.md) | number | <i>(Optional)</i> |
+|  [x?](./influxdb-client-apis.cellupdate.x.md) | number | <i>(Optional)</i> |
+|  [y?](./influxdb-client-apis.cellupdate.y.md) | number | <i>(Optional)</i> |
 

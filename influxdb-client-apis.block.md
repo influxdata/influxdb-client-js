@@ -16,6 +16,6 @@ export interface Block
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.block.body.md) | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | Block body |
-|  [type](./influxdb-client-apis.block.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [body?](./influxdb-client-apis.block.body.md) | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | <i>(Optional)</i> Block body |
+|  [type?](./influxdb-client-apis.block.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

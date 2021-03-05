@@ -12,3 +12,5 @@ export declare type TelegramNotificationEndpoint = NotificationEndpointBase & {
     channel: string;
 };
 ```
+<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+

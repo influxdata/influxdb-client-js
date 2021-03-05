@@ -14,8 +14,8 @@ export interface GetScrapersRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [id](./influxdb-client-apis.getscrapersrequest.id.md) | any | List of scraper target IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
-|  [name](./influxdb-client-apis.getscrapersrequest.name.md) | string | Specifies the name of the scraper target. |
-|  [org](./influxdb-client-apis.getscrapersrequest.org.md) | string | Specifies the organization name of the scraper target. |
-|  [orgID](./influxdb-client-apis.getscrapersrequest.orgid.md) | string | Specifies the organization ID of the scraper target. |
+|  [id?](./influxdb-client-apis.getscrapersrequest.id.md) | any | <i>(Optional)</i> List of scraper target IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
+|  [name?](./influxdb-client-apis.getscrapersrequest.name.md) | string | <i>(Optional)</i> Specifies the name of the scraper target. |
+|  [org?](./influxdb-client-apis.getscrapersrequest.org.md) | string | <i>(Optional)</i> Specifies the organization name of the scraper target. |
+|  [orgID?](./influxdb-client-apis.getscrapersrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the scraper target. |
 

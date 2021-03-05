@@ -14,5 +14,5 @@ export interface Documents
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [documents](./influxdb-client-apis.documents.documents.md) | [DocumentListEntry](./influxdb-client-apis.documentlistentry.md)<!-- -->\[\] |  |
+|  [documents?](./influxdb-client-apis.documents.documents.md) | [DocumentListEntry](./influxdb-client-apis.documentlistentry.md)<!-- -->\[\] | <i>(Optional)</i> |
 

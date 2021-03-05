@@ -14,5 +14,5 @@ export interface AnalyzeQueryResponse
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [errors](./influxdb-client-apis.analyzequeryresponse.errors.md) | Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt; |  |
+|  [errors?](./influxdb-client-apis.analyzequeryresponse.errors.md) | Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt; | <i>(Optional)</i> |
 

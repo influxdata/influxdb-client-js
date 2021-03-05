@@ -16,9 +16,9 @@ export interface File
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.file.body.md) | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | List of Flux statements |
-|  [imports](./influxdb-client-apis.file.imports.md) | [ImportDeclaration](./influxdb-client-apis.importdeclaration.md)<!-- -->\[\] | A list of package imports |
-|  [name](./influxdb-client-apis.file.name.md) | string | The name of the file. |
-|  [package](./influxdb-client-apis.file.package.md) | [PackageClause](./influxdb-client-apis.packageclause.md) |  |
-|  [type](./influxdb-client-apis.file.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [body?](./influxdb-client-apis.file.body.md) | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | <i>(Optional)</i> List of Flux statements |
+|  [imports?](./influxdb-client-apis.file.imports.md) | [ImportDeclaration](./influxdb-client-apis.importdeclaration.md)<!-- -->\[\] | <i>(Optional)</i> A list of package imports |
+|  [name?](./influxdb-client-apis.file.name.md) | string | <i>(Optional)</i> The name of the file. |
+|  [package?](./influxdb-client-apis.file.package.md) | [PackageClause](./influxdb-client-apis.packageclause.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.file.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

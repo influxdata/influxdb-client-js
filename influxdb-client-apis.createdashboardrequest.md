@@ -14,7 +14,7 @@ export interface CreateDashboardRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [description](./influxdb-client-apis.createdashboardrequest.description.md) | string | The user-facing description of the dashboard. |
+|  [description?](./influxdb-client-apis.createdashboardrequest.description.md) | string | <i>(Optional)</i> The user-facing description of the dashboard. |
 |  [name](./influxdb-client-apis.createdashboardrequest.name.md) | string | The user-facing name of the dashboard. |
 |  [orgID](./influxdb-client-apis.createdashboardrequest.orgid.md) | string | The ID of the organization that owns the dashboard. |
 

@@ -14,11 +14,11 @@ export interface Cell
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [h](./influxdb-client-apis.cell.h.md) | number |  |
-|  [id](./influxdb-client-apis.cell.id.md) | string |  |
-|  [links](./influxdb-client-apis.cell.links.md) | { self?: string; view?: string; } |  |
-|  [viewID](./influxdb-client-apis.cell.viewid.md) | string | The reference to a view from the views API. |
-|  [w](./influxdb-client-apis.cell.w.md) | number |  |
-|  [x](./influxdb-client-apis.cell.x.md) | number |  |
-|  [y](./influxdb-client-apis.cell.y.md) | number |  |
+|  [h?](./influxdb-client-apis.cell.h.md) | number | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.cell.id.md) | string | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.cell.links.md) | { self?: string; view?: string; } | <i>(Optional)</i> |
+|  [viewID?](./influxdb-client-apis.cell.viewid.md) | string | <i>(Optional)</i> The reference to a view from the views API. |
+|  [w?](./influxdb-client-apis.cell.w.md) | number | <i>(Optional)</i> |
+|  [x?](./influxdb-client-apis.cell.x.md) | number | <i>(Optional)</i> |
+|  [y?](./influxdb-client-apis.cell.y.md) | number | <i>(Optional)</i> |
 

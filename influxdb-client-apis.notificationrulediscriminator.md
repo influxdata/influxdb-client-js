@@ -19,3 +19,5 @@ export declare type NotificationRuleDiscriminator = (SlackNotificationRule & {
     type: string;
 });
 ```
+<b>References:</b> [SlackNotificationRule](./influxdb-client-apis.slacknotificationrule.md)<!-- -->, [SMTPNotificationRule](./influxdb-client-apis.smtpnotificationrule.md)<!-- -->, [PagerDutyNotificationRule](./influxdb-client-apis.pagerdutynotificationrule.md)<!-- -->, [HTTPNotificationRule](./influxdb-client-apis.httpnotificationrule.md)<!-- -->, [TelegramNotificationRule](./influxdb-client-apis.telegramnotificationrule.md)
+

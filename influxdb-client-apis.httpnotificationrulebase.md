@@ -15,5 +15,5 @@ export interface HTTPNotificationRuleBase
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [type](./influxdb-client-apis.httpnotificationrulebase.type.md) | 'http' |  |
-|  [url](./influxdb-client-apis.httpnotificationrulebase.url.md) | string |  |
+|  [url?](./influxdb-client-apis.httpnotificationrulebase.url.md) | string | <i>(Optional)</i> |
 

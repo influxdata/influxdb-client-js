@@ -16,5 +16,5 @@ export interface LabelCreateRequest
 |  --- | --- | --- |
 |  [name](./influxdb-client-apis.labelcreaterequest.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.labelcreaterequest.orgid.md) | string |  |
-|  [properties](./influxdb-client-apis.labelcreaterequest.properties.md) | any | Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
+|  [properties?](./influxdb-client-apis.labelcreaterequest.properties.md) | any | <i>(Optional)</i> Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
 

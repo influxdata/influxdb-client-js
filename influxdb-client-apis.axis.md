@@ -16,10 +16,10 @@ export interface Axis
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [base](./influxdb-client-apis.axis.base.md) | '' \| '2' \| '10' | Base represents the radix for formatting axis values. |
-|  [bounds](./influxdb-client-apis.axis.bounds.md) | string\[\] | The extents of an axis in the form \[lower, upper\]. Clients determine whether bounds are to be inclusive or exclusive of their limits |
-|  [label](./influxdb-client-apis.axis.label.md) | string | Label is a description of this Axis |
-|  [prefix](./influxdb-client-apis.axis.prefix.md) | string | Prefix represents a label prefix for formatting axis values. |
-|  [scale](./influxdb-client-apis.axis.scale.md) | [AxisScale](./influxdb-client-apis.axisscale.md) |  |
-|  [suffix](./influxdb-client-apis.axis.suffix.md) | string | Suffix represents a label suffix for formatting axis values. |
+|  [base?](./influxdb-client-apis.axis.base.md) | '' \| '2' \| '10' | <i>(Optional)</i> Base represents the radix for formatting axis values. |
+|  [bounds?](./influxdb-client-apis.axis.bounds.md) | string\[\] | <i>(Optional)</i> The extents of an axis in the form \[lower, upper\]. Clients determine whether bounds are to be inclusive or exclusive of their limits |
+|  [label?](./influxdb-client-apis.axis.label.md) | string | <i>(Optional)</i> Label is a description of this Axis |
+|  [prefix?](./influxdb-client-apis.axis.prefix.md) | string | <i>(Optional)</i> Prefix represents a label prefix for formatting axis values. |
+|  [scale?](./influxdb-client-apis.axis.scale.md) | [AxisScale](./influxdb-client-apis.axisscale.md) | <i>(Optional)</i> |
+|  [suffix?](./influxdb-client-apis.axis.suffix.md) | string | <i>(Optional)</i> Suffix represents a label suffix for formatting axis values. |
 

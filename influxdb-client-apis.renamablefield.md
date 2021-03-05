@@ -16,7 +16,7 @@ export interface RenamableField
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [displayName](./influxdb-client-apis.renamablefield.displayname.md) | string | The name that a field is renamed to by the user. |
-|  [internalName](./influxdb-client-apis.renamablefield.internalname.md) | string | The calculated name of a field. |
-|  [visible](./influxdb-client-apis.renamablefield.visible.md) | boolean | Indicates whether this field should be visible on the table. |
+|  [displayName?](./influxdb-client-apis.renamablefield.displayname.md) | string | <i>(Optional)</i> The name that a field is renamed to by the user. |
+|  [internalName?](./influxdb-client-apis.renamablefield.internalname.md) | string | <i>(Optional)</i> The calculated name of a field. |
+|  [visible?](./influxdb-client-apis.renamablefield.visible.md) | boolean | <i>(Optional)</i> Indicates whether this field should be visible on the table. |
 

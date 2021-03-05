@@ -11,3 +11,5 @@ export declare type ResourceMember = User & {
     role?: 'member';
 };
 ```
+<b>References:</b> [User](./influxdb-client-apis.user.md)
+

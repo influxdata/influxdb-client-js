@@ -14,7 +14,7 @@ export interface ListStacksRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [name](./influxdb-client-apis.liststacksrequest.name.md) | string | A collection of names to filter the list by. |
+|  [name?](./influxdb-client-apis.liststacksrequest.name.md) | string | <i>(Optional)</i> A collection of names to filter the list by. |
 |  [orgID](./influxdb-client-apis.liststacksrequest.orgid.md) | string | The organization id of the stacks |
-|  [stackID](./influxdb-client-apis.liststacksrequest.stackid.md) | string | A collection of stackIDs to filter the list by. |
+|  [stackID?](./influxdb-client-apis.liststacksrequest.stackid.md) | string | <i>(Optional)</i> A collection of stackIDs to filter the list by. |
 

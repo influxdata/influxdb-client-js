@@ -14,5 +14,5 @@ export interface GetLabelsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.getlabelsrequest.orgid.md) | string | The organization ID. |
+|  [orgID?](./influxdb-client-apis.getlabelsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
 

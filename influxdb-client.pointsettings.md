@@ -16,6 +16,6 @@ export interface PointSettings
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [convertTime](./influxdb-client.pointsettings.converttime.md) | (value: string \| number \| Date \| undefined) =&gt; string \| undefined |  |
-|  [defaultTags](./influxdb-client.pointsettings.defaulttags.md) | { \[key: string\]: string; } |  |
+|  [convertTime?](./influxdb-client.pointsettings.converttime.md) | (value: string \| number \| Date \| undefined) =&gt; string \| undefined | <i>(Optional)</i> |
+|  [defaultTags?](./influxdb-client.pointsettings.defaulttags.md) | { \[key: string\]: string; } | <i>(Optional)</i> |
 

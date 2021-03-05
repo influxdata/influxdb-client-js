@@ -16,6 +16,6 @@ export interface Legend
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [orientation](./influxdb-client-apis.legend.orientation.md) | 'top' \| 'bottom' \| 'left' \| 'right' | orientation is the location of the legend with respect to the view graph |
-|  [type](./influxdb-client-apis.legend.type.md) | 'static' | The style of the legend. |
+|  [orientation?](./influxdb-client-apis.legend.orientation.md) | 'top' \| 'bottom' \| 'left' \| 'right' | <i>(Optional)</i> orientation is the location of the legend with respect to the view graph |
+|  [type?](./influxdb-client-apis.legend.type.md) | 'static' | <i>(Optional)</i> The style of the legend. |
 

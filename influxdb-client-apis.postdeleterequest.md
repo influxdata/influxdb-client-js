@@ -15,8 +15,8 @@ export interface PostDeleteRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [body](./influxdb-client-apis.postdeleterequest.body.md) | [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | Predicate delete request |
-|  [bucket](./influxdb-client-apis.postdeleterequest.bucket.md) | string | Specifies the bucket to delete data from. |
-|  [bucketID](./influxdb-client-apis.postdeleterequest.bucketid.md) | string | Specifies the bucket ID to delete data from. |
-|  [org](./influxdb-client-apis.postdeleterequest.org.md) | string | Specifies the organization to delete data from. |
-|  [orgID](./influxdb-client-apis.postdeleterequest.orgid.md) | string | Specifies the organization ID of the resource. |
+|  [bucket?](./influxdb-client-apis.postdeleterequest.bucket.md) | string | <i>(Optional)</i> Specifies the bucket to delete data from. |
+|  [bucketID?](./influxdb-client-apis.postdeleterequest.bucketid.md) | string | <i>(Optional)</i> Specifies the bucket ID to delete data from. |
+|  [org?](./influxdb-client-apis.postdeleterequest.org.md) | string | <i>(Optional)</i> Specifies the organization to delete data from. |
+|  [orgID?](./influxdb-client-apis.postdeleterequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the resource. |
 

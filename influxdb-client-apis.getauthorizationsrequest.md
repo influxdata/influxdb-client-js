@@ -14,8 +14,8 @@ export interface GetAuthorizationsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [org](./influxdb-client-apis.getauthorizationsrequest.org.md) | string | Only show authorizations that belong to a organization name. |
-|  [orgID](./influxdb-client-apis.getauthorizationsrequest.orgid.md) | string | Only show authorizations that belong to an organization ID. |
-|  [user](./influxdb-client-apis.getauthorizationsrequest.user.md) | string | Only show authorizations that belong to a user name. |
-|  [userID](./influxdb-client-apis.getauthorizationsrequest.userid.md) | string | Only show authorizations that belong to a user ID. |
+|  [org?](./influxdb-client-apis.getauthorizationsrequest.org.md) | string | <i>(Optional)</i> Only show authorizations that belong to a organization name. |
+|  [orgID?](./influxdb-client-apis.getauthorizationsrequest.orgid.md) | string | <i>(Optional)</i> Only show authorizations that belong to an organization ID. |
+|  [user?](./influxdb-client-apis.getauthorizationsrequest.user.md) | string | <i>(Optional)</i> Only show authorizations that belong to a user name. |
+|  [userID?](./influxdb-client-apis.getauthorizationsrequest.userid.md) | string | <i>(Optional)</i> Only show authorizations that belong to a user ID. |
 

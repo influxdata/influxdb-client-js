@@ -14,20 +14,20 @@ export interface Source
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [default](./influxdb-client-apis.source.default.md) | boolean |  |
-|  [defaultRP](./influxdb-client-apis.source.defaultrp.md) | string |  |
-|  [id](./influxdb-client-apis.source.id.md) | string |  |
-|  [insecureSkipVerify](./influxdb-client-apis.source.insecureskipverify.md) | boolean |  |
-|  [languages](./influxdb-client-apis.source.languages.md) | Array&lt;'flux' \| 'influxql'&gt; |  |
-|  [links](./influxdb-client-apis.source.links.md) | { self?: string; query?: string; health?: string; buckets?: string; } |  |
-|  [metaUrl](./influxdb-client-apis.source.metaurl.md) | string |  |
-|  [name](./influxdb-client-apis.source.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.source.orgid.md) | string |  |
-|  [password](./influxdb-client-apis.source.password.md) | string |  |
-|  [sharedSecret](./influxdb-client-apis.source.sharedsecret.md) | string |  |
-|  [telegraf](./influxdb-client-apis.source.telegraf.md) | string |  |
-|  [token](./influxdb-client-apis.source.token.md) | string |  |
-|  [type](./influxdb-client-apis.source.type.md) | 'v1' \| 'v2' \| 'self' |  |
-|  [url](./influxdb-client-apis.source.url.md) | string |  |
-|  [username](./influxdb-client-apis.source.username.md) | string |  |
+|  [default?](./influxdb-client-apis.source.default.md) | boolean | <i>(Optional)</i> |
+|  [defaultRP?](./influxdb-client-apis.source.defaultrp.md) | string | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.source.id.md) | string | <i>(Optional)</i> |
+|  [insecureSkipVerify?](./influxdb-client-apis.source.insecureskipverify.md) | boolean | <i>(Optional)</i> |
+|  [languages?](./influxdb-client-apis.source.languages.md) | Array&lt;'flux' \| 'influxql'&gt; | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.source.links.md) | { self?: string; query?: string; health?: string; buckets?: string; } | <i>(Optional)</i> |
+|  [metaUrl?](./influxdb-client-apis.source.metaurl.md) | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.source.name.md) | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.source.orgid.md) | string | <i>(Optional)</i> |
+|  [password?](./influxdb-client-apis.source.password.md) | string | <i>(Optional)</i> |
+|  [sharedSecret?](./influxdb-client-apis.source.sharedsecret.md) | string | <i>(Optional)</i> |
+|  [telegraf?](./influxdb-client-apis.source.telegraf.md) | string | <i>(Optional)</i> |
+|  [token?](./influxdb-client-apis.source.token.md) | string | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.source.type.md) | 'v1' \| 'v2' \| 'self' | <i>(Optional)</i> |
+|  [url?](./influxdb-client-apis.source.url.md) | string | <i>(Optional)</i> |
+|  [username?](./influxdb-client-apis.source.username.md) | string | <i>(Optional)</i> |
 

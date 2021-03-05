@@ -16,6 +16,6 @@ export interface OptionStatement
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [assignment](./influxdb-client-apis.optionstatement.assignment.md) | [VariableAssignment](./influxdb-client-apis.variableassignment.md) \| [MemberAssignment](./influxdb-client-apis.memberassignment.md) |  |
-|  [type](./influxdb-client-apis.optionstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) |  |
+|  [assignment?](./influxdb-client-apis.optionstatement.assignment.md) | [VariableAssignment](./influxdb-client-apis.variableassignment.md) \| [MemberAssignment](./influxdb-client-apis.memberassignment.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.optionstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

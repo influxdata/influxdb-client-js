@@ -14,6 +14,6 @@ export interface Checks
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [checks](./influxdb-client-apis.checks.checks.md) | [Check](./influxdb-client-apis.check.md)<!-- -->\[\] |  |
-|  [links](./influxdb-client-apis.checks.links.md) | [Links](./influxdb-client-apis.links.md) |  |
+|  [checks?](./influxdb-client-apis.checks.checks.md) | [Check](./influxdb-client-apis.check.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.checks.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 

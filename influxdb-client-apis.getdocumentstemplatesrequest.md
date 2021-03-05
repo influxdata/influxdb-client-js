@@ -14,6 +14,6 @@ export interface GetDocumentsTemplatesRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [org](./influxdb-client-apis.getdocumentstemplatesrequest.org.md) | string | Specifies the name of the organization of the template. |
-|  [orgID](./influxdb-client-apis.getdocumentstemplatesrequest.orgid.md) | string | Specifies the organization ID of the template. |
+|  [org?](./influxdb-client-apis.getdocumentstemplatesrequest.org.md) | string | <i>(Optional)</i> Specifies the name of the organization of the template. |
+|  [orgID?](./influxdb-client-apis.getdocumentstemplatesrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the template. |
 
