@@ -62,6 +62,9 @@ export interface OnboardingRequest {
   password?: string
   org: string
   bucket: string
+  retentionPeriodSeconds?: number
+  /** Retention period *in nanoseconds* for the new bucket. This key's name has been misleading since OSS 2.0 GA, please transition to use `retentionPeriodSeconds`
+   */
   retentionPeriodHrs?: number
 }
 
@@ -142,8 +145,10 @@ export type RetentionRules = RetentionRule[]
 
 export interface RetentionRule {
   type: 'expire'
-  /** Duration in seconds for how long data will be kept in the database. */
+  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
   everySeconds: number
+  /** Shard duration measured in seconds. */
+  shardGroupDurationSeconds?: number
 }
 
 export type Labels = Label[]
@@ -1131,6 +1136,8 @@ export interface MosaicViewProperties {
   xTotalTicks?: number
   xTickStart?: number
   xTickStep?: number
+  yLabelColumnSeparator?: string
+  yLabelColumns?: string[]
   ySeriesColumns: string[]
   fillColumns: string[]
   xDomain: number[]
@@ -1141,6 +1148,7 @@ export interface MosaicViewProperties {
   xSuffix: string
   yPrefix: string
   ySuffix: string
+  hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   legendColorizeRows?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
