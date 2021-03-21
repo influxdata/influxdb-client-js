@@ -106,31 +106,27 @@ export function fluxString(value: any): FluxParameterLike {
 }
 
 /**
- * Creates a flux integer literal.
- */
-export function fluxInteger(value: any): FluxParameterLike {
-  const val = String(value)
-  for (const c of val) {
-    if (c < '0' || c > '9') throw new Error(`not a flux integer: ${val}`)
-  }
-  return new FluxParameter(val)
-}
-
-/**
  * Sanitizes float value to avoid injections.
  * @param value - InfluxDB float literal
  * @returns sanitized float value
  * @throws Error if the the value cannot be sanitized
  */
 export function sanitizeFloat(value: any): string {
+  if (typeof value === 'number') {
+    if (!isFinite(value)) {
+      throw new Error(`not a flux float: ${value}`)
+    }
+    return value.toString()
+  }
   const val = String(value)
   let dot = false
   for (const c of val) {
     if (c === '.') {
       if (dot) throw new Error(`not a flux float: ${val}`)
       dot = !dot
+      continue
     }
-    if (c !== '.' && (c < '0' || c > '9'))
+    if (!(c === '.' || (c >= '0' && c <= '9') || c === '-'))
       throw new Error(`not a flux float: ${val}`)
   }
   return val
@@ -140,6 +136,19 @@ export function sanitizeFloat(value: any): string {
  */
 export function fluxFloat(value: any): FluxParameterLike {
   return new FluxParameter(sanitizeFloat(value))
+}
+
+/**
+ * Creates a flux integer literal.
+ */
+export function fluxInteger(value: any): FluxParameterLike {
+  const val = sanitizeFloat(value)
+  for (const c of val) {
+    if (c === '.') {
+      throw new Error(`not a flux integer: ${val}`)
+    }
+  }
+  return new FluxParameter(val)
 }
 
 function sanitizeDateTime(value: any): string {
