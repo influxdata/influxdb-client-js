@@ -126,7 +126,7 @@ export function sanitizeFloat(value: any): string {
       dot = !dot
       continue
     }
-    if (!(c === '.' || (c >= '0' && c <= '9') || c === '-'))
+    if (c !== '.' && c !== '-' && (c < '0' || c > '9'))
       throw new Error(`not a flux float: ${val}`)
   }
   return val
