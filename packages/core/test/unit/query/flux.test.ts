@@ -24,7 +24,13 @@ describe('Flux Values', () => {
     const subject = fluxInteger(123)
     expect(subject.toString()).equals('123')
     expect((subject as any)[FLUX_VALUE]()).equals('123')
+    expect(fluxInteger(123).toString()).equals('123')
+    expect(fluxInteger(-123).toString()).equals('-123')
+    expect(() => fluxInteger('-1.1')).to.throw()
     expect(() => fluxInteger('123a')).to.throw()
+    expect(() => fluxInteger(NaN)).to.throw()
+    expect(() => fluxInteger(Infinity)).to.throw()
+    expect(() => fluxInteger(-Infinity)).to.throw()
   })
   it('creates fluxBool', () => {
     expect(fluxBool('true').toString()).equals('true')
@@ -44,8 +50,12 @@ describe('Flux Values', () => {
     const subject = fluxFloat(123.456)
     expect(subject.toString()).equals('123.456')
     expect((subject as any)[FLUX_VALUE]()).equals('123.456')
+    expect(fluxFloat('-123').toString()).equals('-123')
     expect(() => fluxFloat('123..')).to.throw()
     expect(() => fluxFloat('123.a')).to.throw()
+    expect(() => fluxFloat(NaN)).to.throw()
+    expect(() => fluxFloat(Infinity)).to.throw()
+    expect(() => fluxFloat(-Infinity)).to.throw()
   })
   it('creates fluxDuration', () => {
     const subject = fluxDuration('1ms')
@@ -81,6 +91,7 @@ describe('Flux Values', () => {
       {value: false, flux: 'false'},
       {value: 1, flux: '1'},
       {value: 1.1, flux: '1.1'},
+      {value: -1.1, flux: '-1.1'},
       {value: 'a', flux: '"a"'},
       {value: new Date(1589521447471), flux: '2020-05-15T05:44:07.471Z'},
       {value: /abc/, flux: 'regexp.compile(v: "/abc/")'},

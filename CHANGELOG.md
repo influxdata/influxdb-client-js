@@ -4,6 +4,10 @@
 
 1. [#316](https://github.com/influxdata/influxdb-client-js/pull/316): Regenerate APIs from swagger.
 
+### Bug Fixes
+
+1. [#318](https://github.com/influxdata/influxdb-client-js/pull/318): Support negative numbers in flux tagged template.
+
 ## 1.11.0 [2021-03-05]
 
 ### Features
