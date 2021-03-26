@@ -11,7 +11,7 @@ export interface ConnectionOptions {
   token?: string
   /** socket timeout */
   timeout?: number
-  /** extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback }*/
+  /** extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback } */
   transportOptions?: {[key: string]: any}
 }
 
