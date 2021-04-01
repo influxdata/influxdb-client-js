@@ -4,7 +4,7 @@
 
 ## ConnectionOptions.transportOptions property
 
-extra options for the transport layer
+extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon [https://nodejs.org/api/http.html\#http\_http\_request\_url\_options\_callback](https://nodejs.org/api/http.html#http_http_request_url_options_callback)
 
 <b>Signature:</b>
 

@@ -14,6 +14,7 @@ export interface RetentionRule
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md) | number | Duration in seconds for how long data will be kept in the database. |
+|  [everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md) | number | Duration in seconds for how long data will be kept in the database. 0 means infinite. |
+|  [shardGroupDurationSeconds?](./influxdb-client-apis.retentionrule.shardgroupdurationseconds.md) | number | <i>(Optional)</i> Shard duration measured in seconds. |
 |  [type](./influxdb-client-apis.retentionrule.type.md) | 'expire' |  |
 

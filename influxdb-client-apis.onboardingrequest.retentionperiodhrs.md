@@ -4,6 +4,8 @@
 
 ## OnboardingRequest.retentionPeriodHrs property
 
+Retention period \*in nanoseconds\* for the new bucket. This key's name has been misleading since OSS 2.0 GA, please transition to use `retentionPeriodSeconds`
+
 <b>Signature:</b>
 
 ```typescript

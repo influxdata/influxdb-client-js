@@ -17,6 +17,7 @@ export interface MosaicViewProperties
 |  [colors](./influxdb-client-apis.mosaicviewproperties.colors.md) | string\[\] | Colors define color encoding of data into a visualization |
 |  [fillColumns](./influxdb-client-apis.mosaicviewproperties.fillcolumns.md) | string\[\] |  |
 |  [generateXAxisTicks?](./influxdb-client-apis.mosaicviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
+|  [hoverDimension?](./influxdb-client-apis.mosaicviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.mosaicviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
@@ -36,6 +37,8 @@ export interface MosaicViewProperties
 |  [xTotalTicks?](./influxdb-client-apis.mosaicviewproperties.xtotalticks.md) | number | <i>(Optional)</i> |
 |  [yAxisLabel](./influxdb-client-apis.mosaicviewproperties.yaxislabel.md) | string |  |
 |  [yDomain](./influxdb-client-apis.mosaicviewproperties.ydomain.md) | number\[\] |  |
+|  [yLabelColumns?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumns.md) | string\[\] | <i>(Optional)</i> |
+|  [yLabelColumnSeparator?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumnseparator.md) | string | <i>(Optional)</i> |
 |  [yPrefix](./influxdb-client-apis.mosaicviewproperties.yprefix.md) | string |  |
 |  [ySeriesColumns](./influxdb-client-apis.mosaicviewproperties.yseriescolumns.md) | string\[\] |  |
 |  [ySuffix](./influxdb-client-apis.mosaicviewproperties.ysuffix.md) | string |  |

@@ -4,7 +4,7 @@
 
 ## RetentionRule.everySeconds property
 
-Duration in seconds for how long data will be kept in the database.
+Duration in seconds for how long data will be kept in the database. 0 means infinite.
 
 <b>Signature:</b>
 
