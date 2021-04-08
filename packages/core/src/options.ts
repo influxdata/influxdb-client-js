@@ -79,6 +79,8 @@ export interface WriteOptions extends WriteRetryOptions {
   defaultTags?: Record<string, string>
   /** HTTP headers that will be sent with every write request */
   headers?: {[key: string]: string}
+  /** When specified, write bodies larger than the threshold are gzipped  */
+  gzipThreshold?: number
 }
 
 /** default RetryDelayStrategyOptions */
@@ -102,6 +104,7 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   minRetryDelay: 5000,
   maxRetryDelay: 180000,
   exponentialBase: 5,
+  gzipThreshold: 1000,
 }
 
 /**
