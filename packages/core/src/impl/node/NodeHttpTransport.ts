@@ -206,7 +206,7 @@ export class NodeHttpTransport implements Transport {
     }
     if (
       sendOptions.gzipThreshold !== undefined &&
-      sendOptions.gzipThreshold > bodyBuffer.length
+      sendOptions.gzipThreshold < bodyBuffer.length
     ) {
       bodyPromise = bodyPromise.then(body => {
         return new Promise((resolve, reject) => {
