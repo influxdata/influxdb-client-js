@@ -157,6 +157,7 @@ describe('WriteApi', () => {
     it('does not retry write when configured to do so', async () => {
       useSubject({maxRetries: 0, batchSize: 1})
       subject.writeRecord('test value=1')
+      await waitForCondition(() => logs.error.length > 0)
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).is.deep.equal([])
@@ -175,6 +176,7 @@ describe('WriteApi', () => {
         },
       })
       subject.writeRecord('test value=1')
+      await waitForCondition(() => logs.warn.length > 0)
       await subject.close().then(() => {
         expect(logs.error).length(0)
         expect(logs.warn).is.deep.equal([
