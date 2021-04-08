@@ -8,7 +8,7 @@ export interface SendOptions {
   method: string
   /** Request HTTP headers. */
   headers?: {[key: string]: string}
-  /** When specified, message body larger than the treshold will is gzipped  */
+  /** When specified, message body larger than the treshold is gzipped  */
   gzipThreshold?: number
 }
 
