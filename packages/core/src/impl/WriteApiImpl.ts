@@ -91,6 +91,7 @@ export default class WriteApiImpl implements WriteApi {
         'content-type': 'text/plain; charset=utf-8',
         ...writeOptions?.headers,
       },
+      gzipThreshold: this.writeOptions.gzipThreshold,
     }
 
     const scheduleNextSend = (): void => {
