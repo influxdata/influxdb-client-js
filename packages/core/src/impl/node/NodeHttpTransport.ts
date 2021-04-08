@@ -215,6 +215,7 @@ export class NodeHttpTransport implements Transport {
             if (err) {
               return reject(err)
             }
+            options.headers['content-encoding'] = 'gzip'
             return resolve(res)
           })
         })
