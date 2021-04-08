@@ -210,7 +210,7 @@ export class NodeHttpTransport implements Transport {
     ) {
       bodyPromise = bodyPromise.then(body => {
         return new Promise((resolve, reject) => {
-          zlib.gzip(body, zlibOptions, (err, res) => {
+          zlib.gzip(body, (err, res) => {
             /* istanbul ignore next - hard to simulate failure, manually reviewed */
             if (err) {
               return reject(err)
