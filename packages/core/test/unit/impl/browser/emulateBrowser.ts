@@ -79,8 +79,12 @@ let beforeEmulation:
   | {fetch: any; AbortController: any; TextEncoder: any}
   | undefined
 
-export function emulateFetchApi(spec: ResponseSpec): void {
-  function fetch(url: string, _options: any): Promise<any> {
+export function emulateFetchApi(
+  spec: ResponseSpec,
+  onRequest?: (options: any) => void
+): void {
+  function fetch(url: string, options: any): Promise<any> {
+    if (onRequest) onRequest(options)
     return url.indexOf('error') !== -1
       ? Promise.reject(new Error(url))
       : Promise.resolve(createResponse(spec))

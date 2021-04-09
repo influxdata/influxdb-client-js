@@ -89,6 +89,26 @@ describe('FetchTransport', () => {
       })
       expect(response).is.deep.equal('{}')
     })
+    it('allows to transform requests', async () => {
+      let lastRequest: any
+      emulateFetchApi(
+        {
+          headers: {'content-type': 'text/plain'},
+          body: '{}',
+        },
+        req => (lastRequest = req)
+      )
+      const transport = new FetchTransport({url: 'http://test:8086'})
+      transport.modifyFetchRequest = (request): void => {
+        request.body = 'modified'
+      }
+      await transport.request('/whatever', '', {
+        method: 'POST',
+      })
+      expect(lastRequest)
+        .property('body')
+        .equals('modified')
+    })
     it('receives also response headers', async () => {
       emulateFetchApi({
         headers: {'content-type': 'application/json'},
