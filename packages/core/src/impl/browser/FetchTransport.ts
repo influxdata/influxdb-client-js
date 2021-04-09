@@ -213,6 +213,23 @@ export default class FetchTransport implements Transport {
 
   /**
    * ModifyFetchRequest allows to modify requests before sending.
+   * The following example shows a function that adds gzip
+   * compression of requests using pako.js.
+   *
+   * ```ts
+   * function(request: RequestInit, options: SendOptions) {
+   *   const body = request.body
+   *   if (
+   *     typeof body === 'string' &&
+   *     options.gzipThreshold !== undefined &&
+   *     body.length > options.gzipThreshold
+   *   ) {
+   *     // gzip request, used in write API
+   *     ;(request.headers as Record<string, string>)['content-encoding'] = 'gzip'
+   *     request.body = pako.gzip(body, {to: 'string'})
+   *   }
+   * }
+   * ```
    */
   public modifyFetchRequest: (
     request: RequestInit,
