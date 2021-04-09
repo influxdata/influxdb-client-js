@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {Transport, SendOptions} from '../../transport'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
@@ -191,7 +190,8 @@ export default class FetchTransport implements Transport {
     options: SendOptions
   ): Promise<Response> {
     const {method, headers, ...other} = options
-    return fetch(`${this.url}${path}`, {
+    const url = `${this.url}${path}`
+    const request: RequestInit = {
       method: method,
       body:
         method === 'GET' || method === 'HEAD'
@@ -206,6 +206,17 @@ export default class FetchTransport implements Transport {
       credentials: 'omit' as 'omit',
       // allow to specify custom options, such as signal, in SendOptions
       ...other,
-    })
+    }
+    this.modifyFetchRequest(request, options, url)
+    return fetch(url, request)
   }
+
+  /**
+   * ModifyFetchRequest allows to modify requests before sending.
+   */
+  public modifyFetchRequest: (
+    request: RequestInit,
+    options: SendOptions,
+    url: string
+  ) => void = function() {}
 }
