@@ -207,12 +207,12 @@ export default class FetchTransport implements Transport {
       // allow to specify custom options, such as signal, in SendOptions
       ...other,
     }
-    this.modifyFetchRequest(request, options, url)
+    this.requestDecorator(request, options, url)
     return fetch(url, request)
   }
 
   /**
-   * ModifyFetchRequest allows to modify requests before sending.
+   * RequestDecorator allows to modify requests before sending.
    * The following example shows a function that adds gzip
    * compression of requests using pako.js.
    *
@@ -231,7 +231,7 @@ export default class FetchTransport implements Transport {
    * }
    * ```
    */
-  public modifyFetchRequest: (
+  public requestDecorator: (
     request: RequestInit,
     options: SendOptions,
     url: string

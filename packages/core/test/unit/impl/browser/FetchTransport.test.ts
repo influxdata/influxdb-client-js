@@ -99,7 +99,7 @@ describe('FetchTransport', () => {
         req => (lastRequest = req)
       )
       const transport = new FetchTransport({url: 'http://test:8086'})
-      transport.modifyFetchRequest = (request): void => {
+      transport.requestDecorator = (request): void => {
         request.body = 'modified'
       }
       await transport.request('/whatever', '', {
