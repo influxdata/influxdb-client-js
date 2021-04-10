@@ -130,7 +130,8 @@ export class Point {
    * An undefined value instructs to assign a local timestamp using
    * the client's clock. An empty string can be used to let the server assign
    * the timestamp. Bigint (or any other value type) can be also passed, its
-   * toString() value is used.
+   * toString() value is used. Note that InfluxDB requires the timestamp to fit into
+   * int64 data type.
    *
    * @param value - point time
    * @returns this
