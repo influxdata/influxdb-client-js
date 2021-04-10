@@ -13,6 +13,7 @@ import {
 import {collectLogging, CollectedLogs} from '../util'
 import {Logger} from '../../src/util/logger'
 import {waitForCondition} from './util/waitForCondition'
+import zlib from 'zlib'
 
 const clientOptions: ClientOptions = {
   url: 'http://fake:8086',
@@ -157,6 +158,7 @@ describe('WriteApi', () => {
     it('does not retry write when configured to do so', async () => {
       useSubject({maxRetries: 0, batchSize: 1})
       subject.writeRecord('test value=1')
+      await waitForCondition(() => logs.error.length > 0)
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).is.deep.equal([])
@@ -175,6 +177,7 @@ describe('WriteApi', () => {
         },
       })
       subject.writeRecord('test value=1')
+      await waitForCondition(() => logs.warn.length > 0)
       await subject.close().then(() => {
         expect(logs.error).length(0)
         expect(logs.warn).is.deep.equal([
@@ -284,6 +287,79 @@ describe('WriteApi', () => {
             return [429, '', {'retry-after': '1'}]
           } else {
             messages.push(_requestBody.toString())
+            return [204, '', {'retry-after': '1'}]
+          }
+        })
+        .persist()
+      subject.writePoint(
+        new Point('test')
+          .tag('t', ' ')
+          .floatField('value', 1)
+          .timestamp('')
+      )
+      await waitForCondition(() => writeCounters.successLineCount == 1)
+      expect(logs.error).has.length(0)
+      expect(logs.warn).has.length(1) // request was retried once
+      subject.writePoint(new Point()) // ignored, since it generates no line
+      subject.writePoints([
+        new Point('test'), // will be ignored + warning
+        new Point('test').floatField('value', 2),
+        new Point('test').floatField('value', 3),
+        new Point('test').floatField('value', 4).timestamp('1'),
+        new Point('test').floatField('value', 5).timestamp(2.1),
+        new Point('test').floatField('value', 6).timestamp(new Date(3)),
+        new Point('test')
+          .floatField('value', 7)
+          .timestamp((false as any) as string), // server decides what to do with such values
+      ])
+      await waitForCondition(() => writeCounters.successLineCount == 7)
+      expect(logs.error).to.length(0)
+      expect(logs.warn).to.length(2)
+      expect(messages).to.have.length(2)
+      expect(messages[0]).to.equal('test,t=\\ ,xtra=1 value=1')
+      const lines = messages[1].split('\n')
+      expect(lines).has.length(6)
+      expect(lines[0]).to.satisfy((line: string) =>
+        line.startsWith('test,xtra=1 value=2')
+      )
+      expect(lines[0].substring(lines[0].lastIndexOf(' ') + 1)).to.have.length(
+        String(Date.now()).length + 6 // nanosecond precision
+      )
+      expect(lines[1]).to.satisfy((line: string) =>
+        line.startsWith('test,xtra=1 value=3')
+      )
+      expect(lines[0].substring(lines[0].lastIndexOf(' ') + 1)).to.have.length(
+        String(Date.now()).length + 6 // nanosecond precision
+      )
+      expect(lines[2]).to.be.equal('test,xtra=1 value=4 1')
+      expect(lines[3]).to.be.equal('test,xtra=1 value=5 2')
+      expect(lines[4]).to.be.equal('test,xtra=1 value=6 3000000')
+      expect(lines[5]).to.be.equal('test,xtra=1 value=7 false')
+    })
+    it('flushes gzipped line protocol', async () => {
+      const writeCounters = createWriteCounters()
+      useSubject({
+        flushInterval: 5,
+        maxRetries: 1,
+        batchSize: 10,
+        writeSuccess: writeCounters.writeSuccess,
+        gzipThreshold: 0,
+      })
+      let requests = 0
+      const messages: string[] = []
+      nock(clientOptions.url)
+        .post(WRITE_PATH_NS)
+        .reply(function(_uri, _requestBody) {
+          requests++
+          if (requests % 2) {
+            return [429, '', {'retry-after': '1'}]
+          } else {
+            if (this.req.headers['content-encoding'] == 'gzip') {
+              const plain = zlib.gunzipSync(
+                Buffer.from(_requestBody as string, 'hex')
+              )
+              messages.push(plain.toString())
+            }
             return [204, '', {'retry-after': '1'}]
           }
         })

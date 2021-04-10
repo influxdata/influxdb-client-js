@@ -103,11 +103,16 @@ export class NodeHttpTransport implements Transport {
     options: SendOptions,
     callbacks?: Partial<CommunicationObserver<any>>
   ): void {
-    const message = this.createRequestMessage(path, body, options)
     const cancellable = new CancellableImpl()
     if (callbacks && callbacks.useCancellable)
       callbacks.useCancellable(cancellable)
-    this._request(message, cancellable, callbacks)
+    this.createRequestMessage(path, body, options).then(
+      (message: {[key: string]: any}) => {
+        this._request(message, cancellable, callbacks)
+      },
+      /* istanbul ignore next - hard to simulate failure, manually reviewed */
+      (err: Error) => callbacks?.error && callbacks.error(err)
+    )
   }
 
   /**
@@ -180,7 +185,7 @@ export class NodeHttpTransport implements Transport {
     path: string,
     body: string,
     sendOptions: SendOptions
-  ): {[key: string]: any} {
+  ): Promise<{[key: string]: any}> {
     const bodyBuffer = Buffer.from(body, 'utf-8')
     const headers: {[key: string]: any} = {
       'content-type': 'application/json; charset=utf-8',
@@ -189,6 +194,7 @@ export class NodeHttpTransport implements Transport {
     if (this.connectionOptions.token) {
       headers.authorization = 'Token ' + this.connectionOptions.token
     }
+    let bodyPromise = Promise.resolve(bodyBuffer)
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path: this.contextPath + path,
@@ -197,11 +203,30 @@ export class NodeHttpTransport implements Transport {
         ...headers,
         ...sendOptions.headers,
       },
-      body: bodyBuffer,
     }
-    options.headers['content-length'] = bodyBuffer.length
+    if (
+      sendOptions.gzipThreshold !== undefined &&
+      sendOptions.gzipThreshold < bodyBuffer.length
+    ) {
+      bodyPromise = bodyPromise.then(body => {
+        return new Promise((resolve, reject) => {
+          zlib.gzip(body, (err, res) => {
+            /* istanbul ignore next - hard to simulate failure, manually reviewed */
+            if (err) {
+              return reject(err)
+            }
+            options.headers['content-encoding'] = 'gzip'
+            return resolve(res)
+          })
+        })
+      })
+    }
 
-    return options
+    return bodyPromise.then(bodyBuffer => {
+      options.body = bodyBuffer
+      options.headers['content-length'] = bodyBuffer.length
+      return options
+    })
   }
 
   private _request(
@@ -215,6 +240,7 @@ export class NodeHttpTransport implements Transport {
       return
     }
     const req = this.requestApi(requestMessage, (res: http.IncomingMessage) => {
+      /* istanbul ignore next - hard to simulate failure, manually reviewed */
       if (cancellable.isCancelled()) {
         res.resume()
         listeners.complete()

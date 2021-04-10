@@ -1,5 +1,18 @@
 ## 1.13.0 [unreleased]
 
+### Features
+
+1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
+
+### Breaking Changes
+
+1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Write request to InfluxDB is gzipped
+   if the size greater than 1000 bytes, this change optimizes communication with InfluxDB. Whenever required,
+   the `gzipThreshold` can be changed in `WriteOptions` during the creation of Write API. The gzip
+   compression work fine in the node.js environment, but it does not work OOTB in the browser.
+   The browser transport must be customized to do gzip, an example is provided in the `decorateRequest` field of
+   [FetchTransport](https://github.com/influxdata/influxdb-client-js/blob/master/packages/core/src/impl/browser/FetchTransport.ts).
+
 ## 1.12.0 [2021-04-01]
 
 ### Features

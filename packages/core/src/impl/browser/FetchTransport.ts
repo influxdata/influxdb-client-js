@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {Transport, SendOptions} from '../../transport'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
@@ -191,7 +190,8 @@ export default class FetchTransport implements Transport {
     options: SendOptions
   ): Promise<Response> {
     const {method, headers, ...other} = options
-    return fetch(`${this.url}${path}`, {
+    const url = `${this.url}${path}`
+    const request: RequestInit = {
       method: method,
       body:
         method === 'GET' || method === 'HEAD'
@@ -206,6 +206,35 @@ export default class FetchTransport implements Transport {
       credentials: 'omit' as 'omit',
       // allow to specify custom options, such as signal, in SendOptions
       ...other,
-    })
+    }
+    this.requestDecorator(request, options, url)
+    return fetch(url, request)
   }
+
+  /**
+   * RequestDecorator allows to modify requests before sending.
+   *
+   * The following example shows a function that adds gzip
+   * compression of requests using pako.js.
+   *
+   * ```ts
+   * const client = new InfluxDB({url: 'http://a'})
+   * client.transport.requestDecorator = function(request, options) {
+   *   const body = request.body
+   *   if (
+   *     typeof body === 'string' &&
+   *     options.gzipThreshold !== undefined &&
+   *     body.length > options.gzipThreshold
+   *   ) {
+   *     request.headers['content-encoding'] = 'gzip'
+   *     request.body = pako.gzip(body)
+   *   }
+   * }
+   * ```
+   */
+  public requestDecorator: (
+    request: RequestInit,
+    options: SendOptions,
+    url: string
+  ) => void = function() {}
 }
