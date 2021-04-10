@@ -9,6 +9,7 @@ import {
   InfluxDB,
   WritePrecisionType,
   DEFAULT_WriteOptions,
+  PointSettings,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
 import {Logger} from '../../src/util/logger'
@@ -207,6 +208,41 @@ describe('WriteApi', () => {
       )
       expect(writeOptions.writeSuccess).to.not.throw()
       expect(writeOptions.writeFailed).to.not.throw()
+    })
+  })
+  describe('convert point time to line protocol', () => {
+    const writeAPI = createApi(ORG, BUCKET, 'ms', {
+      retryJitter: 0,
+    }) as PointSettings
+    it('converts empty string to no timestamp', () => {
+      const p = new Point('a').floatField('b', 1).timestamp('')
+      expect(p.toLineProtocol(writeAPI)).equals('a b=1')
+    })
+    it('converts number to timestamp', () => {
+      const p = new Point('a').floatField('b', 1).timestamp(1.2)
+      expect(p.toLineProtocol(writeAPI)).equals('a b=1 1')
+    })
+    it('converts number to timestamp', () => {
+      const d = new Date()
+      const p = new Point('a').floatField('b', 1).timestamp(d)
+      expect(p.toLineProtocol(writeAPI)).equals(`a b=1 ${d.getTime()}`)
+    })
+    it('converts undefined to local timestamp', () => {
+      const p = new Point('a').floatField('b', 1)
+      expect(p.toLineProtocol(writeAPI)).satisfies((x: string) => {
+        return x.startsWith('a b=1')
+      }, `does not start with 'a b=1'`)
+      expect(p.toLineProtocol(writeAPI)).satisfies((x: string) => {
+        return Date.now() - Number.parseInt(x.substring('a b=1 '.length)) < 1000
+      })
+    })
+    it('converts any value to a timestamp using value.toString', () => {
+      const p = new Point('a').floatField('b', 1).timestamp({
+        toString() {
+          return '123'
+        },
+      })
+      expect(p.toLineProtocol(writeAPI)).equals('a b=1 123')
     })
   })
   describe('flush on background', () => {
