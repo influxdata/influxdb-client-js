@@ -7,7 +7,7 @@ import {escape} from './util/escape'
 export interface PointSettings {
   defaultTags?: {[key: string]: string}
   convertTime?: (
-    value: string | number | Date | undefined
+    value: string | number | Date | unknown | undefined
   ) => string | undefined
 }
 
@@ -19,7 +19,7 @@ export class Point {
   private tags: {[key: string]: string} = {}
   /** escaped field values */
   public fields: {[key: string]: string} = {}
-  private time: string | number | Date | undefined
+  private time: string | number | Date | unknown | undefined
 
   /**
    * Create a new Point with specified a measurement name.
@@ -123,17 +123,19 @@ export class Point {
   }
 
   /**
-   * Sets point time. A string or number value can be used
-   * to carry an int64 value of a precision that depends
-   * on WriteApi, nanoseconds by default. An undefined value
-   * generates a local timestamp using the client's clock.
-   * An empty string can be used to let the server assign
-   * the timestamp.
+   * Sets point timestamp. Timestamp can be specified as a Date, number, string,
+   * bigint or undefined value. A number or a string (base-10) value
+   * represents time as a count of time units since epoch. The time unit
+   * is specified in a WriteApi precision, nanosecond by default.
+   * An undefined value instructs to assign a local timestamp using
+   * the client's clock. An empty string can be used to let the server assign
+   * the timestamp. Bigint (or any other value type) can be also passed, its
+   * toString() value is used.
    *
    * @param value - point time
    * @returns this
    */
-  public timestamp(value: Date | number | string | undefined): Point {
+  public timestamp(value: Date | number | string | unknown | undefined): Point {
     this.time = value
     return this
   }
