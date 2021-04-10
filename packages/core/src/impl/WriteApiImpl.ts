@@ -279,7 +279,9 @@ export default class WriteApiImpl implements WriteApi {
     })
     return this
   }
-  convertTime(value: string | number | Date | undefined): string | undefined {
+  convertTime(
+    value: string | number | Date | unknown | undefined
+  ): string | undefined {
     if (value === undefined) {
       return this.currentTime()
     } else if (typeof value === 'string') {
@@ -289,7 +291,6 @@ export default class WriteApiImpl implements WriteApi {
     } else if (typeof value === 'number') {
       return String(Math.floor(value))
     } else {
-      // Logger.warn(`unsupported timestamp value: ${value}`)
       return String(value)
     }
   }
