@@ -123,12 +123,10 @@ export class Point {
   }
 
   /**
-   * Sets point time. A string or number value can be used
-   * to carry an int64 value of a precision that depends
-   * on WriteApi, nanoseconds by default. An undefined value
-   * generates a local timestamp using the client's clock.
-   * An empty string can be used to let the server assign
-   * the timestamp.
+   * Sets point time. A string containing a base 10 encoded number or a JavaScript number value can be
+   * used to carry an int64 value of a precision that depends on WriteApi configuration, nanoseconds by
+   * default. An undefined value generates a local timestamp using the client's clock.
+   * An empty string can be used to let the server assign the timestamp.
    *
    * @param value - point time
    * @returns this
