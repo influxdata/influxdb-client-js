@@ -7,7 +7,7 @@ import {escape} from './util/escape'
 export interface PointSettings {
   defaultTags?: {[key: string]: string}
   convertTime?: (
-    value: string | number | Date | unknown | undefined
+    value: string | number | Date | undefined
   ) => string | undefined
 }
 
@@ -19,7 +19,7 @@ export class Point {
   private tags: {[key: string]: string} = {}
   /** escaped field values */
   public fields: {[key: string]: string} = {}
-  private time: string | number | Date | unknown | undefined
+  private time: string | number | Date | undefined
 
   /**
    * Create a new Point with specified a measurement name.
@@ -123,20 +123,21 @@ export class Point {
   }
 
   /**
-   * Sets point timestamp. Timestamp can be specified as a Date, number, string,
-   * bigint or undefined value. A number or a string (base-10) value
-   * represents time as a count of time units since epoch. The time unit
-   * is specified in a WriteApi precision, nanosecond by default.
-   * An undefined value instructs to assign a local timestamp using
+   * Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string
+   * or an undefined value. An undefined value instructs to assign a local timestamp using
    * the client's clock. An empty string can be used to let the server assign
-   * the timestamp. Bigint (or any other value type) can be also passed, its
-   * toString() value is used. Note that InfluxDB requires the timestamp to fit into
-   * int64 data type.
+   * the timestamp. A number value represents time as a count of time units since epoch.
+   * The current time in nanoseconds can't precisely fit into a JS number, which
+   * can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as
+   * a (base-10) string. An application can use ES2020 BigInt to represent nanoseconds,
+   * BigInt's `toString()` returns the required high-precision string.
+   *
+   * Note that InfluxDB requires the timestamp to fit into int64 data type.
    *
    * @param value - point time
    * @returns this
    */
-  public timestamp(value: Date | number | string | unknown | undefined): Point {
+  public timestamp(value: Date | number | string | undefined): Point {
     this.time = value
     return this
   }

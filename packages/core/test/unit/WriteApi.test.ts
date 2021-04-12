@@ -236,14 +236,6 @@ describe('WriteApi', () => {
         return Date.now() - Number.parseInt(x.substring('a b=1 '.length)) < 1000
       })
     })
-    it('converts any value to a timestamp using value.toString', () => {
-      const p = new Point('a').floatField('b', 1).timestamp({
-        toString() {
-          return '123'
-        },
-      })
-      expect(p.toLineProtocol(writeAPI)).equals('a b=1 123')
-    })
   })
   describe('flush on background', () => {
     let subject: WriteApi

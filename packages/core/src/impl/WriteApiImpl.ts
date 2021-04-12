@@ -279,9 +279,7 @@ export default class WriteApiImpl implements WriteApi {
     })
     return this
   }
-  convertTime(
-    value: string | number | Date | unknown | undefined
-  ): string | undefined {
+  convertTime(value: string | number | Date | undefined): string | undefined {
     if (value === undefined) {
       return this.currentTime()
     } else if (typeof value === 'string') {
