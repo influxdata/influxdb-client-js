@@ -222,7 +222,7 @@ describe('WriteApi', () => {
       const p = new Point('a').floatField('b', 1).timestamp(1.2)
       expect(p.toLineProtocol(writeAPI)).equals('a b=1 1')
     })
-    it('converts number to timestamp', () => {
+    it('converts Date to timestamp', () => {
       const d = new Date()
       const p = new Point('a').floatField('b', 1).timestamp(d)
       expect(p.toLineProtocol(writeAPI)).equals(`a b=1 ${d.getTime()}`)
