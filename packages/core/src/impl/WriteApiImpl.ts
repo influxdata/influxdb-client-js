@@ -289,7 +289,6 @@ export default class WriteApiImpl implements WriteApi {
     } else if (typeof value === 'number') {
       return String(Math.floor(value))
     } else {
-      // Logger.warn(`unsupported timestamp value: ${value}`)
       return String(value)
     }
   }
