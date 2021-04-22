@@ -15,6 +15,8 @@ export interface GetAuthorizationsRequest {
   orgID?: string
   /** Only show authorizations that belong to a organization name. */
   org?: string
+  /** Find a token by value. */
+  token?: string
 }
 export interface PostAuthorizationsRequest {
   /** Authorization to create */
@@ -66,6 +68,7 @@ export class AuthorizationsAPI {
         'user',
         'orgID',
         'org',
+        'token',
       ])}`,
       request,
       requestOptions

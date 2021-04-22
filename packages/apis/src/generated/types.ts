@@ -673,7 +673,7 @@ export interface LinePlusSingleStatProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
-  legend: Legend
+  staticLegend?: StaticLegend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -774,13 +774,15 @@ export interface Axis {
 export type AxisScale = 'log' | 'linear'
 
 /**
- * Legend define encoding of data into a view's legend
+ * The options specific to the static legend
  */
-export interface Legend {
-  /** The style of the legend. */
-  type?: 'static'
-  /** orientation is the location of the legend with respect to the view graph */
-  orientation?: 'top' | 'bottom' | 'left' | 'right'
+export interface StaticLegend {
+  colorizeRows?: boolean
+  heightRatio?: number
+  opacity?: number
+  orientationThreshold?: number
+  valueAxis?: string
+  widthRatio?: number
 }
 
 /**
@@ -804,7 +806,7 @@ export interface XYViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
-  legend: Legend
+  staticLegend?: StaticLegend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -839,7 +841,6 @@ export interface SingleStatViewProperties {
   tickPrefix: string
   suffix: string
   tickSuffix: string
-  legend: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -876,7 +877,6 @@ export interface GaugeViewProperties {
   tickPrefix: string
   suffix: string
   tickSuffix: string
-  legend: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -1165,7 +1165,7 @@ export interface BandViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
-  legend: Legend
+  staticLegend?: StaticLegend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
