@@ -3,7 +3,10 @@
 ### Features
 
 1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
-1. [#328](https://github.com/influxdata/influxdb-client-js/pull/328): Explain Point timestamp.
+
+### Bug Fixes
+
+1. [#328](https://github.com/influxdata/influxdb-client-js/pull/328): Better Explain Point timestamp.
 
 ### Breaking Changes
 
