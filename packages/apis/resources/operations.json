@@ -5212,6 +5212,11 @@
         "name": "org",
         "description": "Only show authorizations that belong to a organization name.",
         "type": "string"
+      },
+      {
+        "name": "token",
+        "description": "Find a token by value.",
+        "type": "string"
       }
     ],
     "bodyParam": null,

@@ -3,6 +3,7 @@
 ### Features
 
 1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
+1. [#331](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from swagger.
 
 ### Bug Fixes
 
