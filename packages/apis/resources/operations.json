@@ -134,129 +134,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/setup",
-    "operation": "get",
-    "operationId": "GetSetup",
-    "basicAuth": false,
-    "summary": "Check if database has default user, org, bucket",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "allowed true or false",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "IsOnboarding"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/setup",
-    "operation": "post",
-    "operationId": "PostSetup",
-    "basicAuth": false,
-    "summary": "Set up initial user, org and bucket",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Source to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "OnboardingRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Created default user, bucket, org",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OnboardingResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/setup/user",
-    "operation": "post",
-    "operationId": "PostSetupUser",
-    "basicAuth": false,
-    "summary": "Set up a new user, org and bucket",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Source to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "OnboardingRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Created default user, bucket, org",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OnboardingResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/documents/templates",
     "operation": "get",
     "operationId": "GetDocumentsTemplates",
@@ -2457,321 +2334,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/variables",
-    "operation": "get",
-    "operationId": "GetVariables",
-    "basicAuth": false,
-    "summary": "Get all variables",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "The organization name.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "All variables for an organization",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Variables"
-          }
-        ]
-      },
-      {
-        "code": "400",
-        "description": "Invalid request",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/variables",
-    "operation": "post",
-    "operationId": "PostVariables",
-    "basicAuth": false,
-    "summary": "Create a variable",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Variable to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Variable"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Variable created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Variable"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/variables/{variableID}",
-    "operation": "get",
-    "operationId": "GetVariablesID",
-    "basicAuth": false,
-    "summary": "Get a variable",
-    "positionalParams": [
-      {
-        "name": "variableID",
-        "description": "The variable ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Variable found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Variable"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Variable not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/variables/{variableID}",
-    "operation": "put",
-    "operationId": "PutVariablesID",
-    "basicAuth": false,
-    "summary": "Replace a variable",
-    "positionalParams": [
-      {
-        "name": "variableID",
-        "description": "The variable ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Variable to replace",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Variable"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Variable updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Variable"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/variables/{variableID}",
-    "operation": "patch",
-    "operationId": "PatchVariablesID",
-    "basicAuth": false,
-    "summary": "Update a variable",
-    "positionalParams": [
-      {
-        "name": "variableID",
-        "description": "The variable ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Variable update to apply",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Variable"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Variable updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Variable"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/variables/{variableID}",
-    "operation": "delete",
-    "operationId": "DeleteVariablesID",
-    "basicAuth": false,
-    "summary": "Delete a variable",
-    "positionalParams": [
-      {
-        "name": "variableID",
-        "description": "The variable ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Variable deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/variables/{variableID}/labels",
     "operation": "get",
     "operationId": "GetVariablesIDLabels",
@@ -3116,7 +2678,7 @@
       },
       {
         "code": "400",
-        "description": "invalid request.",
+        "description": "Invalid request.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3147,98 +2709,6 @@
       {
         "code": "default",
         "description": "internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/ready",
-    "operation": "get",
-    "operationId": "GetReady",
-    "basicAuth": false,
-    "summary": "Get the readiness of an instance at startup",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "The instance is ready",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Ready"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/health",
-    "operation": "get",
-    "operationId": "GetHealth",
-    "basicAuth": false,
-    "summary": "Get the health of an instance",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "The instance is healthy",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "HealthCheck"
-          }
-        ]
-      },
-      {
-        "code": "503",
-        "description": "The instance is unhealthy",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "HealthCheck"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5167,273 +4637,6 @@
       {
         "code": "default",
         "description": "Any response other than 200 is an internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/authorizations",
-    "operation": "get",
-    "operationId": "GetAuthorizations",
-    "basicAuth": false,
-    "summary": "List all authorizations",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "userID",
-        "description": "Only show authorizations that belong to a user ID.",
-        "type": "string"
-      },
-      {
-        "name": "user",
-        "description": "Only show authorizations that belong to a user name.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "Only show authorizations that belong to an organization ID.",
-        "type": "string"
-      },
-      {
-        "name": "org",
-        "description": "Only show authorizations that belong to a organization name.",
-        "type": "string"
-      },
-      {
-        "name": "token",
-        "description": "Find a token by value.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of authorizations",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorizations"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/authorizations",
-    "operation": "post",
-    "operationId": "PostAuthorizations",
-    "basicAuth": false,
-    "summary": "Create an authorization",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Authorization to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Authorization"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Authorization created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "400",
-        "description": "Invalid request",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/authorizations/{authID}",
-    "operation": "get",
-    "operationId": "GetAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Retrieve an authorization",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the authorization to get.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Authorization details",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/authorizations/{authID}",
-    "operation": "patch",
-    "operationId": "PatchAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Update an authorization to be active or inactive",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the authorization to update.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Authorization to update",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "AuthorizationUpdateRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "The active or inactie authorization",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/authorizations/{authID}",
-    "operation": "delete",
-    "operationId": "DeleteAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Delete an authorization",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the authorization to delete.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Authorization deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -8271,7 +7474,7 @@
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "User"
+            "type": "UserResponse"
           }
         ]
       },
@@ -8614,237 +7817,6 @@
       {
         "code": "204",
         "description": "Owner removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users",
-    "operation": "get",
-    "operationId": "GetUsers",
-    "basicAuth": false,
-    "summary": "List all users",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of users",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Users"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users",
-    "operation": "post",
-    "operationId": "PostUsers",
-    "basicAuth": false,
-    "summary": "Create a user",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "User to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "User"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "User created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "User"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users/{userID}",
-    "operation": "get",
-    "operationId": "GetUsersID",
-    "basicAuth": false,
-    "summary": "Retrieve a user",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The user ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "User details",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "User"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users/{userID}",
-    "operation": "patch",
-    "operationId": "PatchUsersID",
-    "basicAuth": false,
-    "summary": "Update a user",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of the user to update.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "User update to apply",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "User"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "User updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "User"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/users/{userID}",
-    "operation": "delete",
-    "operationId": "DeleteUsersID",
-    "basicAuth": false,
-    "summary": "Delete a user",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of the user to delete.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "User deleted",
         "mediaTypes": []
       },
       {
@@ -10496,6 +9468,1029 @@
       {
         "code": "default",
         "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/health",
+    "operation": "get",
+    "operationId": "GetHealth",
+    "basicAuth": false,
+    "summary": "Get the health of an instance",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The instance is healthy",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "HealthCheck"
+          }
+        ]
+      },
+      {
+        "code": "503",
+        "description": "The instance is unhealthy",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "HealthCheck"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/ready",
+    "operation": "get",
+    "operationId": "GetReady",
+    "basicAuth": false,
+    "summary": "Get the readiness of an instance at startup",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The instance is ready",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Ready"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/users",
+    "operation": "get",
+    "operationId": "GetUsers",
+    "basicAuth": false,
+    "summary": "List all users",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of users",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Users"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/users",
+    "operation": "post",
+    "operationId": "PostUsers",
+    "basicAuth": false,
+    "summary": "Create a user",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "User to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "User"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "User created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "UserResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/users/{userID}",
+    "operation": "get",
+    "operationId": "GetUsersID",
+    "basicAuth": false,
+    "summary": "Retrieve a user",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The user ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "User details",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "UserResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/users/{userID}",
+    "operation": "patch",
+    "operationId": "PatchUsersID",
+    "basicAuth": false,
+    "summary": "Update a user",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of the user to update.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "User update to apply",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "User"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "User updated",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "UserResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/users/{userID}",
+    "operation": "delete",
+    "operationId": "DeleteUsersID",
+    "basicAuth": false,
+    "summary": "Delete a user",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of the user to delete.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "User deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/setup",
+    "operation": "get",
+    "operationId": "GetSetup",
+    "basicAuth": false,
+    "summary": "Check if database has default user, org, bucket",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "allowed true or false",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "IsOnboarding"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/setup",
+    "operation": "post",
+    "operationId": "PostSetup",
+    "basicAuth": false,
+    "summary": "Set up initial user, org and bucket",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Source to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "OnboardingRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Created default user, bucket, org",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "OnboardingResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/setup/user",
+    "operation": "post",
+    "operationId": "PostSetupUser",
+    "basicAuth": false,
+    "summary": "Set up a new user, org and bucket",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Source to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "OnboardingRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Created default user, bucket, org",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "OnboardingResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/authorizations",
+    "operation": "get",
+    "operationId": "GetAuthorizations",
+    "basicAuth": false,
+    "summary": "List all authorizations",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "userID",
+        "description": "Only show authorizations that belong to a user ID.",
+        "type": "string"
+      },
+      {
+        "name": "user",
+        "description": "Only show authorizations that belong to a user name.",
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "Only show authorizations that belong to an organization ID.",
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Only show authorizations that belong to a organization name.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of authorizations",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorizations"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/authorizations",
+    "operation": "post",
+    "operationId": "PostAuthorizations",
+    "basicAuth": false,
+    "summary": "Create an authorization",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Authorization to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Authorization"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Authorization created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Invalid request",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/authorizations/{authID}",
+    "operation": "get",
+    "operationId": "GetAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Retrieve an authorization",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the authorization to get.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Authorization details",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/authorizations/{authID}",
+    "operation": "patch",
+    "operationId": "PatchAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Update an authorization to be active or inactive",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the authorization to update.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Authorization to update",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "AuthorizationUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "The active or inactie authorization",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/authorizations/{authID}",
+    "operation": "delete",
+    "operationId": "DeleteAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Delete an authorization",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the authorization to delete.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Authorization deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables",
+    "operation": "get",
+    "operationId": "GetVariables",
+    "basicAuth": false,
+    "summary": "Get all variables",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The organization name.",
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "All variables for an organization",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Variables"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Invalid request",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables",
+    "operation": "post",
+    "operationId": "PostVariables",
+    "basicAuth": false,
+    "summary": "Create a variable",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Variable to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Variable"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Variable created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Variable"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables/{variableID}",
+    "operation": "get",
+    "operationId": "GetVariablesID",
+    "basicAuth": false,
+    "summary": "Get a variable",
+    "positionalParams": [
+      {
+        "name": "variableID",
+        "description": "The variable ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Variable found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Variable"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Variable not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables/{variableID}",
+    "operation": "put",
+    "operationId": "PutVariablesID",
+    "basicAuth": false,
+    "summary": "Replace a variable",
+    "positionalParams": [
+      {
+        "name": "variableID",
+        "description": "The variable ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Variable to replace",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Variable"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Variable updated",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Variable"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables/{variableID}",
+    "operation": "patch",
+    "operationId": "PatchVariablesID",
+    "basicAuth": false,
+    "summary": "Update a variable",
+    "positionalParams": [
+      {
+        "name": "variableID",
+        "description": "The variable ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Variable update to apply",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Variable"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Variable updated",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Variable"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/variables/{variableID}",
+    "operation": "delete",
+    "operationId": "DeleteVariablesID",
+    "basicAuth": false,
+    "summary": "Delete a variable",
+    "positionalParams": [
+      {
+        "name": "variableID",
+        "description": "The variable ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Variable deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
         "mediaTypes": [
           {
             "mediaType": "application/json",

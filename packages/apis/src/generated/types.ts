@@ -3,7 +3,7 @@
 // [0]: https://github.com/influxdata/oats
 
 export interface Error {
-  /** Code is the machine-readable error code. */
+  /** code is the machine-readable error code. */
   readonly code:
     | 'internal error'
     | 'not found'
@@ -16,8 +16,13 @@ export interface Error {
     | 'too many requests'
     | 'unauthorized'
     | 'method not allowed'
-  /** Message is a human-readable message. */
+    | 'request too large'
+  /** message is a human-readable message. */
   readonly message: string
+  /** op describes the logical code operation during error. Useful for debugging. */
+  readonly op?: string
+  /** err is a stack of errors that occurred during processing of the request. Useful for debugging. */
+  readonly err?: string
 }
 
 export interface Routes {
@@ -52,179 +57,6 @@ export interface Routes {
   write?: string
 }
 
-export interface IsOnboarding {
-  /** True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. */
-  allowed?: boolean
-}
-
-export interface OnboardingRequest {
-  username: string
-  password?: string
-  org: string
-  bucket: string
-  retentionPeriodSeconds?: number
-  /** Retention period *in nanoseconds* for the new bucket. This key's name has been misleading since OSS 2.0 GA, please transition to use `retentionPeriodSeconds`
-   */
-  retentionPeriodHrs?: number
-}
-
-export interface OnboardingResponse {
-  user?: User
-  org?: Organization
-  bucket?: Bucket
-  auth?: Authorization
-}
-
-export interface User {
-  readonly id?: string
-  oauthID?: string
-  name: string
-  /** If inactive the user is inactive. */
-  status?: 'active' | 'inactive'
-  readonly links?: {
-    self?: string
-  }
-}
-
-export interface Organization {
-  readonly links?: {
-    self?: Link
-    members?: Link
-    owners?: Link
-    labels?: Link
-    secrets?: Link
-    buckets?: Link
-    tasks?: Link
-    dashboards?: Link
-  }
-  readonly id?: string
-  name: string
-  description?: string
-  readonly createdAt?: string
-  readonly updatedAt?: string
-  /** If inactive the organization is inactive. */
-  status?: 'active' | 'inactive'
-}
-
-/**
- * URI of resource.
- */
-export type Link = string
-
-export interface Bucket {
-  readonly links?: {
-    /** URL to retrieve labels for this bucket */
-    labels?: Link
-    /** URL to retrieve members that can read this bucket */
-    members?: Link
-    /** URL to retrieve parent organization for this bucket */
-    org?: Link
-    /** URL to retrieve owners that can read and write to this bucket. */
-    owners?: Link
-    /** URL for this bucket */
-    self?: Link
-    /** URL to write line protocol for this bucket */
-    write?: Link
-  }
-  readonly id?: string
-  readonly type?: 'user' | 'system'
-  name: string
-  description?: string
-  orgID?: string
-  rp?: string
-  readonly createdAt?: string
-  readonly updatedAt?: string
-  retentionRules: RetentionRules
-  labels?: Labels
-}
-
-/**
- * Rules to expire or retain data.  No rules means data never expires.
- */
-export type RetentionRules = RetentionRule[]
-
-export interface RetentionRule {
-  type: 'expire'
-  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
-  everySeconds: number
-  /** Shard duration measured in seconds. */
-  shardGroupDurationSeconds?: number
-}
-
-export type Labels = Label[]
-
-export interface Label {
-  readonly id?: string
-  readonly orgID?: string
-  name?: string
-  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
-  properties?: any
-}
-
-export type Authorization = AuthorizationUpdateRequest & {
-  readonly createdAt?: string
-  readonly updatedAt?: string
-  /** ID of org that authorization is scoped to. */
-  orgID?: string
-  /** List of permissions for an auth.  An auth must have at least one Permission. */
-  permissions?: Permission[]
-  readonly id?: string
-  /** Passed via the Authorization Header and Token Authentication type. */
-  readonly token?: string
-  /** ID of user that created and owns the token. */
-  readonly userID?: string
-  /** Name of user that created and owns the token. */
-  readonly user?: string
-  /** Name of the org token is scoped to. */
-  readonly org?: string
-  readonly links?: {
-    readonly self?: Link
-    readonly user?: Link
-  }
-}
-
-export interface AuthorizationUpdateRequest {
-  /** If inactive the token is inactive and requests using the token will be rejected. */
-  status?: 'active' | 'inactive'
-  /** A description of the token. */
-  description?: string
-}
-
-export interface Permission {
-  action: 'read' | 'write'
-  resource: Resource
-}
-
-export interface Resource {
-  type:
-    | 'authorizations'
-    | 'buckets'
-    | 'dashboards'
-    | 'orgs'
-    | 'sources'
-    | 'tasks'
-    | 'telegrafs'
-    | 'users'
-    | 'variables'
-    | 'scrapers'
-    | 'secrets'
-    | 'labels'
-    | 'views'
-    | 'documents'
-    | 'notificationRules'
-    | 'notificationEndpoints'
-    | 'checks'
-    | 'dbrp'
-  /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
-  id?: string
-  /** Optional name of the resource if the resource has a name field. */
-  name?: string
-  /** If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. */
-  orgID?: string
-  /** Optional name of the organization of the organization with orgID. */
-  org?: string
-}
-
 export interface Documents {
   documents?: DocumentListEntry[]
 }
@@ -248,6 +80,21 @@ export interface DocumentMeta {
   readonly createdAt?: string
   readonly updatedAt?: string
 }
+
+export type Labels = Label[]
+
+export interface Label {
+  readonly id?: string
+  readonly orgID?: string
+  name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
+  properties?: any
+}
+
+/**
+ * URI of resource.
+ */
+export type Link = string
 
 export interface DocumentCreate {
   meta: DocumentMeta
@@ -372,8 +219,19 @@ export interface ResourceMembers {
   users?: ResourceMember[]
 }
 
-export type ResourceMember = User & {
+export type ResourceMember = UserResponse & {
   role?: 'member'
+}
+
+export interface UserResponse {
+  readonly id?: string
+  oauthID?: string
+  name: string
+  /** If inactive the user is inactive. */
+  status?: 'active' | 'inactive'
+  readonly links?: {
+    self?: string
+  }
 }
 
 export interface AddResourceMemberRequestBody {
@@ -388,7 +246,7 @@ export interface ResourceOwners {
   users?: ResourceOwner[]
 }
 
-export type ResourceOwner = User & {
+export type ResourceOwner = UserResponse & {
   role?: 'owner'
 }
 
@@ -424,50 +282,6 @@ export interface ScraperTargetRequest {
   bucketID?: string
   /** Skip TLS verification on endpoint. */
   allowInsecure?: boolean
-}
-
-export interface Variables {
-  variables?: Variable[]
-}
-
-export interface Variable {
-  readonly links?: {
-    self?: string
-    org?: string
-    labels?: string
-  }
-  readonly id?: string
-  orgID: string
-  name: string
-  description?: string
-  selected?: string[]
-  labels?: Labels
-  arguments: VariableProperties
-  createdAt?: string
-  updatedAt?: string
-}
-
-export type VariableProperties =
-  | QueryVariableProperties
-  | ConstantVariableProperties
-  | MapVariableProperties
-
-export interface QueryVariableProperties {
-  type?: 'query'
-  values?: {
-    query?: string
-    language?: string
-  }
-}
-
-export interface ConstantVariableProperties {
-  type?: 'constant'
-  values?: string[]
-}
-
-export interface MapVariableProperties {
-  type?: 'map'
-  values?: any
 }
 
 export interface LineProtocolError {
@@ -510,21 +324,6 @@ export interface DeletePredicateRequest {
   predicate?: string
 }
 
-export interface Ready {
-  status?: 'ready'
-  started?: string
-  up?: string
-}
-
-export interface HealthCheck {
-  name: string
-  message?: string
-  checks?: HealthCheck[]
-  status: 'pass' | 'fail'
-  version?: string
-  commit?: string
-}
-
 export interface Sources {
   links?: {
     self?: string
@@ -556,9 +355,58 @@ export interface Source {
   readonly languages?: Array<'flux' | 'influxql'>
 }
 
+export interface HealthCheck {
+  name: string
+  message?: string
+  checks?: HealthCheck[]
+  status: 'pass' | 'fail'
+  version?: string
+  commit?: string
+}
+
 export interface Buckets {
   readonly links?: Links
   buckets?: Bucket[]
+}
+
+export interface Bucket {
+  readonly links?: {
+    /** URL to retrieve labels for this bucket */
+    labels?: Link
+    /** URL to retrieve members that can read this bucket */
+    members?: Link
+    /** URL to retrieve parent organization for this bucket */
+    org?: Link
+    /** URL to retrieve owners that can read and write to this bucket. */
+    owners?: Link
+    /** URL for this bucket */
+    self?: Link
+    /** URL to write line protocol for this bucket */
+    write?: Link
+  }
+  readonly id?: string
+  readonly type?: 'user' | 'system'
+  name: string
+  description?: string
+  orgID?: string
+  rp?: string
+  readonly createdAt?: string
+  readonly updatedAt?: string
+  retentionRules: RetentionRules
+  labels?: Labels
+}
+
+/**
+ * Rules to expire or retain data.  No rules means data never expires.
+ */
+export type RetentionRules = RetentionRule[]
+
+export interface RetentionRule {
+  type: 'expire'
+  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
+  everySeconds: number
+  /** Shard duration measured in seconds. */
+  shardGroupDurationSeconds?: number
 }
 
 export interface LabelCreateRequest {
@@ -674,6 +522,7 @@ export interface LinePlusSingleStatProperties {
   showNoteWhenEmpty: boolean
   axes: Axes
   staticLegend?: StaticLegend
+  legend?: Legend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -774,7 +623,7 @@ export interface Axis {
 export type AxisScale = 'log' | 'linear'
 
 /**
- * The options specific to the static legend
+ * StaticLegend represents the options specific to the static legend
  */
 export interface StaticLegend {
   colorizeRows?: boolean
@@ -783,6 +632,16 @@ export interface StaticLegend {
   orientationThreshold?: number
   valueAxis?: string
   widthRatio?: number
+}
+
+/**
+ * Legend define encoding of data into a view's legend
+ */
+export interface Legend {
+  /** The style of the legend. */
+  type?: 'static'
+  /** orientation is the location of the legend with respect to the view graph */
+  orientation?: 'top' | 'bottom' | 'left' | 'right'
 }
 
 /**
@@ -807,6 +666,7 @@ export interface XYViewProperties {
   showNoteWhenEmpty: boolean
   axes: Axes
   staticLegend?: StaticLegend
+  legend?: Legend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -841,6 +701,8 @@ export interface SingleStatViewProperties {
   tickPrefix: string
   suffix: string
   tickSuffix: string
+  staticLegend?: StaticLegend
+  legend?: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -877,6 +739,8 @@ export interface GaugeViewProperties {
   tickPrefix: string
   suffix: string
   tickSuffix: string
+  staticLegend?: StaticLegend
+  legend?: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -970,6 +834,8 @@ export interface CheckBase {
   name: string
   /** The ID of the organization that owns this check. */
   orgID: string
+  /** The ID of the task associated with this check. */
+  taskID?: string
   /** The ID of creator used to create this check. */
   readonly ownerID?: string
   readonly createdAt?: string
@@ -1165,6 +1031,7 @@ export interface BandViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
+  legend?: Legend
   staticLegend?: StaticLegend
   xColumn?: string
   generateXAxisTicks?: string[]
@@ -1714,11 +1581,6 @@ export interface FluxSuggestion {
   params?: any
 }
 
-export interface Authorizations {
-  readonly links?: Links
-  authorizations?: Authorization[]
-}
-
 /**
  * Query influx using the Flux language
  */
@@ -1781,6 +1643,26 @@ export interface PostBucketRequest {
 export interface Organizations {
   links?: Links
   orgs?: Organization[]
+}
+
+export interface Organization {
+  readonly links?: {
+    self?: Link
+    members?: Link
+    owners?: Link
+    labels?: Link
+    secrets?: Link
+    buckets?: Link
+    tasks?: Link
+    dashboards?: Link
+  }
+  readonly id?: string
+  name: string
+  description?: string
+  readonly createdAt?: string
+  readonly updatedAt?: string
+  /** If inactive the organization is inactive. */
+  status?: 'active' | 'inactive'
 }
 
 export type SecretKeysResponse = SecretKeys & {
@@ -2275,6 +2157,29 @@ export type TelegramNotificationEndpoint = NotificationEndpointBase & {
   channel: string
 }
 
+export type VariableProperties =
+  | QueryVariableProperties
+  | ConstantVariableProperties
+  | MapVariableProperties
+
+export interface QueryVariableProperties {
+  type?: 'query'
+  values?: {
+    query?: string
+    language?: string
+  }
+}
+
+export interface ConstantVariableProperties {
+  type?: 'constant'
+  values?: string[]
+}
+
+export interface MapVariableProperties {
+  type?: 'map'
+  values?: any
+}
+
 export interface TemplateExportByID {
   stackID?: string
   orgIDs?: Array<{
@@ -2432,13 +2337,6 @@ export interface PasswordResetBody {
   password: string
 }
 
-export interface Users {
-  links?: {
-    self?: string
-  }
-  users?: User[]
-}
-
 export interface Checks {
   checks?: Check[]
   links?: Links
@@ -2478,6 +2376,8 @@ export interface NotificationRuleBase {
   endpointID: string
   /** The ID of the organization that owns this notification rule. */
   orgID: string
+  /** The ID of the task associated with this notification rule. */
+  taskID?: string
   /** The ID of creator used to create this notification rule. */
   readonly ownerID?: string
   readonly createdAt?: string
@@ -2614,4 +2514,141 @@ export interface NotificationEndpointUpdate {
   name?: string
   description?: string
   status?: 'active' | 'inactive'
+}
+
+export interface Ready {
+  status?: 'ready'
+  started?: string
+  up?: string
+}
+
+export interface Users {
+  links?: {
+    self?: string
+  }
+  users?: UserResponse[]
+}
+
+export interface User {
+  readonly id?: string
+  oauthID?: string
+  name: string
+  /** If inactive the user is inactive. */
+  status?: 'active' | 'inactive'
+}
+
+export interface IsOnboarding {
+  /** True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. */
+  allowed?: boolean
+}
+
+export interface OnboardingRequest {
+  username: string
+  password?: string
+  org: string
+  bucket: string
+  retentionPeriodSeconds?: number
+  /** Retention period *in nanoseconds* for the new bucket. This key's name has been misleading since OSS 2.0 GA, please transition to use `retentionPeriodSeconds`
+   */
+  retentionPeriodHrs?: number
+  /** Authentication token to set on the initial user. If not specified, the server will generate a token.
+   */
+  token?: string
+}
+
+export interface OnboardingResponse {
+  user?: UserResponse
+  org?: Organization
+  bucket?: Bucket
+  auth?: Authorization
+}
+
+export type Authorization = AuthorizationUpdateRequest & {
+  readonly createdAt?: string
+  readonly updatedAt?: string
+  /** ID of org that authorization is scoped to. */
+  orgID?: string
+  /** List of permissions for an auth.  An auth must have at least one Permission. */
+  permissions?: Permission[]
+  readonly id?: string
+  /** Passed via the Authorization Header and Token Authentication type. */
+  readonly token?: string
+  /** ID of user that created and owns the token. */
+  readonly userID?: string
+  /** Name of user that created and owns the token. */
+  readonly user?: string
+  /** Name of the org token is scoped to. */
+  readonly org?: string
+  readonly links?: {
+    readonly self?: Link
+    readonly user?: Link
+  }
+}
+
+export interface AuthorizationUpdateRequest {
+  /** If inactive the token is inactive and requests using the token will be rejected. */
+  status?: 'active' | 'inactive'
+  /** A description of the token. */
+  description?: string
+}
+
+export interface Permission {
+  action: 'read' | 'write'
+  resource: Resource
+}
+
+export interface Resource {
+  type:
+    | 'authorizations'
+    | 'buckets'
+    | 'dashboards'
+    | 'orgs'
+    | 'sources'
+    | 'tasks'
+    | 'telegrafs'
+    | 'users'
+    | 'variables'
+    | 'scrapers'
+    | 'secrets'
+    | 'labels'
+    | 'views'
+    | 'documents'
+    | 'notificationRules'
+    | 'notificationEndpoints'
+    | 'checks'
+    | 'dbrp'
+  /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
+  id?: string
+  /** Optional name of the resource if the resource has a name field. */
+  name?: string
+  /** If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. */
+  orgID?: string
+  /** Optional name of the organization of the organization with orgID. */
+  org?: string
+}
+
+export interface Authorizations {
+  readonly links?: Links
+  authorizations?: Authorization[]
+}
+
+export interface Variables {
+  variables?: Variable[]
+}
+
+export interface Variable {
+  readonly links?: {
+    self?: string
+    org?: string
+    labels?: string
+  }
+  readonly id?: string
+  orgID: string
+  name: string
+  description?: string
+  selected?: string[]
+  labels?: Labels
+  arguments: VariableProperties
+  createdAt?: string
+  updatedAt?: string
 }

@@ -1,7 +1,14 @@
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
-import {PasswordResetBody, User, Users} from './types'
+import {PasswordResetBody, User, UserResponse, Users} from './types'
 
+export interface PostUsersIDPasswordRequest {
+  /** The user ID. */
+  userID: string
+  auth: {user: string; password: string}
+  /** New password */
+  body: PasswordResetBody
+}
 export interface GetUsersRequest {}
 export interface PostUsersRequest {
   /** User to create */
@@ -21,13 +28,6 @@ export interface DeleteUsersIDRequest {
   /** The ID of the user to delete. */
   userID: string
 }
-export interface PostUsersIDPasswordRequest {
-  /** The user ID. */
-  userID: string
-  auth: {user: string; password: string}
-  /** New password */
-  body: PasswordResetBody
-}
 /**
  * Users API
  */
@@ -41,6 +41,25 @@ export class UsersAPI {
    */
   constructor(influxDB: InfluxDB) {
     this.base = new APIBase(influxDB)
+  }
+  /**
+   * Update a password.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  postUsersIDPassword(
+    request: PostUsersIDPasswordRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.base.request(
+      'POST',
+      `/api/v2/users/${request.userID}/password`,
+      request,
+      requestOptions,
+      'application/json'
+    )
   }
   /**
    * List all users.
@@ -65,7 +84,7 @@ export class UsersAPI {
   postUsers(
     request: PostUsersRequest,
     requestOptions?: RequestOptions
-  ): Promise<User> {
+  ): Promise<UserResponse> {
     return this.base.request(
       'POST',
       `/api/v2/users`,
@@ -84,7 +103,7 @@ export class UsersAPI {
   getUsersID(
     request: GetUsersIDRequest,
     requestOptions?: RequestOptions
-  ): Promise<User> {
+  ): Promise<UserResponse> {
     return this.base.request(
       'GET',
       `/api/v2/users/${request.userID}`,
@@ -102,7 +121,7 @@ export class UsersAPI {
   patchUsersID(
     request: PatchUsersIDRequest,
     requestOptions?: RequestOptions
-  ): Promise<User> {
+  ): Promise<UserResponse> {
     return this.base.request(
       'PATCH',
       `/api/v2/users/${request.userID}`,
@@ -127,25 +146,6 @@ export class UsersAPI {
       `/api/v2/users/${request.userID}`,
       request,
       requestOptions
-    )
-  }
-  /**
-   * Update a password.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsersIDPassword }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  postUsersIDPassword(
-    request: PostUsersIDPasswordRequest,
-    requestOptions?: RequestOptions
-  ): Promise<void> {
-    return this.base.request(
-      'POST',
-      `/api/v2/users/${request.userID}/password`,
-      request,
-      requestOptions,
-      'application/json'
     )
   }
 }
