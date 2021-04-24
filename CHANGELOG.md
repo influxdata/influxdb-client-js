@@ -3,7 +3,7 @@
 ### Features
 
 1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
-1. [#331](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from swagger.
+1. [#332](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
 
 ### Bug Fixes
 
