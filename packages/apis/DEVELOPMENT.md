@@ -11,7 +11,7 @@ $ yarn build
 ## Re-generate APIs code
 
 - update local resources/swagger.yml to the latest version
-  - `wget -O resources/swagger.yml https://raw.githubusercontent.com/influxdata/influxdb/master/http/swagger.yml`
+  - `wget -O resources/swagger.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/oss.yml`
 - re-generate src/generated/types.ts and resources/operations.json using [oats](https://github.com/bonitoo/oats)
   - `rm -rf src/generated/*.ts`
   - `oats -i 'types' --storeOperations resources/operations.json resources/swagger.yml > src/generated/types.ts`

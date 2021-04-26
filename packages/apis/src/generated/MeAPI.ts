@@ -1,6 +1,6 @@
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
-import {PasswordResetBody, User} from './types'
+import {PasswordResetBody, UserResponse} from './types'
 
 export interface GetMeRequest {}
 export interface PutMePasswordRequest {
@@ -32,7 +32,7 @@ export class MeAPI {
   getMe(
     request?: GetMeRequest,
     requestOptions?: RequestOptions
-  ): Promise<User> {
+  ): Promise<UserResponse> {
     return this.base.request('GET', `/api/v2/me`, request, requestOptions)
   }
   /**

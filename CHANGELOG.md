@@ -3,7 +3,7 @@
 ### Features
 
 1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
-1. [#331](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from swagger.
+1. [#332](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
 
 ### Bug Fixes
 
@@ -17,6 +17,9 @@
    compression work fine in the node.js environment, but it does not work OOTB in the browser.
    The browser transport must be customized to do gzip, an example is provided in the `decorateRequest` field of
    [FetchTransport](https://github.com/influxdata/influxdb-client-js/blob/master/packages/core/src/impl/browser/FetchTransport.ts).
+1. [#332](https://github.com/influxdata/influxdb-client-js/pull/328): There are a few incompatible changes in the types used by
+   `UsersAPI`, it now uses a `UserResponse` type where a `User` type was used before. A `UserResponse` includes all properties of
+   a `User` type.
 
 ## 1.12.0 [2021-04-01]
 
