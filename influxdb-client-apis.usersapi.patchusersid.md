@@ -9,7 +9,7 @@ Update a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchUse
 <b>Signature:</b>
 
 ```typescript
-patchUsersID(request: PatchUsersIDRequest, requestOptions?: RequestOptions): Promise<User>;
+patchUsersID(request: PatchUsersIDRequest, requestOptions?: RequestOptions): Promise<UserResponse>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ patchUsersID(request: PatchUsersIDRequest, requestOptions?: RequestOptions): Pro
 
 <b>Returns:</b>
 
-Promise&lt;[User](./influxdb-client-apis.user.md)<!-- -->&gt;
+Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
 
 promise of response
 

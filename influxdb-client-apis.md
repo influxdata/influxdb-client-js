@@ -407,6 +407,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Source](./influxdb-client-apis.source.md) |  |
 |  [Sources](./influxdb-client-apis.sources.md) |  |
 |  [Stack](./influxdb-client-apis.stack.md) |  |
+|  [StaticLegend](./influxdb-client-apis.staticlegend.md) | StaticLegend represents the options specific to the static legend |
 |  [StatusRule](./influxdb-client-apis.statusrule.md) |  |
 |  [StringLiteral](./influxdb-client-apis.stringliteral.md) | Expressions begin and end with double quote marks |
 |  [TableViewProperties](./influxdb-client-apis.tableviewproperties.md) |  |
@@ -433,6 +434,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [UnsignedIntegerLiteral](./influxdb-client-apis.unsignedintegerliteral.md) | Represents integer numbers |
 |  [UpdateStackRequest](./influxdb-client-apis.updatestackrequest.md) |  |
 |  [User](./influxdb-client-apis.user.md) |  |
+|  [UserResponse](./influxdb-client-apis.userresponse.md) |  |
 |  [Users](./influxdb-client-apis.users.md) |  |
 |  [Variable](./influxdb-client-apis.variable.md) |  |
 |  [VariableAssignment](./influxdb-client-apis.variableassignment.md) | Represents the declaration of a variable |

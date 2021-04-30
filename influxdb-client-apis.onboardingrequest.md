@@ -19,5 +19,6 @@ export interface OnboardingRequest
 |  [password?](./influxdb-client-apis.onboardingrequest.password.md) | string | <i>(Optional)</i> |
 |  [retentionPeriodHrs?](./influxdb-client-apis.onboardingrequest.retentionperiodhrs.md) | number | <i>(Optional)</i> Retention period \*in nanoseconds\* for the new bucket. This key's name has been misleading since OSS 2.0 GA, please transition to use <code>retentionPeriodSeconds</code> |
 |  [retentionPeriodSeconds?](./influxdb-client-apis.onboardingrequest.retentionperiodseconds.md) | number | <i>(Optional)</i> |
+|  [token?](./influxdb-client-apis.onboardingrequest.token.md) | string | <i>(Optional)</i> Authentication token to set on the initial user. If not specified, the server will generate a token. |
 |  [username](./influxdb-client-apis.onboardingrequest.username.md) | string |  |
 

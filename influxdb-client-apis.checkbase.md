@@ -27,5 +27,6 @@ export interface CheckBase
 |  [ownerID?](./influxdb-client-apis.checkbase.ownerid.md) | string | <i>(Optional)</i> The ID of creator used to create this check. |
 |  [query](./influxdb-client-apis.checkbase.query.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
 |  [status?](./influxdb-client-apis.checkbase.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
+|  [taskID?](./influxdb-client-apis.checkbase.taskid.md) | string | <i>(Optional)</i> The ID of the task associated with this check. |
 |  [updatedAt?](./influxdb-client-apis.checkbase.updatedat.md) | string | <i>(Optional)</i> |
 

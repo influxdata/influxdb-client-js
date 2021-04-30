@@ -14,6 +14,8 @@ export interface Error
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [code](./influxdb-client-apis.error_2.code.md) | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' | Code is the machine-readable error code. |
-|  [message](./influxdb-client-apis.error_2.message.md) | string | Message is a human-readable message. |
+|  [code](./influxdb-client-apis.error_2.code.md) | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' \| 'request too large' | code is the machine-readable error code. |
+|  [err?](./influxdb-client-apis.error_2.err.md) | string | <i>(Optional)</i> err is a stack of errors that occurred during processing of the request. Useful for debugging. |
+|  [message](./influxdb-client-apis.error_2.message.md) | string | message is a human-readable message. |
+|  [op?](./influxdb-client-apis.error_2.op.md) | string | <i>(Optional)</i> op describes the logical code operation during error. Useful for debugging. |
 

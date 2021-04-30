@@ -4,7 +4,9 @@
 
 ## Point.timestamp() method
 
-Sets point time. A string or number value can be used to carry an int64 value of a precision that depends on WriteApi, nanoseconds by default. An undefined value generates a local timestamp using the client's clock. An empty string can be used to let the server assign the timestamp.
+Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string or an undefined value. An undefined value instructs to assign a local timestamp using the client's clock. An empty string can be used to let the server assign the timestamp. A number value represents time as a count of time units since epoch. The current time in nanoseconds can't precisely fit into a JS number, which can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as a (base-10) string. An application can use ES2020 BigInt to represent nanoseconds, BigInt's `toString()` returns the required high-precision string.
+
+Note that InfluxDB requires the timestamp to fit into int64 data type.
 
 <b>Signature:</b>
 

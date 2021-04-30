@@ -20,7 +20,7 @@ export interface LinePlusSingleStatProperties
 |  [generateXAxisTicks?](./influxdb-client-apis.lineplussinglestatproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.lineplussinglestatproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [hoverDimension?](./influxdb-client-apis.lineplussinglestatproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend](./influxdb-client-apis.lineplussinglestatproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
+|  [legend?](./influxdb-client-apis.lineplussinglestatproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.lineplussinglestatproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.lineplussinglestatproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.lineplussinglestatproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
@@ -31,6 +31,7 @@ export interface LinePlusSingleStatProperties
 |  [shadeBelow?](./influxdb-client-apis.lineplussinglestatproperties.shadebelow.md) | boolean | <i>(Optional)</i> |
 |  [shape](./influxdb-client-apis.lineplussinglestatproperties.shape.md) | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.lineplussinglestatproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
+|  [staticLegend?](./influxdb-client-apis.lineplussinglestatproperties.staticlegend.md) | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
 |  [suffix](./influxdb-client-apis.lineplussinglestatproperties.suffix.md) | string |  |
 |  [timeFormat?](./influxdb-client-apis.lineplussinglestatproperties.timeformat.md) | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.lineplussinglestatproperties.type.md) | 'line-plus-single-stat' |  |

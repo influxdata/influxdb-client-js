@@ -20,7 +20,7 @@ export interface XYViewProperties
 |  [generateYAxisTicks?](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [geom](./influxdb-client-apis.xyviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension?](./influxdb-client-apis.xyviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend](./influxdb-client-apis.xyviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
+|  [legend?](./influxdb-client-apis.xyviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.xyviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.xyviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.xyviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
@@ -30,6 +30,7 @@ export interface XYViewProperties
 |  [shadeBelow?](./influxdb-client-apis.xyviewproperties.shadebelow.md) | boolean | <i>(Optional)</i> |
 |  [shape](./influxdb-client-apis.xyviewproperties.shape.md) | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.xyviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
+|  [staticLegend?](./influxdb-client-apis.xyviewproperties.staticlegend.md) | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
 |  [timeFormat?](./influxdb-client-apis.xyviewproperties.timeformat.md) | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.xyviewproperties.type.md) | 'xy' |  |
 |  [xColumn?](./influxdb-client-apis.xyviewproperties.xcolumn.md) | string | <i>(Optional)</i> |

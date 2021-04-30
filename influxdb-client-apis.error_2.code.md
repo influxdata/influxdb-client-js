@@ -4,10 +4,10 @@
 
 ## Error\_2.code property
 
-Code is the machine-readable error code.
+code is the machine-readable error code.
 
 <b>Signature:</b>
 
 ```typescript
-readonly code: 'internal error' | 'not found' | 'conflict' | 'invalid' | 'unprocessable entity' | 'empty value' | 'unavailable' | 'forbidden' | 'too many requests' | 'unauthorized' | 'method not allowed';
+readonly code: 'internal error' | 'not found' | 'conflict' | 'invalid' | 'unprocessable entity' | 'empty value' | 'unavailable' | 'forbidden' | 'too many requests' | 'unauthorized' | 'method not allowed' | 'request too large';
 ```

@@ -4,7 +4,7 @@
 
 ## Error\_2.message property
 
-Message is a human-readable message.
+message is a human-readable message.
 
 <b>Signature:</b>
 

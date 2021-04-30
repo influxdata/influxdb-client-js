@@ -20,5 +20,6 @@ export interface WriteOptions extends WriteRetryOptions
 |  [batchSize](./influxdb-client.writeoptions.batchsize.md) | number | max number of records to send in a batch |
 |  [defaultTags?](./influxdb-client.writeoptions.defaulttags.md) | Record&lt;string, string&gt; | <i>(Optional)</i> default tags, unescaped |
 |  [flushInterval](./influxdb-client.writeoptions.flushinterval.md) | number | delay between data flushes in milliseconds, at most <code>batch size</code> records are sent during flush |
+|  [gzipThreshold?](./influxdb-client.writeoptions.gzipthreshold.md) | number | <i>(Optional)</i> When specified, write bodies larger than the threshold are gzipped |
 |  [headers?](./influxdb-client.writeoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every write request |
 

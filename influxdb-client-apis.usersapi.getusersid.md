@@ -9,7 +9,7 @@ Retrieve a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetUse
 <b>Signature:</b>
 
 ```typescript
-getUsersID(request: GetUsersIDRequest, requestOptions?: RequestOptions): Promise<User>;
+getUsersID(request: GetUsersIDRequest, requestOptions?: RequestOptions): Promise<UserResponse>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ getUsersID(request: GetUsersIDRequest, requestOptions?: RequestOptions): Promise
 
 <b>Returns:</b>
 
-Promise&lt;[User](./influxdb-client-apis.user.md)<!-- -->&gt;
+Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
 
 promise of response
 

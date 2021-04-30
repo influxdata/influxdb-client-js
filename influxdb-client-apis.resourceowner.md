@@ -7,9 +7,9 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ResourceOwner = User & {
+export declare type ResourceOwner = UserResponse & {
     role?: 'owner';
 };
 ```
-<b>References:</b> [User](./influxdb-client-apis.user.md)
+<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
 

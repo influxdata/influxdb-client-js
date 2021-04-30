@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-users?: User[];
+users?: UserResponse[];
 ```

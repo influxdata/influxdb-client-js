@@ -9,7 +9,7 @@ Return the current authenticated user. See [https://v2.docs.influxdata.com/v2.0/
 <b>Signature:</b>
 
 ```typescript
-getMe(request?: GetMeRequest, requestOptions?: RequestOptions): Promise<User>;
+getMe(request?: GetMeRequest, requestOptions?: RequestOptions): Promise<UserResponse>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ getMe(request?: GetMeRequest, requestOptions?: RequestOptions): Promise<User>;
 
 <b>Returns:</b>
 
-Promise&lt;[User](./influxdb-client-apis.user.md)<!-- -->&gt;
+Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
 
 promise of response
 

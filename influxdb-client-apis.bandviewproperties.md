@@ -20,7 +20,7 @@ export interface BandViewProperties
 |  [generateYAxisTicks?](./influxdb-client-apis.bandviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [geom](./influxdb-client-apis.bandviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension?](./influxdb-client-apis.bandviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend](./influxdb-client-apis.bandviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) |  |
+|  [legend?](./influxdb-client-apis.bandviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.bandviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.bandviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.bandviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
@@ -30,6 +30,7 @@ export interface BandViewProperties
 |  [queries](./influxdb-client-apis.bandviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.bandviewproperties.shape.md) | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.bandviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
+|  [staticLegend?](./influxdb-client-apis.bandviewproperties.staticlegend.md) | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
 |  [timeFormat?](./influxdb-client-apis.bandviewproperties.timeformat.md) | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.bandviewproperties.type.md) | 'band' |  |
 |  [upperColumn?](./influxdb-client-apis.bandviewproperties.uppercolumn.md) | string | <i>(Optional)</i> |

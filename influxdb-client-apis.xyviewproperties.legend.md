@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-legend: Legend;
+legend?: Legend;
 ```
