@@ -51,6 +51,8 @@ function createPoint(test: PointTest): Point {
   })
   if (test.time) {
     point.timestamp(test.time)
+  } else {
+    point.timestamp('')
   }
   return point
 }
@@ -98,10 +100,48 @@ describe('Point', () => {
     it('creates line with JSON double encoded field #241', () => {
       const fieldValue = JSON.stringify({prop: JSON.stringify({str: 'test'})})
       const point = new Point('tst')
-      point.stringField('a', fieldValue)
+      point.stringField('a', fieldValue).timestamp('')
       expect(point.toLineProtocol()).equals(
         'tst a="{X"propX":X"{XXX"strXXX":XXX"testXXX"}X"}"'.replace(/X/g, '\\')
       )
+    })
+    it('serializes Point with current time nanosecond OOTB', () => {
+      const point = new Point('tst').floatField('a', 1)
+      const lpParts = point.toLineProtocol()?.split(' ') as string[]
+      expect(lpParts).has.length(3)
+      expect(lpParts[0]).equals('tst')
+      expect(lpParts[1]).equals('a=1')
+      // expect current time in nanoseconds
+      const nowMillisStr = String(Date.now())
+      expect(lpParts[2]).has.length(nowMillisStr.length + 6)
+      expect(
+        Number.parseInt(lpParts[2].substring(0, nowMillisStr.length)) - 1
+      ).lte(Date.now())
+    })
+    it("serializes Point's Date timestamp with nanosecond precision OOTB", () => {
+      const point = new Point('tst').floatField('a', 1).timestamp(new Date())
+      const lpParts = point.toLineProtocol()?.split(' ') as string[]
+      expect(lpParts).has.length(3)
+      expect(lpParts[0]).equals('tst')
+      expect(lpParts[1]).equals('a=1')
+      // expect current time in nanoseconds
+      const nowMillisStr = String(Date.now())
+      expect(lpParts[2]).has.length(nowMillisStr.length + 6)
+      expect(
+        Number.parseInt(lpParts[2].substring(0, nowMillisStr.length)) - 1
+      ).lte(Date.now())
+    })
+    it("serializes Point's number timestamp as-is OOTB", () => {
+      const point = new Point('tst').floatField('a', 1).timestamp(1)
+      expect(point.toLineProtocol()).equals('tst a=1 1')
+    })
+    it("serializes Point's unknown timestamp as-is OOTB", () => {
+      const point = new Point('tst').floatField('a', 1).timestamp(({
+        toString() {
+          return 'any'
+        },
+      } as unknown) as undefined)
+      expect(point.toLineProtocol()).equals('tst a=1 any')
     })
   })
 })
