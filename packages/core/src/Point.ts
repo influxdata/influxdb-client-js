@@ -5,7 +5,9 @@ import {escape} from './util/escape'
  * to a protocol line.
  */
 export interface PointSettings {
+  /** default tags to add to every point */
   defaultTags?: {[key: string]: string}
+  /** convertTime serializes of Point's timestamp to a string */
   convertTime?: (
     value: string | number | Date | undefined
   ) => string | undefined
