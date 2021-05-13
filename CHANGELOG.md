@@ -1,5 +1,9 @@
 ## 1.14.0 [unreleased]
 
+### Features
+
+1. [#338](https://github.com/influxdata/influxdb-client-js/pull/338): Use nanosecond precision by default in `Point.toLineProtocol()`.
+
 ## 1.13.0 [2021-04-30]
 
 ### Features
