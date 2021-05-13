@@ -94,3 +94,24 @@ export const dateToProtocolTimestamp = {
   us: (d: Date): string => `${d.getTime()}000`,
   ns: (d: Date): string => `${d.getTime()}000000`,
 }
+
+/**
+ * convertTimeToNanos converts of Point's timestamp to a string
+ * @param value - supported timestamp value
+ * @returns line protocol value
+ */
+export function convertTimeToNanos(
+  value: string | number | Date | undefined
+): string | undefined {
+  if (value === undefined) {
+    return nanos()
+  } else if (typeof value === 'string') {
+    return value.length > 0 ? value : undefined
+  } else if (value instanceof Date) {
+    return `${value.getTime()}000000`
+  } else if (typeof value === 'number') {
+    return String(Math.floor(value))
+  } else {
+    return String(value)
+  }
+}
