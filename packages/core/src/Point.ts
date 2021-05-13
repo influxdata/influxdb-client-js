@@ -1,3 +1,4 @@
+import {convertTimeToNanos} from './util/currentTime'
 import {escape} from './util/escape'
 
 /**
@@ -181,6 +182,8 @@ export class Point {
     let time = this.time
     if (settings && settings.convertTime) {
       time = settings.convertTime(time)
+    } else {
+      time = convertTimeToNanos(time)
     }
 
     return `${escape.measurement(this.name)}${tagsLine} ${fieldsLine}${
