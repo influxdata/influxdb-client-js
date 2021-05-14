@@ -154,7 +154,7 @@ export class Point {
    * nanosecond timestamp precision is used when no settings are supplied.
    * @returns an InfluxDB protocol line out of this instance
    */
-  public toLineProtocol(settings?: PointSettings): string | undefined {
+  public toLineProtocol(settings?: Partial<PointSettings>): string | undefined {
     if (!this.name) return undefined
     let fieldsLine = ''
     Object.keys(this.fields)
