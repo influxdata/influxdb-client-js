@@ -151,7 +151,7 @@ export class Point {
   /**
    * Creates an InfluxDB protocol line out of this instance.
    * @param settings - settings control serialization of a point timestamp and can also add default tags,
-   * nanosecond timestamp precision is used when no settings are supplied.
+   * nanosecond timestamp precision is used when no `settings` or `settings.convertTime` is supplied.
    * @returns an InfluxDB protocol line out of this instance
    */
   public toLineProtocol(settings?: Partial<PointSettings>): string | undefined {
