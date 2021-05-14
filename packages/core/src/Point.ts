@@ -8,7 +8,7 @@ import {escape} from './util/escape'
 export interface PointSettings {
   /** default tags to add to every point */
   defaultTags?: {[key: string]: string}
-  /** convertTime serializes of Point's timestamp to a string */
+  /** convertTime serializes Point's timestamp to a line protocol value */
   convertTime?: (
     value: string | number | Date | undefined
   ) => string | undefined
@@ -129,10 +129,13 @@ export class Point {
    * Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string
    * or an undefined value. An undefined value instructs to assign a local timestamp using
    * the client's clock. An empty string can be used to let the server assign
-   * the timestamp. A number value represents time as a count of time units since epoch.
-   * The current time in nanoseconds can't precisely fit into a JS number, which
-   * can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as
-   * a (base-10) string. An application can use ES2020 BigInt to represent nanoseconds,
+   * the timestamp. A number value represents time as a count of time units since epoch, the
+   * exact time unit then depends on the {@link InfluxDB.getWriteApi | precision} of the API
+   * that writes the point.
+   *
+   * Beware that the current time in nanoseconds can't precisely fit into a JS number,
+   * which can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as
+   * a (base-10) string. An application can also use ES2020 BigInt to represent nanoseconds,
    * BigInt's `toString()` returns the required high-precision string.
    *
    * Note that InfluxDB requires the timestamp to fit into int64 data type.
@@ -147,7 +150,8 @@ export class Point {
 
   /**
    * Creates an InfluxDB protocol line out of this instance.
-   * @param settings - settings define the exact representation of point time and can also add default tags
+   * @param settings - settings control serialization of a point timestamp and can also add default tags,
+   * nanosecond timestamp precision is used when no settings are supplied.
    * @returns an InfluxDB protocol line out of this instance
    */
   public toLineProtocol(settings?: PointSettings): string | undefined {
