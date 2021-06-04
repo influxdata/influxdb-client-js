@@ -4,6 +4,8 @@
 
 ## PointSettings.defaultTags property
 
+default tags to add to every point
+
 <b>Signature:</b>
 
 ```typescript

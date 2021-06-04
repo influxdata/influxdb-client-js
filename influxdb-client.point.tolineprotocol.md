@@ -9,14 +9,14 @@ Creates an InfluxDB protocol line out of this instance.
 <b>Signature:</b>
 
 ```typescript
-toLineProtocol(settings?: PointSettings): string | undefined;
+toLineProtocol(settings?: Partial<PointSettings>): string | undefined;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  settings | [PointSettings](./influxdb-client.pointsettings.md) | settings define the exact representation of point time and can also add default tags |
+|  settings | Partial&lt;[PointSettings](./influxdb-client.pointsettings.md)<!-- -->&gt; | settings control serialization of a point timestamp and can also add default tags, nanosecond timestamp precision is used when no <code>settings</code> or no <code>settings.convertTime</code> is supplied. |
 
 <b>Returns:</b>
 

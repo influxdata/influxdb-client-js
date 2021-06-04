@@ -16,6 +16,6 @@ export interface PointSettings
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [convertTime?](./influxdb-client.pointsettings.converttime.md) | (value: string \| number \| Date \| undefined) =&gt; string \| undefined | <i>(Optional)</i> |
-|  [defaultTags?](./influxdb-client.pointsettings.defaulttags.md) | { \[key: string\]: string; } | <i>(Optional)</i> |
+|  [convertTime?](./influxdb-client.pointsettings.converttime.md) | (value: string \| number \| Date \| undefined) =&gt; string \| undefined | <i>(Optional)</i> convertTime serializes Point's timestamp to a line protocol value |
+|  [defaultTags?](./influxdb-client.pointsettings.defaulttags.md) | { \[key: string\]: string; } | <i>(Optional)</i> default tags to add to every point |
 

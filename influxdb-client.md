@@ -42,6 +42,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  --- | --- |
 |  [canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md) | Tests the error in order to know if an HTTP call can be retried. |
 |  [chunksToLines(target, chunkCombiner)](./influxdb-client.chunkstolines.md) | ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines. |
+|  [convertTimeToNanos(value)](./influxdb-client.converttimetonanos.md) | convertTimeToNanos converts of Point's timestamp to a string |
 |  [createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md) | Creates a flux table column from a partial FluxTableColumn. |
 |  [createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md) | Created FluxTableMetaData from the columns supplied. |
 |  [createTextDecoderCombiner()](./influxdb-client.createtextdecodercombiner.md) | Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arrays into strings. |

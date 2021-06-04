@@ -4,6 +4,8 @@
 
 ## PointSettings.convertTime property
 
+convertTime serializes Point's timestamp to a line protocol value
+
 <b>Signature:</b>
 
 ```typescript
