@@ -229,4 +229,4 @@
 
 ### Apis
 
-- initial release of new client version
+- initial releayarn coveragese of new client version

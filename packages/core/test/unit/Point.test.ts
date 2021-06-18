@@ -29,7 +29,7 @@ function createPoint(test: PointTest): Point {
       ? new Point().measurement(test.name)
       : new Point()
   ;(test.fields ?? []).forEach(
-    (field: [string, 'n' | 's' | 'b' | 'i' |'u', any]) => {
+    (field: [string, 'n' | 's' | 'b' | 'i' | 'u', any]) => {
       switch (field[1]) {
         case 'n':
           point.floatField(field[0], field[2])
@@ -46,7 +46,6 @@ function createPoint(test: PointTest): Point {
         case 'u':
           point.uIntField(field[0], field[2])
           break
-
       }
     }
   )
@@ -111,6 +110,19 @@ describe('Point', () => {
     })
     it('serializes Point with current time nanosecond OOTB', () => {
       const point = new Point('tst').floatField('a', 1)
+      const lpParts = point.toLineProtocol()?.split(' ') as string[]
+      expect(lpParts).has.length(3)
+      expect(lpParts[0]).equals('tst')
+      expect(lpParts[1]).equals('a=1')
+      // expect current time in nanoseconds
+      const nowMillisStr = String(Date.now())
+      expect(lpParts[2]).has.length(nowMillisStr.length + 6)
+      expect(
+        Number.parseInt(lpParts[2].substring(0, nowMillisStr.length)) - 1
+      ).lte(Date.now())
+    })
+    it('serializes Point with current time nanosecond OOTB', () => {
+      const point = new Point('tst').uIntField('a', 1)
       const lpParts = point.toLineProtocol()?.split(' ') as string[]
       expect(lpParts).has.length(3)
       expect(lpParts[0]).equals('tst')
