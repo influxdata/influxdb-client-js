@@ -90,6 +90,27 @@ export class Point {
   }
 
   /**
+   * Adds an uIntField field.
+   *
+   * @param name - field name
+   * @param value - field value
+   * @returns this
+   */
+  public uIntField(name: string, value: number | any): Point {
+    if (typeof value !== 'number') {
+      let val: number
+      if (isNaN((val = parseInt(String(value))))) {
+        throw new Error(
+          `Expected integer value for field ${name}, but got '${value}'!`
+        )
+      }
+      value = val
+    }
+    this.fields[name] = `${Math.floor(value as number)}u`
+    return this
+  }
+
+  /**
    * Adds a number field.
    *
    * @param name - field name
