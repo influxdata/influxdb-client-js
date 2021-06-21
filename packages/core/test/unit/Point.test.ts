@@ -5,7 +5,7 @@ import {Point, PointSettings} from '../../src'
 interface PointTest {
   name?: string
   tags?: Array<[string, string]>
-  fields?: Array<[string, 'n' | 's' | 'b' | 'i', any]>
+  fields?: Array<[string, 'n' | 's' | 'b' | 'i' | 'u', any]>
   time?: string
   line: string | undefined
   toString: string | undefined
@@ -29,7 +29,7 @@ function createPoint(test: PointTest): Point {
       ? new Point().measurement(test.name)
       : new Point()
   ;(test.fields ?? []).forEach(
-    (field: [string, 'n' | 's' | 'b' | 'i', any]) => {
+    (field: [string, 'n' | 's' | 'b' | 'i' | 'u', any]) => {
       switch (field[1]) {
         case 'n':
           point.floatField(field[0], field[2])
@@ -42,6 +42,9 @@ function createPoint(test: PointTest): Point {
           break
         case 'i':
           point.intField(field[0], field[2])
+          break
+        case 'u':
+          point.uintField(field[0], field[2])
           break
       }
     }

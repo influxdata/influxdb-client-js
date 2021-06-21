@@ -117,5 +117,45 @@
     "name": "m11",
     "fields": [["f", "s", "\\\""]],
     "line": "m11 f=\"\\\\\\\"\""
+  },
+  {
+    "name": "uint1zero",
+    "fields": [["f", "u", 0]],
+    "line": "uint1zero f=0u"
+  },
+  {
+    "name": "uint2maxInt",
+    "fields": [["f", "u", 9007199254740991]],
+    "line": "uint2maxInt f=9007199254740991u"
+  },
+  {
+    "name": "uint3fraction",
+    "fields": [["f", "u", 55.4]],
+    "line": "uint3fraction f=55u"
+  },
+  {
+    "name": "uint4maxStr",
+    "fields": [["f", "u", "18446744073709551615"]],
+    "line": "uint4maxStr f=18446744073709551615u"
+  },
+  {
+    "name": "uintNegativeNumber",
+    "fields": [["f", "u", -1]],
+    "throws": "uint value out of js unsigned integer range: -1"
+  },
+  {
+    "name": "uintTooLargeNumber",
+    "fields": [["f", "u", 9007199254740992]],
+    "throws": "uint value out of js unsigned integer range: 9007199254740992"
+  },
+  {
+    "name": "uintNegativeString",
+    "fields": [["f", "u", "-1"]],
+    "throws": "uint value has an unsupported character at pos 0: -1"
+  },
+  {
+    "name": "uintTooLargeString",
+    "fields": [["f", "u", "18446744073709551616"]],
+    "throws": "uint value out of range: 18446744073709551616"
   }
 ]
