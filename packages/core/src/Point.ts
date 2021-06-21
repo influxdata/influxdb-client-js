@@ -90,6 +90,41 @@ export class Point {
   }
 
   /**
+   * Adds an unsigned integer field.
+   *
+   * @param name - field name
+   * @param value - field value
+   * @returns this
+   */
+  public uintField(name: string, value: number | any): Point {
+    if (typeof value === 'number') {
+      if (value < 0 || value > Number.MAX_SAFE_INTEGER) {
+        throw new Error(`uint value out of js unsigned integer range: ${value}`)
+      }
+      this.fields[name] = `${Math.floor(value as number)}u`
+    } else {
+      const strVal = String(value)
+      for (let i = 0; i < strVal.length; i++) {
+        const code = strVal.charCodeAt(i)
+        if (code < 48 || code > 57) {
+          throw new Error(
+            `uint value has an unsupported character at pos ${i}: ${value}`
+          )
+        }
+      }
+      if (
+        strVal.length > 20 ||
+        (strVal.length === 20 &&
+          strVal.localeCompare('18446744073709551615') > 0)
+      ) {
+        throw new Error(`uint value out of range: ${strVal}`)
+      }
+      this.fields[name] = `${strVal}u`
+    }
+    return this
+  }
+
+  /**
    * Adds a number field.
    *
    * @param name - field name
