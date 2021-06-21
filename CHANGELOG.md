@@ -1,5 +1,9 @@
 ## 1.15.0 [unreleased]
 
+### Features
+
+1. [#341](https://github.com/influxdata/influxdb-client-js/pull/341): Add uintField fn to `Point`.
+
 ## 1.14.0 [2021-06-04]
 
 ### Features
