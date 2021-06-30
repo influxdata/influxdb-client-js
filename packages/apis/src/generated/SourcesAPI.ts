@@ -3,7 +3,7 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {Buckets, HealthCheck, Source, Sources} from './types'
 
 export interface GetSourcesRequest {
-  /** The organization name. */
+  /** The name of the organization. */
   org?: string
 }
 export interface PostSourcesRequest {
@@ -31,7 +31,7 @@ export interface GetSourcesIDHealthRequest {
 export interface GetSourcesIDBucketsRequest {
   /** The source ID. */
   sourceID: string
-  /** The organization name. */
+  /** The name of the organization. */
   org?: string
 }
 /**
@@ -49,7 +49,7 @@ export class SourcesAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all sources.
+   * List all sources.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -86,7 +86,7 @@ export class SourcesAPI {
     )
   }
   /**
-   * Get a source.
+   * Retrieve a source.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

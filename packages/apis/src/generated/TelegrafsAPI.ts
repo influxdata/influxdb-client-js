@@ -19,21 +19,21 @@ export interface GetTelegrafsRequest {
   orgID?: string
 }
 export interface PostTelegrafsRequest {
-  /** Telegraf config to create */
+  /** Telegraf configuration to create */
   body: TelegrafRequest
 }
 export interface GetTelegrafsIDRequest {
-  /** The Telegraf config ID. */
+  /** The Telegraf configuration ID. */
   telegrafID: string
 }
 export interface PutTelegrafsIDRequest {
   /** The Telegraf config ID. */
   telegrafID: string
-  /** Telegraf config update to apply */
+  /** Telegraf configuration update to apply */
   body: TelegrafRequest
 }
 export interface DeleteTelegrafsIDRequest {
-  /** The Telegraf config ID. */
+  /** The Telegraf configuration ID. */
   telegrafID: string
 }
 export interface GetTelegrafsIDLabelsRequest {
@@ -69,11 +69,11 @@ export interface DeleteTelegrafsIDMembersIDRequest {
   telegrafID: string
 }
 export interface GetTelegrafsIDOwnersRequest {
-  /** The Telegraf config ID. */
+  /** The Telegraf configuration ID. */
   telegrafID: string
 }
 export interface PostTelegrafsIDOwnersRequest {
-  /** The Telegraf config ID. */
+  /** The Telegraf configuration ID. */
   telegrafID: string
   /** User to add as owner */
   body: AddResourceMemberRequestBody
@@ -99,6 +99,7 @@ export class TelegrafsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
+   * List all Telegraf configurations.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -116,7 +117,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * Create a Telegraf config.
+   * Create a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -135,7 +136,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * Retrieve a Telegraf config.
+   * Retrieve a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -153,7 +154,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * Update a Telegraf config.
+   * Update a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -172,7 +173,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * Delete a Telegraf config.
+   * Delete a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -300,7 +301,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * List all owners of a Telegraf config.
+   * List all owners of a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -318,7 +319,7 @@ export class TelegrafsAPI {
     )
   }
   /**
-   * Add an owner to a Telegraf config.
+   * Add an owner to a Telegraf configuration.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

@@ -76,7 +76,7 @@ export class ChecksAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all checks.
+   * List all checks.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -117,7 +117,7 @@ export class ChecksAPI {
     )
   }
   /**
-   * Get a check.
+   * Retrieve a check.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -246,7 +246,7 @@ export class ChecksAPI {
     )
   }
   /**
-   * Get a check query.
+   * Retrieve a check query.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

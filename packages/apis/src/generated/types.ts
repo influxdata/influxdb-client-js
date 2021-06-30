@@ -17,6 +17,7 @@ export interface Error {
     | 'unauthorized'
     | 'method not allowed'
     | 'request too large'
+    | 'unsupported media type'
   /** message is a human-readable message. */
   readonly message: string
   /** op describes the logical code operation during error. Useful for debugging. */
@@ -149,7 +150,21 @@ export interface DBRPs {
 
 export interface DBRP {
   /** the mapping identifier */
-  readonly id?: string
+  readonly id: string
+  /** the organization ID that owns this mapping. */
+  orgID: string
+  /** the bucket ID used as target for the translation. */
+  bucketID: string
+  /** InfluxDB v1 database */
+  database: string
+  /** InfluxDB v1 retention policy */
+  retention_policy: string
+  /** Specify if this mapping represents the default retention policy for the database specificed. */
+  default: boolean
+  links?: Links
+}
+
+export interface DBRPCreate {
   /** the organization ID that owns this mapping. */
   orgID?: string
   /** the organization that owns this mapping. */
@@ -162,16 +177,16 @@ export interface DBRP {
   retention_policy: string
   /** Specify if this mapping represents the default retention policy for the database specificed. */
   default?: boolean
-  links?: Links
+}
+
+export interface DBRPGet {
+  content?: DBRP
 }
 
 export interface DBRPUpdate {
-  /** InfluxDB v1 database */
-  database?: string
   /** InfluxDB v1 retention policy */
   retention_policy?: string
   default?: boolean
-  links?: Links
 }
 
 export interface TelegrafPlugins {
@@ -250,40 +265,6 @@ export type ResourceOwner = UserResponse & {
   role?: 'owner'
 }
 
-export interface ScraperTargetResponses {
-  configurations?: ScraperTargetResponse[]
-}
-
-export type ScraperTargetResponse = ScraperTargetRequest & {
-  readonly id?: string
-  /** The organization name. */
-  org?: string
-  /** The bucket name. */
-  bucket?: string
-  readonly links?: {
-    self?: Link
-    members?: Link
-    owners?: Link
-    bucket?: Link
-    organization?: Link
-  }
-}
-
-export interface ScraperTargetRequest {
-  /** The name of the scraper target. */
-  name?: string
-  /** The type of the metrics to be parsed. */
-  type?: 'prometheus'
-  /** The URL of the metrics endpoint. */
-  url?: string
-  /** The organization ID. */
-  orgID?: string
-  /** The ID of the bucket to write to. */
-  bucketID?: string
-  /** Skip TLS verification on endpoint. */
-  allowInsecure?: boolean
-}
-
 export interface LineProtocolError {
   /** Code is the machine-readable error code. */
   readonly code:
@@ -322,91 +303,6 @@ export interface DeletePredicateRequest {
   stop: string
   /** InfluxQL-like delete statement */
   predicate?: string
-}
-
-export interface Sources {
-  links?: {
-    self?: string
-  }
-  sources?: Source[]
-}
-
-export interface Source {
-  links?: {
-    self?: string
-    query?: string
-    health?: string
-    buckets?: string
-  }
-  id?: string
-  orgID?: string
-  default?: boolean
-  name?: string
-  type?: 'v1' | 'v2' | 'self'
-  url?: string
-  insecureSkipVerify?: boolean
-  telegraf?: string
-  token?: string
-  username?: string
-  password?: string
-  sharedSecret?: string
-  metaUrl?: string
-  defaultRP?: string
-  readonly languages?: Array<'flux' | 'influxql'>
-}
-
-export interface HealthCheck {
-  name: string
-  message?: string
-  checks?: HealthCheck[]
-  status: 'pass' | 'fail'
-  version?: string
-  commit?: string
-}
-
-export interface Buckets {
-  readonly links?: Links
-  buckets?: Bucket[]
-}
-
-export interface Bucket {
-  readonly links?: {
-    /** URL to retrieve labels for this bucket */
-    labels?: Link
-    /** URL to retrieve members that can read this bucket */
-    members?: Link
-    /** URL to retrieve parent organization for this bucket */
-    org?: Link
-    /** URL to retrieve owners that can read and write to this bucket. */
-    owners?: Link
-    /** URL for this bucket */
-    self?: Link
-    /** URL to write line protocol for this bucket */
-    write?: Link
-  }
-  readonly id?: string
-  readonly type?: 'user' | 'system'
-  name: string
-  description?: string
-  orgID?: string
-  rp?: string
-  readonly createdAt?: string
-  readonly updatedAt?: string
-  retentionRules: RetentionRules
-  labels?: Labels
-}
-
-/**
- * Rules to expire or retain data.  No rules means data never expires.
- */
-export type RetentionRules = RetentionRule[]
-
-export interface RetentionRule {
-  type: 'expire'
-  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
-  everySeconds: number
-  /** Shard duration measured in seconds. */
-  shardGroupDurationSeconds?: number
 }
 
 export interface LabelCreateRequest {
@@ -522,7 +418,6 @@ export interface LinePlusSingleStatProperties {
   showNoteWhenEmpty: boolean
   axes: Axes
   staticLegend?: StaticLegend
-  legend?: Legend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -540,6 +435,7 @@ export interface LinePlusSingleStatProperties {
   suffix: string
   decimalPlaces: DecimalPlaces
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -628,20 +524,11 @@ export type AxisScale = 'log' | 'linear'
 export interface StaticLegend {
   colorizeRows?: boolean
   heightRatio?: number
+  show?: boolean
   opacity?: number
   orientationThreshold?: number
   valueAxis?: string
   widthRatio?: number
-}
-
-/**
- * Legend define encoding of data into a view's legend
- */
-export interface Legend {
-  /** The style of the legend. */
-  type?: 'static'
-  /** orientation is the location of the legend with respect to the view graph */
-  orientation?: 'top' | 'bottom' | 'left' | 'right'
 }
 
 /**
@@ -666,7 +553,6 @@ export interface XYViewProperties {
   showNoteWhenEmpty: boolean
   axes: Axes
   staticLegend?: StaticLegend
-  legend?: Legend
   xColumn?: string
   generateXAxisTicks?: string[]
   xTotalTicks?: number
@@ -682,6 +568,7 @@ export interface XYViewProperties {
   position: 'overlaid' | 'stacked'
   geom: XYGeom
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -702,7 +589,6 @@ export interface SingleStatViewProperties {
   suffix: string
   tickSuffix: string
   staticLegend?: StaticLegend
-  legend?: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -722,6 +608,7 @@ export interface HistogramViewProperties {
   position: 'overlaid' | 'stacked'
   binCount: number
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -739,8 +626,6 @@ export interface GaugeViewProperties {
   tickPrefix: string
   suffix: string
   tickSuffix: string
-  staticLegend?: StaticLegend
-  legend?: Legend
   decimalPlaces: DecimalPlaces
 }
 
@@ -796,6 +681,7 @@ export interface CheckViewProperties {
   /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -949,6 +835,7 @@ export interface ScatterViewProperties {
   yPrefix: string
   ySuffix: string
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -983,6 +870,7 @@ export interface HeatmapViewProperties {
   ySuffix: string
   binSize: number
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -1016,6 +904,7 @@ export interface MosaicViewProperties {
   ySuffix: string
   hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -1031,7 +920,6 @@ export interface BandViewProperties {
   /** If true, will display note when empty */
   showNoteWhenEmpty: boolean
   axes: Axes
-  legend?: Legend
   staticLegend?: StaticLegend
   xColumn?: string
   generateXAxisTicks?: string[]
@@ -1049,6 +937,7 @@ export interface BandViewProperties {
   hoverDimension?: 'auto' | 'x' | 'y' | 'xy'
   geom: XYGeom
   legendColorizeRows?: boolean
+  legendHide?: boolean
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
@@ -1070,6 +959,11 @@ export interface GeoViewProperties {
   allowPanAndZoom: boolean
   /** If true, search results get automatically regroupped so that lon,lat and value are treated as columns */
   detectCoordinateFields: boolean
+  /** If true, S2 column is used to calculate lat/lon */
+  useS2CellID?: boolean
+  /** String to define the column */
+  s2Column?: string
+  latLonColumns?: LatLonColumns
   /** Define map type - regular, satellite etc. */
   mapStyle?: string
   note: string
@@ -1079,6 +973,24 @@ export interface GeoViewProperties {
   colors?: DashboardColor[]
   /** List of individual layers shown in the map */
   layers: GeoViewLayer[]
+}
+
+/**
+ * Object type to define lat/lon columns
+ */
+export interface LatLonColumns {
+  lat: LatLonColumn
+  lon: LatLonColumn
+}
+
+/**
+ * Object type for key and column definitions
+ */
+export interface LatLonColumn {
+  /** Key to determine whether the column is tag/field */
+  key: string
+  /** Column to look up Lat/Lon */
+  column: string
 }
 
 export type GeoViewLayer =
@@ -1126,6 +1038,8 @@ export type GeoPointMapViewLayer = GeoViewLayerProperties & {
   colors: DashboardColor[]
   /** Cluster close markers together */
   isClustered?: boolean
+  /** An array for which columns to display in tooltip */
+  tooltipColumns?: string[]
 }
 
 export interface GeoTrackMapViewLayer {
@@ -1590,6 +1504,9 @@ export interface Query {
   query: string
   /** The type of query. Must be "flux". */
   type?: 'flux'
+  /** Enumeration of key/value pairs that respresent parameters to be injected into query (can only specify either this field or extern and not both)
+   */
+  params?: any
   dialect?: Dialect
   /** Specifies the time that should be reported as "now" in the query. Default is the server's now time. */
   now?: string
@@ -1632,12 +1549,86 @@ export interface InfluxQLQuery {
   bucket?: string
 }
 
+export interface Buckets {
+  readonly links?: Links
+  buckets?: Bucket[]
+}
+
+export interface Bucket {
+  readonly links?: {
+    /** URL to retrieve labels for this bucket */
+    labels?: Link
+    /** URL to retrieve members that can read this bucket */
+    members?: Link
+    /** URL to retrieve parent organization for this bucket */
+    org?: Link
+    /** URL to retrieve owners that can read and write to this bucket. */
+    owners?: Link
+    /** URL for this bucket */
+    self?: Link
+    /** URL to write line protocol for this bucket */
+    write?: Link
+  }
+  readonly id?: string
+  readonly type?: 'user' | 'system'
+  name: string
+  description?: string
+  orgID?: string
+  rp?: string
+  schemaType?: SchemaType
+  readonly createdAt?: string
+  readonly updatedAt?: string
+  retentionRules: RetentionRules
+  labels?: Labels
+}
+
+export type SchemaType = 'implicit' | 'explicit'
+
+/**
+ * Rules to expire or retain data.  No rules means data never expires.
+ */
+export type RetentionRules = RetentionRule[]
+
+export interface RetentionRule {
+  type: 'expire'
+  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
+  everySeconds: number
+  /** Shard duration measured in seconds. */
+  shardGroupDurationSeconds?: number
+}
+
 export interface PostBucketRequest {
   orgID: string
   name: string
   description?: string
   rp?: string
   retentionRules: RetentionRules
+  schemaType?: SchemaType
+}
+
+/**
+ * Updates to an existing bucket resource.
+ */
+export interface PatchBucketRequest {
+  name?: string
+  description?: string
+  retentionRules?: PatchRetentionRules
+}
+
+/**
+ * Updates to rules to expire or retain data. No rules means no updates.
+ */
+export type PatchRetentionRules = PatchRetentionRule[]
+
+/**
+ * Updates to a rule to expire or retain data.
+ */
+export interface PatchRetentionRule {
+  type: 'expire'
+  /** Duration in seconds for how long data will be kept in the database. 0 means infinite. */
+  everySeconds?: number
+  /** Shard duration measured in seconds. */
+  shardGroupDurationSeconds?: number
 }
 
 export interface Organizations {
@@ -1663,6 +1654,18 @@ export interface Organization {
   readonly updatedAt?: string
   /** If inactive the organization is inactive. */
   status?: 'active' | 'inactive'
+}
+
+export interface PostOrganizationRequest {
+  name: string
+  description?: string
+}
+
+export interface PatchOrganizationRequest {
+  /** New name to set on the organization */
+  name?: string
+  /** New description to set on the organization */
+  description?: string
 }
 
 export type SecretKeysResponse = SecretKeys & {
@@ -1815,7 +1818,7 @@ export interface TemplateSummary {
     missingEnvRefs?: string[]
     missingSecrets?: string[]
     notificationEndpoints?: Array<
-      NotificationEndpointDiscrimator & {
+      NotificationEndpointDiscriminator & {
         kind?: TemplateKind
         templateMetaName?: string
         labelAssociations?: TemplateSummaryLabel[]
@@ -1951,8 +1954,8 @@ export interface TemplateSummary {
       stateStatus?: string
       id?: string
       templateMetaName?: string
-      new?: NotificationEndpointDiscrimator
-      old?: NotificationEndpointDiscrimator
+      new?: NotificationEndpointDiscriminator
+      old?: NotificationEndpointDiscriminator
     }>
     notificationRules?: Array<{
       kind?: TemplateKind
@@ -2089,7 +2092,7 @@ export interface TemplateChart {
   properties?: ViewProperties
 }
 
-export type NotificationEndpointDiscrimator =
+export type NotificationEndpointDiscriminator =
   | (SlackNotificationEndpoint & {type: string})
   | (PagerDutyNotificationEndpoint & {type: string})
   | (HTTPNotificationEndpoint & {type: string})
@@ -2189,12 +2192,12 @@ export interface TemplateExportByID {
       byResourceKind?: TemplateKind[]
     }
   }>
-  resources?: {
+  resources?: Array<{
     id: string
     kind: TemplateKind
     /** if defined with id, name is used for resource exported by id. if defined independently, resources strictly matching name are exported */
     name?: string
-  }
+  }>
 }
 
 export interface TemplateExportByName {
@@ -2206,10 +2209,10 @@ export interface TemplateExportByName {
       byResourceKind?: TemplateKind[]
     }
   }>
-  resources?: {
+  resources?: Array<{
     kind: TemplateKind
     name: string
-  }
+  }>
 }
 
 export interface Tasks {
@@ -2297,11 +2300,7 @@ export interface Run {
   /** Time used for run's "now" option, RFC3339. */
   scheduledFor?: string
   /** An array of logs associated with the run. */
-  readonly log?: Array<{
-    runID?: string
-    time?: string
-    message?: string
-  }>
+  readonly log?: LogEvent[]
   /** Time run started executing, RFC3339Nano. */
   readonly startedAt?: string
   /** Time run finished executing, RFC3339Nano. */
@@ -2315,6 +2314,15 @@ export interface Run {
   }
 }
 
+export interface LogEvent {
+  /** Time event occurred, RFC3339Nano. */
+  readonly time?: string
+  /** A description of the event that occurred. */
+  readonly message?: string
+  /** the ID of the task that logged */
+  readonly runID?: string
+}
+
 export interface RunManually {
   /** Time used for run's "now" option, RFC3339.  Default is the server's now time. */
   scheduledFor?: string
@@ -2322,13 +2330,6 @@ export interface RunManually {
 
 export interface Logs {
   readonly events?: LogEvent[]
-}
-
-export interface LogEvent {
-  /** Time event occurred, RFC3339Nano. */
-  readonly time?: string
-  /** A description of the event that occurred. */
-  readonly message?: string
 }
 
 export type Flags = any
@@ -2372,7 +2373,7 @@ export interface NotificationRuleBase {
   readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
-  readonly id: string
+  readonly id?: string
   endpointID: string
   /** The ID of the organization that owns this notification rule. */
   orgID: string
@@ -2396,7 +2397,7 @@ export interface NotificationRuleBase {
   /** Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. */
   limit?: number
   /** List of tag rules the notification rule attempts to match. */
-  tagRules: TagRule[]
+  tagRules?: TagRule[]
   /** An optional description of the notification rule. */
   description?: string
   /** List of status rules the notification rule attempts to match. */
@@ -2506,14 +2507,23 @@ export interface NotificationEndpoints {
   links?: Links
 }
 
-export type NotificationEndpoint = NotificationEndpointDiscrimator
+export type NotificationEndpoint = NotificationEndpointDiscriminator
 
-export type PostNotificationEndpoint = NotificationEndpointDiscrimator
+export type PostNotificationEndpoint = NotificationEndpointDiscriminator
 
 export interface NotificationEndpointUpdate {
   name?: string
   description?: string
   status?: 'active' | 'inactive'
+}
+
+export interface HealthCheck {
+  name: string
+  message?: string
+  checks?: HealthCheck[]
+  status: 'pass' | 'fail'
+  version?: string
+  commit?: string
 }
 
 export interface Ready {
@@ -2617,6 +2627,7 @@ export interface Resource {
     | 'notificationEndpoints'
     | 'checks'
     | 'dbrp'
+    | 'notebooks'
   /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
   id?: string
   /** Optional name of the resource if the resource has a name field. */
@@ -2630,6 +2641,26 @@ export interface Resource {
 export interface Authorizations {
   readonly links?: Links
   authorizations?: Authorization[]
+}
+
+export type AuthorizationPostRequest = AuthorizationUpdateRequest & {
+  /** ID of org that authorization is scoped to. */
+  orgID?: string
+  /** ID of user that authorization is scoped to. */
+  userID?: string
+  /** List of permissions for an auth.  An auth must have at least one Permission. */
+  permissions?: Permission[]
+}
+
+export type LegacyAuthorizationPostRequest = AuthorizationUpdateRequest & {
+  /** ID of org that authorization is scoped to. */
+  orgID?: string
+  /** ID of user that authorization is scoped to. */
+  userID?: string
+  /** Token (name) of the authorization */
+  token?: string
+  /** List of permissions for an auth.  An auth must have at least one Permission. */
+  permissions?: Permission[]
 }
 
 export interface Variables {
@@ -2651,4 +2682,145 @@ export interface Variable {
   arguments: VariableProperties
   createdAt?: string
   updatedAt?: string
+}
+
+export interface Sources {
+  links?: {
+    self?: string
+  }
+  sources?: Source[]
+}
+
+export interface Source {
+  links?: {
+    self?: string
+    query?: string
+    health?: string
+    buckets?: string
+  }
+  id?: string
+  orgID?: string
+  default?: boolean
+  name?: string
+  type?: 'v1' | 'v2' | 'self'
+  url?: string
+  insecureSkipVerify?: boolean
+  telegraf?: string
+  token?: string
+  username?: string
+  password?: string
+  sharedSecret?: string
+  metaUrl?: string
+  defaultRP?: string
+  readonly languages?: Array<'flux' | 'influxql'>
+}
+
+export interface ScraperTargetResponses {
+  configurations?: ScraperTargetResponse[]
+}
+
+export type ScraperTargetResponse = ScraperTargetRequest & {
+  readonly id?: string
+  /** The name of the organization. */
+  org?: string
+  /** The bucket name. */
+  bucket?: string
+  readonly links?: {
+    self?: Link
+    members?: Link
+    owners?: Link
+    bucket?: Link
+    organization?: Link
+  }
+}
+
+export interface ScraperTargetRequest {
+  /** The name of the scraper target. */
+  name?: string
+  /** The type of the metrics to be parsed. */
+  type?: 'prometheus'
+  /** The URL of the metrics endpoint. */
+  url?: string
+  /** The organization ID. */
+  orgID?: string
+  /** The ID of the bucket to write to. */
+  bucketID?: string
+  /** Skip TLS verification on endpoint. */
+  allowInsecure?: boolean
+}
+
+export interface MetadataBackup {
+  kv: string
+  sql: string
+  buckets: BucketMetadataManifests
+}
+
+export type BucketMetadataManifests = BucketMetadataManifest[]
+
+export interface BucketMetadataManifest {
+  organizationID: string
+  organizationName: string
+  bucketID: string
+  bucketName: string
+  description?: string
+  defaultRetentionPolicy: string
+  retentionPolicies: RetentionPolicyManifests
+}
+
+export type RetentionPolicyManifests = RetentionPolicyManifest[]
+
+export interface RetentionPolicyManifest {
+  name: string
+  replicaN: number
+  duration: number
+  shardGroupDuration: number
+  shardGroups: ShardGroupManifests
+  subscriptions: SubscriptionManifests
+}
+
+export type ShardGroupManifests = ShardGroupManifest[]
+
+export interface ShardGroupManifest {
+  id: number
+  startTime: string
+  endTime: string
+  deletedAt?: string
+  truncatedAt?: string
+  shards: ShardManifests
+}
+
+export type ShardManifests = ShardManifest[]
+
+export interface ShardManifest {
+  id: number
+  shardOwners: ShardOwners
+}
+
+export type ShardOwners = ShardOwner[]
+
+export interface ShardOwner {
+  /** ID of the node that owns a shard. */
+  nodeID: number
+}
+
+export type SubscriptionManifests = SubscriptionManifest[]
+
+export interface SubscriptionManifest {
+  name: string
+  mode: string
+  destinations: string[]
+}
+
+export interface RestoredBucketMappings {
+  /** New ID of the restored bucket */
+  id: string
+  name: string
+  shardMappings: BucketShardMappings
+}
+
+export type BucketShardMappings = BucketShardMapping[]
+
+export interface BucketShardMapping {
+  oldId: number
+  newId: number
 }

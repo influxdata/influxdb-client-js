@@ -1,10 +1,12 @@
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
-import {DBRP, DBRPUpdate, DBRPs} from './types'
+import {DBRP, DBRPCreate, DBRPGet, DBRPUpdate, DBRPs} from './types'
 
 export interface GetDBRPsRequest {
   /** Specifies the organization ID to filter on */
-  orgID: string
+  orgID?: string
+  /** Specifies the organization name to filter on */
+  org?: string
   /** Specifies the mapping ID to filter on */
   id?: string
   /** Specifies the bucket ID to filter on */
@@ -18,13 +20,15 @@ export interface GetDBRPsRequest {
 }
 export interface PostDBRPRequest {
   /** The database retention policy mapping to add */
-  body: DBRP
+  body: DBRPCreate
 }
 export interface GetDBRPsIDRequest {
   /** The database retention policy mapping ID */
   dbrpID: string
   /** Specifies the organization ID of the mapping */
-  orgID: string
+  orgID?: string
+  /** Specifies the organization name of the mapping */
+  org?: string
 }
 export interface PatchDBRPIDRequest {
   /** The database retention policy mapping. */
@@ -32,13 +36,17 @@ export interface PatchDBRPIDRequest {
   /** Database retention policy update to apply */
   body: DBRPUpdate
   /** Specifies the organization ID of the mapping */
-  orgID: string
+  orgID?: string
+  /** Specifies the organization name of the mapping */
+  org?: string
 }
 export interface DeleteDBRPIDRequest {
   /** The database retention policy mapping */
   dbrpID: string
   /** Specifies the organization ID of the mapping */
-  orgID: string
+  orgID?: string
+  /** Specifies the organization name of the mapping */
+  org?: string
 }
 /**
  * Dbrps API
@@ -62,13 +70,14 @@ export class DbrpsAPI {
    * @returns promise of response
    */
   getDBRPs(
-    request: GetDBRPsRequest,
+    request?: GetDBRPsRequest,
     requestOptions?: RequestOptions
   ): Promise<DBRPs> {
     return this.base.request(
       'GET',
       `/api/v2/dbrps${this.base.queryString(request, [
         'orgID',
+        'org',
         'id',
         'bucketID',
         'default',
@@ -108,11 +117,12 @@ export class DbrpsAPI {
   getDBRPsID(
     request: GetDBRPsIDRequest,
     requestOptions?: RequestOptions
-  ): Promise<DBRP> {
+  ): Promise<DBRPGet> {
     return this.base.request(
       'GET',
       `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
         'orgID',
+        'org',
       ])}`,
       request,
       requestOptions
@@ -128,11 +138,12 @@ export class DbrpsAPI {
   patchDBRPID(
     request: PatchDBRPIDRequest,
     requestOptions?: RequestOptions
-  ): Promise<DBRP> {
+  ): Promise<DBRPGet> {
     return this.base.request(
       'PATCH',
       `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
         'orgID',
+        'org',
       ])}`,
       request,
       requestOptions,
@@ -154,6 +165,7 @@ export class DbrpsAPI {
       'DELETE',
       `/api/v2/dbrps/${request.dbrpID}${this.base.queryString(request, [
         'orgID',
+        'org',
       ])}`,
       request,
       requestOptions

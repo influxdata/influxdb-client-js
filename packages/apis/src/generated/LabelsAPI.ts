@@ -44,7 +44,7 @@ export class LabelsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all labels.
+   * List all labels.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -81,7 +81,7 @@ export class LabelsAPI {
     )
   }
   /**
-   * Get a label.
+   * Retrieve a label.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

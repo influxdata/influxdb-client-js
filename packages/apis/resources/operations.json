@@ -107,7 +107,7 @@
     "operation": "get",
     "operationId": "GetRoutes",
     "basicAuth": false,
-    "summary": "Map of all top level routes available",
+    "summary": "List all top level routes",
     "positionalParams": [],
     "headerParams": [
       {
@@ -138,6 +138,7 @@
     "operation": "get",
     "operationId": "GetDocumentsTemplates",
     "basicAuth": false,
+    "summary": "List all templates",
     "positionalParams": [],
     "headerParams": [
       {
@@ -235,6 +236,7 @@
     "operation": "get",
     "operationId": "GetDocumentsTemplatesID",
     "basicAuth": false,
+    "summary": "Retrieve a template",
     "positionalParams": [
       {
         "name": "templateID",
@@ -282,6 +284,7 @@
     "operation": "put",
     "operationId": "PutDocumentsTemplatesID",
     "basicAuth": false,
+    "summary": "Update a template",
     "positionalParams": [
       {
         "name": "templateID",
@@ -551,7 +554,11 @@
       {
         "name": "orgID",
         "description": "Specifies the organization ID to filter on",
-        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Specifies the organization name to filter on",
         "type": "string"
       },
       {
@@ -635,7 +642,7 @@
       "description": "The database retention policy mapping to add",
       "required": true,
       "mediaType": "application/json",
-      "type": "DBRP"
+      "type": "DBRPCreate"
     },
     "responses": [
       {
@@ -697,7 +704,11 @@
       {
         "name": "orgID",
         "description": "Specifies the organization ID of the mapping",
-        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Specifies the organization name of the mapping",
         "type": "string"
       }
     ],
@@ -709,7 +720,7 @@
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "DBRP"
+            "type": "DBRPGet"
           }
         ]
       },
@@ -762,7 +773,11 @@
       {
         "name": "orgID",
         "description": "Specifies the organization ID of the mapping",
-        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Specifies the organization name of the mapping",
         "type": "string"
       }
     ],
@@ -779,7 +794,7 @@
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "DBRP"
+            "type": "DBRPGet"
           }
         ]
       },
@@ -842,7 +857,11 @@
       {
         "name": "orgID",
         "description": "Specifies the organization ID of the mapping",
-        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Specifies the organization name of the mapping",
         "type": "string"
       }
     ],
@@ -881,6 +900,7 @@
     "operation": "get",
     "operationId": "GetTelegrafPlugins",
     "basicAuth": false,
+    "summary": "List all Telegraf plugins",
     "positionalParams": [],
     "headerParams": [
       {
@@ -927,6 +947,7 @@
     "operation": "get",
     "operationId": "GetTelegrafs",
     "basicAuth": false,
+    "summary": "List all Telegraf configurations",
     "positionalParams": [],
     "headerParams": [
       {
@@ -947,7 +968,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of Telegraf configs",
+        "description": "A list of Telegraf configurations",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -973,7 +994,7 @@
     "operation": "post",
     "operationId": "PostTelegrafs",
     "basicAuth": false,
-    "summary": "Create a Telegraf config",
+    "summary": "Create a Telegraf configuration",
     "positionalParams": [],
     "headerParams": [
       {
@@ -985,7 +1006,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Telegraf config to create",
+      "description": "Telegraf configuration to create",
       "required": true,
       "mediaType": "application/json",
       "type": "TelegrafRequest"
@@ -993,7 +1014,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Telegraf config created",
+        "description": "Telegraf configuration created",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1019,11 +1040,11 @@
     "operation": "get",
     "operationId": "GetTelegrafsID",
     "basicAuth": false,
-    "summary": "Retrieve a Telegraf config",
+    "summary": "Retrieve a Telegraf configuration",
     "positionalParams": [
       {
         "name": "telegrafID",
-        "description": "The Telegraf config ID.",
+        "description": "The Telegraf configuration ID.",
         "required": true,
         "type": "string"
       }
@@ -1046,7 +1067,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Telegraf config details",
+        "description": "Telegraf configuration details",
         "mediaTypes": [
           {
             "mediaType": "application/toml",
@@ -1080,7 +1101,7 @@
     "operation": "put",
     "operationId": "PutTelegrafsID",
     "basicAuth": false,
-    "summary": "Update a Telegraf config",
+    "summary": "Update a Telegraf configuration",
     "positionalParams": [
       {
         "name": "telegrafID",
@@ -1099,7 +1120,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Telegraf config update to apply",
+      "description": "Telegraf configuration update to apply",
       "required": true,
       "mediaType": "application/json",
       "type": "TelegrafRequest"
@@ -1107,7 +1128,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "An updated Telegraf config",
+        "description": "An updated Telegraf configurations",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1133,11 +1154,11 @@
     "operation": "delete",
     "operationId": "DeleteTelegrafsID",
     "basicAuth": false,
-    "summary": "Delete a Telegraf config",
+    "summary": "Delete a Telegraf configuration",
     "positionalParams": [
       {
         "name": "telegrafID",
-        "description": "The Telegraf config ID.",
+        "description": "The Telegraf configuration ID.",
         "required": true,
         "type": "string"
       }
@@ -1486,11 +1507,11 @@
     "operation": "get",
     "operationId": "GetTelegrafsIDOwners",
     "basicAuth": false,
-    "summary": "List all owners of a Telegraf config",
+    "summary": "List all owners of a Telegraf configuration",
     "positionalParams": [
       {
         "name": "telegrafID",
-        "description": "The Telegraf config ID.",
+        "description": "The Telegraf configuration ID.",
         "required": true,
         "type": "string"
       }
@@ -1508,7 +1529,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of Telegraf config owners",
+        "description": "Returns Telegraf configuration owners as a ResourceOwners list",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1534,11 +1555,11 @@
     "operation": "post",
     "operationId": "PostTelegrafsIDOwners",
     "basicAuth": false,
-    "summary": "Add an owner to a Telegraf config",
+    "summary": "Add an owner to a Telegraf configuration",
     "positionalParams": [
       {
         "name": "telegrafID",
-        "description": "The Telegraf config ID.",
+        "description": "The Telegraf configuration ID.",
         "required": true,
         "type": "string"
       }
@@ -1561,7 +1582,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Telegraf config owner added",
+        "description": "Telegraf configuration owner was added. Returns a ResourceOwner that references the User.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1598,708 +1619,6 @@
       {
         "name": "telegrafID",
         "description": "The Telegraf config ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Owner removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers",
-    "operation": "get",
-    "operationId": "GetScrapers",
-    "basicAuth": false,
-    "summary": "Get all scraper targets",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "name",
-        "description": "Specifies the name of the scraper target.",
-        "type": "string"
-      },
-      {
-        "name": "id",
-        "description": "List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used.",
-        "type": "any"
-      },
-      {
-        "name": "orgID",
-        "description": "Specifies the organization ID of the scraper target.",
-        "type": "string"
-      },
-      {
-        "name": "org",
-        "description": "Specifies the organization name of the scraper target.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "All scraper targets",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ScraperTargetResponses"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers",
-    "operation": "post",
-    "operationId": "PostScrapers",
-    "basicAuth": false,
-    "summary": "Create a scraper target",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Scraper target to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "ScraperTargetRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Scraper target created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ScraperTargetResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}",
-    "operation": "get",
-    "operationId": "GetScrapersID",
-    "basicAuth": false,
-    "summary": "Get a scraper target by ID",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Scraper target updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ScraperTargetResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}",
-    "operation": "patch",
-    "operationId": "PatchScrapersID",
-    "basicAuth": false,
-    "summary": "Update a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Scraper target update to apply",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "ScraperTargetRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Scraper target updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ScraperTargetResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}",
-    "operation": "delete",
-    "operationId": "DeleteScrapersID",
-    "basicAuth": false,
-    "summary": "Delete a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Scraper target deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/labels",
-    "operation": "get",
-    "operationId": "GetScrapersIDLabels",
-    "basicAuth": false,
-    "summary": "List all labels for a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of all labels for a scraper target",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelsResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/labels",
-    "operation": "post",
-    "operationId": "PostScrapersIDLabels",
-    "basicAuth": false,
-    "summary": "Add a label to a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Label to add",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "LabelMapping"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "The newly added label",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/labels/{labelID}",
-    "operation": "delete",
-    "operationId": "DeleteScrapersIDLabelsID",
-    "basicAuth": false,
-    "summary": "Delete a label from a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "labelID",
-        "description": "The label ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Delete has been accepted",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Scraper target not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/members",
-    "operation": "get",
-    "operationId": "GetScrapersIDMembers",
-    "basicAuth": false,
-    "summary": "List all users with member privileges for a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of scraper target members",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ResourceMembers"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/members",
-    "operation": "post",
-    "operationId": "PostScrapersIDMembers",
-    "basicAuth": false,
-    "summary": "Add a member to a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "User to add as member",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "AddResourceMemberRequestBody"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Member added to scraper targets",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ResourceMember"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/members/{userID}",
-    "operation": "delete",
-    "operationId": "DeleteScrapersIDMembersID",
-    "basicAuth": false,
-    "summary": "Remove a member from a scraper target",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of member to remove.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Member removed",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/owners",
-    "operation": "get",
-    "operationId": "GetScrapersIDOwners",
-    "basicAuth": false,
-    "summary": "List all owners of a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of scraper target owners",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ResourceOwners"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/owners",
-    "operation": "post",
-    "operationId": "PostScrapersIDOwners",
-    "basicAuth": false,
-    "summary": "Add an owner to a scraper target",
-    "positionalParams": [
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "User to add as owner",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "AddResourceMemberRequestBody"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Scraper target owner added",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "ResourceOwner"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/scrapers/{scraperTargetID}/owners/{userID}",
-    "operation": "delete",
-    "operationId": "DeleteScrapersIDOwnersID",
-    "basicAuth": false,
-    "summary": "Remove an owner from a scraper target",
-    "positionalParams": [
-      {
-        "name": "userID",
-        "description": "The ID of owner to remove.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "scraperTargetID",
-        "description": "The scraper target ID.",
         "required": true,
         "type": "string"
       }
@@ -2720,400 +2039,11 @@
   },
   {
     "server": "/api/v2",
-    "path": "/sources",
-    "operation": "get",
-    "operationId": "GetSources",
-    "basicAuth": false,
-    "summary": "Get all sources",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "The organization name.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "All sources",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Sources"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources",
-    "operation": "post",
-    "operationId": "PostSources",
-    "basicAuth": false,
-    "summary": "Create a source",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Source to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Source"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Created Source",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Source"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources/{sourceID}",
-    "operation": "get",
-    "operationId": "GetSourcesID",
-    "basicAuth": false,
-    "summary": "Get a source",
-    "positionalParams": [
-      {
-        "name": "sourceID",
-        "description": "The source ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A source",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Source"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Source not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources/{sourceID}",
-    "operation": "patch",
-    "operationId": "PatchSourcesID",
-    "basicAuth": false,
-    "summary": "Update a Source",
-    "positionalParams": [
-      {
-        "name": "sourceID",
-        "description": "The source ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Source update",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "Source"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Created Source",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Source"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Source not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources/{sourceID}",
-    "operation": "delete",
-    "operationId": "DeleteSourcesID",
-    "basicAuth": false,
-    "summary": "Delete a source",
-    "positionalParams": [
-      {
-        "name": "sourceID",
-        "description": "The source ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Delete has been accepted",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "View not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources/{sourceID}/health",
-    "operation": "get",
-    "operationId": "GetSourcesIDHealth",
-    "basicAuth": false,
-    "summary": "Get the health of a source",
-    "positionalParams": [
-      {
-        "name": "sourceID",
-        "description": "The source ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "The source is healthy",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "HealthCheck"
-          }
-        ]
-      },
-      {
-        "code": "503",
-        "description": "The source is not healthy",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "HealthCheck"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/sources/{sourceID}/buckets",
-    "operation": "get",
-    "operationId": "GetSourcesIDBuckets",
-    "basicAuth": false,
-    "summary": "Get buckets in a source",
-    "positionalParams": [
-      {
-        "name": "sourceID",
-        "description": "The source ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "The organization name.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A source",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Buckets"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Source not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/labels",
     "operation": "get",
     "operationId": "GetLabels",
     "basicAuth": false,
-    "summary": "Get all labels",
+    "summary": "List all labels",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3134,7 +2064,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "All labels",
+        "description": "A list of labels",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3199,7 +2129,7 @@
     "operation": "get",
     "operationId": "GetLabelsID",
     "basicAuth": false,
-    "summary": "Get a label",
+    "summary": "Retrieve a label",
     "positionalParams": [
       {
         "name": "labelID",
@@ -3363,7 +2293,7 @@
     "operation": "get",
     "operationId": "GetDashboards",
     "basicAuth": false,
-    "summary": "Get all dashboards",
+    "summary": "List all dashboards",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3391,7 +2321,7 @@
       },
       {
         "name": "owner",
-        "description": "The owner ID.",
+        "description": "A user identifier. Returns only dashboards where this user has the `owner` role.",
         "type": "string"
       },
       {
@@ -3401,17 +2331,17 @@
       },
       {
         "name": "id",
-        "description": "List of dashboard IDs to return. If both `id` and `owner` are specified, only `id` is used.",
+        "description": "A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.",
         "type": "any"
       },
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The identifier of the organization.",
         "type": "string"
       },
       {
         "name": "org",
-        "description": "The organization name.",
+        "description": "The name of the organization.",
         "type": "string"
       }
     ],
@@ -3491,7 +2421,7 @@
     "operation": "get",
     "operationId": "GetDashboardsID",
     "basicAuth": false,
-    "summary": "Get a Dashboard",
+    "summary": "Retrieve a Dashboard",
     "positionalParams": [
       {
         "name": "dashboardID",
@@ -3520,7 +2450,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Get a single dashboard",
+        "description": "Retrieve a single dashboard",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4516,6 +3446,7 @@
     "operation": "post",
     "operationId": "PostQueryAst",
     "basicAuth": false,
+    "summary": "Generate an Abstract Syntax Tree (AST) from a query",
     "positionalParams": [],
     "headerParams": [
       {
@@ -4539,7 +3470,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Abstract syntax tree of flux query.",
+        "description": "Abstract syntax tree of the flux query.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4565,6 +3496,7 @@
     "operation": "get",
     "operationId": "GetQuerySuggestions",
     "basicAuth": false,
+    "summary": "Retrieve query suggestions",
     "positionalParams": [],
     "headerParams": [
       {
@@ -4605,6 +3537,7 @@
     "operation": "get",
     "operationId": "GetQuerySuggestionsName",
     "basicAuth": false,
+    "summary": "Retrieve query suggestions for a branching suggestion",
     "positionalParams": [
       {
         "name": "name",
@@ -4806,7 +3739,7 @@
       },
       {
         "name": "org",
-        "description": "The organization name.",
+        "description": "The name of the organization.",
         "type": "string"
       },
       {
@@ -4817,6 +3750,11 @@
       {
         "name": "name",
         "description": "Only returns buckets with a specific name.",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "description": "Only returns buckets with a specific ID.",
         "type": "string"
       }
     ],
@@ -4976,7 +3914,7 @@
       "description": "Bucket update to apply",
       "required": true,
       "mediaType": "application/json",
-      "type": "Bucket"
+      "type": "PatchBucketRequest"
     },
     "responses": [
       {
@@ -5607,7 +4545,7 @@
       "description": "Organization to create",
       "required": true,
       "mediaType": "application/json",
-      "type": "Organization"
+      "type": "PostOrganizationRequest"
     },
     "responses": [
       {
@@ -5708,7 +4646,7 @@
       "description": "Organization update to apply",
       "required": true,
       "mediaType": "application/json",
-      "type": "Organization"
+      "type": "PatchOrganizationRequest"
     },
     "responses": [
       {
@@ -6256,7 +5194,7 @@
     "operation": "get",
     "operationId": "ListStacks",
     "basicAuth": false,
-    "summary": "Grab a list of installed InfluxDB Templates",
+    "summary": "List all installed InfluxDB templates",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
@@ -6346,11 +5284,11 @@
     "operation": "get",
     "operationId": "ReadStack",
     "basicAuth": false,
-    "summary": "Grab a stack by its ID",
+    "summary": "Retrieve a stack",
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id",
+        "description": "Theidentifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -6361,7 +5299,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Read an influx stack by ID",
+        "description": "The InfluxDB stack",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -6391,7 +5329,7 @@
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id",
+        "description": "Theidentifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -6433,11 +5371,11 @@
     "operation": "delete",
     "operationId": "DeleteStack",
     "basicAuth": false,
-    "summary": "Delete a stack and remove all its associated resources",
+    "summary": "Delete a stack and associated resources",
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id",
+        "description": "Theidentifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -6446,7 +5384,7 @@
     "queryParams": [
       {
         "name": "orgID",
-        "description": "The organization id of the user",
+        "description": "The identifier of the organization.",
         "required": true,
         "type": "string"
       }
@@ -6455,7 +5393,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "Stack and all its associated resources are deleted",
+        "description": "The stack and its associated resources are deleted",
         "mediaTypes": []
       },
       {
@@ -7122,7 +6060,11 @@
       }
     ],
     "queryParams": [],
-    "bodyParam": null,
+    "bodyParam": {
+      "required": false,
+      "mediaType": "application/json; charset=utf-8",
+      "type": "any"
+    },
     "responses": [
       {
         "code": "200",
@@ -7455,7 +6397,7 @@
     "operation": "get",
     "operationId": "GetMe",
     "basicAuth": false,
-    "summary": "Return the current authenticated user",
+    "summary": "Retrieve the currently authenticated user",
     "positionalParams": [],
     "headerParams": [
       {
@@ -7470,7 +6412,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Currently authenticated user",
+        "description": "The currently authenticated user.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -7885,7 +6827,7 @@
     "operation": "get",
     "operationId": "GetChecks",
     "basicAuth": false,
-    "summary": "Get all checks",
+    "summary": "List all checks",
     "positionalParams": [],
     "headerParams": [
       {
@@ -7982,7 +6924,7 @@
     "operation": "get",
     "operationId": "GetChecksID",
     "basicAuth": false,
-    "summary": "Get a check",
+    "summary": "Retrieve a check",
     "positionalParams": [
       {
         "name": "checkID",
@@ -8369,7 +7311,7 @@
     "operation": "get",
     "operationId": "GetNotificationRules",
     "basicAuth": false,
-    "summary": "Get all notification rules",
+    "summary": "List all notification rules",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8476,7 +7418,7 @@
     "operation": "get",
     "operationId": "GetChecksIDQuery",
     "basicAuth": false,
-    "summary": "Get a check query",
+    "summary": "Retrieve a check query",
     "positionalParams": [
       {
         "name": "checkID",
@@ -8544,7 +7486,7 @@
     "operation": "get",
     "operationId": "GetNotificationRulesID",
     "basicAuth": false,
-    "summary": "Get a notification rule",
+    "summary": "Retrieve a notification rule",
     "positionalParams": [
       {
         "name": "ruleID",
@@ -8931,7 +7873,7 @@
     "operation": "get",
     "operationId": "GetNotificationRulesIDQuery",
     "basicAuth": false,
-    "summary": "Get a notification rule query",
+    "summary": "Retrieve a notification rule query",
     "positionalParams": [
       {
         "name": "ruleID",
@@ -8999,7 +7941,7 @@
     "operation": "get",
     "operationId": "GetNotificationEndpoints",
     "basicAuth": false,
-    "summary": "Get all notification endpoints",
+    "summary": "List all notification endpoints",
     "positionalParams": [],
     "headerParams": [
       {
@@ -9096,7 +8038,7 @@
     "operation": "get",
     "operationId": "GetNotificationEndpointsID",
     "basicAuth": false,
-    "summary": "Get a notification endpoint",
+    "summary": "Retrieve a notification endpoint",
     "positionalParams": [
       {
         "name": "endpointID",
@@ -9518,7 +8460,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9559,7 +8501,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9585,7 +8527,32 @@
         "type": "string"
       }
     ],
-    "queryParams": [],
+    "queryParams": [
+      {
+        "name": "offset",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "after",
+        "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "type": "string"
+      }
+    ],
     "bodyParam": null,
     "responses": [
       {
@@ -9600,7 +8567,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9646,7 +8613,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9694,7 +8661,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9747,7 +8714,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9790,7 +8757,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9867,53 +8834,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/setup/user",
-    "operation": "post",
-    "operationId": "PostSetupUser",
-    "basicAuth": false,
-    "summary": "Set up a new user, org and bucket",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Source to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "OnboardingRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Created default user, bucket, org",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "OnboardingResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9975,7 +8896,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10006,7 +8927,7 @@
       "description": "Authorization to create",
       "required": true,
       "mediaType": "application/json",
-      "type": "Authorization"
+      "type": "AuthorizationPostRequest"
     },
     "responses": [
       {
@@ -10021,7 +8942,7 @@
       },
       {
         "code": "400",
-        "description": "Invalid request",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10031,7 +8952,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10079,7 +9000,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10132,7 +9053,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10175,7 +9096,327 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations",
+    "operation": "get",
+    "operationId": "GetLegacyAuthorizations",
+    "basicAuth": false,
+    "summary": "List all legacy authorizations",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "userID",
+        "description": "Only show legacy authorizations that belong to a user ID.",
+        "type": "string"
+      },
+      {
+        "name": "user",
+        "description": "Only show legacy authorizations that belong to a user name.",
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "Only show legacy authorizations that belong to an organization ID.",
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Only show legacy authorizations that belong to a organization name.",
+        "type": "string"
+      },
+      {
+        "name": "token",
+        "description": "Only show legacy authorizations with a specified token (auth name).",
+        "type": "string"
+      },
+      {
+        "name": "authID",
+        "description": "Only show legacy authorizations with a specified auth ID.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of legacy authorizations",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorizations"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations",
+    "operation": "post",
+    "operationId": "PostLegacyAuthorizations",
+    "basicAuth": false,
+    "summary": "Create a legacy authorization",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Legacy authorization to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "LegacyAuthorizationPostRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Legacy authorization created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations/{authID}",
+    "operation": "get",
+    "operationId": "GetLegacyAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Retrieve a legacy authorization",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the legacy authorization to get.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Legacy authorization details",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations/{authID}",
+    "operation": "patch",
+    "operationId": "PatchLegacyAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Update a legacy authorization to be active or inactive",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the legacy authorization to update.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Legacy authorization to update",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "AuthorizationUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "The active or inactive legacy authorization",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Authorization"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations/{authID}",
+    "operation": "delete",
+    "operationId": "DeleteLegacyAuthorizationsID",
+    "basicAuth": false,
+    "summary": "Delete a legacy authorization",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the legacy authorization to delete.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Legacy authorization deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/legacy/authorizations/{authID}/password",
+    "operation": "post",
+    "operationId": "PostLegacyAuthorizationsIDPassword",
+    "basicAuth": false,
+    "summary": "Set a legacy authorization password",
+    "positionalParams": [
+      {
+        "name": "authID",
+        "description": "The ID of the legacy authorization to update.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "New password",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "PasswordResetBody"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "Legacy authorization password set",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10191,7 +9432,7 @@
     "operation": "get",
     "operationId": "GetVariables",
     "basicAuth": false,
-    "summary": "Get all variables",
+    "summary": "List all variables",
     "positionalParams": [],
     "headerParams": [
       {
@@ -10204,7 +9445,7 @@
     "queryParams": [
       {
         "name": "org",
-        "description": "The organization name.",
+        "description": "The name of the organization.",
         "type": "string"
       },
       {
@@ -10217,7 +9458,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "All variables for an organization",
+        "description": "A list of variables for an organization",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10227,7 +9468,7 @@
       },
       {
         "code": "400",
-        "description": "Invalid request",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10237,7 +9478,7 @@
       },
       {
         "code": "default",
-        "description": "Internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10283,7 +9524,7 @@
       },
       {
         "code": "default",
-        "description": "Internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10299,7 +9540,7 @@
     "operation": "get",
     "operationId": "GetVariablesID",
     "basicAuth": false,
-    "summary": "Get a variable",
+    "summary": "Retrieve a variable",
     "positionalParams": [
       {
         "name": "variableID",
@@ -10331,7 +9572,7 @@
       },
       {
         "code": "404",
-        "description": "Variable not found",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10341,7 +9582,7 @@
       },
       {
         "code": "default",
-        "description": "Internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10394,7 +9635,7 @@
       },
       {
         "code": "default",
-        "description": "Internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10447,7 +9688,7 @@
       },
       {
         "code": "default",
-        "description": "Internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10490,7 +9731,1416 @@
       },
       {
         "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources",
+    "operation": "get",
+    "operationId": "GetSources",
+    "basicAuth": false,
+    "summary": "List all sources",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The name of the organization.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of sources",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Sources"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources",
+    "operation": "post",
+    "operationId": "PostSources",
+    "basicAuth": false,
+    "summary": "Create a source",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Source to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Source"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Created Source",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Source"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources/{sourceID}",
+    "operation": "get",
+    "operationId": "GetSourcesID",
+    "basicAuth": false,
+    "summary": "Retrieve a source",
+    "positionalParams": [
+      {
+        "name": "sourceID",
+        "description": "The source ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A source",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Source"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Source not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources/{sourceID}",
+    "operation": "patch",
+    "operationId": "PatchSourcesID",
+    "basicAuth": false,
+    "summary": "Update a Source",
+    "positionalParams": [
+      {
+        "name": "sourceID",
+        "description": "The source ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Source update",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "Source"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Created Source",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Source"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Source not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources/{sourceID}",
+    "operation": "delete",
+    "operationId": "DeleteSourcesID",
+    "basicAuth": false,
+    "summary": "Delete a source",
+    "positionalParams": [
+      {
+        "name": "sourceID",
+        "description": "The source ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Delete has been accepted",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "View not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources/{sourceID}/health",
+    "operation": "get",
+    "operationId": "GetSourcesIDHealth",
+    "basicAuth": false,
+    "summary": "Get the health of a source",
+    "positionalParams": [
+      {
+        "name": "sourceID",
+        "description": "The source ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The source is healthy",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "HealthCheck"
+          }
+        ]
+      },
+      {
+        "code": "503",
+        "description": "The source is not healthy",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "HealthCheck"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/sources/{sourceID}/buckets",
+    "operation": "get",
+    "operationId": "GetSourcesIDBuckets",
+    "basicAuth": false,
+    "summary": "Get buckets in a source",
+    "positionalParams": [
+      {
+        "name": "sourceID",
+        "description": "The source ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The name of the organization.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A source",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Buckets"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Source not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers",
+    "operation": "get",
+    "operationId": "GetScrapers",
+    "basicAuth": false,
+    "summary": "List all scraper targets",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "name",
+        "description": "Specifies the name of the scraper target.",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "description": "List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used.",
+        "type": "any"
+      },
+      {
+        "name": "orgID",
+        "description": "Specifies the organization ID of the scraper target.",
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Specifies the organization name of the scraper target.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "All scraper targets",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ScraperTargetResponses"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers",
+    "operation": "post",
+    "operationId": "PostScrapers",
+    "basicAuth": false,
+    "summary": "Create a scraper target",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Scraper target to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ScraperTargetRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Scraper target created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ScraperTargetResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
         "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}",
+    "operation": "get",
+    "operationId": "GetScrapersID",
+    "basicAuth": false,
+    "summary": "Retrieve a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The identifier of the scraper target.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The scraper target",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ScraperTargetResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}",
+    "operation": "patch",
+    "operationId": "PatchScrapersID",
+    "basicAuth": false,
+    "summary": "Update a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The identifier of the scraper target.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Scraper target update to apply",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ScraperTargetRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Scraper target updated",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ScraperTargetResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}",
+    "operation": "delete",
+    "operationId": "DeleteScrapersID",
+    "basicAuth": false,
+    "summary": "Delete a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The identifier of the scraper target.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Scraper target deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/labels",
+    "operation": "get",
+    "operationId": "GetScrapersIDLabels",
+    "basicAuth": false,
+    "summary": "List all labels for a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of labels for a scraper target.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "LabelsResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/labels",
+    "operation": "post",
+    "operationId": "PostScrapersIDLabels",
+    "basicAuth": false,
+    "summary": "Add a label to a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Label to add",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "LabelMapping"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "The newly added label",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "LabelResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/labels/{labelID}",
+    "operation": "delete",
+    "operationId": "DeleteScrapersIDLabelsID",
+    "basicAuth": false,
+    "summary": "Delete a label from a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "labelID",
+        "description": "The label ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Delete has been accepted",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "Scraper target not found",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/members",
+    "operation": "get",
+    "operationId": "GetScrapersIDMembers",
+    "basicAuth": false,
+    "summary": "List all users with member privileges for a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of scraper target members",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ResourceMembers"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/members",
+    "operation": "post",
+    "operationId": "PostScrapersIDMembers",
+    "basicAuth": false,
+    "summary": "Add a member to a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "User to add as member",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "AddResourceMemberRequestBody"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Member added to scraper targets",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ResourceMember"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/members/{userID}",
+    "operation": "delete",
+    "operationId": "DeleteScrapersIDMembersID",
+    "basicAuth": false,
+    "summary": "Remove a member from a scraper target",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of member to remove.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Member removed",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/owners",
+    "operation": "get",
+    "operationId": "GetScrapersIDOwners",
+    "basicAuth": false,
+    "summary": "List all owners of a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of scraper target owners",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ResourceOwners"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/owners",
+    "operation": "post",
+    "operationId": "PostScrapersIDOwners",
+    "basicAuth": false,
+    "summary": "Add an owner to a scraper target",
+    "positionalParams": [
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "User to add as owner",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "AddResourceMemberRequestBody"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Scraper target owner added",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "ResourceOwner"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scrapers/{scraperTargetID}/owners/{userID}",
+    "operation": "delete",
+    "operationId": "DeleteScrapersIDOwnersID",
+    "basicAuth": false,
+    "summary": "Remove an owner from a scraper target",
+    "positionalParams": [
+      {
+        "name": "userID",
+        "description": "The ID of owner to remove.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "scraperTargetID",
+        "description": "The scraper target ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Owner removed",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/backup/metadata",
+    "operation": "get",
+    "operationId": "GetBackupMetadata",
+    "basicAuth": false,
+    "summary": "Download snapshot of all metadata in the server",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Accept-Encoding",
+        "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand.",
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Snapshot of metadata",
+        "mediaTypes": [
+          {
+            "mediaType": "multipart/mixed",
+            "type": "MetadataBackup"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/backup/shards/{shardID}",
+    "operation": "get",
+    "operationId": "GetBackupShardId",
+    "basicAuth": false,
+    "summary": "Download snapshot of all TSM data in a shard",
+    "positionalParams": [
+      {
+        "name": "shardID",
+        "description": "The shard ID.",
+        "required": true,
+        "type": "number"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Accept-Encoding",
+        "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand.",
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "since",
+        "description": "Earliest time to include in the snapshot. RFC3339 format.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "TSM snapshot.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Shard not found.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/restore/kv",
+    "operation": "post",
+    "operationId": "PostRestoreKV",
+    "basicAuth": false,
+    "summary": "Overwrite the embedded KV store on the server with a backed-up snapshot.",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Encoding",
+        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Full KV snapshot.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "KV store successfully overwritten.",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/restore/sql",
+    "operation": "post",
+    "operationId": "PostRestoreSQL",
+    "basicAuth": false,
+    "summary": "Overwrite the embedded SQL store on the server with a backed-up snapshot.",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Encoding",
+        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Full SQL snapshot.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "SQL store successfully overwritten.",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/restore/bucket-metadata",
+    "operation": "post",
+    "operationId": "PostRestoreBucketMetadata",
+    "basicAuth": false,
+    "summary": "Create a new bucket pre-seeded with shard info from a backup.",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Metadata manifest for a bucket.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "BucketMetadataManifest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "ID mappings for shards in new bucket.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RestoredBucketMappings"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/restore/shards/{shardID}",
+    "operation": "post",
+    "operationId": "PostRestoreShardId",
+    "basicAuth": false,
+    "summary": "Restore a TSM snapshot into a shard.",
+    "positionalParams": [
+      {
+        "name": "shardID",
+        "description": "The shard ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Encoding",
+        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "TSM snapshot.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "TSM snapshot successfully restored.",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",

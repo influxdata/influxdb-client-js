@@ -46,6 +46,7 @@ export class QueryAPI {
     this.base = new APIBase(influxDB)
   }
   /**
+   * Generate an Abstract Syntax Tree (AST) from a query.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -64,6 +65,7 @@ export class QueryAPI {
     )
   }
   /**
+   * Retrieve query suggestions.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -81,6 +83,7 @@ export class QueryAPI {
     )
   }
   /**
+   * Retrieve query suggestions for a branching suggestion.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

@@ -9,7 +9,15 @@ export interface PostUsersIDPasswordRequest {
   /** New password */
   body: PasswordResetBody
 }
-export interface GetUsersRequest {}
+export interface GetUsersRequest {
+  offset?: number
+  limit?: number
+  /** The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.
+   */
+  after?: string
+  name?: string
+  id?: string
+}
 export interface PostUsersRequest {
   /** User to create */
   body: User
@@ -72,7 +80,18 @@ export class UsersAPI {
     request?: GetUsersRequest,
     requestOptions?: RequestOptions
   ): Promise<Users> {
-    return this.base.request('GET', `/api/v2/users`, request, requestOptions)
+    return this.base.request(
+      'GET',
+      `/api/v2/users${this.base.queryString(request, [
+        'offset',
+        'limit',
+        'after',
+        'name',
+        'id',
+      ])}`,
+      request,
+      requestOptions
+    )
   }
   /**
    * Create a user.

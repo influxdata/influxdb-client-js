@@ -25,15 +25,15 @@ export interface GetDashboardsRequest {
   offset?: number
   limit?: number
   descending?: any
-  /** The owner ID. */
+  /** A user identifier. Returns only dashboards where this user has the `owner` role. */
   owner?: string
   /** The column to sort by. */
   sortBy?: string
-  /** List of dashboard IDs to return. If both `id` and `owner` are specified, only `id` is used. */
+  /** A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used. */
   id?: any
-  /** The organization ID. */
+  /** The identifier of the organization. */
   orgID?: string
-  /** The organization name. */
+  /** The name of the organization. */
   org?: string
 }
 export interface PostDashboardsRequest {
@@ -166,7 +166,7 @@ export class DashboardsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all dashboards.
+   * List all dashboards.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -212,7 +212,7 @@ export class DashboardsAPI {
     )
   }
   /**
-   * Get a Dashboard.
+   * Retrieve a Dashboard.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
