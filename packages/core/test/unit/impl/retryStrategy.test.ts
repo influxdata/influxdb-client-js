@@ -64,13 +64,12 @@ describe('RetryStrategyImpl', () => {
       }
     })
   })
-  it('generates exponential data from min to max for state data', () => {
+  it('generates exponential data from min to max from state data', () => {
     const subject = new RetryStrategyImpl({
       minRetryDelay: 100,
       maxRetryDelay: 1000,
       retryJitter: 0,
       exponentialBase: 2,
-      randomize: false,
     })
     const values = [1, 2, 3, 4, 5, 6].reduce((acc, _val) => {
       acc.push(subject.nextDelay())
@@ -86,8 +85,8 @@ describe('RetryStrategyImpl', () => {
         minRetryDelay: 100,
         maxRetryDelay: 2000,
         retryJitter: 20,
-        // exponentialBase: 5, 5 by default
-        randomize: false,
+        exponentialBase: 5,
+        randomRetry: false,
       })
       const values = [1, 2, 3, 4, 5, 6].reduce((acc, _val, index) => {
         acc.push(subject.nextDelay(undefined, index + 1))
@@ -110,7 +109,7 @@ describe('RetryStrategyImpl', () => {
         minRetryDelay: 100,
         maxRetryDelay: 1000,
         retryJitter: 10,
-        randomize: false,
+        randomRetry: false,
       })
       const values = [1, 2, 3, 4, 5, 6].reduce((acc, val) => {
         acc.push(subject.nextDelay(new Error(), val))
@@ -134,7 +133,7 @@ describe('RetryStrategyImpl', () => {
         maxRetryDelay: 1000,
         retryJitter: 100,
         exponentialBase: 2,
-        randomize: true,
+        randomRetry: true,
       })
       const values = [1, 2, 3, 4, 5].reduce((acc, _val, index) => {
         acc.push(subject.nextDelay(undefined, index + 1))

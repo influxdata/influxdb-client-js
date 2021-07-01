@@ -33,13 +33,13 @@ export interface RetryDelayStrategyOptions {
   /** base for the exponential retry delay */
   exponentialBase: number
   /**
-   * Randomize indicates whether the next retry delay is deterministic (false) or random (true).
+   * randomRetry indicates whether the next retry delay is deterministic (false) or random (true).
    * The deterministic delay starts with `minRetryDelay * exponentialBase` and it is multiplied
    * by `exponentialBase` until it exceeds `maxRetryDelay`.
    * When random is `true`, the next delay is computed as a random number between next retry attempt (upper)
    * and the lower number in the deterministic sequence. `random(retryJitter)` is added to every returned value.
    */
-  randomize: boolean
+  randomRetry: boolean
 }
 
 /**
@@ -97,7 +97,7 @@ export const DEFAULT_RetryDelayStrategyOptions = {
   minRetryDelay: 5000,
   maxRetryDelay: 180000,
   exponentialBase: 5,
-  randomize: false,
+  randomRetry: true,
 }
 
 /** default writeOptions */
@@ -106,15 +106,15 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   flushInterval: 60000,
   writeFailed: function() {},
   writeSuccess: function() {},
-  maxRetries: 3,
+  maxRetries: 5,
   maxBufferLines: 32_000,
   // a copy of DEFAULT_RetryDelayStrategyOptions, so that DEFAULT_WriteOptions could be tree-shaken
   retryJitter: 200,
   minRetryDelay: 5000,
-  maxRetryDelay: 180000,
-  exponentialBase: 5,
+  maxRetryDelay: 125000,
+  exponentialBase: 2,
   gzipThreshold: 1000,
-  randomize: false,
+  randomRetry: true,
 }
 
 /**

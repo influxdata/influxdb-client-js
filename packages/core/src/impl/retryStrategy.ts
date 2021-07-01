@@ -24,7 +24,7 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
     } else {
       if (failedAttempts && failedAttempts > 0) {
         // compute delay
-        if (this.options.randomize) {
+        if (this.options.randomRetry) {
           // random delay between deterministic delays
           let delay = Math.max(this.options.minRetryDelay, 1)
           let nextDelay = delay * this.options.exponentialBase

@@ -302,6 +302,7 @@ describe('WriteApi', () => {
       useSubject({
         flushInterval: 5,
         maxRetries: 1,
+        randomRetry: false,
         batchSize: 10,
         writeSuccess: writeCounters.writeSuccess,
       })
@@ -369,6 +370,7 @@ describe('WriteApi', () => {
       useSubject({
         flushInterval: 5,
         maxRetries: 1,
+        randomRetry: false,
         batchSize: 10,
         writeSuccess: writeCounters.writeSuccess,
         gzipThreshold: 0,
