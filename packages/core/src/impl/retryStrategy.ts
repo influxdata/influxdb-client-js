@@ -24,17 +24,36 @@ export class RetryStrategyImpl implements RetryDelayStrategy {
     } else {
       if (failedAttempts && failedAttempts > 0) {
         // compute delay
-        let delay = this.options.minRetryDelay
+        if (this.options.randomize) {
+          // random delay between deterministic delays
+          let delay = Math.max(this.options.minRetryDelay, 1)
+          let nextDelay = delay * this.options.exponentialBase
+          for (let i = 1; i < failedAttempts; i++) {
+            delay = nextDelay
+            nextDelay = nextDelay * this.options.exponentialBase
+            if (nextDelay >= this.options.maxRetryDelay) {
+              nextDelay = this.options.maxRetryDelay
+              break
+            }
+          }
+          return (
+            delay +
+            Math.round(
+              Math.random() * (nextDelay - delay) +
+                Math.random() * this.options.retryJitter
+            )
+          )
+        }
+        // deterministric delay otherwise
+        let delay = Math.max(this.options.minRetryDelay, 1)
         for (let i = 1; i < failedAttempts; i++) {
           delay = delay * this.options.exponentialBase
           if (delay >= this.options.maxRetryDelay) {
+            delay = this.options.maxRetryDelay
             break
           }
         }
-        return (
-          Math.min(Math.max(delay, 1), this.options.maxRetryDelay) +
-          Math.round(Math.random() * this.options.retryJitter)
-        )
+        return delay + Math.round(Math.random() * this.options.retryJitter)
       } else if (this.currentDelay) {
         this.currentDelay = Math.min(
           Math.max(this.currentDelay * this.options.exponentialBase, 1) +

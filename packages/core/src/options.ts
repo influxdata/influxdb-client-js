@@ -24,14 +24,22 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
  * Options that configure strategy for retrying failed requests.
  */
 export interface RetryDelayStrategyOptions {
-  /** include random milliseconds when retrying HTTP calls */
+  /** add `random(retryJitter)` milliseconds when retrying HTTP calls */
   retryJitter: number
   /** minimum delay when retrying write (milliseconds) */
   minRetryDelay: number
   /** maximum delay when retrying write (milliseconds) */
   maxRetryDelay: number
-  /** base for the exponential retry delay, the next delay is computed as `minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)` */
+  /** base for the exponential retry delay */
   exponentialBase: number
+  /**
+   * Randomize indicates whether the next retry delay is deterministic (false) or random (true).
+   * The deterministic delay starts with `minRetryDelay * exponentialBase` and it is multiplied
+   * by `exponentialBase` until it exceeds `maxRetryDelay`.
+   * When random is `true`, the next delay is computed as a random number between next retry attempt (upper)
+   * and the lower number in the deterministic sequence. `random(retryJitter)` is added to every returned value.
+   */
+  randomize: boolean
 }
 
 /**
@@ -89,6 +97,7 @@ export const DEFAULT_RetryDelayStrategyOptions = {
   minRetryDelay: 5000,
   maxRetryDelay: 180000,
   exponentialBase: 5,
+  randomize: false,
 }
 
 /** default writeOptions */
@@ -105,6 +114,7 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   maxRetryDelay: 180000,
   exponentialBase: 5,
   gzipThreshold: 1000,
+  randomize: false,
 }
 
 /**
