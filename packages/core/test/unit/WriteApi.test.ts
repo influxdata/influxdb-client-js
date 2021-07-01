@@ -218,7 +218,7 @@ describe('WriteApi', () => {
       expect(logs.warn).has.length(0)
       expect(count).equals(1)
     })
-    it('implementation uses default notifiers', () => {
+    it('implementation uses expected defaults', () => {
       useSubject({})
       const writeOptions = (subject as any).writeOptions as WriteOptions
       expect(writeOptions.writeFailed).equals(DEFAULT_WriteOptions.writeFailed)
@@ -227,6 +227,7 @@ describe('WriteApi', () => {
       )
       expect(writeOptions.writeSuccess).to.not.throw()
       expect(writeOptions.writeFailed).to.not.throw()
+      expect(writeOptions.randomRetry).equals(true)
     })
   })
   describe('convert point time to line protocol', () => {
