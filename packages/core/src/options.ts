@@ -24,7 +24,7 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
  * Options that configure strategy for retrying failed requests.
  */
 export interface RetryDelayStrategyOptions {
-  /** add `random(retryJitter)` milliseconds when retrying HTTP calls */
+  /** add `random(retryJitter)` milliseconds delay when retrying HTTP calls */
   retryJitter: number
   /** minimum delay when retrying write (milliseconds) */
   minRetryDelay: number
