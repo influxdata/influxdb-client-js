@@ -156,13 +156,32 @@ describe('WriteApi', () => {
         )
       })
     })
-    it('does not retry write when configured to do so', async () => {
+    it('does not retry write when maxRetries is zero', async () => {
       useSubject({maxRetries: 0, batchSize: 1})
       subject.writeRecord('test value=1')
       await waitForCondition(() => logs.error.length > 0)
       await subject.close().then(() => {
         expect(logs.error).to.length(1)
         expect(logs.warn).is.deep.equal([])
+      })
+    })
+    it('does not retry write when maxRetryTime exceeds', async () => {
+      useSubject({maxRetryTime: 5, batchSize: 1})
+      subject.writeRecord('test value=1')
+      // wait for first attempt to fail
+      await waitForCondition(() => logs.warn.length > 0)
+      // wait for retry attempt to fail on timeout
+      await waitForCondition(() => logs.error.length > 0)
+      await subject.close().then(() => {
+        expect(logs.warn).to.length(1)
+        expect(logs.warn[0][0]).contains(
+          'Write to InfluxDB failed (attempt: 1)'
+        )
+        expect(logs.error).to.length(1)
+        expect(logs.error[0][0]).contains(
+          'Write to InfluxDB failed (attempt: 2)'
+        )
+        expect(logs.error[0][1].toString()).contains('Max retry time exceeded')
       })
     })
     it('does not retry write when writeFailed handler returns a Promise', async () => {

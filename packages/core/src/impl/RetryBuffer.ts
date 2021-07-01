@@ -6,6 +6,7 @@ const RETRY_INTERVAL = 1
 interface RetryItem {
   lines: string[]
   retryCount: number
+  expires: number
   next?: RetryItem
 }
 
@@ -24,14 +25,24 @@ export default class RetryBuffer {
     private maxLines: number,
     private retryLines: (
       lines: string[],
-      retryCountdown: number
+      retryCountdown: number,
+      started: number
     ) => Promise<void>
   ) {}
 
-  addLines(lines: string[], retryCount: number, delay: number): void {
+  addLines(
+    lines: string[],
+    retryCount: number,
+    delay: number,
+    expires: number
+  ): void {
     if (this.closed) return
     if (!lines.length) return
-    const retryTime = Date.now() + delay
+    let retryTime = Date.now() + delay
+    if (expires < retryTime) {
+      delay = expires - Date.now()
+      retryTime = expires
+    }
     if (retryTime > this.nextRetryTime) this.nextRetryTime = retryTime
     // ensure at most maxLines are in the Buffer
     if (this.first && this.size + lines.length > this.maxLines) {
@@ -40,7 +51,11 @@ export default class RetryBuffer {
       do {
         const newFirst = this.first.next as RetryItem
         this.size -= this.first.lines.length
+        this.first.next = undefined
         this.first = newFirst
+        if (!this.first) {
+          this.last = undefined
+        }
       } while (this.first && this.size + lines.length > newSize)
       Logger.error(
         `RetryBuffer: ${origSize -
@@ -50,9 +65,10 @@ export default class RetryBuffer {
         } lines`
       )
     }
-    const toAdd = {
+    const toAdd: RetryItem = {
       lines,
       retryCount,
+      expires,
     }
     if (this.last) {
       this.last.next = toAdd
@@ -69,6 +85,7 @@ export default class RetryBuffer {
     if (this.first) {
       const toRetry = this.first
       this.first = this.first.next
+      toRetry.next = undefined
       this.size -= toRetry.lines.length
       if (!this.first) this.last = undefined
       return toRetry
@@ -80,7 +97,7 @@ export default class RetryBuffer {
     this._timeoutHandle = setTimeout(() => {
       const toRetry = this.removeLines()
       if (toRetry) {
-        this.retryLines(toRetry.lines, toRetry.retryCount)
+        this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
           .then(() => {
             // continue with successfull retry
             this.scheduleRetry(RETRY_INTERVAL)
@@ -92,13 +109,13 @@ export default class RetryBuffer {
       } else {
         this._timeoutHandle = undefined
       }
-    }, delay)
+    }, Math.max(delay, 0))
   }
 
   async flush(): Promise<void> {
     let toRetry
     while ((toRetry = this.removeLines())) {
-      await this.retryLines(toRetry.lines, toRetry.retryCount)
+      await this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
     }
   }
 

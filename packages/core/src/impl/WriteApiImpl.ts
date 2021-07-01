@@ -130,10 +130,23 @@ export default class WriteApiImpl implements WriteApi {
     )
   }
 
-  sendBatch(lines: string[], attempts: number): Promise<void> {
+  sendBatch(
+    lines: string[],
+    attempts: number,
+    expires: number = Date.now() + this.writeOptions.maxRetryTime
+  ): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self: WriteApiImpl = this
+    const failedAttempts = self.writeOptions.maxRetries + 2 - attempts
     if (!this.closed && lines.length > 0) {
+      if (expires <= Date.now()) {
+        const error = new Error('Max retry time exceeded.')
+        Logger.error(
+          `Write to InfluxDB failed (attempt: ${failedAttempts}).`,
+          error
+        )
+        return Promise.reject(error)
+      }
       return new Promise<void>((resolve, reject) => {
         let responseStatusCode: number | undefined
         const callbacks = {
@@ -141,7 +154,6 @@ export default class WriteApiImpl implements WriteApi {
             responseStatusCode = statusCode
           },
           error(error: Error): void {
-            const failedAttempts = self.writeOptions.maxRetries + 2 - attempts
             // call the writeFailed listener and check if we can retry
             const onRetry = self.writeOptions.writeFailed.call(
               self,
@@ -160,14 +172,14 @@ export default class WriteApiImpl implements WriteApi {
                 (error as HttpError).statusCode >= 429)
             ) {
               Logger.warn(
-                `Write to InfluxDB failed (remaining attempts: ${attempts -
-                  1}).`,
+                `Write to InfluxDB failed (attempt: ${failedAttempts}).`,
                 error
               )
               self.retryBuffer.addLines(
                 lines,
                 attempts - 1,
-                self.retryStrategy.nextDelay(error, failedAttempts)
+                self.retryStrategy.nextDelay(error, failedAttempts),
+                expires
               )
               reject(error)
               return
