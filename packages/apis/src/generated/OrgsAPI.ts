@@ -4,6 +4,8 @@ import {
   AddResourceMemberRequestBody,
   Organization,
   Organizations,
+  PatchOrganizationRequest,
+  PostOrganizationRequest,
   ResourceMember,
   ResourceMembers,
   ResourceOwner,
@@ -26,7 +28,7 @@ export interface GetOrgsRequest {
 }
 export interface PostOrgsRequest {
   /** Organization to create */
-  body: Organization
+  body: PostOrganizationRequest
 }
 export interface GetOrgsIDRequest {
   /** The ID of the organization to get. */
@@ -36,7 +38,7 @@ export interface PatchOrgsIDRequest {
   /** The ID of the organization to get. */
   orgID: string
   /** Organization update to apply */
-  body: Organization
+  body: PatchOrganizationRequest
 }
 export interface DeleteOrgsIDRequest {
   /** The ID of the organization to delete. */

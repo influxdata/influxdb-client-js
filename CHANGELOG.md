@@ -3,6 +3,7 @@
 ### Features
 
 1. [#341](https://github.com/influxdata/influxdb-client-js/pull/341): Add uintField fn to `Point`.
+1. [#342](https://github.com/influxdata/influxdb-client-js/pull/342): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
 
 ## 1.14.0 [2021-06-04]
 
@@ -15,7 +16,7 @@
 ### Features
 
 1. [#326](https://github.com/influxdata/influxdb-client-js/pull/326): Apply gzip compression to writes.
-1. [#332](https://github.com/influxdata/influxdb-client-js/pull/331): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
+1. [#332](https://github.com/influxdata/influxdb-client-js/pull/332): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
 
 ### Bug Fixes
 

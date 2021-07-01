@@ -23,7 +23,7 @@ export class MeAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Return the current authenticated user.
+   * Retrieve the currently authenticated user.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

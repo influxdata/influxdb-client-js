@@ -25,7 +25,7 @@ export interface DeleteVariablesIDLabelsIDRequest {
   labelID: string
 }
 export interface GetVariablesRequest {
-  /** The organization name. */
+  /** The name of the organization. */
   org?: string
   /** The organization ID. */
   orgID?: string
@@ -124,7 +124,7 @@ export class VariablesAPI {
     )
   }
   /**
-   * Get all variables.
+   * List all variables.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -161,7 +161,7 @@ export class VariablesAPI {
     )
   }
   /**
-   * Get a variable.
+   * Retrieve a variable.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

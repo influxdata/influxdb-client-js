@@ -20,11 +20,11 @@ export interface CreateStackRequest {
   }
 }
 export interface ReadStackRequest {
-  /** The stack id */
+  /** Theidentifier of the stack. */
   stack_id: string
 }
 export interface UpdateStackRequest {
-  /** The stack id */
+  /** Theidentifier of the stack. */
   stack_id: string
   /** Influx stack to update. */
   body: {
@@ -39,9 +39,9 @@ export interface UpdateStackRequest {
   }
 }
 export interface DeleteStackRequest {
-  /** The stack id */
+  /** Theidentifier of the stack. */
   stack_id: string
-  /** The organization id of the user */
+  /** The identifier of the organization. */
   orgID: string
 }
 export interface UninstallStackRequest {
@@ -63,7 +63,7 @@ export class StacksAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Grab a list of installed InfluxDB Templates.
+   * List all installed InfluxDB templates.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -106,7 +106,7 @@ export class StacksAPI {
     )
   }
   /**
-   * Grab a stack by its ID.
+   * Retrieve a stack.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -143,7 +143,7 @@ export class StacksAPI {
     )
   }
   /**
-   * Delete a stack and remove all its associated resources.
+   * Delete a stack and associated resources.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

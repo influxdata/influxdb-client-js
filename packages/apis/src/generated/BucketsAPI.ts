@@ -7,6 +7,7 @@ import {
   LabelMapping,
   LabelResponse,
   LabelsResponse,
+  PatchBucketRequest,
   PostBucketRequest,
   ResourceMember,
   ResourceMembers,
@@ -20,12 +21,14 @@ export interface GetBucketsRequest {
   /** The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.
    */
   after?: string
-  /** The organization name. */
+  /** The name of the organization. */
   org?: string
   /** The organization ID. */
   orgID?: string
   /** Only returns buckets with a specific name. */
   name?: string
+  /** Only returns buckets with a specific ID. */
+  id?: string
 }
 export interface PostBucketsRequest {
   /** Bucket to create */
@@ -39,7 +42,7 @@ export interface PatchBucketsIDRequest {
   /** The bucket ID. */
   bucketID: string
   /** Bucket update to apply */
-  body: Bucket
+  body: PatchBucketRequest
 }
 export interface DeleteBucketsIDRequest {
   /** The ID of the bucket to delete. */
@@ -127,6 +130,7 @@ export class BucketsAPI {
         'org',
         'orgID',
         'name',
+        'id',
       ])}`,
       request,
       requestOptions

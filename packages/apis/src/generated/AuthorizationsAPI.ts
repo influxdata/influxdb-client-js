@@ -2,6 +2,7 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {
   Authorization,
+  AuthorizationPostRequest,
   AuthorizationUpdateRequest,
   Authorizations,
 } from './types'
@@ -18,7 +19,7 @@ export interface GetAuthorizationsRequest {
 }
 export interface PostAuthorizationsRequest {
   /** Authorization to create */
-  body: Authorization
+  body: AuthorizationPostRequest
 }
 export interface GetAuthorizationsIDRequest {
   /** The ID of the authorization to get. */

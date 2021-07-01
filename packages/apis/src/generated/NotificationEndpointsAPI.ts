@@ -71,7 +71,7 @@ export class NotificationEndpointsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all notification endpoints.
+   * List all notification endpoints.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -112,7 +112,7 @@ export class NotificationEndpointsAPI {
     )
   }
   /**
-   * Get a notification endpoint.
+   * Retrieve a notification endpoint.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

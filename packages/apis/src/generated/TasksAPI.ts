@@ -87,6 +87,8 @@ export interface PostTasksIDRunsIDRetryRequest {
   taskID: string
   /** The run ID. */
   runID: string
+  /** entity body */
+  body: any
 }
 export interface GetTasksIDLogsRequest {
   /** The task ID. */
@@ -353,7 +355,8 @@ export class TasksAPI {
       'POST',
       `/api/v2/tasks/${request.taskID}/runs/${request.runID}/retry`,
       request,
-      requestOptions
+      requestOptions,
+      'application/json; charset=utf-8'
     )
   }
   /**

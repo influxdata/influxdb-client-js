@@ -29,17 +29,17 @@ export interface PostScrapersRequest {
   body: ScraperTargetRequest
 }
 export interface GetScrapersIDRequest {
-  /** The scraper target ID. */
+  /** The identifier of the scraper target. */
   scraperTargetID: string
 }
 export interface PatchScrapersIDRequest {
-  /** The scraper target ID. */
+  /** The identifier of the scraper target. */
   scraperTargetID: string
   /** Scraper target update to apply */
   body: ScraperTargetRequest
 }
 export interface DeleteScrapersIDRequest {
-  /** The scraper target ID. */
+  /** The identifier of the scraper target. */
   scraperTargetID: string
 }
 export interface GetScrapersIDLabelsRequest {
@@ -105,7 +105,7 @@ export class ScrapersAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all scraper targets.
+   * List all scraper targets.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -147,7 +147,7 @@ export class ScrapersAPI {
     )
   }
   /**
-   * Get a scraper target by ID.
+   * Retrieve a scraper target.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

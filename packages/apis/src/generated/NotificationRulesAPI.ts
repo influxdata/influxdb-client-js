@@ -80,7 +80,7 @@ export class NotificationRulesAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all notification rules.
+   * List all notification rules.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -123,7 +123,7 @@ export class NotificationRulesAPI {
     )
   }
   /**
-   * Get a notification rule.
+   * Retrieve a notification rule.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -252,7 +252,7 @@ export class NotificationRulesAPI {
     )
   }
   /**
-   * Get a notification rule query.
+   * Retrieve a notification rule query.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
