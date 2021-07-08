@@ -4,6 +4,7 @@
 
 1. [#341](https://github.com/influxdata/influxdb-client-js/pull/341): Add uintField fn to `Point`.
 1. [#342](https://github.com/influxdata/influxdb-client-js/pull/342): Regenerate APIs from [oss.yml](https://github.com/influxdata/openapi/blob/master/contracts/oss.yml).
+1. [#343](https://github.com/influxdata/influxdb-client-js/pull/343): Use exponential random retry strategy when writing data.
 
 ## 1.14.0 [2021-06-04]
 

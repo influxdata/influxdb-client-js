@@ -24,14 +24,22 @@ export const DEFAULT_ConnectionOptions: Partial<ConnectionOptions> = {
  * Options that configure strategy for retrying failed requests.
  */
 export interface RetryDelayStrategyOptions {
-  /** include random milliseconds when retrying HTTP calls */
+  /** add `random(retryJitter)` milliseconds delay when retrying HTTP calls */
   retryJitter: number
   /** minimum delay when retrying write (milliseconds) */
   minRetryDelay: number
   /** maximum delay when retrying write (milliseconds) */
   maxRetryDelay: number
-  /** base for the exponential retry delay, the next delay is computed as `minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)` */
+  /** base for the exponential retry delay */
   exponentialBase: number
+  /**
+   * randomRetry indicates whether the next retry delay is deterministic (false) or random (true).
+   * The deterministic delay starts with `minRetryDelay * exponentialBase` and it is multiplied
+   * by `exponentialBase` until it exceeds `maxRetryDelay`.
+   * When random is `true`, the next delay is computed as a random number between next retry attempt (upper)
+   * and the lower number in the deterministic sequence. `random(retryJitter)` is added to every returned value.
+   */
+  randomRetry: boolean
 }
 
 /**
@@ -63,6 +71,8 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
 
   /** max number of retries when write fails */
   maxRetries: number
+  /** max time (millis) that can be spent with retries */
+  maxRetryTime: number
   /** the maximum size of retry-buffer (in lines) */
   maxBufferLines: number
 }
@@ -87,8 +97,9 @@ export interface WriteOptions extends WriteRetryOptions {
 export const DEFAULT_RetryDelayStrategyOptions = {
   retryJitter: 200,
   minRetryDelay: 5000,
-  maxRetryDelay: 180000,
+  maxRetryDelay: 125000,
   exponentialBase: 5,
+  randomRetry: true,
 }
 
 /** default writeOptions */
@@ -97,14 +108,16 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   flushInterval: 60000,
   writeFailed: function() {},
   writeSuccess: function() {},
-  maxRetries: 3,
+  maxRetries: 5,
+  maxRetryTime: 180_000,
   maxBufferLines: 32_000,
   // a copy of DEFAULT_RetryDelayStrategyOptions, so that DEFAULT_WriteOptions could be tree-shaken
   retryJitter: 200,
   minRetryDelay: 5000,
-  maxRetryDelay: 180000,
-  exponentialBase: 5,
+  maxRetryDelay: 125000,
+  exponentialBase: 2,
   gzipThreshold: 1000,
+  randomRetry: true,
 }
 
 /**
