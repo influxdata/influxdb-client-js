@@ -4,7 +4,7 @@
 
 ## DeleteStackRequest.orgID property
 
-The organization id of the user
+The identifier of the organization.
 
 <b>Signature:</b>
 

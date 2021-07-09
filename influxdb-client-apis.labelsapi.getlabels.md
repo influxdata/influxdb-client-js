@@ -4,7 +4,7 @@
 
 ## LabelsAPI.getLabels() method
 
-Get all labels. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels)
+List all labels. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabels)
 
 <b>Signature:</b>
 

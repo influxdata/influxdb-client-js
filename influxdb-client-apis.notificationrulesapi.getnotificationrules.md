@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRules() method
 
-Get all notification rules. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationRules](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules)
+List all notification rules. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationRules](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRules)
 
 <b>Signature:</b>
 

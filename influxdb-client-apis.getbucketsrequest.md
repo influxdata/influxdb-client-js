@@ -15,9 +15,10 @@ export interface GetBucketsRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [after?](./influxdb-client-apis.getbucketsrequest.after.md) | string | <i>(Optional)</i> The last resource ID from which to seek from (but not including). This is to be used instead of <code>offset</code>. |
+|  [id?](./influxdb-client-apis.getbucketsrequest.id.md) | string | <i>(Optional)</i> Only returns buckets with a specific ID. |
 |  [limit?](./influxdb-client-apis.getbucketsrequest.limit.md) | number | <i>(Optional)</i> |
 |  [name?](./influxdb-client-apis.getbucketsrequest.name.md) | string | <i>(Optional)</i> Only returns buckets with a specific name. |
 |  [offset?](./influxdb-client-apis.getbucketsrequest.offset.md) | number | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.getbucketsrequest.org.md) | string | <i>(Optional)</i> The organization name. |
+|  [org?](./influxdb-client-apis.getbucketsrequest.org.md) | string | <i>(Optional)</i> The name of the organization. |
 |  [orgID?](./influxdb-client-apis.getbucketsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
 

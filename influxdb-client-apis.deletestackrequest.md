@@ -14,6 +14,6 @@ export interface DeleteStackRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deletestackrequest.orgid.md) | string | The organization id of the user |
-|  [stack\_id](./influxdb-client-apis.deletestackrequest.stack_id.md) | string | The stack id |
+|  [orgID](./influxdb-client-apis.deletestackrequest.orgid.md) | string | The identifier of the organization. |
+|  [stack\_id](./influxdb-client-apis.deletestackrequest.stack_id.md) | string | Theidentifier of the stack. |
 

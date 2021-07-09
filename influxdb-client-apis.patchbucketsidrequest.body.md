@@ -9,5 +9,5 @@ Bucket update to apply
 <b>Signature:</b>
 
 ```typescript
-body: Bucket;
+body: PatchBucketRequest;
 ```

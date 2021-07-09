@@ -20,8 +20,8 @@ export interface BandViewProperties
 |  [generateYAxisTicks?](./influxdb-client-apis.bandviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [geom](./influxdb-client-apis.bandviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension?](./influxdb-client-apis.bandviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend?](./influxdb-client-apis.bandviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.bandviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.bandviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.bandviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.bandviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [lowerColumn?](./influxdb-client-apis.bandviewproperties.lowercolumn.md) | string | <i>(Optional)</i> |

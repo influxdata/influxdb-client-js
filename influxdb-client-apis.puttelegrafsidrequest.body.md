@@ -4,7 +4,7 @@
 
 ## PutTelegrafsIDRequest.body property
 
-Telegraf config update to apply
+Telegraf configuration update to apply
 
 <b>Signature:</b>
 

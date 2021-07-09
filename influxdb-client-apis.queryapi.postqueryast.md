@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQueryAst() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQueryAst](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst)
+Generate an Abstract Syntax Tree (AST) from a query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQueryAst](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst)
 
 <b>Signature:</b>
 

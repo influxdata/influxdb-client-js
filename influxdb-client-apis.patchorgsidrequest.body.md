@@ -9,5 +9,5 @@ Organization update to apply
 <b>Signature:</b>
 
 ```typescript
-body: Organization;
+body: PatchOrganizationRequest;
 ```

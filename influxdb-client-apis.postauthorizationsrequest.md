@@ -14,5 +14,5 @@ export interface PostAuthorizationsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.postauthorizationsrequest.body.md) | [Authorization](./influxdb-client-apis.authorization.md) | Authorization to create |
+|  [body](./influxdb-client-apis.postauthorizationsrequest.body.md) | [AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md) | Authorization to create |
 

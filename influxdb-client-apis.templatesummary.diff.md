@@ -79,8 +79,8 @@ diff?: {
             stateStatus?: string;
             id?: string;
             templateMetaName?: string;
-            new?: NotificationEndpointDiscrimator;
-            old?: NotificationEndpointDiscrimator;
+            new?: NotificationEndpointDiscriminator;
+            old?: NotificationEndpointDiscriminator;
         }>;
         notificationRules?: Array<{
             kind?: TemplateKind;

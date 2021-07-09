@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafs() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs)
+List all Telegraf configurations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafs)
 
 <b>Signature:</b>
 

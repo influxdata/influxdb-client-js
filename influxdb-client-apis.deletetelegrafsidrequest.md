@@ -14,5 +14,5 @@ export interface DeleteTelegrafsIDRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  [telegrafID](./influxdb-client-apis.deletetelegrafsidrequest.telegrafid.md) | string | The Telegraf configuration ID. |
 

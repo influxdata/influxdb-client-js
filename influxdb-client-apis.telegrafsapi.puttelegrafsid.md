@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.putTelegrafsID() method
 
-Update a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutTelegrafsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID)
+Update a Telegraf configuration. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutTelegrafsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutTelegrafsID)
 
 <b>Signature:</b>
 

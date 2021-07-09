@@ -4,7 +4,7 @@
 
 ## GetDashboardsRequest.owner property
 
-The owner ID.
+A user identifier. Returns only dashboards where this user has the `owner` role.
 
 <b>Signature:</b>
 

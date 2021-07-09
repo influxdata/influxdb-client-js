@@ -20,8 +20,8 @@ export interface XYViewProperties
 |  [generateYAxisTicks?](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [geom](./influxdb-client-apis.xyviewproperties.geom.md) | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension?](./influxdb-client-apis.xyviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend?](./influxdb-client-apis.xyviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.xyviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.xyviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.xyviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.xyviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.xyviewproperties.note.md) | string |  |

@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapers() method
 
-Get all scraper targets. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers)
+List all scraper targets. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapers)
 
 <b>Signature:</b>
 

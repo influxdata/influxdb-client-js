@@ -4,7 +4,7 @@
 
 ## VariablesAPI.getVariablesID() method
 
-Get a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetVariablesID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID)
+Retrieve a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetVariablesID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesID)
 
 <b>Signature:</b>
 

@@ -14,5 +14,5 @@ export interface GetTelegrafsIDRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.gettelegrafsidrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  [telegrafID](./influxdb-client-apis.gettelegrafsidrequest.telegrafid.md) | string | The Telegraf configuration ID. |
 

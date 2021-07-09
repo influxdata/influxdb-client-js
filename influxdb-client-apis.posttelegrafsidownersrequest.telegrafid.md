@@ -4,7 +4,7 @@
 
 ## PostTelegrafsIDOwnersRequest.telegrafID property
 
-The Telegraf config ID.
+The Telegraf configuration ID.
 
 <b>Signature:</b>
 

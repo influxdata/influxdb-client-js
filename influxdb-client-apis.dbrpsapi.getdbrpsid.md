@@ -9,7 +9,7 @@ Retrieve a database retention policy mapping. See [https://v2.docs.influxdata.co
 <b>Signature:</b>
 
 ```typescript
-getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise<DBRP>;
+getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise<DBRPGet>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise
 
 <b>Returns:</b>
 
-Promise&lt;[DBRP](./influxdb-client-apis.dbrp.md)<!-- -->&gt;
+Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
 
 promise of response
 

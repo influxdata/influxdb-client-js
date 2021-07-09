@@ -4,7 +4,7 @@
 
 ## GetDashboardsRequest.id property
 
-List of dashboard IDs to return. If both `id` and `owner` are specified, only `id` is used.
+A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.
 
 <b>Signature:</b>
 

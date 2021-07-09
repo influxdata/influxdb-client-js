@@ -14,5 +14,6 @@ DEFAULT_RetryDelayStrategyOptions: {
     minRetryDelay: number;
     maxRetryDelay: number;
     exponentialBase: number;
+    randomRetry: boolean;
 }
 ```

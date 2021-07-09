@@ -4,7 +4,7 @@
 
 ## PatchScrapersIDRequest.scraperTargetID property
 
-The scraper target ID.
+The identifier of the scraper target.
 
 <b>Signature:</b>
 

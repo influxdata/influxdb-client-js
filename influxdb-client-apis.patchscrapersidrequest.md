@@ -15,5 +15,5 @@ export interface PatchScrapersIDRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [body](./influxdb-client-apis.patchscrapersidrequest.body.md) | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target update to apply |
-|  [scraperTargetID](./influxdb-client-apis.patchscrapersidrequest.scrapertargetid.md) | string | The scraper target ID. |
+|  [scraperTargetID](./influxdb-client-apis.patchscrapersidrequest.scrapertargetid.md) | string | The identifier of the scraper target. |
 

@@ -9,3 +9,14 @@
 ```typescript
 export interface GetUsersRequest 
 ```
+
+## Properties
+
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [after?](./influxdb-client-apis.getusersrequest.after.md) | string | <i>(Optional)</i> The last resource ID from which to seek from (but not including). This is to be used instead of <code>offset</code>. |
+|  [id?](./influxdb-client-apis.getusersrequest.id.md) | string | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) | number | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.getusersrequest.name.md) | string | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) | number | <i>(Optional)</i> |
+

@@ -4,7 +4,7 @@
 
 ## MeAPI.getMe() method
 
-Return the current authenticated user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetMe](https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe)
+Retrieve the currently authenticated user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetMe](https://v2.docs.influxdata.com/v2.0/api/#operation/GetMe)
 
 <b>Signature:</b>
 

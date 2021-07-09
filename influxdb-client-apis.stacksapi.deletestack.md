@@ -4,7 +4,7 @@
 
 ## StacksAPI.deleteStack() method
 
-Delete a stack and remove all its associated resources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteStack](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack)
+Delete a stack and associated resources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteStack](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack)
 
 <b>Signature:</b>
 

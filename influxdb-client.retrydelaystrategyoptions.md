@@ -16,8 +16,9 @@ export interface RetryDelayStrategyOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [exponentialBase](./influxdb-client.retrydelaystrategyoptions.exponentialbase.md) | number | base for the exponential retry delay, the next delay is computed as <code>minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)</code> |
+|  [exponentialBase](./influxdb-client.retrydelaystrategyoptions.exponentialbase.md) | number | base for the exponential retry delay |
 |  [maxRetryDelay](./influxdb-client.retrydelaystrategyoptions.maxretrydelay.md) | number | maximum delay when retrying write (milliseconds) |
 |  [minRetryDelay](./influxdb-client.retrydelaystrategyoptions.minretrydelay.md) | number | minimum delay when retrying write (milliseconds) |
-|  [retryJitter](./influxdb-client.retrydelaystrategyoptions.retryjitter.md) | number | include random milliseconds when retrying HTTP calls |
+|  [randomRetry](./influxdb-client.retrydelaystrategyoptions.randomretry.md) | boolean | randomRetry indicates whether the next retry delay is deterministic (false) or random (true). The deterministic delay starts with <code>minRetryDelay * exponentialBase</code> and it is multiplied by <code>exponentialBase</code> until it exceeds <code>maxRetryDelay</code>. When random is <code>true</code>, the next delay is computed as a random number between next retry attempt (upper) and the lower number in the deterministic sequence. <code>random(retryJitter)</code> is added to every returned value. |
+|  [retryJitter](./influxdb-client.retrydelaystrategyoptions.retryjitter.md) | number | add <code>random(retryJitter)</code> milliseconds delay when retrying HTTP calls |
 

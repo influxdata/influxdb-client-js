@@ -9,5 +9,5 @@ Authorization to create
 <b>Signature:</b>
 
 ```typescript
-body: Authorization;
+body: AuthorizationPostRequest;
 ```

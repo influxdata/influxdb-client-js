@@ -18,6 +18,7 @@ export interface HistogramViewProperties
 |  [colors](./influxdb-client-apis.histogramviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [fillColumns](./influxdb-client-apis.histogramviewproperties.fillcolumns.md) | string\[\] |  |
 |  [legendColorizeRows?](./influxdb-client-apis.histogramviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.histogramviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.histogramviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.histogramviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.histogramviewproperties.note.md) | string |  |

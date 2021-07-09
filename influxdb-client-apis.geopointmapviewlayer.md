@@ -12,6 +12,7 @@ export declare type GeoPointMapViewLayer = GeoViewLayerProperties & {
     colorDimension: Axis;
     colors: DashboardColor[];
     isClustered?: boolean;
+    tooltipColumns?: string[];
 };
 ```
 <b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)<!-- -->, [Axis](./influxdb-client-apis.axis.md)<!-- -->, [DashboardColor](./influxdb-client-apis.dashboardcolor.md)

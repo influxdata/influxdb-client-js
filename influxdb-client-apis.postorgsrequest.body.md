@@ -9,5 +9,5 @@ Organization to create
 <b>Signature:</b>
 
 ```typescript
-body: Organization;
+body: PostOrganizationRequest;
 ```

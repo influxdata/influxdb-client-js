@@ -9,5 +9,5 @@ The database retention policy mapping to add
 <b>Signature:</b>
 
 ```typescript
-body: DBRP;
+body: DBRPCreate;
 ```

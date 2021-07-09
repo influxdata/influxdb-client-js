@@ -20,8 +20,8 @@ export interface LinePlusSingleStatProperties
 |  [generateXAxisTicks?](./influxdb-client-apis.lineplussinglestatproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.lineplussinglestatproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [hoverDimension?](./influxdb-client-apis.lineplussinglestatproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legend?](./influxdb-client-apis.lineplussinglestatproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.lineplussinglestatproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.lineplussinglestatproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.lineplussinglestatproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.lineplussinglestatproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.lineplussinglestatproperties.note.md) | string |  |

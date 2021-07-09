@@ -4,7 +4,7 @@
 
 ## TelegrafAPI.getTelegrafPlugins() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafPlugins](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins)
+List all Telegraf plugins. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafPlugins](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins)
 
 <b>Signature:</b>
 

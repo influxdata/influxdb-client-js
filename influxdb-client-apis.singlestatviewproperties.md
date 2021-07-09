@@ -16,7 +16,6 @@ export interface SingleStatViewProperties
 |  --- | --- | --- |
 |  [colors](./influxdb-client-apis.singlestatviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [decimalPlaces](./influxdb-client-apis.singlestatviewproperties.decimalplaces.md) | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
-|  [legend?](./influxdb-client-apis.singlestatviewproperties.legend.md) | [Legend](./influxdb-client-apis.legend.md) | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.singlestatviewproperties.note.md) | string |  |
 |  [prefix](./influxdb-client-apis.singlestatviewproperties.prefix.md) | string |  |
 |  [queries](./influxdb-client-apis.singlestatviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |

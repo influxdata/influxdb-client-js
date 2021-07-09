@@ -15,6 +15,6 @@ export interface TemplateExportByID
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [orgIDs?](./influxdb-client-apis.templateexportbyid.orgids.md) | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
-|  [resources?](./influxdb-client-apis.templateexportbyid.resources.md) | { id: string; kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name?: string; } | <i>(Optional)</i> |
+|  [resources?](./influxdb-client-apis.templateexportbyid.resources.md) | Array&lt;{ id: string; kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name?: string; }&gt; | <i>(Optional)</i> |
 |  [stackID?](./influxdb-client-apis.templateexportbyid.stackid.md) | string | <i>(Optional)</i> |
 

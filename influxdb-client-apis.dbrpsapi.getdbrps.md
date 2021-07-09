@@ -9,7 +9,7 @@ List all database retention policy mappings. See [https://v2.docs.influxdata.com
 <b>Signature:</b>
 
 ```typescript
-getDBRPs(request: GetDBRPsRequest, requestOptions?: RequestOptions): Promise<DBRPs>;
+getDBRPs(request?: GetDBRPsRequest, requestOptions?: RequestOptions): Promise<DBRPs>;
 ```
 
 ## Parameters

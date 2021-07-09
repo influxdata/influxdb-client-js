@@ -18,7 +18,7 @@ export interface NotificationRuleBase
 |  [description?](./influxdb-client-apis.notificationrulebase.description.md) | string | <i>(Optional)</i> An optional description of the notification rule. |
 |  [endpointID](./influxdb-client-apis.notificationrulebase.endpointid.md) | string |  |
 |  [every?](./influxdb-client-apis.notificationrulebase.every.md) | string | <i>(Optional)</i> The notification repetition interval. |
-|  [id](./influxdb-client-apis.notificationrulebase.id.md) | string |  |
+|  [id?](./influxdb-client-apis.notificationrulebase.id.md) | string | <i>(Optional)</i> |
 |  [labels?](./influxdb-client-apis.notificationrulebase.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.notificationrulebase.lastrunerror.md) | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.notificationrulebase.lastrunstatus.md) | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
@@ -34,7 +34,7 @@ export interface NotificationRuleBase
 |  [sleepUntil?](./influxdb-client-apis.notificationrulebase.sleepuntil.md) | string | <i>(Optional)</i> |
 |  [status](./influxdb-client-apis.notificationrulebase.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
 |  [statusRules](./influxdb-client-apis.notificationrulebase.statusrules.md) | [StatusRule](./influxdb-client-apis.statusrule.md)<!-- -->\[\] | List of status rules the notification rule attempts to match. |
-|  [tagRules](./influxdb-client-apis.notificationrulebase.tagrules.md) | [TagRule](./influxdb-client-apis.tagrule.md)<!-- -->\[\] | List of tag rules the notification rule attempts to match. |
+|  [tagRules?](./influxdb-client-apis.notificationrulebase.tagrules.md) | [TagRule](./influxdb-client-apis.tagrule.md)<!-- -->\[\] | <i>(Optional)</i> List of tag rules the notification rule attempts to match. |
 |  [taskID?](./influxdb-client-apis.notificationrulebase.taskid.md) | string | <i>(Optional)</i> The ID of the task associated with this notification rule. |
 |  [updatedAt?](./influxdb-client-apis.notificationrulebase.updatedat.md) | string | <i>(Optional)</i> |
 

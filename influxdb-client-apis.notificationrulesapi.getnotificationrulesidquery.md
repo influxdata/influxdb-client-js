@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRulesIDQuery() method
 
-Get a notification rule query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationRulesIDQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery)
+Retrieve a notification rule query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationRulesIDQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDQuery)
 
 <b>Signature:</b>
 

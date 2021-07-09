@@ -9,9 +9,5 @@ An array of logs associated with the run.
 <b>Signature:</b>
 
 ```typescript
-readonly log?: Array<{
-        runID?: string;
-        time?: string;
-        message?: string;
-    }>;
+readonly log?: LogEvent[];
 ```

@@ -9,5 +9,5 @@ Specify if this mapping represents the default retention policy for the database
 <b>Signature:</b>
 
 ```typescript
-default?: boolean;
+default: boolean;
 ```

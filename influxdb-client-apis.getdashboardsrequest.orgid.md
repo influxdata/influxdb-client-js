@@ -4,7 +4,7 @@
 
 ## GetDashboardsRequest.orgID property
 
-The organization ID.
+The identifier of the organization.
 
 <b>Signature:</b>
 

@@ -14,6 +14,6 @@ export interface PatchOrgsIDRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchorgsidrequest.body.md) | [Organization](./influxdb-client-apis.organization.md) | Organization update to apply |
+|  [body](./influxdb-client-apis.patchorgsidrequest.body.md) | [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) | Organization update to apply |
 |  [orgID](./influxdb-client-apis.patchorgsidrequest.orgid.md) | string | The ID of the organization to get. |
 

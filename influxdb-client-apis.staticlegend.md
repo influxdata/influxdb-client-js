@@ -20,6 +20,7 @@ export interface StaticLegend
 |  [heightRatio?](./influxdb-client-apis.staticlegend.heightratio.md) | number | <i>(Optional)</i> |
 |  [opacity?](./influxdb-client-apis.staticlegend.opacity.md) | number | <i>(Optional)</i> |
 |  [orientationThreshold?](./influxdb-client-apis.staticlegend.orientationthreshold.md) | number | <i>(Optional)</i> |
+|  [show?](./influxdb-client-apis.staticlegend.show.md) | boolean | <i>(Optional)</i> |
 |  [valueAxis?](./influxdb-client-apis.staticlegend.valueaxis.md) | string | <i>(Optional)</i> |
 |  [widthRatio?](./influxdb-client-apis.staticlegend.widthratio.md) | number | <i>(Optional)</i> |
 

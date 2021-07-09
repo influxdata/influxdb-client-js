@@ -7,8 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-resources?: {
+resources?: Array<{
         kind: TemplateKind;
         name: string;
-    };
+    }>;
 ```

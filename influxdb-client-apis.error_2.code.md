@@ -9,5 +9,5 @@ code is the machine-readable error code.
 <b>Signature:</b>
 
 ```typescript
-readonly code: 'internal error' | 'not found' | 'conflict' | 'invalid' | 'unprocessable entity' | 'empty value' | 'unavailable' | 'forbidden' | 'too many requests' | 'unauthorized' | 'method not allowed' | 'request too large';
+readonly code: 'internal error' | 'not found' | 'conflict' | 'invalid' | 'unprocessable entity' | 'empty value' | 'unavailable' | 'forbidden' | 'too many requests' | 'unauthorized' | 'method not allowed' | 'request too large' | 'unsupported media type';
 ```

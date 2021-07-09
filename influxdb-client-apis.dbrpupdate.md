@@ -14,8 +14,6 @@ export interface DBRPUpdate
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [database?](./influxdb-client-apis.dbrpupdate.database.md) | string | <i>(Optional)</i> InfluxDB v1 database |
 |  [default?](./influxdb-client-apis.dbrpupdate.default.md) | boolean | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.dbrpupdate.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 |  [retention\_policy?](./influxdb-client-apis.dbrpupdate.retention_policy.md) | string | <i>(Optional)</i> InfluxDB v1 retention policy |
 

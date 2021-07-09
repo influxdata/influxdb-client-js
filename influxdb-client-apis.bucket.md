@@ -23,6 +23,7 @@ export interface Bucket
 |  [orgID?](./influxdb-client-apis.bucket.orgid.md) | string | <i>(Optional)</i> |
 |  [retentionRules](./influxdb-client-apis.bucket.retentionrules.md) | [RetentionRules](./influxdb-client-apis.retentionrules.md) |  |
 |  [rp?](./influxdb-client-apis.bucket.rp.md) | string | <i>(Optional)</i> |
+|  [schemaType?](./influxdb-client-apis.bucket.schematype.md) | [SchemaType](./influxdb-client-apis.schematype.md) | <i>(Optional)</i> |
 |  [type?](./influxdb-client-apis.bucket.type.md) | 'user' \| 'system' | <i>(Optional)</i> |
 |  [updatedAt?](./influxdb-client-apis.bucket.updatedat.md) | string | <i>(Optional)</i> |
 

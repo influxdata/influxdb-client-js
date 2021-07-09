@@ -9,5 +9,5 @@ Specifies the organization ID to filter on
 <b>Signature:</b>
 
 ```typescript
-orgID: string;
+orgID?: string;
 ```

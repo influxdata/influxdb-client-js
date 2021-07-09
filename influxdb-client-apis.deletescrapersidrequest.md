@@ -14,5 +14,5 @@ export interface DeleteScrapersIDRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidrequest.scrapertargetid.md) | string | The scraper target ID. |
+|  [scraperTargetID](./influxdb-client-apis.deletescrapersidrequest.scrapertargetid.md) | string | The identifier of the scraper target. |
 

@@ -4,7 +4,7 @@
 
 ## DocumentsAPI.putDocumentsTemplatesID() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutDocumentsTemplatesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID)
+Update a template. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutDocumentsTemplatesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutDocumentsTemplatesID)
 
 <b>Signature:</b>
 

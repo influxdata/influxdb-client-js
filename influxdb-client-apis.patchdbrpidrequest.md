@@ -16,5 +16,6 @@ export interface PatchDBRPIDRequest
 |  --- | --- | --- |
 |  [body](./influxdb-client-apis.patchdbrpidrequest.body.md) | [DBRPUpdate](./influxdb-client-apis.dbrpupdate.md) | Database retention policy update to apply |
 |  [dbrpID](./influxdb-client-apis.patchdbrpidrequest.dbrpid.md) | string | The database retention policy mapping. |
-|  [orgID](./influxdb-client-apis.patchdbrpidrequest.orgid.md) | string | Specifies the organization ID of the mapping |
+|  [org?](./influxdb-client-apis.patchdbrpidrequest.org.md) | string | <i>(Optional)</i> Specifies the organization name of the mapping |
+|  [orgID?](./influxdb-client-apis.patchdbrpidrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
 

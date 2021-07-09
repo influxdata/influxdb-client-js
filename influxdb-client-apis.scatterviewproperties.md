@@ -19,6 +19,7 @@ export interface ScatterViewProperties
 |  [generateXAxisTicks?](./influxdb-client-apis.scatterviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.scatterviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.scatterviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.scatterviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.scatterviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.scatterviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.scatterviewproperties.note.md) | string |  |

@@ -22,5 +22,5 @@ export declare class RootAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md) |  | Map of all top level routes available. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetRoutes](https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes) |
+|  [getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md) |  | List all top level routes. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetRoutes](https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes) |
 

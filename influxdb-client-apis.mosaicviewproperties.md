@@ -19,6 +19,7 @@ export interface MosaicViewProperties
 |  [generateXAxisTicks?](./influxdb-client-apis.mosaicviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [hoverDimension?](./influxdb-client-apis.mosaicviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.mosaicviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.mosaicviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.mosaicviewproperties.note.md) | string |  |

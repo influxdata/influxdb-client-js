@@ -4,7 +4,7 @@
 
 ## RetryDelayStrategyOptions.exponentialBase property
 
-base for the exponential retry delay, the next delay is computed as `minRetryDelay * exponentialBase^(attempts-1) + random(retryJitter)`
+base for the exponential retry delay
 
 <b>Signature:</b>
 

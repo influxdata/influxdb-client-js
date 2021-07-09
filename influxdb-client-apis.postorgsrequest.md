@@ -14,5 +14,5 @@ export interface PostOrgsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsrequest.body.md) | [Organization](./influxdb-client-apis.organization.md) | Organization to create |
+|  [body](./influxdb-client-apis.postorgsrequest.body.md) | [PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md) | Organization to create |
 

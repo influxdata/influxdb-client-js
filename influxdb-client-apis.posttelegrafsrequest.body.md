@@ -4,7 +4,7 @@
 
 ## PostTelegrafsRequest.body property
 
-Telegraf config to create
+Telegraf configuration to create
 
 <b>Signature:</b>
 

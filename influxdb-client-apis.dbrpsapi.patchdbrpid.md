@@ -9,7 +9,7 @@ Update a database retention policy mapping. See [https://v2.docs.influxdata.com/
 <b>Signature:</b>
 
 ```typescript
-patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promise<DBRP>;
+patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promise<DBRPGet>;
 ```
 
 ## Parameters
@@ -21,7 +21,7 @@ patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promi
 
 <b>Returns:</b>
 
-Promise&lt;[DBRP](./influxdb-client-apis.dbrp.md)<!-- -->&gt;
+Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
 
 promise of response
 

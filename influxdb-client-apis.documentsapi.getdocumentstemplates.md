@@ -4,7 +4,7 @@
 
 ## DocumentsAPI.getDocumentsTemplates() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDocumentsTemplates](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates)
+List all templates. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDocumentsTemplates](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDocumentsTemplates)
 
 <b>Signature:</b>
 

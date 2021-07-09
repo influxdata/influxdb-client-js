@@ -4,7 +4,7 @@
 
 ## GetSourcesRequest.org property
 
-The organization name.
+The name of the organization.
 
 <b>Signature:</b>
 

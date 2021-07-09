@@ -22,9 +22,9 @@ export declare class QueryAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getQuerySuggestions(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestions.md) |  | See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestions](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions) |
-|  [getQuerySuggestionsName(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestionsname.md) |  | See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestionsName](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName) |
+|  [getQuerySuggestions(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestions.md) |  | Retrieve query suggestions. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestions](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions) |
+|  [getQuerySuggestionsName(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestionsname.md) |  | Retrieve query suggestions for a branching suggestion. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestionsName](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestionsName) |
 |  [postQuery(request, requestOptions)](./influxdb-client-apis.queryapi.postquery.md) |  | Query InfluxDB. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery) |
 |  [postQueryAnalyze(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryanalyze.md) |  | Analyze an InfluxQL or Flux query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQueryAnalyze](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAnalyze) |
-|  [postQueryAst(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryast.md) |  | See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQueryAst](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst) |
+|  [postQueryAst(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryast.md) |  | Generate an Abstract Syntax Tree (AST) from a query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQueryAst](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQueryAst) |
 

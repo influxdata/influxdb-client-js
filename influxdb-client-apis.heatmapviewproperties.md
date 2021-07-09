@@ -19,6 +19,7 @@ export interface HeatmapViewProperties
 |  [generateXAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.heatmapviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.heatmapviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
 |  [legendOpacity?](./influxdb-client-apis.heatmapviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.heatmapviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.heatmapviewproperties.note.md) | string |  |

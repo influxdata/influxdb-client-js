@@ -9,5 +9,5 @@ List of tag rules the notification rule attempts to match.
 <b>Signature:</b>
 
 ```typescript
-tagRules: TagRule[];
+tagRules?: TagRule[];
 ```

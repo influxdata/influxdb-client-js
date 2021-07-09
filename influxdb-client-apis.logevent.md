@@ -15,5 +15,6 @@ export interface LogEvent
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [message?](./influxdb-client-apis.logevent.message.md) | string | <i>(Optional)</i> A description of the event that occurred. |
+|  [runID?](./influxdb-client-apis.logevent.runid.md) | string | <i>(Optional)</i> the ID of the task that logged |
 |  [time?](./influxdb-client-apis.logevent.time.md) | string | <i>(Optional)</i> Time event occurred, RFC3339Nano. |
 

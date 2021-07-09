@@ -19,6 +19,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions
 |  --- | --- | --- |
 |  [maxBufferLines](./influxdb-client.writeretryoptions.maxbufferlines.md) | number | the maximum size of retry-buffer (in lines) |
 |  [maxRetries](./influxdb-client.writeretryoptions.maxretries.md) | number | max number of retries when write fails |
+|  [maxRetryTime](./influxdb-client.writeretryoptions.maxretrytime.md) | number | max time (millis) that can be spent with retries |
 
 ## Methods
 

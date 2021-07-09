@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSources() method
 
-Get all sources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSources](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources)
+List all sources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSources](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## QueryAPI.getQuerySuggestions() method
 
-See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestions](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions)
+Retrieve query suggestions. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetQuerySuggestions](https://v2.docs.influxdata.com/v2.0/api/#operation/GetQuerySuggestions)
 
 <b>Signature:</b>
 

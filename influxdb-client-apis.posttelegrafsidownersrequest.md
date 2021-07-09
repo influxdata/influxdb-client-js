@@ -15,5 +15,5 @@ export interface PostTelegrafsIDOwnersRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [body](./influxdb-client-apis.posttelegrafsidownersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
-|  [telegrafID](./influxdb-client-apis.posttelegrafsidownersrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  [telegrafID](./influxdb-client-apis.posttelegrafsidownersrequest.telegrafid.md) | string | The Telegraf configuration ID. |
 

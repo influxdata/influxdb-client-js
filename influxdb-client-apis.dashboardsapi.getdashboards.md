@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboards() method
 
-Get all dashboards. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboards](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards)
+List all dashboards. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboards](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards)
 
 <b>Signature:</b>
 

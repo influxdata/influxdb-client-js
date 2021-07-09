@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksIDQuery() method
 
-Get a check query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetChecksIDQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery)
+Retrieve a check query. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetChecksIDQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDQuery)
 
 <b>Signature:</b>
 

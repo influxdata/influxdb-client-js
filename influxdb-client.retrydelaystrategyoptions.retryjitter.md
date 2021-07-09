@@ -4,7 +4,7 @@
 
 ## RetryDelayStrategyOptions.retryJitter property
 
-include random milliseconds when retrying HTTP calls
+add `random(retryJitter)` milliseconds delay when retrying HTTP calls
 
 <b>Signature:</b>
 

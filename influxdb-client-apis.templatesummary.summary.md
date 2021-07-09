@@ -49,7 +49,7 @@ summary?: {
         }>;
         missingEnvRefs?: string[];
         missingSecrets?: string[];
-        notificationEndpoints?: Array<NotificationEndpointDiscrimator & {
+        notificationEndpoints?: Array<NotificationEndpointDiscriminator & {
             kind?: TemplateKind;
             templateMetaName?: string;
             labelAssociations?: TemplateSummaryLabel[];

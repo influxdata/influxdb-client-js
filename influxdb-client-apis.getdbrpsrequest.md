@@ -18,6 +18,7 @@ export interface GetDBRPsRequest
 |  [db?](./influxdb-client-apis.getdbrpsrequest.db.md) | string | <i>(Optional)</i> Specifies the database to filter on |
 |  [default?](./influxdb-client-apis.getdbrpsrequest.default.md) | any | <i>(Optional)</i> Specifies filtering on default |
 |  [id?](./influxdb-client-apis.getdbrpsrequest.id.md) | string | <i>(Optional)</i> Specifies the mapping ID to filter on |
-|  [orgID](./influxdb-client-apis.getdbrpsrequest.orgid.md) | string | Specifies the organization ID to filter on |
+|  [org?](./influxdb-client-apis.getdbrpsrequest.org.md) | string | <i>(Optional)</i> Specifies the organization name to filter on |
+|  [orgID?](./influxdb-client-apis.getdbrpsrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID to filter on |
 |  [rp?](./influxdb-client-apis.getdbrpsrequest.rp.md) | string | <i>(Optional)</i> Specifies the retention policy to filter on |
 

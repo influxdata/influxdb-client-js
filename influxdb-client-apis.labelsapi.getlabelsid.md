@@ -4,7 +4,7 @@
 
 ## LabelsAPI.getLabelsID() method
 
-Get a label. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID)
+Retrieve a label. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetLabelsID)
 
 <b>Signature:</b>
 

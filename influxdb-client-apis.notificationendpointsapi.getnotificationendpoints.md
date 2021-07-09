@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.getNotificationEndpoints() method
 
-Get all notification endpoints. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationEndpoints](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints)
+List all notification endpoints. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationEndpoints](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpoints)
 
 <b>Signature:</b>
 

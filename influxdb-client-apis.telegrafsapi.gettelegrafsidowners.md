@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDOwners() method
 
-List all owners of a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners)
+List all owners of a Telegraf configuration. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDOwners)
 
 <b>Signature:</b>
 

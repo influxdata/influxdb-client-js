@@ -14,6 +14,6 @@ export interface PutTelegrafsIDRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.puttelegrafsidrequest.body.md) | [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) | Telegraf config update to apply |
+|  [body](./influxdb-client-apis.puttelegrafsidrequest.body.md) | [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) | Telegraf configuration update to apply |
 |  [telegrafID](./influxdb-client-apis.puttelegrafsidrequest.telegrafid.md) | string | The Telegraf config ID. |
 
