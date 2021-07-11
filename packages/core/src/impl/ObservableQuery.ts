@@ -86,4 +86,8 @@ export default class ObservableQuery<T> implements Observable<T> {
   public [symbolObservable](): this {
     return this
   }
+
+  // this makes sure we satisfy the interface, while using a possibly polyfilled
+  // [symbolObservable] above for the actual implementation
+  public declare [Symbol.observable]: () => this
 }
