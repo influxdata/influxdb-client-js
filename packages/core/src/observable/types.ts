@@ -12,6 +12,10 @@ export interface Observer<T> {
   complete: ObserverComplete
 }
 
+export interface Subscribable<T> {
+  subscribe(observer: Partial<Observer<T>>): Subscription
+}
+
 /**
  * An observable that aligns with the
  * {@link https://github.com/tc39/proposal-observable | TC39 observable proposal} and
@@ -27,9 +31,7 @@ export interface Observable<T> {
     error?: ObserverError,
     complete?: ObserverComplete
   ): Subscription
-  // this is actually implemented, but we cant add it the interface, because we
-  // use `./symbol#symbolObservable` as the key, in case Symbol isnt available
-  /* [Symbol.observable](): Observable<T> */
+  [Symbol.observable](): Subscribable<T>
 }
 
 /** Subscription mimics Subscription from ECMAScript TC39 Observable proposal */

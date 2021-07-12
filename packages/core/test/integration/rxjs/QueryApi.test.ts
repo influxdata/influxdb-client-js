@@ -4,8 +4,16 @@ import {InfluxDB, ClientOptions} from '../../../src'
 import fs from 'fs'
 import simpleResponseLines from '../../fixture/query/simpleResponseLines.json'
 import zlib from 'zlib'
-import {from, concat, of} from 'rxjs'
-import {toArray, groupBy, flatMap, map} from 'rxjs/operators'
+import {
+  from,
+  concat,
+  of,
+  firstValueFrom,
+  toArray,
+  groupBy,
+  map,
+  mergeMap,
+} from 'rxjs'
 
 const ORG = `my-org`
 const QUERY_PATH = `/api/v2/query?org=${ORG}`
@@ -36,11 +44,11 @@ describe('RxJS QueryApi integration', () => {
       })
       .persist()
 
-    const lines = await from(
-      subject.lines('from(bucket:"my-bucket") |> range(start: 0)')
+    const lines = await firstValueFrom(
+      from(subject.lines('from(bucket:"my-bucket") |> range(start: 0)')).pipe(
+        toArray()
+      )
     )
-      .pipe(toArray())
-      .toPromise()
 
     expect(lines).to.deep.equal(simpleResponseLines)
   })
@@ -53,13 +61,14 @@ describe('RxJS QueryApi integration', () => {
       })
       .persist()
 
-    await from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)'))
-      .pipe(toArray())
-      .toPromise()
-      .then(
-        () => expect.fail('Server returned 500!'),
-        () => true // failure is expected
+    await firstValueFrom(
+      from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)')).pipe(
+        toArray()
       )
+    ).then(
+      () => expect.fail('Server returned 500!'),
+      () => true // failure is expected
+    )
   })
   ;[
     ['response2', undefined],
@@ -81,22 +90,20 @@ describe('RxJS QueryApi integration', () => {
         })
         .persist()
 
-      const [tables, rows] = await from(
-        subject.rows('from(bucket:"my-bucket") |> range(start: 0)')
-      )
-        .pipe(
+      const [tables, rows] = await firstValueFrom(
+        from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)')).pipe(
           groupBy(({tableMeta}) => tableMeta),
-          flatMap(group =>
+          mergeMap(group =>
             concat(of(group.key), group.pipe(map(({values}) => values)))
           ),
           map((data, index) =>
             Array.isArray(data) ? {index, row: data} : {index, meta: data}
           ),
           groupBy(value => 'meta' in value),
-          flatMap(group => group.pipe(toArray())),
+          mergeMap(group => group.pipe(toArray())),
           toArray()
         )
-        .toPromise()
+      )
 
       const response = JSON.parse(
         fs.readFileSync(`test/fixture/query/${name}.parsed.json`, 'utf8')
