@@ -1,5 +1,9 @@
 ## 1.16.0 [unreleased]
 
+### Bug Fixes
+
+1. [#347](https://github.com/influxdata/influxdb-client-js/pull/347): Parsing infinite numbers
+
 ## 1.15.0 [2021-07-09]
 
 ### Features
