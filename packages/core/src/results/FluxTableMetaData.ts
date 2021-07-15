@@ -10,7 +10,18 @@ export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   boolean: (x: string): any => x === 'true',
   unsignedLong: (x: string): any => (x === '' ? null : +x),
   long: (x: string): any => (x === '' ? null : +x),
-  double: (x: string): any => (x === '' ? null : +x),
+  double(x: string): any {
+    switch (x) {
+      case '':
+        return null
+      case '+Inf':
+        return Number.POSITIVE_INFINITY
+      case '-Inf':
+        return Number.NEGATIVE_INFINITY
+      default:
+        return +x
+    }
+  },
   string: identity,
   base64Binary: identity,
   duration: (x: string): any => (x === '' ? null : x),
