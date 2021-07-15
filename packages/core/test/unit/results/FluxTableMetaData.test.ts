@@ -58,6 +58,8 @@ describe('FluxTableMetaData', () => {
     ['long', '', null],
     ['double', '1', 1],
     ['double', '', null],
+    ['double', '+Inf', Number.POSITIVE_INFINITY],
+    ['double', '-Inf', -Number.POSITIVE_INFINITY],
     ['string', '1', '1'],
     ['base64Binary', '1', '1'],
     ['dateTime', '1', '1'],
@@ -75,7 +77,9 @@ describe('FluxTableMetaData', () => {
         }),
       ]
       const subject = createFluxTableMetaData(columns)
-      expect(subject.toObject([entry[1]])).to.deep.equal({a: entry[2]})
+      const val = subject.toObject([entry[1]])
+      const entryElement = entry[2]
+      expect(val).to.deep.equal({a: entryElement})
     })
   }
   describe('custom serialization', () => {
