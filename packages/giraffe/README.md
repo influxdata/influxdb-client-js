@@ -5,7 +5,7 @@
 This section contains links to the client library documentation.
 
 * [Product documentation](https://docs.influxdata.com/influxdb/v2.0/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
-* [Examples](../../examples)
+* [Examples](../../examples#influxdb-client-examples)
 * [API Reference](https://influxdata.github.io/influxdb-client-js/influxdb-client-giraffe.html)
 * [Changelog](../../CHANGELOG.md)
 
