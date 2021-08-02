@@ -9,7 +9,10 @@ export interface ConnectionOptions {
   url: string
   /** authentication token */
   token?: string
-  /** socket timeout */
+  /**
+   * socket timeout, 10000 milliseconds by default in node.js
+   * @defaultValue 10000
+   */
   timeout?: number
   /** extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback } */
   transportOptions?: {[key: string]: any}
