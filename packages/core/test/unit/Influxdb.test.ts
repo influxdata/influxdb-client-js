@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {InfluxDB, ClientOptions} from '../../src'
+import {InfluxDB, ClientOptions, Transport} from '../../src'
 
 describe('InfluxDB', () => {
   describe('constructor', () => {

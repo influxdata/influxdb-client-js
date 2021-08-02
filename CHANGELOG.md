@@ -1,5 +1,9 @@
 ## 1.16.0 [unreleased]
 
+### Features
+
+1. [#346](https://github.com/influxdata/influxdb-client-js/pull/346): Make QueryApi compatible with rxjs7.
+
 ## 1.15.0 [2021-07-09]
 
 ### Features
