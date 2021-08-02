@@ -9,6 +9,10 @@
 
 1. [#347](https://github.com/influxdata/influxdb-client-js/pull/347): Parsing infinite numbers
 
+### Documentation
+
+1. [#351](https://github.com/influxdata/influxdb-client-js/pull/351): Upgrade api-extractor and api-documenter.
+
 ## 1.15.0 [2021-07-09]
 
 ### Features
