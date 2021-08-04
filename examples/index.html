@@ -121,9 +121,9 @@
       })
       const queryInput = document.getElementById('query');
       const fluxQueryParam = new URLSearchParams(window.location.search).get('fluxQuery');
-      if (fluxQueryParam){
-        queryInput.value = fluxQueryParam
-      }
+      const exampleQuery = `from(bucket:"${bucket || 'my-bucket'}") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")`
+      queryInput.value = fluxQueryParam ? fluxQueryParam : exampleQuery;
+      queryInput.textContent = queryInput.value;
       document.getElementById('queryButton').addEventListener('click', () => {
         queryExample(queryInput.value)
       })

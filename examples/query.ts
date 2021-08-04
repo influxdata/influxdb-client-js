@@ -4,11 +4,11 @@
 //////////////////////////////////////////
 
 import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
-import {url, token, org} from './env'
+import {url, token, org, bucket} from './env'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
-  'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+  `from(bucket:"${bucket || 'my-bucket'}") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")`
 
 console.log('*** QUERY ROWS ***')
 // Execute query and receive table metadata and rows.

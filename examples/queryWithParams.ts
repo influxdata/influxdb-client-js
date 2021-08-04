@@ -9,12 +9,12 @@ import {
   flux,
   fluxDuration,
 } from '@influxdata/influxdb-client'
-import {url, token, org} from './env'
+import {url, token, org, bucket} from './env'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const start = fluxDuration('-1m')
 const measurement = 'temperature'
-const fluxQuery = flux`from(bucket:"my-bucket") 
+const fluxQuery = flux`from(bucket:"${bucket || 'my-bucket'}") 
   |> range(start: ${start}) 
   |> filter(fn: (r) => r._measurement == ${measurement})`
 console.log('query:', fluxQuery)
