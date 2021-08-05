@@ -45,7 +45,8 @@ export class Point {
   }
 
   /**
-   * Adds a tag.
+   * Adds a tag. The caller has to ensure that both name and value are not empty
+   * and do not end with backslash.
    *
    * @param name - tag name
    * @param value - tag value
