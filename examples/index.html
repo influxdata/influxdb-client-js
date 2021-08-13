@@ -9,7 +9,11 @@
       // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
       // import {HealthAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
-      // import configuration from ./env_browser.js
+      /**
+        * Import the configuration from ./env_browser.js.
+	* The property INFLUX_ENV.bucket is only used in onboardingExample() and writeExample().
+	* The example query in document.getElementById('query') assumes your InfluxDB bucket is named "my-bucket".
+        */
       import './env_browser.js'
       const {url, token, org, bucket, username, password} = window.INFLUX_ENV
 
