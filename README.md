@@ -26,18 +26,18 @@ This section contains links to the client library documentation.
 InfluxDB 2.0 client consists of two main packages
 
 - @influxdata/influxdb-client
-  - Querying data using the Flux language
-  - Writing data
-    - batched in chunks on background
-    - automatic retries on write failures
+  - Query data using the Flux language
+  - Write data to InfluxDB
+    - batch data as chunks in the background
+    - retry automatically on failure
 - @influxdata/influxdb-client-apis
-  - provides all other InfluxDB 2.0 APIs for managing
-    - sources, buckets
+  - Manage the following in InfluxDB:
+    - sources
+    - buckets
     - tasks
     - authorizations
     - health check
-    - ...
-  - built on top of @influxdata/influxdb-client
+  - built on @influxdata/influxdb-client
 
 ## Installation
 
@@ -49,7 +49,11 @@ $ yarn add @influxdata/influxdb-client
 $ pnpm add @influxdata/influxdb-client
 ```
 
-[@influxdata/influxdb-client](./packages/core/README.md) module primarily works in Node.js (main CJS and module ESM), but also provides a bundled ESM distribution for browsers. If you target browsers or clients that don't support ESM, see [@influxdata/influxdb-client-browser](./packages/core-browser/README.md) for UMD distributions.
+If you target Node.js, use [@influxdata/influxdb-client](./packages/core/README.md).
+It provides main (CJS), module (ESM), and browser (UMD) exports.
+ 
+If you target browsers or [Deno](https://deno.land/), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md).
+It provides main (UMD) and module (ESM) exports.
 
 To use InfluxDB management APIs in your project, also add `@influxdata/influxdb-client-apis` as a dependency to your project.
 
