@@ -1,10 +1,10 @@
-// eslint-disable-next-line no-undef
-/** 
+/*
  * The following configuration is used in the browser examples
  * (index.html and giraffe.html).
  *
  * Replace the values with your own InfluxDB values.
  */
+// eslint-disable-next-line no-undef
 window.INFLUX_ENV = {
   /** InfluxDB v2 URL, '/influxdb' relies upon proxy to forward to the target influxDB */
   url: '/influx', //'http://localhost:8086',
