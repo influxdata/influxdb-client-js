@@ -12,6 +12,7 @@
 ### Documentation
 
 1. [#351](https://github.com/influxdata/influxdb-client-js/pull/351): Upgrade api-extractor and api-documenter.
+1. [#360](https://github.com/influxdata/influxdb-client-js/pull/360): Clarify node vs browser usage.
 
 ## 1.15.0 [2021-07-09]
 
