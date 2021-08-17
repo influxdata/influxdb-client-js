@@ -1,16 +1,23 @@
+/*
+ * The following configuration is used in the browser examples
+ * (index.html and giraffe.html).
+ *
+ * Replace the values with your own InfluxDB values.
+ */
 // eslint-disable-next-line no-undef
 window.INFLUX_ENV = {
   /** InfluxDB v2 URL, '/influxdb' relies upon proxy to forward to the target influxDB */
-  url: '/influx', //'http://localhost:8086'
+  url: '/influx', //'http://localhost:8086',
   /** InfluxDB authorization token */
   token: 'my-token',
-  /** Organization within InfluxDB  */
+  /** InfluxDB organization */
   org: 'my-org',
-  /**InfluxDB bucket used in examples  */
+  /** InfluxDB bucket used for onboarding and write requests. */
   bucket: 'my-bucket',
-  // ONLY onboarding example
-  /**InfluxDB user  */
+
+  /** The following properties are used ONLY in the onboarding example */
+  /** InfluxDB user  */
   username: 'my-user',
-  /**InfluxDB password  */
+  /** InfluxDB password  */
   password: 'my-password',
 }

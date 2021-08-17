@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@influxdata/influxdb-client)](https://www.npmjs.com/package/@influxdata/influxdb-client)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://www.influxdata.com/slack)
 
-This repository contains the reference javascript client for InfluxDB 2.0. Node, browser and deno environments are supported.
+This repository contains the reference JavaScript client for InfluxDB 2.0. This client supports Node.js, browser, and Deno environments.
 
 #### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
 
@@ -26,22 +26,22 @@ This section contains links to the client library documentation.
 InfluxDB 2.0 client consists of two main packages
 
 - @influxdata/influxdb-client
-  - Querying data using the Flux language
-  - Writing data
-    - batched in chunks on background
-    - automatic retries on write failures
+  - Query data using the Flux language
+  - Write data to InfluxDB
+    - batch data as chunks in the background
+    - retry automatically on failure
 - @influxdata/influxdb-client-apis
-  - provides all other InfluxDB 2.0 APIs for managing
-    - sources, buckets
+  - Manage the following in InfluxDB:
+    - sources
+    - buckets
     - tasks
     - authorizations
     - health check
-    - ...
-  - built on top of @influxdata/influxdb-client
+  - built on @influxdata/influxdb-client
 
 ## Installation
 
-To write or query InfluxDB, add `@influxdata/influxdb-client` dependency to your project using your favourite package manager.
+To write or query InfluxDB, add `@influxdata/influxdb-client` as a dependency to your project using your favorite package manager.
 
 ```
 $ npm install --save @influxdata/influxdb-client
@@ -49,9 +49,13 @@ $ yarn add @influxdata/influxdb-client
 $ pnpm add @influxdata/influxdb-client
 ```
 
-[@influxdata/influxdb-client](./packages/core/README.md) module primarily works in Node.js (main CJS and module ESM), but a browser (browser UMD) distribution is also available therein. If you target browser or [deno](https://deno.land/), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md).
+If you target Node.js, use [@influxdata/influxdb-client](./packages/core/README.md).
+It provides main (CJS), module (ESM), and browser (UMD) exports.
+ 
+If you target browsers or [Deno](https://deno.land/), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md).
+It provides main (UMD) and module (ESM) exports.
 
-To use InfluxDB management APIs in your project, add also `@influxdata/influxdb-client-apis` dependency to your project.
+To use InfluxDB management APIs in your project, also add `@influxdata/influxdb-client-apis` as a dependency to your project.
 
 ```
 $ npm install --save @influxdata/influxdb-client-apis
@@ -61,7 +65,7 @@ $ pnpm add @influxdata/influxdb-client-apis
 
 ## Usage
 
-The following examples help to start quickly with this client:
+Use the following examples to get started with the JavaScript client for InfluxDB:
 
 - @influxdata/influxdb-client
   - [write points](./examples/write.js)
@@ -71,25 +75,31 @@ The following examples help to start quickly with this client:
   - [create bucket](./examples/createBucket.js)
   - [health](./examples/health.js)
 
-There are also more advanced [examples](./examples/README.md) that show
+See [examples](./examples/README.md) for more advanced use case like the following:
 
-- how to execute parameterized queries
-- how to use this client with InfluxDB 1.8+
-- how to use this client in the browser or deno
-- how to process InfluxDB query results with RX Observables
-- how to customize the way of how measurement points are written to InfluxDB
-- how to visualize query results in [Giraffe](https://github.com/influxdata/giraffe)
+- Execute parameterized queries.
+- Use the client library with InfluxDB 1.8+.
+- Use the client library in the browser or Deno.
+- Process InfluxDB query results with RX Observables.
+- Customize the writing of measurement points to InfluxDB.
+- Visualize query results in [Giraffe](https://github.com/influxdata/giraffe).
 
-The client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
+JavaScript client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
 ## Contributing
 
-If you would like to contribute code you can do through GitHub by forking the repository and sending a pull request into the `master` branch.
+To contribute code, fork the repository and submit a pull request in GitHub to the JavaScript client `master` branch.
 
 Build Requirements:
 
-- node v14 LTS
+- Node.js v14 LTS
+  ```bash
+  node --version
+  ```
 - yarn 1.9.4. or higher
+  ```bash
+  yarn -v
+  ```
 
 Run tests:
 
@@ -111,4 +121,4 @@ $ yarn build
 
 ## License
 
-The InfluxDB 2.0 javascript client is released under the [MIT License](https://opensource.org/licenses/MIT).
+The InfluxDB 2.0 JavaScript client is released under the [MIT License](https://opensource.org/licenses/MIT).

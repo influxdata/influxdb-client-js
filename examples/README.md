@@ -27,8 +27,7 @@ This directory contains javascript and typescript examples for node.js, browser,
   - [writeAdvanced.js](./writeAdvanced.js)
     Shows how to control the way of how data points are written to InfluxDB.
 - Browser examples
-  - Change `url` in [env.js](./env.js) to match your influxDB instance
-  - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your influxDB instance
+  - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your InfluxDB instance
   - Run `npm run browser`
     It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests

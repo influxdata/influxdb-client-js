@@ -9,7 +9,12 @@
       // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
       // import {HealthAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
-      // ./env_browser.js defines window.INFLUX_ENV with client configuration variables
+      /**
+        * Import the configuration from ./env_browser.js.
+        * The property INFLUX_ENV.bucket is only used in onboardingExample() and writeExample().
+        * To prevent SQL injection attacks, the variable is not used within the Flux query examples.
+        * The query examples assume your InfluxDB bucket is named "my-bucket".
+        */
       import './env_browser.js'
       const {url, token, org, bucket, username, password} = window.INFLUX_ENV
 
