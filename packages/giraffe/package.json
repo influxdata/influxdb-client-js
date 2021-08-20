@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client-giraffe",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "InfluxDB 2.0 client - giraffe integration",
   "scripts": {
     "apidoc:extract": "api-extractor run",
@@ -44,7 +44,7 @@
   "license": "MIT",
   "devDependencies": {
     "@influxdata/giraffe": "*",
-    "@influxdata/influxdb-client": "^1.15.0",
+    "@influxdata/influxdb-client": "^1.16.0",
     "@microsoft/api-extractor": "^7.18.4",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.0",
