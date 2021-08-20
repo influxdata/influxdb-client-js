@@ -93,8 +93,9 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md) | Options that configure strategy for retrying failed requests. |
 |  [Row](./influxdb-client.row.md) | Wraps values and associated metadata of a query result row |
 |  [SendOptions](./influxdb-client.sendoptions.md) | Options for sending a request message. |
+|  [Subscribable](./influxdb-client.subscribable.md) |  |
 |  [Subscription](./influxdb-client.subscription.md) | Subscription mimics Subscription from ECMAScript TC39 Observable proposal |
-|  [Transport\_2](./influxdb-client.transport_2.md) | Simpified platform-neutral transport layer for communication with InfluxDB. |
+|  [Transport](./influxdb-client.transport.md) | Simpified platform-neutral transport layer for communication with InfluxDB. |
 |  [WriteApi](./influxdb-client.writeapi.md) | The asynchronous buffering API to Write time-series data into InfluxDB 2.0. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use <code>flush</code> to send the buffered data to InfluxDB immediately. <p> The data are formatted in \[Line Protocol\](https://bit.ly/2QL99fu). <p> |
 |  [WriteOptions](./influxdb-client.writeoptions.md) | Options used by [WriteApi](./influxdb-client.writeapi.md) . |
 |  [WriteRetryOptions](./influxdb-client.writeretryoptions.md) | Options that configure strategy for retrying failed InfluxDB write operations. |

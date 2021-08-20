@@ -22,7 +22,7 @@ export default class InfluxDB
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [transport](./influxdb-client.influxdb.transport.md) |  | Transport |  |
+|  [transport](./influxdb-client.influxdb.transport.md) |  | [Transport](./influxdb-client.transport.md) |  |
 
 ## Methods
 

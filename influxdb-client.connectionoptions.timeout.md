@@ -4,7 +4,7 @@
 
 ## ConnectionOptions.timeout property
 
-socket timeout
+socket timeout, 10000 milliseconds by default in node.js
 
 <b>Signature:</b>
 

@@ -16,6 +16,7 @@ export interface Observable<T>
 
 |  Method | Description |
 |  --- | --- |
+|  [\[Symbol.observable\]()](./influxdb-client.observable._symbol.observable_.md) |  |
 |  [subscribe()](./influxdb-client.observable.subscribe.md) |  |
 |  [subscribe(observer)](./influxdb-client.observable.subscribe_1.md) |  |
 |  [subscribe(next, error, complete)](./influxdb-client.observable.subscribe_2.md) |  |

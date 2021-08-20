@@ -9,5 +9,5 @@ Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for i
 <b>Signature:</b>
 
 ```typescript
-symbolObservable: symbol | "@@observable"
+symbolObservable: typeof Symbol.observable | "@@observable"
 ```

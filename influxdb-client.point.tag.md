@@ -4,7 +4,7 @@
 
 ## Point.tag() method
 
-Adds a tag.
+Adds a tag. The caller has to ensure that both name and value are not empty and do not end with backslash.
 
 <b>Signature:</b>
 
