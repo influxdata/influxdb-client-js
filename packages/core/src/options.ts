@@ -14,7 +14,12 @@ export interface ConnectionOptions {
    * @defaultValue 10000
    */
   timeout?: number
-  /** extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback } */
+  /**
+   * TransportOptions supply extra options for the transport layer. It can contain an `agent` property to
+   * {@link https://www.npmjs.com/package/proxy-http-agent | setup HTTP/HTTPS proxy }
+   * in node.js, or a `signal` property that can stop ongoing requests using
+   * {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback }.
+   */
   transportOptions?: {[key: string]: any}
 }
 
