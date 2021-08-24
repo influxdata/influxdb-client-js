@@ -27,6 +27,6 @@ export class PingAPI {
     request?: GetPingRequest,
     requestOptions?: RequestOptions
   ): Promise<void> {
-    return this.base.request('GET', `/api/v2/ping`, request, requestOptions)
+    return this.base.request('GET', `/ping`, request, requestOptions)
   }
 }

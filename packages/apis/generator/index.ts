@@ -12,7 +12,11 @@ const operations: Array<Operation> = _operations
 // reduce operations to apis
 const apis = operations.reduce(
   (acc: {[api: string]: Array<Operation>}, val: Operation) => {
-    if (val.path === '/ready' || val.path === '/health') {
+    if (
+      val.path === '/ready' ||
+      val.path === '/health' ||
+      val.path === '/ping'
+    ) {
       // due to a bug in the swagger parser, we don't have correct server path's
       val.server = ''
     }
