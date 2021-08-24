@@ -14,8 +14,8 @@ This directory contains javascript and typescript examples for node.js, browser,
     Query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
   - [queryWithParams.ts](./queryWithParams.ts)
     Supply parameters to a [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/) query.
-  - [health.js](./health.js)
-    Check health of InfluxDB server.
+  - [ping.js](./ping.js)
+    Check status of InfluxDB server.
   - [createBucket.js](./createBucket.js)
     Creates an example bucket.
   - [onboarding.js](./onboarding.js)
