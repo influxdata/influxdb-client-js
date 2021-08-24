@@ -2,6 +2,7 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 import {MetadataBackup} from './types'
 
+export interface GetBackupKVRequest {}
 export interface GetBackupMetadataRequest {}
 export interface GetBackupShardIdRequest {
   /** The shard ID. */
@@ -22,6 +23,24 @@ export class BackupAPI {
    */
   constructor(influxDB: InfluxDB) {
     this.base = new APIBase(influxDB)
+  }
+  /**
+   * Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions > 2.1.x, as it doesn't include metadata stored in embedded SQL.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBackupKV }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  getBackupKV(
+    request?: GetBackupKVRequest,
+    requestOptions?: RequestOptions
+  ): Promise<string> {
+    return this.base.request(
+      'GET',
+      `/api/v2/backup/kv`,
+      request,
+      requestOptions
+    )
   }
   /**
    * Download snapshot of all metadata in the server.

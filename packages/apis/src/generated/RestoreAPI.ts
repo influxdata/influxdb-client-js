@@ -10,6 +10,12 @@ export interface PostRestoreSQLRequest {
   /** Full SQL snapshot. */
   body: string
 }
+export interface PostRestoreBucketIDRequest {
+  /** The bucket ID. */
+  bucketID: string
+  /** Database info serialized as protobuf. */
+  body: string
+}
 export interface PostRestoreBucketMetadataRequest {
   /** Metadata manifest for a bucket. */
   body: BucketMetadataManifest
@@ -73,6 +79,25 @@ export class RestoreAPI {
     )
   }
   /**
+   * Overwrite storage metadata for a bucket with shard info from a backup.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreBucketID }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  postRestoreBucketID(
+    request: PostRestoreBucketIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<string> {
+    return this.base.request(
+      'POST',
+      `/api/v2/restore/bucket/${request.bucketID}`,
+      request,
+      requestOptions,
+      'text/plain'
+    )
+  }
+  /**
    * Create a new bucket pre-seeded with shard info from a backup.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreBucketMetadata }
    * @param request - request parameters and body (if supported)
@@ -85,7 +110,7 @@ export class RestoreAPI {
   ): Promise<RestoredBucketMappings> {
     return this.base.request(
       'POST',
-      `/api/v2/restore/bucket-metadata`,
+      `/api/v2/restore/bucketMetadata`,
       request,
       requestOptions,
       'application/json'

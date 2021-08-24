@@ -2230,6 +2230,8 @@ export interface Task {
   org?: string
   /** The name of the task. */
   name: string
+  /** The ID of the user who owns this Task. */
+  ownerID?: string
   /** An optional description of the task. */
   description?: string
   status?: TaskStatusType
@@ -2823,4 +2825,72 @@ export type BucketShardMappings = BucketShardMapping[]
 export interface BucketShardMapping {
   oldId: number
   newId: number
+}
+
+export interface RemoteConnections {
+  remotes?: RemoteConnection[]
+}
+
+export interface RemoteConnection {
+  id: string
+  name: string
+  orgID: string
+  description?: string
+  remoteURL: string
+  remoteOrgID: string
+  allowInsecureTLS: boolean
+}
+
+export interface RemoteConnectionCreationRequest {
+  name: string
+  description?: string
+  orgID: string
+  remoteURL: string
+  remoteAPIToken: string
+  remoteOrgID: string
+  allowInsecureTLS: boolean
+}
+
+export interface RemoteConnectionUpdateRequest {
+  name?: string
+  description?: string
+  remoteURL?: string
+  remoteAPIToken?: string
+  remoteOrgID?: string
+  allowInsecureTLS?: boolean
+}
+
+export interface Replications {
+  replications?: Replication[]
+}
+
+export interface Replication {
+  id: string
+  name: string
+  description?: string
+  remoteID: string
+  localBucketID: string
+  remoteBucketID: string
+  maxQueueSizeBytes: any
+  currentQueueSizeBytes: any
+  latestResponseCode?: any
+  latestErrorMessage?: string
+}
+
+export interface ReplicationCreationRequest {
+  name: string
+  description?: string
+  orgID: string
+  remoteID: string
+  localBucketID?: string
+  remoteBucketID?: string
+  maxQueueSizeBytes: any
+}
+
+export interface ReplicationUpdateRequest {
+  name?: string
+  description?: string
+  remoteID?: string
+  remoteBucketID?: string
+  maxQueueSizeBytes?: any
 }

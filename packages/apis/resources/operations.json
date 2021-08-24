@@ -103,6 +103,25 @@
   },
   {
     "server": "/api/v2",
+    "path": "/ping",
+    "operation": "get",
+    "operationId": "GetPing",
+    "basicAuth": false,
+    "summary": "Checks the status of InfluxDB instance and version of InfluxDB.",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "OK",
+        "mediaTypes": []
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
     "path": "/",
     "operation": "get",
     "operationId": "GetRoutes",
@@ -639,7 +658,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "The database retention policy mapping to add",
+      "description": "The Database Retention Policy Mapping to add",
       "required": true,
       "mediaType": "application/json",
       "type": "DBRPCreate"
@@ -647,7 +666,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Database retention policy mapping created",
+        "description": "The created Database Retention Policy Mapping",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4822,54 +4841,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/orgs/{orgID}/secrets/delete",
-    "operation": "post",
-    "operationId": "PostOrgsIDSecrets",
-    "basicAuth": false,
-    "summary": "Delete secrets from an organization",
-    "positionalParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Secret key to delete",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "SecretKeys"
-    },
-    "responses": [
-      {
-        "code": "204",
-        "description": "Keys successfully patched",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/orgs/{orgID}/members",
     "operation": "get",
     "operationId": "GetOrgsIDMembers",
@@ -5179,6 +5150,144 @@
       {
         "code": "default",
         "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/secrets/delete",
+    "operation": "post",
+    "operationId": "PostOrgsIDSecrets",
+    "basicAuth": false,
+    "summary": "Delete secrets from an organization",
+    "positionalParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Secret key to delete",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "SecretKeys"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "Keys successfully patched",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/orgs/{orgID}/secrets/{secretID}",
+    "operation": "delete",
+    "operationId": "DeleteOrgsIDSecretsID",
+    "basicAuth": false,
+    "summary": "Delete a secret from an organization",
+    "positionalParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "secretID",
+        "description": "The secret ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Keys successfully deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/resources",
+    "operation": "get",
+    "operationId": "GetResources",
+    "basicAuth": false,
+    "summary": "List all known resources",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "All resources targets",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "string[]"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Internal server error",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9043,7 +9152,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The active or inactie authorization",
+        "description": "The active or inactive authorization",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -10834,6 +10943,47 @@
   },
   {
     "server": "/api/v2",
+    "path": "/backup/kv",
+    "operation": "get",
+    "operationId": "GetBackupKV",
+    "basicAuth": false,
+    "summary": "Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions > 2.1.x, as it doesn't include metadata stored in embedded SQL.",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Snapshot of KV metadata",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
     "path": "/backup/metadata",
     "operation": "get",
     "operationId": "GetBackupMetadata",
@@ -11049,7 +11199,64 @@
   },
   {
     "server": "/api/v2",
-    "path": "/restore/bucket-metadata",
+    "path": "/restore/bucket/{bucketID}",
+    "operation": "post",
+    "operationId": "PostRestoreBucketID",
+    "basicAuth": false,
+    "summary": "Overwrite storage metadata for a bucket with shard info from a backup.",
+    "positionalParams": [
+      {
+        "name": "bucketID",
+        "description": "The bucket ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Database info serialized as protobuf.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "ID mappings for shards in bucket.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/restore/bucketMetadata",
     "operation": "post",
     "operationId": "PostRestoreBucketMetadata",
     "basicAuth": false,
@@ -11137,6 +11344,760 @@
         "code": "204",
         "description": "TSM snapshot successfully restored.",
         "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes",
+    "operation": "get",
+    "operationId": "GetRemoteConnections",
+    "basicAuth": false,
+    "summary": "List all remote connections",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "remoteURL",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "List of remote connections",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnections"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes",
+    "operation": "post",
+    "operationId": "PostRemoteConnection",
+    "basicAuth": false,
+    "summary": "Register a new remote connection",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the remote connection, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "RemoteConnectionCreationRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Remote connection saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Remote connection validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "get",
+    "operationId": "GetRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Retrieve a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Remote connection",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "patch",
+    "operationId": "PatchRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Update a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the updated information, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "RemoteConnectionUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Updated information saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Updated connection validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "delete",
+    "operationId": "DeleteRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Delete a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Remote connection info deleted.",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}/validate",
+    "operation": "post",
+    "operationId": "PostValidateRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Validate a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Remote connection is valid",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications",
+    "operation": "get",
+    "operationId": "GetReplications",
+    "basicAuth": false,
+    "summary": "List all replications",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "remoteID",
+        "type": "string"
+      },
+      {
+        "name": "localBucketID",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "List of replications",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replications"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications",
+    "operation": "post",
+    "operationId": "PostReplication",
+    "basicAuth": false,
+    "summary": "Register a new replication",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the replication, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ReplicationCreationRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Replication saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Replication validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "get",
+    "operationId": "GetReplicationByID",
+    "basicAuth": false,
+    "summary": "Retrieve a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Replication",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "patch",
+    "operationId": "PatchReplicationByID",
+    "basicAuth": false,
+    "summary": "Update a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the updated information, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ReplicationUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Updated information saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Updated replication validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "delete",
+    "operationId": "DeleteReplicationByID",
+    "basicAuth": false,
+    "summary": "Delete a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Replication deleted.",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}/validate",
+    "operation": "post",
+    "operationId": "PostValidateReplicationByID",
+    "basicAuth": false,
+    "summary": "Validate a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Replication is valid",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",

@@ -54,12 +54,6 @@ export interface PatchOrgsIDSecretsRequest {
   /** Secret key value pairs to update/add */
   body: Secrets
 }
-export interface PostOrgsIDSecretsRequest {
-  /** The organization ID. */
-  orgID: string
-  /** Secret key to delete */
-  body: SecretKeys
-}
 export interface GetOrgsIDMembersRequest {
   /** The organization ID. */
   orgID: string
@@ -91,6 +85,18 @@ export interface DeleteOrgsIDOwnersIDRequest {
   userID: string
   /** The organization ID. */
   orgID: string
+}
+export interface PostOrgsIDSecretsRequest {
+  /** The organization ID. */
+  orgID: string
+  /** Secret key to delete */
+  body: SecretKeys
+}
+export interface DeleteOrgsIDSecretsIDRequest {
+  /** The organization ID. */
+  orgID: string
+  /** The secret ID. */
+  secretID: string
 }
 /**
  * Orgs API
@@ -243,25 +249,6 @@ export class OrgsAPI {
     )
   }
   /**
-   * Delete secrets from an organization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  postOrgsIDSecrets(
-    request: PostOrgsIDSecretsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<void> {
-    return this.base.request(
-      'POST',
-      `/api/v2/orgs/${request.orgID}/secrets/delete`,
-      request,
-      requestOptions,
-      'application/json'
-    )
-  }
-  /**
    * List all members of an organization.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers }
    * @param request - request parameters and body (if supported)
@@ -367,6 +354,43 @@ export class OrgsAPI {
     return this.base.request(
       'DELETE',
       `/api/v2/orgs/${request.orgID}/owners/${request.userID}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Delete secrets from an organization.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDSecrets }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  postOrgsIDSecrets(
+    request: PostOrgsIDSecretsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.base.request(
+      'POST',
+      `/api/v2/orgs/${request.orgID}/secrets/delete`,
+      request,
+      requestOptions,
+      'application/json'
+    )
+  }
+  /**
+   * Delete a secret from an organization.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDSecretsID }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  deleteOrgsIDSecretsID(
+    request: DeleteOrgsIDSecretsIDRequest,
+    requestOptions?: RequestOptions
+  ): Promise<void> {
+    return this.base.request(
+      'DELETE',
+      `/api/v2/orgs/${request.orgID}/secrets/${request.secretID}`,
       request,
       requestOptions
     )
