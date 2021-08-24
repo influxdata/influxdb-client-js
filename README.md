@@ -16,10 +16,10 @@ This repository contains the reference JavaScript client for InfluxDB 2.0. This 
 
 This section contains links to the client library documentation.
 
-* [Product documentation](https://docs.influxdata.com/influxdb/v2.0/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
-* [Examples](examples#influxdb-client-examples)
-* [API Reference](https://influxdata.github.io/influxdb-client-js/influxdb-client.html)
-* [Changelog](CHANGELOG.md)
+- [Product documentation](https://docs.influxdata.com/influxdb/v2.0/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
+- [Examples](examples#influxdb-client-examples)
+- [API Reference](https://influxdata.github.io/influxdb-client-js/influxdb-client.html)
+- [Changelog](CHANGELOG.md)
 
 ## Features
 
@@ -51,7 +51,7 @@ $ pnpm add @influxdata/influxdb-client
 
 If you target Node.js, use [@influxdata/influxdb-client](./packages/core/README.md).
 It provides main (CJS), module (ESM), and browser (UMD) exports.
- 
+
 If you target browsers or [Deno](https://deno.land/), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md).
 It provides main (UMD) and module (ESM) exports.
 
@@ -83,6 +83,7 @@ See [examples](./examples/README.md) for more advanced use case like the followi
 - Process InfluxDB query results with RX Observables.
 - Customize the writing of measurement points to InfluxDB.
 - Visualize query results in [Giraffe](https://github.com/influxdata/giraffe).
+- [Setup HTTP/HTTPS proxy](https://github.com/influxdata/influxdb-client-js/issues/319#issuecomment-808154245) in communication with InfluxDB.
 
 JavaScript client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
