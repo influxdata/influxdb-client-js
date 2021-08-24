@@ -25,7 +25,7 @@ export class BackupAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions > 2.1.x, as it doesn't include metadata stored in embedded SQL.
+   * Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetBackupKV }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
