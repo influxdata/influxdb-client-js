@@ -1,8 +1,11 @@
 ## 1.17.0 [unreleased]
 
+1. [#362](https://github.com/influxdata/influxdb-client-js/pull/362): Regenerate APIs from swagger.
+
 ### Documentation
 
 1. [#361](https://github.com/influxdata/influxdb-client-js/pull/361): Document how to setup proxy.
+1. [#362](https://github.com/influxdata/influxdb-client-js/pull/362): Use ping API in examples.
 
 ## 1.16.0 [2021-08-20]
 
