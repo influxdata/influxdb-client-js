@@ -19,7 +19,7 @@ export interface GetDBRPsRequest {
   rp?: string
 }
 export interface PostDBRPRequest {
-  /** The database retention policy mapping to add */
+  /** The Database Retention Policy Mapping to add */
   body: DBRPCreate
 }
 export interface GetDBRPsIDRequest {

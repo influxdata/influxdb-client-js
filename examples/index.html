@@ -4,10 +4,10 @@
     <script type="module">
       // import latest release from npm repository 
       import {InfluxDB, Point} from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
-      import {HealthAPI, SetupAPI} from 'https://unpkg.com/@influxdata/influxdb-client-apis/dist/index.browser.mjs'
+      // import {PingAPI, SetupAPI} from 'https://unpkg.com/@influxdata/influxdb-client-apis/dist/index.browser.mjs'
       // or use the following imports to use local builds
       // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
-      // import {HealthAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
+      import {PingAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /**
         * Import the configuration from ./env_browser.js.
@@ -102,16 +102,16 @@
             log('Onboarding FAILED',error)
           })
       }
-      function healthExample() {
-        log('\n*** HEALTH ***')
-        const healthApi = new HealthAPI(influxDB)
-        healthApi
-          .getHealth()
-          .then((result) => {
-            log(JSON.stringify(result, null, 2))
+      function pingExample() {
+        log('\n*** PING ***')
+        const pingApi = new PingAPI(influxDB)
+        pingApi
+          .getPing()
+          .then(() => {
+            log('Ping SUCCESS')
           })
           .catch(error => {
-            log('Health FAILED', error)
+            log('Ping FAILED', error)
           })
       }
 
@@ -135,8 +135,8 @@
       document.getElementById('onboardButton').addEventListener('click', () => {
         onboardingExample()
       })
-      document.getElementById('healthButton').addEventListener('click', () => {
-        healthExample()
+      document.getElementById('pingButton').addEventListener('click', () => {
+        pingExample()
       })
       const visualizeInGiraffe = document.getElementById('visualizeInGiraffe')
       visualizeInGiraffe.addEventListener('click', e => {
@@ -149,7 +149,7 @@
   <hr>
   <div>
     <button id="onboardButton">InfluxDB Onboarding</button>
-    <button id="healthButton">InfluxDB Health</button>
+    <button id="pingButton">InfluxDB Ping</button>
   </div>
   <hr>
   <div>

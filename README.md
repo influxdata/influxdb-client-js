@@ -36,7 +36,6 @@ InfluxDB 2.0 client consists of two main packages
     - buckets
     - tasks
     - authorizations
-    - health check
   - built on @influxdata/influxdb-client
 
 ## Installation
@@ -73,7 +72,6 @@ Use the following examples to get started with the JavaScript client for InfluxD
 - @influxdata/influxdb-client-apis
   - [setup / onboarding](./examples/onboarding.js)
   - [create bucket](./examples/createBucket.js)
-  - [health](./examples/health.js)
 
 See [examples](./examples/README.md) for more advanced use case like the following:
 
