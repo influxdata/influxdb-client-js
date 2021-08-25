@@ -18,7 +18,7 @@
 
 ### Bug Fixes
 
-1. [#347](https://github.com/influxdata/influxdb-client-js/pull/347): Parsing infinite numbers
+1. [#347](https://github.com/influxdata/influxdb-client-js/pull/347): Parse infinite numbers.
 
 ### Documentation
 
