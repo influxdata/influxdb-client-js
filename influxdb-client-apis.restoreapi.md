@@ -22,6 +22,7 @@ export declare class RestoreAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [postRestoreBucketID(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketid.md) |  | Overwrite storage metadata for a bucket with shard info from a backup. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreBucketID](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreBucketID) |
 |  [postRestoreBucketMetadata(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketmetadata.md) |  | Create a new bucket pre-seeded with shard info from a backup. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreBucketMetadata](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreBucketMetadata) |
 |  [postRestoreKV(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorekv.md) |  | Overwrite the embedded KV store on the server with a backed-up snapshot. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreKV](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreKV) |
 |  [postRestoreShardId(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestoreshardid.md) |  | Restore a TSM snapshot into a shard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreShardId](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreShardId) |

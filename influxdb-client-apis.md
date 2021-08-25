@@ -53,8 +53,12 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [NotificationEndpointsAPI](./influxdb-client-apis.notificationendpointsapi.md) | NotificationEndpoints API |
 |  [NotificationRulesAPI](./influxdb-client-apis.notificationrulesapi.md) | NotificationRules API |
 |  [OrgsAPI](./influxdb-client-apis.orgsapi.md) | Orgs API |
+|  [PingAPI](./influxdb-client-apis.pingapi.md) | Ping API |
 |  [QueryAPI](./influxdb-client-apis.queryapi.md) | Query API |
 |  [ReadyAPI](./influxdb-client-apis.readyapi.md) | Ready API |
+|  [RemotesAPI](./influxdb-client-apis.remotesapi.md) | Remotes API |
+|  [ReplicationsAPI](./influxdb-client-apis.replicationsapi.md) | Replications API |
+|  [ResourcesAPI](./influxdb-client-apis.resourcesapi.md) | Resources API |
 |  [RestoreAPI](./influxdb-client-apis.restoreapi.md) | Restore API |
 |  [RootAPI](./influxdb-client-apis.rootapi.md) | Root API |
 |  [ScrapersAPI](./influxdb-client-apis.scrapersapi.md) | Scrapers API |
@@ -146,7 +150,10 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md) |  |
 |  [DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md) |  |
 |  [DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md) |  |
+|  [DeleteOrgsIDSecretsIDRequest](./influxdb-client-apis.deleteorgsidsecretsidrequest.md) |  |
 |  [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | The delete predicate request. |
+|  [DeleteRemoteConnectionByIDRequest](./influxdb-client-apis.deleteremoteconnectionbyidrequest.md) |  |
+|  [DeleteReplicationByIDRequest](./influxdb-client-apis.deletereplicationbyidrequest.md) |  |
 |  [DeleteScrapersIDLabelsIDRequest](./influxdb-client-apis.deletescrapersidlabelsidrequest.md) |  |
 |  [DeleteScrapersIDMembersIDRequest](./influxdb-client-apis.deletescrapersidmembersidrequest.md) |  |
 |  [DeleteScrapersIDOwnersIDRequest](./influxdb-client-apis.deletescrapersidownersidrequest.md) |  |
@@ -191,6 +198,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GeoViewProperties](./influxdb-client-apis.geoviewproperties.md) |  |
 |  [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) |  |
 |  [GetAuthorizationsRequest](./influxdb-client-apis.getauthorizationsrequest.md) |  |
+|  [GetBackupKVRequest](./influxdb-client-apis.getbackupkvrequest.md) |  |
 |  [GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md) |  |
 |  [GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md) |  |
 |  [GetBucketsIDLabelsRequest](./influxdb-client-apis.getbucketsidlabelsrequest.md) |  |
@@ -232,9 +240,15 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetOrgsIDRequest](./influxdb-client-apis.getorgsidrequest.md) |  |
 |  [GetOrgsIDSecretsRequest](./influxdb-client-apis.getorgsidsecretsrequest.md) |  |
 |  [GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md) |  |
+|  [GetPingRequest](./influxdb-client-apis.getpingrequest.md) |  |
 |  [GetQuerySuggestionsNameRequest](./influxdb-client-apis.getquerysuggestionsnamerequest.md) |  |
 |  [GetQuerySuggestionsRequest](./influxdb-client-apis.getquerysuggestionsrequest.md) |  |
 |  [GetReadyRequest](./influxdb-client-apis.getreadyrequest.md) |  |
+|  [GetRemoteConnectionByIDRequest](./influxdb-client-apis.getremoteconnectionbyidrequest.md) |  |
+|  [GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md) |  |
+|  [GetReplicationByIDRequest](./influxdb-client-apis.getreplicationbyidrequest.md) |  |
+|  [GetReplicationsRequest](./influxdb-client-apis.getreplicationsrequest.md) |  |
+|  [GetResourcesRequest](./influxdb-client-apis.getresourcesrequest.md) |  |
 |  [GetRoutesRequest](./influxdb-client-apis.getroutesrequest.md) |  |
 |  [GetScrapersIDLabelsRequest](./influxdb-client-apis.getscrapersidlabelsrequest.md) |  |
 |  [GetScrapersIDMembersRequest](./influxdb-client-apis.getscrapersidmembersrequest.md) |  |
@@ -331,6 +345,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) |  |
 |  [PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md) |  |
 |  [PatchOrgsIDSecretsRequest](./influxdb-client-apis.patchorgsidsecretsrequest.md) |  |
+|  [PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md) |  |
+|  [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) |  |
 |  [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md) | Updates to a rule to expire or retain data. |
 |  [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) |  |
 |  [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) |  |
@@ -369,6 +385,9 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PostQueryAnalyzeRequest](./influxdb-client-apis.postqueryanalyzerequest.md) |  |
 |  [PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md) |  |
 |  [PostQueryRequest](./influxdb-client-apis.postqueryrequest.md) |  |
+|  [PostRemoteConnectionRequest](./influxdb-client-apis.postremoteconnectionrequest.md) |  |
+|  [PostReplicationRequest](./influxdb-client-apis.postreplicationrequest.md) |  |
+|  [PostRestoreBucketIDRequest](./influxdb-client-apis.postrestorebucketidrequest.md) |  |
 |  [PostRestoreBucketMetadataRequest](./influxdb-client-apis.postrestorebucketmetadatarequest.md) |  |
 |  [PostRestoreKVRequest](./influxdb-client-apis.postrestorekvrequest.md) |  |
 |  [PostRestoreShardIdRequest](./influxdb-client-apis.postrestoreshardidrequest.md) |  |
@@ -393,6 +412,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PostTelegrafsRequest](./influxdb-client-apis.posttelegrafsrequest.md) |  |
 |  [PostUsersIDPasswordRequest](./influxdb-client-apis.postusersidpasswordrequest.md) |  |
 |  [PostUsersRequest](./influxdb-client-apis.postusersrequest.md) |  |
+|  [PostValidateRemoteConnectionByIDRequest](./influxdb-client-apis.postvalidateremoteconnectionbyidrequest.md) |  |
+|  [PostValidateReplicationByIDRequest](./influxdb-client-apis.postvalidatereplicationbyidrequest.md) |  |
 |  [PostVariablesIDLabelsRequest](./influxdb-client-apis.postvariablesidlabelsrequest.md) |  |
 |  [PostVariablesRequest](./influxdb-client-apis.postvariablesrequest.md) |  |
 |  [PostWriteRequest](./influxdb-client-apis.postwriterequest.md) |  |
@@ -410,7 +431,15 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ReadStackRequest](./influxdb-client-apis.readstackrequest.md) |  |
 |  [Ready](./influxdb-client-apis.ready.md) |  |
 |  [RegexpLiteral](./influxdb-client-apis.regexpliteral.md) | Expressions begin and end with <code>/</code> and are regular expressions with syntax accepted by RE2 |
+|  [RemoteConnection](./influxdb-client-apis.remoteconnection.md) |  |
+|  [RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md) |  |
+|  [RemoteConnections](./influxdb-client-apis.remoteconnections.md) |  |
+|  [RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md) |  |
 |  [RenamableField](./influxdb-client-apis.renamablefield.md) | Describes a field that can be renamed and made visible or invisible. |
+|  [Replication](./influxdb-client-apis.replication.md) |  |
+|  [ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md) |  |
+|  [Replications](./influxdb-client-apis.replications.md) |  |
+|  [ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md) |  |
 |  [RequestOptions](./influxdb-client-apis.requestoptions.md) |  |
 |  [Resource](./influxdb-client-apis.resource.md) |  |
 |  [ResourceMembers](./influxdb-client-apis.resourcemembers.md) |  |

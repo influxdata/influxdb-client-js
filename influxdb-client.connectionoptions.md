@@ -18,6 +18,6 @@ export interface ConnectionOptions
 |  --- | --- | --- |
 |  [timeout?](./influxdb-client.connectionoptions.timeout.md) | number | <i>(Optional)</i> socket timeout, 10000 milliseconds by default in node.js |
 |  [token?](./influxdb-client.connectionoptions.token.md) | string | <i>(Optional)</i> authentication token |
-|  [transportOptions?](./influxdb-client.connectionoptions.transportoptions.md) | { \[key: string\]: any; } | <i>(Optional)</i> extra options for the transport layer, they can setup a proxy agent or an abort signal in node.js transport that relies upon [https://nodejs.org/api/http.html\#http\_http\_request\_url\_options\_callback](https://nodejs.org/api/http.html#http_http_request_url_options_callback) |
+|  [transportOptions?](./influxdb-client.connectionoptions.transportoptions.md) | { \[key: string\]: any; } | <i>(Optional)</i> TransportOptions supply extra options for the transport layer. It can contain an <code>agent</code> property to [setup HTTP/HTTPS proxy](https://www.npmjs.com/package/proxy-http-agent) in node.js, or a <code>signal</code> property that can stop ongoing requests using [https://nodejs.org/api/http.html\#http\_http\_request\_url\_options\_callback](https://nodejs.org/api/http.html#http_http_request_url_options_callback)<!-- -->. |
 |  [url](./influxdb-client.connectionoptions.url.md) | string | base URL |
 

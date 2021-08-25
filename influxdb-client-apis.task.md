@@ -30,6 +30,7 @@ export interface Task
 |  [offset?](./influxdb-client-apis.task.offset.md) | string | <i>(Optional)</i> Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default. |
 |  [org?](./influxdb-client-apis.task.org.md) | string | <i>(Optional)</i> The name of the organization that owns this Task. |
 |  [orgID](./influxdb-client-apis.task.orgid.md) | string | The ID of the organization that owns this Task. |
+|  [ownerID?](./influxdb-client-apis.task.ownerid.md) | string | <i>(Optional)</i> The ID of the user who owns this Task. |
 |  [status?](./influxdb-client-apis.task.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
 |  [type?](./influxdb-client-apis.task.type.md) | string | <i>(Optional)</i> The type of task, this can be used for filtering tasks on list actions. |
 |  [updatedAt?](./influxdb-client-apis.task.updatedat.md) | string | <i>(Optional)</i> |
