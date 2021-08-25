@@ -28,7 +28,7 @@ InfluxDB 2.0 client consists of two main packages
 - @influxdata/influxdb-client
   - Query data using the Flux language
   - Write data to InfluxDB
-    - batch data as chunks in the background
+    - batch data in the background
     - retry automatically on failure
 - @influxdata/influxdb-client-apis
   - Manage the following in InfluxDB:
@@ -77,7 +77,7 @@ See [examples](./examples/README.md) for more advanced use case like the followi
 
 - Execute parameterized queries.
 - Use the client library with InfluxDB 1.8+.
-- Use the client library in the browser or Deno.
+- Use the client library in the browser or [Deno](./examples/query.deno.ts).
 - Process InfluxDB query results with RX Observables.
 - Customize the writing of measurement points to InfluxDB.
 - Visualize query results in [Giraffe](https://github.com/influxdata/giraffe).
