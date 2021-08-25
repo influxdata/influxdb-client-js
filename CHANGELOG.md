@@ -1,3 +1,5 @@
+## 1.18.0 [unreleased]
+
 ## 1.17.0 [2021-08-25]
 
 1. [#362](https://github.com/influxdata/influxdb-client-js/pull/362): Regenerate APIs from swagger.
