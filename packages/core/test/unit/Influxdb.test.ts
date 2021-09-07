@@ -84,6 +84,23 @@ describe('InfluxDB', () => {
         } as any) as ClientOptions)
       ).has.property('transport')
     })
+    it('creates instance with follow-redirects', () => {
+      const request = (): void => {}
+      const followRedirects = {
+        https: {request},
+      }
+      expect(
+        new InfluxDB({
+          url: 'https://localhost:8086',
+          transportOptions: {
+            'follow-redirects': followRedirects,
+          },
+        })
+      )
+        .has.property('transport')
+        .has.property('requestApi')
+        .is.equal(request)
+    })
   })
   describe('apis', () => {
     const influxDb = new InfluxDB('http://localhost:8086?token=a')

@@ -26,6 +26,8 @@ This directory contains javascript and typescript examples for node.js, browser,
     Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://v2.docs.influxdata.com/v2.0/query-data/get-started/).
   - [writeAdvanced.js](./writeAdvanced.js)
     Shows how to control the way of how data points are written to InfluxDB.
+  - [follow-redirects.js](./follow-redirects.js)
+    Shows how to configure the client to follow HTTP redirects.
 - Browser examples
   - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your InfluxDB instance
   - Run `npm run browser`

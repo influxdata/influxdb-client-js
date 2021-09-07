@@ -19,6 +19,7 @@
     "@types/express-http-proxy": "^1.5.12",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
+    "follow-redirects": "^1.14.3",
     "open": "^7.0.0",
     "response-time": "^2.3.2",
     "rxjs": "^6.5.5",

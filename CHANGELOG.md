@@ -1,6 +1,12 @@
 ## 1.18.0 [unreleased]
 
+### Features
+
+1. [#365](https://github.com/influxdata/influxdb-client-js/pull/365): Allow following HTTP redirects in node.js.
+
 ## 1.17.0 [2021-08-25]
+
+### Features
 
 1. [#362](https://github.com/influxdata/influxdb-client-js/pull/362): Regenerate APIs from swagger.
 
