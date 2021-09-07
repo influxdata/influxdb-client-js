@@ -681,6 +681,46 @@ describe('NodeHttpTransport', () => {
           () => true // OK that it fails
         )
     })
+    it(`does not follow redirects OOTB`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(301, '..', {
+          location: '/redirected',
+        })
+        .persist()
+      await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      })
+        .request('/test', '', {
+          method: 'GET',
+          headers: {'content-type': 'application/json'},
+        })
+        .then(
+          () => expect.fail(`exception shall be thrown because of redirect`),
+          () => true // OK that it fails
+        )
+    })
+    it(`can be configured to follow redirects`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(301, '..', {
+          location: '/redirected',
+        })
+        .get('/redirected')
+        .reply(200, 'OK', {'content-type': 'text/plain'})
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        transportOptions: {
+          'follow-redirects': require('follow-redirects'),
+        },
+        timeout: 10000,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('OK')
+    })
     it(`fails on communication error`, async () => {
       await new NodeHttpTransport({
         ...transportOptions,

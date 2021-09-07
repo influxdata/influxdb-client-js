@@ -79,10 +79,10 @@ export class NodeHttpTransport implements Transport {
 
     if (url.protocol === 'http:') {
       this.requestApi =
-        this.defaultOptions['follow-redirects']?.http ?? http.request
+        this.defaultOptions['follow-redirects']?.http?.request ?? http.request
     } else if (url.protocol === 'https:') {
       this.requestApi =
-        this.defaultOptions['follow-redirects']?.https ?? https.request
+        this.defaultOptions['follow-redirects']?.https?.request ?? https.request
     } else {
       throw new Error(
         `Unsupported protocol "${url.protocol} in URL: "${connectionOptions.url}"`
