@@ -19,6 +19,9 @@ export interface ConnectionOptions {
    * {@link https://www.npmjs.com/package/proxy-http-agent | setup HTTP/HTTPS proxy }
    * in node.js, or a `signal` property that can stop ongoing requests using
    * {@link https://nodejs.org/api/http.html#http_http_request_url_options_callback }.
+   * {@link https://github.com/follow-redirects/follow-redirects | follow-redirects} property can be specified
+   * in order to follow redirects in node.js. Redirects are followed OOTB in browser or deno,
+   * {@link https://developer.mozilla.org/en-US/docs/Web/API/fetch | redirect} property can customize it.
    */
   transportOptions?: {[key: string]: any}
 }
