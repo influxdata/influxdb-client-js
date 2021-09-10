@@ -19,10 +19,11 @@ commands:
 jobs:
   tests:
     parameters:
-      version:
+      image:
         type: string
+        default: &default-image "cimg/node:14.17.6"
     docker:
-      - image: circleci/node:<< parameters.version >>
+      - image: << parameters.image >>
     steps:
       - checkout
       - init-dependencies
@@ -38,7 +39,7 @@ jobs:
   coverage:
     parameters:
     docker:
-      - image: circleci/node:14
+      - image: *default-image
     steps:
       - checkout
       - init-dependencies
@@ -57,7 +58,7 @@ jobs:
   deploy-preview:
     parameters:
     docker:
-      - image: circleci/node:14
+      - image: *default-image
     steps:
       - run:
           name: Early return if this build is from a forked repository
@@ -79,7 +80,6 @@ workflows:
   build:
     jobs:
       - tests:
-          version: '14'
           filters:
             branches:
               ignore: gh-pages
