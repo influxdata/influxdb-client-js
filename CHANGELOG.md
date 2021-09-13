@@ -4,6 +4,9 @@
 
 1. [#365](https://github.com/influxdata/influxdb-client-js/pull/365): Allow following HTTP redirects in node.js.
 
+### CI
+1. [#366](https://github.com/influxdata/influxdb-client-js/pull/366): Switch to next-gen CircleCI's convenience images
+
 ## 1.17.0 [2021-08-25]
 
 ### Features
