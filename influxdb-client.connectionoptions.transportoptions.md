@@ -4,7 +4,7 @@
 
 ## ConnectionOptions.transportOptions property
 
-TransportOptions supply extra options for the transport layer. It can contain an `agent` property to [setup HTTP/HTTPS proxy](https://www.npmjs.com/package/proxy-http-agent) in node.js, or a `signal` property that can stop ongoing requests using [https://nodejs.org/api/http.html\#http\_http\_request\_url\_options\_callback](https://nodejs.org/api/http.html#http_http_request_url_options_callback)<!-- -->.
+TransportOptions supply extra options for the transport layer, they differ between node.js and browser/deno. Node.js transport accepts options specified in [http.request](https://nodejs.org/api/http.html#http_http_request_options_callback) or [https.request](https://nodejs.org/api/https.html#https_https_request_options_callback)<!-- -->. For example, an `agent` property can be set to [setup HTTP/HTTPS proxy](https://www.npmjs.com/package/proxy-http-agent)<!-- -->, [rejectUnauthorized](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) property can disable TLS server certificate verification. Additionally, [follow-redirects](https://github.com/follow-redirects/follow-redirects) property can be also specified in order to follow redirects in node.js. [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) is used under the hood in browser/deno. For example, [redirect](https://developer.mozilla.org/en-US/docs/Web/API/fetch) property can be set to 'error' to abort request if a redirect occurs.
 
 <b>Signature:</b>
 
