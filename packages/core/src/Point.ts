@@ -75,6 +75,7 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN or out of int64 range value is supplied
    */
   public intField(name: string, value: number | any): Point {
     let val: number
@@ -96,6 +97,7 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN out of range value is supplied
    */
   public uintField(name: string, value: number | any): Point {
     if (typeof value === 'number') {
@@ -133,6 +135,7 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN/Infinity/-Infinity is supplied
    */
   public floatField(name: string, value: number | any): Point {
     let val: number
