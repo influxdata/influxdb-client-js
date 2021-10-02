@@ -154,4 +154,11 @@ describe('Point', () => {
     expect(() => new Point().intField('a', -9223372036854776e3)).throws()
     expect(() => new Point().intField('a', 9223372036854776e3)).throws()
   })
+  it('throws when invalid uintField is supplied', () => {
+    expect(() => new Point().uintField('a', NaN)).throws()
+    expect(() => new Point().uintField('a', Infinity)).throws()
+    expect(() => new Point().uintField('a', -Infinity)).throws()
+    expect(() => new Point().uintField('a', Number.MAX_VALUE)).throws()
+    expect(() => new Point().uintField('a', -1)).throws()
+  })
 })

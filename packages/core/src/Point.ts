@@ -101,7 +101,7 @@ export class Point {
    */
   public uintField(name: string, value: number | any): Point {
     if (typeof value === 'number') {
-      if (value < 0 || value > Number.MAX_SAFE_INTEGER) {
+      if (isNaN(value) || value < 0 || value > Number.MAX_SAFE_INTEGER) {
         throw new Error(`uint value for field '${name}' out of range: ${value}`)
       }
       this.fields[name] = `${Math.floor(value as number)}u`
