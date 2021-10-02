@@ -1,5 +1,9 @@
 ## 1.19.0 [unreleased]
 
+### Bug Fixes
+
+1. [#370](https://github.com/influxdata/influxdb-client-js/pull/370): Throw error when int/unit/float point field is out of range.
+
 ## 1.18.0 [2021-09-17]
 
 ### Features
@@ -7,6 +11,7 @@
 1. [#365](https://github.com/influxdata/influxdb-client-js/pull/365): Allow following HTTP redirects in node.js.
 
 ### CI
+
 1. [#366](https://github.com/influxdata/influxdb-client-js/pull/366): Switch to next-gen CircleCI's convenience images
 
 ## 1.17.0 [2021-08-25]
