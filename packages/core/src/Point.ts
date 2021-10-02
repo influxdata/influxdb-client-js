@@ -85,7 +85,7 @@ export class Point {
     }
     if (isNaN(val) || val <= -9223372036854776e3 || val >= 9223372036854776e3) {
       throw new Error(
-        `expected integer value for field ${name}, but got '${value}'!`
+        `integer value for field '${name}' out of range: '${value}'!`
       )
     }
     this.fields[name] = `${Math.floor(val)}i`
@@ -102,7 +102,7 @@ export class Point {
   public uintField(name: string, value: number | any): Point {
     if (typeof value === 'number') {
       if (value < 0 || value > Number.MAX_SAFE_INTEGER) {
-        throw new Error(`uint value out of js unsigned integer range: ${value}`)
+        throw new Error(`uint value for field '${name}' out of range: ${value}`)
       }
       this.fields[name] = `${Math.floor(value as number)}u`
     } else {
@@ -120,7 +120,9 @@ export class Point {
         (strVal.length === 20 &&
           strVal.localeCompare('18446744073709551615') > 0)
       ) {
-        throw new Error(`uint value out of range: ${strVal}`)
+        throw new Error(
+          `uint value for field '${name}' out of range: ${strVal}`
+        )
       }
       this.fields[name] = `${strVal}u`
     }
