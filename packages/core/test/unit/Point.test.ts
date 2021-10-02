@@ -161,4 +161,9 @@ describe('Point', () => {
     expect(() => new Point().uintField('a', Number.MAX_VALUE)).throws()
     expect(() => new Point().uintField('a', -1)).throws()
   })
+  it('throws when invalid float is supplied', () => {
+    expect(() => new Point().floatField('a', NaN)).throws()
+    expect(() => new Point().floatField('a', Infinity)).throws()
+    expect(() => new Point().floatField('a', -Infinity)).throws()
+  })
 })

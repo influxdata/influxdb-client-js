@@ -84,9 +84,7 @@ export class Point {
       val = parseInt(String(value))
     }
     if (isNaN(val) || val <= -9223372036854776e3 || val >= 9223372036854776e3) {
-      throw new Error(
-        `integer value for field '${name}' out of range: '${value}'!`
-      )
+      throw new Error(`invalid integer value for field '${name}': '${value}'!`)
     }
     this.fields[name] = `${Math.floor(val)}i`
     return this
@@ -137,16 +135,17 @@ export class Point {
    * @returns this
    */
   public floatField(name: string, value: number | any): Point {
-    if (typeof value !== 'number') {
-      let val: number
-      if (isNaN((val = parseFloat(value)))) {
-        throw new Error(
-          `Expected float value for field ${name}, but got '${value}'!`
-        )
-      }
-      value = val
+    let val: number
+    if (typeof value === 'number') {
+      val = value
+    } else {
+      val = parseFloat(value)
     }
-    this.fields[name] = String(value)
+    if (!isFinite(val)) {
+      throw new Error(`invalid float value for field '${name}': ${value}`)
+    }
+
+    this.fields[name] = String(val)
     return this
   }
 

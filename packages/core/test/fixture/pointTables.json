@@ -67,12 +67,12 @@
   {
     "name": "m6",
     "fields": [["a", "i"]],
-    "throws": "out of range"
+    "throws": "invalid integer"
   },
   {
     "name": "m7",
     "fields": [["a", "n"]],
-    "throws": "Expected float"
+    "throws": "invalid float"
   },
   {
     "name": "m8",
