@@ -77,16 +77,18 @@ export class Point {
    * @returns this
    */
   public intField(name: string, value: number | any): Point {
-    if (typeof value !== 'number') {
-      let val: number
-      if (isNaN((val = parseInt(String(value))))) {
-        throw new Error(
-          `Expected integer value for field ${name}, but got '${value}'!`
-        )
-      }
-      value = val
+    let val: number
+    if (typeof value === 'number') {
+      val = value
+    } else {
+      val = parseInt(String(value))
     }
-    this.fields[name] = `${Math.floor(value as number)}i`
+    if (isNaN(val) || val <= -9223372036854776e3 || val >= 9223372036854776e3) {
+      throw new Error(
+        `expected integer value for field ${name}, but got '${value}'!`
+      )
+    }
+    this.fields[name] = `${Math.floor(val)}i`
     return this
   }
 

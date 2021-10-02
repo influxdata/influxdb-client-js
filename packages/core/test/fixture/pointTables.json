@@ -67,7 +67,7 @@
   {
     "name": "m6",
     "fields": [["a", "i"]],
-    "throws": "Expected integer"
+    "throws": "expected integer"
   },
   {
     "name": "m7",
