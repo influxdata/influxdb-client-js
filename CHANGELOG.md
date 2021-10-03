@@ -2,7 +2,7 @@
 
 ### Bug Fixes
 
-1. [#370](https://github.com/influxdata/influxdb-client-js/pull/370): Throw error when int/unit/float point field is out of range.
+1. [#370](https://github.com/influxdata/influxdb-client-js/pull/370): Throw error when int/uint/float point field is out of range.
 
 ## 1.18.0 [2021-09-17]
 
