@@ -75,18 +75,19 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN or out of int64 range value is supplied
    */
   public intField(name: string, value: number | any): Point {
-    if (typeof value !== 'number') {
-      let val: number
-      if (isNaN((val = parseInt(String(value))))) {
-        throw new Error(
-          `Expected integer value for field ${name}, but got '${value}'!`
-        )
-      }
-      value = val
+    let val: number
+    if (typeof value === 'number') {
+      val = value
+    } else {
+      val = parseInt(String(value))
     }
-    this.fields[name] = `${Math.floor(value as number)}i`
+    if (isNaN(val) || val <= -9223372036854776e3 || val >= 9223372036854776e3) {
+      throw new Error(`invalid integer value for field '${name}': '${value}'!`)
+    }
+    this.fields[name] = `${Math.floor(val)}i`
     return this
   }
 
@@ -96,11 +97,12 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN out of range value is supplied
    */
   public uintField(name: string, value: number | any): Point {
     if (typeof value === 'number') {
-      if (value < 0 || value > Number.MAX_SAFE_INTEGER) {
-        throw new Error(`uint value out of js unsigned integer range: ${value}`)
+      if (isNaN(value) || value < 0 || value > Number.MAX_SAFE_INTEGER) {
+        throw new Error(`uint value for field '${name}' out of range: ${value}`)
       }
       this.fields[name] = `${Math.floor(value as number)}u`
     } else {
@@ -118,7 +120,9 @@ export class Point {
         (strVal.length === 20 &&
           strVal.localeCompare('18446744073709551615') > 0)
       ) {
-        throw new Error(`uint value out of range: ${strVal}`)
+        throw new Error(
+          `uint value for field '${name}' out of range: ${strVal}`
+        )
       }
       this.fields[name] = `${strVal}u`
     }
@@ -131,18 +135,20 @@ export class Point {
    * @param name - field name
    * @param value - field value
    * @returns this
+   * @throws NaN/Infinity/-Infinity is supplied
    */
   public floatField(name: string, value: number | any): Point {
-    if (typeof value !== 'number') {
-      let val: number
-      if (isNaN((val = parseFloat(value)))) {
-        throw new Error(
-          `Expected float value for field ${name}, but got '${value}'!`
-        )
-      }
-      value = val
+    let val: number
+    if (typeof value === 'number') {
+      val = value
+    } else {
+      val = parseFloat(value)
     }
-    this.fields[name] = String(value)
+    if (!isFinite(val)) {
+      throw new Error(`invalid float value for field '${name}': ${value}`)
+    }
+
+    this.fields[name] = String(val)
     return this
   }
 

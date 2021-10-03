@@ -67,12 +67,12 @@
   {
     "name": "m6",
     "fields": [["a", "i"]],
-    "throws": "Expected integer"
+    "throws": "invalid integer"
   },
   {
     "name": "m7",
     "fields": [["a", "n"]],
-    "throws": "Expected float"
+    "throws": "invalid float"
   },
   {
     "name": "m8",
@@ -141,12 +141,12 @@
   {
     "name": "uintNegativeNumber",
     "fields": [["f", "u", -1]],
-    "throws": "uint value out of js unsigned integer range: -1"
+    "throws": "uint value for field 'f' out of range: -1"
   },
   {
     "name": "uintTooLargeNumber",
     "fields": [["f", "u", 9007199254740992]],
-    "throws": "uint value out of js unsigned integer range: 9007199254740992"
+    "throws": "uint value for field 'f' out of range: 9007199254740992"
   },
   {
     "name": "uintNegativeString",
@@ -156,6 +156,6 @@
   {
     "name": "uintTooLargeString",
     "fields": [["f", "u", "18446744073709551616"]],
-    "throws": "uint value out of range: 18446744073709551616"
+    "throws": "uint value for field 'f' out of range: 18446744073709551616"
   }
 ]

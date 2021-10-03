@@ -147,4 +147,23 @@ describe('Point', () => {
       expect(point.toLineProtocol()).equals('tst a=1 any')
     })
   })
+  it('throws when invalid intField is supplied', () => {
+    expect(() => new Point().intField('a', NaN)).throws()
+    expect(() => new Point().intField('a', Infinity)).throws()
+    expect(() => new Point().intField('a', -Infinity)).throws()
+    expect(() => new Point().intField('a', -9223372036854776e3)).throws()
+    expect(() => new Point().intField('a', 9223372036854776e3)).throws()
+  })
+  it('throws when invalid uintField is supplied', () => {
+    expect(() => new Point().uintField('a', NaN)).throws()
+    expect(() => new Point().uintField('a', Infinity)).throws()
+    expect(() => new Point().uintField('a', -Infinity)).throws()
+    expect(() => new Point().uintField('a', Number.MAX_VALUE)).throws()
+    expect(() => new Point().uintField('a', -1)).throws()
+  })
+  it('throws when invalid float is supplied', () => {
+    expect(() => new Point().floatField('a', NaN)).throws()
+    expect(() => new Point().floatField('a', Infinity)).throws()
+    expect(() => new Point().floatField('a', -Infinity)).throws()
+  })
 })
