@@ -11,7 +11,7 @@ const operations: Array<Operation> = JSON.parse(
       __dirname,
       '..',
       'resources',
-      process.argv[2] || 'operations_oss.json'
+      process.argv[2] || 'operations.json'
     ),
     'utf-8'
   )
