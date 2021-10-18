@@ -2,11 +2,11 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostWriteRequest {
-  /** Line protocol body */
+  /** Data in line protocol format. */
   body: string
-  /** Specifies the destination organization for writes. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence. */
   org: string
-  /** Specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence. */
   orgID?: string
   /** The destination bucket for writes. */
   bucket: string
@@ -28,7 +28,7 @@ export class WriteAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Write time series data into InfluxDB.
+   * Write data.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

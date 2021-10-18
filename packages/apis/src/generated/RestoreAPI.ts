@@ -50,7 +50,10 @@ export class RestoreAPI {
   postRestoreKV(
     request: PostRestoreKVRequest,
     requestOptions?: RequestOptions
-  ): Promise<void> {
+  ): Promise<{
+    /** token is the root token for the instance after restore (this is overwritten during the restore) */
+    token?: string
+  }> {
     return this.base.request(
       'POST',
       `/api/v2/restore/kv`,

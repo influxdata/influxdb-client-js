@@ -26,7 +26,7 @@ export interface PostQueryAnalyzeRequest {
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
   body: Query | InfluxQLQuery
-  /** Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence. */
   org?: string
   /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */
   orgID?: string
@@ -120,7 +120,7 @@ export class QueryAPI {
     )
   }
   /**
-   * Query InfluxDB.
+   * Query data.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

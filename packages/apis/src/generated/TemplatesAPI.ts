@@ -31,7 +31,7 @@ export class TemplatesAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Apply or dry-run an InfluxDB Template.
+   * Apply or dry-run a template.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyTemplate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -50,7 +50,7 @@ export class TemplatesAPI {
     )
   }
   /**
-   * Export a new Influx Template.
+   * Export a new template.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ExportTemplate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

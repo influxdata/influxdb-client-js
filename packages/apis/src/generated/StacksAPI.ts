@@ -3,7 +3,7 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {Stack} from './types'
 
 export interface ListStacksRequest {
-  /** The organization id of the stacks */
+  /** The organization ID of the stacks */
   orgID: string
   /** A collection of names to filter the list by. */
   name?: string
@@ -11,7 +11,7 @@ export interface ListStacksRequest {
   stackID?: string
 }
 export interface CreateStackRequest {
-  /** Stack to create. */
+  /** The stack to create. */
   body: {
     orgID?: string
     name?: string
@@ -20,13 +20,13 @@ export interface CreateStackRequest {
   }
 }
 export interface ReadStackRequest {
-  /** Theidentifier of the stack. */
+  /** The identifier of the stack. */
   stack_id: string
 }
 export interface UpdateStackRequest {
-  /** Theidentifier of the stack. */
+  /** The identifier of the stack. */
   stack_id: string
-  /** Influx stack to update. */
+  /** The stack to update. */
   body: {
     name?: string
     description?: string
@@ -39,13 +39,13 @@ export interface UpdateStackRequest {
   }
 }
 export interface DeleteStackRequest {
-  /** Theidentifier of the stack. */
+  /** The identifier of the stack. */
   stack_id: string
   /** The identifier of the organization. */
   orgID: string
 }
 export interface UninstallStackRequest {
-  /** The stack id */
+  /** The identifier of the stack. */
   stack_id: string
 }
 /**
@@ -63,7 +63,7 @@ export class StacksAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all installed InfluxDB templates.
+   * List installed templates.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -124,7 +124,7 @@ export class StacksAPI {
     )
   }
   /**
-   * Update an InfluxDB Stack.
+   * Update a stack.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -163,7 +163,7 @@ export class StacksAPI {
     )
   }
   /**
-   * Uninstall an InfluxDB Stack.
+   * Uninstall a stack.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UninstallStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

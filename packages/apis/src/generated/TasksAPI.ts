@@ -19,26 +19,6 @@ import {
   Tasks,
 } from './types'
 
-export interface GetTasksRequest {
-  /** Returns task with a specific name. */
-  name?: string
-  /** Return tasks after a specified ID. */
-  after?: string
-  /** Filter tasks to a specific user ID. */
-  user?: string
-  /** Filter tasks to a specific organization name. */
-  org?: string
-  /** Filter tasks to a specific organization ID. */
-  orgID?: string
-  /** Filter tasks by a status--"inactive" or "active". */
-  status?: string
-  /** The number of tasks to return */
-  limit?: number
-}
-export interface PostTasksRequest {
-  /** Task to create */
-  body: TaskCreateRequest
-}
 export interface GetTasksIDRequest {
   /** The task ID. */
   taskID: string
@@ -148,6 +128,26 @@ export interface DeleteTasksIDOwnersIDRequest {
   /** The task ID. */
   taskID: string
 }
+export interface GetTasksRequest {
+  /** Returns task with a specific name. */
+  name?: string
+  /** Return tasks after a specified ID. */
+  after?: string
+  /** Filter tasks to a specific user ID. */
+  user?: string
+  /** Filter tasks to a specific organization name. */
+  org?: string
+  /** Filter tasks to a specific organization ID. */
+  orgID?: string
+  /** Filter tasks by a status--"inactive" or "active". */
+  status?: string
+  /** The number of tasks to return */
+  limit?: number
+}
+export interface PostTasksRequest {
+  /** Task to create */
+  body: TaskCreateRequest
+}
 /**
  * Tasks API
  */
@@ -161,51 +161,6 @@ export class TasksAPI {
    */
   constructor(influxDB: InfluxDB) {
     this.base = new APIBase(influxDB)
-  }
-  /**
-   * List all tasks.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasks }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  getTasks(
-    request?: GetTasksRequest,
-    requestOptions?: RequestOptions
-  ): Promise<Tasks> {
-    return this.base.request(
-      'GET',
-      `/api/v2/tasks${this.base.queryString(request, [
-        'name',
-        'after',
-        'user',
-        'org',
-        'orgID',
-        'status',
-        'limit',
-      ])}`,
-      request,
-      requestOptions
-    )
-  }
-  /**
-   * Create a new task.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasks }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  postTasks(
-    request: PostTasksRequest,
-    requestOptions?: RequestOptions
-  ): Promise<Task> {
-    return this.base.request(
-      'POST',
-      `/api/v2/tasks`,
-      request,
-      requestOptions,
-      'application/json'
-    )
   }
   /**
    * Retrieve a task.
@@ -558,6 +513,51 @@ export class TasksAPI {
       `/api/v2/tasks/${request.taskID}/owners/${request.userID}`,
       request,
       requestOptions
+    )
+  }
+  /**
+   * List all tasks.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasks }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  getTasks(
+    request?: GetTasksRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Tasks> {
+    return this.base.request(
+      'GET',
+      `/api/v2/tasks${this.base.queryString(request, [
+        'name',
+        'after',
+        'user',
+        'org',
+        'orgID',
+        'status',
+        'limit',
+      ])}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Create a new task.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasks }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  postTasks(
+    request: PostTasksRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Task> {
+    return this.base.request(
+      'POST',
+      `/api/v2/tasks`,
+      request,
+      requestOptions,
+      'application/json'
     )
   }
 }

@@ -21,25 +21,6 @@ import {
   View,
 } from './types'
 
-export interface GetDashboardsRequest {
-  offset?: number
-  limit?: number
-  descending?: any
-  /** A user identifier. Returns only dashboards where this user has the `owner` role. */
-  owner?: string
-  /** The column to sort by. */
-  sortBy?: string
-  /** A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used. */
-  id?: any
-  /** The identifier of the organization. */
-  orgID?: string
-  /** The name of the organization. */
-  org?: string
-}
-export interface PostDashboardsRequest {
-  /** Dashboard to create */
-  body: CreateDashboardRequest
-}
 export interface GetDashboardsIDRequest {
   /** The ID of the dashboard to update. */
   dashboardID: string
@@ -151,6 +132,25 @@ export interface DeleteDashboardsIDOwnersIDRequest {
   /** The dashboard ID. */
   dashboardID: string
 }
+export interface GetDashboardsRequest {
+  offset?: number
+  limit?: number
+  descending?: any
+  /** A user identifier. Returns only dashboards where this user has the `owner` role. */
+  owner?: string
+  /** The column to sort by. */
+  sortBy?: string
+  /** A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used. */
+  id?: any
+  /** The identifier of the organization. */
+  orgID?: string
+  /** The name of the organization. */
+  org?: string
+}
+export interface PostDashboardsRequest {
+  /** Dashboard to create */
+  body: CreateDashboardRequest
+}
 /**
  * Dashboards API
  */
@@ -164,52 +164,6 @@ export class DashboardsAPI {
    */
   constructor(influxDB: InfluxDB) {
     this.base = new APIBase(influxDB)
-  }
-  /**
-   * List all dashboards.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  getDashboards(
-    request?: GetDashboardsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<Dashboards> {
-    return this.base.request(
-      'GET',
-      `/api/v2/dashboards${this.base.queryString(request, [
-        'offset',
-        'limit',
-        'descending',
-        'owner',
-        'sortBy',
-        'id',
-        'orgID',
-        'org',
-      ])}`,
-      request,
-      requestOptions
-    )
-  }
-  /**
-   * Create a dashboard.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards }
-   * @param request - request parameters and body (if supported)
-   * @param requestOptions - optional transport options
-   * @returns promise of response
-   */
-  postDashboards(
-    request: PostDashboardsRequest,
-    requestOptions?: RequestOptions
-  ): Promise<Dashboard | DashboardWithViewProperties> {
-    return this.base.request(
-      'POST',
-      `/api/v2/dashboards`,
-      request,
-      requestOptions,
-      'application/json'
-    )
   }
   /**
    * Retrieve a Dashboard.
@@ -544,6 +498,52 @@ export class DashboardsAPI {
       `/api/v2/dashboards/${request.dashboardID}/owners/${request.userID}`,
       request,
       requestOptions
+    )
+  }
+  /**
+   * List all dashboards.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboards }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  getDashboards(
+    request?: GetDashboardsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Dashboards> {
+    return this.base.request(
+      'GET',
+      `/api/v2/dashboards${this.base.queryString(request, [
+        'offset',
+        'limit',
+        'descending',
+        'owner',
+        'sortBy',
+        'id',
+        'orgID',
+        'org',
+      ])}`,
+      request,
+      requestOptions
+    )
+  }
+  /**
+   * Create a dashboard.
+   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards }
+   * @param request - request parameters and body (if supported)
+   * @param requestOptions - optional transport options
+   * @returns promise of response
+   */
+  postDashboards(
+    request: PostDashboardsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<Dashboard | DashboardWithViewProperties> {
+    return this.base.request(
+      'POST',
+      `/api/v2/dashboards`,
+      request,
+      requestOptions,
+      'application/json'
     )
   }
 }

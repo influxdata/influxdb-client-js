@@ -19,7 +19,7 @@ export class SigninAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Exchange basic auth credentials for session.
+   * Create a user session.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
