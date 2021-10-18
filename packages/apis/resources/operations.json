@@ -12125,5 +12125,453 @@
         ]
       }
     ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions",
+    "operation": "get",
+    "operationId": "GetFunctions",
+    "basicAuth": false,
+    "summary": "List all Functions",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The name of the organization.",
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "type": "string"
+      },
+      {
+        "name": "limit",
+        "description": "The number of functions to return",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "offset",
+        "description": "Offset for pagination",
+        "required": false,
+        "type": "number"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of functions",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Functions"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions",
+    "operation": "post",
+    "operationId": "PostFunctions",
+    "basicAuth": false,
+    "summary": "Create a new function",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Function to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "FunctionCreateRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Function created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Function"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/trigger",
+    "operation": "post",
+    "operationId": "PostFunctionsTrigger",
+    "basicAuth": false,
+    "summary": "Manually trigger a function without creating an associated function resource",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Function to be triggered",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "FunctionTriggerRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Function successfully triggered",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "FunctionTriggerResponse"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}",
+    "operation": "get",
+    "operationId": "GetFunctionsID",
+    "basicAuth": false,
+    "summary": "Retrieve a function",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "description": "The function ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Function details",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Function"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}",
+    "operation": "patch",
+    "operationId": "PatchFunctionsID",
+    "basicAuth": false,
+    "summary": "Update a function",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "description": "The function ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Function update to apply",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "FunctionUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Updated function",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Function"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}",
+    "operation": "delete",
+    "operationId": "DeleteFunctionsID",
+    "basicAuth": false,
+    "summary": "Delete a function",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "description": "The ID of the function to delete.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Function deleted",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}/invoke",
+    "operation": "get",
+    "operationId": "GetFunctionsIDInvoke",
+    "basicAuth": false,
+    "summary": "Manually invoke a function with params in query",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "params",
+        "type": "any"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Response defined by function",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "FunctionHTTPResponseData"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}/invoke",
+    "operation": "post",
+    "operationId": "PostFunctionsIDInvoke",
+    "basicAuth": false,
+    "summary": "Manually invoke a function with params in request body",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "required": false,
+      "mediaType": "application/json",
+      "type": "FunctionInvocationParams"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Response defined by function",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "FunctionHTTPResponseData"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}/runs",
+    "operation": "get",
+    "operationId": "GetFunctionsIDRuns",
+    "basicAuth": false,
+    "summary": "List runs for a function",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "description": "The ID of the function to get runs for.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [
+      {
+        "name": "limit",
+        "description": "The number of functions to return",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "offset",
+        "description": "Offset for pagination",
+        "required": false,
+        "type": "number"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of function runs",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "FunctionRuns"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/functions/{functionID}/runs/{runID}",
+    "operation": "get",
+    "operationId": "GetFunctionsIDRunsID",
+    "basicAuth": false,
+    "summary": "Retrieve a single run for a function",
+    "positionalParams": [
+      {
+        "name": "functionID",
+        "description": "The function ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "runID",
+        "description": "The run ID.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "The run record",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "FunctionRun"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
   }
 ]

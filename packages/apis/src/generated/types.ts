@@ -2906,3 +2906,110 @@ export interface LineProtocolLengthError {
   /** Max length in bytes for a body of line-protocol. */
   readonly maxLength: number
 }
+
+export interface Functions {
+  functions?: Function[]
+}
+
+export interface Function {
+  readonly id?: string
+  name: string
+  description?: string
+  orgID: string
+  /** script is script to be executed */
+  script: string
+  language?: FunctionLanguage
+  /** invocation endpoint address */
+  url?: string
+  readonly createdAt?: string
+  readonly updatedAt?: string
+}
+
+export type FunctionLanguage = 'python' | 'flux'
+
+export interface FunctionCreateRequest {
+  name: string
+  description?: string
+  orgID: string
+  /** script is script to be executed */
+  script: string
+  language: FunctionLanguage
+}
+
+export type FunctionTriggerRequest = FunctionInvocationParams & {
+  /** script is script to be executed */
+  script: string
+  method: 'GET' | 'POST'
+  orgID?: string
+  org?: string
+  language: FunctionLanguage
+}
+
+export interface FunctionInvocationParams {
+  params?: any
+}
+
+/**
+ * The full response sent to end user when a function is invoked
+ */
+export type FunctionTriggerResponse = FunctionRunBase & {
+  response?: FunctionHTTPResponse
+}
+
+/**
+ * Function trigger response or function run base, response field varies.
+ */
+export interface FunctionRunBase {
+  readonly id?: string
+  status?: 'ok' | 'error'
+  error?: string
+  logs?: FunctionRunLog[]
+  response?: FunctionHTTPResponseNoData
+  readonly startedAt?: string
+}
+
+export interface FunctionRunLog {
+  message?: string
+  timestamp?: string
+  severity?: any
+}
+
+/**
+ * The full response sent to end user when a function is invoked using http
+ */
+export interface FunctionHTTPResponseNoData {
+  type?: 'http'
+  dataType?: 'json'
+  headers?: any
+  statusCode?: '200' | '500' | '404'
+}
+
+/**
+ * The full response sent to end user when a function is invoked using http
+ */
+export type FunctionHTTPResponse = FunctionHTTPResponseNoData & {
+  data?: FunctionHTTPResponseData
+}
+
+/**
+ * The data sent to end user when a function is invoked using http. User defined and dynamic
+ */
+export type FunctionHTTPResponseData = any
+
+export interface FunctionUpdateRequest {
+  name?: string
+  description?: string
+  /** script is script to be executed */
+  script?: string
+}
+
+export interface FunctionRuns {
+  runs?: FunctionRun[]
+}
+
+/**
+ * The record that is kept of a function run, does not include data returned to user
+ */
+export type FunctionRun = FunctionRunBase & {
+  response?: FunctionHTTPResponseNoData
+}
