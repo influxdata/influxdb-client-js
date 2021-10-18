@@ -10,11 +10,12 @@ $ yarn build
 
 ## Re-generate APIs code
 
-- update local resources/swagger.yml to the latest version
+- fetch latest versions of openapi files
   - `wget -O resources/oss.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/oss.yml`
+  - `wget -O resources/managed-functions.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/managed-functions.yml`
 - re-generate src/generated/types.ts and resources/operations.json using [oats](https://github.com/bonitoo/oats)
   - `rm -rf src/generated/*.ts`
-  - `oats -i 'types' --storeOperations resources/operations.json resources/oss.yml > src/generated/types.ts`
+  - `oats -i 'types' --storeOperations resources/operations.json resources/oss.yml resources/managed-functions.yml > src/generated/types.ts`
 - generate src/generated APIs from resources/operations.json
   - `yarn generate`
 - validate
