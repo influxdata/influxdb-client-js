@@ -5,7 +5,7 @@
     "operation": "post",
     "operationId": "PostSignin",
     "basicAuth": true,
-    "summary": "Exchange basic auth credentials for session",
+    "summary": "Create a user session.",
     "positionalParams": [],
     "headerParams": [
       {
@@ -20,12 +20,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "Successfully authenticated",
+        "description": "Success. User authenticated.",
         "mediaTypes": []
       },
       {
         "code": "401",
-        "description": "Unauthorized access",
+        "description": "Unauthorized access.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -35,7 +35,7 @@
       },
       {
         "code": "403",
-        "description": "user account is disabled",
+        "description": "User account is disabled.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -45,7 +45,7 @@
       },
       {
         "code": "default",
-        "description": "Unsuccessful authentication",
+        "description": "Unsuccessful authentication.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -61,7 +61,7 @@
     "operation": "post",
     "operationId": "PostSignout",
     "basicAuth": false,
-    "summary": "Expire the current session",
+    "summary": "Expire the current UI session",
     "positionalParams": [],
     "headerParams": [
       {
@@ -559,7 +559,7 @@
     "operation": "get",
     "operationId": "GetDBRPs",
     "basicAuth": false,
-    "summary": "List all database retention policy mappings",
+    "summary": "List database retention policy mappings",
     "positionalParams": [],
     "headerParams": [
       {
@@ -610,7 +610,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of all database retention policy mappings",
+        "description": "Success. Returns a list of database retention policy mappings.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -620,7 +620,7 @@
       },
       {
         "code": "400",
-        "description": "if any of the parameter passed is invalid",
+        "description": "Bad request. The request has one or more invalid parameters.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -658,7 +658,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "The Database Retention Policy Mapping to add",
+      "description": "The database retention policy mapping to add",
       "required": true,
       "mediaType": "application/json",
       "type": "DBRPCreate"
@@ -666,7 +666,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "The created Database Retention Policy Mapping",
+        "description": "Created. Returns the created database retention policy mapping.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -676,7 +676,7 @@
       },
       {
         "code": "400",
-        "description": "if any of the IDs in the mapping is invalid",
+        "description": "Bad request. The mapping in the request has one or more invalid IDs.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1832,145 +1832,11 @@
   },
   {
     "server": "/api/v2",
-    "path": "/write",
-    "operation": "post",
-    "operationId": "PostWrite",
-    "basicAuth": false,
-    "summary": "Write time series data into InfluxDB",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      },
-      {
-        "name": "Content-Encoding",
-        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
-        "type": "string"
-      },
-      {
-        "name": "Content-Type",
-        "description": "Content-Type is used to indicate the format of the data sent to the server.",
-        "type": "string"
-      },
-      {
-        "name": "Content-Length",
-        "description": "Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent.",
-        "type": "number"
-      },
-      {
-        "name": "Accept",
-        "description": "Specifies the return content format.",
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "Specifies the destination organization for writes. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "Specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
-        "type": "string"
-      },
-      {
-        "name": "bucket",
-        "description": "The destination bucket for writes.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "precision",
-        "description": "The precision for the unix timestamps within the body line-protocol.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "description": "Line protocol body",
-      "required": true,
-      "mediaType": "text/plain",
-      "type": "string"
-    },
-    "responses": [
-      {
-        "code": "204",
-        "description": "Write data is correctly formatted and accepted for writing to the bucket.",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Line protocol poorly formed and no points were written.  Response can be used to determine the first malformed line in the body line-protocol. All data in body was rejected and not written.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LineProtocolError"
-          }
-        ]
-      },
-      {
-        "code": "401",
-        "description": "Token does not have sufficient permissions to write to this organization and bucket or the organization and bucket do not exist.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "403",
-        "description": "No token was sent and they are required.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "413",
-        "description": "Write has been rejected because the payload is too large. Error message returns max size supported. All data in body was rejected and not written.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LineProtocolLengthError"
-          }
-        ]
-      },
-      {
-        "code": "429",
-        "description": "Token is temporarily over quota. The Retry-After header describes when to try the write again.",
-        "mediaTypes": []
-      },
-      {
-        "code": "503",
-        "description": "Server is temporarily unavailable to accept writes.  The Retry-After header describes when to try the write again.",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Internal server error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/delete",
     "operation": "post",
     "operationId": "PostDelete",
     "basicAuth": false,
-    "summary": "Delete time series data from InfluxDB",
+    "summary": "Delete data",
     "positionalParams": [],
     "headerParams": [
       {
@@ -2003,7 +1869,7 @@
       }
     ],
     "bodyParam": {
-      "description": "Predicate delete request",
+      "description": "Deletes data from an InfluxDB bucket.",
       "required": true,
       "mediaType": "application/json",
       "type": "DeletePredicateRequest"
@@ -2291,134 +2157,6 @@
           {
             "mediaType": "application/json",
             "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/dashboards",
-    "operation": "get",
-    "operationId": "GetDashboards",
-    "basicAuth": false,
-    "summary": "List all dashboards",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "offset",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "limit",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "descending",
-        "required": false,
-        "type": "any"
-      },
-      {
-        "name": "owner",
-        "description": "A user identifier. Returns only dashboards where this user has the `owner` role.",
-        "type": "string"
-      },
-      {
-        "name": "sortBy",
-        "description": "The column to sort by.",
-        "type": "string"
-      },
-      {
-        "name": "id",
-        "description": "A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.",
-        "type": "any"
-      },
-      {
-        "name": "orgID",
-        "description": "The identifier of the organization.",
-        "type": "string"
-      },
-      {
-        "name": "org",
-        "description": "The name of the organization.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "All dashboards",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Dashboards"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/dashboards",
-    "operation": "post",
-    "operationId": "PostDashboards",
-    "basicAuth": false,
-    "summary": "Create a dashboard",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Dashboard to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "CreateDashboardRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Added dashboard",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Dashboard | DashboardWithViewProperties"
           }
         ]
       },
@@ -3654,7 +3392,7 @@
     "operation": "post",
     "operationId": "PostQuery",
     "basicAuth": false,
-    "summary": "Query InfluxDB",
+    "summary": "Query data",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3676,7 +3414,7 @@
     "queryParams": [
       {
         "name": "org",
-        "description": "Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "description": "Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence.",
         "type": "string"
       },
       {
@@ -3694,7 +3432,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Query results",
+        "description": "Success. Returns query results.",
         "mediaTypes": [
           {
             "mediaType": "text/csv",
@@ -5303,13 +5041,13 @@
     "operation": "get",
     "operationId": "ListStacks",
     "basicAuth": false,
-    "summary": "List all installed InfluxDB templates",
+    "summary": "List installed templates",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
       {
         "name": "orgID",
-        "description": "The organization id of the stacks",
+        "description": "The organization ID of the stacks",
         "required": true,
         "type": "string"
       },
@@ -5328,7 +5066,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Influx stacks found",
+        "description": "Success. Returns the list of stacks.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5359,7 +5097,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Stack to create.",
+      "description": "The stack to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "{\n  orgID?: string;\n  name?: string;\n  description?: string;\n  urls?: string[];\n}"
@@ -5367,7 +5105,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "InfluxDB Stack created",
+        "description": "Success. Returns the newly created stack.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5397,7 +5135,7 @@
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "Theidentifier of the stack.",
+        "description": "The identifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -5408,7 +5146,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The InfluxDB stack",
+        "description": "Returns the stack.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5434,11 +5172,11 @@
     "operation": "patch",
     "operationId": "UpdateStack",
     "basicAuth": false,
-    "summary": "Update an InfluxDB Stack",
+    "summary": "Update a stack",
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "Theidentifier of the stack.",
+        "description": "The identifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -5446,7 +5184,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Influx stack to update.",
+      "description": "The stack to update.",
       "required": true,
       "mediaType": "application/json",
       "type": "{\n  name?: string;\n  description?: string;\n  templateURLs?: string[];\n  additionalResources?: Array<{\n  resourceID: string;\n  kind: string;\n  templateMetaName?: string;\n}>;\n}"
@@ -5454,7 +5192,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Influx stack updated",
+        "description": "Returns the updated stack.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5484,7 +5222,7 @@
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "Theidentifier of the stack.",
+        "description": "The identifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -5502,7 +5240,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "The stack and its associated resources are deleted",
+        "description": "The stack and its associated resources were deleted.",
         "mediaTypes": []
       },
       {
@@ -5523,11 +5261,11 @@
     "operation": "post",
     "operationId": "UninstallStack",
     "basicAuth": false,
-    "summary": "Uninstall an InfluxDB Stack",
+    "summary": "Uninstall a stack",
     "positionalParams": [
       {
         "name": "stack_id",
-        "description": "The stack id",
+        "description": "The identifier of the stack.",
         "required": true,
         "type": "string"
       }
@@ -5538,7 +5276,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Influx stack uninstalled",
+        "description": "Returns the uninstalled stack.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5564,7 +5302,7 @@
     "operation": "post",
     "operationId": "ApplyTemplate",
     "basicAuth": false,
-    "summary": "Apply or dry-run an InfluxDB Template",
+    "summary": "Apply or dry-run a template",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
@@ -5576,7 +5314,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Influx package dry-run successful, no new resources created. The provided diff and summary will not have IDs for resources that do not exist at the time of the dry run.\n",
+        "description": "Success. The package dry-run succeeded. No new resources were created. Returns a diff and summary of the dry-run. The diff and summary won't contain IDs for resources that didn't exist at the time of the dry-run.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5586,7 +5324,7 @@
       },
       {
         "code": "201",
-        "description": "Influx package applied successfully. Newly created resources created available in summary. The diff compares the state of the world before the package is applied with the changes the application will impose. This corresponds to `\"dryRun\": true`\n",
+        "description": "Success. The package applied successfully. Returns a diff and summary of the run. The summary contains newly created resources. The diff compares the initial state to the state after the package applied. This corresponds to `\"dryRun\": true`.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5612,7 +5350,7 @@
     "operation": "post",
     "operationId": "ExportTemplate",
     "basicAuth": false,
-    "summary": "Export a new Influx Template",
+    "summary": "Export a new template",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
@@ -5625,7 +5363,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "InfluxDB template created",
+        "description": "The template was created successfully. Returns the newly created template.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5634,129 +5372,6 @@
           {
             "mediaType": "application/x-yaml",
             "type": "Template"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/tasks",
-    "operation": "get",
-    "operationId": "GetTasks",
-    "basicAuth": false,
-    "summary": "List all tasks",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "name",
-        "description": "Returns task with a specific name.",
-        "type": "string"
-      },
-      {
-        "name": "after",
-        "description": "Return tasks after a specified ID.",
-        "type": "string"
-      },
-      {
-        "name": "user",
-        "description": "Filter tasks to a specific user ID.",
-        "type": "string"
-      },
-      {
-        "name": "org",
-        "description": "Filter tasks to a specific organization name.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "Filter tasks to a specific organization ID.",
-        "type": "string"
-      },
-      {
-        "name": "status",
-        "description": "Filter tasks by a status--\"inactive\" or \"active\".",
-        "type": "string"
-      },
-      {
-        "name": "limit",
-        "description": "The number of tasks to return",
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of tasks",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Tasks"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/tasks",
-    "operation": "post",
-    "operationId": "PostTasks",
-    "basicAuth": false,
-    "summary": "Create a new task",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Task to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "TaskCreateRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Task created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Task"
           }
         ]
       },
@@ -10947,7 +10562,7 @@
     "operation": "get",
     "operationId": "GetBackupKV",
     "basicAuth": false,
-    "summary": "Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions > 2.1.x, as it doesn't include metadata stored in embedded SQL.",
+    "summary": "Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL.",
     "positionalParams": [],
     "headerParams": [
       {
@@ -11130,6 +10745,16 @@
       "type": "string"
     },
     "responses": [
+      {
+        "code": "200",
+        "description": "KV store successfully overwritten.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** token is the root token for the instance after restore (this is overwritten during the restore) */\n  token?: string;\n}"
+          }
+        ]
+      },
       {
         "code": "204",
         "description": "KV store successfully overwritten.",
@@ -12098,6 +11723,396 @@
             "type": "Error"
           }
         ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dashboards",
+    "operation": "get",
+    "operationId": "GetDashboards",
+    "basicAuth": false,
+    "summary": "List all dashboards",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "offset",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "type": "number"
+      },
+      {
+        "name": "descending",
+        "required": false,
+        "type": "any"
+      },
+      {
+        "name": "owner",
+        "description": "A user identifier. Returns only dashboards where this user has the `owner` role.",
+        "type": "string"
+      },
+      {
+        "name": "sortBy",
+        "description": "The column to sort by.",
+        "type": "string"
+      },
+      {
+        "name": "id",
+        "description": "A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.",
+        "type": "any"
+      },
+      {
+        "name": "orgID",
+        "description": "The identifier of the organization.",
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "The name of the organization.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "All dashboards",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Dashboards"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/dashboards",
+    "operation": "post",
+    "operationId": "PostDashboards",
+    "basicAuth": false,
+    "summary": "Create a dashboard",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Dashboard to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "CreateDashboardRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Added dashboard",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Dashboard | DashboardWithViewProperties"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/tasks",
+    "operation": "get",
+    "operationId": "GetTasks",
+    "basicAuth": false,
+    "summary": "List all tasks",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "name",
+        "description": "Returns task with a specific name.",
+        "type": "string"
+      },
+      {
+        "name": "after",
+        "description": "Return tasks after a specified ID.",
+        "type": "string"
+      },
+      {
+        "name": "user",
+        "description": "Filter tasks to a specific user ID.",
+        "type": "string"
+      },
+      {
+        "name": "org",
+        "description": "Filter tasks to a specific organization name.",
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "Filter tasks to a specific organization ID.",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "description": "Filter tasks by a status--\"inactive\" or \"active\".",
+        "type": "string"
+      },
+      {
+        "name": "limit",
+        "description": "The number of tasks to return",
+        "type": "number"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "A list of tasks",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Tasks"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/tasks",
+    "operation": "post",
+    "operationId": "PostTasks",
+    "basicAuth": false,
+    "summary": "Create a new task",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "Task to create",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "TaskCreateRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Task created",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/write",
+    "operation": "post",
+    "operationId": "PostWrite",
+    "basicAuth": false,
+    "summary": "Write data",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Encoding",
+        "description": "When present, the header value tells the database that compression is applied to the line protocol in the request body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "description": "The header value indicates the format of the data in the request body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Length",
+        "description": "The header value indicates the size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
+        "type": "number"
+      },
+      {
+        "name": "Accept",
+        "description": "The header value specifies the response format.",
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "type": "string"
+      },
+      {
+        "name": "bucket",
+        "description": "The destination bucket for writes.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "precision",
+        "description": "The precision for the unix timestamps within the body line-protocol.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "description": "Data in line protocol format.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.0/write-data/troubleshoot).",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Bad request. The line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "LineProtocolError"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token does not have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found. A requested resource was not found. The response body contains the requested resource type, e.g. `organization name` or `bucket`, and name.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "413",
+        "description": "All request data was rejected and not written. InfluxDB OSS only returns this error if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "LineProtocolLengthError"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "503",
+        "description": "The server is temporarily unavailable to accept writes.  The `Retry-After` header describes when to try the write again.",
+        "mediaTypes": []
       },
       {
         "code": "default",

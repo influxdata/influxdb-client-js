@@ -1,13 +1,28 @@
 /* eslint-disable no-console */
 import fs from 'fs'
 import path from 'path'
-import _operations from '../resources/operations.json'
 import {Operation} from './operationType'
 import {generateApi} from './generateApi'
 import logger from './logger'
 
-const targetDir = path.join(__dirname, '..', 'src', 'generated')
-const operations: Array<Operation> = _operations
+const operations: Array<Operation> = JSON.parse(
+  fs.readFileSync(
+    path.join(
+      __dirname,
+      '..',
+      'resources',
+      process.argv[2] || 'operations_oss.json'
+    ),
+    'utf-8'
+  )
+) as Array<Operation>
+
+const targetDir = path.join(
+  __dirname,
+  '..',
+  'src',
+  process.argv[3] || 'generated'
+)
 
 // reduce operations to apis
 const apis = operations.reduce(
