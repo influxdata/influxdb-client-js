@@ -19,7 +19,7 @@ export interface GetDBRPsRequest {
   rp?: string
 }
 export interface PostDBRPRequest {
-  /** The Database Retention Policy Mapping to add */
+  /** The database retention policy mapping to add */
   body: DBRPCreate
 }
 export interface GetDBRPsIDRequest {
@@ -63,7 +63,7 @@ export class DbrpsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all database retention policy mappings.
+   * List database retention policy mappings.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

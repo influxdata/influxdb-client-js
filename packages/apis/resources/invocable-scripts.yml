@@ -1,0 +1,279 @@
+openapi: 3.0.0
+info:
+  title: Influxdata API Invocable Scripts CRUD API
+  version: 0.1.0
+servers:
+  - url: /api/v2
+paths:
+  /scripts:
+    get:
+      operationId: GetScripts
+      tags:
+        - Scripts
+      summary: List all Scripts
+      parameters:
+        - in: query
+          name: limit
+          description: The number of scripts to return
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: offset
+          required: false
+          description: Offset for pagination
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of scripts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scripts'
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: PostScripts
+      tags:
+        - Scripts
+      summary: Create a new script
+      requestBody:
+        description: Script to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptCreateRequest'
+      responses:
+        '201':
+          description: Script created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Script'
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+  '/scripts/{scriptID}':
+    get:
+      operationId: GetScriptsID
+      tags:
+        - Scripts
+      summary: Retrieve a script
+      parameters:
+        - in: path
+          name: scriptID
+          schema:
+            type: string
+          required: true
+          description: The script ID.
+      responses:
+        '200':
+          description: Script details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Script'
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+    patch:
+      operationId: PatchScriptsID
+      tags:
+        - Scripts
+      summary: Update a script
+      description: Update a script
+      requestBody:
+        description: Script update to apply
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptUpdateRequest'
+      parameters:
+        - in: path
+          name: scriptID
+          schema:
+            type: string
+          required: true
+          description: The script ID.
+      responses:
+        '200':
+          description: Updated script
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Script'
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: DeleteScriptsID
+      tags:
+        - Scripts
+      summary: Delete a script
+      description: Deletes a script and all associated records
+      parameters:
+        - in: path
+          name: scriptID
+          schema:
+            type: string
+          required: true
+          description: The ID of the script to delete.
+      responses:
+        '204':
+          description: Script deleted
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+  '/scripts/{scriptID}/invoke':
+    post:
+      operationId: PostScriptsIDInvoke
+      tags:
+        - Scripts
+      summary: Manually invoke a script with params in request body
+      parameters:
+        - in: path
+          name: scriptID
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptInvocationParams'
+      responses:
+        '200':
+          description: Response defined by script
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScriptHTTPResponseData'
+        default:
+          description: Unexpected error
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    ServerError:
+      description: Non 2XX error response from server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      properties:
+        code:
+          description: code is the machine-readable error code.
+          readOnly: true
+          type: string
+          enum:
+            - internal error
+            - not found
+            - conflict
+            - invalid
+            - unprocessable entity
+            - empty value
+            - unavailable
+            - forbidden
+            - too many requests
+            - unauthorized
+            - method not allowed
+            - request too large
+            - unsupported media type
+        message:
+          readOnly: true
+          description: message is a human-readable message.
+          type: string
+        op:
+          readOnly: true
+          description: op describes the logical code operation during error. Useful for debugging.
+          type: string
+        err:
+          readOnly: true
+          description: err is a stack of errors that occurred during processing of the request. Useful for debugging.
+          type: string
+      required:
+        - code
+        - message
+    Script:
+      properties:
+        id:
+          readOnly: true
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        orgID:
+          type: string
+        script:
+          description: script to be executed
+          type: string
+        language:
+          $ref: '#/components/schemas/ScriptLanguage'
+        url:
+          type: string
+          description: invocation endpoint address
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - name
+        - orgID
+        - script
+    Scripts:
+      type: object
+      properties:
+        scripts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Script'
+    ScriptCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        script:
+          description: script to be executed
+          type: string
+        language:
+          $ref: '#/components/schemas/ScriptLanguage'
+      required:
+        - name
+        - orgID
+        - script
+        - language
+        - description
+    ScriptUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        script:
+          description: script is script to be executed
+          type: string
+    ScriptHTTPResponseData:
+      description: The data sent to end user when a script is invoked using http. User defined and dynamic
+      type: string
+    ScriptInvocationParams:
+      type: object
+      properties:
+        params:
+          type: object
+    ScriptLanguage:
+      type: string
+      enum:
+        - flux

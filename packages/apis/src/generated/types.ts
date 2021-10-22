@@ -58,92 +58,6 @@ export interface Routes {
   write?: string
 }
 
-export interface Documents {
-  documents?: DocumentListEntry[]
-}
-
-export interface DocumentListEntry {
-  readonly id: string
-  meta: DocumentMeta
-  labels?: Labels
-  readonly links?: {
-    /** The document URL. */
-    self?: Link
-  }
-}
-
-export interface DocumentMeta {
-  name: string
-  type?: string
-  templateID?: string
-  description?: string
-  version: string
-  readonly createdAt?: string
-  readonly updatedAt?: string
-}
-
-export type Labels = Label[]
-
-export interface Label {
-  readonly id?: string
-  readonly orgID?: string
-  name?: string
-  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
-  properties?: any
-}
-
-/**
- * URI of resource.
- */
-export type Link = string
-
-export interface DocumentCreate {
-  meta: DocumentMeta
-  content: any
-  /** The organization Name. Specify either `orgID` or `org`. */
-  org?: string
-  /** The organization Name. Specify either `orgID` or `org`. */
-  orgID?: string
-  /** An array of label IDs to be added as labels to the document. */
-  labels?: string[]
-}
-
-export interface Document {
-  readonly id: string
-  meta: DocumentMeta
-  content: any
-  labels?: Labels
-  readonly links?: {
-    /** The document URL. */
-    self?: Link
-  }
-}
-
-export interface DocumentUpdate {
-  meta?: DocumentMeta
-  content?: any
-}
-
-export interface LabelsResponse {
-  labels?: Labels
-  links?: Links
-}
-
-export interface Links {
-  next?: Link
-  self: Link
-  prev?: Link
-}
-
-export interface LabelMapping {
-  labelID?: string
-}
-
-export interface LabelResponse {
-  label?: Label
-  links?: Links
-}
-
 export interface DBRPs {
   content?: DBRP[]
 }
@@ -163,6 +77,17 @@ export interface DBRP {
   default: boolean
   links?: Links
 }
+
+export interface Links {
+  next?: Link
+  self: Link
+  prev?: Link
+}
+
+/**
+ * URI of resource.
+ */
+export type Link = string
 
 export interface DBRPCreate {
   /** the organization ID that owns this mapping. */
@@ -227,6 +152,30 @@ export interface TelegrafRequest {
   orgID?: string
 }
 
+export type Labels = Label[]
+
+export interface Label {
+  readonly id?: string
+  readonly orgID?: string
+  name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
+  properties?: any
+}
+
+export interface LabelsResponse {
+  labels?: Labels
+  links?: Links
+}
+
+export interface LabelMapping {
+  labelID?: string
+}
+
+export interface LabelResponse {
+  label?: Label
+  links?: Links
+}
+
 export interface ResourceMembers {
   links?: {
     self?: string
@@ -265,34 +214,6 @@ export type ResourceOwner = UserResponse & {
   role?: 'owner'
 }
 
-export interface LineProtocolError {
-  /** Code is the machine-readable error code. */
-  readonly code:
-    | 'internal error'
-    | 'not found'
-    | 'conflict'
-    | 'invalid'
-    | 'empty value'
-    | 'unavailable'
-  /** Message is a human-readable message. */
-  readonly message: string
-  /** Op describes the logical code operation during error. Useful for debugging. */
-  readonly op: string
-  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
-  readonly err: string
-  /** First line within sent body containing malformed data */
-  readonly line?: number
-}
-
-export interface LineProtocolLengthError {
-  /** Code is the machine-readable error code. */
-  readonly code: 'invalid'
-  /** Message is a human-readable message. */
-  readonly message: string
-  /** Max length in bytes for a body of line-protocol. */
-  readonly maxLength: number
-}
-
 /**
  * The delete predicate request.
  */
@@ -316,11 +237,6 @@ export interface LabelUpdate {
   name?: string
   /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
   properties?: any
-}
-
-export interface Dashboards {
-  links?: Links
-  dashboards?: Dashboard[]
 }
 
 export type Dashboard = CreateDashboardRequest & {
@@ -398,6 +314,7 @@ export type ViewProperties =
   | HistogramViewProperties
   | GaugeViewProperties
   | TableViewProperties
+  | SimpleTableViewProperties
   | MarkdownViewProperties
   | CheckViewProperties
   | ScatterViewProperties
@@ -664,6 +581,16 @@ export interface RenamableField {
   displayName?: string
   /** Indicates whether this field should be visible on the table. */
   visible?: boolean
+}
+
+export interface SimpleTableViewProperties {
+  type: 'simple-table'
+  showAll: boolean
+  queries: DashboardQuery[]
+  shape: 'chronograf-v2'
+  note: string
+  /** If true, will display note when empty */
+  showNoteWhenEmpty: boolean
 }
 
 export interface MarkdownViewProperties {
@@ -2215,11 +2142,6 @@ export interface TemplateExportByName {
   }>
 }
 
-export interface Tasks {
-  readonly links?: Links
-  tasks?: Task[]
-}
-
 export interface Task {
   readonly id: string
   /** The type of task, this can be used for filtering tasks on list actions. */
@@ -2260,18 +2182,6 @@ export interface Task {
     logs?: Link
     labels?: Link
   }
-}
-
-export interface TaskCreateRequest {
-  /** The ID of the organization that owns this Task. */
-  orgID?: string
-  /** The name of the organization that owns this Task. */
-  org?: string
-  status?: TaskStatusType
-  /** The Flux script to run for this task. */
-  flux: string
-  /** An optional description of the task. */
-  description?: string
 }
 
 export interface TaskUpdateRequest {
@@ -2868,12 +2778,13 @@ export interface Replication {
   id: string
   name: string
   description?: string
+  orgID: string
   remoteID: string
   localBucketID: string
   remoteBucketID: string
-  maxQueueSizeBytes: any
-  currentQueueSizeBytes: any
-  latestResponseCode?: any
+  maxQueueSizeBytes: number
+  currentQueueSizeBytes: number
+  latestResponseCode?: number
   latestErrorMessage?: string
 }
 
@@ -2882,9 +2793,9 @@ export interface ReplicationCreationRequest {
   description?: string
   orgID: string
   remoteID: string
-  localBucketID?: string
-  remoteBucketID?: string
-  maxQueueSizeBytes: any
+  localBucketID: string
+  remoteBucketID: string
+  maxQueueSizeBytes: number
 }
 
 export interface ReplicationUpdateRequest {
@@ -2892,5 +2803,99 @@ export interface ReplicationUpdateRequest {
   description?: string
   remoteID?: string
   remoteBucketID?: string
-  maxQueueSizeBytes?: any
+  maxQueueSizeBytes?: number
 }
+
+export interface Dashboards {
+  links?: Links
+  dashboards?: Dashboard[]
+}
+
+export interface Tasks {
+  readonly links?: Links
+  tasks?: Task[]
+}
+
+export interface TaskCreateRequest {
+  /** The ID of the organization that owns this Task. */
+  orgID?: string
+  /** The name of the organization that owns this Task. */
+  org?: string
+  status?: TaskStatusType
+  /** The Flux script to run for this task. */
+  flux: string
+  /** An optional description of the task. */
+  description?: string
+}
+
+export interface LineProtocolError {
+  /** Code is the machine-readable error code. */
+  readonly code:
+    | 'internal error'
+    | 'not found'
+    | 'conflict'
+    | 'invalid'
+    | 'empty value'
+    | 'unavailable'
+  /** Message is a human-readable message. */
+  readonly message: string
+  /** Op describes the logical code operation during error. Useful for debugging. */
+  readonly op: string
+  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
+  readonly err: string
+  /** First line within sent body containing malformed data */
+  readonly line?: number
+}
+
+export interface LineProtocolLengthError {
+  /** Code is the machine-readable error code. */
+  readonly code: 'invalid'
+  /** Message is a human-readable message. */
+  readonly message: string
+  /** Max length in bytes for a body of line-protocol. */
+  readonly maxLength: number
+}
+
+export interface Scripts {
+  scripts?: Script[]
+}
+
+export interface Script {
+  readonly id?: string
+  name: string
+  description?: string
+  orgID: string
+  /** script to be executed */
+  script: string
+  language?: ScriptLanguage
+  /** invocation endpoint address */
+  url?: string
+  readonly createdAt?: string
+  readonly updatedAt?: string
+}
+
+export type ScriptLanguage = 'flux'
+
+export interface ScriptCreateRequest {
+  name: string
+  description: string
+  /** script to be executed */
+  script: string
+  language: ScriptLanguage
+}
+
+export interface ScriptUpdateRequest {
+  name?: string
+  description?: string
+  /** script is script to be executed */
+  script?: string
+}
+
+export interface ScriptInvocationParams {
+  params?: any
+}
+
+/**
+ * The data sent to end user when a script is invoked using http. User defined and dynamic
+ */
+export type ScriptHTTPResponseData = string

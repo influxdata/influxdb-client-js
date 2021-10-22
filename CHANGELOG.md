@@ -1,5 +1,10 @@
 ## 1.20.0 [unreleased]
 
+### Features
+
+1. [#374](https://github.com/influxdata/influxdb-client-js/pull/374): Add FunctionsAPI.
+1. [#374](https://github.com/influxdata/influxdb-client-js/pull/374): Regenerate APIs from swagger.
+
 ## 1.19.0 [2021-10-22]
 
 ### Bug Fixes

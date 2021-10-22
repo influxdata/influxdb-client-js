@@ -3,7 +3,7 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {DeletePredicateRequest} from './types'
 
 export interface PostDeleteRequest {
-  /** Predicate delete request */
+  /** Deletes data from an InfluxDB bucket. */
   body: DeletePredicateRequest
   /** Specifies the organization to delete data from. */
   org?: string
@@ -29,7 +29,7 @@ export class DeleteAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Delete time series data from InfluxDB.
+   * Delete data.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
