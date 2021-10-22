@@ -25,3 +25,7 @@ uintField(name: string, value: number | any): Point;
 
 this
 
+## Exceptions
+
+NaN out of range value is supplied
+

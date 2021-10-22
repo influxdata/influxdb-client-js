@@ -25,3 +25,7 @@ floatField(name: string, value: number | any): Point;
 
 this
 
+## Exceptions
+
+NaN/Infinity/-Infinity is supplied
+

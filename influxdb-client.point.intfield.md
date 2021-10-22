@@ -25,3 +25,7 @@ intField(name: string, value: number | any): Point;
 
 this
 
+## Exceptions
+
+NaN or out of int64 range value is supplied
+
