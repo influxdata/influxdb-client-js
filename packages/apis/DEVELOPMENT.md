@@ -12,7 +12,7 @@ $ yarn build
 
 - fetch latest versions of openapi files
   - `wget -O resources/oss.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/oss.yml`
-  - `wget -O resources/managed-functions.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/managed-functions.yml`
+  - `wget -O resources/managed-functions.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/invocable-scripts.yml`
 - re-generate src/generated/types.ts and resources/operations.json using [oats](https://github.com/bonitoo/oats)
   - `rm -rf src/generated/*.ts`
   - `oats -i 'types' --storeOperations resources/operations.json resources/oss.yml resources/managed-functions.yml > src/generated/types.ts`
