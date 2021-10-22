@@ -143,6 +143,8 @@ export interface GetTasksRequest {
   status?: string
   /** The number of tasks to return */
   limit?: number
+  /** Type of task, unset by default. */
+  type?: string
 }
 export interface PostTasksRequest {
   /** Task to create */
@@ -536,6 +538,7 @@ export class TasksAPI {
         'orgID',
         'status',
         'limit',
+        'type',
       ])}`,
       request,
       requestOptions

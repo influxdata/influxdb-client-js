@@ -58,92 +58,6 @@ export interface Routes {
   write?: string
 }
 
-export interface Documents {
-  documents?: DocumentListEntry[]
-}
-
-export interface DocumentListEntry {
-  readonly id: string
-  meta: DocumentMeta
-  labels?: Labels
-  readonly links?: {
-    /** The document URL. */
-    self?: Link
-  }
-}
-
-export interface DocumentMeta {
-  name: string
-  type?: string
-  templateID?: string
-  description?: string
-  version: string
-  readonly createdAt?: string
-  readonly updatedAt?: string
-}
-
-export type Labels = Label[]
-
-export interface Label {
-  readonly id?: string
-  readonly orgID?: string
-  name?: string
-  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
-  properties?: any
-}
-
-/**
- * URI of resource.
- */
-export type Link = string
-
-export interface DocumentCreate {
-  meta: DocumentMeta
-  content: any
-  /** The organization Name. Specify either `orgID` or `org`. */
-  org?: string
-  /** The organization Name. Specify either `orgID` or `org`. */
-  orgID?: string
-  /** An array of label IDs to be added as labels to the document. */
-  labels?: string[]
-}
-
-export interface Document {
-  readonly id: string
-  meta: DocumentMeta
-  content: any
-  labels?: Labels
-  readonly links?: {
-    /** The document URL. */
-    self?: Link
-  }
-}
-
-export interface DocumentUpdate {
-  meta?: DocumentMeta
-  content?: any
-}
-
-export interface LabelsResponse {
-  labels?: Labels
-  links?: Links
-}
-
-export interface Links {
-  next?: Link
-  self: Link
-  prev?: Link
-}
-
-export interface LabelMapping {
-  labelID?: string
-}
-
-export interface LabelResponse {
-  label?: Label
-  links?: Links
-}
-
 export interface DBRPs {
   content?: DBRP[]
 }
@@ -163,6 +77,17 @@ export interface DBRP {
   default: boolean
   links?: Links
 }
+
+export interface Links {
+  next?: Link
+  self: Link
+  prev?: Link
+}
+
+/**
+ * URI of resource.
+ */
+export type Link = string
 
 export interface DBRPCreate {
   /** the organization ID that owns this mapping. */
@@ -225,6 +150,30 @@ export interface TelegrafRequest {
   }
   config?: string
   orgID?: string
+}
+
+export type Labels = Label[]
+
+export interface Label {
+  readonly id?: string
+  readonly orgID?: string
+  name?: string
+  /** Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. */
+  properties?: any
+}
+
+export interface LabelsResponse {
+  labels?: Labels
+  links?: Links
+}
+
+export interface LabelMapping {
+  labelID?: string
+}
+
+export interface LabelResponse {
+  label?: Label
+  links?: Links
 }
 
 export interface ResourceMembers {
@@ -2907,109 +2856,46 @@ export interface LineProtocolLengthError {
   readonly maxLength: number
 }
 
-export interface Functions {
-  functions?: Function[]
+export interface Scripts {
+  scripts?: Script[]
 }
 
-export interface Function {
+export interface Script {
   readonly id?: string
   name: string
   description?: string
   orgID: string
-  /** script is script to be executed */
+  /** script to be executed */
   script: string
-  language?: FunctionLanguage
+  language?: ScriptLanguage
   /** invocation endpoint address */
   url?: string
   readonly createdAt?: string
   readonly updatedAt?: string
 }
 
-export type FunctionLanguage = 'python' | 'flux'
+export type ScriptLanguage = 'flux'
 
-export interface FunctionCreateRequest {
+export interface ScriptCreateRequest {
   name: string
-  description?: string
-  orgID: string
-  /** script is script to be executed */
+  description: string
+  /** script to be executed */
   script: string
-  language: FunctionLanguage
+  language: ScriptLanguage
 }
 
-export type FunctionTriggerRequest = FunctionInvocationParams & {
-  /** script is script to be executed */
-  script: string
-  method: 'GET' | 'POST'
-  orgID?: string
-  org?: string
-  language: FunctionLanguage
-}
-
-export interface FunctionInvocationParams {
-  params?: any
-}
-
-/**
- * The full response sent to end user when a function is invoked
- */
-export type FunctionTriggerResponse = FunctionRunBase & {
-  response?: FunctionHTTPResponse
-}
-
-/**
- * Function trigger response or function run base, response field varies.
- */
-export interface FunctionRunBase {
-  readonly id?: string
-  status?: 'ok' | 'error'
-  error?: string
-  logs?: FunctionRunLog[]
-  response?: FunctionHTTPResponseNoData
-  readonly startedAt?: string
-}
-
-export interface FunctionRunLog {
-  message?: string
-  timestamp?: string
-  severity?: any
-}
-
-/**
- * The full response sent to end user when a function is invoked using http
- */
-export interface FunctionHTTPResponseNoData {
-  type?: 'http'
-  dataType?: 'json'
-  headers?: any
-  statusCode?: '200' | '500' | '404'
-}
-
-/**
- * The full response sent to end user when a function is invoked using http
- */
-export type FunctionHTTPResponse = FunctionHTTPResponseNoData & {
-  data?: FunctionHTTPResponseData
-}
-
-/**
- * The data sent to end user when a function is invoked using http. User defined and dynamic
- */
-export type FunctionHTTPResponseData = any
-
-export interface FunctionUpdateRequest {
+export interface ScriptUpdateRequest {
   name?: string
   description?: string
   /** script is script to be executed */
   script?: string
 }
 
-export interface FunctionRuns {
-  runs?: FunctionRun[]
+export interface ScriptInvocationParams {
+  params?: any
 }
 
 /**
- * The record that is kept of a function run, does not include data returned to user
+ * The data sent to end user when a script is invoked using http. User defined and dynamic
  */
-export type FunctionRun = FunctionRunBase & {
-  response?: FunctionHTTPResponseNoData
-}
+export type ScriptHTTPResponseData = string

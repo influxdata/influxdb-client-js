@@ -153,408 +153,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/documents/templates",
-    "operation": "get",
-    "operationId": "GetDocumentsTemplates",
-    "basicAuth": false,
-    "summary": "List all templates",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "Specifies the name of the organization of the template.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "Specifies the organization ID of the template.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of template documents",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Documents"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates",
-    "operation": "post",
-    "operationId": "PostDocumentsTemplates",
-    "basicAuth": false,
-    "summary": "Create a template",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Template that will be created",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "DocumentCreate"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Template created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Document"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}",
-    "operation": "get",
-    "operationId": "GetDocumentsTemplatesID",
-    "basicAuth": false,
-    "summary": "Retrieve a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "The template requested",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Document"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}",
-    "operation": "put",
-    "operationId": "PutDocumentsTemplatesID",
-    "basicAuth": false,
-    "summary": "Update a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Template that will be updated",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "DocumentUpdate"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "The newly updated template",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Document"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}",
-    "operation": "delete",
-    "operationId": "DeleteDocumentsTemplatesID",
-    "basicAuth": false,
-    "summary": "Delete a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Delete has been accepted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}/labels",
-    "operation": "get",
-    "operationId": "GetDocumentsTemplatesIDLabels",
-    "basicAuth": false,
-    "summary": "List all labels for a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of all labels for a template",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelsResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}/labels",
-    "operation": "post",
-    "operationId": "PostDocumentsTemplatesIDLabels",
-    "basicAuth": false,
-    "summary": "Add a label to a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Label to add",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "LabelMapping"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "The label added to the template",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LabelResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/documents/templates/{templateID}/labels/{labelID}",
-    "operation": "delete",
-    "operationId": "DeleteDocumentsTemplatesIDLabelsID",
-    "basicAuth": false,
-    "summary": "Delete a label from a template",
-    "positionalParams": [
-      {
-        "name": "templateID",
-        "description": "The template ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "labelID",
-        "description": "The label ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Delete has been accepted",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Template not found",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/dbrps",
     "operation": "get",
     "operationId": "GetDBRPs",
@@ -11915,6 +11513,12 @@
         "name": "limit",
         "description": "The number of tasks to return",
         "type": "number"
+      },
+      {
+        "name": "type",
+        "description": "Type of task, unset by default.",
+        "required": false,
+        "type": "string"
       }
     ],
     "bodyParam": null,
@@ -12128,27 +11732,17 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions",
+    "path": "/scripts",
     "operation": "get",
-    "operationId": "GetFunctions",
+    "operationId": "GetScripts",
     "basicAuth": false,
-    "summary": "List all Functions",
+    "summary": "List all Scripts",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
       {
-        "name": "org",
-        "description": "The name of the organization.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "type": "string"
-      },
-      {
         "name": "limit",
-        "description": "The number of functions to return",
+        "description": "The number of scripts to return",
         "required": false,
         "type": "number"
       },
@@ -12163,11 +11757,11 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of functions",
+        "description": "A list of scripts",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Functions"
+            "type": "Scripts"
           }
         ]
       },
@@ -12185,28 +11779,28 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions",
+    "path": "/scripts",
     "operation": "post",
-    "operationId": "PostFunctions",
+    "operationId": "PostScripts",
     "basicAuth": false,
-    "summary": "Create a new function",
+    "summary": "Create a new script",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Function to create",
+      "description": "Script to create",
       "required": true,
       "mediaType": "application/json",
-      "type": "FunctionCreateRequest"
+      "type": "ScriptCreateRequest"
     },
     "responses": [
       {
         "code": "201",
-        "description": "Function created",
+        "description": "Script created",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Function"
+            "type": "Script"
           }
         ]
       },
@@ -12224,54 +11818,15 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions/trigger",
-    "operation": "post",
-    "operationId": "PostFunctionsTrigger",
-    "basicAuth": false,
-    "summary": "Manually trigger a function without creating an associated function resource",
-    "positionalParams": [],
-    "headerParams": [],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Function to be triggered",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "FunctionTriggerRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Function successfully triggered",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "FunctionTriggerResponse"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/functions/{functionID}",
+    "path": "/scripts/{scriptID}",
     "operation": "get",
-    "operationId": "GetFunctionsID",
+    "operationId": "GetScriptsID",
     "basicAuth": false,
-    "summary": "Retrieve a function",
+    "summary": "Retrieve a script",
     "positionalParams": [
       {
-        "name": "functionID",
-        "description": "The function ID.",
+        "name": "scriptID",
+        "description": "The script ID.",
         "required": true,
         "type": "string"
       }
@@ -12282,11 +11837,11 @@
     "responses": [
       {
         "code": "200",
-        "description": "Function details",
+        "description": "Script details",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Function"
+            "type": "Script"
           }
         ]
       },
@@ -12304,15 +11859,15 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions/{functionID}",
+    "path": "/scripts/{scriptID}",
     "operation": "patch",
-    "operationId": "PatchFunctionsID",
+    "operationId": "PatchScriptsID",
     "basicAuth": false,
-    "summary": "Update a function",
+    "summary": "Update a script",
     "positionalParams": [
       {
-        "name": "functionID",
-        "description": "The function ID.",
+        "name": "scriptID",
+        "description": "The script ID.",
         "required": true,
         "type": "string"
       }
@@ -12320,19 +11875,19 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Function update to apply",
+      "description": "Script update to apply",
       "required": true,
       "mediaType": "application/json",
-      "type": "FunctionUpdateRequest"
+      "type": "ScriptUpdateRequest"
     },
     "responses": [
       {
         "code": "200",
-        "description": "Updated function",
+        "description": "Updated script",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Function"
+            "type": "Script"
           }
         ]
       },
@@ -12350,15 +11905,15 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions/{functionID}",
+    "path": "/scripts/{scriptID}",
     "operation": "delete",
-    "operationId": "DeleteFunctionsID",
+    "operationId": "DeleteScriptsID",
     "basicAuth": false,
-    "summary": "Delete a function",
+    "summary": "Delete a script",
     "positionalParams": [
       {
-        "name": "functionID",
-        "description": "The ID of the function to delete.",
+        "name": "scriptID",
+        "description": "The ID of the script to delete.",
         "required": true,
         "type": "string"
       }
@@ -12369,7 +11924,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "Function deleted",
+        "description": "Script deleted",
         "mediaTypes": []
       },
       {
@@ -12386,59 +11941,14 @@
   },
   {
     "server": "/api/v2",
-    "path": "/functions/{functionID}/invoke",
-    "operation": "get",
-    "operationId": "GetFunctionsIDInvoke",
-    "basicAuth": false,
-    "summary": "Manually invoke a function with params in query",
-    "positionalParams": [
-      {
-        "name": "functionID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [],
-    "queryParams": [
-      {
-        "name": "params",
-        "type": "any"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Response defined by function",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "FunctionHTTPResponseData"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/functions/{functionID}/invoke",
+    "path": "/scripts/{scriptID}/invoke",
     "operation": "post",
-    "operationId": "PostFunctionsIDInvoke",
+    "operationId": "PostScriptsIDInvoke",
     "basicAuth": false,
-    "summary": "Manually invoke a function with params in request body",
+    "summary": "Manually invoke a script with params in request body",
     "positionalParams": [
       {
-        "name": "functionID",
+        "name": "scriptID",
         "required": true,
         "type": "string"
       }
@@ -12448,117 +11958,16 @@
     "bodyParam": {
       "required": false,
       "mediaType": "application/json",
-      "type": "FunctionInvocationParams"
+      "type": "ScriptInvocationParams"
     },
     "responses": [
       {
         "code": "200",
-        "description": "Response defined by function",
+        "description": "Response defined by script",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "FunctionHTTPResponseData"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/functions/{functionID}/runs",
-    "operation": "get",
-    "operationId": "GetFunctionsIDRuns",
-    "basicAuth": false,
-    "summary": "List runs for a function",
-    "positionalParams": [
-      {
-        "name": "functionID",
-        "description": "The ID of the function to get runs for.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [],
-    "queryParams": [
-      {
-        "name": "limit",
-        "description": "The number of functions to return",
-        "required": false,
-        "type": "number"
-      },
-      {
-        "name": "offset",
-        "description": "Offset for pagination",
-        "required": false,
-        "type": "number"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of function runs",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "FunctionRuns"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/functions/{functionID}/runs/{runID}",
-    "operation": "get",
-    "operationId": "GetFunctionsIDRunsID",
-    "basicAuth": false,
-    "summary": "Retrieve a single run for a function",
-    "positionalParams": [
-      {
-        "name": "functionID",
-        "description": "The function ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "runID",
-        "description": "The run ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "The run record",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "FunctionRun"
+            "type": "ScriptHTTPResponseData"
           }
         ]
       },
