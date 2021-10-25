@@ -10,7 +10,7 @@
 
 This repository contains the reference JavaScript client for InfluxDB 2.0. This client supports Node.js, browser, and Deno environments.
 
-#### Note: Use this client library with InfluxDB 2.x and InfluxDB 1.8+. For connecting to InfluxDB 1.7 or earlier instances, see the [node-influx](https://github.com/node-influx/node-influx) client library.
+#### Note: Use this client library with InfluxDB 2.x. For connecting to InfluxDB 1.x see the [node-influx](https://github.com/node-influx/node-influx) client library. This library can also write/query [flux-enabled](https://docs.influxdata.com/influxdb/v1.8/administration/config/#flux-enabled--false) InfluxDB 1.8+.
 
 ## Documentation
 
