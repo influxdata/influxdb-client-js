@@ -11736,19 +11736,19 @@
     "operation": "get",
     "operationId": "GetScripts",
     "basicAuth": false,
-    "summary": "List all Scripts",
+    "summary": "List scripts",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
       {
         "name": "limit",
-        "description": "The number of scripts to return",
+        "description": "The number of scripts to return.",
         "required": false,
         "type": "number"
       },
       {
         "name": "offset",
-        "description": "Offset for pagination",
+        "description": "The offset for pagination.",
         "required": false,
         "type": "number"
       }
@@ -11757,7 +11757,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of scripts",
+        "description": "The list of scripts.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -11783,12 +11783,12 @@
     "operation": "post",
     "operationId": "PostScripts",
     "basicAuth": false,
-    "summary": "Create a new script",
+    "summary": "Create a script",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Script to create",
+      "description": "The script to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "ScriptCreateRequest"
@@ -11796,7 +11796,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Script created",
+        "description": "The created script.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -11837,7 +11837,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Script details",
+        "description": "The requested script object.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -11883,7 +11883,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Updated script",
+        "description": "The updated script.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -11924,7 +11924,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "Script deleted",
+        "description": "The script is deleted.",
         "mediaTypes": []
       },
       {
@@ -11945,7 +11945,7 @@
     "operation": "post",
     "operationId": "PostScriptsIDInvoke",
     "basicAuth": false,
-    "summary": "Manually invoke a script with params in request body",
+    "summary": "Invoke a script",
     "positionalParams": [
       {
         "name": "scriptID",
@@ -11963,7 +11963,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Response defined by script",
+        "description": "The result of the script execution.",
         "mediaTypes": [
           {
             "mediaType": "application/json",

@@ -10,13 +10,13 @@ import {
 } from './types'
 
 export interface GetScriptsRequest {
-  /** The number of scripts to return */
+  /** The number of scripts to return. */
   limit?: number
-  /** Offset for pagination */
+  /** The offset for pagination. */
   offset?: number
 }
 export interface PostScriptsRequest {
-  /** Script to create */
+  /** The script to create. */
   body: ScriptCreateRequest
 }
 export interface GetScriptsIDRequest {
@@ -53,7 +53,7 @@ export class ScriptsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all Scripts.
+   * List scripts.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScripts }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -71,7 +71,7 @@ export class ScriptsAPI {
     )
   }
   /**
-   * Create a new script.
+   * Create a script.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScripts }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -145,7 +145,7 @@ export class ScriptsAPI {
     )
   }
   /**
-   * Manually invoke a script with params in request body.
+   * Invoke a script.
    * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScriptsIDInvoke }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

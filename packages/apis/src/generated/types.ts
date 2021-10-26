@@ -2877,9 +2877,11 @@ export interface Script {
 export type ScriptLanguage = 'flux'
 
 export interface ScriptCreateRequest {
+  /** The name of the script. The name must be unique within the organization. */
   name: string
   description: string
-  /** script to be executed */
+  orgID: string
+  /** The script to execute. */
   script: string
   language: ScriptLanguage
 }
@@ -2896,6 +2898,6 @@ export interface ScriptInvocationParams {
 }
 
 /**
- * The data sent to end user when a script is invoked using http. User defined and dynamic
+ * The data sent in the response body when a script is invoked by an HTTP request. User defined and dynamic.
  */
 export type ScriptHTTPResponseData = string
