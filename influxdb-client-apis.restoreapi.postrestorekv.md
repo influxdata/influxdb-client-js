@@ -9,7 +9,9 @@ Overwrite the embedded KV store on the server with a backed-up snapshot. See [ht
 <b>Signature:</b>
 
 ```typescript
-postRestoreKV(request: PostRestoreKVRequest, requestOptions?: RequestOptions): Promise<void>;
+postRestoreKV(request: PostRestoreKVRequest, requestOptions?: RequestOptions): Promise<{
+        token?: string;
+    }>;
 ```
 
 ## Parameters
@@ -21,7 +23,7 @@ postRestoreKV(request: PostRestoreKVRequest, requestOptions?: RequestOptions): P
 
 <b>Returns:</b>
 
-Promise&lt;void&gt;
+Promise&lt;{ token?: string; }&gt;
 
 promise of response
 

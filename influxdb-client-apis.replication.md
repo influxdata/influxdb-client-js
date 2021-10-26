@@ -14,14 +14,15 @@ export interface Replication
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [currentQueueSizeBytes](./influxdb-client-apis.replication.currentqueuesizebytes.md) | any |  |
+|  [currentQueueSizeBytes](./influxdb-client-apis.replication.currentqueuesizebytes.md) | number |  |
 |  [description?](./influxdb-client-apis.replication.description.md) | string | <i>(Optional)</i> |
 |  [id](./influxdb-client-apis.replication.id.md) | string |  |
 |  [latestErrorMessage?](./influxdb-client-apis.replication.latesterrormessage.md) | string | <i>(Optional)</i> |
-|  [latestResponseCode?](./influxdb-client-apis.replication.latestresponsecode.md) | any | <i>(Optional)</i> |
+|  [latestResponseCode?](./influxdb-client-apis.replication.latestresponsecode.md) | number | <i>(Optional)</i> |
 |  [localBucketID](./influxdb-client-apis.replication.localbucketid.md) | string |  |
-|  [maxQueueSizeBytes](./influxdb-client-apis.replication.maxqueuesizebytes.md) | any |  |
+|  [maxQueueSizeBytes](./influxdb-client-apis.replication.maxqueuesizebytes.md) | number |  |
 |  [name](./influxdb-client-apis.replication.name.md) | string |  |
+|  [orgID](./influxdb-client-apis.replication.orgid.md) | string |  |
 |  [remoteBucketID](./influxdb-client-apis.replication.remotebucketid.md) | string |  |
 |  [remoteID](./influxdb-client-apis.replication.remoteid.md) | string |  |
 

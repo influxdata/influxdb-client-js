@@ -4,7 +4,7 @@
 
 ## ListStacksRequest.orgID property
 
-The organization id of the stacks
+The organization ID of the stacks
 
 <b>Signature:</b>
 

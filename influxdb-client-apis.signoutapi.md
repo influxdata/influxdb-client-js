@@ -22,5 +22,5 @@ export declare class SignoutAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md) |  | Expire the current session. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSignout](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout) |
+|  [postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md) |  | Expire the current UI session. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSignout](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout) |
 

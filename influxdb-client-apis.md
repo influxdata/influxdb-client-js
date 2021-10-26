@@ -44,7 +44,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DashboardsAPI](./influxdb-client-apis.dashboardsapi.md) | Dashboards API |
 |  [DbrpsAPI](./influxdb-client-apis.dbrpsapi.md) | Dbrps API |
 |  [DeleteAPI](./influxdb-client-apis.deleteapi.md) | Delete API |
-|  [DocumentsAPI](./influxdb-client-apis.documentsapi.md) | Documents API |
 |  [FlagsAPI](./influxdb-client-apis.flagsapi.md) | Flags API |
 |  [HealthAPI](./influxdb-client-apis.healthapi.md) | Health API |
 |  [LabelsAPI](./influxdb-client-apis.labelsapi.md) | Labels API |
@@ -62,6 +61,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [RestoreAPI](./influxdb-client-apis.restoreapi.md) | Restore API |
 |  [RootAPI](./influxdb-client-apis.rootapi.md) | Root API |
 |  [ScrapersAPI](./influxdb-client-apis.scrapersapi.md) | Scrapers API |
+|  [ScriptsAPI](./influxdb-client-apis.scriptsapi.md) | Scripts API |
 |  [SetupAPI](./influxdb-client-apis.setupapi.md) | Setup API |
 |  [SigninAPI](./influxdb-client-apis.signinapi.md) | Signin API |
 |  [SignoutAPI](./influxdb-client-apis.signoutapi.md) | Signout API |
@@ -139,8 +139,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteDashboardsIDOwnersIDRequest](./influxdb-client-apis.deletedashboardsidownersidrequest.md) |  |
 |  [DeleteDashboardsIDRequest](./influxdb-client-apis.deletedashboardsidrequest.md) |  |
 |  [DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md) |  |
-|  [DeleteDocumentsTemplatesIDLabelsIDRequest](./influxdb-client-apis.deletedocumentstemplatesidlabelsidrequest.md) |  |
-|  [DeleteDocumentsTemplatesIDRequest](./influxdb-client-apis.deletedocumentstemplatesidrequest.md) |  |
 |  [DeleteLabelsIDRequest](./influxdb-client-apis.deletelabelsidrequest.md) |  |
 |  [DeleteLegacyAuthorizationsIDRequest](./influxdb-client-apis.deletelegacyauthorizationsidrequest.md) |  |
 |  [DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md) |  |
@@ -158,6 +156,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DeleteScrapersIDMembersIDRequest](./influxdb-client-apis.deletescrapersidmembersidrequest.md) |  |
 |  [DeleteScrapersIDOwnersIDRequest](./influxdb-client-apis.deletescrapersidownersidrequest.md) |  |
 |  [DeleteScrapersIDRequest](./influxdb-client-apis.deletescrapersidrequest.md) |  |
+|  [DeleteScriptsIDRequest](./influxdb-client-apis.deletescriptsidrequest.md) |  |
 |  [DeleteSourcesIDRequest](./influxdb-client-apis.deletesourcesidrequest.md) |  |
 |  [DeleteStackRequest](./influxdb-client-apis.deletestackrequest.md) |  |
 |  [DeleteTasksIDLabelsIDRequest](./influxdb-client-apis.deletetasksidlabelsidrequest.md) |  |
@@ -175,12 +174,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Dialect](./influxdb-client-apis.dialect.md) | Dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/\#dialect-descriptions |
 |  [DictExpression](./influxdb-client-apis.dictexpression.md) | Used to create and directly specify the elements of a dictionary |
 |  [DictItem](./influxdb-client-apis.dictitem.md) | A key/value pair in a dictionary |
-|  [Document\_2](./influxdb-client-apis.document_2.md) |  |
-|  [DocumentCreate](./influxdb-client-apis.documentcreate.md) |  |
-|  [DocumentListEntry](./influxdb-client-apis.documentlistentry.md) |  |
-|  [DocumentMeta](./influxdb-client-apis.documentmeta.md) |  |
-|  [Documents](./influxdb-client-apis.documents.md) |  |
-|  [DocumentUpdate](./influxdb-client-apis.documentupdate.md) |  |
 |  [Duration](./influxdb-client-apis.duration.md) | A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed. |
 |  [DurationLiteral](./influxdb-client-apis.durationliteral.md) | Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration |
 |  [Error\_2](./influxdb-client-apis.error_2.md) |  |
@@ -218,9 +211,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) |  |
 |  [GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md) |  |
 |  [GetDBRPsRequest](./influxdb-client-apis.getdbrpsrequest.md) |  |
-|  [GetDocumentsTemplatesIDLabelsRequest](./influxdb-client-apis.getdocumentstemplatesidlabelsrequest.md) |  |
-|  [GetDocumentsTemplatesIDRequest](./influxdb-client-apis.getdocumentstemplatesidrequest.md) |  |
-|  [GetDocumentsTemplatesRequest](./influxdb-client-apis.getdocumentstemplatesrequest.md) |  |
 |  [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) |  |
 |  [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) |  |
 |  [GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md) |  |
@@ -255,6 +245,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetScrapersIDOwnersRequest](./influxdb-client-apis.getscrapersidownersrequest.md) |  |
 |  [GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md) |  |
 |  [GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md) |  |
+|  [GetScriptsIDRequest](./influxdb-client-apis.getscriptsidrequest.md) |  |
+|  [GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md) |  |
 |  [GetSetupRequest](./influxdb-client-apis.getsetuprequest.md) |  |
 |  [GetSourcesIDBucketsRequest](./influxdb-client-apis.getsourcesidbucketsrequest.md) |  |
 |  [GetSourcesIDHealthRequest](./influxdb-client-apis.getsourcesidhealthrequest.md) |  |
@@ -349,6 +341,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) |  |
 |  [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md) | Updates to a rule to expire or retain data. |
 |  [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) |  |
+|  [PatchScriptsIDRequest](./influxdb-client-apis.patchscriptsidrequest.md) |  |
 |  [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) |  |
 |  [PatchTasksIDRequest](./influxdb-client-apis.patchtasksidrequest.md) |  |
 |  [PatchUsersIDRequest](./influxdb-client-apis.patchusersidrequest.md) |  |
@@ -370,8 +363,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PostDashboardsRequest](./influxdb-client-apis.postdashboardsrequest.md) |  |
 |  [PostDBRPRequest](./influxdb-client-apis.postdbrprequest.md) |  |
 |  [PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md) |  |
-|  [PostDocumentsTemplatesIDLabelsRequest](./influxdb-client-apis.postdocumentstemplatesidlabelsrequest.md) |  |
-|  [PostDocumentsTemplatesRequest](./influxdb-client-apis.postdocumentstemplatesrequest.md) |  |
 |  [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) |  |
 |  [PostLegacyAuthorizationsIDPasswordRequest](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.md) |  |
 |  [PostLegacyAuthorizationsRequest](./influxdb-client-apis.postlegacyauthorizationsrequest.md) |  |
@@ -396,6 +387,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [PostScrapersIDMembersRequest](./influxdb-client-apis.postscrapersidmembersrequest.md) |  |
 |  [PostScrapersIDOwnersRequest](./influxdb-client-apis.postscrapersidownersrequest.md) |  |
 |  [PostScrapersRequest](./influxdb-client-apis.postscrapersrequest.md) |  |
+|  [PostScriptsIDInvokeRequest](./influxdb-client-apis.postscriptsidinvokerequest.md) |  |
+|  [PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md) |  |
 |  [PostSetupRequest](./influxdb-client-apis.postsetuprequest.md) |  |
 |  [PostSigninRequest](./influxdb-client-apis.postsigninrequest.md) |  |
 |  [PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md) |  |
@@ -420,7 +413,6 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Property](./influxdb-client-apis.property.md) | The value associated with a key |
 |  [PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md) |  |
 |  [PutDashboardsIDCellsRequest](./influxdb-client-apis.putdashboardsidcellsrequest.md) |  |
-|  [PutDocumentsTemplatesIDRequest](./influxdb-client-apis.putdocumentstemplatesidrequest.md) |  |
 |  [PutMePasswordRequest](./influxdb-client-apis.putmepasswordrequest.md) |  |
 |  [PutNotificationEndpointsIDRequest](./influxdb-client-apis.putnotificationendpointsidrequest.md) |  |
 |  [PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md) |  |
@@ -455,10 +447,16 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ScatterViewProperties](./influxdb-client-apis.scatterviewproperties.md) |  |
 |  [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) |  |
 |  [ScraperTargetResponses](./influxdb-client-apis.scrapertargetresponses.md) |  |
+|  [Script](./influxdb-client-apis.script.md) |  |
+|  [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) |  |
+|  [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) |  |
+|  [Scripts](./influxdb-client-apis.scripts.md) |  |
+|  [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) |  |
 |  [SecretKeys](./influxdb-client-apis.secretkeys.md) |  |
 |  [ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md) |  |
 |  [ShardManifest](./influxdb-client-apis.shardmanifest.md) |  |
 |  [ShardOwner](./influxdb-client-apis.shardowner.md) |  |
+|  [SimpleTableViewProperties](./influxdb-client-apis.simpletableviewproperties.md) |  |
 |  [SingleStatViewProperties](./influxdb-client-apis.singlestatviewproperties.md) |  |
 |  [SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md) |  |
 |  [SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md) |  |
@@ -557,6 +555,8 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | The state to record if check matches a criteria. |
 |  [SchemaType](./influxdb-client-apis.schematype.md) |  |
 |  [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md) |  |
+|  [ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md) | The data sent in the response body when a script is invoked by an HTTP request. User defined and dynamic. |
+|  [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) |  |
 |  [SecretKeysResponse](./influxdb-client-apis.secretkeysresponse.md) |  |
 |  [Secrets](./influxdb-client-apis.secrets.md) |  |
 |  [ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md) |  |

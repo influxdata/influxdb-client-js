@@ -4,7 +4,7 @@
 
 ## DeleteAPI.postDelete() method
 
-Delete time series data from InfluxDB. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDelete](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete)
+Delete data. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDelete](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete)
 
 <b>Signature:</b>
 

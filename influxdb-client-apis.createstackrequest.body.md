@@ -4,7 +4,7 @@
 
 ## CreateStackRequest.body property
 
-Stack to create.
+The stack to create.
 
 <b>Signature:</b>
 

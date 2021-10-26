@@ -4,7 +4,7 @@
 
 ## StacksAPI.updateStack() method
 
-Update an InfluxDB Stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UpdateStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack)
+Update a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UpdateStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack)
 
 <b>Signature:</b>
 

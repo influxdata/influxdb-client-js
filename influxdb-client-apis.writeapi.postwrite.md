@@ -4,7 +4,7 @@
 
 ## WriteAPI.postWrite() method
 
-Write time series data into InfluxDB. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite)
+Write data. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite)
 
 <b>Signature:</b>
 

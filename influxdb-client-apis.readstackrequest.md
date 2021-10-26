@@ -14,5 +14,5 @@ export interface ReadStackRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [stack\_id](./influxdb-client-apis.readstackrequest.stack_id.md) | string | Theidentifier of the stack. |
+|  [stack\_id](./influxdb-client-apis.readstackrequest.stack_id.md) | string | The identifier of the stack. |
 

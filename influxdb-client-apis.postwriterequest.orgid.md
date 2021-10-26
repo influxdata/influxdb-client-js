@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.orgID property
 
-Specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.
+The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.
 
 <b>Signature:</b>
 

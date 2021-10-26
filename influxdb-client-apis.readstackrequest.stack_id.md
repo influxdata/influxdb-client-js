@@ -4,7 +4,7 @@
 
 ## ReadStackRequest.stack\_id property
 
-Theidentifier of the stack.
+The identifier of the stack.
 
 <b>Signature:</b>
 

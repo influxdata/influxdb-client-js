@@ -4,7 +4,7 @@
 
 ## UpdateStackRequest.body property
 
-Influx stack to update.
+The stack to update.
 
 <b>Signature:</b>
 

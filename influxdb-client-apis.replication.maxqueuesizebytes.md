@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-maxQueueSizeBytes: any;
+maxQueueSizeBytes: number;
 ```

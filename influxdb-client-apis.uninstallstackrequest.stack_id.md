@@ -4,7 +4,7 @@
 
 ## UninstallStackRequest.stack\_id property
 
-The stack id
+The identifier of the stack.
 
 <b>Signature:</b>
 

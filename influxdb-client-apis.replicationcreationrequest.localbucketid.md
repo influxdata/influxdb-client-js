@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-localBucketID?: string;
+localBucketID: string;
 ```

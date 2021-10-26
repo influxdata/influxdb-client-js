@@ -4,7 +4,7 @@
 
 ## PostDBRPRequest.body property
 
-The Database Retention Policy Mapping to add
+The database retention policy mapping to add
 
 <b>Signature:</b>
 

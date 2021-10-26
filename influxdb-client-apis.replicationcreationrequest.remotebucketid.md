@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-remoteBucketID?: string;
+remoteBucketID: string;
 ```

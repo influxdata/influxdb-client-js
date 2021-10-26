@@ -14,5 +14,5 @@ export interface PostDBRPRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.postdbrprequest.body.md) | [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) | The Database Retention Policy Mapping to add |
+|  [body](./influxdb-client-apis.postdbrprequest.body.md) | [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) | The database retention policy mapping to add |
 

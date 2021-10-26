@@ -4,7 +4,7 @@
 
 ## PostDeleteRequest.body property
 
-Predicate delete request
+Deletes data from an InfluxDB bucket.
 
 <b>Signature:</b>
 

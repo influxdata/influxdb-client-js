@@ -4,7 +4,7 @@
 
 ## SigninAPI.postSignin() method
 
-Exchange basic auth credentials for session. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSignin](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin)
+Create a user session. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSignin](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignin)
 
 <b>Signature:</b>
 

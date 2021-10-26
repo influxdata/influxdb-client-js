@@ -4,7 +4,7 @@
 
 ## StacksAPI.uninstallStack() method
 
-Uninstall an InfluxDB Stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UninstallStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UninstallStack)
+Uninstall a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UninstallStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UninstallStack)
 
 <b>Signature:</b>
 

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-latestResponseCode?: any;
+latestResponseCode?: number;
 ```

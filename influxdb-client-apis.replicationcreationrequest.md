@@ -15,10 +15,10 @@ export interface ReplicationCreationRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [description?](./influxdb-client-apis.replicationcreationrequest.description.md) | string | <i>(Optional)</i> |
-|  [localBucketID?](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) | string | <i>(Optional)</i> |
-|  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) | any |  |
+|  [localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) | string |  |
+|  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) | number |  |
 |  [name](./influxdb-client-apis.replicationcreationrequest.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) | string |  |
-|  [remoteBucketID?](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) | string | <i>(Optional)</i> |
+|  [remoteBucketID](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) | string |  |
 |  [remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md) | string |  |
 

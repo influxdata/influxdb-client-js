@@ -22,5 +22,5 @@ export declare class WriteAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md) |  | Write time series data into InfluxDB. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite) |
+|  [postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md) |  | Write data. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite) |
 

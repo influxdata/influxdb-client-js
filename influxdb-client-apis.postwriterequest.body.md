@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.body property
 
-Line protocol body
+Data in line protocol format.
 
 <b>Signature:</b>
 

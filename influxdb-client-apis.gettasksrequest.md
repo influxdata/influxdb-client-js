@@ -20,5 +20,6 @@ export interface GetTasksRequest
 |  [org?](./influxdb-client-apis.gettasksrequest.org.md) | string | <i>(Optional)</i> Filter tasks to a specific organization name. |
 |  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) | string | <i>(Optional)</i> Filter tasks to a specific organization ID. |
 |  [status?](./influxdb-client-apis.gettasksrequest.status.md) | string | <i>(Optional)</i> Filter tasks by a status--"inactive" or "active". |
+|  [type?](./influxdb-client-apis.gettasksrequest.type.md) | string | <i>(Optional)</i> Type of task, unset by default. |
 |  [user?](./influxdb-client-apis.gettasksrequest.user.md) | string | <i>(Optional)</i> Filter tasks to a specific user ID. |
 
