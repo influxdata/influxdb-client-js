@@ -1,7 +1,15 @@
 openapi: 3.0.0
 info:
-  title: Influxdata API Invocable Scripts CRUD API
+  title: InfluxData Invocable Scripts API
   version: 0.1.0
+  description: |
+    Manage and execute scripts in InfluxDB.
+    An API Invocable Script assigns your custom Flux script to a new InfluxDB API endpoint for your organization.
+    Invocable scripts let you execute your script with an HTTP request to the endpoint.
+    You can reference parameters in your script as `params.myparameter`.
+    When you invoke your script, InfluxDB substitutes your `params` references with key-value pairs that you send in the `params` object.
+
+    For more information and examples, see [Invoke custom scripts](https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts).
 servers:
   - url: /api/v2
 paths:
@@ -9,24 +17,24 @@ paths:
     get:
       operationId: GetScripts
       tags:
-        - Scripts
-      summary: List all Scripts
+        - Invocable Scripts
+      summary: List scripts
       parameters:
         - in: query
           name: limit
-          description: The number of scripts to return
+          description: The number of scripts to return.
           required: false
           schema:
             type: integer
         - in: query
           name: offset
           required: false
-          description: Offset for pagination
+          description: The offset for pagination.
           schema:
             type: integer
       responses:
         '200':
-          description: A list of scripts
+          description: The list of scripts.
           content:
             application/json:
               schema:
@@ -37,10 +45,10 @@ paths:
     post:
       operationId: PostScripts
       tags:
-        - Scripts
-      summary: Create a new script
+        - Invocable Scripts
+      summary: Create a script
       requestBody:
-        description: Script to create
+        description: The script to create.
         required: true
         content:
           application/json:
@@ -48,7 +56,7 @@ paths:
               $ref: '#/components/schemas/ScriptCreateRequest'
       responses:
         '201':
-          description: Script created
+          description: The created script.
           content:
             application/json:
               schema:
@@ -60,8 +68,9 @@ paths:
     get:
       operationId: GetScriptsID
       tags:
-        - Scripts
+        - Invocable Scripts
       summary: Retrieve a script
+      description: Uses script ID to retrieve details of an invocable script.
       parameters:
         - in: path
           name: scriptID
@@ -71,7 +80,7 @@ paths:
           description: The script ID.
       responses:
         '200':
-          description: Script details
+          description: The requested script object.
           content:
             application/json:
               schema:
@@ -82,9 +91,10 @@ paths:
     patch:
       operationId: PatchScriptsID
       tags:
-        - Scripts
+        - Invocable Scripts
       summary: Update a script
-      description: Update a script
+      description: |
+        Updates properties (`name`, `description`, and `script`) of an invocable script.
       requestBody:
         description: Script update to apply
         required: true
@@ -101,7 +111,7 @@ paths:
           description: The script ID.
       responses:
         '200':
-          description: Updated script
+          description: The updated script.
           content:
             application/json:
               schema:
@@ -112,9 +122,9 @@ paths:
     delete:
       operationId: DeleteScriptsID
       tags:
-        - Scripts
+        - Invocable Scripts
       summary: Delete a script
-      description: Deletes a script and all associated records
+      description: Deletes a script and all associated records.
       parameters:
         - in: path
           name: scriptID
@@ -124,7 +134,7 @@ paths:
           description: The ID of the script to delete.
       responses:
         '204':
-          description: Script deleted
+          description: The script is deleted.
         default:
           description: Unexpected error
           $ref: '#/components/responses/ServerError'
@@ -132,8 +142,9 @@ paths:
     post:
       operationId: PostScriptsIDInvoke
       tags:
-        - Scripts
-      summary: Manually invoke a script with params in request body
+        - Invocable Scripts
+      summary: Invoke a script
+      description: Invokes a script and substitutes `params` keys referenced in the script with `params` key-values sent in the request body.
       parameters:
         - in: path
           name: scriptID
@@ -147,7 +158,7 @@ paths:
               $ref: '#/components/schemas/ScriptInvocationParams'
       responses:
         '200':
-          description: Response defined by script
+          description: The result of the script execution.
           content:
             application/json:
               schema:
@@ -241,11 +252,14 @@ components:
       type: object
       properties:
         name:
+          description: The name of the script. The name must be unique within the organization.
           type: string
         description:
           type: string
+        orgID:
+          type: string
         script:
-          description: script to be executed
+          description: The script to execute.
           type: string
         language:
           $ref: '#/components/schemas/ScriptLanguage'
@@ -266,7 +280,7 @@ components:
           description: script is script to be executed
           type: string
     ScriptHTTPResponseData:
-      description: The data sent to end user when a script is invoked using http. User defined and dynamic
+      description: The data sent in the response body when a script is invoked by an HTTP request. User defined and dynamic.
       type: string
     ScriptInvocationParams:
       type: object
