@@ -58,7 +58,7 @@ export function chunksToLines(
       try {
         bufferReceived(chunk)
       } catch (e) {
-        this.error(e)
+        this.error(e as Error)
       }
     },
     error(error: Error): void {
