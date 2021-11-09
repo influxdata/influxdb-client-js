@@ -6,7 +6,7 @@ import {
 } from '../options'
 import {Transport, SendOptions} from '../transport'
 import {Headers} from '../results'
-import {Logger} from '../util/logger'
+import {Log} from '../util/logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import {Point} from '../Point'
 import {escape} from '../util/escape'
@@ -141,7 +141,7 @@ export default class WriteApiImpl implements WriteApi {
     if (!this.closed && lines.length > 0) {
       if (expires <= Date.now()) {
         const error = new Error('Max retry time exceeded.')
-        Logger.error(
+        Log.error(
           `Write to InfluxDB failed (attempt: ${failedAttempts}).`,
           error
         )
@@ -171,7 +171,7 @@ export default class WriteApiImpl implements WriteApi {
               (!(error instanceof HttpError) ||
                 (error as HttpError).statusCode >= 429)
             ) {
-              Logger.warn(
+              Log.warn(
                 `Write to InfluxDB failed (attempt: ${failedAttempts}).`,
                 error
               )
@@ -184,7 +184,7 @@ export default class WriteApiImpl implements WriteApi {
               reject(error)
               return
             }
-            Logger.error(`Write to InfluxDB failed.`, error)
+            Log.error(`Write to InfluxDB failed.`, error)
             reject(error)
           },
           complete(): void {
@@ -265,7 +265,7 @@ export default class WriteApiImpl implements WriteApi {
     const retVal = this.writeBuffer.flush().finally(() => {
       const remaining = this.retryBuffer.close()
       if (remaining) {
-        Logger.error(
+        Log.error(
           `Retry buffer closed with ${remaining} items that were not written to InfluxDB!`,
           null
         )

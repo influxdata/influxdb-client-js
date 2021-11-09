@@ -12,7 +12,7 @@ import {
   PointSettings,
 } from '../../src'
 import {collectLogging, CollectedLogs} from '../util'
-import {Logger} from '../../src/util/logger'
+import {Log} from '../../src/util/logger'
 import {waitForCondition} from './util/waitForCondition'
 import zlib from 'zlib'
 
@@ -189,7 +189,7 @@ describe('WriteApi', () => {
         maxRetries: 3,
         batchSize: 1,
         writeFailed: (error: Error, lines: string[], attempts: number) => {
-          Logger.warn(
+          Log.warn(
             `CUSTOMERRORHANDLING ${!!error} ${lines.length} ${attempts}`,
             undefined
           )
