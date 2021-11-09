@@ -251,6 +251,7 @@ export class NodeHttpTransport implements Transport {
       res.on('aborted', () => {
         listeners.error(new AbortError())
       })
+      res.on('error', listeners.error)
       listeners.responseStarted(res.headers, res.statusCode)
       /* istanbul ignore next statusCode is optional in http.IncomingMessage */
       const statusCode = res.statusCode ?? 600
@@ -258,11 +259,11 @@ export class NodeHttpTransport implements Transport {
       let responseData
       if (contentEncoding === 'gzip') {
         responseData = zlib.createGunzip(zlibOptions)
+        responseData.on('error', listeners.error)
         res.pipe(responseData)
       } else {
         responseData = res
       }
-      responseData.on('error', listeners.error)
       if (statusCode >= 300) {
         let body = ''
         const isJson = String(res.headers['content-type']).startsWith(
@@ -300,7 +301,7 @@ export class NodeHttpTransport implements Transport {
         responseData.on('end', listeners.complete)
       }
     })
-    // Support older Nodes which don't allow .timeout() in the
+    // Support older Nodes which don't allow `timeout` in the
     // request options
     /* istanbul ignore else support older node versions */
     if (typeof req.setTimeout === 'function') {
