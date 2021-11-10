@@ -21,7 +21,7 @@ export const consoleLogger: Logger = {
 }
 let provider: Logger = consoleLogger
 
-export const Logger: Logger = {
+export const Log: Logger = {
   error(message, error) {
     provider.error(message, error)
   },

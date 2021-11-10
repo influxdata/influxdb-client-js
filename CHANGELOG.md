@@ -1,5 +1,9 @@
 ## 1.21.0 [unreleased]
 
+### Bug Fixes
+
+1. [#382](https://github.com/influxdata/influxdb-client-js/pull/382): Rename Logger variable to Log.
+
 ## 1.20.0 [2021-10-26]
 
 ### Features

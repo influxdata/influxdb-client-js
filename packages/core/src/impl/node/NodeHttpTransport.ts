@@ -16,7 +16,7 @@ import nodeChunkCombiner from './nodeChunkCombiner'
 import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import {CLIENT_LIB_VERSION} from '../version'
-import {Logger} from '../../util/logger'
+import {Log} from '../../util/logger'
 
 const zlibOptions = {
   flush: zlib.constants.Z_SYNC_FLUSH,
@@ -71,7 +71,7 @@ export class NodeHttpTransport implements Transport {
     // https://github.com/influxdata/influxdb-client-js/issues/263
     // don't allow /api/v2 suffix to avoid future problems
     if (this.contextPath == '/api/v2') {
-      Logger.warn(
+      Log.warn(
         `Please remove '/api/v2' context path from InfluxDB base url, using ${url.protocol}//${url.hostname}:${url.port} !`
       )
       this.contextPath = ''

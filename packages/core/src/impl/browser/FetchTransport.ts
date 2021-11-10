@@ -2,7 +2,7 @@ import {Transport, SendOptions} from '../../transport'
 import {ConnectionOptions} from '../../options'
 import {HttpError} from '../../errors'
 import completeCommunicationObserver from '../completeCommunicationObserver'
-import {Logger} from '../../util/logger'
+import {Log} from '../../util/logger'
 import {
   ChunkCombiner,
   CommunicationObserver,
@@ -50,7 +50,7 @@ export default class FetchTransport implements Transport {
     // don't allow /api/v2 suffix to avoid future problems
     if (this.url.endsWith('/api/v2')) {
       this.url = this.url.substring(0, this.url.length - '/api/v2'.length)
-      Logger.warn(
+      Log.warn(
         `Please remove '/api/v2' context path from InfluxDB base url, using ${this.url} !`
       )
     }
@@ -109,7 +109,7 @@ export default class FetchTransport implements Transport {
               )
             })
             .catch((e: Error) => {
-              Logger.warn('Unable to receive error body', e)
+              Log.warn('Unable to receive error body', e)
               observer.error(
                 new HttpError(
                   response.status,

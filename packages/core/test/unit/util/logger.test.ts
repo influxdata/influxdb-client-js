@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {Logger, setLogger, consoleLogger} from '../../../src/util/logger'
+import {Log, setLogger, consoleLogger} from '../../../src/util/logger'
 
 describe('Logger', () => {
   ;[{message: '    hey', error: 'you'}, {message: '    hey'}].forEach(data => {
@@ -15,7 +15,7 @@ describe('Logger', () => {
           consoleLogger.warn(message, error)
         },
       })
-      Logger.error.call(Logger, data.message, data.error)
+      Log.error.call(Log, data.message, data.error)
       expect(args).to.be.deep.equal([data.message, data.error])
     })
     it(`uses custom logger's warn (${Object.keys(data).length})`, () => {
@@ -31,7 +31,7 @@ describe('Logger', () => {
         },
       })
 
-      Logger.warn.call(Logger, data.message, data.error)
+      Log.warn.call(Log, data.message, data.error)
       expect(args).to.be.deep.equal([data.message, data.error])
     })
   })

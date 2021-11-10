@@ -1,4 +1,4 @@
-import {Logger} from '../util/logger'
+import {Log} from '../util/logger'
 
 /* interval between successful retries */
 const RETRY_INTERVAL = 1
@@ -57,7 +57,7 @@ export default class RetryBuffer {
           this.last = undefined
         }
       } while (this.first && this.size + lines.length > newSize)
-      Logger.error(
+      Log.error(
         `RetryBuffer: ${origSize -
           this
             .size} oldest lines removed to keep buffer size under the limit of ${
