@@ -68,6 +68,13 @@ export class NodeHttpTransport implements Transport {
         this.contextPath.length - 1
       )
     }
+    // remove all undefined field to avoid node validation errors
+    // https://github.com/influxdata/influxdb-client-js/issues/380
+    Object.keys(this.defaultOptions).forEach(
+      key =>
+        this.defaultOptions[key] === undefined &&
+        delete this.defaultOptions[key]
+    )
     // https://github.com/influxdata/influxdb-client-js/issues/263
     // don't allow /api/v2 suffix to avoid future problems
     if (this.contextPath == '/api/v2') {
@@ -304,7 +311,7 @@ export class NodeHttpTransport implements Transport {
     // Support older Nodes which don't allow `timeout` in the
     // request options
     /* istanbul ignore else support older node versions */
-    if (typeof req.setTimeout === 'function') {
+    if (typeof req.setTimeout === 'function' && requestMessage.timeout) {
       req.setTimeout(requestMessage.timeout)
     }
 

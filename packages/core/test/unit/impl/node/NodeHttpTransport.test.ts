@@ -122,6 +122,19 @@ describe('NodeHttpTransport', () => {
         ],
       ])
     })
+    it('ignores undefined values', () => {
+      const transport: any = new NodeHttpTransport({
+        url: 'http://test:8086',
+        timeout: undefined,
+      })
+      expect(transport.defaultOptions).to.deep.equal({
+        hostname: 'test',
+        port: '8086',
+        protocol: 'http:',
+        url: 'http://test:8086',
+      })
+      expect(transport.requestApi).to.equal(http.request)
+    })
   })
   describe('send', () => {
     beforeEach(() => {
