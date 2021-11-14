@@ -5,7 +5,7 @@
  * @remarks
  * These APIs allow to manage the domain objects of InfluxDB (such as buckets, sources, tasks, authorizations).
  * The APIs are constructed with `InfluxDB` instance that is populated with InfluxDB server parameters. All API
- * operations returns Promise of response data. And the majority of them relies upon simple exchange of JSON data.
+ * operations return Promise of response data, the majority of them relies upon simple exchange of JSON data.
  * For example:
  *
  * ```
