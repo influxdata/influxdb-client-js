@@ -751,5 +751,20 @@ describe('NodeHttpTransport', () => {
           () => true // OK that it fails
         )
     })
+    it(`return undefined when empty JSON message is received`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(200, '', {
+          'content-type': 'application/json',
+        })
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals(undefined)
+    })
   })
 })

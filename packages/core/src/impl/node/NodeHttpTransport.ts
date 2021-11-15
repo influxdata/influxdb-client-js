@@ -161,7 +161,11 @@ export class NodeHttpTransport implements Transport {
           const responseType = options.headers?.accept ?? contentType
           try {
             if (responseType.includes('json')) {
-              resolve(JSON.parse(buffer.toString('utf8')))
+              if (buffer.length) {
+                resolve(JSON.parse(buffer.toString('utf8')))
+              } else {
+                resolve(undefined)
+              }
             } else if (
               responseType.includes('text') ||
               responseType.startsWith('application/csv')
