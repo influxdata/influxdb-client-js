@@ -1,15 +1,15 @@
 import {Observable} from '../observable'
-import QueryApi, {QueryOptions, Row, defaultRowMapping} from '../QueryApi'
+import QueryApi, {QueryOptions} from '../QueryApi'
 import {Transport} from '../transport'
-import {chunksToLines} from '../results'
 import {
   CommunicationObserver,
   FluxResultObserver,
   FluxTableMetaData,
-  linesToTables,
+  Row,
+  AnnotatedCSVResponse,
 } from '../results'
-import ObservableQuery, {QueryExecutor} from './ObservableQuery'
 import {ParameterizedQuery} from '../query/flux'
+import {APIExecutor} from '../results/ObservableQuery'
 
 const DEFAULT_dialect: any = {
   header: true,
@@ -18,96 +18,62 @@ const DEFAULT_dialect: any = {
   commentPrefix: '#',
   annotations: ['datatype', 'group', 'default'],
 }
-const identity = <T>(value: T): T => value
 
 export class QueryApiImpl implements QueryApi {
   private options: QueryOptions
-  constructor(private transport: Transport, org: string | QueryOptions) {
+  constructor(
+    private transport: Transport,
+    private createCSVResponse: (executor: APIExecutor) => AnnotatedCSVResponse,
+    org: string | QueryOptions
+  ) {
     this.options = typeof org === 'string' ? {org} : org
   }
 
   with(options: Partial<QueryOptions>): QueryApi {
-    return new QueryApiImpl(this.transport, {...this.options, ...options})
+    return new QueryApiImpl(this.transport, this.createCSVResponse, {
+      ...this.options,
+      ...options,
+    })
+  }
+
+  response(query: string | ParameterizedQuery): AnnotatedCSVResponse {
+    return this.createCSVResponse(this.createExecutor(query))
   }
 
   lines(query: string | ParameterizedQuery): Observable<string> {
-    return new ObservableQuery(this.createExecutor(query), identity)
+    return this.response(query).lines()
   }
 
   rows(query: string | ParameterizedQuery): Observable<Row> {
-    return new ObservableQuery(this.createExecutor(query), observer => {
-      return linesToTables({
-        next(values, tableMeta) {
-          observer.next({values, tableMeta})
-        },
-        error(e) {
-          observer.error(e)
-        },
-        complete() {
-          observer.complete()
-        },
-      })
-    })
+    return this.response(query).rows()
   }
 
   queryLines(
     query: string | ParameterizedQuery,
     consumer: CommunicationObserver<string>
   ): void {
-    this.createExecutor(query)(consumer)
+    return this.response(query).consumeLines(consumer)
   }
 
   queryRows(
     query: string | ParameterizedQuery,
     consumer: FluxResultObserver<string[]>
   ): void {
-    this.createExecutor(query)(linesToTables(consumer))
+    return this.response(query).consumeRows(consumer)
   }
 
   collectRows<T>(
     query: string | ParameterizedQuery,
-    rowMapper: (
-      values: string[],
-      tableMeta: FluxTableMetaData
-    ) => T | undefined = defaultRowMapping as (
+    rowMapper?: (
       values: string[],
       tableMeta: FluxTableMetaData
     ) => T | undefined
   ): Promise<Array<T>> {
-    const retVal: Array<T> = []
-    return new Promise((resolve, reject) => {
-      this.queryRows(query, {
-        next(values: string[], tableMeta: FluxTableMetaData): void {
-          const toAdd = rowMapper.call(this, values, tableMeta)
-          if (toAdd !== undefined) {
-            retVal.push(toAdd)
-          }
-        },
-        error(error: Error): void {
-          reject(error)
-        },
-        complete(): void {
-          resolve(retVal)
-        },
-      })
-    })
+    return this.response(query).collectRows(rowMapper)
   }
 
   collectLines(query: string | ParameterizedQuery): Promise<Array<string>> {
-    const retVal: Array<string> = []
-    return new Promise((resolve, reject) => {
-      this.queryLines(query, {
-        next(line: string): void {
-          retVal.push(line)
-        },
-        error(error: Error): void {
-          reject(error)
-        },
-        complete(): void {
-          resolve(retVal)
-        },
-      })
-    })
+    return this.response(query).collectLines()
   }
 
   queryRaw(query: string | ParameterizedQuery): Promise<string> {
@@ -133,7 +99,7 @@ export class QueryApiImpl implements QueryApi {
     )
   }
 
-  private createExecutor(query: string | ParameterizedQuery): QueryExecutor {
+  private createExecutor(query: string | ParameterizedQuery): APIExecutor {
     const {org, type, gzip, headers} = this.options
 
     return (consumer): void => {
@@ -154,7 +120,7 @@ export class QueryApiImpl implements QueryApi {
             ...headers,
           },
         },
-        chunksToLines(consumer, this.transport.chunkCombiner)
+        consumer
       )
     }
   }

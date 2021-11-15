@@ -4,14 +4,8 @@ import {
   CommunicationObserver,
   FluxResultObserver,
   FluxTableMetaData,
+  Row,
 } from './results'
-
-export function defaultRowMapping(
-  values: string[],
-  tableMeta: FluxTableMetaData
-): Record<string, any> {
-  return tableMeta.toObject(values)
-}
 
 /** QueryOptions contains QueryApi configuration options. */
 export interface QueryOptions {
@@ -36,12 +30,6 @@ export interface QueryOptions {
    * HTTP headers that will be sent with every query request.
    */
   headers?: {[key: string]: string}
-}
-
-/** Wraps values and associated metadata of a query result row */
-export interface Row {
-  values: string[]
-  tableMeta: FluxTableMetaData
 }
 
 /**

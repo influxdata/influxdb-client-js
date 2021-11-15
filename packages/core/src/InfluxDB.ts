@@ -7,6 +7,8 @@ import {Transport} from './transport'
 import TransportImpl from './impl/node/NodeHttpTransport'
 import QueryApi, {QueryOptions} from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
+import {AnnotatedCSVResponse, APIExecutor} from './results'
+import {AnnotatedCSVResponseImpl} from './results/AnnotatedCSVResponseImpl'
 
 /**
  * InfluxDB 2.0 entry point that configures communication with InfluxDB server
@@ -15,6 +17,7 @@ import QueryApiImpl from './impl/QueryApiImpl'
 export default class InfluxDB {
   private _options: ClientOptions
   readonly transport: Transport
+  readonly processCSVResponse: (executor: APIExecutor) => AnnotatedCSVResponse
 
   /**
    * Creates influxdb client options from an options object or url.
@@ -33,6 +36,8 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url specified!')
     if (url.endsWith('/')) this._options.url = url.substring(0, url.length - 1)
     this.transport = this._options.transport ?? new TransportImpl(this._options)
+    this.processCSVResponse = (executor: APIExecutor): AnnotatedCSVResponse =>
+      new AnnotatedCSVResponseImpl(executor, this.transport.chunkCombiner)
   }
 
   /**
@@ -81,6 +86,6 @@ export default class InfluxDB {
    * @returns QueryApi instance
    */
   getQueryApi(org: string | QueryOptions): QueryApi {
-    return new QueryApiImpl(this.transport, org)
+    return new QueryApiImpl(this.transport, this.processCSVResponse, org)
   }
 }

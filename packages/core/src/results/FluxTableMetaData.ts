@@ -123,3 +123,9 @@ export function createFluxTableMetaData(
 ): FluxTableMetaData {
   return new FluxTableMetaDataImpl(columns)
 }
+
+/** Wraps values and associated metadata of a query result row */
+export interface Row {
+  values: string[]
+  tableMeta: FluxTableMetaData
+}
