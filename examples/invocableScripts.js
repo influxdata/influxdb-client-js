@@ -5,7 +5,10 @@ https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ .
 */
 
 const {InfluxDB, HttpError} = require('@influxdata/influxdb-client')
-const {ScriptsAPI} = require('@influxdata/influxdb-client-apis')
+const {
+  ScriptsAPI,
+  FluxScriptInvocationAPI,
+} = require('@influxdata/influxdb-client-apis')
 const {url, token} = require('./env')
 
 const influxDB = new InfluxDB({url, token})
@@ -49,12 +52,12 @@ async function deleteScript(id) {
   }
   if (id) {
     await scriptsAPI.deleteScriptsID({scriptID: id})
-    console.log(`Script 'scipt_name' was deleted!`)
+    console.log(`Script ${scriptName} was deleted!`)
   }
 }
 
-async function executeScript(scriptID) {
-  console.log('*** Execute example script ***')
+async function invokeScript(scriptID) {
+  console.log('*** Invoke example script ***')
 
   // parse count as a first script argument or use 10
   const count = Number.parseInt(require('process').argv[2] || '10')
@@ -62,19 +65,42 @@ async function executeScript(scriptID) {
   // execute script with count parameter
   const params = {count: count}
   console.log('Script parameters: ', params)
-  const response = await scriptsAPI.postScriptsIDInvoke({
-    scriptID,
-    body: {params},
+  // Use FluxScriptInvocationAPI to execute a particular
+  // script with specified parametes and process parsed results
+  const invocationAPI = new FluxScriptInvocationAPI(influxDB)
+  await new Promise((accept, reject) => {
+    let count = 0
+    invocationAPI.invoke(scriptID, params).consumeRows({
+      complete: accept,
+      error: reject,
+      next(row, tableMetaData) {
+        count++
+        // console.log(tableMetaData.toObject(row))
+        console.log(
+          count,
+          '*',
+          count + 1,
+          '=',
+          row[tableMetaData.column('_value').index]
+        )
+      },
+    })
   })
-  console.log('Response:')
-  console.log(response)
+  // You can also receive the whole response body. Use with caution,
+  // a possibly huge stream of results is copied to memory.
+  // const response = await scriptsAPI.postScriptsIDInvoke({
+  //   scriptID,
+  //   body: {params},
+  // })
+  // console.log('Response:')
+  // console.log(response)
 }
 
 async function example() {
   await listScripts()
   await deleteScript()
   const {id} = await createScript()
-  await executeScript(id)
+  await invokeScript(id)
 }
 
 example()
