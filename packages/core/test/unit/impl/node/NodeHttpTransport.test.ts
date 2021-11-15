@@ -766,5 +766,20 @@ describe('NodeHttpTransport', () => {
       })
       expect(data).equals(undefined)
     })
+    it(`return undefined with 204 status code`, async () => {
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(204, 'whatever it is', {
+          'content-type': 'text/plain',
+        })
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals(undefined)
+    })
   })
 })
