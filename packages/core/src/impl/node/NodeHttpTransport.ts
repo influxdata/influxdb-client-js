@@ -146,6 +146,7 @@ export class NodeHttpTransport implements Transport {
     }
     let buffer = emptyBuffer
     let contentType: string
+    let responseStatusCode: number | undefined
     return new Promise((resolve, reject) => {
       this.send(path, body as string, options, {
         responseStarted(headers: Headers, statusCode?: number) {
@@ -153,6 +154,7 @@ export class NodeHttpTransport implements Transport {
             responseStarted(headers, statusCode)
           }
           contentType = String(headers['content-type'])
+          responseStatusCode = statusCode
         },
         next: (data: Uint8Array): void => {
           buffer = Buffer.concat([buffer, data])
@@ -160,8 +162,16 @@ export class NodeHttpTransport implements Transport {
         complete: (): void => {
           const responseType = options.headers?.accept ?? contentType
           try {
+            if (responseStatusCode === 204) {
+              // ignore body of NO_CONTENT response
+              resolve(undefined)
+            }
             if (responseType.includes('json')) {
-              resolve(JSON.parse(buffer.toString('utf8')))
+              if (buffer.length) {
+                resolve(JSON.parse(buffer.toString('utf8')))
+              } else {
+                resolve(undefined)
+              }
             } else if (
               responseType.includes('text') ||
               responseType.startsWith('application/csv')
