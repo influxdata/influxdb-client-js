@@ -1,6 +1,6 @@
 # influxdb-client-apis
 
-Contains generated client APIs for InfluxDB v2.0. See https://github.com/influxdata/influxdb-client-js to know more.
+Contains generated client APIs for InfluxDB v2.1. See https://github.com/influxdata/influxdb-client-js to know more.
 
 ## Build
 
