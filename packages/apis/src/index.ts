@@ -1,6 +1,6 @@
 /**
- * The `@influxdata/influxdb-client-apis` package provides all InfluxDB v2 APIs generated from its
- * {@link https://v2.docs.influxdata.com/v2.0/api/ | OpenAPI specification}.
+ * The `@influxdata/influxdb-client-apis` package provides InfluxDB APIs, which are 
+ * {@link https://github.com/influxdata/influxdb-client-js/blob/master/packages/apis/DEVELOPMENT.md | generated from OpenAPI specifications }.
  *
  * @remarks
  * These APIs allow to manage the domain objects of InfluxDB (such as buckets, sources, tasks, authorizations).
