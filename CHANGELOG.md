@@ -1,5 +1,10 @@
 ## 1.21.0 [unreleased]
 
+### Features
+
+1. [#387](https://github.com/influxdata/influxdb-client-js/pull/387): Add FluxScriptInvocationAPI.
+1. [#387](https://github.com/influxdata/influxdb-client-js/pull/387): Add invocableScript.js example.
+
 ### Bug Fixes
 
 1. [#382](https://github.com/influxdata/influxdb-client-js/pull/382): Rename Logger variable to Log.
