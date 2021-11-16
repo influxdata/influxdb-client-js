@@ -47,11 +47,11 @@ export default interface QueryApi {
 
   /**
    * Response returns an AnnotatedCSVResponse instance that executes
-   * the query and provides various ways of how to process data
-   * from an annotated CSV response stream.
+   * the query when asked for data.
    *
    * @param query - query
-   * @returns observable of result rows
+   * @returns response with various methods to process data from the returned annotated
+   * CSV response data stream
    */
   response(query: string | ParameterizedQuery): AnnotatedCSVResponse
 

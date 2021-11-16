@@ -3,6 +3,7 @@ import {
   Transport,
   AnnotatedCSVResponse,
   APIExecutor,
+  CommunicationObserver,
 } from '@influxdata/influxdb-client'
 
 /** ExecutionOptions contains execution options for a flux script. */
@@ -39,10 +40,12 @@ export class FluxScriptInvocationAPI {
   }
 
   /**
-   * Invoke calls an API invocable script and returns a parsed response.
-   * @param scriptID - script identified
+   * Invoke returns a parsed response data stream that executes
+   * the supplied script when asked for data.
+   * @param scriptID - script identifier
    * @param params  - script parameters
-   * @returns annotated CSV response
+   * @returns response with various methods to process data from the returned annotated
+   * CSV response data stream
    */
   invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse {
     return this.processCSVResponse(this.createExecutor(scriptID, params))
@@ -54,7 +57,7 @@ export class FluxScriptInvocationAPI {
   ): APIExecutor {
     const {gzip, headers} = this.options
 
-    return (consumer): void => {
+    return (consumer: CommunicationObserver<Uint8Array>): void => {
       this.transport.send(
         `/api/v2/scripts/${scriptID}/invoke`,
         JSON.stringify({
