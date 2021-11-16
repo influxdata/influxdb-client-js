@@ -3,7 +3,7 @@
 This example shows how to check state InfluxDB instance.
 InfluxDB OSS APIs are available through '@influxdata/influxdb-client-apis' package.
 
-See https://v2.docs.influxdata.com/v2.0/api/
+See https://docs.influxdata.com/influxdb/v2.1/api/
 */
 
 const {InfluxDB} = require('@influxdata/influxdb-client')

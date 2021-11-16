@@ -1,7 +1,7 @@
 {
   "name": "@influxdata/influxdb-client-browser",
   "version": "1.20.0",
-  "description": "InfluxDB 2.0 client for browser",
+  "description": "InfluxDB 2.1 client for browser",
   "scripts": {
     "apidoc:extract": "echo \"Nothing to do\"",
     "test": "echo \"Nothing to do\"",

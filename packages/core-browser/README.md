@@ -1,6 +1,6 @@
 # @influxdata/influxdb-client-browser
 
-The reference InfluxDB 2.0 JavaScript client for browser and [Deno](https://deno.land/) environments.
+The reference InfluxDB 2.x JavaScript client for browser and [Deno](https://deno.land/) environments.
 
 The package.json
 

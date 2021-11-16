@@ -8,7 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@influxdata/influxdb-client)](https://www.npmjs.com/package/@influxdata/influxdb-client)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://www.influxdata.com/slack)
 
-This repository contains the reference JavaScript client for InfluxDB 2.0. This client supports Node.js, browser, and Deno environments.
+This repository contains the reference JavaScript client for InfluxDB 2.x. This client supports Node.js, browser, and Deno environments.
 
 #### Note: Use this client library with InfluxDB 2.x. For connecting to InfluxDB 1.x see the [node-influx](https://github.com/node-influx/node-influx) client library. This library can also write/query [flux-enabled](https://docs.influxdata.com/influxdb/v1.8/administration/config/#flux-enabled--false) InfluxDB 1.8+.
 
@@ -16,14 +16,14 @@ This repository contains the reference JavaScript client for InfluxDB 2.0. This 
 
 This section contains links to the client library documentation.
 
-- [Product documentation](https://docs.influxdata.com/influxdb/v2.0/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
+- [Product documentation](https://docs.influxdata.com/influxdb/v2.1/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
 - [Examples](examples#influxdb-client-examples)
 - [API Reference](https://influxdata.github.io/influxdb-client-js/influxdb-client.html)
 - [Changelog](CHANGELOG.md)
 
 ## Features
 
-InfluxDB 2.0 client consists of two main packages
+InfluxDB 2.x client consists of two main packages
 
 - @influxdata/influxdb-client
   - Query data using the Flux language
@@ -120,4 +120,4 @@ $ yarn build
 
 ## License
 
-The InfluxDB 2.0 JavaScript client is released under the [MIT License](https://opensource.org/licenses/MIT).
+The InfluxDB 2.x JavaScript client is released under the [MIT License](https://opensource.org/licenses/MIT).

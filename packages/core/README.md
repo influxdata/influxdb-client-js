@@ -1,6 +1,6 @@
 # @influxdata/influxdb-client
 
-The reference javascript client for InfluxDB 2.0. Both node and browser environments are supported. The package.json
+The reference javascript client for InfluxDB 2.x. Both node and browser environments are supported. The package.json
 
 - **main** points to node.js CJS distribution
 - **module** points to node.js ESM distribution
