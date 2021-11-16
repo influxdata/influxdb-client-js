@@ -91,6 +91,14 @@ function requestRequired(operation: Operation): boolean {
   return false
 }
 
+const CLOUD_APIS = ['ScriptsAPI']
+function apiDocLink(apiName: string, opID: string): string {
+  if (CLOUD_APIS.includes(apiName)) {
+    return `https://docs.influxdata.com/influxdb/cloud/api/#operation/${opID}`
+  }
+  return `https://docs.influxdata.com/influxdb/v2.1/api/#operation/${opID}`
+}
+
 function generateClass(
   apiKey: string,
   apiName: string,
@@ -127,7 +135,7 @@ export class ${apiName} {
       classDef += '\n  /**'
     }
     classDef += `
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/${opId} }
+   * See {@link ${apiDocLink(apiName, opId)} }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
