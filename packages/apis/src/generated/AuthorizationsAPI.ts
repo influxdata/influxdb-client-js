@@ -51,7 +51,7 @@ export class AuthorizationsAPI {
   }
   /**
    * List all authorizations.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -74,7 +74,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Create an authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -93,7 +93,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Retrieve an authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -111,7 +111,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Update an authorization to be active or inactive.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -130,7 +130,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Delete an authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

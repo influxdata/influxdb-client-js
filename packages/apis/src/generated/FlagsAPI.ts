@@ -19,7 +19,7 @@ export class FlagsAPI {
   }
   /**
    * Return the feature flags for the currently authenticated user.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetFlags }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

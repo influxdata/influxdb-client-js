@@ -51,7 +51,7 @@ export class RemotesAPI {
   }
   /**
    * List all remote connections.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetRemoteConnections }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnections }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -73,7 +73,7 @@ export class RemotesAPI {
   }
   /**
    * Register a new remote connection.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostRemoteConnection }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRemoteConnection }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -92,7 +92,7 @@ export class RemotesAPI {
   }
   /**
    * Retrieve a remote connection.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetRemoteConnectionByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnectionByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -110,7 +110,7 @@ export class RemotesAPI {
   }
   /**
    * Update a remote connection.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchRemoteConnectionByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchRemoteConnectionByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -131,7 +131,7 @@ export class RemotesAPI {
   }
   /**
    * Delete a remote connection.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteRemoteConnectionByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteRemoteConnectionByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -149,7 +149,7 @@ export class RemotesAPI {
   }
   /**
    * Validate a remote connection.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostValidateRemoteConnectionByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostValidateRemoteConnectionByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

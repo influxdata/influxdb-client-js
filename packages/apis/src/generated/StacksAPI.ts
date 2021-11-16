@@ -64,7 +64,7 @@ export class StacksAPI {
   }
   /**
    * List installed templates.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -88,7 +88,7 @@ export class StacksAPI {
   }
   /**
    * Create a new stack.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -107,7 +107,7 @@ export class StacksAPI {
   }
   /**
    * Retrieve a stack.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/ReadStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -125,7 +125,7 @@ export class StacksAPI {
   }
   /**
    * Update a stack.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/UpdateStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -144,7 +144,7 @@ export class StacksAPI {
   }
   /**
    * Delete a stack and associated resources.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -164,7 +164,7 @@ export class StacksAPI {
   }
   /**
    * Uninstall a stack.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/UninstallStack }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/UninstallStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

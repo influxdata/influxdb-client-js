@@ -54,7 +54,7 @@ export class ScriptsAPI {
   }
   /**
    * List scripts.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScripts }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -72,7 +72,7 @@ export class ScriptsAPI {
   }
   /**
    * Create a script.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScripts }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -91,7 +91,7 @@ export class ScriptsAPI {
   }
   /**
    * Retrieve a script.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetScriptsID }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScriptsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -109,7 +109,7 @@ export class ScriptsAPI {
   }
   /**
    * Update a script.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScriptsID }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -128,7 +128,7 @@ export class ScriptsAPI {
   }
   /**
    * Delete a script.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScriptsID }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/DeleteScriptsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -146,7 +146,7 @@ export class ScriptsAPI {
   }
   /**
    * Invoke a script.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostScriptsIDInvoke }
+   * See {@link https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

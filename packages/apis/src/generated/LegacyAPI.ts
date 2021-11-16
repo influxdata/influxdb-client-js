@@ -62,7 +62,7 @@ export class LegacyAPI {
   }
   /**
    * List all legacy authorizations.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetLegacyAuthorizations }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -87,7 +87,7 @@ export class LegacyAPI {
   }
   /**
    * Create a legacy authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostLegacyAuthorizations }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -106,7 +106,7 @@ export class LegacyAPI {
   }
   /**
    * Retrieve a legacy authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetLegacyAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -124,7 +124,7 @@ export class LegacyAPI {
   }
   /**
    * Update a legacy authorization to be active or inactive.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLegacyAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLegacyAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -143,7 +143,7 @@ export class LegacyAPI {
   }
   /**
    * Delete a legacy authorization.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteLegacyAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteLegacyAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -161,7 +161,7 @@ export class LegacyAPI {
   }
   /**
    * Set a legacy authorization password.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostLegacyAuthorizationsIDPassword }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizationsIDPassword }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
