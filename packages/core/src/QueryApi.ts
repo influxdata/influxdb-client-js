@@ -1,6 +1,7 @@
 import {Observable} from './observable'
 import {ParameterizedQuery} from './query'
 import {
+  AnnotatedCSVResponse,
   CommunicationObserver,
   FluxResultObserver,
   FluxTableMetaData,
@@ -43,6 +44,16 @@ export default interface QueryApi {
    * @returns queryApi instance with the supplied options
    */
   with(options: Partial<QueryOptions>): QueryApi
+
+  /**
+   * Response returns an AnnotatedCSVResponse instance that executes
+   * the query and provides various ways of how to process data
+   * from an annotated CSV response stream.
+   *
+   * @param query - query
+   * @returns observable of result rows
+   */
+  response(query: string | ParameterizedQuery): AnnotatedCSVResponse
 
   /**
    * Creates a cold observable of the lines returned by the given query.

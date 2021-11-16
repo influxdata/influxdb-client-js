@@ -20,7 +20,7 @@ export function defaultRowMapping(
 
 /**
  * AnnotatedCsvResponseImpl is an implementation AnnotatedCsvResponse
- * that uses the supplied executor to parse results.
+ * that uses the supplied executor to supply a response data stream.
  */
 export class AnnotatedCSVResponseImpl implements AnnotatedCSVResponse {
   constructor(

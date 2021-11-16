@@ -4,7 +4,8 @@ import {CommunicationObserver} from './CommunicationObserver'
 import {FluxResultObserver} from './FluxResultObserver'
 
 /**
- * AnnotatedCSVResponse represents an annotated CSV response,
+ * AnnotatedCSVResponse provides various ways of how to
+ * process data from an annotated CSV response stream,
  * which is returned as a result of a flux script execution.
  */
 export interface AnnotatedCSVResponse {
