@@ -38,3 +38,4 @@
  */
 export * from './generated'
 export {RequestOptions} from './APIBase'
+export * from './custom'

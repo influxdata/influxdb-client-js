@@ -1,17 +1,12 @@
 import {Observable} from './observable'
 import {ParameterizedQuery} from './query'
 import {
+  AnnotatedCSVResponse,
   CommunicationObserver,
   FluxResultObserver,
   FluxTableMetaData,
+  Row,
 } from './results'
-
-export function defaultRowMapping(
-  values: string[],
-  tableMeta: FluxTableMetaData
-): Record<string, any> {
-  return tableMeta.toObject(values)
-}
 
 /** QueryOptions contains QueryApi configuration options. */
 export interface QueryOptions {
@@ -38,12 +33,6 @@ export interface QueryOptions {
   headers?: {[key: string]: string}
 }
 
-/** Wraps values and associated metadata of a query result row */
-export interface Row {
-  values: string[]
-  tableMeta: FluxTableMetaData
-}
-
 /**
  * Query InfluxDB 2.0. Provides methods that notify abouts result lines of the executed query.
  * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery }
@@ -55,6 +44,16 @@ export default interface QueryApi {
    * @returns queryApi instance with the supplied options
    */
   with(options: Partial<QueryOptions>): QueryApi
+
+  /**
+   * Response returns an AnnotatedCSVResponse instance that executes
+   * the query when asked for data.
+   *
+   * @param query - query
+   * @returns response with various methods to process data from the returned annotated
+   * CSV response data stream
+   */
+  response(query: string | ParameterizedQuery): AnnotatedCSVResponse
 
   /**
    * Creates a cold observable of the lines returned by the given query.

@@ -7,17 +7,19 @@ import {
   Subscription,
   symbolObservable,
 } from '../observable'
-import {Cancellable, CommunicationObserver} from '../results'
+import {CommunicationObserver} from '../results/CommunicationObserver'
+import {Cancellable} from '../results/Cancellable'
 
-export type QueryExecutor = (consumer: CommunicationObserver<string>) => void
+/** APIExecutor executes the API and passes its response to the supplied consumer */
+export type APIExecutor = (consumer: CommunicationObserver<Uint8Array>) => void
 
-type Decorator<T> = (observer: Observer<T>) => Observer<string>
+type Decorator<T> = (observer: Observer<T>) => Observer<Uint8Array>
 
 class QuerySubscription implements Subscription {
   private cancellable?: Cancellable
   private isClosed = false
 
-  public constructor(observer: Observer<string>, executor: QueryExecutor) {
+  public constructor(observer: Observer<Uint8Array>, executor: APIExecutor) {
     try {
       executor({
         next: value => {
@@ -65,7 +67,7 @@ function completeObserver<T>(observer: Partial<Observer<T>>): Observer<T> {
 
 export default class ObservableQuery<T> implements Observable<T> {
   public constructor(
-    private readonly executor: QueryExecutor,
+    private readonly executor: APIExecutor,
     private readonly decorator: Decorator<T>
   ) {}
 
