@@ -128,7 +128,7 @@ export class QueryApiImpl implements QueryApi {
     if (typeof this.options.now === 'function') {
       request.now = this.options.now()
     }
-    // https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery requires type
+    // https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery requires type
     request.type = this.options.type ?? 'flux'
     return request
   }

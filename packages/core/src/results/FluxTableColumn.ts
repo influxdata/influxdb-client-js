@@ -1,5 +1,5 @@
 /**
- * Type of query result column, see {@link https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types }
+ * Type of query result column, see {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
  */
 export type ColumnType =
   | 'boolean'

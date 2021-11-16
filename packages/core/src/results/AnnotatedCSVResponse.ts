@@ -21,7 +21,7 @@ export interface AnnotatedCSVResponse {
   rows(): Observable<Row>
   /**
    * ConsumesLines consumes result lines (including empty and annotation lines)
-   * through the supplied consumer. See [annotated-csv](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/).
+   * through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
    * @param consumer - csv result lines and error consumer
    */
   consumeLines(consumer: CommunicationObserver<string>): void
