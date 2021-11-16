@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-This example shows how to use API invocable scripts. See also
+This example shows how to use API-invocable scripts. See also
 https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ .
 */
 
