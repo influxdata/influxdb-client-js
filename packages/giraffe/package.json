@@ -1,7 +1,7 @@
 {
   "name": "@influxdata/influxdb-client-giraffe",
   "version": "1.20.0",
-  "description": "InfluxDB 2.0 client - giraffe integration",
+  "description": "InfluxDB 2.1 client - giraffe integration",
   "scripts": {
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && rollup -c",

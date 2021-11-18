@@ -23,7 +23,7 @@ export class SetupAPI {
   }
   /**
    * Check if database has default user, org, bucket.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSetup }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -36,7 +36,7 @@ export class SetupAPI {
   }
   /**
    * Set up initial user, org and bucket.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSetup }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

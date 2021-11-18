@@ -11,7 +11,7 @@ import {AnnotatedCSVResponse, APIExecutor} from './results'
 import {AnnotatedCSVResponseImpl} from './results/AnnotatedCSVResponseImpl'
 
 /**
- * InfluxDB 2.0 entry point that configures communication with InfluxDB server
+ * InfluxDB entry point that configures communication with InfluxDB server
  * and provide APIs to write and query data.
  */
 export default class InfluxDB {

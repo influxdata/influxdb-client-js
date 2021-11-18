@@ -1,7 +1,7 @@
 {
   "name": "@influxdata/influxdb-client-apis",
   "version": "1.20.0",
-  "description": "InfluxDB 2.0 generated APIs",
+  "description": "InfluxDB 2.1 generated APIs",
   "scripts": {
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && yarn run lint && rollup -c",

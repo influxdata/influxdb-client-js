@@ -12,7 +12,7 @@ const fluxQuery =
 
 console.log('*** QUERY ROWS ***')
 // Execute query and receive table metadata and rows.
-// https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/
+// https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/
 queryApi.queryRows(fluxQuery, {
   next(row: string[], tableMeta: FluxTableMetaData) {
     const o = tableMeta.toObject(row)

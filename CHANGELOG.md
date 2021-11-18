@@ -10,6 +10,7 @@
 1. [#382](https://github.com/influxdata/influxdb-client-js/pull/382): Rename Logger variable to Log.
 1. [#383](https://github.com/influxdata/influxdb-client-js/pull/383): Remove undefined fields from request options.
 1. [#386](https://github.com/influxdata/influxdb-client-js/pull/386): Do not parse empty JSON response.
+1. [#388](https://github.com/influxdata/influxdb-client-js/pull/388): Point to InfluxDB v2.1 / cloud documentation.
 
 ## 1.20.0 [2021-10-26]
 

@@ -22,7 +22,7 @@ export class TelegrafAPI {
   }
   /**
    * List all Telegraf plugins.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafPlugins }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafPlugins }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

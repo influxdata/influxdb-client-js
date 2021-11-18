@@ -19,7 +19,7 @@ export class HealthAPI {
   }
   /**
    * Get the health of an instance.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetHealth }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

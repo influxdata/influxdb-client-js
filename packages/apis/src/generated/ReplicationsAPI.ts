@@ -52,7 +52,7 @@ export class ReplicationsAPI {
   }
   /**
    * List all replications.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetReplications }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplications }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -75,7 +75,7 @@ export class ReplicationsAPI {
   }
   /**
    * Register a new replication.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostReplication }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostReplication }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -94,7 +94,7 @@ export class ReplicationsAPI {
   }
   /**
    * Retrieve a replication.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetReplicationByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplicationByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -112,7 +112,7 @@ export class ReplicationsAPI {
   }
   /**
    * Update a replication.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchReplicationByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchReplicationByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -133,7 +133,7 @@ export class ReplicationsAPI {
   }
   /**
    * Delete a replication.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteReplicationByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteReplicationByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -151,7 +151,7 @@ export class ReplicationsAPI {
   }
   /**
    * Validate a replication.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostValidateReplicationByID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostValidateReplicationByID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

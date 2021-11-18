@@ -50,7 +50,7 @@ export class SourcesAPI {
   }
   /**
    * List all sources.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSources }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSources }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -68,7 +68,7 @@ export class SourcesAPI {
   }
   /**
    * Create a source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSources }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -87,7 +87,7 @@ export class SourcesAPI {
   }
   /**
    * Retrieve a source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -105,7 +105,7 @@ export class SourcesAPI {
   }
   /**
    * Update a Source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchSourcesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -124,7 +124,7 @@ export class SourcesAPI {
   }
   /**
    * Delete a source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteSourcesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -142,7 +142,7 @@ export class SourcesAPI {
   }
   /**
    * Get the health of a source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesIDHealth }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -160,7 +160,7 @@ export class SourcesAPI {
   }
   /**
    * Get buckets in a source.
-   * See {@link https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDBuckets }
+   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesIDBuckets }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
