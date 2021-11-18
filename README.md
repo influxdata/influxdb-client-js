@@ -31,11 +31,13 @@ InfluxDB 2.x client consists of two main packages
     - batch data in the background
     - retry automatically on failure
 - @influxdata/influxdb-client-apis
-  - Manage the following in InfluxDB:
-    - sources
+  - Create/Modify/Delete/Manage
     - buckets
     - tasks
     - authorizations
+    - sources
+    - ... and other InfluxDB domain objects
+  - Delete data from a bucket
   - built on @influxdata/influxdb-client
 
 ## Installation
