@@ -15,7 +15,7 @@ The functionality of the DeleteAPI is fully demonstrated with
 the following sequence of examples:
  - write.js
  - query.ts
- - delete.mjs
+ - delete.ts
  - query.ts
 
 Note: You can also delete and re-create the whole bucket,
