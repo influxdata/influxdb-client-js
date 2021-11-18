@@ -31,11 +31,13 @@ InfluxDB 2.x client consists of two main packages
     - batch data in the background
     - retry automatically on failure
 - @influxdata/influxdb-client-apis
-  - Manage the following in InfluxDB:
-    - sources
+  - Create/Modify/Delete/Manage
     - buckets
     - tasks
     - authorizations
+    - sources
+    - ... and other InfluxDB domain objects
+  - Delete data from a bucket
   - built on @influxdata/influxdb-client
 
 ## Installation
@@ -76,6 +78,7 @@ Use the following examples to get started with the JavaScript client for InfluxD
 See [examples](./examples/README.md) for more advanced use case like the following:
 
 - Execute parameterized queries.
+- Delete bucket data.
 - Use the client library with InfluxDB 1.8+.
 - Use the client library in the browser or [Deno](./examples/query.deno.ts).
 - Process InfluxDB query results with RX Observables.

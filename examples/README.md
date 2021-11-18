@@ -28,6 +28,8 @@ This directory contains javascript and typescript examples for node.js, browser,
     Shows how to control the way of how data points are written to InfluxDB.
   - [follow-redirects.js](./follow-redirects.js)
     Shows how to configure the client to follow HTTP redirects.
+  - [delete.ts](./delete.ts)
+    Shows how to delete data from a bucket.
 - Browser examples
   - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your InfluxDB instance
   - Run `npm run browser`
