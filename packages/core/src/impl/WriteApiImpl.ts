@@ -9,7 +9,6 @@ import {Headers} from '../results'
 import {Log} from '../util/logger'
 import {HttpError, RetryDelayStrategy} from '../errors'
 import {Point} from '../Point'
-import {escape} from '../util/escape'
 import {currentTime, dateToProtocolTimestamp} from '../util/currentTime'
 import {createRetryDelayStrategy} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
@@ -283,12 +282,7 @@ export default class WriteApiImpl implements WriteApi {
   // PointSettings
   defaultTags: {[key: string]: string} | undefined
   useDefaultTags(tags: {[key: string]: string}): WriteApi {
-    this.defaultTags = undefined
-    Object.keys(tags).forEach((key: string) => {
-      ;(this.defaultTags || (this.defaultTags = {}))[key] = escape.tag(
-        tags[key]
-      )
-    })
+    this.defaultTags = tags
     return this
   }
   convertTime(value: string | number | Date | undefined): string | undefined {

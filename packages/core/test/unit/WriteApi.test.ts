@@ -257,6 +257,37 @@ describe('WriteApi', () => {
       })
     })
   })
+  describe('convert default tags to line protocol', () => {
+    it('works with tags OOTB', () => {
+      const writeAPI = createApi(ORG, BUCKET, 'ms', {
+        retryJitter: 0,
+      })
+      const p = new Point('a').floatField('b', 1).timestamp('')
+      expect(p.toLineProtocol(writeAPI)).equals('a b=1')
+    })
+    it('setups tags using useDefaultTags ', () => {
+      const writeAPI = createApi(ORG, BUCKET, 'ms', {
+        retryJitter: 0,
+      })
+      const p = new Point('a').floatField('b', 1).timestamp('')
+      writeAPI.useDefaultTags({
+        x: 'y z',
+        'a b': 'c',
+      })
+      expect(p.toLineProtocol(writeAPI)).equals('a,a\\ b=c,x=y\\ z b=1')
+    })
+    it('setups tags from configuration', () => {
+      const writeAPI = createApi(ORG, BUCKET, 'ms', {
+        retryJitter: 0,
+        defaultTags: {
+          x: 'y z',
+          'a b': 'c',
+        },
+      })
+      const p = new Point('a').floatField('b', 1).timestamp('')
+      expect(p.toLineProtocol(writeAPI)).equals('a,a\\ b=c,x=y\\ z b=1')
+    })
+  })
   describe('flush on background', () => {
     let subject: WriteApi
     let logs: CollectedLogs
