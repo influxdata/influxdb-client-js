@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.deleteTelegrafsIDMembersID() method
 
-Remove a member from a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteTelegrafsIDMembersID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTelegrafsIDMembersID)
+Remove a member from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTelegrafsIDMembersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTelegrafsIDMembersID)
 
 <b>Signature:</b>
 

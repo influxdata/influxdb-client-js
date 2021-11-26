@@ -4,7 +4,7 @@
 
 ## ChecksAPI.patchChecksID() method
 
-Update a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchChecksID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchChecksID)
+Update a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchChecksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchChecksID)
 
 <b>Signature:</b>
 

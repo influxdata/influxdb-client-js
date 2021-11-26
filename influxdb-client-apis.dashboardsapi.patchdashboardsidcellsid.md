@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsIDCellsID() method
 
-Update the non-positional information related to a cell. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchDashboardsIDCellsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsID)
+Update the non-positional information related to a cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDashboardsIDCellsID)
 
 <b>Signature:</b>
 

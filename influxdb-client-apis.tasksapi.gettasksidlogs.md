@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDLogs() method
 
-Retrieve all logs for a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDLogs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDLogs)
+Retrieve all logs for a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDLogs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDLogs)
 
 <b>Signature:</b>
 

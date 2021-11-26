@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDLabels() method
 
-Add a label to a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDashboardsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDLabels)
+Add a label to a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDLabels)
 
 <b>Signature:</b>
 

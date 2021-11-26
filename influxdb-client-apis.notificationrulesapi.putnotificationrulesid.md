@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.putNotificationRulesID() method
 
-Update a notification rule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutNotificationRulesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationRulesID)
+Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutNotificationRulesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutNotificationRulesID)
 
 <b>Signature:</b>
 

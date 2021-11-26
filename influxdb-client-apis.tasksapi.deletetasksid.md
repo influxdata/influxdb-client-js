@@ -4,7 +4,7 @@
 
 ## TasksAPI.deleteTasksID() method
 
-Delete a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteTasksID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksID)
+Delete a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTasksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTasksID)
 
 <b>Signature:</b>
 

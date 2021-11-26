@@ -4,7 +4,7 @@
 
 ## RemotesAPI.getRemoteConnectionByID() method
 
-Retrieve a remote connection. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetRemoteConnectionByID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetRemoteConnectionByID)
+Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnectionByID)
 
 <b>Signature:</b>
 

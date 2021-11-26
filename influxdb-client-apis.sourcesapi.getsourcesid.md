@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSourcesID() method
 
-Retrieve a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSourcesID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesID)
+Retrieve a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSourcesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesID)
 
 <b>Signature:</b>
 

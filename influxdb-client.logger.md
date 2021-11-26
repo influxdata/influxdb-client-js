@@ -2,10 +2,20 @@
 
 [Home](./index.md) &gt; [@influxdata/influxdb-client](./influxdb-client.md) &gt; [Logger](./influxdb-client.logger.md)
 
-## Logger variable
+## Logger interface
+
+Logging interface.
 
 <b>Signature:</b>
 
 ```typescript
-Logger: Logger
+export interface Logger 
 ```
+
+## Methods
+
+|  Method | Description |
+|  --- | --- |
+|  [error(message, err)](./influxdb-client.logger.error.md) |  |
+|  [warn(message, err)](./influxdb-client.logger.warn.md) |  |
+

@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.getScriptsID() method
 
-Retrieve a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScriptsID)
+Retrieve a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScriptsID)
 
 <b>Signature:</b>
 

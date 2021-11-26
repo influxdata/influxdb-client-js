@@ -4,7 +4,7 @@
 
 ## MeAPI.putMePassword() method
 
-Update a password. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutMePassword](https://v2.docs.influxdata.com/v2.0/api/#operation/PutMePassword)
+Update a password. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutMePassword)
 
 <b>Signature:</b>
 

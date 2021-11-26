@@ -4,7 +4,7 @@
 
 ## TasksAPI.deleteTasksIDRunsID() method
 
-Cancel a running task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteTasksIDRunsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteTasksIDRunsID)
+Cancel a running task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTasksIDRunsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTasksIDRunsID)
 
 <b>Signature:</b>
 

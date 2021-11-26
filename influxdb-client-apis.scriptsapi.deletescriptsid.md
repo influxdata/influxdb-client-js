@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.deleteScriptsID() method
 
-Delete a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScriptsID)
+Delete a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/DeleteScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/DeleteScriptsID)
 
 <b>Signature:</b>
 

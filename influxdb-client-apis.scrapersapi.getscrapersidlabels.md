@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDLabels() method
 
-List all labels for a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapersIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDLabels)
+List all labels for a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersIDLabels)
 
 <b>Signature:</b>
 

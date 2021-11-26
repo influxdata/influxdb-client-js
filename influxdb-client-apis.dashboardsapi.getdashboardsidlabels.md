@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDLabels() method
 
-List all labels for a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboardsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDLabels)
+List all labels for a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsIDLabels)
 
 <b>Signature:</b>
 

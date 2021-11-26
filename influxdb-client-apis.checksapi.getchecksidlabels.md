@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksIDLabels() method
 
-List all labels for a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetChecksIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksIDLabels)
+List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecksIDLabels)
 
 <b>Signature:</b>
 

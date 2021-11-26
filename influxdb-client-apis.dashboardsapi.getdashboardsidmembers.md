@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDMembers() method
 
-List all dashboard members. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboardsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDMembers)
+List all dashboard members. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsIDMembers)
 
 <b>Signature:</b>
 

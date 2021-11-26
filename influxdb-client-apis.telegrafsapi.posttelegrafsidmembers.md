@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafsIDMembers() method
 
-Add a member to a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTelegrafsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDMembers)
+Add a member to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTelegrafsIDMembers)
 
 <b>Signature:</b>
 

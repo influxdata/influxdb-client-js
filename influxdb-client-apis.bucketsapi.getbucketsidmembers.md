@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDMembers() method
 
-List all users with member privileges for a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBucketsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDMembers)
+List all users with member privileges for a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDMembers)
 
 <b>Signature:</b>
 

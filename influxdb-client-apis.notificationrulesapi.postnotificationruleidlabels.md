@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.postNotificationRuleIDLabels() method
 
-Add a label to a notification rule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostNotificationRuleIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationRuleIDLabels)
+Add a label to a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostNotificationRuleIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostNotificationRuleIDLabels)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## UsersAPI.getUsersID() method
 
-Retrieve a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetUsersID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsersID)
+Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetUsersID)
 
 <b>Signature:</b>
 

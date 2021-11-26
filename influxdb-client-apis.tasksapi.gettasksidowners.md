@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDOwners() method
 
-List all owners of a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDOwners)
+List all owners of a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDOwners)
 
 <b>Signature:</b>
 

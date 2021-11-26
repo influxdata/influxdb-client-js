@@ -4,7 +4,7 @@
 
 ## RemotesAPI.getRemoteConnections() method
 
-List all remote connections. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetRemoteConnections](https://v2.docs.influxdata.com/v2.0/api/#operation/GetRemoteConnections)
+List all remote connections. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnections)
 
 <b>Signature:</b>
 

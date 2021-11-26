@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDMembers() method
 
-Add a member to a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDashboardsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDMembers)
+Add a member to a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDMembers)
 
 <b>Signature:</b>
 

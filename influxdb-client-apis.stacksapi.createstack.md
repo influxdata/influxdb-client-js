@@ -4,7 +4,7 @@
 
 ## StacksAPI.createStack() method
 
-Create a new stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/CreateStack](https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack)
+Create a new stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateStack)
 
 <b>Signature:</b>
 

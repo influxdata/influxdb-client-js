@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDMembers() method
 
-List all members of an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetOrgsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDMembers)
+List all members of an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgsIDMembers)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## UsersAPI.getUsers() method
 
-List all users. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetUsers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetUsers)
+List all users. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetUsers)
 
 <b>Signature:</b>
 

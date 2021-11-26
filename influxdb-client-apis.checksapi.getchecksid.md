@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksID() method
 
-Retrieve a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetChecksID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecksID)
+Retrieve a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecksID)
 
 <b>Signature:</b>
 

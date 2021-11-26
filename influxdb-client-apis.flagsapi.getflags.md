@@ -4,7 +4,7 @@
 
 ## FlagsAPI.getFlags() method
 
-Return the feature flags for the currently authenticated user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetFlags](https://v2.docs.influxdata.com/v2.0/api/#operation/GetFlags)
+Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetFlags)
 
 <b>Signature:</b>
 

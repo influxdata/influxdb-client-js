@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsIDCellsIDView() method
 
-Update the view for a cell. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchDashboardsIDCellsIDView](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsIDCellsIDView)
+Update the view for a cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDashboardsIDCellsIDView)
 
 <b>Signature:</b>
 

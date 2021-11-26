@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.getNotificationEndpointsIDLabels() method
 
-List all labels for a notification endpoint. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationEndpointsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationEndpointsIDLabels)
+List all labels for a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetNotificationEndpointsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetNotificationEndpointsIDLabels)
 
 <b>Signature:</b>
 

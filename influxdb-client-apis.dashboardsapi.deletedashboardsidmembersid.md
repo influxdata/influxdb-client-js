@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsIDMembersID() method
 
-Remove a member from a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteDashboardsIDMembersID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDMembersID)
+Remove a member from a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteDashboardsIDMembersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteDashboardsIDMembersID)
 
 <b>Signature:</b>
 

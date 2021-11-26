@@ -4,7 +4,7 @@
 
 ## SourcesAPI.patchSourcesID() method
 
-Update a Source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchSourcesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchSourcesID)
+Update a Source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchSourcesID)
 
 <b>Signature:</b>
 

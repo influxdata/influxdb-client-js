@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.postValidateReplicationByID() method
 
-Validate a replication. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostValidateReplicationByID](https://v2.docs.influxdata.com/v2.0/api/#operation/PostValidateReplicationByID)
+Validate a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostValidateReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostValidateReplicationByID)
 
 <b>Signature:</b>
 

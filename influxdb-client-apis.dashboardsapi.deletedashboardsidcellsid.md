@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsIDCellsID() method
 
-Delete a dashboard cell. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteDashboardsIDCellsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsIDCellsID)
+Delete a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteDashboardsIDCellsID)
 
 <b>Signature:</b>
 

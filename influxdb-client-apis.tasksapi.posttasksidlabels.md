@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDLabels() method
 
-Add a label to a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTasksIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDLabels)
+Add a label to a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasksIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasksIDLabels)
 
 <b>Signature:</b>
 

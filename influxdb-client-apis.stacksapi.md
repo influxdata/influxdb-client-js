@@ -22,10 +22,10 @@ export declare class StacksAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [createStack(request, requestOptions)](./influxdb-client-apis.stacksapi.createstack.md) |  | Create a new stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/CreateStack](https://v2.docs.influxdata.com/v2.0/api/#operation/CreateStack) |
-|  [deleteStack(request, requestOptions)](./influxdb-client-apis.stacksapi.deletestack.md) |  | Delete a stack and associated resources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteStack](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteStack) |
-|  [listStacks(request, requestOptions)](./influxdb-client-apis.stacksapi.liststacks.md) |  | List installed templates. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ListStacks](https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks) |
-|  [readStack(request, requestOptions)](./influxdb-client-apis.stacksapi.readstack.md) |  | Retrieve a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ReadStack](https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack) |
-|  [uninstallStack(request, requestOptions)](./influxdb-client-apis.stacksapi.uninstallstack.md) |  | Uninstall a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UninstallStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UninstallStack) |
-|  [updateStack(request, requestOptions)](./influxdb-client-apis.stacksapi.updatestack.md) |  | Update a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/UpdateStack](https://v2.docs.influxdata.com/v2.0/api/#operation/UpdateStack) |
+|  [createStack(request, requestOptions)](./influxdb-client-apis.stacksapi.createstack.md) |  | Create a new stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateStack) |
+|  [deleteStack(request, requestOptions)](./influxdb-client-apis.stacksapi.deletestack.md) |  | Delete a stack and associated resources. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteStack) |
+|  [listStacks(request, requestOptions)](./influxdb-client-apis.stacksapi.liststacks.md) |  | List installed templates. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ListStacks) |
+|  [readStack(request, requestOptions)](./influxdb-client-apis.stacksapi.readstack.md) |  | Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ReadStack) |
+|  [uninstallStack(request, requestOptions)](./influxdb-client-apis.stacksapi.uninstallstack.md) |  | Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/UninstallStack) |
+|  [updateStack(request, requestOptions)](./influxdb-client-apis.stacksapi.updatestack.md) |  | Update a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/UpdateStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/UpdateStack) |
 

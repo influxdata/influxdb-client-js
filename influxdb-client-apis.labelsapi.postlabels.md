@@ -4,7 +4,7 @@
 
 ## LabelsAPI.postLabels() method
 
-Create a label. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostLabels)
+Create a label. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLabels)
 
 <b>Signature:</b>
 

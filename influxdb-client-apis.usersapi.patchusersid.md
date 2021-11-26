@@ -4,7 +4,7 @@
 
 ## UsersAPI.patchUsersID() method
 
-Update a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchUsersID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchUsersID)
+Update a user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchUsersID)
 
 <b>Signature:</b>
 

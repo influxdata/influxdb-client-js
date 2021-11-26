@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasks() method
 
-List all tasks. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasks](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasks)
+List all tasks. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasks)
 
 <b>Signature:</b>
 

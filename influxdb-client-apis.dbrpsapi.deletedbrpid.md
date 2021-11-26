@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.deleteDBRPID() method
 
-Delete a database retention policy. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteDBRPID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDBRPID)
+Delete a database retention policy. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteDBRPID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteDBRPID)
 
 <b>Signature:</b>
 

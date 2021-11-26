@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreShardId() method
 
-Restore a TSM snapshot into a shard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreShardId](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreShardId)
+Restore a TSM snapshot into a shard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreShardId](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreShardId)
 
 <b>Signature:</b>
 

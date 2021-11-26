@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboards() method
 
-Create a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDashboards](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboards)
+Create a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboards](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboards)
 
 <b>Signature:</b>
 

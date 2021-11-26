@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDRunsIDRetry() method
 
-Retry a task run. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTasksIDRunsIDRetry](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRunsIDRetry)
+Retry a task run. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasksIDRunsIDRetry](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasksIDRunsIDRetry)
 
 <b>Signature:</b>
 

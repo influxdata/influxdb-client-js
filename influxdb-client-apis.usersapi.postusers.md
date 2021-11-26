@@ -4,7 +4,7 @@
 
 ## UsersAPI.postUsers() method
 
-Create a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostUsers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostUsers)
+Create a user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostUsers)
 
 <b>Signature:</b>
 

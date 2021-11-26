@@ -4,7 +4,7 @@
 
 ## ChecksAPI.createCheck() method
 
-Add new check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/CreateCheck](https://v2.docs.influxdata.com/v2.0/api/#operation/CreateCheck)
+Add new check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateCheck](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateCheck)
 
 <b>Signature:</b>
 

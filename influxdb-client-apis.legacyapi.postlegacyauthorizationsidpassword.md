@@ -4,7 +4,7 @@
 
 ## LegacyAPI.postLegacyAuthorizationsIDPassword() method
 
-Set a legacy authorization password. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostLegacyAuthorizationsIDPassword](https://v2.docs.influxdata.com/v2.0/api/#operation/PostLegacyAuthorizationsIDPassword)
+Set a legacy authorization password. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostLegacyAuthorizationsIDPassword](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizationsIDPassword)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDOwners() method
 
-List all dashboard owners. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboardsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDOwners)
+List all dashboard owners. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsIDOwners)
 
 <b>Signature:</b>
 

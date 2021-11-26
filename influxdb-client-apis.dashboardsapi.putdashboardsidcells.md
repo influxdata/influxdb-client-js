@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.putDashboardsIDCells() method
 
-Replace cells in a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutDashboardsIDCells](https://v2.docs.influxdata.com/v2.0/api/#operation/PutDashboardsIDCells)
+Replace cells in a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutDashboardsIDCells)
 
 <b>Signature:</b>
 

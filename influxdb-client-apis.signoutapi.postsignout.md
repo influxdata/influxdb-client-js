@@ -4,7 +4,7 @@
 
 ## SignoutAPI.postSignout() method
 
-Expire the current UI session. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSignout](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSignout)
+Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSignout)
 
 <b>Signature:</b>
 

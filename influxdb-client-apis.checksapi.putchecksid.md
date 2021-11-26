@@ -4,7 +4,7 @@
 
 ## ChecksAPI.putChecksID() method
 
-Update a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutChecksID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutChecksID)
+Update a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutChecksID)
 
 <b>Signature:</b>
 

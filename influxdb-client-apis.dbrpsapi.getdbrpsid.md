@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.getDBRPsID() method
 
-Retrieve a database retention policy mapping. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDBRPsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPsID)
+Retrieve a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDBRPsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDBRPsID)
 
 <b>Signature:</b>
 

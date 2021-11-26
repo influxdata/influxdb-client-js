@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDOwners() method
 
-Add an owner to a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostBucketsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDOwners)
+Add an owner to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDOwners)
 
 <b>Signature:</b>
 

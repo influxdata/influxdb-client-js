@@ -4,7 +4,7 @@
 
 ## BackupAPI.getBackupKV() method
 
-Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBackupKV](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBackupKV)
+Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupKV](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupKV)
 
 <b>Signature:</b>
 

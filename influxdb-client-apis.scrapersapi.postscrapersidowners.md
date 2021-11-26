@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapersIDOwners() method
 
-Add an owner to a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScrapersIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDOwners)
+Add an owner to a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostScrapersIDOwners)
 
 <b>Signature:</b>
 

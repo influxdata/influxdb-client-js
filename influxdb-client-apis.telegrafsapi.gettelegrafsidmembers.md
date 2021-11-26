@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDMembers() method
 
-List all users with member privileges for a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDMembers)
+List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafsIDMembers)
 
 <b>Signature:</b>
 

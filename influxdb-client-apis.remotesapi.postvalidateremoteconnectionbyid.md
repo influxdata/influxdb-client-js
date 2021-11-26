@@ -4,7 +4,7 @@
 
 ## RemotesAPI.postValidateRemoteConnectionByID() method
 
-Validate a remote connection. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostValidateRemoteConnectionByID](https://v2.docs.influxdata.com/v2.0/api/#operation/PostValidateRemoteConnectionByID)
+Validate a remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostValidateRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostValidateRemoteConnectionByID)
 
 <b>Signature:</b>
 

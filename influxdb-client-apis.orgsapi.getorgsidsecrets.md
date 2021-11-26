@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDSecrets() method
 
-List all secret keys for an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetOrgsIDSecrets](https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDSecrets)
+List all secret keys for an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgsIDSecrets)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ReadyAPI.getReady() method
 
-Get the readiness of an instance at startup. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetReady](https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady)
+Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReady)
 
 <b>Signature:</b>
 

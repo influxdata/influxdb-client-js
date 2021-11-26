@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRunsID() method
 
-Retrieve a single run for a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDRunsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsID)
+Retrieve a single run for a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDRunsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDRunsID)
 
 <b>Signature:</b>
 

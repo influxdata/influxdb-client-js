@@ -4,7 +4,7 @@
 
 ## VariablesAPI.postVariables() method
 
-Create a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostVariables](https://v2.docs.influxdata.com/v2.0/api/#operation/PostVariables)
+Create a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostVariables](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostVariables)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## LegacyAPI.getLegacyAuthorizations() method
 
-List all legacy authorizations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetLegacyAuthorizations](https://v2.docs.influxdata.com/v2.0/api/#operation/GetLegacyAuthorizations)
+List all legacy authorizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizations)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## VariablesAPI.patchVariablesID() method
 
-Update a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchVariablesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchVariablesID)
+Update a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchVariablesID)
 
 <b>Signature:</b>
 

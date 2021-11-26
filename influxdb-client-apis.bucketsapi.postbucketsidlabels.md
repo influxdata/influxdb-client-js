@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDLabels() method
 
-Add a label to a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostBucketsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDLabels)
+Add a label to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDLabels)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDMembers() method
 
-List all users with member privileges for a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapersIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDMembers)
+List all users with member privileges for a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersIDMembers)
 
 <b>Signature:</b>
 

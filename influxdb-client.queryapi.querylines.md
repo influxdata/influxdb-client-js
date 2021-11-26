@@ -4,7 +4,7 @@
 
 ## QueryApi.queryLines() method
 
-Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/).
+Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
 
 <b>Signature:</b>
 

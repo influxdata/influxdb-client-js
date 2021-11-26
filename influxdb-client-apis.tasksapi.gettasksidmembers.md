@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDMembers() method
 
-List all task members. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDMembers)
+List all task members. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDMembers)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.deleteScrapersIDOwnersID() method
 
-Remove an owner from a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteScrapersIDOwnersID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDOwnersID)
+Remove an owner from a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteScrapersIDOwnersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteScrapersIDOwnersID)
 
 <b>Signature:</b>
 

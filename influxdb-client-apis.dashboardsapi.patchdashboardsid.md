@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsID() method
 
-Update a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchDashboardsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDashboardsID)
+Update a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchDashboardsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDashboardsID)
 
 <b>Signature:</b>
 

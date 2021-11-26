@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsID() method
 
-Delete a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteDashboardsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteDashboardsID)
+Delete a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteDashboardsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteDashboardsID)
 
 <b>Signature:</b>
 

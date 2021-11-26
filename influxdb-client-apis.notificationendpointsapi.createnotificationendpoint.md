@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.createNotificationEndpoint() method
 
-Add a notification endpoint. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/CreateNotificationEndpoint](https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationEndpoint)
+Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateNotificationEndpoint)
 
 <b>Signature:</b>
 

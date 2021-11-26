@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.getDBRPs() method
 
-List database retention policy mappings. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDBRPs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDBRPs)
+List database retention policy mappings. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDBRPs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDBRPs)
 
 <b>Signature:</b>
 

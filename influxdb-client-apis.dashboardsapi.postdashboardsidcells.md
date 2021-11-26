@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDCells() method
 
-Create a dashboard cell. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDashboardsIDCells](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDCells)
+Create a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDCells)
 
 <b>Signature:</b>
 

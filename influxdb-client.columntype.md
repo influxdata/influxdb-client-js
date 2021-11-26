@@ -4,7 +4,7 @@
 
 ## ColumnType type
 
-Type of query result column, see [https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/\#valid-data-types](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types)
+Type of query result column, see [https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types)
 
 <b>Signature:</b>
 

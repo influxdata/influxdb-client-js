@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.patchNotificationRulesID() method
 
-Update a notification rule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchNotificationRulesID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchNotificationRulesID)
+Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchNotificationRulesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchNotificationRulesID)
 
 <b>Signature:</b>
 

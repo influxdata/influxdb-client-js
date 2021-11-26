@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRulesIDLabels() method
 
-List all labels for a notification rule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetNotificationRulesIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetNotificationRulesIDLabels)
+List all labels for a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetNotificationRulesIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetNotificationRulesIDLabels)
 
 <b>Signature:</b>
 

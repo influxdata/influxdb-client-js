@@ -22,6 +22,6 @@ export declare class TemplatesAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [applyTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.applytemplate.md) |  | Apply or dry-run a template. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ApplyTemplate](https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyTemplate) |
-|  [exportTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.exporttemplate.md) |  | Export a new template. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ExportTemplate](https://v2.docs.influxdata.com/v2.0/api/#operation/ExportTemplate) |
+|  [applyTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.applytemplate.md) |  | Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ApplyTemplate) |
+|  [exportTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.exporttemplate.md) |  | Export a new template. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ExportTemplate) |
 

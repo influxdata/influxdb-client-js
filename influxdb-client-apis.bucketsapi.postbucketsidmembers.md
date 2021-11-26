@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDMembers() method
 
-Add a member to a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostBucketsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostBucketsIDMembers)
+Add a member to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDMembers)
 
 <b>Signature:</b>
 

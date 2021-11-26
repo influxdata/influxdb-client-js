@@ -4,7 +4,7 @@
 
 ## StacksAPI.listStacks() method
 
-List installed templates. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ListStacks](https://v2.docs.influxdata.com/v2.0/api/#operation/ListStacks)
+List installed templates. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ListStacks)
 
 <b>Signature:</b>
 

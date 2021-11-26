@@ -4,7 +4,7 @@
 
 ## DeleteAPI.postDelete() method
 
-Delete data. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDelete](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDelete)
+Delete data. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDelete)
 
 <b>Signature:</b>
 

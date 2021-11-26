@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapersIDMembers() method
 
-Add a member to a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScrapersIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapersIDMembers)
+Add a member to a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostScrapersIDMembers)
 
 <b>Signature:</b>
 

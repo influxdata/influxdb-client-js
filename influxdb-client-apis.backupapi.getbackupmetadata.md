@@ -4,7 +4,7 @@
 
 ## BackupAPI.getBackupMetadata() method
 
-Download snapshot of all metadata in the server. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBackupMetadata](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBackupMetadata)
+Download snapshot of all metadata in the server. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupMetadata](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupMetadata)
 
 <b>Signature:</b>
 

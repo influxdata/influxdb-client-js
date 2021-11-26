@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSourcesIDHealth() method
 
-Get the health of a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSourcesIDHealth](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSourcesIDHealth)
+Get the health of a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSourcesIDHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesIDHealth)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasks() method
 
-Create a new task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTasks](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasks)
+Create a new task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasks)
 
 <b>Signature:</b>
 

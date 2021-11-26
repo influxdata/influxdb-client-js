@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.postNotificationEndpointIDLabels() method
 
-Add a label to a notification endpoint. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostNotificationEndpointIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostNotificationEndpointIDLabels)
+Add a label to a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostNotificationEndpointIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostNotificationEndpointIDLabels)
 
 <b>Signature:</b>
 

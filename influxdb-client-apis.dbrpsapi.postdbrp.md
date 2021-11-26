@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.postDBRP() method
 
-Add a database retention policy mapping. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDBRP](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDBRP)
+Add a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDBRP](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDBRP)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ResourcesAPI.getResources() method
 
-List all known resources. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetResources](https://v2.docs.influxdata.com/v2.0/api/#operation/GetResources)
+List all known resources. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetResources)
 
 <b>Signature:</b>
 

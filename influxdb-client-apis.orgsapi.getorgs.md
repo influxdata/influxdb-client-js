@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgs() method
 
-List all organizations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetOrgs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgs)
+List all organizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgs)
 
 <b>Signature:</b>
 

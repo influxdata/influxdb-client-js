@@ -4,7 +4,7 @@
 
 ## SourcesAPI.postSources() method
 
-Create a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSources](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSources)
+Create a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSources](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSources)
 
 <b>Signature:</b>
 

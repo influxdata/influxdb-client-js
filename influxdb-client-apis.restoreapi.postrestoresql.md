@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreSQL() method
 
-Overwrite the embedded SQL store on the server with a backed-up snapshot. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreSQL](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreSQL)
+Overwrite the embedded SQL store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreSQL](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreSQL)
 
 <b>Signature:</b>
 

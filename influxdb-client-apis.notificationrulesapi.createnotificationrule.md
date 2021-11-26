@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.createNotificationRule() method
 
-Add a notification rule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/CreateNotificationRule](https://v2.docs.influxdata.com/v2.0/api/#operation/CreateNotificationRule)
+Add a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateNotificationRule](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateNotificationRule)
 
 <b>Signature:</b>
 

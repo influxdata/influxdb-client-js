@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDLabels() method
 
-List all labels for a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBucketsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDLabels)
+List all labels for a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDLabels)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.patchScrapersID() method
 
-Update a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchScrapersID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScrapersID)
+Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchScrapersID)
 
 <b>Signature:</b>
 

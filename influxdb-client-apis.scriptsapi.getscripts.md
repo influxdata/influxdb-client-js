@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.getScripts() method
 
-List scripts. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScripts](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScripts)
+List scripts. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts)
 
 <b>Signature:</b>
 

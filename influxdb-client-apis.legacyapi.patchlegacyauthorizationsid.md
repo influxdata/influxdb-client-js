@@ -4,7 +4,7 @@
 
 ## LegacyAPI.patchLegacyAuthorizationsID() method
 
-Update a legacy authorization to be active or inactive. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchLegacyAuthorizationsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLegacyAuthorizationsID)
+Update a legacy authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLegacyAuthorizationsID)
 
 <b>Signature:</b>
 

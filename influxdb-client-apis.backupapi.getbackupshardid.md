@@ -4,7 +4,7 @@
 
 ## BackupAPI.getBackupShardId() method
 
-Download snapshot of all TSM data in a shard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBackupShardId](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBackupShardId)
+Download snapshot of all TSM data in a shard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupShardId](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupShardId)
 
 <b>Signature:</b>
 

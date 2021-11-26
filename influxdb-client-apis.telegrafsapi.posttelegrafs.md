@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafs() method
 
-Create a Telegraf configuration. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTelegrafs](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafs)
+Create a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTelegrafs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTelegrafs)
 
 <b>Signature:</b>
 

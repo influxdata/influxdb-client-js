@@ -4,7 +4,7 @@
 
 ## StacksAPI.readStack() method
 
-Retrieve a stack. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ReadStack](https://v2.docs.influxdata.com/v2.0/api/#operation/ReadStack)
+Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ReadStack)
 
 <b>Signature:</b>
 

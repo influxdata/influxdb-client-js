@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQuery() method
 
-Query data. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostQuery](https://v2.docs.influxdata.com/v2.0/api/#operation/PostQuery)
+Query data. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery)
 
 <b>Signature:</b>
 

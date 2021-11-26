@@ -4,7 +4,7 @@
 
 ## OrgsAPI.patchOrgsIDSecrets() method
 
-Update secrets in an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchOrgsIDSecrets](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsIDSecrets)
+Update secrets in an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchOrgsIDSecrets)
 
 <b>Signature:</b>
 

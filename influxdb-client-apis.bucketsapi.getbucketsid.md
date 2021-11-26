@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsID() method
 
-Retrieve a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBucketsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsID)
+Retrieve a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsID)
 
 <b>Signature:</b>
 

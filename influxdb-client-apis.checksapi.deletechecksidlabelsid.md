@@ -4,7 +4,7 @@
 
 ## ChecksAPI.deleteChecksIDLabelsID() method
 
-Delete label from a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteChecksIDLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksIDLabelsID)
+Delete label from a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteChecksIDLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteChecksIDLabelsID)
 
 <b>Signature:</b>
 

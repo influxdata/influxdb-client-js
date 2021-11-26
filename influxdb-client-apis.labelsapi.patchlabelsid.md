@@ -4,7 +4,7 @@
 
 ## LabelsAPI.patchLabelsID() method
 
-Update a label. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchLabelsID)
+Update a label. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLabelsID)
 
 <b>Signature:</b>
 

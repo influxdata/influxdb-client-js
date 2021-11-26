@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.postReplication() method
 
-Register a new replication. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostReplication](https://v2.docs.influxdata.com/v2.0/api/#operation/PostReplication)
+Register a new replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostReplication](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostReplication)
 
 <b>Signature:</b>
 

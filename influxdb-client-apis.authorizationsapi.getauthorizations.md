@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.getAuthorizations() method
 
-List all authorizations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetAuthorizations](https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizations)
+List all authorizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizations)
 
 <b>Signature:</b>
 

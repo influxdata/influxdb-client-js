@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.postScripts() method
 
-Create a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScripts](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScripts)
+Create a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDRuns() method
 
-Manually start a task run, overriding the current schedule. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTasksIDRuns](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDRuns)
+Manually start a task run, overriding the current schedule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasksIDRuns](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasksIDRuns)
 
 <b>Signature:</b>
 

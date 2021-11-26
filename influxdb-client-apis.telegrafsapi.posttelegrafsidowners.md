@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafsIDOwners() method
 
-Add an owner to a Telegraf configuration. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTelegrafsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDOwners)
+Add an owner to a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTelegrafsIDOwners)
 
 <b>Signature:</b>
 

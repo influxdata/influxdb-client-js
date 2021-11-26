@@ -4,7 +4,7 @@
 
 ## RemotesAPI.postRemoteConnection() method
 
-Register a new remote connection. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRemoteConnection](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRemoteConnection)
+Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRemoteConnection)
 
 <b>Signature:</b>
 

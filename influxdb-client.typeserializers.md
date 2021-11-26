@@ -4,7 +4,7 @@
 
 ## typeSerializers variable
 
-A dictionary of serializers of particular types returned by a flux query. See [https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/\#valid-data-types](https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/#valid-data-types)
+A dictionary of serializers of particular types returned by a flux query. See [https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types)
 
 <b>Signature:</b>
 

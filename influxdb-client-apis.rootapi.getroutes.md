@@ -4,7 +4,7 @@
 
 ## RootAPI.getRoutes() method
 
-List all top level routes. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetRoutes](https://v2.docs.influxdata.com/v2.0/api/#operation/GetRoutes)
+List all top level routes. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRoutes)
 
 <b>Signature:</b>
 

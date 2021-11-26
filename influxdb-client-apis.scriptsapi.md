@@ -22,10 +22,10 @@ export declare class ScriptsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.deletescriptsid.md) |  | Delete a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScriptsID) |
-|  [getScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscripts.md) |  | List scripts. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScripts](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScripts) |
-|  [getScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscriptsid.md) |  | Retrieve a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScriptsID) |
-|  [patchScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsid.md) |  | Update a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScriptsID) |
-|  [postScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscripts.md) |  | Create a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScripts](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScripts) |
-|  [postScriptsIDInvoke(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscriptsidinvoke.md) |  | Invoke a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScriptsIDInvoke](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScriptsIDInvoke) |
+|  [deleteScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.deletescriptsid.md) |  | Delete a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/DeleteScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/DeleteScriptsID) |
+|  [getScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscripts.md) |  | List scripts. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts) |
+|  [getScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscriptsid.md) |  | Retrieve a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScriptsID) |
+|  [patchScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsid.md) |  | Update a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsID) |
+|  [postScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscripts.md) |  | Create a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts) |
+|  [postScriptsIDInvoke(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscriptsidinvoke.md) |  | Invoke a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScriptsIDInvoke](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke) |
 

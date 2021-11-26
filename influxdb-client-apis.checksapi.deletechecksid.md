@@ -4,7 +4,7 @@
 
 ## ChecksAPI.deleteChecksID() method
 
-Delete a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteChecksID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteChecksID)
+Delete a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteChecksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteChecksID)
 
 <b>Signature:</b>
 

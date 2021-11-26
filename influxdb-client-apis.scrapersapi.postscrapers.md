@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapers() method
 
-Create a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScrapers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScrapers)
+Create a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostScrapers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostScrapers)
 
 <b>Signature:</b>
 

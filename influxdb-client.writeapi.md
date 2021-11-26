@@ -4,7 +4,7 @@
 
 ## WriteApi interface
 
-The asynchronous buffering API to Write time-series data into InfluxDB 2.0. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use `flush` to send the buffered data to InfluxDB immediately. <p> The data are formatted in \[Line Protocol\](https://bit.ly/2QL99fu). <p>
+The asynchronous buffering API to Write time-series data into InfluxDB. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use `flush` to send the buffered data to InfluxDB immediately. <p> The data are formatted in \[Line Protocol\](https://bit.ly/2QL99fu). <p>
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## SetupAPI.getSetup() method
 
-Check if database has default user, org, bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetSetup](https://v2.docs.influxdata.com/v2.0/api/#operation/GetSetup)
+Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSetup)
 
 <b>Signature:</b>
 

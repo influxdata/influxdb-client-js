@@ -4,7 +4,7 @@
 
 ## SetupAPI.postSetup() method
 
-Set up initial user, org and bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostSetup](https://v2.docs.influxdata.com/v2.0/api/#operation/PostSetup)
+Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSetup)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## VariablesAPI.getVariablesIDLabels() method
 
-List all labels for a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetVariablesIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariablesIDLabels)
+List all labels for a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetVariablesIDLabels)
 
 <b>Signature:</b>
 

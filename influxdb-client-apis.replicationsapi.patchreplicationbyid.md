@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.patchReplicationByID() method
 
-Update a replication. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchReplicationByID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchReplicationByID)
+Update a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchReplicationByID)
 
 <b>Signature:</b>
 

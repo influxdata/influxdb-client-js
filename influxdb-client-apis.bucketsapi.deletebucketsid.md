@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsID() method
 
-Delete a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteBucketsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteBucketsID)
+Delete a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteBucketsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteBucketsID)
 
 <b>Signature:</b>
 

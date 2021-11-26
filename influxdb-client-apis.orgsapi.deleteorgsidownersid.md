@@ -4,7 +4,7 @@
 
 ## OrgsAPI.deleteOrgsIDOwnersID() method
 
-Remove an owner from an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteOrgsIDOwnersID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteOrgsIDOwnersID)
+Remove an owner from an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteOrgsIDOwnersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteOrgsIDOwnersID)
 
 <b>Signature:</b>
 

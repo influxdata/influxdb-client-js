@@ -4,11 +4,11 @@
 
 ## influxdb-client-apis package
 
-The `@influxdata/influxdb-client-apis` package provides all InfluxDB v2 APIs generated from its [OpenAPI specification](https://v2.docs.influxdata.com/v2.0/api/)<!-- -->.
+The `@influxdata/influxdb-client-apis` package provides InfluxDB APIs, which are [generated from OpenAPI specifications](https://github.com/influxdata/influxdb-client-js/blob/master/packages/apis/DEVELOPMENT.md)<!-- -->.
 
 ## Remarks
 
-These APIs allow to manage the domain objects of InfluxDB (such as buckets, sources, tasks, authorizations). The APIs are constructed with `InfluxDB` instance that is populated with InfluxDB server parameters. All API operations returns Promise of response data. And the majority of them relies upon simple exchange of JSON data. For example:
+These APIs allow to manage the domain objects of InfluxDB (such as buckets, sources, tasks, authorizations). The APIs are constructed with `InfluxDB` instance that is populated with InfluxDB server parameters. All API operations return Promise of response data, the majority of them relies upon simple exchange of JSON data. For example:
 
 ```
 ...
@@ -45,6 +45,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DbrpsAPI](./influxdb-client-apis.dbrpsapi.md) | Dbrps API |
 |  [DeleteAPI](./influxdb-client-apis.deleteapi.md) | Delete API |
 |  [FlagsAPI](./influxdb-client-apis.flagsapi.md) | Flags API |
+|  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invocable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ . |
 |  [HealthAPI](./influxdb-client-apis.healthapi.md) | Health API |
 |  [LabelsAPI](./influxdb-client-apis.labelsapi.md) | Labels API |
 |  [LegacyAPI](./influxdb-client-apis.legacyapi.md) | Legacy API |
@@ -177,6 +178,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Duration](./influxdb-client-apis.duration.md) | A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed. |
 |  [DurationLiteral](./influxdb-client-apis.durationliteral.md) | Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration |
 |  [Error\_2](./influxdb-client-apis.error_2.md) |  |
+|  [ExecutionOptions](./influxdb-client-apis.executionoptions.md) | ExecutionOptions contains execution options for a flux script. |
 |  [ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md) |  |
 |  [ExpressionStatement](./influxdb-client-apis.expressionstatement.md) | May consist of an expression that does not return a value and is executed solely for its side-effects |
 |  [File](./influxdb-client-apis.file.md) | Represents a source from a single file |

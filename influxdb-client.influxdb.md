@@ -4,7 +4,7 @@
 
 ## InfluxDB class
 
-InfluxDB 2.0 entry point that configures communication with InfluxDB server and provide APIs to write and query data.
+InfluxDB entry point that configures communication with InfluxDB server and provide APIs to write and query data.
 
 <b>Signature:</b>
 
@@ -22,6 +22,7 @@ export default class InfluxDB
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) |  | (executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) |  |
 |  [transport](./influxdb-client.influxdb.transport.md) |  | [Transport](./influxdb-client.transport.md) |  |
 
 ## Methods

@@ -4,7 +4,7 @@
 
 ## TemplatesAPI.applyTemplate() method
 
-Apply or dry-run a template. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ApplyTemplate](https://v2.docs.influxdata.com/v2.0/api/#operation/ApplyTemplate)
+Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ApplyTemplate)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgsIDMembers() method
 
-Add a member to an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostOrgsIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgsIDMembers)
+Add a member to an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostOrgsIDMembers)
 
 <b>Signature:</b>
 

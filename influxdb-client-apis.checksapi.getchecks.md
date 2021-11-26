@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecks() method
 
-List all checks. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetChecks](https://v2.docs.influxdata.com/v2.0/api/#operation/GetChecks)
+List all checks. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecks)
 
 <b>Signature:</b>
 

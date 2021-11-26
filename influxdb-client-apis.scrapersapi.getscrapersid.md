@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersID() method
 
-Retrieve a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapersID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersID)
+Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersID)
 
 <b>Signature:</b>
 

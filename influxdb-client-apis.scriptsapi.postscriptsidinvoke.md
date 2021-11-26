@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.postScriptsIDInvoke() method
 
-Invoke a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostScriptsIDInvoke](https://v2.docs.influxdata.com/v2.0/api/#operation/PostScriptsIDInvoke)
+Invoke a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScriptsIDInvoke](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke)
 
 <b>Signature:</b>
 

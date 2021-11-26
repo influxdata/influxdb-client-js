@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDCellsIDView() method
 
-Retrieve the view for a cell. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetDashboardsIDCellsIDView](https://v2.docs.influxdata.com/v2.0/api/#operation/GetDashboardsIDCellsIDView)
+Retrieve the view for a cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsIDCellsIDView)
 
 <b>Signature:</b>
 

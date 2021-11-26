@@ -4,7 +4,7 @@
 
 ## OrgsAPI.patchOrgsID() method
 
-Update an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchOrgsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchOrgsID)
+Update an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchOrgsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchOrgsID)
 
 <b>Signature:</b>
 

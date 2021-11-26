@@ -4,7 +4,7 @@
 
 ## SourcesAPI.deleteSourcesID() method
 
-Delete a source. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteSourcesID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteSourcesID)
+Delete a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteSourcesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteSourcesID)
 
 <b>Signature:</b>
 

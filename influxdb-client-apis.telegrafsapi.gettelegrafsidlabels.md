@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDLabels() method
 
-List all labels for a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTelegrafsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTelegrafsIDLabels)
+List all labels for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafsIDLabels)
 
 <b>Signature:</b>
 

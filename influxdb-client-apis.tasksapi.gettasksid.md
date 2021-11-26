@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksID() method
 
-Retrieve a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksID)
+Retrieve a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksID)
 
 <b>Signature:</b>
 

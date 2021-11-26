@@ -4,7 +4,7 @@
 
 ## UsersAPI.deleteUsersID() method
 
-Delete a user. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteUsersID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteUsersID)
+Delete a user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteUsersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteUsersID)
 
 <b>Signature:</b>
 

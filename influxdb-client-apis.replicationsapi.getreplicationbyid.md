@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.getReplicationByID() method
 
-Retrieve a replication. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetReplicationByID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetReplicationByID)
+Retrieve a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplicationByID)
 
 <b>Signature:</b>
 

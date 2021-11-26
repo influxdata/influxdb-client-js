@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDOwners() method
 
-List all owners of an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetOrgsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetOrgsIDOwners)
+List all owners of an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgsIDOwners)
 
 <b>Signature:</b>
 

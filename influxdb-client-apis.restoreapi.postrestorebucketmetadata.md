@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreBucketMetadata() method
 
-Create a new bucket pre-seeded with shard info from a backup. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreBucketMetadata](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreBucketMetadata)
+Create a new bucket pre-seeded with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreBucketMetadata](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreBucketMetadata)
 
 <b>Signature:</b>
 

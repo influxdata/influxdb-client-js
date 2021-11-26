@@ -4,7 +4,7 @@
 
 ## VariablesAPI.deleteVariablesIDLabelsID() method
 
-Delete a label from a variable. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteVariablesIDLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteVariablesIDLabelsID)
+Delete a label from a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteVariablesIDLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteVariablesIDLabelsID)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TemplatesAPI.exportTemplate() method
 
-Export a new template. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/ExportTemplate](https://v2.docs.influxdata.com/v2.0/api/#operation/ExportTemplate)
+Export a new template. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ExportTemplate)
 
 <b>Signature:</b>
 

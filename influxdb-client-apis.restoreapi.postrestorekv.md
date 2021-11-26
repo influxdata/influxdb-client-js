@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreKV() method
 
-Overwrite the embedded KV store on the server with a backed-up snapshot. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostRestoreKV](https://v2.docs.influxdata.com/v2.0/api/#operation/PostRestoreKV)
+Overwrite the embedded KV store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreKV](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreKV)
 
 <b>Signature:</b>
 

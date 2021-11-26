@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBuckets() method
 
-Create a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostBuckets](https://v2.docs.influxdata.com/v2.0/api/#operation/PostBuckets)
+Create a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBuckets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBuckets)
 
 <b>Signature:</b>
 

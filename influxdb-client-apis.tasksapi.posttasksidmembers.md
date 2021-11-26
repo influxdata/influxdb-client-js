@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDMembers() method
 
-Add a member to a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTasksIDMembers](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTasksIDMembers)
+Add a member to a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasksIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasksIDMembers)
 
 <b>Signature:</b>
 

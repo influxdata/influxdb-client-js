@@ -4,7 +4,7 @@
 
 ## ScriptsAPI.patchScriptsID() method
 
-Update a script. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchScriptsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchScriptsID)
+Update a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsID)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.putNotificationEndpointsID() method
 
-Update a notification endpoint. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PutNotificationEndpointsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PutNotificationEndpointsID)
+Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutNotificationEndpointsID)
 
 <b>Signature:</b>
 

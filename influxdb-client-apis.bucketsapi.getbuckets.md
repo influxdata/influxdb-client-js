@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBuckets() method
 
-List all buckets. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBuckets](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBuckets)
+List all buckets. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBuckets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBuckets)
 
 <b>Signature:</b>
 

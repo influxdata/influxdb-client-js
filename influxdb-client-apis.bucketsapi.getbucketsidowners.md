@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDOwners() method
 
-List all owners of a bucket. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetBucketsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetBucketsIDOwners)
+List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDOwners)
 
 <b>Signature:</b>
 

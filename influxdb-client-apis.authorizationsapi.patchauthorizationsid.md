@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.patchAuthorizationsID() method
 
-Update an authorization to be active or inactive. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchAuthorizationsID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchAuthorizationsID)
+Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchAuthorizationsID)
 
 <b>Signature:</b>
 

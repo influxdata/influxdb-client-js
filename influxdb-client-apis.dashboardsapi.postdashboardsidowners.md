@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDOwners() method
 
-Add an owner to a dashboard. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostDashboardsIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/PostDashboardsIDOwners)
+Add an owner to a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDOwners)
 
 <b>Signature:</b>
 

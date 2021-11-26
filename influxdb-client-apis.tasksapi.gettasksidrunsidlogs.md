@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRunsIDLogs() method
 
-Retrieve all logs for a run. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDRunsIDLogs](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRunsIDLogs)
+Retrieve all logs for a run. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDRunsIDLogs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDRunsIDLogs)
 
 <b>Signature:</b>
 

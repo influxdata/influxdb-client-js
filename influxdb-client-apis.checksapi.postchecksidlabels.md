@@ -4,7 +4,7 @@
 
 ## ChecksAPI.postChecksIDLabels() method
 
-Add a label to a check. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostChecksIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostChecksIDLabels)
+Add a label to a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostChecksIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostChecksIDLabels)
 
 <b>Signature:</b>
 

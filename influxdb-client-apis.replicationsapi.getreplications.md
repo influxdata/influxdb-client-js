@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.getReplications() method
 
-List all replications. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetReplications](https://v2.docs.influxdata.com/v2.0/api/#operation/GetReplications)
+List all replications. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReplications](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplications)
 
 <b>Signature:</b>
 

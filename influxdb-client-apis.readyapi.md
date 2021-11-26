@@ -22,5 +22,5 @@ export declare class ReadyAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md) |  | Get the readiness of an instance at startup. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetReady](https://v2.docs.influxdata.com/v2.0/api/#operation/GetReady) |
+|  [getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md) |  | Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReady) |
 

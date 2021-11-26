@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.deleteNotificationEndpointsID() method
 
-Delete a notification endpoint. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteNotificationEndpointsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteNotificationEndpointsID)
+Delete a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteNotificationEndpointsID)
 
 <b>Signature:</b>
 

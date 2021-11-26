@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.postAuthorizations() method
 
-Create an authorization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostAuthorizations](https://v2.docs.influxdata.com/v2.0/api/#operation/PostAuthorizations)
+Create an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostAuthorizations)
 
 <b>Signature:</b>
 

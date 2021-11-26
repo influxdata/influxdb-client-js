@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDOwners() method
 
-List all owners of a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetScrapersIDOwners](https://v2.docs.influxdata.com/v2.0/api/#operation/GetScrapersIDOwners)
+List all owners of a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersIDOwners)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## VariablesAPI.getVariables() method
 
-List all variables. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetVariables](https://v2.docs.influxdata.com/v2.0/api/#operation/GetVariables)
+List all variables. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetVariables](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetVariables)
 
 <b>Signature:</b>
 

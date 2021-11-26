@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafsIDLabels() method
 
-Add a label to a Telegraf config. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostTelegrafsIDLabels](https://v2.docs.influxdata.com/v2.0/api/#operation/PostTelegrafsIDLabels)
+Add a label to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTelegrafsIDLabels)
 
 <b>Signature:</b>
 

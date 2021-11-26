@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.deleteScrapersIDLabelsID() method
 
-Delete a label from a scraper target. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/DeleteScrapersIDLabelsID](https://v2.docs.influxdata.com/v2.0/api/#operation/DeleteScrapersIDLabelsID)
+Delete a label from a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteScrapersIDLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteScrapersIDLabelsID)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRuns() method
 
-List runs for a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetTasksIDRuns](https://v2.docs.influxdata.com/v2.0/api/#operation/GetTasksIDRuns)
+List runs for a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDRuns](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDRuns)
 
 <b>Signature:</b>
 

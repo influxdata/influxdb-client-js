@@ -4,7 +4,7 @@
 
 ## WritePrecisionType type
 
-Timestamp precision used in write operations. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostWrite](https://v2.docs.influxdata.com/v2.0/api/#operation/PostWrite)
+Timestamp precision used in write operations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostWrite)
 
 <b>Signature:</b>
 

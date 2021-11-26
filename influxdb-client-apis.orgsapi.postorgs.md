@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgs() method
 
-Create an organization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PostOrgs](https://v2.docs.influxdata.com/v2.0/api/#operation/PostOrgs)
+Create an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostOrgs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostOrgs)
 
 <b>Signature:</b>
 

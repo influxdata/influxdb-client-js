@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.getAuthorizationsID() method
 
-Retrieve an authorization. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetAuthorizationsID](https://v2.docs.influxdata.com/v2.0/api/#operation/GetAuthorizationsID)
+Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizationsID)
 
 <b>Signature:</b>
 

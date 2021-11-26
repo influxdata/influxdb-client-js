@@ -4,7 +4,7 @@
 
 ## TasksAPI.patchTasksID() method
 
-Update a task. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchTasksID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchTasksID)
+Update a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchTasksID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchTasksID)
 
 <b>Signature:</b>
 

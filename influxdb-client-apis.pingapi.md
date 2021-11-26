@@ -22,5 +22,5 @@ export declare class PingAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getPing(request, requestOptions)](./influxdb-client-apis.pingapi.getping.md) |  | Checks the status of InfluxDB instance and version of InfluxDB. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/GetPing](https://v2.docs.influxdata.com/v2.0/api/#operation/GetPing) |
+|  [getPing(request, requestOptions)](./influxdb-client-apis.pingapi.getping.md) |  | Checks the status of InfluxDB instance and version of InfluxDB. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetPing) |
 

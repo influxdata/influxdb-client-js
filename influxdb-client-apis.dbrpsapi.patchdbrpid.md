@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.patchDBRPID() method
 
-Update a database retention policy mapping. See [https://v2.docs.influxdata.com/v2.0/api/\#operation/PatchDBRPID](https://v2.docs.influxdata.com/v2.0/api/#operation/PatchDBRPID)
+Update a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchDBRPID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDBRPID)
 
 <b>Signature:</b>
 
