@@ -108,7 +108,7 @@ example()
   .catch(error => {
     if (error instanceof HttpError && error.statusCode === 404) {
       console.error(
-        `API invocable scripts are not available in InfluxDB running at ${url} .`
+        `API invocable scripts are not supported by InfluxDB at ${url} .`
       )
       console.error('Modify env.js with InfluxDB Cloud URL and token.')
     } else {
