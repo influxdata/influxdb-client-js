@@ -800,5 +800,33 @@ describe('NodeHttpTransport', () => {
       expect(data).equals('..')
       expect(extra).equals('yes')
     })
+    it(`communicates through a proxy`, async () => {
+      let headers: Record<string, string> = {}
+      let requestPath = ''
+      const targetUrl = 'http://behind.proxy.localhost:8080'
+      nock(transportOptions.url)
+        .get(/.*/)
+        .reply(
+          200,
+          function(uri, _body, callback) {
+            requestPath = uri
+            headers = {...this.req.headers}
+            callback(null, '..')
+          },
+          {
+            'content-type': 'application/csv',
+          }
+        )
+        .persist()
+      const data = await new NodeHttpTransport({
+        url: targetUrl,
+        proxyUrl: transportOptions.url,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+      expect(requestPath).equals(targetUrl + '/test')
+      expect(headers?.host).equals('behind.proxy.localhost:8080')
+    })
   })
 })

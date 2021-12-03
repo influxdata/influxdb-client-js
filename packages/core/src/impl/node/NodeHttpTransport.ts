@@ -56,11 +56,12 @@ export class NodeHttpTransport implements Transport {
   constructor(connectionOptions: ConnectionOptions) {
     const {
       url: _url,
+      proxyUrl,
       token,
       transportOptions,
       ...nodeSupportedOptions
     } = connectionOptions
-    const url = parse(_url)
+    const url = parse(proxyUrl || _url)
     this.token = token
     this.defaultOptions = {
       ...DEFAULT_ConnectionOptions,
@@ -70,7 +71,7 @@ export class NodeHttpTransport implements Transport {
       protocol: url.protocol,
       hostname: url.hostname,
     }
-    this.contextPath = url.path ?? ''
+    this.contextPath = proxyUrl ? _url : url.path ?? ''
     if (this.contextPath.endsWith('/')) {
       this.contextPath = this.contextPath.substring(
         0,
@@ -107,6 +108,9 @@ export class NodeHttpTransport implements Transport {
     this.headers = {
       'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
       ...connectionOptions.headers,
+    }
+    if (proxyUrl) {
+      this.headers['host'] = parse(_url).host as string
     }
   }
 

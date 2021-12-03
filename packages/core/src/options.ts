@@ -31,6 +31,10 @@ export interface ConnectionOptions {
    * Default HTTP headers to send with every request.
    */
   headers?: Record<string, string>
+  /**
+   * HTTP proxy URL
+   */
+  proxyUrl?: string
 }
 
 /** default connection options */
