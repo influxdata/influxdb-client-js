@@ -110,7 +110,7 @@ export class NodeHttpTransport implements Transport {
       ...connectionOptions.headers,
     }
     if (proxyUrl) {
-      this.headers['host'] = parse(_url).host as string
+      this.headers['Host'] = parse(_url).host as string
     }
   }
 
