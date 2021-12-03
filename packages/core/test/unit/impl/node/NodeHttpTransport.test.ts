@@ -254,7 +254,6 @@ describe('NodeHttpTransport', () => {
       const transportOptions = {
         url: TEST_URL,
         timeout: 100,
-        maxRetries: 0,
       }
       it(`fails silently on server error`, async () => {
         nock(transportOptions.url)
@@ -478,7 +477,6 @@ describe('NodeHttpTransport', () => {
       const transportOptions = {
         url: TEST_URL,
         timeout: 100,
-        maxRetries: 0,
       }
       it(`is cancelled before the response arrives`, async () => {
         nock(transportOptions.url)
@@ -543,7 +541,6 @@ describe('NodeHttpTransport', () => {
     const transportOptions = {
       url: TEST_URL,
       timeout: 100,
-      maxRetries: 0,
     }
     ;([
       [null, ''],
