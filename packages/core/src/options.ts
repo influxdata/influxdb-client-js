@@ -32,7 +32,7 @@ export interface ConnectionOptions {
    */
   headers?: Record<string, string>
   /**
-   * HTTP proxy URL
+   * Full HTTP web proxy URL including schema, for example http://your-proxy:8080.
    */
   proxyUrl?: string
 }
