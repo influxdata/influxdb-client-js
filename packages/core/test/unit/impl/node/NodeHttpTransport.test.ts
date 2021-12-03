@@ -776,5 +776,32 @@ describe('NodeHttpTransport', () => {
       })
       expect(data).equals(undefined)
     })
+    it(`uses custom headers set to transport`, async () => {
+      let extra: any
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(
+          200,
+          function(_uri, _body, callback) {
+            extra = this.req.headers['extra']
+            callback(null, '..')
+          },
+          {
+            'content-type': 'application/csv',
+          }
+        )
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+        headers: {
+          extra: 'yes',
+        },
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+      expect(extra).equals('yes')
+    })
   })
 })

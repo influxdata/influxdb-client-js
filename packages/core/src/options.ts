@@ -27,6 +27,10 @@ export interface ConnectionOptions {
    * {@link https://developer.mozilla.org/en-US/docs/Web/API/fetch | redirect } property can be set to 'error' to abort request if a redirect occurs.
    */
   transportOptions?: {[key: string]: any}
+  /**
+   * Default HTTP headers to send with every request.
+   */
+  headers?: Record<string, string>
 }
 
 /** default connection options */

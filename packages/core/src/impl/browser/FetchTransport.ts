@@ -37,6 +37,7 @@ export default class FetchTransport implements Transport {
     this.defaultHeaders = {
       'content-type': 'application/json; charset=utf-8',
       // 'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`, // user-agent can hardly be customized https://github.com/influxdata/influxdb-client-js/issues/262
+      ...connectionOptions.headers,
     }
     if (this.connectionOptions.token) {
       this.defaultHeaders['Authorization'] =

@@ -106,6 +106,7 @@ export class NodeHttpTransport implements Transport {
     }
     this.headers = {
       'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
+      ...connectionOptions.headers,
     }
   }
 
