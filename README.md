@@ -85,6 +85,7 @@ See [examples](./examples/README.md) for more advanced use case like the followi
 - Customize the writing of measurement points to InfluxDB.
 - Visualize query results in [Giraffe](https://github.com/influxdata/giraffe).
 - [Setup HTTP/HTTPS proxy](https://github.com/influxdata/influxdb-client-js/issues/319#issuecomment-808154245) in communication with InfluxDB.
+- [Reuse connections](https://github.com/influxdata/influxdb-client-js/issues/393#issuecomment-985272866) in communication with InfluxDB.
 
 JavaScript client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
 
