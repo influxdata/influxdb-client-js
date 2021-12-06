@@ -1430,6 +1430,154 @@
   },
   {
     "server": "/api/v2",
+    "path": "/write",
+    "operation": "post",
+    "operationId": "PostWrite",
+    "basicAuth": false,
+    "summary": "Write data",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "Content-Encoding",
+        "description": "The value tells InfluxDB what compression is applied to the line protocol in the request payload.\nTo make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.\n",
+        "type": "string"
+      },
+      {
+        "name": "Content-Type",
+        "description": "The header value indicates the format of the data in the request body.",
+        "type": "string"
+      },
+      {
+        "name": "Content-Length",
+        "description": "The header value indicates the size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
+        "type": "number"
+      },
+      {
+        "name": "Accept",
+        "description": "The header value specifies the response format.",
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "org",
+        "description": "The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "orgID",
+        "description": "The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "type": "string"
+      },
+      {
+        "name": "bucket",
+        "description": "The destination bucket for writes.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "precision",
+        "description": "The precision for the unix timestamps within the body line-protocol.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "description": "Data in line protocol format.",
+      "required": true,
+      "mediaType": "text/plain",
+      "type": "string"
+    },
+    "responses": [
+      {
+        "code": "204",
+        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot).",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Bad request. The line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "LineProtocolError"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token does not have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found. A requested resource was not found. The response body contains the requested resource type, e.g. `organization name` or `bucket`, and name.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "413",
+        "description": "The request payload is too large. InfluxDB rejected the batch and did not write any data.\n#### InfluxDB Cloud:\n - returns this error if the payload exceeds the 50MB size limit.\n - returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n - returns `Content-Type: application/json` for this error.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "text/html",
+            "type": "string"
+          },
+          {
+            "mediaType": "application/json",
+            "type": "LineProtocolLengthError"
+          }
+        ]
+      },
+      {
+        "code": "429",
+        "description": "InfluxDB Cloud only. The token is temporarily over quota. The Retry-After header describes when to try the write again.",
+        "mediaTypes": []
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "503",
+        "description": "The server is temporarily unavailable to accept writes.  The `Retry-After` header describes when to try the write again.",
+        "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
     "path": "/delete",
     "operation": "post",
     "operationId": "PostDelete",
@@ -2940,7 +3088,7 @@
     "operation": "post",
     "operationId": "PostQueryAnalyze",
     "basicAuth": false,
-    "summary": "Analyze an InfluxQL or Flux query",
+    "summary": "Analyze a Flux query",
     "positionalParams": [],
     "headerParams": [
       {
@@ -2956,7 +3104,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Flux or InfluxQL query to analyze",
+      "description": "Flux query to analyze",
       "required": false,
       "mediaType": "application/json",
       "type": "Query"
@@ -3001,7 +3149,7 @@
       },
       {
         "name": "Accept-Encoding",
-        "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand.",
+        "description": "Indicates the content encoding (usually a compression algorithm) that the client can understand.",
         "type": "string"
       },
       {
@@ -3025,7 +3173,7 @@
       "description": "Flux query or specification to execute",
       "required": false,
       "mediaType": "application/json",
-      "type": "Query | InfluxQLQuery"
+      "type": "Query"
     },
     "responses": [
       {
@@ -10212,7 +10360,7 @@
       },
       {
         "name": "Accept-Encoding",
-        "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand.",
+        "description": "Indicates the content encoding (usually a compression algorithm) that the client can understand.",
         "type": "string"
       }
     ],
@@ -10265,7 +10413,7 @@
       },
       {
         "name": "Accept-Encoding",
-        "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand.",
+        "description": "Indicates the content encoding (usually a compression algorithm) that the client can understand.",
         "type": "string"
       }
     ],
@@ -10327,7 +10475,7 @@
       },
       {
         "name": "Content-Encoding",
-        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "description": "The value tells InfluxDB what compression is applied to the line protocol in the request payload.\nTo make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.\n",
         "type": "string"
       },
       {
@@ -10387,7 +10535,7 @@
       },
       {
         "name": "Content-Encoding",
-        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "description": "The value tells InfluxDB what compression is applied to the line protocol in the request payload.\nTo make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.\n",
         "type": "string"
       },
       {
@@ -10547,7 +10695,7 @@
       },
       {
         "name": "Content-Encoding",
-        "description": "When present, its value indicates to the database that compression is applied to the line-protocol body.",
+        "description": "The value tells InfluxDB what compression is applied to the line protocol in the request payload.\nTo make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.\n",
         "type": "string"
       },
       {
@@ -10567,760 +10715,6 @@
         "code": "204",
         "description": "TSM snapshot successfully restored.",
         "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes",
-    "operation": "get",
-    "operationId": "GetRemoteConnections",
-    "basicAuth": false,
-    "summary": "List all remote connections",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "name": "remoteURL",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "List of remote connections",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "RemoteConnections"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes",
-    "operation": "post",
-    "operationId": "PostRemoteConnection",
-    "basicAuth": false,
-    "summary": "Register a new remote connection",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "validate",
-        "description": "If true, validate the remote connection, but don't save it.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "required": true,
-      "mediaType": "application/json",
-      "type": "RemoteConnectionCreationRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Remote connection saved",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "RemoteConnection"
-          }
-        ]
-      },
-      {
-        "code": "204",
-        "description": "Remote connection validated, but not saved",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes/{remoteID}",
-    "operation": "get",
-    "operationId": "GetRemoteConnectionByID",
-    "basicAuth": false,
-    "summary": "Retrieve a remote connection",
-    "positionalParams": [
-      {
-        "name": "remoteID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Remote connection",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "RemoteConnection"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes/{remoteID}",
-    "operation": "patch",
-    "operationId": "PatchRemoteConnectionByID",
-    "basicAuth": false,
-    "summary": "Update a remote connection",
-    "positionalParams": [
-      {
-        "name": "remoteID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "validate",
-        "description": "If true, validate the updated information, but don't save it.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "required": true,
-      "mediaType": "application/json",
-      "type": "RemoteConnectionUpdateRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Updated information saved",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "RemoteConnection"
-          }
-        ]
-      },
-      {
-        "code": "204",
-        "description": "Updated connection validated, but not saved",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes/{remoteID}",
-    "operation": "delete",
-    "operationId": "DeleteRemoteConnectionByID",
-    "basicAuth": false,
-    "summary": "Delete a remote connection",
-    "positionalParams": [
-      {
-        "name": "remoteID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Remote connection info deleted.",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/remotes/{remoteID}/validate",
-    "operation": "post",
-    "operationId": "PostValidateRemoteConnectionByID",
-    "basicAuth": false,
-    "summary": "Validate a remote connection",
-    "positionalParams": [
-      {
-        "name": "remoteID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Remote connection is valid",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications",
-    "operation": "get",
-    "operationId": "GetReplications",
-    "basicAuth": false,
-    "summary": "List all replications",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "orgID",
-        "description": "The organization ID.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "name": "remoteID",
-        "type": "string"
-      },
-      {
-        "name": "localBucketID",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "List of replications",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Replications"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications",
-    "operation": "post",
-    "operationId": "PostReplication",
-    "basicAuth": false,
-    "summary": "Register a new replication",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "validate",
-        "description": "If true, validate the replication, but don't save it.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "required": true,
-      "mediaType": "application/json",
-      "type": "ReplicationCreationRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Replication saved",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Replication"
-          }
-        ]
-      },
-      {
-        "code": "204",
-        "description": "Replication validated, but not saved",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications/{replicationID}",
-    "operation": "get",
-    "operationId": "GetReplicationByID",
-    "basicAuth": false,
-    "summary": "Retrieve a replication",
-    "positionalParams": [
-      {
-        "name": "replicationID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Replication",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Replication"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications/{replicationID}",
-    "operation": "patch",
-    "operationId": "PatchReplicationByID",
-    "basicAuth": false,
-    "summary": "Update a replication",
-    "positionalParams": [
-      {
-        "name": "replicationID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "validate",
-        "description": "If true, validate the updated information, but don't save it.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "required": true,
-      "mediaType": "application/json",
-      "type": "ReplicationUpdateRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Updated information saved",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Replication"
-          }
-        ]
-      },
-      {
-        "code": "204",
-        "description": "Updated replication validated, but not saved",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications/{replicationID}",
-    "operation": "delete",
-    "operationId": "DeleteReplicationByID",
-    "basicAuth": false,
-    "summary": "Delete a replication",
-    "positionalParams": [
-      {
-        "name": "replicationID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Replication deleted.",
-        "mediaTypes": []
-      },
-      {
-        "code": "404",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/replications/{replicationID}/validate",
-    "operation": "post",
-    "operationId": "PostValidateReplicationByID",
-    "basicAuth": false,
-    "summary": "Validate a replication",
-    "positionalParams": [
-      {
-        "name": "replicationID",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Replication is valid",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
       },
       {
         "code": "default",
@@ -11582,145 +10976,6 @@
       {
         "code": "default",
         "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/write",
-    "operation": "post",
-    "operationId": "PostWrite",
-    "basicAuth": false,
-    "summary": "Write data",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      },
-      {
-        "name": "Content-Encoding",
-        "description": "When present, the header value tells the database that compression is applied to the line protocol in the request body.",
-        "type": "string"
-      },
-      {
-        "name": "Content-Type",
-        "description": "The header value indicates the format of the data in the request body.",
-        "type": "string"
-      },
-      {
-        "name": "Content-Length",
-        "description": "The header value indicates the size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
-        "type": "number"
-      },
-      {
-        "name": "Accept",
-        "description": "The header value specifies the response format.",
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "org",
-        "description": "The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
-        "type": "string"
-      },
-      {
-        "name": "bucket",
-        "description": "The destination bucket for writes.",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "precision",
-        "description": "The precision for the unix timestamps within the body line-protocol.",
-        "type": "any"
-      }
-    ],
-    "bodyParam": {
-      "description": "Data in line protocol format.",
-      "required": true,
-      "mediaType": "text/plain",
-      "type": "string"
-    },
-    "responses": [
-      {
-        "code": "204",
-        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.0/write-data/troubleshoot).",
-        "mediaTypes": []
-      },
-      {
-        "code": "400",
-        "description": "Bad request. The line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LineProtocolError"
-          }
-        ]
-      },
-      {
-        "code": "401",
-        "description": "Unauthorized. The error may indicate one of the following:\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token does not have sufficient permissions to write to this organization and bucket.\n",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "404",
-        "description": "Not found. A requested resource was not found. The response body contains the requested resource type, e.g. `organization name` or `bucket`, and name.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "413",
-        "description": "All request data was rejected and not written. InfluxDB OSS only returns this error if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "LineProtocolLengthError"
-          }
-        ]
-      },
-      {
-        "code": "500",
-        "description": "Internal server error.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "503",
-        "description": "The server is temporarily unavailable to accept writes.  The `Retry-After` header describes when to try the write again.",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",

@@ -214,6 +214,32 @@ export type ResourceOwner = UserResponse & {
   role?: 'owner'
 }
 
+export interface LineProtocolError {
+  /** Code is the machine-readable error code. */
+  readonly code:
+    | 'internal error'
+    | 'not found'
+    | 'conflict'
+    | 'invalid'
+    | 'empty value'
+    | 'unavailable'
+  /** Message is a human-readable message. */
+  readonly message: string
+  /** Op describes the logical code operation during error. Useful for debugging. */
+  readonly op: string
+  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
+  readonly err: string
+  /** First line within sent body containing malformed data */
+  readonly line?: number
+}
+
+export interface LineProtocolLengthError {
+  /** Code is the machine-readable error code. */
+  readonly code: 'invalid'
+  /** Message is a human-readable message. */
+  readonly message: string
+}
+
 /**
  * The delete predicate request.
  */
@@ -1464,18 +1490,6 @@ export interface AnalyzeQueryResponse {
   }>
 }
 
-/**
- * Query influx using the InfluxQL language
- */
-export interface InfluxQLQuery {
-  /** InfluxQL query execute. */
-  query: string
-  /** The type of query. Must be "influxql". */
-  type?: 'influxql'
-  /** Bucket is to be used instead of the database and retention policy specified in the InfluxQL query. */
-  bucket?: string
-}
-
 export interface Buckets {
   readonly links?: Links
   buckets?: Bucket[]
@@ -2540,6 +2554,9 @@ export interface Resource {
     | 'checks'
     | 'dbrp'
     | 'notebooks'
+    | 'annotations'
+    | 'remotes'
+    | 'replications'
   /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
   id?: string
   /** Optional name of the resource if the resource has a name field. */
@@ -2737,75 +2754,6 @@ export interface BucketShardMapping {
   newId: number
 }
 
-export interface RemoteConnections {
-  remotes?: RemoteConnection[]
-}
-
-export interface RemoteConnection {
-  id: string
-  name: string
-  orgID: string
-  description?: string
-  remoteURL: string
-  remoteOrgID: string
-  allowInsecureTLS: boolean
-}
-
-export interface RemoteConnectionCreationRequest {
-  name: string
-  description?: string
-  orgID: string
-  remoteURL: string
-  remoteAPIToken: string
-  remoteOrgID: string
-  allowInsecureTLS: boolean
-}
-
-export interface RemoteConnectionUpdateRequest {
-  name?: string
-  description?: string
-  remoteURL?: string
-  remoteAPIToken?: string
-  remoteOrgID?: string
-  allowInsecureTLS?: boolean
-}
-
-export interface Replications {
-  replications?: Replication[]
-}
-
-export interface Replication {
-  id: string
-  name: string
-  description?: string
-  orgID: string
-  remoteID: string
-  localBucketID: string
-  remoteBucketID: string
-  maxQueueSizeBytes: number
-  currentQueueSizeBytes: number
-  latestResponseCode?: number
-  latestErrorMessage?: string
-}
-
-export interface ReplicationCreationRequest {
-  name: string
-  description?: string
-  orgID: string
-  remoteID: string
-  localBucketID: string
-  remoteBucketID: string
-  maxQueueSizeBytes: number
-}
-
-export interface ReplicationUpdateRequest {
-  name?: string
-  description?: string
-  remoteID?: string
-  remoteBucketID?: string
-  maxQueueSizeBytes?: number
-}
-
 export interface Dashboards {
   links?: Links
   dashboards?: Dashboard[]
@@ -2826,34 +2774,6 @@ export interface TaskCreateRequest {
   flux: string
   /** An optional description of the task. */
   description?: string
-}
-
-export interface LineProtocolError {
-  /** Code is the machine-readable error code. */
-  readonly code:
-    | 'internal error'
-    | 'not found'
-    | 'conflict'
-    | 'invalid'
-    | 'empty value'
-    | 'unavailable'
-  /** Message is a human-readable message. */
-  readonly message: string
-  /** Op describes the logical code operation during error. Useful for debugging. */
-  readonly op: string
-  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
-  readonly err: string
-  /** First line within sent body containing malformed data */
-  readonly line?: number
-}
-
-export interface LineProtocolLengthError {
-  /** Code is the machine-readable error code. */
-  readonly code: 'invalid'
-  /** Message is a human-readable message. */
-  readonly message: string
-  /** Max length in bytes for a body of line-protocol. */
-  readonly maxLength: number
 }
 
 export interface Scripts {
@@ -2880,7 +2800,6 @@ export interface ScriptCreateRequest {
   /** The name of the script. The name must be unique within the organization. */
   name: string
   description: string
-  orgID: string
   /** The script to execute. */
   script: string
   language: ScriptLanguage

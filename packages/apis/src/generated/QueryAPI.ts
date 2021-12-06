@@ -5,7 +5,6 @@ import {
   AnalyzeQueryResponse,
   FluxSuggestion,
   FluxSuggestions,
-  InfluxQLQuery,
   LanguageRequest,
   Query,
 } from './types'
@@ -20,12 +19,12 @@ export interface GetQuerySuggestionsNameRequest {
   name: string
 }
 export interface PostQueryAnalyzeRequest {
-  /** Flux or InfluxQL query to analyze */
+  /** Flux query to analyze */
   body: Query
 }
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
-  body: Query | InfluxQLQuery
+  body: Query
   /** Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence. */
   org?: string
   /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */
@@ -101,7 +100,7 @@ export class QueryAPI {
     )
   }
   /**
-   * Analyze an InfluxQL or Flux query.
+   * Analyze a Flux query.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAnalyze }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
