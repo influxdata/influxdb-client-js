@@ -1,5 +1,10 @@
 ## 1.22.0 [unreleased]
 
+### Features
+
+1. [#395](https://github.com/influxdata/influxdb-client-js/pull/395): Allow to add extra HTTP headers.
+1. [#395](https://github.com/influxdata/influxdb-client-js/pull/395): Allow to setup HTTP proxy for node.js.
+
 ## 1.21.0 [2021-11-26]
 
 ### Features

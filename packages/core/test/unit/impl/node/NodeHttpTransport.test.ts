@@ -58,7 +58,6 @@ describe('NodeHttpTransport', () => {
         port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:8086',
       })
       expect(transport.requestApi).to.equal(http.request)
     })
@@ -71,7 +70,6 @@ describe('NodeHttpTransport', () => {
         port: '8086',
         protocol: 'https:',
         timeout: 10000,
-        url: 'https://test:8086',
       })
       expect(transport.requestApi).to.equal(https.request)
     })
@@ -84,7 +82,6 @@ describe('NodeHttpTransport', () => {
         port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:8086/influx',
       })
       expect(transport.contextPath).equals('/influx')
     })
@@ -97,7 +94,6 @@ describe('NodeHttpTransport', () => {
         port: '8086',
         protocol: 'http:',
         timeout: 10000,
-        url: 'http://test:8086/influx/',
       })
       expect(transport.contextPath).equals('/influx')
     })
@@ -131,7 +127,6 @@ describe('NodeHttpTransport', () => {
         hostname: 'test',
         port: '8086',
         protocol: 'http:',
-        url: 'http://test:8086',
       })
       expect(transport.requestApi).to.equal(http.request)
     })
@@ -259,7 +254,6 @@ describe('NodeHttpTransport', () => {
       const transportOptions = {
         url: TEST_URL,
         timeout: 100,
-        maxRetries: 0,
       }
       it(`fails silently on server error`, async () => {
         nock(transportOptions.url)
@@ -483,7 +477,6 @@ describe('NodeHttpTransport', () => {
       const transportOptions = {
         url: TEST_URL,
         timeout: 100,
-        maxRetries: 0,
       }
       it(`is cancelled before the response arrives`, async () => {
         nock(transportOptions.url)
@@ -548,7 +541,6 @@ describe('NodeHttpTransport', () => {
     const transportOptions = {
       url: TEST_URL,
       timeout: 100,
-      maxRetries: 0,
     }
     ;([
       [null, ''],
@@ -780,6 +772,61 @@ describe('NodeHttpTransport', () => {
         method: 'GET',
       })
       expect(data).equals(undefined)
+    })
+    it(`uses custom headers set to transport`, async () => {
+      let extra: any
+      nock(transportOptions.url)
+        .get('/test')
+        .reply(
+          200,
+          function(_uri, _body, callback) {
+            extra = this.req.headers['extra']
+            callback(null, '..')
+          },
+          {
+            'content-type': 'application/csv',
+          }
+        )
+        .persist()
+      const data = await new NodeHttpTransport({
+        ...transportOptions,
+        timeout: 10000,
+        headers: {
+          extra: 'yes',
+        },
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+      expect(extra).equals('yes')
+    })
+    it(`communicates through a proxy`, async () => {
+      let headers: Record<string, string> = {}
+      let requestPath = ''
+      const targetUrl = 'http://behind.proxy.localhost:8080'
+      nock(transportOptions.url)
+        .get(/.*/)
+        .reply(
+          200,
+          function(uri, _body, callback) {
+            requestPath = uri
+            headers = {...this.req.headers}
+            callback(null, '..')
+          },
+          {
+            'content-type': 'application/csv',
+          }
+        )
+        .persist()
+      const data = await new NodeHttpTransport({
+        url: targetUrl,
+        proxyUrl: transportOptions.url,
+      }).request('/test', '', {
+        method: 'GET',
+      })
+      expect(data).equals('..')
+      expect(requestPath).equals(targetUrl + '/test')
+      expect(headers?.host).equals('behind.proxy.localhost:8080')
     })
   })
 })

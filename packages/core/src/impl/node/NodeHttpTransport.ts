@@ -47,21 +47,31 @@ export class NodeHttpTransport implements Transport {
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
   private contextPath: string
+  private token?: string
+  private headers: Record<string, string>
   /**
    * Creates a node transport using for the client options supplied.
    * @param connectionOptions - connection options
    */
-  constructor(private connectionOptions: ConnectionOptions) {
-    const url = parse(connectionOptions.url)
+  constructor(connectionOptions: ConnectionOptions) {
+    const {
+      url: _url,
+      proxyUrl,
+      token,
+      transportOptions,
+      ...nodeSupportedOptions
+    } = connectionOptions
+    const url = parse(proxyUrl || _url)
+    this.token = token
     this.defaultOptions = {
       ...DEFAULT_ConnectionOptions,
-      ...connectionOptions,
-      ...connectionOptions.transportOptions,
+      ...nodeSupportedOptions,
+      ...transportOptions,
       port: url.port,
       protocol: url.protocol,
       hostname: url.hostname,
     }
-    this.contextPath = url.path ?? ''
+    this.contextPath = proxyUrl ? _url : url.path ?? ''
     if (this.contextPath.endsWith('/')) {
       this.contextPath = this.contextPath.substring(
         0,
@@ -77,7 +87,7 @@ export class NodeHttpTransport implements Transport {
     )
     // https://github.com/influxdata/influxdb-client-js/issues/263
     // don't allow /api/v2 suffix to avoid future problems
-    if (this.contextPath == '/api/v2') {
+    if (this.contextPath.endsWith('/api/v2')) {
       Log.warn(
         `Please remove '/api/v2' context path from InfluxDB base url, using ${url.protocol}//${url.hostname}:${url.port} !`
       )
@@ -94,6 +104,13 @@ export class NodeHttpTransport implements Transport {
       throw new Error(
         `Unsupported protocol "${url.protocol} in URL: "${connectionOptions.url}"`
       )
+    }
+    this.headers = {
+      'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
+      ...connectionOptions.headers,
+    }
+    if (proxyUrl) {
+      this.headers['Host'] = parse(_url).host as string
     }
   }
 
@@ -208,10 +225,10 @@ export class NodeHttpTransport implements Transport {
     const bodyBuffer = Buffer.from(body, 'utf-8')
     const headers: {[key: string]: any} = {
       'content-type': 'application/json; charset=utf-8',
-      'User-Agent': `influxdb-client-js/${CLIENT_LIB_VERSION}`,
+      ...this.headers,
     }
-    if (this.connectionOptions.token) {
-      headers.authorization = 'Token ' + this.connectionOptions.token
+    if (this.token) {
+      headers.authorization = 'Token ' + this.token
     }
     let bodyPromise = Promise.resolve(bodyBuffer)
     const options: {[key: string]: any} = {
