@@ -4,6 +4,7 @@
 
 1. [#395](https://github.com/influxdata/influxdb-client-js/pull/395): Allow to add extra HTTP headers.
 1. [#395](https://github.com/influxdata/influxdb-client-js/pull/395): Allow to setup HTTP proxy for node.js.
+1. [#396](https://github.com/influxdata/influxdb-client-js/pull/396): Regenerate APIs from swagger.
 
 ## 1.21.0 [2021-11-26]
 
