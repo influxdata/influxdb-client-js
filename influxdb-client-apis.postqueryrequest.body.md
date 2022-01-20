@@ -9,5 +9,5 @@ Flux query or specification to execute
 <b>Signature:</b>
 
 ```typescript
-body: Query | InfluxQLQuery;
+body: Query;
 ```

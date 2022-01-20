@@ -4,7 +4,7 @@
 
 ## PostQueryAnalyzeRequest.body property
 
-Flux or InfluxQL query to analyze
+Flux query to analyze
 
 <b>Signature:</b>
 

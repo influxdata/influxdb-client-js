@@ -15,6 +15,5 @@ export interface LineProtocolLengthError
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [code](./influxdb-client-apis.lineprotocollengtherror.code.md) | 'invalid' | Code is the machine-readable error code. |
-|  [maxLength](./influxdb-client-apis.lineprotocollengtherror.maxlength.md) | number | Max length in bytes for a body of line-protocol. |
 |  [message](./influxdb-client-apis.lineprotocollengtherror.message.md) | string | Message is a human-readable message. |
 

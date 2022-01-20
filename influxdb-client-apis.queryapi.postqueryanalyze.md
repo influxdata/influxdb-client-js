@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQueryAnalyze() method
 
-Analyze an InfluxQL or Flux query. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAnalyze)
+Analyze a Flux query. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAnalyze)
 
 <b>Signature:</b>
 

@@ -14,5 +14,5 @@ export interface PostQueryAnalyzeRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) | [Query](./influxdb-client-apis.query.md) | Flux or InfluxQL query to analyze |
+|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) | [Query](./influxdb-client-apis.query.md) | Flux query to analyze |
 
