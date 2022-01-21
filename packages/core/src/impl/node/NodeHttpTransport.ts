@@ -348,7 +348,6 @@ export class NodeHttpTransport implements Transport {
     req.on('error', error => {
       listeners.error(error)
     })
-    req.on('close', listeners.complete)
 
     /* istanbul ignore else support older node versions */
     if (requestMessage.body) {
