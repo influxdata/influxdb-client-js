@@ -12,13 +12,16 @@ import {Point} from '../Point'
 import {currentTime, dateToProtocolTimestamp} from '../util/currentTime'
 import {createRetryDelayStrategy} from './retryStrategy'
 import RetryBuffer from './RetryBuffer'
+import utf8Length from '../util/utf8Length'
 
 class WriteBuffer {
   length = 0
+  bytes = -1
   lines: string[]
 
   constructor(
     private maxChunkRecords: number,
+    private maxBatchBytes: number,
     private flushFn: (lines: string[]) => Promise<void>,
     private scheduleSend: () => void
   ) {
@@ -26,11 +29,18 @@ class WriteBuffer {
   }
 
   add(record: string): void {
+    const size = utf8Length(record)
     if (this.length === 0) {
       this.scheduleSend()
+    } else if (this.bytes + size + 1 >= this.maxBatchBytes) {
+      // the new size already exceeds maxBatchBytes, send it
+      this.flush().catch(_e => {
+        // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
+      })
     }
     this.lines[this.length] = record
     this.length++
+    this.bytes += size + 1
     if (this.length >= this.maxChunkRecords) {
       this.flush().catch(_e => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
@@ -48,6 +58,7 @@ class WriteBuffer {
   reset(): string[] {
     const retVal = this.lines.slice(0, this.length)
     this.length = 0
+    this.bytes = -1 // lines are joined with \n
     return retVal
   }
 }
@@ -114,6 +125,7 @@ export default class WriteApiImpl implements WriteApi {
     // write buffer
     this.writeBuffer = new WriteBuffer(
       this.writeOptions.batchSize,
+      this.writeOptions.maxBatchBytes,
       lines => {
         this._clearFlushTimeout()
         return this.sendBatch(lines, this.writeOptions.maxRetries + 1)
