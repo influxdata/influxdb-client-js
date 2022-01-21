@@ -162,6 +162,23 @@ export interface Label {
   properties?: any
 }
 
+export interface TelegrafPluginRequest {
+  name?: string
+  description?: string
+  plugins?: Array<{
+    type?: string
+    name?: string
+    alias?: string
+    description?: string
+    config?: string
+  }>
+  metadata?: {
+    buckets?: string[]
+  }
+  config?: string
+  orgID?: string
+}
+
 export interface LabelsResponse {
   labels?: Labels
   links?: Links
@@ -490,6 +507,8 @@ export interface XYViewProperties {
   queries: DashboardQuery[]
   /** Colors define color encoding of data into a visualization */
   colors: DashboardColor[]
+  /** An object that contains information about the color mapping */
+  colorMapping?: ColorMapping
   shape: 'chronograf-v2'
   note: string
   /** If true, will display note when empty */
@@ -515,6 +534,11 @@ export interface XYViewProperties {
   legendOpacity?: number
   legendOrientationThreshold?: number
 }
+
+/**
+ * A color mapping is an object that maps time series data to a UI color scheme to allow the UI to render graphs consistent colors across reloads.
+ */
+export type ColorMapping = any
 
 export type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX'
 
@@ -2752,6 +2776,82 @@ export type BucketShardMappings = BucketShardMapping[]
 export interface BucketShardMapping {
   oldId: number
   newId: number
+}
+
+export interface Config {
+  config?: any
+}
+
+export interface RemoteConnections {
+  remotes?: RemoteConnection[]
+}
+
+export interface RemoteConnection {
+  id: string
+  name: string
+  orgID: string
+  description?: string
+  remoteURL: string
+  remoteOrgID: string
+  allowInsecureTLS: boolean
+}
+
+export interface RemoteConnectionCreationRequest {
+  name: string
+  description?: string
+  orgID: string
+  remoteURL: string
+  remoteAPIToken: string
+  remoteOrgID: string
+  allowInsecureTLS: boolean
+}
+
+export interface RemoteConnectionUpdateRequest {
+  name?: string
+  description?: string
+  remoteURL?: string
+  remoteAPIToken?: string
+  remoteOrgID?: string
+  allowInsecureTLS?: boolean
+}
+
+export interface Replications {
+  replications?: Replication[]
+}
+
+export interface Replication {
+  id: string
+  name: string
+  description?: string
+  orgID: string
+  remoteID: string
+  localBucketID: string
+  remoteBucketID: string
+  maxQueueSizeBytes: number
+  currentQueueSizeBytes: number
+  latestResponseCode?: number
+  latestErrorMessage?: string
+  dropNonRetryableData?: boolean
+}
+
+export interface ReplicationCreationRequest {
+  name: string
+  description?: string
+  orgID: string
+  remoteID: string
+  localBucketID: string
+  remoteBucketID: string
+  maxQueueSizeBytes: number
+  dropNonRetryableData?: boolean
+}
+
+export interface ReplicationUpdateRequest {
+  name?: string
+  description?: string
+  remoteID?: string
+  remoteBucketID?: string
+  maxQueueSizeBytes?: number
+  dropNonRetryableData?: boolean
 }
 
 export interface Dashboards {
