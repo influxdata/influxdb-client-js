@@ -41,7 +41,10 @@ class WriteBuffer {
     this.lines[this.length] = record
     this.length++
     this.bytes += size + 1
-    if (this.length >= this.maxChunkRecords) {
+    if (
+      this.length >= this.maxChunkRecords ||
+      this.bytes >= this.maxBatchBytes
+    ) {
       this.flush().catch(_e => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
       })
