@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import utf8Length from '../../../src/util/utf8Length'
 
-describe('byteLength', () => {
+describe('utf8Length', () => {
   ;[
     {s: ''},
     {s: 'hi'},
