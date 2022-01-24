@@ -626,7 +626,7 @@
       "description": "Telegraf configuration to create",
       "required": true,
       "mediaType": "application/json",
-      "type": "TelegrafRequest"
+      "type": "TelegrafPluginRequest"
     },
     "responses": [
       {
@@ -740,7 +740,7 @@
       "description": "Telegraf configuration update to apply",
       "required": true,
       "mediaType": "application/json",
-      "type": "TelegrafRequest"
+      "type": "TelegrafPluginRequest"
     },
     "responses": [
       {
@@ -1497,7 +1497,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot).",
+        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).",
         "mediaTypes": []
       },
       {
@@ -1535,12 +1535,12 @@
         "description": "The request payload is too large. InfluxDB rejected the batch and did not write any data.\n#### InfluxDB Cloud:\n - returns this error if the payload exceeds the 50MB size limit.\n - returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n - returns `Content-Type: application/json` for this error.\n",
         "mediaTypes": [
           {
-            "mediaType": "text/html",
-            "type": "string"
-          },
-          {
             "mediaType": "application/json",
             "type": "LineProtocolLengthError"
+          },
+          {
+            "mediaType": "text/html",
+            "type": "string"
           }
         ]
       },
@@ -1561,7 +1561,7 @@
       },
       {
         "code": "503",
-        "description": "The server is temporarily unavailable to accept writes.  The `Retry-After` header describes when to try the write again.",
+        "description": "The server is temporarily unavailable to accept writes. The `Retry-After` header describes when to try the write again.",
         "mediaTypes": []
       },
       {
@@ -7910,7 +7910,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The instance is healthy",
+        "description": "The instance is healthy.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -7920,11 +7920,52 @@
       },
       {
         "code": "503",
-        "description": "The instance is unhealthy",
+        "description": "The instance is unhealthy.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "HealthCheck"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/metrics",
+    "operation": "get",
+    "operationId": "GetMetrics",
+    "basicAuth": false,
+    "summary": "Get metrics of an instance",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Payload body contains metrics about the InfluxDB instance.\n\nMetrics are formatted in the\nPrometheus [plain-text exposition format](https://prometheus.io/docs/instrumenting/exposition_formats).\nEach metric is identified by its name and a set of optional key-value pairs.\n\nThe following descriptors precede each metric:\n\n- *`HELP`*: description of the metric\n- *`TYPE`*: type of the metric (e.g. `counter`, `gauge`, `histogram`, or `summary`)\n",
+        "mediaTypes": [
+          {
+            "mediaType": "text/plain",
+            "type": "any"
           }
         ]
       },
@@ -10715,6 +10756,730 @@
         "code": "204",
         "description": "TSM snapshot successfully restored.",
         "mediaTypes": []
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/config",
+    "operation": "get",
+    "operationId": "GetConfig",
+    "basicAuth": false,
+    "summary": "Get the run-time configuration of the instance",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Payload body contains the run-time configuration of the InfluxDB instance.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Config"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes",
+    "operation": "get",
+    "operationId": "GetRemoteConnections",
+    "basicAuth": false,
+    "summary": "List all remote connections",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "remoteURL",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "List of remote connections",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnections"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes",
+    "operation": "post",
+    "operationId": "PostRemoteConnection",
+    "basicAuth": false,
+    "summary": "Register a new remote connection",
+    "positionalParams": [],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "RemoteConnectionCreationRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Remote connection saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "get",
+    "operationId": "GetRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Retrieve a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Remote connection",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "patch",
+    "operationId": "PatchRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Update a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "RemoteConnectionUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Updated information saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "RemoteConnection"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/remotes/{remoteID}",
+    "operation": "delete",
+    "operationId": "DeleteRemoteConnectionByID",
+    "basicAuth": false,
+    "summary": "Delete a remote connection",
+    "positionalParams": [
+      {
+        "name": "remoteID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Remote connection info deleted.",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications",
+    "operation": "get",
+    "operationId": "GetReplications",
+    "basicAuth": false,
+    "summary": "List all replications",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "orgID",
+        "description": "The organization ID.",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "remoteID",
+        "type": "string"
+      },
+      {
+        "name": "localBucketID",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "List of replications",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replications"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications",
+    "operation": "post",
+    "operationId": "PostReplication",
+    "basicAuth": false,
+    "summary": "Register a new replication",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the replication, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ReplicationCreationRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Replication saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Replication validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "get",
+    "operationId": "GetReplicationByID",
+    "basicAuth": false,
+    "summary": "Retrieve a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Replication",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "patch",
+    "operationId": "PatchReplicationByID",
+    "basicAuth": false,
+    "summary": "Update a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "validate",
+        "description": "If true, validate the updated information, but don't save it.",
+        "type": "any"
+      }
+    ],
+    "bodyParam": {
+      "required": true,
+      "mediaType": "application/json",
+      "type": "ReplicationUpdateRequest"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Updated information saved",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Replication"
+          }
+        ]
+      },
+      {
+        "code": "204",
+        "description": "Updated replication validated, but not saved",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}",
+    "operation": "delete",
+    "operationId": "DeleteReplicationByID",
+    "basicAuth": false,
+    "summary": "Delete a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Replication deleted.",
+        "mediaTypes": []
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/replications/{replicationID}/validate",
+    "operation": "post",
+    "operationId": "PostValidateReplicationByID",
+    "basicAuth": false,
+    "summary": "Validate a replication",
+    "positionalParams": [
+      {
+        "name": "replicationID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Replication is valid",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",

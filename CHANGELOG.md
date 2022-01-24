@@ -1,5 +1,9 @@
 ## 1.23.0 [unreleased]
 
+### Features
+
+1. [#403](https://github.com/influxdata/influxdb-client-js/pull/403): Regenerate APIs from swagger.
+
 ### Bug Fixes
 
 1. [#401](https://github.com/influxdata/influxdb-client-js/pull/401): Repair handling of gzipped responses.

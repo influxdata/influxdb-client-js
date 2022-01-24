@@ -10,7 +10,7 @@ import {
   ResourceOwner,
   ResourceOwners,
   Telegraf,
-  TelegrafRequest,
+  TelegrafPluginRequest,
   Telegrafs,
 } from './types'
 
@@ -20,7 +20,7 @@ export interface GetTelegrafsRequest {
 }
 export interface PostTelegrafsRequest {
   /** Telegraf configuration to create */
-  body: TelegrafRequest
+  body: TelegrafPluginRequest
 }
 export interface GetTelegrafsIDRequest {
   /** The Telegraf configuration ID. */
@@ -30,7 +30,7 @@ export interface PutTelegrafsIDRequest {
   /** The Telegraf config ID. */
   telegrafID: string
   /** Telegraf configuration update to apply */
-  body: TelegrafRequest
+  body: TelegrafPluginRequest
 }
 export interface DeleteTelegrafsIDRequest {
   /** The Telegraf configuration ID. */
