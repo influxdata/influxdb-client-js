@@ -103,7 +103,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
  * Options used by {@link WriteApi} .
  */
 export interface WriteOptions extends WriteRetryOptions {
-  /** max number of records to send in a batch   */
+  /** max number of records/lines to send in a batch   */
   batchSize: number
   /** delay between data flushes in milliseconds, at most `batch size` records are sent during flush  */
   flushInterval: number
@@ -113,6 +113,8 @@ export interface WriteOptions extends WriteRetryOptions {
   headers?: {[key: string]: string}
   /** When specified, write bodies larger than the threshold are gzipped  */
   gzipThreshold?: number
+  /** max size of a batch in bytes */
+  maxBatchBytes: number
 }
 
 /** default RetryDelayStrategyOptions */
@@ -127,6 +129,7 @@ export const DEFAULT_RetryDelayStrategyOptions = {
 /** default writeOptions */
 export const DEFAULT_WriteOptions: WriteOptions = {
   batchSize: 1000,
+  maxBatchBytes: 50_000_000, // default max batch size in the cloud
   flushInterval: 60000,
   writeFailed: function() {},
   writeSuccess: function() {},

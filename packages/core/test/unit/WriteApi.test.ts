@@ -292,7 +292,7 @@ describe('WriteApi', () => {
     let subject: WriteApi
     let logs: CollectedLogs
     function useSubject(writeOptions: Partial<WriteOptions>): void {
-      subject = createApi(ORG, BUCKET, PRECISION, {
+      subject = createApi(ORG, BUCKET, 'ns', {
         retryJitter: 0,
         ...writeOptions,
       })
@@ -325,9 +325,40 @@ describe('WriteApi', () => {
       subject.writeRecord('test value=2')
       await waitForCondition(() => logs.error.length >= 2)
       expect(logs.error).has.length(2)
-      await subject.flush().then(() => {
-        expect(logs.error).has.length(2)
-      })
+      await subject.flush()
+      expect(logs.error).has.length(2)
+    })
+    it('flushes the records automatically when size exceeds maxBatchBytes', async () => {
+      useSubject({flushInterval: 0, maxRetries: 0, maxBatchBytes: 15})
+      const messages: string[] = []
+      nock(clientOptions.url)
+        .post(WRITE_PATH_NS)
+        .reply((_uri, _requestBody) => {
+          messages.push(_requestBody.toString())
+          return [204, '', {}]
+        })
+        .persist()
+      subject.writeRecord('test value=1')
+      expect(logs.error).has.length(0) // not flushed yet
+      expect(messages).has.length(0) // not flushed yet
+      subject.writeRecord('test value=2')
+      await waitForCondition(() => messages.length == 1) // wait for background HTTP call
+      expect(logs.error).has.length(0)
+      expect(messages).has.length(1)
+      expect(messages[0]).equals('test value=1')
+      await subject.flush()
+      expect(logs.error).has.length(0)
+      expect(messages).has.length(2)
+      expect(messages[1]).equals('test value=2')
+      subject.writeRecord('test value=4321') // greater or equal to 15 bytes, it should be written immediatelly
+      await waitForCondition(() => messages.length == 3) // wait for background HTTP call
+      subject.writeRecord('t v=1')
+      subject.writeRecord('t v=2')
+      await subject.flush()
+      expect(logs.error).has.length(0)
+      expect(messages).has.length(4)
+      expect(messages[2]).equals('test value=4321')
+      expect(messages[3]).equals('t v=1\nt v=2')
     })
   })
   describe('usage of server API', () => {
