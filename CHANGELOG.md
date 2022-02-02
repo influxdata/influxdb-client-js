@@ -8,6 +8,7 @@
 ### Bug Fixes
 
 1. [#401](https://github.com/influxdata/influxdb-client-js/pull/401): Repair handling of gzipped responses.
+1. [#405](https://github.com/influxdata/influxdb-client-js/pull/405): Add missing PermissionResources from Cloud API definition
 
 ## 1.22.0 [2022-01-20]
 

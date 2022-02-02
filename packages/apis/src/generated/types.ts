@@ -2581,6 +2581,8 @@ export interface Resource {
     | 'annotations'
     | 'remotes'
     | 'replications'
+    | 'flows'
+    | 'functions'
   /** If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. */
   id?: string
   /** Optional name of the resource if the resource has a name field. */
