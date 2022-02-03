@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file ../../reports/apis_eslint/eslint.xml",
-    "lint:fix": "eslint --fix 'src/**/*.ts'"
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
+    "fetchSwaggerFiles": "node ./scripts/fetchSwaggerFiles.js"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
