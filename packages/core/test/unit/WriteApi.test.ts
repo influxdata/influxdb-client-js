@@ -77,7 +77,8 @@ describe('WriteApi', () => {
       logs = collectLogging.replace()
     })
     afterEach(async () => {
-      await subject.close()
+      // eslint-disable-next-line no-console
+      await subject.close().catch(console.error)
       collectLogging.after()
     })
     it('can be closed and flushed without any data', async () => {
@@ -525,9 +526,10 @@ describe('WriteApi', () => {
       const writeCounters = createWriteCounters()
       // required because of https://github.com/influxdata/influxdb-client-js/issues/263
       useSubject({
-        flushInterval: 2,
         maxRetries: 0,
+        flushInterval: 2000, // do not flush automatically in the test
         batchSize: 10,
+        maxBatchBytes: 15,
         writeFailed: writeCounters.writeFailed,
       })
       let authorization: any
@@ -538,7 +540,10 @@ describe('WriteApi', () => {
           return [200, '', {}]
         })
         .persist()
-      subject.writePoint(new Point('test').floatField('value', 1))
+      subject.writeRecord('test value=1')
+      // flushes the previous record by writing a next one
+      // that would exceed 15 maxBatchBytes
+      subject.writeRecord('test value=2')
       await waitForCondition(() => writeCounters.failedLineCount == 1)
       expect(logs.error).has.length(1)
       expect(logs.error[0][0]).equals('Write to InfluxDB failed.')
@@ -549,6 +554,7 @@ describe('WriteApi', () => {
       )
       expect(logs.warn).deep.equals([])
       expect(authorization).equals(`Token ${clientOptions.token}`)
+      expect(subject.dispose()).equals(1) // the second record was not written
     })
     it('sends custom http header', async () => {
       useSubject({
