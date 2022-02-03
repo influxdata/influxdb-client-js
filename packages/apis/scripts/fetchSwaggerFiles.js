@@ -54,4 +54,5 @@ downloadFiles()
   .catch(error => {
     console.error(error)
     console.log('\nFinished ERROR')
+    process.exitCode = 1
   })
