@@ -541,7 +541,8 @@ describe('WriteApi', () => {
         })
         .persist()
       subject.writeRecord('test value=1')
-      // flushes the previous record by writing a next one so that batch is greater than maxBatchBytes
+      // flushes the previous record by writing a next one
+      // that would exceed 15 maxBatchBytes
       subject.writeRecord('test value=2')
       await waitForCondition(() => writeCounters.failedLineCount == 1)
       expect(logs.error).has.length(1)
