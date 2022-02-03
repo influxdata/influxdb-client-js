@@ -16,7 +16,7 @@ $ yarn build
   - `wget -O resources/cloud.yml https://raw.githubusercontent.com/influxdata/openapi/master/contracts/cloud.yml`
 - re-generate src/generated/types.ts and resources/operations.json using [oats](https://github.com/bonitoo-io/oats)
   - `rm -rf src/generated/*.ts`
-  - `oats -i 'types' --storeOperations resources/operations.json --patchScript $PWD/generator/append-cloud-definitions.js resources/oss.yml resources/invocable-scripts.yml > src/generated/types.ts`
+  - `oats -i 'types' --storeOperations resources/operations.json --patchScript $PWD/scripts/patchSwagger.js resources/oss.yml resources/invocable-scripts.yml > src/generated/types.ts`
 - generate src/generated APIs from resources/operations.json
   - `yarn generate`
 - validate
