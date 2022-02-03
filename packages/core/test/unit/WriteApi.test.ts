@@ -525,9 +525,9 @@ describe('WriteApi', () => {
       const writeCounters = createWriteCounters()
       // required because of https://github.com/influxdata/influxdb-client-js/issues/263
       useSubject({
-        flushInterval: 2,
         maxRetries: 0,
         batchSize: 10,
+        maxBatchBytes: 15,
         writeFailed: writeCounters.writeFailed,
       })
       let authorization: any
@@ -538,7 +538,9 @@ describe('WriteApi', () => {
           return [200, '', {}]
         })
         .persist()
-      subject.writePoint(new Point('test').floatField('value', 1))
+      subject.writeRecord('test value=1')
+      // flushes the previous record by writiung a next one that exceeds maxBatchBytes
+      subject.writeRecord('test value=2')
       await waitForCondition(() => writeCounters.failedLineCount == 1)
       expect(logs.error).has.length(1)
       expect(logs.error[0][0]).equals('Write to InfluxDB failed.')
