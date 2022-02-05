@@ -52,7 +52,7 @@ function generateTypes(operation: Operation): string {
   }
 
   if (operation.basicAuth) {
-    retVal += '  auth: {user: string, password: string}\n'
+    retVal += '  auth?: {user: string, password: string}\n'
   }
   if (operation.bodyParam) {
     if (operation.bodyParam.description) {
