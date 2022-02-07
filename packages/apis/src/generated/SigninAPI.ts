@@ -2,7 +2,7 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostSigninRequest {
-  auth: {user: string; password: string}
+  auth?: {user: string; password: string}
 }
 /**
  * Signin API

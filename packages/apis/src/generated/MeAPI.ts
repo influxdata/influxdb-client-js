@@ -4,7 +4,7 @@ import {PasswordResetBody, UserResponse} from './types'
 
 export interface GetMeRequest {}
 export interface PutMePasswordRequest {
-  auth: {user: string; password: string}
+  auth?: {user: string; password: string}
   /** New password */
   body: PasswordResetBody
 }

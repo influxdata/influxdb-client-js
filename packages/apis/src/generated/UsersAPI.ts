@@ -5,7 +5,7 @@ import {PasswordResetBody, User, UserResponse, Users} from './types'
 export interface PostUsersIDPasswordRequest {
   /** The user ID. */
   userID: string
-  auth: {user: string; password: string}
+  auth?: {user: string; password: string}
   /** New password */
   body: PasswordResetBody
 }
