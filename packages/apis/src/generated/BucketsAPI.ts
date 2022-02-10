@@ -18,7 +18,7 @@ import {
 export interface GetBucketsRequest {
   offset?: number
   limit?: number
-  /** The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.
+  /** Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.
    */
   after?: string
   /** The name of the organization. */

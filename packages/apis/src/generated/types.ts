@@ -18,11 +18,11 @@ export interface Error {
     | 'method not allowed'
     | 'request too large'
     | 'unsupported media type'
-  /** message is a human-readable message. */
-  readonly message: string
-  /** op describes the logical code operation during error. Useful for debugging. */
+  /** Human-readable message. */
+  readonly message?: string
+  /** Describes the logical code operation when the error occurred. Useful for debugging. */
   readonly op?: string
-  /** err is a stack of errors that occurred during processing of the request. Useful for debugging. */
+  /** Stack of errors that occurred during processing of the request. Useful for debugging. */
   readonly err?: string
 }
 
@@ -63,17 +63,17 @@ export interface DBRPs {
 }
 
 export interface DBRP {
-  /** the mapping identifier */
+  /** ID of the DBRP mapping. */
   readonly id: string
-  /** the organization ID that owns this mapping. */
+  /** ID of the organization that owns this mapping. */
   orgID: string
-  /** the bucket ID used as target for the translation. */
+  /** ID of the bucket used as the target for the translation. */
   bucketID: string
   /** InfluxDB v1 database */
   database: string
   /** InfluxDB v1 retention policy */
   retention_policy: string
-  /** Specify if this mapping represents the default retention policy for the database specificed. */
+  /** Mapping represents the default retention policy for the database specified. */
   default: boolean
   links?: Links
 }
@@ -90,17 +90,17 @@ export interface Links {
 export type Link = string
 
 export interface DBRPCreate {
-  /** the organization ID that owns this mapping. */
+  /** ID of the organization that owns this mapping. */
   orgID?: string
-  /** the organization that owns this mapping. */
+  /** Name of the organization that owns this mapping. */
   org?: string
-  /** the bucket ID used as target for the translation. */
+  /** ID of the bucket used as the target for the translation. */
   bucketID: string
   /** InfluxDB v1 database */
   database: string
   /** InfluxDB v1 retention policy */
   retention_policy: string
-  /** Specify if this mapping represents the default retention policy for the database specificed. */
+  /** Mapping represents the default retention policy for the database specified. */
   default?: boolean
 }
 
@@ -240,20 +240,20 @@ export interface LineProtocolError {
     | 'invalid'
     | 'empty value'
     | 'unavailable'
-  /** Message is a human-readable message. */
-  readonly message: string
-  /** Op describes the logical code operation during error. Useful for debugging. */
-  readonly op: string
-  /** Err is a stack of errors that occurred during processing of the request. Useful for debugging. */
-  readonly err: string
-  /** First line within sent body containing malformed data */
+  /** Human-readable message. */
+  readonly message?: string
+  /** Describes the logical code operation when the error occurred. Useful for debugging. */
+  readonly op?: string
+  /** Stack of errors that occurred during processing of the request. Useful for debugging. */
+  readonly err?: string
+  /** First line in the request body that contains malformed data. */
   readonly line?: number
 }
 
 export interface LineProtocolLengthError {
   /** Code is the machine-readable error code. */
   readonly code: 'invalid'
-  /** Message is a human-readable message. */
+  /** Human-readable message. */
   readonly message: string
 }
 
@@ -457,18 +457,18 @@ export interface Axes {
 }
 
 /**
- * The description of a particular axis for a visualization.
+ * Axis used in a visualization.
  */
 export interface Axis {
-  /** The extents of an axis in the form [lower, upper]. Clients determine whether bounds are to be inclusive or exclusive of their limits */
+  /** The extents of the axis in the form [lower, upper]. Clients determine whether bounds are inclusive or exclusive of their limits. */
   bounds?: string[]
-  /** Label is a description of this Axis */
+  /** Description of the axis. */
   label?: string
-  /** Prefix represents a label prefix for formatting axis values. */
+  /** Label prefix for formatting axis values. */
   prefix?: string
-  /** Suffix represents a label suffix for formatting axis values. */
+  /** Label suffix for formatting axis values. */
   suffix?: string
-  /** Base represents the radix for formatting axis values. */
+  /** Radix for formatting axis values. */
   base?: '' | '2' | '10'
   scale?: AxisScale
 }
@@ -707,8 +707,8 @@ export interface CheckBase {
   status?: TaskStatusType
   /** An optional description of the check. */
   description?: string
-  /** Timestamp of latest scheduled, completed run, RFC3339. */
-  readonly latestCompleted?: string
+  /** Timestamp (in RFC3339 date/time format](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. */
+  readonly latestCompleted?: any
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
   labels?: Labels
@@ -1521,17 +1521,17 @@ export interface Buckets {
 
 export interface Bucket {
   readonly links?: {
-    /** URL to retrieve labels for this bucket */
+    /** URL to retrieve labels for this bucket. */
     labels?: Link
-    /** URL to retrieve members that can read this bucket */
+    /** URL to retrieve members that can read this bucket. */
     members?: Link
-    /** URL to retrieve parent organization for this bucket */
+    /** URL to retrieve parent organization for this bucket. */
     org?: Link
     /** URL to retrieve owners that can read and write to this bucket. */
     owners?: Link
-    /** URL for this bucket */
+    /** URL for this bucket. */
     self?: Link
-    /** URL to write line protocol for this bucket */
+    /** URL to write line protocol to this bucket. */
     write?: Link
   }
   readonly id?: string
@@ -2182,31 +2182,35 @@ export interface TemplateExportByName {
 
 export interface Task {
   readonly id: string
-  /** The type of task, this can be used for filtering tasks on list actions. */
+  /** Type of the task, useful for filtering a task list. */
   type?: string
-  /** The ID of the organization that owns this Task. */
+  /** ID of the organization that owns the task. */
   orgID: string
-  /** The name of the organization that owns this Task. */
+  /** Name of the organization that owns the task. */
   org?: string
-  /** The name of the task. */
+  /** Name of the task. */
   name: string
-  /** The ID of the user who owns this Task. */
+  /** ID of the user who owns this Task. */
   ownerID?: string
-  /** An optional description of the task. */
+  /** Description of the task. */
   description?: string
   status?: TaskStatusType
   labels?: Labels
-  /** The ID of the authorization used when this task communicates with the query engine. */
+  /** ID of the authorization used when the task communicates with the query engine. */
   authorizationID?: string
-  /** The Flux script to run for this task. */
+  /** Flux script to run for this task. */
   flux: string
-  /** A simple task repetition schedule; parsed from Flux. */
+  /** Interval at which the task runs. `every` also determines when the task first runs, depending on the specified time.
+Value is a [duration literal](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals)). */
   every?: string
-  /** A task repetition schedule in the form '* * * * * *'; parsed from Flux. */
+  /** [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time.
+Value is a [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview). */
   cron?: string
-  /** Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default. */
+  /** [Duration](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset.
+The value is a [duration literal](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals). */
   offset?: string
-  /** Timestamp of latest scheduled, completed run, RFC3339. */
+  /** Timestamp of the latest scheduled and completed run.
+Value is a timestamp in [RFC3339 date/time format](https://docs.influxdata.com/flux/v0.x/data-types/basic/time/#time-syntax). */
   readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
@@ -2319,7 +2323,7 @@ export type SlackNotificationRule = NotificationRuleBase &
   SlackNotificationRuleBase
 
 export interface NotificationRuleBase {
-  /** Timestamp of latest scheduled, completed run, RFC3339. */
+  /** Timestamp (in RFC3339 date/time format](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. */
   readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
@@ -2526,18 +2530,18 @@ export interface OnboardingResponse {
 export type Authorization = AuthorizationUpdateRequest & {
   readonly createdAt?: string
   readonly updatedAt?: string
-  /** ID of org that authorization is scoped to. */
+  /** ID of the organization that the authorization is scoped to. */
   orgID?: string
-  /** List of permissions for an auth.  An auth must have at least one Permission. */
+  /** List of permissions for an authorization.  An authorization must have at least one permission. */
   permissions?: Permission[]
   readonly id?: string
-  /** Passed via the Authorization Header and Token Authentication type. */
+  /** Token used to authenticate API requests. */
   readonly token?: string
-  /** ID of user that created and owns the token. */
+  /** ID of the user that created and owns the token. */
   readonly userID?: string
-  /** Name of user that created and owns the token. */
+  /** Name of the user that created and owns the token. */
   readonly user?: string
-  /** Name of the org token is scoped to. */
+  /** Name of the organization that the token is scoped to. */
   readonly org?: string
   readonly links?: {
     readonly self?: Link
@@ -2546,7 +2550,7 @@ export type Authorization = AuthorizationUpdateRequest & {
 }
 
 export interface AuthorizationUpdateRequest {
-  /** If inactive the token is inactive and requests using the token will be rejected. */
+  /** Status of the token. If `inactive`, requests using the token will be rejected. */
   status?: 'active' | 'inactive'
   /** A description of the token. */
   description?: string
