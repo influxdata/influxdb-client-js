@@ -26,7 +26,7 @@ export class MetricsAPI {
   getMetrics(
     request?: GetMetricsRequest,
     requestOptions?: RequestOptions
-  ): Promise<any> {
+  ): Promise<string> {
     return this.base.request('GET', `/api/v2/metrics`, request, requestOptions)
   }
 }

@@ -200,19 +200,18 @@ components:
             - unsupported media type
         message:
           readOnly: true
-          description: message is a human-readable message.
+          description: Human-readable message.
           type: string
         op:
           readOnly: true
-          description: op describes the logical code operation during error. Useful for debugging.
+          description: Describes the logical code operation when the error occurred. Useful for debugging.
           type: string
         err:
           readOnly: true
-          description: err is a stack of errors that occurred during processing of the request. Useful for debugging.
+          description: Stack of errors that occurred during processing of the request. Useful for debugging.
           type: string
       required:
         - code
-        - message
     Script:
       properties:
         id:

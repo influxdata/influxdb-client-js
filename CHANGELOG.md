@@ -3,7 +3,8 @@
 ### Features
 
 1. [#402](https://github.com/influxdata/influxdb-client-js/pull/402): Limit write batch maximum size in bytes.
-1. [#403](https://github.com/influxdata/influxdb-client-js/pull/403): Regenerate APIs from swagger.
+1. [#403](https://github.com/influxdata/influxdb-client-js/pull/403): Make basic authentication optional in generated APIs.
+1. [#412](https://github.com/influxdata/influxdb-client-js/pull/412): Regenerate APIs from swagger.
 
 ### Bug Fixes
 

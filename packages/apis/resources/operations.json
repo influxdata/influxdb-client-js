@@ -3236,7 +3236,7 @@
       },
       {
         "name": "after",
-        "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n",
+        "description": "Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.\n",
         "required": false,
         "type": "string"
       },
@@ -7965,7 +7965,7 @@
         "mediaTypes": [
           {
             "mediaType": "text/plain",
-            "type": "any"
+            "type": "string"
           }
         ]
       },
@@ -8051,7 +8051,7 @@
       },
       {
         "name": "after",
-        "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n",
+        "description": "Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.\n",
         "required": false,
         "type": "string"
       },
