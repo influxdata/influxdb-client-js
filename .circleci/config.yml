@@ -51,7 +51,12 @@ jobs:
             yarn --version
             yarn run coverage:ci
             yarn run coverage:send
-      - codecov/upload
+      - run:
+          name: Report test results to codecov
+          command: |
+            curl -Os https://uploader.codecov.io/latest/linux/codecov
+            chmod +x codecov
+            codecov
       - store_artifacts:
           path: ./packages/core/coverage
 
