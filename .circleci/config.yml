@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  codecov: codecov/codecov@3.2.2
 
 commands:
   init-dependencies:
@@ -23,7 +21,7 @@ jobs:
     parameters:
       image:
         type: string
-        default: &default-image 'cimg/node:14.17.6'
+        default: &default-image "cimg/node:14.17.6"
     docker:
       - image: << parameters.image >>
     steps:
@@ -51,7 +49,9 @@ jobs:
             yarn --version
             yarn run coverage:ci
             yarn run coverage:send
-      - codecov/upload
+      - run:
+          name: Report test results to codecov
+          command: yarn run coverage:send
       - store_artifacts:
           path: ./packages/core/coverage
 
