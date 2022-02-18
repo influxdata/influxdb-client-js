@@ -52,8 +52,8 @@ jobs:
           name: Report test results to codecov
           command: |
             curl -Os https://uploader.codecov.io/latest/linux/codecov
-            chmod +x codecov
-            codecov
+            chmod +x ./codecov
+            ./codecov
       - store_artifacts:
           path: ./packages/core/coverage
 
