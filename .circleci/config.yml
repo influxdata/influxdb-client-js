@@ -48,7 +48,6 @@ jobs:
           command: |
             yarn --version
             yarn run coverage:ci
-            yarn run coverage:send
       - run:
           name: Report test results to codecov
           command: |
