@@ -14,5 +14,5 @@ export interface PostSigninRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [auth](./influxdb-client-apis.postsigninrequest.auth.md) | { user: string; password: string; } |  |
+|  [auth?](./influxdb-client-apis.postsigninrequest.auth.md) | { user: string; password: string; } | <i>(Optional)</i> |
 

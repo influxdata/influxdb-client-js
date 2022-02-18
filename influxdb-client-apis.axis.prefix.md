@@ -4,7 +4,7 @@
 
 ## Axis.prefix property
 
-Prefix represents a label prefix for formatting axis values.
+Label prefix for formatting axis values.
 
 <b>Signature:</b>
 

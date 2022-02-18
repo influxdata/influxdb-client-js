@@ -4,7 +4,7 @@
 
 ## Task.cron property
 
-A task repetition schedule in the form '\* \* \* \* \* \*'; parsed from Flux.
+\[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time. Value is a \[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview).
 
 <b>Signature:</b>
 

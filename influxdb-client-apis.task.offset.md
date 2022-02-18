@@ -4,7 +4,7 @@
 
 ## Task.offset property
 
-Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default.
+\[Duration\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset. The value is a \[duration literal\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals).
 
 <b>Signature:</b>
 

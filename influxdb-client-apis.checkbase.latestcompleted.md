@@ -4,10 +4,10 @@
 
 ## CheckBase.latestCompleted property
 
-Timestamp of latest scheduled, completed run, RFC3339.
+Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run.
 
 <b>Signature:</b>
 
 ```typescript
-readonly latestCompleted?: string;
+readonly latestCompleted?: any;
 ```

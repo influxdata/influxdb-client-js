@@ -4,7 +4,7 @@
 
 ## LineProtocolLengthError.message property
 
-Message is a human-readable message.
+Human-readable message.
 
 <b>Signature:</b>
 

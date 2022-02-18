@@ -4,10 +4,10 @@
 
 ## LineProtocolError.op property
 
-Op describes the logical code operation during error. Useful for debugging.
+Describes the logical code operation when the error occurred. Useful for debugging.
 
 <b>Signature:</b>
 
 ```typescript
-readonly op: string;
+readonly op?: string;
 ```

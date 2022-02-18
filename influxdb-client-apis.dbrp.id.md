@@ -4,7 +4,7 @@
 
 ## DBRP.id property
 
-the mapping identifier
+ID of the DBRP mapping.
 
 <b>Signature:</b>
 

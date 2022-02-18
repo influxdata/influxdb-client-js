@@ -4,7 +4,7 @@
 
 ## Axis.base property
 
-Base represents the radix for formatting axis values.
+Radix for formatting axis values.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## LineProtocolError.line property
 
-First line within sent body containing malformed data
+First line in the request body that contains malformed data.
 
 <b>Signature:</b>
 

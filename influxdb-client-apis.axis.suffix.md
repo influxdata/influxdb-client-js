@@ -4,7 +4,7 @@
 
 ## Axis.suffix property
 
-Suffix represents a label suffix for formatting axis values.
+Label suffix for formatting axis values.
 
 <b>Signature:</b>
 

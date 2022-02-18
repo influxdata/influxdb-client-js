@@ -9,5 +9,5 @@ Telegraf configuration to create
 <b>Signature:</b>
 
 ```typescript
-body: TelegrafRequest;
+body: TelegrafPluginRequest;
 ```

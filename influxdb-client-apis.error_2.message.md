@@ -4,10 +4,10 @@
 
 ## Error\_2.message property
 
-message is a human-readable message.
+Human-readable message.
 
 <b>Signature:</b>
 
 ```typescript
-readonly message: string;
+readonly message?: string;
 ```

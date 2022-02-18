@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-type: 'authorizations' | 'buckets' | 'dashboards' | 'orgs' | 'sources' | 'tasks' | 'telegrafs' | 'users' | 'variables' | 'scrapers' | 'secrets' | 'labels' | 'views' | 'documents' | 'notificationRules' | 'notificationEndpoints' | 'checks' | 'dbrp' | 'notebooks' | 'annotations' | 'remotes' | 'replications';
+type: 'authorizations' | 'buckets' | 'dashboards' | 'orgs' | 'sources' | 'tasks' | 'telegrafs' | 'users' | 'variables' | 'scrapers' | 'secrets' | 'labels' | 'views' | 'documents' | 'notificationRules' | 'notificationEndpoints' | 'checks' | 'dbrp' | 'notebooks' | 'annotations' | 'remotes' | 'replications' | 'flows' | 'functions';
 ```

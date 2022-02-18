@@ -4,7 +4,7 @@
 
 ## Task.name property
 
-The name of the task.
+Name of the task.
 
 <b>Signature:</b>
 

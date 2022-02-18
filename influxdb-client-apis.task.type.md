@@ -4,7 +4,7 @@
 
 ## Task.type property
 
-The type of task, this can be used for filtering tasks on list actions.
+Type of the task, useful for filtering a task list.
 
 <b>Signature:</b>
 

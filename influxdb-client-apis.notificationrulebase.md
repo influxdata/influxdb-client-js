@@ -22,7 +22,7 @@ export interface NotificationRuleBase
 |  [labels?](./influxdb-client-apis.notificationrulebase.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.notificationrulebase.lastrunerror.md) | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.notificationrulebase.lastrunstatus.md) | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
-|  [latestCompleted?](./influxdb-client-apis.notificationrulebase.latestcompleted.md) | string | <i>(Optional)</i> Timestamp of latest scheduled, completed run, RFC3339. |
+|  [latestCompleted?](./influxdb-client-apis.notificationrulebase.latestcompleted.md) | string | <i>(Optional)</i> Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. |
 |  [limit?](./influxdb-client-apis.notificationrulebase.limit.md) | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. |
 |  [limitEvery?](./influxdb-client-apis.notificationrulebase.limitevery.md) | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty. |
 |  [links?](./influxdb-client-apis.notificationrulebase.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |

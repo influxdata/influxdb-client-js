@@ -4,7 +4,7 @@
 
 ## DBRP.default property
 
-Specify if this mapping represents the default retention policy for the database specificed.
+Mapping represents the default retention policy for the database specified.
 
 <b>Signature:</b>
 

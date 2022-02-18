@@ -4,7 +4,7 @@
 
 ## Error\_2.op property
 
-op describes the logical code operation during error. Useful for debugging.
+Describes the logical code operation when the error occurred. Useful for debugging.
 
 <b>Signature:</b>
 

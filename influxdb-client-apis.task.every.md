@@ -4,7 +4,7 @@
 
 ## Task.every property
 
-A simple task repetition schedule; parsed from Flux.
+Interval at which the task runs. `every` also determines when the task first runs, depending on the specified time. Value is a \[duration literal\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals)).
 
 <b>Signature:</b>
 

@@ -9,5 +9,5 @@ Telegraf configuration update to apply
 <b>Signature:</b>
 
 ```typescript
-body: TelegrafRequest;
+body: TelegrafPluginRequest;
 ```

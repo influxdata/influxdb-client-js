@@ -4,7 +4,7 @@
 
 ## DBRPCreate.org property
 
-the organization that owns this mapping.
+Name of the organization that owns this mapping.
 
 <b>Signature:</b>
 

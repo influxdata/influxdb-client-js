@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-auth: {
+auth?: {
         user: string;
         password: string;
     };

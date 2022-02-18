@@ -4,10 +4,10 @@
 
 ## LineProtocolError.err property
 
-Err is a stack of errors that occurred during processing of the request. Useful for debugging.
+Stack of errors that occurred during processing of the request. Useful for debugging.
 
 <b>Signature:</b>
 
 ```typescript
-readonly err: string;
+readonly err?: string;
 ```

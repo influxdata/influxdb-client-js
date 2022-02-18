@@ -4,7 +4,7 @@
 
 ## AuthorizationUpdateRequest.status property
 
-If inactive the token is inactive and requests using the token will be rejected.
+Status of the token. If `inactive`<!-- -->, requests using the token will be rejected.
 
 <b>Signature:</b>
 

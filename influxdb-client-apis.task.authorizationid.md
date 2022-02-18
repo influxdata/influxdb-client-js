@@ -4,7 +4,7 @@
 
 ## Task.authorizationID property
 
-The ID of the authorization used when this task communicates with the query engine.
+ID of the authorization used when the task communicates with the query engine.
 
 <b>Signature:</b>
 

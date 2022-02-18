@@ -4,7 +4,7 @@
 
 ## Task.org property
 
-The name of the organization that owns this Task.
+Name of the organization that owns the task.
 
 <b>Signature:</b>
 

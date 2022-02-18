@@ -4,7 +4,7 @@
 
 ## Error\_2.err property
 
-err is a stack of errors that occurred during processing of the request. Useful for debugging.
+Stack of errors that occurred during processing of the request. Useful for debugging.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## Axis.bounds property
 
-The extents of an axis in the form \[lower, upper\]. Clients determine whether bounds are to be inclusive or exclusive of their limits
+The extents of the axis in the form \[lower, upper\]. Clients determine whether bounds are inclusive or exclusive of their limits.
 
 <b>Signature:</b>
 

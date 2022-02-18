@@ -4,10 +4,10 @@
 
 ## LineProtocolError.message property
 
-Message is a human-readable message.
+Human-readable message.
 
 <b>Signature:</b>
 
 ```typescript
-readonly message: string;
+readonly message?: string;
 ```

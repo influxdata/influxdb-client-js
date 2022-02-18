@@ -4,7 +4,7 @@
 
 ## WriteOptions.batchSize property
 
-max number of records to send in a batch
+max number of records/lines to send in a batch
 
 <b>Signature:</b>
 

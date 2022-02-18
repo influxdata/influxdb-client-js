@@ -14,5 +14,5 @@ export interface PostTelegrafsRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) | [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) | Telegraf configuration to create |
+|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration to create |
 

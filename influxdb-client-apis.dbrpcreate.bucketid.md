@@ -4,7 +4,7 @@
 
 ## DBRPCreate.bucketID property
 
-the bucket ID used as target for the translation.
+ID of the bucket used as the target for the translation.
 
 <b>Signature:</b>
 

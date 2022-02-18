@@ -4,7 +4,7 @@
 
 ## Task.ownerID property
 
-The ID of the user who owns this Task.
+ID of the user who owns this Task.
 
 <b>Signature:</b>
 

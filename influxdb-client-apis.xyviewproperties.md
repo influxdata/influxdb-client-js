@@ -15,6 +15,7 @@ export interface XYViewProperties
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [axes](./influxdb-client-apis.xyviewproperties.axes.md) | [Axes](./influxdb-client-apis.axes.md) |  |
+|  [colorMapping?](./influxdb-client-apis.xyviewproperties.colormapping.md) | [ColorMapping](./influxdb-client-apis.colormapping.md) | <i>(Optional)</i> An object that contains information about the color mapping |
 |  [colors](./influxdb-client-apis.xyviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [generateXAxisTicks?](./influxdb-client-apis.xyviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |

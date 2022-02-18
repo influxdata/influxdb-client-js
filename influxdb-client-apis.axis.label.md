@@ -4,7 +4,7 @@
 
 ## Axis.label property
 
-Label is a description of this Axis
+Description of the axis.
 
 <b>Signature:</b>
 

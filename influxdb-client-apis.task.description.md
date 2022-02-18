@@ -4,7 +4,7 @@
 
 ## Task.description property
 
-An optional description of the task.
+Description of the task.
 
 <b>Signature:</b>
 

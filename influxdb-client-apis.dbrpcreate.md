@@ -14,10 +14,10 @@ export interface DBRPCreate
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.dbrpcreate.bucketid.md) | string | the bucket ID used as target for the translation. |
+|  [bucketID](./influxdb-client-apis.dbrpcreate.bucketid.md) | string | ID of the bucket used as the target for the translation. |
 |  [database](./influxdb-client-apis.dbrpcreate.database.md) | string | InfluxDB v1 database |
-|  [default?](./influxdb-client-apis.dbrpcreate.default.md) | boolean | <i>(Optional)</i> Specify if this mapping represents the default retention policy for the database specificed. |
-|  [org?](./influxdb-client-apis.dbrpcreate.org.md) | string | <i>(Optional)</i> the organization that owns this mapping. |
-|  [orgID?](./influxdb-client-apis.dbrpcreate.orgid.md) | string | <i>(Optional)</i> the organization ID that owns this mapping. |
+|  [default?](./influxdb-client-apis.dbrpcreate.default.md) | boolean | <i>(Optional)</i> Mapping represents the default retention policy for the database specified. |
+|  [org?](./influxdb-client-apis.dbrpcreate.org.md) | string | <i>(Optional)</i> Name of the organization that owns this mapping. |
+|  [orgID?](./influxdb-client-apis.dbrpcreate.orgid.md) | string | <i>(Optional)</i> ID of the organization that owns this mapping. |
 |  [retention\_policy](./influxdb-client-apis.dbrpcreate.retention_policy.md) | string | InfluxDB v1 retention policy |
 

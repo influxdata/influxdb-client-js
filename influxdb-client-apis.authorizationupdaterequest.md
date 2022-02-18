@@ -15,5 +15,5 @@ export interface AuthorizationUpdateRequest
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [description?](./influxdb-client-apis.authorizationupdaterequest.description.md) | string | <i>(Optional)</i> A description of the token. |
-|  [status?](./influxdb-client-apis.authorizationupdaterequest.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the token is inactive and requests using the token will be rejected. |
+|  [status?](./influxdb-client-apis.authorizationupdaterequest.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> Status of the token. If <code>inactive</code>, requests using the token will be rejected. |
 

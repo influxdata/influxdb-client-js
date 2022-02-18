@@ -14,24 +14,24 @@ export interface Task
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [authorizationID?](./influxdb-client-apis.task.authorizationid.md) | string | <i>(Optional)</i> The ID of the authorization used when this task communicates with the query engine. |
+|  [authorizationID?](./influxdb-client-apis.task.authorizationid.md) | string | <i>(Optional)</i> ID of the authorization used when the task communicates with the query engine. |
 |  [createdAt?](./influxdb-client-apis.task.createdat.md) | string | <i>(Optional)</i> |
-|  [cron?](./influxdb-client-apis.task.cron.md) | string | <i>(Optional)</i> A task repetition schedule in the form '\* \* \* \* \* \*'; parsed from Flux. |
-|  [description?](./influxdb-client-apis.task.description.md) | string | <i>(Optional)</i> An optional description of the task. |
-|  [every?](./influxdb-client-apis.task.every.md) | string | <i>(Optional)</i> A simple task repetition schedule; parsed from Flux. |
-|  [flux](./influxdb-client-apis.task.flux.md) | string | The Flux script to run for this task. |
+|  [cron?](./influxdb-client-apis.task.cron.md) | string | <i>(Optional)</i> \[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time. Value is a \[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview). |
+|  [description?](./influxdb-client-apis.task.description.md) | string | <i>(Optional)</i> Description of the task. |
+|  [every?](./influxdb-client-apis.task.every.md) | string | <i>(Optional)</i> Interval at which the task runs. <code>every</code> also determines when the task first runs, depending on the specified time. Value is a \[duration literal\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals)). |
+|  [flux](./influxdb-client-apis.task.flux.md) | string | Flux script to run for this task. |
 |  [id](./influxdb-client-apis.task.id.md) | string |  |
 |  [labels?](./influxdb-client-apis.task.labels.md) | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.task.lastrunerror.md) | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.task.lastrunstatus.md) | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
-|  [latestCompleted?](./influxdb-client-apis.task.latestcompleted.md) | string | <i>(Optional)</i> Timestamp of latest scheduled, completed run, RFC3339. |
+|  [latestCompleted?](./influxdb-client-apis.task.latestcompleted.md) | string | <i>(Optional)</i> Timestamp of the latest scheduled and completed run. Value is a timestamp in \[RFC3339 date/time format\](https://docs.influxdata.com/flux/v0.x/data-types/basic/time/\#time-syntax). |
 |  [links?](./influxdb-client-apis.task.links.md) | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; runs?: [Link](./influxdb-client-apis.link.md)<!-- -->; logs?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.task.name.md) | string | The name of the task. |
-|  [offset?](./influxdb-client-apis.task.offset.md) | string | <i>(Optional)</i> Duration to delay after the schedule, before executing the task; parsed from flux, if set to zero it will remove this option and use 0 as the default. |
-|  [org?](./influxdb-client-apis.task.org.md) | string | <i>(Optional)</i> The name of the organization that owns this Task. |
-|  [orgID](./influxdb-client-apis.task.orgid.md) | string | The ID of the organization that owns this Task. |
-|  [ownerID?](./influxdb-client-apis.task.ownerid.md) | string | <i>(Optional)</i> The ID of the user who owns this Task. |
+|  [name](./influxdb-client-apis.task.name.md) | string | Name of the task. |
+|  [offset?](./influxdb-client-apis.task.offset.md) | string | <i>(Optional)</i> \[Duration\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals) to delay execution of the task after the scheduled time has elapsed. <code>0</code> removes the offset. The value is a \[duration literal\](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/\#duration-literals). |
+|  [org?](./influxdb-client-apis.task.org.md) | string | <i>(Optional)</i> Name of the organization that owns the task. |
+|  [orgID](./influxdb-client-apis.task.orgid.md) | string | ID of the organization that owns the task. |
+|  [ownerID?](./influxdb-client-apis.task.ownerid.md) | string | <i>(Optional)</i> ID of the user who owns this Task. |
 |  [status?](./influxdb-client-apis.task.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.task.type.md) | string | <i>(Optional)</i> The type of task, this can be used for filtering tasks on list actions. |
+|  [type?](./influxdb-client-apis.task.type.md) | string | <i>(Optional)</i> Type of the task, useful for filtering a task list. |
 |  [updatedAt?](./influxdb-client-apis.task.updatedat.md) | string | <i>(Optional)</i> |
 
