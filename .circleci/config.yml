@@ -21,7 +21,7 @@ jobs:
     parameters:
       image:
         type: string
-        default: &default-image "cimg/node:14.17.6"
+        default: &default-image 'cimg/node:14.17.6'
     docker:
       - image: << parameters.image >>
     steps:
@@ -48,10 +48,17 @@ jobs:
           command: |
             yarn --version
             yarn run coverage:ci
-            yarn run coverage:send
       - run:
           name: Report test results to codecov
-          command: yarn run coverage:send
+          command: |
+            curl -Os https://uploader.codecov.io/latest/linux/codecov
+            curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+            curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
+            curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import
+            gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+            shasum -a 256 -c codecov.SHA256SUM
+            chmod +x ./codecov
+            ./codecov
       - store_artifacts:
           path: ./packages/core/coverage
 
