@@ -77,7 +77,7 @@ describe('FluxTableMetaData', () => {
     expect(subject.get(['4'], 'c')).is.undefined
     expect(subject.get([], 'a')).equals(1)
   })
-  it('creates proxies', () => {
+  it('works with proxies', () => {
     const columns: FluxTableColumn[] = [
       createFluxTableColumn({
         label: 'a',
@@ -91,23 +91,26 @@ describe('FluxTableMetaData', () => {
       }),
     ]
     const subject = createFluxTableMetaData(columns)
-    const fromProxy = (p: Record<string, any>): Record<string, any> =>
-      ['a', 'b', 'c'].reduce((acc, val) => {
+    const useProxy = (row: string[]): Record<string, any> => {
+      const p = new Proxy<Record<string, any>>(row, subject)
+      return ['a', 'b', 'c'].reduce((acc, val) => {
         if (p[val] !== undefined) {
           acc[val] = p[val]
         }
         return acc
       }, {} as Record<string, any>)
-    expect(fromProxy(subject.toProxy(['', '']))).to.deep.equal({a: 1, b: ''})
-    expect(fromProxy(subject.toObject(['2', 'y']))).to.deep.equal({
+    }
+    expect(useProxy(['', ''])).to.deep.equal({a: 1, b: ''})
+    expect(useProxy(['2', 'y'])).to.deep.equal({
       a: 2,
       b: 'y',
     })
-    expect(fromProxy(subject.toObject(['3', 'y', 'z']))).to.deep.equal({
+    expect(useProxy(['3', 'y', 'z'])).to.deep.equal({
       a: 3,
       b: 'y',
     })
-    expect(fromProxy(subject.toObject(['4']))).to.deep.equal({a: 4})
+    expect(useProxy(['4'])).to.deep.equal({a: 4})
+    expect(useProxy([])).to.deep.equal({a: 1})
   })
   const serializationTable: Array<[ColumnType | undefined, string, any]> = [
     ['boolean', 'false', false],

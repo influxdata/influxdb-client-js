@@ -61,13 +61,6 @@ export interface FluxTableMetaData {
   toObject(row: string[]): {[key: string]: any}
 
   /**
-   * Creates a javascript Proxy out of the supplied row with the help of column descriptors.
-   * @param row - a row with data for each column
-   * @returns a proxy instance that returns column values, undefined is returned for unknown columns
-   */
-  toProxy(row: string[]): Record<string, any>
-
-  /**
    * Gets column values out of the supplied row.
    * @param row - a row with data for each column
    * @param column - column name
@@ -102,9 +95,6 @@ class FluxTableMetaDataImpl implements FluxTableMetaData {
       acc[column.label] = column.get(row)
     }
     return acc
-  }
-  toProxy(row: string[]): {[key: string]: any} {
-    return new Proxy(row, this)
   }
   get(row: string[], column: string): any {
     return this.column(column, false).get(row)
