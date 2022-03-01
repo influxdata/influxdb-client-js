@@ -1,4 +1,8 @@
-import {FluxTableColumn, typeSerializers} from './FluxTableColumn'
+import {
+  FluxTableColumn,
+  UNKNOWN_COLUMN,
+  typeSerializers,
+} from './FluxTableColumn'
 import {IllegalArgumentError} from '../errors'
 
 /**
@@ -44,10 +48,11 @@ export interface FluxTableMetaData {
   /**
    * Gets columns by name
    * @param label - column label
+   * @param noErrorOnMissingColumn - throw error on missing column, true by default
    * @returns table column
    * @throws IllegalArgumentError if column is not found
    **/
-  column(label: string): FluxTableColumn
+  column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn
 
   /**
    * Creates an object out of the supplied row values with the help of column descriptors.
@@ -65,12 +70,15 @@ class FluxTableMetaDataImpl implements FluxTableMetaData {
     columns.forEach((col, i) => (col.index = i))
     this.columns = columns
   }
-  column(label: string): FluxTableColumn {
+  column(label: string, errorOnMissingColumn = true): FluxTableColumn {
     for (let i = 0; i < this.columns.length; i++) {
       const col = this.columns[i]
       if (col.label === label) return col
     }
-    throw new IllegalArgumentError(`Column ${label} not found!`)
+    if (errorOnMissingColumn) {
+      throw new IllegalArgumentError(`Column ${label} not found!`)
+    }
+    return UNKNOWN_COLUMN
   }
   toObject(row: string[]): {[key: string]: any} {
     const acc: any = {}
@@ -79,6 +87,9 @@ class FluxTableMetaDataImpl implements FluxTableMetaData {
       acc[column.label] = column.get(row)
     }
     return acc
+  }
+  get(row: string[], column: string): any {
+    return this.column(column, false).get(row)
   }
 }
 

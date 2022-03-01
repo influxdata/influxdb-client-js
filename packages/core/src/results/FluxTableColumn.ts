@@ -94,6 +94,14 @@ class FluxTableColumnImpl implements FluxTableColumn {
     return (typeSerializers[this.dataType] ?? identity)(val)
   }
 }
+export const UNKNOWN_COLUMN: FluxTableColumn = Object.freeze({
+  label: '',
+  dataType: '',
+  group: false,
+  defaultValue: '',
+  index: Number.MAX_SAFE_INTEGER,
+  get: () => undefined,
+})
 
 /**
  * Creates a new flux table column.
