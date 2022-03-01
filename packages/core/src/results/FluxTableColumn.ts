@@ -88,7 +88,7 @@ class FluxTableColumnImpl implements FluxTableColumn {
   index: number
   public get(row: string[]): any {
     let val = row[this.index]
-    if (val === '' && this.defaultValue) {
+    if ((val === '' || val === undefined) && this.defaultValue) {
       val = this.defaultValue
     }
     return (typeSerializers[this.dataType] ?? identity)(val)
