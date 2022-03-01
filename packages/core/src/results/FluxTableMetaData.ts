@@ -1,32 +1,5 @@
-import {FluxTableColumn, ColumnType} from './FluxTableColumn'
+import {FluxTableColumn, typeSerializers} from './FluxTableColumn'
 import {IllegalArgumentError} from '../errors'
-
-const identity = (x: string): any => x
-/**
- * A dictionary of serializers of particular types returned by a flux query.
- * See {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
- */
-export const typeSerializers: Record<ColumnType, (val: string) => any> = {
-  boolean: (x: string): any => x === 'true',
-  unsignedLong: (x: string): any => (x === '' ? null : +x),
-  long: (x: string): any => (x === '' ? null : +x),
-  double(x: string): any {
-    switch (x) {
-      case '':
-        return null
-      case '+Inf':
-        return Number.POSITIVE_INFINITY
-      case '-Inf':
-        return Number.NEGATIVE_INFINITY
-      default:
-        return +x
-    }
-  },
-  string: identity,
-  base64Binary: identity,
-  duration: (x: string): any => (x === '' ? null : x),
-  'dateTime:RFC3339': (x: string): any => (x === '' ? null : x),
-}
 
 /**
  * serializeDateTimeAsDate changes type serializers to return JavaScript Date instances
@@ -77,10 +50,10 @@ export interface FluxTableMetaData {
   column(label: string): FluxTableColumn
 
   /**
-   * Creates an object out of the supplied values with the help of columns .
-   * @param values - a row with data for each column
+   * Creates an object out of the supplied row values with the help of column descriptors.
+   * @param row - a row with data for each column
    */
-  toObject(values: string[]): {[key: string]: any}
+  toObject(row: string[]): {[key: string]: any}
 }
 
 /**
@@ -99,15 +72,11 @@ class FluxTableMetaDataImpl implements FluxTableMetaData {
     }
     throw new IllegalArgumentError(`Column ${label} not found!`)
   }
-  toObject(values: string[]): {[key: string]: any} {
+  toObject(row: string[]): {[key: string]: any} {
     const acc: any = {}
-    for (let i = 0; i < this.columns.length && i < values.length; i++) {
-      let val = values[i]
+    for (let i = 0; i < this.columns.length && i < row.length; i++) {
       const column = this.columns[i]
-      if (val === '' && column.defaultValue) {
-        val = column.defaultValue
-      }
-      acc[column.label] = (typeSerializers[column.dataType] ?? identity)(val)
+      acc[column.label] = column.get(row)
     }
     return acc
   }
