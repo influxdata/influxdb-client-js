@@ -48,7 +48,7 @@ export interface FluxTableMetaData {
   /**
    * Gets columns by name
    * @param label - column label
-   * @param noErrorOnMissingColumn - throw error on missing column, true by default
+   * @param errorOnMissingColumn - throw error on missing column (by default), return UNKNOWN_COLUMN when false
    * @returns table column
    * @throws IllegalArgumentError if column is not found
    **/
