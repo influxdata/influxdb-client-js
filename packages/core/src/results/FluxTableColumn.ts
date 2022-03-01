@@ -42,8 +42,8 @@ export interface FluxTableColumn {
   index: number
 
   /**
-   * ToObject returns a JavaScript object of this columns in the supplied result row, using default deserializers.
-   * @param row - a row with data for each available column
+   * Get returns a JavaScript object of this column in the supplied result row, using default deserializers.
+   * @param row - a data row
    * @returns column value
    */
   get: (row: string[]) => any
