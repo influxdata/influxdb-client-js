@@ -1,5 +1,9 @@
 ## 1.24.0 [unreleased]
 
+### Features
+
+1. [#416](https://github.com/influxdata/influxdb-client-js/pull/416): Simplify retrieval of particular row values.
+
 ## 1.23.0 [2022-02-18]
 
 ### Features
