@@ -11,7 +11,7 @@ import {url, token, org} from './env'
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 
 const fluxQuery =
-  'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
+  'from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")'
 
 console.log('*** QUERY ROWS ***')
 // performs query and receive line table metadata and rows
