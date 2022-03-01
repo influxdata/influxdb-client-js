@@ -3,8 +3,7 @@
 // Shows how to use InfluxDB query API. //
 //////////////////////////////////////////
 
-// import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
-import {InfluxDB, FluxTableMetaData} from '../packages/core'
+import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
 import {url, token, org} from './env'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
@@ -31,7 +30,7 @@ queryApi.queryRows(fluxQuery, {
     // console.log(tableMeta.get(row, '_time'))
 
     // or you can create a proxy to get column values on demand
-    // const p = tableMeta.toProxy(row)
+    // const p = new Proxy<Record<string, any>>(row, tableMeta)
     // console.log(
     //  `${p._time} ${p._measurement} in '${p.location}' (${p.example}): ${p._field}=${p._value}`
     // )
