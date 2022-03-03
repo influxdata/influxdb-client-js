@@ -1,32 +1,9 @@
-import {FluxTableColumn, ColumnType} from './FluxTableColumn'
+import {
+  FluxTableColumn,
+  UNKNOWN_COLUMN,
+  typeSerializers,
+} from './FluxTableColumn'
 import {IllegalArgumentError} from '../errors'
-
-const identity = (x: string): any => x
-/**
- * A dictionary of serializers of particular types returned by a flux query.
- * See {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
- */
-export const typeSerializers: Record<ColumnType, (val: string) => any> = {
-  boolean: (x: string): any => x === 'true',
-  unsignedLong: (x: string): any => (x === '' ? null : +x),
-  long: (x: string): any => (x === '' ? null : +x),
-  double(x: string): any {
-    switch (x) {
-      case '':
-        return null
-      case '+Inf':
-        return Number.POSITIVE_INFINITY
-      case '-Inf':
-        return Number.NEGATIVE_INFINITY
-      default:
-        return +x
-    }
-  },
-  string: identity,
-  base64Binary: identity,
-  duration: (x: string): any => (x === '' ? null : x),
-  'dateTime:RFC3339': (x: string): any => (x === '' ? null : x),
-}
 
 /**
  * serializeDateTimeAsDate changes type serializers to return JavaScript Date instances
@@ -71,16 +48,25 @@ export interface FluxTableMetaData {
   /**
    * Gets columns by name
    * @param label - column label
+   * @param errorOnMissingColumn - throw error on missing column (by default), return UNKNOWN_COLUMN when false
    * @returns table column
    * @throws IllegalArgumentError if column is not found
    **/
-  column(label: string): FluxTableColumn
+  column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn
 
   /**
-   * Creates an object out of the supplied values with the help of columns .
-   * @param values - a row with data for each column
+   * Creates an object out of the supplied row with the help of column descriptors.
+   * @param row - a row with data for each column
    */
-  toObject(values: string[]): {[key: string]: any}
+  toObject(row: string[]): {[key: string]: any}
+
+  /**
+   * Gets column values out of the supplied row.
+   * @param row - a row with data for each column
+   * @param column - column name
+   * @returns column value, undefined for unknown column
+   */
+  get(row: string[], column: string): any
 }
 
 /**
@@ -92,24 +78,26 @@ class FluxTableMetaDataImpl implements FluxTableMetaData {
     columns.forEach((col, i) => (col.index = i))
     this.columns = columns
   }
-  column(label: string): FluxTableColumn {
+  column(label: string, errorOnMissingColumn = true): FluxTableColumn {
     for (let i = 0; i < this.columns.length; i++) {
       const col = this.columns[i]
       if (col.label === label) return col
     }
-    throw new IllegalArgumentError(`Column ${label} not found!`)
+    if (errorOnMissingColumn) {
+      throw new IllegalArgumentError(`Column ${label} not found!`)
+    }
+    return UNKNOWN_COLUMN
   }
-  toObject(values: string[]): {[key: string]: any} {
+  toObject(row: string[]): {[key: string]: any} {
     const acc: any = {}
-    for (let i = 0; i < this.columns.length && i < values.length; i++) {
-      let val = values[i]
+    for (let i = 0; i < this.columns.length && i < row.length; i++) {
       const column = this.columns[i]
-      if (val === '' && column.defaultValue) {
-        val = column.defaultValue
-      }
-      acc[column.label] = (typeSerializers[column.dataType] ?? identity)(val)
+      acc[column.label] = column.get(row)
     }
     return acc
+  }
+  get(row: string[], column: string): any {
+    return this.column(column, false).get(row)
   }
 }
 

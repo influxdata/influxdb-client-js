@@ -49,6 +49,69 @@ describe('FluxTableMetaData', () => {
     expect(subject.toObject(['3', 'y', 'z'])).to.deep.equal({a: 3, b: 'y'})
     expect(subject.toObject(['4'])).to.deep.equal({a: 4})
   })
+  it('get values', () => {
+    const columns: FluxTableColumn[] = [
+      createFluxTableColumn({
+        label: 'a',
+        defaultValue: '1',
+        dataType: 'long',
+        group: false,
+      }),
+      createFluxTableColumn({
+        label: 'b',
+        index: 2, // index can be possibly set, but it gets overriden during createFluxTableMetaData
+      }),
+    ]
+    const subject = createFluxTableMetaData(columns)
+    expect(subject.get(['', ''], 'a')).equals(1)
+    expect(subject.get(['', ''], 'b')).equals('')
+    expect(subject.get(['', ''], 'c')).is.undefined
+    expect(subject.get(['2', 'y'], 'a')).equals(2)
+    expect(subject.get(['2', 'y'], 'b')).equals('y')
+    expect(subject.get(['2', 'y'], 'c')).is.undefined
+    expect(subject.get(['3', 'y', 'z'], 'a')).equals(3)
+    expect(subject.get(['3', 'y', 'z'], 'b')).equals('y')
+    expect(subject.get(['3', 'y', 'z'], 'c')).is.undefined
+    expect(subject.get(['4'], 'a')).equals(4)
+    expect(subject.get(['4'], 'b')).is.undefined
+    expect(subject.get(['4'], 'c')).is.undefined
+    expect(subject.get([], 'a')).equals(1)
+  })
+  it('works with proxies', () => {
+    const columns: FluxTableColumn[] = [
+      createFluxTableColumn({
+        label: 'a',
+        defaultValue: '1',
+        dataType: 'long',
+        group: false,
+      }),
+      createFluxTableColumn({
+        label: 'b',
+        index: 2, // index can be possibly set, but it gets overriden during createFluxTableMetaData
+      }),
+    ]
+    const subject = createFluxTableMetaData(columns)
+    const useProxy = (row: string[]): Record<string, any> => {
+      const p = new Proxy<Record<string, any>>(row, subject)
+      return ['a', 'b', 'c'].reduce((acc, val) => {
+        if (p[val] !== undefined) {
+          acc[val] = p[val]
+        }
+        return acc
+      }, {} as Record<string, any>)
+    }
+    expect(useProxy(['', ''])).to.deep.equal({a: 1, b: ''})
+    expect(useProxy(['2', 'y'])).to.deep.equal({
+      a: 2,
+      b: 'y',
+    })
+    expect(useProxy(['3', 'y', 'z'])).to.deep.equal({
+      a: 3,
+      b: 'y',
+    })
+    expect(useProxy(['4'])).to.deep.equal({a: 4})
+    expect(useProxy([])).to.deep.equal({a: 1})
+  })
   const serializationTable: Array<[ColumnType | undefined, string, any]> = [
     ['boolean', 'false', false],
     ['boolean', 'true', true],

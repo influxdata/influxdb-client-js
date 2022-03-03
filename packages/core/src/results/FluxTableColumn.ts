@@ -13,7 +13,7 @@ export type ColumnType =
   | string
 
 /**
- * Column metadata class of a {@link http://bit.ly/flux-spec#table | flux table} column.
+ * FluxTableColumn describes {@link http://bit.ly/flux-spec#table | flux table} column.
  */
 export interface FluxTableColumn {
   /**
@@ -40,6 +40,41 @@ export interface FluxTableColumn {
    * Index of this column in a row array.
    */
   index: number
+
+  /**
+   * Get returns a JavaScript object of this column in the supplied result row, using default deserializers.
+   * @param row - a data row
+   * @returns column value
+   */
+  get: (row: string[]) => any
+}
+
+const identity = (x: string): any => x
+
+/**
+ * A dictionary of serializers of particular types returned by a flux query.
+ * See {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
+ */
+export const typeSerializers: Record<ColumnType, (val: string) => any> = {
+  boolean: (x: string): any => x === 'true',
+  unsignedLong: (x: string): any => (x === '' ? null : +x),
+  long: (x: string): any => (x === '' ? null : +x),
+  double(x: string): any {
+    switch (x) {
+      case '':
+        return null
+      case '+Inf':
+        return Number.POSITIVE_INFINITY
+      case '-Inf':
+        return Number.NEGATIVE_INFINITY
+      default:
+        return +x
+    }
+  },
+  string: identity,
+  base64Binary: identity,
+  duration: (x: string): any => (x === '' ? null : x),
+  'dateTime:RFC3339': (x: string): any => (x === '' ? null : x),
 }
 
 /**
@@ -51,7 +86,22 @@ class FluxTableColumnImpl implements FluxTableColumn {
   group: boolean
   defaultValue: string
   index: number
+  public get(row: string[]): any {
+    let val = row[this.index]
+    if ((val === '' || val === undefined) && this.defaultValue) {
+      val = this.defaultValue
+    }
+    return (typeSerializers[this.dataType] ?? identity)(val)
+  }
 }
+export const UNKNOWN_COLUMN: FluxTableColumn = Object.freeze({
+  label: '',
+  dataType: '',
+  group: false,
+  defaultValue: '',
+  index: Number.MAX_SAFE_INTEGER,
+  get: () => undefined,
+})
 
 /**
  * Creates a new flux table column.
