@@ -201,7 +201,14 @@ describe('WriteApi', () => {
         }
       }
 
-      useSubject({maxRetryTime: 5, batchSize: 1, writeFailed})
+      useSubject({
+        maxRetryTime: 5,
+        retryJitter: 0,
+        maxRetryDelay: 5,
+        minRetryDelay: 5,
+        batchSize: 1,
+        writeFailed,
+      })
       subject.writeRecord('test value=1')
       // wait for first attempt to fail
       await waitForCondition(() => logs.warn.length > 0)
@@ -263,9 +270,13 @@ describe('WriteApi', () => {
       expect(writeOptions.randomRetry).equals(true)
     })
     it('retries as specified by maxRetryCount', async () => {
-      let writeFailedCount = 0
-      const writeFailed = (): void => {
-        writeFailedCount++
+      const attempts: number[] = []
+      const writeFailed = (
+        _error: Error,
+        _lines: string[],
+        attempt: number
+      ): void => {
+        attempts.push(attempt)
       }
       useSubject({
         maxRetryTime: 5000,
@@ -282,7 +293,7 @@ describe('WriteApi', () => {
       // wait for retry attempt to fail
       await waitForCondition(() => logs.error.length == 1)
       await subject.close().then(() => {
-        expect(writeFailedCount).equals(4)
+        expect(attempts).deep.equals([1, 2, 3, 4])
         expect(logs.warn).to.length(3)
         for (let i = 0; i < 3; i++) {
           expect(logs.warn[i][0]).contains(
