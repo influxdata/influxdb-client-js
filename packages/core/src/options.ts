@@ -73,7 +73,8 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    * @param this - the instance of the API that failed
    * @param error - write error
    * @param lines - failed lines
-   * @param attempts - a number of failed attempts to write the lines
+   * @param attempt - count of already failed attempts to write the lines (1 ... maxRetries+1)
+   * @param expires - expiration time for the lines to be retried in millis since epoch
    * @returns a Promise to force the API to use it as a result of the flush operation,
    * void/undefined to continue with default retry mechanism
    */
@@ -81,7 +82,8 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
     this: WriteApi,
     error: Error,
     lines: Array<string>,
-    attempts: number
+    attempt: number,
+    expires: number
   ): Promise<void> | void
 
   /**
@@ -91,7 +93,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    */
   writeSuccess(this: WriteApi, lines: Array<string>): void
 
-  /** max number of retries when write fails */
+  /** max count of retries after the first write fails */
   maxRetries: number
   /** max time (millis) that can be spent with retries */
   maxRetryTime: number

@@ -185,6 +185,45 @@ describe('WriteApi', () => {
         expect(logs.error[0][1].toString()).contains('Max retry time exceeded')
       })
     })
+    it('call writeFailed also on retry timeout', async () => {
+      let writeFailedLastError: Error
+      let writeFailedExpires = Number.MAX_SAFE_INTEGER
+      const writeFailed = (
+        error: Error,
+        _lines: string[],
+        attempts: number,
+        expires: number
+      ): void | Promise<void> => {
+        writeFailedExpires = expires
+        writeFailedLastError = error
+        if (expires <= Date.now()) {
+          return Promise.resolve() // do not log the the built-in error on timeout
+        }
+      }
+
+      useSubject({
+        maxRetryTime: 5,
+        retryJitter: 0,
+        maxRetryDelay: 5,
+        minRetryDelay: 5,
+        batchSize: 1,
+        writeFailed,
+      })
+      subject.writeRecord('test value=1')
+      // wait for first attempt to fail
+      await waitForCondition(() => logs.warn.length > 0)
+      // wait for retry attempt to fail on timeout
+      await waitForCondition(() => logs.error.length > 0)
+      await subject.close().then(() => {
+        expect(logs.warn).to.length(1)
+        expect(logs.warn[0][0]).contains(
+          'Write to InfluxDB failed (attempt: 1)'
+        )
+        expect(logs.error).to.length(0)
+        expect(writeFailedExpires).not.greaterThan(Date.now())
+        expect(String(writeFailedLastError)).contains('Max retry time exceeded')
+      })
+    })
     it('does not retry write when writeFailed handler returns a Promise', async () => {
       useSubject({
         maxRetries: 3,
@@ -229,6 +268,41 @@ describe('WriteApi', () => {
       expect(writeOptions.writeSuccess).to.not.throw()
       expect(writeOptions.writeFailed).to.not.throw()
       expect(writeOptions.randomRetry).equals(true)
+    })
+    it('retries as specified by maxRetryCount', async () => {
+      const attempts: number[] = []
+      const writeFailed = (
+        _error: Error,
+        _lines: string[],
+        attempt: number
+      ): void => {
+        attempts.push(attempt)
+      }
+      useSubject({
+        maxRetryTime: 5000,
+        retryJitter: 0,
+        minRetryDelay: 1,
+        maxRetryDelay: 1,
+        maxRetries: 3,
+        batchSize: 1,
+        writeFailed,
+      })
+      subject.writeRecord('test value=1')
+      // wait for first attempt to fail
+      await waitForCondition(() => logs.warn.length == 3)
+      // wait for retry attempt to fail
+      await waitForCondition(() => logs.error.length == 1)
+      await subject.close().then(() => {
+        expect(attempts).deep.equals([1, 2, 3, 4])
+        expect(logs.warn).to.length(3)
+        for (let i = 0; i < 3; i++) {
+          expect(logs.warn[i][0]).contains(
+            `Write to InfluxDB failed (attempt: ${i + 1})`
+          )
+        }
+        expect(logs.error).to.length(1)
+        expect(logs.error[0][0]).contains('Write to InfluxDB failed')
+      })
     })
   })
   describe('convert point time to line protocol', () => {
