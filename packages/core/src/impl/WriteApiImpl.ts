@@ -155,6 +155,16 @@ export default class WriteApiImpl implements WriteApi {
     if (!this.closed && lines.length > 0) {
       if (expires <= Date.now()) {
         const error = new Error('Max retry time exceeded.')
+        const onRetry = self.writeOptions.writeFailed.call(
+          self,
+          error,
+          lines,
+          failedAttempts,
+          expires
+        )
+        if (onRetry) {
+          return onRetry
+        }
         Log.error(
           `Write to InfluxDB failed (attempt: ${failedAttempts}).`,
           error
