@@ -185,6 +185,38 @@ describe('WriteApi', () => {
         expect(logs.error[0][1].toString()).contains('Max retry time exceeded')
       })
     })
+    it('call writeFailed also on retry timeout', async () => {
+      let writeFailedLastError: Error
+      let writeFailedExpires = Number.MAX_SAFE_INTEGER
+      const writeFailed = (
+        error: Error,
+        _lines: string[],
+        attempts: number,
+        expires: number
+      ): void | Promise<void> => {
+        writeFailedExpires = expires
+        writeFailedLastError = error
+        if (expires <= Date.now()) {
+          return Promise.resolve() // do not log the the built-in error on timeout
+        }
+      }
+
+      useSubject({maxRetryTime: 5, batchSize: 1, writeFailed})
+      subject.writeRecord('test value=1')
+      // wait for first attempt to fail
+      await waitForCondition(() => logs.warn.length > 0)
+      // wait for retry attempt to fail on timeout
+      await waitForCondition(() => logs.error.length > 0)
+      await subject.close().then(() => {
+        expect(logs.warn).to.length(1)
+        expect(logs.warn[0][0]).contains(
+          'Write to InfluxDB failed (attempt: 1)'
+        )
+        expect(logs.error).to.length(0)
+        expect(writeFailedExpires).not.greaterThan(Date.now())
+        expect(String(writeFailedLastError)).contains('Max retry time exceeded')
+      })
+    })
     it('does not retry write when writeFailed handler returns a Promise', async () => {
       useSubject({
         maxRetries: 3,
