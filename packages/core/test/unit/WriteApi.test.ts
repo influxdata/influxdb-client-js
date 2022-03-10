@@ -262,6 +262,37 @@ describe('WriteApi', () => {
       expect(writeOptions.writeFailed).to.not.throw()
       expect(writeOptions.randomRetry).equals(true)
     })
+    it('retries as specified by maxRetryCount', async () => {
+      let writeFailedCount = 0
+      const writeFailed = (): void => {
+        writeFailedCount++
+      }
+      useSubject({
+        maxRetryTime: 5000,
+        retryJitter: 0,
+        minRetryDelay: 1,
+        maxRetryDelay: 1,
+        maxRetries: 3,
+        batchSize: 1,
+        writeFailed,
+      })
+      subject.writeRecord('test value=1')
+      // wait for first attempt to fail
+      await waitForCondition(() => logs.warn.length == 3)
+      // wait for retry attempt to fail
+      await waitForCondition(() => logs.error.length == 1)
+      await subject.close().then(() => {
+        expect(writeFailedCount).equals(4)
+        expect(logs.warn).to.length(3)
+        for (let i = 0; i < 3; i++) {
+          expect(logs.warn[i][0]).contains(
+            `Write to InfluxDB failed (attempt: ${i + 1})`
+          )
+        }
+        expect(logs.error).to.length(1)
+        expect(logs.error[0][0]).contains('Write to InfluxDB failed')
+      })
+    })
   })
   describe('convert point time to line protocol', () => {
     const writeAPI = createApi(ORG, BUCKET, 'ms', {

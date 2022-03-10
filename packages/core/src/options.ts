@@ -93,7 +93,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    */
   writeSuccess(this: WriteApi, lines: Array<string>): void
 
-  /** max number of write attempts when the write fails */
+  /** max number of retry attempts when the write fails */
   maxRetries: number
   /** max time (millis) that can be spent with retries */
   maxRetryTime: number
