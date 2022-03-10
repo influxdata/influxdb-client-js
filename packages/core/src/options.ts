@@ -73,7 +73,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    * @param this - the instance of the API that failed
    * @param error - write error
    * @param lines - failed lines
-   * @param attempt - count of already failed attempts to write the lines (1 ... maxRetries+1)
+   * @param attempts - count of already failed attempts to write the lines (1 ... maxRetries+1)
    * @param expires - expiration time for the lines to be retried in millis since epoch
    * @returns a Promise to force the API to use it as a result of the flush operation,
    * void/undefined to continue with default retry mechanism
