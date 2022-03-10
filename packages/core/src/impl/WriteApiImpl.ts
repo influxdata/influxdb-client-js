@@ -173,7 +173,8 @@ export default class WriteApiImpl implements WriteApi {
               self,
               error,
               lines,
-              failedAttempts
+              failedAttempts,
+              expires
             )
             if (onRetry) {
               onRetry.then(resolve, reject)

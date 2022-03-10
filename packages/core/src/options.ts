@@ -74,6 +74,7 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    * @param error - write error
    * @param lines - failed lines
    * @param attempts - a number of failed attempts to write the lines
+   * @param expires - expiration time for the lines to be retried in millis since epoch
    * @returns a Promise to force the API to use it as a result of the flush operation,
    * void/undefined to continue with default retry mechanism
    */
@@ -81,7 +82,8 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
     this: WriteApi,
     error: Error,
     lines: Array<string>,
-    attempts: number
+    attempts: number,
+    expires: number
   ): Promise<void> | void
 
   /**
