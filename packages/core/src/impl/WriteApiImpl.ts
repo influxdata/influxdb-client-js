@@ -116,7 +116,7 @@ export default class WriteApiImpl implements WriteApi {
             () =>
               this.sendBatch(
                 this.writeBuffer.reset(),
-                this.writeOptions.maxRetries + 1
+                this.writeOptions.maxRetries
               ).catch(_e => {
                 // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
               }),
@@ -131,7 +131,7 @@ export default class WriteApiImpl implements WriteApi {
       this.writeOptions.maxBatchBytes,
       lines => {
         this._clearFlushTimeout()
-        return this.sendBatch(lines, this.writeOptions.maxRetries + 1)
+        return this.sendBatch(lines, this.writeOptions.maxRetries)
       },
       scheduleNextSend
     )
@@ -146,12 +146,12 @@ export default class WriteApiImpl implements WriteApi {
 
   sendBatch(
     lines: string[],
-    attempts: number,
+    retryAttempts: number,
     expires: number = Date.now() + this.writeOptions.maxRetryTime
   ): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self: WriteApiImpl = this
-    const failedAttempts = self.writeOptions.maxRetries + 2 - attempts
+    const failedAttempts = self.writeOptions.maxRetries + 1 - retryAttempts
     if (!this.closed && lines.length > 0) {
       if (expires <= Date.now()) {
         const error = new Error('Max retry time exceeded.')
@@ -192,7 +192,7 @@ export default class WriteApiImpl implements WriteApi {
             }
             if (
               !self.closed &&
-              attempts > 1 &&
+              retryAttempts > 0 &&
               (!(error instanceof HttpError) ||
                 (error as HttpError).statusCode >= 429)
             ) {
@@ -202,7 +202,7 @@ export default class WriteApiImpl implements WriteApi {
               )
               self.retryBuffer.addLines(
                 lines,
-                attempts - 1,
+                retryAttempts - 1,
                 self.retryStrategy.nextDelay(error, failedAttempts),
                 expires
               )
