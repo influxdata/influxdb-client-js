@@ -5,6 +5,11 @@
 1. [#416](https://github.com/influxdata/influxdb-client-js/pull/416): Simplify retrieval of particular row values.
 1. [#421](https://github.com/influxdata/influxdb-client-js/pull/421): Enhance writeFailed callback.
 
+### CI
+
+1. [#422](https://github.com/influxdata/influxdb-client-js/pull/422): Upgrade development js libraries.
+1. [#423](https://github.com/influxdata/influxdb-client-js/pull/423): Upgrade lerna to v4.
+
 ## 1.23.0 [2022-02-18]
 
 ### Features
