@@ -22,6 +22,7 @@ export interface FluxTableMetaData
 
 |  Method | Description |
 |  --- | --- |
-|  [column(label)](./influxdb-client.fluxtablemetadata.column.md) | Gets columns by name |
-|  [toObject(values)](./influxdb-client.fluxtablemetadata.toobject.md) | Creates an object out of the supplied values with the help of columns . |
+|  [column(label, errorOnMissingColumn)](./influxdb-client.fluxtablemetadata.column.md) | Gets columns by name |
+|  [get(row, column)](./influxdb-client.fluxtablemetadata.get.md) | Gets column values out of the supplied row. |
+|  [toObject(row)](./influxdb-client.fluxtablemetadata.toobject.md) | Creates an object out of the supplied row with the help of column descriptors. |
 

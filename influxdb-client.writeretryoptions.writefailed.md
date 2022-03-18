@@ -9,7 +9,7 @@ WriteFailed is called to inform about write errors.
 <b>Signature:</b>
 
 ```typescript
-writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempts: number): Promise<void> | void;
+writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempt: number, expires: number): Promise<void> | void;
 ```
 
 ## Parameters
@@ -19,7 +19,8 @@ writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempts: number
 |  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API that failed |
 |  error | Error | write error |
 |  lines | Array&lt;string&gt; | failed lines |
-|  attempts | number | a number of failed attempts to write the lines |
+|  attempt | number | count of already failed attempts to write the lines (1 ... maxRetries+1) |
+|  expires | number | expiration time for the lines to be retried in millis since epoch |
 
 <b>Returns:</b>
 

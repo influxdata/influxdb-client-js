@@ -4,7 +4,7 @@
 
 ## WriteRetryOptions.maxRetries property
 
-max number of retries when write fails
+max count of retries after the first write fails
 
 <b>Signature:</b>
 

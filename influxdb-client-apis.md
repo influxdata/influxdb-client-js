@@ -27,7 +27,6 @@ async function getOrg() {
   ...
 }
 ...
-
 ```
 Generated APIs that write or query InfluxDB are also herein, but it is recommended to use [WriteApi](./influxdb-client.writeapi.md) and [QueryApi](./influxdb-client.queryapi.md) from `@influxdata/influxdb-client`<!-- -->, they are much easier to use and offer specialized features (write failover, line protocol serialization, flux results parsing, ...).
 

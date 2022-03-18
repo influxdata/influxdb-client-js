@@ -25,7 +25,6 @@ const table = await queryToTable(
 const config = {table, ...}
 <Plot config={config} >
 ...
-
 ```
 See also [InfluxDB v2 client examples](https://github.com/influxdata/influxdb-client-js/tree/master/examples) and [Giraffe storybook](https://influxdata.github.io/giraffe/)<!-- -->.
 

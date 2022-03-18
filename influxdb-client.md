@@ -16,7 +16,6 @@ const influxDB = new InfluxDB({
   url: "http://localhost:8086",
   token: "your-api-token"
 })
-
 ```
 The influxDB object let you create two essential API instances, [InfluxDB.getWriteApi()](./influxdb-client.influxdb.getwriteapi.md) and [InfluxDB.getQueryApi()](./influxdb-client.influxdb.getqueryapi.md)<!-- -->. The [WriteApi](./influxdb-client.writeapi.md) asynchronously writes measurement points on background, in batches to optimize network traffic, and with retries upon failures. The [QueryApi](./influxdb-client.queryapi.md) let you execute a flux query against InfluxDB and offers several ways to stream query results.
 
@@ -80,7 +79,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ConnectionOptions](./influxdb-client.connectionoptions.md) | Option for the communication with InfluxDB server. |
 |  [FluxParameterLike](./influxdb-client.fluxparameterlike.md) | A flux parameter can print its (sanitized) flux value. |
 |  [FluxResultObserver](./influxdb-client.fluxresultobserver.md) | Observes results of a flux query. |
-|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | Column metadata class of a [flux table](http://bit.ly/flux-spec#table) column. |
+|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | FluxTableColumn describes [flux table](http://bit.ly/flux-spec#table) column. |
 |  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
 |  [Logger](./influxdb-client.logger.md) | Logging interface. |
 |  [Observable](./influxdb-client.observable.md) | An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->. |
@@ -116,6 +115,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [Log](./influxdb-client.log.md) |  |
 |  [symbolObservable](./influxdb-client.symbolobservable.md) | Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for interop |
 |  [typeSerializers](./influxdb-client.typeserializers.md) | A dictionary of serializers of particular types returned by a flux query. See [https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types) |
+|  [UNKNOWN\_COLUMN](./influxdb-client.unknown_column.md) |  |
 
 ## Type Aliases
 

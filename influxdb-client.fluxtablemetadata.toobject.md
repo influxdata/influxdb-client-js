@@ -4,12 +4,12 @@
 
 ## FluxTableMetaData.toObject() method
 
-Creates an object out of the supplied values with the help of columns .
+Creates an object out of the supplied row with the help of column descriptors.
 
 <b>Signature:</b>
 
 ```typescript
-toObject(values: string[]): {
+toObject(row: string[]): {
         [key: string]: any;
     };
 ```
@@ -18,7 +18,7 @@ toObject(values: string[]): {
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  values | string\[\] | a row with data for each column |
+|  row | string\[\] | a row with data for each column |
 
 <b>Returns:</b>
 

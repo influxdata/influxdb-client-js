@@ -9,7 +9,7 @@ Gets columns by name
 <b>Signature:</b>
 
 ```typescript
-column(label: string): FluxTableColumn;
+column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ column(label: string): FluxTableColumn;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  label | string | column label |
+|  errorOnMissingColumn | boolean | throw error on missing column (by default), return UNKNOWN\_COLUMN when false |
 
 <b>Returns:</b>
 
