@@ -19,10 +19,12 @@ function createConfig({browser, format, out, name, target, noTerser}) {
               './impl/node/NodeHttpTransport': './impl/browser/FetchTransport',
               'process.env.ROLLUP_BROWSER': 'true',
               delimiters: ['', ''],
+              preventAssignment: true,
             }
           : {
               'process.env.ROLLUP_BROWSER': 'false',
               delimiters: ['', ''],
+              preventAssignment: true,
             }
       ),
       typescript({
