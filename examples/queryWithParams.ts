@@ -17,24 +17,24 @@ const measurement = 'temperature'
 const fluxQuery = flux`from(bucket:"my-bucket") 
   |> range(start: ${start}) 
   |> filter(fn: (r) => r._measurement == ${measurement})`
-console.log('query:', fluxQuery)
+console.log('query:', fluxQuery.toString())
 
 console.log('*** QUERY ROWS ***')
 // performs query and receive line table metadata and rows
 // https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/
 queryApi.queryRows(fluxQuery, {
-  next(row: string[], tableMeta: FluxTableMetaData) {
+  next: (row: string[], tableMeta: FluxTableMetaData) => {
     const o = tableMeta.toObject(row)
     // console.log(JSON.stringify(o, null, 2))
     console.log(
       `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
     )
   },
-  error(error: Error) {
+  error: (error: Error) => {
     console.error(error)
     console.log('\nFinished ERROR')
   },
-  complete() {
+  complete: () => {
     console.log('\nFinished SUCCESS')
   },
 })
