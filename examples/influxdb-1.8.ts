@@ -33,7 +33,7 @@ const point = new Point('mem')
 writeAPI.writePoint(point)
 writeAPI
   .close()
-  .then(() => console.log('FINISHED'))
+  .then(() => console.log('Write FINISHED'))
   .catch(error => {
     console.error(error)
   })
@@ -43,14 +43,14 @@ console.log('*** QUERY ROWS ***')
 const queryAPI = influxDB.getQueryApi('')
 const query = `from(bucket: "${bucket}") |> range(start: -1h)`
 queryAPI.queryRows(query, {
-  next(row, tableMeta) {
+  next: (row, tableMeta) => {
     const o = tableMeta.toObject(row)
     console.log(`${o._time} ${o._measurement} : ${o._field}=${o._value}`)
   },
-  error(error) {
+  error: (error: Error) => {
     console.error(error)
   },
-  complete() {
-    console.log('\nFinished')
+  complete: () => {
+    console.log('\nQuery FINISHED')
   },
 })

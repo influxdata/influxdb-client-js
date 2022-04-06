@@ -17,7 +17,7 @@ console.log('*** QUERY ROWS ***')
 // Execute query and receive table metadata and rows as they arrive from the server.
 // https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/
 queryApi.queryRows(fluxQuery, {
-  next(row: string[], tableMeta: FluxTableMetaData) {
+  next: (row: string[], tableMeta: FluxTableMetaData) => {
     // the following line creates an object for each row
     const o = tableMeta.toObject(row)
     // console.log(JSON.stringify(o, null, 2))
@@ -35,11 +35,11 @@ queryApi.queryRows(fluxQuery, {
     //  `${p._time} ${p._measurement} in '${p.location}' (${p.example}): ${p._field}=${p._value}`
     // )
   },
-  error(error: Error) {
+  error: (error: Error) => {
     console.error(error)
     console.log('\nFinished ERROR')
   },
-  complete() {
+  complete: () => {
     console.log('\nFinished SUCCESS')
   },
 })
@@ -74,14 +74,14 @@ queryApi.queryRows(fluxQuery, {
 // queryApi.queryLines(
 //   fluxQuery,
 //   {
-//     error(error: Error) {
+//     next: (line: string) => {
+//       console.log(line)
+//     },
+//     error: (error: Error) => {
 //       console.error(error)
 //       console.log('\nFinished ERROR')
 //     },
-//     next(line: string) {
-//       console.log(line)
-//     },
-//     complete() {
+//     complete: () => {
 //       console.log('\nFinished SUCCESS')
 //     },
 //   }
