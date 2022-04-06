@@ -41,10 +41,11 @@ function createResult(
   tableLength: number,
   columns: Record<string, Column>,
   tableFactory: GiraffeTableFactory,
-  computeFluxGroupKeyUnion = false
+  {computeFluxGroupKeyUnion, computeResultColumnNames}: TableOptions
 ): FromFluxResult {
   let table = tableFactory(tableLength)
   const fluxGroupKeyUnion: string[] = []
+  const resultColumnNames = new Set<string>()
   Object.keys(columns).forEach(key => {
     const col = columns[key]
     if (!col.multipleTypes) {
@@ -59,12 +60,16 @@ function createResult(
       if (computeFluxGroupKeyUnion && col.group) {
         fluxGroupKeyUnion.push(key)
       }
+      if (computeResultColumnNames && col.name === 'result') {
+        col.data.forEach(x => resultColumnNames.add(x as string))
+      }
     }
   })
 
   return {
     table,
     fluxGroupKeyUnion,
+    resultColumnNames: Array.from(resultColumnNames),
   }
 }
 
@@ -97,6 +102,9 @@ export interface TableOptions {
 
   /** compute also fluxGroupKeyUnion */
   computeFluxGroupKeyUnion?: boolean
+
+  /** compute also resultColumnNames */
+  computeResultColumnNames?: boolean
 }
 
 /**
@@ -300,27 +308,13 @@ export function createCollector(
       tableSize++
     },
     complete(): void {
-      resolve(
-        createResult(
-          tableSize,
-          columns,
-          tableFactory,
-          tableOptions.computeFluxGroupKeyUnion
-        )
-      )
+      resolve(createResult(tableSize, columns, tableFactory, tableOptions))
     },
     error(e: Error): void {
       if (e.name === 'AbortError') {
         // eslint-disable-next-line no-console
         console.log('queryTable: request aborted:', e)
-        resolve(
-          createResult(
-            tableSize,
-            columns,
-            tableFactory,
-            tableOptions.computeFluxGroupKeyUnion
-          )
-        )
+        resolve(createResult(tableSize, columns, tableFactory, tableOptions))
       }
       reject(e)
     },
@@ -350,7 +344,11 @@ export function csvToFromFluxResult(
     /* istanbul ignore next because error is never thrown */
     e => (error = e),
     tableFactory,
-    {computeFluxGroupKeyUnion: true, ...tableOptions}
+    {
+      computeFluxGroupKeyUnion: true,
+      computeResultColumnNames: true,
+      ...tableOptions,
+    }
   )
   stringToLines(csv, linesToTables(collector))
   /* istanbul ignore if error is never thrown */
