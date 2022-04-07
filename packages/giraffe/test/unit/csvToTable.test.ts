@@ -269,19 +269,35 @@ there",5
 
 describe('csvToFromFluxResult', () => {
   it('returns a group key union', () => {
-    const CSV = `#group,true,false,false,true
-#datatype,string,string,string,string
-#default,,,,
-,a,b,c,d
-,1,2,3,4
+    const CSV = `#group,false,true,false,false,true
+#datatype,string,string,string,string,string
+#default,_result,,,,
+,result,a,b,c,d
+,,1,2,3,4
 
-#group,false,false,true,false
-#datatype,string,string,string,string
+#group,false,false,false,true,false
+#datatype,string,string,string,string,string
 #default,,,,
-,a,b,c,d
-,1,2,3,4`
+,result,a,b,c,d
+,r2,1,2,3,4`
 
     const {fluxGroupKeyUnion} = csvToFromFluxResult(CSV, newTable)
     expect(fluxGroupKeyUnion).deep.equals(['a', 'c', 'd'])
+  })
+  it('returns resultColumnNames', () => {
+    const CSV = `#group,false,true,false,false,true
+#datatype,string,string,string,string,string
+#default,_result,,,,
+,result,a,b,c,d
+,,1,2,3,4
+
+#group,false,false,false,true,false
+#datatype,string,string,string,string,string
+#default,,,,
+,result,a,b,c,d
+,r2,1,2,3,4`
+
+    const {resultColumnNames} = csvToFromFluxResult(CSV, newTable)
+    expect(resultColumnNames).deep.equals(['_result', 'r2'])
   })
 })
