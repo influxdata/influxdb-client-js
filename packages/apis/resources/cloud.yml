@@ -1036,6 +1036,7 @@ paths:
         For more information and examples, see the following:
         - [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/cloud/write-data/developer-tools/api).
         - [Optimize writes to InfluxDB](https://docs.influxdata.com/influxdb/cloud/write-data/best-practices/optimize-writes/).
+        - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/cloud/write-data/troubleshoot/)
       requestBody:
         description: Data in line protocol format.
         required: true
@@ -1053,74 +1054,86 @@ paths:
             To make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.
           schema:
             type: string
-            description: 'The content coding. Use `gzip` for compressed data or `identity` for unmodified, uncompressed data.'
+            description: 'Content coding. Use `gzip` for compressed data or `identity` for unmodified, uncompressed data.'
             default: identity
             enum:
               - gzip
               - identity
         - in: header
           name: Content-Type
-          description: The header value indicates the format of the data in the request body.
+          description: |
+            Format of the data in the request body.
+            To make an API request with a line protocol payload, send `Content-Type: text/plain; charset=utf-8` as a request header.
           schema:
             type: string
             description: |
-              `text/plain` specifies line protocol. `UTF-8` is the default character set.
+              `text/plain` is the content type for line protocol. `UTF-8` is the default character set.
             default: text/plain; charset=utf-8
             enum:
               - text/plain
               - text/plain; charset=utf-8
-              - application/vnd.influx.arrow
         - in: header
           name: Content-Length
-          description: 'The header value indicates the size of the entity-body, in bytes, sent to the database. If the length is greater than the database''s `max body` configuration option, the server responds with status code `413`.'
+          description: 'Size of the entity-body, in bytes, sent to the database. If the length is greater than the database''s `max body` configuration option, the server responds with status code `413`.'
           schema:
             type: integer
             description: The length in decimal number of octets.
         - in: header
           name: Accept
-          description: The header value specifies the response format.
+          description: |
+            Content type that the client can understand. Writes only return a response body if they fail, e.g. due to a formatting problem or quota limit.
+            #### InfluxDB Cloud
+              - returns only `application/json` for format and limit errors.
+              - returns only `text/html` for some quota limit errors.
+
+
+            #### InfluxDB OSS
+              - returns only `application/json` for format and limit errors.
+
+
+            For more information about write errors, see how to [troubleshoot issues writing data](https://docs.influxdata.com/influxdb/cloud/write-data/troubleshoot/).
           schema:
             type: string
-            description: The response format for errors.
+            description: Error content type.
             default: application/json
             enum:
               - application/json
         - in: query
           name: org
-          description: 'The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.'
+          description: 'Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.'
           required: true
           schema:
             type: string
             description: Organization name or ID.
         - in: query
           name: orgID
-          description: 'The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.'
+          description: 'ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.'
           schema:
             type: string
         - in: query
           name: bucket
-          description: The destination bucket for writes.
+          description: Destination bucket for writes.
           required: true
           schema:
             type: string
             description: All points within batch are written to this bucket.
         - in: query
           name: precision
-          description: The precision for the unix timestamps within the body line-protocol.
+          description: Precision for unix timestamps in the line protocol of the request payload.
           schema:
             $ref: '#/components/schemas/WritePrecision'
       responses:
         '204':
-          description: 'InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn''t indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/cloud/write-data/troubleshoot/).'
+          description: 'InfluxDB validated the request data format and accepted the data for writing to the bucket. Because data is written to InfluxDB asynchronously, data may not yet be written to a bucket. If some of your data didn’t write to the bucket, see [how to check for write errors](https://docs.influxdata.com/influxdb/cloud/write-data/troubleshoot/).'
         '400':
-          description: Bad request. The line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.
+          description: Bad request. Line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LineProtocolError'
               examples:
                 measurementSchemaFieldTypeConflict:
-                  summary: Field type conflict thrown by an explicit bucket schema
+                  summary: InfluxDB Cloud field type conflict thrown by an explicit bucket schema
                   value:
                     code: invalid
                     message: 'partial write error (2 written): unable to parse ''air_sensor,service=S1,sensor=L1 temperature="90.5",humidity=70.0 1632850122'': schema: field type for field "temperature" not permitted by schema; got String but expected Float'
@@ -1156,12 +1169,12 @@ paths:
           description: |
             The request payload is too large. InfluxDB rejected the batch and did not write any data.
             #### InfluxDB Cloud:
-             - returns this error if the payload exceeds the 50MB size limit.
-             - returns `Content-Type: text/html` for this error.
+              - returns this error if the request exceeds the maximum [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).
+              - returns `Content-Type: text/html` for this error.
 
             #### InfluxDB OSS:
-             - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.
-             - returns `Content-Type: application/json` for this error.
+              - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.
+              - returns `Content-Type: application/json` for this error.
           content:
             application/json:
               schema:
@@ -1187,10 +1200,19 @@ paths:
                       </body>
                     </html>
         '429':
-          description: InfluxDB Cloud only. The token is temporarily over quota. The Retry-After header describes when to try the write again.
+          description: |
+            #### InfluxDB Cloud:
+              - returns this error if a **read** or **write** request exceeds your
+                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)
+                or if a **delete** request exceeds the maximum
+                [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).
+              - returns `Retry-After` header that describes when to try the write again.
+
+            #### InfluxDB OSS:
+              - doesn't return this error.
           headers:
             Retry-After:
-              description: A non-negative decimal integer indicating the seconds to delay after the response is received.
+              description: Non-negative decimal integer indicating seconds to wait before retrying the request.
               schema:
                 type: integer
                 format: int32
@@ -1206,10 +1228,19 @@ paths:
                   value:
                     code: internal error
         '503':
-          description: The server is temporarily unavailable to accept writes. The `Retry-After` header describes when to try the write again.
+          description: |
+            #### InfluxDB Cloud:
+              - returns this error if series cardinality exceeds your plan's
+                [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas).
+                See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/cloud/write-data/best-practices/resolve-high-cardinality/).
+
+            #### InfluxDB OSS:
+              - returns this error if
+                the server is temporarily unavailable to accept writes.
+              - returns `Retry-After` header that describes when to try the write again.
           headers:
             Retry-After:
-              description: A non-negative decimal integer indicating the seconds to delay after the response is received.
+              description: Non-negative decimal integer indicating seconds to wait before retrying the request.
               schema:
                 type: integer
                 format: int32
@@ -2231,12 +2262,12 @@ paths:
               - application/vnd.flux
         - in: query
           name: org
-          description: 'Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence.'
+          description: 'Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`, `org` takes precedence.'
           schema:
             type: string
         - in: query
           name: orgID
-          description: 'Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence.'
+          description: 'ID of the organization executing the query. If you provide both `orgID` and `org`, `org` takes precedence.'
           schema:
             type: string
       requestBody:
@@ -2261,31 +2292,36 @@ paths:
               schema:
                 type: string
                 description: |
-                  The content coding: `gzip` for compressed data or `identity` for unmodified, uncompressed data.
+                  Content coding: `gzip` for compressed data or `identity` for unmodified, uncompressed data.
                 default: identity
                 enum:
                   - gzip
                   - identity
             Trace-Id:
-              description: 'The Trace-Id header reports the request''s trace ID, if one was generated.'
+              description: 'If generated, trace ID of the request.'
               schema:
                 type: string
-                description: Specifies the request's trace ID.
+                description: Trace ID of a request.
           content:
             text/csv:
               schema:
                 type: string
                 example: |
                   result,table,_start,_stop,_time,region,host,_value mean,0,2018-05-08T20:50:00Z,2018-05-08T20:51:00Z,2018-05-08T20:50:00Z,east,A,15.43 mean,0,2018-05-08T20:50:00Z,2018-05-08T20:51:00Z,2018-05-08T20:50:20Z,east,B,59.25 mean,0,2018-05-08T20:50:00Z,2018-05-08T20:51:00Z,2018-05-08T20:50:40Z,east,C,52.62
-            application/vnd.influx.arrow:
-              schema:
-                type: string
-                format: binary
         '429':
-          description: Token is temporarily over quota. The Retry-After header describes when to try the read again.
+          description: |
+            #### InfluxDB Cloud:
+              - returns this error if a **read** or **write** request exceeds your
+                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)
+                or if a **delete** request exceeds the maximum
+                [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits)
+              - returns `Retry-After` header that describes when to try the write again.
+
+            #### InfluxDB OSS:
+              - doesn't return this error.
           headers:
             Retry-After:
-              description: A non-negative decimal integer indicating the seconds to delay after the response is received.
+              description: Non-negative decimal integer indicating seconds to wait before retrying the request.
               schema:
                 type: integer
                 format: int32
@@ -3463,6 +3499,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TemplateSummary'
+        '422':
+          description: Template failed validation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/TemplateSummary'
+                  - type: object
+                    required:
+                      - message
+                      - code
+                    properties:
+                      message:
+                        type: string
+                      code:
+                        type: string
         default:
           description: Unexpected error
           content:
@@ -10443,6 +10495,7 @@ components:
           description: An optional description of the check.
           type: string
         latestCompleted:
+          type: string
           description: 'Timestamp (in RFC3339 date/time format](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run.'
           format: date-time
           readOnly: true
@@ -11407,6 +11460,9 @@ components:
         rate:
           type: object
           properties:
+            queryTime:
+              type: integer
+              description: Query Time in nanoseconds
             readKBs:
               type: integer
               description: Query limit in kb/sec. 0 is unlimited.
@@ -11430,6 +11486,7 @@ components:
               description: Allowed organization delete request rate.
           required:
             - readKBs
+            - queryTime
             - concurrentReadRequests
             - writeKBs
             - concurrentWriteRequests

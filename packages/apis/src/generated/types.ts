@@ -708,7 +708,7 @@ export interface CheckBase {
   /** An optional description of the check. */
   description?: string
   /** Timestamp (in RFC3339 date/time format](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. */
-  readonly latestCompleted?: any
+  readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string
   labels?: Labels
@@ -2849,6 +2849,7 @@ export interface ReplicationCreationRequest {
   remoteBucketID: string
   maxQueueSizeBytes: number
   dropNonRetryableData?: boolean
+  maxAgeSeconds: number
 }
 
 export interface ReplicationUpdateRequest {
@@ -2858,6 +2859,7 @@ export interface ReplicationUpdateRequest {
   remoteBucketID?: string
   maxQueueSizeBytes?: number
   dropNonRetryableData?: boolean
+  maxAgeSeconds?: number
 }
 
 export interface Dashboards {

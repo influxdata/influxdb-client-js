@@ -25,9 +25,9 @@ export interface PostQueryAnalyzeRequest {
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
   body: Query
-  /** Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`, `org` takes precedence. */
   org?: string
-  /** Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** ID of the organization executing the query. If you provide both `orgID` and `org`, `org` takes precedence. */
   orgID?: string
 }
 /**
