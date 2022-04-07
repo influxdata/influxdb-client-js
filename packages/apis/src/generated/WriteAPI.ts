@@ -4,13 +4,13 @@ import {APIBase, RequestOptions} from '../APIBase'
 export interface PostWriteRequest {
   /** Data in line protocol format. */
   body: string
-  /** The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence. */
+  /** Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence. */
   org: string
-  /** The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence. */
   orgID?: string
-  /** The destination bucket for writes. */
+  /** Destination bucket for writes. */
   bucket: string
-  /** The precision for the unix timestamps within the body line-protocol. */
+  /** Precision for unix timestamps in the line protocol of the request payload. */
   precision?: any
 }
 /**

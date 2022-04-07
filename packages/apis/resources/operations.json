@@ -1450,41 +1450,41 @@
       },
       {
         "name": "Content-Type",
-        "description": "The header value indicates the format of the data in the request body.",
+        "description": "Format of the data in the request body.\nTo make an API request with a line protocol payload, send `Content-Type: text/plain; charset=utf-8` as a request header.\n",
         "type": "string"
       },
       {
         "name": "Content-Length",
-        "description": "The header value indicates the size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
+        "description": "Size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
         "type": "number"
       },
       {
         "name": "Accept",
-        "description": "The header value specifies the response format.",
+        "description": "Content type that the client can understand. Writes only return a response body if they fail, e.g. due to a formatting problem or quota limit.\n#### InfluxDB Cloud\n  - returns only `application/json` for format and limit errors.\n  - returns only `text/html` for some quota limit errors.\n\n\n#### InfluxDB OSS\n  - returns only `application/json` for format and limit errors.\n\n\nFor more information about write errors, see how to [troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).\n",
         "type": "string"
       }
     ],
     "queryParams": [
       {
         "name": "org",
-        "description": "The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
+        "description": "Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
         "required": true,
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "The parameter value specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "description": "ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
         "type": "string"
       },
       {
         "name": "bucket",
-        "description": "The destination bucket for writes.",
+        "description": "Destination bucket for writes.",
         "required": true,
         "type": "string"
       },
       {
         "name": "precision",
-        "description": "The precision for the unix timestamps within the body line-protocol.",
+        "description": "Precision for unix timestamps in the line protocol of the request payload.",
         "type": "any"
       }
     ],
@@ -1497,12 +1497,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. `204` doesn't indicate a successful write operation since writes are asynchronous. See [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).",
+        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. Because data is written to InfluxDB asynchronously, data may not yet be written to a bucket. If some of your data didn’t write to the bucket, see [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).",
         "mediaTypes": []
       },
       {
         "code": "400",
-        "description": "Bad request. The line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
+        "description": "Bad request. Line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1532,7 +1532,7 @@
       },
       {
         "code": "413",
-        "description": "The request payload is too large. InfluxDB rejected the batch and did not write any data.\n#### InfluxDB Cloud:\n - returns this error if the payload exceeds the 50MB size limit.\n - returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n - returns `Content-Type: application/json` for this error.\n",
+        "description": "The request payload is too large. InfluxDB rejected the batch and did not write any data.\n#### InfluxDB Cloud:\n  - returns this error if the request exceeds the maximum [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).\n  - returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n  - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n  - returns `Content-Type: application/json` for this error.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1546,7 +1546,7 @@
       },
       {
         "code": "429",
-        "description": "InfluxDB Cloud only. The token is temporarily over quota. The Retry-After header describes when to try the write again.",
+        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
         "mediaTypes": []
       },
       {
@@ -1561,7 +1561,7 @@
       },
       {
         "code": "503",
-        "description": "The server is temporarily unavailable to accept writes. The `Retry-After` header describes when to try the write again.",
+        "description": "#### InfluxDB Cloud:\n  - returns this error if series cardinality exceeds your plan's\n    [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas).\n    See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.1/write-data/best-practices/resolve-high-cardinality/).\n\n#### InfluxDB OSS:\n  - returns this error if\n    the server is temporarily unavailable to accept writes.\n  - returns `Retry-After` header that describes when to try the write again.\n",
         "mediaTypes": []
       },
       {
@@ -3160,12 +3160,12 @@
     "queryParams": [
       {
         "name": "org",
-        "description": "Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "description": "Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`, `org` takes precedence.",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "description": "ID of the organization executing the query. If you provide both `orgID` and `org`, `org` takes precedence.",
         "type": "string"
       }
     ],
@@ -3183,16 +3183,12 @@
           {
             "mediaType": "text/csv",
             "type": "string"
-          },
-          {
-            "mediaType": "application/vnd.influx.arrow",
-            "type": "string"
           }
         ]
       },
       {
         "code": "429",
-        "description": "Token is temporarily over quota. The Retry-After header describes when to try the read again.",
+        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits)\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
         "mediaTypes": []
       },
       {
@@ -5075,6 +5071,16 @@
           {
             "mediaType": "application/json",
             "type": "TemplateSummary"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Template failed validation",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "TemplateSummary & {\n  message: string;\n  code: string;\n}"
           }
         ]
       },
@@ -7880,6 +7886,529 @@
       {
         "code": "default",
         "description": "Unexpected error",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/all",
+    "operation": "get",
+    "operationId": "GetDebugPprofAllProfiles",
+    "basicAuth": false,
+    "summary": "Get all runtime profiles",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "cpu",
+        "description": "Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/#duration).\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) reports.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/allocs",
+    "operation": "get",
+    "operationId": "GetDebugPprofAllocs",
+    "basicAuth": false,
+    "summary": "Get the memory allocations runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/block",
+    "operation": "get",
+    "operationId": "GetDebugPprofBlock",
+    "basicAuth": false,
+    "summary": "Get the block runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/cmdline",
+    "operation": "get",
+    "operationId": "GetDebugPprofCmdline",
+    "basicAuth": false,
+    "summary": "Get the command line invocation",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Command line invocation.",
+        "mediaTypes": [
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/goroutine",
+    "operation": "get",
+    "operationId": "GetDebugPprofGoroutine",
+    "basicAuth": false,
+    "summary": "Get the goroutines runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/heap",
+    "operation": "get",
+    "operationId": "GetDebugPprofHeap",
+    "basicAuth": false,
+    "summary": "Get the heap runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      },
+      {
+        "name": "gc",
+        "description": "- `0`: (Default) don't force garbage collection before sampling.\n- `1`: Force garbage collection before sampling.\n",
+        "type": "number"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/mutex",
+    "operation": "get",
+    "operationId": "GetDebugPprofMutex",
+    "basicAuth": false,
+    "summary": "Get the mutual exclusion (mutex) runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/profile",
+    "operation": "get",
+    "operationId": "GetDebugPprofProfile",
+    "basicAuth": false,
+    "summary": "Get the CPU runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect profile data. Default is `30` seconds.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/threadcreate",
+    "operation": "get",
+    "operationId": "GetDebugPprofThreadCreate",
+    "basicAuth": false,
+    "summary": "Get the threadcreate runtime profile",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "debug",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "type": "number"
+      },
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect statistics.\n\n`seconds` is mutually exclusive with `debug=1`.\n",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Go runtime profile](https://pkg.go.dev/runtime/pprof) report compatible\nwith [pprof](https://github.com/google/pprof) analysis and visualization tools.\nIf debug is enabled (`?debug=1`), response body contains a human-readable profile.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          },
+          {
+            "mediaType": "text/plain",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/debug/pprof/trace",
+    "operation": "get",
+    "operationId": "GetDebugPprofTrace",
+    "basicAuth": false,
+    "summary": "Get the runtime execution trace",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [
+      {
+        "name": "seconds",
+        "description": "Number of seconds to collect profile data.",
+        "type": "string"
+      }
+    ],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "[Trace file](https://pkg.go.dev/runtime/trace) compatible\nwith the [Golang `trace` command](https://pkg.go.dev/cmd/trace).\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/octet-stream",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",

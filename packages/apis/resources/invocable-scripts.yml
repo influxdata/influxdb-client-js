@@ -286,6 +286,7 @@ components:
       properties:
         params:
           type: object
+          additionalProperties: true
     ScriptLanguage:
       type: string
       enum:
