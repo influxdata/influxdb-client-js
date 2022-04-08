@@ -144,6 +144,14 @@ describe('Flux Tagged Template', () => {
       'from(bucket:"my-bucket") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
     )
   })
+  it('escapes double-quotes', () => {
+    const injection = 'temperature") |> foo'
+    expect(
+      flux`from(bucket:${'my-bucket'}) |> filter(fn: (r) => r._measurement == "${injection}")`.toString()
+    ).equals(
+      'from(bucket:"my-bucket") |> filter(fn: (r) => r._measurement == "temperature\\") |> foo")'
+    )
+  })
   it('interpolates a wrapped string', () => {
     expect(flux`from(bucket:"${'my-bucket'}")`.toString()).equals(
       'from(bucket:"my-bucket")'
