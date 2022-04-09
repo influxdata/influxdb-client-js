@@ -4,6 +4,12 @@
 
 1. [#431](https://github.com/influxdata/influxdb-client-js/pull/431): Regenerate APIs from swagger.
 
+### Other
+
+1. [#429](https://github.com/influxdata/influxdb-client-js/pull/429): Improve query examples.
+1. [#430](https://github.com/influxdata/influxdb-client-js/pull/430): Upgrade dependencies.
+1. [#433](https://github.com/influxdata/influxdb-client-js/pull/433): Improve flux function tests.
+
 ## 1.24.0 [2022-03-18]
 
 ### Features
