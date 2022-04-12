@@ -648,5 +648,23 @@ describe('WriteApi', () => {
       expect(logs.warn).deep.equals([])
       expect(authorization).equals(`Token customToken`)
     })
+    it('sends consistency param when specified', async () => {
+      useSubject({
+        consistency: 'quorum',
+      })
+      let uri: any
+      nock(clientOptions.url)
+        .post(/.*/)
+        .reply(function(_uri, _requestBody) {
+          uri = this.req.path
+          return [204, '', {}]
+        })
+        .persist()
+      subject.writePoint(new Point('test').floatField('value', 1))
+      await subject.close()
+      expect(logs.error).has.length(0)
+      expect(logs.warn).deep.equals([])
+      expect(uri).match(/.*&consistency=quorum$/)
+    })
   })
 })
