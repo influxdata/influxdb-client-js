@@ -3,6 +3,7 @@
 ### Features
 
 1. [#431](https://github.com/influxdata/influxdb-client-js/pull/431): Regenerate APIs from swagger.
+1. [#434](https://github.com/influxdata/influxdb-client-js/pull/434): Support write consistency query parameter.
 
 ### Other
 

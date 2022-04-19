@@ -89,6 +89,11 @@ export default class WriteApiImpl implements WriteApi {
     this.httpPath = `/api/v2/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
+    if (writeOptions?.consistency) {
+      this.httpPath += `&consistency=${encodeURIComponent(
+        writeOptions.consistency
+      )}`
+    }
     this.writeOptions = {
       ...DEFAULT_WriteOptions,
       ...writeOptions,

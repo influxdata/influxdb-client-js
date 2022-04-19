@@ -117,6 +117,8 @@ export interface WriteOptions extends WriteRetryOptions {
   gzipThreshold?: number
   /** max size of a batch in bytes */
   maxBatchBytes: number
+  /** InfluxDB Enterprise write consistency as explained in https://docs.influxdata.com/enterprise_influxdb/v1.9/concepts/clustering/#write-consistency */
+  consistency?: 'any' | 'one' | 'quorum' | 'all'
 }
 
 /** default RetryDelayStrategyOptions */
