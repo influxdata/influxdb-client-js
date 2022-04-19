@@ -187,4 +187,79 @@ describe('Flux Tagged Template', () => {
       'from(bucket:"my-bucket")'
     )
   })
+  it('interpolates parameter with escaping', () => {
+    const pairs: Array<{value: any; flux: string}> = [
+      {value: flux`${null}`, flux: 'null'},
+      {value: flux`${false}`, flux: 'false'},
+      {value: flux`${1}`, flux: '1'},
+      {value: flux`${1.1}`, flux: '1.1'},
+      {value: flux`${-1.1}`, flux: '-1.1'},
+      {value: flux`${'a'}`, flux: '"a"'},
+      {
+        value: flux`${new Date(1589521447471)}`,
+        flux: '2020-05-15T05:44:07.471Z',
+      },
+      {value: flux`${/abc/}`, flux: 'regexp.compile(v: "/abc/")'},
+      {
+        value: flux`${{
+          toString: function(): string {
+            return 'whatever'
+          },
+        }}`,
+        flux: '"whatever"',
+      },
+      {value: flux`${fluxExpression('1ms')}`, flux: '1ms'},
+      {value: flux`${'abc\n\r\t\\"def'}`, flux: '"abc\\n\\r\\t\\\\\\"def"'},
+      {value: flux`${'abc${val}def'}`, flux: '"abc\\${val}def"'},
+      {value: flux`${'abc$'}`, flux: '"abc$"'},
+      {value: flux`${'a"$d'}`, flux: '"a\\"$d"'},
+      {value: flux`${[]}`, flux: '[]'},
+      {value: flux`${['a"$d']}`, flux: '["a\\"$d"]'},
+      {
+        value: flux`${Symbol('thisSym')}`,
+        flux: `"${Symbol('thisSym').toString()}"`,
+      },
+    ]
+    pairs.forEach(pair => {
+      expect(pair.value.toString()).equals(pair.flux)
+    })
+  })
+  it('interpolates double quoted parameter with escaping', () => {
+    const pairs: Array<{value: any; flux: string}> = [
+      {value: flux`"${null}"`, flux: '""'},
+      {value: flux`"${undefined}"`, flux: '""'},
+      {value: flux`"${false}"`, flux: '"false"'},
+      {value: flux`"${1}"`, flux: '"1"'},
+      {value: flux`"${1.1}"`, flux: '"1.1"'},
+      {value: flux`"${-1.1}"`, flux: '"-1.1"'},
+      {value: flux`"${'a'}"`, flux: '"a"'},
+      {
+        value: flux`"${new Date(1589521447471)}"`,
+        flux: `"${new Date(1589521447471)}"`,
+      },
+      {value: flux`"${/abc/}"`, flux: `"${/abc/.toString()}"`},
+      {
+        value: flux`"${{
+          toString: function(): string {
+            return 'whatever'
+          },
+        }}"`,
+        flux: '"whatever"',
+      },
+      {value: flux`"${fluxExpression('1ms')}"`, flux: '"1ms"'},
+      {value: flux`"${'abc\n\r\t\\"def'}"`, flux: '"abc\\n\\r\\t\\\\\\"def"'},
+      {value: flux`"${'abc${val}def'}"`, flux: '"abc\\${val}def"'},
+      {value: flux`"${'abc$'}"`, flux: '"abc$"'},
+      {value: flux`"${'a"$d'}"`, flux: '"a\\"$d"'},
+      {value: flux`"${[]}"`, flux: `""`},
+      {value: flux`"${['a"$d']}"`, flux: `"a\\"$d"`},
+      {
+        value: flux`"${Symbol('thisSym')}"`,
+        flux: `"${Symbol('thisSym').toString()}"`,
+      },
+    ]
+    pairs.forEach(pair => {
+      expect(pair.value.toString()).equals(pair.flux)
+    })
+  })
 })
