@@ -18,8 +18,8 @@ constructor(statusCode: number, statusMessage: string | undefined, body?: string
 |  --- | --- | --- |
 |  statusCode | number |  |
 |  statusMessage | string \| undefined |  |
-|  body | string \| undefined |  |
-|  retryAfter | string \| undefined \| null |  |
-|  contentType | string \| null \| undefined |  |
-|  message | string |  |
+|  body | string \| undefined | <i>(Optional)</i> |
+|  retryAfter | string \| undefined \| null | <i>(Optional)</i> |
+|  contentType | string \| null \| undefined | <i>(Optional)</i> |
+|  message | string | <i>(Optional)</i> |
 

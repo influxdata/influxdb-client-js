@@ -16,8 +16,8 @@ export declare function getRetryDelay(error?: Error, retryJitter?: number): numb
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  error | Error |  |
-|  retryJitter | number |  |
+|  error | Error | <i>(Optional)</i> |
+|  retryJitter | number | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

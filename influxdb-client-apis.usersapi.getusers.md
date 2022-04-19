@@ -16,8 +16,8 @@ getUsers(request?: GetUsersRequest, requestOptions?: RequestOptions): Promise<Us
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetUsersRequest](./influxdb-client-apis.getusersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetUsersRequest](./influxdb-client-apis.getusersrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

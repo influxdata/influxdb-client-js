@@ -17,7 +17,7 @@ getQuerySuggestionsName(request: GetQuerySuggestionsNameRequest, requestOptions?
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetQuerySuggestionsNameRequest](./influxdb-client-apis.getquerysuggestionsnamerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

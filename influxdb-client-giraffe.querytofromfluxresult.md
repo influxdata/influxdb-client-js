@@ -19,7 +19,7 @@ export declare function queryToFromFluxResult(queryApi: QueryApi, query: string 
 |  queryApi | QueryApi | InfluxDB client's QueryApi instance |
 |  query | string \| ParameterizedQuery | query to execute |
 |  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
+|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
 
 <b>Returns:</b>
 

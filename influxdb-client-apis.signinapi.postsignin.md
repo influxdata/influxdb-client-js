@@ -17,7 +17,7 @@ postSignin(request: PostSigninRequest, requestOptions?: RequestOptions): Promise
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostSigninRequest](./influxdb-client-apis.postsigninrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

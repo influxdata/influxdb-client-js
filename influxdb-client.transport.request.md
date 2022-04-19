@@ -19,7 +19,7 @@ request(path: string, body: any, options: SendOptions, responseStarted?: Respons
 |  path | string | HTTP request path |
 |  body | any |  |
 |  options | [SendOptions](./influxdb-client.sendoptions.md) | send options |
-|  responseStarted | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) |  |
+|  responseStarted | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

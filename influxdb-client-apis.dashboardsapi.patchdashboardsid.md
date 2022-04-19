@@ -17,7 +17,7 @@ patchDashboardsID(request: PatchDashboardsIDRequest, requestOptions?: RequestOpt
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchDashboardsIDRequest](./influxdb-client-apis.patchdashboardsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

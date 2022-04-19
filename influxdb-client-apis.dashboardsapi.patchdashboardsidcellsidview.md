@@ -17,7 +17,7 @@ patchDashboardsIDCellsIDView(request: PatchDashboardsIDCellsIDViewRequest, reque
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

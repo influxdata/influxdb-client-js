@@ -17,7 +17,7 @@ getTasksIDMembers(request: GetTasksIDMembersRequest, requestOptions?: RequestOpt
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetTasksIDMembersRequest](./influxdb-client-apis.gettasksidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

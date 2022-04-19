@@ -17,7 +17,7 @@ deleteNotificationRulesIDLabelsID(request: DeleteNotificationRulesIDLabelsIDRequ
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

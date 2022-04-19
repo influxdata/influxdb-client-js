@@ -17,7 +17,7 @@ getTelegrafsIDLabels(request: GetTelegrafsIDLabelsRequest, requestOptions?: Requ
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetTelegrafsIDLabelsRequest](./influxdb-client-apis.gettelegrafsidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -43,6 +43,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [ConfigAPI](./influxdb-client-apis.configapi.md) | Config API |
 |  [DashboardsAPI](./influxdb-client-apis.dashboardsapi.md) | Dashboards API |
 |  [DbrpsAPI](./influxdb-client-apis.dbrpsapi.md) | Dbrps API |
+|  [DebugAPI](./influxdb-client-apis.debugapi.md) | Debug API |
 |  [DeleteAPI](./influxdb-client-apis.deleteapi.md) | Delete API |
 |  [FlagsAPI](./influxdb-client-apis.flagsapi.md) | Flags API |
 |  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invocable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ . |
@@ -216,6 +217,16 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) |  |
 |  [GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md) |  |
 |  [GetDBRPsRequest](./influxdb-client-apis.getdbrpsrequest.md) |  |
+|  [GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md) |  |
+|  [GetDebugPprofAllProfilesRequest](./influxdb-client-apis.getdebugpprofallprofilesrequest.md) |  |
+|  [GetDebugPprofBlockRequest](./influxdb-client-apis.getdebugpprofblockrequest.md) |  |
+|  [GetDebugPprofCmdlineRequest](./influxdb-client-apis.getdebugpprofcmdlinerequest.md) |  |
+|  [GetDebugPprofGoroutineRequest](./influxdb-client-apis.getdebugpprofgoroutinerequest.md) |  |
+|  [GetDebugPprofHeapRequest](./influxdb-client-apis.getdebugpprofheaprequest.md) |  |
+|  [GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md) |  |
+|  [GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md) |  |
+|  [GetDebugPprofThreadCreateRequest](./influxdb-client-apis.getdebugpprofthreadcreaterequest.md) |  |
+|  [GetDebugPprofTraceRequest](./influxdb-client-apis.getdebugpproftracerequest.md) |  |
 |  [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) |  |
 |  [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) |  |
 |  [GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md) |  |

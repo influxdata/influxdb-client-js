@@ -16,8 +16,8 @@ getMetrics(request?: GetMetricsRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ deleteNotificationEndpointsIDLabelsID(request: DeleteNotificationEndpointsIDLabe
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

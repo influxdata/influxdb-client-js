@@ -16,8 +16,8 @@ getHealth(request?: GetHealthRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

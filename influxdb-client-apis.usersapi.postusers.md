@@ -17,7 +17,7 @@ postUsers(request: PostUsersRequest, requestOptions?: RequestOptions): Promise<U
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostUsersRequest](./influxdb-client-apis.postusersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ getChecksIDQuery(request: GetChecksIDQueryRequest, requestOptions?: RequestOptio
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetChecksIDQueryRequest](./influxdb-client-apis.getchecksidqueryrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

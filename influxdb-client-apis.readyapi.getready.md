@@ -16,8 +16,8 @@ getReady(request?: GetReadyRequest, requestOptions?: RequestOptions): Promise<Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetReadyRequest](./influxdb-client-apis.getreadyrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetReadyRequest](./influxdb-client-apis.getreadyrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

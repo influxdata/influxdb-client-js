@@ -15,7 +15,7 @@ warn(message: string, err?: any): void;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  message | string |  |
-|  err | any |  |
+|  err | any | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

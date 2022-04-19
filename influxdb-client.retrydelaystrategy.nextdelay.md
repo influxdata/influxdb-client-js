@@ -16,8 +16,8 @@ nextDelay(error?: Error, failedAttempts?: number): number;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  error | Error | reason for retrying |
-|  failedAttempts | number | a count of already failed attempts, 1 being the first |
+|  error | Error | <i>(Optional)</i> reason for retrying |
+|  failedAttempts | number | <i>(Optional)</i> a count of already failed attempts, 1 being the first |
 
 <b>Returns:</b>
 

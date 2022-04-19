@@ -17,7 +17,7 @@ postLabels(request: PostLabelsRequest, requestOptions?: RequestOptions): Promise
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

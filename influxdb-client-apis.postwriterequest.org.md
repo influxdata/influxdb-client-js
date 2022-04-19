@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.org property
 
-The parameter value specifies the destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.
+Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.
 
 <b>Signature:</b>
 

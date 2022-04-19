@@ -17,7 +17,7 @@ postOrgsIDSecrets(request: PostOrgsIDSecretsRequest, requestOptions?: RequestOpt
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

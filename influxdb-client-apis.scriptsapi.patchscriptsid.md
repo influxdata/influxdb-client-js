@@ -17,7 +17,7 @@ patchScriptsID(request: PatchScriptsIDRequest, requestOptions?: RequestOptions):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchScriptsIDRequest](./influxdb-client-apis.patchscriptsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

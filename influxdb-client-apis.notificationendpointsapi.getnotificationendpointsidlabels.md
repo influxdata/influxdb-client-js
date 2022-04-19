@@ -17,7 +17,7 @@ getNotificationEndpointsIDLabels(request: GetNotificationEndpointsIDLabelsReques
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetNotificationEndpointsIDLabelsRequest](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

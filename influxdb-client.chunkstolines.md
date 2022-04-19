@@ -17,7 +17,7 @@ export declare function chunksToLines(target: CommunicationObserver<string>, chu
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
-|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) |  |
+|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 

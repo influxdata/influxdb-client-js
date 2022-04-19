@@ -17,7 +17,7 @@ getScrapersIDOwners(request: GetScrapersIDOwnersRequest, requestOptions?: Reques
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetScrapersIDOwnersRequest](./influxdb-client-apis.getscrapersidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

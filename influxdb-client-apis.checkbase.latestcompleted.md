@@ -9,5 +9,5 @@ Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/r
 <b>Signature:</b>
 
 ```typescript
-readonly latestCompleted?: any;
+readonly latestCompleted?: string;
 ```

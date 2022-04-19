@@ -17,7 +17,7 @@ postVariables(request: PostVariablesRequest, requestOptions?: RequestOptions): P
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostVariablesRequest](./influxdb-client-apis.postvariablesrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

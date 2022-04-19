@@ -16,8 +16,8 @@ getLabels(request?: GetLabelsRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ postQueryAnalyze(request: PostQueryAnalyzeRequest, requestOptions?: RequestOptio
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostQueryAnalyzeRequest](./influxdb-client-apis.postqueryanalyzerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

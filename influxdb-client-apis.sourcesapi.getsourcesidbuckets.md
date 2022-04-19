@@ -17,7 +17,7 @@ getSourcesIDBuckets(request: GetSourcesIDBucketsRequest, requestOptions?: Reques
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetSourcesIDBucketsRequest](./influxdb-client-apis.getsourcesidbucketsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

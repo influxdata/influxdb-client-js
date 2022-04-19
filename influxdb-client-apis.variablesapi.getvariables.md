@@ -16,8 +16,8 @@ getVariables(request?: GetVariablesRequest, requestOptions?: RequestOptions): Pr
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetVariablesRequest](./influxdb-client-apis.getvariablesrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetVariablesRequest](./influxdb-client-apis.getvariablesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

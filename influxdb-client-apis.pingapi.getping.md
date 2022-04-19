@@ -16,8 +16,8 @@ getPing(request?: GetPingRequest, requestOptions?: RequestOptions): Promise<void
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetPingRequest](./influxdb-client-apis.getpingrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetPingRequest](./influxdb-client-apis.getpingrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

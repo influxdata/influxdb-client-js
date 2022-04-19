@@ -17,7 +17,7 @@ getBackupShardId(request: GetBackupShardIdRequest, requestOptions?: RequestOptio
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

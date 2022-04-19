@@ -17,7 +17,7 @@ patchRemoteConnectionByID(request: PatchRemoteConnectionByIDRequest, requestOpti
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -16,8 +16,8 @@ getTelegrafPlugins(request?: GetTelegrafPluginsRequest, requestOptions?: Request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTelegrafPluginsRequest](./influxdb-client-apis.gettelegrafpluginsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetTelegrafPluginsRequest](./influxdb-client-apis.gettelegrafpluginsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

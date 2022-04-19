@@ -16,8 +16,8 @@ getDashboards(request?: GetDashboardsRequest, requestOptions?: RequestOptions): 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

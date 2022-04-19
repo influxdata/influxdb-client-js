@@ -17,7 +17,7 @@ postVariablesIDLabels(request: PostVariablesIDLabelsRequest, requestOptions?: Re
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostVariablesIDLabelsRequest](./influxdb-client-apis.postvariablesidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ patchChecksID(request: PatchChecksIDRequest, requestOptions?: RequestOptions): P
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchChecksIDRequest](./influxdb-client-apis.patchchecksidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

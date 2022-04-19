@@ -17,6 +17,7 @@ export interface ReplicationCreationRequest
 |  [description?](./influxdb-client-apis.replicationcreationrequest.description.md) | string | <i>(Optional)</i> |
 |  [dropNonRetryableData?](./influxdb-client-apis.replicationcreationrequest.dropnonretryabledata.md) | boolean | <i>(Optional)</i> |
 |  [localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) | string |  |
+|  [maxAgeSeconds](./influxdb-client-apis.replicationcreationrequest.maxageseconds.md) | number |  |
 |  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) | number |  |
 |  [name](./influxdb-client-apis.replicationcreationrequest.name.md) | string |  |
 |  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) | string |  |

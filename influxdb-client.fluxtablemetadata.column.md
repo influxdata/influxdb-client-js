@@ -17,7 +17,7 @@ column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  label | string | column label |
-|  errorOnMissingColumn | boolean | throw error on missing column (by default), return UNKNOWN\_COLUMN when false |
+|  errorOnMissingColumn | boolean | <i>(Optional)</i> throw error on missing column (by default), return UNKNOWN\_COLUMN when false |
 
 <b>Returns:</b>
 

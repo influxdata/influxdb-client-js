@@ -17,7 +17,7 @@ getChecks(request: GetChecksRequest, requestOptions?: RequestOptions): Promise<C
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetChecksRequest](./influxdb-client-apis.getchecksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

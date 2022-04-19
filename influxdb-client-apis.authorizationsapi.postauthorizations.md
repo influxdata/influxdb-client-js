@@ -17,7 +17,7 @@ postAuthorizations(request: PostAuthorizationsRequest, requestOptions?: RequestO
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostAuthorizationsRequest](./influxdb-client-apis.postauthorizationsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

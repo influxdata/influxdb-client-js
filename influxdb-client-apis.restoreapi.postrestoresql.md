@@ -17,7 +17,7 @@ postRestoreSQL(request: PostRestoreSQLRequest, requestOptions?: RequestOptions):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostRestoreSQLRequest](./influxdb-client-apis.postrestoresqlrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

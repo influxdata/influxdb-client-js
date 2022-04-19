@@ -19,7 +19,7 @@ send(path: string, requestBody: string, options: SendOptions, callbacks?: Partia
 |  path | string | HTTP request path |
 |  requestBody | string | HTTP request body |
 |  options | [SendOptions](./influxdb-client.sendoptions.md) | send options |
-|  callbacks | Partial&lt;[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;Uint8Array&gt;&gt; | communication callbacks to received data in Uint8Array |
+|  callbacks | Partial&lt;[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;Uint8Array&gt;&gt; | <i>(Optional)</i> communication callbacks to received data in Uint8Array |
 
 <b>Returns:</b>
 

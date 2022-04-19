@@ -18,8 +18,8 @@ getWriteApi(org: string, bucket: string, precision?: WritePrecisionType, writeOp
 |  --- | --- | --- |
 |  org | string | Specifies the destination organization for writes. Takes either the ID or Name interchangeably. |
 |  bucket | string | The destination bucket for writes. |
-|  precision | [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | Timestamp precision for line items. |
-|  writeOptions | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | Custom write options. |
+|  precision | [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | <i>(Optional)</i> Timestamp precision for line items. |
+|  writeOptions | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> Custom write options. |
 
 <b>Returns:</b>
 

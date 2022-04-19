@@ -17,7 +17,7 @@ postValidateReplicationByID(request: PostValidateReplicationByIDRequest, request
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostValidateReplicationByIDRequest](./influxdb-client-apis.postvalidatereplicationbyidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

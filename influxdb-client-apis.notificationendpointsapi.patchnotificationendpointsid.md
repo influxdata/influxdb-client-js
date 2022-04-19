@@ -17,7 +17,7 @@ patchNotificationEndpointsID(request: PatchNotificationEndpointsIDRequest, reque
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchNotificationEndpointsIDRequest](./influxdb-client-apis.patchnotificationendpointsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

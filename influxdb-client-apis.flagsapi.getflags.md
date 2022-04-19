@@ -16,8 +16,8 @@ getFlags(request?: GetFlagsRequest, requestOptions?: RequestOptions): Promise<Fl
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

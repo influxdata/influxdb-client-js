@@ -17,7 +17,7 @@ getOrgsIDSecrets(request: GetOrgsIDSecretsRequest, requestOptions?: RequestOptio
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetOrgsIDSecretsRequest](./influxdb-client-apis.getorgsidsecretsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

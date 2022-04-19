@@ -16,8 +16,8 @@ getMe(request?: GetMeRequest, requestOptions?: RequestOptions): Promise<UserResp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetMeRequest](./influxdb-client-apis.getmerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetMeRequest](./influxdb-client-apis.getmerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

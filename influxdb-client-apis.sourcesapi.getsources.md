@@ -16,8 +16,8 @@ getSources(request?: GetSourcesRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

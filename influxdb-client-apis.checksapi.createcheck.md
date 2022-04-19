@@ -17,7 +17,7 @@ createCheck(request: CreateCheckRequest, requestOptions?: RequestOptions): Promi
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [CreateCheckRequest](./influxdb-client-apis.createcheckrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

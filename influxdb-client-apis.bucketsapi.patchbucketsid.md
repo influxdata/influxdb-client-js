@@ -17,7 +17,7 @@ patchBucketsID(request: PatchBucketsIDRequest, requestOptions?: RequestOptions):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchBucketsIDRequest](./influxdb-client-apis.patchbucketsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

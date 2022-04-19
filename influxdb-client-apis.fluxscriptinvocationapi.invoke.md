@@ -17,7 +17,7 @@ invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  scriptID | string | script identifier |
-|  params | Record&lt;string, any&gt; | script parameters |
+|  params | Record&lt;string, any&gt; | <i>(Optional)</i> script parameters |
 
 <b>Returns:</b>
 

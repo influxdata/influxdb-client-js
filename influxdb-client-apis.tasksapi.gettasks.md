@@ -16,8 +16,8 @@ getTasks(request?: GetTasksRequest, requestOptions?: RequestOptions): Promise<Ta
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTasksRequest](./influxdb-client-apis.gettasksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetTasksRequest](./influxdb-client-apis.gettasksrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

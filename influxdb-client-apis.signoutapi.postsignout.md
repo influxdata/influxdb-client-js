@@ -16,8 +16,8 @@ postSignout(request?: PostSignoutRequest, requestOptions?: RequestOptions): Prom
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

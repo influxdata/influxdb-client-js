@@ -17,7 +17,7 @@ patchNotificationRulesID(request: PatchNotificationRulesIDRequest, requestOption
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

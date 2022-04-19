@@ -16,8 +16,8 @@ getScrapers(request?: GetScrapersRequest, requestOptions?: RequestOptions): Prom
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

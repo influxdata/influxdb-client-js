@@ -16,8 +16,8 @@ getBackupKV(request?: GetBackupKVRequest, requestOptions?: RequestOptions): Prom
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBackupKVRequest](./influxdb-client-apis.getbackupkvrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetBackupKVRequest](./influxdb-client-apis.getbackupkvrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ postTasks(request: PostTasksRequest, requestOptions?: RequestOptions): Promise<T
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostTasksRequest](./influxdb-client-apis.posttasksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

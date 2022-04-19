@@ -17,7 +17,7 @@ postOrgs(request: PostOrgsRequest, requestOptions?: RequestOptions): Promise<Org
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostOrgsRequest](./influxdb-client-apis.postorgsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

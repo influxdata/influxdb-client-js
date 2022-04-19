@@ -17,7 +17,7 @@ postReplication(request: PostReplicationRequest, requestOptions?: RequestOptions
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostReplicationRequest](./influxdb-client-apis.postreplicationrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

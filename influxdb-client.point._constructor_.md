@@ -16,5 +16,5 @@ constructor(measurementName?: string);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  measurementName | string | the measurement name |
+|  measurementName | string | <i>(Optional)</i> the measurement name |
 

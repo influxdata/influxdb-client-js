@@ -17,7 +17,7 @@ deleteTelegrafsID(request: DeleteTelegrafsIDRequest, requestOptions?: RequestOpt
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

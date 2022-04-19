@@ -4,7 +4,7 @@
 
 ## PostQueryRequest.org property
 
-Specifies the name of the organization executing the query. Takes either the ID or Name. If both `orgID` and `org` are specified, `org` takes precedence.
+Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`<!-- -->, `org` takes precedence.
 
 <b>Signature:</b>
 

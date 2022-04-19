@@ -16,8 +16,8 @@ getBackupMetadata(request?: GetBackupMetadataRequest, requestOptions?: RequestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  request | [GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -17,7 +17,7 @@ deleteDashboardsIDMembersID(request: DeleteDashboardsIDMembersIDRequest, request
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteDashboardsIDMembersIDRequest](./influxdb-client-apis.deletedashboardsidmembersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

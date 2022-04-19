@@ -17,7 +17,7 @@ collectRows<T>(query: string | ParameterizedQuery, rowMapper?: (values: string[]
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
-|  rowMapper | (values: string\[\], tableMeta: [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)<!-- -->) =&gt; T \| undefined | maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, <code>row =&gt; row.tableMeta.toObject(row.values)</code> is used. |
+|  rowMapper | (values: string\[\], tableMeta: [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)<!-- -->) =&gt; T \| undefined | <i>(Optional)</i> maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, <code>row =&gt; row.tableMeta.toObject(row.values)</code> is used. |
 
 <b>Returns:</b>
 

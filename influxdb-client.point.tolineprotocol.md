@@ -16,7 +16,7 @@ toLineProtocol(settings?: Partial<PointSettings>): string | undefined;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  settings | Partial&lt;[PointSettings](./influxdb-client.pointsettings.md)<!-- -->&gt; | settings control serialization of a point timestamp and can also add default tags, nanosecond timestamp precision is used when no <code>settings</code> or no <code>settings.convertTime</code> is supplied. |
+|  settings | Partial&lt;[PointSettings](./influxdb-client.pointsettings.md)<!-- -->&gt; | <i>(Optional)</i> settings control serialization of a point timestamp and can also add default tags, nanosecond timestamp precision is used when no <code>settings</code> or no <code>settings.convertTime</code> is supplied. |
 
 <b>Returns:</b>
 

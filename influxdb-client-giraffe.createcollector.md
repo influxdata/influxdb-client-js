@@ -19,7 +19,7 @@ export declare function createCollector(resolve: (value: FromFluxResult) => void
 |  resolve | (value: FromFluxResult) =&gt; void | called when the Table is collected |
 |  reject | (reason?: any) =&gt; void | called upon error |
 |  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) |  |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect |
+|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect |
 
 <b>Returns:</b>
 

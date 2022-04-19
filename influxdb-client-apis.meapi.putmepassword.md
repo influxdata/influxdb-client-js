@@ -17,7 +17,7 @@ putMePassword(request: PutMePasswordRequest, requestOptions?: RequestOptions): P
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PutMePasswordRequest](./influxdb-client-apis.putmepasswordrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

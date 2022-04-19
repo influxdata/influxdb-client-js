@@ -17,7 +17,7 @@ getAuthorizationsID(request: GetAuthorizationsIDRequest, requestOptions?: Reques
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

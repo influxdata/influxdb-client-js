@@ -17,7 +17,7 @@ postTasksIDMembers(request: PostTasksIDMembersRequest, requestOptions?: RequestO
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostTasksIDMembersRequest](./influxdb-client-apis.posttasksidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

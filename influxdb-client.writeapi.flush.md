@@ -16,7 +16,7 @@ flush(withRetryBuffer?: boolean): Promise<void>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  withRetryBuffer | boolean | flush also all the scheduled retries |
+|  withRetryBuffer | boolean | <i>(Optional)</i> flush also all the scheduled retries |
 
 <b>Returns:</b>
 

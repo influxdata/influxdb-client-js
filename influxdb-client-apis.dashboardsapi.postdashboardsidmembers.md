@@ -17,7 +17,7 @@ postDashboardsIDMembers(request: PostDashboardsIDMembersRequest, requestOptions?
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PostDashboardsIDMembersRequest](./influxdb-client-apis.postdashboardsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

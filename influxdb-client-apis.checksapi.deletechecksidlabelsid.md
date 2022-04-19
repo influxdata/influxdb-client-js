@@ -17,7 +17,7 @@ deleteChecksIDLabelsID(request: DeleteChecksIDLabelsIDRequest, requestOptions?: 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteChecksIDLabelsIDRequest](./influxdb-client-apis.deletechecksidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

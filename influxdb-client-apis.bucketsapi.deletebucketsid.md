@@ -17,7 +17,7 @@ deleteBucketsID(request: DeleteBucketsIDRequest, requestOptions?: RequestOptions
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [DeleteBucketsIDRequest](./influxdb-client-apis.deletebucketsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

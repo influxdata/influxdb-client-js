@@ -17,7 +17,7 @@ patchReplicationByID(request: PatchReplicationByIDRequest, requestOptions?: Requ
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

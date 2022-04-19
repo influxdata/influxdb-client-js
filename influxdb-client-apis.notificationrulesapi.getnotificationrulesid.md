@@ -17,7 +17,7 @@ getNotificationRulesID(request: GetNotificationRulesIDRequest, requestOptions?: 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GetNotificationRulesIDRequest](./influxdb-client-apis.getnotificationrulesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | optional transport options |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
