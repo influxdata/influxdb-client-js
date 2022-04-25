@@ -53,8 +53,7 @@ $ pnpm add @influxdata/influxdb-client
 If you target Node.js, use [@influxdata/influxdb-client](./packages/core/README.md).
 It provides main (CJS), module (ESM), and browser (UMD) exports.
 
-If you target browsers or [Deno](https://deno.land/), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md).
-It provides main (UMD) and module (ESM) exports.
+If you target browsers (including [Deno](https://deno.land/) and [Ionic](https://ionic.io/)), use [@influxdata/influxdb-client-browser](./packages/core-browser/README.md). It provides main (UMD) and module (ESM) exports.
 
 To use InfluxDB management APIs in your project, also add `@influxdata/influxdb-client-apis` as a dependency to your project.
 
