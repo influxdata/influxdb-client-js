@@ -19,8 +19,8 @@ export interface ExecutionOptions {
 }
 
 /**
- * FluxScriptInvocationAPI executes flux 'API invocable script' and parses the result CSV annotated data.
- * See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ .
+ * FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data.
+ * See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ .
  */
 export class FluxScriptInvocationAPI {
   // internal
