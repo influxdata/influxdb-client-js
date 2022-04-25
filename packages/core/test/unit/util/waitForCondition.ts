@@ -8,6 +8,7 @@
  */
 export async function waitForCondition(
   condition: () => any,
+  message = 'timeouted',
   timeout = 100,
   step = 5
 ): Promise<void> {
@@ -20,5 +21,5 @@ export async function waitForCondition(
     if (condition()) return
   }
   // eslint-disable-next-line no-console
-  console.error('WARN:waitForCondition: timeouted')
+  console.error(`WARN:waitForCondition: ${message}`)
 }
