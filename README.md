@@ -38,6 +38,7 @@ InfluxDB 2.x client consists of two main packages
     - sources
     - ... and other InfluxDB domain objects
   - Delete data from a bucket
+  - Invoke a flux script
   - built on @influxdata/influxdb-client
 
 ## Installation
