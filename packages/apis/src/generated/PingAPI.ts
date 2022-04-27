@@ -17,7 +17,7 @@ export class PingAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Checks the status of InfluxDB instance and version of InfluxDB.
+   * Get the status and version of the instance.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetPing }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

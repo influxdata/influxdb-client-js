@@ -18,7 +18,7 @@ export class HealthAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get the health of an instance.
+   * Retrieve the health of the instance.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

@@ -540,7 +540,14 @@ export interface XYViewProperties {
  */
 export type ColorMapping = any
 
-export type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX'
+export type XYGeom =
+  | 'line'
+  | 'step'
+  | 'stacked'
+  | 'bar'
+  | 'monotoneX'
+  | 'stepBefore'
+  | 'stepAfter'
 
 export interface SingleStatViewProperties {
   type: 'single-stat'
@@ -1624,6 +1631,8 @@ export interface Organization {
 export interface PostOrganizationRequest {
   name: string
   description?: string
+  /** An optional list of email address's to be invited to the organization */
+  users?: string[]
 }
 
 export interface PatchOrganizationRequest {

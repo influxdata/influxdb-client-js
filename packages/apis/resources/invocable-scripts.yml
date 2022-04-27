@@ -1,18 +1,18 @@
 openapi: 3.0.0
 info:
-  title: InfluxData Invocable Scripts API
+  title: InfluxData Invokable Scripts API
   version: 0.1.0
   description: |
     Manage and execute scripts as API endpoints in InfluxDB.
 
-    An API Invocable Script assigns your custom Flux script to a new InfluxDB API endpoint for your organization.
-    Invocable scripts let you execute your script as an HTTP request to the endpoint.
+    An API Invokable Script assigns your custom Flux script to a new InfluxDB API endpoint for your organization.
+    Invokable scripts let you execute your script as an HTTP request to the endpoint.
 
-    Invocable scripts accept parameters. Add parameter references in your script as `params.myparameter`.
+    Invokable scripts accept parameters. Add parameter references in your script as `params.myparameter`.
     When you `invoke` your script, you send parameters as key-value pairs in the `params` object.
     InfluxDB executes your script with the key-value pairs as arguments and returns the result.
 
-    For more information and examples, see [Invoke custom scripts](https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts).
+    For more information and examples, see [Invoke custom scripts](https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/).
 servers:
   - url: /api/v2
 paths:
@@ -20,7 +20,7 @@ paths:
     get:
       operationId: GetScripts
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: List scripts
       parameters:
         - in: query
@@ -48,7 +48,7 @@ paths:
     post:
       operationId: PostScripts
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: Create a script
       requestBody:
         description: The script to create.
@@ -71,9 +71,9 @@ paths:
     get:
       operationId: GetScriptsID
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: Retrieve a script
-      description: Uses script ID to retrieve details of an invocable script.
+      description: Uses script ID to retrieve details of an invokable script.
       parameters:
         - in: path
           name: scriptID
@@ -94,10 +94,10 @@ paths:
     patch:
       operationId: PatchScriptsID
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: Update a script
       description: |
-        Updates properties (`name`, `description`, and `script`) of an invocable script.
+        Updates properties (`name`, `description`, and `script`) of an invokable script.
       requestBody:
         description: Script update to apply
         required: true
@@ -125,7 +125,7 @@ paths:
     delete:
       operationId: DeleteScriptsID
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: Delete a script
       description: Deletes a script and all associated records.
       parameters:
@@ -145,7 +145,7 @@ paths:
     post:
       operationId: PostScriptsIDInvoke
       tags:
-        - Invocable Scripts
+        - Invokable Scripts
       summary: Invoke a script
       description: Invokes a script and substitutes `params` keys referenced in the script with `params` key-values sent in the request body.
       parameters:

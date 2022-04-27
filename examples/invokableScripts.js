@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
-This example shows how to use API-invocable scripts. See also
-https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ .
+This example shows how to use API-invokable scripts. See also
+https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ .
 */
 
 const {InfluxDB, HttpError} = require('@influxdata/influxdb-client')
@@ -108,7 +108,7 @@ example()
   .catch(error => {
     if (error instanceof HttpError && error.statusCode === 404) {
       console.error(
-        `API invocable scripts are not supported by InfluxDB at ${url} .`
+        `API invokable scripts are not supported by InfluxDB at ${url} .`
       )
       console.error('Modify env.js with InfluxDB Cloud URL and token.')
     } else {

@@ -18,7 +18,7 @@ export class ConfigAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get the run-time configuration of the instance.
+   * Retrieve runtime configuration.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetConfig }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

@@ -7,27 +7,78 @@ info:
 servers:
   - url: /api/v2
 tags:
+  - name: Authorizations
+    description: |
+      Create and manage API tokens.
+      An **authorization** associates a list of permissions to an
+      **organization** and provides a token for API access.
+      Optionally, you can restrict an authorization and its token to a specific user.
+
+      ### Related guides
+
+        - [Authorize API requests](https://docs.influxdata.com/influxdb/v2.2/api-guide/api_intro/#authentication).
+        - [Manage API tokens](https://docs.influxdata.com/influxdb/v2.2/security/tokens/).
+        - [Assign a token to a specific user](https://docs.influxdata.com/influxdb/v2.2/security/tokens/create-token/).
+  - name: Debug
+    description: |
+      Generates profiling and trace reports.
+
+      Use routes under `/debug/pprof` to analyze the Go runtime of InfluxDB.
+      These endpoints generate [Go runtime profiles](https://pkg.go.dev/runtime/pprof)
+      and **trace** reports.
+      **Profiles** are collections of stack traces that show call sequences
+      leading to instances of a particular event, such as allocation.
+
+      For more information about **pprof profile** and **trace** reports,
+      see the following resources:
+        - [Google pprof tool](https://github.com/google/pprof)
+        - [Golang diagnostics](https://go.dev/doc/diagnostics)
+  - name: Query
+    description: |
+      Retrieve data, analyze queries, and get query suggestions.
+  - name: Write
+    description: |
+      Write time series data to buckets.
   - name: Authentication
     description: |
-      The InfluxDB `/api/v2` API requires authentication for all requests.
-      Use InfluxDB API tokens to authenticate requests to the `/api/v2` API.
+      Use one of the following schemes to authenticate to the InfluxDB API:
 
-      For examples and more information, see
-      [Token authentication](#section/Authentication/TokenAuthentication)
-
+      - [Token authentication](#section/Authentication/TokenAuthentication)
+      - [Basic authentication](#section/Authentication/BasicAuthentication)
+      - [Querystring authentication](#section/Authentication/QuerystringAuthentication)
       <!-- ReDoc-Inject: <security-definitions> -->
     x-traitTag: true
   - name: Quick start
     x-traitTag: true
     description: |
-      See the [**API Quick Start**](https://docs.influxdata.com/influxdb/v2.1/api-guide/api_intro/) to get up and running authenticating with tokens, writing to buckets, and querying data.
+      See the [**API Quick Start**](https://docs.influxdata.com/influxdb/v2.2/api-guide/api_intro/)
+      to get up and running authenticating with tokens, writing to buckets, and querying data.
 
-      [**InfluxDB API client libraries**](https://docs.influxdata.com/influxdb/v2.1/api-guide/client-libraries/) are available for popular languages and ready to import into your application.
+      [**InfluxDB API client libraries**](https://docs.influxdata.com/influxdb/v2.2/api-guide/client-libraries/)
+      are available for popular languages and ready to import into your application.
+  - name: Headers
+    x-traitTag: true
+    description: |
+      InfluxDB API endpoints use standard HTTP request and response headers.
+
+      **Note**: Not all operations support all headers.
+
+      ### Request headers
+
+      | Header                   | Value type            | Description                                |
+      |:------------------------ |:--------------------- |:-------------------------------------------|
+      | `Accept`                 | string                | The content type that the client can understand. |
+      | `Authorization`          | string                | The authorization scheme and credential. |
+      | `Content-Encoding`       | string                | The compression applied to the line protocol in the request payload. |
+      | `Content-Length`         | integer               | The size of the entity-body, in bytes, sent to the database. |
+      | `Content-Type`           | string                | The format of the data in the request body. |
   - name: Response codes
     x-traitTag: true
     description: |
-      The InfluxDB API uses standard HTTP status codes for success and failure responses.
-      The response body may include additional details. For details about a specific operation's response, see **Responses** and **Response Samples** for that operation.
+      InfluxDB API endpoints use standard HTTP status codes for success and failure responses.
+      The response body may include additional details.
+      For details about a specific operation's response,
+      see **Responses** and **Response Samples** for that operation.
 
       API operations may return the following HTTP status codes:
 
@@ -43,41 +94,18 @@ tags:
       | `429`       | Too many requests        | API token is temporarily over the request quota. The `Retry-After` header describes when to try the request again. |
       | `500`       | Internal server error    |                       |
       | `503`       | Service unavailable      | Server is temporarily unavailable to process the request. The `Retry-After` header describes when to try the request again. |
-  - name: Query
-    description: |
-      Retrieve data, analyze queries, and get query suggestions.
-  - name: Write
-    description: |
-      Write time series data to buckets.
-  - name: Authorizations
-    description: |
-      Create and manage API tokens. An **authorization** associates a list of permissions to an **organization** and provides a token for API access.
-      Optionally, you can restrict an authorization and its token to a specific user.
-
-      For more information and examples, see the following:
-        - [Authorize API requests](https://docs.influxdata.com/influxdb/v2.1/api-guide/api_intro/#authentication).
-        - [Manage API tokens](https://docs.influxdata.com/influxdb/v2.1/security/tokens/).
-        - [Assign a token to a specific user](https://docs.influxdata.com/influxdb/v2.1/security/tokens/create-token/).
-  - name: Debug
-    description: |
-      Routes under `/debug/pprof` generate profiling and trace reports
-      you can use to analyze the Go runtime of InfluxDB.
-      [Go runtime profiles](https://pkg.go.dev/runtime/pprof) are
-      collections of stack traces that show call sequences
-      leading to instances of a particular event, such as allocation.
-      For more information about **pprof profile** and **trace** reports, see the following resources:
-        - [Google pprof tool](https://github.com/google/pprof)
-        - [Golang diagnostics](https://go.dev/doc/diagnostics)
 x-tagGroups:
   - name: Overview
     tags:
       - Quick start
       - Authentication
+      - Headers
       - Response codes
   - name: Data I/O endpoints
     tags:
       - Write
       - Query
+      - Tasks
   - name: Resource endpoints
     tags:
       - Buckets
@@ -91,51 +119,15 @@ x-tagGroups:
       - Users
   - name: System information endpoints
     tags:
+      - Config
+      - Debug
       - Health
       - Metrics
       - Ping
       - Ready
       - Routes
   - name: All endpoints
-    tags:
-      - Authorizations
-      - Backup
-      - Buckets
-      - Cells
-      - Checks
-      - Config
-      - DBRPs
-      - Dashboards
-      - Delete
-      - Health
-      - Metrics
-      - Labels
-      - Legacy Authorizations
-      - NotificationEndpoints
-      - NotificationRules
-      - Organizations
-      - Ping
-      - Query
-      - Ready
-      - RemoteConnections
-      - Replications
-      - Resources
-      - Restore
-      - Routes
-      - Rules
-      - Scraper Targets
-      - Secrets
-      - Setup
-      - Signin
-      - Signout
-      - Sources
-      - Tasks
-      - Telegraf Plugins
-      - Telegrafs
-      - Templates
-      - Users
-      - Variables
-      - Write
+    tags: []
 paths:
   /signin:
     post:
@@ -196,14 +188,17 @@ paths:
   /ping:
     get:
       operationId: GetPing
-      summary: Checks the status of InfluxDB instance and version of InfluxDB.
+      summary: Get the status and version of the instance
+      description: Returns the status and InfluxDB version of the instance.
       servers:
         - url: ''
       tags:
         - Ping
       responses:
         '204':
-          description: OK
+          description: |
+            OK.
+            Headers contain InfluxDB version information.
           headers:
             X-Influxdb-Build:
               schema:
@@ -215,14 +210,17 @@ paths:
               description: The version of InfluxDB.
     head:
       operationId: HeadPing
-      summary: Checks the status of InfluxDB instance and version of InfluxDB.
+      summary: Get the status and version of the instance
+      description: Returns the status and InfluxDB version of the instance.
       servers:
         - url: ''
       tags:
         - Ping
       responses:
         '204':
-          description: OK
+          description: |
+            OK.
+            Headers contain InfluxDB version information.
           headers:
             X-Influxdb-Build:
               schema:
@@ -1038,40 +1036,62 @@ paths:
       description: |
         Writes data to a bucket.
 
-        To write data into InfluxDB, you need the following:
+        Use this endpoint to send data in [line protocol](https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/) format to InfluxDB.
+        InfluxDB parses and validates line protocol in the request body,
+        responds with success or failure, and then handles the write asynchronously.
 
-        - **organization name or ID** – _See [View organizations](https://docs.influxdata.com/influxdb/v2.1/organizations/view-orgs/#view-your-organization-id) for instructions on viewing your organization ID._
-        - **bucket** – _See [View buckets](https://docs.influxdata.com/influxdb/v2.1/organizations/buckets/view-buckets/) for
-         instructions on viewing your bucket ID._
-        - **API token** – _See [View tokens](https://docs.influxdata.com/influxdb/v2.1/security/tokens/view-tokens/)
-         for instructions on viewing your API token._
-        - **InfluxDB URL** – _See [InfluxDB URLs](https://docs.influxdata.com/influxdb/v2.1/reference/urls/)_.
-        - data in [line protocol](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/line-protocol) format.
+        #### Required permissions
 
-        InfluxDB Cloud enforces rate and size limits different from InfluxDB OSS. For details, see Responses.
+        - `write-buckets` or `write-bucket BUCKET_ID`
 
-        For more information and examples, see the following:
-        - [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/v2.1/write-data/developer-tools/api).
-        - [Optimize writes to InfluxDB](https://docs.influxdata.com/influxdb/v2.1/write-data/best-practices/optimize-writes/).
-        - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/)
+        `BUCKET_ID` is the ID of the destination bucket.
+
+        #### Rate limits (with InfluxDB Cloud)
+
+        `write` rate limits apply.
+        For more information, see [limits and adjustable quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/).
+
+        #### Related guides
+
+        - [Write data with the InfluxDB API](https://docs.influxdata.com/influxdb/v2.2/write-data/developer-tools/api).
+        - [Optimize writes to InfluxDB](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).
+        - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/)
       requestBody:
-        description: Data in line protocol format.
+        description: |
+          Data in line protocol format.
+
+          To send compressed data, do the following:
+
+            1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data.
+            2. In your request, send the compressed data and the
+               `Content-Encoding: gzip` header.
+
+          #### Related guides
+
+          - [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).
         required: true
         content:
           text/plain:
             schema:
               type: string
               format: byte
+            examples:
+              plain-utf8:
+                value: |
+                  airSensors,sensor_id=TLM0201 temperature=73.97038159354763,humidity=35.23103248356096,co=0.48445310567793615 1630424257000000000
+                  airSensors,sensor_id=TLM0202 temperature=75.30007505999716,humidity=35.651929918691714,co=0.5141876544505826 1630424257000000000
       parameters:
         - $ref: '#/components/parameters/TraceSpan'
         - in: header
           name: Content-Encoding
           description: |
-            The value tells InfluxDB what compression is applied to the line protocol in the request payload.
-            To make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.
+            The compression applied to the line protocol in the request payload.
+            To send a GZIP payload, pass `Content-Encoding: gzip` header.
           schema:
             type: string
-            description: 'Content coding. Use `gzip` for compressed data or `identity` for unmodified, uncompressed data.'
+            description: |
+              Content coding.
+              Use `gzip` for compressed data or `identity` for unmodified, uncompressed data.
             default: identity
             enum:
               - gzip
@@ -1079,8 +1099,8 @@ paths:
         - in: header
           name: Content-Type
           description: |
-            Format of the data in the request body.
-            To make an API request with a line protocol payload, send `Content-Type: text/plain; charset=utf-8` as a request header.
+            The format of the data in the request body.
+            To send a line protocol payload, pass `Content-Type: text/plain; charset=utf-8`.
           schema:
             type: string
             description: |
@@ -1091,24 +1111,31 @@ paths:
               - text/plain; charset=utf-8
         - in: header
           name: Content-Length
-          description: 'Size of the entity-body, in bytes, sent to the database. If the length is greater than the database''s `max body` configuration option, the server responds with status code `413`.'
+          description: |
+            The size of the entity-body, in bytes, sent to InfluxDB.
+            If the length is greater than the `max body` configuration option,
+            the server responds with status code `413`.
           schema:
             type: integer
             description: The length in decimal number of octets.
         - in: header
           name: Accept
           description: |
-            Content type that the client can understand. Writes only return a response body if they fail, e.g. due to a formatting problem or quota limit.
-            #### InfluxDB Cloud
-              - returns only `application/json` for format and limit errors.
-              - returns only `text/html` for some quota limit errors.
+            The content type that the client can understand.
+            Writes only return a response body if they fail--for example,
+            due to a formatting problem or quota limit.
 
+            #### InfluxDB Cloud
+
+              - Returns only `application/json` for format and limit errors.
+              - Returns only `text/html` for some quota limit errors.
 
             #### InfluxDB OSS
-              - returns only `application/json` for format and limit errors.
 
+              - Returns only `application/json` for format and limit errors.
 
-            For more information about write errors, see how to [troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).
+            #### Related guides
+              - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).
           schema:
             type: string
             description: Error content type.
@@ -1117,33 +1144,48 @@ paths:
               - application/json
         - in: query
           name: org
-          description: 'Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.'
+          description: |
+            The destination organization for writes.
+            The database writes all points in the batch to this organization.
+            If you provide both `orgID` and `org` parameters, `org` takes precedence.
           required: true
           schema:
             type: string
-            description: Organization name or ID.
+            description: The organization name or ID.
         - in: query
           name: orgID
-          description: 'ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.'
+          description: |
+            The ID of the destination organization for writes.
+            If both `orgID` and `org` are specified, `org` takes precedence.
           schema:
             type: string
         - in: query
           name: bucket
-          description: Destination bucket for writes.
+          description: The destination bucket for writes.
           required: true
           schema:
             type: string
-            description: All points within batch are written to this bucket.
+            description: InfluxDB writes all points in the batch to this bucket.
         - in: query
           name: precision
-          description: Precision for unix timestamps in the line protocol of the request payload.
+          description: The precision for unix timestamps in the line protocol batch.
           schema:
             $ref: '#/components/schemas/WritePrecision'
       responses:
         '204':
-          description: 'InfluxDB validated the request data format and accepted the data for writing to the bucket. Because data is written to InfluxDB asynchronously, data may not yet be written to a bucket. If some of your data didn’t write to the bucket, see [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).'
+          description: |
+            Success. InfluxDB validated the request and the data format and
+            accepted the data for writing to the bucket.
+            Because data is written to InfluxDB asynchronously, data may not yet be written to a bucket.
+
+            #### Related guides
+
+            - [How to check for write errors](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).
         '400':
-          description: Bad request. Line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.
+          description: |
+            Bad request. The line protocol data in the request is malformed.
+            The response body contains the first malformed line in the data.
+            InfluxDB rejected the batch and did not write any data.
           content:
             application/json:
               schema:
@@ -1184,14 +1226,18 @@ paths:
                     message: bucket "air_sensor" not found
         '413':
           description: |
-            The request payload is too large. InfluxDB rejected the batch and did not write any data.
+            The request payload is too large.
+            InfluxDB rejected the batch and did not write any data.
+
             #### InfluxDB Cloud:
-              - returns this error if the request exceeds the maximum [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).
-              - returns `Content-Type: text/html` for this error.
+
+             - Returns this error if the payload exceeds the 50MB size limit.
+             - Returns `Content-Type: text/html` for this error.
 
             #### InfluxDB OSS:
-              - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.
-              - returns `Content-Type: application/json` for this error.
+
+             - Returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.
+             - Returns `Content-Type: application/json` for this error.
           content:
             application/json:
               schema:
@@ -1218,15 +1264,19 @@ paths:
                     </html>
         '429':
           description: |
-            #### InfluxDB Cloud:
-              - returns this error if a **read** or **write** request exceeds your
-                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)
-                or if a **delete** request exceeds the maximum
-                [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).
-              - returns `Retry-After` header that describes when to try the write again.
+            Too many requests.
 
-            #### InfluxDB OSS:
-              - doesn't return this error.
+            #### InfluxDB Cloud
+
+              - Returns this error if a **read** or **write** request exceeds your
+                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)
+                or if a **delete** request exceeds the maximum
+                [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).
+              - Returns `Retry-After` header that describes when to try the write again.
+
+            #### InfluxDB OSS
+
+              - Doesn't return this error.
           headers:
             Retry-After:
               description: Non-negative decimal integer indicating seconds to wait before retrying the request.
@@ -1246,15 +1296,19 @@ paths:
                     code: internal error
         '503':
           description: |
-            #### InfluxDB Cloud:
-              - returns this error if series cardinality exceeds your plan's
-                [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas).
-                See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.1/write-data/best-practices/resolve-high-cardinality/).
+            Service unavailable.
 
-            #### InfluxDB OSS:
-              - returns this error if
+            #### InfluxDB Cloud
+
+              - Returns this error if series cardinality exceeds your plan's
+                [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas).
+                See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/resolve-high-cardinality/).
+
+            #### InfluxDB OSS
+
+              - Returns this error if
                 the server is temporarily unavailable to accept writes.
-              - returns `Retry-After` header that describes when to try the write again.
+              - Returns `Retry-After` header that describes when to try the write again.
           headers:
             Retry-After:
               description: Non-negative decimal integer indicating seconds to wait before retrying the request.
@@ -1478,7 +1532,7 @@ paths:
       operationId: GetDashboardsID
       tags:
         - Dashboards
-      summary: Retrieve a Dashboard
+      summary: Retrieve a dashboard
       parameters:
         - $ref: '#/components/parameters/TraceSpan'
         - in: path
@@ -1494,7 +1548,7 @@ paths:
             type: string
             enum:
               - properties
-          description: Includes the cell view properties in the response if set to `properties`
+          description: 'If `properties`, includes the cell view properties in the response.'
       responses:
         '200':
           description: Retrieve a single dashboard
@@ -2251,13 +2305,13 @@ paths:
         Retrieves data from InfluxDB buckets.
 
         To query data, you need the following:
-        - **organization** – _See [View organizations](https://docs.influxdata.com/influxdb/v2.1/organizations/view-orgs/#view-your-organization-id) for instructions on viewing your organization ID._
-        - **API token** – _See [View tokens](https://docs.influxdata.com/influxdb/v2.1/security/tokens/view-tokens/)
+        - **organization** – _See [View organizations](https://docs.influxdata.com/influxdb/v2.2/organizations/view-orgs/#view-your-organization-id) for instructions on viewing your organization ID._
+        - **API token** – _See [View tokens](https://docs.influxdata.com/influxdb/v2.2/security/tokens/view-tokens/)
          for instructions on viewing your API token._
-        - **InfluxDB URL** – _See [InfluxDB URLs](https://docs.influxdata.com/influxdb/v2.1/reference/urls/)_.
+        - **InfluxDB URL** – _See [InfluxDB URLs](https://docs.influxdata.com/influxdb/v2.2/reference/urls/)_.
         - **Flux query** – _See [Flux](https://docs.influxdata.com/flux/v0.x/)._
 
-        For more information and examples, see [Query with the InfluxDB API](https://docs.influxdata.com/influxdb/v2.1/query-data/execute-queries/influx-api/).
+        For more information and examples, see [Query with the InfluxDB API](https://docs.influxdata.com/influxdb/v2.2/query-data/execute-queries/influx-api/).
       parameters:
         - $ref: '#/components/parameters/TraceSpan'
         - in: header
@@ -2329,9 +2383,9 @@ paths:
           description: |
             #### InfluxDB Cloud:
               - returns this error if a **read** or **write** request exceeds your
-                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)
+                plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#adjustable-service-quotas)
                 or if a **delete** request exceeds the maximum
-                [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits)
+                [global limit](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#global-limits)
               - returns `Retry-After` header that describes when to try the write again.
 
             #### InfluxDB OSS:
@@ -5208,14 +5262,14 @@ paths:
       operationId: GetDebugPprofAllProfiles
       tags:
         - Debug
-      summary: Get all runtime profiles
+      summary: Retrieve all runtime profiles
       description: |
-        Get reports for the following [Go runtime profiles](https://pkg.go.dev/runtime/pprof):
+        Collects samples and returns reports for the following [Go runtime profiles](https://pkg.go.dev/runtime/pprof):
 
         - **allocs**: All past memory allocations
         - **block**: Stack traces that led to blocking on synchronization primitives
         - **cpu**: (Optional) Program counters sampled from the executing stack.
-          Include by passing the `cpu` query parameter with a [duration](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/#duration) value.
+          Include by passing the `cpu` query parameter with a [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration) value.
           Equivalent to the report from [`GET /debug/pprof/profile?seconds=NUMBER_OF_SECONDS`](#operation/GetDebugPprofProfile).
         - **goroutine**: All current goroutines
         - **heap**: Memory allocations for live objects
@@ -5264,7 +5318,7 @@ paths:
         - in: query
           name: cpu
           description: |
-            Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/#duration).
+            Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration).
           schema:
             type: string
             format: duration
@@ -5294,9 +5348,9 @@ paths:
       operationId: GetDebugPprofAllocs
       tags:
         - Debug
-      summary: Get the memory allocations runtime profile
+      summary: Retrieve the memory allocations runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
+        Returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
         all past memory allocations.
         **allocs** is the same as the **heap** profile,
         but changes the default [pprof](https://pkg.go.dev/runtime/pprof)
@@ -5379,10 +5433,10 @@ paths:
       operationId: GetDebugPprofBlock
       tags:
         - Debug
-      summary: Get the block runtime profile
+      summary: Retrieve the block runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
-        stack traces that led to blocking on synchronization primitives.
+        Collects samples and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof)
+        report of stack traces that led to blocking on synchronization primitives.
       x-codeSamples:
         - lang: Shell
           label: 'Shell: go tool pprof'
@@ -5460,9 +5514,9 @@ paths:
       operationId: GetDebugPprofCmdline
       tags:
         - Debug
-      summary: Get the command line invocation
+      summary: Retrieve the command line invocation
       description: |
-        Get the command line that invoked InfluxDB.
+        Returns the command line that invoked InfluxDB.
       servers:
         - url: ''
       parameters:
@@ -5483,10 +5537,10 @@ paths:
       operationId: GetDebugPprofGoroutine
       tags:
         - Debug
-      summary: Get the goroutines runtime profile
+      summary: Retrieve the goroutines runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
-        all current goroutines.
+        Collects statistics and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof)
+        report of all current goroutines.
       x-codeSamples:
         - lang: Shell
           label: 'Shell: go tool pprof'
@@ -5510,8 +5564,9 @@ paths:
           name: debug
           description: |
             - `0`: (Default) Return the report as a gzip-compressed protocol buffer.
-            - `1`: Return a response body with the report formatted as human-readable text.
-              The report contains comments that translate addresses to function names and line numbers for debugging.
+            - `1`: Return a response body with the report formatted as
+                   human-readable text with comments that translate addresses to
+                   function names and line numbers for debugging.
 
             `debug=1` is mutually exclusive with the `seconds` query parameter.
           schema:
@@ -5564,10 +5619,10 @@ paths:
       operationId: GetDebugPprofHeap
       tags:
         - Debug
-      summary: Get the heap runtime profile
+      summary: Retrieve the heap runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
-        memory allocations for live objects.
+        Collects statistics and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof)
+        report of memory allocations for live objects.
 
         To run **garbage collection** before sampling,
         pass the `gc` query parameter with a value of `1`.
@@ -5668,9 +5723,9 @@ paths:
       operationId: GetDebugPprofMutex
       tags:
         - Debug
-      summary: Get the mutual exclusion (mutex) runtime profile
+      summary: Retrieve the mutual exclusion (mutex) runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
+        Collects statistics and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
         lock contentions.
         The profile contains stack traces of holders of contended mutual exclusions (mutexes).
       x-codeSamples:
@@ -5750,10 +5805,10 @@ paths:
       operationId: GetDebugPprofProfile
       tags:
         - Debug
-      summary: Get the CPU runtime profile
+      summary: Retrieve the CPU runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
-        program counters on the executing stack.
+        Collects statistics and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof)
+        report of program counters on the executing stack.
       x-codeSamples:
         - lang: Shell
           label: 'Shell: go tool pprof'
@@ -5803,10 +5858,10 @@ paths:
       operationId: GetDebugPprofThreadCreate
       tags:
         - Debug
-      summary: Get the threadcreate runtime profile
+      summary: Retrieve the threadcreate runtime profile
       description: |
-        Get a [Go runtime profile](https://pkg.go.dev/runtime/pprof) report of
-        stack traces that led to the creation of new OS threads.
+        Collects statistics and returns a [Go runtime profile](https://pkg.go.dev/runtime/pprof)
+        report of stack traces that led to the creation of new OS threads.
       x-codeSamples:
         - lang: Shell
           label: 'Shell: go tool pprof'
@@ -5888,9 +5943,9 @@ paths:
       operationId: GetDebugPprofTrace
       tags:
         - Debug
-      summary: Get the runtime execution trace
+      summary: Retrieve the runtime execution trace
       description: |
-        Trace execution events for the current program.
+        Collects profile data and returns trace execution events for the current program.
       x-codeSamples:
         - lang: Shell
           label: 'Shell: go tool trace'
@@ -5933,14 +5988,17 @@ paths:
       operationId: GetHealth
       tags:
         - Health
-      summary: Get the health of an instance
+      summary: Retrieve the health of the instance
+      description: Returns the health of the instance.
       servers:
         - url: ''
       parameters:
         - $ref: '#/components/parameters/TraceSpan'
       responses:
         '200':
-          description: The instance is healthy.
+          description: |
+            The instance is healthy.
+            The response body contains the health check items and status.
           content:
             application/json:
               schema:
@@ -5959,7 +6017,17 @@ paths:
       operationId: GetMetrics
       tags:
         - Metrics
-      summary: Get metrics of an instance
+      summary: Retrieve workload performance metrics
+      description: |
+        Returns metrics about the workload performance of an InfluxDB instance.
+
+        Use this endpoint to get performance, resource, and usage metrics.
+
+        #### Related guides
+
+        - For the list of metrics categories, see [InfluxDB OSS metrics](https://docs.influxdata.com/influxdb/v2.2/reference/internals/metrics/).
+        - Learn how to use InfluxDB to [scrape Prometheus metrics](https://docs.influxdata.com/influxdb/v2.2write-data/developer-tools/scrape-prometheus-metrics/).
+        - Learn how InfluxDB [parses the Prometheus exposition format](https://docs.influxdata.com/influxdb/v2.2/reference/prometheus-metrics/).
       servers:
         - url: ''
       parameters:
@@ -5967,16 +6035,14 @@ paths:
       responses:
         '200':
           description: |
-            Payload body contains metrics about the InfluxDB instance.
-
-            Metrics are formatted in the
-            Prometheus [plain-text exposition format](https://prometheus.io/docs/instrumenting/exposition_formats).
-            Each metric is identified by its name and a set of optional key-value pairs.
+            Success. The response body contains metrics in
+            [Prometheus plain-text exposition format](https://prometheus.io/docs/instrumenting/exposition_formats)
+            Metrics contain a name, an optional set of key-value pairs, and a value.
 
             The following descriptors precede each metric:
 
-            - *`HELP`*: description of the metric
-            - *`TYPE`*: type of the metric (e.g. `counter`, `gauge`, `histogram`, or `summary`)
+            - `HELP`: description of the metric
+            - `TYPE`: [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/) (`counter`, `gauge`, `histogram`, or `summary`)
           content:
             text/plain:
               schema:
@@ -7639,12 +7705,23 @@ paths:
       operationId: GetConfig
       tags:
         - Config
-      summary: Get the run-time configuration of the instance
+      summary: Retrieve runtime configuration
+      description: |
+        Returns the active runtime configuration of the InfluxDB instance.
+
+        In InfluxDB v2.2+, use this endpoint to view your active runtime configuration,
+        including flags and environment variables.
+
+        #### Related guides
+
+        - [View your runtime server configuration](https://docs.influxdata.com/influxdb/v2.2/reference/config-options/#view-your-runtime-server-configuration)
       parameters:
         - $ref: '#/components/parameters/TraceSpan'
       responses:
         '200':
-          description: Payload body contains the run-time configuration of the InfluxDB instance.
+          description: |
+            Success.
+            The response body contains the active runtime configuration of the InfluxDB instance.
           content:
             application/json:
               schema:
@@ -9003,6 +9080,11 @@ components:
           type: string
         description:
           type: string
+        users:
+          type: array
+          description: An optional list of email address's to be invited to the organization
+          items:
+            type: string
       required:
         - name
     PatchOrganizationRequest:
@@ -10670,6 +10752,8 @@ components:
         - stacked
         - bar
         - monotoneX
+        - stepBefore
+        - stepAfter
     BandViewProperties:
       type: object
       required:
@@ -14071,8 +14155,8 @@ components:
 
         For more information and examples, see the following:
           - [`/authorizations`](#tag/Authorizations) endpoint.
-          - [Authorize API requests](https://docs.influxdata.com/influxdb/v2.1/api-guide/api_intro/#authentication).
-          - [Manage API tokens](https://docs.influxdata.com/influxdb/v2.1/security/tokens/).
+          - [Authorize API requests](https://docs.influxdata.com/influxdb/v2.2/api-guide/api_intro/#authentication).
+          - [Manage API tokens](https://docs.influxdata.com/influxdb/v2.2/security/tokens/).
     BasicAuthentication:
       type: http
       scheme: basic

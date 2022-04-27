@@ -52,7 +52,7 @@
 ### Features
 
 1. [#387](https://github.com/influxdata/influxdb-client-js/pull/387): Add FluxScriptInvocationAPI.
-1. [#387](https://github.com/influxdata/influxdb-client-js/pull/387): Add invocableScript.js example.
+1. [#387](https://github.com/influxdata/influxdb-client-js/pull/387): Add invokableScript.js example.
 1. [#390](https://github.com/influxdata/influxdb-client-js/pull/390): Add delete.ts example to show how to delete data from a bucket.
 
 ### Bug Fixes
