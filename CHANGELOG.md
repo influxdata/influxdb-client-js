@@ -6,7 +6,7 @@
 
 ### Other
 
-1. [#442](https://github.com/influxdata/influxdb-client-js/pull/442): Rename `InvocableScripts` to `InvokableScripts`.
+1. [#442](https://github.com/influxdata/influxdb-client-js/pull/442): Demonstrate invokable scripts in `invokableScripts.js` example.
 
 ## 1.25.0 [2022-04-19]
 
