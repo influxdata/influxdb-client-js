@@ -24,7 +24,7 @@ import {
 export interface GetDashboardsIDRequest {
   /** The ID of the dashboard to update. */
   dashboardID: string
-  /** Includes the cell view properties in the response if set to `properties` */
+  /** If `properties`, includes the cell view properties in the response. */
   include?: string
 }
 export interface PatchDashboardsIDRequest {
@@ -166,7 +166,7 @@ export class DashboardsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Retrieve a Dashboard.
+   * Retrieve a dashboard.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

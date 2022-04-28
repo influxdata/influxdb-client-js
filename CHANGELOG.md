@@ -1,5 +1,13 @@
 ## 1.26.0 [unreleased]
 
+### Features
+
+1. [#442](https://github.com/influxdata/influxdb-client-js/pull/442): Regenerate APIs from swagger.
+
+### Other
+
+1. [#442](https://github.com/influxdata/influxdb-client-js/pull/442): Demonstrate invokable scripts in `invokableScripts.js` example.
+
 ## 1.25.0 [2022-04-19]
 
 ### Features

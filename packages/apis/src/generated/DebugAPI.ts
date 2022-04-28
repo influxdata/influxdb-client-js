@@ -2,7 +2,7 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface GetDebugPprofAllProfilesRequest {
-  /** Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/#duration).
+  /** Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration).
    */
   cpu?: string
 }
@@ -37,8 +37,9 @@ export interface GetDebugPprofBlockRequest {
 export interface GetDebugPprofCmdlineRequest {}
 export interface GetDebugPprofGoroutineRequest {
   /** - `0`: (Default) Return the report as a gzip-compressed protocol buffer.
-- `1`: Return a response body with the report formatted as human-readable text.
-  The report contains comments that translate addresses to function names and line numbers for debugging.
+- `1`: Return a response body with the report formatted as
+       human-readable text with comments that translate addresses to
+       function names and line numbers for debugging.
 
 `debug=1` is mutually exclusive with the `seconds` query parameter.
  */
@@ -118,7 +119,7 @@ export class DebugAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get all runtime profiles.
+   * Retrieve all runtime profiles.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllProfiles }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -136,7 +137,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the memory allocations runtime profile.
+   * Retrieve the memory allocations runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllocs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -157,7 +158,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the block runtime profile.
+   * Retrieve the block runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofBlock }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -178,7 +179,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the command line invocation.
+   * Retrieve the command line invocation.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofCmdline }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -196,7 +197,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the goroutines runtime profile.
+   * Retrieve the goroutines runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofGoroutine }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -217,7 +218,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the heap runtime profile.
+   * Retrieve the heap runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofHeap }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -239,7 +240,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the mutual exclusion (mutex) runtime profile.
+   * Retrieve the mutual exclusion (mutex) runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofMutex }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -260,7 +261,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the CPU runtime profile.
+   * Retrieve the CPU runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofProfile }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -280,7 +281,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the threadcreate runtime profile.
+   * Retrieve the threadcreate runtime profile.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofThreadCreate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -301,7 +302,7 @@ export class DebugAPI {
     )
   }
   /**
-   * Get the runtime execution trace.
+   * Retrieve the runtime execution trace.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofTrace }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

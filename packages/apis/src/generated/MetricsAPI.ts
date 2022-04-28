@@ -17,7 +17,7 @@ export class MetricsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Get metrics of an instance.
+   * Retrieve workload performance metrics.
    * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMetrics }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

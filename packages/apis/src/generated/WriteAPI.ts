@@ -2,15 +2,31 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface PostWriteRequest {
-  /** Data in line protocol format. */
+  /** Data in line protocol format.
+
+To send compressed data, do the following:
+
+  1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data.
+  2. In your request, send the compressed data and the
+     `Content-Encoding: gzip` header.
+
+#### Related guides
+
+- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).
+ */
   body: string
-  /** Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence. */
+  /** The destination organization for writes.
+The database writes all points in the batch to this organization.
+If you provide both `orgID` and `org` parameters, `org` takes precedence.
+ */
   org: string
-  /** ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence. */
+  /** The ID of the destination organization for writes.
+If both `orgID` and `org` are specified, `org` takes precedence.
+ */
   orgID?: string
-  /** Destination bucket for writes. */
+  /** The destination bucket for writes. */
   bucket: string
-  /** Precision for unix timestamps in the line protocol of the request payload. */
+  /** The precision for unix timestamps in the line protocol batch. */
   precision?: any
 }
 /**

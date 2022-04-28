@@ -107,7 +107,7 @@
     "operation": "get",
     "operationId": "GetPing",
     "basicAuth": false,
-    "summary": "Checks the status of InfluxDB instance and version of InfluxDB.",
+    "summary": "Get the status and version of the instance",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
@@ -115,7 +115,7 @@
     "responses": [
       {
         "code": "204",
-        "description": "OK",
+        "description": "OK.\nHeaders contain InfluxDB version information.\n",
         "mediaTypes": []
       }
     ]
@@ -1445,51 +1445,51 @@
       },
       {
         "name": "Content-Encoding",
-        "description": "The value tells InfluxDB what compression is applied to the line protocol in the request payload.\nTo make an API request with a GZIP payload, send `Content-Encoding: gzip` as a request header.\n",
+        "description": "The compression applied to the line protocol in the request payload.\nTo send a GZIP payload, pass `Content-Encoding: gzip` header.\n",
         "type": "string"
       },
       {
         "name": "Content-Type",
-        "description": "Format of the data in the request body.\nTo make an API request with a line protocol payload, send `Content-Type: text/plain; charset=utf-8` as a request header.\n",
+        "description": "The format of the data in the request body.\nTo send a line protocol payload, pass `Content-Type: text/plain; charset=utf-8`.\n",
         "type": "string"
       },
       {
         "name": "Content-Length",
-        "description": "Size of the entity-body, in bytes, sent to the database. If the length is greater than the database's `max body` configuration option, the server responds with status code `413`.",
+        "description": "The size of the entity-body, in bytes, sent to InfluxDB.\nIf the length is greater than the `max body` configuration option,\nthe server responds with status code `413`.\n",
         "type": "number"
       },
       {
         "name": "Accept",
-        "description": "Content type that the client can understand. Writes only return a response body if they fail, e.g. due to a formatting problem or quota limit.\n#### InfluxDB Cloud\n  - returns only `application/json` for format and limit errors.\n  - returns only `text/html` for some quota limit errors.\n\n\n#### InfluxDB OSS\n  - returns only `application/json` for format and limit errors.\n\n\nFor more information about write errors, see how to [troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).\n",
+        "description": "The content type that the client can understand.\nWrites only return a response body if they fail--for example,\ndue to a formatting problem or quota limit.\n\n#### InfluxDB Cloud\n\n  - Returns only `application/json` for format and limit errors.\n  - Returns only `text/html` for some quota limit errors.\n\n#### InfluxDB OSS\n\n  - Returns only `application/json` for format and limit errors.\n\n#### Related guides\n  - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).\n",
         "type": "string"
       }
     ],
     "queryParams": [
       {
         "name": "org",
-        "description": "Destination organization for writes. The database writes all points in the batch to this organization. If you provide both `orgID` and `org` parameters, `org` takes precedence.",
+        "description": "The destination organization for writes.\nThe database writes all points in the batch to this organization.\nIf you provide both `orgID` and `org` parameters, `org` takes precedence.\n",
         "required": true,
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.",
+        "description": "The ID of the destination organization for writes.\nIf both `orgID` and `org` are specified, `org` takes precedence.\n",
         "type": "string"
       },
       {
         "name": "bucket",
-        "description": "Destination bucket for writes.",
+        "description": "The destination bucket for writes.",
         "required": true,
         "type": "string"
       },
       {
         "name": "precision",
-        "description": "Precision for unix timestamps in the line protocol of the request payload.",
+        "description": "The precision for unix timestamps in the line protocol batch.",
         "type": "any"
       }
     ],
     "bodyParam": {
-      "description": "Data in line protocol format.",
+      "description": "Data in line protocol format.\n\nTo send compressed data, do the following:\n\n  1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data.\n  2. In your request, send the compressed data and the\n     `Content-Encoding: gzip` header.\n\n#### Related guides\n\n- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).\n",
       "required": true,
       "mediaType": "text/plain",
       "type": "string"
@@ -1497,12 +1497,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "InfluxDB validated the request data format and accepted the data for writing to the bucket. Because data is written to InfluxDB asynchronously, data may not yet be written to a bucket. If some of your data didn’t write to the bucket, see [how to check for write errors](https://docs.influxdata.com/influxdb/v2.1/write-data/troubleshoot/).",
+        "description": "Success. InfluxDB validated the request and the data format and\naccepted the data for writing to the bucket.\nBecause data is written to InfluxDB asynchronously, data may not yet be written to a bucket.\n\n#### Related guides\n\n- [How to check for write errors](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).\n",
         "mediaTypes": []
       },
       {
         "code": "400",
-        "description": "Bad request. Line protocol data in the request is malformed. The response body contains the first malformed line in the data. InfluxDB rejected the batch and did not write any data.",
+        "description": "Bad request. The line protocol data in the request is malformed.\nThe response body contains the first malformed line in the data.\nInfluxDB rejected the batch and did not write any data.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1532,7 +1532,7 @@
       },
       {
         "code": "413",
-        "description": "The request payload is too large. InfluxDB rejected the batch and did not write any data.\n#### InfluxDB Cloud:\n  - returns this error if the request exceeds the maximum [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).\n  - returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n  - returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n  - returns `Content-Type: application/json` for this error.\n",
+        "description": "The request payload is too large.\nInfluxDB rejected the batch and did not write any data.\n\n#### InfluxDB Cloud:\n\n - Returns this error if the payload exceeds the 50MB size limit.\n - Returns `Content-Type: text/html` for this error.\n\n#### InfluxDB OSS:\n\n - Returns this error only if the [Go (golang) `ioutil.ReadAll()`](https://pkg.go.dev/io/ioutil#ReadAll) function raises an error.\n - Returns `Content-Type: application/json` for this error.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1546,7 +1546,7 @@
       },
       {
         "code": "429",
-        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits).\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
+        "description": "Too many requests.\n\n#### InfluxDB Cloud\n\n  - Returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).\n  - Returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS\n\n  - Doesn't return this error.\n",
         "mediaTypes": []
       },
       {
@@ -1561,7 +1561,7 @@
       },
       {
         "code": "503",
-        "description": "#### InfluxDB Cloud:\n  - returns this error if series cardinality exceeds your plan's\n    [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas).\n    See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.1/write-data/best-practices/resolve-high-cardinality/).\n\n#### InfluxDB OSS:\n  - returns this error if\n    the server is temporarily unavailable to accept writes.\n  - returns `Retry-After` header that describes when to try the write again.\n",
+        "description": "Service unavailable.\n\n#### InfluxDB Cloud\n\n  - Returns this error if series cardinality exceeds your plan's\n    [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas).\n    See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/resolve-high-cardinality/).\n\n#### InfluxDB OSS\n\n  - Returns this error if\n    the server is temporarily unavailable to accept writes.\n  - Returns `Retry-After` header that describes when to try the write again.\n",
         "mediaTypes": []
       },
       {
@@ -1924,7 +1924,7 @@
     "operation": "get",
     "operationId": "GetDashboardsID",
     "basicAuth": false,
-    "summary": "Retrieve a Dashboard",
+    "summary": "Retrieve a dashboard",
     "positionalParams": [
       {
         "name": "dashboardID",
@@ -1944,7 +1944,7 @@
     "queryParams": [
       {
         "name": "include",
-        "description": "Includes the cell view properties in the response if set to `properties`",
+        "description": "If `properties`, includes the cell view properties in the response.",
         "required": false,
         "type": "string"
       }
@@ -3188,7 +3188,7 @@
       },
       {
         "code": "429",
-        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.1/account-management/limits/#global-limits)\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
+        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#global-limits)\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
         "mediaTypes": []
       },
       {
@@ -7901,7 +7901,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofAllProfiles",
     "basicAuth": false,
-    "summary": "Get all runtime profiles",
+    "summary": "Retrieve all runtime profiles",
     "positionalParams": [],
     "headerParams": [
       {
@@ -7914,7 +7914,7 @@
     "queryParams": [
       {
         "name": "cpu",
-        "description": "Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/#duration).\n",
+        "description": "Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration).\n",
         "type": "string"
       }
     ],
@@ -7948,7 +7948,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofAllocs",
     "basicAuth": false,
-    "summary": "Get the memory allocations runtime profile",
+    "summary": "Retrieve the memory allocations runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8004,7 +8004,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofBlock",
     "basicAuth": false,
-    "summary": "Get the block runtime profile",
+    "summary": "Retrieve the block runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8060,7 +8060,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofCmdline",
     "basicAuth": false,
-    "summary": "Get the command line invocation",
+    "summary": "Retrieve the command line invocation",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8101,7 +8101,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofGoroutine",
     "basicAuth": false,
-    "summary": "Get the goroutines runtime profile",
+    "summary": "Retrieve the goroutines runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8114,7 +8114,7 @@
     "queryParams": [
       {
         "name": "debug",
-        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as human-readable text.\n  The report contains comments that translate addresses to function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
+        "description": "- `0`: (Default) Return the report as a gzip-compressed protocol buffer.\n- `1`: Return a response body with the report formatted as\n       human-readable text with comments that translate addresses to\n       function names and line numbers for debugging.\n\n`debug=1` is mutually exclusive with the `seconds` query parameter.\n",
         "type": "number"
       },
       {
@@ -8157,7 +8157,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofHeap",
     "basicAuth": false,
-    "summary": "Get the heap runtime profile",
+    "summary": "Retrieve the heap runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8218,7 +8218,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofMutex",
     "basicAuth": false,
-    "summary": "Get the mutual exclusion (mutex) runtime profile",
+    "summary": "Retrieve the mutual exclusion (mutex) runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8274,7 +8274,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofProfile",
     "basicAuth": false,
-    "summary": "Get the CPU runtime profile",
+    "summary": "Retrieve the CPU runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8321,7 +8321,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofThreadCreate",
     "basicAuth": false,
-    "summary": "Get the threadcreate runtime profile",
+    "summary": "Retrieve the threadcreate runtime profile",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8377,7 +8377,7 @@
     "operation": "get",
     "operationId": "GetDebugPprofTrace",
     "basicAuth": false,
-    "summary": "Get the runtime execution trace",
+    "summary": "Retrieve the runtime execution trace",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8424,7 +8424,7 @@
     "operation": "get",
     "operationId": "GetHealth",
     "basicAuth": false,
-    "summary": "Get the health of an instance",
+    "summary": "Retrieve the health of the instance",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8439,7 +8439,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The instance is healthy.",
+        "description": "The instance is healthy.\nThe response body contains the health check items and status.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -8475,7 +8475,7 @@
     "operation": "get",
     "operationId": "GetMetrics",
     "basicAuth": false,
-    "summary": "Get metrics of an instance",
+    "summary": "Retrieve workload performance metrics",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8490,7 +8490,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Payload body contains metrics about the InfluxDB instance.\n\nMetrics are formatted in the\nPrometheus [plain-text exposition format](https://prometheus.io/docs/instrumenting/exposition_formats).\nEach metric is identified by its name and a set of optional key-value pairs.\n\nThe following descriptors precede each metric:\n\n- *`HELP`*: description of the metric\n- *`TYPE`*: type of the metric (e.g. `counter`, `gauge`, `histogram`, or `summary`)\n",
+        "description": "Success. The response body contains metrics in\n[Prometheus plain-text exposition format](https://prometheus.io/docs/instrumenting/exposition_formats)\nMetrics contain a name, an optional set of key-value pairs, and a value.\n\nThe following descriptors precede each metric:\n\n- `HELP`: description of the metric\n- `TYPE`: [Prometheus metric type](https://prometheus.io/docs/concepts/metric_types/) (`counter`, `gauge`, `histogram`, or `summary`)\n",
         "mediaTypes": [
           {
             "mediaType": "text/plain",
@@ -11304,7 +11304,7 @@
     "operation": "get",
     "operationId": "GetConfig",
     "basicAuth": false,
-    "summary": "Get the run-time configuration of the instance",
+    "summary": "Retrieve runtime configuration",
     "positionalParams": [],
     "headerParams": [
       {
@@ -11319,7 +11319,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Payload body contains the run-time configuration of the InfluxDB instance.",
+        "description": "Success.\nThe response body contains the active runtime configuration of the InfluxDB instance.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
