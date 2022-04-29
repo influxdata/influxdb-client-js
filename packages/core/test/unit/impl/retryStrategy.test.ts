@@ -128,13 +128,14 @@ describe('RetryStrategyImpl', () => {
   })
   describe('random interval', () => {
     it('generates exponential data from randomized windows', () => {
-      const subject = new RetryStrategyImpl({
+      const options = {
         minRetryDelay: 100,
         maxRetryDelay: 1000,
         retryJitter: 100,
         exponentialBase: 2,
         randomRetry: true,
-      })
+      }
+      const subject = new RetryStrategyImpl(options)
       const values = [1, 2, 3, 4, 5].reduce((acc, _val, index) => {
         acc.push(subject.nextDelay(undefined, index + 1))
         return acc
@@ -157,7 +158,9 @@ describe('RetryStrategyImpl', () => {
         )
       }
       subject.success()
-      expect(Math.trunc(subject.nextDelay() / 100) * 100).equals(100)
+      expect(Math.trunc(subject.nextDelay() / 100) * 100).is.lessThanOrEqual(
+        options.minRetryDelay + options.retryJitter
+      )
     })
   })
 })
