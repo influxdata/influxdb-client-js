@@ -205,6 +205,8 @@ export default class FetchTransport implements Transport {
         ...headers,
       },
       credentials: 'omit' as 'omit',
+      // override with custom transport options
+      ...this.connectionOptions.transportOptions,
       // allow to specify custom options, such as signal, in SendOptions
       ...other,
     }
