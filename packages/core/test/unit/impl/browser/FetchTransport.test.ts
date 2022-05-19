@@ -284,6 +284,28 @@ describe('FetchTransport', () => {
           }
         )
     })
+    it('uses custom transport options', async () => {
+      let request: any
+      emulateFetchApi(
+        {
+          headers: {'content-type': 'text/plain'},
+          body: '{}',
+        },
+        req => (request = req)
+      )
+      await transport.request('/whatever', '', {
+        method: 'GET',
+      })
+      expect(request?.credentials).is.deep.equal('omit')
+      const custom = new FetchTransport({
+        url: 'http://test:8086',
+        transportOptions: {credentials: 'my-val'},
+      })
+      await custom.request('/whatever', '', {
+        method: 'GET',
+      })
+      expect(request?.credentials).is.deep.equal('my-val')
+    })
   })
   describe('send', () => {
     const transport = new FetchTransport({url: 'http://test:8086'})
@@ -477,6 +499,45 @@ describe('FetchTransport', () => {
         })
       }
     )
+    it('uses custom transport options', async () => {
+      let request: any
+      emulateFetchApi(
+        {
+          headers: {'content-type': 'text/plain'},
+          body: '{}',
+        },
+        req => (request = req)
+      )
+      await new Promise(resolve =>
+        transport.send(
+          'http://test:8086',
+          '',
+          {method: 'POST'},
+          {
+            next: sinon.fake(),
+            complete: () => resolve(0),
+            error: resolve,
+          }
+        )
+      )
+      expect(request?.credentials).is.deep.equal('omit')
+      await new Promise(resolve =>
+        new FetchTransport({
+          url: 'http://test:8086',
+          transportOptions: {credentials: 'my-val'},
+        }).send(
+          'http://test:8086',
+          '',
+          {method: 'POST'},
+          {
+            next: sinon.fake(),
+            complete: () => resolve(0),
+            error: resolve,
+          }
+        )
+      )
+      expect(request?.credentials).is.deep.equal('my-val')
+    })
   })
   describe('chunkCombiner', () => {
     const options = {url: 'http://test:8086'}
