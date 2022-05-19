@@ -3,6 +3,7 @@
 ### Features
 
 1. [#442](https://github.com/influxdata/influxdb-client-js/pull/442): Regenerate APIs from swagger.
+1. [#447](https://github.com/influxdata/influxdb-client-js/pull/447): Allow custom transport options in a browser.
 
 ### Other
 
