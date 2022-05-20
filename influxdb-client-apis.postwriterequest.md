@@ -14,9 +14,9 @@ export interface PostWriteRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [body](./influxdb-client-apis.postwriterequest.body.md) | string | Data in line protocol format. |
-|  [bucket](./influxdb-client-apis.postwriterequest.bucket.md) | string | Destination bucket for writes. |
-|  [org](./influxdb-client-apis.postwriterequest.org.md) | string | Destination organization for writes. The database writes all points in the batch to this organization. If you provide both <code>orgID</code> and <code>org</code> parameters, <code>org</code> takes precedence. |
-|  [orgID?](./influxdb-client-apis.postwriterequest.orgid.md) | string | <i>(Optional)</i> ID of the destination organization for writes. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |
-|  [precision?](./influxdb-client-apis.postwriterequest.precision.md) | any | <i>(Optional)</i> Precision for unix timestamps in the line protocol of the request payload. |
+|  [body](./influxdb-client-apis.postwriterequest.body.md) | string | Data in line protocol format.<!-- -->To send compressed data, do the following:<!-- -->1. Use \[GZIP\](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the <code>Content-Encoding: gzip</code> header.<!-- -->\#\#\#\# Related guides<!-- -->- \[Best practices for optimizing writes\](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/). |
+|  [bucket](./influxdb-client-apis.postwriterequest.bucket.md) | string | The destination bucket for writes. |
+|  [org](./influxdb-client-apis.postwriterequest.org.md) | string | The destination organization for writes. The database writes all points in the batch to this organization. If you provide both <code>orgID</code> and <code>org</code> parameters, <code>org</code> takes precedence. |
+|  [orgID?](./influxdb-client-apis.postwriterequest.orgid.md) | string | <i>(Optional)</i> The ID of the destination organization for writes. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |
+|  [precision?](./influxdb-client-apis.postwriterequest.precision.md) | any | <i>(Optional)</i> The precision for unix timestamps in the line protocol batch. |
 

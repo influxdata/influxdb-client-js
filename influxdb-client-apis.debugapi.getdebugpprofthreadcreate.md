@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofThreadCreate() method
 
-Get the threadcreate runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofThreadCreate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofThreadCreate)
+Retrieve the threadcreate runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofThreadCreate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofThreadCreate)
 
 <b>Signature:</b>
 

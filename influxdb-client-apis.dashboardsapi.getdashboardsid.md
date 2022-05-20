@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsID() method
 
-Retrieve a Dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsID)
+Retrieve a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsID)
 
 <b>Signature:</b>
 

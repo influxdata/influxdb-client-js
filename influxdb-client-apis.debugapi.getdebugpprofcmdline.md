@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofCmdline() method
 
-Get the command line invocation. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofCmdline](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofCmdline)
+Retrieve the command line invocation. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofCmdline](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofCmdline)
 
 <b>Signature:</b>
 

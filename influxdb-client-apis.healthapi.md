@@ -22,5 +22,5 @@ export declare class HealthAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getHealth(request, requestOptions)](./influxdb-client-apis.healthapi.gethealth.md) |  | Get the health of an instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth) |
+|  [getHealth(request, requestOptions)](./influxdb-client-apis.healthapi.gethealth.md) |  | Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth) |
 

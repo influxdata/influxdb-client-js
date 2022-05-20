@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.bucket property
 
-Destination bucket for writes.
+The destination bucket for writes.
 
 <b>Signature:</b>
 

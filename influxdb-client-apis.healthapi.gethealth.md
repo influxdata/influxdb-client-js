@@ -4,7 +4,7 @@
 
 ## HealthAPI.getHealth() method
 
-Get the health of an instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth)
+Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetHealth)
 
 <b>Signature:</b>
 

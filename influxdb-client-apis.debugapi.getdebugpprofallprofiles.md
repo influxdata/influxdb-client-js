@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofAllProfiles() method
 
-Get all runtime profiles. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofAllProfiles](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllProfiles)
+Retrieve all runtime profiles. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofAllProfiles](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllProfiles)
 
 <b>Signature:</b>
 

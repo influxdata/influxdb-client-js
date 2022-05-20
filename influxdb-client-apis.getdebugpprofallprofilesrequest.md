@@ -14,5 +14,5 @@ export interface GetDebugPprofAllProfilesRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [cpu?](./influxdb-client-apis.getdebugpprofallprofilesrequest.cpu.md) | string | <i>(Optional)</i> Collects and returns CPU profiling data for the specified \[duration\](https://docs.influxdata.com/influxdb/v2.1/reference/glossary/\#duration). |
+|  [cpu?](./influxdb-client-apis.getdebugpprofallprofilesrequest.cpu.md) | string | <i>(Optional)</i> Collects and returns CPU profiling data for the specified \[duration\](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/\#duration). |
 

@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.precision property
 
-Precision for unix timestamps in the line protocol of the request payload.
+The precision for unix timestamps in the line protocol batch.
 
 <b>Signature:</b>
 

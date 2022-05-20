@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofHeap() method
 
-Get the heap runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofHeap](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofHeap)
+Retrieve the heap runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofHeap](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofHeap)
 
 <b>Signature:</b>
 

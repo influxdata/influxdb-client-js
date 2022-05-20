@@ -4,7 +4,7 @@
 
 ## GetDashboardsIDRequest.include property
 
-Includes the cell view properties in the response if set to `properties`
+If `properties`<!-- -->, includes the cell view properties in the response.
 
 <b>Signature:</b>
 

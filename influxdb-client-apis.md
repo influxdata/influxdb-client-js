@@ -46,7 +46,7 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [DebugAPI](./influxdb-client-apis.debugapi.md) | Debug API |
 |  [DeleteAPI](./influxdb-client-apis.deleteapi.md) | Delete API |
 |  [FlagsAPI](./influxdb-client-apis.flagsapi.md) | Flags API |
-|  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invocable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invocable-scripts/ . |
+|  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ . |
 |  [HealthAPI](./influxdb-client-apis.healthapi.md) | Health API |
 |  [LabelsAPI](./influxdb-client-apis.labelsapi.md) | Labels API |
 |  [LegacyAPI](./influxdb-client-apis.legacyapi.md) | Legacy API |

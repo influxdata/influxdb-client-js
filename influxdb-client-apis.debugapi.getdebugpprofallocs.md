@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofAllocs() method
 
-Get the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllocs)
+Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllocs)
 
 <b>Signature:</b>
 

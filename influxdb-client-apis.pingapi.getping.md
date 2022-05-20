@@ -4,7 +4,7 @@
 
 ## PingAPI.getPing() method
 
-Checks the status of InfluxDB instance and version of InfluxDB. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetPing)
+Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetPing)
 
 <b>Signature:</b>
 

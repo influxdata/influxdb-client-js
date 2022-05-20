@@ -4,7 +4,7 @@
 
 ## GetDebugPprofGoroutineRequest.debug property
 
-- `0`<!-- -->: (Default) Return the report as a gzip-compressed protocol buffer. - `1`<!-- -->: Return a response body with the report formatted as human-readable text. The report contains comments that translate addresses to function names and line numbers for debugging.
+- `0`<!-- -->: (Default) Return the report as a gzip-compressed protocol buffer. - `1`<!-- -->: Return a response body with the report formatted as human-readable text with comments that translate addresses to function names and line numbers for debugging.
 
 `debug=1` is mutually exclusive with the `seconds` query parameter.
 

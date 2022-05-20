@@ -22,5 +22,5 @@ export declare class MetricsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md) |  | Get metrics of an instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMetrics) |
+|  [getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md) |  | Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMetrics) |
 

@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofGoroutine() method
 
-Get the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofGoroutine)
+Retrieve the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofGoroutine)
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofMutex() method
 
-Get the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofMutex)
+Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofMutex)
 
 <b>Signature:</b>
 

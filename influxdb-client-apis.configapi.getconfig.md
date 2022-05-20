@@ -4,7 +4,7 @@
 
 ## ConfigAPI.getConfig() method
 
-Get the run-time configuration of the instance. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetConfig)
+Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetConfig)
 
 <b>Signature:</b>
 
