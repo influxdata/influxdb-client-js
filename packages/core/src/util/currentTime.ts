@@ -96,7 +96,7 @@ export const dateToProtocolTimestamp = {
 }
 
 /**
- * convertTimeToNanos converts of Point's timestamp to a string
+ * convertTimeToNanos converts Point's timestamp to a string.
  * @param value - supported timestamp value
  * @returns line protocol value
  */
