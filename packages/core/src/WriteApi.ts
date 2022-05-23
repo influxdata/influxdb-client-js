@@ -71,5 +71,5 @@ export default interface WriteApi extends PointSettings {
    * automatically initialized to `/api/v2/write?org=...`,
    * but it can be changed after the API is obtained.
    */
-  httpPath: string
+  path: string
 }
