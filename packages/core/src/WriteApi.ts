@@ -65,4 +65,11 @@ export default interface WriteApi extends PointSettings {
    * @returns count of points that were not written to InfluxDB
    */
   dispose(): number
+
+  /**
+   * HTTP path and query parameters of InfluxDB query API. It is
+   * automatically initialized to `/api/v2/write?org=...`,
+   * but it can be changed after the API is obtained.
+   */
+  httpPath: string
 }

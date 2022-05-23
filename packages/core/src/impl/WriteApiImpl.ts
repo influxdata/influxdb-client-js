@@ -67,9 +67,10 @@ class WriteBuffer {
 }
 
 export default class WriteApiImpl implements WriteApi {
+  public httpPath: string
+
   private writeBuffer: WriteBuffer
   private closed = false
-  private httpPath: string
   private writeOptions: WriteOptions
   private sendOptions: SendOptions
   private _timeoutHandle: any = undefined
