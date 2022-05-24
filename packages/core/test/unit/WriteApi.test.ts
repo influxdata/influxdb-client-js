@@ -661,5 +661,24 @@ describe('WriteApi', () => {
       expect(logs.warn).deep.equals([])
       expect(uri).match(/.*&consistency=quorum$/)
     })
+    it('allows to overwrite httpPath', async () => {
+      useSubject({})
+      expect(subject.path).match(/api\/v2\/write\?.*$/)
+      const customPath = '/custom/path?whathever=itis'
+      subject.path = customPath
+      let uri: any
+      nock(clientOptions.url)
+        .post(/.*/)
+        .reply(function(_uri, _requestBody) {
+          uri = this.req.path
+          return [204, '', {}]
+        })
+        .persist()
+      subject.writePoint(new Point('test').floatField('value', 1))
+      await subject.close()
+      expect(logs.error).has.length(0)
+      expect(logs.warn).deep.equals([])
+      expect(uri).equals(customPath)
+    })
   })
 })

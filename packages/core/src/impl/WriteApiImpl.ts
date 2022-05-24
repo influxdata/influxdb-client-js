@@ -67,9 +67,10 @@ class WriteBuffer {
 }
 
 export default class WriteApiImpl implements WriteApi {
+  public path: string
+
   private writeBuffer: WriteBuffer
   private closed = false
-  private httpPath: string
   private writeOptions: WriteOptions
   private sendOptions: SendOptions
   private _timeoutHandle: any = undefined
@@ -86,11 +87,11 @@ export default class WriteApiImpl implements WriteApi {
     precision: WritePrecisionType,
     writeOptions?: Partial<WriteOptions>
   ) {
-    this.httpPath = `/api/v2/write?org=${encodeURIComponent(
+    this.path = `/api/v2/write?org=${encodeURIComponent(
       org
     )}&bucket=${encodeURIComponent(bucket)}&precision=${precision}`
     if (writeOptions?.consistency) {
-      this.httpPath += `&consistency=${encodeURIComponent(
+      this.path += `&consistency=${encodeURIComponent(
         writeOptions.consistency
       )}`
     }
@@ -237,7 +238,7 @@ export default class WriteApiImpl implements WriteApi {
           },
         }
         this.transport.send(
-          this.httpPath,
+          this.path,
           lines.join('\n'),
           this.sendOptions,
           callbacks

@@ -1,5 +1,9 @@
 ## 1.27.0 [unreleased]
 
+### Features
+
+1. [#449](https://github.com/influxdata/influxdb-client-js/pull/449): Allow to overwrite default write API HTTP path.
+
 ## 1.26.0 [2022-05-20]
 
 ### Features
