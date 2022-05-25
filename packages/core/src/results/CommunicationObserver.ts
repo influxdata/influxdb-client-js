@@ -16,7 +16,7 @@ export type ResponseStartedFn = (headers: Headers, statusCode?: number) => void
  */
 export interface CommunicationObserver<T> {
   /**
-   * Data chunk received, can be called mupliple times.
+   * Data chunk received, can be called multiple times.
    * @param data - data
    */
   next(data: T): void
