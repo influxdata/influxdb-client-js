@@ -1,6 +1,5 @@
 {
   "private": true,
-  "name": "@influxdata/influx",
   "description": "InfluxDB 2.x client",
   "workspaces": {
     "packages": [
