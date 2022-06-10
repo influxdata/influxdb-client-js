@@ -4,6 +4,10 @@
 
 1. [#449](https://github.com/influxdata/influxdb-client-js/pull/449): Allow to overwrite default write API HTTP path.
 
+### Other
+
+1. [#455](https://github.com/influxdata/influxdb-client-js/pull/455): Improve `writeAdvanced.js` example.
+
 ## 1.26.0 [2022-05-20]
 
 ### Features
