@@ -111,7 +111,7 @@ export default interface QueryApi {
    * @param query - query
    * @param rowMapper - maps the supplied row to an item that is then collected,
    *  undefined return values are not collected. If no rowMapper is supplied,
-   *  `row => row.tableMeta.toObject(row.values)` is used.
+   *  `row => tableMeta.toObject(row.values)` is used.
    * @returns Promise of mapped results
    */
   collectRows<T>(
