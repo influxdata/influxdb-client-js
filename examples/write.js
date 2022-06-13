@@ -27,9 +27,12 @@ const point2 = new Point('temperature')
 writeApi.writePoint(point2)
 console.log(` ${point2.toLineProtocol(writeApi)}`)
 
-// WriteApi always buffer data into batches to optimize data transfer to InfluxDB server and retries
-// writing upon server/network failure. writeApi.flush() can be called to flush the buffered data,
-// close() also flushes the remaining buffered data and then cancels pending retries.
+// WriteApi always buffer data into batches to optimize data transfer to InfluxDB server.
+// writeApi.flush() can be called to flush the buffered data. The data is always written
+// asynchronously, Moreover, a failed write (caused by a temporary networking or server failure)
+// is retried automatically. Read `writeAdvanced.js` for better explanation and details.
+//
+// close() flushes the remaining buffered data and then cancels pending retries.
 writeApi
   .close()
   .then(() => {

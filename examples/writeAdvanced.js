@@ -32,9 +32,9 @@ const demoCount = 10_000
 /* name of demo measurement */
 const demoMeasurement = 'temperature2'
 
-// explains all write options
+// advanced write options
 const writeOptions = {
-  /* the maximum points/line to send in a single batch to InfluxDB server */
+  /* the maximum points/lines to send in a single batch to InfluxDB server */
   batchSize: flushBatchSize + 1, // don't let automatically flush data
   /* default tags to add to every point */
   defaultTags: {location: hostname},
