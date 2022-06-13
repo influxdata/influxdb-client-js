@@ -42,19 +42,30 @@ const writeOptions = {
   flushInterval: 0,
   /* maximum size of the retry buffer - it contains items that could not be sent for the first time */
   maxBufferLines: 30_000,
-  /* the count of retries, the delays between retries follow an exponential backoff strategy if there is no Retry-After HTTP header */
-  maxRetries: 3,
-  /* maximum delay between retries in milliseconds */
-  maxRetryDelay: 15000,
-  /* minimum delay between retries in milliseconds */
-  minRetryDelay: 1000, // minimum delay between retries
-  /* a random value of up to retryJitter is added when scheduling next retry */
-  retryJitter: 1000,
-  // ... or you can customize what to do on write failures when using a writeFailed fn, see the API docs for details
-  // writeFailed: function(error, lines, failedAttempts){/** return promise or void */},
+  /* the count of internally-scheduled retries upon write failure, the delays between write attempts follow an exponential backoff strategy if there is no Retry-After HTTP header */
+  maxRetries: 0, // do not retry writes
+  // ... there are more write options that can be customized, see
+  // https://influxdata.github.io/influxdb-client-js/influxdb-client.writeoptions.html and
+  // https://influxdata.github.io/influxdb-client-js/influxdb-client.writeretryoptions.html
 }
 
-const influxDB = new InfluxDB({url, token})
+// Node.js HTTP client OOTB does not reuse established TCP connections, a custom node HTTP agent
+// can be used to reuse them and thus reduce the count of newly established networking sockets
+const {Agent} = require('http')
+const keepAliveAgent = new Agent({
+  keepAlive: false, // reuse existing connections
+  keepAliveMsecs: 20 * 1000, // 20 seconds keep alive
+})
+process.on('exit', () => keepAliveAgent.destroy())
+
+// create InfluxDB with a custom HTTP agent
+const influxDB = new InfluxDB({
+  url,
+  token,
+  transportOptions: {
+    agent: keepAliveAgent,
+  },
+})
 
 async function importData() {
   const writeApi = influxDB.getWriteApi(org, bucket, 'ns', writeOptions)
@@ -68,6 +79,7 @@ async function importData() {
     if ((i + 1) % flushBatchSize === 0) {
       console.log(`flush writeApi: chunk #${(i + 1) / flushBatchSize}`)
       try {
+        // write the data to InfluxDB server, wait for it
         await writeApi.flush()
       } catch (e) {
         console.error()
@@ -95,6 +107,11 @@ async function importData() {
   console.log(`Size of temperature2 measurement since '${start}': `, count)
 }
 
+const start = Date.now()
 importData()
-  .then(() => console.log('FINISHED'))
+  .then(() =>
+    console.log(
+      `FINISHED writing ${demoCount} points (${Date.now() - start} millis}`
+    )
+  )
   .catch(e => console.error('FINISHED', e))
