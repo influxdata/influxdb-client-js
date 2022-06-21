@@ -680,5 +680,29 @@ describe('WriteApi', () => {
       expect(logs.warn).deep.equals([])
       expect(uri).equals(customPath)
     })
+    it('swallows hinted handoff queue not empty', async () => {
+      useSubject({
+        consistency: 'quorum',
+      })
+      nock(clientOptions.url)
+        .post(/.*/)
+        .reply(function(_uri, _requestBody) {
+          return [
+            500,
+            '{"error": "write: hinted handoff queue not empty"}',
+            {'content-type': 'application/json'},
+          ]
+        })
+        .persist()
+      subject.writePoint(new Point('test').floatField('value', 1))
+      await subject.close()
+      expect(logs.error).has.length(0)
+      expect(logs.warn).deep.equals([
+        [
+          'Write to InfluxDB returns: write: hinted handoff queue not empty',
+          undefined,
+        ],
+      ])
+    })
   })
 })
