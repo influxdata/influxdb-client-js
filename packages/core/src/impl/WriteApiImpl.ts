@@ -196,20 +196,6 @@ export default class WriteApiImpl implements WriteApi {
               onRetry.then(resolve, reject)
               return
             }
-            // ignore informational message about the state of InfluxDB
-            // enterprise cluster, if present
-            if (
-              error instanceof HttpError &&
-              error.json &&
-              typeof error.json.error === 'string' &&
-              error.json.error.includes('hinted handoff queue not empty')
-            ) {
-              Log.warn('Write to InfluxDB returns: ' + error.json.error)
-              responseStatusCode = 204
-              callbacks.complete()
-              return
-            }
-            // retry if possible
             if (
               !self.closed &&
               retryAttempts > 0 &&
