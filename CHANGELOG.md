@@ -4,6 +4,10 @@
 
 1. [#449](https://github.com/influxdata/influxdb-client-js/pull/449): Allow to overwrite default write API HTTP path.
 
+### Bug Fixes
+
+1. [#458](https://github.com/influxdata/influxdb-client-js/pull/458): Do not retry write upon 'hinted handoff queue not empty' error.
+
 ### Other
 
 1. [#455](https://github.com/influxdata/influxdb-client-js/pull/455): Improve `writeAdvanced.js` example.
