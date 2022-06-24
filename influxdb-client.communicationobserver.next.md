@@ -4,7 +4,7 @@
 
 ## CommunicationObserver.next() method
 
-Data chunk received, can be called mupliple times.
+Data chunk received, can be called multiple times.
 
 <b>Signature:</b>
 

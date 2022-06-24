@@ -25,5 +25,5 @@ export interface CommunicationObserver<T>
 |  --- | --- |
 |  [complete()](./influxdb-client.communicationobserver.complete.md) | Communication was successful. |
 |  [error(error)](./influxdb-client.communicationobserver.error.md) | Communication ended with an error. |
-|  [next(data)](./influxdb-client.communicationobserver.next.md) | Data chunk received, can be called mupliple times. |
+|  [next(data)](./influxdb-client.communicationobserver.next.md) | Data chunk received, can be called multiple times. |
 

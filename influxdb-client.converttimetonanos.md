@@ -4,7 +4,7 @@
 
 ## convertTimeToNanos() function
 
-convertTimeToNanos converts of Point's timestamp to a string
+convertTimeToNanos converts Point's timestamp to a string.
 
 <b>Signature:</b>
 
