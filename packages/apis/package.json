@@ -23,6 +23,7 @@
   "types": "dist/all.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/all.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js",
       "deno": "./dist/index.mjs",

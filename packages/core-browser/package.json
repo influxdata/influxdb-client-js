@@ -16,6 +16,7 @@
   "types": "dist/all.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/all.d.ts",
       "import": "./dist/index.browser.mjs",
       "require": "./dist/index.browser.js",
       "deno": "./dist/index.browser.mjs",
