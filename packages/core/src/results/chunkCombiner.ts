@@ -32,7 +32,10 @@ export interface ChunkCombiner {
 }
 
 // TextDecoder is available since node v8.3.0 and in all modern browsers
-declare const TextDecoder: any
+declare class TextDecoder {
+  constructor(encoding: string)
+  decode(chunk: Uint8Array): string
+}
 
 /**
  * Creates a chunk combiner instance that uses UTF-8
