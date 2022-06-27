@@ -76,7 +76,7 @@ function createResponse({
 }
 
 let beforeEmulation:
-  | {fetch: any; AbortController: any; TextEncoder: any}
+  | {fetch: any; abortController: any; textEncoder: any}
   | undefined
 
 export function emulateFetchApi(
@@ -107,8 +107,8 @@ export function emulateFetchApi(
   if (!beforeEmulation) {
     beforeEmulation = {
       fetch: globalVars.fetch,
-      AbortController: globalVars.AbortController,
-      TextEncoder: globalVars.TextEncoder,
+      abortController: globalVars.AbortController,
+      textEncoder: globalVars.TextEncoder,
     }
   }
   globalVars.fetch = fetch
@@ -117,11 +117,11 @@ export function emulateFetchApi(
 }
 export function removeFetchApi(): void {
   if (beforeEmulation) {
-    const {fetch, AbortController, TextEncoder} = beforeEmulation
+    const {fetch, abortController, textEncoder} = beforeEmulation
     beforeEmulation = undefined
     const globalVars = global as any
     globalVars.fetch = fetch
-    globalVars.AbortController = AbortController
-    globalVars.TextEncoder = TextEncoder
+    globalVars.abortController = abortController
+    globalVars.textEncoder = textEncoder
   }
 }
