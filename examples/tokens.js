@@ -40,48 +40,60 @@ async function signInDemo() {
   )
   // authorize communication with session cookies
   const session = {headers: {cookie: cookies.join('; ')}}
+
   // get all authorization tokens
   console.log('*** GetAuthorizations ***')
   const authorizationAPI = new AuthorizationsAPI(influxDB)
   const authorizations = await authorizationAPI.getAuthorizations({}, session)
   // console.log(JSON.stringify(authorizations?.authorizations, null, 2))
-  let hasMyToken = false
+  let exampleTokenID = undefined
   ;(authorizations.authorizations || []).forEach(auth => {
-    console.log(auth.token)
-    console.log(' ', auth.description)
-    hasMyToken = hasMyToken || auth.description === 'example token'
-  })
-  if (!hasMyToken) {
-    console.log('*** GetOrganization ***')
-    const orgsResponse = await new OrgsAPI(influxDB).getOrgs({org}, session)
-    if (!orgsResponse.orgs || orgsResponse.orgs.length === 0) {
-      throw new Error(`No organization named ${org} found!`)
+    console.log(auth.description)
+    // console.log(auth.token) // token cannot be retrieved in the cloud
+    if (auth.description === 'example token') {
+      exampleTokenID = auth.id
     }
-    const orgID = orgsResponse.orgs[0].id
-    console.log(' ', org, orgID)
-    console.log('*** CreateAuthorization ***')
-    const auth = await authorizationAPI.postAuthorizations(
-      {
-        body: {
-          description: 'example token',
-          orgID,
-          permissions: [
-            {
-              action: 'read',
-              resource: {type: 'buckets', orgID},
-            },
-            {
-              action: 'write',
-              resource: {type: 'buckets', orgID},
-            },
-          ],
-        },
-      },
+  })
+
+  console.log('*** GetOrganization ***')
+  const orgsResponse = await new OrgsAPI(influxDB).getOrgs({org}, session)
+  if (!orgsResponse.orgs || orgsResponse.orgs.length === 0) {
+    throw new Error(`No organization named ${org} found!`)
+  }
+  const orgID = orgsResponse.orgs[0].id
+  console.log(' ', org, orgID)
+
+  if (exampleTokenID) {
+    console.log('*** DeleteAuthorization ***')
+    await authorizationAPI.deleteAuthorizationsID(
+      {authID: exampleTokenID},
       session
     )
-    console.log(auth.token)
-    console.log(' ', auth.description)
   }
+
+  console.log('*** CreateAuthorization ***')
+  const auth = await authorizationAPI.postAuthorizations(
+    {
+      body: {
+        description: 'example token',
+        orgID,
+        permissions: [
+          {
+            action: 'read',
+            resource: {type: 'buckets', orgID},
+          },
+          {
+            action: 'write',
+            resource: {type: 'buckets', orgID},
+          },
+        ],
+      },
+    },
+    session
+  )
+  console.log(auth.token)
+  console.log(' ', auth.description)
+
   console.log('\nFinished SUCCESS')
   // invalidate the session
   const signoutAPI = new SignoutAPI(influxDB)
