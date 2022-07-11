@@ -7,6 +7,7 @@
 ### Other
 
 1. [#462](https://github.com/influxdata/influxdb-client-js/pull/462): Upgrade to typescript 4.7.
+1. [#465](https://github.com/influxdata/influxdb-client-js/pull/465): Upgrade lerna to v5.
 
 ## 1.27.0 [2022-06-24]
 
