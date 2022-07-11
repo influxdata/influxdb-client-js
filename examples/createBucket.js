@@ -51,7 +51,7 @@ async function recreateBucket(name) {
 
 recreateBucket('example-bucket')
   .then(() => console.log('\nFinished SUCCESS'))
-  .catch(error => {
+  .catch((error) => {
     console.error(error)
     console.log('\nFinished ERROR')
   })

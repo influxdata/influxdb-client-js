@@ -21,7 +21,7 @@ pingAPI
   .then(() => {
     console.log('\nPing SUCCESS')
   })
-  .catch(error => {
+  .catch((error) => {
     console.error(error)
     console.log('\nFinished ERROR')
   })

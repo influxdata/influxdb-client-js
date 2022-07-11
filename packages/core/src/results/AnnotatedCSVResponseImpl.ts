@@ -28,13 +28,13 @@ export class AnnotatedCSVResponseImpl implements AnnotatedCSVResponse {
     private chunkCombiner: ChunkCombiner
   ) {}
   lines(): Observable<string> {
-    return new ObservableQuery(this.executor, observer =>
+    return new ObservableQuery(this.executor, (observer) =>
       chunksToLines(observer, this.chunkCombiner)
     )
   }
 
   rows(): Observable<Row> {
-    return new ObservableQuery(this.executor, observer => {
+    return new ObservableQuery(this.executor, (observer) => {
       return chunksToLines(
         linesToTables({
           next(values, tableMeta) {

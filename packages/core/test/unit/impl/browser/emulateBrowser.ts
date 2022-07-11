@@ -29,7 +29,7 @@ function createResponse({
     json(): Promise<any> {
       if (typeof body === 'string') {
         if (body === 'error') return Promise.reject(new Error('error data'))
-        return Promise.resolve(body).then(body =>
+        return Promise.resolve(body).then((body) =>
           body ? JSON.parse(body) : ''
         )
       } else {
@@ -38,13 +38,13 @@ function createResponse({
     },
   }
   if (typeof body === 'string') {
-    retVal.text = function(): Promise<string> {
+    retVal.text = function (): Promise<string> {
       if (body === 'error') return Promise.reject(new Error('error data'))
       return Promise.resolve(body)
     }
   }
   if (body instanceof Uint8Array) {
-    retVal.arrayBuffer = function(): Promise<any> {
+    retVal.arrayBuffer = function (): Promise<any> {
       return Promise.resolve(
         body.buffer.slice(body.byteOffset, body.byteOffset + body.length)
       )

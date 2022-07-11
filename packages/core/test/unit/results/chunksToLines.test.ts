@@ -55,7 +55,7 @@ describe('chunksToLines', () => {
     const target = new CollectLinesObserver()
     const subject = chunksToLines(target, nodeChunkCombiner)
     subject.next(Buffer.from('abcd', 'utf8'))
-    subject.next((1 as any) as Uint8Array)
+    subject.next(1 as any as Uint8Array)
     expect(target.failed).to.be.equal(1)
   })
   it('do not emit lines after being cancelled', () => {

@@ -93,13 +93,8 @@ describe('RetryStrategyImpl', () => {
         return acc
       }, [] as number[])
       // truncate values to ignore jittering
-      expect(values.map(x => Math.trunc(x / 100) * 100)).to.be.deep.equal([
-        100,
-        500,
-        2000,
-        2000,
-        2000,
-        2000,
+      expect(values.map((x) => Math.trunc(x / 100) * 100)).to.be.deep.equal([
+        100, 500, 2000, 2000, 2000, 2000,
       ])
       subject.success()
       expect(Math.trunc(subject.nextDelay() / 100) * 100).equals(100)

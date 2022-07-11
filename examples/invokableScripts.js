@@ -48,7 +48,7 @@ async function deleteScript(id) {
   console.log('*** Delete example script ***')
   if (!id) {
     const scripts = (await scriptsAPI.getScripts()).scripts
-    id = scripts.find(x => x.name === scriptName)?.id
+    id = scripts.find((x) => x.name === scriptName)?.id
   }
   if (id) {
     await scriptsAPI.deleteScriptsID({scriptID: id})
@@ -105,7 +105,7 @@ async function example() {
 
 example()
   .then(() => console.log('\nFinished SUCCESS'))
-  .catch(error => {
+  .catch((error) => {
     if (error instanceof HttpError && error.statusCode === 404) {
       console.error(
         `API invokable scripts are not supported by InfluxDB at ${url} .`

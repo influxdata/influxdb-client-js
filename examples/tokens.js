@@ -32,7 +32,7 @@ async function signInDemo() {
           if (typeof setCookie === 'string') {
             cookies.push(setCookie.split(';').shift())
           } else if (Array.isArray(setCookie)) {
-            setCookie.forEach(c => cookies.push(c.split(';').shift()))
+            setCookie.forEach((c) => cookies.push(c.split(';').shift()))
           }
         }
       },
@@ -47,7 +47,7 @@ async function signInDemo() {
   const authorizations = await authorizationAPI.getAuthorizations({}, session)
   // console.log(JSON.stringify(authorizations?.authorizations, null, 2))
   let exampleTokenID = undefined
-  ;(authorizations.authorizations || []).forEach(auth => {
+  ;(authorizations.authorizations || []).forEach((auth) => {
     console.log(auth.description)
     // console.log(auth.token) // token cannot be retrieved in the cloud
     if (auth.description === 'example token') {
@@ -101,7 +101,7 @@ async function signInDemo() {
   console.log('Signout SUCCESS')
 }
 
-signInDemo().catch(error => {
+signInDemo().catch((error) => {
   console.error(error)
   console.log('\nFinished ERROR')
 })

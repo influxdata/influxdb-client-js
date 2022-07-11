@@ -243,7 +243,7 @@ describe('NodeHttpTransport', () => {
                 expect(responseStartedFn.callCount).equals(0)
               }
             },
-            e => {
+            (e) => {
               expect.fail(undefined, e, e.toString())
             }
           )
@@ -256,9 +256,7 @@ describe('NodeHttpTransport', () => {
         timeout: 100,
       }
       it(`fails silently on server error`, async () => {
-        nock(transportOptions.url)
-          .get('/test')
-          .reply(500, 'not ok')
+        nock(transportOptions.url).get('/test').reply(500, 'not ok')
         expect(
           new NodeHttpTransport(transportOptions).send('/test', '', {
             method: 'GET',
@@ -266,17 +264,13 @@ describe('NodeHttpTransport', () => {
         ).to.not.throw
       })
       it(`fails on server error`, async () => {
-        nock(transportOptions.url)
-          .get('/test')
-          .reply(500, 'not ok')
+        nock(transportOptions.url).get('/test').reply(500, 'not ok')
         await sendTestData(transportOptions, {method: 'GET'})
           .then(() => {
             expect.fail('must not succeed')
           })
-          .catch(e => {
-            expect(e)
-              .property('statusCode')
-              .to.equal(500)
+          .catch((e) => {
+            expect(e).property('statusCode').to.equal(500)
           })
       })
       it(`fails on decoding error`, async () => {
@@ -300,10 +294,8 @@ describe('NodeHttpTransport', () => {
           .then(() => {
             expect.fail('must not succeed')
           })
-          .catch(e => {
-            expect(e)
-              .property('message')
-              .is.not.equal('must not succeed')
+          .catch((e) => {
+            expect(e).property('message').is.not.equal('must not succeed')
             expect(e.toString()).does.not.include('time') // not timeout
           })
       })
@@ -316,7 +308,7 @@ describe('NodeHttpTransport', () => {
           .then(() => {
             throw new Error('must not succeed')
           })
-          .catch(e => {
+          .catch((e) => {
             expect(e.toString()).to.include('timed')
           })
       })
@@ -329,37 +321,30 @@ describe('NodeHttpTransport', () => {
           .then(() => {
             throw new Error('must not succeed')
           })
-          .catch(e => {
+          .catch((e) => {
             expect(e.toString()).to.include('timed')
           })
       })
       it(`fails on response timeout`, async () => {
-        nock(transportOptions.url)
-          .get('/test')
-          .delay(2000)
-          .reply(200, 'ok')
+        nock(transportOptions.url).get('/test').delay(2000).reply(200, 'ok')
         await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
           .then(() => {
             throw new Error('must not succeed')
           })
-          .catch(e => {
+          .catch((e) => {
             expect(e.toString()).to.include('timed')
           })
       })
       it(`truncates error messages`, async () => {
         let bigMessage = 'this is a big error message'
         while (bigMessage.length < 1001) bigMessage += bigMessage
-        nock(transportOptions.url)
-          .get('/test')
-          .reply(500, bigMessage)
+        nock(transportOptions.url).get('/test').reply(500, bigMessage)
         await sendTestData(transportOptions, {method: 'GET'})
           .then(() => {
             throw new Error('must not succeed')
           })
           .catch((e: any) => {
-            expect(e)
-              .property('body')
-              .to.length(1000)
+            expect(e).property('body').to.length(1000)
           })
       })
       it(`parses error responses`, async () => {
@@ -374,18 +359,10 @@ describe('NodeHttpTransport', () => {
             throw new Error('must not succeed')
           },
           (e: any) => {
-            expect(e)
-              .property('body')
-              .to.length(bigMessage.length)
-            expect(e)
-              .property('json')
-              .deep.equals(JSON.parse(bigMessage))
-            expect(e)
-              .property('code')
-              .equals('mc')
-            expect(e)
-              .property('message')
-              .equals('mymsg')
+            expect(e).property('body').to.length(bigMessage.length)
+            expect(e).property('json').deep.equals(JSON.parse(bigMessage))
+            expect(e).property('code').equals('mc')
+            expect(e).property('message').equals('mymsg')
           }
         )
       })
@@ -399,9 +376,7 @@ describe('NodeHttpTransport', () => {
             throw new Error('must not succeed')
           })
           .catch((e: any) => {
-            expect(e)
-              .property('body')
-              .equals(errorMessage)
+            expect(e).property('body').equals(errorMessage)
           })
       })
       it(`is aborted before the whole response arrives`, async () => {
@@ -429,13 +404,11 @@ describe('NodeHttpTransport', () => {
           ])
           .persist()
         await sendTestData(transportOptions, {method: 'GET'})
-          .then(_data => {
+          .then((_data) => {
             expect.fail('not expected!')
           })
           .catch((e: any) => {
-            expect(e)
-              .property('message')
-              .to.include('aborted')
+            expect(e).property('message').to.include('aborted')
           })
       })
       it(`signalizes error upon request's error'`, async () => {
@@ -463,13 +436,11 @@ describe('NodeHttpTransport', () => {
           ])
           .persist()
         await sendTestData(transportOptions, {method: 'GET'})
-          .then(_data => {
+          .then((_data) => {
             expect.fail('not expected!')
           })
           .catch((e: any) => {
-            expect(e)
-              .property('message')
-              .to.include('request failed')
+            expect(e).property('message').to.include('request failed')
           })
       })
     })
@@ -487,12 +458,12 @@ describe('NodeHttpTransport', () => {
         await sendTestData(
           {...transportOptions, timeout: 1000},
           {method: 'GET'},
-          cancellable => cancellable.cancel()
+          (cancellable) => cancellable.cancel()
         )
-          .then(data => {
+          .then((data) => {
             expect(data).to.equal('')
           })
-          .catch(e => {
+          .catch((e) => {
             throw e
           })
       })
@@ -518,12 +489,12 @@ describe('NodeHttpTransport', () => {
         await sendTestData(
           {...transportOptions, timeout: 10000},
           {method: 'GET'},
-          toSet => (cancellable = toSet)
+          (toSet) => (cancellable = toSet)
         )
-          .then(data => {
+          .then((data) => {
             expect(data).to.equal('')
           })
-          .catch(e => {
+          .catch((e) => {
             throw e
           })
       })
@@ -542,12 +513,14 @@ describe('NodeHttpTransport', () => {
       url: TEST_URL,
       timeout: 100,
     }
-    ;([
-      [null, ''],
-      ['', ''],
-      ['a', 'a'],
-      [{yes: true}, '{"yes":true}'],
-    ] as Array<Array<any>>).forEach((pair, i) => {
+    ;(
+      [
+        [null, ''],
+        ['', ''],
+        ['a', 'a'],
+        [{yes: true}, '{"yes":true}'],
+      ] as Array<Array<any>>
+    ).forEach((pair, i) => {
       it(`returns string response ${i}`, async () => {
         let remainingChunks = 2
         let body: any = undefined
@@ -580,11 +553,13 @@ describe('NodeHttpTransport', () => {
         expect(body).equals(pair[1])
       })
     })
-    ;([
-      [{yes: true}, {yes: true}, 'application/json'],
-      // eslint-disable-next-line no-undef
-      ['abcd', Buffer.from('abcd'), 'application/binary'],
-    ] as Array<Array<any>>).forEach(pair => {
+    ;(
+      [
+        [{yes: true}, {yes: true}, 'application/json'],
+        // eslint-disable-next-line no-undef
+        ['abcd', Buffer.from('abcd'), 'application/binary'],
+      ] as Array<Array<any>>
+    ).forEach((pair) => {
       it(`returns ${pair[2]} response`, async () => {
         nock(transportOptions.url)
           .get('/test')
@@ -779,7 +754,7 @@ describe('NodeHttpTransport', () => {
         .get('/test')
         .reply(
           200,
-          function(_uri, _body, callback) {
+          function (_uri, _body, callback) {
             extra = this.req.headers['extra']
             callback(null, '..')
           },
@@ -808,7 +783,7 @@ describe('NodeHttpTransport', () => {
         .get(/.*/)
         .reply(
           200,
-          function(uri, _body, callback) {
+          function (uri, _body, callback) {
             requestPath = uri
             headers = {...this.req.headers}
             callback(null, '..')

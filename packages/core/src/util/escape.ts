@@ -2,7 +2,7 @@ function createEscaper(
   characters: string,
   replacements: string[]
 ): (value: string) => string {
-  return function(value: string): string {
+  return function (value: string): string {
     let retVal = ''
     let from = 0
     let i = 0

@@ -36,9 +36,7 @@ describe('queryToTable', () => {
 ,result,table,_start,_stop,_time,_value,_field,_measurement,cpu,host
 ,,3,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:43Z,fourty,usage_guest,cpu,cpu0,oox4k.local`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
+    nock(url).post(/.*/).reply(200, CSV)
     const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('result', 'string')).deep.equals([
@@ -49,24 +47,15 @@ describe('queryToTable', () => {
     ])
 
     expect(table.getColumn('_start', 'time')).deep.equals([
-      1549064312524,
-      1549064312524,
-      1549064312524,
-      1549064312524,
+      1549064312524, 1549064312524, 1549064312524, 1549064312524,
     ])
 
     expect(table.getColumn('_stop', 'time')).deep.equals([
-      1549064342524,
-      1549064342524,
-      1549064342524,
-      1549064342524,
+      1549064342524, 1549064342524, 1549064342524, 1549064342524,
     ])
 
     expect(table.getColumn('_time', 'time')).deep.equals([
-      1549064313000,
-      1549064323000,
-      1549064313000,
-      1549064323000,
+      1549064313000, 1549064323000, 1549064313000, 1549064323000,
     ])
 
     expect(table.getColumn('_value (number)', 'number')).deep.equals([
@@ -126,9 +115,7 @@ describe('queryToTable', () => {
 ,,1,usage_guest,,true,,1970-01-01T00:00:00.002000Z
 ,,1,usage_guest,,,,`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
+    nock(url).post(/.*/).reply(200, CSV)
     const actual = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(actual.getColumn('result')).deep.equals(['_result', '_result'])
@@ -147,9 +134,7 @@ describe('queryToTable', () => {
 ,,0,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:33Z,10,usage_guest,cpu,cpu-total,oox4k.local
 ,,1,2019-02-01T23:38:32.524234Z,2019-02-01T23:39:02.524234Z,2019-02-01T23:38:43Z,,usage_guest,cpu,cpu-total,oox4k.local`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
+    nock(url).post(/.*/).reply(200, CSV)
     const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('_value')).deep.equals([10, null])
@@ -176,9 +161,7 @@ there",5
 there",5
 ,,1,hi,6`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
+    nock(url).post(/.*/).reply(200, CSV)
     const table = await queryToTable(queryApi, 'ignored', newTable)
 
     expect(table.getColumn('value')).deep.equals([5, 5, 6, 5, 5, 6])
@@ -200,9 +183,7 @@ there",5
 #default,
 ,result
 ,1`
-        nock(url)
-          .post(/.*/)
-          .reply(200, CSV)
+        nock(url).post(/.*/).reply(200, CSV)
         const actual = await queryToTable(queryApi, 'ignored', newTable, {
           maxTableLength: length,
         })
@@ -223,9 +204,7 @@ there",5
 ,1
 ,2
 ,3`
-        nock(url)
-          .post(/.*/)
-          .reply(200, CSV)
+        nock(url).post(/.*/).reply(200, CSV)
         const actual = await queryToTable(queryApi, 'ignored', newTable, {
           maxTableLength: length,
         })
@@ -241,9 +220,7 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
+      nock(url).post(/.*/).reply(200, CSV)
       const actual = await queryToTable(queryApi, 'ignored', newTable, {
         accept: (row: string[]) => row[0] === '2',
         maxTableLength: 2,
@@ -259,9 +236,7 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
+      nock(url).post(/.*/).reply(200, CSV)
       const actual = await queryToTable(queryApi, 'ignored', newTable, {
         accept: [
           (row: string[]): boolean => Number(row[0]) < 3,
@@ -279,9 +254,7 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
+      nock(url).post(/.*/).reply(200, CSV)
       const actual = await queryToTable(queryApi, 'ignored', newTable, {
         maxTableLength: 1,
         accept: (row: string[]) => Number(row[0]) > 1,
@@ -297,9 +270,7 @@ there",5
 ,1
 ,2
 ,3`
-      nock(url)
-        .post(/.*/)
-        .reply(200, CSV)
+      nock(url).post(/.*/).reply(200, CSV)
       const actual = await queryToTable(queryApi, 'ignored', newTable, {
         columns: ['a'],
       })
@@ -307,17 +278,13 @@ there",5
       expect(actual.getColumn('result')).is.null
     })
     it(`handles server error`, async () => {
-      nock(url)
-        .post(/.*/)
-        .reply(500, 'not ok')
+      nock(url).post(/.*/).reply(500, 'not ok')
       await queryToTable(queryApi, 'ignored', newTable)
         .then(() => {
           expect.fail('must not succeed')
         })
-        .catch(e => {
-          expect(e)
-            .property('statusCode')
-            .to.equal(500)
+        .catch((e) => {
+          expect(e).property('statusCode').to.equal(500)
         })
     })
     it(`handles client abort error with success`, async () => {
@@ -379,9 +346,7 @@ describe('queryToFromFluxResult', () => {
 ,a,b,c,d
 ,1,2,3,4`
 
-    nock(url)
-      .post(/.*/)
-      .reply(200, CSV)
+    nock(url).post(/.*/).reply(200, CSV)
     const {fluxGroupKeyUnion} = await queryToFromFluxResult(
       queryApi,
       'ignored',

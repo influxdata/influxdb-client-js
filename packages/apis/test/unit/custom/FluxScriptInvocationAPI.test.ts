@@ -29,7 +29,7 @@ describe('FluxScriptInvocationAPI', () => {
     let body, authorization: any
     nock(fakeUrl)
       .post(`/api/v2/scripts/${fakeScriptID}/invoke`)
-      .reply(function(_uri, requestBody) {
+      .reply(function (_uri, requestBody) {
         body = requestBody
         authorization = this.req.headers.authorization
         return [200, fakeResponse]
@@ -47,7 +47,7 @@ describe('FluxScriptInvocationAPI', () => {
     let customHeader: any
     nock(fakeUrl)
       .post(`/api/v2/scripts/${fakeScriptID}/invoke`)
-      .reply(function(_uri) {
+      .reply(function (_uri) {
         customHeader = this.req.headers.whatever
         return [200, fakeResponse, {'content-type': 'text/csv'}]
       })
@@ -63,7 +63,7 @@ describe('FluxScriptInvocationAPI', () => {
     let acceptEncoding: any
     nock(fakeUrl)
       .post(`/api/v2/scripts/${fakeScriptID}/invoke`)
-      .reply(function(_uri) {
+      .reply(function (_uri) {
         acceptEncoding = this.req.headers['accept-encoding']
         return [
           200,

@@ -14,10 +14,10 @@ export const collectLogging = {
       warn: [],
     }
     previous = setLogger({
-      error: function(...args) {
+      error: function (...args) {
         retVal.error.push(args)
       },
-      warn: function(...args) {
+      warn: function (...args) {
         retVal.warn.push(args)
       },
     })
@@ -29,11 +29,11 @@ export const collectLogging = {
       warn: [],
     }
     const previous = setLogger({
-      error: function(...args) {
+      error: function (...args) {
         ;(previous.error as any).apply(previous, args)
         retVal.error.push(args)
       },
-      warn: function(...args) {
+      warn: function (...args) {
         ;(previous.warn as any).apply(previous, args)
         retVal.warn.push(args)
       },

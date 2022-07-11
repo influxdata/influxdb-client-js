@@ -58,9 +58,9 @@ export default class RetryBuffer {
         }
       } while (this.first && this.size + lines.length > newSize)
       Log.error(
-        `RetryBuffer: ${origSize -
-          this
-            .size} oldest lines removed to keep buffer size under the limit of ${
+        `RetryBuffer: ${
+          origSize - this.size
+        } oldest lines removed to keep buffer size under the limit of ${
           this.maxLines
         } lines`
       )
@@ -102,7 +102,7 @@ export default class RetryBuffer {
             // continue with successfull retry
             this.scheduleRetry(RETRY_INTERVAL)
           })
-          .catch(_e => {
+          .catch((_e) => {
             // already logged
             this.scheduleRetry(this.nextRetryTime - Date.now())
           })

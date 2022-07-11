@@ -2,32 +2,45 @@
   <head>
     <title>InfluxDB JavaScript Client Examples</title>
     <script type="module">
-      // import latest release from npm repository 
-      import {InfluxDB, Point} from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
-      import {PingAPI, SetupAPI} from 'https://unpkg.com/@influxdata/influxdb-client-apis/dist/index.browser.mjs'
+      // import latest release from npm repository
+      import {
+        InfluxDB,
+        Point,
+      } from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
+      import {
+        PingAPI,
+        SetupAPI,
+      } from 'https://unpkg.com/@influxdata/influxdb-client-apis/dist/index.browser.mjs'
       // or use the following imports to use local builds
       // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
       // import {PingAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /**
-        * Import the configuration from ./env_browser.js.
-        * The property INFLUX_ENV.bucket is only used in onboardingExample() and writeExample().
-        * To prevent SQL injection attacks, the variable is not used within the Flux query examples.
-        * The query examples assume your InfluxDB bucket is named "my-bucket".
-        */
+       * Import the configuration from ./env_browser.js.
+       * The property INFLUX_ENV.bucket is only used in onboardingExample() and writeExample().
+       * To prevent SQL injection attacks, the variable is not used within the Flux query examples.
+       * The query examples assume your InfluxDB bucket is named "my-bucket".
+       */
       import './env_browser.js'
       const {url, token, org, bucket, username, password} = window.INFLUX_ENV
 
       const influxDB = new InfluxDB({url, token})
 
       // log results also to HTML page
-      const logField = document.getElementById('log');
-      function log(message, ...rest){
-        console.log(arguments[0],rest)
+      const logField = document.getElementById('log')
+      function log(message, ...rest) {
+        console.log(arguments[0], rest)
         const previousValue = logField.value
-        logField.value += (previousValue?'\n':'')+Array.prototype.slice.call(arguments).join('\n')
+        logField.value +=
+          (previousValue ? '\n' : '') +
+          Array.prototype.slice.call(arguments).join('\n')
         // scroll to bottom with latest results
-        logField.scrollTo(0,logField.scrollHeight <= logField.offsetHeight ? 0 : logField.scrollHeight-logField.offsetHeight)
+        logField.scrollTo(
+          0,
+          logField.scrollHeight <= logField.offsetHeight
+            ? 0
+            : logField.scrollHeight - logField.offsetHeight
+        )
       }
 
       function writeExample(value) {
@@ -47,9 +60,11 @@
           .close()
           .then(() => {
             log('WRITE FINISHED')
-            temperatureInput.value = String(20 + Math.round(100 * Math.random()) / 10)
+            temperatureInput.value = String(
+              20 + Math.round(100 * Math.random()) / 10
+            )
           })
-          .catch(e => {
+          .catch((e) => {
             log('WRITE FAILED', e)
           })
       }
@@ -59,7 +74,7 @@
         queryApi.queryRows(fluxQuery, {
           next(row, tableMeta) {
             const o = tableMeta.toObject(row)
-            if (o.example){
+            if (o.example) {
               // custom output for example query
               log(
                 `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
@@ -90,16 +105,16 @@
                   bucket,
                   username,
                   password,
-                  token
-                }
+                  token,
+                },
               })
               log(`InfluxDB '${url}' is now onboarded.`)
             } else {
               log(`InfluxDB '${url}' has been already onboarded.`)
             }
           })
-          .catch(error => {
-            log('Onboarding FAILED',error)
+          .catch((error) => {
+            log('Onboarding FAILED', error)
           })
       }
       function pingExample() {
@@ -110,23 +125,25 @@
           .then(() => {
             log('Ping SUCCESS')
           })
-          .catch(error => {
+          .catch((error) => {
             log('Ping FAILED', error)
           })
       }
 
       // initialize page controls
-      const temperatureInput = document.getElementById('temperature');
+      const temperatureInput = document.getElementById('temperature')
       temperatureInput.value = String(20 + Math.round(100 * Math.random()) / 10)
       const writeButton = document.getElementById('writeButton')
       writeButton.addEventListener('click', () => {
         const number = Number(temperatureInput.value)
-        if (isNaN(number)) log('ERROR: Not a number '+temperatureInput.value);
+        if (isNaN(number)) log('ERROR: Not a number ' + temperatureInput.value)
         else writeExample(number)
       })
-      const queryInput = document.getElementById('query');
-      const fluxQueryParam = new URLSearchParams(window.location.search).get('fluxQuery');
-      if (fluxQueryParam){
+      const queryInput = document.getElementById('query')
+      const fluxQueryParam = new URLSearchParams(window.location.search).get(
+        'fluxQuery'
+      )
+      if (fluxQueryParam) {
         queryInput.value = fluxQueryParam
       }
       document.getElementById('queryButton').addEventListener('click', () => {
@@ -139,39 +156,37 @@
         pingExample()
       })
       const visualizeInGiraffe = document.getElementById('visualizeInGiraffe')
-      visualizeInGiraffe.addEventListener('click', e => {
-        const target = "./giraffe.html?fluxQuery="+encodeURIComponent(queryInput.value)
-        window.open(target, "_blank")
+      visualizeInGiraffe.addEventListener('click', (e) => {
+        const target =
+          './giraffe.html?fluxQuery=' + encodeURIComponent(queryInput.value)
+        window.open(target, '_blank')
       })
     </script>
   </head>
   <h1>InfluxDB JavaScript Client Examples</h1>
-  <hr>
+  <hr />
   <div>
     <button id="onboardButton">InfluxDB Onboarding</button>
     <button id="pingButton">InfluxDB Ping</button>
   </div>
-  <hr>
+  <hr />
   <div>
     <button id="writeButton">Write to InfluxDB</button>
     <span>Temperature: </span>
-    <input type="number" id="temperature" value='20'></input>
+    <input type="number" id="temperature" value="20" />
   </div>
-  <hr>
-  <div style="display:flex; margin-bottom: 10px;">
-    <textarea id="query" style="flex: 1" rows="2"
-    >from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea>
+  <hr />
+  <div style="display: flex; margin-bottom: 10px">
+    <textarea id="query" style="flex: 1" rows="2">
+from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea
+    >
   </div>
   <button id="queryButton">Query InfluxDB</button>
   <button id="visualizeInGiraffe">Visualize with Giraffe Line Chart</button>
-  <hr>
+  <hr />
   <fieldset>
     <legend>Log</legend>
-    <textarea
-      id="log"
-      style="width: 100%"
-      rows="25"
-    ></textarea>
+    <textarea id="log" style="width: 100%" rows="25"></textarea>
     <button onclick="document.getElementById('log').value=''">Clear Log</button>
   </fieldset>
 </html>

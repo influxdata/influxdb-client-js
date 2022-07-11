@@ -82,8 +82,10 @@ describe('WriteApi', () => {
       collectLogging.after()
     })
     it('can be closed and flushed without any data', async () => {
-      await subject.close().catch(e => expect.fail('should not happen', e))
-      await subject.flush(true).catch(e => expect.fail('should not happen', e))
+      await subject.close().catch((e) => expect.fail('should not happen', e))
+      await subject
+        .flush(true)
+        .catch((e) => expect.fail('should not happen', e))
     })
     it('fails on close without server connection', async () => {
       subject.writeRecord('test value=1')
@@ -91,7 +93,7 @@ describe('WriteApi', () => {
       await subject
         .close()
         .then(() => expect.fail('failure expected'))
-        .catch(e => {
+        .catch((e) => {
           expect(logs.error).length.greaterThan(0)
           expect(e).to.be.ok
         })
@@ -102,7 +104,7 @@ describe('WriteApi', () => {
       await subject
         .flush()
         .then(() => expect.fail('failure expected'))
-        .catch(e => {
+        .catch((e) => {
           expect([...logs.error, ...logs.warn]).to.length(1)
           expect(e).to.be.ok
         })
@@ -473,10 +475,7 @@ describe('WriteApi', () => {
         })
         .persist()
       subject.writePoint(
-        new Point('test')
-          .tag('t', ' ')
-          .floatField('value', 1)
-          .timestamp('')
+        new Point('test').tag('t', ' ').floatField('value', 1).timestamp('')
       )
       await waitForCondition(() => writeCounters.successLineCount == 1)
       expect(logs.error).has.length(0)
@@ -491,7 +490,7 @@ describe('WriteApi', () => {
         new Point('test').floatField('value', 6).timestamp(new Date(3)),
         new Point('test')
           .floatField('value', 7)
-          .timestamp((false as any) as string), // server decides what to do with such values
+          .timestamp(false as any as string), // server decides what to do with such values
       ])
       await waitForCondition(() => writeCounters.successLineCount == 7)
       expect(logs.error).to.length(0)
@@ -531,7 +530,7 @@ describe('WriteApi', () => {
       const messages: string[] = []
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           requests++
           if (requests % 2) {
             return [429, '', {'retry-after': '1'}]
@@ -547,10 +546,7 @@ describe('WriteApi', () => {
         })
         .persist()
       subject.writePoint(
-        new Point('test')
-          .tag('t', ' ')
-          .floatField('value', 1)
-          .timestamp('')
+        new Point('test').tag('t', ' ').floatField('value', 1).timestamp('')
       )
       await waitForCondition(() => writeCounters.successLineCount == 1)
       expect(logs.error).has.length(0)
@@ -565,7 +561,7 @@ describe('WriteApi', () => {
         new Point('test').floatField('value', 6).timestamp(new Date(3)),
         new Point('test')
           .floatField('value', 7)
-          .timestamp((false as any) as string), // server decides what to do with such values
+          .timestamp(false as any as string), // server decides what to do with such values
       ])
       await waitForCondition(() => writeCounters.successLineCount == 7)
       expect(logs.error).to.length(0)
@@ -604,7 +600,7 @@ describe('WriteApi', () => {
       let authorization: any
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           authorization = this.req.headers.authorization
           return [200, '', {}]
         })
@@ -632,7 +628,7 @@ describe('WriteApi', () => {
       let authorization: any
       nock(clientOptions.url)
         .post(WRITE_PATH_NS)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           authorization = this.req.headers.authorization
           return [204, '', {}]
         })
@@ -650,7 +646,7 @@ describe('WriteApi', () => {
       let uri: any
       nock(clientOptions.url)
         .post(/.*/)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           uri = this.req.path
           return [204, '', {}]
         })
@@ -669,7 +665,7 @@ describe('WriteApi', () => {
       let uri: any
       nock(clientOptions.url)
         .post(/.*/)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           uri = this.req.path
           return [204, '', {}]
         })
@@ -686,7 +682,7 @@ describe('WriteApi', () => {
       })
       nock(clientOptions.url)
         .post(/.*/)
-        .reply(function(_uri, _requestBody) {
+        .reply(function (_uri, _requestBody) {
           return [
             500,
             '{"error": "write: hinted handoff queue not empty"}',

@@ -171,9 +171,10 @@ export class SourcesAPI {
   ): Promise<Buckets> {
     return this.base.request(
       'GET',
-      `/api/v2/sources/${
-        request.sourceID
-      }/buckets${this.base.queryString(request, ['org'])}`,
+      `/api/v2/sources/${request.sourceID}/buckets${this.base.queryString(
+        request,
+        ['org']
+      )}`,
       request,
       requestOptions
     )

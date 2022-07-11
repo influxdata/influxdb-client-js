@@ -123,9 +123,10 @@ export class ReplicationsAPI {
   ): Promise<Replication> {
     return this.base.request(
       'PATCH',
-      `/api/v2/replications/${
-        request.replicationID
-      }${this.base.queryString(request, ['validate'])}`,
+      `/api/v2/replications/${request.replicationID}${this.base.queryString(
+        request,
+        ['validate']
+      )}`,
       request,
       requestOptions,
       'application/json'

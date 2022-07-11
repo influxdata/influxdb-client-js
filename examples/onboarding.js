@@ -31,7 +31,7 @@ setupApi
     }
     console.log('\nFinished SUCCESS')
   })
-  .catch(error => {
+  .catch((error) => {
     console.error(error)
     console.log('\nFinished ERROR')
   })
