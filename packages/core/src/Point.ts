@@ -201,7 +201,7 @@ export class Point {
     let fieldsLine = ''
     Object.keys(this.fields)
       .sort()
-      .forEach(x => {
+      .forEach((x) => {
         if (x) {
           const val = this.fields[x]
           if (fieldsLine.length > 0) fieldsLine += ','
@@ -216,7 +216,7 @@ export class Point {
         : this.tags
     Object.keys(tags)
       .sort()
-      .forEach(x => {
+      .forEach((x) => {
         if (x) {
           const val = tags[x]
           if (val) {

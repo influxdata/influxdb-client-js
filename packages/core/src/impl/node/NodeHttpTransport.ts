@@ -81,7 +81,7 @@ export class NodeHttpTransport implements Transport {
     // remove all undefined field to avoid node validation errors
     // https://github.com/influxdata/influxdb-client-js/issues/380
     Object.keys(this.defaultOptions).forEach(
-      key =>
+      (key) =>
         this.defaultOptions[key] === undefined &&
         delete this.defaultOptions[key]
     )
@@ -244,7 +244,7 @@ export class NodeHttpTransport implements Transport {
       sendOptions.gzipThreshold !== undefined &&
       sendOptions.gzipThreshold < bodyBuffer.length
     ) {
-      bodyPromise = bodyPromise.then(body => {
+      bodyPromise = bodyPromise.then((body) => {
         return new Promise((resolve, reject) => {
           zlib.gzip(body, (err, res) => {
             /* istanbul ignore next - hard to simulate failure, manually reviewed */
@@ -258,7 +258,7 @@ export class NodeHttpTransport implements Transport {
       })
     }
 
-    return bodyPromise.then(bodyBuffer => {
+    return bodyPromise.then((bodyBuffer) => {
       options.body = bodyBuffer
       options.headers['content-length'] = bodyBuffer.length
       return options
@@ -303,7 +303,7 @@ export class NodeHttpTransport implements Transport {
         const isJson = String(res.headers['content-type']).startsWith(
           'application/json'
         )
-        responseData.on('data', s => {
+        responseData.on('data', (s) => {
           body += s.toString()
           if (!isJson && body.length > 1000) {
             body = body.slice(0, 1000)
@@ -325,7 +325,7 @@ export class NodeHttpTransport implements Transport {
           )
         })
       } else {
-        responseData.on('data', data => {
+        responseData.on('data', (data) => {
           if (cancellable.isCancelled()) {
             res.resume()
           } else {
@@ -345,7 +345,7 @@ export class NodeHttpTransport implements Transport {
     req.on('timeout', () => {
       listeners.error(new RequestTimedOutError())
     })
-    req.on('error', error => {
+    req.on('error', (error) => {
       listeners.error(error)
     })
 

@@ -93,14 +93,14 @@ describe('RxJS QueryApi integration', () => {
       const [tables, rows] = await firstValueFrom(
         from(subject.rows('from(bucket:"my-bucket") |> range(start: 0)')).pipe(
           groupBy(({tableMeta}) => tableMeta),
-          mergeMap(group =>
+          mergeMap((group) =>
             concat(of(group.key), group.pipe(map(({values}) => values)))
           ),
           map((data, index) =>
             Array.isArray(data) ? {index, row: data} : {index, meta: data}
           ),
-          groupBy(value => 'meta' in value),
-          mergeMap(group => group.pipe(toArray())),
+          groupBy((value) => 'meta' in value),
+          mergeMap((group) => group.pipe(toArray())),
           toArray()
         )
       )

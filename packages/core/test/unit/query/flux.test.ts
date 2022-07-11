@@ -97,7 +97,7 @@ describe('Flux Values', () => {
       {value: /abc/, flux: 'regexp.compile(v: "/abc/")'},
       {
         value: {
-          toString: function(): string {
+          toString: function (): string {
             return 'whatever'
           },
         },
@@ -112,7 +112,7 @@ describe('Flux Values', () => {
       {value: ['a"$d'], flux: '["a\\"$d"]'},
       {value: Symbol('thisSym'), flux: `"${Symbol('thisSym').toString()}"`},
     ]
-    pairs.forEach(pair => {
+    pairs.forEach((pair) => {
       it(`converts ${JSON.stringify(String(pair.value))} to '${
         pair.flux
       }'`, () => {
@@ -162,7 +162,7 @@ describe('Flux Tagged Template', () => {
   })
   it('fails on wrong usage of template', () => {
     try {
-      flux((['1', '2'] as any) as TemplateStringsArray)
+      flux(['1', '2'] as any as TemplateStringsArray)
       expect.fail()
     } catch (_e) {
       // ok expected, too few arguments supplied to a tagged template
@@ -202,7 +202,7 @@ describe('Flux Tagged Template', () => {
       {value: flux`${/abc/}`, flux: 'regexp.compile(v: "/abc/")'},
       {
         value: flux`${{
-          toString: function(): string {
+          toString: function (): string {
             return 'whatever'
           },
         }}`,
@@ -220,7 +220,7 @@ describe('Flux Tagged Template', () => {
         flux: `"${Symbol('thisSym').toString()}"`,
       },
     ]
-    pairs.forEach(pair => {
+    pairs.forEach((pair) => {
       expect(pair.value.toString()).equals(pair.flux)
     })
   })
@@ -240,7 +240,7 @@ describe('Flux Tagged Template', () => {
       {value: flux`"${/abc/}"`, flux: `"${/abc/.toString()}"`},
       {
         value: flux`"${{
-          toString: function(): string {
+          toString: function (): string {
             return 'whatever'
           },
         }}"`,
@@ -258,7 +258,7 @@ describe('Flux Tagged Template', () => {
         flux: `"${Symbol('thisSym').toString()}"`,
       },
     ]
-    pairs.forEach(pair => {
+    pairs.forEach((pair) => {
       expect(pair.value.toString()).equals(pair.flux)
     })
   })

@@ -34,7 +34,7 @@ class WriteBuffer {
       this.scheduleSend()
     } else if (this.bytes + size + 1 >= this.maxBatchBytes) {
       // the new size already exceeds maxBatchBytes, send it
-      this.flush().catch(_e => {
+      this.flush().catch((_e) => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
       })
     }
@@ -45,7 +45,7 @@ class WriteBuffer {
       this.length >= this.maxChunkRecords ||
       this.bytes >= this.maxBatchBytes
     ) {
-      this.flush().catch(_e => {
+      this.flush().catch((_e) => {
         // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
       })
     }
@@ -123,7 +123,7 @@ export default class WriteApiImpl implements WriteApi {
               this.sendBatch(
                 this.writeBuffer.reset(),
                 this.writeOptions.maxRetries
-              ).catch(_e => {
+              ).catch((_e) => {
                 // an error is logged in case of failure, avoid UnhandledPromiseRejectionWarning
               }),
             this.writeOptions.flushInterval
@@ -135,7 +135,7 @@ export default class WriteApiImpl implements WriteApi {
     this.writeBuffer = new WriteBuffer(
       this.writeOptions.batchSize,
       this.writeOptions.maxBatchBytes,
-      lines => {
+      (lines) => {
         this._clearFlushTimeout()
         return this.sendBatch(lines, this.writeOptions.maxRetries)
       },

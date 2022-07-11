@@ -46,7 +46,7 @@ function createResult(
   let table = tableFactory(tableLength)
   const fluxGroupKeyUnion: string[] = []
   const resultColumnNames = new Set<string>()
-  Object.keys(columns).forEach(key => {
+  Object.keys(columns).forEach((key) => {
     const col = columns[key]
     if (!col.multipleTypes) {
       ;(col.data as any).length = tableLength // extend the array length, required (and tested)
@@ -61,7 +61,7 @@ function createResult(
         fluxGroupKeyUnion.push(key)
       }
       if (computeResultColumnNames && col.name === 'result') {
-        col.data.forEach(x => resultColumnNames.add(x as string))
+        col.data.forEach((x) => resultColumnNames.add(x as string))
       }
     }
   })
@@ -270,9 +270,8 @@ export function createCollector(
               existingColumn = columns[columnKey]
             } else if (existingColumn.type !== type) {
               // move the existing key to a type-specific key
-              columns[
-                `${existingColumn.name} (${existingColumn.type})`
-              ] = existingColumn
+              columns[`${existingColumn.name} (${existingColumn.type})`] =
+                existingColumn
               // create a multiType (virtual) column
               columns[metaCol.label] = {
                 name: metaCol.label,
@@ -340,9 +339,9 @@ export function csvToFromFluxResult(
   let result: FromFluxResult | undefined
   let error: Error | undefined = undefined
   const collector = createCollector(
-    r => (result = r),
+    (r) => (result = r),
     /* istanbul ignore next because error is never thrown */
-    e => (error = e),
+    (e) => (error = e),
     tableFactory,
     {
       computeFluxGroupKeyUnion: true,

@@ -38,7 +38,7 @@ writeApi
   .then(() => {
     console.log('FINISHED ... now try ./query.ts')
   })
-  .catch(e => {
+  .catch((e) => {
     console.error(e)
     if (e instanceof HttpError && e.statusCode === 401) {
       console.log('Run ./onboarding.js to setup a new InfluxDB database.')

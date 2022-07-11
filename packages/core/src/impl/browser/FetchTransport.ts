@@ -82,7 +82,7 @@ export default class FetchTransport implements Transport {
       })
     }
     this.fetch(path, body, options)
-      .then(async response => {
+      .then(async (response) => {
         if (callbacks?.responseStarted) {
           observer.responseStarted(
             getResponseHeaders(response),
@@ -138,7 +138,7 @@ export default class FetchTransport implements Transport {
           }
         }
       })
-      .catch(e => {
+      .catch((e) => {
         if (!cancelled) {
           observer.error(e)
         }
@@ -239,5 +239,5 @@ export default class FetchTransport implements Transport {
     request: RequestInit,
     options: SendOptions,
     url: string
-  ) => void = function() {}
+  ) => void = function () {}
 }

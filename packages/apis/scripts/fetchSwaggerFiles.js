@@ -8,10 +8,10 @@ const {writeFile} = require('fs/promises')
 function downloadFile(url) {
   return new Promise((resolve, reject) => {
     https
-      .get(url, function(res) {
+      .get(url, function (res) {
         const data = []
         res
-          .on('data', chunk => {
+          .on('data', (chunk) => {
             data.push(chunk)
           })
           .on('end', () => {
@@ -25,18 +25,15 @@ function downloadFile(url) {
 const FILES = [
   {
     file: 'resources/oss.yml',
-    url:
-      'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/oss.yml',
+    url: 'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/oss.yml',
   },
   {
     file: 'resources/invocable-scripts.yml',
-    url:
-      'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/invocable-scripts.yml',
+    url: 'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/invocable-scripts.yml',
   },
   {
     file: 'resources/cloud.yml',
-    url:
-      'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/cloud.yml',
+    url: 'https://raw.githubusercontent.com/influxdata/openapi/master/contracts/cloud.yml',
   },
 ]
 async function downloadFiles() {
@@ -51,7 +48,7 @@ async function downloadFiles() {
 
 downloadFiles()
   .then(() => console.log('\nFinished SUCCESS'))
-  .catch(error => {
+  .catch((error) => {
     console.error(error)
     console.log('\nFinished ERROR')
     process.exitCode = 1

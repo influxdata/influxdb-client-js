@@ -34,7 +34,7 @@ writeAPI.writePoint(point)
 writeAPI
   .close()
   .then(() => console.log('Write FINISHED'))
-  .catch(error => {
+  .catch((error) => {
     console.error(error)
   })
 

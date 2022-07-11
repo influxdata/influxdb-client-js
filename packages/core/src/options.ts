@@ -135,8 +135,8 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   batchSize: 1000,
   maxBatchBytes: 50_000_000, // default max batch size in the cloud
   flushInterval: 60000,
-  writeFailed: function() {},
-  writeSuccess: function() {},
+  writeFailed: function () {},
+  writeSuccess: function () {},
   maxRetries: 5,
   maxRetryTime: 180_000,
   maxBufferLines: 32_000,

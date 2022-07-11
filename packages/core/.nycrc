@@ -1,21 +1,11 @@
 {
   "cache": false,
   "check-coverage": false,
-  "extension": [
-    ".ts"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "src/index.ts"
-  ],
+  "extension": [".ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/index.ts"],
   "sourceMap": true,
-  "reporter": [
-    "html",
-    "text",
-    "text-summary"
-  ],
+  "reporter": ["html", "text", "text-summary"],
   "all": true,
   "instrument": true
 }

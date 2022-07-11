@@ -103,7 +103,7 @@ async function importData() {
     .collectRows(countQuery, (row, tableMeta) =>
       Number.parseInt(row[tableMeta.column('_value').index])
     )
-    .then(results => results.reduce((acc, val) => acc + val, 0))
+    .then((results) => results.reduce((acc, val) => acc + val, 0))
   console.log(`Size of temperature2 measurement since '${start}': `, count)
 }
 
@@ -114,4 +114,4 @@ importData()
       `FINISHED writing ${demoCount} points (${Date.now() - start} millis}`
     )
   )
-  .catch(e => console.error('FINISHED', e))
+  .catch((e) => console.error('FINISHED', e))

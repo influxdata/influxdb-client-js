@@ -139,11 +139,11 @@ describe('Point', () => {
       expect(point.toLineProtocol()).equals('tst a=1 1')
     })
     it("serializes Point's unknown timestamp as-is OOTB", () => {
-      const point = new Point('tst').floatField('a', 1).timestamp(({
+      const point = new Point('tst').floatField('a', 1).timestamp({
         toString() {
           return 'any'
         },
-      } as unknown) as undefined)
+      } as unknown as undefined)
       expect(point.toLineProtocol()).equals('tst a=1 any')
     })
   })

@@ -22,7 +22,7 @@ export function queryToTable(
       query,
       createCollector(resolve, reject, tableFactory, tableOptions)
     )
-  }).then(result => result.table)
+  }).then((result) => result.table)
 }
 
 /**

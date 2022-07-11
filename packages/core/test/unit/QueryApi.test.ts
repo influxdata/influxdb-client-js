@@ -173,7 +173,7 @@ describe('QueryApi', () => {
     let authorization: any
     nock(clientOptions.url)
       .post(QUERY_PATH)
-      .reply(function(_uri, requestBody) {
+      .reply(function (_uri, requestBody) {
         body = requestBody
         authorization = this.req.headers.authorization
         return [200, '', {}]

@@ -23,7 +23,7 @@ describe('createTextDecoderCombiner', () => {
   })
   // see examples in https://en.wikipedia.org/wiki/UTF-8
   const chunks = [
-    ...[0, 1, 2, 3, 4, 5, 6, 7].map(num => [
+    ...[0, 1, 2, 3, 4, 5, 6, 7].map((num) => [
       String.fromCharCode(num << 4),
       Uint8Array.from([num << 4]),
     ]),

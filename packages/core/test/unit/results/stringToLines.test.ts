@@ -11,8 +11,8 @@ interface StringToLinesTest {
 
 describe('chunksToLines', () => {
   const tests = chunksToLinesTables
-    .filter(x => x.chunks.indexOf('error') === -1)
-    .map(x => ({...x, source: x.chunks.join('')}))
+    .filter((x) => x.chunks.indexOf('error') === -1)
+    .map((x) => ({...x, source: x.chunks.join('')}))
   tests.forEach((test: StringToLinesTest) => {
     it(test.name, () => {
       const target = new CollectLinesObserver()

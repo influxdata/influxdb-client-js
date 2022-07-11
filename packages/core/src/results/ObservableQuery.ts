@@ -22,10 +22,10 @@ class QuerySubscription implements Subscription {
   public constructor(observer: Observer<Uint8Array>, executor: APIExecutor) {
     try {
       executor({
-        next: value => {
+        next: (value) => {
           observer.next(value)
         },
-        error: e => {
+        error: (e) => {
           this.isClosed = true
           observer.error(e)
         },
@@ -33,7 +33,7 @@ class QuerySubscription implements Subscription {
           this.isClosed = true
           observer.complete()
         },
-        useCancellable: c => {
+        useCancellable: (c) => {
           this.cancellable = c
         },
       })

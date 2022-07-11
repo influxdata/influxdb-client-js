@@ -67,9 +67,8 @@ export class APIBase {
       method,
     }
     if (mediaType) {
-      ;(sendOptions.headers || (sendOptions.headers = {}))[
-        'content-type'
-      ] = mediaType
+      ;(sendOptions.headers || (sendOptions.headers = {}))['content-type'] =
+        mediaType
     }
     if (request.auth) {
       const value = `${request.auth.user}:${request.auth.password}`

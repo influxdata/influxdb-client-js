@@ -52,13 +52,14 @@ process.on('SIGINT', onShutdown)
 process.on('SIGTERM', onShutdown)
 
 // export a monitoring function for express.js response time monitoring
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(
     responseTime((req, res, time) => {
       // print out request basics
       console.info(
-        `${req.method} ${req.path} ${res.statusCode} ${Math.round(time * 100) /
-          100}ms`
+        `${req.method} ${req.path} ${res.statusCode} ${
+          Math.round(time * 100) / 100
+        }ms`
       )
       // write response time to InfluxDB
       const point = new Point('express_http_server')

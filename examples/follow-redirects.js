@@ -32,12 +32,12 @@ server.listen(0, 'localhost', () => {
   }).getQueryApi(org)
   queryApi
     .collectRows('buckets()')
-    .then(data => {
+    .then((data) => {
       console.info('Available buckets:')
-      data.forEach(x => console.info('', x.name))
+      data.forEach((x) => console.info('', x.name))
       console.log('\nQuery SUCCESS')
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error)
       console.log('\nQuery ERROR')
     })

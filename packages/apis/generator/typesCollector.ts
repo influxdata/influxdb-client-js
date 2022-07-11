@@ -19,17 +19,15 @@ export default class TypesCollector {
       } else if (type.includes('|')) {
         type
           .split('|')
-          .map(x => x.trim())
-          .forEach(x => this.add(x))
+          .map((x) => x.trim())
+          .forEach((x) => this.add(x))
       } else {
         this.types[type] = true
       }
     }
   }
   toString(): string {
-    return Object.keys(this.types)
-      .sort()
-      .join(', ')
+    return Object.keys(this.types).sort().join(', ')
   }
   hasTypes(): boolean {
     return !!Object.keys(this.types).length

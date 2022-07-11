@@ -19,10 +19,12 @@ describe('InfluxDB', () => {
     })
     it('is created from configuration with url and token', () => {
       expect(
-        (new InfluxDB({
-          url: 'https://localhost:8086?token=a',
-          token: 'b',
-        }) as any)._options
+        (
+          new InfluxDB({
+            url: 'https://localhost:8086?token=a',
+            token: 'b',
+          }) as any
+        )._options
       ).to.deep.equal({
         url: 'https://localhost:8086?token=a',
         token: 'b',
@@ -43,19 +45,19 @@ describe('InfluxDB', () => {
       })
     })
     it('fails on null arg', () => {
-      expect(() => new InfluxDB((null as unknown) as ClientOptions)).to.throw(
+      expect(() => new InfluxDB(null as unknown as ClientOptions)).to.throw(
         'No url or configuration specified!'
       )
     })
     it('fails on undefined arg', () => {
       expect(
-        () => new InfluxDB((undefined as unknown) as ClientOptions)
+        () => new InfluxDB(undefined as unknown as ClientOptions)
       ).to.throw('No url or configuration specified!')
     })
     it('fails on missing url', () => {
-      expect(
-        () => new InfluxDB(({} as ClientOptions) as ClientOptions)
-      ).to.throw('No url specified!')
+      expect(() => new InfluxDB({} as ClientOptions as ClientOptions)).to.throw(
+        'No url specified!'
+      )
     })
     it('fails on unsupported protocol', () => {
       expect(
@@ -72,16 +74,16 @@ describe('InfluxDB', () => {
         })
       ).has.property('transport')
       expect(
-        new InfluxDB(({
+        new InfluxDB({
           url: 'http://localhost:8086',
           transport: null,
-        } as any) as ClientOptions)
+        } as any as ClientOptions)
       ).has.property('transport')
       expect(
-        new InfluxDB(({
+        new InfluxDB({
           url: 'http://localhost:8086',
           transport: {} as Transport,
-        } as any) as ClientOptions)
+        } as any as ClientOptions)
       ).has.property('transport')
     })
     it('creates instance with follow-redirects', () => {

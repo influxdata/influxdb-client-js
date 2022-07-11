@@ -54,7 +54,7 @@ describe('TypesCollector', () => {
       result: '',
     },
   ]
-  tests.forEach(test => {
+  tests.forEach((test) => {
     it(test.name, () => {
       const collector = new TypesCollector()
       test.toAdd.forEach(collector.add.bind(collector))

@@ -50,7 +50,7 @@ describe('errors', () => {
         return err
       })(),
     ]
-    testSetOK.forEach(error => {
+    testSetOK.forEach((error) => {
       it('retries ' + error, () => {
         expect(canRetryHttpCall(error)).to.be.true
         if (error instanceof HttpError) {
@@ -66,7 +66,7 @@ describe('errors', () => {
       new IllegalArgumentError('illegal argument'),
       new Error(''),
     ]
-    testSetNotOK.forEach(error => {
+    testSetNotOK.forEach((error) => {
       it('does not retry ' + error, () => {
         expect(canRetryHttpCall(error)).to.be.false
       })
@@ -81,7 +81,7 @@ describe('errors', () => {
       {error: new RequestTimedOutError(), retryAfter: 0},
       {error: new AbortError(), retryAfter: 0},
     ]
-    testSet.forEach(entry => {
+    testSet.forEach((entry) => {
       it(`retries ${entry.error} in ${entry.retryAfter} ms`, () => {
         expect((entry.error as RetriableDecision).retryAfter()).to.be.equal(
           entry.retryAfter
@@ -96,7 +96,7 @@ describe('errors', () => {
       new IllegalArgumentError('illegal argument'),
       new Error(''),
     ]
-    testSetNotOK.forEach(error => {
+    testSetNotOK.forEach((error) => {
       it('does not retry ' + error, () => {
         expect(canRetryHttpCall(error)).to.be.false
       })
@@ -115,7 +115,7 @@ describe('errors', () => {
       {error: null, retryAfter: 0},
       {error: undefined, retryAfter: 0},
     ]
-    testSet.forEach(entry => {
+    testSet.forEach((entry) => {
       it(`retries ${entry.error} in ${
         entry.retryAfter === -1 ? '>=1' : entry.retryAfter
       } ms`, () => {

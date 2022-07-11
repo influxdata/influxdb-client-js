@@ -13,7 +13,7 @@ export async function waitForCondition(
   step = 5
 ): Promise<void> {
   for (;;) {
-    await new Promise(resolve => setTimeout(resolve, step))
+    await new Promise((resolve) => setTimeout(resolve, step))
     timeout -= step
     if (timeout <= 0) {
       break

@@ -100,7 +100,7 @@ describe('FetchTransport', () => {
           headers: {'content-type': 'text/plain'},
           body: '{}',
         },
-        opts => {
+        (opts) => {
           options = opts
         }
       )
@@ -117,7 +117,7 @@ describe('FetchTransport', () => {
           headers: {'content-type': 'text/plain'},
           body: '{}',
         },
-        req => (lastRequest = req)
+        (req) => (lastRequest = req)
       )
       const transport = new FetchTransport({url: 'http://test:8086'})
       transport.requestDecorator = (request): void => {
@@ -126,9 +126,7 @@ describe('FetchTransport', () => {
       await transport.request('/whatever', '', {
         method: 'POST',
       })
-      expect(lastRequest)
-        .property('body')
-        .equals('modified')
+      expect(lastRequest).property('body').equals('modified')
     })
     it('receives also response headers', async () => {
       emulateFetchApi({
@@ -142,7 +140,7 @@ describe('FetchTransport', () => {
         {
           method: 'POST',
         },
-        function(headers, status) {
+        function (headers, status) {
           responseMeta = [headers, status]
         }
       )
@@ -194,10 +192,7 @@ describe('FetchTransport', () => {
         })
         .then(
           () => Promise.reject('client error expected'),
-          (e: any) =>
-            expect(e)
-              .property('message')
-              .equals('error data') //thrown by emulator
+          (e: any) => expect(e).property('message').equals('error data') //thrown by emulator
         )
     })
     it('throws error', async () => {
@@ -231,10 +226,7 @@ describe('FetchTransport', () => {
         })
         .then(
           () => Promise.reject('client error expected'),
-          (e: any) =>
-            expect(e)
-              .property('body')
-              .equals(message)
+          (e: any) => expect(e).property('body').equals(message)
         )
     })
     it('throws error with empty body', async () => {
@@ -249,10 +241,7 @@ describe('FetchTransport', () => {
         })
         .then(
           () => Promise.reject('client error expected'),
-          (e: any) =>
-            expect(e)
-              .property('body')
-              .equals('')
+          (e: any) => expect(e).property('body').equals('')
         )
     })
     it('throws error with json body', async () => {
@@ -269,18 +258,10 @@ describe('FetchTransport', () => {
         .then(
           () => Promise.reject('client error expected'),
           (e: any) => {
-            expect(e)
-              .property('body')
-              .equals(body)
-            expect(e)
-              .property('json')
-              .deep.equals(JSON.parse(body))
-            expect(e)
-              .property('message')
-              .equals('mymsg')
-            expect(e)
-              .property('code')
-              .equals('mycode')
+            expect(e).property('body').equals(body)
+            expect(e).property('json').deep.equals(JSON.parse(body))
+            expect(e).property('message').equals('mymsg')
+            expect(e).property('code').equals('mycode')
           }
         )
     })
@@ -291,7 +272,7 @@ describe('FetchTransport', () => {
           headers: {'content-type': 'text/plain'},
           body: '{}',
         },
-        req => (request = req)
+        (req) => (request = req)
       )
       await transport.request('/whatever', '', {
         method: 'GET',
@@ -506,9 +487,9 @@ describe('FetchTransport', () => {
           headers: {'content-type': 'text/plain'},
           body: '{}',
         },
-        req => (request = req)
+        (req) => (request = req)
       )
-      await new Promise(resolve =>
+      await new Promise((resolve) =>
         transport.send(
           'http://test:8086',
           '',
@@ -521,7 +502,7 @@ describe('FetchTransport', () => {
         )
       )
       expect(request?.credentials).is.deep.equal('omit')
-      await new Promise(resolve =>
+      await new Promise((resolve) =>
         new FetchTransport({
           url: 'http://test:8086',
           transportOptions: {credentials: 'my-val'},

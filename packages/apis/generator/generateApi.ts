@@ -5,7 +5,7 @@ import logger from './logger'
 
 function getResponse(operation: Operation): Response {
   const validResponse: Array<Response> = operation.responses.filter(
-    x => x.code === 'default' || x.code < '300'
+    (x) => x.code === 'default' || x.code < '300'
   )
   if (validResponse.length > 1) {
     if (
@@ -14,7 +14,7 @@ function getResponse(operation: Operation): Response {
     ) {
       logger.warn(
         `more OK responses available for ${operation.path}: ${validResponse
-          .map(x => x.code)
+          .map((x) => x.code)
           .join(',')}`
       )
     }
@@ -84,7 +84,7 @@ function requestRequired(operation: Operation): boolean {
   if (
     operation.queryParams &&
     operation.queryParams.length &&
-    operation.queryParams.some(x => x.required)
+    operation.queryParams.some((x) => x.required)
   ) {
     return true
   }
@@ -153,7 +153,7 @@ export class ${apiName} {
     )}${
       operation.queryParams.length
         ? '${this.base.queryString(request,[' +
-          operation.queryParams.map(x => "'" + x.name + "'").join(',') +
+          operation.queryParams.map((x) => "'" + x.name + "'").join(',') +
           '])}'
         : ''
     }\`, request, requestOptions${
