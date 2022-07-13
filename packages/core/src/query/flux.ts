@@ -209,7 +209,7 @@ function sanitizeRegExp(value: any): string {
  * for details.
  */
 export function fluxRegExp(value: any): FluxParameterLike {
-  // let the server decide if it can be parsed
+  // let the server decide if a regexp can be parsed
   return new FluxParameter(sanitizeRegExp(value))
 }
 
