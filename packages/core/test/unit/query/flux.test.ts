@@ -245,6 +245,10 @@ describe('Flux Tagged Template', () => {
         value: flux`${Symbol('thisSym')}`,
         flux: `"${Symbol('thisSym').toString()}"`,
       },
+      {
+        value: flux`${BigInt('123456789123456789123456789')}`,
+        flux: `123456789123456789123456789.0`,
+      },
     ]
     pairs.forEach((pair) => {
       expect(pair.value.toString()).equals(pair.flux)
