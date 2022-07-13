@@ -262,8 +262,10 @@ export function toFluxValue(value: any): string {
     } else if (Array.isArray(value)) {
       return `[${value.map(toFluxValue).join(',')}]`
     }
+  } else if (typeof value === 'bigint') {
+    return `${value}.0`
   }
-  // use toString value for unrecognized object, bigint, symbol
+  // use toString value for unrecognized object, symbol
   return toFluxValue(value.toString())
 }
 

@@ -40,6 +40,12 @@ describe('Flux Values', () => {
       '9223372036854775807'
     )
     expect(() => fluxInteger('9223372036854775808').toString()).throws()
+    expect(fluxInteger(BigInt('-9223372036854775808')).toString()).equals(
+      '-9223372036854775808'
+    )
+    expect(fluxInteger(BigInt('9223372036854775807')).toString()).equals(
+      '9223372036854775807'
+    )
   })
   it('creates fluxBool', () => {
     expect(fluxBool('true').toString()).equals('true')
@@ -72,6 +78,7 @@ describe('Flux Values', () => {
     expect(() => fluxFloat({})).to.throw()
     expect(() => fluxFloat(undefined)).to.throw()
     expect(fluxFloat({toString: () => '1'}).toString()).equals('1.0')
+    expect(fluxFloat(BigInt('10')).toString()).equals('10.0')
   })
   it('creates fluxDuration', () => {
     const subject = fluxDuration('1ms')
@@ -126,6 +133,10 @@ describe('Flux Values', () => {
       {value: [], flux: '[]'},
       {value: ['a"$d'], flux: '["a\\"$d"]'},
       {value: Symbol('thisSym'), flux: `"${Symbol('thisSym').toString()}"`},
+      {
+        value: BigInt('123456789123456789123456789'),
+        flux: '123456789123456789123456789.0',
+      },
     ]
     pairs.forEach((pair) => {
       it(`converts ${JSON.stringify(String(pair.value))} to '${
