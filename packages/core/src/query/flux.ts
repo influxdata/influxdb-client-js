@@ -197,7 +197,10 @@ export function fluxDuration(value: any): FluxParameterLike {
 }
 
 function sanitizeRegExp(value: any): string {
-  return `regexp.compile(v: "${sanitizeString(value)}")`
+  if (value instanceof RegExp) {
+    return value.toString()
+  }
+  return new RegExp(value).toString()
 }
 
 /**

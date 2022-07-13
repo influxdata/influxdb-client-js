@@ -86,10 +86,8 @@ describe('Flux Values', () => {
     expect((subject as any)[FLUX_VALUE]()).equals(fluxValue)
   })
   it('creates fluxRegExp', () => {
-    const subject = fluxRegExp('/abc/')
-    const fluxValue = 'regexp.compile(v: "/abc/")'
-    expect(subject.toString()).equals(fluxValue)
-    expect((subject as any)[FLUX_VALUE]()).equals(fluxValue)
+    expect(fluxRegExp('abc').toString()).equals('/abc/')
+    expect(fluxRegExp(/abc/i).toString()).equals('/abc/i')
   })
   it('creates fluxString', () => {
     const subject = fluxString('abc')
@@ -111,7 +109,7 @@ describe('Flux Values', () => {
       {value: -1e-21, flux: 'float(v: "-1e-21")'},
       {value: 'a', flux: '"a"'},
       {value: new Date(1589521447471), flux: '2020-05-15T05:44:07.471Z'},
-      {value: /abc/, flux: 'regexp.compile(v: "/abc/")'},
+      {value: /abc/, flux: '/abc/'},
       {
         value: {
           toString: function (): string {
@@ -216,7 +214,7 @@ describe('Flux Tagged Template', () => {
         value: flux`${new Date(1589521447471)}`,
         flux: '2020-05-15T05:44:07.471Z',
       },
-      {value: flux`${/abc/}`, flux: 'regexp.compile(v: "/abc/")'},
+      {value: flux`${/abc/}`, flux: '/abc/'},
       {
         value: flux`${{
           toString: function (): string {
