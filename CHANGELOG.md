@@ -3,6 +3,7 @@
 ### Features
 
 1. [#460](https://github.com/influxdata/influxdb-client-js/pull/460): Add type definitions for typescript 4.7+.
+1. [#469](https://github.com/influxdata/influxdb-client-js/pull/469): Support bigint in flux tagged template.
 
 ### Bug Fixes
 
