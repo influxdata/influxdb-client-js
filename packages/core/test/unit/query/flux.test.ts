@@ -59,12 +59,19 @@ describe('Flux Values', () => {
     const subject = fluxFloat(123.456)
     expect(subject.toString()).equals('123.456')
     expect((subject as any)[FLUX_VALUE]()).equals('123.456')
-    expect(fluxFloat('-123').toString()).equals('-123')
+    expect(fluxFloat('-123').toString()).equals('-123.0')
+    expect(fluxFloat(1e20).toString()).equals('100000000000000000000.0')
+    expect(fluxFloat(1e-2).toString()).equals('0.01')
+    expect(fluxFloat(1e21).toString()).equals('float(v: "1e+21")')
+    expect(fluxFloat(1e-21).toString()).equals('float(v: "1e-21")')
+    expect(fluxFloat(Infinity).toString()).equals('float(v: "Infinity")')
+    expect(fluxFloat(-Infinity).toString()).equals('float(v: "-Infinity")')
+    expect(fluxFloat(NaN).toString()).equals('float(v: "NaN")')
     expect(() => fluxFloat('123..')).to.throw()
     expect(() => fluxFloat('123.a')).to.throw()
-    expect(() => fluxFloat(NaN)).to.throw()
-    expect(() => fluxFloat(Infinity)).to.throw()
-    expect(() => fluxFloat(-Infinity)).to.throw()
+    expect(() => fluxFloat({})).to.throw()
+    expect(() => fluxFloat(undefined)).to.throw()
+    expect(fluxFloat({toString: () => '1'}).toString()).equals('1.0')
   })
   it('creates fluxDuration', () => {
     const subject = fluxDuration('1ms')
@@ -101,6 +108,7 @@ describe('Flux Values', () => {
       {value: 1, flux: '1'},
       {value: 1.1, flux: '1.1'},
       {value: -1.1, flux: '-1.1'},
+      {value: -1e-21, flux: 'float(v: "-1e-21")'},
       {value: 'a', flux: '"a"'},
       {value: new Date(1589521447471), flux: '2020-05-15T05:44:07.471Z'},
       {value: /abc/, flux: 'regexp.compile(v: "/abc/")'},

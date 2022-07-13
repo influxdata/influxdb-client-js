@@ -112,24 +112,26 @@ export function fluxString(value: any): FluxParameterLike {
  * @throws Error if the the value cannot be sanitized
  */
 export function sanitizeFloat(value: any): string {
-  if (typeof value === 'number') {
-    if (!isFinite(value)) {
-      throw new Error(`not a flux float: ${value}`)
+  const val = Number(value)
+  if (!isFinite(val)) {
+    if (typeof value === 'number') {
+      return `float(v: "${val}")`
     }
-    return value.toString()
+    throw new Error(`not a flux float: ${value}`)
   }
-  const val = String(value)
-  let dot = false
-  for (const c of val) {
+  // try to return a flux float literal if possible
+  // https://docs.influxdata.com/flux/v0.x/data-types/basic/float/#float-syntax
+  const strVal = val.toString()
+  let hasDot = false
+  for (const c of strVal) {
+    if ((c >= '0' && c <= '9') || c == '-') continue
     if (c === '.') {
-      if (dot) throw new Error(`not a flux float: ${val}`)
-      dot = !dot
+      hasDot = true
       continue
     }
-    if (c !== '.' && c !== '-' && (c < '0' || c > '9'))
-      throw new Error(`not a flux float: ${val}`)
+    return `float(v: "${strVal}")`
   }
-  return val
+  return hasDot ? strVal : strVal + '.0'
 }
 /**
  * Creates a flux float literal.
