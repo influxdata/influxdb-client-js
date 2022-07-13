@@ -31,6 +31,15 @@ describe('Flux Values', () => {
     expect(() => fluxInteger(NaN)).to.throw()
     expect(() => fluxInteger(Infinity)).to.throw()
     expect(() => fluxInteger(-Infinity)).to.throw()
+    expect(() => fluxInteger('')).to.throw()
+    expect(fluxInteger('-9223372036854775808').toString()).equals(
+      '-9223372036854775808'
+    )
+    expect(() => fluxInteger('-9223372036854775809').toString()).throws()
+    expect(fluxInteger('9223372036854775807').toString()).equals(
+      '9223372036854775807'
+    )
+    expect(() => fluxInteger('9223372036854775808').toString()).throws()
   })
   it('creates fluxBool', () => {
     expect(fluxBool('true').toString()).equals('true')

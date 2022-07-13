@@ -139,16 +139,41 @@ export function fluxFloat(value: any): FluxParameterLike {
 }
 
 /**
+ * Sanitizes integer value to avoid injections.
+ * @param value - InfluxDB integer literal
+ * @returns sanitized integer value
+ * @throws Error if the the value cannot be sanitized
+ */
+export function sanitizeInteger(value: any): string {
+  // https://docs.influxdata.com/flux/v0.x/data-types/basic/int/
+  // Min value: -9223372036854775808
+  // Max value: 9223372036854775807
+  // "9223372036854775807".length === 19
+  const strVal = String(value)
+  const negative = strVal.startsWith('-')
+  const val = negative ? strVal.substring(1) : strVal
+  if (val.length === 0 || val.length > 19) {
+    throw new Error(`not a flux integer: ${strVal}`)
+  }
+  for (const c of val) {
+    if (c < '0' || c > '9') throw new Error(`not a flux integer: ${strVal}`)
+  }
+  if (val.length === 19) {
+    if (negative && val > '9223372036854775808') {
+      throw new Error(`flux integer out of bounds: ${strVal}`)
+    }
+    if (!negative && val > '9223372036854775807') {
+      throw new Error(`flux integer out of bounds: ${strVal}`)
+    }
+  }
+  return strVal
+}
+
+/**
  * Creates a flux integer literal.
  */
 export function fluxInteger(value: any): FluxParameterLike {
-  const val = sanitizeFloat(value)
-  for (const c of val) {
-    if (c === '.') {
-      throw new Error(`not a flux integer: ${val}`)
-    }
-  }
-  return new FluxParameter(val)
+  return new FluxParameter(sanitizeInteger(value))
 }
 
 function sanitizeDateTime(value: any): string {
@@ -216,6 +241,9 @@ export function toFluxValue(value: any): string {
   } else if (typeof value === 'string') {
     return `"${sanitizeString(value)}"`
   } else if (typeof value === 'number') {
+    if (Number.isSafeInteger(value)) {
+      return sanitizeInteger(value)
+    }
     return sanitizeFloat(value)
   } else if (typeof value === 'object') {
     if (typeof value[FLUX_VALUE] === 'function') {
