@@ -204,7 +204,9 @@ function sanitizeRegExp(value: any): string {
 }
 
 /**
- * Creates flux regexp literal.
+ * Creates flux regexp literal out of a regular expression. See
+ * https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/#regular-expression-syntax
+ * for details.
  */
 export function fluxRegExp(value: any): FluxParameterLike {
   // let the server decide if it can be parsed
