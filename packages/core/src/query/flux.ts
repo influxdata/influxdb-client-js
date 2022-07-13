@@ -112,24 +112,26 @@ export function fluxString(value: any): FluxParameterLike {
  * @throws Error if the the value cannot be sanitized
  */
 export function sanitizeFloat(value: any): string {
-  if (typeof value === 'number') {
-    if (!isFinite(value)) {
-      throw new Error(`not a flux float: ${value}`)
+  const val = Number(value)
+  if (!isFinite(val)) {
+    if (typeof value === 'number') {
+      return `float(v: "${val}")`
     }
-    return value.toString()
+    throw new Error(`not a flux float: ${value}`)
   }
-  const val = String(value)
-  let dot = false
-  for (const c of val) {
+  // try to return a flux float literal if possible
+  // https://docs.influxdata.com/flux/v0.x/data-types/basic/float/#float-syntax
+  const strVal = val.toString()
+  let hasDot = false
+  for (const c of strVal) {
+    if ((c >= '0' && c <= '9') || c == '-') continue
     if (c === '.') {
-      if (dot) throw new Error(`not a flux float: ${val}`)
-      dot = !dot
+      hasDot = true
       continue
     }
-    if (c !== '.' && c !== '-' && (c < '0' || c > '9'))
-      throw new Error(`not a flux float: ${val}`)
+    return `float(v: "${strVal}")`
   }
-  return val
+  return hasDot ? strVal : strVal + '.0'
 }
 /**
  * Creates a flux float literal.
@@ -139,16 +141,41 @@ export function fluxFloat(value: any): FluxParameterLike {
 }
 
 /**
+ * Sanitizes integer value to avoid injections.
+ * @param value - InfluxDB integer literal
+ * @returns sanitized integer value
+ * @throws Error if the the value cannot be sanitized
+ */
+export function sanitizeInteger(value: any): string {
+  // https://docs.influxdata.com/flux/v0.x/data-types/basic/int/
+  // Min value: -9223372036854775808
+  // Max value: 9223372036854775807
+  // "9223372036854775807".length === 19
+  const strVal = String(value)
+  const negative = strVal.startsWith('-')
+  const val = negative ? strVal.substring(1) : strVal
+  if (val.length === 0 || val.length > 19) {
+    throw new Error(`not a flux integer: ${strVal}`)
+  }
+  for (const c of val) {
+    if (c < '0' || c > '9') throw new Error(`not a flux integer: ${strVal}`)
+  }
+  if (val.length === 19) {
+    if (negative && val > '9223372036854775808') {
+      throw new Error(`flux integer out of bounds: ${strVal}`)
+    }
+    if (!negative && val > '9223372036854775807') {
+      throw new Error(`flux integer out of bounds: ${strVal}`)
+    }
+  }
+  return strVal
+}
+
+/**
  * Creates a flux integer literal.
  */
 export function fluxInteger(value: any): FluxParameterLike {
-  const val = sanitizeFloat(value)
-  for (const c of val) {
-    if (c === '.') {
-      throw new Error(`not a flux integer: ${val}`)
-    }
-  }
-  return new FluxParameter(val)
+  return new FluxParameter(sanitizeInteger(value))
 }
 
 function sanitizeDateTime(value: any): string {
@@ -170,14 +197,19 @@ export function fluxDuration(value: any): FluxParameterLike {
 }
 
 function sanitizeRegExp(value: any): string {
-  return `regexp.compile(v: "${sanitizeString(value)}")`
+  if (value instanceof RegExp) {
+    return value.toString()
+  }
+  return new RegExp(value).toString()
 }
 
 /**
- * Creates flux regexp literal.
+ * Creates flux regexp literal out of a regular expression. See
+ * https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/#regular-expression-syntax
+ * for details.
  */
 export function fluxRegExp(value: any): FluxParameterLike {
-  // let the server decide if it can be parsed
+  // let the server decide if a regexp can be parsed
   return new FluxParameter(sanitizeRegExp(value))
 }
 
@@ -216,6 +248,9 @@ export function toFluxValue(value: any): string {
   } else if (typeof value === 'string') {
     return `"${sanitizeString(value)}"`
   } else if (typeof value === 'number') {
+    if (Number.isSafeInteger(value)) {
+      return sanitizeInteger(value)
+    }
     return sanitizeFloat(value)
   } else if (typeof value === 'object') {
     if (typeof value[FLUX_VALUE] === 'function') {

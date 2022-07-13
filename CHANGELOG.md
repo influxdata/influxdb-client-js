@@ -4,6 +4,10 @@
 
 1. [#460](https://github.com/influxdata/influxdb-client-js/pull/460): Add type definitions for typescript 4.7+.
 
+### Bug Fixes
+
+1. [#468](https://github.com/influxdata/influxdb-client-js/pull/468): Repair sanitizing of number and regexp values.
+
 ### Other
 
 1. [#462](https://github.com/influxdata/influxdb-client-js/pull/462): Upgrade to typescript 4.7.
