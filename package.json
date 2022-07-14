@@ -39,7 +39,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@microsoft/api-documenter": "^7.13.34",
+    "@microsoft/api-documenter": "^7.18.3",
     "gh-pages": "^3.1.0",
     "lerna": "^5.0.0",
     "prettier": "^2.7.1",

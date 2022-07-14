@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@influxdata/influxdb-client": "^1.27.0",
-    "@microsoft/api-extractor": "^7.18.4",
+    "@microsoft/api-extractor": "^7.28.4",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
