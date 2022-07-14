@@ -63,7 +63,7 @@
     "eslint-plugin-tsdoc": "^0.2.16",
     "mocha": "^6.2.2",
     "mocha-junit-reporter": "^1.23.1",
-    "nock": "^11.7.0",
+    "nock": "^13.2.8",
     "nyc": "^15.1.0",
     "prettier": "^2.7.1",
     "react": "^17.0.2",
