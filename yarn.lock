@@ -5600,10 +5600,10 @@ rollup-plugin-dts@^2.0.0:
   optionalDependencies:
     "@babel/code-frame" "^7.10.4"
 
-rollup-plugin-gzip@^2.2.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-gzip/-/rollup-plugin-gzip-2.5.1.tgz#afb962ecd3ebbc7dc3bc080612da789a5103f890"
-  integrity sha512-l9h3g0imsGvhjcSsxNRLHNW/gqRSSgaJLCKKWYeRclPHvDMDewmI43ZyiGJ3nc3+sZNy1pJnWzB3Bvm+tJI2jQ==
+rollup-plugin-gzip@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-gzip/-/rollup-plugin-gzip-3.0.1.tgz#871c5df5cbdf7e0c54a512e166761de55ea87dc2"
+  integrity sha512-yzyrbe5cn/3yTqtGpVb+0kQXiqKLZpNpRTGpItc11b8c9IhawpjZPPLMkh1Q7gl6UsHIVjcw9LeEdvom9H3klw==
 
 rollup-plugin-terser@^7.0.0:
   version "7.0.2"
