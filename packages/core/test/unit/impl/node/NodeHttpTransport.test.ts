@@ -302,7 +302,7 @@ describe('NodeHttpTransport', () => {
       it(`fails on socket timeout`, async () => {
         nock(transportOptions.url)
           .get('/test')
-          .socketDelay(2000)
+          .delayConnection(2000)
           .reply(200, 'ok')
         await sendTestData({...transportOptions, timeout: 100}, {method: 'GET'})
           .then(() => {
@@ -452,7 +452,7 @@ describe('NodeHttpTransport', () => {
       it(`is cancelled before the response arrives`, async () => {
         nock(transportOptions.url)
           .get('/test')
-          .socketDelay(2000)
+          .delayConnection(2000)
           .reply(200, 'yes')
           .persist()
         await sendTestData(
