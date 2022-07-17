@@ -1477,9 +1477,9 @@
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
 "@types/node@*", "@types/node@^18":
-  version "18.0.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.4.tgz#48aedbf35efb3af1248e4cd4d792c730290cd5d6"
-  integrity sha512-M0+G6V0Y4YV8cqzHssZpaNCqvYwlCiulmm0PwpNLF55r/+cT8Ol42CHRU1SEaYFH2rTwiiE1aYg/2g2rrtGdPA==
+  version "18.0.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.5.tgz#96be8113b014e9e7f0c3609c4a25afadd85ff659"
+  integrity sha512-En7tneq+j0qAiVwysBD79y86MT3ModuoIJbe7JXp+sb5UAjInSShmK3nXXMioBzfF7rXC12hv12d4IyCVwN4dA==
 
 "@types/node@12.20.24":
   version "12.20.24"
