@@ -24,15 +24,15 @@
   "exports": {
     ".": {
       "types": "./dist/all.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "deno": "./dist/index.mjs",
       "browser": {
         "import": "./dist/index.mjs",
         "require": "./dist/index.js",
         "umd": "./dist/index.browser.js",
         "script": "./dist/influxdbApis.js"
-      }
+      },
+      "deno": "./dist/index.mjs",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
