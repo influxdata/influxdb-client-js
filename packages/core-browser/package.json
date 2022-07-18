@@ -17,19 +17,15 @@
   "exports": {
     ".": {
       "types": "./dist/all.d.ts",
-      "import": "./dist/index.browser.mjs",
-      "require": "./dist/index.browser.js",
-      "deno": "./dist/index.browser.mjs",
-      "node": {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.js"
-      },
       "browser": {
         "import": "./dist/index.browser.mjs",
         "require": "./dist/index.browser.js",
         "script": "./dist/influxdb.js",
         "umd": "./dist/index.browser.js"
-      }
+      },
+      "deno": "./dist/index.browser.mjs",
+      "import": "./dist/index.browser.mjs",
+      "require": "./dist/index.browser.js"
     }
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",

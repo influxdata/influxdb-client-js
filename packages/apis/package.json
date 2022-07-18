@@ -4,7 +4,7 @@
   "description": "InfluxDB 2.x generated APIs",
   "scripts": {
     "apidoc:extract": "api-extractor run",
-    "build": "yarn run clean && yarn run lint && rollup -c",
+    "build": "yarn run clean && yarn run lint && rollup --failAfterWarnings  -c",
     "clean": "rimraf build doc dist reports",
     "clean:apis": "rimraf src/generated/*API.ts",
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
@@ -24,15 +24,15 @@
   "exports": {
     ".": {
       "types": "./dist/all.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "deno": "./dist/index.mjs",
       "browser": {
         "import": "./dist/index.mjs",
         "require": "./dist/index.js",
         "umd": "./dist/index.browser.js",
         "script": "./dist/influxdbApis.js"
-      }
+      },
+      "deno": "./dist/index.mjs",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "homepage": "https://github.com/influxdata/influxdb-client-js",
