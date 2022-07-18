@@ -4,7 +4,7 @@
   "description": "InfluxDB 2.x generated APIs",
   "scripts": {
     "apidoc:extract": "api-extractor run",
-    "build": "yarn run clean && yarn run lint && rollup -c",
+    "build": "yarn run clean && yarn run lint && rollup --failAfterWarnings  -c",
     "clean": "rimraf build doc dist reports",
     "clean:apis": "rimraf src/generated/*API.ts",
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
