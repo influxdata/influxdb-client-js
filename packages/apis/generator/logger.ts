@@ -1,9 +1,9 @@
-import {yellow} from 'chalk'
+import chalk from 'chalk'
 
 /* eslint-disable no-console */
 const logger = {
   warn(message: string, ...otherParameters: any[]): void {
-    message = yellow(message)
+    message = chalk.yellow(message)
     if (otherParameters.length) {
       console.warn(message, ...otherParameters)
     } else {
