@@ -10,7 +10,7 @@
     "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
-    "test:ci": "yarn run lint:ci && yarn run test:unit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/apis_mocha/test-results.xml",
+    "test:ci": "yarn run typecheck && yarn run lint:ci && yarn run test:unit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/apis_mocha/test-results.xml",
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file ../../reports/apis_eslint/eslint.xml",
