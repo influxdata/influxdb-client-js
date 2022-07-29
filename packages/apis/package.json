@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client-apis",
-  "version": "1.27.0",
+  "version": "1.28.0",
   "description": "InfluxDB 2.x generated APIs",
   "scripts": {
     "apidoc:extract": "api-extractor run",
@@ -53,7 +53,7 @@
     "@influxdata/influxdb-client": "*"
   },
   "devDependencies": {
-    "@influxdata/influxdb-client": "^1.27.0",
+    "@influxdata/influxdb-client": "^1.28.0",
     "@microsoft/api-extractor": "^7.28.4",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
