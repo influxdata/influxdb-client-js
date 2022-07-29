@@ -12,8 +12,8 @@ export interface DeleteChecksIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [checkID](./influxdb-client-apis.deletechecksidlabelsidrequest.checkid.md) | string | The check ID. |
-|  [labelID](./influxdb-client-apis.deletechecksidlabelsidrequest.labelid.md) | string | The ID of the label to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [checkID](./influxdb-client-apis.deletechecksidlabelsidrequest.checkid.md) |  | string | The check ID. |
+|  [labelID](./influxdb-client-apis.deletechecksidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
 

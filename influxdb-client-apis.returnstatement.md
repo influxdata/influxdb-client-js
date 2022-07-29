@@ -14,8 +14,8 @@ export interface ReturnStatement
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [argument?](./influxdb-client-apis.returnstatement.argument.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.returnstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [argument?](./influxdb-client-apis.returnstatement.argument.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.returnstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

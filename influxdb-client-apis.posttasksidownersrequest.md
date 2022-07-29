@@ -12,8 +12,8 @@ export interface PostTasksIDOwnersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidownersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
-|  [taskID](./influxdb-client-apis.posttasksidownersrequest.taskid.md) | string | The task ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttasksidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
+|  [taskID](./influxdb-client-apis.posttasksidownersrequest.taskid.md) |  | string | The task ID. |
 

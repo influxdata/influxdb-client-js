@@ -12,7 +12,7 @@ export interface GetDashboardsIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.getdashboardsidlabelsrequest.dashboardid.md) | string | The dashboard ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboardID](./influxdb-client-apis.getdashboardsidlabelsrequest.dashboardid.md) |  | string | The dashboard ID. |
 

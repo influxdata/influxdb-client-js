@@ -12,7 +12,7 @@ export interface GetSourcesRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [org?](./influxdb-client-apis.getsourcesrequest.org.md) | string | <i>(Optional)</i> The name of the organization. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [org?](./influxdb-client-apis.getsourcesrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
 

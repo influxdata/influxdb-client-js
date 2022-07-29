@@ -12,10 +12,10 @@ export interface BuilderConfig
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [aggregateWindow?](./influxdb-client-apis.builderconfig.aggregatewindow.md) | { period?: string; fillValues?: boolean; } | <i>(Optional)</i> |
-|  [buckets?](./influxdb-client-apis.builderconfig.buckets.md) | string\[\] | <i>(Optional)</i> |
-|  [functions?](./influxdb-client-apis.builderconfig.functions.md) | [BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [tags?](./influxdb-client-apis.builderconfig.tags.md) | [BuilderTagsType](./influxdb-client-apis.buildertagstype.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [aggregateWindow?](./influxdb-client-apis.builderconfig.aggregatewindow.md) |  | { period?: string; fillValues?: boolean; } | <i>(Optional)</i> |
+|  [buckets?](./influxdb-client-apis.builderconfig.buckets.md) |  | string\[\] | <i>(Optional)</i> |
+|  [functions?](./influxdb-client-apis.builderconfig.functions.md) |  | [BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [tags?](./influxdb-client-apis.builderconfig.tags.md) |  | [BuilderTagsType](./influxdb-client-apis.buildertagstype.md)<!-- -->\[\] | <i>(Optional)</i> |
 

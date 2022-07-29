@@ -12,7 +12,7 @@ export interface PostDashboardsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsrequest.body.md) | [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) | Dashboard to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postdashboardsrequest.body.md) |  | [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) | Dashboard to create |
 

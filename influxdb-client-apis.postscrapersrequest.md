@@ -12,7 +12,7 @@ export interface PostScrapersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersrequest.body.md) | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postscrapersrequest.body.md) |  | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target to create |
 

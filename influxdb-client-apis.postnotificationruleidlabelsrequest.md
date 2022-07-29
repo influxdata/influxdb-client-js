@@ -12,8 +12,8 @@ export interface PostNotificationRuleIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md) | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [ruleID](./influxdb-client-apis.postnotificationruleidlabelsrequest.ruleid.md) | string | The notification rule ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [ruleID](./influxdb-client-apis.postnotificationruleidlabelsrequest.ruleid.md) |  | string | The notification rule ID. |
 

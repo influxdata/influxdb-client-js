@@ -12,7 +12,7 @@ export interface PostQueryAnalyzeRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) | [Query](./influxdb-client-apis.query.md) | Flux query to analyze |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) |  | [Query](./influxdb-client-apis.query.md) | Flux query to analyze |
 

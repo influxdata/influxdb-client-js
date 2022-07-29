@@ -12,7 +12,7 @@ export interface GetReplicationByIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [replicationID](./influxdb-client-apis.getreplicationbyidrequest.replicationid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [replicationID](./influxdb-client-apis.getreplicationbyidrequest.replicationid.md) |  | string |  |
 

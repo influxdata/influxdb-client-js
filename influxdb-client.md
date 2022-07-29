@@ -52,13 +52,14 @@ See also [examples](https://github.com/influxdata/influxdb-client-js/tree/master
 |  [fluxExpression(value)](./influxdb-client.fluxexpression.md) | Assumes that the supplied value is flux expression or literal that does not need sanitizing. |
 |  [fluxFloat(value)](./influxdb-client.fluxfloat.md) | Creates a flux float literal. |
 |  [fluxInteger(value)](./influxdb-client.fluxinteger.md) | Creates a flux integer literal. |
-|  [fluxRegExp(value)](./influxdb-client.fluxregexp.md) | Creates flux regexp literal. |
+|  [fluxRegExp(value)](./influxdb-client.fluxregexp.md) | Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/\#regular-expression-syntax for details. |
 |  [fluxString(value)](./influxdb-client.fluxstring.md) | Creates a flux string literal. |
 |  [getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md) | Gets retry delay from the supplied error, possibly using random number up to retryJitter. |
 |  [isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md) | isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. |
 |  [linesToTables(consumer)](./influxdb-client.linestotables.md) | linesToTables creates a transformationthat accepts (flux) annotated CSV lines and emits rows together with table metadata. |
 |  [newFluxTableColumn()](./influxdb-client.newfluxtablecolumn.md) | Creates a new flux table column. |
 |  [sanitizeFloat(value)](./influxdb-client.sanitizefloat.md) | Sanitizes float value to avoid injections. |
+|  [sanitizeInteger(value)](./influxdb-client.sanitizeinteger.md) | Sanitizes integer value to avoid injections. |
 |  [serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md) | serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md) | serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
 |  [serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md) | serializeDateTimeAsString changes type serializers to return string values for <code>dateTime:RFC3339</code> query result data type. Empty value is converted to null. |

@@ -12,9 +12,9 @@ export interface GetNotificationEndpointsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getnotificationendpointsrequest.limit.md) | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getnotificationendpointsrequest.offset.md) | number | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getnotificationendpointsrequest.orgid.md) | string | Only show notification endpoints that belong to specific organization ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [limit?](./influxdb-client-apis.getnotificationendpointsrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getnotificationendpointsrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [orgID](./influxdb-client-apis.getnotificationendpointsrequest.orgid.md) |  | string | Only show notification endpoints that belong to specific organization ID. |
 

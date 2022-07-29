@@ -12,10 +12,10 @@ export interface SMTPNotificationRuleBase
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bodyTemplate?](./influxdb-client-apis.smtpnotificationrulebase.bodytemplate.md) | string | <i>(Optional)</i> |
-|  [subjectTemplate](./influxdb-client-apis.smtpnotificationrulebase.subjecttemplate.md) | string |  |
-|  [to](./influxdb-client-apis.smtpnotificationrulebase.to.md) | string |  |
-|  [type](./influxdb-client-apis.smtpnotificationrulebase.type.md) | 'smtp' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bodyTemplate?](./influxdb-client-apis.smtpnotificationrulebase.bodytemplate.md) |  | string | <i>(Optional)</i> |
+|  [subjectTemplate](./influxdb-client-apis.smtpnotificationrulebase.subjecttemplate.md) |  | string |  |
+|  [to](./influxdb-client-apis.smtpnotificationrulebase.to.md) |  | string |  |
+|  [type](./influxdb-client-apis.smtpnotificationrulebase.type.md) |  | 'smtp' |  |
 

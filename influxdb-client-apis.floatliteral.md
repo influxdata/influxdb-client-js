@@ -14,8 +14,8 @@ export interface FloatLiteral
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.floatliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.floatliteral.value.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.floatliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.floatliteral.value.md) |  | number | <i>(Optional)</i> |
 

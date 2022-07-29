@@ -12,8 +12,8 @@ export interface PutChecksIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.putchecksidrequest.body.md) | [Check](./influxdb-client-apis.check.md) | Check update to apply |
-|  [checkID](./influxdb-client-apis.putchecksidrequest.checkid.md) | string | The check ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.putchecksidrequest.body.md) |  | [Check](./influxdb-client-apis.check.md) | Check update to apply |
+|  [checkID](./influxdb-client-apis.putchecksidrequest.checkid.md) |  | string | The check ID. |
 

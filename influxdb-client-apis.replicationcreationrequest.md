@@ -12,15 +12,15 @@ export interface ReplicationCreationRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.replicationcreationrequest.description.md) | string | <i>(Optional)</i> |
-|  [dropNonRetryableData?](./influxdb-client-apis.replicationcreationrequest.dropnonretryabledata.md) | boolean | <i>(Optional)</i> |
-|  [localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) | string |  |
-|  [maxAgeSeconds](./influxdb-client-apis.replicationcreationrequest.maxageseconds.md) | number |  |
-|  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) | number |  |
-|  [name](./influxdb-client-apis.replicationcreationrequest.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) | string |  |
-|  [remoteBucketID](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) | string |  |
-|  [remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.replicationcreationrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [dropNonRetryableData?](./influxdb-client-apis.replicationcreationrequest.dropnonretryabledata.md) |  | boolean | <i>(Optional)</i> |
+|  [localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) |  | string |  |
+|  [maxAgeSeconds](./influxdb-client-apis.replicationcreationrequest.maxageseconds.md) |  | number |  |
+|  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) |  | number |  |
+|  [name](./influxdb-client-apis.replicationcreationrequest.name.md) |  | string |  |
+|  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) |  | string |  |
+|  [remoteBucketID](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) |  | string |  |
+|  [remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md) |  | string |  |
 

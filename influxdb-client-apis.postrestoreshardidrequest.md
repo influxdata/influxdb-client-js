@@ -12,8 +12,8 @@ export interface PostRestoreShardIdRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestoreshardidrequest.body.md) | string | TSM snapshot. |
-|  [shardID](./influxdb-client-apis.postrestoreshardidrequest.shardid.md) | string | The shard ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postrestoreshardidrequest.body.md) |  | string | TSM snapshot. |
+|  [shardID](./influxdb-client-apis.postrestoreshardidrequest.shardid.md) |  | string | The shard ID. |
 

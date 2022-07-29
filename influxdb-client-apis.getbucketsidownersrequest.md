@@ -12,7 +12,7 @@ export interface GetBucketsIDOwnersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidownersrequest.bucketid.md) | string | The bucket ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.getbucketsidownersrequest.bucketid.md) |  | string | The bucket ID. |
 

@@ -12,7 +12,7 @@ export interface PostRestoreKVRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorekvrequest.body.md) | string | Full KV snapshot. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postrestorekvrequest.body.md) |  | string | Full KV snapshot. |
 

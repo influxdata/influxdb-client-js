@@ -14,9 +14,9 @@ export interface PatchBucketRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchbucketrequest.description.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.patchbucketrequest.name.md) | string | <i>(Optional)</i> |
-|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) | [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.patchbucketrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.patchbucketrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | <i>(Optional)</i> |
 

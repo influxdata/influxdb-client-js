@@ -12,11 +12,11 @@ export interface TelegrafRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [config?](./influxdb-client-apis.telegrafrequest.config.md) | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.telegrafrequest.description.md) | string | <i>(Optional)</i> |
-|  [metadata?](./influxdb-client-apis.telegrafrequest.metadata.md) | { buckets?: string\[\]; } | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.telegrafrequest.name.md) | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.telegrafrequest.orgid.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [config?](./influxdb-client-apis.telegrafrequest.config.md) |  | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.telegrafrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [metadata?](./influxdb-client-apis.telegrafrequest.metadata.md) |  | { buckets?: string\[\]; } | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.telegrafrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.telegrafrequest.orgid.md) |  | string | <i>(Optional)</i> |
 

@@ -12,9 +12,9 @@ export interface SubscriptionManifest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [destinations](./influxdb-client-apis.subscriptionmanifest.destinations.md) | string\[\] |  |
-|  [mode](./influxdb-client-apis.subscriptionmanifest.mode.md) | string |  |
-|  [name](./influxdb-client-apis.subscriptionmanifest.name.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [destinations](./influxdb-client-apis.subscriptionmanifest.destinations.md) |  | string\[\] |  |
+|  [mode](./influxdb-client-apis.subscriptionmanifest.mode.md) |  | string |  |
+|  [name](./influxdb-client-apis.subscriptionmanifest.name.md) |  | string |  |
 

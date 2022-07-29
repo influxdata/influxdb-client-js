@@ -12,9 +12,9 @@ export interface Ready
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [started?](./influxdb-client-apis.ready.started.md) | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.ready.status.md) | 'ready' | <i>(Optional)</i> |
-|  [up?](./influxdb-client-apis.ready.up.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [started?](./influxdb-client-apis.ready.started.md) |  | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.ready.status.md) |  | 'ready' | <i>(Optional)</i> |
+|  [up?](./influxdb-client-apis.ready.up.md) |  | string | <i>(Optional)</i> |
 

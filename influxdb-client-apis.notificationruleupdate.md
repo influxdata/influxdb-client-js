@@ -12,9 +12,9 @@ export interface NotificationRuleUpdate
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.notificationruleupdate.description.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.notificationruleupdate.name.md) | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.notificationruleupdate.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.notificationruleupdate.description.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.notificationruleupdate.name.md) |  | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.notificationruleupdate.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> |
 

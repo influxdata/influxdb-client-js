@@ -12,8 +12,8 @@ export interface PutDashboardsIDCellsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md) | [Cells](./influxdb-client-apis.cells.md) | entity body |
-|  [dashboardID](./influxdb-client-apis.putdashboardsidcellsrequest.dashboardid.md) | string | The ID of the dashboard to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md) |  | [Cells](./influxdb-client-apis.cells.md) | entity body |
+|  [dashboardID](./influxdb-client-apis.putdashboardsidcellsrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

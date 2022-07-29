@@ -12,8 +12,8 @@ export interface DeleteOrgsIDSecretsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidsecretsidrequest.orgid.md) | string | The organization ID. |
-|  [secretID](./influxdb-client-apis.deleteorgsidsecretsidrequest.secretid.md) | string | The secret ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID](./influxdb-client-apis.deleteorgsidsecretsidrequest.orgid.md) |  | string | The organization ID. |
+|  [secretID](./influxdb-client-apis.deleteorgsidsecretsidrequest.secretid.md) |  | string | The secret ID. |
 

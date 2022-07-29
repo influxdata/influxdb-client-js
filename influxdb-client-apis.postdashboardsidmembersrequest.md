@@ -12,8 +12,8 @@ export interface PostDashboardsIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsidmembersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [dashboardID](./influxdb-client-apis.postdashboardsidmembersrequest.dashboardid.md) | string | The dashboard ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postdashboardsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [dashboardID](./influxdb-client-apis.postdashboardsidmembersrequest.dashboardid.md) |  | string | The dashboard ID. |
 

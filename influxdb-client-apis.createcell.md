@@ -12,12 +12,12 @@ export interface CreateCell
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [h?](./influxdb-client-apis.createcell.h.md) | number | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.createcell.name.md) | string | <i>(Optional)</i> |
-|  [usingView?](./influxdb-client-apis.createcell.usingview.md) | string | <i>(Optional)</i> Makes a copy of the provided view. |
-|  [w?](./influxdb-client-apis.createcell.w.md) | number | <i>(Optional)</i> |
-|  [x?](./influxdb-client-apis.createcell.x.md) | number | <i>(Optional)</i> |
-|  [y?](./influxdb-client-apis.createcell.y.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [h?](./influxdb-client-apis.createcell.h.md) |  | number | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.createcell.name.md) |  | string | <i>(Optional)</i> |
+|  [usingView?](./influxdb-client-apis.createcell.usingview.md) |  | string | <i>(Optional)</i> Makes a copy of the provided view. |
+|  [w?](./influxdb-client-apis.createcell.w.md) |  | number | <i>(Optional)</i> |
+|  [x?](./influxdb-client-apis.createcell.x.md) |  | number | <i>(Optional)</i> |
+|  [y?](./influxdb-client-apis.createcell.y.md) |  | number | <i>(Optional)</i> |
 

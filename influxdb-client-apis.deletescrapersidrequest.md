@@ -12,7 +12,7 @@ export interface DeleteScrapersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidrequest.scrapertargetid.md) | string | The identifier of the scraper target. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scraperTargetID](./influxdb-client-apis.deletescrapersidrequest.scrapertargetid.md) |  | string | The identifier of the scraper target. |
 

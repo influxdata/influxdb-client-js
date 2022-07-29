@@ -12,8 +12,8 @@ export interface BucketShardMapping
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [newId](./influxdb-client-apis.bucketshardmapping.newid.md) | number |  |
-|  [oldId](./influxdb-client-apis.bucketshardmapping.oldid.md) | number |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [newId](./influxdb-client-apis.bucketshardmapping.newid.md) |  | number |  |
+|  [oldId](./influxdb-client-apis.bucketshardmapping.oldid.md) |  | number |  |
 

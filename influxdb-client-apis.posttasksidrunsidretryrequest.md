@@ -12,9 +12,9 @@ export interface PostTasksIDRunsIDRetryRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidrunsidretryrequest.body.md) | any | entity body |
-|  [runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md) | string | The run ID. |
-|  [taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md) | string | The task ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttasksidrunsidretryrequest.body.md) |  | any | entity body |
+|  [runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md) |  | string | The run ID. |
+|  [taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md) |  | string | The task ID. |
 

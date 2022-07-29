@@ -12,8 +12,8 @@ export interface DeleteBucketsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidmembersidrequest.bucketid.md) | string | The bucket ID. |
-|  [userID](./influxdb-client-apis.deletebucketsidmembersidrequest.userid.md) | string | The ID of the member to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.deletebucketsidmembersidrequest.bucketid.md) |  | string | The bucket ID. |
+|  [userID](./influxdb-client-apis.deletebucketsidmembersidrequest.userid.md) |  | string | The ID of the member to remove. |
 

@@ -15,8 +15,8 @@ export interface ClientOptions extends ConnectionOptions
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [transport?](./influxdb-client.clientoptions.transport.md) | [Transport](./influxdb-client.transport.md) | <i>(Optional)</i> specifies custom transport |
-|  [writeOptions?](./influxdb-client.clientoptions.writeoptions.md) | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> supplies and overrides default writing options |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [transport?](./influxdb-client.clientoptions.transport.md) |  | [Transport](./influxdb-client.transport.md) | <i>(Optional)</i> specifies custom transport |
+|  [writeOptions?](./influxdb-client.clientoptions.writeoptions.md) |  | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> supplies and overrides default writing options |
 

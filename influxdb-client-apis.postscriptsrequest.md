@@ -12,7 +12,7 @@ export interface PostScriptsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsrequest.body.md) | [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) | The script to create. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postscriptsrequest.body.md) |  | [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) | The script to create. |
 

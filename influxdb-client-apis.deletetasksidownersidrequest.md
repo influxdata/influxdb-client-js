@@ -12,8 +12,8 @@ export interface DeleteTasksIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [taskID](./influxdb-client-apis.deletetasksidownersidrequest.taskid.md) | string | The task ID. |
-|  [userID](./influxdb-client-apis.deletetasksidownersidrequest.userid.md) | string | The ID of the owner to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [taskID](./influxdb-client-apis.deletetasksidownersidrequest.taskid.md) |  | string | The task ID. |
+|  [userID](./influxdb-client-apis.deletetasksidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
 

@@ -12,9 +12,9 @@ export interface GetChecksRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) | number | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getchecksrequest.orgid.md) | string | Only show checks that belong to a specific organization ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [orgID](./influxdb-client-apis.getchecksrequest.orgid.md) |  | string | Only show checks that belong to a specific organization ID. |
 

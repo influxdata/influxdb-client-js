@@ -12,7 +12,7 @@ export interface DeleteTasksIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [taskID](./influxdb-client-apis.deletetasksidrequest.taskid.md) | string | The ID of the task to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [taskID](./influxdb-client-apis.deletetasksidrequest.taskid.md) |  | string | The ID of the task to delete. |
 

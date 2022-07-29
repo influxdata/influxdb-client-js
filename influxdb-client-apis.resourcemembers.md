@@ -12,8 +12,8 @@ export interface ResourceMembers
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [links?](./influxdb-client-apis.resourcemembers.links.md) | { self?: string; } | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.resourcemembers.users.md) | [ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [links?](./influxdb-client-apis.resourcemembers.links.md) |  | { self?: string; } | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.resourcemembers.users.md) |  | [ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->\[\] | <i>(Optional)</i> |
 

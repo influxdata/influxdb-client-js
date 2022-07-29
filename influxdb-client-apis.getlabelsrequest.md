@@ -12,7 +12,7 @@ export interface GetLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID?](./influxdb-client-apis.getlabelsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID?](./influxdb-client-apis.getlabelsrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID. |
 

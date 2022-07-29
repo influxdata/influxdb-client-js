@@ -12,17 +12,17 @@ export interface GaugeViewProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [colors](./influxdb-client-apis.gaugeviewproperties.colors.md) | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.gaugeviewproperties.decimalplaces.md) | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
-|  [note](./influxdb-client-apis.gaugeviewproperties.note.md) | string |  |
-|  [prefix](./influxdb-client-apis.gaugeviewproperties.prefix.md) | string |  |
-|  [queries](./influxdb-client-apis.gaugeviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.gaugeviewproperties.shape.md) | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.gaugeviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
-|  [suffix](./influxdb-client-apis.gaugeviewproperties.suffix.md) | string |  |
-|  [tickPrefix](./influxdb-client-apis.gaugeviewproperties.tickprefix.md) | string |  |
-|  [tickSuffix](./influxdb-client-apis.gaugeviewproperties.ticksuffix.md) | string |  |
-|  [type](./influxdb-client-apis.gaugeviewproperties.type.md) | 'gauge' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [colors](./influxdb-client-apis.gaugeviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
+|  [decimalPlaces](./influxdb-client-apis.gaugeviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
+|  [note](./influxdb-client-apis.gaugeviewproperties.note.md) |  | string |  |
+|  [prefix](./influxdb-client-apis.gaugeviewproperties.prefix.md) |  | string |  |
+|  [queries](./influxdb-client-apis.gaugeviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [shape](./influxdb-client-apis.gaugeviewproperties.shape.md) |  | 'chronograf-v2' |  |
+|  [showNoteWhenEmpty](./influxdb-client-apis.gaugeviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
+|  [suffix](./influxdb-client-apis.gaugeviewproperties.suffix.md) |  | string |  |
+|  [tickPrefix](./influxdb-client-apis.gaugeviewproperties.tickprefix.md) |  | string |  |
+|  [tickSuffix](./influxdb-client-apis.gaugeviewproperties.ticksuffix.md) |  | string |  |
+|  [type](./influxdb-client-apis.gaugeviewproperties.type.md) |  | 'gauge' |  |
 

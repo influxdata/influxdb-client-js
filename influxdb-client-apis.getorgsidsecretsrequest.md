@@ -12,7 +12,7 @@ export interface GetOrgsIDSecretsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.getorgsidsecretsrequest.orgid.md) | string | The organization ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID](./influxdb-client-apis.getorgsidsecretsrequest.orgid.md) |  | string | The organization ID. |
 

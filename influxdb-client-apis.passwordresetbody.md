@@ -12,7 +12,7 @@ export interface PasswordResetBody
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [password](./influxdb-client-apis.passwordresetbody.password.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [password](./influxdb-client-apis.passwordresetbody.password.md) |  | string |  |
 

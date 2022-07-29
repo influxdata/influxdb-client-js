@@ -12,8 +12,8 @@ export interface PatchScriptsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) | [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) | Script update to apply |
-|  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) | string | The script ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) | Script update to apply |
+|  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) |  | string | The script ID. |
 

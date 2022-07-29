@@ -12,7 +12,7 @@ export interface GetNotificationRulesIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [ruleID](./influxdb-client-apis.getnotificationrulesidlabelsrequest.ruleid.md) | string | The notification rule ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [ruleID](./influxdb-client-apis.getnotificationrulesidlabelsrequest.ruleid.md) |  | string | The notification rule ID. |
 

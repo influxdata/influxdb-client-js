@@ -12,11 +12,11 @@ export interface TaskCreateRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.taskcreaterequest.description.md) | string | <i>(Optional)</i> An optional description of the task. |
-|  [flux](./influxdb-client-apis.taskcreaterequest.flux.md) | string | The Flux script to run for this task. |
-|  [org?](./influxdb-client-apis.taskcreaterequest.org.md) | string | <i>(Optional)</i> The name of the organization that owns this Task. |
-|  [orgID?](./influxdb-client-apis.taskcreaterequest.orgid.md) | string | <i>(Optional)</i> The ID of the organization that owns this Task. |
-|  [status?](./influxdb-client-apis.taskcreaterequest.status.md) | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.taskcreaterequest.description.md) |  | string | <i>(Optional)</i> An optional description of the task. |
+|  [flux](./influxdb-client-apis.taskcreaterequest.flux.md) |  | string | The Flux script to run for this task. |
+|  [org?](./influxdb-client-apis.taskcreaterequest.org.md) |  | string | <i>(Optional)</i> The name of the organization that owns this Task. |
+|  [orgID?](./influxdb-client-apis.taskcreaterequest.orgid.md) |  | string | <i>(Optional)</i> The ID of the organization that owns this Task. |
+|  [status?](./influxdb-client-apis.taskcreaterequest.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
 

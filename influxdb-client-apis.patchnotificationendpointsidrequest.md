@@ -12,8 +12,8 @@ export interface PatchNotificationEndpointsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md) | [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) | Check update to apply |
-|  [endpointID](./influxdb-client-apis.patchnotificationendpointsidrequest.endpointid.md) | string | The notification endpoint ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md) |  | [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) | Check update to apply |
+|  [endpointID](./influxdb-client-apis.patchnotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

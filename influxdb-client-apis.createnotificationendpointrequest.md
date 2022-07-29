@@ -12,7 +12,7 @@ export interface CreateNotificationEndpointRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationendpointrequest.body.md) | [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) | Notification endpoint to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.createnotificationendpointrequest.body.md) |  | [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) | Notification endpoint to create |
 

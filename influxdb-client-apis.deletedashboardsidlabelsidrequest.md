@@ -12,8 +12,8 @@ export interface DeleteDashboardsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.dashboardid.md) | string | The dashboard ID. |
-|  [labelID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.labelid.md) | string | The ID of the label to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboardID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.dashboardid.md) |  | string | The dashboard ID. |
+|  [labelID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
 

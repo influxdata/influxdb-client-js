@@ -12,13 +12,13 @@ export interface TemplateSummaryLabel
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [envReferences?](./influxdb-client-apis.templatesummarylabel.envreferences.md) | [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.templatesummarylabel.id.md) | string | <i>(Optional)</i> |
-|  [kind?](./influxdb-client-apis.templatesummarylabel.kind.md) | [TemplateKind](./influxdb-client-apis.templatekind.md) | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.templatesummarylabel.name.md) | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.templatesummarylabel.orgid.md) | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.templatesummarylabel.properties.md) | { color?: string; description?: string; } | <i>(Optional)</i> |
-|  [templateMetaName?](./influxdb-client-apis.templatesummarylabel.templatemetaname.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [envReferences?](./influxdb-client-apis.templatesummarylabel.envreferences.md) |  | [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.templatesummarylabel.id.md) |  | string | <i>(Optional)</i> |
+|  [kind?](./influxdb-client-apis.templatesummarylabel.kind.md) |  | [TemplateKind](./influxdb-client-apis.templatekind.md) | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.templatesummarylabel.name.md) |  | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.templatesummarylabel.orgid.md) |  | string | <i>(Optional)</i> |
+|  [properties?](./influxdb-client-apis.templatesummarylabel.properties.md) |  | { color?: string; description?: string; } | <i>(Optional)</i> |
+|  [templateMetaName?](./influxdb-client-apis.templatesummarylabel.templatemetaname.md) |  | string | <i>(Optional)</i> |
 

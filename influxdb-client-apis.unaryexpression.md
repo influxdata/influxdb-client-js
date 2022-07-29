@@ -14,9 +14,9 @@ export interface UnaryExpression
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [argument?](./influxdb-client-apis.unaryexpression.argument.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [operator?](./influxdb-client-apis.unaryexpression.operator.md) | string | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.unaryexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [argument?](./influxdb-client-apis.unaryexpression.argument.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [operator?](./influxdb-client-apis.unaryexpression.operator.md) |  | string | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.unaryexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

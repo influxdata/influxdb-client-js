@@ -12,7 +12,7 @@ export interface SecretKeys
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [secrets?](./influxdb-client-apis.secretkeys.secrets.md) | string\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [secrets?](./influxdb-client-apis.secretkeys.secrets.md) |  | string\[\] | <i>(Optional)</i> |
 

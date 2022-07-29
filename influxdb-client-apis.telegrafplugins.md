@@ -12,9 +12,9 @@ export interface TelegrafPlugins
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [os?](./influxdb-client-apis.telegrafplugins.os.md) | string | <i>(Optional)</i> |
-|  [plugins?](./influxdb-client-apis.telegrafplugins.plugins.md) | [TelegrafPlugin](./influxdb-client-apis.telegrafplugin.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [version?](./influxdb-client-apis.telegrafplugins.version.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [os?](./influxdb-client-apis.telegrafplugins.os.md) |  | string | <i>(Optional)</i> |
+|  [plugins?](./influxdb-client-apis.telegrafplugins.plugins.md) |  | [TelegrafPlugin](./influxdb-client-apis.telegrafplugin.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [version?](./influxdb-client-apis.telegrafplugins.version.md) |  | string | <i>(Optional)</i> |
 

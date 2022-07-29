@@ -12,8 +12,8 @@ export interface DeleteTelegrafsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.telegrafid.md) | string | The Telegraf config ID. |
-|  [userID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.userid.md) | string | The ID of the member to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [telegrafID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+|  [userID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.userid.md) |  | string | The ID of the member to remove. |
 

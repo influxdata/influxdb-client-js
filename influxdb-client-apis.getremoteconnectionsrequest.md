@@ -12,9 +12,9 @@ export interface GetRemoteConnectionsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [name?](./influxdb-client-apis.getremoteconnectionsrequest.name.md) | string | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getremoteconnectionsrequest.orgid.md) | string | The organization ID. |
-|  [remoteURL?](./influxdb-client-apis.getremoteconnectionsrequest.remoteurl.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [name?](./influxdb-client-apis.getremoteconnectionsrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [orgID](./influxdb-client-apis.getremoteconnectionsrequest.orgid.md) |  | string | The organization ID. |
+|  [remoteURL?](./influxdb-client-apis.getremoteconnectionsrequest.remoteurl.md) |  | string | <i>(Optional)</i> |
 

@@ -12,7 +12,7 @@ export interface Logs
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [events?](./influxdb-client-apis.logs.events.md) | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [events?](./influxdb-client-apis.logs.events.md) | <code>readonly</code> | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> |
 

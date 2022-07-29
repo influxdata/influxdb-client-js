@@ -12,13 +12,13 @@ export interface DBRP
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.dbrp.bucketid.md) | string | ID of the bucket used as the target for the translation. |
-|  [database](./influxdb-client-apis.dbrp.database.md) | string | InfluxDB v1 database |
-|  [default](./influxdb-client-apis.dbrp.default.md) | boolean | Mapping represents the default retention policy for the database specified. |
-|  [id](./influxdb-client-apis.dbrp.id.md) | string | ID of the DBRP mapping. |
-|  [links?](./influxdb-client-apis.dbrp.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.dbrp.orgid.md) | string | ID of the organization that owns this mapping. |
-|  [retention\_policy](./influxdb-client-apis.dbrp.retention_policy.md) | string | InfluxDB v1 retention policy |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.dbrp.bucketid.md) |  | string | ID of the bucket used as the target for the translation. |
+|  [database](./influxdb-client-apis.dbrp.database.md) |  | string | InfluxDB v1 database |
+|  [default](./influxdb-client-apis.dbrp.default.md) |  | boolean | Mapping represents the default retention policy for the database specified. |
+|  [id](./influxdb-client-apis.dbrp.id.md) | <code>readonly</code> | string | ID of the DBRP mapping. |
+|  [links?](./influxdb-client-apis.dbrp.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [orgID](./influxdb-client-apis.dbrp.orgid.md) |  | string | ID of the organization that owns this mapping. |
+|  [retention\_policy](./influxdb-client-apis.dbrp.retention_policy.md) |  | string | InfluxDB v1 retention policy |
 

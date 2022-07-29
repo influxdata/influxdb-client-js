@@ -12,9 +12,9 @@ export interface SlackNotificationRuleBase
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [channel?](./influxdb-client-apis.slacknotificationrulebase.channel.md) | string | <i>(Optional)</i> |
-|  [messageTemplate](./influxdb-client-apis.slacknotificationrulebase.messagetemplate.md) | string |  |
-|  [type](./influxdb-client-apis.slacknotificationrulebase.type.md) | 'slack' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [channel?](./influxdb-client-apis.slacknotificationrulebase.channel.md) |  | string | <i>(Optional)</i> |
+|  [messageTemplate](./influxdb-client-apis.slacknotificationrulebase.messagetemplate.md) |  | string |  |
+|  [type](./influxdb-client-apis.slacknotificationrulebase.type.md) |  | 'slack' |  |
 

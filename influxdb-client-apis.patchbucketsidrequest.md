@@ -12,8 +12,8 @@ export interface PatchBucketsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchbucketsidrequest.body.md) | [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | Bucket update to apply |
-|  [bucketID](./influxdb-client-apis.patchbucketsidrequest.bucketid.md) | string | The bucket ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchbucketsidrequest.body.md) |  | [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | Bucket update to apply |
+|  [bucketID](./influxdb-client-apis.patchbucketsidrequest.bucketid.md) |  | string | The bucket ID. |
 

@@ -12,8 +12,8 @@ export interface PostChecksIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postchecksidlabelsrequest.body.md) | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [checkID](./influxdb-client-apis.postchecksidlabelsrequest.checkid.md) | string | The check ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postchecksidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [checkID](./influxdb-client-apis.postchecksidlabelsrequest.checkid.md) |  | string | The check ID. |
 

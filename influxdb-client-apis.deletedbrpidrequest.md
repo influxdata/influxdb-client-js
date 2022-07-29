@@ -12,9 +12,9 @@ export interface DeleteDBRPIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dbrpID](./influxdb-client-apis.deletedbrpidrequest.dbrpid.md) | string | The database retention policy mapping |
-|  [org?](./influxdb-client-apis.deletedbrpidrequest.org.md) | string | <i>(Optional)</i> Specifies the organization name of the mapping |
-|  [orgID?](./influxdb-client-apis.deletedbrpidrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dbrpID](./influxdb-client-apis.deletedbrpidrequest.dbrpid.md) |  | string | The database retention policy mapping |
+|  [org?](./influxdb-client-apis.deletedbrpidrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name of the mapping |
+|  [orgID?](./influxdb-client-apis.deletedbrpidrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
 

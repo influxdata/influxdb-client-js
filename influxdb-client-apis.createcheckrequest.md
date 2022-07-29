@@ -12,7 +12,7 @@ export interface CreateCheckRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.createcheckrequest.body.md) | [PostCheck](./influxdb-client-apis.postcheck.md) | Check to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | [PostCheck](./influxdb-client-apis.postcheck.md) | Check to create |
 

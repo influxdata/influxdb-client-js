@@ -12,7 +12,7 @@ export interface ShardOwner
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [nodeID](./influxdb-client-apis.shardowner.nodeid.md) | number | ID of the node that owns a shard. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [nodeID](./influxdb-client-apis.shardowner.nodeid.md) |  | number | ID of the node that owns a shard. |
 

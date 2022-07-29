@@ -12,7 +12,7 @@ export interface GetVariablesIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [variableID](./influxdb-client-apis.getvariablesidrequest.variableid.md) | string | The variable ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [variableID](./influxdb-client-apis.getvariablesidrequest.variableid.md) |  | string | The variable ID. |
 

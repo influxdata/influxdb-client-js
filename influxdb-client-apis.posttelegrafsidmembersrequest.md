@@ -12,8 +12,8 @@ export interface PostTelegrafsIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidmembersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [telegrafID](./influxdb-client-apis.posttelegrafsidmembersrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttelegrafsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [telegrafID](./influxdb-client-apis.posttelegrafsidmembersrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

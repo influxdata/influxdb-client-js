@@ -12,10 +12,10 @@ export interface GetReplicationsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [localBucketID?](./influxdb-client-apis.getreplicationsrequest.localbucketid.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.getreplicationsrequest.name.md) | string | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getreplicationsrequest.orgid.md) | string | The organization ID. |
-|  [remoteID?](./influxdb-client-apis.getreplicationsrequest.remoteid.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [localBucketID?](./influxdb-client-apis.getreplicationsrequest.localbucketid.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.getreplicationsrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [orgID](./influxdb-client-apis.getreplicationsrequest.orgid.md) |  | string | The organization ID. |
+|  [remoteID?](./influxdb-client-apis.getreplicationsrequest.remoteid.md) |  | string | <i>(Optional)</i> |
 

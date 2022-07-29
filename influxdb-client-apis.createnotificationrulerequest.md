@@ -12,7 +12,7 @@ export interface CreateNotificationRuleRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationrulerequest.body.md) | [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) | Notification rule to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.createnotificationrulerequest.body.md) |  | [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) | Notification rule to create |
 

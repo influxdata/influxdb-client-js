@@ -12,7 +12,7 @@ export interface Scripts
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scripts?](./influxdb-client-apis.scripts.scripts.md) | [Script](./influxdb-client-apis.script.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scripts?](./influxdb-client-apis.scripts.scripts.md) |  | [Script](./influxdb-client-apis.script.md)<!-- -->\[\] | <i>(Optional)</i> |
 

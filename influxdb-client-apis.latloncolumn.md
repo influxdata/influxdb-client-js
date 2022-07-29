@@ -14,8 +14,8 @@ export interface LatLonColumn
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [column](./influxdb-client-apis.latloncolumn.column.md) | string | Column to look up Lat/Lon |
-|  [key](./influxdb-client-apis.latloncolumn.key.md) | string | Key to determine whether the column is tag/field |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [column](./influxdb-client-apis.latloncolumn.column.md) |  | string | Column to look up Lat/Lon |
+|  [key](./influxdb-client-apis.latloncolumn.key.md) |  | string | Key to determine whether the column is tag/field |
 

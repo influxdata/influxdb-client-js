@@ -12,9 +12,9 @@ export interface TemplateExportByName
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgIDs?](./influxdb-client-apis.templateexportbyname.orgids.md) | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
-|  [resources?](./influxdb-client-apis.templateexportbyname.resources.md) | Array&lt;{ kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name: string; }&gt; | <i>(Optional)</i> |
-|  [stackID?](./influxdb-client-apis.templateexportbyname.stackid.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgIDs?](./influxdb-client-apis.templateexportbyname.orgids.md) |  | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
+|  [resources?](./influxdb-client-apis.templateexportbyname.resources.md) |  | Array&lt;{ kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name: string; }&gt; | <i>(Optional)</i> |
+|  [stackID?](./influxdb-client-apis.templateexportbyname.stackid.md) |  | string | <i>(Optional)</i> |
 

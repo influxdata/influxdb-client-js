@@ -12,9 +12,9 @@ export interface PatchDashboardsIDCellsIDViewRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md) | [View](./influxdb-client-apis.view.md) | entity body |
-|  [cellID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.cellid.md) | string | The ID of the cell to update. |
-|  [dashboardID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.dashboardid.md) | string | The ID of the dashboard to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md) |  | [View](./influxdb-client-apis.view.md) | entity body |
+|  [cellID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.cellid.md) |  | string | The ID of the cell to update. |
+|  [dashboardID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

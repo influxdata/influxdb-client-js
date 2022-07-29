@@ -12,7 +12,7 @@ export interface LabelMapping
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) |  | string | <i>(Optional)</i> |
 

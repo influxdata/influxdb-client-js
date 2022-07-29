@@ -12,8 +12,8 @@ export interface DeleteTasksIDRunsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md) | string | The run ID. |
-|  [taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md) | string | The task ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md) |  | string | The run ID. |
+|  [taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md) |  | string | The task ID. |
 

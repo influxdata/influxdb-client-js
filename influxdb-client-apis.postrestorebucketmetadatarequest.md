@@ -12,7 +12,7 @@ export interface PostRestoreBucketMetadataRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorebucketmetadatarequest.body.md) | [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md) | Metadata manifest for a bucket. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postrestorebucketmetadatarequest.body.md) |  | [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md) | Metadata manifest for a bucket. |
 

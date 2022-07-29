@@ -22,8 +22,8 @@ export default class InfluxDB
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) |  | (executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) |  |
-|  [transport](./influxdb-client.influxdb.transport.md) |  | [Transport](./influxdb-client.transport.md) |  |
+|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) | <code>readonly</code> | (executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) |  |
+|  [transport](./influxdb-client.influxdb.transport.md) | <code>readonly</code> | [Transport](./influxdb-client.transport.md) |  |
 
 ## Methods
 

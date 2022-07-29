@@ -14,8 +14,8 @@ export interface PackageClause
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [name?](./influxdb-client-apis.packageclause.name.md) | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.packageclause.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [name?](./influxdb-client-apis.packageclause.name.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.packageclause.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

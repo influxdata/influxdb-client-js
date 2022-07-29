@@ -14,9 +14,9 @@ export interface MemberExpression
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [object?](./influxdb-client-apis.memberexpression.object.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [property?](./influxdb-client-apis.memberexpression.property.md) | PropertyKey | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [object?](./influxdb-client-apis.memberexpression.object.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [property?](./influxdb-client-apis.memberexpression.property.md) |  | PropertyKey | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.memberexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

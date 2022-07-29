@@ -12,8 +12,8 @@ export interface PatchLegacyAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.patchlegacyauthorizationsidrequest.authid.md) | string | The ID of the legacy authorization to update. |
-|  [body](./influxdb-client-apis.patchlegacyauthorizationsidrequest.body.md) | [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md) | Legacy authorization to update |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.patchlegacyauthorizationsidrequest.authid.md) |  | string | The ID of the legacy authorization to update. |
+|  [body](./influxdb-client-apis.patchlegacyauthorizationsidrequest.body.md) |  | [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md) | Legacy authorization to update |
 

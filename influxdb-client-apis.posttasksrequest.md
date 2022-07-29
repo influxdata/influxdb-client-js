@@ -12,7 +12,7 @@ export interface PostTasksRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksrequest.body.md) | [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) | Task to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) | Task to create |
 

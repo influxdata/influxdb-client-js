@@ -14,8 +14,8 @@ export interface LatLonColumns
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [lat](./influxdb-client-apis.latloncolumns.lat.md) | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
-|  [lon](./influxdb-client-apis.latloncolumns.lon.md) | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [lat](./influxdb-client-apis.latloncolumns.lat.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
+|  [lon](./influxdb-client-apis.latloncolumns.lon.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
 

@@ -14,8 +14,8 @@ export interface ExecutionOptions
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [gzip?](./influxdb-client-apis.executionoptions.gzip.md) | boolean | <i>(Optional)</i> Requests gzip encoded response. |
-|  [headers?](./influxdb-client-apis.executionoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every query request. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [gzip?](./influxdb-client-apis.executionoptions.gzip.md) |  | boolean | <i>(Optional)</i> Requests gzip encoded response. |
+|  [headers?](./influxdb-client-apis.executionoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every query request. |
 

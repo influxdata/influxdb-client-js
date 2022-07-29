@@ -12,8 +12,8 @@ export interface PostOrgsIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidmembersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [orgID](./influxdb-client-apis.postorgsidmembersrequest.orgid.md) | string | The organization ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postorgsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [orgID](./influxdb-client-apis.postorgsidmembersrequest.orgid.md) |  | string | The organization ID. |
 

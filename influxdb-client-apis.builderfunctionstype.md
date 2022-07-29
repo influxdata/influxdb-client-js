@@ -12,7 +12,7 @@ export interface BuilderFunctionsType
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [name?](./influxdb-client-apis.builderfunctionstype.name.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [name?](./influxdb-client-apis.builderfunctionstype.name.md) |  | string | <i>(Optional)</i> |
 

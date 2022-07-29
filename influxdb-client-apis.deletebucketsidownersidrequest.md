@@ -12,8 +12,8 @@ export interface DeleteBucketsIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidownersidrequest.bucketid.md) | string | The bucket ID. |
-|  [userID](./influxdb-client-apis.deletebucketsidownersidrequest.userid.md) | string | The ID of the owner to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.deletebucketsidownersidrequest.bucketid.md) |  | string | The bucket ID. |
+|  [userID](./influxdb-client-apis.deletebucketsidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
 

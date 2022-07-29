@@ -12,8 +12,8 @@ export interface PostRestoreBucketIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorebucketidrequest.body.md) | string | Database info serialized as protobuf. |
-|  [bucketID](./influxdb-client-apis.postrestorebucketidrequest.bucketid.md) | string | The bucket ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postrestorebucketidrequest.body.md) |  | string | Database info serialized as protobuf. |
+|  [bucketID](./influxdb-client-apis.postrestorebucketidrequest.bucketid.md) |  | string | The bucket ID. |
 

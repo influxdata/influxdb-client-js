@@ -14,10 +14,10 @@ export interface ConditionalExpression
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [alternate?](./influxdb-client-apis.conditionalexpression.alternate.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [consequent?](./influxdb-client-apis.conditionalexpression.consequent.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [test?](./influxdb-client-apis.conditionalexpression.test.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.conditionalexpression.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [alternate?](./influxdb-client-apis.conditionalexpression.alternate.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [consequent?](./influxdb-client-apis.conditionalexpression.consequent.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [test?](./influxdb-client-apis.conditionalexpression.test.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.conditionalexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

@@ -12,8 +12,8 @@ export interface DeleteDashboardsIDCellsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cellID](./influxdb-client-apis.deletedashboardsidcellsidrequest.cellid.md) | string | The ID of the cell to delete. |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidcellsidrequest.dashboardid.md) | string | The ID of the dashboard to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cellID](./influxdb-client-apis.deletedashboardsidcellsidrequest.cellid.md) |  | string | The ID of the cell to delete. |
+|  [dashboardID](./influxdb-client-apis.deletedashboardsidcellsidrequest.dashboardid.md) |  | string | The ID of the dashboard to delete. |
 

@@ -15,13 +15,13 @@ export interface WriteOptions extends WriteRetryOptions
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [batchSize](./influxdb-client.writeoptions.batchsize.md) | number | max number of records/lines to send in a batch |
-|  [consistency?](./influxdb-client.writeoptions.consistency.md) | 'any' \| 'one' \| 'quorum' \| 'all' | <i>(Optional)</i> InfluxDB Enterprise write consistency as explained in https://docs.influxdata.com/enterprise\_influxdb/v1.9/concepts/clustering/\#write-consistency |
-|  [defaultTags?](./influxdb-client.writeoptions.defaulttags.md) | Record&lt;string, string&gt; | <i>(Optional)</i> default tags, unescaped |
-|  [flushInterval](./influxdb-client.writeoptions.flushinterval.md) | number | delay between data flushes in milliseconds, at most <code>batch size</code> records are sent during flush |
-|  [gzipThreshold?](./influxdb-client.writeoptions.gzipthreshold.md) | number | <i>(Optional)</i> When specified, write bodies larger than the threshold are gzipped |
-|  [headers?](./influxdb-client.writeoptions.headers.md) | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every write request |
-|  [maxBatchBytes](./influxdb-client.writeoptions.maxbatchbytes.md) | number | max size of a batch in bytes |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [batchSize](./influxdb-client.writeoptions.batchsize.md) |  | number | max number of records/lines to send in a batch |
+|  [consistency?](./influxdb-client.writeoptions.consistency.md) |  | 'any' \| 'one' \| 'quorum' \| 'all' | <i>(Optional)</i> InfluxDB Enterprise write consistency as explained in https://docs.influxdata.com/enterprise\_influxdb/v1.9/concepts/clustering/\#write-consistency |
+|  [defaultTags?](./influxdb-client.writeoptions.defaulttags.md) |  | Record&lt;string, string&gt; | <i>(Optional)</i> default tags, unescaped |
+|  [flushInterval](./influxdb-client.writeoptions.flushinterval.md) |  | number | delay between data flushes in milliseconds, at most <code>batch size</code> records are sent during flush |
+|  [gzipThreshold?](./influxdb-client.writeoptions.gzipthreshold.md) |  | number | <i>(Optional)</i> When specified, write bodies larger than the threshold are gzipped |
+|  [headers?](./influxdb-client.writeoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every write request |
+|  [maxBatchBytes](./influxdb-client.writeoptions.maxbatchbytes.md) |  | number | max size of a batch in bytes |
 

@@ -12,8 +12,8 @@ export interface PatchDashboardsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdashboardsidrequest.body.md) | { name?: string; description?: string; cells?: [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)<!-- -->; } | Patching of a dashboard |
-|  [dashboardID](./influxdb-client-apis.patchdashboardsidrequest.dashboardid.md) | string | The ID of the dashboard to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchdashboardsidrequest.body.md) |  | { name?: string; description?: string; cells?: [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)<!-- -->; } | Patching of a dashboard |
+|  [dashboardID](./influxdb-client-apis.patchdashboardsidrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

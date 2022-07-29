@@ -12,7 +12,7 @@ export interface DeleteReplicationByIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [replicationID](./influxdb-client-apis.deletereplicationbyidrequest.replicationid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [replicationID](./influxdb-client-apis.deletereplicationbyidrequest.replicationid.md) |  | string |  |
 

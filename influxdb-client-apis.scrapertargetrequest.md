@@ -12,12 +12,12 @@ export interface ScraperTargetRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allowInsecure?](./influxdb-client-apis.scrapertargetrequest.allowinsecure.md) | boolean | <i>(Optional)</i> Skip TLS verification on endpoint. |
-|  [bucketID?](./influxdb-client-apis.scrapertargetrequest.bucketid.md) | string | <i>(Optional)</i> The ID of the bucket to write to. |
-|  [name?](./influxdb-client-apis.scrapertargetrequest.name.md) | string | <i>(Optional)</i> The name of the scraper target. |
-|  [orgID?](./influxdb-client-apis.scrapertargetrequest.orgid.md) | string | <i>(Optional)</i> The organization ID. |
-|  [type?](./influxdb-client-apis.scrapertargetrequest.type.md) | 'prometheus' | <i>(Optional)</i> The type of the metrics to be parsed. |
-|  [url?](./influxdb-client-apis.scrapertargetrequest.url.md) | string | <i>(Optional)</i> The URL of the metrics endpoint. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [allowInsecure?](./influxdb-client-apis.scrapertargetrequest.allowinsecure.md) |  | boolean | <i>(Optional)</i> Skip TLS verification on endpoint. |
+|  [bucketID?](./influxdb-client-apis.scrapertargetrequest.bucketid.md) |  | string | <i>(Optional)</i> The ID of the bucket to write to. |
+|  [name?](./influxdb-client-apis.scrapertargetrequest.name.md) |  | string | <i>(Optional)</i> The name of the scraper target. |
+|  [orgID?](./influxdb-client-apis.scrapertargetrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID. |
+|  [type?](./influxdb-client-apis.scrapertargetrequest.type.md) |  | 'prometheus' | <i>(Optional)</i> The type of the metrics to be parsed. |
+|  [url?](./influxdb-client-apis.scrapertargetrequest.url.md) |  | string | <i>(Optional)</i> The URL of the metrics endpoint. |
 

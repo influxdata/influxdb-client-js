@@ -12,8 +12,8 @@ export interface PatchChecksIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchchecksidrequest.body.md) | [CheckPatch](./influxdb-client-apis.checkpatch.md) | Check update to apply |
-|  [checkID](./influxdb-client-apis.patchchecksidrequest.checkid.md) | string | The check ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchchecksidrequest.body.md) |  | [CheckPatch](./influxdb-client-apis.checkpatch.md) | Check update to apply |
+|  [checkID](./influxdb-client-apis.patchchecksidrequest.checkid.md) |  | string | The check ID. |
 

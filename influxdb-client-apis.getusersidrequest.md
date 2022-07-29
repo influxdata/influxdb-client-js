@@ -12,7 +12,7 @@ export interface GetUsersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [userID](./influxdb-client-apis.getusersidrequest.userid.md) | string | The user ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [userID](./influxdb-client-apis.getusersidrequest.userid.md) |  | string | The user ID. |
 

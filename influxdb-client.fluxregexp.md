@@ -4,7 +4,7 @@
 
 ## fluxRegExp() function
 
-Creates flux regexp literal.
+Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/\#regular-expression-syntax for details.
 
 <b>Signature:</b>
 

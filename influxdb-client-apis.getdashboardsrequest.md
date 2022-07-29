@@ -12,14 +12,14 @@ export interface GetDashboardsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [descending?](./influxdb-client-apis.getdashboardsrequest.descending.md) | any | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.getdashboardsrequest.id.md) | any | <i>(Optional)</i> A list of dashboard identifiers. Returns only the listed dashboards. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
-|  [limit?](./influxdb-client-apis.getdashboardsrequest.limit.md) | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getdashboardsrequest.offset.md) | number | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.getdashboardsrequest.org.md) | string | <i>(Optional)</i> The name of the organization. |
-|  [orgID?](./influxdb-client-apis.getdashboardsrequest.orgid.md) | string | <i>(Optional)</i> The identifier of the organization. |
-|  [owner?](./influxdb-client-apis.getdashboardsrequest.owner.md) | string | <i>(Optional)</i> A user identifier. Returns only dashboards where this user has the <code>owner</code> role. |
-|  [sortBy?](./influxdb-client-apis.getdashboardsrequest.sortby.md) | string | <i>(Optional)</i> The column to sort by. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [descending?](./influxdb-client-apis.getdashboardsrequest.descending.md) |  | any | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.getdashboardsrequest.id.md) |  | any | <i>(Optional)</i> A list of dashboard identifiers. Returns only the listed dashboards. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
+|  [limit?](./influxdb-client-apis.getdashboardsrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getdashboardsrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [org?](./influxdb-client-apis.getdashboardsrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
+|  [orgID?](./influxdb-client-apis.getdashboardsrequest.orgid.md) |  | string | <i>(Optional)</i> The identifier of the organization. |
+|  [owner?](./influxdb-client-apis.getdashboardsrequest.owner.md) |  | string | <i>(Optional)</i> A user identifier. Returns only dashboards where this user has the <code>owner</code> role. |
+|  [sortBy?](./influxdb-client-apis.getdashboardsrequest.sortby.md) |  | string | <i>(Optional)</i> The column to sort by. |
 

@@ -14,11 +14,11 @@ export interface Dialect
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [annotations?](./influxdb-client-apis.dialect.annotations.md) | Array&lt;'group' \| 'datatype' \| 'default'&gt; | <i>(Optional)</i> https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns |
-|  [commentPrefix?](./influxdb-client-apis.dialect.commentprefix.md) | string | <i>(Optional)</i> Character prefixed to comment strings |
-|  [dateTimeFormat?](./influxdb-client-apis.dialect.datetimeformat.md) | 'RFC3339' \| 'RFC3339Nano' | <i>(Optional)</i> Format of timestamps |
-|  [delimiter?](./influxdb-client-apis.dialect.delimiter.md) | string | <i>(Optional)</i> Separator between cells; the default is , |
-|  [header?](./influxdb-client-apis.dialect.header.md) | boolean | <i>(Optional)</i> If true, the results will contain a header row |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [annotations?](./influxdb-client-apis.dialect.annotations.md) |  | Array&lt;'group' \| 'datatype' \| 'default'&gt; | <i>(Optional)</i> https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns |
+|  [commentPrefix?](./influxdb-client-apis.dialect.commentprefix.md) |  | string | <i>(Optional)</i> Character prefixed to comment strings |
+|  [dateTimeFormat?](./influxdb-client-apis.dialect.datetimeformat.md) |  | 'RFC3339' \| 'RFC3339Nano' | <i>(Optional)</i> Format of timestamps |
+|  [delimiter?](./influxdb-client-apis.dialect.delimiter.md) |  | string | <i>(Optional)</i> Separator between cells; the default is , |
+|  [header?](./influxdb-client-apis.dialect.header.md) |  | boolean | <i>(Optional)</i> If true, the results will contain a header row |
 

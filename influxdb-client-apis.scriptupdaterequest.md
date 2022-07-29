@@ -12,9 +12,9 @@ export interface ScriptUpdateRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.scriptupdaterequest.description.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.scriptupdaterequest.name.md) | string | <i>(Optional)</i> |
-|  [script?](./influxdb-client-apis.scriptupdaterequest.script.md) | string | <i>(Optional)</i> script is script to be executed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.scriptupdaterequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.scriptupdaterequest.name.md) |  | string | <i>(Optional)</i> |
+|  [script?](./influxdb-client-apis.scriptupdaterequest.script.md) |  | string | <i>(Optional)</i> script is script to be executed |
 

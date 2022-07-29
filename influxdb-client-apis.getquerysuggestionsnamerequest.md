@@ -12,7 +12,7 @@ export interface GetQuerySuggestionsNameRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md) | string | The name of the branching suggestion. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md) |  | string | The name of the branching suggestion. |
 

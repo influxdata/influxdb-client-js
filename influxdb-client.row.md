@@ -14,8 +14,8 @@ export interface Row
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [tableMeta](./influxdb-client.row.tablemeta.md) | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
-|  [values](./influxdb-client.row.values.md) | string\[\] |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
+|  [values](./influxdb-client.row.values.md) |  | string\[\] |  |
 

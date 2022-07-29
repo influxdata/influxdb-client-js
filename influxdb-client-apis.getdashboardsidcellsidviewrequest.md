@@ -12,8 +12,8 @@ export interface GetDashboardsIDCellsIDViewRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [cellID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.cellid.md) | string | The cell ID. |
-|  [dashboardID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.dashboardid.md) | string | The dashboard ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [cellID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.cellid.md) |  | string | The cell ID. |
+|  [dashboardID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.dashboardid.md) |  | string | The dashboard ID. |
 

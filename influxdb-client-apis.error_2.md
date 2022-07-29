@@ -12,10 +12,10 @@ export interface Error
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [code](./influxdb-client-apis.error_2.code.md) | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' \| 'request too large' \| 'unsupported media type' | code is the machine-readable error code. |
-|  [err?](./influxdb-client-apis.error_2.err.md) | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
-|  [message?](./influxdb-client-apis.error_2.message.md) | string | <i>(Optional)</i> Human-readable message. |
-|  [op?](./influxdb-client-apis.error_2.op.md) | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [code](./influxdb-client-apis.error_2.code.md) | <code>readonly</code> | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' \| 'request too large' \| 'unsupported media type' | code is the machine-readable error code. |
+|  [err?](./influxdb-client-apis.error_2.err.md) | <code>readonly</code> | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
+|  [message?](./influxdb-client-apis.error_2.message.md) | <code>readonly</code> | string | <i>(Optional)</i> Human-readable message. |
+|  [op?](./influxdb-client-apis.error_2.op.md) | <code>readonly</code> | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
 

@@ -14,9 +14,9 @@ export interface FluxResultObserver<T>
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
 
 ## Methods
 

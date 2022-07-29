@@ -12,8 +12,8 @@ export interface GetSourcesIDBucketsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [org?](./influxdb-client-apis.getsourcesidbucketsrequest.org.md) | string | <i>(Optional)</i> The name of the organization. |
-|  [sourceID](./influxdb-client-apis.getsourcesidbucketsrequest.sourceid.md) | string | The source ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [org?](./influxdb-client-apis.getsourcesidbucketsrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
+|  [sourceID](./influxdb-client-apis.getsourcesidbucketsrequest.sourceid.md) |  | string | The source ID. |
 

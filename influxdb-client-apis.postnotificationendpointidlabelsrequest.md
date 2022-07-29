@@ -12,8 +12,8 @@ export interface PostNotificationEndpointIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md) | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [endpointID](./influxdb-client-apis.postnotificationendpointidlabelsrequest.endpointid.md) | string | The notification endpoint ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [endpointID](./influxdb-client-apis.postnotificationendpointidlabelsrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

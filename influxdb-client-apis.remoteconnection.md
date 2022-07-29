@@ -12,13 +12,13 @@ export interface RemoteConnection
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allowInsecureTLS](./influxdb-client-apis.remoteconnection.allowinsecuretls.md) | boolean |  |
-|  [description?](./influxdb-client-apis.remoteconnection.description.md) | string | <i>(Optional)</i> |
-|  [id](./influxdb-client-apis.remoteconnection.id.md) | string |  |
-|  [name](./influxdb-client-apis.remoteconnection.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.remoteconnection.orgid.md) | string |  |
-|  [remoteOrgID](./influxdb-client-apis.remoteconnection.remoteorgid.md) | string |  |
-|  [remoteURL](./influxdb-client-apis.remoteconnection.remoteurl.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [allowInsecureTLS](./influxdb-client-apis.remoteconnection.allowinsecuretls.md) |  | boolean |  |
+|  [description?](./influxdb-client-apis.remoteconnection.description.md) |  | string | <i>(Optional)</i> |
+|  [id](./influxdb-client-apis.remoteconnection.id.md) |  | string |  |
+|  [name](./influxdb-client-apis.remoteconnection.name.md) |  | string |  |
+|  [orgID](./influxdb-client-apis.remoteconnection.orgid.md) |  | string |  |
+|  [remoteOrgID](./influxdb-client-apis.remoteconnection.remoteorgid.md) |  | string |  |
+|  [remoteURL](./influxdb-client-apis.remoteconnection.remoteurl.md) |  | string |  |
 

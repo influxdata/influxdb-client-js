@@ -12,7 +12,7 @@ export interface GetTasksIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidrequest.taskid.md) | string | The task ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [taskID](./influxdb-client-apis.gettasksidrequest.taskid.md) |  | string | The task ID. |
 

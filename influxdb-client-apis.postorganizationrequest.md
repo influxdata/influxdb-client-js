@@ -12,9 +12,9 @@ export interface PostOrganizationRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.postorganizationrequest.description.md) | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.postorganizationrequest.name.md) | string |  |
-|  [users?](./influxdb-client-apis.postorganizationrequest.users.md) | string\[\] | <i>(Optional)</i> An optional list of email address's to be invited to the organization |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.postorganizationrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.postorganizationrequest.name.md) |  | string |  |
+|  [users?](./influxdb-client-apis.postorganizationrequest.users.md) |  | string\[\] | <i>(Optional)</i> An optional list of email address's to be invited to the organization |
 

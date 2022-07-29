@@ -12,9 +12,9 @@ export interface GetDBRPsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dbrpID](./influxdb-client-apis.getdbrpsidrequest.dbrpid.md) | string | The database retention policy mapping ID |
-|  [org?](./influxdb-client-apis.getdbrpsidrequest.org.md) | string | <i>(Optional)</i> Specifies the organization name of the mapping |
-|  [orgID?](./influxdb-client-apis.getdbrpsidrequest.orgid.md) | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dbrpID](./influxdb-client-apis.getdbrpsidrequest.dbrpid.md) |  | string | The database retention policy mapping ID |
+|  [org?](./influxdb-client-apis.getdbrpsidrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name of the mapping |
+|  [orgID?](./influxdb-client-apis.getdbrpsidrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
 

@@ -12,8 +12,8 @@ export interface PatchOrganizationRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchorganizationrequest.description.md) | string | <i>(Optional)</i> New description to set on the organization |
-|  [name?](./influxdb-client-apis.patchorganizationrequest.name.md) | string | <i>(Optional)</i> New name to set on the organization |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.patchorganizationrequest.description.md) |  | string | <i>(Optional)</i> New description to set on the organization |
+|  [name?](./influxdb-client-apis.patchorganizationrequest.name.md) |  | string | <i>(Optional)</i> New name to set on the organization |
 

@@ -12,7 +12,7 @@ export interface GetScriptsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md) | string | The script ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md) |  | string | The script ID. |
 

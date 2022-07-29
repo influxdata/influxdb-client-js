@@ -14,7 +14,7 @@ export interface PipeLiteral
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.pipeliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

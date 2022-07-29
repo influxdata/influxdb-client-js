@@ -12,7 +12,7 @@ export interface PostVariablesRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postvariablesrequest.body.md) | [Variable](./influxdb-client-apis.variable.md) | Variable to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postvariablesrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable to create |
 

@@ -12,14 +12,14 @@ export interface GetTasksRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [after?](./influxdb-client-apis.gettasksrequest.after.md) | string | <i>(Optional)</i> Return tasks after a specified ID. |
-|  [limit?](./influxdb-client-apis.gettasksrequest.limit.md) | number | <i>(Optional)</i> The number of tasks to return |
-|  [name?](./influxdb-client-apis.gettasksrequest.name.md) | string | <i>(Optional)</i> Returns task with a specific name. |
-|  [org?](./influxdb-client-apis.gettasksrequest.org.md) | string | <i>(Optional)</i> Filter tasks to a specific organization name. |
-|  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) | string | <i>(Optional)</i> Filter tasks to a specific organization ID. |
-|  [status?](./influxdb-client-apis.gettasksrequest.status.md) | string | <i>(Optional)</i> Filter tasks by a status--"inactive" or "active". |
-|  [type?](./influxdb-client-apis.gettasksrequest.type.md) | string | <i>(Optional)</i> Type of task, unset by default. |
-|  [user?](./influxdb-client-apis.gettasksrequest.user.md) | string | <i>(Optional)</i> Filter tasks to a specific user ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [after?](./influxdb-client-apis.gettasksrequest.after.md) |  | string | <i>(Optional)</i> Return tasks after a specified ID. |
+|  [limit?](./influxdb-client-apis.gettasksrequest.limit.md) |  | number | <i>(Optional)</i> The number of tasks to return |
+|  [name?](./influxdb-client-apis.gettasksrequest.name.md) |  | string | <i>(Optional)</i> Returns task with a specific name. |
+|  [org?](./influxdb-client-apis.gettasksrequest.org.md) |  | string | <i>(Optional)</i> Filter tasks to a specific organization name. |
+|  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) |  | string | <i>(Optional)</i> Filter tasks to a specific organization ID. |
+|  [status?](./influxdb-client-apis.gettasksrequest.status.md) |  | string | <i>(Optional)</i> Filter tasks by a status--"inactive" or "active". |
+|  [type?](./influxdb-client-apis.gettasksrequest.type.md) |  | string | <i>(Optional)</i> Type of task, unset by default. |
+|  [user?](./influxdb-client-apis.gettasksrequest.user.md) |  | string | <i>(Optional)</i> Filter tasks to a specific user ID. |
 

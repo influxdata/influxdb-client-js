@@ -12,24 +12,24 @@ export interface Routes
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authorizations?](./influxdb-client-apis.routes.authorizations.md) | string | <i>(Optional)</i> |
-|  [buckets?](./influxdb-client-apis.routes.buckets.md) | string | <i>(Optional)</i> |
-|  [dashboards?](./influxdb-client-apis.routes.dashboards.md) | string | <i>(Optional)</i> |
-|  [external?](./influxdb-client-apis.routes.external.md) | { statusFeed?: string; } | <i>(Optional)</i> |
-|  [flags?](./influxdb-client-apis.routes.flags.md) | string | <i>(Optional)</i> |
-|  [me?](./influxdb-client-apis.routes.me.md) | string | <i>(Optional)</i> |
-|  [orgs?](./influxdb-client-apis.routes.orgs.md) | string | <i>(Optional)</i> |
-|  [query?](./influxdb-client-apis.routes.query.md) | { self?: string; ast?: string; analyze?: string; suggestions?: string; } | <i>(Optional)</i> |
-|  [setup?](./influxdb-client-apis.routes.setup.md) | string | <i>(Optional)</i> |
-|  [signin?](./influxdb-client-apis.routes.signin.md) | string | <i>(Optional)</i> |
-|  [signout?](./influxdb-client-apis.routes.signout.md) | string | <i>(Optional)</i> |
-|  [sources?](./influxdb-client-apis.routes.sources.md) | string | <i>(Optional)</i> |
-|  [system?](./influxdb-client-apis.routes.system.md) | { metrics?: string; debug?: string; health?: string; } | <i>(Optional)</i> |
-|  [tasks?](./influxdb-client-apis.routes.tasks.md) | string | <i>(Optional)</i> |
-|  [telegrafs?](./influxdb-client-apis.routes.telegrafs.md) | string | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.routes.users.md) | string | <i>(Optional)</i> |
-|  [variables?](./influxdb-client-apis.routes.variables.md) | string | <i>(Optional)</i> |
-|  [write?](./influxdb-client-apis.routes.write.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authorizations?](./influxdb-client-apis.routes.authorizations.md) |  | string | <i>(Optional)</i> |
+|  [buckets?](./influxdb-client-apis.routes.buckets.md) |  | string | <i>(Optional)</i> |
+|  [dashboards?](./influxdb-client-apis.routes.dashboards.md) |  | string | <i>(Optional)</i> |
+|  [external?](./influxdb-client-apis.routes.external.md) |  | { statusFeed?: string; } | <i>(Optional)</i> |
+|  [flags?](./influxdb-client-apis.routes.flags.md) |  | string | <i>(Optional)</i> |
+|  [me?](./influxdb-client-apis.routes.me.md) |  | string | <i>(Optional)</i> |
+|  [orgs?](./influxdb-client-apis.routes.orgs.md) |  | string | <i>(Optional)</i> |
+|  [query?](./influxdb-client-apis.routes.query.md) |  | { self?: string; ast?: string; analyze?: string; suggestions?: string; } | <i>(Optional)</i> |
+|  [setup?](./influxdb-client-apis.routes.setup.md) |  | string | <i>(Optional)</i> |
+|  [signin?](./influxdb-client-apis.routes.signin.md) |  | string | <i>(Optional)</i> |
+|  [signout?](./influxdb-client-apis.routes.signout.md) |  | string | <i>(Optional)</i> |
+|  [sources?](./influxdb-client-apis.routes.sources.md) |  | string | <i>(Optional)</i> |
+|  [system?](./influxdb-client-apis.routes.system.md) |  | { metrics?: string; debug?: string; health?: string; } | <i>(Optional)</i> |
+|  [tasks?](./influxdb-client-apis.routes.tasks.md) |  | string | <i>(Optional)</i> |
+|  [telegrafs?](./influxdb-client-apis.routes.telegrafs.md) |  | string | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.routes.users.md) |  | string | <i>(Optional)</i> |
+|  [variables?](./influxdb-client-apis.routes.variables.md) |  | string | <i>(Optional)</i> |
+|  [write?](./influxdb-client-apis.routes.write.md) |  | string | <i>(Optional)</i> |
 

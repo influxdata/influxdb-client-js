@@ -12,7 +12,7 @@ export interface DeleteAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.deleteauthorizationsidrequest.authid.md) | string | The ID of the authorization to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.deleteauthorizationsidrequest.authid.md) |  | string | The ID of the authorization to delete. |
 

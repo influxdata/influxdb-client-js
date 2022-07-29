@@ -12,8 +12,8 @@ export interface LabelResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [label?](./influxdb-client-apis.labelresponse.label.md) | [Label](./influxdb-client-apis.label.md) | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.labelresponse.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [label?](./influxdb-client-apis.labelresponse.label.md) |  | [Label](./influxdb-client-apis.label.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.labelresponse.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 

@@ -12,7 +12,7 @@ export interface ApplyTemplateRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.applytemplaterequest.body.md) | [TemplateApply](./influxdb-client-apis.templateapply.md) | entity body |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | [TemplateApply](./influxdb-client-apis.templateapply.md) | entity body |
 

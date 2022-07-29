@@ -12,7 +12,7 @@ export interface PostSourcesRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postsourcesrequest.body.md) | [Source](./influxdb-client-apis.source.md) | Source to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postsourcesrequest.body.md) |  | [Source](./influxdb-client-apis.source.md) | Source to create |
 

@@ -12,9 +12,9 @@ export interface TagRule
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [key?](./influxdb-client-apis.tagrule.key.md) | string | <i>(Optional)</i> |
-|  [operator?](./influxdb-client-apis.tagrule.operator.md) | 'equal' \| 'notequal' \| 'equalregex' \| 'notequalregex' | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.tagrule.value.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [key?](./influxdb-client-apis.tagrule.key.md) |  | string | <i>(Optional)</i> |
+|  [operator?](./influxdb-client-apis.tagrule.operator.md) |  | 'equal' \| 'notequal' \| 'equalregex' \| 'notequalregex' | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.tagrule.value.md) |  | string | <i>(Optional)</i> |
 

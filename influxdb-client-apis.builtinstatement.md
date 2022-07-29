@@ -14,8 +14,8 @@ export interface BuiltinStatement
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [id?](./influxdb-client-apis.builtinstatement.id.md) | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.builtinstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [id?](./influxdb-client-apis.builtinstatement.id.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.builtinstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

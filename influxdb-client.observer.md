@@ -14,9 +14,9 @@ export interface Observer<T>
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [complete](./influxdb-client.observer.complete.md) | [ObserverComplete](./influxdb-client.observercomplete.md) |  |
-|  [error](./influxdb-client.observer.error.md) | [ObserverError](./influxdb-client.observererror.md) |  |
-|  [next](./influxdb-client.observer.next.md) | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [complete](./influxdb-client.observer.complete.md) |  | [ObserverComplete](./influxdb-client.observercomplete.md) |  |
+|  [error](./influxdb-client.observer.error.md) |  | [ObserverError](./influxdb-client.observererror.md) |  |
+|  [next](./influxdb-client.observer.next.md) |  | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
 

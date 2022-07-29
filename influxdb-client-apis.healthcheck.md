@@ -12,12 +12,12 @@ export interface HealthCheck
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [checks?](./influxdb-client-apis.healthcheck.checks.md) | [HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [commit?](./influxdb-client-apis.healthcheck.commit.md) | string | <i>(Optional)</i> |
-|  [message?](./influxdb-client-apis.healthcheck.message.md) | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.healthcheck.name.md) | string |  |
-|  [status](./influxdb-client-apis.healthcheck.status.md) | 'pass' \| 'fail' |  |
-|  [version?](./influxdb-client-apis.healthcheck.version.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [checks?](./influxdb-client-apis.healthcheck.checks.md) |  | [HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [commit?](./influxdb-client-apis.healthcheck.commit.md) |  | string | <i>(Optional)</i> |
+|  [message?](./influxdb-client-apis.healthcheck.message.md) |  | string | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.healthcheck.name.md) |  | string |  |
+|  [status](./influxdb-client-apis.healthcheck.status.md) |  | 'pass' \| 'fail' |  |
+|  [version?](./influxdb-client-apis.healthcheck.version.md) |  | string | <i>(Optional)</i> |
 

@@ -12,7 +12,7 @@ export interface GetTelegrafPluginsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.gettelegrafpluginsrequest.type.md) | string | <i>(Optional)</i> The type of plugin desired. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.gettelegrafpluginsrequest.type.md) |  | string | <i>(Optional)</i> The type of plugin desired. |
 

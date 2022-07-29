@@ -12,15 +12,15 @@ export interface TemplateApply
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [actions?](./influxdb-client-apis.templateapply.actions.md) | Array&lt;{ action?: 'skipKind'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; }; } \| { action?: 'skipResource'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; resourceTemplateName: string; }; }&gt; | <i>(Optional)</i> |
-|  [dryRun?](./influxdb-client-apis.templateapply.dryrun.md) | boolean | <i>(Optional)</i> |
-|  [envRefs?](./influxdb-client-apis.templateapply.envrefs.md) | any | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.templateapply.orgid.md) | string | <i>(Optional)</i> |
-|  [remotes?](./influxdb-client-apis.templateapply.remotes.md) | Array&lt;{ url: string; contentType?: string; }&gt; | <i>(Optional)</i> |
-|  [secrets?](./influxdb-client-apis.templateapply.secrets.md) | any | <i>(Optional)</i> |
-|  [stackID?](./influxdb-client-apis.templateapply.stackid.md) | string | <i>(Optional)</i> |
-|  [template?](./influxdb-client-apis.templateapply.template.md) | { contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; } | <i>(Optional)</i> |
-|  [templates?](./influxdb-client-apis.templateapply.templates.md) | Array&lt;{ contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; }&gt; | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [actions?](./influxdb-client-apis.templateapply.actions.md) |  | Array&lt;{ action?: 'skipKind'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; }; } \| { action?: 'skipResource'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; resourceTemplateName: string; }; }&gt; | <i>(Optional)</i> |
+|  [dryRun?](./influxdb-client-apis.templateapply.dryrun.md) |  | boolean | <i>(Optional)</i> |
+|  [envRefs?](./influxdb-client-apis.templateapply.envrefs.md) |  | any | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.templateapply.orgid.md) |  | string | <i>(Optional)</i> |
+|  [remotes?](./influxdb-client-apis.templateapply.remotes.md) |  | Array&lt;{ url: string; contentType?: string; }&gt; | <i>(Optional)</i> |
+|  [secrets?](./influxdb-client-apis.templateapply.secrets.md) |  | any | <i>(Optional)</i> |
+|  [stackID?](./influxdb-client-apis.templateapply.stackid.md) |  | string | <i>(Optional)</i> |
+|  [template?](./influxdb-client-apis.templateapply.template.md) |  | { contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; } | <i>(Optional)</i> |
+|  [templates?](./influxdb-client-apis.templateapply.templates.md) |  | Array&lt;{ contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; }&gt; | <i>(Optional)</i> |
 

@@ -14,8 +14,8 @@ export interface Identifier
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [name?](./influxdb-client-apis.identifier.name.md) | string | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.identifier.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [name?](./influxdb-client-apis.identifier.name.md) |  | string | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.identifier.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

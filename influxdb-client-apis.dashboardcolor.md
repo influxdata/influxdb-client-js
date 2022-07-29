@@ -14,11 +14,11 @@ export interface DashboardColor
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [hex](./influxdb-client-apis.dashboardcolor.hex.md) | string | The hex number of the color |
-|  [id](./influxdb-client-apis.dashboardcolor.id.md) | string | The unique ID of the view color. |
-|  [name](./influxdb-client-apis.dashboardcolor.name.md) | string | The user-facing name of the hex color. |
-|  [type](./influxdb-client-apis.dashboardcolor.type.md) | 'min' \| 'max' \| 'threshold' \| 'scale' \| 'text' \| 'background' | Type is how the color is used. |
-|  [value](./influxdb-client-apis.dashboardcolor.value.md) | number | The data value mapped to this color. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [hex](./influxdb-client-apis.dashboardcolor.hex.md) |  | string | The hex number of the color |
+|  [id](./influxdb-client-apis.dashboardcolor.id.md) |  | string | The unique ID of the view color. |
+|  [name](./influxdb-client-apis.dashboardcolor.name.md) |  | string | The user-facing name of the hex color. |
+|  [type](./influxdb-client-apis.dashboardcolor.type.md) |  | 'min' \| 'max' \| 'threshold' \| 'scale' \| 'text' \| 'background' | Type is how the color is used. |
+|  [value](./influxdb-client-apis.dashboardcolor.value.md) |  | number | The data value mapped to this color. |
 

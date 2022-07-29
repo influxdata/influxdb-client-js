@@ -12,7 +12,7 @@ export interface DeleteDashboardsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidrequest.dashboardid.md) | string | The ID of the dashboard to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboardID](./influxdb-client-apis.deletedashboardsidrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

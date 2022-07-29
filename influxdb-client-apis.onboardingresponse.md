@@ -12,10 +12,10 @@ export interface OnboardingResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [auth?](./influxdb-client-apis.onboardingresponse.auth.md) | [Authorization](./influxdb-client-apis.authorization.md) | <i>(Optional)</i> |
-|  [bucket?](./influxdb-client-apis.onboardingresponse.bucket.md) | [Bucket](./influxdb-client-apis.bucket.md) | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.onboardingresponse.org.md) | [Organization](./influxdb-client-apis.organization.md) | <i>(Optional)</i> |
-|  [user?](./influxdb-client-apis.onboardingresponse.user.md) | [UserResponse](./influxdb-client-apis.userresponse.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [auth?](./influxdb-client-apis.onboardingresponse.auth.md) |  | [Authorization](./influxdb-client-apis.authorization.md) | <i>(Optional)</i> |
+|  [bucket?](./influxdb-client-apis.onboardingresponse.bucket.md) |  | [Bucket](./influxdb-client-apis.bucket.md) | <i>(Optional)</i> |
+|  [org?](./influxdb-client-apis.onboardingresponse.org.md) |  | [Organization](./influxdb-client-apis.organization.md) | <i>(Optional)</i> |
+|  [user?](./influxdb-client-apis.onboardingresponse.user.md) |  | [UserResponse](./influxdb-client-apis.userresponse.md) | <i>(Optional)</i> |
 

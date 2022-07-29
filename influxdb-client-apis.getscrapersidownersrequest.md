@@ -12,7 +12,7 @@ export interface GetScrapersIDOwnersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.getscrapersidownersrequest.scrapertargetid.md) | string | The scraper target ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scraperTargetID](./influxdb-client-apis.getscrapersidownersrequest.scrapertargetid.md) |  | string | The scraper target ID. |
 

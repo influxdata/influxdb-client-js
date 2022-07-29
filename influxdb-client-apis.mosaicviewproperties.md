@@ -12,35 +12,35 @@ export interface MosaicViewProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [colors](./influxdb-client-apis.mosaicviewproperties.colors.md) | string\[\] | Colors define color encoding of data into a visualization |
-|  [fillColumns](./influxdb-client-apis.mosaicviewproperties.fillcolumns.md) | string\[\] |  |
-|  [generateXAxisTicks?](./influxdb-client-apis.mosaicviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
-|  [hoverDimension?](./influxdb-client-apis.mosaicviewproperties.hoverdimension.md) | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
-|  [legendColorizeRows?](./influxdb-client-apis.mosaicviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
-|  [legendHide?](./influxdb-client-apis.mosaicviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
-|  [legendOpacity?](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
-|  [legendOrientationThreshold?](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
-|  [note](./influxdb-client-apis.mosaicviewproperties.note.md) | string |  |
-|  [queries](./influxdb-client-apis.mosaicviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.mosaicviewproperties.shape.md) | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.mosaicviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
-|  [timeFormat?](./influxdb-client-apis.mosaicviewproperties.timeformat.md) | string | <i>(Optional)</i> |
-|  [type](./influxdb-client-apis.mosaicviewproperties.type.md) | 'mosaic' |  |
-|  [xAxisLabel](./influxdb-client-apis.mosaicviewproperties.xaxislabel.md) | string |  |
-|  [xColumn](./influxdb-client-apis.mosaicviewproperties.xcolumn.md) | string |  |
-|  [xDomain](./influxdb-client-apis.mosaicviewproperties.xdomain.md) | number\[\] |  |
-|  [xPrefix](./influxdb-client-apis.mosaicviewproperties.xprefix.md) | string |  |
-|  [xSuffix](./influxdb-client-apis.mosaicviewproperties.xsuffix.md) | string |  |
-|  [xTickStart?](./influxdb-client-apis.mosaicviewproperties.xtickstart.md) | number | <i>(Optional)</i> |
-|  [xTickStep?](./influxdb-client-apis.mosaicviewproperties.xtickstep.md) | number | <i>(Optional)</i> |
-|  [xTotalTicks?](./influxdb-client-apis.mosaicviewproperties.xtotalticks.md) | number | <i>(Optional)</i> |
-|  [yAxisLabel](./influxdb-client-apis.mosaicviewproperties.yaxislabel.md) | string |  |
-|  [yDomain](./influxdb-client-apis.mosaicviewproperties.ydomain.md) | number\[\] |  |
-|  [yLabelColumns?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumns.md) | string\[\] | <i>(Optional)</i> |
-|  [yLabelColumnSeparator?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumnseparator.md) | string | <i>(Optional)</i> |
-|  [yPrefix](./influxdb-client-apis.mosaicviewproperties.yprefix.md) | string |  |
-|  [ySeriesColumns](./influxdb-client-apis.mosaicviewproperties.yseriescolumns.md) | string\[\] |  |
-|  [ySuffix](./influxdb-client-apis.mosaicviewproperties.ysuffix.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [colors](./influxdb-client-apis.mosaicviewproperties.colors.md) |  | string\[\] | Colors define color encoding of data into a visualization |
+|  [fillColumns](./influxdb-client-apis.mosaicviewproperties.fillcolumns.md) |  | string\[\] |  |
+|  [generateXAxisTicks?](./influxdb-client-apis.mosaicviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
+|  [hoverDimension?](./influxdb-client-apis.mosaicviewproperties.hoverdimension.md) |  | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
+|  [legendColorizeRows?](./influxdb-client-apis.mosaicviewproperties.legendcolorizerows.md) |  | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.mosaicviewproperties.legendhide.md) |  | boolean | <i>(Optional)</i> |
+|  [legendOpacity?](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
+|  [legendOrientationThreshold?](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
+|  [note](./influxdb-client-apis.mosaicviewproperties.note.md) |  | string |  |
+|  [queries](./influxdb-client-apis.mosaicviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [shape](./influxdb-client-apis.mosaicviewproperties.shape.md) |  | 'chronograf-v2' |  |
+|  [showNoteWhenEmpty](./influxdb-client-apis.mosaicviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
+|  [timeFormat?](./influxdb-client-apis.mosaicviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |
+|  [type](./influxdb-client-apis.mosaicviewproperties.type.md) |  | 'mosaic' |  |
+|  [xAxisLabel](./influxdb-client-apis.mosaicviewproperties.xaxislabel.md) |  | string |  |
+|  [xColumn](./influxdb-client-apis.mosaicviewproperties.xcolumn.md) |  | string |  |
+|  [xDomain](./influxdb-client-apis.mosaicviewproperties.xdomain.md) |  | number\[\] |  |
+|  [xPrefix](./influxdb-client-apis.mosaicviewproperties.xprefix.md) |  | string |  |
+|  [xSuffix](./influxdb-client-apis.mosaicviewproperties.xsuffix.md) |  | string |  |
+|  [xTickStart?](./influxdb-client-apis.mosaicviewproperties.xtickstart.md) |  | number | <i>(Optional)</i> |
+|  [xTickStep?](./influxdb-client-apis.mosaicviewproperties.xtickstep.md) |  | number | <i>(Optional)</i> |
+|  [xTotalTicks?](./influxdb-client-apis.mosaicviewproperties.xtotalticks.md) |  | number | <i>(Optional)</i> |
+|  [yAxisLabel](./influxdb-client-apis.mosaicviewproperties.yaxislabel.md) |  | string |  |
+|  [yDomain](./influxdb-client-apis.mosaicviewproperties.ydomain.md) |  | number\[\] |  |
+|  [yLabelColumns?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumns.md) |  | string\[\] | <i>(Optional)</i> |
+|  [yLabelColumnSeparator?](./influxdb-client-apis.mosaicviewproperties.ylabelcolumnseparator.md) |  | string | <i>(Optional)</i> |
+|  [yPrefix](./influxdb-client-apis.mosaicviewproperties.yprefix.md) |  | string |  |
+|  [ySeriesColumns](./influxdb-client-apis.mosaicviewproperties.yseriescolumns.md) |  | string\[\] |  |
+|  [ySuffix](./influxdb-client-apis.mosaicviewproperties.ysuffix.md) |  | string |  |
 

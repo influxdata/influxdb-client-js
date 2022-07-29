@@ -12,7 +12,7 @@ export interface ScriptInvocationParams
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [params?](./influxdb-client-apis.scriptinvocationparams.params.md) | any | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [params?](./influxdb-client-apis.scriptinvocationparams.params.md) |  | any | <i>(Optional)</i> |
 

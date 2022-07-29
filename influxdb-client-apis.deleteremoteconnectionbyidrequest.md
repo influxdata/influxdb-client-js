@@ -12,7 +12,7 @@ export interface DeleteRemoteConnectionByIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [remoteID](./influxdb-client-apis.deleteremoteconnectionbyidrequest.remoteid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [remoteID](./influxdb-client-apis.deleteremoteconnectionbyidrequest.remoteid.md) |  | string |  |
 

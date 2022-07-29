@@ -12,12 +12,12 @@ export interface TelegrafPluginRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [config?](./influxdb-client-apis.telegrafpluginrequest.config.md) | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.telegrafpluginrequest.description.md) | string | <i>(Optional)</i> |
-|  [metadata?](./influxdb-client-apis.telegrafpluginrequest.metadata.md) | { buckets?: string\[\]; } | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.telegrafpluginrequest.name.md) | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.telegrafpluginrequest.orgid.md) | string | <i>(Optional)</i> |
-|  [plugins?](./influxdb-client-apis.telegrafpluginrequest.plugins.md) | Array&lt;{ type?: string; name?: string; alias?: string; description?: string; config?: string; }&gt; | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [config?](./influxdb-client-apis.telegrafpluginrequest.config.md) |  | string | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.telegrafpluginrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [metadata?](./influxdb-client-apis.telegrafpluginrequest.metadata.md) |  | { buckets?: string\[\]; } | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.telegrafpluginrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [orgID?](./influxdb-client-apis.telegrafpluginrequest.orgid.md) |  | string | <i>(Optional)</i> |
+|  [plugins?](./influxdb-client-apis.telegrafpluginrequest.plugins.md) |  | Array&lt;{ type?: string; name?: string; alias?: string; description?: string; config?: string; }&gt; | <i>(Optional)</i> |
 

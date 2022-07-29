@@ -12,8 +12,8 @@ export interface DeleteNotificationEndpointsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [endpointID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.endpointid.md) | string | The notification endpoint ID. |
-|  [labelID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.labelid.md) | string | The ID of the label to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [endpointID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
+|  [labelID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
 

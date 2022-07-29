@@ -12,7 +12,7 @@ export interface PostTelegrafsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) |  | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration to create |
 

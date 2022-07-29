@@ -12,8 +12,8 @@ export interface PostLegacyAuthorizationsIDPasswordRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.authid.md) | string | The ID of the legacy authorization to update. |
-|  [body](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.body.md) | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.authid.md) |  | string | The ID of the legacy authorization to update. |
+|  [body](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
 

@@ -12,7 +12,7 @@ export interface ScraperTargetResponses
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [configurations?](./influxdb-client-apis.scrapertargetresponses.configurations.md) | [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [configurations?](./influxdb-client-apis.scrapertargetresponses.configurations.md) |  | [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
 

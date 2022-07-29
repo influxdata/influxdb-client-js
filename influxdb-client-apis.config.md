@@ -12,7 +12,7 @@ export interface Config
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [config?](./influxdb-client-apis.config.config.md) | any | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [config?](./influxdb-client-apis.config.config.md) |  | any | <i>(Optional)</i> |
 

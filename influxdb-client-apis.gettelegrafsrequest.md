@@ -12,7 +12,7 @@ export interface GetTelegrafsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID?](./influxdb-client-apis.gettelegrafsrequest.orgid.md) | string | <i>(Optional)</i> The organization ID the Telegraf config belongs to. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID?](./influxdb-client-apis.gettelegrafsrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID the Telegraf config belongs to. |
 

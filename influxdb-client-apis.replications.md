@@ -12,7 +12,7 @@ export interface Replications
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [replications?](./influxdb-client-apis.replications.replications.md) | [Replication](./influxdb-client-apis.replication.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [replications?](./influxdb-client-apis.replications.replications.md) |  | [Replication](./influxdb-client-apis.replication.md)<!-- -->\[\] | <i>(Optional)</i> |
 

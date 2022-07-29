@@ -12,11 +12,11 @@ export interface GetUsersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [after?](./influxdb-client-apis.getusersrequest.after.md) | string | <i>(Optional)</i> Resource ID to seek from. Results are not inclusive of this ID. Use <code>after</code> instead of <code>offset</code>. |
-|  [id?](./influxdb-client-apis.getusersrequest.id.md) | string | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) | number | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.getusersrequest.name.md) | string | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [after?](./influxdb-client-apis.getusersrequest.after.md) |  | string | <i>(Optional)</i> Resource ID to seek from. Results are not inclusive of this ID. Use <code>after</code> instead of <code>offset</code>. |
+|  [id?](./influxdb-client-apis.getusersrequest.id.md) |  | string | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.getusersrequest.name.md) |  | string | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) |  | number | <i>(Optional)</i> |
 

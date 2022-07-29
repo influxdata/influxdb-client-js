@@ -12,8 +12,8 @@ export interface DeleteTelegrafsIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidownersidrequest.telegrafid.md) | string | The Telegraf config ID. |
-|  [userID](./influxdb-client-apis.deletetelegrafsidownersidrequest.userid.md) | string | The ID of the owner to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [telegrafID](./influxdb-client-apis.deletetelegrafsidownersidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+|  [userID](./influxdb-client-apis.deletetelegrafsidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
 

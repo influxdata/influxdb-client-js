@@ -12,7 +12,7 @@ export interface DeleteLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletelabelsidrequest.labelid.md) | string | The ID of the label to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.deletelabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
 

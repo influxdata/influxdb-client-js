@@ -14,9 +14,9 @@ export interface DeletePredicateRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md) | string | <i>(Optional)</i> InfluxQL-like delete statement |
-|  [start](./influxdb-client-apis.deletepredicaterequest.start.md) | string | RFC3339Nano |
-|  [stop](./influxdb-client-apis.deletepredicaterequest.stop.md) | string | RFC3339Nano |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md) |  | string | <i>(Optional)</i> InfluxQL-like delete statement |
+|  [start](./influxdb-client-apis.deletepredicaterequest.start.md) |  | string | RFC3339Nano |
+|  [stop](./influxdb-client-apis.deletepredicaterequest.stop.md) |  | string | RFC3339Nano |
 

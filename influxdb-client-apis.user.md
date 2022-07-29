@@ -12,10 +12,10 @@ export interface User
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [id?](./influxdb-client-apis.user.id.md) | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.user.name.md) | string |  |
-|  [oauthID?](./influxdb-client-apis.user.oauthid.md) | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.user.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the user is inactive. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [id?](./influxdb-client-apis.user.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.user.name.md) |  | string |  |
+|  [oauthID?](./influxdb-client-apis.user.oauthid.md) |  | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.user.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the user is inactive. |
 

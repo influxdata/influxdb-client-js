@@ -12,7 +12,7 @@ export interface DBRPGet
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [content?](./influxdb-client-apis.dbrpget.content.md) | [DBRP](./influxdb-client-apis.dbrp.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [content?](./influxdb-client-apis.dbrpget.content.md) |  | [DBRP](./influxdb-client-apis.dbrp.md) | <i>(Optional)</i> |
 

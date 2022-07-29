@@ -12,8 +12,8 @@ export interface DeleteVariablesIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletevariablesidlabelsidrequest.labelid.md) | string | The label ID to delete. |
-|  [variableID](./influxdb-client-apis.deletevariablesidlabelsidrequest.variableid.md) | string | The variable ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.deletevariablesidlabelsidrequest.labelid.md) |  | string | The label ID to delete. |
+|  [variableID](./influxdb-client-apis.deletevariablesidlabelsidrequest.variableid.md) |  | string | The variable ID. |
 

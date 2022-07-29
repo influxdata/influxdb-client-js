@@ -12,8 +12,8 @@ export interface Sources
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [links?](./influxdb-client-apis.sources.links.md) | { self?: string; } | <i>(Optional)</i> |
-|  [sources?](./influxdb-client-apis.sources.sources.md) | [Source](./influxdb-client-apis.source.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [links?](./influxdb-client-apis.sources.links.md) |  | { self?: string; } | <i>(Optional)</i> |
+|  [sources?](./influxdb-client-apis.sources.sources.md) |  | [Source](./influxdb-client-apis.source.md)<!-- -->\[\] | <i>(Optional)</i> |
 

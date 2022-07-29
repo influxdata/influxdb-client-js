@@ -12,12 +12,12 @@ export interface PostBucketRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.postbucketrequest.description.md) | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.postbucketrequest.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) | string |  |
-|  [retentionRules](./influxdb-client-apis.postbucketrequest.retentionrules.md) | [RetentionRules](./influxdb-client-apis.retentionrules.md) |  |
-|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) | string | <i>(Optional)</i> |
-|  [schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md) | [SchemaType](./influxdb-client-apis.schematype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.postbucketrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.postbucketrequest.name.md) |  | string |  |
+|  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) |  | string |  |
+|  [retentionRules](./influxdb-client-apis.postbucketrequest.retentionrules.md) |  | [RetentionRules](./influxdb-client-apis.retentionrules.md) |  |
+|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) |  | string | <i>(Optional)</i> |
+|  [schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md) |  | [SchemaType](./influxdb-client-apis.schematype.md) | <i>(Optional)</i> |
 

@@ -12,7 +12,7 @@ export interface GetAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.getauthorizationsidrequest.authid.md) | string | The ID of the authorization to get. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.getauthorizationsidrequest.authid.md) |  | string | The ID of the authorization to get. |
 

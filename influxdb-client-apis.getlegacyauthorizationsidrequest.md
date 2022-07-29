@@ -12,7 +12,7 @@ export interface GetLegacyAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.getlegacyauthorizationsidrequest.authid.md) | string | The ID of the legacy authorization to get. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.getlegacyauthorizationsidrequest.authid.md) |  | string | The ID of the legacy authorization to get. |
 

@@ -12,8 +12,8 @@ export interface DeleteBucketsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidlabelsidrequest.bucketid.md) | string | The bucket ID. |
-|  [labelID](./influxdb-client-apis.deletebucketsidlabelsidrequest.labelid.md) | string | The ID of the label to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.deletebucketsidlabelsidrequest.bucketid.md) |  | string | The bucket ID. |
+|  [labelID](./influxdb-client-apis.deletebucketsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
 

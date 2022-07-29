@@ -12,8 +12,8 @@ export interface GetDashboardsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.getdashboardsidrequest.dashboardid.md) | string | The ID of the dashboard to update. |
-|  [include?](./influxdb-client-apis.getdashboardsidrequest.include.md) | string | <i>(Optional)</i> If <code>properties</code>, includes the cell view properties in the response. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboardID](./influxdb-client-apis.getdashboardsidrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
+|  [include?](./influxdb-client-apis.getdashboardsidrequest.include.md) |  | string | <i>(Optional)</i> If <code>properties</code>, includes the cell view properties in the response. |
 

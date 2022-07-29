@@ -14,8 +14,8 @@ export interface DateTimeLiteral
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.datetimeliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.datetimeliteral.value.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.datetimeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.datetimeliteral.value.md) |  | string | <i>(Optional)</i> |
 

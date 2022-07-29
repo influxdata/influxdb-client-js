@@ -12,7 +12,7 @@ export interface GetTelegrafsIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.gettelegrafsidmembersrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [telegrafID](./influxdb-client-apis.gettelegrafsidmembersrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

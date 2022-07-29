@@ -12,8 +12,8 @@ export interface PutNotificationEndpointsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.putnotificationendpointsidrequest.body.md) | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md) | A new notification endpoint to replace the existing endpoint with |
-|  [endpointID](./influxdb-client-apis.putnotificationendpointsidrequest.endpointid.md) | string | The notification endpoint ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.putnotificationendpointsidrequest.body.md) |  | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md) | A new notification endpoint to replace the existing endpoint with |
+|  [endpointID](./influxdb-client-apis.putnotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

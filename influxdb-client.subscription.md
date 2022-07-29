@@ -14,9 +14,9 @@ export interface Subscription
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [closed](./influxdb-client.subscription.closed.md) | boolean |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [closed](./influxdb-client.subscription.closed.md) | <code>readonly</code> | boolean |  |
 
 ## Methods
 

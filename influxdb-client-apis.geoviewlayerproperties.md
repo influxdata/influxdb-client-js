@@ -12,7 +12,7 @@ export interface GeoViewLayerProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type](./influxdb-client-apis.geoviewlayerproperties.type.md) | 'heatmap' \| 'circleMap' \| 'pointMap' \| 'trackMap' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type](./influxdb-client-apis.geoviewlayerproperties.type.md) |  | 'heatmap' \| 'circleMap' \| 'pointMap' \| 'trackMap' |  |
 

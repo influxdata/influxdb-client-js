@@ -12,12 +12,12 @@ export interface GetOrgsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [descending?](./influxdb-client-apis.getorgsrequest.descending.md) | any | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getorgsrequest.limit.md) | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getorgsrequest.offset.md) | number | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.getorgsrequest.org.md) | string | <i>(Optional)</i> Filter organizations to a specific organization name. |
-|  [orgID?](./influxdb-client-apis.getorgsrequest.orgid.md) | string | <i>(Optional)</i> Filter organizations to a specific organization ID. |
-|  [userID?](./influxdb-client-apis.getorgsrequest.userid.md) | string | <i>(Optional)</i> Filter organizations to a specific user ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [descending?](./influxdb-client-apis.getorgsrequest.descending.md) |  | any | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getorgsrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getorgsrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [org?](./influxdb-client-apis.getorgsrequest.org.md) |  | string | <i>(Optional)</i> Filter organizations to a specific organization name. |
+|  [orgID?](./influxdb-client-apis.getorgsrequest.orgid.md) |  | string | <i>(Optional)</i> Filter organizations to a specific organization ID. |
+|  [userID?](./influxdb-client-apis.getorgsrequest.userid.md) |  | string | <i>(Optional)</i> Filter organizations to a specific user ID. |
 

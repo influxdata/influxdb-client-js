@@ -14,7 +14,7 @@ export interface FluxResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [flux?](./influxdb-client-apis.fluxresponse.flux.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [flux?](./influxdb-client-apis.fluxresponse.flux.md) |  | string | <i>(Optional)</i> |
 

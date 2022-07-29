@@ -12,7 +12,7 @@ export interface DeleteNotificationEndpointsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [endpointID](./influxdb-client-apis.deletenotificationendpointsidrequest.endpointid.md) | string | The notification endpoint ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [endpointID](./influxdb-client-apis.deletenotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

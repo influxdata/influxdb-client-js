@@ -14,8 +14,8 @@ export interface BooleanLiteral
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.booleanliteral.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.booleanliteral.value.md) | boolean | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.booleanliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.booleanliteral.value.md) |  | boolean | <i>(Optional)</i> |
 

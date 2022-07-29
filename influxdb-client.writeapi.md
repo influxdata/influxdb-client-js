@@ -15,9 +15,9 @@ export default interface WriteApi extends PointSettings
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [path](./influxdb-client.writeapi.path.md) | string | HTTP path and query parameters of InfluxDB query API. It is automatically initialized to <code>/api/v2/write?org=...</code>, but it can be changed after the API is obtained. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [path](./influxdb-client.writeapi.path.md) |  | string | HTTP path and query parameters of InfluxDB query API. It is automatically initialized to <code>/api/v2/write?org=...</code>, but it can be changed after the API is obtained. |
 
 ## Methods
 

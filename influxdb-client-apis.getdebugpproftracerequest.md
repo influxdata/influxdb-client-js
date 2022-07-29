@@ -12,7 +12,7 @@ export interface GetDebugPprofTraceRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [seconds?](./influxdb-client-apis.getdebugpproftracerequest.seconds.md) | string | <i>(Optional)</i> Number of seconds to collect profile data. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [seconds?](./influxdb-client-apis.getdebugpproftracerequest.seconds.md) |  | string | <i>(Optional)</i> Number of seconds to collect profile data. |
 

@@ -12,7 +12,7 @@ export interface PostLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postlabelsrequest.body.md) | [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) | Label to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) | Label to create |
 

@@ -12,9 +12,9 @@ export interface NotificationEndpointUpdate
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [description?](./influxdb-client-apis.notificationendpointupdate.description.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.notificationendpointupdate.name.md) | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.notificationendpointupdate.status.md) | 'active' \| 'inactive' | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [description?](./influxdb-client-apis.notificationendpointupdate.description.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.notificationendpointupdate.name.md) |  | string | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.notificationendpointupdate.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> |
 

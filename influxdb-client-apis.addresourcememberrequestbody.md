@@ -12,8 +12,8 @@ export interface AddResourceMemberRequestBody
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [id](./influxdb-client-apis.addresourcememberrequestbody.id.md) | string |  |
-|  [name?](./influxdb-client-apis.addresourcememberrequestbody.name.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [id](./influxdb-client-apis.addresourcememberrequestbody.id.md) |  | string |  |
+|  [name?](./influxdb-client-apis.addresourcememberrequestbody.name.md) |  | string | <i>(Optional)</i> |
 

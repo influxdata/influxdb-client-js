@@ -12,7 +12,7 @@ export interface PostUsersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postusersrequest.body.md) | [User](./influxdb-client-apis.user.md) | User to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postusersrequest.body.md) |  | [User](./influxdb-client-apis.user.md) | User to create |
 

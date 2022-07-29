@@ -12,13 +12,13 @@ export interface BucketMetadataManifest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.bucketmetadatamanifest.bucketid.md) | string |  |
-|  [bucketName](./influxdb-client-apis.bucketmetadatamanifest.bucketname.md) | string |  |
-|  [defaultRetentionPolicy](./influxdb-client-apis.bucketmetadatamanifest.defaultretentionpolicy.md) | string |  |
-|  [description?](./influxdb-client-apis.bucketmetadatamanifest.description.md) | string | <i>(Optional)</i> |
-|  [organizationID](./influxdb-client-apis.bucketmetadatamanifest.organizationid.md) | string |  |
-|  [organizationName](./influxdb-client-apis.bucketmetadatamanifest.organizationname.md) | string |  |
-|  [retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md) | [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.bucketmetadatamanifest.bucketid.md) |  | string |  |
+|  [bucketName](./influxdb-client-apis.bucketmetadatamanifest.bucketname.md) |  | string |  |
+|  [defaultRetentionPolicy](./influxdb-client-apis.bucketmetadatamanifest.defaultretentionpolicy.md) |  | string |  |
+|  [description?](./influxdb-client-apis.bucketmetadatamanifest.description.md) |  | string | <i>(Optional)</i> |
+|  [organizationID](./influxdb-client-apis.bucketmetadatamanifest.organizationid.md) |  | string |  |
+|  [organizationName](./influxdb-client-apis.bucketmetadatamanifest.organizationname.md) |  | string |  |
+|  [retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md) |  | [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
 

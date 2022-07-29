@@ -12,7 +12,7 @@ export interface PostLegacyAuthorizationsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postlegacyauthorizationsrequest.body.md) | [LegacyAuthorizationPostRequest](./influxdb-client-apis.legacyauthorizationpostrequest.md) | Legacy authorization to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postlegacyauthorizationsrequest.body.md) |  | [LegacyAuthorizationPostRequest](./influxdb-client-apis.legacyauthorizationpostrequest.md) | Legacy authorization to create |
 

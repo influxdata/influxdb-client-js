@@ -12,9 +12,9 @@ export interface PostQueryRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryrequest.body.md) | [Query](./influxdb-client-apis.query.md) | Flux query or specification to execute |
-|  [org?](./influxdb-client-apis.postqueryrequest.org.md) | string | <i>(Optional)</i> Name of the organization executing the query. Accepts either the ID or Name. If you provide both <code>orgID</code> and <code>org</code>, <code>org</code> takes precedence. |
-|  [orgID?](./influxdb-client-apis.postqueryrequest.orgid.md) | string | <i>(Optional)</i> ID of the organization executing the query. If you provide both <code>orgID</code> and <code>org</code>, <code>org</code> takes precedence. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postqueryrequest.body.md) |  | [Query](./influxdb-client-apis.query.md) | Flux query or specification to execute |
+|  [org?](./influxdb-client-apis.postqueryrequest.org.md) |  | string | <i>(Optional)</i> Name of the organization executing the query. Accepts either the ID or Name. If you provide both <code>orgID</code> and <code>org</code>, <code>org</code> takes precedence. |
+|  [orgID?](./influxdb-client-apis.postqueryrequest.orgid.md) |  | string | <i>(Optional)</i> ID of the organization executing the query. If you provide both <code>orgID</code> and <code>org</code>, <code>org</code> takes precedence. |
 

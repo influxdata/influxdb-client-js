@@ -12,8 +12,8 @@ export interface DeleteNotificationRulesIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.labelid.md) | string | The ID of the label to delete. |
-|  [ruleID](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.ruleid.md) | string | The notification rule ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+|  [ruleID](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.ruleid.md) |  | string | The notification rule ID. |
 

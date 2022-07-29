@@ -12,8 +12,8 @@ export interface DeleteScrapersIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidownersidrequest.scrapertargetid.md) | string | The scraper target ID. |
-|  [userID](./influxdb-client-apis.deletescrapersidownersidrequest.userid.md) | string | The ID of owner to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scraperTargetID](./influxdb-client-apis.deletescrapersidownersidrequest.scrapertargetid.md) |  | string | The scraper target ID. |
+|  [userID](./influxdb-client-apis.deletescrapersidownersidrequest.userid.md) |  | string | The ID of owner to remove. |
 

@@ -12,8 +12,8 @@ export interface MapVariableProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [type?](./influxdb-client-apis.mapvariableproperties.type.md) | 'map' | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.mapvariableproperties.values.md) | any | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [type?](./influxdb-client-apis.mapvariableproperties.type.md) |  | 'map' | <i>(Optional)</i> |
+|  [values?](./influxdb-client-apis.mapvariableproperties.values.md) |  | any | <i>(Optional)</i> |
 

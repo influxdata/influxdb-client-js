@@ -12,7 +12,7 @@ export interface GetRemoteConnectionByIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [remoteID](./influxdb-client-apis.getremoteconnectionbyidrequest.remoteid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [remoteID](./influxdb-client-apis.getremoteconnectionbyidrequest.remoteid.md) |  | string |  |
 

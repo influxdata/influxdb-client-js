@@ -12,7 +12,7 @@ export interface IsOnboarding
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allowed?](./influxdb-client-apis.isonboarding.allowed.md) | boolean | <i>(Optional)</i> True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [allowed?](./influxdb-client-apis.isonboarding.allowed.md) |  | boolean | <i>(Optional)</i> True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. |
 

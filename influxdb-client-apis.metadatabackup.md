@@ -12,9 +12,9 @@ export interface MetadataBackup
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [buckets](./influxdb-client-apis.metadatabackup.buckets.md) | [BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md) |  |
-|  [kv](./influxdb-client-apis.metadatabackup.kv.md) | string |  |
-|  [sql](./influxdb-client-apis.metadatabackup.sql.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [buckets](./influxdb-client-apis.metadatabackup.buckets.md) |  | [BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md) |  |
+|  [kv](./influxdb-client-apis.metadatabackup.kv.md) |  | string |  |
+|  [sql](./influxdb-client-apis.metadatabackup.sql.md) |  | string |  |
 

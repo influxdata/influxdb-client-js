@@ -14,9 +14,9 @@ export interface PatchRetentionRule
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [everySeconds?](./influxdb-client-apis.patchretentionrule.everyseconds.md) | number | <i>(Optional)</i> Duration in seconds for how long data will be kept in the database. 0 means infinite. |
-|  [shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md) | number | <i>(Optional)</i> Shard duration measured in seconds. |
-|  [type](./influxdb-client-apis.patchretentionrule.type.md) | 'expire' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [everySeconds?](./influxdb-client-apis.patchretentionrule.everyseconds.md) |  | number | <i>(Optional)</i> Duration in seconds for how long data will be kept in the database. 0 means infinite. |
+|  [shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md) |  | number | <i>(Optional)</i> Shard duration measured in seconds. |
+|  [type](./influxdb-client-apis.patchretentionrule.type.md) |  | 'expire' |  |
 

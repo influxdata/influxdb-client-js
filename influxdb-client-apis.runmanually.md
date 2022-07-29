@@ -12,7 +12,7 @@ export interface RunManually
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scheduledFor?](./influxdb-client-apis.runmanually.scheduledfor.md) | string | <i>(Optional)</i> Time used for run's "now" option, RFC3339. Default is the server's now time. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scheduledFor?](./influxdb-client-apis.runmanually.scheduledfor.md) |  | string | <i>(Optional)</i> Time used for run's "now" option, RFC3339. Default is the server's now time. |
 

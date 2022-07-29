@@ -12,8 +12,8 @@ export interface DeleteTelegrafsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.labelid.md) | string | The label ID. |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.labelid.md) |  | string | The label ID. |
+|  [telegrafID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

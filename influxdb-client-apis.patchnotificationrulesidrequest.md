@@ -12,8 +12,8 @@ export interface PatchNotificationRulesIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchnotificationrulesidrequest.body.md) | [NotificationRuleUpdate](./influxdb-client-apis.notificationruleupdate.md) | Notification rule update to apply |
-|  [ruleID](./influxdb-client-apis.patchnotificationrulesidrequest.ruleid.md) | string | The notification rule ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchnotificationrulesidrequest.body.md) |  | [NotificationRuleUpdate](./influxdb-client-apis.notificationruleupdate.md) | Notification rule update to apply |
+|  [ruleID](./influxdb-client-apis.patchnotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
 

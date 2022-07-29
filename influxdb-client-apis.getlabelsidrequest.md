@@ -12,7 +12,7 @@ export interface GetLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.getlabelsidrequest.labelid.md) | string | The ID of the label to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.getlabelsidrequest.labelid.md) |  | string | The ID of the label to update. |
 

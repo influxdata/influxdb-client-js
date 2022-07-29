@@ -12,8 +12,8 @@ export interface PagerDutyNotificationRuleBase
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [messageTemplate](./influxdb-client-apis.pagerdutynotificationrulebase.messagetemplate.md) | string |  |
-|  [type](./influxdb-client-apis.pagerdutynotificationrulebase.type.md) | 'pagerduty' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [messageTemplate](./influxdb-client-apis.pagerdutynotificationrulebase.messagetemplate.md) |  | string |  |
+|  [type](./influxdb-client-apis.pagerdutynotificationrulebase.type.md) |  | 'pagerduty' |  |
 

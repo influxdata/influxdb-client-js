@@ -12,7 +12,7 @@ export interface DeleteScriptsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scriptID](./influxdb-client-apis.deletescriptsidrequest.scriptid.md) | string | The ID of the script to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scriptID](./influxdb-client-apis.deletescriptsidrequest.scriptid.md) |  | string | The ID of the script to delete. |
 

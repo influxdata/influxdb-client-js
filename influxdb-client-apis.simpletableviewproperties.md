@@ -12,12 +12,12 @@ export interface SimpleTableViewProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [note](./influxdb-client-apis.simpletableviewproperties.note.md) | string |  |
-|  [queries](./influxdb-client-apis.simpletableviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.simpletableviewproperties.shape.md) | 'chronograf-v2' |  |
-|  [showAll](./influxdb-client-apis.simpletableviewproperties.showall.md) | boolean |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.simpletableviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
-|  [type](./influxdb-client-apis.simpletableviewproperties.type.md) | 'simple-table' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [note](./influxdb-client-apis.simpletableviewproperties.note.md) |  | string |  |
+|  [queries](./influxdb-client-apis.simpletableviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [shape](./influxdb-client-apis.simpletableviewproperties.shape.md) |  | 'chronograf-v2' |  |
+|  [showAll](./influxdb-client-apis.simpletableviewproperties.showall.md) |  | boolean |  |
+|  [showNoteWhenEmpty](./influxdb-client-apis.simpletableviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
+|  [type](./influxdb-client-apis.simpletableviewproperties.type.md) |  | 'simple-table' |  |
 

@@ -12,8 +12,8 @@ export interface Dashboards
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboards?](./influxdb-client-apis.dashboards.dashboards.md) | [Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.dashboards.links.md) | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboards?](./influxdb-client-apis.dashboards.dashboards.md) |  | [Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.dashboards.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 

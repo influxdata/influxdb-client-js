@@ -12,8 +12,8 @@ export interface DeleteDashboardsIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidownersidrequest.dashboardid.md) | string | The dashboard ID. |
-|  [userID](./influxdb-client-apis.deletedashboardsidownersidrequest.userid.md) | string | The ID of the owner to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [dashboardID](./influxdb-client-apis.deletedashboardsidownersidrequest.dashboardid.md) |  | string | The dashboard ID. |
+|  [userID](./influxdb-client-apis.deletedashboardsidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
 

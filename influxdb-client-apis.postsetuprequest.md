@@ -12,7 +12,7 @@ export interface PostSetupRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postsetuprequest.body.md) | [OnboardingRequest](./influxdb-client-apis.onboardingrequest.md) | Source to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postsetuprequest.body.md) |  | [OnboardingRequest](./influxdb-client-apis.onboardingrequest.md) | Source to create |
 

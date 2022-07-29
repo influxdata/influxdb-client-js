@@ -12,8 +12,8 @@ export interface DeleteScrapersIDMembersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidmembersidrequest.scrapertargetid.md) | string | The scraper target ID. |
-|  [userID](./influxdb-client-apis.deletescrapersidmembersidrequest.userid.md) | string | The ID of member to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scraperTargetID](./influxdb-client-apis.deletescrapersidmembersidrequest.scrapertargetid.md) |  | string | The scraper target ID. |
+|  [userID](./influxdb-client-apis.deletescrapersidmembersidrequest.userid.md) |  | string | The ID of member to remove. |
 

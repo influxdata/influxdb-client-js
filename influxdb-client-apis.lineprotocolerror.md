@@ -12,11 +12,11 @@ export interface LineProtocolError
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [code](./influxdb-client-apis.lineprotocolerror.code.md) | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'empty value' \| 'unavailable' | Code is the machine-readable error code. |
-|  [err?](./influxdb-client-apis.lineprotocolerror.err.md) | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
-|  [line?](./influxdb-client-apis.lineprotocolerror.line.md) | number | <i>(Optional)</i> First line in the request body that contains malformed data. |
-|  [message?](./influxdb-client-apis.lineprotocolerror.message.md) | string | <i>(Optional)</i> Human-readable message. |
-|  [op?](./influxdb-client-apis.lineprotocolerror.op.md) | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [code](./influxdb-client-apis.lineprotocolerror.code.md) | <code>readonly</code> | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'empty value' \| 'unavailable' | Code is the machine-readable error code. |
+|  [err?](./influxdb-client-apis.lineprotocolerror.err.md) | <code>readonly</code> | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
+|  [line?](./influxdb-client-apis.lineprotocolerror.line.md) | <code>readonly</code> | number | <i>(Optional)</i> First line in the request body that contains malformed data. |
+|  [message?](./influxdb-client-apis.lineprotocolerror.message.md) | <code>readonly</code> | string | <i>(Optional)</i> Human-readable message. |
+|  [op?](./influxdb-client-apis.lineprotocolerror.op.md) | <code>readonly</code> | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
 

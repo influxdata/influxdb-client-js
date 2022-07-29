@@ -12,8 +12,8 @@ export interface PostTelegrafsIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md) | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [telegrafID](./influxdb-client-apis.posttelegrafsidlabelsrequest.telegrafid.md) | string | The Telegraf config ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [telegrafID](./influxdb-client-apis.posttelegrafsidlabelsrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

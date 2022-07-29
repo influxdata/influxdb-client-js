@@ -12,8 +12,8 @@ export interface PostTasksIDRunsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidrunsrequest.body.md) | [RunManually](./influxdb-client-apis.runmanually.md) | entity body |
-|  [taskID](./influxdb-client-apis.posttasksidrunsrequest.taskid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttasksidrunsrequest.body.md) |  | [RunManually](./influxdb-client-apis.runmanually.md) | entity body |
+|  [taskID](./influxdb-client-apis.posttasksidrunsrequest.taskid.md) |  | string |  |
 

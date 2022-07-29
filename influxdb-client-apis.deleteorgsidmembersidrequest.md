@@ -12,8 +12,8 @@ export interface DeleteOrgsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidmembersidrequest.orgid.md) | string | The organization ID. |
-|  [userID](./influxdb-client-apis.deleteorgsidmembersidrequest.userid.md) | string | The ID of the member to remove. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID](./influxdb-client-apis.deleteorgsidmembersidrequest.orgid.md) |  | string | The organization ID. |
+|  [userID](./influxdb-client-apis.deleteorgsidmembersidrequest.userid.md) |  | string | The ID of the member to remove. |
 

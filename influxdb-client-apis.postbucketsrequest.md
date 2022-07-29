@@ -12,7 +12,7 @@ export interface PostBucketsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsrequest.body.md) | [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) | Bucket to create |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postbucketsrequest.body.md) |  | [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) | Bucket to create |
 

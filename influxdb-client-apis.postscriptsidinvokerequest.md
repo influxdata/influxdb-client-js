@@ -12,8 +12,8 @@ export interface PostScriptsIDInvokeRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) | [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) | entity body |
-|  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) | entity body |
+|  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) |  | string |  |
 

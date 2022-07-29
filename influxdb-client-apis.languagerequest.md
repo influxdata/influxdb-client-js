@@ -14,7 +14,7 @@ export interface LanguageRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [query](./influxdb-client-apis.languagerequest.query.md) | string | Flux query script to be analyzed |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [query](./influxdb-client-apis.languagerequest.query.md) |  | string | Flux query script to be analyzed |
 

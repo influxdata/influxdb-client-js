@@ -12,7 +12,7 @@ export interface GetNotificationEndpointsIDLabelsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [endpointID](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.endpointid.md) | string | The notification endpoint ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [endpointID](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

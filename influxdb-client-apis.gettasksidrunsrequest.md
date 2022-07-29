@@ -12,11 +12,11 @@ export interface GetTasksIDRunsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [after?](./influxdb-client-apis.gettasksidrunsrequest.after.md) | string | <i>(Optional)</i> Returns runs after a specific ID. |
-|  [afterTime?](./influxdb-client-apis.gettasksidrunsrequest.aftertime.md) | string | <i>(Optional)</i> Filter runs to those scheduled after this time, RFC3339 |
-|  [beforeTime?](./influxdb-client-apis.gettasksidrunsrequest.beforetime.md) | string | <i>(Optional)</i> Filter runs to those scheduled before this time, RFC3339 |
-|  [limit?](./influxdb-client-apis.gettasksidrunsrequest.limit.md) | number | <i>(Optional)</i> The number of runs to return |
-|  [taskID](./influxdb-client-apis.gettasksidrunsrequest.taskid.md) | string | The ID of the task to get runs for. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [after?](./influxdb-client-apis.gettasksidrunsrequest.after.md) |  | string | <i>(Optional)</i> Returns runs after a specific ID. |
+|  [afterTime?](./influxdb-client-apis.gettasksidrunsrequest.aftertime.md) |  | string | <i>(Optional)</i> Filter runs to those scheduled after this time, RFC3339 |
+|  [beforeTime?](./influxdb-client-apis.gettasksidrunsrequest.beforetime.md) |  | string | <i>(Optional)</i> Filter runs to those scheduled before this time, RFC3339 |
+|  [limit?](./influxdb-client-apis.gettasksidrunsrequest.limit.md) |  | number | <i>(Optional)</i> The number of runs to return |
+|  [taskID](./influxdb-client-apis.gettasksidrunsrequest.taskid.md) |  | string | The ID of the task to get runs for. |
 

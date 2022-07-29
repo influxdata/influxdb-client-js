@@ -12,7 +12,7 @@ export interface GetBucketsIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md) | string | The bucket ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md) |  | string | The bucket ID. |
 

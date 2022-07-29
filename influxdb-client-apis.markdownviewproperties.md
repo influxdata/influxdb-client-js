@@ -12,9 +12,9 @@ export interface MarkdownViewProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [note](./influxdb-client-apis.markdownviewproperties.note.md) | string |  |
-|  [shape](./influxdb-client-apis.markdownviewproperties.shape.md) | 'chronograf-v2' |  |
-|  [type](./influxdb-client-apis.markdownviewproperties.type.md) | 'markdown' |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [note](./influxdb-client-apis.markdownviewproperties.note.md) |  | string |  |
+|  [shape](./influxdb-client-apis.markdownviewproperties.shape.md) |  | 'chronograf-v2' |  |
+|  [type](./influxdb-client-apis.markdownviewproperties.type.md) |  | 'markdown' |  |
 

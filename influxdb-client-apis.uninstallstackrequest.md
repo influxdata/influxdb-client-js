@@ -12,7 +12,7 @@ export interface UninstallStackRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [stack\_id](./influxdb-client-apis.uninstallstackrequest.stack_id.md) | string | The identifier of the stack. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [stack\_id](./influxdb-client-apis.uninstallstackrequest.stack_id.md) |  | string | The identifier of the stack. |
 

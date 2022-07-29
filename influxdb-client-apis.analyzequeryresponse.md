@@ -12,7 +12,7 @@ export interface AnalyzeQueryResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [errors?](./influxdb-client-apis.analyzequeryresponse.errors.md) | Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt; | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [errors?](./influxdb-client-apis.analyzequeryresponse.errors.md) |  | Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt; | <i>(Optional)</i> |
 

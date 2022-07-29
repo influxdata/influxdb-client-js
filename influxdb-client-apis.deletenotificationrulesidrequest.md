@@ -12,7 +12,7 @@ export interface DeleteNotificationRulesIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [ruleID](./influxdb-client-apis.deletenotificationrulesidrequest.ruleid.md) | string | The notification rule ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [ruleID](./influxdb-client-apis.deletenotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
 

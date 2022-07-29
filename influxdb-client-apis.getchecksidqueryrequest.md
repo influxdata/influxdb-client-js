@@ -12,7 +12,7 @@ export interface GetChecksIDQueryRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [checkID](./influxdb-client-apis.getchecksidqueryrequest.checkid.md) | string | The check ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [checkID](./influxdb-client-apis.getchecksidqueryrequest.checkid.md) |  | string | The check ID. |
 

@@ -12,12 +12,12 @@ export interface RemoteConnectionUpdateRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allowInsecureTLS?](./influxdb-client-apis.remoteconnectionupdaterequest.allowinsecuretls.md) | boolean | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.remoteconnectionupdaterequest.description.md) | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.remoteconnectionupdaterequest.name.md) | string | <i>(Optional)</i> |
-|  [remoteAPIToken?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteapitoken.md) | string | <i>(Optional)</i> |
-|  [remoteOrgID?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteorgid.md) | string | <i>(Optional)</i> |
-|  [remoteURL?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteurl.md) | string | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [allowInsecureTLS?](./influxdb-client-apis.remoteconnectionupdaterequest.allowinsecuretls.md) |  | boolean | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.remoteconnectionupdaterequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name?](./influxdb-client-apis.remoteconnectionupdaterequest.name.md) |  | string | <i>(Optional)</i> |
+|  [remoteAPIToken?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteapitoken.md) |  | string | <i>(Optional)</i> |
+|  [remoteOrgID?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteorgid.md) |  | string | <i>(Optional)</i> |
+|  [remoteURL?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteurl.md) |  | string | <i>(Optional)</i> |
 

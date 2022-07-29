@@ -14,8 +14,8 @@ export interface ExpressionStatement
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.expressionstatement.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.expressionstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

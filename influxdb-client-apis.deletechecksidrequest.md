@@ -12,7 +12,7 @@ export interface DeleteChecksIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [checkID](./influxdb-client-apis.deletechecksidrequest.checkid.md) | string | The check ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [checkID](./influxdb-client-apis.deletechecksidrequest.checkid.md) |  | string | The check ID. |
 

@@ -12,7 +12,7 @@ export interface Telegrafs
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [configurations?](./influxdb-client-apis.telegrafs.configurations.md) | [Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [configurations?](./influxdb-client-apis.telegrafs.configurations.md) |  | [Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->\[\] | <i>(Optional)</i> |
 

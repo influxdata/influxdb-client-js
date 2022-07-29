@@ -12,7 +12,7 @@ export interface GetSourcesIDHealthRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [sourceID](./influxdb-client-apis.getsourcesidhealthrequest.sourceid.md) | string | The source ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [sourceID](./influxdb-client-apis.getsourcesidhealthrequest.sourceid.md) |  | string | The source ID. |
 

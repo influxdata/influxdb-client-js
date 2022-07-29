@@ -12,10 +12,10 @@ export interface StatusRule
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [count?](./influxdb-client-apis.statusrule.count.md) | number | <i>(Optional)</i> |
-|  [currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md) | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
-|  [period?](./influxdb-client-apis.statusrule.period.md) | string | <i>(Optional)</i> |
-|  [previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md) | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [count?](./influxdb-client-apis.statusrule.count.md) |  | number | <i>(Optional)</i> |
+|  [currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
+|  [period?](./influxdb-client-apis.statusrule.period.md) |  | string | <i>(Optional)</i> |
+|  [previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
 

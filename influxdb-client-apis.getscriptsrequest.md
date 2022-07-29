@@ -12,8 +12,8 @@ export interface GetScriptsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getscriptsrequest.limit.md) | number | <i>(Optional)</i> The number of scripts to return. |
-|  [offset?](./influxdb-client-apis.getscriptsrequest.offset.md) | number | <i>(Optional)</i> The offset for pagination. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [limit?](./influxdb-client-apis.getscriptsrequest.limit.md) |  | number | <i>(Optional)</i> The number of scripts to return. |
+|  [offset?](./influxdb-client-apis.getscriptsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. |
 

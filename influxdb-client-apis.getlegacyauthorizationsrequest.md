@@ -12,12 +12,12 @@ export interface GetLegacyAuthorizationsRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID?](./influxdb-client-apis.getlegacyauthorizationsrequest.authid.md) | string | <i>(Optional)</i> Only show legacy authorizations with a specified auth ID. |
-|  [org?](./influxdb-client-apis.getlegacyauthorizationsrequest.org.md) | string | <i>(Optional)</i> Only show legacy authorizations that belong to a organization name. |
-|  [orgID?](./influxdb-client-apis.getlegacyauthorizationsrequest.orgid.md) | string | <i>(Optional)</i> Only show legacy authorizations that belong to an organization ID. |
-|  [token?](./influxdb-client-apis.getlegacyauthorizationsrequest.token.md) | string | <i>(Optional)</i> Only show legacy authorizations with a specified token (auth name). |
-|  [user?](./influxdb-client-apis.getlegacyauthorizationsrequest.user.md) | string | <i>(Optional)</i> Only show legacy authorizations that belong to a user name. |
-|  [userID?](./influxdb-client-apis.getlegacyauthorizationsrequest.userid.md) | string | <i>(Optional)</i> Only show legacy authorizations that belong to a user ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID?](./influxdb-client-apis.getlegacyauthorizationsrequest.authid.md) |  | string | <i>(Optional)</i> Only show legacy authorizations with a specified auth ID. |
+|  [org?](./influxdb-client-apis.getlegacyauthorizationsrequest.org.md) |  | string | <i>(Optional)</i> Only show legacy authorizations that belong to a organization name. |
+|  [orgID?](./influxdb-client-apis.getlegacyauthorizationsrequest.orgid.md) |  | string | <i>(Optional)</i> Only show legacy authorizations that belong to an organization ID. |
+|  [token?](./influxdb-client-apis.getlegacyauthorizationsrequest.token.md) |  | string | <i>(Optional)</i> Only show legacy authorizations with a specified token (auth name). |
+|  [user?](./influxdb-client-apis.getlegacyauthorizationsrequest.user.md) |  | string | <i>(Optional)</i> Only show legacy authorizations that belong to a user name. |
+|  [userID?](./influxdb-client-apis.getlegacyauthorizationsrequest.userid.md) |  | string | <i>(Optional)</i> Only show legacy authorizations that belong to a user ID. |
 

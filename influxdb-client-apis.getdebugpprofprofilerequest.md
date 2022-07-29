@@ -12,7 +12,7 @@ export interface GetDebugPprofProfileRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [seconds?](./influxdb-client-apis.getdebugpprofprofilerequest.seconds.md) | string | <i>(Optional)</i> Number of seconds to collect profile data. Default is <code>30</code> seconds. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [seconds?](./influxdb-client-apis.getdebugpprofprofilerequest.seconds.md) |  | string | <i>(Optional)</i> Number of seconds to collect profile data. Default is <code>30</code> seconds. |
 

@@ -12,7 +12,7 @@ export interface RemoteConnections
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) | [RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | [RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\] | <i>(Optional)</i> |
 

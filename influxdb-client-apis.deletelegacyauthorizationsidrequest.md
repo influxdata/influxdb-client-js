@@ -12,7 +12,7 @@ export interface DeleteLegacyAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [authID](./influxdb-client-apis.deletelegacyauthorizationsidrequest.authid.md) | string | The ID of the legacy authorization to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [authID](./influxdb-client-apis.deletelegacyauthorizationsidrequest.authid.md) |  | string | The ID of the legacy authorization to delete. |
 

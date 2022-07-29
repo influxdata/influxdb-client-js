@@ -12,13 +12,13 @@ export interface RemoteConnectionCreationRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allowInsecureTLS](./influxdb-client-apis.remoteconnectioncreationrequest.allowinsecuretls.md) | boolean |  |
-|  [description?](./influxdb-client-apis.remoteconnectioncreationrequest.description.md) | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.remoteconnectioncreationrequest.name.md) | string |  |
-|  [orgID](./influxdb-client-apis.remoteconnectioncreationrequest.orgid.md) | string |  |
-|  [remoteAPIToken](./influxdb-client-apis.remoteconnectioncreationrequest.remoteapitoken.md) | string |  |
-|  [remoteOrgID](./influxdb-client-apis.remoteconnectioncreationrequest.remoteorgid.md) | string |  |
-|  [remoteURL](./influxdb-client-apis.remoteconnectioncreationrequest.remoteurl.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [allowInsecureTLS](./influxdb-client-apis.remoteconnectioncreationrequest.allowinsecuretls.md) |  | boolean |  |
+|  [description?](./influxdb-client-apis.remoteconnectioncreationrequest.description.md) |  | string | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.remoteconnectioncreationrequest.name.md) |  | string |  |
+|  [orgID](./influxdb-client-apis.remoteconnectioncreationrequest.orgid.md) |  | string |  |
+|  [remoteAPIToken](./influxdb-client-apis.remoteconnectioncreationrequest.remoteapitoken.md) |  | string |  |
+|  [remoteOrgID](./influxdb-client-apis.remoteconnectioncreationrequest.remoteorgid.md) |  | string |  |
+|  [remoteURL](./influxdb-client-apis.remoteconnectioncreationrequest.remoteurl.md) |  | string |  |
 

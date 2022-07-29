@@ -12,7 +12,7 @@ export interface DeleteOrgsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidrequest.orgid.md) | string | The ID of the organization to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [orgID](./influxdb-client-apis.deleteorgsidrequest.orgid.md) |  | string | The ID of the organization to delete. |
 

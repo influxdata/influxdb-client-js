@@ -12,7 +12,7 @@ export interface PostRestoreSQLRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestoresqlrequest.body.md) | string | Full SQL snapshot. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.postrestoresqlrequest.body.md) |  | string | Full SQL snapshot. |
 

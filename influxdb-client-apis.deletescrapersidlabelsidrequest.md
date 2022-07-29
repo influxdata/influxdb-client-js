@@ -12,8 +12,8 @@ export interface DeleteScrapersIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletescrapersidlabelsidrequest.labelid.md) | string | The label ID. |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidlabelsidrequest.scrapertargetid.md) | string | The scraper target ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [labelID](./influxdb-client-apis.deletescrapersidlabelsidrequest.labelid.md) |  | string | The label ID. |
+|  [scraperTargetID](./influxdb-client-apis.deletescrapersidlabelsidrequest.scrapertargetid.md) |  | string | The scraper target ID. |
 

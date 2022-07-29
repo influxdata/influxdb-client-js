@@ -12,7 +12,7 @@ export interface PostValidateReplicationByIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [replicationID](./influxdb-client-apis.postvalidatereplicationbyidrequest.replicationid.md) | string |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [replicationID](./influxdb-client-apis.postvalidatereplicationbyidrequest.replicationid.md) |  | string |  |
 

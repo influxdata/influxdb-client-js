@@ -14,9 +14,9 @@ export interface MemberAssignment
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [init?](./influxdb-client-apis.memberassignment.init.md) | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [member?](./influxdb-client-apis.memberassignment.member.md) | [MemberExpression](./influxdb-client-apis.memberexpression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberassignment.type.md) | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [init?](./influxdb-client-apis.memberassignment.init.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [member?](./influxdb-client-apis.memberassignment.member.md) |  | [MemberExpression](./influxdb-client-apis.memberexpression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.memberassignment.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

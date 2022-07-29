@@ -12,7 +12,7 @@ export interface DeleteUsersIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [userID](./influxdb-client-apis.deleteusersidrequest.userid.md) | string | The ID of the user to delete. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [userID](./influxdb-client-apis.deleteusersidrequest.userid.md) |  | string | The ID of the user to delete. |
 

@@ -12,8 +12,8 @@ export interface PostTasksIDMembersRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidmembersrequest.body.md) | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [taskID](./influxdb-client-apis.posttasksidmembersrequest.taskid.md) | string | The task ID. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.posttasksidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [taskID](./influxdb-client-apis.posttasksidmembersrequest.taskid.md) |  | string | The task ID. |
 

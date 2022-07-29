@@ -12,8 +12,8 @@ export interface PatchLabelsIDRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [body](./influxdb-client-apis.patchlabelsidrequest.body.md) | [LabelUpdate](./influxdb-client-apis.labelupdate.md) | Label update |
-|  [labelID](./influxdb-client-apis.patchlabelsidrequest.labelid.md) | string | The ID of the label to update. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [body](./influxdb-client-apis.patchlabelsidrequest.body.md) |  | [LabelUpdate](./influxdb-client-apis.labelupdate.md) | Label update |
+|  [labelID](./influxdb-client-apis.patchlabelsidrequest.labelid.md) |  | string | The ID of the label to update. |
 

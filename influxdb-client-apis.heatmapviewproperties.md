@@ -12,36 +12,36 @@ export interface HeatmapViewProperties
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [binSize](./influxdb-client-apis.heatmapviewproperties.binsize.md) | number |  |
-|  [colors](./influxdb-client-apis.heatmapviewproperties.colors.md) | string\[\] | Colors define color encoding of data into a visualization |
-|  [generateXAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generatexaxisticks.md) | string\[\] | <i>(Optional)</i> |
-|  [generateYAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generateyaxisticks.md) | string\[\] | <i>(Optional)</i> |
-|  [legendColorizeRows?](./influxdb-client-apis.heatmapviewproperties.legendcolorizerows.md) | boolean | <i>(Optional)</i> |
-|  [legendHide?](./influxdb-client-apis.heatmapviewproperties.legendhide.md) | boolean | <i>(Optional)</i> |
-|  [legendOpacity?](./influxdb-client-apis.heatmapviewproperties.legendopacity.md) | number | <i>(Optional)</i> |
-|  [legendOrientationThreshold?](./influxdb-client-apis.heatmapviewproperties.legendorientationthreshold.md) | number | <i>(Optional)</i> |
-|  [note](./influxdb-client-apis.heatmapviewproperties.note.md) | string |  |
-|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.heatmapviewproperties.shape.md) | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.heatmapviewproperties.shownotewhenempty.md) | boolean | If true, will display note when empty |
-|  [timeFormat?](./influxdb-client-apis.heatmapviewproperties.timeformat.md) | string | <i>(Optional)</i> |
-|  [type](./influxdb-client-apis.heatmapviewproperties.type.md) | 'heatmap' |  |
-|  [xAxisLabel](./influxdb-client-apis.heatmapviewproperties.xaxislabel.md) | string |  |
-|  [xColumn](./influxdb-client-apis.heatmapviewproperties.xcolumn.md) | string |  |
-|  [xDomain](./influxdb-client-apis.heatmapviewproperties.xdomain.md) | number\[\] |  |
-|  [xPrefix](./influxdb-client-apis.heatmapviewproperties.xprefix.md) | string |  |
-|  [xSuffix](./influxdb-client-apis.heatmapviewproperties.xsuffix.md) | string |  |
-|  [xTickStart?](./influxdb-client-apis.heatmapviewproperties.xtickstart.md) | number | <i>(Optional)</i> |
-|  [xTickStep?](./influxdb-client-apis.heatmapviewproperties.xtickstep.md) | number | <i>(Optional)</i> |
-|  [xTotalTicks?](./influxdb-client-apis.heatmapviewproperties.xtotalticks.md) | number | <i>(Optional)</i> |
-|  [yAxisLabel](./influxdb-client-apis.heatmapviewproperties.yaxislabel.md) | string |  |
-|  [yColumn](./influxdb-client-apis.heatmapviewproperties.ycolumn.md) | string |  |
-|  [yDomain](./influxdb-client-apis.heatmapviewproperties.ydomain.md) | number\[\] |  |
-|  [yPrefix](./influxdb-client-apis.heatmapviewproperties.yprefix.md) | string |  |
-|  [ySuffix](./influxdb-client-apis.heatmapviewproperties.ysuffix.md) | string |  |
-|  [yTickStart?](./influxdb-client-apis.heatmapviewproperties.ytickstart.md) | number | <i>(Optional)</i> |
-|  [yTickStep?](./influxdb-client-apis.heatmapviewproperties.ytickstep.md) | number | <i>(Optional)</i> |
-|  [yTotalTicks?](./influxdb-client-apis.heatmapviewproperties.ytotalticks.md) | number | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [binSize](./influxdb-client-apis.heatmapviewproperties.binsize.md) |  | number |  |
+|  [colors](./influxdb-client-apis.heatmapviewproperties.colors.md) |  | string\[\] | Colors define color encoding of data into a visualization |
+|  [generateXAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
+|  [generateYAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generateyaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
+|  [legendColorizeRows?](./influxdb-client-apis.heatmapviewproperties.legendcolorizerows.md) |  | boolean | <i>(Optional)</i> |
+|  [legendHide?](./influxdb-client-apis.heatmapviewproperties.legendhide.md) |  | boolean | <i>(Optional)</i> |
+|  [legendOpacity?](./influxdb-client-apis.heatmapviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
+|  [legendOrientationThreshold?](./influxdb-client-apis.heatmapviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
+|  [note](./influxdb-client-apis.heatmapviewproperties.note.md) |  | string |  |
+|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [shape](./influxdb-client-apis.heatmapviewproperties.shape.md) |  | 'chronograf-v2' |  |
+|  [showNoteWhenEmpty](./influxdb-client-apis.heatmapviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
+|  [timeFormat?](./influxdb-client-apis.heatmapviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |
+|  [type](./influxdb-client-apis.heatmapviewproperties.type.md) |  | 'heatmap' |  |
+|  [xAxisLabel](./influxdb-client-apis.heatmapviewproperties.xaxislabel.md) |  | string |  |
+|  [xColumn](./influxdb-client-apis.heatmapviewproperties.xcolumn.md) |  | string |  |
+|  [xDomain](./influxdb-client-apis.heatmapviewproperties.xdomain.md) |  | number\[\] |  |
+|  [xPrefix](./influxdb-client-apis.heatmapviewproperties.xprefix.md) |  | string |  |
+|  [xSuffix](./influxdb-client-apis.heatmapviewproperties.xsuffix.md) |  | string |  |
+|  [xTickStart?](./influxdb-client-apis.heatmapviewproperties.xtickstart.md) |  | number | <i>(Optional)</i> |
+|  [xTickStep?](./influxdb-client-apis.heatmapviewproperties.xtickstep.md) |  | number | <i>(Optional)</i> |
+|  [xTotalTicks?](./influxdb-client-apis.heatmapviewproperties.xtotalticks.md) |  | number | <i>(Optional)</i> |
+|  [yAxisLabel](./influxdb-client-apis.heatmapviewproperties.yaxislabel.md) |  | string |  |
+|  [yColumn](./influxdb-client-apis.heatmapviewproperties.ycolumn.md) |  | string |  |
+|  [yDomain](./influxdb-client-apis.heatmapviewproperties.ydomain.md) |  | number\[\] |  |
+|  [yPrefix](./influxdb-client-apis.heatmapviewproperties.yprefix.md) |  | string |  |
+|  [ySuffix](./influxdb-client-apis.heatmapviewproperties.ysuffix.md) |  | string |  |
+|  [yTickStart?](./influxdb-client-apis.heatmapviewproperties.ytickstart.md) |  | number | <i>(Optional)</i> |
+|  [yTickStep?](./influxdb-client-apis.heatmapviewproperties.ytickstep.md) |  | number | <i>(Optional)</i> |
+|  [yTotalTicks?](./influxdb-client-apis.heatmapviewproperties.ytotalticks.md) |  | number | <i>(Optional)</i> |
 

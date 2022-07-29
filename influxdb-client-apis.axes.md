@@ -14,8 +14,8 @@ export interface Axes
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [x](./influxdb-client-apis.axes.x.md) | [Axis](./influxdb-client-apis.axis.md) |  |
-|  [y](./influxdb-client-apis.axes.y.md) | [Axis](./influxdb-client-apis.axis.md) |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [x](./influxdb-client-apis.axes.x.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
+|  [y](./influxdb-client-apis.axes.y.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
 
