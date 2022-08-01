@@ -13,10 +13,10 @@
   "module": "dist/index.browser.mjs",
   "module:browser": "dist/index.browser.mjs",
   "browser": "dist/index.browser.js",
-  "types": "dist/all.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/all.d.ts",
+      "types": "./dist/index.d.ts",
       "browser": {
         "import": "./dist/index.browser.mjs",
         "require": "./dist/index.browser.js",
