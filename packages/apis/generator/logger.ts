@@ -1,9 +1,7 @@
-import chalk from 'chalk'
-
 /* eslint-disable no-console */
 const logger = {
   warn(message: string, ...otherParameters: any[]): void {
-    message = chalk.yellow(message)
+    message = `\u001b[33m${message}\u001b[0m` // wrap to yellow
     if (otherParameters.length) {
       console.warn(message, ...otherParameters)
     } else {
