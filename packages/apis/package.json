@@ -55,6 +55,7 @@
   "devDependencies": {
     "@influxdata/influxdb-client": "^1.28.0",
     "@microsoft/api-extractor": "^7.28.4",
+    "@types/mocha": "^9.1.1",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "chai": "^4.2.0",
