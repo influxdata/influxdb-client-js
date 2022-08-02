@@ -2,7 +2,7 @@ import {defineConfig} from 'tsup'
 import {readFile} from 'fs/promises'
 import pkg from './package.json'
 
-const minify = false
+const minify = !(process.env.ESBUILD_MINIFY === '0')
 
 const outFiles = {
   esm: pkg.exports['.'].browser.import,

@@ -1,7 +1,7 @@
 import {defineConfig} from 'tsup'
 import pkg from './package.json'
 
-const minify = true
+const minify = !(process.env.ESBUILD_MINIFY === '0')
 
 const outFiles = {
   esm: pkg.exports['.'].import,
