@@ -21,6 +21,6 @@ export default defineConfig({
     options.outfile = outFiles[format]
   },
   define: {
-    'process.env.ROLLUP_BROWSER': 'false',
+    'process.env.BUILD_BROWSER': 'false',
   },
 })

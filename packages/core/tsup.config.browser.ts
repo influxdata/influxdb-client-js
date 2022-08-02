@@ -21,7 +21,7 @@ export default defineConfig({
   platform: 'browser',
   splitting: false,
   define: {
-    'process.env.ROLLUP_BROWSER': 'true',
+    'process.env.BUILD_BROWSER': 'true',
   },
   esbuildOptions(options, {format}) {
     options.outdir = undefined
