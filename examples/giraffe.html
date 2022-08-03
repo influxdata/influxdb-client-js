@@ -9,9 +9,9 @@
       // required by giraffe
       global = window
     </script>
-    <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@influxdata/giraffe@0.41.0/dist/index.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@influxdata/giraffe@2.33.2/dist/index.js"></script>
     <script src="https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.js"></script>
     <script src="https://unpkg.com/@influxdata/influxdb-client-giraffe/dist/index.js"></script>
     <!-- <script src="../packages/giraffe/dist/index.js"></script> -->
@@ -60,7 +60,7 @@ from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measuremen
       const queryApi = influxDB.getQueryApi(org)
 
       // execute query and fill query data into giraffe table
-      const giraffe = window['@influxdata/giraffe']
+      const giraffe = window.Giraffe
       // React functional component that renders query results or an error
       function RenderResults({error, table}) {
         if (error) {
