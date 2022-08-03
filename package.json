@@ -38,14 +38,12 @@
     "name": "InfluxData"
   },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
+    "@types/node": "^16",
     "@microsoft/api-documenter": "^7.18.3",
     "gh-pages": "^4.0.0",
     "lerna": "^5.0.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.0"
-  },
-  "resolutions": {
-    "minimist": ">=1.2.2"
   }
 }

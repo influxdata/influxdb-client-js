@@ -1,4 +1,5 @@
 import {defineConfig} from 'tsup'
+import {esbuildGzipOutJsPlugin} from '../../scripts/esbuild-gzip-js'
 import pkg from './package.json'
 
 const minify = !(process.env.ESBUILD_MINIFY === '0')
@@ -23,4 +24,5 @@ export default defineConfig({
   define: {
     'process.env.BUILD_BROWSER': 'false',
   },
+  esbuildPlugins: [esbuildGzipOutJsPlugin],
 })

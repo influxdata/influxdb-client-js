@@ -1,4 +1,5 @@
 import {defineConfig} from 'tsup'
+import {esbuildGzipOutJsPlugin} from '../../scripts/esbuild-gzip-js'
 import {readFile} from 'fs/promises'
 import pkg from './package.json'
 
@@ -43,12 +44,13 @@ export default defineConfig({
     }
   },
   esbuildPlugins: [
+    esbuildGzipOutJsPlugin,
     {
-      name: 'replace',
+      name: 'replaceTransportImport',
       setup: (build) => {
         build.onLoad({filter: /InfluxDB.ts$/}, async (args) => {
           const source = await readFile(args.path, 'utf8')
-          const contents = source.replace(
+          const contents = (source as unknown as string).replace(
             './impl/node/NodeHttpTransport',
             './impl/browser/FetchTransport'
           )
