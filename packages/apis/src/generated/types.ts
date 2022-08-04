@@ -2210,16 +2210,16 @@ export interface Task {
   /** Flux script to run for this task. */
   flux: string
   /** Interval at which the task runs. `every` also determines when the task first runs, depending on the specified time.
-Value is a [duration literal](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals)). */
+Value is a [duration literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals)). */
   every?: string
   /** [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time.
 Value is a [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview). */
   cron?: string
-  /** [Duration](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset.
-The value is a [duration literal](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals). */
+  /** [Duration](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset.
+The value is a [duration literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals). */
   offset?: string
   /** Timestamp of the latest scheduled and completed run.
-Value is a timestamp in [RFC3339 date/time format](https://docs.influxdata.com/flux/v0.x/data-types/basic/time/#time-syntax). */
+Value is a timestamp in [RFC3339 date/time format](https://docs.influxdata.com/flux/latest/data-types/basic/time/#time-syntax). */
   readonly latestCompleted?: string
   readonly lastRunStatus?: 'failed' | 'success' | 'canceled'
   readonly lastRunError?: string

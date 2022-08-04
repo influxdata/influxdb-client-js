@@ -15,7 +15,7 @@ const fluxQuery =
 
 console.log('*** QUERY ROWS ***')
 // performs query and receive line table metadata and rows
-// https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/
+// https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/
 from(queryApi.rows(fluxQuery))
   .pipe(map(({values, tableMeta}) => tableMeta.toObject(values)))
   .subscribe({
@@ -34,5 +34,5 @@ from(queryApi.rows(fluxQuery))
   })
 
 // performs query and receive line results in annotated csv format
-// https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/
+// https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/
 // from(queryApi.lines(fluxQuery)).forEach(console.log)

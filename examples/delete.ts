@@ -1,9 +1,9 @@
 #!./node_modules/.bin/ts-node
 
-///////////////////////////////////////////////////////////////////////
-// Shows how to delete data from InfluxDB. See                       //
-// https://docs.influxdata.com/influxdb/v2.1/write-data/delete-data/ //
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+// Shows how to delete data from InfluxDB. See                         //
+// https://docs.influxdata.com/influxdb/latest/write-data/delete-data/ //
+/////////////////////////////////////////////////////////////////////////
 
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {DeleteAPI} from '@influxdata/influxdb-client-apis'
@@ -36,7 +36,7 @@ async function deleteData(): Promise<void> {
     body: {
       start: start.toISOString(),
       stop: stop.toISOString(),
-      // see https://docs.influxdata.com/influxdb/v2.1/reference/syntax/delete-predicate/
+      // see https://docs.influxdata.com/influxdb/latest/reference/syntax/delete-predicate/
       predicate: '_measurement="temperature"',
     },
   })

@@ -161,6 +161,6 @@ export interface ClientOptions extends ConnectionOptions {
 
 /**
  * Timestamp precision used in write operations.
- * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostWrite }
+ * See {@link https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite }
  */
 export type WritePrecisionType = 'ns' | 'us' | 'ms' | 's'

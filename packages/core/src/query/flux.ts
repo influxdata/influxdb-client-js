@@ -39,7 +39,7 @@ function isFluxParameterLike(value: any): boolean {
 
 /**
  * Escapes content of the supplied string so it can be wrapped into double qoutes
- * to become a [flux string literal](https://docs.influxdata.com/flux/v0.65/language/lexical-elements/#string-literals).
+ * to become a [flux string literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#string-literals).
  * @param value - string value
  * @returns sanitized string
  */
@@ -120,7 +120,7 @@ export function sanitizeFloat(value: any): string {
     throw new Error(`not a flux float: ${value}`)
   }
   // try to return a flux float literal if possible
-  // https://docs.influxdata.com/flux/v0.x/data-types/basic/float/#float-syntax
+  // https://docs.influxdata.com/flux/latest/data-types/basic/float/#float-syntax
   const strVal = val.toString()
   let hasDot = false
   for (const c of strVal) {
@@ -147,7 +147,7 @@ export function fluxFloat(value: any): FluxParameterLike {
  * @throws Error if the the value cannot be sanitized
  */
 export function sanitizeInteger(value: any): string {
-  // https://docs.influxdata.com/flux/v0.x/data-types/basic/int/
+  // https://docs.influxdata.com/flux/latest/data-types/basic/int/
   // Min value: -9223372036854775808
   // Max value: 9223372036854775807
   // "9223372036854775807".length === 19
@@ -205,7 +205,7 @@ function sanitizeRegExp(value: any): string {
 
 /**
  * Creates flux regexp literal out of a regular expression. See
- * https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/#regular-expression-syntax
+ * https://docs.influxdata.com/flux/latest/data-types/basic/regexp/#regular-expression-syntax
  * for details.
  */
 export function fluxRegExp(value: any): FluxParameterLike {

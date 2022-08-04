@@ -15,7 +15,7 @@ console.log('*** QUERY ROWS ***')
 // the essential ones are shown/commented below. See also rxjs-query.ts .
 //
 // Execute query and receive table metadata and rows as they arrive from the server.
-// https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/
+// https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/
 queryApi.queryRows(fluxQuery, {
   next: (row: string[], tableMeta: FluxTableMetaData) => {
     // the following line creates an object for each row

@@ -35,7 +35,7 @@ export interface QueryOptions {
 
 /**
  * Query InfluxDB. Provides methods that notify about result lines of the executed query.
- * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery }
+ * See {@link https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery }
  */
 export default interface QueryApi {
   /**
@@ -73,7 +73,7 @@ export default interface QueryApi {
 
   /**
    * Executes the query and receives result lines (including empty and annotation lines)
-   * through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
+   * through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/).
    *
    * @param query - query
    * @param consumer - csv result lines and error consumer

@@ -45,7 +45,7 @@ export class LabelsAPI {
   }
   /**
    * List all labels.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -63,7 +63,7 @@ export class LabelsAPI {
   }
   /**
    * Create a label.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -82,7 +82,7 @@ export class LabelsAPI {
   }
   /**
    * Retrieve a label.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -100,7 +100,7 @@ export class LabelsAPI {
   }
   /**
    * Update a label.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -119,7 +119,7 @@ export class LabelsAPI {
   }
   /**
    * Delete a label.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

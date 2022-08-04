@@ -46,7 +46,7 @@ export class QueryAPI {
   }
   /**
    * Generate an Abstract Syntax Tree (AST) from a query.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAst }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQueryAst }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -65,7 +65,7 @@ export class QueryAPI {
   }
   /**
    * Retrieve query suggestions.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetQuerySuggestions }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetQuerySuggestions }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -83,7 +83,7 @@ export class QueryAPI {
   }
   /**
    * Retrieve query suggestions for a branching suggestion.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetQuerySuggestionsName }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetQuerySuggestionsName }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -101,7 +101,7 @@ export class QueryAPI {
   }
   /**
    * Analyze a Flux query.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAnalyze }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQueryAnalyze }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -120,7 +120,7 @@ export class QueryAPI {
   }
   /**
    * Query data.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

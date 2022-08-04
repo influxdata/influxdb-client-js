@@ -3,6 +3,7 @@
 ### Other
 
 1. [#511](https://github.com/influxdata/influxdb-client-js/pull/511): Replace rollup with tsup.
+1. [#514](https://github.com/influxdata/influxdb-client-js/pull/514): Repair links in generated API documentation.
 
 ## 1.28.0 [2022-07-29]
 

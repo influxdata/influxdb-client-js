@@ -24,7 +24,7 @@ export class MeAPI {
   }
   /**
    * Retrieve the currently authenticated user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMe }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetMe }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -37,7 +37,7 @@ export class MeAPI {
   }
   /**
    * Update a password.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutMePassword }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutMePassword }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

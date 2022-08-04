@@ -26,7 +26,7 @@ export class BackupAPI {
   }
   /**
    * Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupKV }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupKV }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -44,7 +44,7 @@ export class BackupAPI {
   }
   /**
    * Download snapshot of all metadata in the server.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupMetadata }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupMetadata }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -62,7 +62,7 @@ export class BackupAPI {
   }
   /**
    * Download snapshot of all TSM data in a shard.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupShardId }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupShardId }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

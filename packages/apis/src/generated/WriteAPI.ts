@@ -45,7 +45,7 @@ export class WriteAPI {
   }
   /**
    * Write data.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostWrite }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostWrite }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

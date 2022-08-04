@@ -1,5 +1,5 @@
 /**
- * Type of query result column, see {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
+ * Type of query result column, see {@link https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types }
  */
 export type ColumnType =
   | 'boolean'
@@ -53,7 +53,7 @@ const identity = (x: string): any => x
 
 /**
  * A dictionary of serializers of particular types returned by a flux query.
- * See {@link https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types }
+ * See {@link https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types }
  */
 export const typeSerializers: Record<ColumnType, (val: string) => any> = {
   boolean: (x: string): any => x === 'true',

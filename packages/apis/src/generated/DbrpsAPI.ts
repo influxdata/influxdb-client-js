@@ -64,7 +64,7 @@ export class DbrpsAPI {
   }
   /**
    * List database retention policy mappings.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDBRPs }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDBRPs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -90,7 +90,7 @@ export class DbrpsAPI {
   }
   /**
    * Add a database retention policy mapping.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDBRP }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDBRP }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -109,7 +109,7 @@ export class DbrpsAPI {
   }
   /**
    * Retrieve a database retention policy mapping.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDBRPsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDBRPsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -130,7 +130,7 @@ export class DbrpsAPI {
   }
   /**
    * Update a database retention policy mapping.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDBRPID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchDBRPID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -152,7 +152,7 @@ export class DbrpsAPI {
   }
   /**
    * Delete a database retention policy.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteDBRPID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteDBRPID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
