@@ -12,7 +12,7 @@
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "args": [
         "--require",
-        "ts-node/register",
+        "esbuild-runner/register",
         "--timeout",
         "15000",
         "--colors",
