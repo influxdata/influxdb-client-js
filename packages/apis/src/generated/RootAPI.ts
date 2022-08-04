@@ -19,7 +19,7 @@ export class RootAPI {
   }
   /**
    * List all top level routes.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRoutes }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRoutes }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

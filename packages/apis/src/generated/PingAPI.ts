@@ -18,7 +18,7 @@ export class PingAPI {
   }
   /**
    * Get the status and version of the instance.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetPing }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetPing }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

@@ -120,7 +120,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve all runtime profiles.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllProfiles }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofAllProfiles }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -138,7 +138,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the memory allocations runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllocs }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofAllocs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -159,7 +159,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the block runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofBlock }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofBlock }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -180,7 +180,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the command line invocation.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofCmdline }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofCmdline }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -198,7 +198,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the goroutines runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofGoroutine }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofGoroutine }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -219,7 +219,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the heap runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofHeap }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofHeap }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -241,7 +241,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the mutual exclusion (mutex) runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofMutex }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofMutex }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -262,7 +262,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the CPU runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofProfile }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofProfile }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -282,7 +282,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the threadcreate runtime profile.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofThreadCreate }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofThreadCreate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -303,7 +303,7 @@ export class DebugAPI {
   }
   /**
    * Retrieve the runtime execution trace.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofTrace }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofTrace }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

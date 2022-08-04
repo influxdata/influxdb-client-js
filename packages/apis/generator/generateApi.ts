@@ -96,7 +96,7 @@ function apiDocLink(apiName: string, opID: string): string {
   if (CLOUD_APIS.includes(apiName)) {
     return `https://docs.influxdata.com/influxdb/cloud/api/#operation/${opID}`
   }
-  return `https://docs.influxdata.com/influxdb/v2.1/api/#operation/${opID}`
+  return `https://docs.influxdata.com/influxdb/v2.3/api/#operation/${opID}`
 }
 
 function generateClass(

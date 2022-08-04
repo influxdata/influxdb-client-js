@@ -32,7 +32,7 @@ export class TemplatesAPI {
   }
   /**
    * Apply or dry-run a template.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/ApplyTemplate }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/ApplyTemplate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -51,7 +51,7 @@ export class TemplatesAPI {
   }
   /**
    * Export a new template.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/ExportTemplate }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/ExportTemplate }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

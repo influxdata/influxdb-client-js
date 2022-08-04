@@ -19,7 +19,7 @@ export class ReadyAPI {
   }
   /**
    * Get the readiness of an instance at startup.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReady }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReady }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

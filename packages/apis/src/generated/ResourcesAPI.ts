@@ -18,7 +18,7 @@ export class ResourcesAPI {
   }
   /**
    * List all known resources.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetResources }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetResources }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

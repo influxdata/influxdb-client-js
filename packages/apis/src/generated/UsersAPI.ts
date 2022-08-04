@@ -52,7 +52,7 @@ export class UsersAPI {
   }
   /**
    * Update a password.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostUsersIDPassword }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsersIDPassword }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -71,7 +71,7 @@ export class UsersAPI {
   }
   /**
    * List all users.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetUsers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -95,7 +95,7 @@ export class UsersAPI {
   }
   /**
    * Create a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostUsers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -114,7 +114,7 @@ export class UsersAPI {
   }
   /**
    * Retrieve a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -132,7 +132,7 @@ export class UsersAPI {
   }
   /**
    * Update a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -151,7 +151,7 @@ export class UsersAPI {
   }
   /**
    * Delete a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
