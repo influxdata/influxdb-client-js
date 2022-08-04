@@ -1,8 +1,5 @@
 /*
- * The following configuration is used in the browser examples
- * (index.html and giraffe.html).
- *
- * Replace the values with your own InfluxDB values.
+ * The following configuration is used in the browser example.
  */
 // eslint-disable-next-line no-undef
 window.INFLUX_ENV = {

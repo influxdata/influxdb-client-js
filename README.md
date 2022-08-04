@@ -83,7 +83,6 @@ See [examples](./examples/README.md) for more advanced use case like the followi
 - Use the client library in the browser or [Deno](./examples/query.deno.ts).
 - Process InfluxDB query results with RX Observables.
 - Customize the writing of measurement points to InfluxDB.
-- Visualize query results in [Giraffe](https://github.com/influxdata/giraffe).
 - [Reuse connections](https://github.com/influxdata/influxdb-client-js/issues/393#issuecomment-985272866) in communication with InfluxDB.
 
 JavaScript client API Reference Documentation is available online at https://influxdata.github.io/influxdb-client-js/ .
