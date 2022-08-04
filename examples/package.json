@@ -6,7 +6,7 @@
     "clean": "echo 'nothing to clean'",
     "build": "echo 'nothing to build'",
     "test": "echo 'run examples to test'",
-    "ts-node": "ts-node"
+    "esr": "esr"
   },
   "dependencies": {
     "@influxdata/influxdb-client": "*",
@@ -16,13 +16,14 @@
     "@types/express": "^4.17.2",
     "@types/express-http-proxy": "^1.5.12",
     "@types/node": "^16",
+    "esbuild": "0.14.25",
+    "esbuild-runner": "^2.2.1",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "follow-redirects": "^1.14.3",
     "open": "^7.0.0",
     "response-time": "^2.3.2",
     "rxjs": "^6.5.5",
-    "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   }
 }

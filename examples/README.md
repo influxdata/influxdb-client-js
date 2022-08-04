@@ -7,7 +7,7 @@ This directory contains javascript and typescript examples for node.js, browser,
     - [node](https://nodejs.org/en/) installed
     - Run `npm install` in this directory
     - Change variables in [./env.js](env.js) to configure connection to your InfluxDB instance. The file can be used as-is against a new [docker InfluxDB v2.1 OSS GA installation](https://docs.influxdata.com/influxdb/v2.1/get-started/)
-  - Examples are executable. If it does not work for you, run `npm run ts-node EXAMPLE.ts`.
+  - Examples are executable. If it does not work for you, run `npm run esr EXAMPLE.ts`.
   - [write.js](./write.js)
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
