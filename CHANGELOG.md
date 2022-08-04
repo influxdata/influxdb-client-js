@@ -1,5 +1,9 @@
 ## 1.29.0 [unreleased]
 
+### Other
+
+1. [#511](https://github.com/influxdata/influxdb-client-js/pull/511): Replace rollup with tsup.
+
 ## 1.28.0 [2022-07-29]
 
 ### Features

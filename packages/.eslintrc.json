@@ -5,5 +5,5 @@
   "rules": {
     "no-console": "warn"
   },
-  "ignorePatterns": ["rollup.config.js", "dist/*.js"]
+  "ignorePatterns": ["dist/*.js"]
 }

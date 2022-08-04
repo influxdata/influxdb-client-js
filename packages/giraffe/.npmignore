@@ -9,7 +9,7 @@ doc
 reports
 yarn-error.log
 /tsconfig.*
-/rollup.config.js
+/tsup.*
 /.prettierrc.json
 /src
 /test

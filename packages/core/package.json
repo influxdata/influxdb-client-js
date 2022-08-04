@@ -4,7 +4,7 @@
   "description": "InfluxDB 2.x client",
   "scripts": {
     "apidoc:extract": "api-extractor run",
-    "build": "yarn run clean && rollup --failAfterWarnings -c",
+    "build": "yarn run clean && yarn tsup --config ./tsup.config.browser.ts && yarn tsup",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "coverage:ci": "yarn run coverage && yarn run coverage:lcov",
@@ -24,10 +24,10 @@
   "module": "dist/index.mjs",
   "module:browser": "dist/index.browser.mjs",
   "browser": "dist/index.browser.js",
-  "types": "dist/all.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/all.d.ts",
+      "types": "./dist/index.d.ts",
       "browser": {
         "import": "./dist/index.browser.mjs",
         "require": "./dist/index.browser.js",
@@ -55,7 +55,6 @@
   "license": "MIT",
   "devDependencies": {
     "@microsoft/api-extractor": "^7.28.4",
-    "@rollup/plugin-replace": "^4.0.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^9.1.1",
     "@types/sinon": "^10.0.13",
@@ -73,14 +72,10 @@
     "nyc": "^15.1.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.0",
-    "rollup": "^2.33.3",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-gzip": "^3.0.1",
-    "rollup-plugin-terser": "^7.0.0",
-    "rollup-plugin-typescript2": "^0.32.1",
     "rxjs": "^7.2.0",
     "sinon": "^14.0.0",
     "ts-node": "^10.8.1",
+    "tsup": "^6.2.1",
     "typescript": "^4.7.4"
   }
 }

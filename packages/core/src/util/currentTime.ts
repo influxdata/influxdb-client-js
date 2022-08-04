@@ -4,7 +4,7 @@ let useHrTime = false
 
 export function useProcessHrtime(use: boolean): boolean {
   /* istanbul ignore else */
-  if (!process.env.ROLLUP_BROWSER) {
+  if (!process.env.BUILD_BROWSER) {
     return (useHrTime = use && process && typeof process.hrtime === 'function')
   } else {
     return false
@@ -17,7 +17,7 @@ let startHrTime: [number, number] | undefined = undefined
 let lastMillis = Date.now()
 let stepsInMillis = 0
 function nanos(): string {
-  if (!process.env.ROLLUP_BROWSER && useHrTime) {
+  if (!process.env.BUILD_BROWSER && useHrTime) {
     const hrTime = process.hrtime() as [number, number]
     let millis = Date.now()
     if (!startHrTime) {
@@ -52,7 +52,7 @@ function nanos(): string {
 }
 
 function micros(): string {
-  if (!process.env.ROLLUP_BROWSER && useHrTime) {
+  if (!process.env.BUILD_BROWSER && useHrTime) {
     const hrTime = process.hrtime() as [number, number]
     const micros = String(Math.trunc(hrTime[1] / 1000) % 1000)
     return (
