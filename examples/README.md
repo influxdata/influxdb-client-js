@@ -36,8 +36,6 @@ This directory contains javascript and typescript examples for node.js, browser,
     It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests
     to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
-  - Click `Visualize with Giraffe Line Chart` to open [giraffe.html](./giraffe.html) that
-    shows how visualize query results with [@influxdata/giraffe](https://github.com/influxdata/giraffe).
 - Deno examples
   - [query.deno.ts](./query.deno.ts) shows how to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/).
     It is almost the same as node's [query.ts](./query.ts) example, the difference is the import statement that works in [deno](https://deno.land) and built-in typescript support.

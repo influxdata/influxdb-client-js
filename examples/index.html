@@ -155,12 +155,6 @@
       document.getElementById('pingButton').addEventListener('click', () => {
         pingExample()
       })
-      const visualizeInGiraffe = document.getElementById('visualizeInGiraffe')
-      visualizeInGiraffe.addEventListener('click', (e) => {
-        const target =
-          './giraffe.html?fluxQuery=' + encodeURIComponent(queryInput.value)
-        window.open(target, '_blank')
-      })
     </script>
   </head>
   <h1>InfluxDB JavaScript Client Examples</h1>
@@ -182,7 +176,6 @@ from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measuremen
     >
   </div>
   <button id="queryButton">Query InfluxDB</button>
-  <button id="visualizeInGiraffe">Visualize with Giraffe Line Chart</button>
   <hr />
   <fieldset>
     <legend>Log</legend>
