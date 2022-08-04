@@ -3,10 +3,23 @@
 const path = require('path')
 const fs = require('fs')
 
+const markdownLinkRE = /\[([^\]]*)\]\(([^)]*)\)/g
+function changeMarkdownLinks(text) {
+  if (text) {
+    // changes markdown style [text](link) to tsdoc {@link URL | text }
+    return text.replace(markdownLinkRE, (match, text, link) => {
+      const retVal = `{@link ${link} | ${text} }`
+      console.log(` ${match} => ${retVal}`)
+      return retVal
+    })
+  }
+  return text
+}
+
 function replaceInExtractorFile(file) {
-  console.log(`correct references in: ${file}`)
   const data = fs.readFileSync(file, 'utf8')
   const json = JSON.parse(data)
+  console.log(`correct: ${file}`)
 
   function replaceObject(obj) {
     if (typeof obj === 'object') {
@@ -26,6 +39,10 @@ function replaceInExtractorFile(file) {
           }
         } else {
           for (const key in obj) {
+            if (key === 'docComment') {
+              obj.docComment = changeMarkdownLinks(obj.docComment)
+              continue
+            }
             replaceObject(obj[key])
           }
         }
@@ -38,7 +55,7 @@ function replaceInExtractorFile(file) {
 }
 
 const docsDir = path.resolve(__dirname, '..', 'docs')
-const files = fs.readdirSync(docsDir).filter(x => /\.api\.json$/.test(x))
-files.forEach(file => {
+const files = fs.readdirSync(docsDir).filter((x) => /\.api\.json$/.test(x))
+files.forEach((file) => {
   replaceInExtractorFile(path.resolve(docsDir, file))
 })
