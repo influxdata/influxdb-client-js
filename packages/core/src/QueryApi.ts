@@ -73,7 +73,7 @@ export default interface QueryApi {
 
   /**
    * Executes the query and receives result lines (including empty and annotation lines)
-   * through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
+   * through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/).
    *
    * @param query - query
    * @param consumer - csv result lines and error consumer

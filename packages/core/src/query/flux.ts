@@ -39,7 +39,7 @@ function isFluxParameterLike(value: any): boolean {
 
 /**
  * Escapes content of the supplied string so it can be wrapped into double qoutes
- * to become a [flux string literal](https://docs.influxdata.com/flux/v0.65/language/lexical-elements/#string-literals).
+ * to become a [flux string literal](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#string-literals).
  * @param value - string value
  * @returns sanitized string
  */
