@@ -28,9 +28,12 @@ server.listen(0, 'localhost', async () => {
       // The following transport option is required in order to follow HTTP redirects in node.js.
       // Browsers and deno follow redirects OOTB.
       'follow-redirects': followRedirects,
-      beforeRedirect: (options) => {
-        // setup Authorization header for redirected message
-        options.headers.authorization = `Token ${token}`
+      beforeRedirect: (options, _response, request) => {
+        // setup Authorization header for a redirected message,
+        // authorization and cookie headers are removed by follow-redirects
+        if (request.headers.authorization) {
+          options.headers.authorization = request.headers.authorization
+        }
       },
     },
   }).getQueryApi(org)
