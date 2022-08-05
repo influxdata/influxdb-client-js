@@ -1,12 +1,13 @@
-const {InfluxDB, Point} = require('@influxdata/influxdb-client')
-const {url, token, org, bucket} = require('../env')
-const responseTime = require('response-time')
+import {InfluxDB, Point} from '@influxdata/influxdb-client'
+import {url, token, org, bucket} from '../env.js'
+import responseTime from 'response-time'
+import {hostname} from 'os'
 
 // create Influx Write API to report application monitoring data
 const writeAPI = new InfluxDB({url, token}).getWriteApi(org, bucket, 'ns', {
   defaultTags: {
     service: 'influxdb_client_example_app',
-    host: require('os').hostname(),
+    host: hostname(),
   },
 })
 // write node resource/cpu/memory usage
@@ -52,7 +53,7 @@ process.on('SIGINT', onShutdown)
 process.on('SIGTERM', onShutdown)
 
 // export a monitoring function for express.js response time monitoring
-module.exports = function (app) {
+export default function (app) {
   app.use(
     responseTime((req, res, time) => {
       // print out request basics

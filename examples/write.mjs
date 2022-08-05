@@ -3,9 +3,9 @@
 // Shows how to use InfluxDB write API. //
 //////////////////////////////////////////
 
-const {InfluxDB, Point, HttpError} = require('@influxdata/influxdb-client')
-const {url, token, org, bucket} = require('./env')
-const {hostname} = require('os')
+import {InfluxDB, Point, HttpError} from '@influxdata/influxdb-client'
+import {url, token, org, bucket} from './env.js'
+import {hostname} from 'os'
 
 console.log('*** WRITE POINTS ***')
 // create a write API, expecting point timestamps in nanoseconds (can be also 's', 'ms', 'us')
@@ -33,15 +33,13 @@ console.log(` ${point2.toLineProtocol(writeApi)}`)
 // is retried automatically. Read `writeAdvanced.js` for better explanation and details.
 //
 // close() flushes the remaining buffered data and then cancels pending retries.
-writeApi
-  .close()
-  .then(() => {
-    console.log('FINISHED ... now try ./query.ts')
-  })
-  .catch((e) => {
-    console.error(e)
-    if (e instanceof HttpError && e.statusCode === 401) {
-      console.log('Run ./onboarding.js to setup a new InfluxDB database.')
-    }
-    console.log('\nFinished ERROR')
-  })
+try {
+  await writeApi.close()
+  console.log('FINISHED ... now try ./query.ts')
+} catch (e) {
+  console.error(e)
+  if (e instanceof HttpError && e.statusCode === 401) {
+    console.log('Run ./onboarding.js to setup a new InfluxDB database.')
+  }
+  console.log('\nFinished ERROR')
+}

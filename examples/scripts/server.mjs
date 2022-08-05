@@ -1,9 +1,8 @@
-const express = require('express')
-const path = require('path')
-const proxy = require('express-http-proxy')
-const open = require('open')
-const {url} = require('../env')
-const monitor = require('./monitor')
+import express from 'express'
+import proxy from 'express-http-proxy'
+import open from 'open'
+import {url} from '../env.js'
+import monitor from './monitor.mjs'
 
 const port = 3001
 const proxyPath = '/influx'
@@ -12,7 +11,8 @@ const app = express()
 // monitor express response time in InfluxDB
 monitor(app)
 // serve all files of the git repository
-app.use(express.static(path.join(__dirname, '..', '..'), {index: false}))
+const dirName = new URL('../..', import.meta.url).pathname
+app.use(express.static(dirName, {index: false}))
 // create also proxy to InfluxDB
 app.use(proxyPath, proxy(url))
 app.listen(port, () => {

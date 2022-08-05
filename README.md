@@ -69,11 +69,11 @@ $ pnpm add @influxdata/influxdb-client-apis
 Use the following examples to get started with the JavaScript client for InfluxDB:
 
 - @influxdata/influxdb-client
-  - [write points](./examples/write.js)
+  - [write points](./examples/write.mjs)
   - [query data](./examples/query.ts)
 - @influxdata/influxdb-client-apis
-  - [setup / onboarding](./examples/onboarding.js)
-  - [create bucket](./examples/createBucket.js)
+  - [setup / onboarding](./examples/onboarding.mjs)
+  - [create bucket](./examples/createBucket.mjs)
 
 See [examples](./examples/README.md) for more advanced use case like the following:
 

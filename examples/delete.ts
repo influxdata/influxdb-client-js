@@ -13,7 +13,7 @@ const influxDB = new InfluxDB({url, token})
 /*
 The functionality of the DeleteAPI is fully demonstrated with
 the following sequence of examples:
- - write.js
+ - write.mjs
  - query.ts
  - delete.ts
  - query.ts

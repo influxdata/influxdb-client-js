@@ -2,7 +2,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "browser": "node scripts/server.js",
+    "browser": "node scripts/server.mjs",
     "clean": "echo 'nothing to clean'",
     "build": "echo 'nothing to build'",
     "test": "echo 'run examples to test'",

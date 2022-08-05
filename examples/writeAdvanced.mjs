@@ -6,23 +6,23 @@
 This example shows how to use the client's Write API to control the way of how points 
 are sent to InfluxDB server.
 
-It is based on the simpler write.js example, it assumes that you are familiar with it.
-The write.js example asynchronously writes points to InfluxDB and assumes that the library
+It is based on the simpler write.mjs example, it assumes that you are familiar with it.
+The write.mjs example asynchronously writes points to InfluxDB and assumes that the library
 takes care about retries upon failures and optimizes networking to send points in 
 batches and on background. This approach is good for sending various metrics from your 
 application, but it does not scale well when you need to import bigger amount of data. See 
 https://github.com/influxdata/influxdb-client-js/issues/213 for details.
 */
 
-const {
+import {
   InfluxDB,
   Point,
   flux,
   fluxDuration,
   DEFAULT_WriteOptions,
-} = require('@influxdata/influxdb-client')
-const {url, token, org, bucket} = require('./env')
-const {hostname} = require('os')
+} from '@influxdata/influxdb-client'
+import {url, token, org, bucket} from './env.js'
+import {hostname} from 'os'
 
 console.log('*** WRITE POINTS ***')
 /* points/lines are batched in order to minimize networking and increase performance */
@@ -51,7 +51,7 @@ const writeOptions = {
 
 // Node.js HTTP client OOTB does not reuse established TCP connections, a custom node HTTP agent
 // can be used to reuse them and thus reduce the count of newly established networking sockets
-const {Agent} = require('http')
+import {Agent} from 'http'
 const keepAliveAgent = new Agent({
   keepAlive: false, // reuse existing connections
   keepAliveMsecs: 20 * 1000, // 20 seconds keep alive
@@ -107,11 +107,13 @@ async function importData() {
   console.log(`Size of temperature2 measurement since '${start}': `, count)
 }
 
-const start = Date.now()
-importData()
-  .then(() =>
-    console.log(
-      `FINISHED writing ${demoCount} points (${Date.now() - start} millis}`
-    )
+try {
+  const start = Date.now()
+  await importData()
+  console.log(
+    `FINISHED writing ${demoCount} points (${Date.now() - start} millis}`
   )
-  .catch((e) => console.error('FINISHED', e))
+} catch (e) {
+  console.error(e)
+  console.long('FINISHED ERROR')
+}
