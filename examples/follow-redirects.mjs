@@ -5,7 +5,7 @@
 
 import {url as targetUrl, token, org} from './env.mjs'
 import {InfluxDB} from '@influxdata/influxdb-client'
-import {createServer} from 'http'
+import {createServer} from 'node:http'
 import followRedirects from 'follow-redirects'
 
 // start a simple HTTP server that always redirects to a configured InfluxDB

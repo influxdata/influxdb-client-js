@@ -22,7 +22,7 @@ import {
   DEFAULT_WriteOptions,
 } from '@influxdata/influxdb-client'
 import {url, token, org, bucket} from './env.mjs'
-import {hostname} from 'os'
+import {hostname} from 'node:os'
 
 console.log('*** WRITE POINTS ***')
 /* points/lines are batched in order to minimize networking and increase performance */

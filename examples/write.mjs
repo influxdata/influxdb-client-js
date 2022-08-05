@@ -5,7 +5,7 @@
 
 import {InfluxDB, Point, HttpError} from '@influxdata/influxdb-client'
 import {url, token, org, bucket} from './env.mjs'
-import {hostname} from 'os'
+import {hostname} from 'node:os'
 
 console.log('*** WRITE POINTS ***')
 // create a write API, expecting point timestamps in nanoseconds (can be also 's', 'ms', 'us')

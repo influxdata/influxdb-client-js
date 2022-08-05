@@ -10,7 +10,7 @@ import {
   FluxScriptInvocationAPI,
 } from '@influxdata/influxdb-client-apis'
 import {url, token} from './env.mjs'
-import {argv} from 'process'
+import {argv} from 'node:process'
 
 const influxDB = new InfluxDB({url, token})
 const scriptsAPI = new ScriptsAPI(influxDB)
