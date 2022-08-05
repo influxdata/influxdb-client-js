@@ -9,7 +9,7 @@ import {
   ScriptsAPI,
   FluxScriptInvocationAPI,
 } from '@influxdata/influxdb-client-apis'
-import {url, token} from './env.js'
+import {url, token} from './env.mjs'
 import {argv} from 'process'
 
 const influxDB = new InfluxDB({url, token})
@@ -108,7 +108,7 @@ try {
     console.error(
       `API invokable scripts are not supported by InfluxDB at ${url} .`
     )
-    console.error('Modify env.js with InfluxDB Cloud URL and token.')
+    console.error('Modify env.mjs with InfluxDB Cloud URL and token.')
   } else {
     console.error(e)
   }

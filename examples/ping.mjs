@@ -7,7 +7,7 @@ See https://docs.influxdata.com/influxdb/v2.1/api/
 */
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {PingAPI} from '@influxdata/influxdb-client-apis'
-import {url} from './env.js'
+import {url} from './env.mjs'
 
 const timeout = 10 * 1000 // timeout for ping
 

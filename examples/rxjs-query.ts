@@ -6,7 +6,7 @@
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {from} from 'rxjs'
 import {map} from 'rxjs/operators'
-import {url, token, org} from './env'
+import {url, token, org} from './env.mjs'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 

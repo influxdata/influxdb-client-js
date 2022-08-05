@@ -3,7 +3,7 @@
 // Shows how to configure InfluxDB node.js client to follow redirects. //
 /////////////////////////////////////////////////////////////////////////
 
-import {url as targetUrl, token, org} from './env.js'
+import {url as targetUrl, token, org} from './env.mjs'
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {createServer} from 'http'
 import followRedirects from 'follow-redirects'

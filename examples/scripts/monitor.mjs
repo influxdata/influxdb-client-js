@@ -1,5 +1,5 @@
 import {InfluxDB, Point} from '@influxdata/influxdb-client'
-import {url, token, org, bucket} from '../env.js'
+import {url, token, org, bucket} from '../env.mjs'
 import responseTime from 'response-time'
 import {hostname} from 'os'
 

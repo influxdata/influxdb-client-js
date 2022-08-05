@@ -1,7 +1,7 @@
 import express from 'express'
 import proxy from 'express-http-proxy'
 import open from 'open'
-import {url} from '../env.js'
+import {url} from '../env.mjs'
 import monitor from './monitor.mjs'
 
 const port = 3001

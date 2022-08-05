@@ -6,7 +6,7 @@ it is deleted and then created again.
 
 import {InfluxDB, HttpError} from '@influxdata/influxdb-client'
 import {OrgsAPI, BucketsAPI} from '@influxdata/influxdb-client-apis'
-import {url, org, token} from './env.js'
+import {url, org, token} from './env.mjs'
 const influxDB = new InfluxDB({url, token})
 
 async function recreateBucket(name) {

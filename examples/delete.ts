@@ -7,7 +7,7 @@
 
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {DeleteAPI} from '@influxdata/influxdb-client-apis'
-import {url, token, org, bucket} from './env'
+import {url, token, org, bucket} from './env.mjs'
 const influxDB = new InfluxDB({url, token})
 
 /*

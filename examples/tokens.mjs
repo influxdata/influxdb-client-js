@@ -15,7 +15,7 @@ import {
   SigninAPI,
   SignoutAPI,
 } from '@influxdata/influxdb-client-apis'
-import {url, username, password, org} from './env.js'
+import {url, username, password, org} from './env.mjs'
 
 async function signInDemo() {
   const influxDB = new InfluxDB({url})

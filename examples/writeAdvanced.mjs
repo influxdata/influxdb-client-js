@@ -21,7 +21,7 @@ import {
   fluxDuration,
   DEFAULT_WriteOptions,
 } from '@influxdata/influxdb-client'
-import {url, token, org, bucket} from './env.js'
+import {url, token, org, bucket} from './env.mjs'
 import {hostname} from 'os'
 
 console.log('*** WRITE POINTS ***')

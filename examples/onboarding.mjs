@@ -7,7 +7,7 @@ for onboarding are defined in ./env.ts .
 
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {SetupAPI} from '@influxdata/influxdb-client-apis'
-import {url, username, password, org, bucket, token} from './env.js'
+import {url, username, password, org, bucket, token} from './env.mjs'
 
 console.log('*** ONBOARDING ***')
 const setupApi = new SetupAPI(new InfluxDB({url}))

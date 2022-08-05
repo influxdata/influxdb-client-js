@@ -4,7 +4,7 @@
 //////////////////////////////////////////
 
 import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
-import {url, token, org} from './env'
+import {url, token, org} from './env.mjs'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
