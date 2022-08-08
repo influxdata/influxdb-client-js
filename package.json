@@ -39,7 +39,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^16",
+    "@types/node": "^18",
     "@microsoft/api-documenter": "^7.18.3",
     "gh-pages": "^4.0.0",
     "lerna": "^5.0.0",
