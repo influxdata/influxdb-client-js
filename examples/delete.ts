@@ -1,4 +1,4 @@
-#!./node_modules/.bin/ts-node
+#!./node_modules/.bin/esr
 
 /////////////////////////////////////////////////////////////////////////
 // Shows how to delete data from InfluxDB. See                         //

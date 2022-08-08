@@ -7,9 +7,9 @@
     "build": "yarn run clean && yarn tsup --config ./tsup.config.browser.ts && yarn tsup",
     "clean": "rimraf build doc dist reports",
     "clean:apis": "rimraf src/generated/*API.ts",
-    "generate": "yarn ts-node generator && yarn prettier --write src/generated/*.ts",
+    "generate": "yarn esr generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
-    "test:unit": "mocha --require ts-node/register 'test/unit/**/*.test.ts' --exit",
+    "test:unit": "mocha --require esbuild-runner/register 'test/unit/**/*.test.ts' --exit",
     "test:ci": "yarn run typecheck && yarn run lint:ci && yarn run test:unit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/apis_mocha/test-results.xml",
     "typecheck": "tsc --noEmit --pretty",
     "lint": "eslint 'src/**/*.ts'",
@@ -59,6 +59,8 @@
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "chai": "^4.2.0",
+    "esbuild": "^0.14.25",
+    "esbuild-runner": "^2.2.1",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -68,7 +70,6 @@
     "nock": "^13.2.8",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.0",
-    "ts-node": "^10.8.1",
     "tsup": "^6.2.1",
     "typescript": "^4.7.4"
   }
