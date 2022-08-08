@@ -237,9 +237,9 @@
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
 "@influxdata/giraffe@*":
-  version "2.33.1"
-  resolved "https://registry.yarnpkg.com/@influxdata/giraffe/-/giraffe-2.33.1.tgz#3d8bfcf0eedd5557eb642d79dca5f5d888959310"
-  integrity sha512-bBogjIg99ctgGCm4knUezY7zImwmJR92z1lwZivQMhpWJmbnnJDRBO0Z3QUJd6HmlR4zNeOYxhZ4uMupwftrTw==
+  version "2.33.4"
+  resolved "https://registry.yarnpkg.com/@influxdata/giraffe/-/giraffe-2.33.4.tgz#1d169689e2b141dfbd977774143e6b14583b417d"
+  integrity sha512-9On4TlmzGFCSfWzSUOGQrRExsngGMlzn7XTO7s0f9psXMyDqLCTkV+JOGrAxk4G+0FLao+t4wiuqKikcy6RtJQ==
   dependencies:
     merge-images "^2.0.0"
 
