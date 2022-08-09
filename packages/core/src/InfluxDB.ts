@@ -45,8 +45,8 @@ export default class InfluxDB {
    * in order to flush the remaining data and close already scheduled retry executions.
    *
    * @remarks
-   * Inspect the {@link WriteOptions} to control also advanced options, such retries of failure, retry strategy options, data chunking
-   * and flushing windows. See {@link DEFAULT_WriteOptions} to see the defaults.
+   * Use {@link WriteOptions} to customize retry strategy options, data chunking
+   * and flushing options. See {@link DEFAULT_WriteOptions} to see the defaults.
    *
    * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.mjs | write example},
    * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.mjs | writeAdvanced example},
