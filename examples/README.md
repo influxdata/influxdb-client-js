@@ -24,7 +24,7 @@ This directory contains javascript and typescript examples for node.js, browser,
     How to use forward compatibility APIs from InfluxDB 1.8.
   - [rxjs-query.ts](./rxjs-query.ts)
     Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/).
-  - [writeAdvanced.js](./writeAdvanced.js)
+  - [writeAdvanced.mjs](./writeAdvanced.mjs)
     Shows how to control the way of how data points are written to InfluxDB.
   - [follow-redirects.mjs](./follow-redirects.mjs)
     Shows how to configure the client to follow HTTP redirects.
