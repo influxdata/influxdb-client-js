@@ -4,7 +4,7 @@
 //////////////////////////////////////////
 
 import {InfluxDB, FluxTableMetaData} from '@influxdata/influxdb-client'
-import {url, token, org} from './env'
+import {url, token, org} from './env.mjs'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 const fluxQuery =
@@ -46,29 +46,27 @@ queryApi.queryRows(fluxQuery, {
 
 // // Execute query and collect result rows in a Promise.
 // // Use with caution, it copies the whole stream of results into memory.
-// queryApi
-//   .collectRows(fluxQuery /*, you can specify a row mapper as a second arg */)
-//   .then(data => {
-//     data.forEach(x => console.log(JSON.stringify(x)))
-//     console.log('\nCollect ROWS SUCCESS')
-//   })
-//   .catch(error => {
-//     console.error(error)
-//     console.log('\nCollect ROWS ERROR')
-//   })
+// try {
+//   const data = await queryApi.collectRows(
+//     fluxQuery /*, you can specify a row mapper as a second arg */
+//   )
+//   data.forEach((x) => console.log(JSON.stringify(x)))
+//   console.log('\nCollect ROWS SUCCESS')
+// } catch (e) {
+//   console.error(e)
+//   console.log('\nCollect ROWS ERROR')
+// }
 
 // // Execute query and return the whole result as a string.
 // // Use with caution, it copies the whole stream of results into memory.
-// queryApi
-//   .queryRaw(fluxQuery)
-//   .then(result => {
-//     console.log(result)
-//     console.log('\nQueryRaw SUCCESS')
-//   })
-//   .catch(error => {
-//     console.error(error)
-//     console.log('\nQueryRaw ERROR')
-//   })
+// try {
+//   const result = await queryApi.queryRaw(fluxQuery)
+//   console.log(result)
+//   console.log('\nQueryRaw SUCCESS')
+// } catch (e) {
+//   console.error(e)
+//   console.log('\nQueryRaw ERROR')
+// }
 
 // Execute query and receive result lines in annotated csv format
 // queryApi.queryLines(

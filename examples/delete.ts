@@ -7,13 +7,13 @@
 
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {DeleteAPI} from '@influxdata/influxdb-client-apis'
-import {url, token, org, bucket} from './env'
+import {url, token, org, bucket} from './env.mjs'
 const influxDB = new InfluxDB({url, token})
 
 /*
 The functionality of the DeleteAPI is fully demonstrated with
 the following sequence of examples:
- - write.js
+ - write.mjs
  - query.ts
  - delete.ts
  - query.ts

@@ -4,12 +4,13 @@ This example shows how to use API-invokable scripts. See also
 https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ .
 */
 
-const {InfluxDB, HttpError} = require('@influxdata/influxdb-client')
-const {
+import {InfluxDB, HttpError} from '@influxdata/influxdb-client'
+import {
   ScriptsAPI,
   FluxScriptInvocationAPI,
-} = require('@influxdata/influxdb-client-apis')
-const {url, token} = require('./env')
+} from '@influxdata/influxdb-client-apis'
+import {url, token} from './env.mjs'
+import {argv} from 'node:process'
 
 const influxDB = new InfluxDB({url, token})
 const scriptsAPI = new ScriptsAPI(influxDB)
@@ -60,7 +61,7 @@ async function invokeScript(scriptID) {
   console.log('*** Invoke example script ***')
 
   // parse count as a first script argument or use 10
-  const count = Number.parseInt(require('process').argv[2] || '10')
+  const count = Number.parseInt(argv[2] || '10')
 
   // execute script with count parameter
   const params = {count: count}
@@ -96,23 +97,20 @@ async function invokeScript(scriptID) {
   // console.log(response)
 }
 
-async function example() {
+try {
   await listScripts()
   await deleteScript()
   const {id} = await createScript()
   await invokeScript(id)
+  console.log('\nFinished SUCCESS')
+} catch (e) {
+  if (e instanceof HttpError && e.statusCode === 404) {
+    console.error(
+      `API invokable scripts are not supported by InfluxDB at ${url} .`
+    )
+    console.error('Modify env.mjs with InfluxDB Cloud URL and token.')
+  } else {
+    console.error(e)
+  }
+  console.log('\nFinished ERROR')
 }
-
-example()
-  .then(() => console.log('\nFinished SUCCESS'))
-  .catch((error) => {
-    if (error instanceof HttpError && error.statusCode === 404) {
-      console.error(
-        `API invokable scripts are not supported by InfluxDB at ${url} .`
-      )
-      console.error('Modify env.js with InfluxDB Cloud URL and token.')
-    } else {
-      console.error(error)
-    }
-    console.log('\nFinished ERROR')
-  })

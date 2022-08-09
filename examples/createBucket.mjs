@@ -4,9 +4,9 @@ This example creates a new bucket. If a bucket of the same name already exists,
 it is deleted and then created again.
 */
 
-const {InfluxDB, HttpError} = require('@influxdata/influxdb-client')
-const {OrgsAPI, BucketsAPI} = require('@influxdata/influxdb-client-apis')
-const {url, org, token} = require('./env')
+import {InfluxDB, HttpError} from '@influxdata/influxdb-client'
+import {OrgsAPI, BucketsAPI} from '@influxdata/influxdb-client-apis'
+import {url, org, token} from './env.mjs'
 const influxDB = new InfluxDB({url, token})
 
 async function recreateBucket(name) {
@@ -49,9 +49,10 @@ async function recreateBucket(name) {
   )
 }
 
-recreateBucket('example-bucket')
-  .then(() => console.log('\nFinished SUCCESS'))
-  .catch((error) => {
-    console.error(error)
-    console.log('\nFinished ERROR')
-  })
+try {
+  await recreateBucket('example-bucket')
+  console.log('\nFinished SUCCESS')
+} catch (e) {
+  console.error(e)
+  console.log('\nFinished ERROR')
+}

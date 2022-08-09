@@ -8,14 +8,14 @@ for programmatic access to InfluxDB v2. `username + password`
 authentication might be used to automate management of tokens.
 */
 
-const {InfluxDB} = require('@influxdata/influxdb-client')
-const {
+import {InfluxDB} from '@influxdata/influxdb-client'
+import {
   AuthorizationsAPI,
   OrgsAPI,
   SigninAPI,
   SignoutAPI,
-} = require('@influxdata/influxdb-client-apis')
-const {url, username, password, org} = require('./env')
+} from '@influxdata/influxdb-client-apis'
+import {url, username, password, org} from './env.mjs'
 
 async function signInDemo() {
   const influxDB = new InfluxDB({url})
@@ -101,7 +101,9 @@ async function signInDemo() {
   console.log('Signout SUCCESS')
 }
 
-signInDemo().catch((error) => {
-  console.error(error)
+try {
+  await signInDemo()
+} catch (e) {
+  console.error(e)
   console.log('\nFinished ERROR')
-})
+}

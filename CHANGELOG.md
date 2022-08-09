@@ -5,6 +5,7 @@
 1. [#511](https://github.com/influxdata/influxdb-client-js/pull/511): Replace rollup with tsup.
 1. [#514](https://github.com/influxdata/influxdb-client-js/pull/514): Repair links in generated API documentation.
 1. [#516](https://github.com/influxdata/influxdb-client-js/pull/516): Replace ts-node with esbuild-runner.
+1. [#518](https://github.com/influxdata/influxdb-client-js/pull/518): Change examples to ES modules.
 
 ## 1.28.0 [2022-07-29]
 

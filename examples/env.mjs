@@ -12,11 +12,4 @@ const username = 'my-user'
 /**InfluxDB password  */
 const password = 'my-password'
 
-module.exports = {
-  url,
-  token,
-  org,
-  bucket,
-  username,
-  password,
-}
+export {url, token, org, bucket, username, password}
