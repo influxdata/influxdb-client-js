@@ -11,13 +11,11 @@ interface RetryItem {
 type FindOldestExpiredResult = [found: RetryItem, parent?: RetryItem]
 
 function findOldestExpires(first: RetryItem): FindOldestExpiredResult {
-  let oldestExpires = Number.MIN_SAFE_INTEGER
   let parent = undefined
   let found = first
   let currentParent = first
   while (currentParent.next) {
-    if (currentParent.next.expires > oldestExpires) {
-      oldestExpires = currentParent.next.expires
+    if (currentParent.next.expires > found.expires) {
       parent = currentParent
       found = currentParent.next
     }
