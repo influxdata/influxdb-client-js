@@ -242,6 +242,45 @@ describe('WriteApi', () => {
         ])
       })
     })
+    const withWriteRetryOptions = [true, false]
+    for (const withWriteRetry of withWriteRetryOptions) {
+      it(`informs about skipped retry ${
+        withWriteRetry ? 'with' : 'without'
+      } callback`, async () => {
+        const skippedLines: string[][] = []
+        let failedAttempts = 0
+        const writeOptions: Partial<WriteOptions> = {
+          flushInterval: 0,
+          batchSize: 1,
+          maxBufferLines: 1,
+          writeFailed: () => {
+            failedAttempts++
+          },
+        }
+        if (withWriteRetry) {
+          writeOptions.writeRetrySkipped = ({lines}) => {
+            skippedLines.push(lines)
+          }
+        }
+        useSubject(writeOptions)
+        subject.writeRecord('test value=1')
+        subject.writeRecord('test value=2')
+        // wait for http calls to finish
+        await waitForCondition(() => failedAttempts == 2)
+        await subject.close().then(() => {
+          expect(logs.error).to.length(2)
+          expect(logs.error[0][0]).equals(
+            'RetryBuffer: 1 oldest lines removed to keep buffer size under the limit of 1 lines.'
+          )
+          expect(logs.error[1][0]).equals(
+            'Retry buffer closed with 1 items that were not written to InfluxDB!'
+          )
+          if (withWriteRetry) {
+            expect(skippedLines).deep.equals([['test value=1']])
+          }
+        })
+      })
+    }
     it('uses the pre-configured batchSize', async () => {
       useSubject({flushInterval: 0, maxRetries: 0, batchSize: 2})
       subject.writeRecords(['test value=1', 'test value=2', 'test value=3'])

@@ -83,7 +83,7 @@ export default class RetryBuffer {
           origSize - this.size
         } oldest lines removed to keep buffer size under the limit of ${
           this.maxLines
-        } lines`
+        } lines.`
       )
     }
     const toAdd: RetryItem = {
