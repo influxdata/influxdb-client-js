@@ -25,20 +25,30 @@ describe('RetryBuffer', () => {
     }
     await waitForCondition(() => output.length >= 10)
     expect(output).length.is.greaterThan(0)
-    subject.addLines([], 1, 1, Date.now() + 1000) // shall be ignored
+    subject.addLines([], 1, 1, Date.now() + 1000) // empty lines are ignored
     subject.close()
-    subject.addLines(['x'], 1, 1, Date.now() + 1000) // shall be ignored
+    subject.addLines(['x'], 1, 1, Date.now() + 1000) // ignored after calling flush
     await subject.flush()
     expect(input).deep.equals(output)
   })
   it('ignores lines on heavy load', async () => {
     const output = [] as Array<[string[], number]>
-    const subject = new RetryBuffer(5, (lines, countdown) => {
-      output.push([lines, countdown])
-      return Promise.resolve()
-    })
+    const subject = new RetryBuffer(
+      5,
+      (lines, countdown) => {
+        output.push([lines, countdown])
+        return Promise.resolve()
+      },
+      ({expires}) => {
+        for (let actual = subject.first; actual; actual = actual?.next) {
+          if (actual.expires > expires) {
+            expect.fail('Oldest items were not removed from the retry buffer')
+          }
+        }
+      }
+    )
     for (let i = 0; i < 10; i++) {
-      subject.addLines(['a' + i], i, 100, Date.now() + 1000)
+      subject.addLines(['a' + i], i, 100 - i, Date.now() + 1000 - i)
     }
     await subject.flush()
     expect(subject.close()).equals(0)
