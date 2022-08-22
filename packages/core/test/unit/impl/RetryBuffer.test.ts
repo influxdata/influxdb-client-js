@@ -41,14 +41,42 @@ describe('RetryBuffer', () => {
       },
       ({expires}) => {
         for (let actual = subject.first; actual; actual = actual?.next) {
-          if (actual.expires > expires) {
-            expect.fail('Oldest items were not removed from the retry buffer')
+          if (actual.expires < expires) {
+            expect.fail(
+              `${actual.expires} entry was not removed from the retry buffer, but ${expires} was!`
+            )
           }
         }
       }
     )
     for (let i = 0; i < 10; i++) {
-      subject.addLines(['a' + i], i, 100 - i, Date.now() + 1000 - i)
+      subject.addLines(['a' + i], i, 100 + i, Date.now() + 1000 + i)
+    }
+    await subject.flush()
+    expect(subject.close()).equals(0)
+    expect(logs.error).length.is.greaterThan(0) // 5 entries over limit
+    expect(output).length.is.lessThan(6) // at most 5 items will be written
+  })
+  it('ignores lines on heavy load with descending expiration', async () => {
+    const output = [] as Array<[string[], number]>
+    const subject = new RetryBuffer(
+      5,
+      (lines, countdown) => {
+        output.push([lines, countdown])
+        return Promise.resolve()
+      },
+      ({expires}) => {
+        for (let actual = subject.first; actual; actual = actual?.next) {
+          if (actual.expires < expires) {
+            expect.fail(
+              `${actual.expires} entry was not removed from the retry buffer, but ${expires} was!`
+            )
+          }
+        }
+      }
+    )
+    for (let i = 0; i < 10; i++) {
+      subject.addLines(['a' + i], i, 100 + i, Date.now() + 1000 - i)
     }
     await subject.flush()
     expect(subject.close()).equals(0)

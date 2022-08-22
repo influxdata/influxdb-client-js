@@ -8,14 +8,14 @@ interface RetryItem {
   next?: RetryItem
 }
 
-type FindOldestExpiredResult = [found: RetryItem, parent?: RetryItem]
+type FindShrinkCandidateResult = [found: RetryItem, parent?: RetryItem]
 
-function findOldestExpires(first: RetryItem): FindOldestExpiredResult {
+function findShrinkCandidate(first: RetryItem): FindShrinkCandidateResult {
   let parent = undefined
   let found = first
   let currentParent = first
   while (currentParent.next) {
-    if (currentParent.next.expires > found.expires) {
+    if (currentParent.next.expires < found.expires) {
       parent = currentParent
       found = currentParent.next
     }
@@ -65,8 +65,8 @@ export default class RetryBuffer {
       const origSize = this.size
       const newSize = origSize * 0.7 // reduce to 70 %
       do {
-        // remove oldest item
-        const [found, parent] = findOldestExpires(this.first)
+        // remove "oldest" item
+        const [found, parent] = findShrinkCandidate(this.first)
         this.size -= found.lines.length
         if (parent) {
           parent.next = found.next
