@@ -43,7 +43,6 @@ export default class RetryBuffer {
     private onShrink: (entry: {
       lines: string[]
       retryCount: number
-      retryTime: number
       expires: number
     }) => void = () => undefined
   ) {}
@@ -72,6 +71,9 @@ export default class RetryBuffer {
           parent.next = found.next
         } else {
           this.first = found.next
+          if (this.first) {
+            this.scheduleRetry(this.first.retryTime - Date.now())
+          }
         }
         found.next = undefined
         this.onShrink(found)

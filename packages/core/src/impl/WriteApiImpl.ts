@@ -146,7 +146,8 @@ export default class WriteApiImpl implements WriteApi {
     this.retryStrategy = createRetryDelayStrategy(this.writeOptions)
     this.retryBuffer = new RetryBuffer(
       this.writeOptions.maxBufferLines,
-      this.sendBatch
+      this.sendBatch,
+      this.writeOptions.writeRetrySkipped
     )
   }
 
