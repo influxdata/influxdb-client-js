@@ -6,7 +6,7 @@
     "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && yarn tsup --config ./tsup.config.browser.ts && yarn tsup",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
-    "coverage": "nyc mocha --require esbuild-runner/register 'test/**/*.test.ts' --exit",
+    "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
     "coverage:ci": "yarn run coverage && yarn run coverage:lcov",
     "coverage:lcov": "yarn run --silent nyc report --reporter=text-lcov > coverage/coverage.lcov",
     "test": "yarn run lint && yarn run typecheck && yarn run test:all",
@@ -76,6 +76,7 @@
     "rimraf": "^3.0.0",
     "rxjs": "^7.2.0",
     "sinon": "^14.0.0",
+    "ts-node": "^10.9.1",
     "tsup": "^6.2.1",
     "typescript": "^4.7.4"
   }
