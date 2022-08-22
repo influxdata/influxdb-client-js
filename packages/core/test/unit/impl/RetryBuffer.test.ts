@@ -32,14 +32,12 @@ describe('RetryBuffer', () => {
     expect(input).deep.equals(output)
   })
   it('ignores lines on heavy load', async () => {
-    const input = [] as Array<[string[], number]>
     const output = [] as Array<[string[], number]>
     const subject = new RetryBuffer(5, (lines, countdown) => {
       output.push([lines, countdown])
       return Promise.resolve()
     })
     for (let i = 0; i < 10; i++) {
-      if (i >= 5) input.push([['a' + i], i])
       subject.addLines(['a' + i], i, 100, Date.now() + 1000)
     }
     await subject.flush()
