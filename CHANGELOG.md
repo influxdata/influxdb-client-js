@@ -1,5 +1,9 @@
 ## 1.29.0 [unreleased]
 
+### Features
+
+1. [#547](https://github.com/influxdata/influxdb-client-js/pull/547): Improve write retry buffer.
+
 ### Other
 
 1. [#511](https://github.com/influxdata/influxdb-client-js/pull/511): Replace rollup with tsup.
