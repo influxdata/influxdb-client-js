@@ -1,4 +1,4 @@
-## 1.29.0 [unreleased]
+## 1.29.0 [2022-08-25]
 
 ### Other
 
@@ -276,7 +276,7 @@
 
 1. [#238](https://github.com/influxdata/influxdb-client-js/pull/238): Respect context path in client's url option.
 1. [#240](https://github.com/influxdata/influxdb-client-js/pull/240): Add helpers to let users choose how to deserialize dateTime:RFC3339 query response data type.
-1. [#248](https://github.com/influxdata/influxdb-client-js/pull/248): Change default InfluxDB URL to http://localhost:8086 .
+1. [#248](https://github.com/influxdata/influxdb-client-js/pull/248): Change default InfluxDB URL to <http://localhost:8086> .
 1. [#250](https://github.com/influxdata/influxdb-client-js/pull/250): Simplify precision for WriteApi retrieval.
 1. [#253](https://github.com/influxdata/influxdb-client-js/pull/253): Allow to simply receive the whole query response as a string.
 1. [#257](https://github.com/influxdata/influxdb-client-js/pull/257): Regenerate APIs from swagger.
