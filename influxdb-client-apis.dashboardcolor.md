@@ -9,7 +9,7 @@ Defines an encoding of data value into color space.
 <b>Signature:</b>
 
 ```typescript
-export interface DashboardColor 
+interface DashboardColor 
 ```
 
 ## Properties

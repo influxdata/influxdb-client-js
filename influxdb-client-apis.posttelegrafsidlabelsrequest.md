@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTelegrafsIDLabelsRequest 
+interface PostTelegrafsIDLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md) |  | LabelMapping | Label to add |
 |  [telegrafID](./influxdb-client-apis.posttelegrafsidlabelsrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface NotificationRuleUpdate 
+interface NotificationRuleUpdate 
 ```
 
 ## Properties

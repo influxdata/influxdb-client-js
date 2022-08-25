@@ -4,7 +4,7 @@
 
 ## TelegrafAPI.getTelegrafPlugins() method
 
-List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafPlugins)
+List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafPlugins)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTelegrafPlugins(request?: GetTelegrafPluginsRequest, requestOptions?: Request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTelegrafPluginsRequest](./influxdb-client-apis.gettelegrafpluginsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTelegrafPluginsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[TelegrafPlugins](./influxdb-client-apis.telegrafplugins.md)<!-- -->&gt;
+Promise&lt;TelegrafPlugins&gt;
 
 promise of response
 

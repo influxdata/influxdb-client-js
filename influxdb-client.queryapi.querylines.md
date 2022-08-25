@@ -4,7 +4,7 @@
 
 ## QueryApi.queryLines() method
 
-Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
+Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->.
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ queryLines(query: string | ParameterizedQuery, consumer: CommunicationObserver<s
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
-|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
+|  query | string \| ParameterizedQuery | query |
+|  consumer | CommunicationObserver&lt;string&gt; | csv result lines and error consumer |
 
 <b>Returns:</b>
 

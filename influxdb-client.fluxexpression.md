@@ -9,7 +9,7 @@ Assumes that the supplied value is flux expression or literal that does not need
 <b>Signature:</b>
 
 ```typescript
-export declare function fluxExpression(value: any): FluxParameterLike;
+declare function fluxExpression(value: any): FluxParameterLike;
 ```
 
 ## Parameters
@@ -20,7 +20,7 @@ export declare function fluxExpression(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+FluxParameterLike
 
 the supplied value as-is
 

@@ -16,7 +16,7 @@ writePoints(points: ArrayLike<Point>): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  points | ArrayLike&lt;[Point](./influxdb-client.point.md)<!-- -->&gt; | points to write |
+|  points | ArrayLike&lt;Point&gt; | points to write |
 
 <b>Returns:</b>
 

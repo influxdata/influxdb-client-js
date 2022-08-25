@@ -4,7 +4,7 @@
 
 ## LabelsAPI.getLabelsID() method
 
-Retrieve a label. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLabelsID)
+Retrieve a label. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLabelsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getLabelsID(request: GetLabelsIDRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetLabelsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
+Promise&lt;LabelResponse&gt;
 
 promise of response
 

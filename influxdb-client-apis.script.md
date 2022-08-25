@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Script 
+interface Script 
 ```
 
 ## Properties
@@ -17,7 +17,7 @@ export interface Script
 |  [createdAt?](./influxdb-client-apis.script.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [description?](./influxdb-client-apis.script.description.md) |  | string | <i>(Optional)</i> |
 |  [id?](./influxdb-client-apis.script.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [language?](./influxdb-client-apis.script.language.md) |  | [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) | <i>(Optional)</i> |
+|  [language?](./influxdb-client-apis.script.language.md) |  | ScriptLanguage | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.script.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.script.orgid.md) |  | string |  |
 |  [script](./influxdb-client-apis.script.script.md) |  | string | script to be executed |

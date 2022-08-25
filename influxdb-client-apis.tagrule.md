@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TagRule 
+interface TagRule 
 ```
 
 ## Properties

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchNotificationRulesIDRequest 
+interface PatchNotificationRulesIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchnotificationrulesidrequest.body.md) |  | [NotificationRuleUpdate](./influxdb-client-apis.notificationruleupdate.md) | Notification rule update to apply |
+|  [body](./influxdb-client-apis.patchnotificationrulesidrequest.body.md) |  | NotificationRuleUpdate | Notification rule update to apply |
 |  [ruleID](./influxdb-client-apis.patchnotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
 

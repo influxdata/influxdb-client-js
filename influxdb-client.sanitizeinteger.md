@@ -9,7 +9,7 @@ Sanitizes integer value to avoid injections.
 <b>Signature:</b>
 
 ```typescript
-export declare function sanitizeInteger(value: any): string;
+declare function sanitizeInteger(value: any): string;
 ```
 
 ## Parameters

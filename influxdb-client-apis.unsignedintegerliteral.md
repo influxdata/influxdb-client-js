@@ -9,13 +9,13 @@ Represents integer numbers
 <b>Signature:</b>
 
 ```typescript
-export interface UnsignedIntegerLiteral 
+interface UnsignedIntegerLiteral 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.unsignedintegerliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.unsignedintegerliteral.type.md) |  | NodeType | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.unsignedintegerliteral.value.md) |  | string | <i>(Optional)</i> |
 

@@ -9,14 +9,14 @@ A key/value pair in a dictionary
 <b>Signature:</b>
 
 ```typescript
-export interface DictItem 
+interface DictItem 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [key?](./influxdb-client-apis.dictitem.key.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.dictitem.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [val?](./influxdb-client-apis.dictitem.val.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [key?](./influxdb-client-apis.dictitem.key.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.dictitem.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [val?](./influxdb-client-apis.dictitem.val.md) |  | Expression | <i>(Optional)</i> |
 

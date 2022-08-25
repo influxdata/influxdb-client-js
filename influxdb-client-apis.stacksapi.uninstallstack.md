@@ -4,7 +4,7 @@
 
 ## StacksAPI.uninstallStack() method
 
-Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/UninstallStack)
+Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.3/api/#operation/UninstallStack)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ uninstallStack(request: UninstallStackRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | UninstallStackRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
+Promise&lt;Stack&gt;
 
 promise of response
 

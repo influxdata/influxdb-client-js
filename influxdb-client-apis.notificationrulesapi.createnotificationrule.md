@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.createNotificationRule() method
 
-Add a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateNotificationRule](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateNotificationRule)
+Add a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/CreateNotificationRule](https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateNotificationRule)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ createNotificationRule(request: CreateNotificationRuleRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [CreateNotificationRuleRequest](./influxdb-client-apis.createnotificationrulerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | CreateNotificationRuleRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->&gt;
+Promise&lt;NotificationRule&gt;
 
 promise of response
 

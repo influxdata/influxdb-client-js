@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ScraperTargetResponse = ScraperTargetRequest & {
+declare type ScraperTargetResponse = ScraperTargetRequest & {
     readonly id?: string;
     org?: string;
     bucket?: string;
@@ -20,5 +20,3 @@ export declare type ScraperTargetResponse = ScraperTargetRequest & {
     };
 };
 ```
-<b>References:</b> [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
-

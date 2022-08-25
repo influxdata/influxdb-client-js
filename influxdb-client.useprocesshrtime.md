@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare function useProcessHrtime(use: boolean): boolean;
+declare function useProcessHrtime(use: boolean): boolean;
 ```
 
 ## Parameters

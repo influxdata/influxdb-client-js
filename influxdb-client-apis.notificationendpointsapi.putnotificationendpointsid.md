@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.putNotificationEndpointsID() method
 
-Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutNotificationEndpointsID)
+Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutNotificationEndpointsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ putNotificationEndpointsID(request: PutNotificationEndpointsIDRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PutNotificationEndpointsIDRequest](./influxdb-client-apis.putnotificationendpointsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PutNotificationEndpointsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->&gt;
+Promise&lt;NotificationEndpoint&gt;
 
 promise of response
 

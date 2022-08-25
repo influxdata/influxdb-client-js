@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDLabels() method
 
-List all labels for a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDLabels)
+List all labels for a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getBucketsIDLabels(request: GetBucketsIDLabelsRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBucketsIDLabelsRequest](./influxdb-client-apis.getbucketsidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetBucketsIDLabelsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
+Promise&lt;LabelsResponse&gt;
 
 promise of response
 

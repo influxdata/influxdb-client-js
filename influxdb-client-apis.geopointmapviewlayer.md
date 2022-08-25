@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type GeoPointMapViewLayer = GeoViewLayerProperties & {
+declare type GeoPointMapViewLayer = GeoViewLayerProperties & {
     colorField: string;
     colorDimension: Axis;
     colors: DashboardColor[];
@@ -15,5 +15,3 @@ export declare type GeoPointMapViewLayer = GeoViewLayerProperties & {
     tooltipColumns?: string[];
 };
 ```
-<b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)<!-- -->, [Axis](./influxdb-client-apis.axis.md)<!-- -->, [DashboardColor](./influxdb-client-apis.dashboardcolor.md)
-

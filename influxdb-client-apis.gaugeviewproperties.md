@@ -7,18 +7,18 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GaugeViewProperties 
+interface GaugeViewProperties 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [colors](./influxdb-client-apis.gaugeviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.gaugeviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
+|  [colors](./influxdb-client-apis.gaugeviewproperties.colors.md) |  | DashboardColor\[\] | Colors define color encoding of data into a visualization |
+|  [decimalPlaces](./influxdb-client-apis.gaugeviewproperties.decimalplaces.md) |  | DecimalPlaces |  |
 |  [note](./influxdb-client-apis.gaugeviewproperties.note.md) |  | string |  |
 |  [prefix](./influxdb-client-apis.gaugeviewproperties.prefix.md) |  | string |  |
-|  [queries](./influxdb-client-apis.gaugeviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.gaugeviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.gaugeviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.gaugeviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [suffix](./influxdb-client-apis.gaugeviewproperties.suffix.md) |  | string |  |

@@ -18,18 +18,18 @@ getWriteApi(org: string, bucket: string, precision?: WritePrecisionType, writeOp
 |  --- | --- | --- |
 |  org | string | Specifies the destination organization for writes. Takes either the ID or Name interchangeably. |
 |  bucket | string | The destination bucket for writes. |
-|  precision | [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | <i>(Optional)</i> Timestamp precision for line items. |
-|  writeOptions | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> Custom write options. |
+|  precision | WritePrecisionType | <i>(Optional)</i> Timestamp precision for line items. |
+|  writeOptions | Partial&lt;WriteOptions&gt; | <i>(Optional)</i> Custom write options. |
 
 <b>Returns:</b>
 
-[WriteApi](./influxdb-client.writeapi.md)
+WriteApi
 
 WriteApi instance
 
 ## Remarks
 
-Inspect the [WriteOptions](./influxdb-client.writeoptions.md) to control also advanced options, such retries of failure, retry strategy options, data chunking and flushing windows. See [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) to see the defaults.
+Use [WriteOptions](./influxdb-client.writeoptions.md) to customize retry strategy options, data chunking and flushing options. See [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) to see the defaults.
 
-See also [write.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.js)<!-- -->, [writeAdvanced.js example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.js)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->.
+See also [write example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.mjs)<!-- -->, [writeAdvanced example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.mjs)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->.
 

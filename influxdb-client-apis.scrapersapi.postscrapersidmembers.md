@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapersIDMembers() method
 
-Add a member to a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostScrapersIDMembers)
+Add a member to a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postScrapersIDMembers(request: PostScrapersIDMembersRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostScrapersIDMembersRequest](./influxdb-client-apis.postscrapersidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostScrapersIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
+Promise&lt;ResourceMember&gt;
 
 promise of response
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PasswordResetBody 
+interface PasswordResetBody 
 ```
 
 ## Properties

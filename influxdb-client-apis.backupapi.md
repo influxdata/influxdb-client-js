@@ -9,7 +9,7 @@ Backup API
 <b>Signature:</b>
 
 ```typescript
-export declare class BackupAPI 
+declare class BackupAPI 
 ```
 
 ## Constructors
@@ -22,7 +22,7 @@ export declare class BackupAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getBackupKV(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupkv.md) |  | Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupKV](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupKV) |
-|  [getBackupMetadata(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupmetadata.md) |  | Download snapshot of all metadata in the server. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupMetadata](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupMetadata) |
-|  [getBackupShardId(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupshardid.md) |  | Download snapshot of all TSM data in a shard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupShardId](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupShardId) |
+|  [getBackupKV(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupkv.md) |  | Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBackupKV](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupKV) |
+|  [getBackupMetadata(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupmetadata.md) |  | Download snapshot of all metadata in the server. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBackupMetadata](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupMetadata) |
+|  [getBackupShardId(request, requestOptions)](./influxdb-client-apis.backupapi.getbackupshardid.md) |  | Download snapshot of all TSM data in a shard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBackupShardId](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupShardId) |
 

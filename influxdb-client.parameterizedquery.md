@@ -9,7 +9,7 @@ Represents a parameterized query.
 <b>Signature:</b>
 
 ```typescript
-export interface ParameterizedQuery 
+interface ParameterizedQuery 
 ```
 
 ## Methods

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Organizations 
+interface Organizations 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.organizations.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
-|  [orgs?](./influxdb-client-apis.organizations.orgs.md) |  | [Organization](./influxdb-client-apis.organization.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.organizations.links.md) |  | Links | <i>(Optional)</i> |
+|  [orgs?](./influxdb-client-apis.organizations.orgs.md) |  | Organization\[\] | <i>(Optional)</i> |
 

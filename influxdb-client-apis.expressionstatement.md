@@ -9,13 +9,13 @@ May consist of an expression that does not return a value and is executed solely
 <b>Signature:</b>
 
 ```typescript
-export interface ExpressionStatement 
+interface ExpressionStatement 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.expressionstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.expressionstatement.type.md) |  | NodeType | <i>(Optional)</i> |
 

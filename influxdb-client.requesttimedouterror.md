@@ -9,11 +9,11 @@ RequestTimedOutError indicates request timeout in the communication with the ser
 <b>Signature:</b>
 
 ```typescript
-export declare class RequestTimedOutError extends Error implements RetriableDecision 
+declare class RequestTimedOutError extends Error implements RetriableDecision 
 ```
 <b>Extends:</b> Error
 
-<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
+<b>Implements:</b> RetriableDecision
 
 ## Constructors
 

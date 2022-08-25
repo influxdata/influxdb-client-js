@@ -9,15 +9,15 @@ Represents the rule conditions that collectively evaluate to either true or fals
 <b>Signature:</b>
 
 ```typescript
-export interface LogicalExpression 
+interface LogicalExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [left?](./influxdb-client-apis.logicalexpression.left.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [left?](./influxdb-client-apis.logicalexpression.left.md) |  | Expression | <i>(Optional)</i> |
 |  [operator?](./influxdb-client-apis.logicalexpression.operator.md) |  | string | <i>(Optional)</i> |
-|  [right?](./influxdb-client-apis.logicalexpression.right.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.logicalexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [right?](./influxdb-client-apis.logicalexpression.right.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.logicalexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

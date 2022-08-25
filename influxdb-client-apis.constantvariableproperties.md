@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ConstantVariableProperties 
+interface ConstantVariableProperties 
 ```
 
 ## Properties

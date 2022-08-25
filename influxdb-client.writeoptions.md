@@ -9,9 +9,9 @@ Options used by [WriteApi](./influxdb-client.writeapi.md) .
 <b>Signature:</b>
 
 ```typescript
-export interface WriteOptions extends WriteRetryOptions 
+interface WriteOptions extends WriteRetryOptions 
 ```
-<b>Extends:</b> [WriteRetryOptions](./influxdb-client.writeretryoptions.md)
+<b>Extends:</b> WriteRetryOptions
 
 ## Properties
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface BucketShardMapping 
+interface BucketShardMapping 
 ```
 
 ## Properties

@@ -4,7 +4,7 @@
 
 ## StacksAPI.createStack() method
 
-Create a new stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateStack)
+Create a new stack. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateStack)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ createStack(request: CreateStackRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [CreateStackRequest](./influxdb-client-apis.createstackrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | CreateStackRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
+Promise&lt;Stack&gt;
 
 promise of response
 

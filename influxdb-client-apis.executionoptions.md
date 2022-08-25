@@ -9,7 +9,7 @@ ExecutionOptions contains execution options for a flux script.
 <b>Signature:</b>
 
 ```typescript
-export interface ExecutionOptions 
+interface ExecutionOptions 
 ```
 
 ## Properties

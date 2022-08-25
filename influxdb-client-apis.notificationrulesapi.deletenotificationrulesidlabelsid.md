@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.deleteNotificationRulesIDLabelsID() method
 
-Delete label from a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteNotificationRulesIDLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteNotificationRulesIDLabelsID)
+Delete label from a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteNotificationRulesIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteNotificationRulesIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteNotificationRulesIDLabelsID(request: DeleteNotificationRulesIDLabelsIDRequ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteNotificationRulesIDLabelsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

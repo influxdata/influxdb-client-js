@@ -14,11 +14,11 @@ subscribe(next: ObserverNext<T>, error?: ObserverError, complete?: ObserverCompl
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  next | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
-|  error | [ObserverError](./influxdb-client.observererror.md) | <i>(Optional)</i> |
-|  complete | [ObserverComplete](./influxdb-client.observercomplete.md) | <i>(Optional)</i> |
+|  next | ObserverNext&lt;T&gt; |  |
+|  error | ObserverError | <i>(Optional)</i> |
+|  complete | ObserverComplete | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-[Subscription](./influxdb-client.subscription.md)
+Subscription
 

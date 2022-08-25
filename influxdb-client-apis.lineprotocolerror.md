@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface LineProtocolError 
+interface LineProtocolError 
 ```
 
 ## Properties

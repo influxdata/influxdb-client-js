@@ -9,7 +9,7 @@ Creates flux date-time literal.
 <b>Signature:</b>
 
 ```typescript
-export declare function fluxDateTime(value: any): FluxParameterLike;
+declare function fluxDateTime(value: any): FluxParameterLike;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ export declare function fluxDateTime(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+FluxParameterLike
 

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostSignoutRequest 
+interface PostSignoutRequest 
 ```

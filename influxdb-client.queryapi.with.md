@@ -16,11 +16,11 @@ with(options: Partial<QueryOptions>): QueryApi;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | Partial&lt;[QueryOptions](./influxdb-client.queryoptions.md)<!-- -->&gt; | query options to use |
+|  options | Partial&lt;QueryOptions&gt; | query options to use |
 
 <b>Returns:</b>
 
-[QueryApi](./influxdb-client.queryapi.md)
+QueryApi
 
 queryApi instance with the supplied options
 

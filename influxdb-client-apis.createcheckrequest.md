@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface CreateCheckRequest 
+interface CreateCheckRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | [PostCheck](./influxdb-client-apis.postcheck.md) | Check to create |
+|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | PostCheck | Check to create |
 

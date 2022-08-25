@@ -9,7 +9,7 @@ IllegalArgumentError is thrown when illegal argument is supplied.
 <b>Signature:</b>
 
 ```typescript
-export declare class IllegalArgumentError extends Error 
+declare class IllegalArgumentError extends Error 
 ```
 <b>Extends:</b> Error
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostOrganizationRequest 
+interface PostOrganizationRequest 
 ```
 
 ## Properties

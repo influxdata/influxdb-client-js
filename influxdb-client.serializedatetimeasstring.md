@@ -9,7 +9,7 @@ serializeDateTimeAsString changes type serializers to return string values for `
 <b>Signature:</b>
 
 ```typescript
-export declare function serializeDateTimeAsString(): void;
+declare function serializeDateTimeAsString(): void;
 ```
 <b>Returns:</b>
 

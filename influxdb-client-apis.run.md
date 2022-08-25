@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Run 
+interface Run 
 ```
 
 ## Properties
@@ -17,7 +17,7 @@ export interface Run
 |  [finishedAt?](./influxdb-client-apis.run.finishedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run finished executing, RFC3339Nano. |
 |  [id?](./influxdb-client-apis.run.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [links?](./influxdb-client-apis.run.links.md) | <code>readonly</code> | { self?: string; task?: string; retry?: string; } | <i>(Optional)</i> |
-|  [log?](./influxdb-client-apis.run.log.md) | <code>readonly</code> | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> An array of logs associated with the run. |
+|  [log?](./influxdb-client-apis.run.log.md) | <code>readonly</code> | LogEvent\[\] | <i>(Optional)</i> An array of logs associated with the run. |
 |  [requestedAt?](./influxdb-client-apis.run.requestedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run was manually requested, RFC3339Nano. |
 |  [scheduledFor?](./influxdb-client-apis.run.scheduledfor.md) |  | string | <i>(Optional)</i> Time used for run's "now" option, RFC3339. |
 |  [startedAt?](./influxdb-client-apis.run.startedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run started executing, RFC3339Nano. |

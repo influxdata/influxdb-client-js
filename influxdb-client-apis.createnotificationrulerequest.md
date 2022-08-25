@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface CreateNotificationRuleRequest 
+interface CreateNotificationRuleRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationrulerequest.body.md) |  | [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) | Notification rule to create |
+|  [body](./influxdb-client-apis.createnotificationrulerequest.body.md) |  | PostNotificationRule | Notification rule to create |
 

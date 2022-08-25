@@ -9,7 +9,7 @@ An observable that aligns with the [TC39 observable proposal](https://github.com
 <b>Signature:</b>
 
 ```typescript
-export interface Observable<T> 
+interface Observable<T> 
 ```
 
 ## Methods

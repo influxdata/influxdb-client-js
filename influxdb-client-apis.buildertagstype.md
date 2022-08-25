@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface BuilderTagsType 
+interface BuilderTagsType 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [aggregateFunctionType?](./influxdb-client-apis.buildertagstype.aggregatefunctiontype.md) |  | [BuilderAggregateFunctionType](./influxdb-client-apis.builderaggregatefunctiontype.md) | <i>(Optional)</i> |
+|  [aggregateFunctionType?](./influxdb-client-apis.buildertagstype.aggregatefunctiontype.md) |  | BuilderAggregateFunctionType | <i>(Optional)</i> |
 |  [key?](./influxdb-client-apis.buildertagstype.key.md) |  | string | <i>(Optional)</i> |
 |  [values?](./influxdb-client-apis.buildertagstype.values.md) |  | string\[\] | <i>(Optional)</i> |
 

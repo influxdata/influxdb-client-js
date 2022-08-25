@@ -9,14 +9,14 @@ Represents indexing into an array
 <b>Signature:</b>
 
 ```typescript
-export interface IndexExpression 
+interface IndexExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [array?](./influxdb-client-apis.indexexpression.array.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [index?](./influxdb-client-apis.indexexpression.index.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.indexexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [array?](./influxdb-client-apis.indexexpression.array.md) |  | Expression | <i>(Optional)</i> |
+|  [index?](./influxdb-client-apis.indexexpression.index.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.indexexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

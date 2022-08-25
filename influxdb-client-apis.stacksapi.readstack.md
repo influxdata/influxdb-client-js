@@ -4,7 +4,7 @@
 
 ## StacksAPI.readStack() method
 
-Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ReadStack)
+Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.3/api/#operation/ReadStack)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ readStack(request: ReadStackRequest, requestOptions?: RequestOptions): Promise<S
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [ReadStackRequest](./influxdb-client-apis.readstackrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | ReadStackRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
+Promise&lt;Stack&gt;
 
 promise of response
 

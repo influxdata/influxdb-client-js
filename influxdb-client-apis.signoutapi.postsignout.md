@@ -4,7 +4,7 @@
 
 ## SignoutAPI.postSignout() method
 
-Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSignout)
+Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignout)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postSignout(request?: PostSignoutRequest, requestOptions?: RequestOptions): Prom
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostSignoutRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

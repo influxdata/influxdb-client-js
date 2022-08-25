@@ -9,7 +9,7 @@ Me API
 <b>Signature:</b>
 
 ```typescript
-export declare class MeAPI 
+declare class MeAPI 
 ```
 
 ## Constructors
@@ -22,6 +22,6 @@ export declare class MeAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getMe(request, requestOptions)](./influxdb-client-apis.meapi.getme.md) |  | Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMe) |
-|  [putMePassword(request, requestOptions)](./influxdb-client-apis.meapi.putmepassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutMePassword) |
+|  [getMe(request, requestOptions)](./influxdb-client-apis.meapi.getme.md) |  | Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetMe) |
+|  [putMePassword(request, requestOptions)](./influxdb-client-apis.meapi.putmepassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutMePassword) |
 

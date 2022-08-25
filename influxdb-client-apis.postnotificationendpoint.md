@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type PostNotificationEndpoint = NotificationEndpointDiscriminator;
+declare type PostNotificationEndpoint = NotificationEndpointDiscriminator;
 ```
-<b>References:</b> [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
-

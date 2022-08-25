@@ -9,18 +9,18 @@ Sets custom logger.
 <b>Signature:</b>
 
 ```typescript
-export declare function setLogger(logger: Logger): Logger;
+declare function setLogger(logger: Logger): Logger;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  logger | [Logger](./influxdb-client.logger.md) | logger to use |
+|  logger | Logger | logger to use |
 
 <b>Returns:</b>
 
-[Logger](./influxdb-client.logger.md)
+Logger
 
 previous logger
 

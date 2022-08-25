@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksIDLabelsRequest 
+interface PostTasksIDLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [body](./influxdb-client-apis.posttasksidlabelsrequest.body.md) |  | LabelMapping | Label to add |
 |  [taskID](./influxdb-client-apis.posttasksidlabelsrequest.taskid.md) |  | string | The task ID. |
 

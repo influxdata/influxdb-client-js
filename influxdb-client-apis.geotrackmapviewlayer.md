@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GeoTrackMapViewLayer 
+interface GeoTrackMapViewLayer 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [colors?](./influxdb-client-apis.geotrackmapviewlayer.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | <i>(Optional)</i> Colors define color encoding of data into a visualization |
+|  [colors?](./influxdb-client-apis.geotrackmapviewlayer.colors.md) |  | DashboardColor\[\] | <i>(Optional)</i> Colors define color encoding of data into a visualization |
 |  [randomColors?](./influxdb-client-apis.geotrackmapviewlayer.randomcolors.md) |  | boolean | <i>(Optional)</i> Assign different colors to different tracks |
 |  [speed?](./influxdb-client-apis.geotrackmapviewlayer.speed.md) |  | number | <i>(Optional)</i> Speed of the track animation |
 |  [trackWidth?](./influxdb-client-apis.geotrackmapviewlayer.trackwidth.md) |  | number | <i>(Optional)</i> Width of the track |

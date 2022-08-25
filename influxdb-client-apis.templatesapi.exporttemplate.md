@@ -4,7 +4,7 @@
 
 ## TemplatesAPI.exportTemplate() method
 
-Export a new template. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ExportTemplate)
+Export a new template. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.3/api/#operation/ExportTemplate)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ exportTemplate(request: ExportTemplateRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | ExportTemplateRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Template](./influxdb-client-apis.template.md)<!-- -->&gt;
+Promise&lt;Template&gt;
 
 promise of response
 

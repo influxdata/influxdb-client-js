@@ -4,7 +4,7 @@
 
 ## QueryAPI.getQuerySuggestionsName() method
 
-Retrieve query suggestions for a branching suggestion. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetQuerySuggestionsName](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetQuerySuggestionsName)
+Retrieve query suggestions for a branching suggestion. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetQuerySuggestionsName](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetQuerySuggestionsName)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getQuerySuggestionsName(request: GetQuerySuggestionsNameRequest, requestOptions?
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetQuerySuggestionsNameRequest](./influxdb-client-apis.getquerysuggestionsnamerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetQuerySuggestionsNameRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->&gt;
+Promise&lt;FluxSuggestion&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQueryAst() method
 
-Generate an Abstract Syntax Tree (AST) from a query. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQueryAst](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQueryAst)
+Generate an Abstract Syntax Tree (AST) from a query. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostQueryAst](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQueryAst)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postQueryAst(request: PostQueryAstRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostQueryAstRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ASTResponse](./influxdb-client-apis.astresponse.md)<!-- -->&gt;
+Promise&lt;ASTResponse&gt;
 
 promise of response
 

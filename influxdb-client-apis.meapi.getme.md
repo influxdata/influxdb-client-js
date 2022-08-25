@@ -4,7 +4,7 @@
 
 ## MeAPI.getMe() method
 
-Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMe)
+Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetMe)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getMe(request?: GetMeRequest, requestOptions?: RequestOptions): Promise<UserResp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetMeRequest](./influxdb-client-apis.getmerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetMeRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
+Promise&lt;UserResponse&gt;
 
 promise of response
 

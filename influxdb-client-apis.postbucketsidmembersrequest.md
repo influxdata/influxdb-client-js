@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostBucketsIDMembersRequest 
+interface PostBucketsIDMembersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [body](./influxdb-client-apis.postbucketsidmembersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as member |
 |  [bucketID](./influxdb-client-apis.postbucketsidmembersrequest.bucketid.md) |  | string | The bucket ID. |
 

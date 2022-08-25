@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSourcesID() method
 
-Retrieve a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSourcesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesID)
+Retrieve a source. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSourcesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSourcesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getSourcesID(request: GetSourcesIDRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetSourcesIDRequest](./influxdb-client-apis.getsourcesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetSourcesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Source](./influxdb-client-apis.source.md)<!-- -->&gt;
+Promise&lt;Source&gt;
 
 promise of response
 

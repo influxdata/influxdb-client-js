@@ -9,7 +9,7 @@ Authorizations API
 <b>Signature:</b>
 
 ```typescript
-export declare class AuthorizationsAPI 
+declare class AuthorizationsAPI 
 ```
 
 ## Constructors
@@ -22,9 +22,9 @@ export declare class AuthorizationsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.deleteauthorizationsid.md) |  | Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteAuthorizationsID) |
-|  [getAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizations.md) |  | List all authorizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizations) |
-|  [getAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizationsid.md) |  | Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizationsID) |
-|  [patchAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.patchauthorizationsid.md) |  | Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchAuthorizationsID) |
-|  [postAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.postauthorizations.md) |  | Create an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostAuthorizations) |
+|  [deleteAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.deleteauthorizationsid.md) |  | Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteAuthorizationsID) |
+|  [getAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizations.md) |  | List all authorizations. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizations) |
+|  [getAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizationsid.md) |  | Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizationsID) |
+|  [patchAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.patchauthorizationsid.md) |  | Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchAuthorizationsID) |
+|  [postAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.postauthorizations.md) |  | Create an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostAuthorizations) |
 

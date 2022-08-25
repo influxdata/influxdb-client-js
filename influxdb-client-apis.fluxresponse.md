@@ -9,7 +9,7 @@ Rendered flux that backs the check or notification.
 <b>Signature:</b>
 
 ```typescript
-export interface FluxResponse 
+interface FluxResponse 
 ```
 
 ## Properties

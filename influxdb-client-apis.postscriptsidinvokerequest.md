@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostScriptsIDInvokeRequest 
+interface PostScriptsIDInvokeRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) | entity body |
+|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | ScriptInvocationParams | entity body |
 |  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) |  | string |  |
 

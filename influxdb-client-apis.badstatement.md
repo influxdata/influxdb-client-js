@@ -9,7 +9,7 @@ A placeholder for statements for which no correct statement nodes can be created
 <b>Signature:</b>
 
 ```typescript
-export interface BadStatement 
+interface BadStatement 
 ```
 
 ## Properties
@@ -17,5 +17,5 @@ export interface BadStatement
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [text?](./influxdb-client-apis.badstatement.text.md) |  | string | <i>(Optional)</i> Raw source text |
-|  [type?](./influxdb-client-apis.badstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.badstatement.type.md) |  | NodeType | <i>(Optional)</i> |
 

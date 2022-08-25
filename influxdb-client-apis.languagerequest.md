@@ -9,7 +9,7 @@ Flux query to be analyzed.
 <b>Signature:</b>
 
 ```typescript
-export interface LanguageRequest 
+interface LanguageRequest 
 ```
 
 ## Properties

@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Node = Expression | Block;
+declare type Node = Expression | Block;
 ```
-<b>References:</b> [Expression](./influxdb-client-apis.expression.md)<!-- -->, [Block](./influxdb-client-apis.block.md)
-

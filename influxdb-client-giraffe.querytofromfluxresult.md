@@ -9,7 +9,7 @@ Executes a flux query and iterrativelly collects results into a Giraffe's FromFl
 <b>Signature:</b>
 
 ```typescript
-export declare function queryToFromFluxResult(queryApi: QueryApi, query: string | ParameterizedQuery, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Promise<FromFluxResult>;
+declare function queryToFromFluxResult(queryApi: QueryApi, query: string | ParameterizedQuery, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Promise<FromFluxResult>;
 ```
 
 ## Parameters
@@ -18,8 +18,8 @@ export declare function queryToFromFluxResult(queryApi: QueryApi, query: string 
 |  --- | --- | --- |
 |  queryApi | QueryApi | InfluxDB client's QueryApi instance |
 |  query | string \| ParameterizedQuery | query to execute |
-|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
+|  tableFactory | GiraffeTableFactory | creates a new Giraffe table |
+|  tableOptions | TableOptions | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
 
 <b>Returns:</b>
 

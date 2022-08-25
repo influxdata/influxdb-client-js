@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface LabelUpdate 
+interface LabelUpdate 
 ```
 
 ## Properties

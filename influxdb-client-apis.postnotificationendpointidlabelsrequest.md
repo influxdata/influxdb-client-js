@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostNotificationEndpointIDLabelsRequest 
+interface PostNotificationEndpointIDLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md) |  | LabelMapping | Label to add |
 |  [endpointID](./influxdb-client-apis.postnotificationendpointidlabelsrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

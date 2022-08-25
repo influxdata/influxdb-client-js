@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDOwners() method
 
-List all owners of a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafsIDOwners)
+List all owners of a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTelegrafsIDOwners(request: GetTelegrafsIDOwnersRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTelegrafsIDOwnersRequest](./influxdb-client-apis.gettelegrafsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTelegrafsIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
+Promise&lt;ResourceOwners&gt;
 
 promise of response
 

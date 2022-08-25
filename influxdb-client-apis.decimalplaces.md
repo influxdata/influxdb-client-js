@@ -9,7 +9,7 @@ Indicates whether decimal places should be enforced, and how many digits it shou
 <b>Signature:</b>
 
 ```typescript
-export interface DecimalPlaces 
+interface DecimalPlaces 
 ```
 
 ## Properties

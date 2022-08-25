@@ -4,7 +4,7 @@
 
 ## ReadyAPI.getReady() method
 
-Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReady)
+Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReady)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getReady(request?: GetReadyRequest, requestOptions?: RequestOptions): Promise<Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetReadyRequest](./influxdb-client-apis.getreadyrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetReadyRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Ready](./influxdb-client-apis.ready.md)<!-- -->&gt;
+Promise&lt;Ready&gt;
 
 promise of response
 

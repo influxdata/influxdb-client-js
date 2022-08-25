@@ -9,5 +9,5 @@ Informs about a start of response processing.
 <b>Signature:</b>
 
 ```typescript
-export declare type ResponseStartedFn = (headers: Headers, statusCode?: number) => void;
+declare type ResponseStartedFn = (headers: Headers, statusCode?: number) => void;
 ```

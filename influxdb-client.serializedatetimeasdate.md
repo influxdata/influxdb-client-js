@@ -9,7 +9,7 @@ serializeDateTimeAsDate changes type serializers to return JavaScript Date insta
 <b>Signature:</b>
 
 ```typescript
-export declare function serializeDateTimeAsDate(): void;
+declare function serializeDateTimeAsDate(): void;
 ```
 <b>Returns:</b>
 

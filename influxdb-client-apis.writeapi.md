@@ -9,7 +9,7 @@ Write API
 <b>Signature:</b>
 
 ```typescript
-export declare class WriteAPI 
+declare class WriteAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class WriteAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md) |  | Write data. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostWrite) |
+|  [postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md) |  | Write data. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostWrite) |
 

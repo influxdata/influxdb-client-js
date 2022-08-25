@@ -4,7 +4,7 @@
 
 ## LegacyAPI.getLegacyAuthorizations() method
 
-List all legacy authorizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizations)
+List all legacy authorizations. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLegacyAuthorizations)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getLegacyAuthorizations(request?: GetLegacyAuthorizationsRequest, requestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetLegacyAuthorizationsRequest](./influxdb-client-apis.getlegacyauthorizationsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetLegacyAuthorizationsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorizations](./influxdb-client-apis.authorizations.md)<!-- -->&gt;
+Promise&lt;Authorizations&gt;
 
 promise of response
 

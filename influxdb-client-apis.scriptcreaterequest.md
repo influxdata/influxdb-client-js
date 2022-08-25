@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ScriptCreateRequest 
+interface ScriptCreateRequest 
 ```
 
 ## Properties
@@ -15,7 +15,7 @@ export interface ScriptCreateRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [description](./influxdb-client-apis.scriptcreaterequest.description.md) |  | string |  |
-|  [language](./influxdb-client-apis.scriptcreaterequest.language.md) |  | [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) |  |
+|  [language](./influxdb-client-apis.scriptcreaterequest.language.md) |  | ScriptLanguage |  |
 |  [name](./influxdb-client-apis.scriptcreaterequest.name.md) |  | string | The name of the script. The name must be unique within the organization. |
 |  [script](./influxdb-client-apis.scriptcreaterequest.script.md) |  | string | The script to execute. |
 

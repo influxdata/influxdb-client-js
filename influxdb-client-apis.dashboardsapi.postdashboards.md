@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboards() method
 
-Create a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboards](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboards)
+Create a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDashboards](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDashboards)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postDashboards(request: PostDashboardsRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostDashboardsRequest](./influxdb-client-apis.postdashboardsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostDashboardsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Dashboard](./influxdb-client-apis.dashboard.md) \| [DashboardWithViewProperties](./influxdb-client-apis.dashboardwithviewproperties.md)<!-- -->&gt;
+Promise&lt;Dashboard \| DashboardWithViewProperties&gt;
 
 promise of response
 

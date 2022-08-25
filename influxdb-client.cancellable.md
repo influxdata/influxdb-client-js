@@ -9,7 +9,7 @@ Allows to cancel a running execution.
 <b>Signature:</b>
 
 ```typescript
-export interface Cancellable 
+interface Cancellable 
 ```
 
 ## Methods

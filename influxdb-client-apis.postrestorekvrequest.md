@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostRestoreKVRequest 
+interface PostRestoreKVRequest 
 ```
 
 ## Properties

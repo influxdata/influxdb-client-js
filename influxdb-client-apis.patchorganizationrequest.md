@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchOrganizationRequest 
+interface PatchOrganizationRequest 
 ```
 
 ## Properties

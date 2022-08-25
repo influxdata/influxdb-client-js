@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksIDLabels() method
 
-List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecksIDLabels)
+List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getChecksIDLabels(request: GetChecksIDLabelsRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetChecksIDLabelsRequest](./influxdb-client-apis.getchecksidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetChecksIDLabelsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
+Promise&lt;LabelsResponse&gt;
 
 promise of response
 

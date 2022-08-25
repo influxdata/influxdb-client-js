@@ -9,7 +9,7 @@ FluxScriptInvocationAPI executes flux 'API invokable script' and parses the resu
 <b>Signature:</b>
 
 ```typescript
-export declare class FluxScriptInvocationAPI 
+declare class FluxScriptInvocationAPI 
 ```
 
 ## Constructors

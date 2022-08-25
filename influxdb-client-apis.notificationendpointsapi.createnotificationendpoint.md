@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.createNotificationEndpoint() method
 
-Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.1/api/#operation/CreateNotificationEndpoint)
+Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateNotificationEndpoint)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ createNotificationEndpoint(request: CreateNotificationEndpointRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | CreateNotificationEndpointRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->&gt;
+Promise&lt;NotificationEndpoint&gt;
 
 promise of response
 

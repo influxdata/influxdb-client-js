@@ -9,11 +9,11 @@ Creates a new flux table column.
 <b>Signature:</b>
 
 ```typescript
-export declare function newFluxTableColumn(): FluxTableColumn;
+declare function newFluxTableColumn(): FluxTableColumn;
 ```
 <b>Returns:</b>
 
-[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
+FluxTableColumn
 
 column instance
 

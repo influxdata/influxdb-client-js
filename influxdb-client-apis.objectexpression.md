@@ -9,13 +9,13 @@ Allows the declaration of an anonymous object within a declaration
 <b>Signature:</b>
 
 ```typescript
-export interface ObjectExpression 
+interface ObjectExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [properties?](./influxdb-client-apis.objectexpression.properties.md) |  | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Object properties |
-|  [type?](./influxdb-client-apis.objectexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [properties?](./influxdb-client-apis.objectexpression.properties.md) |  | Property\[\] | <i>(Optional)</i> Object properties |
+|  [type?](./influxdb-client-apis.objectexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

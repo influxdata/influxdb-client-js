@@ -9,7 +9,7 @@ Optimized tokenizer of a single CSV line.
 <b>Signature:</b>
 
 ```typescript
-export declare class LineSplitter 
+declare class LineSplitter 
 ```
 
 ## Properties

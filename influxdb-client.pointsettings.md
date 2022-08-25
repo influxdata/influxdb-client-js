@@ -9,7 +9,7 @@ Settings that control the way of how a [Point](./influxdb-client.point.md) is se
 <b>Signature:</b>
 
 ```typescript
-export interface PointSettings 
+interface PointSettings 
 ```
 
 ## Properties

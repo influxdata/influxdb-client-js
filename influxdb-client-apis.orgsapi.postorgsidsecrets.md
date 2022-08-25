@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgsIDSecrets() method
 
-Delete secrets from an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostOrgsIDSecrets)
+Delete secrets from an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostOrgsIDSecrets)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postOrgsIDSecrets(request: PostOrgsIDSecretsRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostOrgsIDSecretsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

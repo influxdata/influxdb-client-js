@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchTasksIDRequest 
+interface PatchTasksIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchtasksidrequest.body.md) |  | [TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md) | Task update to apply |
+|  [body](./influxdb-client-apis.patchtasksidrequest.body.md) |  | TaskUpdateRequest | Task update to apply |
 |  [taskID](./influxdb-client-apis.patchtasksidrequest.taskid.md) |  | string | The task ID. |
 

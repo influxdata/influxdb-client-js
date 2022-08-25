@@ -4,10 +4,10 @@
 
 ## ColumnType type
 
-Type of query result column, see [https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/#data-types)
+Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types)
 
 <b>Signature:</b>
 
 ```typescript
-export declare type ColumnType = 'boolean' | 'unsignedLong' | 'long' | 'double' | 'string' | 'base64Binary' | 'dateTime:RFC3339' | 'duration' | string;
+declare type ColumnType = 'boolean' | 'unsignedLong' | 'long' | 'double' | 'string' | 'base64Binary' | 'dateTime:RFC3339' | 'duration' | string;
 ```

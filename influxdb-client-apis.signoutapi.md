@@ -9,7 +9,7 @@ Signout API
 <b>Signature:</b>
 
 ```typescript
-export declare class SignoutAPI 
+declare class SignoutAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class SignoutAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md) |  | Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSignout) |
+|  [postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md) |  | Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignout) |
 

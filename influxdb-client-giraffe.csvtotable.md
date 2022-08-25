@@ -9,7 +9,7 @@ Transforms annotated CSV query response to Giraffe's Table.
 <b>Signature:</b>
 
 ```typescript
-export declare function csvToTable(csv: string, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Table;
+declare function csvToTable(csv: string, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Table;
 ```
 
 ## Parameters
@@ -17,8 +17,8 @@ export declare function csvToTable(csv: string, tableFactory: GiraffeTableFactor
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  csv | string | annotated CSV flux query response |
-|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect. |
+|  tableFactory | GiraffeTableFactory | creates a new Giraffe table |
+|  tableOptions | TableOptions | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect. |
 
 <b>Returns:</b>
 

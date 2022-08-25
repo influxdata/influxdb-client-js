@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Permission 
+interface Permission 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface Permission
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [action](./influxdb-client-apis.permission.action.md) |  | 'read' \| 'write' |  |
-|  [resource](./influxdb-client-apis.permission.resource.md) |  | [Resource](./influxdb-client-apis.resource.md) |  |
+|  [resource](./influxdb-client-apis.permission.resource.md) |  | Resource |  |
 

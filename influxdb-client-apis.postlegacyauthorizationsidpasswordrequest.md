@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostLegacyAuthorizationsIDPasswordRequest 
+interface PostLegacyAuthorizationsIDPasswordRequest 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface PostLegacyAuthorizationsIDPasswordRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [authID](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.authid.md) |  | string | The ID of the legacy authorization to update. |
-|  [body](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
+|  [body](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.body.md) |  | PasswordResetBody | New password |
 

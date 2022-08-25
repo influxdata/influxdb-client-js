@@ -4,7 +4,7 @@
 
 ## OrgsAPI.deleteOrgsIDSecretsID() method
 
-Delete a secret from an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteOrgsIDSecretsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteOrgsIDSecretsID)
+Delete a secret from an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteOrgsIDSecretsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteOrgsIDSecretsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteOrgsIDSecretsID(request: DeleteOrgsIDSecretsIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteOrgsIDSecretsIDRequest](./influxdb-client-apis.deleteorgsidsecretsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteOrgsIDSecretsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

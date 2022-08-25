@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.deleteNotificationRulesID() method
 
-Delete a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteNotificationRulesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteNotificationRulesID)
+Delete a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteNotificationRulesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteNotificationRulesID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteNotificationRulesID(request: DeleteNotificationRulesIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteNotificationRulesIDRequest](./influxdb-client-apis.deletenotificationrulesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteNotificationRulesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

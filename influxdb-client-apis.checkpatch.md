@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface CheckPatch 
+interface CheckPatch 
 ```
 
 ## Properties

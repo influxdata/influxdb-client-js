@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchOrgsIDSecretsRequest 
+interface PatchOrgsIDSecretsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchorgsidsecretsrequest.body.md) |  | [Secrets](./influxdb-client-apis.secrets.md) | Secret key value pairs to update/add |
+|  [body](./influxdb-client-apis.patchorgsidsecretsrequest.body.md) |  | Secrets | Secret key value pairs to update/add |
 |  [orgID](./influxdb-client-apis.patchorgsidsecretsrequest.orgid.md) |  | string | The organization ID. |
 

@@ -4,7 +4,7 @@
 
 ## ResourcesAPI.getResources() method
 
-List all known resources. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetResources)
+List all known resources. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetResources)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getResources(request?: GetResourcesRequest, requestOptions?: RequestOptions): Pr
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetResourcesRequest](./influxdb-client-apis.getresourcesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetResourcesRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

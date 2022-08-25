@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ScriptUpdateRequest 
+interface ScriptUpdateRequest 
 ```
 
 ## Properties

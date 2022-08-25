@@ -7,18 +7,18 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Variable 
+interface Variable 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [arguments](./influxdb-client-apis.variable.arguments.md) |  | [VariableProperties](./influxdb-client-apis.variableproperties.md) |  |
+|  [arguments](./influxdb-client-apis.variable.arguments.md) |  | VariableProperties |  |
 |  [createdAt?](./influxdb-client-apis.variable.createdat.md) |  | string | <i>(Optional)</i> |
 |  [description?](./influxdb-client-apis.variable.description.md) |  | string | <i>(Optional)</i> |
 |  [id?](./influxdb-client-apis.variable.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.variable.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.variable.labels.md) |  | Labels | <i>(Optional)</i> |
 |  [links?](./influxdb-client-apis.variable.links.md) | <code>readonly</code> | { self?: string; org?: string; labels?: string; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.variable.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.variable.orgid.md) |  | string |  |

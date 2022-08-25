@@ -7,10 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type TelegramNotificationEndpoint = NotificationEndpointBase & {
+declare type TelegramNotificationEndpoint = NotificationEndpointBase & {
     token: string;
     channel: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
-

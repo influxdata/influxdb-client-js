@@ -9,16 +9,16 @@ linesToTables creates a transformationthat accepts (flux) annotated CSV lines an
 <b>Signature:</b>
 
 ```typescript
-export declare function linesToTables(consumer: FluxResultObserver<string[]>): CommunicationObserver<string>;
+declare function linesToTables(consumer: FluxResultObserver<string[]>): CommunicationObserver<string>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; |  |
+|  consumer | FluxResultObserver&lt;string\[\]&gt; |  |
 
 <b>Returns:</b>
 
-[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
+CommunicationObserver&lt;string&gt;
 

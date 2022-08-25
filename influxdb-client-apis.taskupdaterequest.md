@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TaskUpdateRequest 
+interface TaskUpdateRequest 
 ```
 
 ## Properties
@@ -20,5 +20,5 @@ export interface TaskUpdateRequest
 |  [flux?](./influxdb-client-apis.taskupdaterequest.flux.md) |  | string | <i>(Optional)</i> The Flux script to run for this task. |
 |  [name?](./influxdb-client-apis.taskupdaterequest.name.md) |  | string | <i>(Optional)</i> Override the 'name' option in the flux script. |
 |  [offset?](./influxdb-client-apis.taskupdaterequest.offset.md) |  | string | <i>(Optional)</i> Override the 'offset' option in the flux script. |
-|  [status?](./influxdb-client-apis.taskupdaterequest.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.taskupdaterequest.status.md) |  | TaskStatusType | <i>(Optional)</i> |
 

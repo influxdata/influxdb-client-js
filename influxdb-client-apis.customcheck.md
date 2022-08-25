@@ -7,9 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type CustomCheck = CheckBase & {
+declare type CustomCheck = CheckBase & {
     type: 'custom';
 };
 ```
-<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)
-

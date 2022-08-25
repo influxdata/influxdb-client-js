@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TemplateChart 
+interface TemplateChart 
 ```
 
 ## Properties
@@ -15,7 +15,7 @@ export interface TemplateChart
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [height?](./influxdb-client-apis.templatechart.height.md) |  | number | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.templatechart.properties.md) |  | [ViewProperties](./influxdb-client-apis.viewproperties.md) | <i>(Optional)</i> |
+|  [properties?](./influxdb-client-apis.templatechart.properties.md) |  | ViewProperties | <i>(Optional)</i> |
 |  [width?](./influxdb-client-apis.templatechart.width.md) |  | number | <i>(Optional)</i> |
 |  [xPos?](./influxdb-client-apis.templatechart.xpos.md) |  | number | <i>(Optional)</i> |
 |  [yPos?](./influxdb-client-apis.templatechart.ypos.md) |  | number | <i>(Optional)</i> |

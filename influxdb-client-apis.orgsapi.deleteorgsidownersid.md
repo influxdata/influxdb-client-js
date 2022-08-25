@@ -4,7 +4,7 @@
 
 ## OrgsAPI.deleteOrgsIDOwnersID() method
 
-Remove an owner from an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteOrgsIDOwnersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteOrgsIDOwnersID)
+Remove an owner from an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteOrgsIDOwnersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteOrgsIDOwnersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteOrgsIDOwnersID(request: DeleteOrgsIDOwnersIDRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteOrgsIDOwnersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

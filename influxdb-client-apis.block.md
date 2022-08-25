@@ -9,13 +9,13 @@ A set of statements
 <b>Signature:</b>
 
 ```typescript
-export interface Block 
+interface Block 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body?](./influxdb-client-apis.block.body.md) |  | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | <i>(Optional)</i> Block body |
-|  [type?](./influxdb-client-apis.block.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [body?](./influxdb-client-apis.block.body.md) |  | Statement\[\] | <i>(Optional)</i> Block body |
+|  [type?](./influxdb-client-apis.block.type.md) |  | NodeType | <i>(Optional)</i> |
 

@@ -9,7 +9,7 @@ Logging interface.
 <b>Signature:</b>
 
 ```typescript
-export interface Logger 
+interface Logger 
 ```
 
 ## Methods

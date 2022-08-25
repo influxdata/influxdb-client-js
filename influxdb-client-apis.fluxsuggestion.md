@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface FluxSuggestion 
+interface FluxSuggestion 
 ```
 
 ## Properties

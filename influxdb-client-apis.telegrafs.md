@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Telegrafs 
+interface Telegrafs 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [configurations?](./influxdb-client-apis.telegrafs.configurations.md) |  | [Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [configurations?](./influxdb-client-apis.telegrafs.configurations.md) |  | Telegraf\[\] | <i>(Optional)</i> |
 

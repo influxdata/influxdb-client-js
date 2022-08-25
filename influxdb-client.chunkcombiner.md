@@ -9,7 +9,7 @@ ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that 
 <b>Signature:</b>
 
 ```typescript
-export interface ChunkCombiner 
+interface ChunkCombiner 
 ```
 
 ## Methods

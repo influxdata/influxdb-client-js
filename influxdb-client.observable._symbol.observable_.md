@@ -11,5 +11,5 @@
 ```
 <b>Returns:</b>
 
-[Subscribable](./influxdb-client.subscribable.md)<!-- -->&lt;T&gt;
+Subscribable&lt;T&gt;
 

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Checks 
+interface Checks 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [checks?](./influxdb-client-apis.checks.checks.md) |  | [Check](./influxdb-client-apis.check.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.checks.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [checks?](./influxdb-client-apis.checks.checks.md) |  | Check\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.checks.links.md) |  | Links | <i>(Optional)</i> |
 

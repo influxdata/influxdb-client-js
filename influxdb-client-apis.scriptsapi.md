@@ -9,7 +9,7 @@ Scripts API
 <b>Signature:</b>
 
 ```typescript
-export declare class ScriptsAPI 
+declare class ScriptsAPI 
 ```
 
 ## Constructors

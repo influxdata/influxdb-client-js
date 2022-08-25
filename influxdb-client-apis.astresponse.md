@@ -9,12 +9,12 @@ Contains the AST for the supplied Flux query
 <b>Signature:</b>
 
 ```typescript
-export interface ASTResponse 
+interface ASTResponse 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [ast?](./influxdb-client-apis.astresponse.ast.md) |  | [Package](./influxdb-client-apis.package.md) | <i>(Optional)</i> |
+|  [ast?](./influxdb-client-apis.astresponse.ast.md) |  | Package | <i>(Optional)</i> |
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Cell 
+interface Cell 
 ```
 
 ## Properties

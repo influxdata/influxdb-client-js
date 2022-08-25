@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface MetadataBackup 
+interface MetadataBackup 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [buckets](./influxdb-client-apis.metadatabackup.buckets.md) |  | [BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md) |  |
+|  [buckets](./influxdb-client-apis.metadatabackup.buckets.md) |  | BucketMetadataManifests |  |
 |  [kv](./influxdb-client-apis.metadatabackup.kv.md) |  | string |  |
 |  [sql](./influxdb-client-apis.metadatabackup.sql.md) |  | string |  |
 

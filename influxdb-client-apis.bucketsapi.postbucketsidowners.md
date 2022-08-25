@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDOwners() method
 
-Add an owner to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDOwners)
+Add an owner to a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postBucketsIDOwners(request: PostBucketsIDOwnersRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostBucketsIDOwnersRequest](./influxdb-client-apis.postbucketsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostBucketsIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->&gt;
+Promise&lt;ResourceOwner&gt;
 
 promise of response
 

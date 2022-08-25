@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TelegrafPlugins 
+interface TelegrafPlugins 
 ```
 
 ## Properties
@@ -15,6 +15,6 @@ export interface TelegrafPlugins
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [os?](./influxdb-client-apis.telegrafplugins.os.md) |  | string | <i>(Optional)</i> |
-|  [plugins?](./influxdb-client-apis.telegrafplugins.plugins.md) |  | [TelegrafPlugin](./influxdb-client-apis.telegrafplugin.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [plugins?](./influxdb-client-apis.telegrafplugins.plugins.md) |  | TelegrafPlugin\[\] | <i>(Optional)</i> |
 |  [version?](./influxdb-client-apis.telegrafplugins.version.md) |  | string | <i>(Optional)</i> |
 

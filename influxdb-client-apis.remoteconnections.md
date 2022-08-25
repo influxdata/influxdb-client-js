@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface RemoteConnections 
+interface RemoteConnections 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | [RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | RemoteConnection\[\] | <i>(Optional)</i> |
 

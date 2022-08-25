@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksRequest 
+interface PostTasksRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) | Task to create |
+|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | TaskCreateRequest | Task to create |
 

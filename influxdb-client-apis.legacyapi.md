@@ -9,7 +9,7 @@ Legacy API
 <b>Signature:</b>
 
 ```typescript
-export declare class LegacyAPI 
+declare class LegacyAPI 
 ```
 
 ## Constructors
@@ -22,10 +22,10 @@ export declare class LegacyAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.deletelegacyauthorizationsid.md) |  | Delete a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteLegacyAuthorizationsID) |
-|  [getLegacyAuthorizations(request, requestOptions)](./influxdb-client-apis.legacyapi.getlegacyauthorizations.md) |  | List all legacy authorizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizations) |
-|  [getLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.getlegacyauthorizationsid.md) |  | Retrieve a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizationsID) |
-|  [patchLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.patchlegacyauthorizationsid.md) |  | Update a legacy authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLegacyAuthorizationsID) |
-|  [postLegacyAuthorizations(request, requestOptions)](./influxdb-client-apis.legacyapi.postlegacyauthorizations.md) |  | Create a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizations) |
-|  [postLegacyAuthorizationsIDPassword(request, requestOptions)](./influxdb-client-apis.legacyapi.postlegacyauthorizationsidpassword.md) |  | Set a legacy authorization password. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostLegacyAuthorizationsIDPassword](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizationsIDPassword) |
+|  [deleteLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.deletelegacyauthorizationsid.md) |  | Delete a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteLegacyAuthorizationsID) |
+|  [getLegacyAuthorizations(request, requestOptions)](./influxdb-client-apis.legacyapi.getlegacyauthorizations.md) |  | List all legacy authorizations. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLegacyAuthorizations) |
+|  [getLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.getlegacyauthorizationsid.md) |  | Retrieve a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLegacyAuthorizationsID) |
+|  [patchLegacyAuthorizationsID(request, requestOptions)](./influxdb-client-apis.legacyapi.patchlegacyauthorizationsid.md) |  | Update a legacy authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchLegacyAuthorizationsID) |
+|  [postLegacyAuthorizations(request, requestOptions)](./influxdb-client-apis.legacyapi.postlegacyauthorizations.md) |  | Create a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostLegacyAuthorizations) |
+|  [postLegacyAuthorizationsIDPassword(request, requestOptions)](./influxdb-client-apis.legacyapi.postlegacyauthorizationsidpassword.md) |  | Set a legacy authorization password. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostLegacyAuthorizationsIDPassword](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostLegacyAuthorizationsIDPassword) |
 

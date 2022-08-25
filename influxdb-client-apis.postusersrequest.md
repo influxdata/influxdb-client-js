@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostUsersRequest 
+interface PostUsersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postusersrequest.body.md) |  | [User](./influxdb-client-apis.user.md) | User to create |
+|  [body](./influxdb-client-apis.postusersrequest.body.md) |  | User | User to create |
 

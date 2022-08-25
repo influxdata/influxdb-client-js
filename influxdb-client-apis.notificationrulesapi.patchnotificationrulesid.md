@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.patchNotificationRulesID() method
 
-Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchNotificationRulesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchNotificationRulesID)
+Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchNotificationRulesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchNotificationRulesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchNotificationRulesID(request: PatchNotificationRulesIDRequest, requestOption
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchNotificationRulesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->&gt;
+Promise&lt;NotificationRule&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## BackupAPI.getBackupMetadata() method
 
-Download snapshot of all metadata in the server. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBackupMetadata](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBackupMetadata)
+Download snapshot of all metadata in the server. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBackupMetadata](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBackupMetadata)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getBackupMetadata(request?: GetBackupMetadataRequest, requestOptions?: RequestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetBackupMetadataRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[MetadataBackup](./influxdb-client-apis.metadatabackup.md)<!-- -->&gt;
+Promise&lt;MetadataBackup&gt;
 
 promise of response
 

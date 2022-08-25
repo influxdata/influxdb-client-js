@@ -9,7 +9,7 @@ Tests the error in order to know if an HTTP call can be retried.
 <b>Signature:</b>
 
 ```typescript
-export declare function canRetryHttpCall(error: any): boolean;
+declare function canRetryHttpCall(error: any): boolean;
 ```
 
 ## Parameters

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchOrgsIDRequest 
+interface PatchOrgsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchorgsidrequest.body.md) |  | [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) | Organization update to apply |
+|  [body](./influxdb-client-apis.patchorgsidrequest.body.md) |  | PatchOrganizationRequest | Organization update to apply |
 |  [orgID](./influxdb-client-apis.patchorgsidrequest.orgid.md) |  | string | The ID of the organization to get. |
 

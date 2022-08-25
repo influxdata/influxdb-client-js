@@ -9,7 +9,7 @@ Remotes API
 <b>Signature:</b>
 
 ```typescript
-export declare class RemotesAPI 
+declare class RemotesAPI 
 ```
 
 ## Constructors
@@ -22,9 +22,9 @@ export declare class RemotesAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.deleteremoteconnectionbyid.md) |  | Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteRemoteConnectionByID) |
-|  [getRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnectionbyid.md) |  | Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnectionByID) |
-|  [getRemoteConnections(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnections.md) |  | List all remote connections. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRemoteConnections) |
-|  [patchRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.patchremoteconnectionbyid.md) |  | Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchRemoteConnectionByID) |
-|  [postRemoteConnection(request, requestOptions)](./influxdb-client-apis.remotesapi.postremoteconnection.md) |  | Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRemoteConnection) |
+|  [deleteRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.deleteremoteconnectionbyid.md) |  | Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteRemoteConnectionByID) |
+|  [getRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnectionbyid.md) |  | Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRemoteConnectionByID) |
+|  [getRemoteConnections(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnections.md) |  | List all remote connections. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRemoteConnections) |
+|  [patchRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.patchremoteconnectionbyid.md) |  | Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchRemoteConnectionByID) |
+|  [postRemoteConnection(request, requestOptions)](./influxdb-client-apis.remotesapi.postremoteconnection.md) |  | Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRemoteConnection) |
 

@@ -4,7 +4,7 @@
 
 ## Task.latestCompleted property
 
-Timestamp of the latest scheduled and completed run. Value is a timestamp in \[RFC3339 date/time format\](https://docs.influxdata.com/flux/v0.x/data-types/basic/time/\#time-syntax).
+Timestamp of the latest scheduled and completed run. Value is a timestamp in [RFC3339 date/time format](https://docs.influxdata.com/flux/latest/data-types/basic/time/#time-syntax)<!-- -->.
 
 <b>Signature:</b>
 

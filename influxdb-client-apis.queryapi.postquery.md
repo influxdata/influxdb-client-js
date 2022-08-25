@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQuery() method
 
-Query data. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery)
+Query data. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQuery)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postQuery(request: PostQueryRequest, requestOptions?: RequestOptions): Promise<s
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostQueryRequest](./influxdb-client-apis.postqueryrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostQueryRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

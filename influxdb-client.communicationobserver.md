@@ -9,15 +9,15 @@ Observes communication with the server.
 <b>Signature:</b>
 
 ```typescript
-export interface CommunicationObserver<T> 
+interface CommunicationObserver<T> 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [responseStarted?](./influxdb-client.communicationobserver.responsestarted.md) |  | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | <i>(Optional)</i> Informs about a start of response processing. |
-|  [useCancellable?](./influxdb-client.communicationobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancelllable for this communication. |
+|  [responseStarted?](./influxdb-client.communicationobserver.responsestarted.md) |  | ResponseStartedFn | <i>(Optional)</i> Informs about a start of response processing. |
+|  [useCancellable?](./influxdb-client.communicationobserver.usecancellable.md) |  | (cancellable: Cancellable) =&gt; void | <i>(Optional)</i> Setups cancelllable for this communication. |
 
 ## Methods
 

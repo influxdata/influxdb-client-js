@@ -9,12 +9,12 @@ Represents a specialized literal value, indicating the left hand value of a pipe
 <b>Signature:</b>
 
 ```typescript
-export interface PipeLiteral 
+interface PipeLiteral 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | NodeType | <i>(Optional)</i> |
 

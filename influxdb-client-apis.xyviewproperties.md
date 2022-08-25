@@ -7,19 +7,19 @@
 <b>Signature:</b>
 
 ```typescript
-export interface XYViewProperties 
+interface XYViewProperties 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [axes](./influxdb-client-apis.xyviewproperties.axes.md) |  | [Axes](./influxdb-client-apis.axes.md) |  |
-|  [colorMapping?](./influxdb-client-apis.xyviewproperties.colormapping.md) |  | [ColorMapping](./influxdb-client-apis.colormapping.md) | <i>(Optional)</i> An object that contains information about the color mapping |
-|  [colors](./influxdb-client-apis.xyviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
+|  [axes](./influxdb-client-apis.xyviewproperties.axes.md) |  | Axes |  |
+|  [colorMapping?](./influxdb-client-apis.xyviewproperties.colormapping.md) |  | ColorMapping | <i>(Optional)</i> An object that contains information about the color mapping |
+|  [colors](./influxdb-client-apis.xyviewproperties.colors.md) |  | DashboardColor\[\] | Colors define color encoding of data into a visualization |
 |  [generateXAxisTicks?](./influxdb-client-apis.xyviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.xyviewproperties.generateyaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
-|  [geom](./influxdb-client-apis.xyviewproperties.geom.md) |  | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
+|  [geom](./influxdb-client-apis.xyviewproperties.geom.md) |  | XYGeom |  |
 |  [hoverDimension?](./influxdb-client-apis.xyviewproperties.hoverdimension.md) |  | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.xyviewproperties.legendcolorizerows.md) |  | boolean | <i>(Optional)</i> |
 |  [legendHide?](./influxdb-client-apis.xyviewproperties.legendhide.md) |  | boolean | <i>(Optional)</i> |
@@ -27,11 +27,11 @@ export interface XYViewProperties
 |  [legendOrientationThreshold?](./influxdb-client-apis.xyviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.xyviewproperties.note.md) |  | string |  |
 |  [position](./influxdb-client-apis.xyviewproperties.position.md) |  | 'overlaid' \| 'stacked' |  |
-|  [queries](./influxdb-client-apis.xyviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.xyviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shadeBelow?](./influxdb-client-apis.xyviewproperties.shadebelow.md) |  | boolean | <i>(Optional)</i> |
 |  [shape](./influxdb-client-apis.xyviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.xyviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [staticLegend?](./influxdb-client-apis.xyviewproperties.staticlegend.md) |  | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
+|  [staticLegend?](./influxdb-client-apis.xyviewproperties.staticlegend.md) |  | StaticLegend | <i>(Optional)</i> |
 |  [timeFormat?](./influxdb-client-apis.xyviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.xyviewproperties.type.md) |  | 'xy' |  |
 |  [xColumn?](./influxdb-client-apis.xyviewproperties.xcolumn.md) |  | string | <i>(Optional)</i> |

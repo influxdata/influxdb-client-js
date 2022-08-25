@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.putTelegrafsID() method
 
-Update a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutTelegrafsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutTelegrafsID)
+Update a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutTelegrafsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutTelegrafsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ putTelegrafsID(request: PutTelegrafsIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PutTelegrafsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->&gt;
+Promise&lt;Telegraf&gt;
 
 promise of response
 

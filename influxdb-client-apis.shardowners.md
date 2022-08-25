@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ShardOwners = ShardOwner[];
+declare type ShardOwners = ShardOwner[];
 ```
-<b>References:</b> [ShardOwner](./influxdb-client-apis.shardowner.md)
-

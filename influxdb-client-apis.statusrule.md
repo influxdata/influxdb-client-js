@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface StatusRule 
+interface StatusRule 
 ```
 
 ## Properties
@@ -15,7 +15,7 @@ export interface StatusRule
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [count?](./influxdb-client-apis.statusrule.count.md) |  | number | <i>(Optional)</i> |
-|  [currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
+|  [currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md) |  | RuleStatusLevel | <i>(Optional)</i> |
 |  [period?](./influxdb-client-apis.statusrule.period.md) |  | string | <i>(Optional)</i> |
-|  [previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
+|  [previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md) |  | RuleStatusLevel | <i>(Optional)</i> |
 

@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.deleteTelegrafsIDLabelsID() method
 
-Delete a label from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTelegrafsIDLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTelegrafsIDLabelsID)
+Delete a label from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTelegrafsIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTelegrafsIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTelegrafsIDLabelsID(request: DeleteTelegrafsIDLabelsIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteTelegrafsIDLabelsIDRequest](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteTelegrafsIDLabelsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

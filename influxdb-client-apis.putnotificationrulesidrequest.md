@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PutNotificationRulesIDRequest 
+interface PutNotificationRulesIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putnotificationrulesidrequest.body.md) |  | [NotificationRule](./influxdb-client-apis.notificationrule.md) | Notification rule update to apply |
+|  [body](./influxdb-client-apis.putnotificationrulesidrequest.body.md) |  | NotificationRule | Notification rule update to apply |
 |  [ruleID](./influxdb-client-apis.putnotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
 

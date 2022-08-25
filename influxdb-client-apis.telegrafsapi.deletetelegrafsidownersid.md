@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.deleteTelegrafsIDOwnersID() method
 
-Remove an owner from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTelegrafsIDOwnersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTelegrafsIDOwnersID)
+Remove an owner from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTelegrafsIDOwnersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTelegrafsIDOwnersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTelegrafsIDOwnersID(request: DeleteTelegrafsIDOwnersIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteTelegrafsIDOwnersIDRequest](./influxdb-client-apis.deletetelegrafsidownersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteTelegrafsIDOwnersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

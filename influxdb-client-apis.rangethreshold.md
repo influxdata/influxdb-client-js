@@ -7,12 +7,10 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type RangeThreshold = ThresholdBase & {
+declare type RangeThreshold = ThresholdBase & {
     type: 'range';
     min: number;
     max: number;
     within: boolean;
 };
 ```
-<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
-

@@ -9,7 +9,7 @@ Options that configure strategy for retrying failed requests.
 <b>Signature:</b>
 
 ```typescript
-export interface RetryDelayStrategyOptions 
+interface RetryDelayStrategyOptions 
 ```
 
 ## Properties

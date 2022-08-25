@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDOwners() method
 
-Add an owner to a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDOwners)
+Add an owner to a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDashboardsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postDashboardsIDOwners(request: PostDashboardsIDOwnersRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostDashboardsIDOwnersRequest](./influxdb-client-apis.postdashboardsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostDashboardsIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->&gt;
+Promise&lt;ResourceOwner&gt;
 
 promise of response
 

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksIDRunsRequest 
+interface PostTasksIDRunsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidrunsrequest.body.md) |  | [RunManually](./influxdb-client-apis.runmanually.md) | entity body |
+|  [body](./influxdb-client-apis.posttasksidrunsrequest.body.md) |  | RunManually | entity body |
 |  [taskID](./influxdb-client-apis.posttasksidrunsrequest.taskid.md) |  | string |  |
 

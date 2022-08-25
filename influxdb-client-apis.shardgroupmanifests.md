@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ShardGroupManifests = ShardGroupManifest[];
+declare type ShardGroupManifests = ShardGroupManifest[];
 ```
-<b>References:</b> [ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md)
-

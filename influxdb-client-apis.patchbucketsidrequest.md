@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchBucketsIDRequest 
+interface PatchBucketsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchbucketsidrequest.body.md) |  | [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | Bucket update to apply |
+|  [body](./influxdb-client-apis.patchbucketsidrequest.body.md) |  | PatchBucketRequest | Bucket update to apply |
 |  [bucketID](./influxdb-client-apis.patchbucketsidrequest.bucketid.md) |  | string | The bucket ID. |
 

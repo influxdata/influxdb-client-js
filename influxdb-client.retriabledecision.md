@@ -9,7 +9,7 @@ Interface for errors to inform that an associated operation can be retried.
 <b>Signature:</b>
 
 ```typescript
-export interface RetriableDecision 
+interface RetriableDecision 
 ```
 
 ## Methods

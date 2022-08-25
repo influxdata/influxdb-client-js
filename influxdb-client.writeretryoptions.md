@@ -9,9 +9,9 @@ Options that configure strategy for retrying failed InfluxDB write operations.
 <b>Signature:</b>
 
 ```typescript
-export interface WriteRetryOptions extends RetryDelayStrategyOptions 
+interface WriteRetryOptions extends RetryDelayStrategyOptions 
 ```
-<b>Extends:</b> [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md)
+<b>Extends:</b> RetryDelayStrategyOptions
 
 ## Properties
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DeleteDashboardsIDOwnersIDRequest 
+interface DeleteDashboardsIDOwnersIDRequest 
 ```
 
 ## Properties

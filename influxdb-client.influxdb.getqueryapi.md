@@ -16,11 +16,11 @@ getQueryApi(org: string | QueryOptions): QueryApi;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  org | string \| [QueryOptions](./influxdb-client.queryoptions.md) | organization or query options |
+|  org | string \| QueryOptions | organization or query options |
 
 <b>Returns:</b>
 
-[QueryApi](./influxdb-client.queryapi.md)
+QueryApi
 
 QueryApi instance
 

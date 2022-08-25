@@ -4,12 +4,12 @@
 
 ## QueryApi interface
 
-Query InfluxDB. Provides methods that notify about result lines of the executed query. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostQuery)
+Query InfluxDB. Provides methods that notify about result lines of the executed query. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery)
 
 <b>Signature:</b>
 
 ```typescript
-export default interface QueryApi 
+interface QueryApi 
 ```
 
 ## Methods
@@ -19,7 +19,7 @@ export default interface QueryApi
 |  [collectLines(query)](./influxdb-client.queryapi.collectlines.md) | CollectLines executes the query and collects all result lines in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of lines is copied to memory. |
 |  [collectRows(query, rowMapper)](./influxdb-client.queryapi.collectrows.md) | CollectRows executes the query and collects all the results in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of results is copied to memory. |
 |  [lines(query)](./influxdb-client.queryapi.lines.md) | Creates a cold observable of the lines returned by the given query. |
-|  [queryLines(query, consumer)](./influxdb-client.queryapi.querylines.md) | Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/). |
+|  [queryLines(query, consumer)](./influxdb-client.queryapi.querylines.md) | Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->. |
 |  [queryRaw(query)](./influxdb-client.queryapi.queryraw.md) | QueryRaw executes a query and returns the full response as a string. Use with caution, a possibly huge stream is copied to memory. |
 |  [queryRows(query, consumer)](./influxdb-client.queryapi.queryrows.md) | Executes the query and receives table metadata and rows through the supplied consumer. |
 |  [response(query)](./influxdb-client.queryapi.response.md) | Response returns an AnnotatedCSVResponse instance that executes the query when asked for data. |

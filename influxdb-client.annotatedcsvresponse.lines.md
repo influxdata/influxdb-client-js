@@ -13,7 +13,7 @@ lines(): Observable<string>;
 ```
 <b>Returns:</b>
 
-[Observable](./influxdb-client.observable.md)<!-- -->&lt;string&gt;
+Observable&lt;string&gt;
 
 observable of CSV result lines
 

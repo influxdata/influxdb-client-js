@@ -9,14 +9,14 @@ Represents the declaration of a variable
 <b>Signature:</b>
 
 ```typescript
-export interface VariableAssignment 
+interface VariableAssignment 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.variableassignment.id.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [init?](./influxdb-client-apis.variableassignment.init.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.variableassignment.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.variableassignment.id.md) |  | Identifier | <i>(Optional)</i> |
+|  [init?](./influxdb-client-apis.variableassignment.init.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.variableassignment.type.md) |  | NodeType | <i>(Optional)</i> |
 

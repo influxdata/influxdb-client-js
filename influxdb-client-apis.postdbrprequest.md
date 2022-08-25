@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostDBRPRequest 
+interface PostDBRPRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdbrprequest.body.md) |  | [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) | The database retention policy mapping to add |
+|  [body](./influxdb-client-apis.postdbrprequest.body.md) |  | DBRPCreate | The database retention policy mapping to add |
 

@@ -9,14 +9,14 @@ Represents accessing a property of an object
 <b>Signature:</b>
 
 ```typescript
-export interface MemberExpression 
+interface MemberExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [object?](./influxdb-client-apis.memberexpression.object.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [object?](./influxdb-client-apis.memberexpression.object.md) |  | Expression | <i>(Optional)</i> |
 |  [property?](./influxdb-client-apis.memberexpression.property.md) |  | PropertyKey | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.memberexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

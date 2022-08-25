@@ -7,10 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type CellWithViewProperties = Cell & {
+declare type CellWithViewProperties = Cell & {
     name?: string;
     properties?: ViewProperties;
 };
 ```
-<b>References:</b> [Cell](./influxdb-client-apis.cell.md)<!-- -->, [ViewProperties](./influxdb-client-apis.viewproperties.md)
-

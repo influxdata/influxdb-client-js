@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Dashboard = CreateDashboardRequest & {
+declare type Dashboard = CreateDashboardRequest & {
     links?: {
         self?: Link;
         cells?: Link;
@@ -25,5 +25,3 @@ export declare type Dashboard = CreateDashboardRequest & {
     labels?: Labels;
 };
 ```
-<b>References:</b> [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [Cells](./influxdb-client-apis.cells.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
-

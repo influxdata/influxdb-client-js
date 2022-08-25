@@ -9,13 +9,13 @@ A single variable declaration
 <b>Signature:</b>
 
 ```typescript
-export interface OptionStatement 
+interface OptionStatement 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [assignment?](./influxdb-client-apis.optionstatement.assignment.md) |  | [VariableAssignment](./influxdb-client-apis.variableassignment.md) \| [MemberAssignment](./influxdb-client-apis.memberassignment.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.optionstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [assignment?](./influxdb-client-apis.optionstatement.assignment.md) |  | VariableAssignment \| MemberAssignment | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.optionstatement.type.md) |  | NodeType | <i>(Optional)</i> |
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type GeoHeatMapViewLayer = GeoViewLayerProperties & {
+declare type GeoHeatMapViewLayer = GeoViewLayerProperties & {
     intensityField: string;
     intensityDimension: Axis;
     radius: number;
@@ -15,5 +15,3 @@ export declare type GeoHeatMapViewLayer = GeoViewLayerProperties & {
     colors: DashboardColor[];
 };
 ```
-<b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)<!-- -->, [Axis](./influxdb-client-apis.axis.md)<!-- -->, [DashboardColor](./influxdb-client-apis.dashboardcolor.md)
-

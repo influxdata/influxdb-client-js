@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Logs 
+interface Logs 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [events?](./influxdb-client-apis.logs.events.md) | <code>readonly</code> | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [events?](./influxdb-client-apis.logs.events.md) | <code>readonly</code> | LogEvent\[\] | <i>(Optional)</i> |
 

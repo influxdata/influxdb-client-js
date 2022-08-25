@@ -4,7 +4,7 @@
 
 ## VariablesAPI.postVariables() method
 
-Create a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostVariables](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostVariables)
+Create a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostVariables](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostVariables)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postVariables(request: PostVariablesRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostVariablesRequest](./influxdb-client-apis.postvariablesrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostVariablesRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
+Promise&lt;Variable&gt;
 
 promise of response
 

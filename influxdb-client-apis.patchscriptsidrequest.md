@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchScriptsIDRequest 
+interface PatchScriptsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) | Script update to apply |
+|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | ScriptUpdateRequest | Script update to apply |
 |  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) |  | string | The script ID. |
 

@@ -9,14 +9,14 @@ Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
 <b>Signature:</b>
 
 ```typescript
-export interface FluxTableMetaData 
+interface FluxTableMetaData 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | Table columns. |
+|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;FluxTableColumn&gt; | Table columns. |
 
 ## Methods
 

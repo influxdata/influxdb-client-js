@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetChecksIDQueryRequest 
+interface GetChecksIDQueryRequest 
 ```
 
 ## Properties

@@ -9,13 +9,13 @@ Represents an expression wrapped in parenthesis
 <b>Signature:</b>
 
 ```typescript
-export interface ParenExpression 
+interface ParenExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [expression?](./influxdb-client-apis.parenexpression.expression.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.parenexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [expression?](./influxdb-client-apis.parenexpression.expression.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.parenexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

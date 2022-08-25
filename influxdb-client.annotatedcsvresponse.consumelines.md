@@ -4,7 +4,7 @@
 
 ## AnnotatedCSVResponse.consumeLines() method
 
-ConsumesLines consumes result lines (including empty and annotation lines) through the supplied consumer. See \[annotated-csv\](https://docs.influxdata.com/influxdb/v2.1/reference/syntax/annotated-csv/).
+ConsumesLines consumes result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->.
 
 <b>Signature:</b>
 
@@ -16,7 +16,7 @@ consumeLines(consumer: CommunicationObserver<string>): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
+|  consumer | CommunicationObserver&lt;string&gt; | csv result lines and error consumer |
 
 <b>Returns:</b>
 

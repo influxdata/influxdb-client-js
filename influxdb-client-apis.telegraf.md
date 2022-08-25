@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Telegraf = TelegrafRequest & {
+declare type Telegraf = TelegrafRequest & {
     readonly id?: string;
     readonly links?: {
         self?: Link;
@@ -18,5 +18,3 @@ export declare type Telegraf = TelegrafRequest & {
     readonly labels?: Labels;
 };
 ```
-<b>References:</b> [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
-

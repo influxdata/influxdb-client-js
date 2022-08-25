@@ -4,7 +4,7 @@
 
 ## LegacyAPI.getLegacyAuthorizationsID() method
 
-Retrieve a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLegacyAuthorizationsID)
+Retrieve a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLegacyAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getLegacyAuthorizationsID(request: GetLegacyAuthorizationsIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetLegacyAuthorizationsIDRequest](./influxdb-client-apis.getlegacyauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetLegacyAuthorizationsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
+Promise&lt;Authorization&gt;
 
 promise of response
 

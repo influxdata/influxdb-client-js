@@ -9,14 +9,14 @@ Object property assignment
 <b>Signature:</b>
 
 ```typescript
-export interface MemberAssignment 
+interface MemberAssignment 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [init?](./influxdb-client-apis.memberassignment.init.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [member?](./influxdb-client-apis.memberassignment.member.md) |  | [MemberExpression](./influxdb-client-apis.memberexpression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberassignment.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [init?](./influxdb-client-apis.memberassignment.init.md) |  | Expression | <i>(Optional)</i> |
+|  [member?](./influxdb-client-apis.memberassignment.member.md) |  | MemberExpression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.memberassignment.type.md) |  | NodeType | <i>(Optional)</i> |
 

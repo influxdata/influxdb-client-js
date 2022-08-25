@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.patchDBRPID() method
 
-Update a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchDBRPID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchDBRPID)
+Update a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchDBRPID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchDBRPID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchDBRPIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
+Promise&lt;DBRPGet&gt;
 
 promise of response
 

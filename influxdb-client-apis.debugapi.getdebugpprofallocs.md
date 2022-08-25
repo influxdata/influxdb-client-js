@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofAllocs() method
 
-Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDebugPprofAllocs)
+Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofAllocs)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofAllocs(request?: GetDebugPprofAllocsRequest, requestOptions?: Reque
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetDebugPprofAllocsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

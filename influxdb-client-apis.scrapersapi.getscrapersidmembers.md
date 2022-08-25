@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDMembers() method
 
-List all users with member privileges for a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersIDMembers)
+List all users with member privileges for a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getScrapersIDMembers(request: GetScrapersIDMembersRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetScrapersIDMembersRequest](./influxdb-client-apis.getscrapersidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetScrapersIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
+Promise&lt;ResourceMembers&gt;
 
 promise of response
 

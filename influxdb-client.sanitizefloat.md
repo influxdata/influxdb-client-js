@@ -9,7 +9,7 @@ Sanitizes float value to avoid injections.
 <b>Signature:</b>
 
 ```typescript
-export declare function sanitizeFloat(value: any): string;
+declare function sanitizeFloat(value: any): string;
 ```
 
 ## Parameters

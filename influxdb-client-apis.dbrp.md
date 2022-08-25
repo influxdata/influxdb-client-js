@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DBRP 
+interface DBRP 
 ```
 
 ## Properties
@@ -18,7 +18,7 @@ export interface DBRP
 |  [database](./influxdb-client-apis.dbrp.database.md) |  | string | InfluxDB v1 database |
 |  [default](./influxdb-client-apis.dbrp.default.md) |  | boolean | Mapping represents the default retention policy for the database specified. |
 |  [id](./influxdb-client-apis.dbrp.id.md) | <code>readonly</code> | string | ID of the DBRP mapping. |
-|  [links?](./influxdb-client-apis.dbrp.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.dbrp.links.md) |  | Links | <i>(Optional)</i> |
 |  [orgID](./influxdb-client-apis.dbrp.orgid.md) |  | string | ID of the organization that owns this mapping. |
 |  [retention\_policy](./influxdb-client-apis.dbrp.retention_policy.md) |  | string | InfluxDB v1 retention policy |
 

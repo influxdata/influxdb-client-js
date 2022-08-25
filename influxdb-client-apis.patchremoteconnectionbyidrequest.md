@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchRemoteConnectionByIDRequest 
+interface PatchRemoteConnectionByIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchremoteconnectionbyidrequest.body.md) |  | [RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md) | entity body |
+|  [body](./influxdb-client-apis.patchremoteconnectionbyidrequest.body.md) |  | RemoteConnectionUpdateRequest | entity body |
 |  [remoteID](./influxdb-client-apis.patchremoteconnectionbyidrequest.remoteid.md) |  | string |  |
 

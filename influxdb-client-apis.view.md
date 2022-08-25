@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface View 
+interface View 
 ```
 
 ## Properties
@@ -17,5 +17,5 @@ export interface View
 |  [id?](./influxdb-client-apis.view.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [links?](./influxdb-client-apis.view.links.md) | <code>readonly</code> | { self?: string; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.view.name.md) |  | string |  |
-|  [properties](./influxdb-client-apis.view.properties.md) |  | [ViewProperties](./influxdb-client-apis.viewproperties.md) |  |
+|  [properties](./influxdb-client-apis.view.properties.md) |  | ViewProperties |  |
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type DeadmanCheck = CheckBase & {
+declare type DeadmanCheck = CheckBase & {
     type: 'deadman';
     timeSince?: string;
     staleTime?: string;
@@ -22,5 +22,3 @@ export declare type DeadmanCheck = CheckBase & {
     statusMessageTemplate?: string;
 };
 ```
-<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md)
-

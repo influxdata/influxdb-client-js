@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ResourceMembers 
+interface ResourceMembers 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface ResourceMembers
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [links?](./influxdb-client-apis.resourcemembers.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.resourcemembers.users.md) |  | [ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.resourcemembers.users.md) |  | ResourceMember\[\] | <i>(Optional)</i> |
 

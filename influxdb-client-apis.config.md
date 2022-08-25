@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Config 
+interface Config 
 ```
 
 ## Properties

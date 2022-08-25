@@ -9,13 +9,13 @@ Represents an instant in time with nanosecond precision using the syntax of gola
 <b>Signature:</b>
 
 ```typescript
-export interface DateTimeLiteral 
+interface DateTimeLiteral 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.datetimeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.datetimeliteral.type.md) |  | NodeType | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.datetimeliteral.value.md) |  | string | <i>(Optional)</i> |
 

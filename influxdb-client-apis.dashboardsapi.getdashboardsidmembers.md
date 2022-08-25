@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDMembers() method
 
-List all dashboard members. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetDashboardsIDMembers)
+List all dashboard members. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDashboardsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDashboardsIDMembers(request: GetDashboardsIDMembersRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetDashboardsIDMembersRequest](./influxdb-client-apis.getdashboardsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetDashboardsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
+Promise&lt;ResourceMembers&gt;
 
 promise of response
 

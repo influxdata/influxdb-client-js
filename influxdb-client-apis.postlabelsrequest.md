@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostLabelsRequest 
+interface PostLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) | Label to create |
+|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | LabelCreateRequest | Label to create |
 

@@ -9,14 +9,14 @@ Function expression
 <b>Signature:</b>
 
 ```typescript
-export interface FunctionExpression 
+interface FunctionExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body?](./influxdb-client-apis.functionexpression.body.md) |  | [Node](./influxdb-client-apis.node.md) | <i>(Optional)</i> |
-|  [params?](./influxdb-client-apis.functionexpression.params.md) |  | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Function parameters |
-|  [type?](./influxdb-client-apis.functionexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [body?](./influxdb-client-apis.functionexpression.body.md) |  | Node | <i>(Optional)</i> |
+|  [params?](./influxdb-client-apis.functionexpression.params.md) |  | Property\[\] | <i>(Optional)</i> Function parameters |
+|  [type?](./influxdb-client-apis.functionexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

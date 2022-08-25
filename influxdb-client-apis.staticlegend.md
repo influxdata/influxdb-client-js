@@ -9,7 +9,7 @@ StaticLegend represents the options specific to the static legend
 <b>Signature:</b>
 
 ```typescript
-export interface StaticLegend 
+interface StaticLegend 
 ```
 
 ## Properties

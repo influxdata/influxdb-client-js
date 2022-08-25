@@ -9,7 +9,7 @@ Creates an accept function that stops processing if the table reaches the specif
 <b>Signature:</b>
 
 ```typescript
-export declare function acceptMaxTableLength(max: number): AcceptRowFunction;
+declare function acceptMaxTableLength(max: number): AcceptRowFunction;
 ```
 
 ## Parameters
@@ -20,7 +20,7 @@ export declare function acceptMaxTableLength(max: number): AcceptRowFunction;
 
 <b>Returns:</b>
 
-[AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)
+AcceptRowFunction
 
 AcceptRowFunction that enforces that most max rows are processed
 

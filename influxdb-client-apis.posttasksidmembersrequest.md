@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksIDMembersRequest 
+interface PostTasksIDMembersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
+|  [body](./influxdb-client-apis.posttasksidmembersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as member |
 |  [taskID](./influxdb-client-apis.posttasksidmembersrequest.taskid.md) |  | string | The task ID. |
 

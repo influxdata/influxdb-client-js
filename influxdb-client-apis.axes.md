@@ -9,13 +9,13 @@ The viewport for a View's visualizations
 <b>Signature:</b>
 
 ```typescript
-export interface Axes 
+interface Axes 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [x](./influxdb-client-apis.axes.x.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
-|  [y](./influxdb-client-apis.axes.y.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
+|  [x](./influxdb-client-apis.axes.x.md) |  | Axis |  |
+|  [y](./influxdb-client-apis.axes.y.md) |  | Axis |  |
 

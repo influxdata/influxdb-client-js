@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostSigninRequest 
+interface PostSigninRequest 
 ```
 
 ## Properties

@@ -4,7 +4,7 @@
 
 ## VariablesAPI.deleteVariablesID() method
 
-Delete a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteVariablesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteVariablesID)
+Delete a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteVariablesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteVariablesID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteVariablesID(request: DeleteVariablesIDRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteVariablesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

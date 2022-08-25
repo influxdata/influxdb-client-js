@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.postDBRP() method
 
-Add a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDBRP](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDBRP)
+Add a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDBRP](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDBRP)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postDBRP(request: PostDBRPRequest, requestOptions?: RequestOptions): Promise<DBR
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostDBRPRequest](./influxdb-client-apis.postdbrprequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostDBRPRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[DBRP](./influxdb-client-apis.dbrp.md)<!-- -->&gt;
+Promise&lt;DBRP&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## MetricsAPI.getMetrics() method
 
-Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMetrics)
+Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetMetrics)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getMetrics(request?: GetMetricsRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetMetricsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -7,9 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ResourceMember = UserResponse & {
+declare type ResourceMember = UserResponse & {
     role?: 'member';
 };
 ```
-<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
-

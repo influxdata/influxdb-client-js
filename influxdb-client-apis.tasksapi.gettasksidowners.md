@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDOwners() method
 
-List all owners of a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDOwners)
+List all owners of a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksIDOwners(request: GetTasksIDOwnersRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTasksIDOwnersRequest](./influxdb-client-apis.gettasksidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTasksIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
+Promise&lt;ResourceOwners&gt;
 
 promise of response
 

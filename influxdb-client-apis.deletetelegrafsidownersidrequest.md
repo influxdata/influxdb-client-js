@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DeleteTelegrafsIDOwnersIDRequest 
+interface DeleteTelegrafsIDOwnersIDRequest 
 ```
 
 ## Properties

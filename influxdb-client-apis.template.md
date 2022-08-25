@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Template = Array<{
+declare type Template = Array<{
     apiVersion?: string;
     kind?: TemplateKind;
     meta?: {
@@ -16,5 +16,3 @@ export declare type Template = Array<{
     spec?: any;
 }>;
 ```
-<b>References:</b> [TemplateKind](./influxdb-client-apis.templatekind.md)
-

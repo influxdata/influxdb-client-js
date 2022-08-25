@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface HealthCheck 
+interface HealthCheck 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [checks?](./influxdb-client-apis.healthcheck.checks.md) |  | [HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [checks?](./influxdb-client-apis.healthcheck.checks.md) |  | HealthCheck\[\] | <i>(Optional)</i> |
 |  [commit?](./influxdb-client-apis.healthcheck.commit.md) |  | string | <i>(Optional)</i> |
 |  [message?](./influxdb-client-apis.healthcheck.message.md) |  | string | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.healthcheck.name.md) |  | string |  |

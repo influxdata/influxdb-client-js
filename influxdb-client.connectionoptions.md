@@ -9,7 +9,7 @@ Option for the communication with InfluxDB server.
 <b>Signature:</b>
 
 ```typescript
-export interface ConnectionOptions 
+interface ConnectionOptions 
 ```
 
 ## Properties

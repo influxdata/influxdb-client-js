@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type ThresholdCheck = CheckBase & {
+declare type ThresholdCheck = CheckBase & {
     type: 'threshold';
     thresholds?: Threshold[];
     every?: string;
@@ -19,5 +19,3 @@ export declare type ThresholdCheck = CheckBase & {
     statusMessageTemplate?: string;
 };
 ```
-<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [Threshold](./influxdb-client-apis.threshold.md)
-

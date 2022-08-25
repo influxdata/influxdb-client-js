@@ -4,7 +4,7 @@
 
 ## VariablesAPI.patchVariablesID() method
 
-Update a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchVariablesID)
+Update a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchVariablesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchVariablesID(request: PatchVariablesIDRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchVariablesIDRequest](./influxdb-client-apis.patchvariablesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchVariablesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
+Promise&lt;Variable&gt;
 
 promise of response
 

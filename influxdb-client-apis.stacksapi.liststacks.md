@@ -4,7 +4,7 @@
 
 ## StacksAPI.listStacks() method
 
-List installed templates. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/ListStacks)
+List installed templates. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.3/api/#operation/ListStacks)
 
 <b>Signature:</b>
 
@@ -18,12 +18,12 @@ listStacks(request: ListStacksRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [ListStacksRequest](./influxdb-client-apis.liststacksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | ListStacksRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;{ stacks?: [Stack](./influxdb-client-apis.stack.md)<!-- -->\[\]; }&gt;
+Promise&lt;{ stacks?: Stack\[\]; }&gt;
 
 promise of response
 

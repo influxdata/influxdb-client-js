@@ -4,14 +4,14 @@
 
 ## WriteApi interface
 
-The asynchronous buffering API to Write time-series data into InfluxDB. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use `flush` to send the buffered data to InfluxDB immediately. <p> The data are formatted in \[Line Protocol\](https://bit.ly/2QL99fu). <p>
+Asynchronous API that writes time-series data into InfluxDB. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use `flush` to send the buffered data to InfluxDB immediately.
 
 <b>Signature:</b>
 
 ```typescript
-export default interface WriteApi extends PointSettings 
+interface WriteApi extends PointSettings 
 ```
-<b>Extends:</b> [PointSettings](./influxdb-client.pointsettings.md)
+<b>Extends:</b> PointSettings
 
 ## Properties
 
@@ -29,6 +29,6 @@ export default interface WriteApi extends PointSettings
 |  [useDefaultTags(tags)](./influxdb-client.writeapi.usedefaulttags.md) | Instructs to use the following default tags when writing points. Not applicable for writing records/lines. |
 |  [writePoint(point)](./influxdb-client.writeapi.writepoint.md) | Write point. |
 |  [writePoints(points)](./influxdb-client.writeapi.writepoints.md) | Write points. |
-|  [writeRecord(record)](./influxdb-client.writeapi.writerecord.md) | Write a line of \[Line Protocol\](https://bit.ly/2QL99fu). |
-|  [writeRecords(records)](./influxdb-client.writeapi.writerecords.md) | Write lines of \[Line Protocol\](https://bit.ly/2QL99fu). |
+|  [writeRecord(record)](./influxdb-client.writeapi.writerecord.md) | Write a line of [Line Protocol](https://bit.ly/2QL99fu)<!-- -->. |
+|  [writeRecords(records)](./influxdb-client.writeapi.writerecords.md) | Write lines of [Line Protocol](https://bit.ly/2QL99fu)<!-- -->. |
 

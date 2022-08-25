@@ -4,7 +4,7 @@
 
 ## LegacyAPI.deleteLegacyAuthorizationsID() method
 
-Delete a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteLegacyAuthorizationsID)
+Delete a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteLegacyAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteLegacyAuthorizationsID(request: DeleteLegacyAuthorizationsIDRequest, reque
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteLegacyAuthorizationsIDRequest](./influxdb-client-apis.deletelegacyauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteLegacyAuthorizationsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasks() method
 
-List all tasks. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasks)
+List all tasks. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasks](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasks)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasks(request?: GetTasksRequest, requestOptions?: RequestOptions): Promise<Ta
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTasksRequest](./influxdb-client-apis.gettasksrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTasksRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Tasks](./influxdb-client-apis.tasks.md)<!-- -->&gt;
+Promise&lt;Tasks&gt;
 
 promise of response
 

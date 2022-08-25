@@ -7,10 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type GreaterThreshold = ThresholdBase & {
+declare type GreaterThreshold = ThresholdBase & {
     type: 'greater';
     value: number;
 };
 ```
-<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
-

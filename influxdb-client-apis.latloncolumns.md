@@ -9,13 +9,13 @@ Object type to define lat/lon columns
 <b>Signature:</b>
 
 ```typescript
-export interface LatLonColumns 
+interface LatLonColumns 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [lat](./influxdb-client-apis.latloncolumns.lat.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
-|  [lon](./influxdb-client-apis.latloncolumns.lon.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
+|  [lat](./influxdb-client-apis.latloncolumns.lat.md) |  | LatLonColumn |  |
+|  [lon](./influxdb-client-apis.latloncolumns.lon.md) |  | LatLonColumn |  |
 

@@ -9,7 +9,7 @@ Dialect are options to change the default CSV output format; https://www.w3.org/
 <b>Signature:</b>
 
 ```typescript
-export interface Dialect 
+interface Dialect 
 ```
 
 ## Properties

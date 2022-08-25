@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface QueryVariableProperties 
+interface QueryVariableProperties 
 ```
 
 ## Properties

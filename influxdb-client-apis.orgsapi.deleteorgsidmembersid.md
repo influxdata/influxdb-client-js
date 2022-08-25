@@ -4,7 +4,7 @@
 
 ## OrgsAPI.deleteOrgsIDMembersID() method
 
-Remove a member from an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteOrgsIDMembersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteOrgsIDMembersID)
+Remove a member from an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteOrgsIDMembersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteOrgsIDMembersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteOrgsIDMembersID(request: DeleteOrgsIDMembersIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteOrgsIDMembersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

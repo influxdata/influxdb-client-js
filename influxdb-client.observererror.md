@@ -9,5 +9,5 @@ Type of [Observer.error](./influxdb-client.observer.error.md)
 <b>Signature:</b>
 
 ```typescript
-export declare type ObserverError = (e: any) => void;
+declare type ObserverError = (e: any) => void;
 ```

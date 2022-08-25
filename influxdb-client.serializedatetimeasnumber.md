@@ -9,7 +9,7 @@ serializeDateTimeAsNumber changes type serializers to return milliseconds since 
 <b>Signature:</b>
 
 ```typescript
-export declare function serializeDateTimeAsNumber(): void;
+declare function serializeDateTimeAsNumber(): void;
 ```
 <b>Returns:</b>
 

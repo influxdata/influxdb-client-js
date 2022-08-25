@@ -9,7 +9,7 @@ The delete predicate request.
 <b>Signature:</b>
 
 ```typescript
-export interface DeletePredicateRequest 
+interface DeletePredicateRequest 
 ```
 
 ## Properties

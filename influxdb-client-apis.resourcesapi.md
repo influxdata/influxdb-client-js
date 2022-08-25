@@ -9,7 +9,7 @@ Resources API
 <b>Signature:</b>
 
 ```typescript
-export declare class ResourcesAPI 
+declare class ResourcesAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class ResourcesAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md) |  | List all known resources. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetResources) |
+|  [getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md) |  | List all known resources. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetResources) |
 

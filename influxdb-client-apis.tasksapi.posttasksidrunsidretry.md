@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDRunsIDRetry() method
 
-Retry a task run. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTasksIDRunsIDRetry](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTasksIDRunsIDRetry)
+Retry a task run. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTasksIDRunsIDRetry](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDRunsIDRetry)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTasksIDRunsIDRetry(request: PostTasksIDRunsIDRetryRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostTasksIDRunsIDRetryRequest](./influxdb-client-apis.posttasksidrunsidretryrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostTasksIDRunsIDRetryRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Run](./influxdb-client-apis.run.md)<!-- -->&gt;
+Promise&lt;Run&gt;
 
 promise of response
 

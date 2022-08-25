@@ -9,14 +9,14 @@ Represents a function call
 <b>Signature:</b>
 
 ```typescript
-export interface CallExpression 
+interface CallExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [arguments?](./influxdb-client-apis.callexpression.arguments.md) |  | [Expression](./influxdb-client-apis.expression.md)<!-- -->\[\] | <i>(Optional)</i> Function arguments |
-|  [callee?](./influxdb-client-apis.callexpression.callee.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.callexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [arguments?](./influxdb-client-apis.callexpression.arguments.md) |  | Expression\[\] | <i>(Optional)</i> Function arguments |
+|  [callee?](./influxdb-client-apis.callexpression.callee.md) |  | Expression | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.callexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

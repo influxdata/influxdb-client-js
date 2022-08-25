@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Cells = Cell[];
+declare type Cells = Cell[];
 ```
-<b>References:</b> [Cell](./influxdb-client-apis.cell.md)
-

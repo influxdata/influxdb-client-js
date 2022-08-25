@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PutTelegrafsIDRequest 
+interface PutTelegrafsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.puttelegrafsidrequest.body.md) |  | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration update to apply |
+|  [body](./influxdb-client-apis.puttelegrafsidrequest.body.md) |  | TelegrafPluginRequest | Telegraf configuration update to apply |
 |  [telegrafID](./influxdb-client-apis.puttelegrafsidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
 

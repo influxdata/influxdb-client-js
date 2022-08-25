@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDMembers() method
 
-List all users with member privileges for a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDMembers)
+List all users with member privileges for a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getBucketsIDMembers(request: GetBucketsIDMembersRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBucketsIDMembersRequest](./influxdb-client-apis.getbucketsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetBucketsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
+Promise&lt;ResourceMembers&gt;
 
 promise of response
 

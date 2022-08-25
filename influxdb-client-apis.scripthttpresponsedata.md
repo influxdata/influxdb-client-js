@@ -9,5 +9,5 @@ The data sent in the response body when a script is invoked by an HTTP request. 
 <b>Signature:</b>
 
 ```typescript
-export declare type ScriptHTTPResponseData = string;
+declare type ScriptHTTPResponseData = string;
 ```

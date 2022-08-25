@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ApplyTemplateRequest 
+interface ApplyTemplateRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | [TemplateApply](./influxdb-client-apis.templateapply.md) | entity body |
+|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | TemplateApply | entity body |
 

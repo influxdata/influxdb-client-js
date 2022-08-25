@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ShardManifest 
+interface ShardManifest 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface ShardManifest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [id](./influxdb-client-apis.shardmanifest.id.md) |  | number |  |
-|  [shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md) |  | [ShardOwners](./influxdb-client-apis.shardowners.md) |  |
+|  [shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md) |  | ShardOwners |  |
 

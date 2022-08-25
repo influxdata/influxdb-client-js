@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type PostNotificationRule = NotificationRuleDiscriminator;
+declare type PostNotificationRule = NotificationRuleDiscriminator;
 ```
-<b>References:</b> [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
-

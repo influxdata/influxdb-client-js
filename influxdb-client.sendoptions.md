@@ -9,7 +9,7 @@ Options for sending a request message.
 <b>Signature:</b>
 
 ```typescript
-export interface SendOptions 
+interface SendOptions 
 ```
 
 ## Properties

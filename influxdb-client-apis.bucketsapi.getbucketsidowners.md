@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBucketsIDOwners() method
 
-List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetBucketsIDOwners)
+List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getBucketsIDOwners(request: GetBucketsIDOwnersRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetBucketsIDOwnersRequest](./influxdb-client-apis.getbucketsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetBucketsIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
+Promise&lt;ResourceOwners&gt;
 
 promise of response
 

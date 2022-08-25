@@ -9,13 +9,13 @@ Expressions begin and end with double quote marks
 <b>Signature:</b>
 
 ```typescript
-export interface StringLiteral 
+interface StringLiteral 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.stringliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.stringliteral.type.md) |  | NodeType | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.stringliteral.value.md) |  | string | <i>(Optional)</i> |
 

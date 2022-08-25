@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TaskCreateRequest 
+interface TaskCreateRequest 
 ```
 
 ## Properties
@@ -18,5 +18,5 @@ export interface TaskCreateRequest
 |  [flux](./influxdb-client-apis.taskcreaterequest.flux.md) |  | string | The Flux script to run for this task. |
 |  [org?](./influxdb-client-apis.taskcreaterequest.org.md) |  | string | <i>(Optional)</i> The name of the organization that owns this Task. |
 |  [orgID?](./influxdb-client-apis.taskcreaterequest.orgid.md) |  | string | <i>(Optional)</i> The ID of the organization that owns this Task. |
-|  [status?](./influxdb-client-apis.taskcreaterequest.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
+|  [status?](./influxdb-client-apis.taskcreaterequest.status.md) |  | TaskStatusType | <i>(Optional)</i> |
 

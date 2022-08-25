@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDOwners() method
 
-List all owners of an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgsIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgsIDOwners)
+List all owners of an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetOrgsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getOrgsIDOwners(request: GetOrgsIDOwnersRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetOrgsIDOwnersRequest](./influxdb-client-apis.getorgsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetOrgsIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
+Promise&lt;ResourceOwners&gt;
 
 promise of response
 

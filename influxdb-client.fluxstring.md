@@ -9,7 +9,7 @@ Creates a flux string literal.
 <b>Signature:</b>
 
 ```typescript
-export declare function fluxString(value: any): FluxParameterLike;
+declare function fluxString(value: any): FluxParameterLike;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ export declare function fluxString(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+FluxParameterLike
 

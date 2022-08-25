@@ -11,5 +11,5 @@ subscribe(): Subscription;
 ```
 <b>Returns:</b>
 
-[Subscription](./influxdb-client.subscription.md)
+Subscription
 

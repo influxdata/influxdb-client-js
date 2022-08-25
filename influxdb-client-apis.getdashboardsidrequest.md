@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetDashboardsIDRequest 
+interface GetDashboardsIDRequest 
 ```
 
 ## Properties

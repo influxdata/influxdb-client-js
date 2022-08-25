@@ -9,7 +9,7 @@ QueryOptions contains QueryApi configuration options.
 <b>Signature:</b>
 
 ```typescript
-export interface QueryOptions 
+interface QueryOptions 
 ```
 
 ## Properties

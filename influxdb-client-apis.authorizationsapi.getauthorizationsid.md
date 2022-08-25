@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.getAuthorizationsID() method
 
-Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetAuthorizationsID)
+Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getAuthorizationsID(request: GetAuthorizationsIDRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetAuthorizationsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
+Promise&lt;Authorization&gt;
 
 promise of response
 

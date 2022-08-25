@@ -7,12 +7,10 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type LegacyAuthorizationPostRequest = AuthorizationUpdateRequest & {
+declare type LegacyAuthorizationPostRequest = AuthorizationUpdateRequest & {
     orgID?: string;
     userID?: string;
     token?: string;
     permissions?: Permission[];
 };
 ```
-<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)
-

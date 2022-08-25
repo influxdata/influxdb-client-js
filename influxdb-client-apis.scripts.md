@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Scripts 
+interface Scripts 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [scripts?](./influxdb-client-apis.scripts.scripts.md) |  | [Script](./influxdb-client-apis.script.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [scripts?](./influxdb-client-apis.scripts.scripts.md) |  | Script\[\] | <i>(Optional)</i> |
 

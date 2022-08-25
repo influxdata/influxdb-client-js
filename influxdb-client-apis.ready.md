@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Ready 
+interface Ready 
 ```
 
 ## Properties

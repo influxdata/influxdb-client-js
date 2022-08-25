@@ -9,13 +9,13 @@ Declares a builtin identifier and its type
 <b>Signature:</b>
 
 ```typescript
-export interface BuiltinStatement 
+interface BuiltinStatement 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.builtinstatement.id.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.builtinstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.builtinstatement.id.md) |  | Identifier | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.builtinstatement.type.md) |  | NodeType | <i>(Optional)</i> |
 

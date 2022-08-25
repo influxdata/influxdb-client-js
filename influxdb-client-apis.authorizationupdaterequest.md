@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface AuthorizationUpdateRequest 
+interface AuthorizationUpdateRequest 
 ```
 
 ## Properties

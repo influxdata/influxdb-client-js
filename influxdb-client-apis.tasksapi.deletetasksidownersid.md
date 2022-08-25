@@ -4,7 +4,7 @@
 
 ## TasksAPI.deleteTasksIDOwnersID() method
 
-Remove an owner from a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteTasksIDOwnersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteTasksIDOwnersID)
+Remove an owner from a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTasksIDOwnersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDOwnersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTasksIDOwnersID(request: DeleteTasksIDOwnersIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteTasksIDOwnersIDRequest](./influxdb-client-apis.deletetasksidownersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteTasksIDOwnersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -14,9 +14,9 @@ subscribe(observer: Partial<Observer<T>>): Subscription;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  observer | Partial&lt;[Observer](./influxdb-client.observer.md)<!-- -->&lt;T&gt;&gt; |  |
+|  observer | Partial&lt;Observer&lt;T&gt;&gt; |  |
 
 <b>Returns:</b>
 
-[Subscription](./influxdb-client.subscription.md)
+Subscription
 

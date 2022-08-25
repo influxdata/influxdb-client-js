@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.patchScrapersID() method
 
-Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchScrapersID)
+Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchScrapersID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchScrapersID(request: PatchScrapersIDRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchScrapersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->&gt;
+Promise&lt;ScraperTargetResponse&gt;
 
 promise of response
 

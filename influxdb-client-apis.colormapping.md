@@ -9,5 +9,5 @@ A color mapping is an object that maps time series data to a UI color scheme to 
 <b>Signature:</b>
 
 ```typescript
-export declare type ColorMapping = any;
+declare type ColorMapping = any;
 ```

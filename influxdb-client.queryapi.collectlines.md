@@ -16,7 +16,7 @@ collectLines(query: string | ParameterizedQuery): Promise<Array<string>>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+|  query | string \| ParameterizedQuery | query |
 
 <b>Returns:</b>
 

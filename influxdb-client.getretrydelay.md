@@ -9,7 +9,7 @@ Gets retry delay from the supplied error, possibly using random number up to ret
 <b>Signature:</b>
 
 ```typescript
-export declare function getRetryDelay(error?: Error, retryJitter?: number): number;
+declare function getRetryDelay(error?: Error, retryJitter?: number): number;
 ```
 
 ## Parameters

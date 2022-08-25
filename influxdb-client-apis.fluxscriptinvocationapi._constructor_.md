@@ -17,5 +17,5 @@ constructor(influxDB: InfluxDB, options?: ExecutionOptions);
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  influxDB | InfluxDB | an instance that knows how to communicate with InfluxDB server |
-|  options | [ExecutionOptions](./influxdb-client-apis.executionoptions.md) | <i>(Optional)</i> script execution options |
+|  options | ExecutionOptions | <i>(Optional)</i> script execution options |
 

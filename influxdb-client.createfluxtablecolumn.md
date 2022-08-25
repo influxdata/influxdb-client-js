@@ -9,18 +9,18 @@ Creates a flux table column from a partial FluxTableColumn.
 <b>Signature:</b>
 
 ```typescript
-export declare function createFluxTableColumn(object: Partial<FluxTableColumn>): FluxTableColumn;
+declare function createFluxTableColumn(object: Partial<FluxTableColumn>): FluxTableColumn;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  object | Partial&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | source object |
+|  object | Partial&lt;FluxTableColumn&gt; | source object |
 
 <b>Returns:</b>
 
-[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
+FluxTableColumn
 
 column instance
 

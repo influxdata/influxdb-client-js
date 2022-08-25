@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetNotificationEndpointsRequest 
+interface GetNotificationEndpointsRequest 
 ```
 
 ## Properties

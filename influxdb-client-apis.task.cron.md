@@ -4,7 +4,7 @@
 
 ## Task.cron property
 
-\[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time. Value is a \[Cron expression\](https://en.wikipedia.org/wiki/Cron\#Overview).
+[Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time. Value is a [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview)<!-- -->.
 
 <b>Signature:</b>
 

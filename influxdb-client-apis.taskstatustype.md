@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type TaskStatusType = 'active' | 'inactive';
+declare type TaskStatusType = 'active' | 'inactive';
 ```

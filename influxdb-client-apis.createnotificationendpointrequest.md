@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface CreateNotificationEndpointRequest 
+interface CreateNotificationEndpointRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationendpointrequest.body.md) |  | [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) | Notification endpoint to create |
+|  [body](./influxdb-client-apis.createnotificationendpointrequest.body.md) |  | PostNotificationEndpoint | Notification endpoint to create |
 

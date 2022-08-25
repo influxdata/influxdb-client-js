@@ -9,5 +9,5 @@ Type of AST node
 <b>Signature:</b>
 
 ```typescript
-export declare type NodeType = string;
+declare type NodeType = string;
 ```

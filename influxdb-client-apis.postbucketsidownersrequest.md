@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostBucketsIDOwnersRequest 
+interface PostBucketsIDOwnersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
+|  [body](./influxdb-client-apis.postbucketsidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
 |  [bucketID](./influxdb-client-apis.postbucketsidownersrequest.bucketid.md) |  | string | The bucket ID. |
 

@@ -9,7 +9,7 @@ Creates flux boolean literal.
 <b>Signature:</b>
 
 ```typescript
-export declare function fluxBool(value: any): FluxParameterLike;
+declare function fluxBool(value: any): FluxParameterLike;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ export declare function fluxBool(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+FluxParameterLike
 

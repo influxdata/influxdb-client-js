@@ -9,7 +9,7 @@ Updates to an existing bucket resource.
 <b>Signature:</b>
 
 ```typescript
-export interface PatchBucketRequest 
+interface PatchBucketRequest 
 ```
 
 ## Properties
@@ -18,5 +18,5 @@ export interface PatchBucketRequest
 |  --- | --- | --- | --- |
 |  [description?](./influxdb-client-apis.patchbucketrequest.description.md) |  | string | <i>(Optional)</i> |
 |  [name?](./influxdb-client-apis.patchbucketrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | <i>(Optional)</i> |
+|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | PatchRetentionRules | <i>(Optional)</i> |
 

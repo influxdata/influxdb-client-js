@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostNotificationRuleIDLabelsRequest 
+interface PostNotificationRuleIDLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md) |  | LabelMapping | Label to add |
 |  [ruleID](./influxdb-client-apis.postnotificationruleidlabelsrequest.ruleid.md) |  | string | The notification rule ID. |
 

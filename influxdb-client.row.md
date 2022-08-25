@@ -9,13 +9,13 @@ Wraps values and associated metadata of a query result row
 <b>Signature:</b>
 
 ```typescript
-export interface Row 
+interface Row 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
+|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | FluxTableMetaData |  |
 |  [values](./influxdb-client.row.values.md) |  | string\[\] |  |
 

@@ -9,7 +9,7 @@ Flux is a tagged template that sanitizes supplied parameters to avoid injection 
 <b>Signature:</b>
 
 ```typescript
-export declare function flux(strings: TemplateStringsArray, ...values: any): ParameterizedQuery;
+declare function flux(strings: TemplateStringsArray, ...values: any): ParameterizedQuery;
 ```
 
 ## Parameters
@@ -21,5 +21,5 @@ export declare function flux(strings: TemplateStringsArray, ...values: any): Par
 
 <b>Returns:</b>
 
-[ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+ParameterizedQuery
 

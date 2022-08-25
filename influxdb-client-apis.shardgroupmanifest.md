@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ShardGroupManifest 
+interface ShardGroupManifest 
 ```
 
 ## Properties
@@ -17,7 +17,7 @@ export interface ShardGroupManifest
 |  [deletedAt?](./influxdb-client-apis.shardgroupmanifest.deletedat.md) |  | string | <i>(Optional)</i> |
 |  [endTime](./influxdb-client-apis.shardgroupmanifest.endtime.md) |  | string |  |
 |  [id](./influxdb-client-apis.shardgroupmanifest.id.md) |  | number |  |
-|  [shards](./influxdb-client-apis.shardgroupmanifest.shards.md) |  | [ShardManifests](./influxdb-client-apis.shardmanifests.md) |  |
+|  [shards](./influxdb-client-apis.shardgroupmanifest.shards.md) |  | ShardManifests |  |
 |  [startTime](./influxdb-client-apis.shardgroupmanifest.starttime.md) |  | string |  |
 |  [truncatedAt?](./influxdb-client-apis.shardgroupmanifest.truncatedat.md) |  | string | <i>(Optional)</i> |
 

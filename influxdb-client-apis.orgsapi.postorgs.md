@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgs() method
 
-Create an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostOrgs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostOrgs)
+Create an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostOrgs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostOrgs)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postOrgs(request: PostOrgsRequest, requestOptions?: RequestOptions): Promise<Org
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostOrgsRequest](./influxdb-client-apis.postorgsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostOrgsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Organization](./influxdb-client-apis.organization.md)<!-- -->&gt;
+Promise&lt;Organization&gt;
 
 promise of response
 

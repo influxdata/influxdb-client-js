@@ -4,7 +4,7 @@
 
 ## UsersAPI.postUsersIDPassword() method
 
-Update a password. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostUsersIDPassword)
+Update a password. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsersIDPassword)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postUsersIDPassword(request: PostUsersIDPasswordRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostUsersIDPasswordRequest](./influxdb-client-apis.postusersidpasswordrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostUsersIDPasswordRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

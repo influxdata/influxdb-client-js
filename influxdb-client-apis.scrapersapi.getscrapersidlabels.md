@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDLabels() method
 
-List all labels for a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersIDLabels)
+List all labels for a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getScrapersIDLabels(request: GetScrapersIDLabelsRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetScrapersIDLabelsRequest](./influxdb-client-apis.getscrapersidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetScrapersIDLabelsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
+Promise&lt;LabelsResponse&gt;
 
 promise of response
 

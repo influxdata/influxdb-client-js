@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostRestoreShardIdRequest 
+interface PostRestoreShardIdRequest 
 ```
 
 ## Properties

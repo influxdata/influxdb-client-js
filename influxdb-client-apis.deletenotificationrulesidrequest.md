@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DeleteNotificationRulesIDRequest 
+interface DeleteNotificationRulesIDRequest 
 ```
 
 ## Properties

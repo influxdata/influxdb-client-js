@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsID() method
 
-Retrieve an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgsID)
+Retrieve an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetOrgsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getOrgsID(request: GetOrgsIDRequest, requestOptions?: RequestOptions): Promise<O
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetOrgsIDRequest](./influxdb-client-apis.getorgsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetOrgsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Organization](./influxdb-client-apis.organization.md)<!-- -->&gt;
+Promise&lt;Organization&gt;
 
 promise of response
 

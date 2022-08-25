@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type GeoCircleViewLayer = GeoViewLayerProperties & {
+declare type GeoCircleViewLayer = GeoViewLayerProperties & {
     radiusField: string;
     radiusDimension: Axis;
     colorField: string;
@@ -17,5 +17,3 @@ export declare type GeoCircleViewLayer = GeoViewLayerProperties & {
     interpolateColors?: boolean;
 };
 ```
-<b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)<!-- -->, [Axis](./influxdb-client-apis.axis.md)<!-- -->, [DashboardColor](./influxdb-client-apis.dashboardcolor.md)
-

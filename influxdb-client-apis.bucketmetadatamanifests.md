@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type BucketMetadataManifests = BucketMetadataManifest[];
+declare type BucketMetadataManifests = BucketMetadataManifest[];
 ```
-<b>References:</b> [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md)
-

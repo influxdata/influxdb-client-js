@@ -9,7 +9,7 @@ The value associated with a key
 <b>Signature:</b>
 
 ```typescript
-export interface Property 
+interface Property 
 ```
 
 ## Properties
@@ -17,6 +17,6 @@ export interface Property
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [key?](./influxdb-client-apis.property.key.md) |  | PropertyKey | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.property.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.property.value.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.property.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.property.value.md) |  | Expression | <i>(Optional)</i> |
 

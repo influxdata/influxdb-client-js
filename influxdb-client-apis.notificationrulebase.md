@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface NotificationRuleBase 
+interface NotificationRuleBase 
 ```
 
 ## Properties
@@ -19,22 +19,22 @@ export interface NotificationRuleBase
 |  [endpointID](./influxdb-client-apis.notificationrulebase.endpointid.md) |  | string |  |
 |  [every?](./influxdb-client-apis.notificationrulebase.every.md) |  | string | <i>(Optional)</i> The notification repetition interval. |
 |  [id?](./influxdb-client-apis.notificationrulebase.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.notificationrulebase.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.notificationrulebase.labels.md) |  | Labels | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.notificationrulebase.lastrunerror.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.notificationrulebase.lastrunstatus.md) | <code>readonly</code> | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
 |  [latestCompleted?](./influxdb-client-apis.notificationrulebase.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. |
 |  [limit?](./influxdb-client-apis.notificationrulebase.limit.md) |  | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty. |
 |  [limitEvery?](./influxdb-client-apis.notificationrulebase.limitevery.md) |  | number | <i>(Optional)</i> Don't notify me more than <limit> times every <limitEvery> seconds. If set, limit cannot be empty. |
-|  [links?](./influxdb-client-apis.notificationrulebase.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.notificationrulebase.links.md) | <code>readonly</code> | { self?: Link; labels?: Link; members?: Link; owners?: Link; query?: Link; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.notificationrulebase.name.md) |  | string | Human-readable name describing the notification rule. |
 |  [offset?](./influxdb-client-apis.notificationrulebase.offset.md) |  | string | <i>(Optional)</i> Duration to delay after the schedule, before executing check. |
 |  [orgID](./influxdb-client-apis.notificationrulebase.orgid.md) |  | string | The ID of the organization that owns this notification rule. |
 |  [ownerID?](./influxdb-client-apis.notificationrulebase.ownerid.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of creator used to create this notification rule. |
 |  [runbookLink?](./influxdb-client-apis.notificationrulebase.runbooklink.md) |  | string | <i>(Optional)</i> |
 |  [sleepUntil?](./influxdb-client-apis.notificationrulebase.sleepuntil.md) |  | string | <i>(Optional)</i> |
-|  [status](./influxdb-client-apis.notificationrulebase.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
-|  [statusRules](./influxdb-client-apis.notificationrulebase.statusrules.md) |  | [StatusRule](./influxdb-client-apis.statusrule.md)<!-- -->\[\] | List of status rules the notification rule attempts to match. |
-|  [tagRules?](./influxdb-client-apis.notificationrulebase.tagrules.md) |  | [TagRule](./influxdb-client-apis.tagrule.md)<!-- -->\[\] | <i>(Optional)</i> List of tag rules the notification rule attempts to match. |
+|  [status](./influxdb-client-apis.notificationrulebase.status.md) |  | TaskStatusType |  |
+|  [statusRules](./influxdb-client-apis.notificationrulebase.statusrules.md) |  | StatusRule\[\] | List of status rules the notification rule attempts to match. |
+|  [tagRules?](./influxdb-client-apis.notificationrulebase.tagrules.md) |  | TagRule\[\] | <i>(Optional)</i> List of tag rules the notification rule attempts to match. |
 |  [taskID?](./influxdb-client-apis.notificationrulebase.taskid.md) |  | string | <i>(Optional)</i> The ID of the task associated with this notification rule. |
 |  [updatedAt?](./influxdb-client-apis.notificationrulebase.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRuns() method
 
-List runs for a task. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTasksIDRuns](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTasksIDRuns)
+List runs for a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksIDRuns](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRuns)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksIDRuns(request: GetTasksIDRunsRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTasksIDRunsRequest](./influxdb-client-apis.gettasksidrunsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTasksIDRunsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Runs](./influxdb-client-apis.runs.md)<!-- -->&gt;
+Promise&lt;Runs&gt;
 
 promise of response
 

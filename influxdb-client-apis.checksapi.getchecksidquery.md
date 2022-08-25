@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksIDQuery() method
 
-Retrieve a check query. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecksIDQuery](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecksIDQuery)
+Retrieve a check query. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetChecksIDQuery](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksIDQuery)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getChecksIDQuery(request: GetChecksIDQueryRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetChecksIDQueryRequest](./influxdb-client-apis.getchecksidqueryrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetChecksIDQueryRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[FluxResponse](./influxdb-client-apis.fluxresponse.md)<!-- -->&gt;
+Promise&lt;FluxResponse&gt;
 
 promise of response
 

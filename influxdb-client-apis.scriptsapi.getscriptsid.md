@@ -16,12 +16,12 @@ getScriptsID(request: GetScriptsIDRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetScriptsIDRequest](./influxdb-client-apis.getscriptsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetScriptsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Script](./influxdb-client-apis.script.md)<!-- -->&gt;
+Promise&lt;Script&gt;
 
 promise of response
 

@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostWriteRequest 
+interface PostWriteRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postwriterequest.body.md) |  | string | <p>Data in line protocol format.</p><p>To send compressed data, do the following:</p><p>1. Use \[GZIP\](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the <code>Content-Encoding: gzip</code> header.</p><p>\#\#\#\# Related guides</p><p>- \[Best practices for optimizing writes\](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).</p> |
+|  [body](./influxdb-client-apis.postwriterequest.body.md) |  | string | <p>Data in line protocol format.</p><p>To send compressed data, do the following:</p><p>1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the <code>Content-Encoding: gzip</code> header.</p><p>\#\#\#\# Related guides</p><p>- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/)<!-- -->.</p> |
 |  [bucket](./influxdb-client-apis.postwriterequest.bucket.md) |  | string | The destination bucket for writes. |
 |  [org](./influxdb-client-apis.postwriterequest.org.md) |  | string | The destination organization for writes. The database writes all points in the batch to this organization. If you provide both <code>orgID</code> and <code>org</code> parameters, <code>org</code> takes precedence. |
 |  [orgID?](./influxdb-client-apis.postwriterequest.orgid.md) |  | string | <i>(Optional)</i> The ID of the destination organization for writes. If both <code>orgID</code> and <code>org</code> are specified, <code>org</code> takes precedence. |

@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecks() method
 
-List all checks. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetChecks](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetChecks)
+List all checks. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetChecks](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecks)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getChecks(request: GetChecksRequest, requestOptions?: RequestOptions): Promise<C
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetChecksRequest](./influxdb-client-apis.getchecksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetChecksRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Checks](./influxdb-client-apis.checks.md)<!-- -->&gt;
+Promise&lt;Checks&gt;
 
 promise of response
 

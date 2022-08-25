@@ -9,5 +9,5 @@ Type of [Observer.next](./influxdb-client.observer.next.md)
 <b>Signature:</b>
 
 ```typescript
-export declare type ObserverNext<T> = (value: T) => void;
+declare type ObserverNext<T> = (value: T) => void;
 ```

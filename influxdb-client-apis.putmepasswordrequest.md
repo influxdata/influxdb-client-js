@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PutMePasswordRequest 
+interface PutMePasswordRequest 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface PutMePasswordRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [auth?](./influxdb-client-apis.putmepasswordrequest.auth.md) |  | { user: string; password: string; } | <i>(Optional)</i> |
-|  [body](./influxdb-client-apis.putmepasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
+|  [body](./influxdb-client-apis.putmepasswordrequest.body.md) |  | PasswordResetBody | New password |
 

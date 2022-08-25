@@ -4,12 +4,12 @@
 
 ## fluxRegExp() function
 
-Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/v0.x/data-types/basic/regexp/\#regular-expression-syntax for details.
+Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/latest/data-types/basic/regexp/\#regular-expression-syntax for details.
 
 <b>Signature:</b>
 
 ```typescript
-export declare function fluxRegExp(value: any): FluxParameterLike;
+declare function fluxRegExp(value: any): FluxParameterLike;
 ```
 
 ## Parameters
@@ -20,5 +20,5 @@ export declare function fluxRegExp(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+FluxParameterLike
 

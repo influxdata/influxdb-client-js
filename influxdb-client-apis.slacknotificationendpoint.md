@@ -7,10 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type SlackNotificationEndpoint = NotificationEndpointBase & {
+declare type SlackNotificationEndpoint = NotificationEndpointBase & {
     url?: string;
     token?: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
-

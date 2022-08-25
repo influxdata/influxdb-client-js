@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostAuthorizationsRequest 
+interface PostAuthorizationsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postauthorizationsrequest.body.md) |  | [AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md) | Authorization to create |
+|  [body](./influxdb-client-apis.postauthorizationsrequest.body.md) |  | AuthorizationPostRequest | Authorization to create |
 

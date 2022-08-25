@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PutDashboardsIDCellsRequest 
+interface PutDashboardsIDCellsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md) |  | [Cells](./influxdb-client-apis.cells.md) | entity body |
+|  [body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md) |  | Cells | entity body |
 |  [dashboardID](./influxdb-client-apis.putdashboardsidcellsrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

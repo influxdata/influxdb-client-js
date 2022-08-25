@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTelegrafsIDOwnersRequest 
+interface PostTelegrafsIDOwnersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
+|  [body](./influxdb-client-apis.posttelegrafsidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
 |  [telegrafID](./influxdb-client-apis.posttelegrafsidownersrequest.telegrafid.md) |  | string | The Telegraf configuration ID. |
 

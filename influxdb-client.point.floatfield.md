@@ -21,7 +21,7 @@ floatField(name: string, value: number | any): Point;
 
 <b>Returns:</b>
 
-[Point](./influxdb-client.point.md)
+Point
 
 this
 

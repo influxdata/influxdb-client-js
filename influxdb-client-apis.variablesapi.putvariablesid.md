@@ -4,7 +4,7 @@
 
 ## VariablesAPI.putVariablesID() method
 
-Replace a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PutVariablesID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PutVariablesID)
+Replace a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutVariablesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutVariablesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ putVariablesID(request: PutVariablesIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PutVariablesIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
+Promise&lt;Variable&gt;
 
 promise of response
 

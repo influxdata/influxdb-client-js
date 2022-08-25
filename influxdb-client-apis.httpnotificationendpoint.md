@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type HTTPNotificationEndpoint = NotificationEndpointBase & {
+declare type HTTPNotificationEndpoint = NotificationEndpointBase & {
     url: string;
     username?: string;
     password?: string;
@@ -18,5 +18,3 @@ export declare type HTTPNotificationEndpoint = NotificationEndpointBase & {
     headers?: any;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
-

@@ -7,12 +7,10 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type SecretKeysResponse = SecretKeys & {
+declare type SecretKeysResponse = SecretKeys & {
     readonly links?: {
         self?: string;
         org?: string;
     };
 };
 ```
-<b>References:</b> [SecretKeys](./influxdb-client-apis.secretkeys.md)
-

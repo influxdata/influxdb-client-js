@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface SubscriptionManifest 
+interface SubscriptionManifest 
 ```
 
 ## Properties

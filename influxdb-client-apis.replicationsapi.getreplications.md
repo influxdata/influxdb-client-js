@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.getReplications() method
 
-List all replications. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReplications](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplications)
+List all replications. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReplications](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReplications)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getReplications(request: GetReplicationsRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetReplicationsRequest](./influxdb-client-apis.getreplicationsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetReplicationsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Replications](./influxdb-client-apis.replications.md)<!-- -->&gt;
+Promise&lt;Replications&gt;
 
 promise of response
 

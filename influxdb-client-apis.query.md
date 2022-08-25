@@ -9,15 +9,15 @@ Query influx using the Flux language
 <b>Signature:</b>
 
 ```typescript
-export interface Query 
+interface Query 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [dialect?](./influxdb-client-apis.query.dialect.md) |  | [Dialect](./influxdb-client-apis.dialect.md) | <i>(Optional)</i> |
-|  [extern?](./influxdb-client-apis.query.extern.md) |  | [File](./influxdb-client-apis.file.md) | <i>(Optional)</i> |
+|  [dialect?](./influxdb-client-apis.query.dialect.md) |  | Dialect | <i>(Optional)</i> |
+|  [extern?](./influxdb-client-apis.query.extern.md) |  | File | <i>(Optional)</i> |
 |  [now?](./influxdb-client-apis.query.now.md) |  | string | <i>(Optional)</i> Specifies the time that should be reported as "now" in the query. Default is the server's now time. |
 |  [params?](./influxdb-client-apis.query.params.md) |  | any | <i>(Optional)</i> Enumeration of key/value pairs that respresent parameters to be injected into query (can only specify either this field or extern and not both) |
 |  [query](./influxdb-client-apis.query.query.md) |  | string | Query script to execute. |

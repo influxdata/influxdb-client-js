@@ -9,13 +9,13 @@ Used to create and directly specify the elements of a dictionary
 <b>Signature:</b>
 
 ```typescript
-export interface DictExpression 
+interface DictExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [elements?](./influxdb-client-apis.dictexpression.elements.md) |  | [DictItem](./influxdb-client-apis.dictitem.md)<!-- -->\[\] | <i>(Optional)</i> Elements of the dictionary |
-|  [type?](./influxdb-client-apis.dictexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [elements?](./influxdb-client-apis.dictexpression.elements.md) |  | DictItem\[\] | <i>(Optional)</i> Elements of the dictionary |
+|  [type?](./influxdb-client-apis.dictexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

@@ -9,7 +9,7 @@ Replications API
 <b>Signature:</b>
 
 ```typescript
-export declare class ReplicationsAPI 
+declare class ReplicationsAPI 
 ```
 
 ## Constructors
@@ -22,10 +22,10 @@ export declare class ReplicationsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.deletereplicationbyid.md) |  | Delete a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteReplicationByID) |
-|  [getReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.getreplicationbyid.md) |  | Retrieve a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplicationByID) |
-|  [getReplications(request, requestOptions)](./influxdb-client-apis.replicationsapi.getreplications.md) |  | List all replications. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReplications](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReplications) |
-|  [patchReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.patchreplicationbyid.md) |  | Update a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchReplicationByID) |
-|  [postReplication(request, requestOptions)](./influxdb-client-apis.replicationsapi.postreplication.md) |  | Register a new replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostReplication](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostReplication) |
-|  [postValidateReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.postvalidatereplicationbyid.md) |  | Validate a replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostValidateReplicationByID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostValidateReplicationByID) |
+|  [deleteReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.deletereplicationbyid.md) |  | Delete a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteReplicationByID) |
+|  [getReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.getreplicationbyid.md) |  | Retrieve a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReplicationByID) |
+|  [getReplications(request, requestOptions)](./influxdb-client-apis.replicationsapi.getreplications.md) |  | List all replications. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReplications](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReplications) |
+|  [patchReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.patchreplicationbyid.md) |  | Update a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchReplicationByID) |
+|  [postReplication(request, requestOptions)](./influxdb-client-apis.replicationsapi.postreplication.md) |  | Register a new replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostReplication](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostReplication) |
+|  [postValidateReplicationByID(request, requestOptions)](./influxdb-client-apis.replicationsapi.postvalidatereplicationbyid.md) |  | Validate a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostValidateReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostValidateReplicationByID) |
 

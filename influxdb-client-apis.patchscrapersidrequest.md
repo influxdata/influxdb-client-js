@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchScrapersIDRequest 
+interface PatchScrapersIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscrapersidrequest.body.md) |  | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target update to apply |
+|  [body](./influxdb-client-apis.patchscrapersidrequest.body.md) |  | ScraperTargetRequest | Scraper target update to apply |
 |  [scraperTargetID](./influxdb-client-apis.patchscrapersidrequest.scrapertargetid.md) |  | string | The identifier of the scraper target. |
 

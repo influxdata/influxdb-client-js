@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostBucketsIDLabelsRequest 
+interface PostBucketsIDLabelsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
+|  [body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md) |  | LabelMapping | Label to add |
 |  [bucketID](./influxdb-client-apis.postbucketsidlabelsrequest.bucketid.md) |  | string | The bucket ID. |
 

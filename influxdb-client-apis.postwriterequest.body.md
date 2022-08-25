@@ -8,11 +8,11 @@ Data in line protocol format.
 
 To send compressed data, do the following:
 
-1. Use \[GZIP\](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the `Content-Encoding: gzip` header.
+1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the `Content-Encoding: gzip` header.
 
 \#\#\#\# Related guides
 
-- \[Best practices for optimizing writes\](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).
+- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/)<!-- -->.
 
 <b>Signature:</b>
 

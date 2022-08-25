@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PagerDutyNotificationRuleBase 
+interface PagerDutyNotificationRuleBase 
 ```
 
 ## Properties

@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDMembers() method
 
-Add a member to a dashboard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDMembers)
+Add a member to a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDashboardsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDashboardsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postDashboardsIDMembers(request: PostDashboardsIDMembersRequest, requestOptions?
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostDashboardsIDMembersRequest](./influxdb-client-apis.postdashboardsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostDashboardsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
+Promise&lt;ResourceMember&gt;
 
 promise of response
 

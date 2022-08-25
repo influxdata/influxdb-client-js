@@ -9,5 +9,5 @@ The state to record if check matches a criteria.
 <b>Signature:</b>
 
 ```typescript
-export declare type RuleStatusLevel = 'UNKNOWN' | 'OK' | 'INFO' | 'CRIT' | 'WARN' | 'ANY';
+declare type RuleStatusLevel = 'UNKNOWN' | 'OK' | 'INFO' | 'CRIT' | 'WARN' | 'ANY';
 ```

@@ -9,7 +9,7 @@ Escapes content of the supplied parameter so that it can be safely embedded into
 <b>Signature:</b>
 
 ```typescript
-export declare function toFluxValue(value: any): string;
+declare function toFluxValue(value: any): string;
 ```
 
 ## Parameters

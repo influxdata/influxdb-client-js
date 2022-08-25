@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface BucketMetadataManifest 
+interface BucketMetadataManifest 
 ```
 
 ## Properties
@@ -20,5 +20,5 @@ export interface BucketMetadataManifest
 |  [description?](./influxdb-client-apis.bucketmetadatamanifest.description.md) |  | string | <i>(Optional)</i> |
 |  [organizationID](./influxdb-client-apis.bucketmetadatamanifest.organizationid.md) |  | string |  |
 |  [organizationName](./influxdb-client-apis.bucketmetadatamanifest.organizationname.md) |  | string |  |
-|  [retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md) |  | [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
+|  [retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md) |  | RetentionPolicyManifests |  |
 

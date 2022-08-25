@@ -9,7 +9,7 @@ Updates to a rule to expire or retain data.
 <b>Signature:</b>
 
 ```typescript
-export interface PatchRetentionRule 
+interface PatchRetentionRule 
 ```
 
 ## Properties

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface RunManually 
+interface RunManually 
 ```
 
 ## Properties

@@ -4,7 +4,7 @@
 
 ## SigninAPI.postSignin() method
 
-Create a user session. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostSignin)
+Create a user session. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignin)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postSignin(request: PostSigninRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostSigninRequest](./influxdb-client-apis.postsigninrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostSigninRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

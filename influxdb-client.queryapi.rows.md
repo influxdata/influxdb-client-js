@@ -16,11 +16,11 @@ rows(query: string | ParameterizedQuery): Observable<Row>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+|  query | string \| ParameterizedQuery | query |
 
 <b>Returns:</b>
 
-[Observable](./influxdb-client.observable.md)<!-- -->&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
+Observable&lt;Row&gt;
 
 observable of result rows
 

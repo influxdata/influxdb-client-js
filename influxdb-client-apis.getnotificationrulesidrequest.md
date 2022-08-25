@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetNotificationRulesIDRequest 
+interface GetNotificationRulesIDRequest 
 ```
 
 ## Properties

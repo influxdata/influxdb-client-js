@@ -9,19 +9,19 @@ ChunksToLines is a transformation that accepts Uint8Array instances and emmits s
 <b>Signature:</b>
 
 ```typescript
-export declare function chunksToLines(target: CommunicationObserver<string>, chunkCombiner?: ChunkCombiner): CommunicationObserver<Uint8Array>;
+declare function chunksToLines(target: CommunicationObserver<string>, chunkCombiner?: ChunkCombiner): CommunicationObserver<Uint8Array>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
-|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | <i>(Optional)</i> |
+|  target | CommunicationObserver&lt;string&gt; | target to emmit CSV lines to |
+|  chunkCombiner | ChunkCombiner | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;Uint8Array&gt;
+CommunicationObserver&lt;Uint8Array&gt;
 
 communication obrver to accept Uint8Arrays
 

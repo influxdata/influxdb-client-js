@@ -9,13 +9,13 @@ Used to create and directly specify the elements of an array object
 <b>Signature:</b>
 
 ```typescript
-export interface ArrayExpression 
+interface ArrayExpression 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [elements?](./influxdb-client-apis.arrayexpression.elements.md) |  | [Expression](./influxdb-client-apis.expression.md)<!-- -->\[\] | <i>(Optional)</i> Elements of the array |
-|  [type?](./influxdb-client-apis.arrayexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [elements?](./influxdb-client-apis.arrayexpression.elements.md) |  | Expression\[\] | <i>(Optional)</i> Elements of the array |
+|  [type?](./influxdb-client-apis.arrayexpression.type.md) |  | NodeType | <i>(Optional)</i> |
 

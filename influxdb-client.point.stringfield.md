@@ -21,7 +21,7 @@ stringField(name: string, value: string | any): Point;
 
 <b>Returns:</b>
 
-[Point](./influxdb-client.point.md)
+Point
 
 this
 

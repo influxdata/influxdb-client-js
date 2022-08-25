@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Authorization = AuthorizationUpdateRequest & {
+declare type Authorization = AuthorizationUpdateRequest & {
     readonly createdAt?: string;
     readonly updatedAt?: string;
     orgID?: string;
@@ -23,5 +23,3 @@ export declare type Authorization = AuthorizationUpdateRequest & {
     };
 };
 ```
-<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
-

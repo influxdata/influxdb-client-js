@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostQueryAstRequest 
+interface PostQueryAstRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryastrequest.body.md) |  | [LanguageRequest](./influxdb-client-apis.languagerequest.md) | Analyzed Flux query to generate abstract syntax tree. |
+|  [body](./influxdb-client-apis.postqueryastrequest.body.md) |  | LanguageRequest | Analyzed Flux query to generate abstract syntax tree. |
 

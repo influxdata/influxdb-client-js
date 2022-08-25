@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksIDOwnersRequest 
+interface PostTasksIDOwnersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
+|  [body](./influxdb-client-apis.posttasksidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
 |  [taskID](./influxdb-client-apis.posttasksidownersrequest.taskid.md) |  | string | The task ID. |
 

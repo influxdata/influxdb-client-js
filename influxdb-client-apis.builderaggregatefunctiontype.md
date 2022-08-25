@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type BuilderAggregateFunctionType = 'filter' | 'group';
+declare type BuilderAggregateFunctionType = 'filter' | 'group';
 ```

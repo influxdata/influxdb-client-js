@@ -9,11 +9,11 @@ AbortError indicates that the communication with the server was aborted
 <b>Signature:</b>
 
 ```typescript
-export declare class AbortError extends Error implements RetriableDecision 
+declare class AbortError extends Error implements RetriableDecision 
 ```
 <b>Extends:</b> Error
 
-<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
+<b>Implements:</b> RetriableDecision
 
 ## Constructors
 

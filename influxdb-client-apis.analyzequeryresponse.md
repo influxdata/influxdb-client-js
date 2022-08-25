@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface AnalyzeQueryResponse 
+interface AnalyzeQueryResponse 
 ```
 
 ## Properties

@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DBRPGet 
+interface DBRPGet 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [content?](./influxdb-client-apis.dbrpget.content.md) |  | [DBRP](./influxdb-client-apis.dbrp.md) | <i>(Optional)</i> |
+|  [content?](./influxdb-client-apis.dbrpget.content.md) |  | DBRP | <i>(Optional)</i> |
 

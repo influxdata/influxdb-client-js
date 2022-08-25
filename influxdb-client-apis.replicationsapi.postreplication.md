@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.postReplication() method
 
-Register a new replication. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostReplication](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostReplication)
+Register a new replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostReplication](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostReplication)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postReplication(request: PostReplicationRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostReplicationRequest](./influxdb-client-apis.postreplicationrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostReplicationRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Replication](./influxdb-client-apis.replication.md)<!-- -->&gt;
+Promise&lt;Replication&gt;
 
 promise of response
 

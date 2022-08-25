@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.getNotificationEndpointsID() method
 
-Retrieve a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetNotificationEndpointsID)
+Retrieve a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationEndpointsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationEndpointsID(request: GetNotificationEndpointsIDRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetNotificationEndpointsIDRequest](./influxdb-client-apis.getnotificationendpointsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetNotificationEndpointsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->&gt;
+Promise&lt;NotificationEndpoint&gt;
 
 promise of response
 

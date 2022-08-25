@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetTasksIDMembersRequest 
+interface GetTasksIDMembersRequest 
 ```
 
 ## Properties

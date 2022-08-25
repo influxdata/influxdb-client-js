@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostLegacyAuthorizationsRequest 
+interface PostLegacyAuthorizationsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postlegacyauthorizationsrequest.body.md) |  | [LegacyAuthorizationPostRequest](./influxdb-client-apis.legacyauthorizationpostrequest.md) | Legacy authorization to create |
+|  [body](./influxdb-client-apis.postlegacyauthorizationsrequest.body.md) |  | LegacyAuthorizationPostRequest | Legacy authorization to create |
 

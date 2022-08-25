@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Sources 
+interface Sources 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface Sources
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [links?](./influxdb-client-apis.sources.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [sources?](./influxdb-client-apis.sources.sources.md) |  | [Source](./influxdb-client-apis.source.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [sources?](./influxdb-client-apis.sources.sources.md) |  | Source\[\] | <i>(Optional)</i> |
 

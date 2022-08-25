@@ -9,13 +9,13 @@ Declares a Flux test case
 <b>Signature:</b>
 
 ```typescript
-export interface TestStatement 
+interface TestStatement 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [assignment?](./influxdb-client-apis.teststatement.assignment.md) |  | [VariableAssignment](./influxdb-client-apis.variableassignment.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.teststatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [assignment?](./influxdb-client-apis.teststatement.assignment.md) |  | VariableAssignment | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.teststatement.type.md) |  | NodeType | <i>(Optional)</i> |
 

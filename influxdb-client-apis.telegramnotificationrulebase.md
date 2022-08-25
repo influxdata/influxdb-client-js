@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TelegramNotificationRuleBase 
+interface TelegramNotificationRuleBase 
 ```
 
 ## Properties

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetScrapersRequest 
+interface GetScrapersRequest 
 ```
 
 ## Properties

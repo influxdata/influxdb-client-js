@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgsIDMembers() method
 
-Add a member to an organization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostOrgsIDMembers)
+Add a member to an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostOrgsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postOrgsIDMembers(request: PostOrgsIDMembersRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostOrgsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
+Promise&lt;ResourceMember&gt;
 
 promise of response
 

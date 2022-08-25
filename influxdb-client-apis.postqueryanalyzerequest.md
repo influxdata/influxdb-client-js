@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostQueryAnalyzeRequest 
+interface PostQueryAnalyzeRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) |  | [Query](./influxdb-client-apis.query.md) | Flux query to analyze |
+|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) |  | Query | Flux query to analyze |
 

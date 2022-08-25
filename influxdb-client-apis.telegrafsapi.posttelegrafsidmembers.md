@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafsIDMembers() method
 
-Add a member to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostTelegrafsIDMembers)
+Add a member to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTelegrafsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTelegrafsIDMembers(request: PostTelegrafsIDMembersRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostTelegrafsIDMembersRequest](./influxdb-client-apis.posttelegrafsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostTelegrafsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
+Promise&lt;ResourceMember&gt;
 
 promise of response
 

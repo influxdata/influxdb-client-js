@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface MapVariableProperties 
+interface MapVariableProperties 
 ```
 
 ## Properties

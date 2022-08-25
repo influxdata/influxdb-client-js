@@ -9,14 +9,14 @@ Observer mimics Observer from ECMAScript TC39 Observable proposal
 <b>Signature:</b>
 
 ```typescript
-export interface Observer<T> 
+interface Observer<T> 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [complete](./influxdb-client.observer.complete.md) |  | [ObserverComplete](./influxdb-client.observercomplete.md) |  |
-|  [error](./influxdb-client.observer.error.md) |  | [ObserverError](./influxdb-client.observererror.md) |  |
-|  [next](./influxdb-client.observer.next.md) |  | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
+|  [complete](./influxdb-client.observer.complete.md) |  | ObserverComplete |  |
+|  [error](./influxdb-client.observer.error.md) |  | ObserverError |  |
+|  [next](./influxdb-client.observer.next.md) |  | ObserverNext&lt;T&gt; |  |
 

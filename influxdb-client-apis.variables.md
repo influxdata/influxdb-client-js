@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Variables 
+interface Variables 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [variables?](./influxdb-client-apis.variables.variables.md) |  | [Variable](./influxdb-client-apis.variable.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [variables?](./influxdb-client-apis.variables.variables.md) |  | Variable\[\] | <i>(Optional)</i> |
 

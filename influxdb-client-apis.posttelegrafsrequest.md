@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTelegrafsRequest 
+interface PostTelegrafsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) |  | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration to create |
+|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) |  | TelegrafPluginRequest | Telegraf configuration to create |
 

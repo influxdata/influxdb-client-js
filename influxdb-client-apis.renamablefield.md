@@ -9,7 +9,7 @@ Describes a field that can be renamed and made visible or invisible.
 <b>Signature:</b>
 
 ```typescript
-export interface RenamableField 
+interface RenamableField 
 ```
 
 ## Properties

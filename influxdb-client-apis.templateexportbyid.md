@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TemplateExportByID 
+interface TemplateExportByID 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [orgIDs?](./influxdb-client-apis.templateexportbyid.orgids.md) |  | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
-|  [resources?](./influxdb-client-apis.templateexportbyid.resources.md) |  | Array&lt;{ id: string; kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name?: string; }&gt; | <i>(Optional)</i> |
+|  [orgIDs?](./influxdb-client-apis.templateexportbyid.orgids.md) |  | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: TemplateKind\[\]; }; }&gt; | <i>(Optional)</i> |
+|  [resources?](./influxdb-client-apis.templateexportbyid.resources.md) |  | Array&lt;{ id: string; kind: TemplateKind; name?: string; }&gt; | <i>(Optional)</i> |
 |  [stackID?](./influxdb-client-apis.templateexportbyid.stackid.md) |  | string | <i>(Optional)</i> |
 

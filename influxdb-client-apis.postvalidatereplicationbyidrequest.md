@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostValidateReplicationByIDRequest 
+interface PostValidateReplicationByIDRequest 
 ```
 
 ## Properties

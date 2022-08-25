@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.postDashboardsIDCells() method
 
-Create a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostDashboardsIDCells)
+Create a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDashboardsIDCells)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postDashboardsIDCells(request: PostDashboardsIDCellsRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostDashboardsIDCellsRequest](./influxdb-client-apis.postdashboardsidcellsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostDashboardsIDCellsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Cell](./influxdb-client-apis.cell.md)<!-- -->&gt;
+Promise&lt;Cell&gt;
 
 promise of response
 

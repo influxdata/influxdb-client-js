@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreBucketMetadata() method
 
-Create a new bucket pre-seeded with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreBucketMetadata](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreBucketMetadata)
+Create a new bucket pre-seeded with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostRestoreBucketMetadata](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreBucketMetadata)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postRestoreBucketMetadata(request: PostRestoreBucketMetadataRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostRestoreBucketMetadataRequest](./influxdb-client-apis.postrestorebucketmetadatarequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostRestoreBucketMetadataRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[RestoredBucketMappings](./influxdb-client-apis.restoredbucketmappings.md)<!-- -->&gt;
+Promise&lt;RestoredBucketMappings&gt;
 
 promise of response
 

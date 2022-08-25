@@ -9,7 +9,7 @@ Metrics API
 <b>Signature:</b>
 
 ```typescript
-export declare class MetricsAPI 
+declare class MetricsAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class MetricsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md) |  | Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetMetrics) |
+|  [getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md) |  | Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetMetrics) |
 

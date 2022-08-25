@@ -9,7 +9,7 @@ Object type for key and column definitions
 <b>Signature:</b>
 
 ```typescript
-export interface LatLonColumn 
+interface LatLonColumn 
 ```
 
 ## Properties

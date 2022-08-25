@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Replications 
+interface Replications 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [replications?](./influxdb-client-apis.replications.replications.md) |  | [Replication](./influxdb-client-apis.replication.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [replications?](./influxdb-client-apis.replications.replications.md) |  | Replication\[\] | <i>(Optional)</i> |
 

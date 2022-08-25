@@ -9,7 +9,7 @@ isStatusCodeRetriable checks whether the supplied HTTP status code is retriable.
 <b>Signature:</b>
 
 ```typescript
-export declare function isStatusCodeRetriable(statusCode: number): boolean;
+declare function isStatusCodeRetriable(statusCode: number): boolean;
 ```
 
 ## Parameters

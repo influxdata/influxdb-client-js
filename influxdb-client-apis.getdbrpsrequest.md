@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetDBRPsRequest 
+interface GetDBRPsRequest 
 ```
 
 ## Properties

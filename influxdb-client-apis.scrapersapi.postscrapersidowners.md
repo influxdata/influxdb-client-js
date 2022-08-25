@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapersIDOwners() method
 
-Add an owner to a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostScrapersIDOwners)
+Add an owner to a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postScrapersIDOwners(request: PostScrapersIDOwnersRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostScrapersIDOwnersRequest](./influxdb-client-apis.postscrapersidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostScrapersIDOwnersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->&gt;
+Promise&lt;ResourceOwner&gt;
 
 promise of response
 

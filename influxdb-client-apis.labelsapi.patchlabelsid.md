@@ -4,7 +4,7 @@
 
 ## LabelsAPI.patchLabelsID() method
 
-Update a label. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchLabelsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLabelsID)
+Update a label. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchLabelsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchLabelsID(request: PatchLabelsIDRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchLabelsIDRequest](./influxdb-client-apis.patchlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchLabelsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
+Promise&lt;LabelResponse&gt;
 
 promise of response
 

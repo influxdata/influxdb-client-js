@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetBucketsIDLabelsRequest 
+interface GetBucketsIDLabelsRequest 
 ```
 
 ## Properties

@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchChecksIDRequest 
+interface PatchChecksIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchchecksidrequest.body.md) |  | [CheckPatch](./influxdb-client-apis.checkpatch.md) | Check update to apply |
+|  [body](./influxdb-client-apis.patchchecksidrequest.body.md) |  | CheckPatch | Check update to apply |
 |  [checkID](./influxdb-client-apis.patchchecksidrequest.checkid.md) |  | string | The check ID. |
 

@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSourcesIDBuckets() method
 
-Get buckets in a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSourcesIDBuckets](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesIDBuckets)
+Get buckets in a source. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSourcesIDBuckets](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSourcesIDBuckets)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getSourcesIDBuckets(request: GetSourcesIDBucketsRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetSourcesIDBucketsRequest](./influxdb-client-apis.getsourcesidbucketsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetSourcesIDBucketsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Buckets](./influxdb-client-apis.buckets.md)<!-- -->&gt;
+Promise&lt;Buckets&gt;
 
 promise of response
 

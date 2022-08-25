@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetDebugPprofGoroutineRequest 
+interface GetDebugPprofGoroutineRequest 
 ```
 
 ## Properties

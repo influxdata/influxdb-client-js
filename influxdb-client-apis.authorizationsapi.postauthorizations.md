@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.postAuthorizations() method
 
-Create an authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostAuthorizations)
+Create an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostAuthorizations)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postAuthorizations(request: PostAuthorizationsRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostAuthorizationsRequest](./influxdb-client-apis.postauthorizationsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostAuthorizationsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
+Promise&lt;Authorization&gt;
 
 promise of response
 

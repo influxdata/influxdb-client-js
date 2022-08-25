@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface SimpleTableViewProperties 
+interface SimpleTableViewProperties 
 ```
 
 ## Properties
@@ -15,7 +15,7 @@ export interface SimpleTableViewProperties
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [note](./influxdb-client-apis.simpletableviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.simpletableviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.simpletableviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.simpletableviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showAll](./influxdb-client-apis.simpletableviewproperties.showall.md) |  | boolean |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.simpletableviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |

@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreShardId() method
 
-Restore a TSM snapshot into a shard. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostRestoreShardId](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostRestoreShardId)
+Restore a TSM snapshot into a shard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostRestoreShardId](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreShardId)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postRestoreShardId(request: PostRestoreShardIdRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostRestoreShardIdRequest](./influxdb-client-apis.postrestoreshardidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostRestoreShardIdRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

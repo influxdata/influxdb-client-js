@@ -4,7 +4,7 @@
 
 ## LegacyAPI.patchLegacyAuthorizationsID() method
 
-Update a legacy authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchLegacyAuthorizationsID)
+Update a legacy authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchLegacyAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchLegacyAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchLegacyAuthorizationsID(request: PatchLegacyAuthorizationsIDRequest, request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchLegacyAuthorizationsIDRequest](./influxdb-client-apis.patchlegacyauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchLegacyAuthorizationsIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
+Promise&lt;Authorization&gt;
 
 promise of response
 

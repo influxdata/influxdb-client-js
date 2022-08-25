@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GeoViewProperties 
+interface GeoViewProperties 
 ```
 
 ## Properties
@@ -16,13 +16,13 @@ export interface GeoViewProperties
 |  --- | --- | --- | --- |
 |  [allowPanAndZoom](./influxdb-client-apis.geoviewproperties.allowpanandzoom.md) |  | boolean | If true, map zoom and pan controls are enabled on the dashboard view |
 |  [center](./influxdb-client-apis.geoviewproperties.center.md) |  | { lat: number; lon: number; } | Coordinates of the center of the map |
-|  [colors?](./influxdb-client-apis.geoviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | <i>(Optional)</i> Colors define color encoding of data into a visualization |
+|  [colors?](./influxdb-client-apis.geoviewproperties.colors.md) |  | DashboardColor\[\] | <i>(Optional)</i> Colors define color encoding of data into a visualization |
 |  [detectCoordinateFields](./influxdb-client-apis.geoviewproperties.detectcoordinatefields.md) |  | boolean | If true, search results get automatically regroupped so that lon,lat and value are treated as columns |
-|  [latLonColumns?](./influxdb-client-apis.geoviewproperties.latloncolumns.md) |  | [LatLonColumns](./influxdb-client-apis.latloncolumns.md) | <i>(Optional)</i> |
-|  [layers](./influxdb-client-apis.geoviewproperties.layers.md) |  | [GeoViewLayer](./influxdb-client-apis.geoviewlayer.md)<!-- -->\[\] | List of individual layers shown in the map |
+|  [latLonColumns?](./influxdb-client-apis.geoviewproperties.latloncolumns.md) |  | LatLonColumns | <i>(Optional)</i> |
+|  [layers](./influxdb-client-apis.geoviewproperties.layers.md) |  | GeoViewLayer\[\] | List of individual layers shown in the map |
 |  [mapStyle?](./influxdb-client-apis.geoviewproperties.mapstyle.md) |  | string | <i>(Optional)</i> Define map type - regular, satellite etc. |
 |  [note](./influxdb-client-apis.geoviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.geoviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.geoviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [s2Column?](./influxdb-client-apis.geoviewproperties.s2column.md) |  | string | <i>(Optional)</i> String to define the column |
 |  [shape](./influxdb-client-apis.geoviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.geoviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |

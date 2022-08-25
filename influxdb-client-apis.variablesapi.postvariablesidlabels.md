@@ -4,7 +4,7 @@
 
 ## VariablesAPI.postVariablesIDLabels() method
 
-Add a label to a variable. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostVariablesIDLabels)
+Add a label to a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostVariablesIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postVariablesIDLabels(request: PostVariablesIDLabelsRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostVariablesIDLabelsRequest](./influxdb-client-apis.postvariablesidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostVariablesIDLabelsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
+Promise&lt;LabelResponse&gt;
 
 promise of response
 

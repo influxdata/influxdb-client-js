@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type PostCheck = CheckDiscriminator;
+declare type PostCheck = CheckDiscriminator;
 ```
-<b>References:</b> [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
-

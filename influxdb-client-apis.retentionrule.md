@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface RetentionRule 
+interface RetentionRule 
 ```
 
 ## Properties

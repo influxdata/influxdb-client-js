@@ -9,14 +9,14 @@ Declares a package import
 <b>Signature:</b>
 
 ```typescript
-export interface ImportDeclaration 
+interface ImportDeclaration 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [as?](./influxdb-client-apis.importdeclaration.as.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [path?](./influxdb-client-apis.importdeclaration.path.md) |  | [StringLiteral](./influxdb-client-apis.stringliteral.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.importdeclaration.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [as?](./influxdb-client-apis.importdeclaration.as.md) |  | Identifier | <i>(Optional)</i> |
+|  [path?](./influxdb-client-apis.importdeclaration.path.md) |  | StringLiteral | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.importdeclaration.type.md) |  | NodeType | <i>(Optional)</i> |
 

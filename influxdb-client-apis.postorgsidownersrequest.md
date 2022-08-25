@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostOrgsIDOwnersRequest 
+interface PostOrgsIDOwnersRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
+|  [body](./influxdb-client-apis.postorgsidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
 |  [orgID](./influxdb-client-apis.postorgsidownersrequest.orgid.md) |  | string | The organization ID. |
 

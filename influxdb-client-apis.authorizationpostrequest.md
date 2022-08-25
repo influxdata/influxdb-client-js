@@ -7,11 +7,9 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type AuthorizationPostRequest = AuthorizationUpdateRequest & {
+declare type AuthorizationPostRequest = AuthorizationUpdateRequest & {
     orgID?: string;
     userID?: string;
     permissions?: Permission[];
 };
 ```
-<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)
-

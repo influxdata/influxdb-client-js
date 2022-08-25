@@ -7,14 +7,14 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchDashboardsIDCellsIDViewRequest 
+interface PatchDashboardsIDCellsIDViewRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md) |  | [View](./influxdb-client-apis.view.md) | entity body |
+|  [body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md) |  | View | entity body |
 |  [cellID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.cellid.md) |  | string | The ID of the cell to update. |
 |  [dashboardID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

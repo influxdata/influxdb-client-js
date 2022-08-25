@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSourcesIDHealth() method
 
-Get the health of a source. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetSourcesIDHealth](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetSourcesIDHealth)
+Get the health of a source. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSourcesIDHealth](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSourcesIDHealth)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getSourcesIDHealth(request: GetSourcesIDHealthRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetSourcesIDHealthRequest](./influxdb-client-apis.getsourcesidhealthrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetSourcesIDHealthRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->&gt;
+Promise&lt;HealthCheck&gt;
 
 promise of response
 

@@ -7,21 +7,21 @@
 <b>Signature:</b>
 
 ```typescript
-export interface TableViewProperties 
+interface TableViewProperties 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [colors](./influxdb-client-apis.tableviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.tableviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
-|  [fieldOptions](./influxdb-client-apis.tableviewproperties.fieldoptions.md) |  | [RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->\[\] | fieldOptions represent the fields retrieved by the query with customization options |
+|  [colors](./influxdb-client-apis.tableviewproperties.colors.md) |  | DashboardColor\[\] | Colors define color encoding of data into a visualization |
+|  [decimalPlaces](./influxdb-client-apis.tableviewproperties.decimalplaces.md) |  | DecimalPlaces |  |
+|  [fieldOptions](./influxdb-client-apis.tableviewproperties.fieldoptions.md) |  | RenamableField\[\] | fieldOptions represent the fields retrieved by the query with customization options |
 |  [note](./influxdb-client-apis.tableviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.tableviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.tableviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.tableviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.tableviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [tableOptions](./influxdb-client-apis.tableviewproperties.tableoptions.md) |  | { verticalTimeAxis?: boolean; sortBy?: [RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->; wrapping?: 'truncate' \| 'wrap' \| 'single-line'; fixFirstColumn?: boolean; } |  |
+|  [tableOptions](./influxdb-client-apis.tableviewproperties.tableoptions.md) |  | { verticalTimeAxis?: boolean; sortBy?: RenamableField; wrapping?: 'truncate' \| 'wrap' \| 'single-line'; fixFirstColumn?: boolean; } |  |
 |  [timeFormat](./influxdb-client-apis.tableviewproperties.timeformat.md) |  | string | timeFormat describes the display format for time values according to moment.js date formatting |
 |  [type](./influxdb-client-apis.tableviewproperties.type.md) |  | 'table' |  |
 

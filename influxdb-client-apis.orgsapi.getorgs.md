@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgs() method
 
-List all organizations. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetOrgs](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetOrgs)
+List all organizations. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetOrgs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgs)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getOrgs(request?: GetOrgsRequest, requestOptions?: RequestOptions): Promise<Orga
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetOrgsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Organizations](./influxdb-client-apis.organizations.md)<!-- -->&gt;
+Promise&lt;Organizations&gt;
 
 promise of response
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DeleteStackRequest 
+interface DeleteStackRequest 
 ```
 
 ## Properties

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetLabelsRequest 
+interface GetLabelsRequest 
 ```
 
 ## Properties

@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type PropertyKey = Identifier | StringLiteral;
+declare type PropertyKey = Identifier | StringLiteral;
 ```
-<b>References:</b> [Identifier](./influxdb-client-apis.identifier.md)<!-- -->, [StringLiteral](./influxdb-client-apis.stringliteral.md)
-

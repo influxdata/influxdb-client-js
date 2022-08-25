@@ -9,7 +9,7 @@ Ready API
 <b>Signature:</b>
 
 ```typescript
-export declare class ReadyAPI 
+declare class ReadyAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class ReadyAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md) |  | Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetReady) |
+|  [getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md) |  | Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReady) |
 

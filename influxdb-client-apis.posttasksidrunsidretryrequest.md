@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostTasksIDRunsIDRetryRequest 
+interface PostTasksIDRunsIDRetryRequest 
 ```
 
 ## Properties

@@ -9,7 +9,7 @@ Type of HTTP headers.
 <b>Signature:</b>
 
 ```typescript
-export declare type Headers = {
+declare type Headers = {
     [header: string]: string | string[] | undefined;
 };
 ```

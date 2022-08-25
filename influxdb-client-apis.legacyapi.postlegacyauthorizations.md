@@ -4,7 +4,7 @@
 
 ## LegacyAPI.postLegacyAuthorizations() method
 
-Create a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostLegacyAuthorizations)
+Create a legacy authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostLegacyAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostLegacyAuthorizations)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postLegacyAuthorizations(request: PostLegacyAuthorizationsRequest, requestOption
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostLegacyAuthorizationsRequest](./influxdb-client-apis.postlegacyauthorizationsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostLegacyAuthorizationsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
+Promise&lt;Authorization&gt;
 
 promise of response
 

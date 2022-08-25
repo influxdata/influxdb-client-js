@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type SchemaType = 'implicit' | 'explicit';
+declare type SchemaType = 'implicit' | 'explicit';
 ```

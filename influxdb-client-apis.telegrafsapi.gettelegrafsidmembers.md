@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDMembers() method
 
-List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetTelegrafsIDMembers)
+List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTelegrafsIDMembers(request: GetTelegrafsIDMembersRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetTelegrafsIDMembersRequest](./influxdb-client-apis.gettelegrafsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetTelegrafsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
+Promise&lt;ResourceMembers&gt;
 
 promise of response
 

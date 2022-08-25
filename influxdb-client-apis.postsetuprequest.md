@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostSetupRequest 
+interface PostSetupRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postsetuprequest.body.md) |  | [OnboardingRequest](./influxdb-client-apis.onboardingrequest.md) | Source to create |
+|  [body](./influxdb-client-apis.postsetuprequest.body.md) |  | OnboardingRequest | Source to create |
 

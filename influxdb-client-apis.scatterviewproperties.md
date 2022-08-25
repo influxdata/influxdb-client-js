@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface ScatterViewProperties 
+interface ScatterViewProperties 
 ```
 
 ## Properties
@@ -23,7 +23,7 @@ export interface ScatterViewProperties
 |  [legendOpacity?](./influxdb-client-apis.scatterviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.scatterviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.scatterviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.scatterviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.scatterviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.scatterviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.scatterviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [symbolColumns](./influxdb-client-apis.scatterviewproperties.symbolcolumns.md) |  | string\[\] |  |

@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRules() method
 
-List all notification rules. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetNotificationRules](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetNotificationRules)
+List all notification rules. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationRules](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRules)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationRules(request: GetNotificationRulesRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetNotificationRulesRequest](./influxdb-client-apis.getnotificationrulesrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetNotificationRulesRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[NotificationRules](./influxdb-client-apis.notificationrules.md)<!-- -->&gt;
+Promise&lt;NotificationRules&gt;
 
 promise of response
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Subscribable<T> 
+interface Subscribable<T> 
 ```
 
 ## Methods

@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsIDMembersID() method
 
-Remove a member from a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/DeleteBucketsIDMembersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/DeleteBucketsIDMembersID)
+Remove a member from a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteBucketsIDMembersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDMembersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteBucketsIDMembersID(request: DeleteBucketsIDMembersIDRequest, requestOption
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [DeleteBucketsIDMembersIDRequest](./influxdb-client-apis.deletebucketsidmembersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | DeleteBucketsIDMembersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

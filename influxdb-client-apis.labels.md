@@ -7,7 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Labels = Label[];
+declare type Labels = Label[];
 ```
-<b>References:</b> [Label](./influxdb-client-apis.label.md)
-

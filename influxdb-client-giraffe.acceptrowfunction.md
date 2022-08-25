@@ -9,5 +9,5 @@ AcceptRowFunction allows to accept/reject specific rows or terminate processing.
 <b>Signature:</b>
 
 ```typescript
-export declare type AcceptRowFunction = (row: string[], tableMeta: FluxTableMetaData) => true | false | undefined;
+declare type AcceptRowFunction = (row: string[], tableMeta: FluxTableMetaData) => true | false | undefined;
 ```

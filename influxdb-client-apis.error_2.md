@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Error 
+interface Error 
 ```
 
 ## Properties

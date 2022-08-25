@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DBRPUpdate 
+interface DBRPUpdate 
 ```
 
 ## Properties

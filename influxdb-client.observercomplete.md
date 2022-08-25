@@ -9,5 +9,5 @@ Type of [Observer.complete](./influxdb-client.observer.complete.md)
 <b>Signature:</b>
 
 ```typescript
-export declare type ObserverComplete = () => void;
+declare type ObserverComplete = () => void;
 ```

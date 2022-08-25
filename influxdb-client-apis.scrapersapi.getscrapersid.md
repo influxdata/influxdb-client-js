@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersID() method
 
-Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetScrapersID)
+Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getScrapersID(request: GetScrapersIDRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetScrapersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->&gt;
+Promise&lt;ScraperTargetResponse&gt;
 
 promise of response
 

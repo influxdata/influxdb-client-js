@@ -9,13 +9,13 @@ Represents floating point numbers according to the double representations define
 <b>Signature:</b>
 
 ```typescript
-export interface FloatLiteral 
+interface FloatLiteral 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.floatliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.floatliteral.type.md) |  | NodeType | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.floatliteral.value.md) |  | number | <i>(Optional)</i> |
 

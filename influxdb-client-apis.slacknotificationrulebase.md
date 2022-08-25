@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface SlackNotificationRuleBase 
+interface SlackNotificationRuleBase 
 ```
 
 ## Properties

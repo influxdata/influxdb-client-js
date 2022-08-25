@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchLabelsIDRequest 
+interface PatchLabelsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchlabelsidrequest.body.md) |  | [LabelUpdate](./influxdb-client-apis.labelupdate.md) | Label update |
+|  [body](./influxdb-client-apis.patchlabelsidrequest.body.md) |  | LabelUpdate | Label update |
 |  [labelID](./influxdb-client-apis.patchlabelsidrequest.labelid.md) |  | string | The ID of the label to update. |
 

@@ -4,7 +4,7 @@
 
 ## LabelsAPI.getLabels() method
 
-List all labels. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetLabels)
+List all labels. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getLabels(request?: GetLabelsRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | GetLabelsRequest | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
+Promise&lt;LabelsResponse&gt;
 
 promise of response
 

@@ -7,10 +7,8 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
+declare type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
     clientURL?: string;
     routingKey: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
-

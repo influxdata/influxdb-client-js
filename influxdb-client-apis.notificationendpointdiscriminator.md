@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
+declare type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
     type: string;
 }) | (PagerDutyNotificationEndpoint & {
     type: string;
@@ -17,5 +17,3 @@ export declare type NotificationEndpointDiscriminator = (SlackNotificationEndpoi
     type: string;
 });
 ```
-<b>References:</b> [SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md)<!-- -->, [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md)<!-- -->, [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md)<!-- -->, [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md)
-

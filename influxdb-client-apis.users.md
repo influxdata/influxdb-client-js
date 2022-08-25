@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Users 
+interface Users 
 ```
 
 ## Properties
@@ -15,5 +15,5 @@ export interface Users
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [links?](./influxdb-client-apis.users.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.users.users.md) |  | [UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [users?](./influxdb-client-apis.users.users.md) |  | UserResponse\[\] | <i>(Optional)</i> |
 

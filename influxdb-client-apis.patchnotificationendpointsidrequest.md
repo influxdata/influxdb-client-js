@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PatchNotificationEndpointsIDRequest 
+interface PatchNotificationEndpointsIDRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md) |  | [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) | Check update to apply |
+|  [body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md) |  | NotificationEndpointUpdate | Check update to apply |
 |  [endpointID](./influxdb-client-apis.patchnotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
 

@@ -9,7 +9,7 @@ Root API
 <b>Signature:</b>
 
 ```typescript
-export declare class RootAPI 
+declare class RootAPI 
 ```
 
 ## Constructors
@@ -22,5 +22,5 @@ export declare class RootAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md) |  | List all top level routes. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.1/api/#operation/GetRoutes) |
+|  [getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md) |  | List all top level routes. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRoutes) |
 

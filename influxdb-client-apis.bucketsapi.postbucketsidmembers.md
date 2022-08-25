@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDMembers() method
 
-Add a member to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDMembers)
+Add a member to a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postBucketsIDMembers(request: PostBucketsIDMembersRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostBucketsIDMembersRequest](./influxdb-client-apis.postbucketsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostBucketsIDMembersRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
+Promise&lt;ResourceMember&gt;
 
 promise of response
 

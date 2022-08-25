@@ -9,14 +9,14 @@ Observes results of a flux query.
 <b>Signature:</b>
 
 ```typescript
-export interface FluxResultObserver<T> 
+interface FluxResultObserver<T> 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
+|  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) |  | (cancellable: Cancellable) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 ## WriteApi.writeRecord() method
 
-Write a line of \[Line Protocol\](https://bit.ly/2QL99fu).
+Write a line of [Line Protocol](https://bit.ly/2QL99fu)<!-- -->.
 
 <b>Signature:</b>
 

@@ -9,7 +9,7 @@ Subscription mimics Subscription from ECMAScript TC39 Observable proposal
 <b>Signature:</b>
 
 ```typescript
-export interface Subscription 
+interface Subscription 
 ```
 
 ## Properties

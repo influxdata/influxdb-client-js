@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface AddResourceMemberRequestBody 
+interface AddResourceMemberRequestBody 
 ```
 
 ## Properties

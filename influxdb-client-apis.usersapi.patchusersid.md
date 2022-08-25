@@ -4,7 +4,7 @@
 
 ## UsersAPI.patchUsersID() method
 
-Update a user. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PatchUsersID)
+Update a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchUsersID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchUsersID(request: PatchUsersIDRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PatchUsersIDRequest](./influxdb-client-apis.patchusersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PatchUsersIDRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
+Promise&lt;UserResponse&gt;
 
 promise of response
 

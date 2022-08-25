@@ -9,9 +9,9 @@ Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arr
 <b>Signature:</b>
 
 ```typescript
-export declare function createTextDecoderCombiner(): ChunkCombiner;
+declare function createTextDecoderCombiner(): ChunkCombiner;
 ```
 <b>Returns:</b>
 
-[ChunkCombiner](./influxdb-client.chunkcombiner.md)
+ChunkCombiner
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface MosaicViewProperties 
+interface MosaicViewProperties 
 ```
 
 ## Properties
@@ -23,7 +23,7 @@ export interface MosaicViewProperties
 |  [legendOpacity?](./influxdb-client-apis.mosaicviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.mosaicviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.mosaicviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.mosaicviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.mosaicviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.mosaicviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.mosaicviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [timeFormat?](./influxdb-client-apis.mosaicviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |

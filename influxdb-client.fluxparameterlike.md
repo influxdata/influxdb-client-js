@@ -9,7 +9,7 @@ A flux parameter can print its (sanitized) flux value.
 <b>Signature:</b>
 
 ```typescript
-export interface FluxParameterLike 
+interface FluxParameterLike 
 ```
 
 ## Methods

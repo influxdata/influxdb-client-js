@@ -9,7 +9,7 @@ Strategy for calculating retry delays.
 <b>Signature:</b>
 
 ```typescript
-export interface RetryDelayStrategy 
+interface RetryDelayStrategy 
 ```
 
 ## Methods

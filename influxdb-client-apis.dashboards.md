@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface Dashboards 
+interface Dashboards 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [dashboards?](./influxdb-client-apis.dashboards.dashboards.md) |  | [Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.dashboards.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [dashboards?](./influxdb-client-apis.dashboards.dashboards.md) |  | Dashboard\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.dashboards.links.md) |  | Links | <i>(Optional)</i> |
 

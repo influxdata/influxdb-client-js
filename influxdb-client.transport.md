@@ -9,14 +9,14 @@ Simpified platform-neutral transport layer for communication with InfluxDB.
 <b>Signature:</b>
 
 ```typescript
-export interface Transport 
+interface Transport 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [chunkCombiner](./influxdb-client.transport.chunkcombiner.md) | <code>readonly</code> | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | Combines response chunks to create a single response object. |
+|  [chunkCombiner](./influxdb-client.transport.chunkcombiner.md) | <code>readonly</code> | ChunkCombiner | Combines response chunks to create a single response object. |
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBucketsIDLabels() method
 
-Add a label to a bucket. See [https://docs.influxdata.com/influxdb/v2.1/api/\#operation/PostBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.1/api/#operation/PostBucketsIDLabels)
+Add a label to a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postBucketsIDLabels(request: PostBucketsIDLabelsRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [PostBucketsIDLabelsRequest](./influxdb-client-apis.postbucketsidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+|  request | PostBucketsIDLabelsRequest | request parameters and body (if supported) |
+|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
+Promise&lt;LabelResponse&gt;
 
 promise of response
 

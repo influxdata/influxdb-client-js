@@ -7,13 +7,13 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostOrgsIDSecretsRequest 
+interface PostOrgsIDSecretsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidsecretsrequest.body.md) |  | [SecretKeys](./influxdb-client-apis.secretkeys.md) | Secret key to delete |
+|  [body](./influxdb-client-apis.postorgsidsecretsrequest.body.md) |  | SecretKeys | Secret key to delete |
 |  [orgID](./influxdb-client-apis.postorgsidsecretsrequest.orgid.md) |  | string | The organization ID. |
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface RemoteConnectionCreationRequest 
+interface RemoteConnectionCreationRequest 
 ```
 
 ## Properties

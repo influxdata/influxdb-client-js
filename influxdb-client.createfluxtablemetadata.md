@@ -9,18 +9,18 @@ Created FluxTableMetaData from the columns supplied.
 <b>Signature:</b>
 
 ```typescript
-export declare function createFluxTableMetaData(columns: FluxTableColumn[]): FluxTableMetaData;
+declare function createFluxTableMetaData(columns: FluxTableColumn[]): FluxTableMetaData;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  columns | [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->\[\] | columns |
+|  columns | FluxTableColumn\[\] | columns |
 
 <b>Returns:</b>
 
-[FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
+FluxTableMetaData
 
 - instance
 

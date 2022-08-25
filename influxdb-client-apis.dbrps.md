@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface DBRPs 
+interface DBRPs 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [content?](./influxdb-client-apis.dbrps.content.md) |  | [DBRP](./influxdb-client-apis.dbrp.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [content?](./influxdb-client-apis.dbrps.content.md) |  | DBRP\[\] | <i>(Optional)</i> |
 

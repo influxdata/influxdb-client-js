@@ -7,12 +7,12 @@
 <b>Signature:</b>
 
 ```typescript
-export interface PostBucketsRequest 
+interface PostBucketsRequest 
 ```
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsrequest.body.md) |  | [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) | Bucket to create |
+|  [body](./influxdb-client-apis.postbucketsrequest.body.md) |  | PostBucketRequest | Bucket to create |
 

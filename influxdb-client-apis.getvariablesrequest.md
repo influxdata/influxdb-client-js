@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface GetVariablesRequest 
+interface GetVariablesRequest 
 ```
 
 ## Properties

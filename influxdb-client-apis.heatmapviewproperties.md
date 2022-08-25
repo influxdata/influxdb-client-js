@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-export interface HeatmapViewProperties 
+interface HeatmapViewProperties 
 ```
 
 ## Properties
@@ -23,7 +23,7 @@ export interface HeatmapViewProperties
 |  [legendOpacity?](./influxdb-client-apis.heatmapviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.heatmapviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.heatmapviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
+|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) |  | DashboardQuery\[\] |  |
 |  [shape](./influxdb-client-apis.heatmapviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.heatmapviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [timeFormat?](./influxdb-client-apis.heatmapviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |
