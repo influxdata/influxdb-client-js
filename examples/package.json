@@ -24,6 +24,6 @@
     "open": "^7.0.0",
     "response-time": "^2.3.2",
     "rxjs": "^6.5.5",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   }
 }

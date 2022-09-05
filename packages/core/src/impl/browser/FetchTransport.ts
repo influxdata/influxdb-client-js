@@ -124,7 +124,7 @@ export default class FetchTransport implements Transport {
         } else {
           if (response.body) {
             const reader = response.body.getReader()
-            let chunk: ReadableStreamDefaultReadResult<Uint8Array>
+            let chunk: ReadableStreamReadResult<Uint8Array>
             do {
               chunk = await reader.read()
               observer.next(chunk.value)
