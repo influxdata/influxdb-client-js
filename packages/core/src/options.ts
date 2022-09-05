@@ -93,6 +93,13 @@ export interface WriteRetryOptions extends RetryDelayStrategyOptions {
    */
   writeSuccess(this: WriteApi, lines: Array<string>): void
 
+  /**
+   * WriteRetrySkipped is informed about lines that were removed from the retry buffer
+   * to keep the size of the retry buffer under the configured limit (maxBufferLines).
+   * @param entry - lines that were skipped
+   */
+  writeRetrySkipped(entry: {lines: Array<string>; expires: number}): void
+
   /** max count of retries after the first write fails */
   maxRetries: number
   /** max time (millis) that can be spent with retries */
@@ -137,6 +144,7 @@ export const DEFAULT_WriteOptions: WriteOptions = {
   flushInterval: 60000,
   writeFailed: function () {},
   writeSuccess: function () {},
+  writeRetrySkipped: function () {},
   maxRetries: 5,
   maxRetryTime: 180_000,
   maxBufferLines: 32_000,

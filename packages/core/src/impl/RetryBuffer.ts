@@ -1,13 +1,27 @@
 import {Log} from '../util/logger'
 
-/* interval between successful retries */
-const RETRY_INTERVAL = 1
-
 interface RetryItem {
   lines: string[]
   retryCount: number
+  retryTime: number
   expires: number
   next?: RetryItem
+}
+
+type FindShrinkCandidateResult = [found: RetryItem, parent?: RetryItem]
+
+function findShrinkCandidate(first: RetryItem): FindShrinkCandidateResult {
+  let parent = undefined
+  let found = first
+  let currentParent = first
+  while (currentParent.next) {
+    if (currentParent.next.expires < found.expires) {
+      parent = currentParent
+      found = currentParent.next
+    }
+    currentParent = currentParent.next
+  }
+  return [found, parent]
 }
 
 /**
@@ -15,9 +29,7 @@ interface RetryItem {
  */
 export default class RetryBuffer {
   first?: RetryItem
-  last?: RetryItem
   size = 0
-  nextRetryTime = 0
   closed = false
   private _timeoutHandle: any = undefined
 
@@ -27,7 +39,12 @@ export default class RetryBuffer {
       lines: string[],
       retryCountdown: number,
       started: number
-    ) => Promise<void>
+    ) => Promise<void>,
+    private onShrink: (entry: {
+      lines: string[]
+      retryCount: number
+      expires: number
+    }) => void = () => undefined
   ) {}
 
   addLines(
@@ -40,43 +57,57 @@ export default class RetryBuffer {
     if (!lines.length) return
     let retryTime = Date.now() + delay
     if (expires < retryTime) {
-      delay = expires - Date.now()
       retryTime = expires
     }
-    if (retryTime > this.nextRetryTime) this.nextRetryTime = retryTime
     // ensure at most maxLines are in the Buffer
     if (this.first && this.size + lines.length > this.maxLines) {
       const origSize = this.size
       const newSize = origSize * 0.7 // reduce to 70 %
       do {
-        const newFirst = this.first.next as RetryItem
-        this.size -= this.first.lines.length
-        this.first.next = undefined
-        this.first = newFirst
-        if (!this.first) {
-          this.last = undefined
+        // remove "oldest" item
+        const [found, parent] = findShrinkCandidate(this.first)
+        this.size -= found.lines.length
+        if (parent) {
+          parent.next = found.next
+        } else {
+          this.first = found.next
+          if (this.first) {
+            this.scheduleRetry(this.first.retryTime - Date.now())
+          }
         }
+        found.next = undefined
+        this.onShrink(found)
       } while (this.first && this.size + lines.length > newSize)
       Log.error(
         `RetryBuffer: ${
           origSize - this.size
         } oldest lines removed to keep buffer size under the limit of ${
           this.maxLines
-        } lines`
+        } lines.`
       )
     }
     const toAdd: RetryItem = {
       lines,
       retryCount,
+      retryTime,
       expires,
     }
-    if (this.last) {
-      this.last.next = toAdd
-      this.last = toAdd
-    } else {
-      this.first = toAdd
-      this.last = toAdd
-      this.scheduleRetry(delay)
+    // insert sorted according to retryTime
+    let current: RetryItem | undefined = this.first
+    let parent = undefined
+    for (;;) {
+      if (!current || current.retryTime > retryTime) {
+        toAdd.next = current
+        if (parent) {
+          parent.next = toAdd
+        } else {
+          this.first = toAdd
+          this.scheduleRetry(retryTime - Date.now())
+        }
+        break
+      }
+      parent = current
+      current = current.next
     }
     this.size += lines.length
   }
@@ -87,25 +118,28 @@ export default class RetryBuffer {
       this.first = this.first.next
       toRetry.next = undefined
       this.size -= toRetry.lines.length
-      if (!this.first) this.last = undefined
       return toRetry
     }
     return undefined
   }
 
   scheduleRetry(delay: number): void {
+    if (this._timeoutHandle) {
+      clearTimeout(this._timeoutHandle)
+    }
     this._timeoutHandle = setTimeout(() => {
       const toRetry = this.removeLines()
       if (toRetry) {
-        this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
-          .then(() => {
-            // continue with successfull retry
-            this.scheduleRetry(RETRY_INTERVAL)
-          })
-          .catch((_e) => {
-            // already logged
-            this.scheduleRetry(this.nextRetryTime - Date.now())
-          })
+        this.retryLines(
+          toRetry.lines,
+          toRetry.retryCount,
+          toRetry.expires
+        ).finally(() => {
+          // schedule next retry execution
+          if (this.first) {
+            this.scheduleRetry(this.first.retryTime - Date.now())
+          }
+        })
       } else {
         this._timeoutHandle = undefined
       }
