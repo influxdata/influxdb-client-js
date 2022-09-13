@@ -9,7 +9,15 @@ let fixedMarkdownLinks = 0
 const ignoredReferencePackages = [
   '!' /* ts&js builtin types */,
   '@influxdata/giraffe!' /* giraffe references */,
+  '@influxdata/influxdb-client!~__global' /*ignore global symbol declaration in packages/core/src/observable/symbol.ts */,
 ]
+const mappedReferences = {
+  // defect in api-extractor naming
+  '@influxdata/influxdb-client!FLUX_VALUE':
+    '@influxdata/influxdb-client!FLUX_VALUE:var',
+  '@influxdata/influxdb-client!Headers:type':
+    '@influxdata/influxdb-client!Headers_2:type',
+}
 
 const markdownLinkRE = /\[([^\]]*)\]\(([^)]*)\)/g
 function changeMarkdownLinks(text) {
@@ -57,17 +65,26 @@ function fixExtractedFile(file, json, errors = []) {
           if (canonicalReference && !referenceIds[canonicalReference]) {
             if (canonicalReference.indexOf('!~') > 0) {
               const replaced = canonicalReference.replace('!~', '!')
+              if (referenceIds[replaced]) {
+                fixedReferenceCount++
+                console.log(` FIXED ${canonicalReference} => ${replaced}`)
+                obj.canonicalReference = replaced
+                return
+              }
+            }
+            const mapped = mappedReferences[canonicalReference]
+            if (mapped && referenceIds[mapped]) {
               fixedReferenceCount++
-              console.log(` FIXED ${canonicalReference} => ${replaced}`)
-              obj.canonicalReference = replaced
+              console.log(` FIXED ${canonicalReference} => ${mapped}`)
+              obj.canonicalReference = mapped
               return
             }
-            // report unresolved reference
             for (const ignoredPackage of ignoredReferencePackages) {
               if (canonicalReference.startsWith(ignoredPackage)) {
                 return
               }
             }
+            // report unresolved references
             const msg = ` MISSING ${canonicalReference}`
             errors.push(`${file}: ${msg}`)
             console.log(msg)
