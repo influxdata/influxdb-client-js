@@ -40,7 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18",
-    "@microsoft/api-documenter": "^7.18.3",
+    "@microsoft/api-documenter": "^7.19.12",
     "gh-pages": "^4.0.0",
     "lerna": "^5.0.0",
     "prettier": "^2.7.1",

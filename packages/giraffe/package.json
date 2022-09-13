@@ -46,7 +46,7 @@
   "devDependencies": {
     "@influxdata/giraffe": "*",
     "@influxdata/influxdb-client": "^1.29.0",
-    "@microsoft/api-extractor": "^7.28.4",
+    "@microsoft/api-extractor": "^7.31.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^9.1.1",
     "@types/react": "^16.9.55",
