@@ -3,6 +3,8 @@
 const path = require('path')
 const fs = require('fs')
 const referenceIds = {}
+let fixedReferenceCount = 0
+let fixedMarkdownLinks = 0
 
 const ignoredReferencePackages = [
   '!' /* ts&js builtin types */,
@@ -16,6 +18,7 @@ function changeMarkdownLinks(text) {
     return text.replace(markdownLinkRE, (match, text, link) => {
       const retVal = `{@link ${link} | ${text} }`
       console.log(` CHANGED ${match} => ${retVal}`)
+      fixedMarkdownLinks++
       return retVal
     })
   }
@@ -54,6 +57,7 @@ function fixExtractedFile(file, json, errors = []) {
           if (canonicalReference && !referenceIds[canonicalReference]) {
             if (canonicalReference.indexOf('!~') > 0) {
               const replaced = canonicalReference.replace('!~', '!')
+              fixedReferenceCount++
               console.log(` FIXED ${canonicalReference} => ${replaced}`)
               obj.canonicalReference = replaced
               return
@@ -100,6 +104,8 @@ for (const [file, json] of Object.entries(fileToJson)) {
   fixExtractedFile(file, json, errors)
 }
 
+console.info('Fixed markdown links: ' + fixedMarkdownLinks)
+console.info('Fixed references: ' + fixedReferenceCount)
 if (errors.length) {
   console.error(`\n\nERRORS:`)
   errors.forEach((e) => console.error(e))
