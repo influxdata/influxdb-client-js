@@ -42,7 +42,7 @@ function storeCanonicalReferences(json, references) {
 }
 
 function fixExtractedFile(file, json, errors = []) {
-  console.log(`correct: ${file}`)
+  console.log(`\nCheck and correct: ${file}`)
 
   function replaceObject(obj) {
     if (typeof obj === 'object') {
