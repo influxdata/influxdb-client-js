@@ -89,7 +89,7 @@ JavaScript client API Reference Documentation is available online at https://inf
 
 ## Contributing
 
-To contribute code, fork the repository and submit a pull request in GitHub to the JavaScript client `master` branch.
+To contribute code, fork the repository, apply changes and submit a pull request in GitHub to the `master` branch.
 
 Build Requirements:
 
