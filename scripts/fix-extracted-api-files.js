@@ -12,7 +12,7 @@ const ignoredReferencePackages = [
   '@influxdata/influxdb-client!~__global' /*ignore global symbol declaration in packages/core/src/observable/symbol.ts */,
 ]
 const mappedReferences = {
-  // defect in api-extractor naming
+  // defect in api-extractor naming https://github.com/microsoft/rushstack/issues/3629
   '@influxdata/influxdb-client!FLUX_VALUE':
     '@influxdata/influxdb-client!FLUX_VALUE:var',
   '@influxdata/influxdb-client!Headers:type':
@@ -64,6 +64,7 @@ function fixExtractedFile(file, json, errors = []) {
           const canonicalReference = obj['canonicalReference']
           if (canonicalReference && !referenceIds[canonicalReference]) {
             if (canonicalReference.indexOf('!~') > 0) {
+              // https://github.com/microsoft/rushstack/issues/3624
               const replaced = canonicalReference.replace('!~', '!')
               if (referenceIds[replaced]) {
                 fixedReferenceCount++
