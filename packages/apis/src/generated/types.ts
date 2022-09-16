@@ -1928,7 +1928,7 @@ Queries may reference secrets stored in InfluxDB--for example,
 the following Flux script retrieves `POSTGRES_USERNAME` and `POSTGRES_PASSWORD`
 secrets and then uses them to connect to a PostgreSQL database:
 
-  ```js
+```js
   import "sql"
   import "influxdata/influxdb/secrets"
 
@@ -1940,12 +1940,12 @@ secrets and then uses them to connect to a PostgreSQL database:
     dataSourceName: "postgresql://${username}:${password}@localhost:5432",
     query: "SELECT * FROM example_table",
   )
-  ```
+```
 
 To define secret values in your `/api/v2/templates/apply` request,
 pass the `secrets` parameter with key-value pairs--for example:
 
-  ```json
+```json
   {
     ...
     "secrets": {
@@ -1954,7 +1954,7 @@ pass the `secrets` parameter with key-value pairs--for example:
     }
     ...
   }
-  ```
+```
 
 InfluxDB stores the key-value pairs as secrets that you can access with `secrets.get()`.
 Once stored, you can't view secret values in InfluxDB.
@@ -2014,7 +2014,7 @@ The following code samples show `spec` configurations for template resources:
 
 - A bucket:
 
-  ```json
+```json
   { "spec": {
       "name": "iot_center",
       "retentionRules": [{
@@ -2023,11 +2023,11 @@ The following code samples show `spec` configurations for template resources:
         }]
     }
   }
-  ```
+```
 
 - A variable:
 
-  ```json
+```json
   { "spec": {
       "language": "flux",
       "name": "Node_Service",
@@ -2036,7 +2036,7 @@ The following code samples show `spec` configurations for template resources:
       "type": "query"
     }
   }
-  ```
+```
  */
   spec?: any
 }>
