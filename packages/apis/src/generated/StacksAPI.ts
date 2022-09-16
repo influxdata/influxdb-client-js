@@ -3,11 +3,34 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {Stack} from './types'
 
 export interface ListStacksRequest {
-  /** The organization ID of the stacks */
+  /** The ID of the organization that owns the stacks.
+Only returns stacks owned by this organization.
+
+#### InfluxDB Cloud
+
+- Doesn't require this parameter;
+  InfluxDB only returns resources allowed by the API token.
+ */
   orgID: string
-  /** A collection of names to filter the list by. */
+  /** The stack name.
+Finds stack `events` with this name and returns the stacks.
+
+Repeatable.
+To filter for more than one stack name,
+repeat this parameter with each name--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&name=project-stack-0&name=project-stack-1`
+ */
   name?: string
-  /** A collection of stackIDs to filter the list by. */
+  /** The stack ID.
+Only returns stacks with this ID.
+
+Repeatable.
+To filter for more than one stack ID,
+repeat this parameter with each ID--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&stackID=09bd87cd33be3000&stackID=09bef35081fe3000`
+ */
   stackID?: string
 }
 export interface CreateStackRequest {
@@ -63,7 +86,7 @@ export class StacksAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List installed templates.
+   * List installed stacks.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/ListStacks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -87,7 +110,7 @@ export class StacksAPI {
     )
   }
   /**
-   * Create a new stack.
+   * Create a stack.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateStack }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

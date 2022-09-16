@@ -10,12 +10,14 @@ import {
 } from './types'
 
 export interface PostQueryAstRequest {
-  /** Analyzed Flux query to generate abstract syntax tree. */
+  /** The Flux query to analyze. */
   body: LanguageRequest
 }
 export interface GetQuerySuggestionsRequest {}
 export interface GetQuerySuggestionsNameRequest {
-  /** The name of the branching suggestion. */
+  /** A Flux Function name.
+Only returns functions with this name.
+ */
   name: string
 }
 export interface PostQueryAnalyzeRequest {
@@ -25,9 +27,29 @@ export interface PostQueryAnalyzeRequest {
 export interface PostQueryRequest {
   /** Flux query or specification to execute */
   body: Query
-  /** Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`, `org` takes precedence. */
+  /** The name or ID of the organization executing the query.
+
+#### InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`.
+- Queries the bucket in the organization associated with the authorization (API token).
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+ */
   org?: string
-  /** ID of the organization executing the query. If you provide both `orgID` and `org`, `org` takes precedence. */
+  /** The ID of the organization executing the query.
+
+#### InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`.
+- Queries the bucket in the organization associated with the authorization (API token).
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+ */
   orgID?: string
 }
 /**
@@ -45,7 +67,7 @@ export class QueryAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * Generate an Abstract Syntax Tree (AST) from a query.
+   * Generate a query Abstract Syntax Tree (AST).
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQueryAst }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -64,7 +86,7 @@ export class QueryAPI {
     )
   }
   /**
-   * Retrieve query suggestions.
+   * Retrieve Flux query suggestions.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetQuerySuggestions }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
@@ -82,7 +104,7 @@ export class QueryAPI {
     )
   }
   /**
-   * Retrieve query suggestions for a branching suggestion.
+   * Retrieve a query suggestion for a branching suggestion.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetQuerySuggestionsName }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

@@ -12,7 +12,7 @@ export interface GetLabelsRequest {
   orgID?: string
 }
 export interface PostLabelsRequest {
-  /** Label to create */
+  /** The label to create. */
   body: LabelCreateRequest
 }
 export interface GetLabelsIDRequest {
@@ -22,7 +22,7 @@ export interface GetLabelsIDRequest {
 export interface PatchLabelsIDRequest {
   /** The ID of the label to update. */
   labelID: string
-  /** Label update */
+  /** A label update. */
   body: LabelUpdate
 }
 export interface DeleteLabelsIDRequest {

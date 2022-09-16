@@ -16,32 +16,46 @@ import {
 } from './types'
 
 export interface GetOrgsRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   descending?: any
-  /** Filter organizations to a specific organization name. */
+  /** An organization name.
+Only returns organizations with this name.
+ */
   org?: string
-  /** Filter organizations to a specific organization ID. */
+  /** An organization ID.
+Only returns the organization with this ID.
+ */
   orgID?: string
-  /** Filter organizations to a specific user ID. */
+  /** A user ID.
+Only returns organizations where this user is a member or owner.
+ */
   userID?: string
 }
 export interface PostOrgsRequest {
-  /** Organization to create */
+  /** The organization to create. */
   body: PostOrganizationRequest
 }
 export interface GetOrgsIDRequest {
-  /** The ID of the organization to get. */
+  /** The ID of the organization to retrieve.
+   */
   orgID: string
 }
 export interface PatchOrgsIDRequest {
-  /** The ID of the organization to get. */
+  /** The ID of the organization to update.
+   */
   orgID: string
-  /** Organization update to apply */
+  /** The organization update to apply. */
   body: PatchOrganizationRequest
 }
 export interface DeleteOrgsIDRequest {
-  /** The ID of the organization to delete. */
+  /** The ID of the organization to delete.
+   */
   orgID: string
 }
 export interface GetOrgsIDSecretsRequest {
@@ -55,35 +69,40 @@ export interface PatchOrgsIDSecretsRequest {
   body: Secrets
 }
 export interface GetOrgsIDMembersRequest {
-  /** The organization ID. */
+  /** The ID of the organization to retrieve users for.
+   */
   orgID: string
 }
 export interface PostOrgsIDMembersRequest {
-  /** The organization ID. */
+  /** The ID of the organization.
+   */
   orgID: string
-  /** User to add as member */
+  /** The user to add to the organization.
+   */
   body: AddResourceMemberRequestBody
 }
 export interface DeleteOrgsIDMembersIDRequest {
-  /** The ID of the member to remove. */
+  /** The ID of the user to remove. */
   userID: string
-  /** The organization ID. */
+  /** The ID of the organization to remove a user from. */
   orgID: string
 }
 export interface GetOrgsIDOwnersRequest {
-  /** The organization ID. */
+  /** The ID of the organization to list owners for.
+   */
   orgID: string
 }
 export interface PostOrgsIDOwnersRequest {
-  /** The organization ID. */
+  /** The ID of the organization that you want to add an owner for. */
   orgID: string
-  /** User to add as owner */
+  /** The user to add as an owner of the organization. */
   body: AddResourceMemberRequestBody
 }
 export interface DeleteOrgsIDOwnersIDRequest {
-  /** The ID of the owner to remove. */
+  /** The ID of the user to remove. */
   userID: string
-  /** The organization ID. */
+  /** The ID of the organization to remove an owner from.
+   */
   orgID: string
 }
 export interface PostOrgsIDSecretsRequest {
@@ -113,7 +132,7 @@ export class OrgsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all organizations.
+   * List organizations.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

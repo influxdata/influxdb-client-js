@@ -12,7 +12,12 @@ import {
 } from './types'
 
 export interface GetChecksRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   /** Only show checks that belong to a specific organization ID. */
   orgID: string

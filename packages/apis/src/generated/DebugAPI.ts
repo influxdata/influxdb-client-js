@@ -2,7 +2,7 @@ import {InfluxDB} from '@influxdata/influxdb-client'
 import {APIBase, RequestOptions} from '../APIBase'
 
 export interface GetDebugPprofAllProfilesRequest {
-  /** Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration).
+  /** Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#duration).
    */
   cpu?: string
 }

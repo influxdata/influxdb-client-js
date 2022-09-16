@@ -9,7 +9,8 @@ import {
 } from './types'
 
 export interface ApplyTemplateRequest {
-  /** entity body */
+  /** Parameters for applying templates.
+   */
   body: TemplateApply
 }
 export interface ExportTemplateRequest {

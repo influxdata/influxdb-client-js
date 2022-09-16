@@ -10,7 +10,12 @@ export interface PostUsersIDPasswordRequest {
   body: PasswordResetBody
 }
 export interface GetUsersRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   /** Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.
    */
@@ -19,7 +24,7 @@ export interface GetUsersRequest {
   id?: string
 }
 export interface PostUsersRequest {
-  /** User to create */
+  /** The user to create. */
   body: User
 }
 export interface GetUsersIDRequest {
@@ -70,7 +75,7 @@ export class UsersAPI {
     )
   }
   /**
-   * List all users.
+   * List users.
    * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options

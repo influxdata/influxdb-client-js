@@ -133,7 +133,12 @@ export interface DeleteDashboardsIDOwnersIDRequest {
   dashboardID: string
 }
 export interface GetDashboardsRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   descending?: any
   /** A user identifier. Returns only dashboards where this user has the `owner` role. */

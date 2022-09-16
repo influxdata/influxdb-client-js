@@ -3,15 +3,52 @@ import {APIBase, RequestOptions} from '../APIBase'
 import {DeletePredicateRequest} from './types'
 
 export interface PostDeleteRequest {
-  /** Deletes data from an InfluxDB bucket. */
+  /** Time range parameters and an optional **delete predicate expression**.
+
+To select points to delete within the specified time range, pass a
+**delete predicate expression** in the `predicate` property of the request body.
+If you don't pass a `predicate`, InfluxDB deletes all data with timestamps
+in the specified time range.
+
+#### Related guides
+
+- [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/).
+- Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/).
+ */
   body: DeletePredicateRequest
-  /** Specifies the organization to delete data from. */
+  /** The organization to delete data from.
+If you pass both `orgID` and `org`, they must both be valid.
+
+#### InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`.
+- Deletes data from the bucket in the organization associated with the authorization (API token).
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+ */
   org?: string
-  /** Specifies the bucket to delete data from. */
+  /** The name or ID of the bucket to delete data from.
+If you pass both `bucket` and `bucketID`, `bucketID` takes precedence.
+ */
   bucket?: string
-  /** Specifies the organization ID of the resource. */
+  /** The ID of the organization to delete data from.
+If you pass both `orgID` and `org`, they must both be valid.
+
+#### InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`.
+- Deletes data from the bucket in the organization associated with the authorization (API token).
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+ */
   orgID?: string
-  /** Specifies the bucket ID to delete data from. */
+  /** The ID of the bucket to delete data from.
+If you pass both `bucket` and `bucketID`, `bucketID` takes precedence.
+ */
   bucketID?: string
 }
 /**
