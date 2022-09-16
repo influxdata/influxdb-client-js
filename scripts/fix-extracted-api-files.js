@@ -15,8 +15,6 @@ const mappedReferences = {
   // defect in api-extractor naming https://github.com/microsoft/rushstack/issues/3629
   '@influxdata/influxdb-client!FLUX_VALUE':
     '@influxdata/influxdb-client!FLUX_VALUE:var',
-  '@influxdata/influxdb-client!Headers:type':
-    '@influxdata/influxdb-client!Headers_2:type',
 }
 
 const markdownLinkRE = /\[([^\]]*)\]\(([^)]*)\)/g

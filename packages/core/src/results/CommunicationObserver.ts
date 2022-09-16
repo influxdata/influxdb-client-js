@@ -2,14 +2,18 @@ import {Cancellable} from './Cancellable'
 /**
  * Type of HTTP headers.
  */
-export type Headers = {[header: string]: string | string[] | undefined}
+export type HttpHeaders = {[header: string]: string | string[] | undefined}
+export {HttpHeaders as Headers}
 
 /**
  * Informs about a start of response processing.
  * @param headers - response HTTP headers
  * @param statusCode - response status code
  */
-export type ResponseStartedFn = (headers: Headers, statusCode?: number) => void
+export type ResponseStartedFn = (
+  headers: HttpHeaders,
+  statusCode?: number
+) => void
 
 /**
  * Observes communication with the server.
