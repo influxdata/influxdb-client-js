@@ -7,7 +7,6 @@
     "build": "yarn run clean && yarn tsup --config ./tsup.config.browser.ts && yarn tsup",
     "clean": "rimraf build doc dist reports",
     "clean:apis": "rimraf src/generated/*API.ts",
-    "generate": "yarn esr generator && yarn prettier --write src/generated/*.ts",
     "test": "yarn run lint && yarn run typecheck && yarn run test:unit",
     "test:unit": "mocha --require esbuild-runner/register 'test/unit/**/*.test.ts' --exit",
     "test:ci": "yarn run typecheck && yarn run lint:ci && yarn run test:unit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/apis_mocha/test-results.xml",
@@ -15,7 +14,12 @@
     "lint": "eslint 'src/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file ../../reports/apis_eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
-    "fetchSwaggerFiles": "node ./scripts/fetchSwaggerFiles.js"
+    "regenerate": "yarn fetchSwaggerFiles && yarn generate && yarn test",
+    "fetchSwaggerFiles": "node ./scripts/fetchSwaggerFiles.js",
+    "generate": "yarn generate:clean && yarn generate:types && yarn generate:apis",
+    "generate:clean": "rm -rf src/generated/*.ts",
+    "generate:types": "oats -i 'types' --storeOperations resources/operations.json --patchScript $PWD/scripts/patchSwagger.js resources/oss.yml resources/invocable-scripts.yml > src/generated/types.ts",
+    "generate:apis": "yarn esr generator && yarn prettier --write src/generated/*.ts"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -54,6 +58,7 @@
   },
   "devDependencies": {
     "@influxdata/influxdb-client": "^1.29.0",
+    "@influxdata/oats": "^0.7.0",
     "@microsoft/api-extractor": "^7.31.0",
     "@types/mocha": "^9.1.1",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
