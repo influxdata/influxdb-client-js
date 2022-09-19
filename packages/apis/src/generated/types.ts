@@ -1929,31 +1929,31 @@ the following Flux script retrieves `POSTGRES_USERNAME` and `POSTGRES_PASSWORD`
 secrets and then uses them to connect to a PostgreSQL database:
 
 ```js
-  import "sql"
-  import "influxdata/influxdb/secrets"
+import "sql"
+import "influxdata/influxdb/secrets"
 
-  username = secrets.get(key: "POSTGRES_USERNAME")
-  password = secrets.get(key: "POSTGRES_PASSWORD")
+username = secrets.get(key: "POSTGRES_USERNAME")
+password = secrets.get(key: "POSTGRES_PASSWORD")
 
-  sql.from(
-    driverName: "postgres",
-    dataSourceName: "postgresql://${username}:${password}@localhost:5432",
-    query: "SELECT * FROM example_table",
-  )
+sql.from(
+  driverName: "postgres",
+  dataSourceName: "postgresql://${username}:${password}@localhost:5432",
+  query: "SELECT * FROM example_table",
+)
 ```
 
 To define secret values in your `/api/v2/templates/apply` request,
 pass the `secrets` parameter with key-value pairs--for example:
 
 ```json
-  {
-    ...
-    "secrets": {
-      "POSTGRES_USERNAME": "pguser",
-      "POSTGRES_PASSWORD": "foo"
-    }
-    ...
+{
+  ...
+  "secrets": {
+    "POSTGRES_USERNAME": "pguser",
+    "POSTGRES_PASSWORD": "foo"
   }
+  ...
+}
 ```
 
 InfluxDB stores the key-value pairs as secrets that you can access with `secrets.get()`.
@@ -2015,27 +2015,27 @@ The following code samples show `spec` configurations for template resources:
 - A bucket:
 
 ```json
-  { "spec": {
-      "name": "iot_center",
-      "retentionRules": [{
-          "everySeconds": 2.592e+06,
-          "type": "expire"
-        }]
-    }
+{ "spec": {
+    "name": "iot_center",
+    "retentionRules": [{
+        "everySeconds": 2.592e+06,
+        "type": "expire"
+      }]
   }
+}
 ```
 
 - A variable:
 
 ```json
-  { "spec": {
-      "language": "flux",
-      "name": "Node_Service",
-      "query": "import \"influxdata/influxdb/v1\"\r\nv1.tagValues(bucket: \"iot_center\",
-          tag: \"service\")",
-      "type": "query"
-    }
+{ "spec": {
+    "language": "flux",
+    "name": "Node_Service",
+    "query": "import \"influxdata/influxdb/v1\"\r\nv1.tagValues(bucket: \"iot_center\",
+        tag: \"service\")",
+    "type": "query"
   }
+}
 ```
  */
   spec?: any

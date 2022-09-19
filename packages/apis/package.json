@@ -18,7 +18,7 @@
     "fetchSwaggerFiles": "node ./scripts/fetchSwaggerFiles.js",
     "generate": "yarn generate:clean && yarn generate:types && yarn generate:apis",
     "generate:clean": "rm -rf src/generated/*.ts",
-    "generate:types": "oats -i 'types' --storeOperations resources/operations.json --patchScript $PWD/scripts/patchSwagger.js resources/oss.yml resources/invocable-scripts.yml > src/generated/types.ts",
+    "generate:types": "oats -i 'types' --storeOperations resources/operations.json --patchScript $PWD/scripts/patchSwagger.js resources/oss.yml resources/invocable-scripts.yml > src/generated/types.ts && node ../../scripts/repair-doc-code-blocks.js src/generated/types.ts",
     "generate:apis": "yarn esr generator && yarn prettier --write src/generated/*.ts"
   },
   "main": "dist/index.js",
