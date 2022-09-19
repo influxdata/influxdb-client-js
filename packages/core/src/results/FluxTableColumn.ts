@@ -56,7 +56,7 @@ const identity = (x: string): any => x
  * See {@link https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types }
  */
 export const typeSerializers: Record<ColumnType, (val: string) => any> = {
-  boolean: (x: string): any => x === 'true',
+  boolean: (x: string): any => (x === '' ? null : x === 'true'),
   unsignedLong: (x: string): any => (x === '' ? null : +x),
   long: (x: string): any => (x === '' ? null : +x),
   double(x: string): any {
