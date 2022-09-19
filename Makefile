@@ -20,7 +20,7 @@ publish:
 	git checkout master
 	git pull
 	yarn install --frozen-lockfile
-	sed -i '' -e "s/CLIENT_LIB_VERSION = '.*'/CLIENT_LIB_VERSION = '$(VERSION)'/" packages/core/src/impl/version.ts
+	node scripts/change-version.js
 	yarn run build
 	yarn run test
 	@echo "Publishing $(VERSION)..."
