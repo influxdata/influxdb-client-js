@@ -115,6 +115,7 @@ describe('FluxTableMetaData', () => {
   const serializationTable: Array<[ColumnType | undefined, string, any]> = [
     ['boolean', 'false', false],
     ['boolean', 'true', true],
+    ['boolean', '', null],
     ['unsignedLong', '1', 1],
     ['unsignedLong', '', null],
     ['long', '1', 1],
