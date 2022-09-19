@@ -205,7 +205,7 @@ export class TasksAPI {
   }
   /**
    * List runs for a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRuns }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRuns }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -228,7 +228,7 @@ export class TasksAPI {
   }
   /**
    * Start a task run, overriding the schedule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDRuns }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDRuns }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -247,7 +247,7 @@ export class TasksAPI {
   }
   /**
    * Retrieve a run for a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRunsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRunsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -265,7 +265,7 @@ export class TasksAPI {
   }
   /**
    * Cancel a running task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDRunsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDRunsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -283,7 +283,7 @@ export class TasksAPI {
   }
   /**
    * Retry a task run.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDRunsIDRetry }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDRunsIDRetry }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -302,7 +302,7 @@ export class TasksAPI {
   }
   /**
    * Retrieve all logs for a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDLogs }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDLogs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -320,7 +320,7 @@ export class TasksAPI {
   }
   /**
    * Retrieve all logs for a run.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRunsIDLogs }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRunsIDLogs }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -338,7 +338,7 @@ export class TasksAPI {
   }
   /**
    * List labels for a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -356,7 +356,7 @@ export class TasksAPI {
   }
   /**
    * Add a label to a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -375,7 +375,7 @@ export class TasksAPI {
   }
   /**
    * Delete a label from a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -393,7 +393,7 @@ export class TasksAPI {
   }
   /**
    * List all task members.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -411,7 +411,7 @@ export class TasksAPI {
   }
   /**
    * Add a member to a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -430,7 +430,7 @@ export class TasksAPI {
   }
   /**
    * Remove a member from a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDMembersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDMembersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -448,7 +448,7 @@ export class TasksAPI {
   }
   /**
    * List all owners of a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -466,7 +466,7 @@ export class TasksAPI {
   }
   /**
    * Add an owner for a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -485,7 +485,7 @@ export class TasksAPI {
   }
   /**
    * Remove an owner from a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDOwnersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDOwnersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -503,7 +503,7 @@ export class TasksAPI {
   }
   /**
    * List tasks.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasks }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -530,7 +530,7 @@ export class TasksAPI {
   }
   /**
    * Create a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasks }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -549,7 +549,7 @@ export class TasksAPI {
   }
   /**
    * Retrieve a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -567,7 +567,7 @@ export class TasksAPI {
   }
   /**
    * Update a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchTasksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchTasksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -586,7 +586,7 @@ export class TasksAPI {
   }
   /**
    * Delete a task.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

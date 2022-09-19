@@ -18,7 +18,7 @@ export class SignoutAPI {
   }
   /**
    * Expire the current UI session.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignout }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignout }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

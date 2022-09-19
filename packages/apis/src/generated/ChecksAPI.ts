@@ -82,7 +82,7 @@ export class ChecksAPI {
   }
   /**
    * List all checks.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecks }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecks }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -104,7 +104,7 @@ export class ChecksAPI {
   }
   /**
    * Add new check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateCheck }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateCheck }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -123,7 +123,7 @@ export class ChecksAPI {
   }
   /**
    * Retrieve a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -141,7 +141,7 @@ export class ChecksAPI {
   }
   /**
    * Update a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutChecksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutChecksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -160,7 +160,7 @@ export class ChecksAPI {
   }
   /**
    * Update a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchChecksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchChecksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -179,7 +179,7 @@ export class ChecksAPI {
   }
   /**
    * Delete a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteChecksID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -197,7 +197,7 @@ export class ChecksAPI {
   }
   /**
    * List all labels for a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -215,7 +215,7 @@ export class ChecksAPI {
   }
   /**
    * Add a label to a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostChecksIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostChecksIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -234,7 +234,7 @@ export class ChecksAPI {
   }
   /**
    * Delete label from a check.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteChecksIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -252,7 +252,7 @@ export class ChecksAPI {
   }
   /**
    * Retrieve a check query.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksIDQuery }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

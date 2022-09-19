@@ -42,7 +42,7 @@ export class RestoreAPI {
   }
   /**
    * Overwrite the embedded KV store on the server with a backed-up snapshot.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreKV }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreKV }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -64,7 +64,7 @@ export class RestoreAPI {
   }
   /**
    * Overwrite the embedded SQL store on the server with a backed-up snapshot.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreSQL }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreSQL }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -83,7 +83,7 @@ export class RestoreAPI {
   }
   /**
    * Overwrite storage metadata for a bucket with shard info from a backup.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreBucketID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -102,7 +102,7 @@ export class RestoreAPI {
   }
   /**
    * Create a new bucket pre-seeded with shard info from a backup.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreBucketMetadata }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketMetadata }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -121,7 +121,7 @@ export class RestoreAPI {
   }
   /**
    * Restore a TSM snapshot into a shard.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreShardId }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreShardId }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

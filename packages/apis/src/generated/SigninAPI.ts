@@ -20,7 +20,7 @@ export class SigninAPI {
   }
   /**
    * Create a user session.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignin }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignin }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

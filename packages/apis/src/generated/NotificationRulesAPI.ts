@@ -86,7 +86,7 @@ export class NotificationRulesAPI {
   }
   /**
    * List all notification rules.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRules }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRules }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -110,7 +110,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Add a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateNotificationRule }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationRule }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -129,7 +129,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Retrieve a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -147,7 +147,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Update a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutNotificationRulesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationRulesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -166,7 +166,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Update a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchNotificationRulesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchNotificationRulesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -185,7 +185,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Delete a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteNotificationRulesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -203,7 +203,7 @@ export class NotificationRulesAPI {
   }
   /**
    * List all labels for a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -221,7 +221,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Add a label to a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostNotificationRuleIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostNotificationRuleIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -240,7 +240,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Delete label from a notification rule.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteNotificationRulesIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -258,7 +258,7 @@ export class NotificationRulesAPI {
   }
   /**
    * Retrieve a notification rule query.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesIDQuery }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDQuery }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

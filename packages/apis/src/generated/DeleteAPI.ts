@@ -67,7 +67,7 @@ export class DeleteAPI {
   }
   /**
    * Delete data.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDelete }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
