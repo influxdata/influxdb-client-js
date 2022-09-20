@@ -13,6 +13,7 @@
 ### Other
 
 1. [#571](https://github.com/influxdata/influxdb-client-js/pull/571): Automate APIs generator, switch to @influxdata/oats.
+1. [#580](https://github.com/influxdata/influxdb-client-js/pull/580): Repair doc links to point to latest API docs.
 
 ## 1.29.0 [2022-08-25]
 
