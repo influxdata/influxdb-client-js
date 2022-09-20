@@ -16,7 +16,7 @@ This repository contains the reference JavaScript client for InfluxDB 2.x. This 
 
 This section contains links to the client library documentation.
 
-- [Product documentation](https://docs.influxdata.com/influxdb/v2.1/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
+- [Product documentation](https://docs.influxdata.com/influxdb/latest/api-guide/client-libraries/nodejs/), [Getting Started](#usage)
 - [Examples](examples#influxdb-client-examples)
 - [API Reference](https://influxdata.github.io/influxdb-client-js/influxdb-client.html)
 - [Changelog](CHANGELOG.md)
