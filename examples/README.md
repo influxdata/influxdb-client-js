@@ -11,9 +11,9 @@ This directory contains javascript and typescript examples for node.js, browser,
   - [write.mjs](./write.mjs)
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
-    Query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/).
+    Query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
   - [queryWithParams.ts](./queryWithParams.ts)
-    Supply parameters to a [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/) query.
+    Supply parameters to a [Flux](https://docs.influxdata.com/influxdb/latest/get-started/) query.
   - [ping.mjs](./ping.mjs)
     Check status of InfluxDB server.
   - [createBucket.mjs](./createBucket.mjs)
@@ -23,7 +23,7 @@ This directory contains javascript and typescript examples for node.js, browser,
   - [influxdb-1.8.ts](./influxdb-1.8.ts)
     How to use forward compatibility APIs from InfluxDB 1.8.
   - [rxjs-query.ts](./rxjs-query.ts)
-    Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/).
+    Use [RxJS](https://rxjs.dev/) to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
   - [writeAdvanced.mjs](./writeAdvanced.mjs)
     Shows how to control the way of how data points are written to InfluxDB.
   - [follow-redirects.mjs](./follow-redirects.mjs)
@@ -37,5 +37,5 @@ This directory contains javascript and typescript examples for node.js, browser,
     The local HTTP server serves all files from this git repository and also proxies requests
     to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
 - Deno examples
-  - [query.deno.ts](./query.deno.ts) shows how to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/v2.1/get-started/).
+  - [query.deno.ts](./query.deno.ts) shows how to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
     It is almost the same as node's [query.ts](./query.ts) example, the difference is the import statement that works in [deno](https://deno.land) and built-in typescript support.

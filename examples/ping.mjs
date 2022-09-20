@@ -3,7 +3,7 @@
 This example shows how to check state InfluxDB instance.
 InfluxDB OSS APIs are available through '@influxdata/influxdb-client-apis' package.
 
-See https://docs.influxdata.com/influxdb/v2.1/api/
+See https://docs.influxdata.com/influxdb/latest/api/
 */
 import {InfluxDB} from '@influxdata/influxdb-client'
 import {PingAPI} from '@influxdata/influxdb-client-apis'
