@@ -19,7 +19,7 @@ export class ConfigAPI {
   }
   /**
    * Retrieve runtime configuration.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetConfig }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetConfig }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

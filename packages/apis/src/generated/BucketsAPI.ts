@@ -16,18 +16,51 @@ import {
 } from './types'
 
 export interface GetBucketsRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   /** Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.
    */
   after?: string
-  /** The name of the organization. */
+  /** Organization name.
+The name of the organization.
+
+#### InfluxDB Cloud
+
+ - Doesn't use `org` or `orgID`.
+ - Creates a bucket in the organization associated with the authorization (API token).
+
+ #### InfluxDB OSS
+
+ - Accepts either `org` or `orgID`.
+ - InfluxDB creates the bucket within this organization.
+ */
   org?: string
-  /** The organization ID. */
+  /** Organization ID.
+The organization ID.
+
+#### InfluxDB Cloud
+
+ - Doesn't use `org` or `orgID`.
+ - Creates a bucket in the organization associated with the authorization (API token).
+
+ #### InfluxDB OSS
+
+ - Accepts either `org` or `orgID`.
+ - InfluxDB creates the bucket within this organization.
+ */
   orgID?: string
-  /** Only returns buckets with a specific name. */
+  /** Bucket name.
+Only returns buckets with this specific name.
+ */
   name?: string
-  /** Only returns buckets with a specific ID. */
+  /** Bucket ID.
+Only returns the bucket with this ID.
+ */
   id?: string
 }
 export interface PostBucketsRequest {
@@ -35,27 +68,33 @@ export interface PostBucketsRequest {
   body: PostBucketRequest
 }
 export interface GetBucketsIDRequest {
-  /** The bucket ID. */
+  /** The ID of the bucket to retrieve.
+   */
   bucketID: string
 }
 export interface PatchBucketsIDRequest {
   /** The bucket ID. */
   bucketID: string
-  /** Bucket update to apply */
+  /** The bucket update to apply. */
   body: PatchBucketRequest
 }
 export interface DeleteBucketsIDRequest {
-  /** The ID of the bucket to delete. */
+  /** Bucket ID.
+The ID of the bucket to delete.
+ */
   bucketID: string
 }
 export interface GetBucketsIDLabelsRequest {
-  /** The bucket ID. */
+  /** The ID of the bucket to retrieve labels for.
+   */
   bucketID: string
 }
 export interface PostBucketsIDLabelsRequest {
-  /** The bucket ID. */
+  /** Bucket ID.
+The ID of the bucket to label.
+ */
   bucketID: string
-  /** Label to add */
+  /** An object that contains a _`labelID`_ to add to the bucket. */
   body: LabelMapping
 }
 export interface DeleteBucketsIDLabelsIDRequest {
@@ -65,19 +104,23 @@ export interface DeleteBucketsIDLabelsIDRequest {
   labelID: string
 }
 export interface GetBucketsIDMembersRequest {
-  /** The bucket ID. */
+  /** The ID of the bucket to retrieve users for.
+   */
   bucketID: string
 }
 export interface PostBucketsIDMembersRequest {
-  /** The bucket ID. */
+  /** The ID of the bucket to retrieve users for.
+   */
   bucketID: string
-  /** User to add as member */
+  /** A user to add as a member to the bucket. */
   body: AddResourceMemberRequestBody
 }
 export interface DeleteBucketsIDMembersIDRequest {
-  /** The ID of the member to remove. */
+  /** The ID of the user to remove.
+   */
   userID: string
-  /** The bucket ID. */
+  /** The ID of the bucket to remove a user from.
+   */
   bucketID: string
 }
 export interface GetBucketsIDOwnersRequest {
@@ -111,8 +154,8 @@ export class BucketsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all buckets.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBuckets }
+   * List buckets.
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBuckets }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -138,7 +181,7 @@ export class BucketsAPI {
   }
   /**
    * Create a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBuckets }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBuckets }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -157,7 +200,7 @@ export class BucketsAPI {
   }
   /**
    * Retrieve a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -175,7 +218,7 @@ export class BucketsAPI {
   }
   /**
    * Update a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchBucketsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchBucketsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -194,7 +237,7 @@ export class BucketsAPI {
   }
   /**
    * Delete a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -212,7 +255,7 @@ export class BucketsAPI {
   }
   /**
    * List all labels for a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -230,7 +273,7 @@ export class BucketsAPI {
   }
   /**
    * Add a label to a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -249,7 +292,7 @@ export class BucketsAPI {
   }
   /**
    * Delete a label from a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -267,7 +310,7 @@ export class BucketsAPI {
   }
   /**
    * List all users with member privileges for a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -285,7 +328,7 @@ export class BucketsAPI {
   }
   /**
    * Add a member to a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -304,7 +347,7 @@ export class BucketsAPI {
   }
   /**
    * Remove a member from a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDMembersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDMembersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -322,7 +365,7 @@ export class BucketsAPI {
   }
   /**
    * List all owners of a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBucketsIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -340,7 +383,7 @@ export class BucketsAPI {
   }
   /**
    * Add an owner to a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBucketsIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -359,7 +402,7 @@ export class BucketsAPI {
   }
   /**
    * Remove an owner from a bucket.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDOwnersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDOwnersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

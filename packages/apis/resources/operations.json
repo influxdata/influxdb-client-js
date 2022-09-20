@@ -1460,25 +1460,25 @@
       },
       {
         "name": "Accept",
-        "description": "The content type that the client can understand.\nWrites only return a response body if they fail--for example,\ndue to a formatting problem or quota limit.\n\n#### InfluxDB Cloud\n\n  - Returns only `application/json` for format and limit errors.\n  - Returns only `text/html` for some quota limit errors.\n\n#### InfluxDB OSS\n\n  - Returns only `application/json` for format and limit errors.\n\n#### Related guides\n  - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).\n",
+        "description": "The content type that the client can understand.\nWrites only return a response body if they fail--for example,\ndue to a formatting problem or quota limit.\n\n#### InfluxDB Cloud\n\n  - Returns only `application/json` for format and limit errors.\n  - Returns only `text/html` for some quota limit errors.\n\n#### InfluxDB OSS\n\n  - Returns only `application/json` for format and limit errors.\n\n#### Related guides\n  - [Troubleshoot issues writing data](https://docs.influxdata.com/influxdb/v2.3/write-data/troubleshoot/).\n",
         "type": "string"
       }
     ],
     "queryParams": [
       {
         "name": "org",
-        "description": "The destination organization for writes.\nThe database writes all points in the batch to this organization.\nIf you provide both `orgID` and `org` parameters, `org` takes precedence.\n",
+        "description": "The destination organization for writes.\nInfluxDB writes all points in the batch to this organization.\nIf you pass both `orgID` and `org`, they must both be valid.\n\n#### InfluxDB Cloud\n\n- Doesn't require `org` or `orgID`.\n- Writes to the bucket in the organization associated with the authorization (API token).\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n- InfluxDB writes all points in the batch to this organization.\n",
         "required": true,
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "The ID of the destination organization for writes.\nIf both `orgID` and `org` are specified, `org` takes precedence.\n",
+        "description": "The ID of the destination organization for writes.\nIf you pass both `orgID` and `org`, they must both be valid.\n\n#### InfluxDB Cloud\n\n- Doesn't require `org` or `orgID`.\n- Writes to the bucket in the organization associated with the authorization (API token).\n\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n- InfluxDB writes all points in the batch to this organization.\n",
         "type": "string"
       },
       {
         "name": "bucket",
-        "description": "The destination bucket for writes.",
+        "description": "The destination bucket for writes.\nInfluxDB writes all points in the batch to this bucket.\n",
         "required": true,
         "type": "string"
       },
@@ -1489,7 +1489,7 @@
       }
     ],
     "bodyParam": {
-      "description": "Data in line protocol format.\n\nTo send compressed data, do the following:\n\n  1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data.\n  2. In your request, send the compressed data and the\n     `Content-Encoding: gzip` header.\n\n#### Related guides\n\n- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).\n",
+      "description": "Data in line protocol format.\n\nTo send compressed data, do the following:\n\n  1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data.\n  2. In your request, send the compressed data and the\n     `Content-Encoding: gzip` header.\n\n#### Related guides\n\n- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/).\n",
       "required": true,
       "mediaType": "text/plain",
       "type": "string"
@@ -1497,12 +1497,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "Success. InfluxDB validated the request and the data format and\naccepted the data for writing to the bucket.\nBecause data is written to InfluxDB asynchronously, data may not yet be written to a bucket.\n\n#### Related guides\n\n- [How to check for write errors](https://docs.influxdata.com/influxdb/v2.2/write-data/troubleshoot/).\n",
+        "description": "Success.\n\n#### InfluxDB Cloud\n\n- Validated and queued the request.\n- Handles the write asynchronously - the write might not have completed yet.\n\n#### InfluxDB OSS\n\n- Successfully wrote all points in the batch.\n\n#### Related guides\n\n- [How to check for write errors](https://docs.influxdata.com/influxdb/v2.3/write-data/troubleshoot/).\n",
         "mediaTypes": []
       },
       {
         "code": "400",
-        "description": "Bad request. The line protocol data in the request is malformed.\nThe response body contains the first malformed line in the data.\nInfluxDB rejected the batch and did not write any data.\n",
+        "description": "Bad request. The response body contains detail about the error.\n\nInfluxDB returns this error if the line protocol data in the request is malformed.\nThe response body contains the first malformed line in the data, and indicates what was expected.\nFor partial writes, the number of points written and the number of points rejected are also included.\nFor more information, check the `rejected_points` measurement in your `_monitoring` bucket.\n\n#### InfluxDB Cloud\n\n- Returns this error for bucket schema conflicts.\n\n#### InfluxDB OSS\n\n- Returns this error if `org` or `orgID` doesn't match an organization.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1512,17 +1512,17 @@
       },
       {
         "code": "401",
-        "description": "Unauthorized. The error may indicate one of the following:\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token does not have sufficient permissions to write to this organization and bucket.\n",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Error"
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
           }
         ]
       },
       {
         "code": "404",
-        "description": "Not found. A requested resource was not found. The response body contains the requested resource type, e.g. `organization name` or `bucket`, and name.",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1546,12 +1546,12 @@
       },
       {
         "code": "429",
-        "description": "Too many requests.\n\n#### InfluxDB Cloud\n\n  - Returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).\n  - Returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS\n\n  - Doesn't return this error.\n",
+        "description": "Too many requests.\n\n#### InfluxDB Cloud\n\n  - Returns this error if a **read** or **write** request exceeds your plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum [global limit](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#global-limits).\n  - For rate limits that reset automatically, returns a `Retry-After` header that describes when to try the write again.\n  - For limits that can't reset (for example, **cardinality limit**), doesn't return a `Retry-After` header.\n\n  Rates (data-in (writes), queries (reads), and deletes) accrue within a fixed five-minute window.\n  Once a rate limit is exceeded, InfluxDB returns an error response until the current five-minute window resets.\n\n#### InfluxDB OSS\n\n  - Doesn't return this error.\n",
         "mediaTypes": []
       },
       {
         "code": "500",
-        "description": "Internal server error.",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1561,7 +1561,7 @@
       },
       {
         "code": "503",
-        "description": "Service unavailable.\n\n#### InfluxDB Cloud\n\n  - Returns this error if series cardinality exceeds your plan's\n    [adjustable service quotas](https://docs.influxdata.com/influxdb/cloud/account-management/limits/#adjustable-service-quotas).\n    See [how to resolve high series cardinality](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/resolve-high-cardinality/).\n\n#### InfluxDB OSS\n\n  - Returns this error if\n    the server is temporarily unavailable to accept writes.\n  - Returns `Retry-After` header that describes when to try the write again.\n",
+        "description": "Service unavailable.\n\n- Returns this error if\n  the server is temporarily unavailable to accept writes.\n- Returns a `Retry-After` header that describes when to try the write again.\n",
         "mediaTypes": []
       },
       {
@@ -1595,27 +1595,27 @@
     "queryParams": [
       {
         "name": "org",
-        "description": "Specifies the organization to delete data from.",
+        "description": "The organization to delete data from.\nIf you pass both `orgID` and `org`, they must both be valid.\n\n#### InfluxDB Cloud\n\n- Doesn't require `org` or `orgID`.\n- Deletes data from the bucket in the organization associated with the authorization (API token).\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n",
         "type": "string"
       },
       {
         "name": "bucket",
-        "description": "Specifies the bucket to delete data from.",
+        "description": "The name or ID of the bucket to delete data from.\nIf you pass both `bucket` and `bucketID`, `bucketID` takes precedence.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "Specifies the organization ID of the resource.",
+        "description": "The ID of the organization to delete data from.\nIf you pass both `orgID` and `org`, they must both be valid.\n\n#### InfluxDB Cloud\n\n- Doesn't require `org` or `orgID`.\n- Deletes data from the bucket in the organization associated with the authorization (API token).\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n",
         "type": "string"
       },
       {
         "name": "bucketID",
-        "description": "Specifies the bucket ID to delete data from.",
+        "description": "The ID of the bucket to delete data from.\nIf you pass both `bucket` and `bucketID`, `bucketID` takes precedence.\n",
         "type": "string"
       }
     ],
     "bodyParam": {
-      "description": "Deletes data from an InfluxDB bucket.",
+      "description": "Time range parameters and an optional **delete predicate expression**.\n\nTo select points to delete within the specified time range, pass a\n**delete predicate expression** in the `predicate` property of the request body.\nIf you don't pass a `predicate`, InfluxDB deletes all data with timestamps\nin the specified time range.\n\n#### Related guides\n\n- [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/).\n- Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/).\n",
       "required": true,
       "mediaType": "application/json",
       "type": "DeletePredicateRequest"
@@ -1623,12 +1623,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "delete has been accepted",
+        "description": "Success.\n\n#### InfluxDB Cloud\n\n- Validated and queued the request.\n- Handles the delete asynchronously - the deletion might not have completed yet.\n\nAn HTTP `2xx` status code acknowledges that the write or delete is queued.\nTo ensure that InfluxDB Cloud handles writes and deletes in the order you request them,\nwait for a response before you send the next request.\n\nBecause writes are asynchronous, data might not yet be written\nwhen you receive the response.\n\n#### InfluxDB OSS\n\n- Deleted the data.\n",
         "mediaTypes": []
       },
       {
         "code": "400",
-        "description": "Invalid request.",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if `org` or `orgID` doesn't match an organization.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1637,18 +1637,28 @@
         ]
       },
       {
-        "code": "403",
-        "description": "no token was sent or does not have sufficient permissions.",
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "Error"
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
           }
         ]
       },
       {
         "code": "404",
-        "description": "the bucket or organization is not found.",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1658,7 +1668,7 @@
       },
       {
         "code": "default",
-        "description": "internal server error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1695,7 +1705,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of labels",
+        "description": "Success. The response body contains a list of labels.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1704,8 +1714,18 @@
         ]
       },
       {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1726,7 +1746,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Label to create",
+      "description": "The label to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "LabelCreateRequest"
@@ -1734,7 +1754,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Added label",
+        "description": "Success. The label was created.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1743,8 +1763,18 @@
         ]
       },
       {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1782,7 +1812,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A label",
+        "description": "Success. The response body contains the label.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1791,8 +1821,18 @@
         ]
       },
       {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1827,7 +1867,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Label update",
+      "description": "A label update.",
       "required": true,
       "mediaType": "application/json",
       "type": "LabelUpdate"
@@ -1835,7 +1875,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Updated label",
+        "description": "Success. The response body contains the updated label.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1844,8 +1884,28 @@
         ]
       },
       {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Label not found",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1855,7 +1915,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1893,12 +1953,32 @@
     "responses": [
       {
         "code": "204",
-        "description": "Delete has been accepted",
+        "description": "Success. The delete was accepted.",
         "mediaTypes": []
       },
       {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Label not found",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -1908,7 +1988,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -2949,7 +3029,7 @@
     "operation": "post",
     "operationId": "PostQueryAst",
     "basicAuth": false,
-    "summary": "Generate an Abstract Syntax Tree (AST) from a query",
+    "summary": "Generate a query Abstract Syntax Tree (AST)",
     "positionalParams": [],
     "headerParams": [
       {
@@ -2965,7 +3045,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Analyzed Flux query to generate abstract syntax tree.",
+      "description": "The Flux query to analyze.",
       "required": false,
       "mediaType": "application/json",
       "type": "LanguageRequest"
@@ -2973,7 +3053,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Abstract syntax tree of the flux query.",
+        "description": "Success.\nThe response body contains an Abstract Syntax Tree (AST) of the Flux query.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -2982,8 +3062,18 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB is unable to parse the request.\nThe response body contains detail about the problem.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Any response other than 200 is an internal server error",
+        "description": "Internal server error.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -2999,7 +3089,7 @@
     "operation": "get",
     "operationId": "GetQuerySuggestions",
     "basicAuth": false,
-    "summary": "Retrieve query suggestions",
+    "summary": "Retrieve Flux query suggestions",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3014,7 +3104,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Suggestions for next functions in call chain",
+        "description": "Success.\nThe response body contains a list of Flux query suggestions--function\nnames used in the Flux Query Builder autocomplete suggestions.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3023,8 +3113,18 @@
         ]
       },
       {
+        "code": "301",
+        "description": "Moved Permanently.\nInfluxData has moved the URL of the endpoint.\nUse `/api/v2/query/suggestions`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "text/html",
+            "type": "{\n  /** Response message with URL of requested resource. */\n  readonly body?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Any response other than 200 is an internal server error",
+        "description": "Internal server error.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3040,11 +3140,11 @@
     "operation": "get",
     "operationId": "GetQuerySuggestionsName",
     "basicAuth": false,
-    "summary": "Retrieve query suggestions for a branching suggestion",
+    "summary": "Retrieve a query suggestion for a branching suggestion",
     "positionalParams": [
       {
         "name": "name",
-        "description": "The name of the branching suggestion.",
+        "description": "A Flux Function name.\nOnly returns functions with this name.\n",
         "required": true,
         "type": "string"
       }
@@ -3062,7 +3162,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Suggestions for next functions in call chain",
+        "description": "Success.\nThe response body contains the function name and parameters.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3071,8 +3171,8 @@
         ]
       },
       {
-        "code": "default",
-        "description": "Any response other than 200 is an internal server error",
+        "code": "500",
+        "description": "Internal server error.\nThe value passed for _`name`_ may have been misspelled.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3112,11 +3212,21 @@
     "responses": [
       {
         "code": "200",
-        "description": "Query analyze results. Errors will be empty if the query is valid.",
+        "description": "Success.\nThe response body contains the list of `errors`.\nIf the query syntax is valid, the endpoint returns an empty `errors` list.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "AnalyzeQueryResponse"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB is unable to parse the request.\nThe response body contains detail about the problem.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3149,7 +3259,7 @@
       },
       {
         "name": "Accept-Encoding",
-        "description": "Indicates the content encoding (usually a compression algorithm) that the client can understand.",
+        "description": "The content encoding (usually a compression algorithm) that the client can understand.",
         "type": "string"
       },
       {
@@ -3160,12 +3270,12 @@
     "queryParams": [
       {
         "name": "org",
-        "description": "Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`, `org` takes precedence.",
+        "description": "The name or ID of the organization executing the query.\n\n#### InfluxDB Cloud\n\n- Doesn't use `org` or `orgID`.\n- Queries the bucket in the organization associated with the authorization (API token).\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "ID of the organization executing the query. If you provide both `orgID` and `org`, `org` takes precedence.",
+        "description": "The ID of the organization executing the query.\n\n#### InfluxDB Cloud\n\n- Doesn't use `org` or `orgID`.\n- Queries the bucket in the organization associated with the authorization (API token).\n\n#### InfluxDB OSS\n\n- Requires either `org` or `orgID`.\n",
         "type": "string"
       }
     ],
@@ -3178,22 +3288,62 @@
     "responses": [
       {
         "code": "200",
-        "description": "Success. Returns query results.",
+        "description": "Success. The response body contains query results.",
         "mediaTypes": [
           {
-            "mediaType": "text/csv",
+            "mediaType": "application/csv",
             "type": "string"
           }
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if `org` or `orgID` doesn't match an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "429",
-        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.2/account-management/limits/#global-limits)\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
+        "description": "#### InfluxDB Cloud:\n  - returns this error if a **read** or **write** request exceeds your\n    plan's [adjustable service quotas](https://docs.influxdata.com/influxdb/v2.3/account-management/limits/#adjustable-service-quotas)\n    or if a **delete** request exceeds the maximum\n    [global limit](https://docs.influxdata.com/influxdb/v2.3/account-management/limits/#global-limits)\n  - returns `Retry-After` header that describes when to try the write again.\n\n#### InfluxDB OSS:\n  - doesn't return this error.\n",
         "mediaTypes": []
       },
       {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Error processing query",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3209,7 +3359,7 @@
     "operation": "get",
     "operationId": "GetBuckets",
     "basicAuth": false,
-    "summary": "List all buckets",
+    "summary": "List buckets",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3222,11 +3372,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -3238,22 +3390,22 @@
       },
       {
         "name": "org",
-        "description": "The name of the organization.",
+        "description": "Organization name.\nThe name of the organization.\n\n#### InfluxDB Cloud\n\n - Doesn't use `org` or `orgID`.\n - Creates a bucket in the organization associated with the authorization (API token).\n\n #### InfluxDB OSS\n\n - Accepts either `org` or `orgID`.\n - InfluxDB creates the bucket within this organization.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "Organization ID.\nThe organization ID.\n\n#### InfluxDB Cloud\n\n - Doesn't use `org` or `orgID`.\n - Creates a bucket in the organization associated with the authorization (API token).\n\n #### InfluxDB OSS\n\n - Accepts either `org` or `orgID`.\n - InfluxDB creates the bucket within this organization.\n",
         "type": "string"
       },
       {
         "name": "name",
-        "description": "Only returns buckets with a specific name.",
+        "description": "Bucket name.\nOnly returns buckets with this specific name.\n",
         "type": "string"
       },
       {
         "name": "id",
-        "description": "Only returns buckets with a specific ID.",
+        "description": "Bucket ID.\nOnly returns the bucket with this ID.\n",
         "type": "string"
       }
     ],
@@ -3261,11 +3413,31 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of buckets",
+        "description": "Success.\nThe response body contains a list of buckets.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Buckets"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3307,7 +3479,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Bucket created",
+        "description": "Success.\nThe bucket was created.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3316,8 +3488,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "403",
+        "description": "Forbidden.\nThe bucket quota is exceeded.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "422",
-        "description": "Request body failed validation",
+        "description": "Unprocessable Entity.\nThe request body failed validation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3347,7 +3559,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "The ID of the bucket to retrieve.\n",
         "required": true,
         "type": "string"
       }
@@ -3365,11 +3577,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "Bucket details",
+        "description": "Success.\nThe response body contains the bucket information.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Bucket"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nBucket not found.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3410,7 +3652,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Bucket update to apply",
+      "description": "The bucket update to apply.",
       "required": true,
       "mediaType": "application/json",
       "type": "PatchBucketRequest"
@@ -3423,6 +3665,56 @@
           {
             "mediaType": "application/json",
             "type": "Bucket"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad Request.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "403",
+        "description": "Forbidden.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nBucket not found.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3448,7 +3740,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The ID of the bucket to delete.",
+        "description": "Bucket ID.\nThe ID of the bucket to delete.\n",
         "required": true,
         "type": "string"
       }
@@ -3466,12 +3758,42 @@
     "responses": [
       {
         "code": "204",
-        "description": "Delete has been accepted",
+        "description": "Success.\n\n#### InfluxDB Cloud\n  - The bucket is queued for deletion.\n\n#### InfluxDB OSS\n  - The bucket is deleted.\n",
         "mediaTypes": []
       },
       {
+        "code": "400",
+        "description": "Bad Request.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Bucket not found",
+        "description": "Not found.\nBucket not found.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3501,7 +3823,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "The ID of the bucket to retrieve labels for.\n",
         "required": true,
         "type": "string"
       }
@@ -3519,11 +3841,51 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of all labels for a bucket",
+        "description": "Success.\nThe response body contains a list of all labels for the bucket.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "LabelsResponse"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3549,7 +3911,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "Bucket ID.\nThe ID of the bucket to label.\n",
         "required": true,
         "type": "string"
       }
@@ -3564,7 +3926,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Label to add",
+      "description": "An object that contains a _`labelID`_ to add to the bucket.",
       "required": true,
       "mediaType": "application/json",
       "type": "LabelMapping"
@@ -3572,11 +3934,61 @@
     "responses": [
       {
         "code": "201",
-        "description": "The newly added label",
+        "description": "Success.\nThe response body contains the label information.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "LabelResponse"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\nLabel already exists on the resource.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3661,7 +4073,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "The ID of the bucket to retrieve users for.\n",
         "required": true,
         "type": "string"
       }
@@ -3679,11 +4091,51 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of bucket members",
+        "description": "Success.\nThe response body contains a list of all users for the bucket.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceMembers"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3709,7 +4161,7 @@
     "positionalParams": [
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "The ID of the bucket to retrieve users for.\n",
         "required": true,
         "type": "string"
       }
@@ -3724,7 +4176,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to add as member",
+      "description": "A user to add as a member to the bucket.",
       "required": true,
       "mediaType": "application/json",
       "type": "AddResourceMemberRequestBody"
@@ -3732,11 +4184,51 @@
     "responses": [
       {
         "code": "201",
-        "description": "Member added to bucket",
+        "description": "Success.\nThe response body contains the user information.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceMember"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -3762,13 +4254,13 @@
     "positionalParams": [
       {
         "name": "userID",
-        "description": "The ID of the member to remove.",
+        "description": "The ID of the user to remove.\n",
         "required": true,
         "type": "string"
       },
       {
         "name": "bucketID",
-        "description": "The bucket ID.",
+        "description": "The ID of the bucket to remove a user from.\n",
         "required": true,
         "type": "string"
       }
@@ -3786,8 +4278,38 @@
     "responses": [
       {
         "code": "204",
-        "description": "Member removed",
+        "description": "Success.\nThe user is no longer a member of the bucket.\n",
         "mediaTypes": []
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",
@@ -3882,7 +4404,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Bucket owner added",
+        "description": "Success. The user is an owner of the bucket",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -3957,7 +4479,7 @@
     "operation": "get",
     "operationId": "GetOrgs",
     "basicAuth": false,
-    "summary": "List all organizations",
+    "summary": "List organizations",
     "positionalParams": [],
     "headerParams": [
       {
@@ -3970,11 +4492,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -3985,17 +4509,17 @@
       },
       {
         "name": "org",
-        "description": "Filter organizations to a specific organization name.",
+        "description": "An organization name.\nOnly returns organizations with this name.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "Filter organizations to a specific organization ID.",
+        "description": "An organization ID.\nOnly returns the organization with this ID.\n",
         "type": "string"
       },
       {
         "name": "userID",
-        "description": "Filter organizations to a specific user ID.",
+        "description": "A user ID.\nOnly returns organizations where this user is a member or owner.\n",
         "type": "string"
       }
     ],
@@ -4003,7 +4527,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of organizations",
+        "description": "Success. The response body contains a list of organizations.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4012,8 +4536,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4041,7 +4605,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Organization to create",
+      "description": "The organization to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "PostOrganizationRequest"
@@ -4049,11 +4613,51 @@
     "responses": [
       {
         "code": "201",
-        "description": "Organization created",
+        "description": "Created. The response body contains the organization information.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Organization"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4079,7 +4683,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The ID of the organization to get.",
+        "description": "The ID of the organization to retrieve.\n",
         "required": true,
         "type": "string"
       }
@@ -4097,11 +4701,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "Organization details",
+        "description": "Success.\nThe response body contains the organization information.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Organization"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nOrganization not found.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4127,7 +4761,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The ID of the organization to get.",
+        "description": "The ID of the organization to update.\n",
         "required": true,
         "type": "string"
       }
@@ -4142,7 +4776,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Organization update to apply",
+      "description": "The organization update to apply.",
       "required": true,
       "mediaType": "application/json",
       "type": "PatchOrganizationRequest"
@@ -4150,11 +4784,51 @@
     "responses": [
       {
         "code": "200",
-        "description": "Organization updated",
+        "description": "Success. The response body contains the updated organization.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Organization"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4180,7 +4854,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The ID of the organization to delete.",
+        "description": "The ID of the organization to delete.\n",
         "required": true,
         "type": "string"
       }
@@ -4198,12 +4872,42 @@
     "responses": [
       {
         "code": "204",
-        "description": "Delete has been accepted",
+        "description": "Success.\n\n#### InfluxDB Cloud\n  - The organization is queued for deletion.\n\n#### InfluxDB OSS\n  - The organization is deleted.\n",
         "mediaTypes": []
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Organization not found",
+        "description": "Not found.\nInfluxDB can't find the organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4329,7 +5033,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization to retrieve users for.\n",
         "required": true,
         "type": "string"
       }
@@ -4347,7 +5051,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of organization members",
+        "description": "Success.\nThe response body contains a list of all users within the organization.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4356,8 +5060,38 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Organization not found",
+        "description": "Not found.\nInfluxDB can't find the organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -4387,7 +5121,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization.\n",
         "required": true,
         "type": "string"
       }
@@ -4402,7 +5136,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to add as member",
+      "description": "The user to add to the organization.\n",
       "required": true,
       "mediaType": "application/json",
       "type": "AddResourceMemberRequestBody"
@@ -4410,11 +5144,51 @@
     "responses": [
       {
         "code": "201",
-        "description": "Added to organization created",
+        "description": "Success.\nThe response body contains the user information.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceMember"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4440,13 +5214,13 @@
     "positionalParams": [
       {
         "name": "userID",
-        "description": "The ID of the member to remove.",
+        "description": "The ID of the user to remove.",
         "required": true,
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization to remove a user from.",
         "required": true,
         "type": "string"
       }
@@ -4464,8 +5238,38 @@
     "responses": [
       {
         "code": "204",
-        "description": "Member removed",
+        "description": "Success.\nThe user is no longer a member of the organization.\n",
         "mediaTypes": []
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",
@@ -4489,7 +5293,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization to list owners for.\n",
         "required": true,
         "type": "string"
       }
@@ -4547,7 +5351,7 @@
     "positionalParams": [
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization that you want to add an owner for.",
         "required": true,
         "type": "string"
       }
@@ -4562,7 +5366,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to add as owner",
+      "description": "The user to add as an owner of the organization.",
       "required": true,
       "mediaType": "application/json",
       "type": "AddResourceMemberRequestBody"
@@ -4570,11 +5374,51 @@
     "responses": [
       {
         "code": "201",
-        "description": "Organization owner added",
+        "description": "Success. The user is an owner of the organization.\nThe response body contains the owner with role and user detail.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceOwner"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4600,13 +5444,13 @@
     "positionalParams": [
       {
         "name": "userID",
-        "description": "The ID of the owner to remove.",
+        "description": "The ID of the user to remove.",
         "required": true,
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "The organization ID.",
+        "description": "The ID of the organization to remove an owner from.\n",
         "required": true,
         "type": "string"
       }
@@ -4624,8 +5468,38 @@
     "responses": [
       {
         "code": "204",
-        "description": "Owner removed",
+        "description": "Success.\nThe user is no longer an owner of the organization.\n",
         "mediaTypes": []
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",
@@ -4783,24 +5657,24 @@
     "operation": "get",
     "operationId": "ListStacks",
     "basicAuth": false,
-    "summary": "List installed templates",
+    "summary": "List installed stacks",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [
       {
         "name": "orgID",
-        "description": "The organization ID of the stacks",
+        "description": "The ID of the organization that owns the stacks.\nOnly returns stacks owned by this organization.\n\n#### InfluxDB Cloud\n\n- Doesn't require this parameter;\n  InfluxDB only returns resources allowed by the API token.\n",
         "required": true,
         "type": "string"
       },
       {
         "name": "name",
-        "description": "A collection of names to filter the list by.",
+        "description": "The stack name.\nFinds stack `events` with this name and returns the stacks.\n\nRepeatable.\nTo filter for more than one stack name,\nrepeat this parameter with each name--for example:\n\n- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&name=project-stack-0&name=project-stack-1`\n",
         "type": "string"
       },
       {
         "name": "stackID",
-        "description": "A collection of stackIDs to filter the list by.",
+        "description": "The stack ID.\nOnly returns stacks with this ID.\n\nRepeatable.\nTo filter for more than one stack ID,\nrepeat this parameter with each ID--for example:\n\n- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&stackID=09bd87cd33be3000&stackID=09bef35081fe3000`\n",
         "type": "string"
       }
     ],
@@ -4808,11 +5682,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "Success. Returns the list of stacks.",
+        "description": "Success. The response body contains the list of stacks.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "{\n  stacks?: Stack[];\n}"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -4834,7 +5738,7 @@
     "operation": "post",
     "operationId": "CreateStack",
     "basicAuth": false,
-    "summary": "Create a new stack",
+    "summary": "Create a stack",
     "positionalParams": [],
     "headerParams": [],
     "queryParams": [],
@@ -4852,6 +5756,36 @@
           {
             "mediaType": "application/json",
             "type": "Stack"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n\nThe error may indicate one of the following problems:\n\n- The request body isn't valid--the request is well-formed, but InfluxDB can't process it due to semantic errors.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -5049,6 +5983,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
+      "description": "Parameters for applying templates.\n",
       "required": true,
       "mediaType": "application/json",
       "type": "TemplateApply"
@@ -5056,7 +5991,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Success. The package dry-run succeeded. No new resources were created. Returns a diff and summary of the dry-run. The diff and summary won't contain IDs for resources that didn't exist at the time of the dry-run.\n",
+        "description": "Success.\nThe template dry run succeeded.\nThe response body contains a resource diff of changes that the\ntemplate would have made if installed.\nNo resources were created or updated.\nThe diff and summary won't contain IDs for resources\nthat didn't exist at the time of the dry run.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5066,7 +6001,7 @@
       },
       {
         "code": "201",
-        "description": "Success. The package applied successfully. Returns a diff and summary of the run. The summary contains newly created resources. The diff compares the initial state to the state after the package applied. This corresponds to `\"dryRun\": true`.\n",
+        "description": "Success.\nThe template applied successfully.\nThe response body contains the stack ID, a diff, and a summary.\nThe diff compares the initial state to the state after the template installation.\nThe summary contains newly created resources.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5076,11 +6011,21 @@
       },
       {
         "code": "422",
-        "description": "Template failed validation",
+        "description": "Unprocessable entity.\n\n\nThe error may indicate one of the following problems:\n\n- The template failed validation.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "TemplateSummary & {\n  message: string;\n  code: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\n\n#### InfluxDB Cloud\n\n- Returns this error if creating one of the template\n  resources (bucket, dashboard, task, user) exceeds your plan’s\n  adjustable service quotas.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -5141,150 +6086,6 @@
   },
   {
     "server": "/api/v2",
-    "path": "/tasks/{taskID}",
-    "operation": "get",
-    "operationId": "GetTasksID",
-    "basicAuth": false,
-    "summary": "Retrieve a task",
-    "positionalParams": [
-      {
-        "name": "taskID",
-        "description": "The task ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Task details",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Task"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/tasks/{taskID}",
-    "operation": "patch",
-    "operationId": "PatchTasksID",
-    "basicAuth": false,
-    "summary": "Update a task",
-    "positionalParams": [
-      {
-        "name": "taskID",
-        "description": "The task ID.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Task update to apply",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "TaskUpdateRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "Task updated",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Task"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/tasks/{taskID}",
-    "operation": "delete",
-    "operationId": "DeleteTasksID",
-    "basicAuth": false,
-    "summary": "Delete a task",
-    "positionalParams": [
-      {
-        "name": "taskID",
-        "description": "The ID of the task to delete.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Task deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Unexpected error",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
     "path": "/tasks/{taskID}/runs",
     "operation": "get",
     "operationId": "GetTasksIDRuns",
@@ -5293,7 +6094,7 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The ID of the task to get runs for.",
+        "description": "The ID of the task to get runs for.\nOnly returns runs for this task.\n",
         "required": true,
         "type": "string"
       }
@@ -5309,22 +6110,22 @@
     "queryParams": [
       {
         "name": "after",
-        "description": "Returns runs after a specific ID.",
+        "description": "A task run ID. Only returns runs created after this run.",
         "type": "string"
       },
       {
         "name": "limit",
-        "description": "The number of runs to return",
+        "description": "Limits the number of task runs returned. Default is `100`.\n",
         "type": "number"
       },
       {
         "name": "afterTime",
-        "description": "Filter runs to those scheduled after this time, RFC3339",
+        "description": "A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)).\nOnly returns runs scheduled after this time.\n",
         "type": "string"
       },
       {
         "name": "beforeTime",
-        "description": "Filter runs to those scheduled before this time, RFC3339",
+        "description": "A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)).\nOnly returns runs scheduled before this time.\n",
         "type": "string"
       }
     ],
@@ -5332,7 +6133,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of task runs",
+        "description": "Success. The response body contains the list of task runs.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5341,8 +6142,28 @@
         ]
       },
       {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5358,7 +6179,7 @@
     "operation": "post",
     "operationId": "PostTasksIDRuns",
     "basicAuth": false,
-    "summary": "Manually start a task run, overriding the current schedule",
+    "summary": "Start a task run, overriding the schedule",
     "positionalParams": [
       {
         "name": "taskID",
@@ -5383,7 +6204,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Run scheduled to start",
+        "description": "Success. The run is scheduled to start.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5392,8 +6213,28 @@
         ]
       },
       {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5409,17 +6250,17 @@
     "operation": "get",
     "operationId": "GetTasksIDRunsID",
     "basicAuth": false,
-    "summary": "Retrieve a single run for a task",
+    "summary": "Retrieve a run for a task.",
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to retrieve runs for.",
         "required": true,
         "type": "string"
       },
       {
         "name": "runID",
-        "description": "The run ID.",
+        "description": "The ID of the run to retrieve.",
         "required": true,
         "type": "string"
       }
@@ -5437,7 +6278,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The run record",
+        "description": "Success. The response body contains the task run.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5446,8 +6287,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5467,13 +6348,13 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to cancel.",
         "required": true,
         "type": "string"
       },
       {
         "name": "runID",
-        "description": "The run ID.",
+        "description": "The ID of the task run to cancel.",
         "required": true,
         "type": "string"
       }
@@ -5491,12 +6372,62 @@
     "responses": [
       {
         "code": "204",
-        "description": "Delete has been accepted",
+        "description": "Success. The `DELETE` is accepted and the run will be cancelled.\n\n#### InfluxDB Cloud\n\n- Doesn't support this operation.\n- Doesn't return this status.\n",
         "mediaTypes": []
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "405",
+        "description": "Method not allowed.\n\n#### InfluxDB Cloud\n\n  - Always returns this error; doesn't support cancelling tasks.\n\n#### InfluxDB OSS\n\n  - Doesn't return this error.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5516,13 +6447,13 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task)  ID.\nSpecifies the task to retry.\n",
         "required": true,
         "type": "string"
       },
       {
         "name": "runID",
-        "description": "The run ID.",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run ID.\nSpecifies the task run to retry.\n\nTo find a task run ID, use the\n[`GET /api/v2/tasks/{taskID}/runs` endpoint](#operation/GetTasksIDRuns)\nto list task runs.\n",
         "required": true,
         "type": "string"
       }
@@ -5544,7 +6475,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Run that has been queued",
+        "description": "Success. The response body contains the queued run.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5553,8 +6484,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\nInfluxDB may return this error for the following reasons:\n\n- The task has `status: inactive`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5592,7 +6563,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "All logs for a task",
+        "description": "Success. The response body contains an `events` list with logs for the task.\nEach log event `message` contains detail about the event.\nIf a task run fails, InfluxDB logs an event with the reason for the failure.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5601,8 +6572,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5622,13 +6633,13 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "ID of task to get logs for.",
+        "description": "The ID of the task to get logs for.",
         "required": true,
         "type": "string"
       },
       {
         "name": "runID",
-        "description": "ID of run to get logs for.",
+        "description": "The ID of the run to get logs for.",
         "required": true,
         "type": "string"
       }
@@ -5646,7 +6657,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "All logs for a run",
+        "description": "Success. The response body contains an `events` list with logs for the task run.\nEach log event `message` contains detail about the event.\nIf a run fails, InfluxDB logs an event with the reason for the failure.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5655,8 +6666,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5672,11 +6723,11 @@
     "operation": "get",
     "operationId": "GetTasksIDLabels",
     "basicAuth": false,
-    "summary": "List all labels for a task",
+    "summary": "List labels for a task",
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to retrieve labels for.",
         "required": true,
         "type": "string"
       }
@@ -5694,7 +6745,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of all labels for a task",
+        "description": "Success. The response body contains a list of all labels for the task.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5703,8 +6754,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5724,7 +6815,7 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to label.",
         "required": true,
         "type": "string"
       }
@@ -5739,7 +6830,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Label to add",
+      "description": "An object that contains a _`labelID`_ to add to the task.",
       "required": true,
       "mediaType": "application/json",
       "type": "LabelMapping"
@@ -5747,7 +6838,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "A list of all labels for a task",
+        "description": "Success. The response body contains a list of all labels for the task.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5756,8 +6847,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5777,13 +6908,13 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to delete the label from.",
         "required": true,
         "type": "string"
       },
       {
         "name": "labelID",
-        "description": "The label ID.",
+        "description": "The ID of the label to delete.",
         "required": true,
         "type": "string"
       }
@@ -5801,12 +6932,42 @@
     "responses": [
       {
         "code": "204",
-        "description": "Delete has been accepted",
+        "description": "Success. The label is deleted.",
         "mediaTypes": []
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
         "code": "404",
-        "description": "Task not found",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5816,7 +6977,7 @@
       },
       {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5888,7 +7049,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "The currently authenticated user.",
+        "description": "Success. The response body contains the currently authenticated user.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5897,8 +7058,28 @@
         ]
       },
       {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -5926,7 +7107,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "New password",
+      "description": "The new password.",
       "required": true,
       "mediaType": "application/json",
       "type": "PasswordResetBody"
@@ -5934,7 +7115,12 @@
     "responses": [
       {
         "code": "204",
-        "description": "Password successfully updated",
+        "description": "Success. The password was updated.",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB Cloud doesn't support changing passwords through the API and always responds with this status.\n",
         "mediaTypes": []
       },
       {
@@ -5977,7 +7163,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of users who have member privileges for a task",
+        "description": "Success. The response body contains a list of `users` that have\nthe `member` role for a task.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -6022,7 +7208,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to add as member",
+      "description": "A user to add as a member of the task.",
       "required": true,
       "mediaType": "application/json",
       "type": "AddResourceMemberRequestBody"
@@ -6030,7 +7216,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Added to task members",
+        "description": "Created. The user is added to task members.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -6109,7 +7295,7 @@
     "positionalParams": [
       {
         "name": "taskID",
-        "description": "The task ID.",
+        "description": "The ID of the task to retrieve owners for.",
         "required": true,
         "type": "string"
       }
@@ -6127,11 +7313,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of users who have owner privileges for a task",
+        "description": "Success.\nThe response contains a list of `users` that have the `owner` role for the task.\n\nIf the task has no owners, the response contains an empty `users` array.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceOwners"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n\nThe error may indicate one of the following problems:\n\n- The request body isn't valid--the request is well-formed, but InfluxDB can't process it due to semantic errors.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -6153,7 +7369,7 @@
     "operation": "post",
     "operationId": "PostTasksIDOwners",
     "basicAuth": false,
-    "summary": "Add an owner to a task",
+    "summary": "Add an owner for a task",
     "positionalParams": [
       {
         "name": "taskID",
@@ -6172,7 +7388,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to add as owner",
+      "description": "A user to add as an owner of the task.",
       "required": true,
       "mediaType": "application/json",
       "type": "AddResourceMemberRequestBody"
@@ -6180,11 +7396,41 @@
     "responses": [
       {
         "code": "201",
-        "description": "Added to task owners",
+        "description": "Created. The task `owner` role is assigned to the user.\nThe response body contains the resource owner with\nrole and user detail.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "ResourceOwner"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n\nThe error may indicate one of the following problems:\n\n- The request body isn't valid--the request is well-formed, but InfluxDB can't process it due to semantic errors.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -6286,6 +7532,11 @@
         "mediaTypes": []
       },
       {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB Cloud doesn't support changing passwords through the API and always responds with this status.\n",
+        "mediaTypes": []
+      },
+      {
         "code": "default",
         "description": "Unsuccessful authentication",
         "mediaTypes": [
@@ -6316,11 +7567,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -6800,11 +8053,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -7430,11 +8685,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -7914,7 +9171,7 @@
     "queryParams": [
       {
         "name": "cpu",
-        "description": "Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration).\n",
+        "description": "Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#duration).\n",
         "type": "string"
       }
     ],
@@ -8557,7 +9814,7 @@
     "operation": "get",
     "operationId": "GetUsers",
     "basicAuth": false,
-    "summary": "List all users",
+    "summary": "List users",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8570,11 +9827,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -8597,11 +9856,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of users",
+        "description": "Success. The response contains a list of `users`.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Users"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n\nThe error may indicate one of the following problems:\n\n- The request body isn't valid--the request is well-formed, but InfluxDB can't process it due to semantic errors.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -8635,7 +9924,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "User to create",
+      "description": "The user to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "User"
@@ -8643,11 +9932,41 @@
     "responses": [
       {
         "code": "201",
-        "description": "User created",
+        "description": "Success.\nThe response contains the newly created user.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "UserResponse"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n\nThe error may indicate one of the following problems:\n\n- The request body isn't valid--the request is well-formed, but InfluxDB can't process it due to semantic errors.\n- You passed a parameter combination that InfluxDB doesn't support.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -8890,7 +10209,7 @@
     "operation": "get",
     "operationId": "GetAuthorizations",
     "basicAuth": false,
-    "summary": "List all authorizations",
+    "summary": "List authorizations",
     "positionalParams": [],
     "headerParams": [
       {
@@ -8903,22 +10222,22 @@
     "queryParams": [
       {
         "name": "userID",
-        "description": "Only show authorizations that belong to a user ID.",
+        "description": "A user ID.\nOnly returns authorizations scoped to this user.\n",
         "type": "string"
       },
       {
         "name": "user",
-        "description": "Only show authorizations that belong to a user name.",
+        "description": "A user name.\nOnly returns authorizations scoped to this user.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "Only show authorizations that belong to an organization ID.",
+        "description": "An organization ID. Only returns authorizations that belong to this organization.",
         "type": "string"
       },
       {
         "name": "org",
-        "description": "Only show authorizations that belong to a organization name.",
+        "description": "An organization name.\nOnly returns authorizations that belong to this organization.\n",
         "type": "string"
       }
     ],
@@ -8926,11 +10245,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of authorizations",
+        "description": "Success. The response body contains a list of authorizations.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Authorizations"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -8964,7 +10313,7 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Authorization to create",
+      "description": "The authorization to create.",
       "required": true,
       "mediaType": "application/json",
       "type": "AuthorizationPostRequest"
@@ -8972,7 +10321,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "Authorization created",
+        "description": "Created. The response body contains the newly created authorization.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -8983,6 +10332,26 @@
       {
         "code": "400",
         "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -9132,326 +10501,6 @@
       {
         "code": "204",
         "description": "Authorization deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations",
-    "operation": "get",
-    "operationId": "GetLegacyAuthorizations",
-    "basicAuth": false,
-    "summary": "List all legacy authorizations",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [
-      {
-        "name": "userID",
-        "description": "Only show legacy authorizations that belong to a user ID.",
-        "type": "string"
-      },
-      {
-        "name": "user",
-        "description": "Only show legacy authorizations that belong to a user name.",
-        "type": "string"
-      },
-      {
-        "name": "orgID",
-        "description": "Only show legacy authorizations that belong to an organization ID.",
-        "type": "string"
-      },
-      {
-        "name": "org",
-        "description": "Only show legacy authorizations that belong to a organization name.",
-        "type": "string"
-      },
-      {
-        "name": "token",
-        "description": "Only show legacy authorizations with a specified token (auth name).",
-        "type": "string"
-      },
-      {
-        "name": "authID",
-        "description": "Only show legacy authorizations with a specified auth ID.",
-        "type": "string"
-      }
-    ],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "A list of legacy authorizations",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorizations"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations",
-    "operation": "post",
-    "operationId": "PostLegacyAuthorizations",
-    "basicAuth": false,
-    "summary": "Create a legacy authorization",
-    "positionalParams": [],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Legacy authorization to create",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "LegacyAuthorizationPostRequest"
-    },
-    "responses": [
-      {
-        "code": "201",
-        "description": "Legacy authorization created",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "400",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations/{authID}",
-    "operation": "get",
-    "operationId": "GetLegacyAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Retrieve a legacy authorization",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the legacy authorization to get.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "200",
-        "description": "Legacy authorization details",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations/{authID}",
-    "operation": "patch",
-    "operationId": "PatchLegacyAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Update a legacy authorization to be active or inactive",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the legacy authorization to update.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "Legacy authorization to update",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "AuthorizationUpdateRequest"
-    },
-    "responses": [
-      {
-        "code": "200",
-        "description": "The active or inactive legacy authorization",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Authorization"
-          }
-        ]
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations/{authID}",
-    "operation": "delete",
-    "operationId": "DeleteLegacyAuthorizationsID",
-    "basicAuth": false,
-    "summary": "Delete a legacy authorization",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the legacy authorization to delete.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": null,
-    "responses": [
-      {
-        "code": "204",
-        "description": "Legacy authorization deleted",
-        "mediaTypes": []
-      },
-      {
-        "code": "default",
-        "description": "Non 2XX error response from server.",
-        "mediaTypes": [
-          {
-            "mediaType": "application/json",
-            "type": "Error"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "server": "/api/v2",
-    "path": "/legacy/authorizations/{authID}/password",
-    "operation": "post",
-    "operationId": "PostLegacyAuthorizationsIDPassword",
-    "basicAuth": false,
-    "summary": "Set a legacy authorization password",
-    "positionalParams": [
-      {
-        "name": "authID",
-        "description": "The ID of the legacy authorization to update.",
-        "required": true,
-        "type": "string"
-      }
-    ],
-    "headerParams": [
-      {
-        "name": "Zap-Trace-Span",
-        "description": "OpenTracing span context",
-        "required": false,
-        "type": "string"
-      }
-    ],
-    "queryParams": [],
-    "bodyParam": {
-      "description": "New password",
-      "required": true,
-      "mediaType": "application/json",
-      "type": "PasswordResetBody"
-    },
-    "responses": [
-      {
-        "code": "204",
-        "description": "Legacy authorization password set",
         "mediaTypes": []
       },
       {
@@ -10878,7 +11927,7 @@
     "operation": "get",
     "operationId": "GetBackupKV",
     "basicAuth": false,
-    "summary": "Download snapshot of metadata stored in the server's embedded KV store. Should not be used in versions greater than 2.1.x, as it doesn't include metadata stored in embedded SQL.",
+    "summary": "Download snapshot of metadata stored in the server's embedded KV store. Don't use with InfluxDB versions greater than InfluxDB 2.1.x.",
     "positionalParams": [],
     "headerParams": [
       {
@@ -10893,7 +11942,7 @@
     "responses": [
       {
         "code": "200",
-        "description": "Snapshot of KV metadata",
+        "description": "Success. The response contains a snapshot of KV metadata.",
         "mediaTypes": [
           {
             "mediaType": "application/octet-stream",
@@ -10990,7 +12039,7 @@
     "queryParams": [
       {
         "name": "since",
-        "description": "Earliest time to include in the snapshot. RFC3339 format.",
+        "description": "The earliest time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) to include in the snapshot.",
         "type": "string"
       }
     ],
@@ -12041,11 +13090,13 @@
     "queryParams": [
       {
         "name": "offset",
+        "description": "The offset for pagination.\nThe number of records to skip.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "limit",
+        "description": "Limits the number of records returned. Default is `20`.\n",
         "required": false,
         "type": "number"
       },
@@ -12156,7 +13207,7 @@
     "operation": "get",
     "operationId": "GetTasks",
     "basicAuth": false,
-    "summary": "List all tasks",
+    "summary": "List tasks",
     "positionalParams": [],
     "headerParams": [
       {
@@ -12169,42 +13220,42 @@
     "queryParams": [
       {
         "name": "name",
-        "description": "Returns task with a specific name.",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) name.\nOnly returns tasks with the specified name.\nDifferent tasks may have the same name.\n",
         "type": "string"
       },
       {
         "name": "after",
-        "description": "Return tasks after a specified ID.",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID.\nOnly returns tasks created after the specified task.\n",
         "type": "string"
       },
       {
         "name": "user",
-        "description": "Filter tasks to a specific user ID.",
+        "description": "A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID.\nOnly returns tasks owned by the specified user.\n",
         "type": "string"
       },
       {
         "name": "org",
-        "description": "Filter tasks to a specific organization name.",
+        "description": "An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) name.\nOnly returns tasks owned by the specified organization.\n",
         "type": "string"
       },
       {
         "name": "orgID",
-        "description": "Filter tasks to a specific organization ID.",
+        "description": "An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) ID.\nOnly returns tasks owned by the specified organization.\n",
         "type": "string"
       },
       {
         "name": "status",
-        "description": "Filter tasks by a status--\"inactive\" or \"active\".",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) status.\nOnly returns tasks that have the specified status (`active` or `inactive`).\n",
         "type": "string"
       },
       {
         "name": "limit",
-        "description": "The number of tasks to return",
+        "description": "The maximum number of [tasks](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) to return.\nDefault is `100`.\nThe minimum is `1` and the maximum is `500`.\n\nTo reduce the payload size, combine _`type=basic`_ and _`limit`_ (see _Request samples_).\nFor more information about the `basic` response, see the _`type`_ parameter.\n",
         "type": "number"
       },
       {
         "name": "type",
-        "description": "Type of task, unset by default.",
+        "description": "A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) type (`basic` or `system`).\nDefault is `system`.\nSpecifies the level of detail for tasks in the response.\nThe default (`system`) response contains all the metadata properties for tasks.\nTo reduce the response size, pass `basic` to omit some task properties (`flux`, `createdAt`, `updatedAt`).\n",
         "required": false,
         "type": "string"
       }
@@ -12213,11 +13264,107 @@
     "responses": [
       {
         "code": "200",
-        "description": "A list of tasks",
+        "description": "Success.\nThe response body contains the list of tasks.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Tasks"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/tasks",
+    "operation": "post",
+    "operationId": "PostTasks",
+    "basicAuth": false,
+    "summary": "Create a task",
+    "positionalParams": [],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "The task to create.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "TaskCreateRequest"
+    },
+    "responses": [
+      {
+        "code": "201",
+        "description": "Success. The response body contains a `tasks` list with the task.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -12235,12 +13382,107 @@
   },
   {
     "server": "/api/v2",
-    "path": "/tasks",
-    "operation": "post",
-    "operationId": "PostTasks",
+    "path": "/tasks/{taskID}",
+    "operation": "get",
+    "operationId": "GetTasksID",
     "basicAuth": false,
-    "summary": "Create a new task",
-    "positionalParams": [],
+    "summary": "Retrieve a task",
+    "positionalParams": [
+      {
+        "name": "taskID",
+        "description": "The ID of the task to retrieve.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "200",
+        "description": "Success. The response body contains the task.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/tasks/{taskID}",
+    "operation": "patch",
+    "operationId": "PatchTasksID",
+    "basicAuth": false,
+    "summary": "Update a task",
+    "positionalParams": [
+      {
+        "name": "taskID",
+        "description": "The ID of the task to update.",
+        "required": true,
+        "type": "string"
+      }
+    ],
     "headerParams": [
       {
         "name": "Zap-Trace-Span",
@@ -12251,15 +13493,15 @@
     ],
     "queryParams": [],
     "bodyParam": {
-      "description": "Task to create",
+      "description": "An object that contains updated task properties to apply.",
       "required": true,
       "mediaType": "application/json",
-      "type": "TaskCreateRequest"
+      "type": "TaskUpdateRequest"
     },
     "responses": [
       {
-        "code": "201",
-        "description": "Task created",
+        "code": "200",
+        "description": "Success. The response body contains the updated task.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12268,8 +13510,131 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Unexpected error",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/tasks/{taskID}",
+    "operation": "delete",
+    "operationId": "DeleteTasksID",
+    "basicAuth": false,
+    "summary": "Delete a task",
+    "positionalParams": [
+      {
+        "name": "taskID",
+        "description": "The ID of the task to delete.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [
+      {
+        "name": "Zap-Trace-Span",
+        "description": "OpenTracing span context",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "queryParams": [],
+    "bodyParam": null,
+    "responses": [
+      {
+        "code": "204",
+        "description": "Success. The task and runs are deleted. Scheduled runs are canceled.",
+        "mediaTypes": []
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\nA requested resource was not found.\nThe response body contains the requested resource type and the name value\n(if you passed it)--for example:\n\n- `\"organization name \\\"my-org\\\" not found\"`\n- `\"organization not found\"`: indicates you passed an ID that did not match\n   an organization.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12291,22 +13656,40 @@
     "queryParams": [
       {
         "name": "limit",
-        "description": "The number of scripts to return.",
+        "description": "The maximum number of scripts to return. Default is `100`.\n",
         "required": false,
         "type": "number"
       },
       {
         "name": "offset",
-        "description": "The offset for pagination.",
+        "description": "The offset for pagination.\nSpecifies the number of records to skip in the result.\n",
         "required": false,
         "type": "number"
+      },
+      {
+        "name": "name",
+        "description": "The name of the script.",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "labelNames",
+        "description": "A list of label names.\nOnly returns scripts that have all the specified labels.\nTo retrieve a script, each name you pass in `labelNames` must exactly\nmatch the label for a script.\n",
+        "required": false,
+        "type": "any"
+      },
+      {
+        "name": "labelContains",
+        "description": "A part of the label name.\nReturns scripts that have a label that contains the specified phrase.\n",
+        "required": false,
+        "type": "string"
       }
     ],
     "bodyParam": null,
     "responses": [
       {
         "code": "200",
-        "description": "The list of scripts.",
+        "description": "Success.\nThe response body contains the list of scripts.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12315,8 +13698,38 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB is unable to parse the request.\nThe response body contains detail about the error.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Non 2XX error response from server.",
+        "description": "Unexpected error.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12345,7 +13758,7 @@
     "responses": [
       {
         "code": "201",
-        "description": "The created script.",
+        "description": "Success.\nThe response body contains the script and its metadata.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12354,8 +13767,48 @@
         ]
       },
       {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "422",
+        "description": "Unprocessable entity.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
         "code": "default",
-        "description": "Non 2XX error response from server.",
+        "description": "Unexpected error.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
@@ -12375,7 +13828,7 @@
     "positionalParams": [
       {
         "name": "scriptID",
-        "description": "The script ID.",
+        "description": "A script ID.\nSpecifies the script to retrieve.\n",
         "required": true,
         "type": "string"
       }
@@ -12386,11 +13839,31 @@
     "responses": [
       {
         "code": "200",
-        "description": "The requested script object.",
+        "description": "Success. The response body contains the script.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Script"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -12416,7 +13889,7 @@
     "positionalParams": [
       {
         "name": "scriptID",
-        "description": "The script ID.",
+        "description": "A script ID.\nSpecifies the script to update.\n",
         "required": true,
         "type": "string"
       }
@@ -12424,7 +13897,7 @@
     "headerParams": [],
     "queryParams": [],
     "bodyParam": {
-      "description": "Script update to apply",
+      "description": "The script update to apply.",
       "required": true,
       "mediaType": "application/json",
       "type": "ScriptUpdateRequest"
@@ -12432,11 +13905,41 @@
     "responses": [
       {
         "code": "200",
-        "description": "The updated script.",
+        "description": "Success. The response body contains the updated script.",
         "mediaTypes": [
           {
             "mediaType": "application/json",
             "type": "Script"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },
@@ -12462,7 +13965,7 @@
     "positionalParams": [
       {
         "name": "scriptID",
-        "description": "The ID of the script to delete.",
+        "description": "A script ID.\nSpecifies the script to delete.\n",
         "required": true,
         "type": "string"
       }
@@ -12473,8 +13976,28 @@
     "responses": [
       {
         "code": "204",
-        "description": "The script is deleted.",
+        "description": "Success. The script is deleted.",
         "mediaTypes": []
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
       },
       {
         "code": "default",
@@ -12498,6 +14021,7 @@
     "positionalParams": [
       {
         "name": "scriptID",
+        "description": "A script ID.\nSpecifies the script to execute.\n",
         "required": true,
         "type": "string"
       }
@@ -12512,11 +14036,223 @@
     "responses": [
       {
         "code": "200",
-        "description": "The result of the script execution.",
+        "description": "Success.\nThe response body contains the result of the script execution.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "text/csv",
+            "type": "ScriptHTTPResponseData"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nInfluxDB is unable to parse the request.\nThe response body contains detail about the error.\n",
         "mediaTypes": [
           {
             "mediaType": "application/json",
-            "type": "ScriptHTTPResponseData"
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Not found.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Unexpected error.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scripts/{scriptID}/labels/add",
+    "operation": "patch",
+    "operationId": "PatchScriptsIDAddLabels",
+    "basicAuth": false,
+    "summary": "Add labels to a script",
+    "positionalParams": [
+      {
+        "name": "scriptID",
+        "description": "The script ID.\nSpecifies the script to add labels to.\n",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "The labels to add to the script.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "{\n  /** A list of label names to add. */\n  labels?: string[];\n}"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Success.\nThe response body contains the updated script.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Script"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "default",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "server": "/api/v2",
+    "path": "/scripts/{scriptID}/labels/remove",
+    "operation": "patch",
+    "operationId": "PatchScriptsIDRemoveLabels",
+    "basicAuth": false,
+    "summary": "Remove labels from a script",
+    "positionalParams": [
+      {
+        "name": "scriptID",
+        "description": "A script ID. Specifies the script to remove labels from.",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "headerParams": [],
+    "queryParams": [],
+    "bodyParam": {
+      "description": "The labels to remove from the script.",
+      "required": true,
+      "mediaType": "application/json",
+      "type": "{\n  /** A list of label names to remove. */\n  labels?: string[];\n}"
+    },
+    "responses": [
+      {
+        "code": "200",
+        "description": "Success.\nThe response body contains the updated script.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Script"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "description": "Bad request.\nThe response body contains detail about the error.\n\n#### InfluxDB OSS\n\n- Returns this error if an incorrect value is passed for `org` or `orgID`.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "description": "Unauthorized. The error may indicate one of the following:\n\n  * The `Authorization: Token` header is missing or malformed.\n  * The API token value is missing from the header.\n  * The token doesn't have sufficient permissions to write to this organization and bucket.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "{\n  /** The HTTP status code description. Default is `unauthorized`.\n */\n  readonly code?: \"unauthorized\";\n  /** A human-readable message that may contain detail about the error. */\n  readonly message?: string;\n}"
+          }
+        ]
+      },
+      {
+        "code": "404",
+        "description": "Non 2XX error response from server.",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "description": "Internal server error.\nThe server encountered an unexpected situation.\n",
+        "mediaTypes": [
+          {
+            "mediaType": "application/json",
+            "type": "Error"
           }
         ]
       },

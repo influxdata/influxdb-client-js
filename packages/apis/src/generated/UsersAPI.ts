@@ -10,7 +10,12 @@ export interface PostUsersIDPasswordRequest {
   body: PasswordResetBody
 }
 export interface GetUsersRequest {
+  /** The offset for pagination.
+The number of records to skip.
+ */
   offset?: number
+  /** Limits the number of records returned. Default is `20`.
+   */
   limit?: number
   /** Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`.
    */
@@ -19,7 +24,7 @@ export interface GetUsersRequest {
   id?: string
 }
 export interface PostUsersRequest {
-  /** User to create */
+  /** The user to create. */
   body: User
 }
 export interface GetUsersIDRequest {
@@ -52,7 +57,7 @@ export class UsersAPI {
   }
   /**
    * Update a password.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsersIDPassword }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsersIDPassword }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -70,8 +75,8 @@ export class UsersAPI {
     )
   }
   /**
-   * List all users.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsers }
+   * List users.
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -95,7 +100,7 @@ export class UsersAPI {
   }
   /**
    * Create a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -114,7 +119,7 @@ export class UsersAPI {
   }
   /**
    * Retrieve a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -132,7 +137,7 @@ export class UsersAPI {
   }
   /**
    * Update a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -151,7 +156,7 @@ export class UsersAPI {
   }
   /**
    * Delete a user.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteUsersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteUsersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

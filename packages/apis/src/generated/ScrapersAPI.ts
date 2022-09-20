@@ -106,7 +106,7 @@ export class ScrapersAPI {
   }
   /**
    * List all scraper targets.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -129,7 +129,7 @@ export class ScrapersAPI {
   }
   /**
    * Create a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -148,7 +148,7 @@ export class ScrapersAPI {
   }
   /**
    * Retrieve a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -166,7 +166,7 @@ export class ScrapersAPI {
   }
   /**
    * Update a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchScrapersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchScrapersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -185,7 +185,7 @@ export class ScrapersAPI {
   }
   /**
    * Delete a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteScrapersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -203,7 +203,7 @@ export class ScrapersAPI {
   }
   /**
    * List all labels for a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -221,7 +221,7 @@ export class ScrapersAPI {
   }
   /**
    * Add a label to a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -240,7 +240,7 @@ export class ScrapersAPI {
   }
   /**
    * Delete a label from a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteScrapersIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -258,7 +258,7 @@ export class ScrapersAPI {
   }
   /**
    * List all users with member privileges for a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -276,7 +276,7 @@ export class ScrapersAPI {
   }
   /**
    * Add a member to a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDMembers }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDMembers }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -295,7 +295,7 @@ export class ScrapersAPI {
   }
   /**
    * Remove a member from a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteScrapersIDMembersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDMembersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -313,7 +313,7 @@ export class ScrapersAPI {
   }
   /**
    * List all owners of a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -331,7 +331,7 @@ export class ScrapersAPI {
   }
   /**
    * Add an owner to a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDOwners }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDOwners }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -350,7 +350,7 @@ export class ScrapersAPI {
   }
   /**
    * Remove an owner from a scraper target.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteScrapersIDOwnersID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDOwnersID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

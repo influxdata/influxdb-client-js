@@ -12,19 +12,42 @@ To send compressed data, do the following:
 
 #### Related guides
 
-- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/).
+- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/).
  */
   body: string
   /** The destination organization for writes.
-The database writes all points in the batch to this organization.
-If you provide both `orgID` and `org` parameters, `org` takes precedence.
+InfluxDB writes all points in the batch to this organization.
+If you pass both `orgID` and `org`, they must both be valid.
+
+#### InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`.
+- Writes to the bucket in the organization associated with the authorization (API token).
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+- InfluxDB writes all points in the batch to this organization.
  */
   org: string
   /** The ID of the destination organization for writes.
-If both `orgID` and `org` are specified, `org` takes precedence.
+If you pass both `orgID` and `org`, they must both be valid.
+
+#### InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`.
+- Writes to the bucket in the organization associated with the authorization (API token).
+
+
+#### InfluxDB OSS
+
+- Requires either `org` or `orgID`.
+- InfluxDB writes all points in the batch to this organization.
  */
   orgID?: string
-  /** The destination bucket for writes. */
+  /** The destination bucket for writes.
+InfluxDB writes all points in the batch to this bucket.
+ */
   bucket: string
   /** The precision for unix timestamps in the line protocol batch. */
   precision?: any
@@ -45,7 +68,7 @@ export class WriteAPI {
   }
   /**
    * Write data.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostWrite }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostWrite }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

@@ -70,7 +70,7 @@ export class VariablesAPI {
   }
   /**
    * List all labels for a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetVariablesIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -88,7 +88,7 @@ export class VariablesAPI {
   }
   /**
    * Add a label to a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostVariablesIDLabels }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariablesIDLabels }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -107,7 +107,7 @@ export class VariablesAPI {
   }
   /**
    * Delete a label from a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteVariablesIDLabelsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesIDLabelsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -125,7 +125,7 @@ export class VariablesAPI {
   }
   /**
    * List all variables.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetVariables }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariables }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -143,7 +143,7 @@ export class VariablesAPI {
   }
   /**
    * Create a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostVariables }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariables }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -162,7 +162,7 @@ export class VariablesAPI {
   }
   /**
    * Retrieve a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetVariablesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -180,7 +180,7 @@ export class VariablesAPI {
   }
   /**
    * Replace a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutVariablesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutVariablesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -199,7 +199,7 @@ export class VariablesAPI {
   }
   /**
    * Update a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchVariablesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchVariablesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -218,7 +218,7 @@ export class VariablesAPI {
   }
   /**
    * Delete a variable.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteVariablesID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response

@@ -1,10 +1,18 @@
 ## 1.30.0 [unreleased]
 
+### Features
+
+1. [#571](https://github.com/influxdata/influxdb-client-js/pull/571): Regenerate APIs from swagger.
+
 ### Bug Fixes
 
 1. [#567](https://github.com/influxdata/influxdb-client-js/pull/567): Repair generated API documentation so that links between packages are rendered.
 1. [#570](https://github.com/influxdata/influxdb-client-js/pull/570): Rename Headers to HttpHeaders to avoid clash with DOM's Headers type.
 1. [#578](https://github.com/influxdata/influxdb-client-js/pull/578): Repair deserialization of a missing boolean value.
+
+### Other
+
+1. [#571](https://github.com/influxdata/influxdb-client-js/pull/571): Automate APIs generator, switch to @influxdata/oats.
 
 ## 1.29.0 [2022-08-25]
 

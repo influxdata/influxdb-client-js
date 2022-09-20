@@ -8,17 +8,23 @@ import {
 } from './types'
 
 export interface GetAuthorizationsRequest {
-  /** Only show authorizations that belong to a user ID. */
+  /** A user ID.
+Only returns authorizations scoped to this user.
+ */
   userID?: string
-  /** Only show authorizations that belong to a user name. */
+  /** A user name.
+Only returns authorizations scoped to this user.
+ */
   user?: string
-  /** Only show authorizations that belong to an organization ID. */
+  /** An organization ID. Only returns authorizations that belong to this organization. */
   orgID?: string
-  /** Only show authorizations that belong to a organization name. */
+  /** An organization name.
+Only returns authorizations that belong to this organization.
+ */
   org?: string
 }
 export interface PostAuthorizationsRequest {
-  /** Authorization to create */
+  /** The authorization to create. */
   body: AuthorizationPostRequest
 }
 export interface GetAuthorizationsIDRequest {
@@ -50,8 +56,8 @@ export class AuthorizationsAPI {
     this.base = new APIBase(influxDB)
   }
   /**
-   * List all authorizations.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizations }
+   * List authorizations.
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -74,7 +80,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Create an authorization.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostAuthorizations }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostAuthorizations }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -93,7 +99,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Retrieve an authorization.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -111,7 +117,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Update an authorization to be active or inactive.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
@@ -130,7 +136,7 @@ export class AuthorizationsAPI {
   }
   /**
    * Delete an authorization.
-   * See {@link https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteAuthorizationsID }
+   * See {@link https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteAuthorizationsID }
    * @param request - request parameters and body (if supported)
    * @param requestOptions - optional transport options
    * @returns promise of response
