@@ -1,6 +1,10 @@
 import FetchTransport from '../../../../src/impl/browser/FetchTransport'
 import {expect} from 'chai'
-import {removeFetchApi, emulateFetchApi} from './emulateBrowser'
+import {
+  removeFetchApi,
+  emulateFetchApi,
+  AbortController,
+} from './emulateBrowser'
 import sinon from 'sinon'
 import {SendOptions, Cancellable} from '../../../../src'
 import {CollectedLogs, collectLogging} from '../../../util'
@@ -346,7 +350,7 @@ describe('FetchTransport', () => {
       {
         url: 'customNext_cancelledWithSignal',
         body: [Buffer.from('a'), Buffer.from('b')],
-        signal: {aborted: true},
+        signal: new AbortController(true).signal,
         callbacks: ((): void => {
           const overriden = fakeCallbacks()
           overriden.useCancellable = sinon.spy((c: Cancellable): void => {

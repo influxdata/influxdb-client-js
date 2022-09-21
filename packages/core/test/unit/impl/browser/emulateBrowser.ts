@@ -79,6 +79,23 @@ let beforeEmulation:
   | {fetch: any; abortController: any; textEncoder: any}
   | undefined
 
+export class AbortController {
+  private listeners: Array<() => void> = []
+  signal = {
+    aborted: false,
+    addEventListener: (type: string, listener: () => void) => {
+      this.listeners.push(listener)
+    },
+  }
+  constructor(aborted = false) {
+    this.signal.aborted = aborted
+  }
+  abort(): void {
+    this.signal.aborted = true
+    this.listeners.forEach((x) => x())
+  }
+}
+
 export function emulateFetchApi(
   spec: ResponseSpec,
   onRequest?: (options: any) => void
@@ -89,15 +106,6 @@ export function emulateFetchApi(
       ? Promise.reject(new Error(url))
       : Promise.resolve(createResponse(spec))
   }
-  class AbortController {
-    signal = {
-      aborted: false,
-    }
-    abort(): void {
-      this.signal.aborted = true
-    }
-  }
-
   class TextEncoder {
     encode(s: string): Uint8Array {
       return Buffer.from(s)
