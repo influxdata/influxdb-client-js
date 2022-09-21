@@ -140,10 +140,13 @@ export default class FetchTransport implements Transport {
                 break
               }
               chunk = await reader.read()
-              if (
-                observer.next(chunk.value) === false &&
-                callbacks?.useResume
-              ) {
+              if (observer.next(chunk.value) === false) {
+                if (!observer.useResume) {
+                  await reader.cancel()
+                  return Promise.reject(
+                    new Error('Unable to pause, useResume is not configured!')
+                  )
+                }
                 pausePromise = new Promise((resolve) => {
                   resume = () => {
                     resolve()
