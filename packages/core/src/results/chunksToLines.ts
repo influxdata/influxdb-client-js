@@ -52,7 +52,7 @@ export function chunksToLines(
     }
   }
 
-  return {
+  const retVal: CommunicationObserver<Uint8Array> = {
     next(chunk: Uint8Array): void {
       if (finished) return
       try {
@@ -76,21 +76,22 @@ export function chunksToLines(
         target.complete()
       }
     },
-    useCancellable(cancellable: Cancellable): void {
-      if (target.useCancellable) {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
-        const self = this
+  }
+  if (target.useCancellable) {
+    retVal.useCancellable = (cancellable: Cancellable) => {
+      target.useCancellable &&
         target.useCancellable({
           cancel(): void {
             cancellable.cancel()
             previous = undefined // do not emit more lines
-            self.complete()
+            retVal.complete()
           },
           isCancelled(): boolean {
             return cancellable.isCancelled()
           },
         })
-      }
-    },
+    }
   }
+
+  return retVal
 }
