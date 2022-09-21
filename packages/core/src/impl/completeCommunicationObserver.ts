@@ -2,7 +2,7 @@ import {CommunicationObserver, Headers} from '../results'
 
 export default function completeCommunicationObserver(
   callbacks: Partial<CommunicationObserver<any>> = {}
-): Omit<Required<CommunicationObserver<any>>, 'useCancellable'> {
+): Omit<Required<CommunicationObserver<any>>, 'useCancellable' | 'useResume'> {
   let state = 0
   const retVal = {
     next: (data: any): void => {
