@@ -26,8 +26,13 @@ const emptyBuffer = Buffer.allocUnsafe(0)
 
 class CancellableImpl implements Cancellable {
   private cancelled = false
+  public resume?: () => void
   cancel(): void {
     this.cancelled = true
+    if (this.resume) {
+      this.resume()
+      this.resume = undefined
+    }
   }
   isCancelled(): boolean {
     return this.cancelled
@@ -329,7 +334,16 @@ export class NodeHttpTransport implements Transport {
           if (cancellable.isCancelled()) {
             res.resume()
           } else {
-            listeners.next(data)
+            if (listeners.next(data) === false && callbacks?.useResume) {
+              // pause processing, the consumer signalizes that
+              // it is not able to receive more data
+              res.pause()
+              const resume = () => {
+                res.resume()
+              }
+              cancellable.resume = resume
+              callbacks.useResume(resume)
+            }
           }
         })
         responseData.on('end', listeners.complete)
