@@ -334,15 +334,22 @@ export class NodeHttpTransport implements Transport {
           if (cancellable.isCancelled()) {
             res.resume()
           } else {
-            if (listeners.next(data) === false && callbacks?.useResume) {
+            if (listeners.next(data) === false) {
               // pause processing, the consumer signalizes that
               // it is not able to receive more data
+              if (!listeners.useResume) {
+                listeners.error(
+                  new Error('Unable to pause, useResume is not configured!')
+                )
+                res.resume()
+                return
+              }
               res.pause()
               const resume = () => {
                 res.resume()
               }
               cancellable.resume = resume
-              callbacks.useResume(resume)
+              listeners.useResume(resume)
             }
           }
         })

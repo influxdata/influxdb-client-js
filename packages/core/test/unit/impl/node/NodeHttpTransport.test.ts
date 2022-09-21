@@ -3,7 +3,7 @@ import nock from 'nock' // WARN: nock must be imported before NodeHttpTransport,
 import NodeHttpTransport from '../../../../src/impl/node/NodeHttpTransport'
 import {ConnectionOptions} from '../../../../src/options'
 import {SendOptions} from '../../../../src/transport'
-import {Cancellable} from '../../../../src/results'
+import {Cancellable, CommunicationObserver} from '../../../../src/results'
 import * as http from 'http'
 import * as https from 'https'
 import sinon from 'sinon'
@@ -11,6 +11,8 @@ import {Readable} from 'stream'
 import zlib from 'zlib'
 import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 import {CollectedLogs, collectLogging} from '../../../util'
+import {waitForCondition} from '../../util/waitForCondition'
+import {AddressInfo} from 'net'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -498,6 +500,156 @@ describe('NodeHttpTransport', () => {
             throw e
           })
       })
+    })
+  })
+  describe('send.backpressure', () => {
+    let server: http.Server
+    let url = ''
+    before(async () => {
+      await new Promise<void>((resolve) => {
+        server = http.createServer()
+        server.listen(() => {
+          const addr = server.address() as AddressInfo
+          url = `http://${addr.address}:${addr.port}`
+          resolve()
+        })
+      })
+    })
+    after(() => {
+      server.close()
+    })
+    afterEach(async () => {
+      server.removeAllListeners('request')
+    })
+
+    it(`it throws an error when paused and useResume is not set`, async () => {
+      server.on('request', async (_req, res) => {
+        res.setHeader('content-type', 'application/csv')
+        res.writeHead(200)
+        const writeUntilFull = () => {
+          while (res.write('.'));
+        }
+        writeUntilFull()
+        res.once('drain', () => {
+          res.write('.')
+          res.end()
+        })
+      })
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          // do not receive more than 1 chunk, but still
+          // there is no useResume callback!
+          return false
+        },
+        error() {},
+        complete(): void {},
+      }
+      const spy = sinon.spy(observer)
+
+      new NodeHttpTransport({url, timeout: 10000}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for resume being called
+      await waitForCondition(() => spy.error.callCount === 1)
+      expect(spy.next.callCount).equals(1)
+      expect(spy.error.getCall(0).args[0]?.message).contains(
+        'useResume is not configured!'
+      )
+    })
+
+    it(`is paused after the first chunk, then cancelled`, async () => {
+      let cancellable: Cancellable | undefined
+      let resume: () => void | undefined
+
+      server.on('request', async (_req, res) => {
+        res.setHeader('content-type', 'application/csv')
+        res.writeHead(200)
+        const writeUntilFull = () => {
+          while (res.write('.'));
+        }
+        writeUntilFull()
+        res.once('drain', () => writeUntilFull())
+        res.once('drain', () => res.end())
+      })
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          return false // do not receive more than 1 chunk
+        },
+        error() {},
+        complete(): void {},
+        useCancellable(c: Cancellable) {
+          cancellable = c
+        },
+        useResume(r) {
+          resume = r
+        },
+      }
+      const spy = sinon.spy(observer)
+
+      new NodeHttpTransport({url, timeout: 10000}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for resume being called
+      await waitForCondition(() => cancellable && resume)
+      expect(spy.next.callCount).equals(1)
+      cancellable?.cancel()
+    })
+    it(`is paused after the second chunk and then read fully`, async () => {
+      let resume: (() => void) | undefined
+      let chunkNumber = 0
+
+      server.on('request', async (_req, res) => {
+        res.setHeader('content-type', 'application/csv')
+        res.writeHead(200)
+        const writeUntilFull = () => {
+          while (res.write('.'));
+        }
+        writeUntilFull()
+        res.once('drain', () => {
+          res.write('.')
+          res.end()
+        })
+      })
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          return ++chunkNumber === 2 ? false : undefined // pause at 2nd chunk
+        },
+        error() {},
+        complete(): void {},
+        useResume(r) {
+          resume = r
+        },
+      }
+      const spy = sinon.spy(observer)
+
+      new NodeHttpTransport({url, timeout: 10000}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for resume being called
+      await waitForCondition(() => resume, 'resume callback is set')
+      expect(spy.next.callCount).equals(2)
+      expect(resume).is.not.null
+      if (resume) resume()
+      await waitForCondition(
+        () => spy.complete.callCount === 1,
+        'response is fully read'
+      )
+      expect(spy.next.callCount).is.greaterThan(2)
     })
   })
 
