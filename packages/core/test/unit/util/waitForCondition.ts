@@ -20,6 +20,5 @@ export async function waitForCondition(
     }
     if (condition()) return
   }
-  // eslint-disable-next-line no-console
-  console.error(`WARN:waitForCondition: ${message}`)
+  return Promise.reject(`WARN:waitForCondition: ${message}`)
 }
