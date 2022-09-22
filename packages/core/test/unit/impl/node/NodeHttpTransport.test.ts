@@ -554,7 +554,7 @@ describe('NodeHttpTransport', () => {
         },
         spy
       )
-      // wait for resume being called
+      // wait for error being called
       await waitForCondition(() => spy.error.callCount === 1)
       expect(spy.next.callCount).equals(1)
       expect(spy.error.getCall(0).args[0]?.message).contains(
@@ -640,7 +640,7 @@ describe('NodeHttpTransport', () => {
         },
         spy
       )
-      // wait for resume being called
+      // wait for useResume being called
       await waitForCondition(() => resume, 'resume callback is set')
       expect(spy.next.callCount).equals(2)
       expect(resume).is.not.null

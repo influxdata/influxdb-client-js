@@ -68,6 +68,9 @@ function createResponse({
               })
             }
           },
+          cancel(_msg = '') {
+            /* read cancelled with an optional message*/
+          },
         }
       },
     }
