@@ -1,5 +1,4 @@
 import {CommunicationObserver} from './CommunicationObserver'
-import {Cancellable} from './Cancellable'
 import {LineSplitter} from './LineSplitter'
 import {FluxResultObserver} from './FluxResultObserver'
 import {
@@ -21,11 +20,11 @@ export function linesToTables(
   let expectMeta = true
   let firstColumnIndex = 0
   let lastMeta: FluxTableMetaData
-  return {
+  const retVal: CommunicationObserver<string> = {
     error(error: Error): void {
       consumer.error(error)
     },
-    next(line: string): void {
+    next(line: string): void | boolean {
       if (line === '') {
         expectMeta = true
         columns = undefined
@@ -67,15 +66,20 @@ export function linesToTables(
             }
           }
         } else {
-          consumer.next(values.slice(firstColumnIndex, size), lastMeta)
+          return consumer.next(values.slice(firstColumnIndex, size), lastMeta)
         }
       }
+      return true
     },
     complete(): void {
       consumer.complete()
     },
-    useCancellable(cancellable: Cancellable): void {
-      if (consumer.useCancellable) consumer.useCancellable(cancellable)
-    },
   }
+  if (consumer.useCancellable) {
+    retVal.useCancellable = consumer.useCancellable.bind(consumer)
+  }
+  if (consumer.useResume) {
+    retVal.useResume = consumer.useResume.bind(consumer)
+  }
+  return retVal
 }
