@@ -88,4 +88,82 @@ describe('chunksToLines', () => {
     expect((cancellable as any)?.isCancelled()).equals(true)
     expect(target.complete.callCount).equals(1)
   })
+  it('can pause and resume processing', () => {
+    let lines: string[] = []
+    let chunksResume = sinon.spy((): void => {})
+    const target = {
+      next(line: string): boolean {
+        lines.push(line)
+        const paused = line.includes('pause')
+        return !paused
+      },
+      error: sinon.fake(),
+      complete: sinon.fake(),
+      useResume: sinon.spy((_x: () => void): void => {}),
+    }
+    const subject = chunksToLines(target, nodeChunkCombiner)
+    let nextVal = subject.next(Buffer.from('a\npause\nb\nd', 'utf8'))
+    subject?.useResume?.((chunksResume = sinon.spy((): void => {})))
+    expect(nextVal).equals(false)
+    expect(lines).deep.equals(['a', 'pause'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(1)
+    expect(chunksResume.callCount).equals(0)
+    target.useResume.args[0][0]() // resume
+    expect(lines).deep.equals(['a', 'pause', 'b'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(1)
+    expect(chunksResume.callCount).equals(1)
+    lines = []
+    nextVal = subject.next(Buffer.from('pause\npause\nf', 'utf8'))
+    expect(nextVal).equals(false)
+    subject?.useResume?.((chunksResume = sinon.spy((): void => {})))
+    expect(lines).deep.equals(['dpause'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(2)
+    expect(chunksResume.callCount).equals(0)
+    target.useResume.args[1][0]() // resume
+    expect(lines).deep.equals(['dpause', 'pause'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(3)
+    expect(chunksResume.callCount).equals(0)
+    target.useResume.args[2][0]() // resume
+    expect(lines).deep.equals(['dpause', 'pause'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(3)
+    expect(chunksResume.callCount).equals(1)
+    subject.complete()
+    expect(lines).deep.equals(['dpause', 'pause', 'f'])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(1)
+    expect(target.useResume.callCount).equals(3)
+  })
+  it('requires useResume', () => {
+    const lines: string[] = []
+    const target = {
+      next(line: string): boolean {
+        lines.push(line)
+        const paused = line.includes('pause')
+        return !paused
+      },
+      error: sinon.fake(),
+      complete: sinon.fake(),
+    }
+    const subject = chunksToLines(target, nodeChunkCombiner)
+    const nextVal = subject.next(Buffer.from('a\npause\nb\nd', 'utf8'))
+    expect(nextVal).equals(true)
+    expect(lines).deep.equals(['a', 'pause'])
+    expect(target.error.callCount).equals(1)
+    expect(target.complete.callCount).equals(0)
+    subject.next(Buffer.from('whatever'))
+    subject.complete()
+    expect(lines).deep.equals(['a', 'pause'])
+    expect(target.error.callCount).equals(1)
+    expect(target.complete.callCount).equals(0)
+  })
 })
