@@ -586,7 +586,7 @@ describe('FetchTransport', () => {
       expect(spy.next.callCount).equals(1)
       cancellable?.cancel()
     })
-    it.only(`is paused after the second chunk and then read fully`, async () => {
+    it(`is paused after the second chunk and then read fully`, async () => {
       let resume: (() => void) | undefined
       let chunkNumber = 0
       const responseBody = 'abcd'

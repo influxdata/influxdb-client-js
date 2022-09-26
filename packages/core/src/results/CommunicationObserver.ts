@@ -23,9 +23,9 @@ export interface CommunicationObserver<T> {
    * Data chunk received, can be called multiple times.
    * @param data - data
    * @returns when `false` value is returned and {@link CommunicationObserver#useResume} is defined,
-   * future calls to `next` are temporarily paused.
+   * future calls to `next` are paused until resume is called.
    */
-  next(data: T): void | false
+  next(data: T): void | boolean
   /**
    * Communication ended with an error.
    */

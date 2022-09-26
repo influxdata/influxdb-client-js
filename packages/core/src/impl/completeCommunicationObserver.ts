@@ -11,7 +11,7 @@ export default function completeCommunicationObserver(
 ): CompleteObserver {
   let state = 0
   const retVal: CompleteObserver = {
-    next: (data: any): void | false => {
+    next: (data: any): void | boolean => {
       if (
         state === 0 &&
         callbacks.next &&
