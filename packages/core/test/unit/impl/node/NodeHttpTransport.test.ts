@@ -573,7 +573,6 @@ describe('NodeHttpTransport', () => {
           while (res.write('.'));
         }
         writeUntilFull()
-        res.once('drain', () => writeUntilFull())
         res.once('drain', () => res.end())
       })
       const observer: CommunicationObserver<Uint8Array> = {
@@ -603,6 +602,7 @@ describe('NodeHttpTransport', () => {
       await waitForCondition(() => cancellable && resume)
       expect(spy.next.callCount).equals(1)
       cancellable?.cancel()
+      await waitForCondition(() => spy.complete.callCount == 1)
     })
     it(`is paused after the second chunk and then read fully`, async () => {
       let resume: (() => void) | undefined
