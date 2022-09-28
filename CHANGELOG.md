@@ -5,6 +5,7 @@
 ### Features
 
 1. [#571](https://github.com/influxdata/influxdb-client-js/pull/571): Regenerate APIs from swagger.
+1. [#588](https://github.com/influxdata/influxdb-client-js/pull/588): Allow to pause/resume flux query result communication observer.
 
 ### Bug Fixes
 
