@@ -16,5 +16,5 @@ interface PipeLiteral
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

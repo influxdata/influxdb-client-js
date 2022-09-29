@@ -16,7 +16,7 @@ interface GetUsersRequest
 |  --- | --- | --- | --- |
 |  [after?](./influxdb-client-apis.getusersrequest.after.md) |  | string | <i>(Optional)</i> Resource ID to seek from. Results are not inclusive of this ID. Use <code>after</code> instead of <code>offset</code>. |
 |  [id?](./influxdb-client-apis.getusersrequest.id.md) |  | string | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) |  | number | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
 |  [name?](./influxdb-client-apis.getusersrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
 

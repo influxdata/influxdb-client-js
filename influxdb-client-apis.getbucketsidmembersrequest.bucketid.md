@@ -4,7 +4,7 @@
 
 ## GetBucketsIDMembersRequest.bucketID property
 
-The bucket ID.
+The ID of the bucket to retrieve users for.
 
 <b>Signature:</b>
 

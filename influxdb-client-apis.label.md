@@ -17,5 +17,5 @@ interface Label
 |  [id?](./influxdb-client-apis.label.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [name?](./influxdb-client-apis.label.name.md) |  | string | <i>(Optional)</i> |
 |  [orgID?](./influxdb-client-apis.label.orgid.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.label.properties.md) |  | any | <i>(Optional)</i> Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
+|  [properties?](./influxdb-client-apis.label.properties.md) |  | any | <i>(Optional)</i> Key-value pairs associated with this label. To remove a property, send an update with an empty value (<code>&quot;&quot;</code>) for the key. |
 

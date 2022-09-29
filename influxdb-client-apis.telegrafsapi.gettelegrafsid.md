@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsID() method
 
-Retrieve a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafsID)
+Retrieve a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getTelegrafsID(request: GetTelegrafsIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTelegrafsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTelegrafsIDRequest](./influxdb-client-apis.gettelegrafsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

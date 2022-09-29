@@ -4,7 +4,7 @@
 
 ## PostQueryAstRequest.body property
 
-Analyzed Flux query to generate abstract syntax tree.
+The Flux query to analyze.
 
 <b>Signature:</b>
 

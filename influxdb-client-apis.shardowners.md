@@ -9,3 +9,5 @@
 ```typescript
 declare type ShardOwners = ShardOwner[];
 ```
+<b>References:</b> [ShardOwner](./influxdb-client-apis.shardowner.md)
+

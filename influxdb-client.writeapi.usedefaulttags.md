@@ -22,7 +22,7 @@ useDefaultTags(tags: {
 
 <b>Returns:</b>
 
-WriteApi
+[WriteApi](./influxdb-client.writeapi.md)
 
 this
 

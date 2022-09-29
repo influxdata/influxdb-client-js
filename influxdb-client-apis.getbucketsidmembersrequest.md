@@ -14,5 +14,5 @@ interface GetBucketsIDMembersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md) |  | string | The bucket ID. |
+|  [bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md) |  | string | The ID of the bucket to retrieve users for. |
 

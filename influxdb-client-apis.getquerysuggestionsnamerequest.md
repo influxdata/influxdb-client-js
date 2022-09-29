@@ -14,5 +14,5 @@ interface GetQuerySuggestionsNameRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md) |  | string | The name of the branching suggestion. |
+|  [name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md) |  | string | A Flux Function name. Only returns functions with this name. |
 

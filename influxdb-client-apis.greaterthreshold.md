@@ -12,3 +12,5 @@ declare type GreaterThreshold = ThresholdBase & {
     value: number;
 };
 ```
+<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
+

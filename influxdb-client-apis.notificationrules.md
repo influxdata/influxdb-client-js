@@ -14,6 +14,6 @@ interface NotificationRules
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.notificationrules.links.md) |  | Links | <i>(Optional)</i> |
-|  [notificationRules?](./influxdb-client-apis.notificationrules.notificationrules.md) |  | NotificationRule\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.notificationrules.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [notificationRules?](./influxdb-client-apis.notificationrules.notificationrules.md) |  | [NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->\[\] | <i>(Optional)</i> |
 

@@ -22,5 +22,5 @@ declare class FlagsAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getFlags(request, requestOptions)](./influxdb-client-apis.flagsapi.getflags.md) |  | Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetFlags) |
+|  [getFlags(request, requestOptions)](./influxdb-client-apis.flagsapi.getflags.md) |  | Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetFlags) |
 

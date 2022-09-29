@@ -4,7 +4,7 @@
 
 ## GetDebugPprofAllProfilesRequest.cpu property
 
-Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.2/reference/glossary/#duration)<!-- -->.
+Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#duration)<!-- -->.
 
 <b>Signature:</b>
 

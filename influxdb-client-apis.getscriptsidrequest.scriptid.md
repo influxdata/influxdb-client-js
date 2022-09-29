@@ -4,7 +4,7 @@
 
 ## GetScriptsIDRequest.scriptID property
 
-The script ID.
+A script ID. Specifies the script to retrieve.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDCellsIDView() method
 
-Retrieve the view for a cell. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDashboardsIDCellsIDView)
+Retrieve the view for a cell. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboardsIDCellsIDView)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDashboardsIDCellsIDView(request: GetDashboardsIDCellsIDViewRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDashboardsIDCellsIDViewRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDashboardsIDCellsIDViewRequest](./influxdb-client-apis.getdashboardsidcellsidviewrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;View&gt;
+Promise&lt;[View](./influxdb-client-apis.view.md)<!-- -->&gt;
 
 promise of response
 

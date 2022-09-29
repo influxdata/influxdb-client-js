@@ -16,7 +16,7 @@ interface TableOptions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [accept?](./influxdb-client-giraffe.tableoptions.accept.md) |  | AcceptRowFunction \| AcceptRowFunction\[\] | <i>(Optional)</i> Accept allows to accept/reject specific rows or terminate processing. |
+|  [accept?](./influxdb-client-giraffe.tableoptions.accept.md) |  | [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) \| [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)<!-- -->\[\] | <i>(Optional)</i> Accept allows to accept/reject specific rows or terminate processing. |
 |  [columns?](./influxdb-client-giraffe.tableoptions.columns.md) |  | string\[\] | <i>(Optional)</i> column keys to collect in the table, undefined means all columns |
 |  [computeFluxGroupKeyUnion?](./influxdb-client-giraffe.tableoptions.computefluxgroupkeyunion.md) |  | boolean | <i>(Optional)</i> compute also fluxGroupKeyUnion |
 |  [computeResultColumnNames?](./influxdb-client-giraffe.tableoptions.computeresultcolumnnames.md) |  | boolean | <i>(Optional)</i> compute also resultColumnNames |

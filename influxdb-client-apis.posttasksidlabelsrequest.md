@@ -14,6 +14,6 @@ interface PostTasksIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidlabelsrequest.body.md) |  | LabelMapping | Label to add |
-|  [taskID](./influxdb-client-apis.posttasksidlabelsrequest.taskid.md) |  | string | The task ID. |
+|  [body](./influxdb-client-apis.posttasksidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | An object that contains a \_<code>labelID</code>\_ to add to the task. |
+|  [taskID](./influxdb-client-apis.posttasksidlabelsrequest.taskid.md) |  | string | The ID of the task to label. |
 

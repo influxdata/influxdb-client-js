@@ -14,6 +14,6 @@ interface PostDashboardsIDCellsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsidcellsrequest.body.md) |  | CreateCell | Cell that will be added |
+|  [body](./influxdb-client-apis.postdashboardsidcellsrequest.body.md) |  | [CreateCell](./influxdb-client-apis.createcell.md) | Cell that will be added |
 |  [dashboardID](./influxdb-client-apis.postdashboardsidcellsrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

@@ -16,8 +16,8 @@ queryLines(query: string | ParameterizedQuery, consumer: CommunicationObserver<s
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| ParameterizedQuery | query |
-|  consumer | CommunicationObserver&lt;string&gt; | csv result lines and error consumer |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
 
 <b>Returns:</b>
 

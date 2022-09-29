@@ -17,12 +17,12 @@ interface NotificationEndpointBase
 |  [createdAt?](./influxdb-client-apis.notificationendpointbase.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [description?](./influxdb-client-apis.notificationendpointbase.description.md) |  | string | <i>(Optional)</i> An optional description of the notification endpoint. |
 |  [id?](./influxdb-client-apis.notificationendpointbase.id.md) |  | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.notificationendpointbase.labels.md) |  | Labels | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.notificationendpointbase.links.md) | <code>readonly</code> | { self?: Link; labels?: Link; members?: Link; owners?: Link; } | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.notificationendpointbase.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.notificationendpointbase.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.notificationendpointbase.name.md) |  | string |  |
 |  [orgID?](./influxdb-client-apis.notificationendpointbase.orgid.md) |  | string | <i>(Optional)</i> |
 |  [status?](./influxdb-client-apis.notificationendpointbase.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> The status of the endpoint. |
-|  [type](./influxdb-client-apis.notificationendpointbase.type.md) |  | NotificationEndpointType |  |
+|  [type](./influxdb-client-apis.notificationendpointbase.type.md) |  | [NotificationEndpointType](./influxdb-client-apis.notificationendpointtype.md) |  |
 |  [updatedAt?](./influxdb-client-apis.notificationendpointbase.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [userID?](./influxdb-client-apis.notificationendpointbase.userid.md) |  | string | <i>(Optional)</i> |
 

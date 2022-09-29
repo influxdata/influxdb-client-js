@@ -16,11 +16,11 @@ declare function setLogger(logger: Logger): Logger;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  logger | Logger | logger to use |
+|  logger | [Logger](./influxdb-client.logger.md) | logger to use |
 
 <b>Returns:</b>
 
-Logger
+[Logger](./influxdb-client.logger.md)
 
 previous logger
 

@@ -13,7 +13,7 @@ declare function newFluxTableColumn(): FluxTableColumn;
 ```
 <b>Returns:</b>
 
-FluxTableColumn
+[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 
 column instance
 

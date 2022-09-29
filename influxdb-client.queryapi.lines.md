@@ -16,11 +16,11 @@ lines(query: string | ParameterizedQuery): Observable<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| ParameterizedQuery | query |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
 
 <b>Returns:</b>
 
-Observable&lt;string&gt;
+[Observable](./influxdb-client.observable.md)<!-- -->&lt;string&gt;
 
 observable of CSV result lines
 

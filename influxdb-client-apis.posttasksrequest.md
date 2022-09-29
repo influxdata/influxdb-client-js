@@ -14,5 +14,5 @@ interface PostTasksRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | TaskCreateRequest | Task to create |
+|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) | The task to create. |
 

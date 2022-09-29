@@ -14,24 +14,23 @@ interface Task
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [authorizationID?](./influxdb-client-apis.task.authorizationid.md) |  | string | <i>(Optional)</i> ID of the authorization used when the task communicates with the query engine. |
+|  [authorizationID?](./influxdb-client-apis.task.authorizationid.md) |  | string | <p><i>(Optional)</i> An authorization ID. Specifies the authorization used when the task communicates with the query engine.</p><p>To find an authorization ID, you can use the  to list authorizations.</p> |
 |  [createdAt?](./influxdb-client-apis.task.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [cron?](./influxdb-client-apis.task.cron.md) |  | string | <i>(Optional)</i> [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. Cron scheduling is based on system time. Value is a [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview)<!-- -->. |
-|  [description?](./influxdb-client-apis.task.description.md) |  | string | <i>(Optional)</i> Description of the task. |
-|  [every?](./influxdb-client-apis.task.every.md) |  | string | <i>(Optional)</i> Interval at which the task runs. <code>every</code> also determines when the task first runs, depending on the specified time. Value is a [duration literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals)<!-- -->). |
-|  [flux](./influxdb-client-apis.task.flux.md) |  | string | Flux script to run for this task. |
+|  [cron?](./influxdb-client-apis.task.cron.md) |  | string | <i>(Optional)</i> A [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions. |
+|  [description?](./influxdb-client-apis.task.description.md) |  | string | <i>(Optional)</i> A description of the task. |
+|  [every?](./influxdb-client-apis.task.every.md) |  | string | <i>(Optional)</i> The interval ([duration literal](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) at which the task runs. <code>every</code> also determines when the task first runs, depending on the specified time. |
+|  [flux](./influxdb-client-apis.task.flux.md) |  | string | The Flux script that the task executes. |
 |  [id](./influxdb-client-apis.task.id.md) | <code>readonly</code> | string |  |
-|  [labels?](./influxdb-client-apis.task.labels.md) |  | Labels | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.task.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.task.lastrunerror.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.task.lastrunstatus.md) | <code>readonly</code> | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
-|  [latestCompleted?](./influxdb-client-apis.task.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> Timestamp of the latest scheduled and completed run. Value is a timestamp in [RFC3339 date/time format](https://docs.influxdata.com/flux/latest/data-types/basic/time/#time-syntax)<!-- -->. |
-|  [links?](./influxdb-client-apis.task.links.md) | <code>readonly</code> | { self?: Link; owners?: Link; members?: Link; runs?: Link; logs?: Link; labels?: Link; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.task.name.md) |  | string | Name of the task. |
-|  [offset?](./influxdb-client-apis.task.offset.md) |  | string | <i>(Optional)</i> [Duration](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. <code>0</code> removes the offset. The value is a [duration literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals)<!-- -->. |
-|  [org?](./influxdb-client-apis.task.org.md) |  | string | <i>(Optional)</i> Name of the organization that owns the task. |
-|  [orgID](./influxdb-client-apis.task.orgid.md) |  | string | ID of the organization that owns the task. |
-|  [ownerID?](./influxdb-client-apis.task.ownerid.md) |  | string | <i>(Optional)</i> ID of the user who owns this Task. |
-|  [status?](./influxdb-client-apis.task.status.md) |  | TaskStatusType | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.task.type.md) |  | string | <i>(Optional)</i> Type of the task, useful for filtering a task list. |
+|  [latestCompleted?](./influxdb-client-apis.task.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) of the latest scheduled and completed run. |
+|  [links?](./influxdb-client-apis.task.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; runs?: [Link](./influxdb-client-apis.link.md)<!-- -->; logs?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
+|  [name](./influxdb-client-apis.task.name.md) |  | string | The name of the task. |
+|  [offset?](./influxdb-client-apis.task.offset.md) |  | string | <i>(Optional)</i> A [duration](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. <code>0</code> removes the offset. |
+|  [org?](./influxdb-client-apis.task.org.md) |  | string | <i>(Optional)</i> An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) name. Specifies the organization that owns the task. |
+|  [orgID](./influxdb-client-apis.task.orgid.md) |  | string | An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) ID. Specifies the organization that owns the task. |
+|  [ownerID?](./influxdb-client-apis.task.ownerid.md) |  | string | <p><i>(Optional)</i> A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID. Specifies the owner of the task.</p><p>To find a user ID, you can use the  to list users.</p> |
+|  [status?](./influxdb-client-apis.task.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
 |  [updatedAt?](./influxdb-client-apis.task.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 

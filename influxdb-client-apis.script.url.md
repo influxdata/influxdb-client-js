@@ -4,7 +4,7 @@
 
 ## Script.url property
 
-invocation endpoint address
+The invocation endpoint address.
 
 <b>Signature:</b>
 

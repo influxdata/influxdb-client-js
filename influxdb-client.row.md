@@ -16,6 +16,6 @@ interface Row
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | FluxTableMetaData |  |
+|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
 |  [values](./influxdb-client.row.values.md) |  | string\[\] |  |
 

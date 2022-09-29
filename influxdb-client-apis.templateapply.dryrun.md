@@ -4,6 +4,10 @@
 
 ## TemplateApply.dryRun property
 
+Only applies a dry run of the templates passed in the request.
+
+- Validates the template and generates a resource diff and summary. - Doesn't install templates or make changes to the InfluxDB instance.
+
 <b>Signature:</b>
 
 ```typescript

@@ -16,7 +16,7 @@ writePoint(point: Point): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  point | Point | point to write |
+|  point | [Point](./influxdb-client.point.md) | point to write |
 
 <b>Returns:</b>
 

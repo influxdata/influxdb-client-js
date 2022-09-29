@@ -18,6 +18,6 @@ interface RetentionPolicyManifest
 |  [name](./influxdb-client-apis.retentionpolicymanifest.name.md) |  | string |  |
 |  [replicaN](./influxdb-client-apis.retentionpolicymanifest.replican.md) |  | number |  |
 |  [shardGroupDuration](./influxdb-client-apis.retentionpolicymanifest.shardgroupduration.md) |  | number |  |
-|  [shardGroups](./influxdb-client-apis.retentionpolicymanifest.shardgroups.md) |  | ShardGroupManifests |  |
-|  [subscriptions](./influxdb-client-apis.retentionpolicymanifest.subscriptions.md) |  | SubscriptionManifests |  |
+|  [shardGroups](./influxdb-client-apis.retentionpolicymanifest.shardgroups.md) |  | [ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md) |  |
+|  [subscriptions](./influxdb-client-apis.retentionpolicymanifest.subscriptions.md) |  | [SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md) |  |
 

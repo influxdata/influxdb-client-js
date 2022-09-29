@@ -4,6 +4,10 @@
 
 ## TemplateApply.template property
 
+A template object to apply. A template object has a `contents` property with an array of InfluxDB resource configurations.
+
+Pass `template` to apply only one template object. If you use `template`<!-- -->, you can't use the `templates` parameter. If you want to apply multiple template objects, use `templates` instead.
+
 <b>Signature:</b>
 
 ```typescript

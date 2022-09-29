@@ -16,7 +16,7 @@ writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempt: number,
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | WriteApi | the instance of the API that failed |
+|  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API that failed |
 |  error | Error | write error |
 |  lines | Array&lt;string&gt; | failed lines |
 |  attempt | number | count of already failed attempts to write the lines (1 ... maxRetries+1) |

@@ -17,16 +17,16 @@ interface CheckBase
 |  [createdAt?](./influxdb-client-apis.checkbase.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [description?](./influxdb-client-apis.checkbase.description.md) |  | string | <i>(Optional)</i> An optional description of the check. |
 |  [id?](./influxdb-client-apis.checkbase.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.checkbase.labels.md) |  | Labels | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.checkbase.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
 |  [lastRunError?](./influxdb-client-apis.checkbase.lastrunerror.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [lastRunStatus?](./influxdb-client-apis.checkbase.lastrunstatus.md) | <code>readonly</code> | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
-|  [latestCompleted?](./influxdb-client-apis.checkbase.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run. |
-|  [links?](./influxdb-client-apis.checkbase.links.md) | <code>readonly</code> | { self?: Link; labels?: Link; members?: Link; owners?: Link; query?: Link; } | <i>(Optional)</i> |
+|  [latestCompleted?](./influxdb-client-apis.checkbase.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) of the latest scheduled and completed run. |
+|  [links?](./influxdb-client-apis.checkbase.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.checkbase.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.checkbase.orgid.md) |  | string | The ID of the organization that owns this check. |
 |  [ownerID?](./influxdb-client-apis.checkbase.ownerid.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of creator used to create this check. |
-|  [query](./influxdb-client-apis.checkbase.query.md) |  | DashboardQuery |  |
-|  [status?](./influxdb-client-apis.checkbase.status.md) |  | TaskStatusType | <i>(Optional)</i> |
+|  [query](./influxdb-client-apis.checkbase.query.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
+|  [status?](./influxdb-client-apis.checkbase.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
 |  [taskID?](./influxdb-client-apis.checkbase.taskid.md) |  | string | <i>(Optional)</i> The ID of the task associated with this check. |
 |  [updatedAt?](./influxdb-client-apis.checkbase.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 

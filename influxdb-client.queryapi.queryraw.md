@@ -16,7 +16,7 @@ queryRaw(query: string | ParameterizedQuery): Promise<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| ParameterizedQuery | query |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
 
 <b>Returns:</b>
 

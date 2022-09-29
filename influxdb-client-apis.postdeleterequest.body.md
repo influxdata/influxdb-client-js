@@ -4,7 +4,13 @@
 
 ## PostDeleteRequest.body property
 
-Deletes data from an InfluxDB bucket.
+Time range parameters and an optional \*\*delete predicate expression\*\*.
+
+To select points to delete within the specified time range, pass a \*delete predicate expression\*\* in the `predicate` property of the request body. If you don't pass a `predicate`<!-- -->, InfluxDB deletes all data with timestamps in the specified time range.
+
+\#\#\#\# Related guides
+
+- [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/)<!-- -->. - Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.
 
 <b>Signature:</b>
 

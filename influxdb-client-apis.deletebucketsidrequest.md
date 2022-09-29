@@ -14,5 +14,5 @@ interface DeleteBucketsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidrequest.bucketid.md) |  | string | The ID of the bucket to delete. |
+|  [bucketID](./influxdb-client-apis.deletebucketsidrequest.bucketid.md) |  | string | Bucket ID. The ID of the bucket to delete. |
 

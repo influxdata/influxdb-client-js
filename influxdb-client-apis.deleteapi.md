@@ -22,5 +22,5 @@ declare class DeleteAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postDelete(request, requestOptions)](./influxdb-client-apis.deleteapi.postdelete.md) |  | Delete data. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDelete) |
+|  [postDelete(request, requestOptions)](./influxdb-client-apis.deleteapi.postdelete.md) |  | Delete data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete) |
 

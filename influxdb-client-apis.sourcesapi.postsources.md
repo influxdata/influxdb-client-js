@@ -4,7 +4,7 @@
 
 ## SourcesAPI.postSources() method
 
-Create a source. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSources](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSources)
+Create a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSources)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postSources(request: PostSourcesRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostSourcesRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostSourcesRequest](./influxdb-client-apis.postsourcesrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Source&gt;
+Promise&lt;[Source](./influxdb-client-apis.source.md)<!-- -->&gt;
 
 promise of response
 

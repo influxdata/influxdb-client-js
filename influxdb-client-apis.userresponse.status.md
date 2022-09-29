@@ -4,7 +4,7 @@
 
 ## UserResponse.status property
 
-If inactive the user is inactive.
+The status of a user. An inactive user won't have access to resources.
 
 <b>Signature:</b>
 

@@ -14,8 +14,8 @@ interface GetAuthorizationsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [org?](./influxdb-client-apis.getauthorizationsrequest.org.md) |  | string | <i>(Optional)</i> Only show authorizations that belong to a organization name. |
-|  [orgID?](./influxdb-client-apis.getauthorizationsrequest.orgid.md) |  | string | <i>(Optional)</i> Only show authorizations that belong to an organization ID. |
-|  [user?](./influxdb-client-apis.getauthorizationsrequest.user.md) |  | string | <i>(Optional)</i> Only show authorizations that belong to a user name. |
-|  [userID?](./influxdb-client-apis.getauthorizationsrequest.userid.md) |  | string | <i>(Optional)</i> Only show authorizations that belong to a user ID. |
+|  [org?](./influxdb-client-apis.getauthorizationsrequest.org.md) |  | string | <i>(Optional)</i> An organization name. Only returns authorizations that belong to this organization. |
+|  [orgID?](./influxdb-client-apis.getauthorizationsrequest.orgid.md) |  | string | <i>(Optional)</i> An organization ID. Only returns authorizations that belong to this organization. |
+|  [user?](./influxdb-client-apis.getauthorizationsrequest.user.md) |  | string | <i>(Optional)</i> A user name. Only returns authorizations scoped to this user. |
+|  [userID?](./influxdb-client-apis.getauthorizationsrequest.userid.md) |  | string | <i>(Optional)</i> A user ID. Only returns authorizations scoped to this user. |
 

@@ -14,5 +14,5 @@ interface PostLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | LabelCreateRequest | Label to create |
+|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) | The label to create. |
 

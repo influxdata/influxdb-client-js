@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRulesIDLabels() method
 
-List all labels for a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationRulesIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesIDLabels)
+List all labels for a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationRulesIDLabels(request: GetNotificationRulesIDLabelsRequest, reque
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetNotificationRulesIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetNotificationRulesIDLabelsRequest](./influxdb-client-apis.getnotificationrulesidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelsResponse&gt;
+Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
 
 promise of response
 

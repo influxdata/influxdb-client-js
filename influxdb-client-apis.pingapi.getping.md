@@ -4,7 +4,7 @@
 
 ## PingAPI.getPing() method
 
-Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetPing)
+Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetPing)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getPing(request?: GetPingRequest, requestOptions?: RequestOptions): Promise<void
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetPingRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetPingRequest](./influxdb-client-apis.getpingrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

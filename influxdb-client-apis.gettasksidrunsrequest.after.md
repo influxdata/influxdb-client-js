@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsRequest.after property
 
-Returns runs after a specific ID.
+A task run ID. Only returns runs created after this run.
 
 <b>Signature:</b>
 

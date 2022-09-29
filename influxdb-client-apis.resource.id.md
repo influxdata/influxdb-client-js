@@ -4,7 +4,7 @@
 
 ## Resource.id property
 
-If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type.
+The ID of a specific resource. In a `permission`<!-- -->, applies the permission to only the resource with this ID.
 
 <b>Signature:</b>
 

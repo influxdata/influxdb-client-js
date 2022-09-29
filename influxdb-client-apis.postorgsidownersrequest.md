@@ -14,6 +14,6 @@ interface PostOrgsIDOwnersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
-|  [orgID](./influxdb-client-apis.postorgsidownersrequest.orgid.md) |  | string | The organization ID. |
+|  [body](./influxdb-client-apis.postorgsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | The user to add as an owner of the organization. |
+|  [orgID](./influxdb-client-apis.postorgsidownersrequest.orgid.md) |  | string | The ID of the organization that you want to add an owner for. |
 

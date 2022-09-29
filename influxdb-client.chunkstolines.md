@@ -16,12 +16,12 @@ declare function chunksToLines(target: CommunicationObserver<string>, chunkCombi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  target | CommunicationObserver&lt;string&gt; | target to emmit CSV lines to |
-|  chunkCombiner | ChunkCombiner | <i>(Optional)</i> |
+|  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
+|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
-CommunicationObserver&lt;Uint8Array&gt;
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;Uint8Array&gt;
 
 communication obrver to accept Uint8Arrays
 

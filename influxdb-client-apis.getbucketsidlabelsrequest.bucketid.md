@@ -4,7 +4,7 @@
 
 ## GetBucketsIDLabelsRequest.bucketID property
 
-The bucket ID.
+The ID of the bucket to retrieve labels for.
 
 <b>Signature:</b>
 

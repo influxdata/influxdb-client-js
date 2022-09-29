@@ -14,6 +14,6 @@ interface PostDashboardsIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsidlabelsrequest.body.md) |  | LabelMapping | Label to add |
+|  [body](./influxdb-client-apis.postdashboardsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
 |  [dashboardID](./influxdb-client-apis.postdashboardsidlabelsrequest.dashboardid.md) |  | string | The dashboard ID. |
 

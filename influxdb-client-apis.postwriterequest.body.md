@@ -12,7 +12,7 @@ To send compressed data, do the following:
 
 \#\#\#\# Related guides
 
-- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.2/write-data/best-practices/optimize-writes/)<!-- -->.
+- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/)<!-- -->.
 
 <b>Signature:</b>
 

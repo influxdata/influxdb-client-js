@@ -4,7 +4,7 @@
 
 ## SourcesAPI.getSources() method
 
-List all sources. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSources](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSources)
+List all sources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSources)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getSources(request?: GetSourcesRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetSourcesRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Sources&gt;
+Promise&lt;[Sources](./influxdb-client-apis.sources.md)<!-- -->&gt;
 
 promise of response
 

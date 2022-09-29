@@ -21,7 +21,7 @@ tag(name: string, value: string): Point;
 
 <b>Returns:</b>
 
-Point
+[Point](./influxdb-client.point.md)
 
 this
 

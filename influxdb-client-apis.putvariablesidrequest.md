@@ -14,6 +14,6 @@ interface PutVariablesIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putvariablesidrequest.body.md) |  | Variable | Variable to replace |
+|  [body](./influxdb-client-apis.putvariablesidrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable to replace |
 |  [variableID](./influxdb-client-apis.putvariablesidrequest.variableid.md) |  | string | The variable ID. |
 

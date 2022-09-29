@@ -14,6 +14,6 @@ interface Authorizations
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [authorizations?](./influxdb-client-apis.authorizations.authorizations.md) |  | Authorization\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.authorizations.links.md) | <code>readonly</code> | Links | <i>(Optional)</i> |
+|  [authorizations?](./influxdb-client-apis.authorizations.authorizations.md) |  | [Authorization](./influxdb-client-apis.authorization.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.authorizations.links.md) | <code>readonly</code> | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
 

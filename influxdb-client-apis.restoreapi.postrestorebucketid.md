@@ -4,7 +4,7 @@
 
 ## RestoreAPI.postRestoreBucketID() method
 
-Overwrite storage metadata for a bucket with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostRestoreBucketID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRestoreBucketID)
+Overwrite storage metadata for a bucket with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreBucketID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postRestoreBucketID(request: PostRestoreBucketIDRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostRestoreBucketIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostRestoreBucketIDRequest](./influxdb-client-apis.postrestorebucketidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

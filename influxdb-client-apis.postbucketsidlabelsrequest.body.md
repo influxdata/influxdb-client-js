@@ -4,7 +4,7 @@
 
 ## PostBucketsIDLabelsRequest.body property
 
-Label to add
+An object that contains a \_`labelID`<!-- -->\_ to add to the bucket.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapers() method
 
-Create a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostScrapers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapers)
+Create a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postScrapers(request: PostScrapersRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostScrapersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostScrapersRequest](./influxdb-client-apis.postscrapersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ScraperTargetResponse&gt;
+Promise&lt;[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->&gt;
 
 promise of response
 

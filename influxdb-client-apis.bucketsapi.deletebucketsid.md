@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsID() method
 
-Delete a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteBucketsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsID)
+Delete a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteBucketsID(request: DeleteBucketsIDRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteBucketsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteBucketsIDRequest](./influxdb-client-apis.deletebucketsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

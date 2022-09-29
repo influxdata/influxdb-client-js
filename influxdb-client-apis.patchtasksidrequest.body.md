@@ -4,7 +4,7 @@
 
 ## PatchTasksIDRequest.body property
 
-Task update to apply
+An object that contains updated task properties to apply.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## BucketsAPI.getBuckets() method
 
-List all buckets. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetBuckets](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetBuckets)
+List buckets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBuckets)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getBuckets(request?: GetBucketsRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetBucketsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetBucketsRequest](./influxdb-client-apis.getbucketsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Buckets&gt;
+Promise&lt;[Buckets](./influxdb-client-apis.buckets.md)<!-- -->&gt;
 
 promise of response
 

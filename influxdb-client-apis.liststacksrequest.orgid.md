@@ -4,7 +4,11 @@
 
 ## ListStacksRequest.orgID property
 
-The organization ID of the stacks
+The ID of the organization that owns the stacks. Only returns stacks owned by this organization.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require this parameter; InfluxDB only returns resources allowed by the API token.
 
 <b>Signature:</b>
 

@@ -9,3 +9,5 @@
 ```typescript
 declare type NotificationEndpoint = NotificationEndpointDiscriminator;
 ```
+<b>References:</b> [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
+

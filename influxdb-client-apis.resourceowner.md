@@ -11,3 +11,5 @@ declare type ResourceOwner = UserResponse & {
     role?: 'owner';
 };
 ```
+<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
+

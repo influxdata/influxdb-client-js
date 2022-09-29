@@ -14,5 +14,5 @@ interface PostVariablesRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postvariablesrequest.body.md) |  | Variable | Variable to create |
+|  [body](./influxdb-client-apis.postvariablesrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable to create |
 

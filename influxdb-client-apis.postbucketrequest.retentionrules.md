@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-retentionRules: RetentionRules;
+retentionRules?: RetentionRules;
 ```

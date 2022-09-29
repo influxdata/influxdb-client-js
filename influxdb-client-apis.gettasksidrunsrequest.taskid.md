@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsRequest.taskID property
 
-The ID of the task to get runs for.
+The ID of the task to get runs for. Only returns runs for this task.
 
 <b>Signature:</b>
 

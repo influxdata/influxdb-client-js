@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksID() method
 
-Retrieve a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksID)
+Retrieve a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksID(request: GetTasksIDRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTasksIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTasksIDRequest](./influxdb-client-apis.gettasksidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Task&gt;
+Promise&lt;[Task](./influxdb-client-apis.task.md)<!-- -->&gt;
 
 promise of response
 

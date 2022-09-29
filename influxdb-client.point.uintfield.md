@@ -21,7 +21,7 @@ uintField(name: string, value: number | any): Point;
 
 <b>Returns:</b>
 
-Point
+[Point](./influxdb-client.point.md)
 
 this
 

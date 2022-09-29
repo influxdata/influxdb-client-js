@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.getNotificationEndpoints() method
 
-List all notification endpoints. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationEndpoints](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationEndpoints)
+List all notification endpoints. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpoints](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpoints)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationEndpoints(request: GetNotificationEndpointsRequest, requestOption
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetNotificationEndpointsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetNotificationEndpointsRequest](./influxdb-client-apis.getnotificationendpointsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;NotificationEndpoints&gt;
+Promise&lt;[NotificationEndpoints](./influxdb-client-apis.notificationendpoints.md)<!-- -->&gt;
 
 promise of response
 

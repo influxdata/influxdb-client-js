@@ -14,5 +14,5 @@ interface CreateCheckRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | PostCheck | Check to create |
+|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | [PostCheck](./influxdb-client-apis.postcheck.md) | Check to create |
 

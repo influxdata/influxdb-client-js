@@ -9,3 +9,5 @@
 ```typescript
 declare type SMTPNotificationRule = NotificationRuleBase & SMTPNotificationRuleBase;
 ```
+<b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md)
+

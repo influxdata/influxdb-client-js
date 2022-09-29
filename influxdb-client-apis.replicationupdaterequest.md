@@ -20,5 +20,6 @@ interface ReplicationUpdateRequest
 |  [maxQueueSizeBytes?](./influxdb-client-apis.replicationupdaterequest.maxqueuesizebytes.md) |  | number | <i>(Optional)</i> |
 |  [name?](./influxdb-client-apis.replicationupdaterequest.name.md) |  | string | <i>(Optional)</i> |
 |  [remoteBucketID?](./influxdb-client-apis.replicationupdaterequest.remotebucketid.md) |  | string | <i>(Optional)</i> |
+|  [remoteBucketName?](./influxdb-client-apis.replicationupdaterequest.remotebucketname.md) |  | string | <i>(Optional)</i> |
 |  [remoteID?](./influxdb-client-apis.replicationupdaterequest.remoteid.md) |  | string | <i>(Optional)</i> |
 

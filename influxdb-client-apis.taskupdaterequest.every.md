@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest.every property
 
-Override the 'every' option in the flux script.
+Update the 'every' option in the flux script.
 
 <b>Signature:</b>
 

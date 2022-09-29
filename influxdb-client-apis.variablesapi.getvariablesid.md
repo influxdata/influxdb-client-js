@@ -4,7 +4,7 @@
 
 ## VariablesAPI.getVariablesID() method
 
-Retrieve a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetVariablesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetVariablesID)
+Retrieve a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getVariablesID(request: GetVariablesIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetVariablesIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetVariablesIDRequest](./influxdb-client-apis.getvariablesidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Variable&gt;
+Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
 
 promise of response
 

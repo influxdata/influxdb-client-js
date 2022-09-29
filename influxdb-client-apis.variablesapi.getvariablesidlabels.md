@@ -4,7 +4,7 @@
 
 ## VariablesAPI.getVariablesIDLabels() method
 
-List all labels for a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetVariablesIDLabels)
+List all labels for a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getVariablesIDLabels(request: GetVariablesIDLabelsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetVariablesIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetVariablesIDLabelsRequest](./influxdb-client-apis.getvariablesidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelsResponse&gt;
+Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
 
 promise of response
 

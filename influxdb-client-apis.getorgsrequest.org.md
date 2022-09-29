@@ -4,7 +4,7 @@
 
 ## GetOrgsRequest.org property
 
-Filter organizations to a specific organization name.
+An organization name. Only returns organizations with this name.
 
 <b>Signature:</b>
 

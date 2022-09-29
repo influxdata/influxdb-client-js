@@ -4,6 +4,8 @@
 
 ## UserResponse.name property
 
+The name of the user.
+
 <b>Signature:</b>
 
 ```typescript

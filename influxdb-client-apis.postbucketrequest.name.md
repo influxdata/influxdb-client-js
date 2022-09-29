@@ -4,6 +4,8 @@
 
 ## PostBucketRequest.name property
 
+The name of the bucket.
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,7 +4,11 @@
 
 ## ListStacksRequest.stackID property
 
-A collection of stackIDs to filter the list by.
+The stack ID. Only returns stacks with this ID.
+
+Repeatable. To filter for more than one stack ID, repeat this parameter with each ID--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&stackID=09bd87cd33be3000&stackID=09bef35081fe3000`
 
 <b>Signature:</b>
 

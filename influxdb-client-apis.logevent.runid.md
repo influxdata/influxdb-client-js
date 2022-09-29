@@ -4,7 +4,7 @@
 
 ## LogEvent.runID property
 
-the ID of the task that logged
+The ID of the task run that generated the event.
 
 <b>Signature:</b>
 

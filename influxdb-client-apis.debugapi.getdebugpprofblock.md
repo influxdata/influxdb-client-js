@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofBlock() method
 
-Retrieve the block runtime profile. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofBlock](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofBlock)
+Retrieve the block runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofBlock](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofBlock)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofBlock(request?: GetDebugPprofBlockRequest, requestOptions?: Request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDebugPprofBlockRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDebugPprofBlockRequest](./influxdb-client-apis.getdebugpprofblockrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

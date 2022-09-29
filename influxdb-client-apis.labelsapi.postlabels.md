@@ -4,7 +4,7 @@
 
 ## LabelsAPI.postLabels() method
 
-Create a label. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostLabels)
+Create a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postLabels(request: PostLabelsRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelResponse&gt;
+Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
 
 promise of response
 

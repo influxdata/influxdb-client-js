@@ -14,6 +14,6 @@ interface PatchSourcesIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchsourcesidrequest.body.md) |  | Source | Source update |
+|  [body](./influxdb-client-apis.patchsourcesidrequest.body.md) |  | [Source](./influxdb-client-apis.source.md) | Source update |
 |  [sourceID](./influxdb-client-apis.patchsourcesidrequest.sourceid.md) |  | string | The source ID. |
 

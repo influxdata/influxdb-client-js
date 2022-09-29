@@ -4,7 +4,7 @@
 
 ## DeletePredicateRequest.start property
 
-RFC3339Nano
+A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The earliest time to delete from.
 
 <b>Signature:</b>
 

@@ -4,6 +4,10 @@
 
 ## TemplateApply.remotes property
 
+A list of URLs for template files.
+
+To apply a template manifest file located at a URL, pass `remotes` with an array that contains the URL.
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsIDOwners() method
 
-List all dashboard owners. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDashboardsIDOwners)
+List all dashboard owners. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboardsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDashboardsIDOwners(request: GetDashboardsIDOwnersRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDashboardsIDOwnersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDashboardsIDOwnersRequest](./influxdb-client-apis.getdashboardsidownersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceOwners&gt;
+Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
 
 promise of response
 

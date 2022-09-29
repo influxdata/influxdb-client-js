@@ -4,7 +4,7 @@
 
 ## BucketsAPI.postBuckets() method
 
-Create a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostBuckets](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostBuckets)
+Create a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBuckets)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postBuckets(request: PostBucketsRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostBucketsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostBucketsRequest](./influxdb-client-apis.postbucketsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Bucket&gt;
+Promise&lt;[Bucket](./influxdb-client-apis.bucket.md)<!-- -->&gt;
 
 promise of response
 

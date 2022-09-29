@@ -4,8 +4,10 @@
 
 ## Resource.type property
 
+The type of resource. In a `permission`<!-- -->, applies the permission to all resources of this type.
+
 <b>Signature:</b>
 
 ```typescript
-type: 'authorizations' | 'buckets' | 'dashboards' | 'orgs' | 'sources' | 'tasks' | 'telegrafs' | 'users' | 'variables' | 'scrapers' | 'secrets' | 'labels' | 'views' | 'documents' | 'notificationRules' | 'notificationEndpoints' | 'checks' | 'dbrp' | 'notebooks' | 'annotations' | 'remotes' | 'replications' | 'flows' | 'functions';
+type: 'authorizations' | 'buckets' | 'dashboards' | 'orgs' | 'sources' | 'tasks' | 'telegrafs' | 'users' | 'variables' | 'scrapers' | 'secrets' | 'labels' | 'views' | 'documents' | 'notificationRules' | 'notificationEndpoints' | 'checks' | 'dbrp' | 'notebooks' | 'annotations' | 'remotes' | 'replications' | 'instance' | 'flows' | 'functions';
 ```

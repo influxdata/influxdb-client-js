@@ -21,7 +21,7 @@ invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse;
 
 <b>Returns:</b>
 
-AnnotatedCSVResponse
+[AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
 
 response with various methods to process data from the returned annotated CSV response data stream
 

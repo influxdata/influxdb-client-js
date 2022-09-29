@@ -14,7 +14,7 @@ interface PatchDashboardsIDCellsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdashboardsidcellsidrequest.body.md) |  | CellUpdate | entity body |
+|  [body](./influxdb-client-apis.patchdashboardsidcellsidrequest.body.md) |  | [CellUpdate](./influxdb-client-apis.cellupdate.md) | entity body |
 |  [cellID](./influxdb-client-apis.patchdashboardsidcellsidrequest.cellid.md) |  | string | The ID of the cell to update. |
 |  [dashboardID](./influxdb-client-apis.patchdashboardsidcellsidrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
 

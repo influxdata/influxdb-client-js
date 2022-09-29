@@ -14,6 +14,6 @@ interface PatchScriptsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | ScriptUpdateRequest | Script update to apply |
-|  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) |  | string | The script ID. |
+|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) | The script update to apply. |
+|  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) |  | string | A script ID. Specifies the script to update. |
 

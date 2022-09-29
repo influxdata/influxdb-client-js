@@ -10,9 +10,11 @@
 declare type Template = Array<{
     apiVersion?: string;
     kind?: TemplateKind;
-    meta?: {
+    metadata?: {
         name?: string;
     };
     spec?: any;
 }>;
 ```
+<b>References:</b> [TemplateKind](./influxdb-client-apis.templatekind.md)
+

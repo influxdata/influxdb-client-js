@@ -4,6 +4,8 @@
 
 ## Links interface
 
+URI pointers for additional paged results.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ interface Links
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [next?](./influxdb-client-apis.links.next.md) |  | Link | <i>(Optional)</i> |
-|  [prev?](./influxdb-client-apis.links.prev.md) |  | Link | <i>(Optional)</i> |
-|  [self](./influxdb-client-apis.links.self.md) |  | Link |  |
+|  [next?](./influxdb-client-apis.links.next.md) |  | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
+|  [prev?](./influxdb-client-apis.links.prev.md) |  | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
+|  [self](./influxdb-client-apis.links.self.md) |  | [Link](./influxdb-client-apis.link.md) |  |
 

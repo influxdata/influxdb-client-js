@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest.flux property
 
-The Flux script to run for this task.
+The Flux script that the task runs.
 
 <b>Signature:</b>
 

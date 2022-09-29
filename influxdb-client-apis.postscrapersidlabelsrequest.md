@@ -14,6 +14,6 @@ interface PostScrapersIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersidlabelsrequest.body.md) |  | LabelMapping | Label to add |
+|  [body](./influxdb-client-apis.postscrapersidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
 |  [scraperTargetID](./influxdb-client-apis.postscrapersidlabelsrequest.scrapertargetid.md) |  | string | The scraper target ID. |
 

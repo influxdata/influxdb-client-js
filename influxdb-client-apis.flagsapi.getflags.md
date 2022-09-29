@@ -4,7 +4,7 @@
 
 ## FlagsAPI.getFlags() method
 
-Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetFlags)
+Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetFlags)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getFlags(request?: GetFlagsRequest, requestOptions?: RequestOptions): Promise<Fl
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetFlagsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Flags&gt;
+Promise&lt;[Flags](./influxdb-client-apis.flags.md)<!-- -->&gt;
 
 promise of response
 

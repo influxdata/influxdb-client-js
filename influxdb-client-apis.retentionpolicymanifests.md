@@ -9,3 +9,5 @@
 ```typescript
 declare type RetentionPolicyManifests = RetentionPolicyManifest[];
 ```
+<b>References:</b> [RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md)
+

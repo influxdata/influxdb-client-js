@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.deleteTelegrafsID() method
 
-Delete a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTelegrafsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTelegrafsID)
+Delete a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTelegrafsID(request: DeleteTelegrafsIDRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteTelegrafsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

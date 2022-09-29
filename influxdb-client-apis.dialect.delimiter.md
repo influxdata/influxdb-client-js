@@ -4,7 +4,7 @@
 
 ## Dialect.delimiter property
 
-Separator between cells; the default is ,
+The separator used between cells. Default is a comma (`,`<!-- -->).
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## GetTasksRequest.after property
 
-Return tasks after a specified ID.
+A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Only returns tasks created after the specified task.
 
 <b>Signature:</b>
 

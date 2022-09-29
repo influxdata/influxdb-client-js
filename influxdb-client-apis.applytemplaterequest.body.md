@@ -4,7 +4,7 @@
 
 ## ApplyTemplateRequest.body property
 
-entity body
+Parameters for applying templates.
 
 <b>Signature:</b>
 

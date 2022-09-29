@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.patchReplicationByID() method
 
-Update a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchReplicationByID)
+Update a replication. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchReplicationByID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchReplicationByID(request: PatchReplicationByIDRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchReplicationByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Replication&gt;
+Promise&lt;[Replication](./influxdb-client-apis.replication.md)<!-- -->&gt;
 
 promise of response
 

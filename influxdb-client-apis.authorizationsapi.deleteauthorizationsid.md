@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.deleteAuthorizationsID() method
 
-Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteAuthorizationsID)
+Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteAuthorizationsID(request: DeleteAuthorizationsIDRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteAuthorizationsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteAuthorizationsIDRequest](./influxdb-client-apis.deleteauthorizationsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

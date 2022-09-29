@@ -4,7 +4,7 @@
 
 ## PostOrgsIDMembersRequest.orgID property
 
-The organization ID.
+The ID of the organization.
 
 <b>Signature:</b>
 

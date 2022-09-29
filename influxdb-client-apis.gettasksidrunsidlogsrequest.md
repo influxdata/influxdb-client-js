@@ -14,6 +14,6 @@ interface GetTasksIDRunsIDLogsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [runID](./influxdb-client-apis.gettasksidrunsidlogsrequest.runid.md) |  | string | ID of run to get logs for. |
-|  [taskID](./influxdb-client-apis.gettasksidrunsidlogsrequest.taskid.md) |  | string | ID of task to get logs for. |
+|  [runID](./influxdb-client-apis.gettasksidrunsidlogsrequest.runid.md) |  | string | The ID of the run to get logs for. |
+|  [taskID](./influxdb-client-apis.gettasksidrunsidlogsrequest.taskid.md) |  | string | The ID of the task to get logs for. |
 

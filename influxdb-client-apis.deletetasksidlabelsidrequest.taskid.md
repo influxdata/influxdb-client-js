@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDLabelsIDRequest.taskID property
 
-The task ID.
+The ID of the task to delete the label from.
 
 <b>Signature:</b>
 

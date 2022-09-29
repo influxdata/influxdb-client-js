@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofGoroutine() method
 
-Retrieve the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofGoroutine)
+Retrieve the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofGoroutine)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofGoroutine(request?: GetDebugPprofGoroutineRequest, requestOptions?:
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDebugPprofGoroutineRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDebugPprofGoroutineRequest](./influxdb-client-apis.getdebugpprofgoroutinerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

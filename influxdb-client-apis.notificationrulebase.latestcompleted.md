@@ -4,7 +4,7 @@
 
 ## NotificationRuleBase.latestCompleted property
 
-Timestamp (in RFC3339 date/time format\](https://datatracker.ietf.org/doc/html/rfc3339)) of the latest scheduled and completed run.
+A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) of the latest scheduled and completed run.
 
 <b>Signature:</b>
 

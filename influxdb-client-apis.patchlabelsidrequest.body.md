@@ -4,7 +4,7 @@
 
 ## PatchLabelsIDRequest.body property
 
-Label update
+A label update.
 
 <b>Signature:</b>
 

@@ -16,7 +16,7 @@ interface Property
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [key?](./influxdb-client-apis.property.key.md) |  | PropertyKey | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.property.type.md) |  | NodeType | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.property.value.md) |  | Expression | <i>(Optional)</i> |
+|  [key?](./influxdb-client-apis.property.key.md) |  | [PropertyKey](./influxdb-client-apis.propertykey_2.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.property.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [value?](./influxdb-client-apis.property.value.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
 

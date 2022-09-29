@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboards() method
 
-List all dashboards. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDashboards](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDashboards)
+List all dashboards. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboards](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboards)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDashboards(request?: GetDashboardsRequest, requestOptions?: RequestOptions): 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDashboardsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Dashboards&gt;
+Promise&lt;[Dashboards](./influxdb-client-apis.dashboards.md)<!-- -->&gt;
 
 promise of response
 

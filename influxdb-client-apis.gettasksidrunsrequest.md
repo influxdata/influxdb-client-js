@@ -14,9 +14,9 @@ interface GetTasksIDRunsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [after?](./influxdb-client-apis.gettasksidrunsrequest.after.md) |  | string | <i>(Optional)</i> Returns runs after a specific ID. |
-|  [afterTime?](./influxdb-client-apis.gettasksidrunsrequest.aftertime.md) |  | string | <i>(Optional)</i> Filter runs to those scheduled after this time, RFC3339 |
-|  [beforeTime?](./influxdb-client-apis.gettasksidrunsrequest.beforetime.md) |  | string | <i>(Optional)</i> Filter runs to those scheduled before this time, RFC3339 |
-|  [limit?](./influxdb-client-apis.gettasksidrunsrequest.limit.md) |  | number | <i>(Optional)</i> The number of runs to return |
-|  [taskID](./influxdb-client-apis.gettasksidrunsrequest.taskid.md) |  | string | The ID of the task to get runs for. |
+|  [after?](./influxdb-client-apis.gettasksidrunsrequest.after.md) |  | string | <i>(Optional)</i> A task run ID. Only returns runs created after this run. |
+|  [afterTime?](./influxdb-client-apis.gettasksidrunsrequest.aftertime.md) |  | string | <i>(Optional)</i> A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). Only returns runs scheduled after this time. |
+|  [beforeTime?](./influxdb-client-apis.gettasksidrunsrequest.beforetime.md) |  | string | <i>(Optional)</i> A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). Only returns runs scheduled before this time. |
+|  [limit?](./influxdb-client-apis.gettasksidrunsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of task runs returned. Default is <code>100</code>. |
+|  [taskID](./influxdb-client-apis.gettasksidrunsrequest.taskid.md) |  | string | The ID of the task to get runs for. Only returns runs for this task. |
 

@@ -13,5 +13,5 @@ withReuse(): LineSplitter;
 ```
 <b>Returns:</b>
 
-LineSplitter
+[LineSplitter](./influxdb-client.linesplitter.md)
 

@@ -4,7 +4,7 @@
 
 ## GetScriptsRequest.offset property
 
-The offset for pagination.
+The offset for pagination. Specifies the number of records to skip in the result.
 
 <b>Signature:</b>
 

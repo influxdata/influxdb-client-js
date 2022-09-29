@@ -4,7 +4,7 @@
 
 ## RemotesAPI.deleteRemoteConnectionByID() method
 
-Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteRemoteConnectionByID)
+Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteRemoteConnectionByID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteRemoteConnectionByID(request: DeleteRemoteConnectionByIDRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteRemoteConnectionByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteRemoteConnectionByIDRequest](./influxdb-client-apis.deleteremoteconnectionbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

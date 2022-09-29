@@ -16,12 +16,12 @@ postScripts(request: PostScriptsRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostScriptsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Script&gt;
+Promise&lt;[Script](./influxdb-client-apis.script.md)<!-- -->&gt;
 
 promise of response
 

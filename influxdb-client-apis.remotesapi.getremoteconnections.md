@@ -4,7 +4,7 @@
 
 ## RemotesAPI.getRemoteConnections() method
 
-List all remote connections. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRemoteConnections)
+List all remote connections. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnections)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getRemoteConnections(request: GetRemoteConnectionsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetRemoteConnectionsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;RemoteConnections&gt;
+Promise&lt;[RemoteConnections](./influxdb-client-apis.remoteconnections.md)<!-- -->&gt;
 
 promise of response
 

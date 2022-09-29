@@ -22,5 +22,5 @@ declare class SigninAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [postSignin(request, requestOptions)](./influxdb-client-apis.signinapi.postsignin.md) |  | Create a user session. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSignin) |
+|  [postSignin(request, requestOptions)](./influxdb-client-apis.signinapi.postsignin.md) |  | Create a user session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignin) |
 

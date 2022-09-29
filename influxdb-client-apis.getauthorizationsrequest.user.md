@@ -4,7 +4,7 @@
 
 ## GetAuthorizationsRequest.user property
 
-Only show authorizations that belong to a user name.
+A user name. Only returns authorizations scoped to this user.
 
 <b>Signature:</b>
 

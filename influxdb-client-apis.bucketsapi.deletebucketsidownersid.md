@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsIDOwnersID() method
 
-Remove an owner from a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteBucketsIDOwnersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDOwnersID)
+Remove an owner from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDOwnersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteBucketsIDOwnersID(request: DeleteBucketsIDOwnersIDRequest, requestOptions?
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteBucketsIDOwnersIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteBucketsIDOwnersIDRequest](./influxdb-client-apis.deletebucketsidownersidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

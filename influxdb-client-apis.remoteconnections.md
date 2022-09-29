@@ -14,5 +14,5 @@ interface RemoteConnections
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | RemoteConnection\[\] | <i>(Optional)</i> |
+|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | [RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\] | <i>(Optional)</i> |
 

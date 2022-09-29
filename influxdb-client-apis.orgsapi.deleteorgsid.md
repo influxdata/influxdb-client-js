@@ -4,7 +4,7 @@
 
 ## OrgsAPI.deleteOrgsID() method
 
-Delete an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteOrgsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteOrgsID)
+Delete an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteOrgsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteOrgsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteOrgsID(request: DeleteOrgsIDRequest, requestOptions?: RequestOptions): Pro
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteOrgsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

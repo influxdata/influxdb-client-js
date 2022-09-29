@@ -20,3 +20,5 @@ declare type ScraperTargetResponse = ScraperTargetRequest & {
     };
 };
 ```
+<b>References:</b> [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
+

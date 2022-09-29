@@ -14,5 +14,5 @@ interface PostScriptsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsrequest.body.md) |  | ScriptCreateRequest | The script to create. |
+|  [body](./influxdb-client-apis.postscriptsrequest.body.md) |  | [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) | The script to create. |
 

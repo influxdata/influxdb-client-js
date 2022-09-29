@@ -14,6 +14,7 @@ interface HeatmapViewProperties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [adaptiveZoomHide?](./influxdb-client-apis.heatmapviewproperties.adaptivezoomhide.md) |  | boolean | <i>(Optional)</i> |
 |  [binSize](./influxdb-client-apis.heatmapviewproperties.binsize.md) |  | number |  |
 |  [colors](./influxdb-client-apis.heatmapviewproperties.colors.md) |  | string\[\] | Colors define color encoding of data into a visualization |
 |  [generateXAxisTicks?](./influxdb-client-apis.heatmapviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
@@ -23,7 +24,7 @@ interface HeatmapViewProperties
 |  [legendOpacity?](./influxdb-client-apis.heatmapviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.heatmapviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.heatmapviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) |  | DashboardQuery\[\] |  |
+|  [queries](./influxdb-client-apis.heatmapviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.heatmapviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.heatmapviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [timeFormat?](./influxdb-client-apis.heatmapviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |

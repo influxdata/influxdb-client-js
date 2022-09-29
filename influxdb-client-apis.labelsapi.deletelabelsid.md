@@ -4,7 +4,7 @@
 
 ## LabelsAPI.deleteLabelsID() method
 
-Delete a label. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteLabelsID)
+Delete a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteLabelsID(request: DeleteLabelsIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteLabelsIDRequest](./influxdb-client-apis.deletelabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

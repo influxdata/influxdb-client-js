@@ -4,6 +4,8 @@
 
 ## GetBucketsRequest.limit property
 
+Limits the number of records returned. Default is `20`<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

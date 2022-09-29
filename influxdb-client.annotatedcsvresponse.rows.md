@@ -13,7 +13,7 @@ rows(): Observable<Row>;
 ```
 <b>Returns:</b>
 
-Observable&lt;Row&gt;
+[Observable](./influxdb-client.observable.md)<!-- -->&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
 
 observable of CSV result rows
 

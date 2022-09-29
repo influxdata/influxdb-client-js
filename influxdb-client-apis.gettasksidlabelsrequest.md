@@ -14,5 +14,5 @@ interface GetTasksIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidlabelsrequest.taskid.md) |  | string | The task ID. |
+|  [taskID](./influxdb-client-apis.gettasksidlabelsrequest.taskid.md) |  | string | The ID of the task to retrieve labels for. |
 

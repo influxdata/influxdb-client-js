@@ -14,7 +14,7 @@ interface GetNotificationEndpointsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getnotificationendpointsrequest.limit.md) |  | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getnotificationendpointsrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getnotificationendpointsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
+|  [offset?](./influxdb-client-apis.getnotificationendpointsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
 |  [orgID](./influxdb-client-apis.getnotificationendpointsrequest.orgid.md) |  | string | Only show notification endpoints that belong to specific organization ID. |
 

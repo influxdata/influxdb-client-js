@@ -20,7 +20,7 @@ declare function acceptMaxTableLength(max: number): AcceptRowFunction;
 
 <b>Returns:</b>
 
-AcceptRowFunction
+[AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)
 
 AcceptRowFunction that enforces that most max rows are processed
 

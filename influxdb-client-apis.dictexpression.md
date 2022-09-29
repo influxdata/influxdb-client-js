@@ -16,6 +16,6 @@ interface DictExpression
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [elements?](./influxdb-client-apis.dictexpression.elements.md) |  | DictItem\[\] | <i>(Optional)</i> Elements of the dictionary |
-|  [type?](./influxdb-client-apis.dictexpression.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [elements?](./influxdb-client-apis.dictexpression.elements.md) |  | [DictItem](./influxdb-client-apis.dictitem.md)<!-- -->\[\] | <i>(Optional)</i> Elements of the dictionary |
+|  [type?](./influxdb-client-apis.dictexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

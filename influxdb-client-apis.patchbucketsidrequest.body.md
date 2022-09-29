@@ -4,7 +4,7 @@
 
 ## PatchBucketsIDRequest.body property
 
-Bucket update to apply
+The bucket update to apply.
 
 <b>Signature:</b>
 

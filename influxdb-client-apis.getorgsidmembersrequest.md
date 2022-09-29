@@ -14,5 +14,5 @@ interface GetOrgsIDMembersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.getorgsidmembersrequest.orgid.md) |  | string | The organization ID. |
+|  [orgID](./influxdb-client-apis.getorgsidmembersrequest.orgid.md) |  | string | The ID of the organization to retrieve users for. |
 

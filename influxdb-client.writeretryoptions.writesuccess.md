@@ -16,7 +16,7 @@ writeSuccess(this: WriteApi, lines: Array<string>): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | WriteApi | the instance of the API in use |
+|  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API in use |
 |  lines | Array&lt;string&gt; | written lines |
 
 <b>Returns:</b>

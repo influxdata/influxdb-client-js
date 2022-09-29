@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsRequest.limit property
 
-The number of runs to return
+Limits the number of task runs returned. Default is `100`<!-- -->.
 
 <b>Signature:</b>
 

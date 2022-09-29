@@ -4,7 +4,7 @@
 
 ## GetOrgsRequest.orgID property
 
-Filter organizations to a specific organization ID.
+An organization ID. Only returns the organization with this ID.
 
 <b>Signature:</b>
 

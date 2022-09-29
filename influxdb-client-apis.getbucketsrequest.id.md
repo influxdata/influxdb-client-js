@@ -4,7 +4,7 @@
 
 ## GetBucketsRequest.id property
 
-Only returns buckets with a specific ID.
+Bucket ID. Only returns the bucket with this ID.
 
 <b>Signature:</b>
 

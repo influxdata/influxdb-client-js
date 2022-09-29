@@ -4,10 +4,18 @@
 
 ## RetentionRules type
 
-Rules to expire or retain data. No rules means data never expires.
+Retention rules to expire or retain data. \#\#\#\# InfluxDB Cloud
+
+- `retentionRules` is required.
+
+\#\#\#\# InfluxDB OSS
+
+- `retentionRules` isn't required.
 
 <b>Signature:</b>
 
 ```typescript
 declare type RetentionRules = RetentionRule[];
 ```
+<b>References:</b> [RetentionRule](./influxdb-client-apis.retentionrule.md)
+

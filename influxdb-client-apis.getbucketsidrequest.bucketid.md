@@ -4,7 +4,7 @@
 
 ## GetBucketsIDRequest.bucketID property
 
-The bucket ID.
+The ID of the bucket to retrieve.
 
 <b>Signature:</b>
 

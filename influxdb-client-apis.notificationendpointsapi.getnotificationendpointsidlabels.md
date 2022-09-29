@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.getNotificationEndpointsIDLabels() method
 
-List all labels for a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationEndpointsIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationEndpointsIDLabels)
+List all labels for a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationEndpointsIDLabels(request: GetNotificationEndpointsIDLabelsReques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetNotificationEndpointsIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetNotificationEndpointsIDLabelsRequest](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelsResponse&gt;
+Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
 
 promise of response
 

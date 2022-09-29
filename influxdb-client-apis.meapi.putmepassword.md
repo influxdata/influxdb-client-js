@@ -4,7 +4,7 @@
 
 ## MeAPI.putMePassword() method
 
-Update a password. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutMePassword)
+Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutMePassword)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ putMePassword(request: PutMePasswordRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PutMePasswordRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PutMePasswordRequest](./influxdb-client-apis.putmepasswordrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

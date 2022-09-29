@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDOwnersIDRequest.orgID property
 
-The organization ID.
+The ID of the organization to remove an owner from.
 
 <b>Signature:</b>
 

@@ -22,6 +22,6 @@ declare class SetupAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getSetup(request, requestOptions)](./influxdb-client-apis.setupapi.getsetup.md) |  | Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSetup) |
-|  [postSetup(request, requestOptions)](./influxdb-client-apis.setupapi.postsetup.md) |  | Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSetup) |
+|  [getSetup(request, requestOptions)](./influxdb-client-apis.setupapi.getsetup.md) |  | Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSetup) |
+|  [postSetup(request, requestOptions)](./influxdb-client-apis.setupapi.postsetup.md) |  | Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSetup) |
 

@@ -14,5 +14,5 @@ interface GetBucketsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidrequest.bucketid.md) |  | string | The bucket ID. |
+|  [bucketID](./influxdb-client-apis.getbucketsidrequest.bucketid.md) |  | string | The ID of the bucket to retrieve. |
 

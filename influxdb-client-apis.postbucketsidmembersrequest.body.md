@@ -4,7 +4,7 @@
 
 ## PostBucketsIDMembersRequest.body property
 
-User to add as member
+A user to add as a member to the bucket.
 
 <b>Signature:</b>
 

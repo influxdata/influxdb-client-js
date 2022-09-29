@@ -14,6 +14,6 @@ interface PostScrapersIDOwnersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersidownersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as owner |
+|  [body](./influxdb-client-apis.postscrapersidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
 |  [scraperTargetID](./influxdb-client-apis.postscrapersidownersrequest.scrapertargetid.md) |  | string | The scraper target ID. |
 

@@ -14,14 +14,14 @@ interface SingleStatViewProperties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [colors](./influxdb-client-apis.singlestatviewproperties.colors.md) |  | DashboardColor\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.singlestatviewproperties.decimalplaces.md) |  | DecimalPlaces |  |
+|  [colors](./influxdb-client-apis.singlestatviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
+|  [decimalPlaces](./influxdb-client-apis.singlestatviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
 |  [note](./influxdb-client-apis.singlestatviewproperties.note.md) |  | string |  |
 |  [prefix](./influxdb-client-apis.singlestatviewproperties.prefix.md) |  | string |  |
-|  [queries](./influxdb-client-apis.singlestatviewproperties.queries.md) |  | DashboardQuery\[\] |  |
+|  [queries](./influxdb-client-apis.singlestatviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.singlestatviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.singlestatviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [staticLegend?](./influxdb-client-apis.singlestatviewproperties.staticlegend.md) |  | StaticLegend | <i>(Optional)</i> |
+|  [staticLegend?](./influxdb-client-apis.singlestatviewproperties.staticlegend.md) |  | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
 |  [suffix](./influxdb-client-apis.singlestatviewproperties.suffix.md) |  | string |  |
 |  [tickPrefix](./influxdb-client-apis.singlestatviewproperties.tickprefix.md) |  | string |  |
 |  [tickSuffix](./influxdb-client-apis.singlestatviewproperties.ticksuffix.md) |  | string |  |

@@ -4,7 +4,7 @@
 
 ## OrgsAPI.postOrgsIDOwners() method
 
-Add an owner to an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostOrgsIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostOrgsIDOwners)
+Add an owner to an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostOrgsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostOrgsIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postOrgsIDOwners(request: PostOrgsIDOwnersRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostOrgsIDOwnersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostOrgsIDOwnersRequest](./influxdb-client-apis.postorgsidownersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceOwner&gt;
+Promise&lt;[ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## RetentionRule.everySeconds property
 
-Duration in seconds for how long data will be kept in the database. 0 means infinite.
+The duration in seconds for how long data will be kept in the database. The default duration is 2592000 (30 days). 0 represents infinite retention.
 
 <b>Signature:</b>
 

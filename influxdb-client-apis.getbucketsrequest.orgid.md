@@ -4,7 +4,15 @@
 
 ## GetBucketsRequest.orgID property
 
-The organization ID.
+Organization ID. The organization ID.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Creates a bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Accepts either `org` or `orgID`<!-- -->. - InfluxDB creates the bucket within this organization.
 
 <b>Signature:</b>
 

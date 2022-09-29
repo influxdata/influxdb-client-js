@@ -14,5 +14,5 @@ interface GetTasksIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidrequest.taskid.md) |  | string | The task ID. |
+|  [taskID](./influxdb-client-apis.gettasksidrequest.taskid.md) |  | string | The ID of the task to retrieve. |
 

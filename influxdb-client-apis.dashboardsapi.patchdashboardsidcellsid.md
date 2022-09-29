@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsIDCellsID() method
 
-Update the non-positional information related to a cell. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchDashboardsIDCellsID)
+Update the non-positional information related to a cell. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchDashboardsIDCellsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchDashboardsIDCellsID(request: PatchDashboardsIDCellsIDRequest, requestOption
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchDashboardsIDCellsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchDashboardsIDCellsIDRequest](./influxdb-client-apis.patchdashboardsidcellsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Cell&gt;
+Promise&lt;[Cell](./influxdb-client-apis.cell.md)<!-- -->&gt;
 
 promise of response
 

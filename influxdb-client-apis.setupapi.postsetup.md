@@ -4,7 +4,7 @@
 
 ## SetupAPI.postSetup() method
 
-Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostSetup)
+Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSetup)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postSetup(request: PostSetupRequest, requestOptions?: RequestOptions): Promise<O
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostSetupRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostSetupRequest](./influxdb-client-apis.postsetuprequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;OnboardingResponse&gt;
+Promise&lt;[OnboardingResponse](./influxdb-client-apis.onboardingresponse.md)<!-- -->&gt;
 
 promise of response
 

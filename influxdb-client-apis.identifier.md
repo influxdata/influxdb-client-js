@@ -17,5 +17,5 @@ interface Identifier
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [name?](./influxdb-client-apis.identifier.name.md) |  | string | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.identifier.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.identifier.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

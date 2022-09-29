@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsIDLabelsID() method
 
-Delete a label from a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteDashboardsIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteDashboardsIDLabelsID)
+Delete a label from a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteDashboardsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteDashboardsIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteDashboardsIDLabelsID(request: DeleteDashboardsIDLabelsIDRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteDashboardsIDLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteDashboardsIDLabelsIDRequest](./influxdb-client-apis.deletedashboardsidlabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

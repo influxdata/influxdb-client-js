@@ -14,5 +14,5 @@ interface GetOrgsIDOwnersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.getorgsidownersrequest.orgid.md) |  | string | The organization ID. |
+|  [orgID](./influxdb-client-apis.getorgsidownersrequest.orgid.md) |  | string | The ID of the organization to list owners for. |
 

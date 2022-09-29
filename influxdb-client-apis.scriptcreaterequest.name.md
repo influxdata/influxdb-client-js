@@ -4,7 +4,7 @@
 
 ## ScriptCreateRequest.name property
 
-The name of the script. The name must be unique within the organization.
+Script name. The name must be unique within the organization.
 
 <b>Signature:</b>
 

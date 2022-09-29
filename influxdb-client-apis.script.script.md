@@ -4,7 +4,7 @@
 
 ## Script.script property
 
-script to be executed
+The script to execute.
 
 <b>Signature:</b>
 

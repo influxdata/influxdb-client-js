@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.patchAuthorizationsID() method
 
-Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchAuthorizationsID)
+Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchAuthorizationsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchAuthorizationsID(request: PatchAuthorizationsIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchAuthorizationsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchAuthorizationsIDRequest](./influxdb-client-apis.patchauthorizationsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Authorization&gt;
+Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
 
 promise of response
 

@@ -14,5 +14,5 @@ interface PostRemoteConnectionRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postremoteconnectionrequest.body.md) |  | RemoteConnectionCreationRequest | entity body |
+|  [body](./influxdb-client-apis.postremoteconnectionrequest.body.md) |  | [RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md) | entity body |
 

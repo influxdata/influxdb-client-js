@@ -4,7 +4,7 @@
 
 ## HealthAPI.getHealth() method
 
-Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetHealth)
+Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetHealth)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getHealth(request?: GetHealthRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetHealthRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;HealthCheck&gt;
+Promise&lt;[HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->&gt;
 
 promise of response
 

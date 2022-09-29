@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.deleteScrapersIDMembersID() method
 
-Remove a member from a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteScrapersIDMembersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteScrapersIDMembersID)
+Remove a member from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDMembersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteScrapersIDMembersID(request: DeleteScrapersIDMembersIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteScrapersIDMembersIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteScrapersIDMembersIDRequest](./influxdb-client-apis.deletescrapersidmembersidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

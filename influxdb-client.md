@@ -105,7 +105,7 @@
 |  --- | --- |
 |  [APIExecutor](./influxdb-client.apiexecutor.md) | APIExecutor executes the API and passes its response to the supplied consumer |
 |  [ColumnType](./influxdb-client.columntype.md) | Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types) |
-|  [Headers\_2](./influxdb-client.headers_2.md) | Type of HTTP headers. |
+|  [HttpHeaders](./influxdb-client.httpheaders.md) | Type of HTTP headers. |
 |  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
 |  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
 |  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |

@@ -13,3 +13,5 @@ declare type AuthorizationPostRequest = AuthorizationUpdateRequest & {
     permissions?: Permission[];
 };
 ```
+<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)
+

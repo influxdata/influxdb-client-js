@@ -4,7 +4,7 @@
 
 ## GetAuthorizationsRequest.orgID property
 
-Only show authorizations that belong to an organization ID.
+An organization ID. Only returns authorizations that belong to this organization.
 
 <b>Signature:</b>
 

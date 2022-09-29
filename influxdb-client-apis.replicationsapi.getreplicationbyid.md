@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.getReplicationByID() method
 
-Retrieve a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetReplicationByID)
+Retrieve a replication. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetReplicationByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetReplicationByID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getReplicationByID(request: GetReplicationByIDRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetReplicationByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetReplicationByIDRequest](./influxdb-client-apis.getreplicationbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Replication&gt;
+Promise&lt;[Replication](./influxdb-client-apis.replication.md)<!-- -->&gt;
 
 promise of response
 

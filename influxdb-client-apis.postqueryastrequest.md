@@ -14,5 +14,5 @@ interface PostQueryAstRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryastrequest.body.md) |  | LanguageRequest | Analyzed Flux query to generate abstract syntax tree. |
+|  [body](./influxdb-client-apis.postqueryastrequest.body.md) |  | [LanguageRequest](./influxdb-client-apis.languagerequest.md) | The Flux query to analyze. |
 

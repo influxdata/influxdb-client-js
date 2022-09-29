@@ -14,5 +14,5 @@ interface GetScriptsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md) |  | string | The script ID. |
+|  [scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md) |  | string | A script ID. Specifies the script to retrieve. |
 

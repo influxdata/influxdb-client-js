@@ -14,6 +14,6 @@ interface DeleteTasksIDRunsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md) |  | string | The run ID. |
-|  [taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md) |  | string | The task ID. |
+|  [runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md) |  | string | The ID of the task run to cancel. |
+|  [taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md) |  | string | The ID of the task to cancel. |
 

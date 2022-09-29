@@ -16,10 +16,10 @@ declare function queryToFromFluxResult(queryApi: QueryApi, query: string | Param
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  queryApi | QueryApi | InfluxDB client's QueryApi instance |
-|  query | string \| ParameterizedQuery | query to execute |
-|  tableFactory | GiraffeTableFactory | creates a new Giraffe table |
-|  tableOptions | TableOptions | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
+|  queryApi | [QueryApi](./influxdb-client.queryapi.md) | InfluxDB client's QueryApi instance |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query to execute |
+|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
+|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
 
 <b>Returns:</b>
 

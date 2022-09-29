@@ -14,5 +14,5 @@ interface GetBucketsIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidlabelsrequest.bucketid.md) |  | string | The bucket ID. |
+|  [bucketID](./influxdb-client-apis.getbucketsidlabelsrequest.bucketid.md) |  | string | The ID of the bucket to retrieve labels for. |
 

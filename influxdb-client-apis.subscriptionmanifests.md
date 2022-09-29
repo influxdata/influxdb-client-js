@@ -9,3 +9,5 @@
 ```typescript
 declare type SubscriptionManifests = SubscriptionManifest[];
 ```
+<b>References:</b> [SubscriptionManifest](./influxdb-client-apis.subscriptionmanifest.md)
+

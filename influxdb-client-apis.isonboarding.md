@@ -14,5 +14,5 @@ interface IsOnboarding
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [allowed?](./influxdb-client-apis.isonboarding.allowed.md) |  | boolean | <i>(Optional)</i> True means that the influxdb instance has NOT had initial setup; false means that the database has been setup. |
+|  [allowed?](./influxdb-client-apis.isonboarding.allowed.md) |  | boolean | <i>(Optional)</i> If <code>true</code>, the InfluxDB instance hasn't had initial setup; <code>false</code> otherwise. |
 

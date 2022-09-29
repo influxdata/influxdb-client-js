@@ -14,5 +14,5 @@ interface PostOrgsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsrequest.body.md) |  | PostOrganizationRequest | Organization to create |
+|  [body](./influxdb-client-apis.postorgsrequest.body.md) |  | [PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md) | The organization to create. |
 

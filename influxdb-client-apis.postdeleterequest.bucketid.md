@@ -4,7 +4,7 @@
 
 ## PostDeleteRequest.bucketID property
 
-Specifies the bucket ID to delete data from.
+The ID of the bucket to delete data from. If you pass both `bucket` and `bucketID`<!-- -->, `bucketID` takes precedence.
 
 <b>Signature:</b>
 

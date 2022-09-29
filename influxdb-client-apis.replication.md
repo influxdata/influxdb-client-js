@@ -24,6 +24,7 @@ interface Replication
 |  [maxQueueSizeBytes](./influxdb-client-apis.replication.maxqueuesizebytes.md) |  | number |  |
 |  [name](./influxdb-client-apis.replication.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.replication.orgid.md) |  | string |  |
-|  [remoteBucketID](./influxdb-client-apis.replication.remotebucketid.md) |  | string |  |
+|  [remoteBucketID?](./influxdb-client-apis.replication.remotebucketid.md) |  | string | <i>(Optional)</i> |
+|  [remoteBucketName?](./influxdb-client-apis.replication.remotebucketname.md) |  | string | <i>(Optional)</i> |
 |  [remoteID](./influxdb-client-apis.replication.remoteid.md) |  | string |  |
 

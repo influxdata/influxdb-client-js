@@ -14,5 +14,5 @@ interface ApplyTemplateRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | TemplateApply | entity body |
+|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | [TemplateApply](./influxdb-client-apis.templateapply.md) | Parameters for applying templates. |
 

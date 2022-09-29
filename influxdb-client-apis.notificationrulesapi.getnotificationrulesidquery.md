@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRulesIDQuery() method
 
-Retrieve a notification rule query. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationRulesIDQuery](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesIDQuery)
+Retrieve a notification rule query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDQuery)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationRulesIDQuery(request: GetNotificationRulesIDQueryRequest, request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetNotificationRulesIDQueryRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetNotificationRulesIDQueryRequest](./influxdb-client-apis.getnotificationrulesidqueryrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;FluxResponse&gt;
+Promise&lt;[FluxResponse](./influxdb-client-apis.fluxresponse.md)<!-- -->&gt;
 
 promise of response
 

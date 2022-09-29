@@ -4,7 +4,7 @@
 
 ## PostTasksRequest.body property
 
-Task to create
+The task to create.
 
 <b>Signature:</b>
 

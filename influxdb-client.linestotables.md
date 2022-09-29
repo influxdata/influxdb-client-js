@@ -16,9 +16,9 @@ declare function linesToTables(consumer: FluxResultObserver<string[]>): Communic
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  consumer | FluxResultObserver&lt;string\[\]&gt; |  |
+|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; |  |
 
 <b>Returns:</b>
 
-CommunicationObserver&lt;string&gt;
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
 

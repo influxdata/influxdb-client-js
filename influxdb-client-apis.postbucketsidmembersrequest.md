@@ -14,6 +14,6 @@ interface PostBucketsIDMembersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidmembersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as member |
-|  [bucketID](./influxdb-client-apis.postbucketsidmembersrequest.bucketid.md) |  | string | The bucket ID. |
+|  [body](./influxdb-client-apis.postbucketsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | A user to add as a member to the bucket. |
+|  [bucketID](./influxdb-client-apis.postbucketsidmembersrequest.bucketid.md) |  | string | The ID of the bucket to retrieve users for. |
 

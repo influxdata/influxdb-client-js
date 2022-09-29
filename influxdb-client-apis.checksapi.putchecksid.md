@@ -4,7 +4,7 @@
 
 ## ChecksAPI.putChecksID() method
 
-Update a check. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutChecksID)
+Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutChecksID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ putChecksID(request: PutChecksIDRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PutChecksIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Check&gt;
+Promise&lt;[Check](./influxdb-client-apis.check.md)<!-- -->&gt;
 
 promise of response
 

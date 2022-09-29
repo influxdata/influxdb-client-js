@@ -4,7 +4,7 @@
 
 ## Resource.name property
 
-Optional name of the resource if the resource has a name field.
+Optional: A name for the resource. Not all resource types have a name field.
 
 <b>Signature:</b>
 

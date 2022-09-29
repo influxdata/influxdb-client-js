@@ -16,5 +16,5 @@ constructor(options: ClientOptions | string);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  options | ClientOptions \| string | client options |
+|  options | [ClientOptions](./influxdb-client.clientoptions.md) \| string | client options |
 

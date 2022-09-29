@@ -4,7 +4,7 @@
 
 ## UsersAPI.getUsersID() method
 
-Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsersID)
+Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsersID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getUsersID(request: GetUsersIDRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetUsersIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetUsersIDRequest](./influxdb-client-apis.getusersidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;UserResponse&gt;
+Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
 
 promise of response
 

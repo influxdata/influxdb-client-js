@@ -4,7 +4,7 @@
 
 ## UsersAPI.postUsers() method
 
-Create a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsers)
+Create a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postUsers(request: PostUsersRequest, requestOptions?: RequestOptions): Promise<U
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostUsersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostUsersRequest](./influxdb-client-apis.postusersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;UserResponse&gt;
+Promise&lt;[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->&gt;
 
 promise of response
 

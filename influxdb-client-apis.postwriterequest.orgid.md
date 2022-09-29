@@ -4,7 +4,15 @@
 
 ## PostWriteRequest.orgID property
 
-The ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence.
+The ID of the destination organization for writes. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Writes to the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->. - InfluxDB writes all points in the batch to this organization.
 
 <b>Signature:</b>
 

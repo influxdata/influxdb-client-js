@@ -22,5 +22,5 @@ declare class ConfigAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getConfig(request, requestOptions)](./influxdb-client-apis.configapi.getconfig.md) |  | Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetConfig) |
+|  [getConfig(request, requestOptions)](./influxdb-client-apis.configapi.getconfig.md) |  | Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetConfig) |
 

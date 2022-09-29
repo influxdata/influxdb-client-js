@@ -4,7 +4,7 @@
 
 ## NotificationEndpointsAPI.deleteNotificationEndpointsIDLabelsID() method
 
-Delete a label from a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteNotificationEndpointsIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteNotificationEndpointsIDLabelsID)
+Delete a label from a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationEndpointsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationEndpointsIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteNotificationEndpointsIDLabelsID(request: DeleteNotificationEndpointsIDLabe
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteNotificationEndpointsIDLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

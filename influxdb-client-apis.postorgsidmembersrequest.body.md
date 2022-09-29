@@ -4,7 +4,7 @@
 
 ## PostOrgsIDMembersRequest.body property
 
-User to add as member
+The user to add to the organization.
 
 <b>Signature:</b>
 

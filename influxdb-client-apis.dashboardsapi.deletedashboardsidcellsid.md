@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsIDCellsID() method
 
-Delete a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteDashboardsIDCellsID)
+Delete a dashboard cell. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteDashboardsIDCellsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteDashboardsIDCellsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteDashboardsIDCellsID(request: DeleteDashboardsIDCellsIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteDashboardsIDCellsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteDashboardsIDCellsIDRequest](./influxdb-client-apis.deletedashboardsidcellsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

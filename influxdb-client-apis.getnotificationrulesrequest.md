@@ -15,8 +15,8 @@ interface GetNotificationRulesRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [checkID?](./influxdb-client-apis.getnotificationrulesrequest.checkid.md) |  | string | <i>(Optional)</i> Only show notifications that belong to the specific check ID. |
-|  [limit?](./influxdb-client-apis.getnotificationrulesrequest.limit.md) |  | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getnotificationrulesrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getnotificationrulesrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
+|  [offset?](./influxdb-client-apis.getnotificationrulesrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
 |  [orgID](./influxdb-client-apis.getnotificationrulesrequest.orgid.md) |  | string | Only show notification rules that belong to a specific organization ID. |
 |  [tag?](./influxdb-client-apis.getnotificationrulesrequest.tag.md) |  | string | <i>(Optional)</i> Only return notification rules that "would match" statuses which contain the tag key value pairs provided. |
 

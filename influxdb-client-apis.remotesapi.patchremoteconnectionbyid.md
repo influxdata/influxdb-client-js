@@ -4,7 +4,7 @@
 
 ## RemotesAPI.patchRemoteConnectionByID() method
 
-Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchRemoteConnectionByID)
+Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchRemoteConnectionByID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchRemoteConnectionByID(request: PatchRemoteConnectionByIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchRemoteConnectionByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;RemoteConnection&gt;
+Promise&lt;[RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->&gt;
 
 promise of response
 

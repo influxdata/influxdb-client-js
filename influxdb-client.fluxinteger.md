@@ -20,5 +20,5 @@ declare function fluxInteger(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-FluxParameterLike
+[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 

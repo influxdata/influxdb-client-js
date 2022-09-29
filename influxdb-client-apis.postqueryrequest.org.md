@@ -4,7 +4,15 @@
 
 ## PostQueryRequest.org property
 
-Name of the organization executing the query. Accepts either the ID or Name. If you provide both `orgID` and `org`<!-- -->, `org` takes precedence.
+The name or ID of the organization executing the query.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Queries the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
 
 <b>Signature:</b>
 

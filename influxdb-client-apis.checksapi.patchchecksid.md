@@ -4,7 +4,7 @@
 
 ## ChecksAPI.patchChecksID() method
 
-Update a check. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchChecksID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchChecksID)
+Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchChecksID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchChecksID(request: PatchChecksIDRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchChecksIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchChecksIDRequest](./influxdb-client-apis.patchchecksidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Check&gt;
+Promise&lt;[Check](./influxdb-client-apis.check.md)<!-- -->&gt;
 
 promise of response
 

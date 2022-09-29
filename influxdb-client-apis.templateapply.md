@@ -14,13 +14,38 @@ interface TemplateApply
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [actions?](./influxdb-client-apis.templateapply.actions.md) |  | Array&lt;{ action?: 'skipKind'; properties?: { kind: TemplateKind; }; } \| { action?: 'skipResource'; properties?: { kind: TemplateKind; resourceTemplateName: string; }; }&gt; | <i>(Optional)</i> |
-|  [dryRun?](./influxdb-client-apis.templateapply.dryrun.md) |  | boolean | <i>(Optional)</i> |
-|  [envRefs?](./influxdb-client-apis.templateapply.envrefs.md) |  | any | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.templateapply.orgid.md) |  | string | <i>(Optional)</i> |
-|  [remotes?](./influxdb-client-apis.templateapply.remotes.md) |  | Array&lt;{ url: string; contentType?: string; }&gt; | <i>(Optional)</i> |
-|  [secrets?](./influxdb-client-apis.templateapply.secrets.md) |  | any | <i>(Optional)</i> |
-|  [stackID?](./influxdb-client-apis.templateapply.stackid.md) |  | string | <i>(Optional)</i> |
-|  [template?](./influxdb-client-apis.templateapply.template.md) |  | { contentType?: string; sources?: string\[\]; contents?: Template; } | <i>(Optional)</i> |
-|  [templates?](./influxdb-client-apis.templateapply.templates.md) |  | Array&lt;{ contentType?: string; sources?: string\[\]; contents?: Template; }&gt; | <i>(Optional)</i> |
+|  [actions?](./influxdb-client-apis.templateapply.actions.md) |  | Array&lt;{ action?: 'skipKind'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; }; } \| { action?: 'skipResource'; properties?: { kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; resourceTemplateName: string; }; }&gt; | <p><i>(Optional)</i> A list of <code>action</code> objects. Actions let you customize how InfluxDB applies templates in the request.</p><p>You can use the following actions to prevent creating or updating resources:</p><p>- A <code>skipKind</code> action skips template resources of a specified <code>kind</code>. - A <code>skipResource</code> action skips template resources with a specified <code>metadata.name</code> and <code>kind</code>.</p> |
+|  [dryRun?](./influxdb-client-apis.templateapply.dryrun.md) |  | boolean | <p><i>(Optional)</i> Only applies a dry run of the templates passed in the request.</p><p>- Validates the template and generates a resource diff and summary. - Doesn't install templates or make changes to the InfluxDB instance.</p> |
+|  [envRefs?](./influxdb-client-apis.templateapply.envrefs.md) |  | any | <p><i>(Optional)</i> An object with key-value pairs that map to \*\*environment references\*\* in templates.</p><p>Environment references in templates are <code>envRef</code> objects with an <code>envRef.key</code> property. To substitute a custom environment reference value when applying templates, pass <code>envRefs</code> with the <code>envRef.key</code> and the value.</p><p>When you apply a template, InfluxDB replaces <code>envRef</code> objects in the template with the values that you provide in the <code>envRefs</code> parameter. For more examples, see how to [define environment references](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/use/#define-environment-references)<!-- -->.</p><p>The following template fields may use environment references:</p><p>- <code>metadata.name</code> - <code>spec.endpointName</code> - <code>spec.associations.name</code></p><p>For more information about including environment references in template fields, see how to [include user-definable resource names](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/create/#include-user-definable-resource-names)<!-- -->.</p> |
+|  [orgID?](./influxdb-client-apis.templateapply.orgid.md) |  | string | <p><i>(Optional)</i> Organization ID. InfluxDB applies templates to this organization. The organization owns all resources created by the template.</p><p>To find your organization, see how to [view organizations](https://docs.influxdata.com/influxdb/v2.3/organizations/view-orgs/)<!-- -->.</p> |
+|  [remotes?](./influxdb-client-apis.templateapply.remotes.md) |  | Array&lt;{ url: string; contentType?: string; }&gt; | <p><i>(Optional)</i> A list of URLs for template files.</p><p>To apply a template manifest file located at a URL, pass <code>remotes</code> with an array that contains the URL.</p> |
+|  [secrets?](./influxdb-client-apis.templateapply.secrets.md) |  | any | <p><i>(Optional)</i> An object with key-value pairs that map to \*\*secrets\*\* in queries.</p><p>Queries may reference secrets stored in InfluxDB--for example, the following Flux script retrieves <code>POSTGRES_USERNAME</code> and <code>POSTGRES_PASSWORD</code> secrets and then uses them to connect to a PostgreSQL database:</p>
+```js
+import "sql"
+import "influxdata/influxdb/secrets"
+
+username = secrets.get(key: "POSTGRES_USERNAME")
+password = secrets.get(key: "POSTGRES_PASSWORD")
+
+sql.from(
+  driverName: "postgres",
+  dataSourceName: "postgresql://${username}:${password}@localhost:5432",
+  query: "SELECT * FROM example_table",
+)
+```
+<p>To define secret values in your <code>/api/v2/templates/apply</code> request, pass the <code>secrets</code> parameter with key-value pairs--for example:</p>
+```json
+{
+  ...
+  "secrets": {
+    "POSTGRES_USERNAME": "pguser",
+    "POSTGRES_PASSWORD": "foo"
+  }
+  ...
+}
+```
+<p>InfluxDB stores the key-value pairs as secrets that you can access with <code>secrets.get()</code>. Once stored, you can't view secret values in InfluxDB.</p><p>\#\#\#\# Related guides</p><p>- [How to pass secrets when installing a template](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/use/#pass-secrets-when-installing-a-template)</p> |
+|  [stackID?](./influxdb-client-apis.templateapply.stackid.md) |  | string | <p><i>(Optional)</i> ID of the stack to update.</p><p>To apply templates to an existing stack in the organization, use the <code>stackID</code> parameter. If you apply templates without providing a stack ID, InfluxDB initializes a new stack with all new resources.</p><p>To find a stack ID, use the InfluxDB  to list stacks.</p><p>\#\#\#\# Related guides</p><p>- [Stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/) - [View stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/view/)</p> |
+|  [template?](./influxdb-client-apis.templateapply.template.md) |  | { contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; } | <p><i>(Optional)</i> A template object to apply. A template object has a <code>contents</code> property with an array of InfluxDB resource configurations.</p><p>Pass <code>template</code> to apply only one template object. If you use <code>template</code>, you can't use the <code>templates</code> parameter. If you want to apply multiple template objects, use <code>templates</code> instead.</p> |
+|  [templates?](./influxdb-client-apis.templateapply.templates.md) |  | Array&lt;{ contentType?: string; sources?: string\[\]; contents?: [Template](./influxdb-client-apis.template.md)<!-- -->; }&gt; | <p><i>(Optional)</i> A list of template objects to apply. A template object has a <code>contents</code> property with an array of InfluxDB resource configurations.</p><p>Use the <code>templates</code> parameter to apply multiple template objects. If you use <code>templates</code>, you can't use the <code>template</code> parameter.</p> |
 

@@ -16,6 +16,6 @@ interface BooleanLiteral
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.booleanliteral.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.booleanliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.booleanliteral.value.md) |  | boolean | <i>(Optional)</i> |
 

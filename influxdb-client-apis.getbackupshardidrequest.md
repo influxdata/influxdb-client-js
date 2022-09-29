@@ -15,5 +15,5 @@ interface GetBackupShardIdRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [shardID](./influxdb-client-apis.getbackupshardidrequest.shardid.md) |  | number | The shard ID. |
-|  [since?](./influxdb-client-apis.getbackupshardidrequest.since.md) |  | string | <i>(Optional)</i> Earliest time to include in the snapshot. RFC3339 format. |
+|  [since?](./influxdb-client-apis.getbackupshardidrequest.since.md) |  | string | <i>(Optional)</i> The earliest time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) to include in the snapshot. |
 

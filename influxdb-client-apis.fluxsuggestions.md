@@ -14,5 +14,5 @@ interface FluxSuggestions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [funcs?](./influxdb-client-apis.fluxsuggestions.funcs.md) |  | FluxSuggestion\[\] | <i>(Optional)</i> |
+|  [funcs?](./influxdb-client-apis.fluxsuggestions.funcs.md) |  | [FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->\[\] | <i>(Optional)</i> |
 

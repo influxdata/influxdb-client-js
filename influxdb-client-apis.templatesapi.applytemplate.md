@@ -4,7 +4,7 @@
 
 ## TemplatesAPI.applyTemplate() method
 
-Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.3/api/#operation/ApplyTemplate)
+Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ApplyTemplate)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ applyTemplate(request: ApplyTemplateRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | ApplyTemplateRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;TemplateSummary&gt;
+Promise&lt;[TemplateSummary](./influxdb-client-apis.templatesummary.md)<!-- -->&gt;
 
 promise of response
 

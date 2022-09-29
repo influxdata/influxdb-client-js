@@ -16,8 +16,8 @@ queryRows(query: string | ParameterizedQuery, consumer: FluxResultObserver<strin
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| ParameterizedQuery | query |
-|  consumer | FluxResultObserver&lt;string\[\]&gt; | result rows and error consumer |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; | result rows and error consumer |
 
 <b>Returns:</b>
 

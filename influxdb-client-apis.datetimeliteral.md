@@ -4,7 +4,7 @@
 
 ## DateTimeLiteral interface
 
-Represents an instant in time with nanosecond precision using the syntax of golang's RFC3339 Nanosecond variant
+Represents an instant in time with nanosecond precision in [RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->.
 
 <b>Signature:</b>
 
@@ -16,6 +16,6 @@ interface DateTimeLiteral
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.datetimeliteral.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.datetimeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.datetimeliteral.value.md) |  | string | <i>(Optional)</i> |
 

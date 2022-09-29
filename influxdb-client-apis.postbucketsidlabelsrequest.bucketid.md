@@ -4,7 +4,7 @@
 
 ## PostBucketsIDLabelsRequest.bucketID property
 
-The bucket ID.
+Bucket ID. The ID of the bucket to label.
 
 <b>Signature:</b>
 

@@ -14,11 +14,12 @@ interface BandViewProperties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [axes](./influxdb-client-apis.bandviewproperties.axes.md) |  | Axes |  |
-|  [colors](./influxdb-client-apis.bandviewproperties.colors.md) |  | DashboardColor\[\] | Colors define color encoding of data into a visualization |
+|  [adaptiveZoomHide?](./influxdb-client-apis.bandviewproperties.adaptivezoomhide.md) |  | boolean | <i>(Optional)</i> |
+|  [axes](./influxdb-client-apis.bandviewproperties.axes.md) |  | [Axes](./influxdb-client-apis.axes.md) |  |
+|  [colors](./influxdb-client-apis.bandviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
 |  [generateXAxisTicks?](./influxdb-client-apis.bandviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
 |  [generateYAxisTicks?](./influxdb-client-apis.bandviewproperties.generateyaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
-|  [geom](./influxdb-client-apis.bandviewproperties.geom.md) |  | XYGeom |  |
+|  [geom](./influxdb-client-apis.bandviewproperties.geom.md) |  | [XYGeom](./influxdb-client-apis.xygeom.md) |  |
 |  [hoverDimension?](./influxdb-client-apis.bandviewproperties.hoverdimension.md) |  | 'auto' \| 'x' \| 'y' \| 'xy' | <i>(Optional)</i> |
 |  [legendColorizeRows?](./influxdb-client-apis.bandviewproperties.legendcolorizerows.md) |  | boolean | <i>(Optional)</i> |
 |  [legendHide?](./influxdb-client-apis.bandviewproperties.legendhide.md) |  | boolean | <i>(Optional)</i> |
@@ -27,10 +28,10 @@ interface BandViewProperties
 |  [lowerColumn?](./influxdb-client-apis.bandviewproperties.lowercolumn.md) |  | string | <i>(Optional)</i> |
 |  [mainColumn?](./influxdb-client-apis.bandviewproperties.maincolumn.md) |  | string | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.bandviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.bandviewproperties.queries.md) |  | DashboardQuery\[\] |  |
+|  [queries](./influxdb-client-apis.bandviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.bandviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.bandviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [staticLegend?](./influxdb-client-apis.bandviewproperties.staticlegend.md) |  | StaticLegend | <i>(Optional)</i> |
+|  [staticLegend?](./influxdb-client-apis.bandviewproperties.staticlegend.md) |  | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
 |  [timeFormat?](./influxdb-client-apis.bandviewproperties.timeformat.md) |  | string | <i>(Optional)</i> |
 |  [type](./influxdb-client-apis.bandviewproperties.type.md) |  | 'band' |  |
 |  [upperColumn?](./influxdb-client-apis.bandviewproperties.uppercolumn.md) |  | string | <i>(Optional)</i> |

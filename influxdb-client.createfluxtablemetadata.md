@@ -16,11 +16,11 @@ declare function createFluxTableMetaData(columns: FluxTableColumn[]): FluxTableM
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  columns | FluxTableColumn\[\] | columns |
+|  columns | [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->\[\] | columns |
 
 <b>Returns:</b>
 
-FluxTableMetaData
+[FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
 
 - instance
 

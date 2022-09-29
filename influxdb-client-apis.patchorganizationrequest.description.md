@@ -4,7 +4,7 @@
 
 ## PatchOrganizationRequest.description property
 
-New description to set on the organization
+The description of the organization.
 
 <b>Signature:</b>
 

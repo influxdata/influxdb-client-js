@@ -16,7 +16,7 @@ interface FluxTableMetaData
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;FluxTableColumn&gt; | Table columns. |
+|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | Table columns. |
 
 ## Methods
 

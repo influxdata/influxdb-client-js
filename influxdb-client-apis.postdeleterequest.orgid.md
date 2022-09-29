@@ -4,7 +4,15 @@
 
 ## PostDeleteRequest.orgID property
 
-Specifies the organization ID of the resource.
+The ID of the organization to delete data from. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Deletes data from the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
 
 <b>Signature:</b>
 

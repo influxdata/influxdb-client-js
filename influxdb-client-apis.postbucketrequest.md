@@ -14,10 +14,10 @@ interface PostBucketRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.postbucketrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.postbucketrequest.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) |  | string |  |
-|  [retentionRules](./influxdb-client-apis.postbucketrequest.retentionrules.md) |  | RetentionRules |  |
-|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) |  | string | <i>(Optional)</i> |
-|  [schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md) |  | SchemaType | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.postbucketrequest.description.md) |  | string | <i>(Optional)</i> A description of the bucket. |
+|  [name](./influxdb-client-apis.postbucketrequest.name.md) |  | string | The name of the bucket. |
+|  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) |  | string | Organization ID. The ID of the organization. |
+|  [retentionRules?](./influxdb-client-apis.postbucketrequest.retentionrules.md) |  | [RetentionRules](./influxdb-client-apis.retentionrules.md) | <i>(Optional)</i> |
+|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) |  | string | <i>(Optional)</i> Retention policy is an InfluxDB 1.x concept that represents the duration of time that each data point in the retention policy persists. Use <code>rp</code> for compatibility with InfluxDB 1.x. The InfluxDB 2.x and Cloud equivalent is [retention period](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#retention-period)<!-- -->. |
+|  [schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md) |  | [SchemaType](./influxdb-client-apis.schematype.md) | <p><i>(Optional)</i> Schema Type. Use <code>explicit</code> to enforce column names, tags, fields, and data types for your data.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Default is <code>implicit</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Doesn't support <code>schemaType</code>.</p> |
 

@@ -15,6 +15,6 @@ interface PostUsersIDPasswordRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [auth?](./influxdb-client-apis.postusersidpasswordrequest.auth.md) |  | { user: string; password: string; } | <i>(Optional)</i> |
-|  [body](./influxdb-client-apis.postusersidpasswordrequest.body.md) |  | PasswordResetBody | New password |
+|  [body](./influxdb-client-apis.postusersidpasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
 |  [userID](./influxdb-client-apis.postusersidpasswordrequest.userid.md) |  | string | The user ID. |
 

@@ -4,7 +4,7 @@
 
 ## GetBackupShardIdRequest.since property
 
-Earliest time to include in the snapshot. RFC3339 format.
+The earliest time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) to include in the snapshot.
 
 <b>Signature:</b>
 

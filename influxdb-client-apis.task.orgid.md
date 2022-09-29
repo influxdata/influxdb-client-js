@@ -4,7 +4,7 @@
 
 ## Task.orgID property
 
-ID of the organization that owns the task.
+An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) ID. Specifies the organization that owns the task.
 
 <b>Signature:</b>
 

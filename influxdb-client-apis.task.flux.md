@@ -4,7 +4,7 @@
 
 ## Task.flux property
 
-Flux script to run for this task.
+The Flux script that the task executes.
 
 <b>Signature:</b>
 

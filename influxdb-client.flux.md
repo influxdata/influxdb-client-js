@@ -21,5 +21,5 @@ declare function flux(strings: TemplateStringsArray, ...values: any): Parameteri
 
 <b>Returns:</b>
 
-ParameterizedQuery
+[ParameterizedQuery](./influxdb-client.parameterizedquery.md)
 

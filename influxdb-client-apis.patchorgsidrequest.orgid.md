@@ -4,7 +4,7 @@
 
 ## PatchOrgsIDRequest.orgID property
 
-The ID of the organization to get.
+The ID of the organization to update.
 
 <b>Signature:</b>
 

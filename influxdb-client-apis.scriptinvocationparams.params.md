@@ -4,6 +4,8 @@
 
 ## ScriptInvocationParams.params property
 
+The script parameters. `params` contains key-value pairs that map values to the \*\*params.keys\*\* in a script. When you invoke a script with `params`<!-- -->, InfluxDB passes the values as invocation parameters to the script.
+
 <b>Signature:</b>
 
 ```typescript

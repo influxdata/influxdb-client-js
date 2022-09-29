@@ -4,6 +4,12 @@
 
 ## TemplateApply.actions property
 
+A list of `action` objects. Actions let you customize how InfluxDB applies templates in the request.
+
+You can use the following actions to prevent creating or updating resources:
+
+- A `skipKind` action skips template resources of a specified `kind`<!-- -->. - A `skipResource` action skips template resources with a specified `metadata.name` and `kind`<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

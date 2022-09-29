@@ -4,7 +4,7 @@
 
 ## SourcesAPI.patchSourcesID() method
 
-Update a Source. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchSourcesID)
+Update a Source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchSourcesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchSourcesID(request: PatchSourcesIDRequest, requestOptions?: RequestOptions):
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchSourcesIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Source&gt;
+Promise&lt;[Source](./influxdb-client-apis.source.md)<!-- -->&gt;
 
 promise of response
 

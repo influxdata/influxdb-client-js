@@ -4,6 +4,8 @@
 
 ## LabelMapping.labelID property
 
+Label ID. The ID of the label to attach.
+
 <b>Signature:</b>
 
 ```typescript

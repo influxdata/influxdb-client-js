@@ -4,7 +4,7 @@
 
 ## PostTasksIDMembersRequest.body property
 
-User to add as member
+A user to add as a member of the task.
 
 <b>Signature:</b>
 

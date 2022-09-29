@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsIDRequest.taskID property
 
-The task ID.
+The ID of the task to retrieve runs for.
 
 <b>Signature:</b>
 

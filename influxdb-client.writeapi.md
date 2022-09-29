@@ -11,7 +11,7 @@ Asynchronous API that writes time-series data into InfluxDB. This API always buf
 ```typescript
 interface WriteApi extends PointSettings 
 ```
-<b>Extends:</b> PointSettings
+<b>Extends:</b> [PointSettings](./influxdb-client.pointsettings.md)
 
 ## Properties
 

@@ -4,7 +4,7 @@
 
 ## LanguageRequest.query property
 
-Flux query script to be analyzed
+The Flux query script to be analyzed.
 
 <b>Signature:</b>
 

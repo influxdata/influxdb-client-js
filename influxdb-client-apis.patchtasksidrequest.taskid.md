@@ -4,7 +4,7 @@
 
 ## PatchTasksIDRequest.taskID property
 
-The task ID.
+The ID of the task to update.
 
 <b>Signature:</b>
 

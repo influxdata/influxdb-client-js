@@ -4,7 +4,7 @@
 
 ## Run.startedAt property
 
-Time run started executing, RFC3339Nano.
+The time ([RFC3339Nano date/time format](https://go.dev/src/time/format.go)<!-- -->) the run started executing.
 
 <b>Signature:</b>
 

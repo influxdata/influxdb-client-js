@@ -14,13 +14,14 @@ interface Run
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [finishedAt?](./influxdb-client-apis.run.finishedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run finished executing, RFC3339Nano. |
+|  [finishedAt?](./influxdb-client-apis.run.finishedat.md) | <code>readonly</code> | string | <i>(Optional)</i> The time ([RFC3339Nano date/time format](https://go.dev/src/time/format.go)<!-- -->) the run finished executing. |
+|  [flux?](./influxdb-client-apis.run.flux.md) | <code>readonly</code> | string | <i>(Optional)</i> Flux used for the task |
 |  [id?](./influxdb-client-apis.run.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [links?](./influxdb-client-apis.run.links.md) | <code>readonly</code> | { self?: string; task?: string; retry?: string; } | <i>(Optional)</i> |
-|  [log?](./influxdb-client-apis.run.log.md) | <code>readonly</code> | LogEvent\[\] | <i>(Optional)</i> An array of logs associated with the run. |
-|  [requestedAt?](./influxdb-client-apis.run.requestedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run was manually requested, RFC3339Nano. |
-|  [scheduledFor?](./influxdb-client-apis.run.scheduledfor.md) |  | string | <i>(Optional)</i> Time used for run's "now" option, RFC3339. |
-|  [startedAt?](./influxdb-client-apis.run.startedat.md) | <code>readonly</code> | string | <i>(Optional)</i> Time run started executing, RFC3339Nano. |
+|  [log?](./influxdb-client-apis.run.log.md) | <code>readonly</code> | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> An array of logs associated with the run. |
+|  [requestedAt?](./influxdb-client-apis.run.requestedat.md) | <code>readonly</code> | string | <i>(Optional)</i> The time ([RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->) the run was manually requested. |
+|  [scheduledFor?](./influxdb-client-apis.run.scheduledfor.md) |  | string | <i>(Optional)</i> The time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) used for the run's <code>now</code> option. |
+|  [startedAt?](./influxdb-client-apis.run.startedat.md) | <code>readonly</code> | string | <i>(Optional)</i> The time ([RFC3339Nano date/time format](https://go.dev/src/time/format.go)<!-- -->) the run started executing. |
 |  [status?](./influxdb-client-apis.run.status.md) | <code>readonly</code> | 'scheduled' \| 'started' \| 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
 |  [taskID?](./influxdb-client-apis.run.taskid.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 

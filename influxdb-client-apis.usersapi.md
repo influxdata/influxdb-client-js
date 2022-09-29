@@ -22,10 +22,10 @@ declare class UsersAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [deleteUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.deleteusersid.md) |  | Delete a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteUsersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteUsersID) |
-|  [getUsers(request, requestOptions)](./influxdb-client-apis.usersapi.getusers.md) |  | List all users. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsers) |
-|  [getUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.getusersid.md) |  | Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsersID) |
-|  [patchUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.patchusersid.md) |  | Update a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchUsersID) |
-|  [postUsers(request, requestOptions)](./influxdb-client-apis.usersapi.postusers.md) |  | Create a user. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsers) |
-|  [postUsersIDPassword(request, requestOptions)](./influxdb-client-apis.usersapi.postusersidpassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostUsersIDPassword) |
+|  [deleteUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.deleteusersid.md) |  | Delete a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteUsersID) |
+|  [getUsers(request, requestOptions)](./influxdb-client-apis.usersapi.getusers.md) |  | List users. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers) |
+|  [getUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.getusersid.md) |  | Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsersID) |
+|  [patchUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.patchusersid.md) |  | Update a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchUsersID) |
+|  [postUsers(request, requestOptions)](./influxdb-client-apis.usersapi.postusers.md) |  | Create a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsers) |
+|  [postUsersIDPassword(request, requestOptions)](./influxdb-client-apis.usersapi.postusersidpassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsersIDPassword) |
 

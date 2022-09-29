@@ -20,7 +20,7 @@ declare function fluxExpression(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-FluxParameterLike
+[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 
 the supplied value as-is
 

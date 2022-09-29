@@ -4,7 +4,7 @@
 
 ## TasksAPI.deleteTasksIDLabelsID() method
 
-Delete a label from a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTasksIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDLabelsID)
+Delete a label from a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTasksIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTasksIDLabelsID(request: DeleteTasksIDLabelsIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteTasksIDLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteTasksIDLabelsIDRequest](./influxdb-client-apis.deletetasksidlabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

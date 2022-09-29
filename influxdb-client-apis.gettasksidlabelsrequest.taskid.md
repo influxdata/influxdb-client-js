@@ -4,7 +4,7 @@
 
 ## GetTasksIDLabelsRequest.taskID property
 
-The task ID.
+The ID of the task to retrieve labels for.
 
 <b>Signature:</b>
 

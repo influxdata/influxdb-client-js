@@ -4,7 +4,7 @@
 
 ## BucketsAPI.deleteBucketsIDLabelsID() method
 
-Delete a label from a bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteBucketsIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteBucketsIDLabelsID)
+Delete a label from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteBucketsIDLabelsID(request: DeleteBucketsIDLabelsIDRequest, requestOptions?
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteBucketsIDLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteBucketsIDLabelsIDRequest](./influxdb-client-apis.deletebucketsidlabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

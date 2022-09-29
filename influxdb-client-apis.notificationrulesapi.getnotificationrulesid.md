@@ -4,7 +4,7 @@
 
 ## NotificationRulesAPI.getNotificationRulesID() method
 
-Retrieve a notification rule. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetNotificationRulesID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetNotificationRulesID)
+Retrieve a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getNotificationRulesID(request: GetNotificationRulesIDRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetNotificationRulesIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetNotificationRulesIDRequest](./influxdb-client-apis.getnotificationrulesidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;NotificationRule&gt;
+Promise&lt;[NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->&gt;
 
 promise of response
 

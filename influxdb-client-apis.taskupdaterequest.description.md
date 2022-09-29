@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest.description property
 
-An optional description of the task.
+Update the description of the task.
 
 <b>Signature:</b>
 

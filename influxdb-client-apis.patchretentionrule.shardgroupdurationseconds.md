@@ -4,7 +4,19 @@
 
 ## PatchRetentionRule.shardGroupDurationSeconds property
 
-Shard duration measured in seconds.
+The [shard group duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#shard)<!-- -->. The number of seconds that each shard group covers.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `shardGroupDurationsSeconds`<!-- -->.
+
+\#\#\#\# InfluxDB OSS
+
+- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.
+
+\#\#\#\# Related guides
+
+- InfluxDB [shards and shard groups](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/)
 
 <b>Signature:</b>
 

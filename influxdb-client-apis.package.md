@@ -16,8 +16,8 @@ interface Package
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [files?](./influxdb-client-apis.package.files.md) |  | File\[\] | <i>(Optional)</i> Package files |
+|  [files?](./influxdb-client-apis.package.files.md) |  | [File](./influxdb-client-apis.file.md)<!-- -->\[\] | <i>(Optional)</i> Package files |
 |  [package?](./influxdb-client-apis.package.package.md) |  | string | <i>(Optional)</i> Package name |
 |  [path?](./influxdb-client-apis.package.path.md) |  | string | <i>(Optional)</i> Package import path |
-|  [type?](./influxdb-client-apis.package.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.package.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

@@ -14,5 +14,5 @@ interface PostDashboardsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsrequest.body.md) |  | CreateDashboardRequest | Dashboard to create |
+|  [body](./influxdb-client-apis.postdashboardsrequest.body.md) |  | [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) | Dashboard to create |
 

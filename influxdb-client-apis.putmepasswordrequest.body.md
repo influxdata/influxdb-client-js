@@ -4,7 +4,7 @@
 
 ## PutMePasswordRequest.body property
 
-New password
+The new password.
 
 <b>Signature:</b>
 

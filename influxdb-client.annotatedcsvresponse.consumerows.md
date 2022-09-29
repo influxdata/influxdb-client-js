@@ -16,7 +16,7 @@ consumeRows(consumer: FluxResultObserver<string[]>): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  consumer | FluxResultObserver&lt;string\[\]&gt; | csv result lines and error consumer |
+|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; | csv result lines and error consumer |
 
 <b>Returns:</b>
 

@@ -15,9 +15,9 @@ interface GetOrgsRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [descending?](./influxdb-client-apis.getorgsrequest.descending.md) |  | any | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getorgsrequest.limit.md) |  | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getorgsrequest.offset.md) |  | number | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.getorgsrequest.org.md) |  | string | <i>(Optional)</i> Filter organizations to a specific organization name. |
-|  [orgID?](./influxdb-client-apis.getorgsrequest.orgid.md) |  | string | <i>(Optional)</i> Filter organizations to a specific organization ID. |
-|  [userID?](./influxdb-client-apis.getorgsrequest.userid.md) |  | string | <i>(Optional)</i> Filter organizations to a specific user ID. |
+|  [limit?](./influxdb-client-apis.getorgsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
+|  [offset?](./influxdb-client-apis.getorgsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
+|  [org?](./influxdb-client-apis.getorgsrequest.org.md) |  | string | <i>(Optional)</i> An organization name. Only returns organizations with this name. |
+|  [orgID?](./influxdb-client-apis.getorgsrequest.orgid.md) |  | string | <i>(Optional)</i> An organization ID. Only returns the organization with this ID. |
+|  [userID?](./influxdb-client-apis.getorgsrequest.userid.md) |  | string | <i>(Optional)</i> A user ID. Only returns organizations where this user is a member or owner. |
 

@@ -14,6 +14,6 @@ interface PatchUsersIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchusersidrequest.body.md) |  | User | User update to apply |
+|  [body](./influxdb-client-apis.patchusersidrequest.body.md) |  | [User](./influxdb-client-apis.user.md) | User update to apply |
 |  [userID](./influxdb-client-apis.patchusersidrequest.userid.md) |  | string | The ID of the user to update. |
 

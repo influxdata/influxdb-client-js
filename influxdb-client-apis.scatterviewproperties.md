@@ -14,6 +14,7 @@ interface ScatterViewProperties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [adaptiveZoomHide?](./influxdb-client-apis.scatterviewproperties.adaptivezoomhide.md) |  | boolean | <i>(Optional)</i> |
 |  [colors](./influxdb-client-apis.scatterviewproperties.colors.md) |  | string\[\] | Colors define color encoding of data into a visualization |
 |  [fillColumns](./influxdb-client-apis.scatterviewproperties.fillcolumns.md) |  | string\[\] |  |
 |  [generateXAxisTicks?](./influxdb-client-apis.scatterviewproperties.generatexaxisticks.md) |  | string\[\] | <i>(Optional)</i> |
@@ -23,7 +24,7 @@ interface ScatterViewProperties
 |  [legendOpacity?](./influxdb-client-apis.scatterviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
 |  [legendOrientationThreshold?](./influxdb-client-apis.scatterviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
 |  [note](./influxdb-client-apis.scatterviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.scatterviewproperties.queries.md) |  | DashboardQuery\[\] |  |
+|  [queries](./influxdb-client-apis.scatterviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
 |  [shape](./influxdb-client-apis.scatterviewproperties.shape.md) |  | 'chronograf-v2' |  |
 |  [showNoteWhenEmpty](./influxdb-client-apis.scatterviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
 |  [symbolColumns](./influxdb-client-apis.scatterviewproperties.symbolcolumns.md) |  | string\[\] |  |

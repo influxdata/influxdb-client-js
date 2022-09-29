@@ -14,9 +14,8 @@ interface UserResponse
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.userresponse.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
+|  [id?](./influxdb-client-apis.userresponse.id.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of the user. |
 |  [links?](./influxdb-client-apis.userresponse.links.md) | <code>readonly</code> | { self?: string; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.userresponse.name.md) |  | string |  |
-|  [oauthID?](./influxdb-client-apis.userresponse.oauthid.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.userresponse.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the user is inactive. |
+|  [name](./influxdb-client-apis.userresponse.name.md) |  | string | The name of the user. |
+|  [status?](./influxdb-client-apis.userresponse.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> The status of a user. An inactive user won't have access to resources. |
 

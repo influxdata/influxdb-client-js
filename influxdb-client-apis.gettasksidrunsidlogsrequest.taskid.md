@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsIDLogsRequest.taskID property
 
-ID of task to get logs for.
+The ID of the task to get logs for.
 
 <b>Signature:</b>
 

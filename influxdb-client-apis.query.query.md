@@ -4,7 +4,7 @@
 
 ## Query.query property
 
-Query script to execute.
+The query script to execute.
 
 <b>Signature:</b>
 

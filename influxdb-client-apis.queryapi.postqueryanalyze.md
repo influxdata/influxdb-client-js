@@ -4,7 +4,7 @@
 
 ## QueryAPI.postQueryAnalyze() method
 
-Analyze a Flux query. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostQueryAnalyze)
+Analyze a Flux query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAnalyze)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postQueryAnalyze(request: PostQueryAnalyzeRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostQueryAnalyzeRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostQueryAnalyzeRequest](./influxdb-client-apis.postqueryanalyzerequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;AnalyzeQueryResponse&gt;
+Promise&lt;[AnalyzeQueryResponse](./influxdb-client-apis.analyzequeryresponse.md)<!-- -->&gt;
 
 promise of response
 

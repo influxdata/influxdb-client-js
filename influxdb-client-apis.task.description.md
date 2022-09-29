@@ -4,7 +4,7 @@
 
 ## Task.description property
 
-Description of the task.
+A description of the task.
 
 <b>Signature:</b>
 

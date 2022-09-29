@@ -14,6 +14,6 @@ interface PostReplicationRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postreplicationrequest.body.md) |  | ReplicationCreationRequest | entity body |
+|  [body](./influxdb-client-apis.postreplicationrequest.body.md) |  | [ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md) | entity body |
 |  [validate?](./influxdb-client-apis.postreplicationrequest.validate.md) |  | any | <i>(Optional)</i> If true, validate the replication, but don't save it. |
 

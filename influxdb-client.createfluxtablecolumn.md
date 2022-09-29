@@ -16,11 +16,11 @@ declare function createFluxTableColumn(object: Partial<FluxTableColumn>): FluxTa
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  object | Partial&lt;FluxTableColumn&gt; | source object |
+|  object | Partial&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | source object |
 
 <b>Returns:</b>
 
-FluxTableColumn
+[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 
 column instance
 

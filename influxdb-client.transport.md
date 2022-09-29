@@ -16,7 +16,7 @@ interface Transport
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [chunkCombiner](./influxdb-client.transport.chunkcombiner.md) | <code>readonly</code> | ChunkCombiner | Combines response chunks to create a single response object. |
+|  [chunkCombiner](./influxdb-client.transport.chunkcombiner.md) | <code>readonly</code> | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | Combines response chunks to create a single response object. |
 
 ## Methods
 

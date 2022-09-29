@@ -4,7 +4,7 @@
 
 ## VariablesAPI.deleteVariablesIDLabelsID() method
 
-Delete a label from a variable. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteVariablesIDLabelsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteVariablesIDLabelsID)
+Delete a label from a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteVariablesIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesIDLabelsID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteVariablesIDLabelsID(request: DeleteVariablesIDLabelsIDRequest, requestOpti
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteVariablesIDLabelsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

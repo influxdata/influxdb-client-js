@@ -13,5 +13,5 @@ declare function createTextDecoderCombiner(): ChunkCombiner;
 ```
 <b>Returns:</b>
 
-ChunkCombiner
+[ChunkCombiner](./influxdb-client.chunkcombiner.md)
 

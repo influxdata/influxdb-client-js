@@ -21,7 +21,7 @@ column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn;
 
 <b>Returns:</b>
 
-FluxTableColumn
+[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 
 table column
 

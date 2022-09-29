@@ -4,6 +4,8 @@
 
 ## ScriptCreateRequest.description property
 
+Script description. A description of the script.
+
 <b>Signature:</b>
 
 ```typescript

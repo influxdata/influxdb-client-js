@@ -4,7 +4,7 @@
 
 ## GetTasksRequest.user property
 
-Filter tasks to a specific user ID.
+A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID. Only returns tasks owned by the specified user.
 
 <b>Signature:</b>
 

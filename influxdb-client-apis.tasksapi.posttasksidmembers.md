@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDMembers() method
 
-Add a member to a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTasksIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDMembers)
+Add a member to a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTasksIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTasksIDMembers(request: PostTasksIDMembersRequest, requestOptions?: RequestO
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostTasksIDMembersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostTasksIDMembersRequest](./influxdb-client-apis.posttasksidmembersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceMember&gt;
+Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
 
 promise of response
 

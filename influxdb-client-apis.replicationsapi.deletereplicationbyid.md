@@ -4,7 +4,7 @@
 
 ## ReplicationsAPI.deleteReplicationByID() method
 
-Delete a replication. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteReplicationByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteReplicationByID)
+Delete a replication. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteReplicationByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteReplicationByID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteReplicationByID(request: DeleteReplicationByIDRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteReplicationByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteReplicationByIDRequest](./influxdb-client-apis.deletereplicationbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

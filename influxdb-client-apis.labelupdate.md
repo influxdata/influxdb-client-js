@@ -15,5 +15,5 @@ interface LabelUpdate
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [name?](./influxdb-client-apis.labelupdate.name.md) |  | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.labelupdate.properties.md) |  | any | <i>(Optional)</i> Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value. |
+|  [properties?](./influxdb-client-apis.labelupdate.properties.md) |  | any | <i>(Optional)</i> |
 

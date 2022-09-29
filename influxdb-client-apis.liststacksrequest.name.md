@@ -4,7 +4,11 @@
 
 ## ListStacksRequest.name property
 
-A collection of names to filter the list by.
+The stack name. Finds stack `events` with this name and returns the stacks.
+
+Repeatable. To filter for more than one stack name, repeat this parameter with each name--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&name=project-stack-0&name=project-stack-1`
 
 <b>Signature:</b>
 

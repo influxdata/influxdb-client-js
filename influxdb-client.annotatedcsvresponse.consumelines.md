@@ -16,7 +16,7 @@ consumeLines(consumer: CommunicationObserver<string>): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  consumer | CommunicationObserver&lt;string&gt; | csv result lines and error consumer |
+|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
 
 <b>Returns:</b>
 

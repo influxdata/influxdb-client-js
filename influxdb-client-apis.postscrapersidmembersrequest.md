@@ -14,6 +14,6 @@ interface PostScrapersIDMembersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersidmembersrequest.body.md) |  | AddResourceMemberRequestBody | User to add as member |
+|  [body](./influxdb-client-apis.postscrapersidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
 |  [scraperTargetID](./influxdb-client-apis.postscrapersidmembersrequest.scrapertargetid.md) |  | string | The scraper target ID. |
 

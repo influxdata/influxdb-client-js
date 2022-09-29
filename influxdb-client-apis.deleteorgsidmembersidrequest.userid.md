@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDMembersIDRequest.userID property
 
-The ID of the member to remove.
+The ID of the user to remove.
 
 <b>Signature:</b>
 

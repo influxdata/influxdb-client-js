@@ -4,7 +4,7 @@
 
 ## RootAPI.getRoutes() method
 
-List all top level routes. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRoutes)
+List all top level routes. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRoutes)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getRoutes(request?: GetRoutesRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetRoutesRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetRoutesRequest](./influxdb-client-apis.getroutesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Routes&gt;
+Promise&lt;[Routes](./influxdb-client-apis.routes.md)<!-- -->&gt;
 
 promise of response
 

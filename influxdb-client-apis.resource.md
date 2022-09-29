@@ -14,9 +14,9 @@ interface Resource
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.resource.id.md) |  | string | <i>(Optional)</i> If ID is set that is a permission for a specific resource. if it is not set it is a permission for all resources of that resource type. |
-|  [name?](./influxdb-client-apis.resource.name.md) |  | string | <i>(Optional)</i> Optional name of the resource if the resource has a name field. |
-|  [org?](./influxdb-client-apis.resource.org.md) |  | string | <i>(Optional)</i> Optional name of the organization of the organization with orgID. |
-|  [orgID?](./influxdb-client-apis.resource.orgid.md) |  | string | <i>(Optional)</i> If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type. |
-|  [type](./influxdb-client-apis.resource.type.md) |  | 'authorizations' \| 'buckets' \| 'dashboards' \| 'orgs' \| 'sources' \| 'tasks' \| 'telegrafs' \| 'users' \| 'variables' \| 'scrapers' \| 'secrets' \| 'labels' \| 'views' \| 'documents' \| 'notificationRules' \| 'notificationEndpoints' \| 'checks' \| 'dbrp' \| 'notebooks' \| 'annotations' \| 'remotes' \| 'replications' \| 'flows' \| 'functions' |  |
+|  [id?](./influxdb-client-apis.resource.id.md) |  | string | <i>(Optional)</i> The ID of a specific resource. In a <code>permission</code>, applies the permission to only the resource with this ID. |
+|  [name?](./influxdb-client-apis.resource.name.md) |  | string | <i>(Optional)</i> Optional: A name for the resource. Not all resource types have a name field. |
+|  [org?](./influxdb-client-apis.resource.org.md) |  | string | <i>(Optional)</i> Optional: The name of the organization with <code>orgID</code>. |
+|  [orgID?](./influxdb-client-apis.resource.orgid.md) |  | string | <i>(Optional)</i> The ID of the organization that owns the resource. In a <code>permission</code>, applies the permission to all resources of <code>type</code> owned by this organization. |
+|  [type](./influxdb-client-apis.resource.type.md) |  | 'authorizations' \| 'buckets' \| 'dashboards' \| 'orgs' \| 'sources' \| 'tasks' \| 'telegrafs' \| 'users' \| 'variables' \| 'scrapers' \| 'secrets' \| 'labels' \| 'views' \| 'documents' \| 'notificationRules' \| 'notificationEndpoints' \| 'checks' \| 'dbrp' \| 'notebooks' \| 'annotations' \| 'remotes' \| 'replications' \| 'instance' \| 'flows' \| 'functions' | The type of resource. In a <code>permission</code>, applies the permission to all resources of this type. |
 

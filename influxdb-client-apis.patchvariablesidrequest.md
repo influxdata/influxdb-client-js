@@ -14,6 +14,6 @@ interface PatchVariablesIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchvariablesidrequest.body.md) |  | Variable | Variable update to apply |
+|  [body](./influxdb-client-apis.patchvariablesidrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable update to apply |
 |  [variableID](./influxdb-client-apis.patchvariablesidrequest.variableid.md) |  | string | The variable ID. |
 

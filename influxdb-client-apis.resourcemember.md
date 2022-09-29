@@ -11,3 +11,5 @@ declare type ResourceMember = UserResponse & {
     role?: 'member';
 };
 ```
+<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
+

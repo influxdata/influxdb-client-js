@@ -4,6 +4,8 @@
 
 ## PostOrganizationRequest.description property
 
+The description of the organization.
+
 <b>Signature:</b>
 
 ```typescript

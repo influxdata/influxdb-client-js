@@ -4,7 +4,7 @@
 
 ## ChecksAPI.getChecksID() method
 
-Retrieve a check. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetChecksID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetChecksID)
+Retrieve a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getChecksID(request: GetChecksIDRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetChecksIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetChecksIDRequest](./influxdb-client-apis.getchecksidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Check&gt;
+Promise&lt;[Check](./influxdb-client-apis.check.md)<!-- -->&gt;
 
 promise of response
 

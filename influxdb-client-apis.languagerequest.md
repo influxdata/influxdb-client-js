@@ -16,5 +16,5 @@ interface LanguageRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [query](./influxdb-client-apis.languagerequest.query.md) |  | string | Flux query script to be analyzed |
+|  [query](./influxdb-client-apis.languagerequest.query.md) |  | string | The Flux query script to be analyzed. |
 

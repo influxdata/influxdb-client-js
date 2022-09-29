@@ -4,7 +4,11 @@
 
 ## Dialect.dateTimeFormat property
 
-Format of timestamps
+The format for timestamps in results. Default is [\`RFC3339\` date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->. To include nanoseconds in timestamps, use `RFC3339Nano`<!-- -->.
+
+\#\#\#\# Example formatted date/time values
+
+\| Format \| Value \| \|:\-\-\-\-\-\-\-\-\-\-\-\-\|:\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\| \| `RFC3339` \| `"2006-01-02T15:04:05Z07:00"` \| \| `RFC3339Nano` \| `"2006-01-02T15:04:05.999999999Z07:00"` \|
 
 <b>Signature:</b>
 

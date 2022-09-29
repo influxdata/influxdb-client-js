@@ -4,7 +4,7 @@
 
 ## SetupAPI.getSetup() method
 
-Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetSetup)
+Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSetup)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getSetup(request?: GetSetupRequest, requestOptions?: RequestOptions): Promise<Is
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetSetupRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetSetupRequest](./influxdb-client-apis.getsetuprequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;IsOnboarding&gt;
+Promise&lt;[IsOnboarding](./influxdb-client-apis.isonboarding.md)<!-- -->&gt;
 
 promise of response
 

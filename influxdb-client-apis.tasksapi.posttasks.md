@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasks() method
 
-Create a new task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTasks](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasks)
+Create a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTasks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasks)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTasks(request: PostTasksRequest, requestOptions?: RequestOptions): Promise<T
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostTasksRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostTasksRequest](./influxdb-client-apis.posttasksrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Task&gt;
+Promise&lt;[Task](./influxdb-client-apis.task.md)<!-- -->&gt;
 
 promise of response
 

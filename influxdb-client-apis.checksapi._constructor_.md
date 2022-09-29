@@ -16,5 +16,5 @@ constructor(influxDB: InfluxDB);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  influxDB | InfluxDB | an instance that knows how to communicate with InfluxDB server |
+|  influxDB | [InfluxDB](./influxdb-client.influxdb.md) | an instance that knows how to communicate with InfluxDB server |
 

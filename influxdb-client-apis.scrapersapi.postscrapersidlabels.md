@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.postScrapersIDLabels() method
 
-Add a label to a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostScrapersIDLabels)
+Add a label to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postScrapersIDLabels(request: PostScrapersIDLabelsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostScrapersIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostScrapersIDLabelsRequest](./influxdb-client-apis.postscrapersidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelResponse&gt;
+Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
 
 promise of response
 

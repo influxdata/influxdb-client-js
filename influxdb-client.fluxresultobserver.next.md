@@ -17,7 +17,7 @@ next(row: T, tableMeta: FluxTableMetaData): void;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  row | T |  |
-|  tableMeta | FluxTableMetaData |  |
+|  tableMeta | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
 
 <b>Returns:</b>
 

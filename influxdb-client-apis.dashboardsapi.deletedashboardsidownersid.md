@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.deleteDashboardsIDOwnersID() method
 
-Remove an owner from a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteDashboardsIDOwnersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteDashboardsIDOwnersID)
+Remove an owner from a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteDashboardsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteDashboardsIDOwnersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteDashboardsIDOwnersID(request: DeleteDashboardsIDOwnersIDRequest, requestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteDashboardsIDOwnersIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteDashboardsIDOwnersIDRequest](./influxdb-client-apis.deletedashboardsidownersidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

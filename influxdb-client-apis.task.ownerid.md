@@ -4,7 +4,9 @@
 
 ## Task.ownerID property
 
-ID of the user who owns this Task.
+A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID. Specifies the owner of the task.
+
+To find a user ID, you can use the  to list users.
 
 <b>Signature:</b>
 

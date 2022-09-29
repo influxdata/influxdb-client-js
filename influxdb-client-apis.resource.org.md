@@ -4,7 +4,7 @@
 
 ## Resource.org property
 
-Optional name of the organization of the organization with orgID.
+Optional: The name of the organization with `orgID`<!-- -->.
 
 <b>Signature:</b>
 

@@ -4,6 +4,10 @@
 
 ## TemplateApply.orgID property
 
+Organization ID. InfluxDB applies templates to this organization. The organization owns all resources created by the template.
+
+To find your organization, see how to [view organizations](https://docs.influxdata.com/influxdb/v2.3/organizations/view-orgs/)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

@@ -14,6 +14,6 @@ interface PostScriptsIDInvokeRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | ScriptInvocationParams | entity body |
-|  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) |  | string |  |
+|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) | entity body |
+|  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) |  | string | A script ID. Specifies the script to execute. |
 

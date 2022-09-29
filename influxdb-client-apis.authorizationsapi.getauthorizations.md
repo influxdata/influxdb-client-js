@@ -4,7 +4,7 @@
 
 ## AuthorizationsAPI.getAuthorizations() method
 
-List all authorizations. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetAuthorizations)
+List authorizations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizations)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getAuthorizations(request?: GetAuthorizationsRequest, requestOptions?: RequestOp
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetAuthorizationsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetAuthorizationsRequest](./influxdb-client-apis.getauthorizationsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Authorizations&gt;
+Promise&lt;[Authorizations](./influxdb-client-apis.authorizations.md)<!-- -->&gt;
 
 promise of response
 

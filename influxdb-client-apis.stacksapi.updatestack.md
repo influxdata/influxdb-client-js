@@ -4,7 +4,7 @@
 
 ## StacksAPI.updateStack() method
 
-Update a stack. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/UpdateStack](https://docs.influxdata.com/influxdb/v2.3/api/#operation/UpdateStack)
+Update a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UpdateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UpdateStack)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ updateStack(request: UpdateStackRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | UpdateStackRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [UpdateStackRequest](./influxdb-client-apis.updatestackrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Stack&gt;
+Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
 
 promise of response
 

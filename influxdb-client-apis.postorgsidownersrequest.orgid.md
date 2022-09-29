@@ -4,7 +4,7 @@
 
 ## PostOrgsIDOwnersRequest.orgID property
 
-The organization ID.
+The ID of the organization that you want to add an owner for.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## Resource.orgID property
 
-If orgID is set that is a permission for all resources owned my that org. if it is not set it is a permission for all resources of that resource type.
+The ID of the organization that owns the resource. In a `permission`<!-- -->, applies the permission to all resources of `type` owned by this organization.
 
 <b>Signature:</b>
 

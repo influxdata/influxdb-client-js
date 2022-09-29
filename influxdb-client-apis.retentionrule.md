@@ -14,7 +14,7 @@ interface RetentionRule
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md) |  | number | Duration in seconds for how long data will be kept in the database. 0 means infinite. |
-|  [shardGroupDurationSeconds?](./influxdb-client-apis.retentionrule.shardgroupdurationseconds.md) |  | number | <i>(Optional)</i> Shard duration measured in seconds. |
-|  [type](./influxdb-client-apis.retentionrule.type.md) |  | 'expire' |  |
+|  [everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md) |  | number | The duration in seconds for how long data will be kept in the database. The default duration is 2592000 (30 days). 0 represents infinite retention. |
+|  [shardGroupDurationSeconds?](./influxdb-client-apis.retentionrule.shardgroupdurationseconds.md) |  | number | <p><i>(Optional)</i> The shard group duration. The duration or interval (in seconds) that each shard group covers.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Does not use <code>shardGroupDurationsSeconds</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.</p> |
+|  [type?](./influxdb-client-apis.retentionrule.type.md) |  | 'expire' | <i>(Optional)</i> |
 

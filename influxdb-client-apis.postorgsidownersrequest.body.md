@@ -4,7 +4,7 @@
 
 ## PostOrgsIDOwnersRequest.body property
 
-User to add as owner
+The user to add as an owner of the organization.
 
 <b>Signature:</b>
 

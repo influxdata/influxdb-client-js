@@ -4,6 +4,8 @@
 
 ## GetUsersRequest.offset property
 
+The offset for pagination. The number of records to skip.
+
 <b>Signature:</b>
 
 ```typescript

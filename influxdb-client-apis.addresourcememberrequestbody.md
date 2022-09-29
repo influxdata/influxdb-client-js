@@ -14,6 +14,6 @@ interface AddResourceMemberRequestBody
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [id](./influxdb-client-apis.addresourcememberrequestbody.id.md) |  | string |  |
-|  [name?](./influxdb-client-apis.addresourcememberrequestbody.name.md) |  | string | <i>(Optional)</i> |
+|  [id](./influxdb-client-apis.addresourcememberrequestbody.id.md) |  | string | The ID of the user to add to the resource. |
+|  [name?](./influxdb-client-apis.addresourcememberrequestbody.name.md) |  | string | <i>(Optional)</i> The name of the user to add to the resource. |
 

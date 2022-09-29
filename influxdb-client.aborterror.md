@@ -13,7 +13,7 @@ declare class AbortError extends Error implements RetriableDecision
 ```
 <b>Extends:</b> Error
 
-<b>Implements:</b> RetriableDecision
+<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
 
 ## Constructors
 

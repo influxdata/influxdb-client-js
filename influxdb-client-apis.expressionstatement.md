@@ -4,7 +4,7 @@
 
 ## ExpressionStatement interface
 
-May consist of an expression that does not return a value and is executed solely for its side-effects
+May consist of an expression that doesn't return a value and is executed solely for its side-effects
 
 <b>Signature:</b>
 
@@ -16,6 +16,6 @@ interface ExpressionStatement
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) |  | Expression | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.expressionstatement.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [expression?](./influxdb-client-apis.expressionstatement.expression.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.expressionstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

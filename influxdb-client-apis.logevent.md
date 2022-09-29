@@ -15,6 +15,6 @@ interface LogEvent
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [message?](./influxdb-client-apis.logevent.message.md) | <code>readonly</code> | string | <i>(Optional)</i> A description of the event that occurred. |
-|  [runID?](./influxdb-client-apis.logevent.runid.md) | <code>readonly</code> | string | <i>(Optional)</i> the ID of the task that logged |
-|  [time?](./influxdb-client-apis.logevent.time.md) | <code>readonly</code> | string | <i>(Optional)</i> Time event occurred, RFC3339Nano. |
+|  [runID?](./influxdb-client-apis.logevent.runid.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of the task run that generated the event. |
+|  [time?](./influxdb-client-apis.logevent.time.md) | <code>readonly</code> | string | <i>(Optional)</i> The time ([RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->) that the event occurred. |
 

@@ -4,10 +4,10 @@
 
 ## PatchRetentionRule.everySeconds property
 
-Duration in seconds for how long data will be kept in the database. 0 means infinite.
+The number of seconds to keep data. Default duration is `2592000` (30 days). `0` represents infinite retention.
 
 <b>Signature:</b>
 
 ```typescript
-everySeconds?: number;
+everySeconds: number;
 ```

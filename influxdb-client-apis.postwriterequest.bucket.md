@@ -4,7 +4,7 @@
 
 ## PostWriteRequest.bucket property
 
-The destination bucket for writes.
+The destination bucket for writes. InfluxDB writes all points in the batch to this bucket.
 
 <b>Signature:</b>
 

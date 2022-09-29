@@ -16,5 +16,5 @@ interface RestoredBucketMappings
 |  --- | --- | --- | --- |
 |  [id](./influxdb-client-apis.restoredbucketmappings.id.md) |  | string | New ID of the restored bucket |
 |  [name](./influxdb-client-apis.restoredbucketmappings.name.md) |  | string |  |
-|  [shardMappings](./influxdb-client-apis.restoredbucketmappings.shardmappings.md) |  | BucketShardMappings |  |
+|  [shardMappings](./influxdb-client-apis.restoredbucketmappings.shardmappings.md) |  | [BucketShardMappings](./influxdb-client-apis.bucketshardmappings.md) |  |
 

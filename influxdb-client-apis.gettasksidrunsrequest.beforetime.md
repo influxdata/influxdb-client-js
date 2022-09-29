@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsRequest.beforeTime property
 
-Filter runs to those scheduled before this time, RFC3339
+A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). Only returns runs scheduled before this time.
 
 <b>Signature:</b>
 

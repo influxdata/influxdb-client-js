@@ -4,6 +4,16 @@
 
 ## TemplateApply.stackID property
 
+ID of the stack to update.
+
+To apply templates to an existing stack in the organization, use the `stackID` parameter. If you apply templates without providing a stack ID, InfluxDB initializes a new stack with all new resources.
+
+To find a stack ID, use the InfluxDB  to list stacks.
+
+\#\#\#\# Related guides
+
+- [Stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/) - [View stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/view/)
+
 <b>Signature:</b>
 
 ```typescript

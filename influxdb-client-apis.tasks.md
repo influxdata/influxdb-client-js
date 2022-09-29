@@ -14,6 +14,6 @@ interface Tasks
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.tasks.links.md) | <code>readonly</code> | Links | <i>(Optional)</i> |
-|  [tasks?](./influxdb-client-apis.tasks.tasks.md) |  | Task\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.tasks.links.md) | <code>readonly</code> | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [tasks?](./influxdb-client-apis.tasks.tasks.md) |  | [Task](./influxdb-client-apis.task.md)<!-- -->\[\] | <i>(Optional)</i> |
 

@@ -16,6 +16,6 @@ interface ReturnStatement
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [argument?](./influxdb-client-apis.returnstatement.argument.md) |  | Expression | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.returnstatement.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [argument?](./influxdb-client-apis.returnstatement.argument.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.returnstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 

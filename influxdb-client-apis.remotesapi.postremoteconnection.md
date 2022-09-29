@@ -4,7 +4,7 @@
 
 ## RemotesAPI.postRemoteConnection() method
 
-Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostRemoteConnection)
+Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRemoteConnection)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postRemoteConnection(request: PostRemoteConnectionRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostRemoteConnectionRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostRemoteConnectionRequest](./influxdb-client-apis.postremoteconnectionrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;RemoteConnection&gt;
+Promise&lt;[RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->&gt;
 
 promise of response
 

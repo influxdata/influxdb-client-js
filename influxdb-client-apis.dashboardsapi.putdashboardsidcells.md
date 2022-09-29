@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.putDashboardsIDCells() method
 
-Replace cells in a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PutDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PutDashboardsIDCells)
+Replace cells in a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutDashboardsIDCells](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutDashboardsIDCells)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ putDashboardsIDCells(request: PutDashboardsIDCellsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PutDashboardsIDCellsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PutDashboardsIDCellsRequest](./influxdb-client-apis.putdashboardsidcellsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Dashboard&gt;
+Promise&lt;[Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->&gt;
 
 promise of response
 

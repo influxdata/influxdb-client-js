@@ -18,3 +18,5 @@ declare type HTTPNotificationEndpoint = NotificationEndpointBase & {
     headers?: any;
 };
 ```
+<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+

@@ -4,7 +4,7 @@
 
 ## PostTasksIDOwnersRequest.body property
 
-User to add as owner
+A user to add as an owner of the task.
 
 <b>Signature:</b>
 

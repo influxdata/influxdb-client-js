@@ -4,7 +4,7 @@
 
 ## TelegramNotificationRuleBase.parseMode property
 
-Parse mode of the message text per https://core.telegram.org/bots/api\#formatting-options . Defaults to "MarkdownV2" .
+Parse mode of the message text per https://core.telegram.org/bots/api\#formatting-options. Defaults to "MarkdownV2".
 
 <b>Signature:</b>
 

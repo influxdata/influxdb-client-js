@@ -4,7 +4,7 @@
 
 ## DeleteScriptsIDRequest.scriptID property
 
-The ID of the script to delete.
+A script ID. Specifies the script to delete.
 
 <b>Signature:</b>
 

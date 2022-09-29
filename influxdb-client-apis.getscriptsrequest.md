@@ -14,6 +14,9 @@ interface GetScriptsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getscriptsrequest.limit.md) |  | number | <i>(Optional)</i> The number of scripts to return. |
-|  [offset?](./influxdb-client-apis.getscriptsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. |
+|  [labelContains?](./influxdb-client-apis.getscriptsrequest.labelcontains.md) |  | string | <i>(Optional)</i> A part of the label name. Returns scripts that have a label that contains the specified phrase. |
+|  [labelNames?](./influxdb-client-apis.getscriptsrequest.labelnames.md) |  | any | <i>(Optional)</i> A list of label names. Only returns scripts that have all the specified labels. To retrieve a script, each name you pass in <code>labelNames</code> must exactly match the label for a script. |
+|  [limit?](./influxdb-client-apis.getscriptsrequest.limit.md) |  | number | <i>(Optional)</i> The maximum number of scripts to return. Default is <code>100</code>. |
+|  [name?](./influxdb-client-apis.getscriptsrequest.name.md) |  | string | <i>(Optional)</i> The name of the script. |
+|  [offset?](./influxdb-client-apis.getscriptsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. Specifies the number of records to skip in the result. |
 

@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofTrace() method
 
-Retrieve the runtime execution trace. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofTrace](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofTrace)
+Retrieve the runtime execution trace. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofTrace](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofTrace)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofTrace(request?: GetDebugPprofTraceRequest, requestOptions?: Request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDebugPprofTraceRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDebugPprofTraceRequest](./influxdb-client-apis.getdebugpproftracerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

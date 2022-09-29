@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapers() method
 
-List all scraper targets. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetScrapers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapers)
+List all scraper targets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getScrapers(request?: GetScrapersRequest, requestOptions?: RequestOptions): Prom
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetScrapersRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ScraperTargetResponses&gt;
+Promise&lt;[ScraperTargetResponses](./influxdb-client-apis.scrapertargetresponses.md)<!-- -->&gt;
 
 promise of response
 

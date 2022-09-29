@@ -15,5 +15,5 @@ interface ShardManifest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [id](./influxdb-client-apis.shardmanifest.id.md) |  | number |  |
-|  [shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md) |  | ShardOwners |  |
+|  [shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md) |  | [ShardOwners](./influxdb-client-apis.shardowners.md) |  |
 

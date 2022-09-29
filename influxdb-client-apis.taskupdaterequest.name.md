@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest.name property
 
-Override the 'name' option in the flux script.
+Update the 'name' option in the flux script.
 
 <b>Signature:</b>
 

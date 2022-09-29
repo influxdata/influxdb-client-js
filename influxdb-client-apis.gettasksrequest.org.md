@@ -4,7 +4,7 @@
 
 ## GetTasksRequest.org property
 
-Filter tasks to a specific organization name.
+An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) name. Only returns tasks owned by the specified organization.
 
 <b>Signature:</b>
 

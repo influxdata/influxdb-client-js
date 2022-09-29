@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDMembers() method
 
-List all members of an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgsIDMembers)
+List all members of an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetOrgsIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getOrgsIDMembers(request: GetOrgsIDMembersRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetOrgsIDMembersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetOrgsIDMembersRequest](./influxdb-client-apis.getorgsidmembersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceMembers&gt;
+Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## PostAuthorizationsRequest.body property
 
-Authorization to create
+The authorization to create.
 
 <b>Signature:</b>
 

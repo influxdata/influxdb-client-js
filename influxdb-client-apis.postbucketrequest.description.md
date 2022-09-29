@@ -4,6 +4,8 @@
 
 ## PostBucketRequest.description property
 
+A description of the bucket.
+
 <b>Signature:</b>
 
 ```typescript

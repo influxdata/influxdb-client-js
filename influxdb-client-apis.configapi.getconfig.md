@@ -4,7 +4,7 @@
 
 ## ConfigAPI.getConfig() method
 
-Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetConfig)
+Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetConfig)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getConfig(request?: GetConfigRequest, requestOptions?: RequestOptions): Promise<
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetConfigRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetConfigRequest](./influxdb-client-apis.getconfigrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Config&gt;
+Promise&lt;[Config](./influxdb-client-apis.config.md)<!-- -->&gt;
 
 promise of response
 

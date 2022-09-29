@@ -14,7 +14,7 @@ interface GetChecksRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) |  | number | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) |  | number | <i>(Optional)</i> |
+|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
+|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
 |  [orgID](./influxdb-client-apis.getchecksrequest.orgid.md) |  | string | Only show checks that belong to a specific organization ID. |
 

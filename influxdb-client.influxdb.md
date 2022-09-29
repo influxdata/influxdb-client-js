@@ -22,8 +22,8 @@ declare class InfluxDB
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) | <code>readonly</code> | (executor: APIExecutor) =&gt; AnnotatedCSVResponse |  |
-|  [transport](./influxdb-client.influxdb.transport.md) | <code>readonly</code> | Transport |  |
+|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) | <code>readonly</code> | (executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) |  |
+|  [transport](./influxdb-client.influxdb.transport.md) | <code>readonly</code> | [Transport](./influxdb-client.transport.md) |  |
 
 ## Methods
 

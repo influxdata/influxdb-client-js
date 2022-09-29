@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsID() method
 
-Update a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchDashboardsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchDashboardsID)
+Update a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchDashboardsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchDashboardsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchDashboardsID(request: PatchDashboardsIDRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchDashboardsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchDashboardsIDRequest](./influxdb-client-apis.patchdashboardsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Dashboard&gt;
+Promise&lt;[Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDMembersIDRequest.orgID property
 
-The organization ID.
+The ID of the organization to remove a user from.
 
 <b>Signature:</b>
 

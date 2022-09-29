@@ -4,7 +4,13 @@
 
 ## Dialect.annotations property
 
-https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/\#columns
+Annotation rows to include in the results. An \_annotation\_ is metadata associated with an object (column) in the data model.
+
+\#\#\#\# Related guides
+
+- See [Annotated CSV annotations](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#annotations) for examples and more information.
+
+For more information about \*\*annotations\*\* in tabular data, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns)<!-- -->.
 
 <b>Signature:</b>
 

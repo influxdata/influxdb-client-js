@@ -4,7 +4,7 @@
 
 ## Run.finishedAt property
 
-Time run finished executing, RFC3339Nano.
+The time ([RFC3339Nano date/time format](https://go.dev/src/time/format.go)<!-- -->) the run finished executing.
 
 <b>Signature:</b>
 

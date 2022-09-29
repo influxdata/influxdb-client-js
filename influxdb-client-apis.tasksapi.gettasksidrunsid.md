@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRunsID() method
 
-Retrieve a single run for a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksIDRunsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRunsID)
+Retrieve a run for a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasksIDRunsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRunsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksIDRunsID(request: GetTasksIDRunsIDRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTasksIDRunsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTasksIDRunsIDRequest](./influxdb-client-apis.gettasksidrunsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Run&gt;
+Promise&lt;[Run](./influxdb-client-apis.run.md)<!-- -->&gt;
 
 promise of response
 

@@ -4,7 +4,7 @@
 
 ## PatchBucketRequest interface
 
-Updates to an existing bucket resource.
+An object that contains updated bucket properties to apply.
 
 <b>Signature:</b>
 
@@ -16,7 +16,7 @@ interface PatchBucketRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchbucketrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.patchbucketrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | PatchRetentionRules | <i>(Optional)</i> |
+|  [description?](./influxdb-client-apis.patchbucketrequest.description.md) |  | string | <i>(Optional)</i> A description of the bucket. |
+|  [name?](./influxdb-client-apis.patchbucketrequest.name.md) |  | string | <i>(Optional)</i> The name of the bucket. |
+|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | <i>(Optional)</i> |
 

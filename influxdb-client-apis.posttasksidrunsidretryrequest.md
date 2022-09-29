@@ -15,6 +15,6 @@ interface PostTasksIDRunsIDRetryRequest
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [body](./influxdb-client-apis.posttasksidrunsidretryrequest.body.md) |  | any | entity body |
-|  [runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md) |  | string | The run ID. |
-|  [taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md) |  | string | The task ID. |
+|  [runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md) |  | string | <p>A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run ID. Specifies the task run to retry.</p><p>To find a task run ID, use the {@<!-- -->link \#operation/GetTasksIDRuns \| <code>GET /api/v2/tasks/{taskID}/runs</code> endpoint } to list task runs.</p> |
+|  [taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md) |  | string | A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Specifies the task to retry. |
 

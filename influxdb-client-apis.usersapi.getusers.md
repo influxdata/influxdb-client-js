@@ -4,7 +4,7 @@
 
 ## UsersAPI.getUsers() method
 
-List all users. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetUsers)
+List users. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getUsers(request?: GetUsersRequest, requestOptions?: RequestOptions): Promise<Us
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetUsersRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetUsersRequest](./influxdb-client-apis.getusersrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Users&gt;
+Promise&lt;[Users](./influxdb-client-apis.users.md)<!-- -->&gt;
 
 promise of response
 

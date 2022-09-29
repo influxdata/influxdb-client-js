@@ -12,3 +12,5 @@ declare type CellWithViewProperties = Cell & {
     properties?: ViewProperties;
 };
 ```
+<b>References:</b> [Cell](./influxdb-client-apis.cell.md)<!-- -->, [ViewProperties](./influxdb-client-apis.viewproperties.md)
+

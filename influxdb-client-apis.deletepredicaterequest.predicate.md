@@ -4,7 +4,7 @@
 
 ## DeletePredicateRequest.predicate property
 
-InfluxQL-like delete statement
+An expression in [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.
 
 <b>Signature:</b>
 

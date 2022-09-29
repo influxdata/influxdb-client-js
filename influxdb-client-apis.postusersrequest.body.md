@@ -4,7 +4,7 @@
 
 ## PostUsersRequest.body property
 
-User to create
+The user to create.
 
 <b>Signature:</b>
 

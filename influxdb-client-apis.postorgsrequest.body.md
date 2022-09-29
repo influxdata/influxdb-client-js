@@ -4,7 +4,7 @@
 
 ## PostOrgsRequest.body property
 
-Organization to create
+The organization to create.
 
 <b>Signature:</b>
 

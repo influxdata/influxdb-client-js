@@ -14,5 +14,5 @@ interface ShardOwner
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [nodeID](./influxdb-client-apis.shardowner.nodeid.md) |  | number | ID of the node that owns a shard. |
+|  [nodeID](./influxdb-client-apis.shardowner.nodeid.md) |  | number | The ID of the node that owns the shard. |
 

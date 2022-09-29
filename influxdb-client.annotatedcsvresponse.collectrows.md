@@ -16,7 +16,7 @@ collectRows<T>(rowMapper?: (values: string[], tableMeta: FluxTableMetaData) => T
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  rowMapper | (values: string\[\], tableMeta: FluxTableMetaData) =&gt; T \| undefined | <i>(Optional)</i> maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, <code>row =&gt; tableMeta.toObject(row.values)</code> is used. |
+|  rowMapper | (values: string\[\], tableMeta: [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)<!-- -->) =&gt; T \| undefined | <i>(Optional)</i> maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, <code>row =&gt; tableMeta.toObject(row.values)</code> is used. |
 
 <b>Returns:</b>
 

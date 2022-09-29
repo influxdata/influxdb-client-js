@@ -18,12 +18,12 @@ declare function createCollector(resolve: (value: FromFluxResult) => void, rejec
 |  --- | --- | --- |
 |  resolve | (value: FromFluxResult) =&gt; void | called when the Table is collected |
 |  reject | (reason?: any) =&gt; void | called upon error |
-|  tableFactory | GiraffeTableFactory |  |
-|  tableOptions | TableOptions | <i>(Optional)</i> tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect |
+|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) |  |
+|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect |
 
 <b>Returns:</b>
 
-FluxResultObserver&lt;string\[\]&gt;
+[FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt;
 
 FluxResultObserver that collects table data from result rows
 

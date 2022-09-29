@@ -4,7 +4,7 @@
 
 ## DeleteBucketsIDRequest.bucketID property
 
-The ID of the bucket to delete.
+Bucket ID. The ID of the bucket to delete.
 
 <b>Signature:</b>
 

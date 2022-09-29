@@ -4,7 +4,9 @@
 
 ## PostTasksIDRunsIDRetryRequest.runID property
 
-The run ID.
+A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run ID. Specifies the task run to retry.
+
+To find a task run ID, use the {@<!-- -->link \#operation/GetTasksIDRuns \| `GET /api/v2/tasks/{taskID}/runs` endpoint } to list task runs.
 
 <b>Signature:</b>
 

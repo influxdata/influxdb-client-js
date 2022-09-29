@@ -22,5 +22,5 @@ declare class ResourcesAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md) |  | List all known resources. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetResources) |
+|  [getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md) |  | List all known resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetResources) |
 

@@ -4,6 +4,8 @@
 
 ## PatchOrganizationRequest interface
 
+An object that contains updated organization properties to apply.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,6 +16,6 @@ interface PatchOrganizationRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchorganizationrequest.description.md) |  | string | <i>(Optional)</i> New description to set on the organization |
-|  [name?](./influxdb-client-apis.patchorganizationrequest.name.md) |  | string | <i>(Optional)</i> New name to set on the organization |
+|  [description?](./influxdb-client-apis.patchorganizationrequest.description.md) |  | string | <i>(Optional)</i> The description of the organization. |
+|  [name?](./influxdb-client-apis.patchorganizationrequest.name.md) |  | string | <i>(Optional)</i> The name of the organization. |
 

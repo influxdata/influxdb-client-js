@@ -4,7 +4,7 @@
 
 ## ScriptHTTPResponseData type
 
-The data sent in the response body when a script is invoked by an HTTP request. User defined and dynamic.
+The response body contains the results of the executed script. The response is user-defined and dynamic.
 
 <b>Signature:</b>
 

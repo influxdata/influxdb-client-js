@@ -4,7 +4,7 @@
 
 ## PatchOrganizationRequest.name property
 
-New name to set on the organization
+The name of the organization.
 
 <b>Signature:</b>
 

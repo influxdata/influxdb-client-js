@@ -14,5 +14,5 @@ interface LabelMapping
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) |  | string | <i>(Optional)</i> |
+|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) |  | string | <i>(Optional)</i> Label ID. The ID of the label to attach. |
 

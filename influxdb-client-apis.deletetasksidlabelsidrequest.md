@@ -14,6 +14,6 @@ interface DeleteTasksIDLabelsIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletetasksidlabelsidrequest.labelid.md) |  | string | The label ID. |
-|  [taskID](./influxdb-client-apis.deletetasksidlabelsidrequest.taskid.md) |  | string | The task ID. |
+|  [labelID](./influxdb-client-apis.deletetasksidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+|  [taskID](./influxdb-client-apis.deletetasksidlabelsidrequest.taskid.md) |  | string | The ID of the task to delete the label from. |
 

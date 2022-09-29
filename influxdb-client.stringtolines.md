@@ -17,7 +17,7 @@ declare function stringToLines(source: string, target: CommunicationObserver<str
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  source | string | source string |
-|  target | CommunicationObserver&lt;string&gt; | target to emmit CSV lines to |
+|  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
 
 <b>Returns:</b>
 

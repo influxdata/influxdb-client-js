@@ -4,7 +4,7 @@
 
 ## DeleteAPI.postDelete() method
 
-Delete data. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostDelete)
+Delete data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ postDelete(request: PostDeleteRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostDeleteRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

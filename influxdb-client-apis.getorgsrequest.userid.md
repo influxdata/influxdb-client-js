@@ -4,7 +4,7 @@
 
 ## GetOrgsRequest.userID property
 
-Filter organizations to a specific user ID.
+A user ID. Only returns organizations where this user is a member or owner.
 
 <b>Signature:</b>
 

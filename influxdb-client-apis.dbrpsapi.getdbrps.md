@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.getDBRPs() method
 
-List database retention policy mappings. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDBRPs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDBRPs)
+List database retention policy mappings. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDBRPs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDBRPs)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDBRPs(request?: GetDBRPsRequest, requestOptions?: RequestOptions): Promise<DB
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDBRPsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDBRPsRequest](./influxdb-client-apis.getdbrpsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;DBRPs&gt;
+Promise&lt;[DBRPs](./influxdb-client-apis.dbrps.md)<!-- -->&gt;
 
 promise of response
 

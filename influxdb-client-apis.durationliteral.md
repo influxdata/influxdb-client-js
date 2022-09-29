@@ -16,6 +16,6 @@ interface DurationLiteral
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.durationliteral.type.md) |  | NodeType | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.durationliteral.values.md) |  | Duration\[\] | <i>(Optional)</i> Duration values |
+|  [type?](./influxdb-client-apis.durationliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+|  [values?](./influxdb-client-apis.durationliteral.values.md) |  | [Duration](./influxdb-client-apis.duration.md)<!-- -->\[\] | <i>(Optional)</i> Duration values |
 

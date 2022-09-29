@@ -4,7 +4,7 @@
 
 ## Dialect.commentPrefix property
 
-Character prefixed to comment strings
+The character prefixed to comment strings. Default is a number sign (`#`<!-- -->).
 
 <b>Signature:</b>
 

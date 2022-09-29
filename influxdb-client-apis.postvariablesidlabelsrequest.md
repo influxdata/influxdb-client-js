@@ -14,6 +14,6 @@ interface PostVariablesIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postvariablesidlabelsrequest.body.md) |  | LabelMapping | Label to add |
+|  [body](./influxdb-client-apis.postvariablesidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
 |  [variableID](./influxdb-client-apis.postvariablesidlabelsrequest.variableid.md) |  | string | The variable ID. |
 

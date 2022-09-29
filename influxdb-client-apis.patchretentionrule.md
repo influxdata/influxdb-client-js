@@ -4,8 +4,6 @@
 
 ## PatchRetentionRule interface
 
-Updates to a rule to expire or retain data.
-
 <b>Signature:</b>
 
 ```typescript
@@ -16,7 +14,7 @@ interface PatchRetentionRule
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [everySeconds?](./influxdb-client-apis.patchretentionrule.everyseconds.md) |  | number | <i>(Optional)</i> Duration in seconds for how long data will be kept in the database. 0 means infinite. |
-|  [shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md) |  | number | <i>(Optional)</i> Shard duration measured in seconds. |
-|  [type](./influxdb-client-apis.patchretentionrule.type.md) |  | 'expire' |  |
+|  [everySeconds](./influxdb-client-apis.patchretentionrule.everyseconds.md) |  | number | The number of seconds to keep data. Default duration is <code>2592000</code> (30 days). <code>0</code> represents infinite retention. |
+|  [shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md) |  | number | <p><i>(Optional)</i> The [shard group duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#shard)<!-- -->. The number of seconds that each shard group covers.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>shardGroupDurationsSeconds</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.</p><p>\#\#\#\# Related guides</p><p>- InfluxDB [shards and shard groups](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/)</p> |
+|  [type?](./influxdb-client-apis.patchretentionrule.type.md) |  | 'expire' | <i>(Optional)</i> |
 

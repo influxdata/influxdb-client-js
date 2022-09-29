@@ -15,5 +15,5 @@ interface Permission
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [action](./influxdb-client-apis.permission.action.md) |  | 'read' \| 'write' |  |
-|  [resource](./influxdb-client-apis.permission.resource.md) |  | Resource |  |
+|  [resource](./influxdb-client-apis.permission.resource.md) |  | [Resource](./influxdb-client-apis.resource.md) |  |
 

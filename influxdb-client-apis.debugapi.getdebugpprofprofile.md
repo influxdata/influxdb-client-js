@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofProfile() method
 
-Retrieve the CPU runtime profile. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofProfile](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofProfile)
+Retrieve the CPU runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofProfile](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofProfile)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofProfile(request?: GetDebugPprofProfileRequest, requestOptions?: Req
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDebugPprofProfileRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

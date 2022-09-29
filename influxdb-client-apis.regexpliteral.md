@@ -16,6 +16,6 @@ interface RegexpLiteral
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.regexpliteral.type.md) |  | NodeType | <i>(Optional)</i> |
+|  [type?](./influxdb-client-apis.regexpliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
 |  [value?](./influxdb-client-apis.regexpliteral.value.md) |  | string | <i>(Optional)</i> |
 

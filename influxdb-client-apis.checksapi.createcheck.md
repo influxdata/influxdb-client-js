@@ -4,7 +4,7 @@
 
 ## ChecksAPI.createCheck() method
 
-Add new check. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/CreateCheck](https://docs.influxdata.com/influxdb/v2.3/api/#operation/CreateCheck)
+Add new check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateCheck](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateCheck)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ createCheck(request: CreateCheckRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | CreateCheckRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [CreateCheckRequest](./influxdb-client-apis.createcheckrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Check&gt;
+Promise&lt;[Check](./influxdb-client-apis.check.md)<!-- -->&gt;
 
 promise of response
 

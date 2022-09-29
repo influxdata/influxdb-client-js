@@ -4,6 +4,8 @@
 
 ## PostBucketRequest.orgID property
 
+Organization ID. The ID of the organization.
+
 <b>Signature:</b>
 
 ```typescript

@@ -16,11 +16,11 @@ response(query: string | ParameterizedQuery): AnnotatedCSVResponse;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string \| ParameterizedQuery | query |
+|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
 
 <b>Returns:</b>
 
-AnnotatedCSVResponse
+[AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
 
 response with various methods to process data from the returned annotated CSV response data stream
 

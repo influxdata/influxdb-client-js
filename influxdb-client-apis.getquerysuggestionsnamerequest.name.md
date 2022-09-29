@@ -4,7 +4,7 @@
 
 ## GetQuerySuggestionsNameRequest.name property
 
-The name of the branching suggestion.
+A Flux Function name. Only returns functions with this name.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDMembers() method
 
-List all task members. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksIDMembers](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDMembers)
+List all task members. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasksIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDMembers)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksIDMembers(request: GetTasksIDMembersRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTasksIDMembersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTasksIDMembersRequest](./influxdb-client-apis.gettasksidmembersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceMembers&gt;
+Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
 
 promise of response
 

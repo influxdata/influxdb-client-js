@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafsIDLabels() method
 
-Add a label to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTelegrafsIDLabels)
+Add a label to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTelegrafsIDLabels(request: PostTelegrafsIDLabelsRequest, requestOptions?: Re
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostTelegrafsIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostTelegrafsIDLabelsRequest](./influxdb-client-apis.posttelegrafsidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelResponse&gt;
+Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
 
 promise of response
 

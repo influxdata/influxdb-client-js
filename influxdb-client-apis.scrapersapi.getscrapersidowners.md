@@ -4,7 +4,7 @@
 
 ## ScrapersAPI.getScrapersIDOwners() method
 
-List all owners of a scraper target. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetScrapersIDOwners)
+List all owners of a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDOwners)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getScrapersIDOwners(request: GetScrapersIDOwnersRequest, requestOptions?: Reques
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetScrapersIDOwnersRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetScrapersIDOwnersRequest](./influxdb-client-apis.getscrapersidownersrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;ResourceOwners&gt;
+Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
 
 promise of response
 

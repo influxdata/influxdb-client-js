@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest.offset property
 
-Override the 'offset' option in the flux script.
+Update the 'offset' option in the flux script.
 
 <b>Signature:</b>
 

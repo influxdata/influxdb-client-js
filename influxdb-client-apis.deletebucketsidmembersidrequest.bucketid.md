@@ -4,7 +4,7 @@
 
 ## DeleteBucketsIDMembersIDRequest.bucketID property
 
-The bucket ID.
+The ID of the bucket to remove a user from.
 
 <b>Signature:</b>
 

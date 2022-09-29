@@ -16,7 +16,7 @@ interface DeletePredicateRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md) |  | string | <i>(Optional)</i> InfluxQL-like delete statement |
-|  [start](./influxdb-client-apis.deletepredicaterequest.start.md) |  | string | RFC3339Nano |
-|  [stop](./influxdb-client-apis.deletepredicaterequest.stop.md) |  | string | RFC3339Nano |
+|  [predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md) |  | string | <i>(Optional)</i> An expression in [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->. |
+|  [start](./influxdb-client-apis.deletepredicaterequest.start.md) |  | string | A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The earliest time to delete from. |
+|  [stop](./influxdb-client-apis.deletepredicaterequest.stop.md) |  | string | A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The latest time to delete from. |
 

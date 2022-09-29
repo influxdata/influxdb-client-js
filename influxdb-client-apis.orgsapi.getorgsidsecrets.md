@@ -4,7 +4,7 @@
 
 ## OrgsAPI.getOrgsIDSecrets() method
 
-List all secret keys for an organization. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetOrgsIDSecrets)
+List all secret keys for an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetOrgsIDSecrets)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getOrgsIDSecrets(request: GetOrgsIDSecretsRequest, requestOptions?: RequestOptio
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetOrgsIDSecretsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetOrgsIDSecretsRequest](./influxdb-client-apis.getorgsidsecretsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;SecretKeysResponse&gt;
+Promise&lt;[SecretKeysResponse](./influxdb-client-apis.secretkeysresponse.md)<!-- -->&gt;
 
 promise of response
 

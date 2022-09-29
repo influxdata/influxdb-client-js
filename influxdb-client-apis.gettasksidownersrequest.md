@@ -14,5 +14,5 @@ interface GetTasksIDOwnersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidownersrequest.taskid.md) |  | string | The task ID. |
+|  [taskID](./influxdb-client-apis.gettasksidownersrequest.taskid.md) |  | string | The ID of the task to retrieve owners for. |
 

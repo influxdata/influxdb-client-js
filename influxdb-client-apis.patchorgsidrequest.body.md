@@ -4,7 +4,7 @@
 
 ## PatchOrgsIDRequest.body property
 
-Organization update to apply
+The organization update to apply.
 
 <b>Signature:</b>
 

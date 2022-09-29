@@ -4,7 +4,7 @@
 
 ## GetOrgsIDRequest.orgID property
 
-The ID of the organization to get.
+The ID of the organization to retrieve.
 
 <b>Signature:</b>
 

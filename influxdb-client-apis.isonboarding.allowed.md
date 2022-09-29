@@ -4,7 +4,7 @@
 
 ## IsOnboarding.allowed property
 
-True means that the influxdb instance has NOT had initial setup; false means that the database has been setup.
+If `true`<!-- -->, the InfluxDB instance hasn't had initial setup; `false` otherwise.
 
 <b>Signature:</b>
 

@@ -16,8 +16,8 @@ deleteScriptsID(request: DeleteScriptsIDRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteScriptsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteScriptsIDRequest](./influxdb-client-apis.deletescriptsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

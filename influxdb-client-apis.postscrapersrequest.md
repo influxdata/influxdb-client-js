@@ -14,5 +14,5 @@ interface PostScrapersRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersrequest.body.md) |  | ScraperTargetRequest | Scraper target to create |
+|  [body](./influxdb-client-apis.postscrapersrequest.body.md) |  | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target to create |
 

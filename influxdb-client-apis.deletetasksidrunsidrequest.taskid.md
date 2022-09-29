@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDRunsIDRequest.taskID property
 
-The task ID.
+The ID of the task to cancel.
 
 <b>Signature:</b>
 

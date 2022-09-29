@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDLabelsIDRequest.labelID property
 
-The label ID.
+The ID of the label to delete.
 
 <b>Signature:</b>
 

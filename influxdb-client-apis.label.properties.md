@@ -4,7 +4,7 @@
 
 ## Label.properties property
 
-Key/Value pairs associated with this label. Keys can be removed by sending an update with an empty value.
+Key-value pairs associated with this label. To remove a property, send an update with an empty value (`""`<!-- -->) for the key.
 
 <b>Signature:</b>
 

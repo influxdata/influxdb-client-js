@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.getTelegrafsIDLabels() method
 
-List all labels for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafsIDLabels)
+List all labels for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTelegrafsIDLabels(request: GetTelegrafsIDLabelsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTelegrafsIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTelegrafsIDLabelsRequest](./influxdb-client-apis.gettelegrafsidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelsResponse&gt;
+Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
 
 promise of response
 

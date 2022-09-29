@@ -4,7 +4,7 @@
 
 ## DbrpsAPI.getDBRPsID() method
 
-Retrieve a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDBRPsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDBRPsID)
+Retrieve a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDBRPsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDBRPsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDBRPsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;DBRPGet&gt;
+Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
 
 promise of response
 

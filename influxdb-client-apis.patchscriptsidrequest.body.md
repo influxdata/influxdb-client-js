@@ -4,7 +4,7 @@
 
 ## PatchScriptsIDRequest.body property
 
-Script update to apply
+The script update to apply.
 
 <b>Signature:</b>
 

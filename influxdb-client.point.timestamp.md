@@ -24,7 +24,7 @@ timestamp(value: Date | number | string | undefined): Point;
 
 <b>Returns:</b>
 
-Point
+[Point](./influxdb-client.point.md)
 
 this
 

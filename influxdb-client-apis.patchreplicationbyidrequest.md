@@ -14,7 +14,7 @@ interface PatchReplicationByIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchreplicationbyidrequest.body.md) |  | ReplicationUpdateRequest | entity body |
+|  [body](./influxdb-client-apis.patchreplicationbyidrequest.body.md) |  | [ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md) | entity body |
 |  [replicationID](./influxdb-client-apis.patchreplicationbyidrequest.replicationid.md) |  | string |  |
 |  [validate?](./influxdb-client-apis.patchreplicationbyidrequest.validate.md) |  | any | <i>(Optional)</i> If true, validate the updated information, but don't save it. |
 

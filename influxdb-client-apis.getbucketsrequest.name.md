@@ -4,7 +4,7 @@
 
 ## GetBucketsRequest.name property
 
-Only returns buckets with a specific name.
+Bucket name. Only returns buckets with this specific name.
 
 <b>Signature:</b>
 

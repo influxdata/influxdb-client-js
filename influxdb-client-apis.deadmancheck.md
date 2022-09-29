@@ -22,3 +22,5 @@ declare type DeadmanCheck = CheckBase & {
     statusMessageTemplate?: string;
 };
 ```
+<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md)
+

@@ -14,6 +14,6 @@ interface PostBucketsIDLabelsRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md) |  | LabelMapping | Label to add |
-|  [bucketID](./influxdb-client-apis.postbucketsidlabelsrequest.bucketid.md) |  | string | The bucket ID. |
+|  [body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | An object that contains a \_<code>labelID</code>\_ to add to the bucket. |
+|  [bucketID](./influxdb-client-apis.postbucketsidlabelsrequest.bucketid.md) |  | string | Bucket ID. The ID of the bucket to label. |
 

@@ -4,7 +4,7 @@
 
 ## TelegramNotificationRuleBase.disableWebPagePreview property
 
-Disables preview of web links in the sent messages when "true". Defaults to "false" .
+Disables preview of web links in the sent messages when "true". Defaults to "false".
 
 <b>Signature:</b>
 

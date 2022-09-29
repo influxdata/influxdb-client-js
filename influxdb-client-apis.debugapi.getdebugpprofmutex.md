@@ -4,7 +4,7 @@
 
 ## DebugAPI.getDebugPprofMutex() method
 
-Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDebugPprofMutex)
+Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofMutex)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ getDebugPprofMutex(request?: GetDebugPprofMutexRequest, requestOptions?: Request
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDebugPprofMutexRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

@@ -4,7 +4,7 @@
 
 ## Task.offset property
 
-[Duration](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset. The value is a [duration literal](https://docs.influxdata.com/flux/latest/spec/lexical-elements/#duration-literals)<!-- -->.
+A [duration](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset.
 
 <b>Signature:</b>
 

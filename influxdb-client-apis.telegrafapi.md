@@ -22,5 +22,5 @@ declare class TelegrafAPI
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [getTelegrafPlugins(request, requestOptions)](./influxdb-client-apis.telegrafapi.gettelegrafplugins.md) |  | List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTelegrafPlugins) |
+|  [getTelegrafPlugins(request, requestOptions)](./influxdb-client-apis.telegrafapi.gettelegrafplugins.md) |  | List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafPlugins) |
 

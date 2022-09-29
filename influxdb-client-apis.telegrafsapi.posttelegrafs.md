@@ -4,7 +4,7 @@
 
 ## TelegrafsAPI.postTelegrafs() method
 
-Create a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTelegrafs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTelegrafs)
+Create a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafs)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTelegrafs(request: PostTelegrafsRequest, requestOptions?: RequestOptions): P
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostTelegrafsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostTelegrafsRequest](./influxdb-client-apis.posttelegrafsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Telegraf&gt;
+Promise&lt;[Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->&gt;
 
 promise of response
 

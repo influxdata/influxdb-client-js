@@ -4,6 +4,41 @@
 
 ## TemplateApply.secrets property
 
+An object with key-value pairs that map to \*\*secrets\*\* in queries.
+
+Queries may reference secrets stored in InfluxDB--for example, the following Flux script retrieves `POSTGRES_USERNAME` and `POSTGRES_PASSWORD` secrets and then uses them to connect to a PostgreSQL database:
+
+```js
+import "sql"
+import "influxdata/influxdb/secrets"
+
+username = secrets.get(key: "POSTGRES_USERNAME")
+password = secrets.get(key: "POSTGRES_PASSWORD")
+
+sql.from(
+  driverName: "postgres",
+  dataSourceName: "postgresql://${username}:${password}@localhost:5432",
+  query: "SELECT * FROM example_table",
+)
+```
+To define secret values in your `/api/v2/templates/apply` request, pass the `secrets` parameter with key-value pairs--for example:
+
+```json
+{
+  ...
+  "secrets": {
+    "POSTGRES_USERNAME": "pguser",
+    "POSTGRES_PASSWORD": "foo"
+  }
+  ...
+}
+```
+InfluxDB stores the key-value pairs as secrets that you can access with `secrets.get()`<!-- -->. Once stored, you can't view secret values in InfluxDB.
+
+\#\#\#\# Related guides
+
+- [How to pass secrets when installing a template](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/use/#pass-secrets-when-installing-a-template)
+
 <b>Signature:</b>
 
 ```typescript

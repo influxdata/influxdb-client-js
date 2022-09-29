@@ -9,3 +9,5 @@
 ```typescript
 declare type BucketShardMappings = BucketShardMapping[];
 ```
+<b>References:</b> [BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md)
+

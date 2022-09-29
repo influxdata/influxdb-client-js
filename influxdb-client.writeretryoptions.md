@@ -11,7 +11,7 @@ Options that configure strategy for retrying failed InfluxDB write operations.
 ```typescript
 interface WriteRetryOptions extends RetryDelayStrategyOptions 
 ```
-<b>Extends:</b> RetryDelayStrategyOptions
+<b>Extends:</b> [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md)
 
 ## Properties
 
@@ -26,5 +26,6 @@ interface WriteRetryOptions extends RetryDelayStrategyOptions
 |  Method | Description |
 |  --- | --- |
 |  [writeFailed(this, error, lines, attempt, expires)](./influxdb-client.writeretryoptions.writefailed.md) | WriteFailed is called to inform about write errors. |
+|  [writeRetrySkipped(entry)](./influxdb-client.writeretryoptions.writeretryskipped.md) | WriteRetrySkipped is informed about lines that were removed from the retry buffer to keep the size of the retry buffer under the configured limit (maxBufferLines). |
 |  [writeSuccess(this, lines)](./influxdb-client.writeretryoptions.writesuccess.md) | WriteSuccess is informed about successfully written lines. |
 

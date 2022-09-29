@@ -17,10 +17,11 @@ interface Script
 |  [createdAt?](./influxdb-client-apis.script.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
 |  [description?](./influxdb-client-apis.script.description.md) |  | string | <i>(Optional)</i> |
 |  [id?](./influxdb-client-apis.script.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [language?](./influxdb-client-apis.script.language.md) |  | ScriptLanguage | <i>(Optional)</i> |
+|  [labels?](./influxdb-client-apis.script.labels.md) |  | string\[\] | <i>(Optional)</i> The list of label names associated with the script. |
+|  [language?](./influxdb-client-apis.script.language.md) |  | [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) | <i>(Optional)</i> |
 |  [name](./influxdb-client-apis.script.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.script.orgid.md) |  | string |  |
-|  [script](./influxdb-client-apis.script.script.md) |  | string | script to be executed |
+|  [script](./influxdb-client-apis.script.script.md) |  | string | The script to execute. |
 |  [updatedAt?](./influxdb-client-apis.script.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [url?](./influxdb-client-apis.script.url.md) |  | string | <i>(Optional)</i> invocation endpoint address |
+|  [url?](./influxdb-client-apis.script.url.md) |  | string | <i>(Optional)</i> The invocation endpoint address. |
 

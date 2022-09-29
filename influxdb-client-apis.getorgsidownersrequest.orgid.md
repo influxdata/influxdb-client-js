@@ -4,7 +4,7 @@
 
 ## GetOrgsIDOwnersRequest.orgID property
 
-The organization ID.
+The ID of the organization to list owners for.
 
 <b>Signature:</b>
 

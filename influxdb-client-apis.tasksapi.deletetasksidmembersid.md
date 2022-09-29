@@ -4,7 +4,7 @@
 
 ## TasksAPI.deleteTasksIDMembersID() method
 
-Remove a member from a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteTasksIDMembersID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteTasksIDMembersID)
+Remove a member from a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTasksIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTasksIDMembersID)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteTasksIDMembersID(request: DeleteTasksIDMembersIDRequest, requestOptions?: 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteTasksIDMembersIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteTasksIDMembersIDRequest](./influxdb-client-apis.deletetasksidmembersidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

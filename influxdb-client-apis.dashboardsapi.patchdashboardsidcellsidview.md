@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.patchDashboardsIDCellsIDView() method
 
-Update the view for a cell. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PatchDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PatchDashboardsIDCellsIDView)
+Update the view for a cell. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchDashboardsIDCellsIDView)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ patchDashboardsIDCellsIDView(request: PatchDashboardsIDCellsIDViewRequest, reque
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PatchDashboardsIDCellsIDViewRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;View&gt;
+Promise&lt;[View](./influxdb-client-apis.view.md)<!-- -->&gt;
 
 promise of response
 

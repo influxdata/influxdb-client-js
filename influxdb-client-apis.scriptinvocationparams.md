@@ -14,5 +14,5 @@ interface ScriptInvocationParams
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [params?](./influxdb-client-apis.scriptinvocationparams.params.md) |  | any | <i>(Optional)</i> |
+|  [params?](./influxdb-client-apis.scriptinvocationparams.params.md) |  | any | <i>(Optional)</i> The script parameters. <code>params</code> contains key-value pairs that map values to the \*\*params.keys\*\* in a script. When you invoke a script with <code>params</code>, InfluxDB passes the values as invocation parameters to the script. |
 

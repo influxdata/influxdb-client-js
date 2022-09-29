@@ -4,6 +4,8 @@
 
 ## PostOrganizationRequest.name property
 
+The name of the organization.
+
 <b>Signature:</b>
 
 ```typescript

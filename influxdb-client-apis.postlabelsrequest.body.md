@@ -4,7 +4,7 @@
 
 ## PostLabelsRequest.body property
 
-Label to create
+The label to create.
 
 <b>Signature:</b>
 

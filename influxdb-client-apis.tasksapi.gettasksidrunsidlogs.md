@@ -4,7 +4,7 @@
 
 ## TasksAPI.getTasksIDRunsIDLogs() method
 
-Retrieve all logs for a run. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetTasksIDRunsIDLogs](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetTasksIDRunsIDLogs)
+Retrieve all logs for a run. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasksIDRunsIDLogs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRunsIDLogs)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getTasksIDRunsIDLogs(request: GetTasksIDRunsIDLogsRequest, requestOptions?: Requ
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetTasksIDRunsIDLogsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetTasksIDRunsIDLogsRequest](./influxdb-client-apis.gettasksidrunsidlogsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Logs&gt;
+Promise&lt;[Logs](./influxdb-client-apis.logs.md)<!-- -->&gt;
 
 promise of response
 

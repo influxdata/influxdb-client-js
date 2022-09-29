@@ -4,7 +4,7 @@
 
 ## DashboardsAPI.getDashboardsID() method
 
-Retrieve a dashboard. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetDashboardsID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetDashboardsID)
+Retrieve a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboardsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboardsID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getDashboardsID(request: GetDashboardsIDRequest, requestOptions?: RequestOptions
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetDashboardsIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetDashboardsIDRequest](./influxdb-client-apis.getdashboardsidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Dashboard \| DashboardWithViewProperties&gt;
+Promise&lt;[Dashboard](./influxdb-client-apis.dashboard.md) \| [DashboardWithViewProperties](./influxdb-client-apis.dashboardwithviewproperties.md)<!-- -->&gt;
 
 promise of response
 

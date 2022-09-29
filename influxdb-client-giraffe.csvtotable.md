@@ -17,8 +17,8 @@ declare function csvToTable(csv: string, tableFactory: GiraffeTableFactory, tabl
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  csv | string | annotated CSV flux query response |
-|  tableFactory | GiraffeTableFactory | creates a new Giraffe table |
-|  tableOptions | TableOptions | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect. |
+|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
+|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect. |
 
 <b>Returns:</b>
 

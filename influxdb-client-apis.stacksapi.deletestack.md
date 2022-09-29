@@ -4,7 +4,7 @@
 
 ## StacksAPI.deleteStack() method
 
-Delete a stack and associated resources. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/DeleteStack](https://docs.influxdata.com/influxdb/v2.3/api/#operation/DeleteStack)
+Delete a stack and associated resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteStack)
 
 <b>Signature:</b>
 
@@ -16,8 +16,8 @@ deleteStack(request: DeleteStackRequest, requestOptions?: RequestOptions): Promi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | DeleteStackRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [DeleteStackRequest](./influxdb-client-apis.deletestackrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 

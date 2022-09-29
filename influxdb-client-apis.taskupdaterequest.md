@@ -14,11 +14,11 @@ interface TaskUpdateRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [cron?](./influxdb-client-apis.taskupdaterequest.cron.md) |  | string | <i>(Optional)</i> Override the 'cron' option in the flux script. |
-|  [description?](./influxdb-client-apis.taskupdaterequest.description.md) |  | string | <i>(Optional)</i> An optional description of the task. |
-|  [every?](./influxdb-client-apis.taskupdaterequest.every.md) |  | string | <i>(Optional)</i> Override the 'every' option in the flux script. |
-|  [flux?](./influxdb-client-apis.taskupdaterequest.flux.md) |  | string | <i>(Optional)</i> The Flux script to run for this task. |
-|  [name?](./influxdb-client-apis.taskupdaterequest.name.md) |  | string | <i>(Optional)</i> Override the 'name' option in the flux script. |
-|  [offset?](./influxdb-client-apis.taskupdaterequest.offset.md) |  | string | <i>(Optional)</i> Override the 'offset' option in the flux script. |
-|  [status?](./influxdb-client-apis.taskupdaterequest.status.md) |  | TaskStatusType | <i>(Optional)</i> |
+|  [cron?](./influxdb-client-apis.taskupdaterequest.cron.md) |  | string | <i>(Optional)</i> Update the 'cron' option in the flux script. |
+|  [description?](./influxdb-client-apis.taskupdaterequest.description.md) |  | string | <i>(Optional)</i> Update the description of the task. |
+|  [every?](./influxdb-client-apis.taskupdaterequest.every.md) |  | string | <i>(Optional)</i> Update the 'every' option in the flux script. |
+|  [flux?](./influxdb-client-apis.taskupdaterequest.flux.md) |  | string | <i>(Optional)</i> The Flux script that the task runs. |
+|  [name?](./influxdb-client-apis.taskupdaterequest.name.md) |  | string | <i>(Optional)</i> Update the 'name' option in the flux script. |
+|  [offset?](./influxdb-client-apis.taskupdaterequest.offset.md) |  | string | <i>(Optional)</i> Update the 'offset' option in the flux script. |
+|  [status?](./influxdb-client-apis.taskupdaterequest.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
 

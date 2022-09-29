@@ -4,7 +4,7 @@
 
 ## GetOrgsIDMembersRequest.orgID property
 
-The organization ID.
+The ID of the organization to retrieve users for.
 
 <b>Signature:</b>
 

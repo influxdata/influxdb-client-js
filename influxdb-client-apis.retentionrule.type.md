@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-type: 'expire';
+type?: 'expire';
 ```

@@ -14,5 +14,5 @@ interface ExportTemplateRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.exporttemplaterequest.body.md) |  | TemplateExportByID \| TemplateExportByName | Export resources as an InfluxDB template. |
+|  [body](./influxdb-client-apis.exporttemplaterequest.body.md) |  | [TemplateExportByID](./influxdb-client-apis.templateexportbyid.md) \| [TemplateExportByName](./influxdb-client-apis.templateexportbyname.md) | Export resources as an InfluxDB template. |
 

@@ -4,6 +4,16 @@
 
 ## PostBucketRequest.schemaType property
 
+Schema Type. Use `explicit` to enforce column names, tags, fields, and data types for your data.
+
+\#\#\#\# InfluxDB Cloud
+
+- Default is `implicit`<!-- -->.
+
+\#\#\#\# InfluxDB OSS
+
+- Doesn't support `schemaType`<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

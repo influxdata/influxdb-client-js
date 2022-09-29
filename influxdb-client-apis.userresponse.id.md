@@ -4,6 +4,8 @@
 
 ## UserResponse.id property
 
+The ID of the user.
+
 <b>Signature:</b>
 
 ```typescript

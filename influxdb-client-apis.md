@@ -21,7 +21,6 @@
 |  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ . |
 |  [HealthAPI](./influxdb-client-apis.healthapi.md) | Health API |
 |  [LabelsAPI](./influxdb-client-apis.labelsapi.md) | Labels API |
-|  [LegacyAPI](./influxdb-client-apis.legacyapi.md) | Legacy API |
 |  [MeAPI](./influxdb-client-apis.meapi.md) | Me API |
 |  [MetricsAPI](./influxdb-client-apis.metricsapi.md) | Metrics API |
 |  [NotificationEndpointsAPI](./influxdb-client-apis.notificationendpointsapi.md) | NotificationEndpoints API |
@@ -95,7 +94,7 @@
 |  [DashboardColor](./influxdb-client-apis.dashboardcolor.md) | Defines an encoding of data value into color space. |
 |  [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
 |  [Dashboards](./influxdb-client-apis.dashboards.md) |  |
-|  [DateTimeLiteral](./influxdb-client-apis.datetimeliteral.md) | Represents an instant in time with nanosecond precision using the syntax of golang's RFC3339 Nanosecond variant |
+|  [DateTimeLiteral](./influxdb-client-apis.datetimeliteral.md) | Represents an instant in time with nanosecond precision in [RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->. |
 |  [DBRP](./influxdb-client-apis.dbrp.md) |  |
 |  [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) |  |
 |  [DBRPGet](./influxdb-client-apis.dbrpget.md) |  |
@@ -116,7 +115,6 @@
 |  [DeleteDashboardsIDRequest](./influxdb-client-apis.deletedashboardsidrequest.md) |  |
 |  [DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md) |  |
 |  [DeleteLabelsIDRequest](./influxdb-client-apis.deletelabelsidrequest.md) |  |
-|  [DeleteLegacyAuthorizationsIDRequest](./influxdb-client-apis.deletelegacyauthorizationsidrequest.md) |  |
 |  [DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md) |  |
 |  [DeleteNotificationEndpointsIDRequest](./influxdb-client-apis.deletenotificationendpointsidrequest.md) |  |
 |  [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) |  |
@@ -147,15 +145,15 @@
 |  [DeleteUsersIDRequest](./influxdb-client-apis.deleteusersidrequest.md) |  |
 |  [DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md) |  |
 |  [DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md) |  |
-|  [Dialect](./influxdb-client-apis.dialect.md) | Dialect are options to change the default CSV output format; https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/\#dialect-descriptions |
+|  [Dialect](./influxdb-client-apis.dialect.md) | <p>Options for tabular data output. Default output is [annotated CSV](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#csv-response-format) with headers.</p><p>For more information about tabular data \*\*dialect\*\*, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions)<!-- -->.</p> |
 |  [DictExpression](./influxdb-client-apis.dictexpression.md) | Used to create and directly specify the elements of a dictionary |
-|  [DictItem](./influxdb-client-apis.dictitem.md) | A key/value pair in a dictionary |
+|  [DictItem](./influxdb-client-apis.dictitem.md) | A key-value pair in a dictionary. |
 |  [Duration](./influxdb-client-apis.duration.md) | A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed. |
 |  [DurationLiteral](./influxdb-client-apis.durationliteral.md) | Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration |
 |  [Error\_2](./influxdb-client-apis.error_2.md) |  |
 |  [ExecutionOptions](./influxdb-client-apis.executionoptions.md) | ExecutionOptions contains execution options for a flux script. |
 |  [ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md) |  |
-|  [ExpressionStatement](./influxdb-client-apis.expressionstatement.md) | May consist of an expression that does not return a value and is executed solely for its side-effects |
+|  [ExpressionStatement](./influxdb-client-apis.expressionstatement.md) | May consist of an expression that doesn't return a value and is executed solely for its side-effects |
 |  [File](./influxdb-client-apis.file.md) | Represents a source from a single file |
 |  [FloatLiteral](./influxdb-client-apis.floatliteral.md) | Represents floating point numbers according to the double representations defined by the IEEE-754-1985 |
 |  [FluxResponse](./influxdb-client-apis.fluxresponse.md) | Rendered flux that backs the check or notification. |
@@ -163,7 +161,6 @@
 |  [FluxSuggestions](./influxdb-client-apis.fluxsuggestions.md) |  |
 |  [FunctionExpression](./influxdb-client-apis.functionexpression.md) | Function expression |
 |  [GaugeViewProperties](./influxdb-client-apis.gaugeviewproperties.md) |  |
-|  [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md) |  |
 |  [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md) |  |
 |  [GeoViewProperties](./influxdb-client-apis.geoviewproperties.md) |  |
 |  [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) |  |
@@ -203,8 +200,6 @@
 |  [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) |  |
 |  [GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md) |  |
 |  [GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md) |  |
-|  [GetLegacyAuthorizationsIDRequest](./influxdb-client-apis.getlegacyauthorizationsidrequest.md) |  |
-|  [GetLegacyAuthorizationsRequest](./influxdb-client-apis.getlegacyauthorizationsrequest.md) |  |
 |  [GetMeRequest](./influxdb-client-apis.getmerequest.md) |  |
 |  [GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md) |  |
 |  [GetNotificationEndpointsIDLabelsRequest](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.md) |  |
@@ -282,7 +277,7 @@
 |  [LinePlusSingleStatProperties](./influxdb-client-apis.lineplussinglestatproperties.md) |  |
 |  [LineProtocolError](./influxdb-client-apis.lineprotocolerror.md) |  |
 |  [LineProtocolLengthError](./influxdb-client-apis.lineprotocollengtherror.md) |  |
-|  [Links](./influxdb-client-apis.links.md) |  |
+|  [Links](./influxdb-client-apis.links.md) | URI pointers for additional paged results. |
 |  [ListStacksRequest](./influxdb-client-apis.liststacksrequest.md) |  |
 |  [LogEvent](./influxdb-client-apis.logevent.md) |  |
 |  [LogicalExpression](./influxdb-client-apis.logicalexpression.md) | Represents the rule conditions that collectively evaluate to either true or false |
@@ -311,7 +306,7 @@
 |  [ParenExpression](./influxdb-client-apis.parenexpression.md) | Represents an expression wrapped in parenthesis |
 |  [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) |  |
 |  [PatchAuthorizationsIDRequest](./influxdb-client-apis.patchauthorizationsidrequest.md) |  |
-|  [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | Updates to an existing bucket resource. |
+|  [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | An object that contains updated bucket properties to apply. |
 |  [PatchBucketsIDRequest](./influxdb-client-apis.patchbucketsidrequest.md) |  |
 |  [PatchChecksIDRequest](./influxdb-client-apis.patchchecksidrequest.md) |  |
 |  [PatchDashboardsIDCellsIDRequest](./influxdb-client-apis.patchdashboardsidcellsidrequest.md) |  |
@@ -319,16 +314,17 @@
 |  [PatchDashboardsIDRequest](./influxdb-client-apis.patchdashboardsidrequest.md) |  |
 |  [PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md) |  |
 |  [PatchLabelsIDRequest](./influxdb-client-apis.patchlabelsidrequest.md) |  |
-|  [PatchLegacyAuthorizationsIDRequest](./influxdb-client-apis.patchlegacyauthorizationsidrequest.md) |  |
 |  [PatchNotificationEndpointsIDRequest](./influxdb-client-apis.patchnotificationendpointsidrequest.md) |  |
 |  [PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md) |  |
-|  [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) |  |
+|  [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) | An object that contains updated organization properties to apply. |
 |  [PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md) |  |
 |  [PatchOrgsIDSecretsRequest](./influxdb-client-apis.patchorgsidsecretsrequest.md) |  |
 |  [PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md) |  |
 |  [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) |  |
-|  [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md) | Updates to a rule to expire or retain data. |
+|  [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md) |  |
 |  [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) |  |
+|  [PatchScriptsIDAddLabelsRequest](./influxdb-client-apis.patchscriptsidaddlabelsrequest.md) |  |
+|  [PatchScriptsIDRemoveLabelsRequest](./influxdb-client-apis.patchscriptsidremovelabelsrequest.md) |  |
 |  [PatchScriptsIDRequest](./influxdb-client-apis.patchscriptsidrequest.md) |  |
 |  [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) |  |
 |  [PatchTasksIDRequest](./influxdb-client-apis.patchtasksidrequest.md) |  |
@@ -352,8 +348,6 @@
 |  [PostDBRPRequest](./influxdb-client-apis.postdbrprequest.md) |  |
 |  [PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md) |  |
 |  [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) |  |
-|  [PostLegacyAuthorizationsIDPasswordRequest](./influxdb-client-apis.postlegacyauthorizationsidpasswordrequest.md) |  |
-|  [PostLegacyAuthorizationsRequest](./influxdb-client-apis.postlegacyauthorizationsrequest.md) |  |
 |  [PostNotificationEndpointIDLabelsRequest](./influxdb-client-apis.postnotificationendpointidlabelsrequest.md) |  |
 |  [PostNotificationRuleIDLabelsRequest](./influxdb-client-apis.postnotificationruleidlabelsrequest.md) |  |
 |  [PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md) |  |
@@ -405,7 +399,7 @@
 |  [PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md) |  |
 |  [PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md) |  |
 |  [PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md) |  |
-|  [Query](./influxdb-client-apis.query.md) | Query influx using the Flux language |
+|  [Query](./influxdb-client-apis.query.md) | Query InfluxDB with the Flux language |
 |  [QueryVariableProperties](./influxdb-client-apis.queryvariableproperties.md) |  |
 |  [ReadStackRequest](./influxdb-client-apis.readstackrequest.md) |  |
 |  [Ready](./influxdb-client-apis.ready.md) |  |
@@ -513,12 +507,12 @@
 |  [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md) |  |
 |  [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md) |  |
 |  [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md) |  |
+|  [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md) |  |
 |  [GeoViewLayer](./influxdb-client-apis.geoviewlayer.md) |  |
 |  [GreaterThreshold](./influxdb-client-apis.greaterthreshold.md) |  |
 |  [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md) |  |
 |  [HTTPNotificationRule](./influxdb-client-apis.httpnotificationrule.md) |  |
 |  [Labels](./influxdb-client-apis.labels.md) |  |
-|  [LegacyAuthorizationPostRequest](./influxdb-client-apis.legacyauthorizationpostrequest.md) |  |
 |  [LesserThreshold](./influxdb-client-apis.lesserthreshold.md) |  |
 |  [Link](./influxdb-client-apis.link.md) | URI of resource. |
 |  [Node](./influxdb-client-apis.node.md) |  |
@@ -540,11 +534,11 @@
 |  [ResourceMember](./influxdb-client-apis.resourcemember.md) |  |
 |  [ResourceOwner](./influxdb-client-apis.resourceowner.md) |  |
 |  [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
-|  [RetentionRules](./influxdb-client-apis.retentionrules.md) | Rules to expire or retain data. No rules means data never expires. |
+|  [RetentionRules](./influxdb-client-apis.retentionrules.md) | <p>Retention rules to expire or retain data. \#\#\#\# InfluxDB Cloud</p><p>- <code>retentionRules</code> is required.</p><p>\#\#\#\# InfluxDB OSS</p><p>- <code>retentionRules</code> isn't required.</p> |
 |  [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | The state to record if check matches a criteria. |
 |  [SchemaType](./influxdb-client-apis.schematype.md) |  |
 |  [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md) |  |
-|  [ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md) | The data sent in the response body when a script is invoked by an HTTP request. User defined and dynamic. |
+|  [ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md) | The response body contains the results of the executed script. The response is user-defined and dynamic. |
 |  [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) |  |
 |  [SecretKeysResponse](./influxdb-client-apis.secretkeysresponse.md) |  |
 |  [Secrets](./influxdb-client-apis.secrets.md) |  |
@@ -556,7 +550,7 @@
 |  [SMTPNotificationRule](./influxdb-client-apis.smtpnotificationrule.md) |  |
 |  [Statement](./influxdb-client-apis.statement.md) |  |
 |  [SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md) |  |
-|  [TaskStatusType](./influxdb-client-apis.taskstatustype.md) |  |
+|  [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <code>inactive</code> cancels scheduled runs and prevents manual runs of the task. |
 |  [Telegraf](./influxdb-client-apis.telegraf.md) |  |
 |  [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md) |  |
 |  [TelegramNotificationRule](./influxdb-client-apis.telegramnotificationrule.md) |  |

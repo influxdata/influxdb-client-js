@@ -16,12 +16,12 @@ getScripts(request?: GetScriptsRequest, requestOptions?: RequestOptions): Promis
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetScriptsRequest | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;Scripts&gt;
+Promise&lt;[Scripts](./influxdb-client-apis.scripts.md)<!-- -->&gt;
 
 promise of response
 

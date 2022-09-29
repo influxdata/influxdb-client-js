@@ -20,5 +20,5 @@ declare function fluxBool(value: any): FluxParameterLike;
 
 <b>Returns:</b>
 
-FluxParameterLike
+[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 

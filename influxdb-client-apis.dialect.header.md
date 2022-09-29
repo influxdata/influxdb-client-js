@@ -4,7 +4,7 @@
 
 ## Dialect.header property
 
-If true, the results will contain a header row
+If true, the results contain a header row.
 
 <b>Signature:</b>
 

@@ -4,7 +4,7 @@
 
 ## TasksAPI.postTasksIDLabels() method
 
-Add a label to a task. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/PostTasksIDLabels](https://docs.influxdata.com/influxdb/v2.3/api/#operation/PostTasksIDLabels)
+Add a label to a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTasksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTasksIDLabels)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ postTasksIDLabels(request: PostTasksIDLabelsRequest, requestOptions?: RequestOpt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | PostTasksIDLabelsRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [PostTasksIDLabelsRequest](./influxdb-client-apis.posttasksidlabelsrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;LabelResponse&gt;
+Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
 
 promise of response
 

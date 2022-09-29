@@ -14,12 +14,12 @@ interface GetTasksRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [after?](./influxdb-client-apis.gettasksrequest.after.md) |  | string | <i>(Optional)</i> Return tasks after a specified ID. |
-|  [limit?](./influxdb-client-apis.gettasksrequest.limit.md) |  | number | <i>(Optional)</i> The number of tasks to return |
-|  [name?](./influxdb-client-apis.gettasksrequest.name.md) |  | string | <i>(Optional)</i> Returns task with a specific name. |
-|  [org?](./influxdb-client-apis.gettasksrequest.org.md) |  | string | <i>(Optional)</i> Filter tasks to a specific organization name. |
-|  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) |  | string | <i>(Optional)</i> Filter tasks to a specific organization ID. |
-|  [status?](./influxdb-client-apis.gettasksrequest.status.md) |  | string | <i>(Optional)</i> Filter tasks by a status--"inactive" or "active". |
-|  [type?](./influxdb-client-apis.gettasksrequest.type.md) |  | string | <i>(Optional)</i> Type of task, unset by default. |
-|  [user?](./influxdb-client-apis.gettasksrequest.user.md) |  | string | <i>(Optional)</i> Filter tasks to a specific user ID. |
+|  [after?](./influxdb-client-apis.gettasksrequest.after.md) |  | string | <i>(Optional)</i> A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Only returns tasks created after the specified task. |
+|  [limit?](./influxdb-client-apis.gettasksrequest.limit.md) |  | number | <p><i>(Optional)</i> The maximum number of [tasks](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) to return. Default is <code>100</code>. The minimum is <code>1</code> and the maximum is <code>500</code>.</p><p>To reduce the payload size, combine \_<code>type=basic</code>\_ and \_<code>limit</code>\_ (see \_Request samples\_). For more information about the <code>basic</code> response, see the \_<code>type</code>\_ parameter.</p> |
+|  [name?](./influxdb-client-apis.gettasksrequest.name.md) |  | string | <i>(Optional)</i> A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) name. Only returns tasks with the specified name. Different tasks may have the same name. |
+|  [org?](./influxdb-client-apis.gettasksrequest.org.md) |  | string | <i>(Optional)</i> An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) name. Only returns tasks owned by the specified organization. |
+|  [orgID?](./influxdb-client-apis.gettasksrequest.orgid.md) |  | string | <i>(Optional)</i> An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) ID. Only returns tasks owned by the specified organization. |
+|  [status?](./influxdb-client-apis.gettasksrequest.status.md) |  | string | <i>(Optional)</i> A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) status. Only returns tasks that have the specified status (<code>active</code> or <code>inactive</code>). |
+|  [type?](./influxdb-client-apis.gettasksrequest.type.md) |  | string | <i>(Optional)</i> A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) type (<code>basic</code> or <code>system</code>). Default is <code>system</code>. Specifies the level of detail for tasks in the response. The default (<code>system</code>) response contains all the metadata properties for tasks. To reduce the response size, pass <code>basic</code> to omit some task properties (<code>flux</code>, <code>createdAt</code>, <code>updatedAt</code>). |
+|  [user?](./influxdb-client-apis.gettasksrequest.user.md) |  | string | <i>(Optional)</i> A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID. Only returns tasks owned by the specified user. |
 

@@ -4,7 +4,7 @@
 
 ## RemotesAPI.getRemoteConnectionByID() method
 
-Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.3/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.3/api/#operation/GetRemoteConnectionByID)
+Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnectionByID)
 
 <b>Signature:</b>
 
@@ -16,12 +16,12 @@ getRemoteConnectionByID(request: GetRemoteConnectionByIDRequest, requestOptions?
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | GetRemoteConnectionByIDRequest | request parameters and body (if supported) |
-|  requestOptions | RequestOptions | <i>(Optional)</i> optional transport options |
+|  request | [GetRemoteConnectionByIDRequest](./influxdb-client-apis.getremoteconnectionbyidrequest.md) | request parameters and body (if supported) |
+|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
 
 <b>Returns:</b>
 
-Promise&lt;RemoteConnection&gt;
+Promise&lt;[RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->&gt;
 
 promise of response
 

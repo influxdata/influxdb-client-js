@@ -14,6 +14,6 @@ interface PatchTasksIDRequest
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchtasksidrequest.body.md) |  | TaskUpdateRequest | Task update to apply |
-|  [taskID](./influxdb-client-apis.patchtasksidrequest.taskid.md) |  | string | The task ID. |
+|  [body](./influxdb-client-apis.patchtasksidrequest.body.md) |  | [TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md) | An object that contains updated task properties to apply. |
+|  [taskID](./influxdb-client-apis.patchtasksidrequest.taskid.md) |  | string | The ID of the task to update. |
 

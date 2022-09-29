@@ -14,6 +14,6 @@ interface NotificationEndpoints
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.notificationendpoints.links.md) |  | Links | <i>(Optional)</i> |
-|  [notificationEndpoints?](./influxdb-client-apis.notificationendpoints.notificationendpoints.md) |  | NotificationEndpoint\[\] | <i>(Optional)</i> |
+|  [links?](./influxdb-client-apis.notificationendpoints.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+|  [notificationEndpoints?](./influxdb-client-apis.notificationendpoints.notificationendpoints.md) |  | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->\[\] | <i>(Optional)</i> |
 

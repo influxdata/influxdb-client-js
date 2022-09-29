@@ -21,6 +21,7 @@ interface ReplicationCreationRequest
 |  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) |  | number |  |
 |  [name](./influxdb-client-apis.replicationcreationrequest.name.md) |  | string |  |
 |  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) |  | string |  |
-|  [remoteBucketID](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) |  | string |  |
+|  [remoteBucketID?](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) |  | string | <i>(Optional)</i> |
+|  [remoteBucketName?](./influxdb-client-apis.replicationcreationrequest.remotebucketname.md) |  | string | <i>(Optional)</i> |
 |  [remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md) |  | string |  |
 

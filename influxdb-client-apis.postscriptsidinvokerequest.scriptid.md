@@ -4,6 +4,8 @@
 
 ## PostScriptsIDInvokeRequest.scriptID property
 
+A script ID. Specifies the script to execute.
+
 <b>Signature:</b>
 
 ```typescript

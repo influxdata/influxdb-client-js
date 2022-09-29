@@ -4,6 +4,8 @@
 
 ## AddResourceMemberRequestBody.id property
 
+The ID of the user to add to the resource.
+
 <b>Signature:</b>
 
 ```typescript
