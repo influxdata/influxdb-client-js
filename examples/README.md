@@ -31,7 +31,7 @@ This directory contains javascript and typescript examples for node.js, browser,
   - [delete.ts](./delete.ts)
     Shows how to delete data from a bucket.
 - Browser examples
-  - Change `token, org, bucket, username, password` variables in [./env_browser.js](env_browser.js) to match your InfluxDB instance
+  - Change `token, org, bucket, username, password` variables in [./env_browser.mjs](env_browser.mjs) to match your InfluxDB instance
   - Run `npm run browser`
     It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests
