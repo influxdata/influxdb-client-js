@@ -16,13 +16,12 @@
       // import {PingAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /**
-       * Import the configuration from ./env_browser.js.
-       * The property INFLUX_ENV.bucket is only used in onboardingExample() and writeExample().
+       * Import InfluxDB configuration from ./env_browser.js.
+       * The `bucket` property is only used in onboardingExample() and writeExample().
        * To prevent SQL injection attacks, the variable is not used within the Flux query examples.
        * The query examples assume your InfluxDB bucket is named "my-bucket".
        */
-      import './env_browser.js'
-      const {url, token, org, bucket, username, password} = window.INFLUX_ENV
+      import {url, token, org, bucket, username, password} from './env_browser.mjs'
 
       const influxDB = new InfluxDB({url, token})
 
