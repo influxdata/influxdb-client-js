@@ -6,6 +6,7 @@
       import {
         InfluxDB,
         Point,
+        flux
       } from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
       import {
         PingAPI,
@@ -16,10 +17,7 @@
       // import {PingAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /**
-       * Import InfluxDB configuration from ./env_browser.js.
-       * The `bucket` property is only used in onboardingExample() and writeExample().
-       * To prevent SQL injection attacks, the variable is not used within the Flux query examples.
-       * The query examples assume your InfluxDB bucket is named "my-bucket".
+       * Import InfluxDB configuration rather than inlining it.
        */
       import {url, token, org, bucket, username, password} from './env_browser.mjs'
 
@@ -139,12 +137,6 @@
         else writeExample(number)
       })
       const queryInput = document.getElementById('query')
-      const fluxQueryParam = new URLSearchParams(window.location.search).get(
-        'fluxQuery'
-      )
-      if (fluxQueryParam) {
-        queryInput.value = fluxQueryParam
-      }
       document.getElementById('queryButton').addEventListener('click', () => {
         queryExample(queryInput.value)
       })
@@ -153,6 +145,15 @@
       })
       document.getElementById('pingButton').addEventListener('click', () => {
         pingExample()
+      })
+      document.addEventListener('DOMContentLoaded', () => {
+        const fluxQueryParam = new URLSearchParams(window.location.search).get('fluxQuery')
+        if (fluxQueryParam) {
+          queryInput.value = fluxQueryParam
+        } else {
+          queryInput.value = 
+            flux`from(bucket:${bucket}) |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")`.toString()
+        }
       })
     </script>
   </head>
@@ -170,9 +171,7 @@
   </div>
   <hr />
   <div style="display: flex; margin-bottom: 10px">
-    <textarea id="query" style="flex: 1" rows="2">
-from(bucket:"my-bucket") |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")</textarea
-    >
+    <textarea id="query" style="flex: 1" rows="2"></textarea>
   </div>
   <button id="queryButton">Query InfluxDB</button>
   <hr />
