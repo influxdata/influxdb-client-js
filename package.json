@@ -39,11 +39,21 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18",
     "@microsoft/api-documenter": "^7.19.12",
+    "@types/node": "^18",
+    "@types/react": "^18.0.21",
     "gh-pages": "^4.0.0",
     "lerna": "^5.0.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "@influxdata/giraffe": "^2.36.1",
+    "@influxdata/influxdb-client": "^1.30.0",
+    "@microsoft/api-extractor": "^7.32.0",
+    "apidoc": "^0.53.0",
+    "cpr": "^3.0.1",
+    "react": "^18.2.0",
+    "tsup": "^6.2.3"
   }
 }

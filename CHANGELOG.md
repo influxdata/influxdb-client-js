@@ -1,4 +1,6 @@
-## 1.30.0 [unreleased]
+## 1.31.0 [unreleased]
+
+## 1.30.0 [2022-09-29]
 
 ### Features
 
