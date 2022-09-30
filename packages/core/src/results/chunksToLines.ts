@@ -17,13 +17,17 @@ export function chunksToLines(
   let previous: Uint8Array | undefined
   let finished = false
   let quoted = false
+  let paused = false
+  let resumeChunks: (() => void) | undefined
 
   function bufferReceived(chunk: Uint8Array): void {
     let index: number
     let start = 0
     if (previous) {
+      // inspect the whole remaining data upon empty chunk
+      // empty chunk signalizes to restart of receiving
+      index = chunk.length === 0 ? 0 : (previous as Uint8Array).length
       chunk = chunks.concat(previous, chunk)
-      index = (previous as Buffer).length
     } else {
       index = 0
     }
@@ -37,29 +41,50 @@ export function chunksToLines(
           if (finished) {
             return
           }
-          target.next(chunks.toUtf8String(chunk, start, end))
+          paused = target.next(chunks.toUtf8String(chunk, start, end)) === false
           start = index + 1
+          if (paused) {
+            break
+          }
         }
       } else if (c === 34 /* " */) {
         quoted = !quoted
       }
       index++
     }
-    if (start < index) {
-      previous = chunks.copy(chunk, start, index)
+    if (start < chunk.length) {
+      previous = chunks.copy(chunk, start, chunk.length)
     } else {
       previous = undefined
     }
+    if (paused) {
+      if (target.useResume) {
+        target.useResume(() => {
+          paused = false
+          bufferReceived(new Uint8Array(0))
+        })
+        return
+      }
+      retVal.error(new Error('Unable to pause, useResume is not configured!'))
+      paused = false // consume remaining data
+    }
+    if (resumeChunks) {
+      resumeChunks()
+      resumeChunks = undefined
+    }
   }
 
-  return {
-    next(chunk: Uint8Array): void {
-      if (finished) return
-      try {
-        bufferReceived(chunk)
-      } catch (e) {
-        this.error(e as Error)
+  const retVal: CommunicationObserver<Uint8Array> = {
+    next(chunk: Uint8Array): boolean {
+      if (!finished) {
+        try {
+          bufferReceived(chunk)
+          return !paused
+        } catch (e) {
+          this.error(e as Error)
+        }
       }
+      return true
     },
     error(error: Error): void {
       if (!finished) {
@@ -76,21 +101,27 @@ export function chunksToLines(
         target.complete()
       }
     },
-    useCancellable(cancellable: Cancellable): void {
-      if (target.useCancellable) {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
-        const self = this
+  }
+  if (target.useCancellable) {
+    retVal.useCancellable = (cancellable: Cancellable) => {
+      target.useCancellable &&
         target.useCancellable({
           cancel(): void {
             cancellable.cancel()
             previous = undefined // do not emit more lines
-            self.complete()
+            retVal.complete()
           },
           isCancelled(): boolean {
             return cancellable.isCancelled()
           },
         })
-      }
-    },
+    }
   }
+  if (target.useResume) {
+    retVal.useResume = (x: () => void) => {
+      resumeChunks = x
+    }
+  }
+
+  return retVal
 }

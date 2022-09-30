@@ -65,12 +65,19 @@ export default class FetchTransport implements Transport {
     const observer = completeCommunicationObserver(callbacks)
     let cancelled = false
     let signal = (options as any).signal
+    let pausePromise: Promise<void> | undefined
+    const resumeQuickly = () => {}
+    let resume = resumeQuickly
     if (callbacks && callbacks.useCancellable) {
       const controller = new AbortController()
       if (!signal) {
         signal = controller.signal
         options = {...(options as object), ...signal} as SendOptions
       }
+      // resume data reading so that it can exit on abort signal
+      signal.addEventListener('abort', () => {
+        resume()
+      })
       callbacks.useCancellable({
         cancel() {
           cancelled = true
@@ -126,8 +133,29 @@ export default class FetchTransport implements Transport {
             const reader = response.body.getReader()
             let chunk: ReadableStreamReadResult<Uint8Array>
             do {
+              if (pausePromise) {
+                await pausePromise
+              }
+              if (cancelled) {
+                break
+              }
               chunk = await reader.read()
-              observer.next(chunk.value)
+              if (observer.next(chunk.value) === false) {
+                const useResume = observer.useResume
+                if (!useResume) {
+                  const msg = 'Unable to pause, useResume is not configured!'
+                  await reader.cancel(msg)
+                  return Promise.reject(new Error(msg))
+                }
+                pausePromise = new Promise((resolve) => {
+                  resume = () => {
+                    resolve()
+                    pausePromise = undefined
+                    resume = resumeQuickly
+                  }
+                  useResume(resume)
+                })
+              }
             } while (!chunk.done)
           } else if (response.arrayBuffer) {
             const buffer = await response.arrayBuffer()

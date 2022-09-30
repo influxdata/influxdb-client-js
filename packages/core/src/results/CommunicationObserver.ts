@@ -22,8 +22,10 @@ export interface CommunicationObserver<T> {
   /**
    * Data chunk received, can be called multiple times.
    * @param data - data
+   * @returns when `false` value is returned and {@link CommunicationObserver.useResume} is defined,
+   * future calls to `next` are paused until resume is called.
    */
-  next(data: T): void
+  next(data: T): void | boolean
   /**
    * Communication ended with an error.
    */
@@ -40,4 +42,11 @@ export interface CommunicationObserver<T> {
    * Setups cancelllable for this communication.
    */
   useCancellable?: (cancellable: Cancellable) => void
+  /**
+   * Setups a callback that resumes reading of next data, it is called whenever
+   * {@link CommunicationObserver.next} returns `false`.
+   *
+   * @param resume - a function that will resume reading of next data when called
+   */
+  useResume?: (resume: () => void) => void
 }

@@ -1,9 +1,14 @@
 import FetchTransport from '../../../../src/impl/browser/FetchTransport'
 import {expect} from 'chai'
-import {removeFetchApi, emulateFetchApi} from './emulateBrowser'
+import {
+  removeFetchApi,
+  emulateFetchApi,
+  AbortController,
+} from './emulateBrowser'
 import sinon from 'sinon'
-import {SendOptions, Cancellable} from '../../../../src'
+import {SendOptions, Cancellable, CommunicationObserver} from '../../../../src'
 import {CollectedLogs, collectLogging} from '../../../util'
+import {waitForCondition} from '../../util/waitForCondition'
 
 describe('FetchTransport', () => {
   afterEach(() => {
@@ -346,7 +351,7 @@ describe('FetchTransport', () => {
       {
         url: 'customNext_cancelledWithSignal',
         body: [Buffer.from('a'), Buffer.from('b')],
-        signal: {aborted: true},
+        signal: new AbortController(true).signal,
         callbacks: ((): void => {
           const overriden = fakeCallbacks()
           overriden.useCancellable = sinon.spy((c: Cancellable): void => {
@@ -518,6 +523,108 @@ describe('FetchTransport', () => {
         )
       )
       expect(request?.credentials).is.deep.equal('my-val')
+    })
+  })
+  describe('send.backpressure', () => {
+    it(`it throws an error when paused and useResume is not set`, async () => {
+      emulateFetchApi({body: 'abc'.split('').map(Buffer.from)})
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          // do not receive more than 1 chunk, but still
+          // there is no useResume callback!
+          return false
+        },
+        error() {},
+        complete(): void {},
+      }
+      const spy = sinon.spy(observer)
+      new FetchTransport({url: '/test'}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for error being called
+      await waitForCondition(() => spy.error.callCount === 1)
+      expect(spy.next.callCount).equals(1)
+      expect(spy.error.getCall(0).args[0]?.message).contains(
+        'useResume is not configured!'
+      )
+    })
+    it(`is paused after the first chunk, then cancelled`, async () => {
+      let cancellable: Cancellable | undefined
+      let resume: () => void | undefined
+
+      emulateFetchApi({body: 'abc'.split('').map(Buffer.from)})
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          return false // do not receive more than 1 chunk
+        },
+        error() {},
+        complete(): void {},
+        useCancellable(c: Cancellable) {
+          cancellable = c
+        },
+        useResume(r) {
+          resume = r
+        },
+      }
+      const spy = sinon.spy(observer)
+
+      new FetchTransport({url: '/test'}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for resume being called
+      await waitForCondition(() => cancellable && resume)
+      expect(spy.next.callCount).equals(1)
+      cancellable?.cancel()
+    })
+    it(`is paused after the second chunk and then read fully`, async () => {
+      let resume: (() => void) | undefined
+      let chunkNumber = 0
+      const responseBody = 'abcd'
+
+      emulateFetchApi({body: responseBody.split('').map(Buffer.from)})
+      const observer: CommunicationObserver<Uint8Array> = {
+        next(_chunk: Uint8Array) {
+          return ++chunkNumber === 2 ? false : undefined // pause at 2nd chunk
+        },
+        error() {},
+        complete(): void {},
+        useResume(r) {
+          resume = r
+        },
+      }
+      const spy = sinon.spy(observer)
+
+      new FetchTransport({url: '/test'}).send(
+        '/test',
+        '',
+        {
+          method: 'GET',
+        },
+        spy
+      )
+      // wait for useResume being called
+      await waitForCondition(() => resume, 'resume callback is set')
+      expect(spy.next.callCount).equals(2)
+      expect(resume).is.not.null
+      if (resume) resume()
+      await waitForCondition(
+        () => spy.complete.callCount === 1,
+        'response is fully read'
+      )
+      expect(spy.next.callCount).equals(responseBody.length)
+      expect(
+        spy.next.args.reduce((acc, [body]) => acc + body.toString(), '')
+      ).equals(responseBody)
     })
   })
   describe('chunkCombiner', () => {

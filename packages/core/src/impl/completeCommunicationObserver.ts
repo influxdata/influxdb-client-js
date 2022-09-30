@@ -1,18 +1,24 @@
 import {CommunicationObserver, Headers} from '../results'
 
+type CompleteObserver = Omit<
+  Required<CommunicationObserver<any>>,
+  'useCancellable' | 'useResume'
+> &
+  Pick<CommunicationObserver<any>, 'useResume' | 'useCancellable'>
+
 export default function completeCommunicationObserver(
   callbacks: Partial<CommunicationObserver<any>> = {}
-): Omit<Required<CommunicationObserver<any>>, 'useCancellable'> {
+): CompleteObserver {
   let state = 0
-  const retVal = {
-    next: (data: any): void => {
+  const retVal: CompleteObserver = {
+    next: (data: any): void | boolean => {
       if (
         state === 0 &&
         callbacks.next &&
         data !== null &&
         data !== undefined
       ) {
-        callbacks.next(data)
+        return callbacks.next(data)
       }
     },
     error: (error: Error): void => {
@@ -34,6 +40,12 @@ export default function completeCommunicationObserver(
       if (callbacks.responseStarted)
         callbacks.responseStarted(headers, statusCode)
     },
+  }
+  if (callbacks.useCancellable) {
+    retVal.useCancellable = callbacks.useCancellable.bind(callbacks)
+  }
+  if (callbacks.useResume) {
+    retVal.useResume = callbacks.useResume.bind(callbacks)
   }
   return retVal
 }

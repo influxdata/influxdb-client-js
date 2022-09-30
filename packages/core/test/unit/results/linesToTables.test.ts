@@ -6,6 +6,7 @@ import {
   createTextDecoderCombiner,
   linesToTables,
 } from '../../../src/results'
+import sinon from 'sinon'
 
 describe('linesToTables', () => {
   const chunkCombiner = createTextDecoderCombiner()
@@ -38,5 +39,41 @@ describe('linesToTables', () => {
     })
     input.error(new Error())
     expect(target.failed).equals(1)
+  })
+  it('can pause and resume processing', () => {
+    const rows: string[][] = []
+    let chunksResume = sinon.spy((): void => {})
+    const target = {
+      next(row: string[]): boolean {
+        rows.push(row)
+        const paused = row[0].includes('pause')
+        return !paused
+      },
+      error: sinon.fake(),
+      complete: sinon.fake(),
+      useResume: sinon.spy((_x: () => void): void => {}),
+    }
+    const subject = linesToTables(target)
+    let nextVal = subject.next('a,b\n')
+    expect(nextVal).equals(true)
+    nextVal = subject.next('pause,1')
+    expect(nextVal).equals(false)
+    subject?.useResume?.((chunksResume = sinon.spy((): void => {})))
+    expect(nextVal).equals(false)
+    expect(rows).deep.equals([['pause', '1']])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(0)
+    expect(target.useResume.callCount).equals(1)
+    expect(chunksResume.callCount).equals(0)
+    target.useResume.args[0][0]() // resume
+    expect(chunksResume.callCount).equals(1)
+    subject.next('ok,2')
+    subject.complete()
+    expect(rows).deep.equals([
+      ['pause', '1'],
+      ['ok', '2'],
+    ])
+    expect(target.error.callCount).equals(0)
+    expect(target.complete.callCount).equals(1)
   })
 })
