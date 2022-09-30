@@ -40,13 +40,29 @@ export interface Transport {
    * @param path - HTTP request path
    * @param requestBody - request body
    * @param options - send options
+   * @returns response data
    */
   request(
     path: string,
-    body: any,
+    requestBody: any,
     options: SendOptions,
     responseStarted?: ResponseStartedFn
   ): Promise<any>
+
+  /**
+   * Sends requestBody and returns response chunks in an async iterable
+   * that can be easily consumed in an `for-await` loop.
+   *
+   * @param path - HTTP request path
+   * @param requestBody - request body
+   * @param options - send options
+   * @returns async iterable
+   */
+  iterate(
+    path: string,
+    requestBody: any,
+    options: SendOptions
+  ): AsyncIterableIterator<Uint8Array>
 
   /**
    * Combines response chunks to create a single response object.
