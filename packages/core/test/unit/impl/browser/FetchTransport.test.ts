@@ -6,7 +6,13 @@ import {
   AbortController,
 } from './emulateBrowser'
 import sinon from 'sinon'
-import {SendOptions, Cancellable, CommunicationObserver} from '../../../../src'
+import {
+  SendOptions,
+  Cancellable,
+  CommunicationObserver,
+  AbortError,
+  HttpError,
+} from '../../../../src'
 import {CollectedLogs, collectLogging} from '../../../util'
 import {waitForCondition} from '../../util/waitForCondition'
 
@@ -675,7 +681,7 @@ describe('FetchTransport', () => {
         body: [Buffer.from('signal breaks reading response')],
         status: 200,
         signal: new AbortController(true).getSignal(),
-        url: 'breaked by a signal',
+        url: 'aborted by a signal',
       },
     ].forEach(
       ({body, url, status = 200, headers = {}, errorBody, signal}, i) => {
@@ -707,6 +713,11 @@ describe('FetchTransport', () => {
             expect(vals).is.empty
             if (errorBody) {
               expect(error).property('body').equals(errorBody)
+            }
+            if (signal?.aborted) {
+              expect(error).is.instanceOf(AbortError)
+            } else {
+              expect(error).is.instanceOf(HttpError)
             }
           } else {
             expect(

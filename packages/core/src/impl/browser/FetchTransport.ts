@@ -186,6 +186,7 @@ export default class FetchTransport implements Transport {
           break
         }
         if (options.signal?.aborted) {
+          await response.body.cancel()
           throw new AbortError()
         }
         yield value

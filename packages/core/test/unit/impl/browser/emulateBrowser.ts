@@ -1,3 +1,5 @@
+import {HttpError} from '../../../../src'
+
 interface ResponseSpec {
   headers?: {[key: string]: string}
   status?: number
@@ -52,6 +54,7 @@ function createResponse({
   }
   if (Array.isArray(body)) {
     retVal.body = {
+      cancel() {},
       getReader(): any {
         let position = 0
         return {
@@ -110,7 +113,9 @@ export function emulateFetchApi(
   function fetch(url: string, options: any): Promise<any> {
     if (onRequest) onRequest(options)
     return url.endsWith('error')
-      ? Promise.reject(new Error(url))
+      ? Promise.reject(
+          new HttpError(500, undefined, undefined, undefined, undefined, url)
+        )
       : Promise.resolve(createResponse(spec))
   }
   class TextEncoder {
