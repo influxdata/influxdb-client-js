@@ -17,7 +17,7 @@ import zlib from 'zlib'
 import completeCommunicationObserver from '../completeCommunicationObserver'
 import {CLIENT_LIB_VERSION} from '../version'
 import {Log} from '../../util/logger'
-import {pipeline} from 'stream'
+import {pipeline, Readable} from 'stream'
 
 const zlibOptions = {
   flush: zlib.constants.Z_SYNC_FLUSH,
@@ -138,7 +138,10 @@ export class NodeHttpTransport implements Transport {
     const cancellable = new CancellableImpl()
     if (callbacks && callbacks.useCancellable)
       callbacks.useCancellable(cancellable)
-    this.createRequestMessage(path, body, options).then(
+    this.createRequestMessage(
+      path,
+      body,
+      options,
       (message: {[key: string]: any}) => {
         this._request(message, cancellable, callbacks)
       },
@@ -214,6 +217,50 @@ export class NodeHttpTransport implements Transport {
     })
   }
 
+  async *iterate(
+    path: string,
+    body: string,
+    options: SendOptions
+  ): AsyncIterableIterator<Uint8Array> {
+    let terminationError: Error | undefined = undefined
+    let nestedReject: (e: Error) => void
+    function wrapReject(error: Error) {
+      terminationError = error
+      nestedReject(error)
+    }
+    const requestMessage = await new Promise<Record<string, any>>(
+      (resolve, reject) => {
+        nestedReject = reject
+        this.createRequestMessage(path, body, options, resolve, wrapReject)
+      }
+    )
+    if (requestMessage.signal?.addEventListener) {
+      ;(requestMessage.signal as AbortSignal).addEventListener('abort', () => {
+        wrapReject(new AbortError())
+      })
+    }
+    const response = await new Promise<http.IncomingMessage>(
+      (resolve, reject) => {
+        nestedReject = reject
+        const req = this.requestApi(requestMessage, resolve)
+        req.on('timeout', () => wrapReject(new RequestTimedOutError()))
+        req.on('error', wrapReject)
+
+        req.write(requestMessage.body)
+        req.end()
+      }
+    )
+    const res = await new Promise<Readable>((resolve, reject) => {
+      nestedReject = reject
+      this._prepareResponse(response, resolve, wrapReject)
+    })
+    for await (const chunk of res) {
+      if (terminationError) {
+        throw terminationError
+      }
+      yield chunk
+    }
+  }
   /**
    * Creates configuration for a specific request.
    *
@@ -226,8 +273,10 @@ export class NodeHttpTransport implements Transport {
   private createRequestMessage(
     path: string,
     body: string,
-    sendOptions: SendOptions
-  ): Promise<{[key: string]: any}> {
+    sendOptions: SendOptions,
+    resolve: (req: http.RequestOptions) => void,
+    reject: (err: Error) => void
+  ): void {
     const bodyBuffer = Buffer.from(body, 'utf-8')
     const headers: {[key: string]: any} = {
       'content-type': 'application/json; charset=utf-8',
@@ -236,7 +285,6 @@ export class NodeHttpTransport implements Transport {
     if (this.token) {
       headers.authorization = 'Token ' + this.token
     }
-    let bodyPromise = Promise.resolve(bodyBuffer)
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
       path: this.contextPath + path,
@@ -250,25 +298,70 @@ export class NodeHttpTransport implements Transport {
       sendOptions.gzipThreshold !== undefined &&
       sendOptions.gzipThreshold < bodyBuffer.length
     ) {
-      bodyPromise = bodyPromise.then((body) => {
-        return new Promise((resolve, reject) => {
-          zlib.gzip(body, (err, res) => {
-            /* istanbul ignore next - hard to simulate failure, manually reviewed */
-            if (err) {
-              return reject(err)
-            }
-            options.headers['content-encoding'] = 'gzip'
-            return resolve(res)
-          })
-        })
+      zlib.gzip(bodyBuffer, (err, res) => {
+        /* istanbul ignore next - hard to simulate failure, manually reviewed */
+        if (err) {
+          return reject(err)
+        }
+        options.headers['content-encoding'] = 'gzip'
+        options.body = res
+        resolve(options)
       })
-    }
-
-    return bodyPromise.then((bodyBuffer) => {
+    } else {
       options.body = bodyBuffer
-      options.headers['content-length'] = bodyBuffer.length
-      return options
+      options.headers['content-length'] = options.body.length
+      resolve(options)
+    }
+  }
+
+  private _prepareResponse(
+    res: http.IncomingMessage,
+    resolve: (res: Readable) => void,
+    reject: (err: Error) => void
+  ) {
+    res.on('aborted', () => {
+      reject(new AbortError())
     })
+    res.on('error', reject)
+    /* istanbul ignore next statusCode is optional in http.IncomingMessage */
+    const statusCode = res.statusCode ?? 600
+    const contentEncoding = res.headers['content-encoding']
+    let responseData
+    if (contentEncoding === 'gzip') {
+      responseData = zlib.createGunzip(zlibOptions)
+      responseData = pipeline(res, responseData, (e) => e && reject(e))
+    } else {
+      responseData = res
+    }
+    if (statusCode >= 300) {
+      let body = ''
+      const isJson = String(res.headers['content-type']).startsWith(
+        'application/json'
+      )
+      responseData.on('data', (s) => {
+        body += s.toString()
+        if (!isJson && body.length > 1000) {
+          body = body.slice(0, 1000)
+          res.resume()
+        }
+      })
+      responseData.on('end', () => {
+        if (body === '' && !!res.headers['x-influxdb-error']) {
+          body = res.headers['x-influxdb-error'].toString()
+        }
+        reject(
+          new HttpError(
+            statusCode,
+            res.statusMessage,
+            body,
+            res.headers['retry-after'],
+            res.headers['content-type']
+          )
+        )
+      })
+    } else {
+      resolve(responseData)
+    }
   }
 
   private _request(
@@ -281,6 +374,11 @@ export class NodeHttpTransport implements Transport {
       listeners.complete()
       return
     }
+    if (requestMessage.signal?.addEventListener) {
+      ;(requestMessage.signal as AbortSignal).addEventListener('abort', () => {
+        listeners.error(new AbortError())
+      })
+    }
     const req = this.requestApi(requestMessage, (res: http.IncomingMessage) => {
       /* istanbul ignore next - hard to simulate failure, manually reviewed */
       if (cancellable.isCancelled()) {
@@ -288,77 +386,37 @@ export class NodeHttpTransport implements Transport {
         listeners.complete()
         return
       }
-      res.on('aborted', () => {
-        listeners.error(new AbortError())
-      })
-      res.on('error', listeners.error)
       listeners.responseStarted(res.headers, res.statusCode)
-      /* istanbul ignore next statusCode is optional in http.IncomingMessage */
-      const statusCode = res.statusCode ?? 600
-      const contentEncoding = res.headers['content-encoding']
-      let responseData
-      if (contentEncoding === 'gzip') {
-        responseData = zlib.createGunzip(zlibOptions)
-        responseData = pipeline(
-          res,
-          responseData,
-          (e) => e && listeners.error(e)
-        )
-      } else {
-        responseData = res
-      }
-      if (statusCode >= 300) {
-        let body = ''
-        const isJson = String(res.headers['content-type']).startsWith(
-          'application/json'
-        )
-        responseData.on('data', (s) => {
-          body += s.toString()
-          if (!isJson && body.length > 1000) {
-            body = body.slice(0, 1000)
-            res.resume()
-          }
-        })
-        responseData.on('end', () => {
-          if (body === '' && !!res.headers['x-influxdb-error']) {
-            body = res.headers['x-influxdb-error'].toString()
-          }
-          listeners.error(
-            new HttpError(
-              statusCode,
-              res.statusMessage,
-              body,
-              res.headers['retry-after'],
-              res.headers['content-type']
-            )
-          )
-        })
-      } else {
-        responseData.on('data', (data) => {
-          if (cancellable.isCancelled()) {
-            res.resume()
-          } else {
-            if (listeners.next(data) === false) {
-              // pause processing, the consumer signalizes that
-              // it is not able to receive more data
-              if (!listeners.useResume) {
-                listeners.error(
-                  new Error('Unable to pause, useResume is not configured!')
-                )
-                res.resume()
-                return
+      this._prepareResponse(
+        res,
+        (responseData) => {
+          responseData.on('data', (data) => {
+            if (cancellable.isCancelled()) {
+              res.resume()
+            } else {
+              if (listeners.next(data) === false) {
+                // pause processing, the consumer signalizes that
+                // it is not able to receive more data
+                if (!listeners.useResume) {
+                  listeners.error(
+                    new Error('Unable to pause, useResume is not configured!')
+                  )
+                  res.resume()
+                  return
+                }
+                res.pause()
+                const resume = () => {
+                  res.resume()
+                }
+                cancellable.resume = resume
+                listeners.useResume(resume)
               }
-              res.pause()
-              const resume = () => {
-                res.resume()
-              }
-              cancellable.resume = resume
-              listeners.useResume(resume)
             }
-          }
-        })
-        responseData.on('end', listeners.complete)
-      }
+          })
+          responseData.on('end', listeners.complete)
+        },
+        listeners.error
+      )
     })
     // Support older Nodes which don't allow `timeout` in the
     // request options

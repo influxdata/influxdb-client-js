@@ -13,6 +13,7 @@ import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 import {CollectedLogs, collectLogging} from '../../../util'
 import {waitForCondition} from '../../util/waitForCondition'
 import {AddressInfo} from 'net'
+import {AbortController} from '../browser/emulateBrowser'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -39,6 +40,20 @@ function sendTestData(
       },
     })
   })
+}
+async function iterateTestData(
+  connectionOptions: ConnectionOptions,
+  sendOptions: SendOptions
+): Promise<string> {
+  let data = ''
+  for await (const chunk of new NodeHttpTransport(connectionOptions).iterate(
+    '/test',
+    '',
+    sendOptions
+  )) {
+    data += chunk.toString()
+  }
+  return data
 }
 const TEST_URL = 'http://test:8086'
 
@@ -413,6 +428,35 @@ describe('NodeHttpTransport', () => {
             expect(e).property('message').to.include('aborted')
           })
       })
+      it(`is aborted by a signal before response arrives`, async () => {
+        let remainingChunks = 2
+        const ac = new AbortController()
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                remainingChunks--
+                if (!remainingChunks) {
+                  ac.abort()
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+          ])
+          .persist()
+        await sendTestData(
+          {...transportOptions, transportOptions: {signal: ac.signal}},
+          {method: 'GET'}
+        )
+          .then((_data) => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e).property('message').to.include('aborted')
+          })
+      })
       it(`signalizes error upon request's error'`, async () => {
         let remainingChunks = 2
         let req: any
@@ -653,6 +697,301 @@ describe('NodeHttpTransport', () => {
         'response is fully read'
       )
       expect(spy.next.callCount).is.greaterThan(2)
+    })
+  })
+  describe('iterate', () => {
+    beforeEach(() => {
+      nock.disableNetConnect()
+    })
+    afterEach(() => {
+      nock.cleanAll()
+      nock.enableNetConnect()
+    })
+    describe('positive', () => {
+      const transportOptions = {
+        url: TEST_URL,
+        timeout: 100,
+      }
+      const extraOptions = [
+        {},
+        {
+          token: 'a',
+        },
+        {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+        },
+        {contextPath: '/context'},
+      ]
+      for (let i = 0; i < extraOptions.length; i++) {
+        const extras = extraOptions[i]
+        const responseData = 'yes'
+        it(`works with options ${JSON.stringify(extras)}`, async () => {
+          let responseRead = false
+          const context = nock(transportOptions.url)
+            .post((extras.contextPath ?? '') + '/test')
+            .reply((_uri, _requestBody) => [
+              200,
+              new Readable({
+                read(): any {
+                  const encode = !!(extras.headers ?? {})['accept-encoding']
+                  if (encode) {
+                    this.push(responseRead ? null : zlib.gzipSync(responseData))
+                  } else {
+                    this.push(responseRead ? null : responseData)
+                  }
+                  responseRead = true
+                },
+              }),
+              {
+                'content-encoding': (
+                  _req: any,
+                  _res: any,
+                  _body: any
+                ): string =>
+                  (extras.headers ?? {})['accept-encoding'] ?? 'identity',
+              },
+            ])
+            .persist()
+          if (extras.token) {
+            context.matchHeader('authorization', 'Token ' + extras.token)
+          }
+          context.matchHeader(
+            'User-Agent',
+            `influxdb-client-js/${CLIENT_LIB_VERSION}`
+          )
+          const transport = new NodeHttpTransport({
+            ...extras,
+            ...transportOptions,
+            url: transportOptions.url + (extras.contextPath ?? ''),
+          })
+          try {
+            let result = ''
+            let resultAppended = 0
+            const iterable = transport.iterate('/test', '', {
+              ...extras,
+              method: 'POST',
+            })
+            for await (const data of iterable) {
+              result += data.toString()
+              resultAppended++
+            }
+            expect(resultAppended).equals(1)
+            expect(result).to.equal(responseData)
+          } catch (e) {
+            expect.fail(e?.toString())
+          }
+        })
+      }
+    })
+    describe('negative', () => {
+      const transportOptions = {
+        url: TEST_URL,
+        timeout: 100,
+      }
+      it(`fails on server error`, async () => {
+        nock(transportOptions.url).get('/test').reply(500, 'not ok')
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            expect.fail('must not succeed')
+          })
+          .catch((e) => {
+            expect(e).property('statusCode').to.equal(500)
+          })
+      })
+      it(`fails on decoding error`, async () => {
+        let responseRead = false
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                this.push(responseRead ? null : 'no')
+                responseRead = true
+              },
+            }),
+            {
+              'content-encoding': 'gzip',
+            },
+          ])
+          .persist()
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            expect.fail('must not succeed')
+          })
+          .catch((e) => {
+            expect(e).property('message').is.not.equal('must not succeed')
+            expect(e.toString()).does.not.include('time') // not timeout
+          })
+      })
+      it(`fails on connection timeout`, async () => {
+        nock(transportOptions.url)
+          .get('/test')
+          .delayConnection(2000)
+          .reply(200, 'ok')
+        await iterateTestData(
+          {...transportOptions, timeout: 100},
+          {method: 'GET'}
+        )
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e) => {
+            expect(e.toString()).to.include('timed')
+          })
+      })
+      it(`fails on response timeout`, async () => {
+        nock(transportOptions.url).get('/test').delay(2000).reply(200, 'ok')
+        await iterateTestData(
+          {...transportOptions, timeout: 100},
+          {method: 'GET'}
+        )
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e) => {
+            expect(e.toString()).to.include('timed')
+          })
+      })
+      it(`truncates error messages`, async () => {
+        let bigMessage = 'this is a big error message'
+        while (bigMessage.length < 1001) bigMessage += bigMessage
+        nock(transportOptions.url).get('/test').reply(500, bigMessage)
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e: any) => {
+            expect(e).property('body').to.length(1000)
+          })
+      })
+      it(`parses error responses`, async () => {
+        let bigMessage = ',"this is a big error message"'
+        while (bigMessage.length < 1001) bigMessage += bigMessage
+        bigMessage = `{"code":"mc","message":"mymsg","details":[""${bigMessage}]}`
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(400, bigMessage, {'content-type': 'application/json'})
+        await iterateTestData(transportOptions, {method: 'GET'}).then(
+          () => {
+            throw new Error('must not succeed')
+          },
+          (e: any) => {
+            expect(e).property('body').to.length(bigMessage.length)
+            expect(e).property('json').deep.equals(JSON.parse(bigMessage))
+            expect(e).property('code').equals('mc')
+            expect(e).property('message').equals('mymsg')
+          }
+        )
+      })
+      it(`uses X-Influxdb-Error header when no body is returned`, async () => {
+        const errorMessage = 'this is a header error message'
+        nock(transportOptions.url)
+          .get('/test')
+          .reply(500, '', {'X-Influxdb-Error': errorMessage})
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then(() => {
+            throw new Error('must not succeed')
+          })
+          .catch((e: any) => {
+            expect(e).property('body').equals(errorMessage)
+          })
+      })
+      it(`is aborted before the whole response arrives`, async () => {
+        let remainingChunks = 2
+        let res: any
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                remainingChunks--
+                if (!remainingChunks) {
+                  res.emit('aborted')
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+            {
+              'X-Whatever': (_req: any, _res: any, _body: any): string => {
+                res = _res
+                return '1'
+              },
+            },
+          ])
+          .persist()
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then((_data) => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e).property('message').to.include('aborted')
+          })
+      })
+      it(`is aborted with a signal before the whole response arrives`, async () => {
+        let remainingChunks = 2
+        const ac = new AbortController()
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                remainingChunks--
+                if (!remainingChunks) {
+                  ac.abort()
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+          ])
+          .persist()
+        await iterateTestData(
+          {...transportOptions, transportOptions: {signal: ac.signal}},
+          {method: 'GET'}
+        )
+          .then((_data) => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e).property('message').to.include('aborted')
+          })
+      })
+      it(`signalizes error upon request's error'`, async () => {
+        let remainingChunks = 2
+        let req: any
+        nock(transportOptions.url)
+          .get('/test')
+          .reply((_uri, _requestBody) => [
+            200,
+            new Readable({
+              read(): any {
+                remainingChunks--
+                if (!remainingChunks) {
+                  req.emit('error', new Error('request failed'))
+                }
+                this.push(remainingChunks < 0 ? null : '.')
+              },
+            }),
+            {
+              'X-Whatever': (_req: any, _res: any, _body: any): string => {
+                req = _req
+                return '1'
+              },
+            },
+          ])
+          .persist()
+        await iterateTestData(transportOptions, {method: 'GET'})
+          .then((_data) => {
+            expect.fail('not expected!')
+          })
+          .catch((e: any) => {
+            expect(e).property('message').to.include('request failed')
+          })
+      })
     })
   })
 
