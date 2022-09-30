@@ -14,7 +14,7 @@ export default defineConfig({
   dts: true,
   format: ['cjs', 'esm'],
   minify,
-  target: ['es2015'],
+  target: ['es2018'],
   platform: 'node',
   splitting: false,
   esbuildOptions(options, {format}) {
