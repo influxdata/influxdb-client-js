@@ -97,6 +97,10 @@ export class AbortController {
     this.signal.aborted = true
     this.listeners.forEach((x) => x())
   }
+
+  getSignal(): AbortSignal {
+    return this.signal as unknown as AbortSignal
+  }
 }
 
 export function emulateFetchApi(
@@ -105,7 +109,7 @@ export function emulateFetchApi(
 ): void {
   function fetch(url: string, options: any): Promise<any> {
     if (onRequest) onRequest(options)
-    return url.indexOf('error') !== -1
+    return url.endsWith('error')
       ? Promise.reject(new Error(url))
       : Promise.resolve(createResponse(spec))
   }

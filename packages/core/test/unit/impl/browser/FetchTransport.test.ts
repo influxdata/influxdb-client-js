@@ -627,6 +627,98 @@ describe('FetchTransport', () => {
       ).equals(responseBody)
     })
   })
+  describe('iterate', () => {
+    const transport = new FetchTransport({url: 'http://test:8086'})
+    ;[
+      {
+        body: 'a',
+        status: 201,
+        url: 'string body',
+      },
+      {
+        body: 'a',
+        url: 'error',
+      },
+      {
+        body: [Buffer.from('a'), Buffer.from('b')],
+        url: 'use response reader',
+      },
+      {
+        body: Buffer.from('a'),
+        url: 'use array buffer',
+      },
+      {
+        body: 'error',
+        status: 501,
+        url: '501 error',
+      },
+      {
+        body: '',
+        status: 500,
+        headers: {'x-influxdb-error': 'header error'},
+        errorBody: 'header error',
+        url: 'x-influxdb-error header',
+      },
+      {
+        body: '',
+        status: 500,
+        errorBody: '',
+        url: 'empty err body',
+      },
+      {
+        body: 'this is error message',
+        status: 500,
+        errorBody: 'this is error message',
+        url: 'check error body message',
+      },
+      {
+        body: [Buffer.from('signal breaks reading response')],
+        status: 200,
+        signal: new AbortController(true).getSignal(),
+        url: 'breaked by a signal',
+      },
+    ].forEach(
+      ({body, url, status = 200, headers = {}, errorBody, signal}, i) => {
+        it(`iterates chunks ${i} (${url})`, async () => {
+          emulateFetchApi({
+            headers: {
+              'content-type': 'text/plain',
+              duplicate: 'ok',
+              ...headers,
+            },
+            status,
+            body,
+          })
+          let error: any = undefined
+          const vals: Uint8Array[] = []
+          try {
+            for await (const chunk of transport.iterate(url, '', {
+              method: 'POST',
+              signal,
+            })) {
+              vals.push(chunk)
+            }
+          } catch (e) {
+            error = e
+          }
+          const isError = url === 'error' || status >= 300 || signal?.aborted
+          if (isError) {
+            expect(error).is.not.undefined
+            expect(vals).is.empty
+            if (errorBody) {
+              expect(error).property('body').equals(errorBody)
+            }
+          } else {
+            expect(
+              Array.isArray(body)
+                ? body
+                : [Buffer.isBuffer(body) ? body : Buffer.from(body)]
+            ).is.deep.equal(vals)
+          }
+        })
+      }
+    )
+  })
   describe('chunkCombiner', () => {
     const options = {url: 'http://test:8086'}
     const chunkCombiner = new FetchTransport(options).chunkCombiner
