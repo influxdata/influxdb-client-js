@@ -294,6 +294,9 @@ export class NodeHttpTransport implements Transport {
         ...sendOptions.headers,
       },
     }
+    if (sendOptions.signal) {
+      options.signal = sendOptions.signal
+    }
     if (
       sendOptions.gzipThreshold !== undefined &&
       sendOptions.gzipThreshold < bodyBuffer.length

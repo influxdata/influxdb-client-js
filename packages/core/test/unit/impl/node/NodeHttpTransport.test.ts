@@ -13,7 +13,6 @@ import {CLIENT_LIB_VERSION} from '../../../../src/impl/version'
 import {CollectedLogs, collectLogging} from '../../../util'
 import {waitForCondition} from '../../util/waitForCondition'
 import {AddressInfo} from 'net'
-import {AbortController} from '../browser/emulateBrowser'
 
 function sendTestData(
   connectionOptions: ConnectionOptions,
@@ -446,10 +445,7 @@ describe('NodeHttpTransport', () => {
             }),
           ])
           .persist()
-        await sendTestData(
-          {...transportOptions, transportOptions: {signal: ac.signal}},
-          {method: 'GET'}
-        )
+        await sendTestData(transportOptions, {method: 'GET', signal: ac.signal})
           .then((_data) => {
             expect.fail('not expected!')
           })
@@ -931,7 +927,7 @@ describe('NodeHttpTransport', () => {
             expect(e).property('message').to.include('aborted')
           })
       })
-      it(`is aborted with a signal before the whole response arrives`, async () => {
+      it(`is aborted by a signal before the whole response arrives`, async () => {
         let remainingChunks = 2
         const ac = new AbortController()
         nock(transportOptions.url)
@@ -949,10 +945,10 @@ describe('NodeHttpTransport', () => {
             }),
           ])
           .persist()
-        await iterateTestData(
-          {...transportOptions, transportOptions: {signal: ac.signal}},
-          {method: 'GET'}
-        )
+        await iterateTestData(transportOptions, {
+          method: 'GET',
+          signal: ac.signal,
+        })
           .then((_data) => {
             expect.fail('not expected!')
           })

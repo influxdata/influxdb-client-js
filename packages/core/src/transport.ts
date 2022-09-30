@@ -10,6 +10,8 @@ export interface SendOptions {
   headers?: {[key: string]: string}
   /** When specified, message body larger than the treshold is gzipped  */
   gzipThreshold?: number
+  /** Abort signal */
+  signal?: AbortSignal
 }
 
 /**

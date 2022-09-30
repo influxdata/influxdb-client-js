@@ -72,7 +72,7 @@ export default class FetchTransport implements Transport {
       const controller = new AbortController()
       if (!signal) {
         signal = controller.signal
-        options = {...(options as object), ...signal} as SendOptions
+        options = {...options, signal}
       }
       // resume data reading so that it can exit on abort signal
       signal.addEventListener('abort', () => {
