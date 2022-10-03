@@ -17,6 +17,7 @@ interface FluxResultObserver<T>
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
+|  [useResume?](./influxdb-client.fluxresultobserver.useresume.md) |  | (resume: () =&gt; void) =&gt; void | <i>(Optional)</i> Setups a callback that resumes reading of next data, it is called whenever [FluxResultObserver.next()](./influxdb-client.fluxresultobserver.next.md) returns <code>false</code>. |
 
 ## Methods
 

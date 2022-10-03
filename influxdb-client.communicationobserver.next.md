@@ -9,7 +9,7 @@ Data chunk received, can be called multiple times.
 <b>Signature:</b>
 
 ```typescript
-next(data: T): void;
+next(data: T): void | boolean;
 ```
 
 ## Parameters
@@ -20,5 +20,7 @@ next(data: T): void;
 
 <b>Returns:</b>
 
-void
+void \| boolean
+
+when `false` value is returned and [CommunicationObserver.useResume](./influxdb-client.communicationobserver.useresume.md) is defined, future calls to `next` are paused until resume is called.
 

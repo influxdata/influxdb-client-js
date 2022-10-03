@@ -18,6 +18,7 @@ interface CommunicationObserver<T>
 |  --- | --- | --- | --- |
 |  [responseStarted?](./influxdb-client.communicationobserver.responsestarted.md) |  | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | <i>(Optional)</i> Informs about a start of response processing. |
 |  [useCancellable?](./influxdb-client.communicationobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancelllable for this communication. |
+|  [useResume?](./influxdb-client.communicationobserver.useresume.md) |  | (resume: () =&gt; void) =&gt; void | <i>(Optional)</i> Setups a callback that resumes reading of next data, it is called whenever [CommunicationObserver.next()](./influxdb-client.communicationobserver.next.md) returns <code>false</code>. |
 
 ## Methods
 

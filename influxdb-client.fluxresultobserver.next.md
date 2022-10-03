@@ -9,17 +9,19 @@ Inform about a next record in a table.
 <b>Signature:</b>
 
 ```typescript
-next(row: T, tableMeta: FluxTableMetaData): void;
+next(row: T, tableMeta: FluxTableMetaData): void | boolean;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  row | T |  |
-|  tableMeta | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
+|  row | T | flux result |
+|  tableMeta | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | actual table metata for the row supplied |
 
 <b>Returns:</b>
 
-void
+void \| boolean
+
+when `false` value is returned and [FluxResultObserver.useResume](./influxdb-client.fluxresultobserver.useresume.md) is defined, future calls to `next` are paused until resume is called.
 
