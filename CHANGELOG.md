@@ -4,6 +4,10 @@
 
 1. [#588](https://github.com/influxdata/influxdb-client-js/pull/588): Allow to pause/resume flux query result communication observer.
 
+### Bug Fixes
+
+1. [#604](https://github.com/influxdata/influxdb-client-js/pull/604): Fix unhandled promise rejection in write retry.
+
 ## 1.30.0 [2022-09-29]
 
 ### Features

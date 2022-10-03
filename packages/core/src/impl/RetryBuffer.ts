@@ -132,7 +132,7 @@ export default class RetryBuffer {
       if (toRetry) {
         this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
           .catch(() => {
-            /* error is already logged */
+            /* error is already logged, it must be caught */
           })
           .finally(() => {
             // schedule next retry execution
