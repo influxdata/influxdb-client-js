@@ -9,7 +9,7 @@ import {
 import {FluxTableMetaData, createFluxTableMetaData} from './FluxTableMetaData'
 
 /**
- * linesToTables creates a transformationthat accepts (flux) annotated CSV lines
+ * LinesToTables creates a transformation that accepts (flux) annotated CSV lines
  * and emits rows together with table metadata.
  */
 export function linesToTables(

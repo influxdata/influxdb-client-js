@@ -11,7 +11,7 @@ interface ChunkTest {
   withCancellable?: boolean // use observer with cancellable implementation
 }
 
-describe('chunksToLines', () => {
+describe('chunksToLinesIterable', () => {
   const combiners: Array<{name: string; value?: ChunkCombiner}> = [
     {name: 'default', value: undefined as undefined},
     {name: 'nodeChunkCombiner', value: nodeChunkCombiner},
