@@ -11,7 +11,7 @@ import {
   DEFAULT_WriteOptions,
   PointSettings,
 } from '../../src'
-import {collectLogging, CollectedLogs} from '../util'
+import {collectLogging, CollectedLogs, unhandledRejections} from '../util'
 import {Log} from '../../src/util/logger'
 import {waitForCondition} from './util/waitForCondition'
 import zlib from 'zlib'
@@ -61,10 +61,12 @@ function createWriteCounters(): WriteListeners {
 describe('WriteApi', () => {
   beforeEach(() => {
     nock.disableNetConnect()
+    unhandledRejections.before()
   })
   afterEach(() => {
     nock.cleanAll()
     nock.enableNetConnect()
+    unhandledRejections.after()
   })
   describe('simple', () => {
     let subject: WriteApi

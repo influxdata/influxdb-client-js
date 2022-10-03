@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import RetryBuffer from '../../../src/impl/RetryBuffer'
-import {CollectedLogs, collectLogging} from '../../util'
+import {CollectedLogs, collectLogging, unhandledRejections} from '../../util'
 import {waitForCondition} from '../util/waitForCondition'
 
 describe('RetryBuffer', () => {
@@ -8,9 +8,11 @@ describe('RetryBuffer', () => {
   beforeEach(() => {
     logs = collectLogging.decorate()
     // logs = collectLogging.replace()
+    unhandledRejections.before()
   })
   afterEach(async () => {
     collectLogging.after()
+    unhandledRejections.after()
   })
   it('stores lines for future retry', async () => {
     const input = [] as Array<[string[], number]>

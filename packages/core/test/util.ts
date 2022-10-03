@@ -1,3 +1,4 @@
+import {expect} from 'chai'
 import {setLogger} from '../src/util/logger'
 
 let previous: any
@@ -54,7 +55,7 @@ function addRejection(e: any) {
 }
 
 /**
- * A simple guerd used by tests to check no unhandled promise rejection occurs.
+ * Used by unit tests to check that no unhandled promise rejection occurs.
  */
 export const unhandledRejections = {
   before(): void {
@@ -63,5 +64,6 @@ export const unhandledRejections = {
   },
   after(): void {
     process.off('unhandledRejection', addRejection)
+    expect(rejections, 'Unhandled Promise rejections detected').deep.equals([])
   },
 }
