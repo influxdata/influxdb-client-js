@@ -1,3 +1,4 @@
+import {expect} from 'chai'
 import {setLogger} from '../src/util/logger'
 
 let previous: any
@@ -45,5 +46,24 @@ export const collectLogging = {
       setLogger(previous)
       previous = undefined
     }
+  },
+}
+
+let rejections: Array<any> = []
+function addRejection(e: any) {
+  rejections.push(e)
+}
+
+/**
+ * Used by unit tests to check that no unhandled promise rejection occurs.
+ */
+export const unhandledRejections = {
+  before(): void {
+    rejections = []
+    process.on('unhandledRejection', addRejection)
+  },
+  after(): void {
+    process.off('unhandledRejection', addRejection)
+    expect(rejections, 'Unhandled Promise rejections detected').deep.equals([])
   },
 }
