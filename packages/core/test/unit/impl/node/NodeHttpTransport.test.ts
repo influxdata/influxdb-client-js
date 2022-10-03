@@ -616,6 +616,9 @@ describe('NodeHttpTransport', () => {
         }
         writeUntilFull()
         res.once('drain', () => {
+          writeUntilFull()
+        })
+        res.once('drain', () => {
           res.write('.')
           res.end()
         })
