@@ -2,8 +2,6 @@ import {
   InfluxDB,
   Transport,
   AnnotatedCSVResponse,
-  APIExecutor,
-  CommunicationObserver,
 } from '@influxdata/influxdb-client'
 
 /** ExecutionOptions contains execution options for a flux script. */
@@ -25,7 +23,7 @@ export interface ExecutionOptions {
 export class FluxScriptInvocationAPI {
   // internal
   private transport: Transport
-  private processCSVResponse: (supplier: APIExecutor) => AnnotatedCSVResponse
+  private processCSVResponse: InfluxDB['processCSVResponse']
   private options: ExecutionOptions
 
   /**
@@ -48,31 +46,22 @@ export class FluxScriptInvocationAPI {
    * CSV response data stream
    */
   invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse {
-    return this.processCSVResponse(this.createExecutor(scriptID, params))
-  }
-
-  private createExecutor(
-    scriptID: string,
-    params: Record<string, any> | undefined
-  ): APIExecutor {
     const {gzip, headers} = this.options
-
-    return (consumer: CommunicationObserver<Uint8Array>): void => {
-      this.transport.send(
-        `/api/v2/scripts/${scriptID}/invoke`,
-        JSON.stringify({
-          params: {...params},
-        }),
-        {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json; encoding=utf-8',
-            'accept-encoding': gzip ? 'gzip' : 'identity',
-            ...headers,
-          },
-        },
-        consumer
-      )
+    const path = `/api/v2/scripts/${scriptID}/invoke`
+    const body = JSON.stringify({
+      params: {...params},
+    })
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json; encoding=utf-8',
+        'accept-encoding': gzip ? 'gzip' : 'identity',
+        ...headers,
+      },
     }
+    return this.processCSVResponse(
+      (consumer) => this.transport.send(path, body, options, consumer),
+      () => this.transport.iterate(path, body, options)
+    )
   }
 }

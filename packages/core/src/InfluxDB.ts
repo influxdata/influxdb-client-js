@@ -7,7 +7,11 @@ import {Transport} from './transport'
 import TransportImpl from './impl/node/NodeHttpTransport'
 import QueryApi, {QueryOptions} from './QueryApi'
 import QueryApiImpl from './impl/QueryApiImpl'
-import {AnnotatedCSVResponse, APIExecutor} from './results'
+import {
+  AnnotatedCSVResponse,
+  APIExecutor,
+  IterableResultExecutor,
+} from './results'
 import {AnnotatedCSVResponseImpl} from './results/AnnotatedCSVResponseImpl'
 
 /**
@@ -17,7 +21,10 @@ import {AnnotatedCSVResponseImpl} from './results/AnnotatedCSVResponseImpl'
 export default class InfluxDB {
   private _options: ClientOptions
   readonly transport: Transport
-  readonly processCSVResponse: (executor: APIExecutor) => AnnotatedCSVResponse
+  readonly processCSVResponse: (
+    executor: APIExecutor,
+    iterableResultExecutor: IterableResultExecutor
+  ) => AnnotatedCSVResponse
 
   /**
    * Creates influxdb client options from an options object or url.
@@ -36,8 +43,15 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url specified!')
     if (url.endsWith('/')) this._options.url = url.substring(0, url.length - 1)
     this.transport = this._options.transport ?? new TransportImpl(this._options)
-    this.processCSVResponse = (executor: APIExecutor): AnnotatedCSVResponse =>
-      new AnnotatedCSVResponseImpl(executor, this.transport.chunkCombiner)
+    this.processCSVResponse = (
+      executor: APIExecutor,
+      iterableResultExecutor: IterableResultExecutor
+    ): AnnotatedCSVResponse =>
+      new AnnotatedCSVResponseImpl(
+        executor,
+        iterableResultExecutor,
+        this.transport.chunkCombiner
+      )
   }
 
   /**

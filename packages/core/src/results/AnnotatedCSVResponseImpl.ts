@@ -6,9 +6,14 @@ import {
   linesToTables,
   ChunkCombiner,
   chunksToLines,
+  chunksToLinesIterable,
+  linesToRowsIterable,
 } from '../results'
 import {Observable} from '../observable'
-import {AnnotatedCSVResponse} from './AnnotatedCSVResponse'
+import {
+  AnnotatedCSVResponse,
+  IterableResultExecutor,
+} from './AnnotatedCSVResponse'
 import ObservableQuery, {APIExecutor} from './ObservableQuery'
 
 export function defaultRowMapping(
@@ -25,8 +30,17 @@ export function defaultRowMapping(
 export class AnnotatedCSVResponseImpl implements AnnotatedCSVResponse {
   constructor(
     private executor: APIExecutor,
+    private iterableResultExecutor: IterableResultExecutor,
     private chunkCombiner: ChunkCombiner
   ) {}
+  iterateLines(): AsyncIterable<string> {
+    return chunksToLinesIterable(this.iterableResultExecutor())
+  }
+  iterateRows(): AsyncIterable<Row> {
+    return linesToRowsIterable(
+      chunksToLinesIterable(this.iterableResultExecutor())
+    )
+  }
   lines(): Observable<string> {
     return new ObservableQuery(this.executor, (observer) =>
       chunksToLines(observer, this.chunkCombiner)
