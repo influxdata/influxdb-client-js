@@ -6,7 +6,7 @@ import {Cancellable} from './Cancellable'
  * ChunksToLines is a transformation that accepts Uint8Array instances
  * and emmits strings representing CSV lines.
  * @param target - target to emmit CSV lines to
- * @param chunks - chunk combiner
+ * @param chunkCombiner - chunk combiner
  * @returns communication obrver to accept Uint8Arrays
  */
 export function chunksToLines(
