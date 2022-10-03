@@ -47,3 +47,21 @@ export const collectLogging = {
     }
   },
 }
+
+let rejections: Array<any> = []
+function addRejection(e: any) {
+  rejections.push(e)
+}
+
+/**
+ * A simple guerd used by tests to check no unhandled promise rejection occurs.
+ */
+export const unhandledRejections = {
+  before(): void {
+    rejections = []
+    process.on('unhandledRejection', addRejection)
+  },
+  after(): void {
+    process.off('unhandledRejection', addRejection)
+  },
+}
