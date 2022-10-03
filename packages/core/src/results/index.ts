@@ -1,5 +1,6 @@
 export * from './chunkCombiner'
 export * from './chunksToLines'
+export * from './chunksToLinesIterable'
 export * from './Cancellable'
 export * from './CommunicationObserver'
 export * from './linesToTables'
