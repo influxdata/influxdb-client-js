@@ -6,27 +6,34 @@
       import {
         InfluxDB,
         Point,
-        flux
+        flux,
       } from 'https://unpkg.com/@influxdata/influxdb-client/dist/index.browser.mjs'
       import {
         PingAPI,
         SetupAPI,
       } from 'https://unpkg.com/@influxdata/influxdb-client-apis/dist/index.mjs'
       // or use the following imports to use local builds
-      // import {InfluxDB, Point} from '../packages/core/dist/index.browser.mjs'
+      // import {InfluxDB, Point, flux} from '../packages/core/dist/index.browser.mjs'
       // import {PingAPI, SetupAPI} from '../packages/apis/dist/index.browser.mjs'
 
       /**
        * Import InfluxDB configuration rather than inlining it.
        */
-      import {url, token, org, bucket, username, password} from './env_browser.mjs'
+      import {
+        url,
+        token,
+        org,
+        bucket,
+        username,
+        password,
+      } from './env_browser.mjs'
 
       const influxDB = new InfluxDB({url, token})
 
       // log results also to HTML page
       const logField = document.getElementById('log')
-      function log(message, ...rest) {
-        console.log(arguments[0], rest)
+      function log(...args) {
+        console.log.apply(console, args)
         const previousValue = logField.value
         logField.value +=
           (previousValue ? '\n' : '') +
@@ -147,11 +154,13 @@
         pingExample()
       })
       document.addEventListener('DOMContentLoaded', () => {
-        const fluxQueryParam = new URLSearchParams(window.location.search).get('fluxQuery')
+        const fluxQueryParam = new URLSearchParams(window.location.search).get(
+          'fluxQuery'
+        )
         if (fluxQueryParam) {
           queryInput.value = fluxQueryParam
         } else {
-          queryInput.value = 
+          queryInput.value =
             flux`from(bucket:${bucket}) |> range(start: -1d) |> filter(fn: (r) => r._measurement == "temperature")`.toString()
         }
       })
