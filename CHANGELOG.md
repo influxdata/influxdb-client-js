@@ -14,7 +14,7 @@
 
 ### Breaking Changes
 
-1. [#592](https://github.com/influxdata/influxdb-client-js/pull/592): The client packages now require ES2018 (was ES2015). The generated javascript code now needs [async generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator#browser_compatibility) and [for-await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of#browser_compatibility) loop. At least the latest node 14 is required (because of mature support for iterable http response). Deno and all current modern browsers support ES2018 for years back.
+1. [#592](https://github.com/influxdata/influxdb-client-js/pull/592): The client packages newly require ES2018 runtime (was ES2015). The javascript code now needs [async generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator#browser_compatibility) and [for-await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of#browser_compatibility) loop. At least the latest node 14 is required because of mature support for iterable http response. Deno and all current modern browsers support ES2018 for years back.
 
 ## 1.30.0 [2022-09-29]
 
