@@ -50,6 +50,24 @@ describe('QueryApi', () => {
     expect(target.completed).to.equals(1)
     expect(target.lines).to.deep.equal(simpleResponseLines)
   })
+  it('iterates lines', async () => {
+    const subject = new InfluxDB(clientOptions).getQueryApi(ORG)
+    nock(clientOptions.url)
+      .post(QUERY_PATH)
+      .reply((_uri, _requestBody) => {
+        return [
+          200,
+          fs.createReadStream('test/fixture/query/simpleResponse.txt'),
+          {'retry-after': '1'},
+        ]
+      })
+      .persist()
+    const lines: any[] = []
+    for await (const line of subject.iterateLines('buckets()')) {
+      lines.push(line)
+    }
+    expect(lines).to.deep.equal(simpleResponseLines)
+  })
   ;[
     ['response2', undefined],
     ['response2', true],
@@ -83,6 +101,46 @@ describe('QueryApi', () => {
       // console.log(JSON.stringify({tables: target.tables, rows: target.rows}))
       expect(target.tables).to.deep.equal(response.tables)
       expect(target.rows).to.deep.equal(response.rows)
+    })
+  })
+  ;[
+    ['response2', undefined],
+    ['response2', true],
+    ['response3', false],
+  ].forEach(([name, gzip]) => {
+    it(`iterate rows from ${name} with gzip=${gzip}`, async () => {
+      const subject = new InfluxDB(clientOptions)
+        .getQueryApi(ORG)
+        .with({gzip: gzip as boolean | undefined})
+      nock(clientOptions.url)
+        .post(QUERY_PATH)
+        .reply((_uri, _requestBody) => {
+          let stream: any = fs.createReadStream(
+            `test/fixture/query/${name}.txt`
+          )
+          if (gzip) stream = stream.pipe(zlib.createGzip())
+          return [200, stream, {'content-encoding': gzip ? 'gzip' : 'identity'}]
+        })
+        .persist()
+      let index = 0
+      let lastMeta: FluxTableMetaData | undefined = undefined
+      const tables: Array<{index: number; meta: FluxTableMetaData}> = []
+      const rows: Array<{index: number; row: string[]}> = []
+      for await (const {values, tableMeta} of subject.iterateRows(
+        'buckets()'
+      )) {
+        if (lastMeta !== tableMeta) {
+          tables.push({index: index++, meta: tableMeta})
+          lastMeta = tableMeta
+        }
+        rows.push({index: index++, row: values})
+      }
+
+      const response = JSON.parse(
+        fs.readFileSync(`test/fixture/query/${name}.parsed.json`, 'utf8')
+      )
+      expect(tables).to.deep.equal(response.tables)
+      expect(rows).to.deep.equal(response.rows)
     })
   })
   it('receives properly indexed table data', async () => {

@@ -64,6 +64,12 @@ export class QueryApiImpl implements QueryApi {
     )
   }
 
+  iterateLines(query: string | ParameterizedQuery): AsyncIterable<string> {
+    return this.response(query).iterateLines()
+  }
+  iterateRows(query: string | ParameterizedQuery): AsyncIterable<Row> {
+    return this.response(query).iterateRows()
+  }
   lines(query: string | ParameterizedQuery): Observable<string> {
     return this.response(query).lines()
   }
