@@ -24,7 +24,7 @@ const clientOptions: ClientOptions = {
 
 const influxDB = new InfluxDB(clientOptions)
 
-async function writePoints() {
+async function writePoints(): Promise<void> {
   console.log('*** WRITE POINTS ***')
   const writeAPI = influxDB.getWriteApi('', bucket)
   const point = new Point('mem')
@@ -34,7 +34,7 @@ async function writePoints() {
   await writeAPI.close()
 }
 
-async function queryRows() {
+async function queryRows(): Promise<void> {
   console.log('*** QUERY ROWS ***')
   const queryAPI = influxDB.getQueryApi('')
   const query = `from(bucket: "${bucket}") |> range(start: -1h)`
@@ -46,5 +46,5 @@ async function queryRows() {
 }
 
 writePoints()
-  .then(() => queryRows())
+  .then(queryRows)
   .catch((e) => console.error(e))
