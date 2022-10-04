@@ -91,13 +91,13 @@ JavaScript client API Reference Documentation is available online at https://inf
 
 To contribute code, fork the repository, apply changes and submit a pull request to the `master` branch.
 
-Build Requirements:
+Requirements:
 
-- Node.js v14 LTS
+- Node.js v16 LTS
   ```bash
   node --version
   ```
-- yarn 1.9.4. or higher
+- yarn 1.22.19 or higher
   ```bash
   yarn -v
   ```
