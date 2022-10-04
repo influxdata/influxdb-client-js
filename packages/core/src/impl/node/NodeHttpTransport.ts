@@ -308,11 +308,11 @@ export class NodeHttpTransport implements Transport {
         options.body = res
         resolve(options)
       })
-    } else {
-      options.body = bodyBuffer
-      options.headers['content-length'] = options.body.length
-      resolve(options)
+      return
     }
+    options.body = bodyBuffer
+    options.headers['content-length'] = options.body.length
+    resolve(options)
   }
 
   private _prepareResponse(
