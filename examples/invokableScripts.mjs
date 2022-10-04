@@ -69,26 +69,15 @@ async function invokeScript(scriptID) {
   // Use FluxScriptInvocationAPI to execute a particular
   // script with specified parametes and process parsed results
   const invocationAPI = new FluxScriptInvocationAPI(influxDB)
-  await new Promise((accept, reject) => {
-    let count = 0
-    invocationAPI.invoke(scriptID, params).consumeRows({
-      complete: accept,
-      error: reject,
-      next(row, tableMetaData) {
-        count++
-        // console.log(tableMetaData.toObject(row))
-        console.log(
-          count,
-          '*',
-          count + 1,
-          '=',
-          row[tableMetaData.column('_value').index]
-        )
-      },
-    })
-  })
-  // You can also receive the whole response body. Use with caution,
-  // a possibly huge stream of results is copied to memory.
+  const results = invocationAPI.invoke(scriptID, params)
+  let cnt = 0
+  for await (const {values, tableMeta} of results.iterateRows()) {
+    cnt++
+    // console.log(tableMetaData.toObject(row))
+    console.log(cnt, '*', cnt + 1, '=', tableMeta.get(values, '_value'))
+  }
+  // // You can also receive the whole response body. Use with caution,
+  // // a possibly huge stream of results is copied to memory.
   // const response = await scriptsAPI.postScriptsIDInvoke({
   //   scriptID,
   //   body: {params},
