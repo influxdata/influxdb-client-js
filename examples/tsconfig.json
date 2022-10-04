@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2017",
+    "target": "ES2018",
     "allowJs": true
   },
   "exclude": ["**/*.js", "**/*.mjs"]
