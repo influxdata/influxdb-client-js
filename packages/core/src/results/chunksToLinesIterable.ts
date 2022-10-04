@@ -1,8 +1,8 @@
 import {ChunkCombiner, createTextDecoderCombiner} from './chunkCombiner'
 
 /**
- * ChunksToLinesIterable is a transformation that accepts an iterable of Uint8Array instances
- * and returns iterable of lines.
+ * ChunksToLinesIterable is a transformation that accepts
+ * an iterable of Uint8Array instancesand returns iterable of lines.
  * @param source - iterable of transport buffers
  * @param chunkCombiner - chunk combiner
  * @returns iterable of lines

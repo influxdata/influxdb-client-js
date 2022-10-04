@@ -11,8 +11,9 @@ import {
 } from './FluxTableMetaData'
 
 /**
- * LinesToRowsIterable is a transformation that accepts and iterable of flux annotated CSV lines
- * and returns iterable of rows (row data and row metadata).
+ * LinesToRowsIterable is a transformation that accepts
+ * an iterable of flux annotated CSV lines and returns
+ * an iterable of rows (row values and table metadata).
  */
 export async function* linesToRowsIterable(
   source: AsyncIterable<string>
