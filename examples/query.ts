@@ -14,8 +14,8 @@ const fluxQuery =
 // There are more ways of how to receive results,
 // the essential ones are shown in functions below.
 // Execution of a particular function follows
-// its defintion, comment/uncomment it at will.
-// See also rxjs-query.ts and queryWithParamas.mjs .
+// its definition, comment/uncomment it at will.
+// See also rxjs-query.ts and queryWithParams.mjs .
 
 // Execute query and receive table metadata and table row values using async iterator.
 async function iterateRows() {
