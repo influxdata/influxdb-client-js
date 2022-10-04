@@ -38,9 +38,11 @@ server.listen(0, 'localhost', async () => {
     },
   }).getQueryApi(org)
   try {
-    const data = await queryApi.collectRows('buckets()')
+    const data = await queryApi.collectRows('buckets()', (values, tableMeta) =>
+      tableMeta.get(values, 'name')
+    )
     console.info('Available buckets:')
-    data.forEach((x) => console.info('', x.name))
+    data.forEach((name) => console.info('', name))
     console.log('\nQuery SUCCESS')
   } catch (e) {
     console.error(e)
