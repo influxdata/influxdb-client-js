@@ -92,7 +92,7 @@ export default class InfluxDB {
    *
    * @remarks
    * See also {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts | query.ts example},
-   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.ts | queryWithParams.ts example},
+   * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.mjs | queryWithParams.mjs example},
    * {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts | rxjs-query.ts example},
    * and {@link https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html | browser example},
    *

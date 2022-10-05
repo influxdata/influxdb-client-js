@@ -35,7 +35,7 @@ This directory contains javascript and typescript examples for node.js, browser,
   - Run `npm run browser`
     It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests
-    to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
+    to a configured influxDB database, see [scripts/server.mjs](./scripts/server.mjs) for details.
 - Deno examples
   - [query.deno.ts](./query.deno.ts) shows how to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
     It is almost the same as node's [query.ts](./query.ts) example, the difference is the import statement that works in [deno](https://deno.land) and built-in typescript support.
