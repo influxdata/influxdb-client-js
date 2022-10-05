@@ -67,7 +67,7 @@ async function invokeScript(scriptID) {
   const params = {count: count}
   console.log('Script parameters: ', params)
   // Use FluxScriptInvocationAPI to execute a particular
-  // script with specified parametes and process parsed results
+  // script with specified parameters and process parsed results
   const invocationAPI = new FluxScriptInvocationAPI(influxDB)
   const results = invocationAPI.invoke(scriptID, params)
   let cnt = 0
