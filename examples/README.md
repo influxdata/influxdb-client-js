@@ -4,7 +4,7 @@ This directory contains javascript and typescript examples for node.js, browser,
 
 - Node.js examples
   - Prerequisites
-    - [node](https://nodejs.org/en/) installed
+    - [node](https://nodejs.org/en/) installed, at least version 16 is recommended
     - Run `npm install` in this directory
     - Change variables in [./env.mjs](env.mjs) to configure connection to your InfluxDB instance. The file can be used as-is against a new [docker InfluxDB v2.3 OSS GA installation](https://docs.influxdata.com/influxdb/v2.3/get-started/)
   - Examples are executable. If it does not work for you, run `npm run esr EXAMPLE.ts`.
@@ -12,7 +12,7 @@ This directory contains javascript and typescript examples for node.js, browser,
     Write data points to InfluxDB.
   - [query.ts](./query.ts)
     Query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
-  - [queryWithParams.ts](./queryWithParams.ts)
+  - [queryWithParams.mjs](./queryWithParams.mjs)
     Supply parameters to a [Flux](https://docs.influxdata.com/influxdb/latest/get-started/) query.
   - [ping.mjs](./ping.mjs)
     Check status of InfluxDB server.
@@ -35,7 +35,7 @@ This directory contains javascript and typescript examples for node.js, browser,
   - Run `npm run browser`
     It starts a local HTTP server and opens [index.html](./index.html) that contains client examples.
     The local HTTP server serves all files from this git repository and also proxies requests
-    to a configured influxDB database, see [scripts/server.js](./scripts/server.js) for details.
+    to a configured influxDB database, see [scripts/server.mjs](./scripts/server.mjs) for details.
 - Deno examples
   - [query.deno.ts](./query.deno.ts) shows how to query InfluxDB with [Flux](https://docs.influxdata.com/influxdb/latest/get-started/).
     It is almost the same as node's [query.ts](./query.ts) example, the difference is the import statement that works in [deno](https://deno.land) and built-in typescript support.

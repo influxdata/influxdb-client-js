@@ -4,11 +4,26 @@ import {CommunicationObserver} from './CommunicationObserver'
 import {FluxResultObserver} from './FluxResultObserver'
 
 /**
+ * A factory that returns async iterables.
+ */
+export type IterableResultExecutor = () => AsyncIterable<Uint8Array>
+
+/**
  * AnnotatedCSVResponse provides various ways of how to
  * process data from an annotated CSV response stream,
  * which is returned as a result of a flux script execution.
  */
 export interface AnnotatedCSVResponse {
+  /**
+   * IterateLines returns iterable of CSV response lines suitable for `for-await` loop consumption.
+   * @returns iterable of lines
+   */
+  iterateLines(): AsyncIterable<string>
+  /**
+   * IterateRows returns iterable of response table rows suitable for `for-await` loop consumption.
+   * @returns iterable of rows
+   */
+  iterateRows(): AsyncIterable<Row>
   /**
    * Lines creates a cold observable of the CSV response lines.
    * @returns observable of CSV result lines

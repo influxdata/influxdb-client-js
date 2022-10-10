@@ -1,14 +1,9 @@
-#!./node_modules/.bin/esr
+#!/usr/bin/env node
 //////////////////////////////////////////
 // Shows how to use InfluxDB query API. //
 //////////////////////////////////////////
 
-import {
-  InfluxDB,
-  FluxTableMetaData,
-  flux,
-  fluxDuration,
-} from '@influxdata/influxdb-client'
+import {InfluxDB, flux, fluxDuration} from '@influxdata/influxdb-client'
 import {url, token, org} from './env.mjs'
 
 const queryApi = new InfluxDB({url, token}).getQueryApi(org)
@@ -20,21 +15,15 @@ const fluxQuery = flux`from(bucket:"my-bucket")
 console.log('query:', fluxQuery.toString())
 
 console.log('*** QUERY ROWS ***')
-// performs query and receive line table metadata and rows
-// https://v2.docs.influxdata.com/v2.0/reference/syntax/annotated-csv/
-queryApi.queryRows(fluxQuery, {
-  next: (row: string[], tableMeta: FluxTableMetaData) => {
-    const o = tableMeta.toObject(row)
+try {
+  for await (const {values, tableMeta} of queryApi.iterateRows(fluxQuery)) {
+    const o = tableMeta.toObject(values)
     // console.log(JSON.stringify(o, null, 2))
     console.log(
       `${o._time} ${o._measurement} in '${o.location}' (${o.example}): ${o._field}=${o._value}`
     )
-  },
-  error: (error: Error) => {
-    console.error(error)
-    console.log('\nFinished ERROR')
-  },
-  complete: () => {
-    console.log('\nFinished SUCCESS')
-  },
-})
+  }
+  console.log('\nFinished SUCCESS')
+} catch (e) {
+  console.log('\nFinished ERROR')
+}

@@ -16,7 +16,7 @@ export default defineConfig({
   globalName: 'influxdbApis',
   dts: false,
   minify,
-  target: ['es2015'],
+  target: ['es2018'],
   platform: 'browser',
   splitting: false,
   esbuildOptions(options, {format}) {

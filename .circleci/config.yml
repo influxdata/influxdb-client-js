@@ -21,7 +21,7 @@ jobs:
     parameters:
       image:
         type: string
-        default: &default-image 'cimg/node:14.19'
+        default: &default-image 'cimg/node:16.17'
     docker:
       - image: << parameters.image >>
     steps:

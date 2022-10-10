@@ -56,6 +56,26 @@ export default interface QueryApi {
   response(query: string | ParameterizedQuery): AnnotatedCSVResponse
 
   /**
+   * IterateLines executes the supplied query and returns results in
+   * an async iterable of annotated CSV lines.
+   * Async iterables are best consumed by `for-await` loop.
+   *
+   * @param query - query
+   * @returns async iterable of CSV result lines
+   */
+  iterateLines(query: string | ParameterizedQuery): AsyncIterable<string>
+
+  /**
+   * IterateRows executes the supplied query and returns results in
+   * an async iterable of row data and table metadata pairs.
+   * Async iterables are best consumed by `for-await` loop.
+   *
+   * @param query - query
+   * @returns async iterable of CSV result lines
+   */
+  iterateRows(query: string | ParameterizedQuery): AsyncIterable<Row>
+
+  /**
    * Creates a cold observable of the lines returned by the given query.
    *
    * @param query - query

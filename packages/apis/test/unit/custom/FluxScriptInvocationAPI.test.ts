@@ -8,6 +8,7 @@ import zlib from 'zlib'
 const fakeUrl = 'http://fake:8086'
 const fakeToken = 'a'
 const fakeResponseLines = [
+  '#datatype,string,long,dateTime:RFC3339,double',
   ',result,table,_time,_value',
   ',_result,0,2021-01-01T00:00:00Z,2',
   ',_result,0,2021-01-01T02:24:00Z,6',
@@ -39,6 +40,45 @@ describe('FluxScriptInvocationAPI', () => {
     expect(lines).to.deep.equal(fakeResponseLines)
     expect(body).to.deep.equal({params: {hi: 'Bob'}})
     expect(authorization).equals(`Token ${fakeToken}`)
+  })
+  it('iterates lines', async () => {
+    const subject = new FluxScriptInvocationAPI(influxDB)
+    nock(fakeUrl)
+      .post(`/api/v2/scripts/${fakeScriptID}/invoke`)
+      .reply(200, fakeResponse)
+      .persist()
+    const lines: string[] = []
+    const response = subject.invoke(fakeScriptID, {hi: 'Bob'})
+    for await (const line of response.iterateLines()) {
+      lines.push(line)
+    }
+    expect(lines).to.deep.equal(fakeResponseLines)
+  })
+  it('iterates rows', async () => {
+    const subject = new FluxScriptInvocationAPI(influxDB)
+    nock(fakeUrl)
+      .post(`/api/v2/scripts/${fakeScriptID}/invoke`)
+      .reply(200, fakeResponse)
+      .persist()
+    const rows: any[] = []
+    const response = subject.invoke(fakeScriptID, {hi: 'Bob'})
+    for await (const {values, tableMeta} of response.iterateRows()) {
+      rows.push(tableMeta.toObject(values))
+    }
+    expect(rows).to.deep.equal([
+      {
+        result: '_result',
+        table: 0,
+        _time: '2021-01-01T00:00:00Z',
+        _value: 2,
+      },
+      {
+        result: '_result',
+        table: 0,
+        _time: '2021-01-01T02:24:00Z',
+        _value: 6,
+      },
+    ])
   })
   it('can provide custom headers', async () => {
     const subject = new FluxScriptInvocationAPI(influxDB, {

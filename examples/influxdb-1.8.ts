@@ -24,33 +24,27 @@ const clientOptions: ClientOptions = {
 
 const influxDB = new InfluxDB(clientOptions)
 
-console.log('*** WRITE POINTS ***')
+async function writePoints(): Promise<void> {
+  console.log('*** WRITE POINTS ***')
+  const writeAPI = influxDB.getWriteApi('', bucket)
+  const point = new Point('mem')
+    .tag('host', 'host1')
+    .floatField('used_percent', 23.43234543)
+  writeAPI.writePoint(point)
+  await writeAPI.close()
+}
 
-const writeAPI = influxDB.getWriteApi('', bucket)
-const point = new Point('mem')
-  .tag('host', 'host1')
-  .floatField('used_percent', 23.43234543)
-writeAPI.writePoint(point)
-writeAPI
-  .close()
-  .then(() => console.log('Write FINISHED'))
-  .catch((error) => {
-    console.error(error)
-  })
-
-console.log('*** QUERY ROWS ***')
-
-const queryAPI = influxDB.getQueryApi('')
-const query = `from(bucket: "${bucket}") |> range(start: -1h)`
-queryAPI.queryRows(query, {
-  next: (row, tableMeta) => {
-    const o = tableMeta.toObject(row)
+async function queryRows(): Promise<void> {
+  console.log('*** QUERY ROWS ***')
+  const queryAPI = influxDB.getQueryApi('')
+  const query = `from(bucket: "${bucket}") |> range(start: -1h)`
+  for await (const {values, tableMeta} of queryAPI.iterateRows(query)) {
+    const o = tableMeta.toObject(values)
     console.log(`${o._time} ${o._measurement} : ${o._field}=${o._value}`)
-  },
-  error: (error: Error) => {
-    console.error(error)
-  },
-  complete: () => {
-    console.log('\nQuery FINISHED')
-  },
-})
+  }
+  console.log('\nQuery FINISHED')
+}
+
+writePoints()
+  .then(queryRows)
+  .catch((e) => console.error(e))

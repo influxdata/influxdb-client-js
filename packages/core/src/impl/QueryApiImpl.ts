@@ -7,6 +7,7 @@ import {
   FluxTableMetaData,
   Row,
   AnnotatedCSVResponse,
+  IterableResultExecutor,
 } from '../results'
 import {ParameterizedQuery} from '../query/flux'
 import {APIExecutor} from '../results/ObservableQuery'
@@ -23,7 +24,10 @@ export class QueryApiImpl implements QueryApi {
   private options: QueryOptions
   constructor(
     private transport: Transport,
-    private createCSVResponse: (executor: APIExecutor) => AnnotatedCSVResponse,
+    private createCSVResponse: (
+      executor: APIExecutor,
+      iterableResultExecutor: IterableResultExecutor
+    ) => AnnotatedCSVResponse,
     org: string | QueryOptions
   ) {
     this.options = typeof org === 'string' ? {org} : org
@@ -37,9 +41,35 @@ export class QueryApiImpl implements QueryApi {
   }
 
   response(query: string | ParameterizedQuery): AnnotatedCSVResponse {
-    return this.createCSVResponse(this.createExecutor(query))
+    const {org, type, gzip, headers} = this.options
+    const path = `/api/v2/query?org=${encodeURIComponent(org)}`
+    const body = JSON.stringify(
+      this.decorateRequest({
+        query: query.toString(),
+        dialect: DEFAULT_dialect,
+        type,
+      })
+    )
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json; encoding=utf-8',
+        'accept-encoding': gzip ? 'gzip' : 'identity',
+        ...headers,
+      },
+    }
+    return this.createCSVResponse(
+      (consumer) => this.transport.send(path, body, options, consumer),
+      () => this.transport.iterate(path, body, options)
+    )
   }
 
+  iterateLines(query: string | ParameterizedQuery): AsyncIterable<string> {
+    return this.response(query).iterateLines()
+  }
+  iterateRows(query: string | ParameterizedQuery): AsyncIterable<Row> {
+    return this.response(query).iterateRows()
+  }
   lines(query: string | ParameterizedQuery): Observable<string> {
     return this.response(query).lines()
   }
@@ -99,31 +129,6 @@ export class QueryApiImpl implements QueryApi {
     )
   }
 
-  private createExecutor(query: string | ParameterizedQuery): APIExecutor {
-    const {org, type, gzip, headers} = this.options
-
-    return (consumer): void => {
-      this.transport.send(
-        `/api/v2/query?org=${encodeURIComponent(org)}`,
-        JSON.stringify(
-          this.decorateRequest({
-            query: query.toString(),
-            dialect: DEFAULT_dialect,
-            type,
-          })
-        ),
-        {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json; encoding=utf-8',
-            'accept-encoding': gzip ? 'gzip' : 'identity',
-            ...headers,
-          },
-        },
-        consumer
-      )
-    }
-  }
   private decorateRequest(request: any): any {
     if (typeof this.options.now === 'function') {
       request.now = this.options.now()
