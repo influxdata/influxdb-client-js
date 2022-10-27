@@ -4,6 +4,10 @@
 
 1. [#592](https://github.com/influxdata/influxdb-client-js/pull/592): Allow to receive query results using for-await loop.
 
+### Other
+
+1. [#624](https://github.com/influxdata/influxdb-client-js/pull/624): Upgrade to the latest node v18 LTS.
+
 ### Breaking Changes
 
 1. [#592](https://github.com/influxdata/influxdb-client-js/pull/592): The client packages newly require ES2018 runtime (was ES2015). The javascript code now needs [async generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator#browser_compatibility) and [for-await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of#browser_compatibility) loop. At least the latest node 14 is required because of mature support for iterable http response. Deno and all current modern browsers support ES2018 for years back. This change shoudn't cause any harm in existing installations. In case of troubles, configure your project with babel ES2018 preset to produce ES2015 code.
