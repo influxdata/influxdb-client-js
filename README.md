@@ -93,7 +93,7 @@ To contribute code, fork the repository, apply changes and submit a pull request
 
 Requirements:
 
-- Node.js v16 LTS
+- Node.js v18 LTS
   ```bash
   node --version
   ```
