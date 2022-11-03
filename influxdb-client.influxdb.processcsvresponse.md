@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-readonly processCSVResponse: (executor: APIExecutor) => AnnotatedCSVResponse;
+readonly processCSVResponse: (executor: APIExecutor, iterableResultExecutor: IterableResultExecutor) => AnnotatedCSVResponse;
 ```

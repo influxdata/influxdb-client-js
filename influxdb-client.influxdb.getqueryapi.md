@@ -26,5 +26,5 @@ QueryApi instance
 
 ## Remarks
 
-See also [query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts)<!-- -->, [queryWithParams.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.ts)<!-- -->, [rxjs-query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->,
+See also [query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/query.ts)<!-- -->, [queryWithParams.mjs example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/queryWithParams.mjs)<!-- -->, [rxjs-query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts)<!-- -->, and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html)<!-- -->,
 

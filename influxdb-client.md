@@ -22,6 +22,7 @@
 |  --- | --- |
 |  [canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md) | Tests the error in order to know if an HTTP call can be retried. |
 |  [chunksToLines(target, chunkCombiner)](./influxdb-client.chunkstolines.md) | ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines. |
+|  [chunksToLinesIterable(source, chunkCombiner)](./influxdb-client.chunkstolinesiterable.md) | ChunksToLinesIterable is a transformation that accepts an iterable of Uint8Array instances and returns iterable of lines. |
 |  [convertTimeToNanos(value)](./influxdb-client.converttimetonanos.md) | convertTimeToNanos converts Point's timestamp to a string. |
 |  [createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md) | Creates a flux table column from a partial FluxTableColumn. |
 |  [createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md) | Created FluxTableMetaData from the columns supplied. |
@@ -37,7 +38,8 @@
 |  [fluxString(value)](./influxdb-client.fluxstring.md) | Creates a flux string literal. |
 |  [getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md) | Gets retry delay from the supplied error, possibly using random number up to retryJitter. |
 |  [isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md) | isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. |
-|  [linesToTables(consumer)](./influxdb-client.linestotables.md) | linesToTables creates a transformationthat accepts (flux) annotated CSV lines and emits rows together with table metadata. |
+|  [linesToRowsIterable(source)](./influxdb-client.linestorowsiterable.md) | LinesToRowsIterable is a transformation that accepts an iterable of flux annotated CSV lines and returns an iterable of rows (row values and table metadata). |
+|  [linesToTables(consumer)](./influxdb-client.linestotables.md) | LinesToTables creates a transformation that accepts (flux) annotated CSV lines and emits rows together with table metadata. |
 |  [newFluxTableColumn()](./influxdb-client.newfluxtablecolumn.md) | Creates a new flux table column. |
 |  [sanitizeFloat(value)](./influxdb-client.sanitizefloat.md) | Sanitizes float value to avoid injections. |
 |  [sanitizeInteger(value)](./influxdb-client.sanitizeinteger.md) | Sanitizes integer value to avoid injections. |
@@ -106,6 +108,7 @@
 |  [APIExecutor](./influxdb-client.apiexecutor.md) | APIExecutor executes the API and passes its response to the supplied consumer |
 |  [ColumnType](./influxdb-client.columntype.md) | Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types) |
 |  [HttpHeaders](./influxdb-client.httpheaders.md) | Type of HTTP headers. |
+|  [IterableResultExecutor](./influxdb-client.iterableresultexecutor.md) | A factory that returns async iterables. |
 |  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
 |  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
 |  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |

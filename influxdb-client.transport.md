@@ -22,6 +22,7 @@ interface Transport
 
 |  Method | Description |
 |  --- | --- |
-|  [request(path, body, options, responseStarted)](./influxdb-client.transport.request.md) | Sends data to the server and receives decoded result. The type of the result depends on response's content-type (deserialized json, text). |
+|  [iterate(path, requestBody, options)](./influxdb-client.transport.iterate.md) | Sends requestBody and returns response chunks in an async iterable that can be easily consumed in an <code>for-await</code> loop. |
+|  [request(path, requestBody, options, responseStarted)](./influxdb-client.transport.request.md) | Sends data to the server and receives decoded result. The type of the result depends on response's content-type (deserialized json, text). |
 |  [send(path, requestBody, options, callbacks)](./influxdb-client.transport.send.md) | Send data to the server and receive communication events via callbacks. |
 

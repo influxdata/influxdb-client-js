@@ -4,7 +4,7 @@
 
 ## linesToTables() function
 
-linesToTables creates a transformationthat accepts (flux) annotated CSV lines and emits rows together with table metadata.
+LinesToTables creates a transformation that accepts (flux) annotated CSV lines and emits rows together with table metadata.
 
 <b>Signature:</b>
 

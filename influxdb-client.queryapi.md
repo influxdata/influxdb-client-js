@@ -18,6 +18,8 @@ interface QueryApi
 |  --- | --- |
 |  [collectLines(query)](./influxdb-client.queryapi.collectlines.md) | CollectLines executes the query and collects all result lines in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of lines is copied to memory. |
 |  [collectRows(query, rowMapper)](./influxdb-client.queryapi.collectrows.md) | CollectRows executes the query and collects all the results in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of results is copied to memory. |
+|  [iterateLines(query)](./influxdb-client.queryapi.iteratelines.md) | IterateLines executes the supplied query and returns results in an async iterable of annotated CSV lines. Async iterables are best consumed by <code>for-await</code> loop. |
+|  [iterateRows(query)](./influxdb-client.queryapi.iteraterows.md) | IterateRows executes the supplied query and returns results in an async iterable of row data and table metadata pairs. Async iterables are best consumed by <code>for-await</code> loop. |
 |  [lines(query)](./influxdb-client.queryapi.lines.md) | Creates a cold observable of the lines returned by the given query. |
 |  [queryLines(query, consumer)](./influxdb-client.queryapi.querylines.md) | Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->. |
 |  [queryRaw(query)](./influxdb-client.queryapi.queryraw.md) | QueryRaw executes a query and returns the full response as a string. Use with caution, a possibly huge stream is copied to memory. |

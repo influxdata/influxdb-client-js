@@ -9,7 +9,7 @@ Sends data to the server and receives decoded result. The type of the result dep
 <b>Signature:</b>
 
 ```typescript
-request(path: string, body: any, options: SendOptions, responseStarted?: ResponseStartedFn): Promise<any>;
+request(path: string, requestBody: any, options: SendOptions, responseStarted?: ResponseStartedFn): Promise<any>;
 ```
 
 ## Parameters
@@ -17,11 +17,13 @@ request(path: string, body: any, options: SendOptions, responseStarted?: Respons
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  path | string | HTTP request path |
-|  body | any |  |
+|  requestBody | any | request body |
 |  options | [SendOptions](./influxdb-client.sendoptions.md) | send options |
 |  responseStarted | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | <i>(Optional)</i> |
 
 <b>Returns:</b>
 
 Promise&lt;any&gt;
+
+response data
 

@@ -20,6 +20,8 @@ interface AnnotatedCSVResponse
 |  [collectRows(rowMapper)](./influxdb-client.annotatedcsvresponse.collectrows.md) | CollectRows collects all the result rows in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of results is copied to memory. |
 |  [consumeLines(consumer)](./influxdb-client.annotatedcsvresponse.consumelines.md) | ConsumesLines consumes result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->. |
 |  [consumeRows(consumer)](./influxdb-client.annotatedcsvresponse.consumerows.md) | ConsumeRows consumes result rows through the supplied consumer. |
+|  [iterateLines()](./influxdb-client.annotatedcsvresponse.iteratelines.md) | IterateLines returns iterable of CSV response lines suitable for <code>for-await</code> loop consumption. |
+|  [iterateRows()](./influxdb-client.annotatedcsvresponse.iteraterows.md) | IterateRows returns iterable of response table rows suitable for <code>for-await</code> loop consumption. |
 |  [lines()](./influxdb-client.annotatedcsvresponse.lines.md) | Lines creates a cold observable of the CSV response lines. |
 |  [rows()](./influxdb-client.annotatedcsvresponse.rows.md) | Rows creates a cold observable of the CSV response rows. |
 

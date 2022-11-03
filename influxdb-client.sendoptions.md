@@ -19,4 +19,5 @@ interface SendOptions
 |  [gzipThreshold?](./influxdb-client.sendoptions.gzipthreshold.md) |  | number | <i>(Optional)</i> When specified, message body larger than the treshold is gzipped |
 |  [headers?](./influxdb-client.sendoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> Request HTTP headers. |
 |  [method](./influxdb-client.sendoptions.method.md) |  | string | HTTP method (POST, PUT, GET, PATCH ...) |
+|  [signal?](./influxdb-client.sendoptions.signal.md) |  | AbortSignal | <i>(Optional)</i> Abort signal |
 
