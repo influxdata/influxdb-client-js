@@ -1,9 +1,7 @@
 {
-  "version": "1.31.0",
+  "version": "1.32.0",
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "version": {
       "message": "chore(release): publish %s [skip CI]"
