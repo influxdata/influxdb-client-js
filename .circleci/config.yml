@@ -87,6 +87,25 @@ workflows:
   build:
     jobs:
       - tests:
+          name: 'tests-node-18'
+          filters:
+            branches:
+              ignore: gh-pages
+      - tests:
+          name: 'tests-node-14'
+          image: 'cimg/node:14.21'
+          filters:
+            branches:
+              ignore: gh-pages
+      - tests:
+          name: 'tests-node-16'
+          image: 'cimg/node:16.18'
+          filters:
+            branches:
+              ignore: gh-pages
+      - tests:
+          name: 'tests-node-19'
+          image: 'cimg/node:19.1'
           filters:
             branches:
               ignore: gh-pages
@@ -96,7 +115,7 @@ workflows:
               ignore: gh-pages
       - deploy-preview:
           requires:
-            - tests
+            - tests-node-18
             - coverage
           filters:
             branches:
