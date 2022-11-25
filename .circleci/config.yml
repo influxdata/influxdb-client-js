@@ -103,12 +103,6 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - tests:
-          name: 'tests-node-19'
-          image: 'cimg/node:19.1'
-          filters:
-            branches:
-              ignore: gh-pages
       - coverage:
           filters:
             branches:
