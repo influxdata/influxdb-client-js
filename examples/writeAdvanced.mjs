@@ -3,14 +3,14 @@
 // Shows how to control the way of how points are written into InfluxDB //
 //////////////////////////////////////////////////////////////////////////
 /*
-This example shows how to use the client's Write API to control the way of how points 
+This example shows how to use the client's Write API to control the way of how points
 are sent to InfluxDB server.
 
 It is based on the simpler write.mjs example, it assumes that you are familiar with it.
 The write.mjs example asynchronously writes points to InfluxDB and assumes that the library
-takes care about retries upon failures and optimizes networking to send points in 
-batches and on background. This approach is good for sending various metrics from your 
-application, but it does not scale well when you need to import bigger amount of data. See 
+takes care about retries upon failures and optimizes networking to send points in
+batches and on background. This approach is good for sending various metrics from your
+application, but it does not scale well when you need to import bigger amount of data. See
 https://github.com/influxdata/influxdb-client-js/issues/213 for details.
 */
 
@@ -53,7 +53,7 @@ const writeOptions = {
 // can be used to reuse them and thus reduce the count of newly established networking sockets
 import {Agent} from 'http'
 const keepAliveAgent = new Agent({
-  keepAlive: false, // reuse existing connections
+  keepAlive: true, // reuse existing connections
   keepAliveMsecs: 20 * 1000, // 20 seconds keep alive
 })
 process.on('exit', () => keepAliveAgent.destroy())
