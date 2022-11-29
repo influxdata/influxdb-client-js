@@ -4,7 +4,7 @@ This directory contains javascript and typescript examples for node.js, browser,
 
 - Node.js examples
   - Prerequisites
-    - [node](https://nodejs.org/en/) installed, at least version 16 is recommended
+    - [node](https://nodejs.org/en/) installed, at least version 18 is recommended
     - Run `npm install` in this directory
     - Change variables in [./env.mjs](env.mjs) to configure connection to your InfluxDB instance. The file can be used as-is against a new [docker InfluxDB v2.3 OSS GA installation](https://docs.influxdata.com/influxdb/v2.3/get-started/)
   - Examples are executable. If it does not work for you, run `npm run esr EXAMPLE.ts`.
