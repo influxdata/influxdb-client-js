@@ -31,10 +31,6 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
-          paths-ignore:
-            - '**/test/*.ts'
-            - 'examples/*.ts'
-            - 'examples/*.mjs'
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
@@ -43,3 +39,7 @@ jobs:
         uses: github/codeql-action/analyze@v2
         with:
           category: "/language:${{ matrix.language }}"
+          paths-ignore:
+            - '**/test/*.ts'
+            - 'examples/*.ts'
+            - 'examples/*.mjs'
