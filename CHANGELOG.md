@@ -1,4 +1,8 @@
-## 1.33.0 [unreleased]
+## 1.33.0 [2022-12-02]
+
+### Bug Fixes
+
+1. Updates to projects dependencies
 
 ## 1.32.0 [2022-11-01]
 
