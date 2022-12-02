@@ -1,6 +1,6 @@
 {
   "name": "@influxdata/influxdb-client-apis",
-  "version": "1.32.0",
+  "version": "1.33.0",
   "description": "InfluxDB 2.x generated APIs",
   "scripts": {
     "apidoc:extract": "api-extractor run",
@@ -57,7 +57,7 @@
     "@influxdata/influxdb-client": "*"
   },
   "devDependencies": {
-    "@influxdata/influxdb-client": "^1.32.0",
+    "@influxdata/influxdb-client": "^1.33.0",
     "@influxdata/oats": "^0.7.0",
     "@microsoft/api-extractor": "^7.31.0",
     "@types/mocha": "^10.0.0",
