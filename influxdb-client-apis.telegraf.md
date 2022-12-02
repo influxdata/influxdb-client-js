@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type Telegraf = TelegrafRequest & {
+type Telegraf = TelegrafRequest & {
     readonly id?: string;
     readonly links?: {
         self?: Link;

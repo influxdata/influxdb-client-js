@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type CellWithViewProperties = Cell & {
+type CellWithViewProperties = Cell & {
     name?: string;
     properties?: ViewProperties;
 };

@@ -9,5 +9,5 @@ The response body contains the results of the executed script. The response is u
 <b>Signature:</b>
 
 ```typescript
-declare type ScriptHTTPResponseData = string;
+type ScriptHTTPResponseData = string;
 ```

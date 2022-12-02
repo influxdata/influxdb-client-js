@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GeoTrackMapViewLayer = GeoViewLayerProperties & any;
+type GeoTrackMapViewLayer = GeoViewLayerProperties & any;
 ```
 <b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)
 

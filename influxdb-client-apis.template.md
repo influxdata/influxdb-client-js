@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type Template = Array<{
+type Template = Array<{
     apiVersion?: string;
     kind?: TemplateKind;
     metadata?: {

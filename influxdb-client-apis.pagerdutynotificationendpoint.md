@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
+type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
     clientURL?: string;
     routingKey: string;
 };

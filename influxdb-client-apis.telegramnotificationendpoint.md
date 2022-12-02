@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type TelegramNotificationEndpoint = NotificationEndpointBase & {
+type TelegramNotificationEndpoint = NotificationEndpointBase & {
     token: string;
     channel: string;
 };

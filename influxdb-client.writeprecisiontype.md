@@ -9,5 +9,5 @@ Timestamp precision used in write operations. See [https://docs.influxdata.com/i
 <b>Signature:</b>
 
 ```typescript
-declare type WritePrecisionType = 'ns' | 'us' | 'ms' | 's';
+type WritePrecisionType = 'ns' | 'us' | 'ms' | 's';
 ```

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type TemplateEnvReferences = Array<{
+type TemplateEnvReferences = Array<{
     resourceField: string;
     envRefKey: string;
     value?: string | number | number | boolean;

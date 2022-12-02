@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type ResourceMember = UserResponse & {
+type ResourceMember = UserResponse & {
     role?: 'member';
 };
 ```

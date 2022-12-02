@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type Authorization = AuthorizationUpdateRequest & {
+type Authorization = AuthorizationUpdateRequest & {
     readonly createdAt?: string;
     readonly updatedAt?: string;
     orgID?: string;

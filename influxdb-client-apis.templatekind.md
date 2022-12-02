@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type TemplateKind = 'Bucket' | 'Check' | 'CheckDeadman' | 'CheckThreshold' | 'Dashboard' | 'Label' | 'NotificationEndpoint' | 'NotificationEndpointHTTP' | 'NotificationEndpointPagerDuty' | 'NotificationEndpointSlack' | 'NotificationRule' | 'Task' | 'Telegraf' | 'Variable';
+type TemplateKind = 'Bucket' | 'Check' | 'CheckDeadman' | 'CheckThreshold' | 'Dashboard' | 'Label' | 'NotificationEndpoint' | 'NotificationEndpointHTTP' | 'NotificationEndpointPagerDuty' | 'NotificationEndpointSlack' | 'NotificationRule' | 'Task' | 'Telegraf' | 'Variable';
 ```

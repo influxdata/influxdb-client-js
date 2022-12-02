@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GreaterThreshold = ThresholdBase & {
+type GreaterThreshold = ThresholdBase & {
     type: 'greater';
     value: number;
 };

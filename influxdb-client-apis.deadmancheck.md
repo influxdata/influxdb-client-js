@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type DeadmanCheck = CheckBase & {
+type DeadmanCheck = CheckBase & {
     type: 'deadman';
     timeSince?: string;
     staleTime?: string;

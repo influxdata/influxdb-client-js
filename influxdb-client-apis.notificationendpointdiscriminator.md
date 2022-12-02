@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
+type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
     type: string;
 }) | (PagerDutyNotificationEndpoint & {
     type: string;

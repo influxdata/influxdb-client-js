@@ -9,5 +9,5 @@ A factory that returns async iterables.
 <b>Signature:</b>
 
 ```typescript
-declare type IterableResultExecutor = () => AsyncIterable<Uint8Array>;
+type IterableResultExecutor = () => AsyncIterable<Uint8Array>;
 ```

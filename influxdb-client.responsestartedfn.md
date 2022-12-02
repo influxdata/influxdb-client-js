@@ -9,7 +9,7 @@ Informs about a start of response processing.
 <b>Signature:</b>
 
 ```typescript
-declare type ResponseStartedFn = (headers: HttpHeaders, statusCode?: number) => void;
+type ResponseStartedFn = (headers: HttpHeaders, statusCode?: number) => void;
 ```
 <b>References:</b> [HttpHeaders](./influxdb-client.httpheaders.md)
 

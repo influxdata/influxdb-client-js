@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type SlackNotificationEndpoint = NotificationEndpointBase & {
+type SlackNotificationEndpoint = NotificationEndpointBase & {
     url?: string;
     token?: string;
 };

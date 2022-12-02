@@ -9,5 +9,5 @@ URI of resource.
 <b>Signature:</b>
 
 ```typescript
-declare type Link = string;
+type Link = string;
 ```

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type ScriptLanguage = 'flux';
+type ScriptLanguage = 'flux';
 ```

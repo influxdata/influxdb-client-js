@@ -9,7 +9,7 @@ AcceptRowFunction allows to accept/reject specific rows or terminate processing.
 <b>Signature:</b>
 
 ```typescript
-declare type AcceptRowFunction = (row: string[], tableMeta: FluxTableMetaData) => true | false | undefined;
+type AcceptRowFunction = (row: string[], tableMeta: FluxTableMetaData) => true | false | undefined;
 ```
 <b>References:</b> [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
 

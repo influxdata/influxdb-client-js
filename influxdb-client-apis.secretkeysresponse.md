@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type SecretKeysResponse = SecretKeys & {
+type SecretKeysResponse = SecretKeys & {
     readonly links?: {
         self?: string;
         org?: string;

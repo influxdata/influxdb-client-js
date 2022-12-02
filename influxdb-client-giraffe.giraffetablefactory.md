@@ -9,5 +9,5 @@ A type of a function that creates a new giraffe table of a specified length
 <b>Signature:</b>
 
 ```typescript
-declare type GiraffeTableFactory = (length: number) => Table;
+type GiraffeTableFactory = (length: number) => Table;
 ```

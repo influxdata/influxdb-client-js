@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type TelegramNotificationRule = NotificationRuleBase & TelegramNotificationRuleBase;
+type TelegramNotificationRule = NotificationRuleBase & TelegramNotificationRuleBase;
 ```
 <b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [TelegramNotificationRuleBase](./influxdb-client-apis.telegramnotificationrulebase.md)
 

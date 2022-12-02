@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type DashboardWithViewProperties = CreateDashboardRequest & {
+type DashboardWithViewProperties = CreateDashboardRequest & {
     links?: {
         self?: Link;
         cells?: Link;

@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type Flags = any;
+type Flags = any;
 ```

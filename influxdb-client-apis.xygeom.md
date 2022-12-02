@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX' | 'stepBefore' | 'stepAfter';
+type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX' | 'stepBefore' | 'stepAfter';
 ```

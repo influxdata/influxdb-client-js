@@ -9,5 +9,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type TaskStatusType = 'active' | 'inactive';
+type TaskStatusType = 'active' | 'inactive';
 ```

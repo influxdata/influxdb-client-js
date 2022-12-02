@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type BucketShardMappings = BucketShardMapping[];
+type BucketShardMappings = BucketShardMapping[];
 ```
 <b>References:</b> [BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md)
 

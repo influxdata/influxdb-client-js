@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type HTTPNotificationRule = NotificationRuleBase & HTTPNotificationRuleBase;
+type HTTPNotificationRule = NotificationRuleBase & HTTPNotificationRuleBase;
 ```
 <b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [HTTPNotificationRuleBase](./influxdb-client-apis.httpnotificationrulebase.md)
 

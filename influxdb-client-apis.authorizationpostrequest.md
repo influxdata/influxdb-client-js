@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type AuthorizationPostRequest = AuthorizationUpdateRequest & {
+type AuthorizationPostRequest = AuthorizationUpdateRequest & {
     orgID?: string;
     userID?: string;
     permissions?: Permission[];

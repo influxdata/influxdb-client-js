@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type HTTPNotificationEndpoint = NotificationEndpointBase & {
+type HTTPNotificationEndpoint = NotificationEndpointBase & {
     url: string;
     username?: string;
     password?: string;

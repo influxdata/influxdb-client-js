@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GeoViewLayer = GeoCircleViewLayer | GeoHeatMapViewLayer | GeoPointMapViewLayer | GeoTrackMapViewLayer;
+type GeoViewLayer = GeoCircleViewLayer | GeoHeatMapViewLayer | GeoPointMapViewLayer | GeoTrackMapViewLayer;
 ```
 <b>References:</b> [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md)<!-- -->, [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md)<!-- -->, [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md)<!-- -->, [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md)
 

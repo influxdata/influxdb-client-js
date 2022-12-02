@@ -9,7 +9,7 @@ APIExecutor executes the API and passes its response to the supplied consumer
 <b>Signature:</b>
 
 ```typescript
-declare type APIExecutor = (consumer: CommunicationObserver<Uint8Array>) => void;
+type APIExecutor = (consumer: CommunicationObserver<Uint8Array>) => void;
 ```
 <b>References:</b> [CommunicationObserver](./influxdb-client.communicationobserver.md)
 

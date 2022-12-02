@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GeoPointMapViewLayer = GeoViewLayerProperties & {
+type GeoPointMapViewLayer = GeoViewLayerProperties & {
     colorField: string;
     colorDimension: Axis;
     colors: DashboardColor[];

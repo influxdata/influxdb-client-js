@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-declare type QueryEditMode = 'builder' | 'advanced';
+type QueryEditMode = 'builder' | 'advanced';
 ```

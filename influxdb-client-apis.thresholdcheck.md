@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type ThresholdCheck = CheckBase & {
+type ThresholdCheck = CheckBase & {
     type: 'threshold';
     thresholds?: Threshold[];
     every?: string;

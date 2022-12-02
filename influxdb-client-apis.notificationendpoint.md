@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type NotificationEndpoint = NotificationEndpointDiscriminator;
+type NotificationEndpoint = NotificationEndpointDiscriminator;
 ```
 <b>References:</b> [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
 

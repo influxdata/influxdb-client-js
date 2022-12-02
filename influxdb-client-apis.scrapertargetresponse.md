@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type ScraperTargetResponse = ScraperTargetRequest & {
+type ScraperTargetResponse = ScraperTargetRequest & {
     readonly id?: string;
     org?: string;
     bucket?: string;

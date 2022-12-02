@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type Statement = BadStatement | VariableAssignment | MemberAssignment | ExpressionStatement | ReturnStatement | OptionStatement | BuiltinStatement | TestStatement;
+type Statement = BadStatement | VariableAssignment | MemberAssignment | ExpressionStatement | ReturnStatement | OptionStatement | BuiltinStatement | TestStatement;
 ```
 <b>References:</b> [BadStatement](./influxdb-client-apis.badstatement.md)<!-- -->, [VariableAssignment](./influxdb-client-apis.variableassignment.md)<!-- -->, [MemberAssignment](./influxdb-client-apis.memberassignment.md)<!-- -->, [ExpressionStatement](./influxdb-client-apis.expressionstatement.md)<!-- -->, [ReturnStatement](./influxdb-client-apis.returnstatement.md)<!-- -->, [OptionStatement](./influxdb-client-apis.optionstatement.md)<!-- -->, [BuiltinStatement](./influxdb-client-apis.builtinstatement.md)<!-- -->, [TestStatement](./influxdb-client-apis.teststatement.md)
 

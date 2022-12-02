@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type PagerDutyNotificationRule = NotificationRuleBase & PagerDutyNotificationRuleBase;
+type PagerDutyNotificationRule = NotificationRuleBase & PagerDutyNotificationRuleBase;
 ```
 <b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [PagerDutyNotificationRuleBase](./influxdb-client-apis.pagerdutynotificationrulebase.md)
 

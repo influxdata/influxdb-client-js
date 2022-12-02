@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type RangeThreshold = ThresholdBase & {
+type RangeThreshold = ThresholdBase & {
     type: 'range';
     min: number;
     max: number;

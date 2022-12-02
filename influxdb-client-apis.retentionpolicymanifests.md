@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type RetentionPolicyManifests = RetentionPolicyManifest[];
+type RetentionPolicyManifests = RetentionPolicyManifest[];
 ```
 <b>References:</b> [RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md)
 

@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type NotificationRuleDiscriminator = (SlackNotificationRule & {
+type NotificationRuleDiscriminator = (SlackNotificationRule & {
     type: string;
 }) | (SMTPNotificationRule & {
     type: string;

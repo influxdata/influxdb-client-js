@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type CustomCheck = CheckBase & {
+type CustomCheck = CheckBase & {
     type: 'custom';
 };
 ```

@@ -9,5 +9,5 @@ Scale is the axis formatting scale. Supported: "log", "linear"
 <b>Signature:</b>
 
 ```typescript
-declare type AxisScale = 'log' | 'linear';
+type AxisScale = 'log' | 'linear';
 ```

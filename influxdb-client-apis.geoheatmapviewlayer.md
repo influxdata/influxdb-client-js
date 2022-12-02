@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GeoHeatMapViewLayer = GeoViewLayerProperties & {
+type GeoHeatMapViewLayer = GeoViewLayerProperties & {
     intensityField: string;
     intensityDimension: Axis;
     radius: number;

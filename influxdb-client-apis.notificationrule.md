@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type NotificationRule = NotificationRuleDiscriminator;
+type NotificationRule = NotificationRuleDiscriminator;
 ```
 <b>References:</b> [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
 

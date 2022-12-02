@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type CheckDiscriminator = (DeadmanCheck & {
+type CheckDiscriminator = (DeadmanCheck & {
     type: string;
 }) | (ThresholdCheck & {
     type: string;

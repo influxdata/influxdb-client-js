@@ -7,7 +7,7 @@
 <b>Signature:</b>
 
 ```typescript
-declare type GeoCircleViewLayer = GeoViewLayerProperties & {
+type GeoCircleViewLayer = GeoViewLayerProperties & {
     radiusField: string;
     radiusDimension: Axis;
     colorField: string;
