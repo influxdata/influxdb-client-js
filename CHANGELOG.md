@@ -1,4 +1,8 @@
-## 1.34.0 [unreleased]
+## 1.34.0 [2023-01-26]
+
+### Bug Fixes
+
+1. Various updates to dependencies
 
 ## 1.33.0 [2022-12-02]
 
