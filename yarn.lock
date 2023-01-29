@@ -1153,21 +1153,21 @@
     "@microsoft/tsdoc-config" "~0.16.1"
     "@rushstack/node-core-library" "3.53.2"
 
-"@microsoft/api-extractor-model@7.25.3":
-  version "7.25.3"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.25.3.tgz#1ad0fe161623564e5b36b73d5889066e36097389"
-  integrity sha512-WWxBUq77p2iZ+5VF7Nmrm3y/UtqCh5bYV8ii3khwq3w99+fXWpvfsAhgSLsC7k8XDQc6De4ssMxH6He/qe1pzg==
+"@microsoft/api-extractor-model@7.26.0":
+  version "7.26.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.26.0.tgz#aef2963ae02e0ed18d55475faae9d75e4bdce35a"
+  integrity sha512-iUlscM9a3/scqgaL+sipTYsfbkF/frrZhdYWXm5+zEVMW6QlP5jDV6cYNeIEIdMeGSbzk1yxpBjyeBDAZQLdyA==
   dependencies:
     "@microsoft/tsdoc" "0.14.2"
     "@microsoft/tsdoc-config" "~0.16.1"
     "@rushstack/node-core-library" "3.53.3"
 
 "@microsoft/api-extractor@^7.31.0":
-  version "7.33.7"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.33.7.tgz#3579f23469a9e02deb4e7aee705ddd2a221c7b8d"
-  integrity sha512-fQT2v/j/55DhvMFiopLtth66E7xTFNhnumMKgKY14SaG6qU/V1W0e4nOAgbA+SmLakQjAd1Evu06ofaVaxBPbA==
+  version "7.34.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.34.0.tgz#1301226c9c28205d1521055151a5cceba6cb7788"
+  integrity sha512-U9opcYpFrN0eIVunEx90SDSYzmjgO2mEVbttHwtJBjOHUhK2cY2QykH8uiBnJuVtuBvHVCdEFUGt6i/8LVexYA==
   dependencies:
-    "@microsoft/api-extractor-model" "7.25.3"
+    "@microsoft/api-extractor-model" "7.26.0"
     "@microsoft/tsdoc" "0.14.2"
     "@microsoft/tsdoc-config" "~0.16.1"
     "@rushstack/node-core-library" "3.53.3"
@@ -1175,7 +1175,7 @@
     "@rushstack/ts-command-line" "4.13.1"
     colors "~1.2.1"
     lodash "~4.17.15"
-    resolve "~1.17.0"
+    resolve "~1.22.1"
     semver "~7.3.0"
     source-map "~0.6.1"
     typescript "~4.8.4"
@@ -5805,7 +5805,7 @@ resolve-from@^5.0.0:
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-5.0.0.tgz#c35225843df8f776df21c57557bc087e9dfdfc69"
   integrity sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==
 
-resolve@^1.10.0:
+resolve@^1.10.0, resolve@~1.22.1:
   version "1.22.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.1.tgz#27cb2ebb53f91abb49470a928bba7558066ac177"
   integrity sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==
