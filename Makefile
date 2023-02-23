@@ -25,7 +25,7 @@ publish:
 	yarn run test
 	@echo "Publishing $(VERSION)..."
 	git commit -am "chore(release): prepare to release influxdb-client-js-$(VERSION)"
-	lerna publish $(VERSION)
+	npx lerna publish $(VERSION)
 	@echo "Publish successful"
 	@echo ""
 	@echo "Next steps:"
