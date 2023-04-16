@@ -45,6 +45,6 @@
   "devDependencies": {
     "@influxdata/influxdb-client": "^1.33.2",
     "cpr": "^3.0.1",
-    "rimraf": "^4.1.1"
+    "rimraf": "^5.0.0"
   }
 }
