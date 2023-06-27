@@ -42,7 +42,7 @@
     "@microsoft/api-documenter": "^7.19.12",
     "@types/node": "^20",
     "gh-pages": "^5.0.0",
-    "lerna": "^6.0.1",
+    "lerna": "^7.1.0",
     "prettier": "^2.7.1",
     "rimraf": "^5.0.1"
   }
