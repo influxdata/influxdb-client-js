@@ -8,9 +8,7 @@
 [![npm](https://img.shields.io/npm/v/@influxdata/influxdb-client)](https://www.npmjs.com/package/@influxdata/influxdb-client)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://www.influxdata.com/slack)
 
-This repository contains the reference JavaScript client for InfluxDB 2.x. This client supports Node.js, browser, and Deno environments.
-
-#### Note: Use this client library with InfluxDB 2.x. For connecting to InfluxDB 1.x see the [node-influx](https://github.com/node-influx/node-influx) client library. This library can also write/query [flux-enabled](https://docs.influxdata.com/influxdb/v1.8/administration/config/#flux-enabled--false) InfluxDB 1.8+.
+This repository contains the JavaScript client library for use with InfluxDB 2.0 specifically with Flux. This client supports Node.js, browser, and Deno environments. For InfluxDB 3.0 users, utilize the lightweight [v3 client library](https://github.com/InfluxCommunity/influxdb3-js). 1.x users may want to use the [node-influx](https://github.com/node-influx/node-influx) client library.
 
 ## Documentation
 
