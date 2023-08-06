@@ -64,7 +64,7 @@
     "esbuild": "^0.18.4",
     "esbuild-runner": "^2.2.1",
     "eslint": "^8.18.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-tsdoc": "^0.2.16",
     "follow-redirects": "^1.14.7",
