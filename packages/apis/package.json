@@ -62,7 +62,7 @@
     "@microsoft/api-extractor": "^7.31.0",
     "@types/mocha": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@typescript-eslint/parser": "^6.7.3",
     "chai": "^4.2.0",
     "esbuild": "^0.19.2",
     "esbuild-runner": "^2.2.1",
