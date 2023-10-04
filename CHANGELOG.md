@@ -1,5 +1,13 @@
 ## 1.34.0 [unreleased]
 
+### Breaking Changes
+
+:warning: Drop supports for node v14 and v15.
+
+### CI
+
+1. [#893](https://github.com/influxdata/influxdb-client-js/pull/893): Add node v20 to CI.
+
 ## 1.33.2 [2023-02-23]
 
 ### Bug Fixes
