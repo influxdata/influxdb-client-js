@@ -93,12 +93,15 @@ describe('FluxTableMetaData', () => {
     const subject = createFluxTableMetaData(columns)
     const useProxy = (row: string[]): Record<string, any> => {
       const p = new Proxy<Record<string, any>>(row, subject)
-      return ['a', 'b', 'c'].reduce((acc, val) => {
-        if (p[val] !== undefined) {
-          acc[val] = p[val]
-        }
-        return acc
-      }, {} as Record<string, any>)
+      return ['a', 'b', 'c'].reduce(
+        (acc, val) => {
+          if (p[val] !== undefined) {
+            acc[val] = p[val]
+          }
+          return acc
+        },
+        {} as Record<string, any>
+      )
     }
     expect(useProxy(['', ''])).to.deep.equal({a: 1, b: ''})
     expect(useProxy(['2', 'y'])).to.deep.equal({
