@@ -127,23 +127,26 @@ export default class RetryBuffer {
     if (this._timeoutHandle) {
       clearTimeout(this._timeoutHandle)
     }
-    this._timeoutHandle = setTimeout(() => {
-      const toRetry = this.removeLines()
-      if (toRetry) {
-        this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
-          .catch(() => {
-            /* error is already logged, it must be caught */
-          })
-          .finally(() => {
-            // schedule next retry execution
-            if (this.first) {
-              this.scheduleRetry(this.first.retryTime - Date.now())
-            }
-          })
-      } else {
-        this._timeoutHandle = undefined
-      }
-    }, Math.max(delay, 0))
+    this._timeoutHandle = setTimeout(
+      () => {
+        const toRetry = this.removeLines()
+        if (toRetry) {
+          this.retryLines(toRetry.lines, toRetry.retryCount, toRetry.expires)
+            .catch(() => {
+              /* error is already logged, it must be caught */
+            })
+            .finally(() => {
+              // schedule next retry execution
+              if (this.first) {
+                this.scheduleRetry(this.first.retryTime - Date.now())
+              }
+            })
+        } else {
+          this._timeoutHandle = undefined
+        }
+      },
+      Math.max(delay, 0)
+    )
   }
 
   async flush(): Promise<void> {
