@@ -672,21 +672,21 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@lerna/child-process@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@lerna/child-process/-/child-process-7.3.0.tgz#c56488a8a881f22a64793bf9339c5a2450a18559"
-  integrity sha512-rA+fGUo2j/LEq6w1w8s6oVikLbJTWoIDVpYMc7bUCtwDOUuZKMQiRtjmpavY3fTm7ltu42f4AKflc2A70K4wvA==
+"@lerna/child-process@7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@lerna/child-process/-/child-process-7.4.2.tgz#a2fd013ac2150dc288270d3e0d0b850c06bec511"
+  integrity sha512-je+kkrfcvPcwL5Tg8JRENRqlbzjdlZXyaR88UcnCdNW0AJ1jX9IfHRys1X7AwSroU2ug8ESNC+suoBw1vX833Q==
   dependencies:
     chalk "^4.1.0"
     execa "^5.0.0"
     strong-log-transformer "^2.1.0"
 
-"@lerna/create@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@lerna/create/-/create-7.3.0.tgz#5438c231f617b8e825731390d394f8684af471d5"
-  integrity sha512-fjgiKjg9VXwQ4ZKKsrXICEKRiC3yo6+FprR0mc55uz0s5e9xupoSGLobUTTBdE7ncNB3ibqml8dfaAn/+ESajQ==
+"@lerna/create@7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@lerna/create/-/create-7.4.2.tgz#f845fad1480e46555af98bd39af29571605dddc9"
+  integrity sha512-1wplFbQ52K8E/unnqB0Tq39Z4e+NEoNrpovEnl6GpsTUrC6WDp8+w0Le2uCBV0hXyemxChduCkLz4/y1H1wTeg==
   dependencies:
-    "@lerna/child-process" "7.3.0"
+    "@lerna/child-process" "7.4.2"
     "@npmcli/run-script" "6.0.2"
     "@nx/devkit" ">=16.5.1 < 17"
     "@octokit/plugin-enterprise-rest" "6.0.1"
@@ -2189,10 +2189,10 @@ console-control-strings@^1.1.0:
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==
 
-conventional-changelog-angular@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-6.0.0.tgz#a9a9494c28b7165889144fd5b91573c4aa9ca541"
-  integrity sha512-6qLgrBF4gueoC7AFVHu51nHL9pF9FRjXrH+ceVf7WmAfH3gs+gEYOkvxhjMPjZu57I4AGUGoNTY8V7Hrgf1uqg==
+conventional-changelog-angular@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-7.0.0.tgz#5eec8edbff15aa9b1680a8dcfbd53e2d7eb2ba7a"
+  integrity sha512-ROjNchA9LgfNMTTFSIWPzebCwOGFdgkEq45EnvvrmSLvCtAw0HSmrCs7/ty+wAeYUZyNay0YMUNYFTRL72PkBQ==
   dependencies:
     compare-func "^2.0.0"
 
@@ -3301,15 +3301,10 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-graceful-fs@4.2.11:
+graceful-fs@4.2.11, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.5, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.6:
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
-
-graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.5, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.6:
-  version "4.2.10"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
-  integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
 graphemer@^1.4.0:
   version "1.4.0"
@@ -3987,12 +3982,12 @@ kind-of@^6.0.2, kind-of@^6.0.3:
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
 lerna@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-7.3.0.tgz#efecafbdce15694e2f6841256e073a3a2061053e"
-  integrity sha512-Dt8TH+J+c9+3MhTYcm5OxnNzXb87WG7GPNj3kidjYJjJY7KxIMDNU37qBTYRWA1h3wAeNKBplXVQYUPkGcYgkQ==
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-7.4.2.tgz#03497125d7b7c8d463eebfe17a701b16bde2ad09"
+  integrity sha512-gxavfzHfJ4JL30OvMunmlm4Anw7d7Tq6tdVHzUukLdS9nWnxCN/QB21qR+VJYp5tcyXogHKbdUEGh6qmeyzxSA==
   dependencies:
-    "@lerna/child-process" "7.3.0"
-    "@lerna/create" "7.3.0"
+    "@lerna/child-process" "7.4.2"
+    "@lerna/create" "7.4.2"
     "@npmcli/run-script" "6.0.2"
     "@nx/devkit" ">=16.5.1 < 17"
     "@octokit/plugin-enterprise-rest" "6.0.1"
@@ -4002,7 +3997,7 @@ lerna@^7.3.0:
     clone-deep "4.0.1"
     cmd-shim "6.0.1"
     columnify "1.6.0"
-    conventional-changelog-angular "6.0.0"
+    conventional-changelog-angular "7.0.0"
     conventional-changelog-core "5.0.1"
     conventional-recommended-bump "7.0.1"
     cosmiconfig "^8.2.0"
@@ -5959,6 +5954,7 @@ string-argv@~0.3.1:
   integrity sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==
 
 "string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -5991,6 +5987,7 @@ string_decoder@~1.1.1:
     safe-buffer "~5.1.0"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -6604,6 +6601,7 @@ workerpool@6.2.1:
   integrity sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
