@@ -57,7 +57,7 @@
     "@microsoft/api-extractor": "^7.31.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^10.0.0",
-    "@types/sinon": "^10.0.13",
+    "@types/sinon": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "chai": "^4.2.0",
@@ -75,7 +75,7 @@
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
     "rxjs": "^7.2.0",
-    "sinon": "^16.0.0",
+    "sinon": "^17.0.1",
     "ts-node": "^10.9.1",
     "tsup": "^7.2.0",
     "typescript": "^5.1.3"
