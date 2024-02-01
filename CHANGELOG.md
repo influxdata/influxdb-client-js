@@ -2,11 +2,12 @@
 
 ### Breaking Changes
 
-:warning: Drop supports for node v14 and v15.
+:warning: Drop supports for node v14, v15 and v16 in CI.
 
 ### CI
 
 1. [#893](https://github.com/influxdata/influxdb-client-js/pull/893): Add node v20 to CI.
+1. [#953](https://github.com/influxdata/influxdb-client-js/pull/953): Add node v21 to CI.
 
 ## 1.33.2 [2023-02-23]
 
