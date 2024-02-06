@@ -26,8 +26,8 @@ function createPoint(test: PointTest): Point {
     testIndex % 2 == 1
       ? new Point(test.name)
       : test.name
-      ? new Point().measurement(test.name)
-      : new Point()
+        ? new Point().measurement(test.name)
+        : new Point()
   ;(test.fields ?? []).forEach(
     (field: [string, 'n' | 's' | 'b' | 'i' | 'u', any]) => {
       switch (field[1]) {

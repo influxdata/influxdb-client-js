@@ -238,8 +238,8 @@ export default class FetchTransport implements Transport {
         method === 'GET' || method === 'HEAD'
           ? undefined
           : typeof body === 'string'
-          ? body
-          : JSON.stringify(body),
+            ? body
+            : JSON.stringify(body),
       headers: {
         ...this.defaultHeaders,
         ...headers,
