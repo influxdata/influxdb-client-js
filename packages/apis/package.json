@@ -64,7 +64,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.1",
     "chai": "^4.2.0",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.21.4",
     "esbuild-runner": "^2.2.1",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^9.0.0",
