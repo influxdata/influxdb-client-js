@@ -53,7 +53,7 @@ export class NodeHttpTransport implements Transport {
     callback: (res: http.IncomingMessage) => void
   ) => http.ClientRequest
   private contextPath: string
-  private token?: string
+  #token?: string
   private headers: Record<string, string>
   /**
    * Creates a node transport using for the client options supplied.
@@ -68,7 +68,7 @@ export class NodeHttpTransport implements Transport {
       ...nodeSupportedOptions
     } = connectionOptions
     const url = parse(proxyUrl || _url)
-    this.token = token
+    this.#token = token
     this.defaultOptions = {
       ...DEFAULT_ConnectionOptions,
       ...nodeSupportedOptions,
@@ -280,8 +280,8 @@ export class NodeHttpTransport implements Transport {
       'content-type': 'application/json; charset=utf-8',
       ...this.headers,
     }
-    if (this.token) {
-      headers.authorization = 'Token ' + this.token
+    if (this.#token) {
+      headers.authorization = 'Token ' + this.#token
     }
     const options: {[key: string]: any} = {
       ...this.defaultOptions,
