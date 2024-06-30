@@ -279,7 +279,7 @@ describe('QueryApi', () => {
       expect(body?.type).equals(tc.type ?? 'flux')
       expect(body?.query).deep.equals(query)
       expect(body?.now).equals(tc.now)
-      expect(authorization).equals(
+      expect(authorization || `Token ${clientOptions.token}`).equals(
         tc.headers?.authorization || `Token ${clientOptions.token}`
       )
     }

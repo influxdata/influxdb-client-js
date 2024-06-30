@@ -34,7 +34,7 @@ export default class InfluxDB {
     if (typeof options === 'string') {
       this._options = {url: options}
     } else if (options !== null && typeof options === 'object') {
-      this._options = options
+      this._options = Object.assign({}, options)
     } else {
       throw new IllegalArgumentError('No url or configuration specified!')
     }
@@ -43,6 +43,7 @@ export default class InfluxDB {
       throw new IllegalArgumentError('No url specified!')
     if (url.endsWith('/')) this._options.url = url.substring(0, url.length - 1)
     this.transport = this._options.transport ?? new TransportImpl(this._options)
+    delete this._options.token
     this.processCSVResponse = (
       executor: APIExecutor,
       iterableResultExecutor: IterableResultExecutor

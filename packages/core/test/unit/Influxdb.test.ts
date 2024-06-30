@@ -27,7 +27,6 @@ describe('InfluxDB', () => {
         )._options
       ).to.deep.equal({
         url: 'https://localhost:8086?token=a',
-        token: 'b',
       })
     })
     it('is created from string url with trailing slash', () => {
