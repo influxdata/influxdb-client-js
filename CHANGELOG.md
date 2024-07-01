@@ -4,6 +4,10 @@
 
 :warning: Drop supports for node v14, v15 and v16 in CI.
 
+### Features:
+
+1. [#1005](https://github.com/influxdata/influxdb-client-js/pull/1005): Token stored as a private class property.
+
 ### CI
 
 1. [#893](https://github.com/influxdata/influxdb-client-js/pull/893): Add node v20 to CI.
