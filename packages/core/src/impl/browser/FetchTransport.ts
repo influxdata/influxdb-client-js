@@ -143,6 +143,10 @@ export default class FetchTransport implements Transport {
   private async throwOnErrorResponse(response: Response): Promise<void> {
     if (response.status >= 300) {
       let text = ''
+      const headersToBeReturned: Record<string, string> = {}
+      response.headers.forEach((value, key) => {
+        headersToBeReturned[key] = value
+      })
       try {
         text = await response.text()
         if (!text) {
@@ -153,12 +157,15 @@ export default class FetchTransport implements Transport {
         }
       } catch (e) {
         Log.warn('Unable to receive error body', e)
+
         throw new HttpError(
           response.status,
           response.statusText,
           undefined,
           response.headers.get('retry-after'),
-          response.headers.get('content-type')
+          response.headers.get('content-type'),
+          undefined,
+          headersToBeReturned
         )
       }
       throw new HttpError(
@@ -166,7 +173,9 @@ export default class FetchTransport implements Transport {
         response.statusText,
         text,
         response.headers.get('retry-after'),
-        response.headers.get('content-type')
+        response.headers.get('content-type'),
+        undefined,
+        headersToBeReturned
       )
     }
   }

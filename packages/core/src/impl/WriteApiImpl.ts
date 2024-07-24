@@ -180,9 +180,11 @@ export default class WriteApiImpl implements WriteApi {
       }
       return new Promise<void>((resolve, reject) => {
         let responseStatusCode: number | undefined
+        let headers: Headers | undefined
         const callbacks = {
           responseStarted(_headers: Headers, statusCode?: number): void {
             responseStatusCode = statusCode
+            headers = _headers
           },
           error(error: Error): void {
             // call the writeFailed listener and check if we can retry
@@ -245,7 +247,10 @@ export default class WriteApiImpl implements WriteApi {
                 responseStatusCode,
                 message,
                 undefined,
-                '0'
+                '0',
+                undefined,
+                undefined,
+                headers
               )
               error.message = message
               callbacks.error(error)
