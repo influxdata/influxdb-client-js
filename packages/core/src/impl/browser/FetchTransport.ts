@@ -153,12 +153,15 @@ export default class FetchTransport implements Transport {
         }
       } catch (e) {
         Log.warn('Unable to receive error body', e)
+
         throw new HttpError(
           response.status,
           response.statusText,
           undefined,
           response.headers.get('retry-after'),
-          response.headers.get('content-type')
+          response.headers.get('content-type'),
+          undefined,
+          getResponseHeaders(response)
         )
       }
       throw new HttpError(
@@ -166,7 +169,9 @@ export default class FetchTransport implements Transport {
         response.statusText,
         text,
         response.headers.get('retry-after'),
-        response.headers.get('content-type')
+        response.headers.get('content-type'),
+        undefined,
+        getResponseHeaders(response)
       )
     }
   }

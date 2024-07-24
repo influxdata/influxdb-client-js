@@ -37,6 +37,13 @@ describe('errors', () => {
     expect(new RequestTimedOutError().message).is.not.empty
     expect(new AbortError().message).is.not.empty
   })
+  describe('HttpError Headers Property is defined', () => {
+    expect(
+      new HttpError(200, 'OK', 'body', '10', 'text/plain', 'message', {
+        header: 'value',
+      }).headers
+    ).is.deep.equal({header: 'value'})
+  })
   describe('retriable errors', () => {
     const testSetOK = [
       new HttpError(503, 'Service Unavailable'),
