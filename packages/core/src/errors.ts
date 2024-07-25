@@ -56,7 +56,7 @@ export class HttpError extends Error implements RetriableDecision {
   /** json error response */
   public json: any
 
-  public headers: HttpHeaders
+  public headers?: HttpHeaders | undefined
 
   /* istanbul ignore next because of super() not being covered*/
   constructor(
@@ -66,13 +66,13 @@ export class HttpError extends Error implements RetriableDecision {
     retryAfter?: string | undefined | null,
     readonly contentType?: string | undefined | null,
     message?: string,
-    headers?: HttpHeaders
+    headers?: HttpHeaders | undefined
   ) {
     super()
     Object.setPrototypeOf(this, HttpError.prototype)
-    if (headers) {
-      this.headers = headers
-    }
+
+    this.headers = headers
+
     if (message) {
       this.message = message
     } else if (body) {
