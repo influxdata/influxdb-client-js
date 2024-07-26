@@ -1,4 +1,4 @@
-## 1.34.0 [unreleased]
+## 1.34.0 [2024-07-26]
 
 ### Breaking Changes
 
