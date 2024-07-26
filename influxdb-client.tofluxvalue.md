@@ -6,7 +6,7 @@
 
 Escapes content of the supplied parameter so that it can be safely embedded into flux query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function toFluxValue(value: any): string;
@@ -14,11 +14,40 @@ declare function toFluxValue(value: any): string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | any | parameter value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+parameter value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string
 

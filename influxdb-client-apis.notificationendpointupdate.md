@@ -4,7 +4,7 @@
 
 ## NotificationEndpointUpdate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface NotificationEndpointUpdate 
@@ -12,9 +12,82 @@ interface NotificationEndpointUpdate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.notificationendpointupdate.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.notificationendpointupdate.name.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.notificationendpointupdate.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.notificationendpointupdate.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.notificationendpointupdate.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.notificationendpointupdate.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 Replace a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutVariablesID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 putVariablesID(request: PutVariablesIDRequest, requestOptions?: RequestOptions): Promise<Variable>;
@@ -14,12 +14,56 @@ putVariablesID(request: PutVariablesIDRequest, requestOptions?: RequestOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## DashboardQuery.editMode property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 editMode?: QueryEditMode;

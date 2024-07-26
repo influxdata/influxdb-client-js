@@ -6,7 +6,7 @@
 
 Declares a Flux test case
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TestStatement 
@@ -14,8 +14,63 @@ interface TestStatement
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [assignment?](./influxdb-client-apis.teststatement.assignment.md) |  | [VariableAssignment](./influxdb-client-apis.variableassignment.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.teststatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[assignment?](./influxdb-client-apis.teststatement.assignment.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VariableAssignment](./influxdb-client-apis.variableassignment.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.teststatement.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

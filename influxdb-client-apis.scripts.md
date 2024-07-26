@@ -4,7 +4,7 @@
 
 ## Scripts interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Scripts 
@@ -12,7 +12,44 @@ interface Scripts
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scripts?](./influxdb-client-apis.scripts.scripts.md) |  | [Script](./influxdb-client-apis.script.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scripts?](./influxdb-client-apis.scripts.scripts.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Script](./influxdb-client-apis.script.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

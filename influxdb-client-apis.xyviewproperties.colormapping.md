@@ -6,7 +6,7 @@
 
 An object that contains information about the color mapping
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 colorMapping?: ColorMapping;

@@ -4,7 +4,7 @@
 
 ## DeleteTelegrafsIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteTelegrafsIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteTelegrafsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.labelid.md) |  | string | The label ID. |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The label ID.
+
+
+</td></tr>
+<tr><td>
+
+[telegrafID](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+</tbody></table>

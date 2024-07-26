@@ -4,7 +4,7 @@
 
 ## Label.orgID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly orgID?: string;

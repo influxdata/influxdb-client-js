@@ -6,7 +6,7 @@
 
 Sanitizes float value to avoid injections.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function sanitizeFloat(value: any): string;
@@ -14,11 +14,40 @@ declare function sanitizeFloat(value: any): string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | any | InfluxDB float literal |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+InfluxDB float literal
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string
 

@@ -4,7 +4,7 @@
 
 ## Routes.orgs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgs?: string;

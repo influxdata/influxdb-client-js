@@ -6,7 +6,7 @@
 
 The check ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 checkID: string;

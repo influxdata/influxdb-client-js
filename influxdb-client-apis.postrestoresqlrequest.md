@@ -4,7 +4,7 @@
 
 ## PostRestoreSQLRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostRestoreSQLRequest 
@@ -12,7 +12,44 @@ interface PostRestoreSQLRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestoresqlrequest.body.md) |  | string | Full SQL snapshot. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postrestoresqlrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Full SQL snapshot.
+
+
+</td></tr>
+</tbody></table>

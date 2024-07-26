@@ -6,7 +6,7 @@
 
 Setups cancelllable for this communication.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 useCancellable?: (cancellable: Cancellable) => void;

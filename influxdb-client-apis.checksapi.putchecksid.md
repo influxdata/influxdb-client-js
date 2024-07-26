@@ -6,7 +6,7 @@
 
 Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutChecksID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 putChecksID(request: PutChecksIDRequest, requestOptions?: RequestOptions): Promise<Check>;
@@ -14,12 +14,56 @@ putChecksID(request: PutChecksIDRequest, requestOptions?: RequestOptions): Promi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Check](./influxdb-client-apis.check.md)<!-- -->&gt;
 

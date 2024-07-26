@@ -4,7 +4,7 @@
 
 ## Routes.variables property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 variables?: string;

@@ -4,7 +4,7 @@
 
 ## Sources.links property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 links?: {

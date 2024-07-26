@@ -6,7 +6,7 @@
 
 Config API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ConfigAPI 
@@ -14,13 +14,68 @@ declare class ConfigAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.configapi._constructor_.md) |  | Creates ConfigAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.configapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ConfigAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getConfig(request, requestOptions)](./influxdb-client-apis.configapi.getconfig.md) |  | Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetConfig) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getConfig(request, requestOptions)](./influxdb-client-apis.configapi.getconfig.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve runtime configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetConfig](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetConfig)
+
+
+</td></tr>
+</tbody></table>

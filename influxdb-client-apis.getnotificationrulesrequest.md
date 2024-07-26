@@ -4,7 +4,7 @@
 
 ## GetNotificationRulesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetNotificationRulesRequest 
@@ -12,11 +12,120 @@ interface GetNotificationRulesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [checkID?](./influxdb-client-apis.getnotificationrulesrequest.checkid.md) |  | string | <i>(Optional)</i> Only show notifications that belong to the specific check ID. |
-|  [limit?](./influxdb-client-apis.getnotificationrulesrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [offset?](./influxdb-client-apis.getnotificationrulesrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
-|  [orgID](./influxdb-client-apis.getnotificationrulesrequest.orgid.md) |  | string | Only show notification rules that belong to a specific organization ID. |
-|  [tag?](./influxdb-client-apis.getnotificationrulesrequest.tag.md) |  | string | <i>(Optional)</i> Only return notification rules that "would match" statuses which contain the tag key value pairs provided. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[checkID?](./influxdb-client-apis.getnotificationrulesrequest.checkid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Only show notifications that belong to the specific check ID.
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getnotificationrulesrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getnotificationrulesrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.getnotificationrulesrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Only show notification rules that belong to a specific organization ID.
+
+
+</td></tr>
+<tr><td>
+
+[tag?](./influxdb-client-apis.getnotificationrulesrequest.tag.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Only return notification rules that "would match" statuses which contain the tag key value pairs provided.
+
+
+</td></tr>
+</tbody></table>

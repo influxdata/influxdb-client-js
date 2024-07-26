@@ -4,7 +4,7 @@
 
 ## GaugeViewProperties.decimalPlaces property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 decimalPlaces: DecimalPlaces;

@@ -4,7 +4,7 @@
 
 ## PostTelegrafsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTelegrafsIDMembersRequest 
@@ -12,8 +12,63 @@ interface PostTelegrafsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [telegrafID](./influxdb-client-apis.posttelegrafsidmembersrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttelegrafsidmembersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+User to add as member
+
+
+</td></tr>
+<tr><td>
+
+[telegrafID](./influxdb-client-apis.posttelegrafsidmembersrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+</tbody></table>

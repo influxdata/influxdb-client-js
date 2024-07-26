@@ -4,7 +4,7 @@
 
 ## NotificationRuleUpdate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface NotificationRuleUpdate 
@@ -12,9 +12,82 @@ interface NotificationRuleUpdate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.notificationruleupdate.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.notificationruleupdate.name.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.notificationruleupdate.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.notificationruleupdate.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.notificationruleupdate.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.notificationruleupdate.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

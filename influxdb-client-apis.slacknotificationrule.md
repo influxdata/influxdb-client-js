@@ -4,10 +4,10 @@
 
 ## SlackNotificationRule type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type SlackNotificationRule = NotificationRuleBase & SlackNotificationRuleBase;
 ```
-<b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md)
+**References:** [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md)
 

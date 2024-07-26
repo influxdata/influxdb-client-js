@@ -4,7 +4,7 @@
 
 ## GetDebugPprofAllProfilesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDebugPprofAllProfilesRequest 
@@ -12,7 +12,44 @@ interface GetDebugPprofAllProfilesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [cpu?](./influxdb-client-apis.getdebugpprofallprofilesrequest.cpu.md) |  | string | <i>(Optional)</i> Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#duration)<!-- -->. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cpu?](./influxdb-client-apis.getdebugpprofallprofilesrequest.cpu.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Collects and returns CPU profiling data for the specified [duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#duration)<!-- -->.
+
+
+</td></tr>
+</tbody></table>

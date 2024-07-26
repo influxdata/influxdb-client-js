@@ -16,7 +16,7 @@ The following template fields may use environment references:
 
 For more information about including environment references in template fields, see how to [include user-definable resource names](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/create/#include-user-definable-resource-names)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 envRefs?: any;

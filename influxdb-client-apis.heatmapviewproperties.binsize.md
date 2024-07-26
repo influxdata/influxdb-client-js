@@ -4,7 +4,7 @@
 
 ## HeatmapViewProperties.binSize property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 binSize: number;

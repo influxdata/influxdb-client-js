@@ -6,7 +6,7 @@
 
 List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: any;

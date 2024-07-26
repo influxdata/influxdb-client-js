@@ -4,7 +4,7 @@
 
 ## CreateStackRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateStackRequest 
@@ -12,7 +12,44 @@ interface CreateStackRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createstackrequest.body.md) |  | { orgID?: string; name?: string; description?: string; urls?: string\[\]; } | The stack to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.createstackrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ orgID?: string; name?: string; description?: string; urls?: string\[\]; }
+
+
+</td><td>
+
+The stack to create.
+
+
+</td></tr>
+</tbody></table>

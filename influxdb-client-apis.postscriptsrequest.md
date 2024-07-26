@@ -4,7 +4,7 @@
 
 ## PostScriptsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostScriptsRequest 
@@ -12,7 +12,44 @@ interface PostScriptsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsrequest.body.md) |  | [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) | The script to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postscriptsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md)
+
+
+</td><td>
+
+The script to create.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Ready.started property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 started?: string;

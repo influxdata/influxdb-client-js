@@ -4,7 +4,7 @@
 
 ## SlackNotificationRuleBase.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'slack';

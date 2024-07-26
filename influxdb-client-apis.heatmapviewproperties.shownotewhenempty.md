@@ -6,7 +6,7 @@
 
 If true, will display note when empty
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 showNoteWhenEmpty: boolean;

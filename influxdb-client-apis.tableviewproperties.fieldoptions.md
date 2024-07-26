@@ -6,7 +6,7 @@
 
 fieldOptions represent the fields retrieved by the query with customization options
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 fieldOptions: RenamableField[];

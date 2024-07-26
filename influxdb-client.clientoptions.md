@@ -6,17 +6,72 @@
 
 Options used by [InfluxDB](./influxdb-client.influxdb.md) .
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ClientOptions extends ConnectionOptions 
 ```
-<b>Extends:</b> [ConnectionOptions](./influxdb-client.connectionoptions.md)
+**Extends:** [ConnectionOptions](./influxdb-client.connectionoptions.md)
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [transport?](./influxdb-client.clientoptions.transport.md) |  | [Transport](./influxdb-client.transport.md) | <i>(Optional)</i> specifies custom transport |
-|  [writeOptions?](./influxdb-client.clientoptions.writeoptions.md) |  | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> supplies and overrides default writing options |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[transport?](./influxdb-client.clientoptions.transport.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Transport](./influxdb-client.transport.md)
+
+
+</td><td>
+
+_(Optional)_ specifies custom transport
+
+
+</td></tr>
+<tr><td>
+
+[writeOptions?](./influxdb-client.clientoptions.writeoptions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_ supplies and overrides default writing options
+
+
+</td></tr>
+</tbody></table>

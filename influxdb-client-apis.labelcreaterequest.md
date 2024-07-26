@@ -4,7 +4,7 @@
 
 ## LabelCreateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LabelCreateRequest 
@@ -12,9 +12,80 @@ interface LabelCreateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name](./influxdb-client-apis.labelcreaterequest.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.labelcreaterequest.orgid.md) |  | string |  |
-|  [properties?](./influxdb-client-apis.labelcreaterequest.properties.md) |  | any | <p><i>(Optional)</i> Key-value pairs associated with this label.</p><p>To remove a property, send an update with an empty value (<code>&quot;&quot;</code>) for the key.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name](./influxdb-client-apis.labelcreaterequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.labelcreaterequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[properties?](./influxdb-client-apis.labelcreaterequest.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ Key-value pairs associated with this label.
+
+To remove a property, send an update with an empty value (`""`<!-- -->) for the key.
+
+
+</td></tr>
+</tbody></table>

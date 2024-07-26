@@ -18,7 +18,7 @@ The [shard group duration](https://docs.influxdata.com/influxdb/v2.3/reference/g
 
 - InfluxDB [shards and shard groups](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardGroupDurationSeconds?: number;

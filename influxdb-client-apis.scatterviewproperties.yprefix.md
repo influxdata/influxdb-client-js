@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.yPrefix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yPrefix: string;

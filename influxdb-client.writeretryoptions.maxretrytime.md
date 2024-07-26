@@ -6,7 +6,7 @@
 
 max time (millis) that can be spent with retries
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxRetryTime: number;

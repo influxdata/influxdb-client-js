@@ -4,10 +4,10 @@
 
 ## PostNotificationRule type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type PostNotificationRule = NotificationRuleDiscriminator;
 ```
-<b>References:</b> [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
+**References:** [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
 

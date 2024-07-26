@@ -4,7 +4,7 @@
 
 ## Variable interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Variable 
@@ -12,16 +12,213 @@ interface Variable
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [arguments](./influxdb-client-apis.variable.arguments.md) |  | [VariableProperties](./influxdb-client-apis.variableproperties.md) |  |
-|  [createdAt?](./influxdb-client-apis.variable.createdat.md) |  | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.variable.description.md) |  | string | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.variable.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.variable.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.variable.links.md) | <code>readonly</code> | { self?: string; org?: string; labels?: string; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.variable.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.variable.orgid.md) |  | string |  |
-|  [selected?](./influxdb-client-apis.variable.selected.md) |  | string\[\] | <i>(Optional)</i> |
-|  [updatedAt?](./influxdb-client-apis.variable.updatedat.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[arguments](./influxdb-client-apis.variable.arguments.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VariableProperties](./influxdb-client-apis.variableproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[createdAt?](./influxdb-client-apis.variable.createdat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.variable.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.variable.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[labels?](./influxdb-client-apis.variable.labels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Labels](./influxdb-client-apis.labels.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.variable.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: string; org?: string; labels?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.variable.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.variable.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[selected?](./influxdb-client-apis.variable.selected.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[updatedAt?](./influxdb-client-apis.variable.updatedat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

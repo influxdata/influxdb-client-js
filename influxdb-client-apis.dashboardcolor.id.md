@@ -6,7 +6,7 @@
 
 The unique ID of the view color.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id: string;

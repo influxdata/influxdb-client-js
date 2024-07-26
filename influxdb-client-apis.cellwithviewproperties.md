@@ -4,7 +4,7 @@
 
 ## CellWithViewProperties type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type CellWithViewProperties = Cell & {
@@ -12,5 +12,5 @@ type CellWithViewProperties = Cell & {
     properties?: ViewProperties;
 };
 ```
-<b>References:</b> [Cell](./influxdb-client-apis.cell.md)<!-- -->, [ViewProperties](./influxdb-client-apis.viewproperties.md)
+**References:** [Cell](./influxdb-client-apis.cell.md)<!-- -->, [ViewProperties](./influxdb-client-apis.viewproperties.md)
 

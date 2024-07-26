@@ -4,7 +4,7 @@
 
 ## HeatmapViewProperties.yTickStep property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yTickStep?: number;

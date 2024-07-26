@@ -6,7 +6,7 @@
 
 Property that offers a function that returns flux-sanitized value of an object.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 FLUX_VALUE: unique symbol

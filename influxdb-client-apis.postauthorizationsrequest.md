@@ -4,7 +4,7 @@
 
 ## PostAuthorizationsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostAuthorizationsRequest 
@@ -12,7 +12,44 @@ interface PostAuthorizationsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postauthorizationsrequest.body.md) |  | [AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md) | The authorization to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postauthorizationsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md)
+
+
+</td><td>
+
+The authorization to create.
+
+
+</td></tr>
+</tbody></table>

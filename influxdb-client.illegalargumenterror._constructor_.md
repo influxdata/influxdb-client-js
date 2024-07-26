@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `IllegalArgumentError` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(message: string);
@@ -14,7 +14,34 @@ constructor(message: string);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  message | string |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+message
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

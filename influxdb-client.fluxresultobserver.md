@@ -6,7 +6,7 @@
 
 Observes results of a flux query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxResultObserver<T> 
@@ -14,16 +14,111 @@ interface FluxResultObserver<T>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md) |  | (cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void | <i>(Optional)</i> Setups cancellable that can abort flux result processing. |
-|  [useResume?](./influxdb-client.fluxresultobserver.useresume.md) |  | (resume: () =&gt; void) =&gt; void | <i>(Optional)</i> Setups a callback that resumes reading of next data, it is called whenever [FluxResultObserver.next()](./influxdb-client.fluxresultobserver.next.md) returns <code>false</code>. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[useCancellable?](./influxdb-client.fluxresultobserver.usecancellable.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(cancellable: [Cancellable](./influxdb-client.cancellable.md)<!-- -->) =&gt; void
+
+
+</td><td>
+
+_(Optional)_ Setups cancellable that can abort flux result processing.
+
+
+</td></tr>
+<tr><td>
+
+[useResume?](./influxdb-client.fluxresultobserver.useresume.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(resume: () =&gt; void) =&gt; void
+
+
+</td><td>
+
+_(Optional)_ Setups a callback that resumes reading of next data, it is called whenever [FluxResultObserver.next()](./influxdb-client.fluxresultobserver.next.md) returns `false`<!-- -->.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [complete()](./influxdb-client.fluxresultobserver.complete.md) | Signalizes completition. |
-|  [error(error)](./influxdb-client.fluxresultobserver.error.md) | Signalizes processing error. |
-|  [next(row, tableMeta)](./influxdb-client.fluxresultobserver.next.md) | Inform about a next record in a table. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[complete()](./influxdb-client.fluxresultobserver.complete.md)
+
+
+</td><td>
+
+Signalizes completition.
+
+
+</td></tr>
+<tr><td>
+
+[error(error)](./influxdb-client.fluxresultobserver.error.md)
+
+
+</td><td>
+
+Signalizes processing error.
+
+
+</td></tr>
+<tr><td>
+
+[next(row, tableMeta)](./influxdb-client.fluxresultobserver.next.md)
+
+
+</td><td>
+
+Inform about a next record in a table.
+
+
+</td></tr>
+</tbody></table>

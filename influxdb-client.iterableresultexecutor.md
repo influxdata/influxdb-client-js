@@ -6,7 +6,7 @@
 
 A factory that returns async iterables.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type IterableResultExecutor = () => AsyncIterable<Uint8Array>;

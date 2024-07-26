@@ -4,7 +4,7 @@
 
 ## GetChecksRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetChecksRequest 
@@ -12,9 +12,82 @@ interface GetChecksRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [limit?](./influxdb-client-apis.getchecksrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [offset?](./influxdb-client-apis.getchecksrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
-|  [orgID](./influxdb-client-apis.getchecksrequest.orgid.md) |  | string | Only show checks that belong to a specific organization ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[limit?](./influxdb-client-apis.getchecksrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getchecksrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.getchecksrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Only show checks that belong to a specific organization ID.
+
+
+</td></tr>
+</tbody></table>

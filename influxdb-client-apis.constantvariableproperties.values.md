@@ -4,7 +4,7 @@
 
 ## ConstantVariableProperties.values property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 values?: string[];

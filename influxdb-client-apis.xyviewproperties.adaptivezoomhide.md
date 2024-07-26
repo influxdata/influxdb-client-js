@@ -4,7 +4,7 @@
 
 ## XYViewProperties.adaptiveZoomHide property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 adaptiveZoomHide?: boolean;

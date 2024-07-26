@@ -6,7 +6,7 @@
 
 Authorization to update
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AuthorizationUpdateRequest;

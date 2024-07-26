@@ -4,7 +4,7 @@
 
 ## XYGeom type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type XYGeom = 'line' | 'step' | 'stacked' | 'bar' | 'monotoneX' | 'stepBefore' | 'stepAfter';

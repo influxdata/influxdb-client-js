@@ -6,7 +6,7 @@
 
 Update the 'name' option in the flux script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

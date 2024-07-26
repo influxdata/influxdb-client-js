@@ -6,7 +6,7 @@
 
 A label update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: LabelUpdate;

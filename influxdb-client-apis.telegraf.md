@@ -4,7 +4,7 @@
 
 ## Telegraf type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Telegraf = TelegrafRequest & {
@@ -18,5 +18,5 @@ type Telegraf = TelegrafRequest & {
     readonly labels?: Labels;
 };
 ```
-<b>References:</b> [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
+**References:** [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
 

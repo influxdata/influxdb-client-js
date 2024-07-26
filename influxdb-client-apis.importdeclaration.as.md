@@ -4,7 +4,7 @@
 
 ## ImportDeclaration.as property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 as?: Identifier;

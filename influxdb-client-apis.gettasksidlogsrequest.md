@@ -4,7 +4,7 @@
 
 ## GetTasksIDLogsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTasksIDLogsRequest 
@@ -12,7 +12,44 @@ interface GetTasksIDLogsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidlogsrequest.taskid.md) |  | string | The task ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[taskID](./influxdb-client-apis.gettasksidlogsrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The task ID.
+
+
+</td></tr>
+</tbody></table>

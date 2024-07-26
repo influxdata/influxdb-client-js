@@ -4,7 +4,7 @@
 
 ## GetTasksIDRunsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTasksIDRunsIDRequest 
@@ -12,8 +12,63 @@ interface GetTasksIDRunsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [runID](./influxdb-client-apis.gettasksidrunsidrequest.runid.md) |  | string | The ID of the run to retrieve. |
-|  [taskID](./influxdb-client-apis.gettasksidrunsidrequest.taskid.md) |  | string | The ID of the task to retrieve runs for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[runID](./influxdb-client-apis.gettasksidrunsidrequest.runid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the run to retrieve.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.gettasksidrunsidrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to retrieve runs for.
+
+
+</td></tr>
+</tbody></table>

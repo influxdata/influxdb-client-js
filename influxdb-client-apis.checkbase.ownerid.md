@@ -6,7 +6,7 @@
 
 The ID of creator used to create this check.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly ownerID?: string;

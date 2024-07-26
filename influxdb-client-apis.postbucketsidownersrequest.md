@@ -4,7 +4,7 @@
 
 ## PostBucketsIDOwnersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostBucketsIDOwnersRequest 
@@ -12,8 +12,63 @@ interface PostBucketsIDOwnersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as owner |
-|  [bucketID](./influxdb-client-apis.postbucketsidownersrequest.bucketid.md) |  | string | The bucket ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postbucketsidownersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+User to add as owner
+
+
+</td></tr>
+<tr><td>
+
+[bucketID](./influxdb-client-apis.postbucketsidownersrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The bucket ID.
+
+
+</td></tr>
+</tbody></table>

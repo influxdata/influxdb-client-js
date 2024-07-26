@@ -4,10 +4,10 @@
 
 ## PropertyKey\_2 type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type PropertyKey = Identifier | StringLiteral;
 ```
-<b>References:</b> [Identifier](./influxdb-client-apis.identifier.md)<!-- -->, [StringLiteral](./influxdb-client-apis.stringliteral.md)
+**References:** [Identifier](./influxdb-client-apis.identifier.md)<!-- -->, [StringLiteral](./influxdb-client-apis.stringliteral.md)
 

@@ -4,7 +4,7 @@
 
 ## PostRestoreBucketIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostRestoreBucketIDRequest 
@@ -12,8 +12,63 @@ interface PostRestoreBucketIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorebucketidrequest.body.md) |  | string | Database info serialized as protobuf. |
-|  [bucketID](./influxdb-client-apis.postrestorebucketidrequest.bucketid.md) |  | string | The bucket ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postrestorebucketidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Database info serialized as protobuf.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID](./influxdb-client-apis.postrestorebucketidrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The bucket ID.
+
+
+</td></tr>
+</tbody></table>

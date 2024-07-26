@@ -4,7 +4,7 @@
 
 ## UserResponse interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface UserResponse 
@@ -12,10 +12,105 @@ interface UserResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.userresponse.id.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of the user. |
-|  [links?](./influxdb-client-apis.userresponse.links.md) | <code>readonly</code> | { self?: string; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.userresponse.name.md) |  | string | The name of the user. |
-|  [status?](./influxdb-client-apis.userresponse.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> The status of a user. An inactive user won't have access to resources. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.userresponse.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the user.
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.userresponse.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.userresponse.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The name of the user.
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.userresponse.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_ The status of a user. An inactive user won't have access to resources.
+
+
+</td></tr>
+</tbody></table>

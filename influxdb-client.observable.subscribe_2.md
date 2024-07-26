@@ -4,7 +4,7 @@
 
 ## Observable.subscribe() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 subscribe(next: ObserverNext<T>, error?: ObserverError, complete?: ObserverComplete): Subscription;
@@ -12,13 +12,70 @@ subscribe(next: ObserverNext<T>, error?: ObserverError, complete?: ObserverCompl
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  next | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
-|  error | [ObserverError](./influxdb-client.observererror.md) | <i>(Optional)</i> |
-|  complete | [ObserverComplete](./influxdb-client.observercomplete.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+next
+
+
+</td><td>
+
+[ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+error
+
+
+</td><td>
+
+[ObserverError](./influxdb-client.observererror.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+complete
+
+
+</td><td>
+
+[ObserverComplete](./influxdb-client.observercomplete.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Subscription](./influxdb-client.subscription.md)
 

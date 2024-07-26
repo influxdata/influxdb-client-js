@@ -4,7 +4,7 @@
 
 ## ScraperTargetResponses interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ScraperTargetResponses 
@@ -12,7 +12,44 @@ interface ScraperTargetResponses
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [configurations?](./influxdb-client-apis.scrapertargetresponses.configurations.md) |  | [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[configurations?](./influxdb-client-apis.scrapertargetresponses.configurations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

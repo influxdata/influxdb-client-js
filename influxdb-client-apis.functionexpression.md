@@ -6,7 +6,7 @@
 
 Function expression
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FunctionExpression 
@@ -14,9 +14,82 @@ interface FunctionExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body?](./influxdb-client-apis.functionexpression.body.md) |  | [Node](./influxdb-client-apis.node.md) | <i>(Optional)</i> |
-|  [params?](./influxdb-client-apis.functionexpression.params.md) |  | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Function parameters |
-|  [type?](./influxdb-client-apis.functionexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body?](./influxdb-client-apis.functionexpression.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Node](./influxdb-client-apis.node.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[params?](./influxdb-client-apis.functionexpression.params.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Property](./influxdb-client-apis.property.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Function parameters
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.functionexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

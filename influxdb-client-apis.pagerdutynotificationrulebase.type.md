@@ -4,7 +4,7 @@
 
 ## PagerDutyNotificationRuleBase.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'pagerduty';

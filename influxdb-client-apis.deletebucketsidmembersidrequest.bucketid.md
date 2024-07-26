@@ -6,7 +6,7 @@
 
 The ID of the bucket to remove a user from.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

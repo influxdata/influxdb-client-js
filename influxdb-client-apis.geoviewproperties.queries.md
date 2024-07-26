@@ -4,7 +4,7 @@
 
 ## GeoViewProperties.queries property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queries: DashboardQuery[];

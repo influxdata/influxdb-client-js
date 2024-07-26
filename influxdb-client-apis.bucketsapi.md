@@ -6,7 +6,7 @@
 
 Buckets API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class BucketsAPI 
@@ -14,26 +14,250 @@ declare class BucketsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.bucketsapi._constructor_.md) |  | Creates BucketsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.bucketsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates BucketsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsid.md) |  | Delete a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsID) |
-|  [deleteBucketsIDLabelsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidlabelsid.md) |  | Delete a label from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDLabelsID) |
-|  [deleteBucketsIDMembersID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidmembersid.md) |  | Remove a member from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDMembersID) |
-|  [deleteBucketsIDOwnersID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidownersid.md) |  | Remove an owner from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDOwnersID) |
-|  [getBuckets(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbuckets.md) |  | List buckets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBuckets) |
-|  [getBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsid.md) |  | Retrieve a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsID) |
-|  [getBucketsIDLabels(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidlabels.md) |  | List all labels for a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDLabels) |
-|  [getBucketsIDMembers(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidmembers.md) |  | List all users with member privileges for a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDMembers) |
-|  [getBucketsIDOwners(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidowners.md) |  | List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDOwners) |
-|  [patchBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.patchbucketsid.md) |  | Update a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchBucketsID) |
-|  [postBuckets(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbuckets.md) |  | Create a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBuckets) |
-|  [postBucketsIDLabels(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidlabels.md) |  | Add a label to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDLabels) |
-|  [postBucketsIDMembers(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidmembers.md) |  | Add a member to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDMembers) |
-|  [postBucketsIDOwners(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidowners.md) |  | Add an owner to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDOwners) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteBucketsIDLabelsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteBucketsIDMembersID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidmembersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove a member from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDMembersID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteBucketsIDOwnersID(request, requestOptions)](./influxdb-client-apis.bucketsapi.deletebucketsidownersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove an owner from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDOwnersID)
+
+
+</td></tr>
+<tr><td>
+
+[getBuckets(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbuckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List buckets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBuckets)
+
+
+</td></tr>
+<tr><td>
+
+[getBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsID)
+
+
+</td></tr>
+<tr><td>
+
+[getBucketsIDLabels(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getBucketsIDMembers(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all users with member privileges for a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[getBucketsIDOwners(request, requestOptions)](./influxdb-client-apis.bucketsapi.getbucketsidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDOwners)
+
+
+</td></tr>
+<tr><td>
+
+[patchBucketsID(request, requestOptions)](./influxdb-client-apis.bucketsapi.patchbucketsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchBucketsID)
+
+
+</td></tr>
+<tr><td>
+
+[postBuckets(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbuckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBuckets)
+
+
+</td></tr>
+<tr><td>
+
+[postBucketsIDLabels(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[postBucketsIDMembers(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a member to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[postBucketsIDOwners(request, requestOptions)](./influxdb-client-apis.bucketsapi.postbucketsidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add an owner to a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostBucketsIDOwners)
+
+
+</td></tr>
+</tbody></table>

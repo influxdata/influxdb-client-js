@@ -6,7 +6,7 @@
 
 Raw source text
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 text?: string;

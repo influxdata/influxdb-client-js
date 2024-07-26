@@ -6,7 +6,7 @@
 
 A Flux Function name. Only returns functions with this name.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

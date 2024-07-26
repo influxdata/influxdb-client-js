@@ -4,7 +4,7 @@
 
 ## Axis.scale property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scale?: AxisScale;

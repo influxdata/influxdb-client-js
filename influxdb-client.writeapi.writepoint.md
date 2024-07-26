@@ -6,7 +6,7 @@
 
 Write point.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writePoint(point: Point): void;
@@ -14,11 +14,40 @@ writePoint(point: Point): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  point | [Point](./influxdb-client.point.md) | point to write |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+point
+
+
+</td><td>
+
+[Point](./influxdb-client.point.md)
+
+
+</td><td>
+
+point to write
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

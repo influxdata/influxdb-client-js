@@ -4,7 +4,7 @@
 
 ## PostUsersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostUsersRequest 
@@ -12,7 +12,44 @@ interface PostUsersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postusersrequest.body.md) |  | [User](./influxdb-client-apis.user.md) | The user to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postusersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[User](./influxdb-client-apis.user.md)
+
+
+</td><td>
+
+The user to create.
+
+
+</td></tr>
+</tbody></table>

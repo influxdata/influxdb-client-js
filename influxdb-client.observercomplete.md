@@ -6,7 +6,7 @@
 
 Type of [Observer.complete](./influxdb-client.observer.complete.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ObserverComplete = () => void;

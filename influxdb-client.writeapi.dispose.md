@@ -6,12 +6,12 @@
 
 Unlike close, dispose simply quits without trying to flush the buffered data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dispose(): number;
 ```
-<b>Returns:</b>
+**Returns:**
 
 number
 

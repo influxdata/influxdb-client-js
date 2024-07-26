@@ -4,7 +4,7 @@
 
 ## ResourceMembers interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ResourceMembers 
@@ -12,8 +12,63 @@ interface ResourceMembers
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.resourcemembers.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.resourcemembers.users.md) |  | [ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.resourcemembers.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ self?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[users?](./influxdb-client-apis.resourcemembers.users.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

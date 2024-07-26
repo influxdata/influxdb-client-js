@@ -4,7 +4,7 @@
 
 ## BandViewProperties.axes property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 axes: Axes;

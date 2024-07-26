@@ -6,7 +6,7 @@
 
 An organization name. Only returns authorizations that belong to this organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

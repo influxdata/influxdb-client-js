@@ -6,7 +6,7 @@
 
 The name of the organization that owns this Task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

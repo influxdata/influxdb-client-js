@@ -6,26 +6,139 @@
 
 Options that configure strategy for retrying failed InfluxDB write operations.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface WriteRetryOptions extends RetryDelayStrategyOptions 
 ```
-<b>Extends:</b> [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md)
+**Extends:** [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md)
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [maxBufferLines](./influxdb-client.writeretryoptions.maxbufferlines.md) |  | number | the maximum size of retry-buffer (in lines) |
-|  [maxRetries](./influxdb-client.writeretryoptions.maxretries.md) |  | number | max count of retries after the first write fails |
-|  [maxRetryTime](./influxdb-client.writeretryoptions.maxretrytime.md) |  | number | max time (millis) that can be spent with retries |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[maxBufferLines](./influxdb-client.writeretryoptions.maxbufferlines.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+the maximum size of retry-buffer (in lines)
+
+
+</td></tr>
+<tr><td>
+
+[maxRetries](./influxdb-client.writeretryoptions.maxretries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+max count of retries after the first write fails
+
+
+</td></tr>
+<tr><td>
+
+[maxRetryTime](./influxdb-client.writeretryoptions.maxretrytime.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+max time (millis) that can be spent with retries
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [writeFailed(this, error, lines, attempt, expires)](./influxdb-client.writeretryoptions.writefailed.md) | WriteFailed is called to inform about write errors. |
-|  [writeRetrySkipped(entry)](./influxdb-client.writeretryoptions.writeretryskipped.md) | WriteRetrySkipped is informed about lines that were removed from the retry buffer to keep the size of the retry buffer under the configured limit (maxBufferLines). |
-|  [writeSuccess(this, lines)](./influxdb-client.writeretryoptions.writesuccess.md) | WriteSuccess is informed about successfully written lines. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[writeFailed(this, error, lines, attempt, expires)](./influxdb-client.writeretryoptions.writefailed.md)
+
+
+</td><td>
+
+WriteFailed is called to inform about write errors.
+
+
+</td></tr>
+<tr><td>
+
+[writeRetrySkipped(entry)](./influxdb-client.writeretryoptions.writeretryskipped.md)
+
+
+</td><td>
+
+WriteRetrySkipped is informed about lines that were removed from the retry buffer to keep the size of the retry buffer under the configured limit (maxBufferLines).
+
+
+</td></tr>
+<tr><td>
+
+[writeSuccess(this, lines)](./influxdb-client.writeretryoptions.writesuccess.md)
+
+
+</td><td>
+
+WriteSuccess is informed about successfully written lines.
+
+
+</td></tr>
+</tbody></table>

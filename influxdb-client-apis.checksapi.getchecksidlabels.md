@@ -6,7 +6,7 @@
 
 List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDLabels)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getChecksIDLabels(request: GetChecksIDLabelsRequest, requestOptions?: RequestOptions): Promise<LabelsResponse>;
@@ -14,12 +14,56 @@ getChecksIDLabels(request: GetChecksIDLabelsRequest, requestOptions?: RequestOpt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetChecksIDLabelsRequest](./influxdb-client-apis.getchecksidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetChecksIDLabelsRequest](./influxdb-client-apis.getchecksidlabelsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[LabelsResponse](./influxdb-client-apis.labelsresponse.md)<!-- -->&gt;
 

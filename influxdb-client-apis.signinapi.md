@@ -6,7 +6,7 @@
 
 Signin API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class SigninAPI 
@@ -14,13 +14,68 @@ declare class SigninAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.signinapi._constructor_.md) |  | Creates SigninAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.signinapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates SigninAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [postSignin(request, requestOptions)](./influxdb-client-apis.signinapi.postsignin.md) |  | Create a user session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignin) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postSignin(request, requestOptions)](./influxdb-client-apis.signinapi.postsignin.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a user session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignin)
+
+
+</td></tr>
+</tbody></table>

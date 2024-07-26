@@ -4,7 +4,7 @@
 
 ## Routes.write property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 write?: string;

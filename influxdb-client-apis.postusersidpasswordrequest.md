@@ -4,7 +4,7 @@
 
 ## PostUsersIDPasswordRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostUsersIDPasswordRequest 
@@ -12,9 +12,82 @@ interface PostUsersIDPasswordRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [auth?](./influxdb-client-apis.postusersidpasswordrequest.auth.md) |  | { user: string; password: string; } | <i>(Optional)</i> |
-|  [body](./influxdb-client-apis.postusersidpasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | New password |
-|  [userID](./influxdb-client-apis.postusersidpasswordrequest.userid.md) |  | string | The user ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[auth?](./influxdb-client-apis.postusersidpasswordrequest.auth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ user: string; password: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[body](./influxdb-client-apis.postusersidpasswordrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PasswordResetBody](./influxdb-client-apis.passwordresetbody.md)
+
+
+</td><td>
+
+New password
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.postusersidpasswordrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The user ID.
+
+
+</td></tr>
+</tbody></table>

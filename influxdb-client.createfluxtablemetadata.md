@@ -6,7 +6,7 @@
 
 Created FluxTableMetaData from the columns supplied.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function createFluxTableMetaData(columns: FluxTableColumn[]): FluxTableMetaData;
@@ -14,11 +14,40 @@ declare function createFluxTableMetaData(columns: FluxTableColumn[]): FluxTableM
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  columns | [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->\[\] | columns |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+columns
+
+
+</td><td>
+
+[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->\[\]
+
+
+</td><td>
+
+columns
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
 

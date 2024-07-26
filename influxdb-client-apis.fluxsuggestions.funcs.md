@@ -4,7 +4,7 @@
 
 ## FluxSuggestions.funcs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 funcs?: FluxSuggestion[];

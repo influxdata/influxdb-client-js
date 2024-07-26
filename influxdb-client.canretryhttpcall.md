@@ -6,7 +6,7 @@
 
 Tests the error in order to know if an HTTP call can be retried.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function canRetryHttpCall(error: any): boolean;
@@ -14,11 +14,40 @@ declare function canRetryHttpCall(error: any): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  error | any | error to test |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+error
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+error to test
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 boolean
 

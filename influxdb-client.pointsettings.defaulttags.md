@@ -6,7 +6,7 @@
 
 default tags to add to every point
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaultTags?: {

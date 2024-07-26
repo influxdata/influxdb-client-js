@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest.shardGroups property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardGroups: ShardGroupManifests;

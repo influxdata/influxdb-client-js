@@ -6,10 +6,10 @@
 
 Informs about a start of response processing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ResponseStartedFn = (headers: HttpHeaders, statusCode?: number) => void;
 ```
-<b>References:</b> [HttpHeaders](./influxdb-client.httpheaders.md)
+**References:** [HttpHeaders](./influxdb-client.httpheaders.md)
 

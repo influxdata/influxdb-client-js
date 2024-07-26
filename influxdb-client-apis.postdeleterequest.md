@@ -4,7 +4,7 @@
 
 ## PostDeleteRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostDeleteRequest 
@@ -12,11 +12,142 @@ interface PostDeleteRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdeleterequest.body.md) |  | [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | <p>Time range parameters and an optional \*\*delete predicate expression\*\*.</p><p>To select points to delete within the specified time range, pass a \*delete predicate expression\*\* in the <code>predicate</code> property of the request body. If you don't pass a <code>predicate</code>, InfluxDB deletes all data with timestamps in the specified time range.</p><p>\#\#\#\# Related guides</p><p>- [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/)<!-- -->. - Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.</p> |
-|  [bucket?](./influxdb-client-apis.postdeleterequest.bucket.md) |  | string | <i>(Optional)</i> The name or ID of the bucket to delete data from. If you pass both <code>bucket</code> and <code>bucketID</code>, <code>bucketID</code> takes precedence. |
-|  [bucketID?](./influxdb-client-apis.postdeleterequest.bucketid.md) |  | string | <i>(Optional)</i> The ID of the bucket to delete data from. If you pass both <code>bucket</code> and <code>bucketID</code>, <code>bucketID</code> takes precedence. |
-|  [org?](./influxdb-client-apis.postdeleterequest.org.md) |  | string | <p><i>(Optional)</i> The organization to delete data from. If you pass both <code>orgID</code> and <code>org</code>, they must both be valid.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't require <code>org</code> or <code>orgID</code>. - Deletes data from the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>.</p> |
-|  [orgID?](./influxdb-client-apis.postdeleterequest.orgid.md) |  | string | <p><i>(Optional)</i> The ID of the organization to delete data from. If you pass both <code>orgID</code> and <code>org</code>, they must both be valid.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't require <code>org</code> or <code>orgID</code>. - Deletes data from the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postdeleterequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md)
+
+
+</td><td>
+
+Time range parameters and an optional \*\*delete predicate expression\*\*.
+
+To select points to delete within the specified time range, pass a \*delete predicate expression\*\* in the `predicate` property of the request body. If you don't pass a `predicate`<!-- -->, InfluxDB deletes all data with timestamps in the specified time range.
+
+\#\#\#\# Related guides
+
+- [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/)<!-- -->. - Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[bucket?](./influxdb-client-apis.postdeleterequest.bucket.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name or ID of the bucket to delete data from. If you pass both `bucket` and `bucketID`<!-- -->, `bucketID` takes precedence.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID?](./influxdb-client-apis.postdeleterequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the bucket to delete data from. If you pass both `bucket` and `bucketID`<!-- -->, `bucketID` takes precedence.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.postdeleterequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The organization to delete data from. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Deletes data from the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.postdeleterequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the organization to delete data from. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Deletes data from the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

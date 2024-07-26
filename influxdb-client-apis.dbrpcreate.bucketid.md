@@ -6,7 +6,7 @@
 
 The ID of the bucket used as the target for the translation.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

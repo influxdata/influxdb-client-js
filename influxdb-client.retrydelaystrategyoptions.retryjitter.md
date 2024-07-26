@@ -6,7 +6,7 @@
 
 add `random(retryJitter)` milliseconds delay when retrying HTTP calls
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retryJitter: number;

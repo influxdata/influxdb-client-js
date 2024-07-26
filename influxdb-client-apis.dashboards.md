@@ -4,7 +4,7 @@
 
 ## Dashboards interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Dashboards 
@@ -12,8 +12,63 @@ interface Dashboards
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dashboards?](./influxdb-client-apis.dashboards.dashboards.md) |  | [Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.dashboards.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dashboards?](./influxdb-client-apis.dashboards.dashboards.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Dashboard](./influxdb-client-apis.dashboard.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.dashboards.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 socket timeout, 10000 milliseconds by default in node.js
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 timeout?: number;

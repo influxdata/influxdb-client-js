@@ -4,7 +4,7 @@
 
 ## BuilderConfig interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BuilderConfig 
@@ -12,10 +12,101 @@ interface BuilderConfig
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [aggregateWindow?](./influxdb-client-apis.builderconfig.aggregatewindow.md) |  | { period?: string; fillValues?: boolean; } | <i>(Optional)</i> |
-|  [buckets?](./influxdb-client-apis.builderconfig.buckets.md) |  | string\[\] | <i>(Optional)</i> |
-|  [functions?](./influxdb-client-apis.builderconfig.functions.md) |  | [BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [tags?](./influxdb-client-apis.builderconfig.tags.md) |  | [BuilderTagsType](./influxdb-client-apis.buildertagstype.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[aggregateWindow?](./influxdb-client-apis.builderconfig.aggregatewindow.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ period?: string; fillValues?: boolean; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[buckets?](./influxdb-client-apis.builderconfig.buckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[functions?](./influxdb-client-apis.builderconfig.functions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[tags?](./influxdb-client-apis.builderconfig.tags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BuilderTagsType](./influxdb-client-apis.buildertagstype.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

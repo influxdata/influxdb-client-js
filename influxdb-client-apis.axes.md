@@ -6,7 +6,7 @@
 
 The viewport for a View's visualizations
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Axes 
@@ -14,8 +14,59 @@ interface Axes
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [x](./influxdb-client-apis.axes.x.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
-|  [y](./influxdb-client-apis.axes.y.md) |  | [Axis](./influxdb-client-apis.axis.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[x](./influxdb-client-apis.axes.x.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Axis](./influxdb-client-apis.axis.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[y](./influxdb-client-apis.axes.y.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Axis](./influxdb-client-apis.axis.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

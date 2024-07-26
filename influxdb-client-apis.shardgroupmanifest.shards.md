@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest.shards property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shards: ShardManifests;

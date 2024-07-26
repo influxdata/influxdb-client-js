@@ -6,7 +6,7 @@
 
 The Flux query to analyze.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: LanguageRequest;

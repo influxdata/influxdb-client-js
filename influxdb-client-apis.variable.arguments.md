@@ -4,7 +4,7 @@
 
 ## Variable.arguments property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 arguments: VariableProperties;

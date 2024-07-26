@@ -6,7 +6,7 @@
 
 IterateRows executes the supplied query and returns results in an async iterable of row data and table metadata pairs. Async iterables are best consumed by `for-await` loop.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 iterateRows(query: string | ParameterizedQuery): AsyncIterable<Row>;
@@ -14,11 +14,40 @@ iterateRows(query: string | ParameterizedQuery): AsyncIterable<Row>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 AsyncIterable&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
 

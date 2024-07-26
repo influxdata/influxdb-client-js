@@ -4,7 +4,7 @@
 
 ## StatusRule.period property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 period?: string;

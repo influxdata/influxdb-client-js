@@ -6,7 +6,7 @@
 
 CollectLines executes the query and collects all result lines in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of lines is copied to memory.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 collectLines(query: string | ParameterizedQuery): Promise<Array<string>>;
@@ -14,11 +14,40 @@ collectLines(query: string | ParameterizedQuery): Promise<Array<string>>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;Array&lt;string&gt;&gt;
 

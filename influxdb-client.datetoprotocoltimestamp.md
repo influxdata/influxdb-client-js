@@ -6,7 +6,7 @@
 
 dateToProtocolTimestamp provides converters for JavaScript Date to InfluxDB Write Protocol Timestamp. Keys are supported precisions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dateToProtocolTimestamp: {

@@ -6,7 +6,7 @@
 
 Specifies filtering on default
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 default?: any;

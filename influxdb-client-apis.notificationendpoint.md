@@ -4,10 +4,10 @@
 
 ## NotificationEndpoint type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type NotificationEndpoint = NotificationEndpointDiscriminator;
 ```
-<b>References:</b> [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
+**References:** [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
 

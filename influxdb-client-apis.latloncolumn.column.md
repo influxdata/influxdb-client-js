@@ -6,7 +6,7 @@
 
 Column to look up Lat/Lon
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 column: string;

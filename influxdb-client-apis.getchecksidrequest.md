@@ -4,7 +4,7 @@
 
 ## GetChecksIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetChecksIDRequest 
@@ -12,7 +12,44 @@ interface GetChecksIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [checkID](./influxdb-client-apis.getchecksidrequest.checkid.md) |  | string | The check ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[checkID](./influxdb-client-apis.getchecksidrequest.checkid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The check ID.
+
+
+</td></tr>
+</tbody></table>

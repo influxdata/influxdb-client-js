@@ -4,7 +4,7 @@
 
 ## ReplicationCreationRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ReplicationCreationRequest 
@@ -12,16 +12,203 @@ interface ReplicationCreationRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.replicationcreationrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [dropNonRetryableData?](./influxdb-client-apis.replicationcreationrequest.dropnonretryabledata.md) |  | boolean | <i>(Optional)</i> |
-|  [localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md) |  | string |  |
-|  [maxAgeSeconds](./influxdb-client-apis.replicationcreationrequest.maxageseconds.md) |  | number |  |
-|  [maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md) |  | number |  |
-|  [name](./influxdb-client-apis.replicationcreationrequest.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md) |  | string |  |
-|  [remoteBucketID?](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md) |  | string | <i>(Optional)</i> |
-|  [remoteBucketName?](./influxdb-client-apis.replicationcreationrequest.remotebucketname.md) |  | string | <i>(Optional)</i> |
-|  [remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.replicationcreationrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[dropNonRetryableData?](./influxdb-client-apis.replicationcreationrequest.dropnonretryabledata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[localBucketID](./influxdb-client-apis.replicationcreationrequest.localbucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[maxAgeSeconds](./influxdb-client-apis.replicationcreationrequest.maxageseconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[maxQueueSizeBytes](./influxdb-client-apis.replicationcreationrequest.maxqueuesizebytes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.replicationcreationrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.replicationcreationrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteBucketID?](./influxdb-client-apis.replicationcreationrequest.remotebucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[remoteBucketName?](./influxdb-client-apis.replicationcreationrequest.remotebucketname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[remoteID](./influxdb-client-apis.replicationcreationrequest.remoteid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

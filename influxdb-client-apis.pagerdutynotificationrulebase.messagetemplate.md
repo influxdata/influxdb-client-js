@@ -4,7 +4,7 @@
 
 ## PagerDutyNotificationRuleBase.messageTemplate property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 messageTemplate: string;

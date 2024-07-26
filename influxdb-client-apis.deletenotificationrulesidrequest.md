@@ -4,7 +4,7 @@
 
 ## DeleteNotificationRulesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteNotificationRulesIDRequest 
@@ -12,7 +12,44 @@ interface DeleteNotificationRulesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [ruleID](./influxdb-client-apis.deletenotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ruleID](./influxdb-client-apis.deletenotificationrulesidrequest.ruleid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification rule ID.
+
+
+</td></tr>
+</tbody></table>

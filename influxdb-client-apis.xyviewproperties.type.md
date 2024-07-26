@@ -4,7 +4,7 @@
 
 ## XYViewProperties.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'xy';

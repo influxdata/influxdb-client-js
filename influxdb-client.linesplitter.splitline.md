@@ -6,7 +6,7 @@
 
 Splits the supplied line to elements that are separated by comma with values possibly escaped within double quotes ("value")
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 splitLine(line: string | undefined | null): string[];
@@ -14,11 +14,40 @@ splitLine(line: string | undefined | null): string[];
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  line | string \| undefined \| null | line |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+line
+
+
+</td><td>
+
+string \| undefined \| null
+
+
+</td><td>
+
+line
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string\[\]
 

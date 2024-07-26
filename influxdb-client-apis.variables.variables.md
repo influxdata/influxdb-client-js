@@ -4,7 +4,7 @@
 
 ## Variables.variables property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 variables?: Variable[];

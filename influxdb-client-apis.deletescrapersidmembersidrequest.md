@@ -4,7 +4,7 @@
 
 ## DeleteScrapersIDMembersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteScrapersIDMembersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteScrapersIDMembersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidmembersidrequest.scrapertargetid.md) |  | string | The scraper target ID. |
-|  [userID](./influxdb-client-apis.deletescrapersidmembersidrequest.userid.md) |  | string | The ID of member to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scraperTargetID](./influxdb-client-apis.deletescrapersidmembersidrequest.scrapertargetid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The scraper target ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletescrapersidmembersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of member to remove.
+
+
+</td></tr>
+</tbody></table>

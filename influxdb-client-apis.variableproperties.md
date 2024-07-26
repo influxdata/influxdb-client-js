@@ -4,10 +4,10 @@
 
 ## VariableProperties type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type VariableProperties = QueryVariableProperties | ConstantVariableProperties | MapVariableProperties;
 ```
-<b>References:</b> [QueryVariableProperties](./influxdb-client-apis.queryvariableproperties.md)<!-- -->, [ConstantVariableProperties](./influxdb-client-apis.constantvariableproperties.md)<!-- -->, [MapVariableProperties](./influxdb-client-apis.mapvariableproperties.md)
+**References:** [QueryVariableProperties](./influxdb-client-apis.queryvariableproperties.md)<!-- -->, [ConstantVariableProperties](./influxdb-client-apis.constantvariableproperties.md)<!-- -->, [MapVariableProperties](./influxdb-client-apis.mapvariableproperties.md)
 

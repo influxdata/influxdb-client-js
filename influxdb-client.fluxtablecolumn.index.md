@@ -6,7 +6,7 @@
 
 Index of this column in a row array.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 index: number;

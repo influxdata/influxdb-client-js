@@ -4,7 +4,7 @@
 
 ## Dashboards.dashboards property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dashboards?: Dashboard[];

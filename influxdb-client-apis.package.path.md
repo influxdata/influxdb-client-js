@@ -6,7 +6,7 @@
 
 Package import path
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 path?: string;

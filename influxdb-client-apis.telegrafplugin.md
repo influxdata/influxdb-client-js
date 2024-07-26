@@ -4,7 +4,7 @@
 
 ## TelegrafPlugin interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TelegrafPlugin 
@@ -12,10 +12,101 @@ interface TelegrafPlugin
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [config?](./influxdb-client-apis.telegrafplugin.config.md) |  | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.telegrafplugin.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.telegrafplugin.name.md) |  | string | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.telegrafplugin.type.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[config?](./influxdb-client-apis.telegrafplugin.config.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.telegrafplugin.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.telegrafplugin.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.telegrafplugin.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## TelegrafRequest.metadata property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 metadata?: {

@@ -6,7 +6,7 @@
 
 Signout API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class SignoutAPI 
@@ -14,13 +14,68 @@ declare class SignoutAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.signoutapi._constructor_.md) |  | Creates SignoutAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.signoutapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates SignoutAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md) |  | Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignout) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postSignout(request, requestOptions)](./influxdb-client-apis.signoutapi.postsignout.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Expire the current UI session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignout](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignout)
+
+
+</td></tr>
+</tbody></table>

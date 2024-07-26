@@ -4,7 +4,7 @@
 
 ## Authorizations interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Authorizations 
@@ -12,8 +12,65 @@ interface Authorizations
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [authorizations?](./influxdb-client-apis.authorizations.authorizations.md) |  | [Authorization](./influxdb-client-apis.authorization.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.authorizations.links.md) | <code>readonly</code> | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[authorizations?](./influxdb-client-apis.authorizations.authorizations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Authorization](./influxdb-client-apis.authorization.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.authorizations.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

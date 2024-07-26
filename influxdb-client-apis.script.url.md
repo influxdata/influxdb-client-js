@@ -6,7 +6,7 @@
 
 The invocation endpoint address.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url?: string;

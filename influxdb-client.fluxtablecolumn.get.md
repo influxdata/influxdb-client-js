@@ -6,7 +6,7 @@
 
 Get returns a JavaScript object of this column in the supplied result row, using default deserializers.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get: (row: string[]) => any;

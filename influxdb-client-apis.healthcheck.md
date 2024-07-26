@@ -4,7 +4,7 @@
 
 ## HealthCheck interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface HealthCheck 
@@ -12,12 +12,135 @@ interface HealthCheck
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [checks?](./influxdb-client-apis.healthcheck.checks.md) |  | [HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [commit?](./influxdb-client-apis.healthcheck.commit.md) |  | string | <i>(Optional)</i> |
-|  [message?](./influxdb-client-apis.healthcheck.message.md) |  | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.healthcheck.name.md) |  | string |  |
-|  [status](./influxdb-client-apis.healthcheck.status.md) |  | 'pass' \| 'fail' |  |
-|  [version?](./influxdb-client-apis.healthcheck.version.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[checks?](./influxdb-client-apis.healthcheck.checks.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[HealthCheck](./influxdb-client-apis.healthcheck.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[commit?](./influxdb-client-apis.healthcheck.commit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[message?](./influxdb-client-apis.healthcheck.message.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.healthcheck.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[status](./influxdb-client-apis.healthcheck.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'pass' \| 'fail'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[version?](./influxdb-client-apis.healthcheck.version.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

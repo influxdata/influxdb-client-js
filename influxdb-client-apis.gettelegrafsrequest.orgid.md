@@ -6,7 +6,7 @@
 
 The organization ID the Telegraf config belongs to.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

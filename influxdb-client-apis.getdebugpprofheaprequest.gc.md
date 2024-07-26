@@ -6,7 +6,7 @@
 
 - `0`<!-- -->: (Default) don't force garbage collection before sampling. - `1`<!-- -->: Force garbage collection before sampling.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 gc?: number;

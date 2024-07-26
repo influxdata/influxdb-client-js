@@ -4,12 +4,12 @@
 
 ## CustomCheck type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type CustomCheck = CheckBase & {
     type: 'custom';
 };
 ```
-<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)
+**References:** [CheckBase](./influxdb-client-apis.checkbase.md)
 

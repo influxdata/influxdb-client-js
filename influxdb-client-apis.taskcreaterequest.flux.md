@@ -6,7 +6,7 @@
 
 The Flux script to run for this task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flux: string;

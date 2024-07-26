@@ -4,7 +4,7 @@
 
 ## BucketShardMapping interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BucketShardMapping 
@@ -12,8 +12,59 @@ interface BucketShardMapping
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [newId](./influxdb-client-apis.bucketshardmapping.newid.md) |  | number |  |
-|  [oldId](./influxdb-client-apis.bucketshardmapping.oldid.md) |  | number |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[newId](./influxdb-client-apis.bucketshardmapping.newid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[oldId](./influxdb-client-apis.bucketshardmapping.oldid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

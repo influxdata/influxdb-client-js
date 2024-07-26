@@ -6,7 +6,7 @@
 
 Logger that logs to console.out
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 consoleLogger: Logger

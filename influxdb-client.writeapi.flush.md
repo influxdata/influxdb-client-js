@@ -6,7 +6,7 @@
 
 Flushes pending writes to the server.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flush(withRetryBuffer?: boolean): Promise<void>;
@@ -14,11 +14,40 @@ flush(withRetryBuffer?: boolean): Promise<void>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  withRetryBuffer | boolean | <i>(Optional)</i> flush also all the scheduled retries |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+withRetryBuffer
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ flush also all the scheduled retries
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

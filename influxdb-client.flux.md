@@ -6,7 +6,7 @@
 
 Flux is a tagged template that sanitizes supplied parameters to avoid injection attacks in flux.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function flux(strings: TemplateStringsArray, ...values: any): ParameterizedQuery;
@@ -14,12 +14,52 @@ declare function flux(strings: TemplateStringsArray, ...values: any): Parameteri
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  strings | TemplateStringsArray |  |
-|  values | any |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+strings
+
+
+</td><td>
+
+TemplateStringsArray
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+values
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
 

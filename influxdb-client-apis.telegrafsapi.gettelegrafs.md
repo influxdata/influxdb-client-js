@@ -6,7 +6,7 @@
 
 List all Telegraf configurations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafs)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTelegrafs(request?: GetTelegrafsRequest, requestOptions?: RequestOptions): Promise<Telegrafs>;
@@ -14,12 +14,56 @@ getTelegrafs(request?: GetTelegrafsRequest, requestOptions?: RequestOptions): Pr
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetTelegrafsRequest](./influxdb-client-apis.gettelegrafsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetTelegrafsRequest](./influxdb-client-apis.gettelegrafsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Telegrafs](./influxdb-client-apis.telegrafs.md)<!-- -->&gt;
 

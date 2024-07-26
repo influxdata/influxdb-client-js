@@ -6,7 +6,7 @@
 
 Creates a flux table column from a partial FluxTableColumn.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function createFluxTableColumn(object: Partial<FluxTableColumn>): FluxTableColumn;
@@ -14,11 +14,40 @@ declare function createFluxTableColumn(object: Partial<FluxTableColumn>): FluxTa
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  object | Partial&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | source object |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+object
+
+
+</td><td>
+
+Partial&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt;
+
+
+</td><td>
+
+source object
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 

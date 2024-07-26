@@ -6,7 +6,7 @@
 
 WriteRetrySkipped is informed about lines that were removed from the retry buffer to keep the size of the retry buffer under the configured limit (maxBufferLines).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writeRetrySkipped(entry: {
@@ -17,11 +17,40 @@ writeRetrySkipped(entry: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  entry | { lines: Array&lt;string&gt;; expires: number; } | lines that were skipped |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+entry
+
+
+</td><td>
+
+{ lines: Array&lt;string&gt;; expires: number; }
+
+
+</td><td>
+
+lines that were skipped
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

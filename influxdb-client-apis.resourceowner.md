@@ -4,12 +4,12 @@
 
 ## ResourceOwner type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ResourceOwner = UserResponse & {
     role?: 'owner';
 };
 ```
-<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
+**References:** [UserResponse](./influxdb-client-apis.userresponse.md)
 

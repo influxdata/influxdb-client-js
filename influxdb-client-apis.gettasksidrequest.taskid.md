@@ -6,7 +6,7 @@
 
 The ID of the task to retrieve.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

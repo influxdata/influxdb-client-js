@@ -6,7 +6,7 @@
 
 Only show notification endpoints that belong to specific organization ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

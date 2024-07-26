@@ -6,7 +6,7 @@
 
 Mapping represents the default retention policy for the database specified.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 default: boolean;

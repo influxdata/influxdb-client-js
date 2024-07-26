@@ -6,7 +6,7 @@
 
 max number of records/lines to send in a batch
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 batchSize: number;

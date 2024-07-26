@@ -4,7 +4,7 @@
 
 ## PostScriptsIDInvokeRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostScriptsIDInvokeRequest 
@@ -12,8 +12,63 @@ interface PostScriptsIDInvokeRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscriptsidinvokerequest.body.md) |  | [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) | entity body |
-|  [scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md) |  | string | A script ID. Specifies the script to execute. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postscriptsidinvokerequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[scriptID](./influxdb-client-apis.postscriptsidinvokerequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A script ID. Specifies the script to execute.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Routes.authorizations property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 authorizations?: string;

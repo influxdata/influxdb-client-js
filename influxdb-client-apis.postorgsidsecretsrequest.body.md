@@ -6,7 +6,7 @@
 
 Secret key to delete
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: SecretKeys;

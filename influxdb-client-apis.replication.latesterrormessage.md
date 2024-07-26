@@ -4,7 +4,7 @@
 
 ## Replication.latestErrorMessage property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 latestErrorMessage?: string;

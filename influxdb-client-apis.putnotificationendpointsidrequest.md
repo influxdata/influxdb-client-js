@@ -4,7 +4,7 @@
 
 ## PutNotificationEndpointsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutNotificationEndpointsIDRequest 
@@ -12,8 +12,63 @@ interface PutNotificationEndpointsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putnotificationendpointsidrequest.body.md) |  | [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md) | A new notification endpoint to replace the existing endpoint with |
-|  [endpointID](./influxdb-client-apis.putnotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.putnotificationendpointsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)
+
+
+</td><td>
+
+A new notification endpoint to replace the existing endpoint with
+
+
+</td></tr>
+<tr><td>
+
+[endpointID](./influxdb-client-apis.putnotificationendpointsidrequest.endpointid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification endpoint ID.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 If true, the results contain a header row.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 header?: boolean;

@@ -4,7 +4,7 @@
 
 ## GeoViewLayerProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GeoViewLayerProperties 
@@ -12,7 +12,42 @@ interface GeoViewLayerProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./influxdb-client-apis.geoviewlayerproperties.type.md) |  | 'heatmap' \| 'circleMap' \| 'pointMap' \| 'trackMap' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./influxdb-client-apis.geoviewlayerproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'heatmap' \| 'circleMap' \| 'pointMap' \| 'trackMap'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

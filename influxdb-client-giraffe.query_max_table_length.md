@@ -6,7 +6,7 @@
 
 QUERY\_MAX\_TABLE\_LENGTH is a default max table length, it can be overriden in TableOptions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 QUERY_MAX_TABLE_LENGTH = 100000

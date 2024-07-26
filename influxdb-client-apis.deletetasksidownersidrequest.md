@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDOwnersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteTasksIDOwnersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteTasksIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.deletetasksidownersidrequest.taskid.md) |  | string | The task ID. |
-|  [userID](./influxdb-client-apis.deletetasksidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[taskID](./influxdb-client-apis.deletetasksidownersidrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The task ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletetasksidownersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the owner to remove.
+
+
+</td></tr>
+</tbody></table>

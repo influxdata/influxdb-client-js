@@ -4,7 +4,7 @@
 
 ## ResourceOwners.users property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 users?: ResourceOwner[];

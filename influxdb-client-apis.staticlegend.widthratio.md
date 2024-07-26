@@ -4,7 +4,7 @@
 
 ## StaticLegend.widthRatio property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 widthRatio?: number;

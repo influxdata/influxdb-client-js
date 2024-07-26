@@ -6,7 +6,7 @@
 
 When specified, write bodies larger than the threshold are gzipped
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 gzipThreshold?: number;

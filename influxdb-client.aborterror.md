@@ -6,25 +6,89 @@
 
 AbortError indicates that the communication with the server was aborted
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class AbortError extends Error implements RetriableDecision 
 ```
-<b>Extends:</b> Error
+**Extends:** Error
 
-<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
+**Implements:** [RetriableDecision](./influxdb-client.retriabledecision.md)
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)()](./influxdb-client.aborterror._constructor_.md) |  | Constructs a new instance of the <code>AbortError</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)()](./influxdb-client.aborterror._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `AbortError` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [canRetry()](./influxdb-client.aborterror.canretry.md) |  |  |
-|  [retryAfter()](./influxdb-client.aborterror.retryafter.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[canRetry()](./influxdb-client.aborterror.canretry.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[retryAfter()](./influxdb-client.aborterror.retryafter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

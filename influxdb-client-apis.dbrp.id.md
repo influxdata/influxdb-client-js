@@ -6,7 +6,7 @@
 
 The ID of the DBRP mapping.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly id: string;

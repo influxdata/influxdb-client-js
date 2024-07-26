@@ -4,7 +4,7 @@
 
 ## HealthCheck.version property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 version?: string;

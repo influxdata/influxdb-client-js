@@ -4,7 +4,7 @@
 
 ## DeleteScrapersIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteScrapersIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteScrapersIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletescrapersidlabelsidrequest.labelid.md) |  | string | The label ID. |
-|  [scraperTargetID](./influxdb-client-apis.deletescrapersidlabelsidrequest.scrapertargetid.md) |  | string | The scraper target ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelID](./influxdb-client-apis.deletescrapersidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The label ID.
+
+
+</td></tr>
+<tr><td>
+
+[scraperTargetID](./influxdb-client-apis.deletescrapersidlabelsidrequest.scrapertargetid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The scraper target ID.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 Transforms annotated CSV query response to Giraffe's Table.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function csvToTable(csv: string, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Table;
@@ -14,13 +14,72 @@ declare function csvToTable(csv: string, tableFactory: GiraffeTableFactory, tabl
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  csv | string | annotated CSV flux query response |
-|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect. |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+csv
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+annotated CSV flux query response
+
+
+</td></tr>
+<tr><td>
+
+tableFactory
+
+
+</td><td>
+
+[GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md)
+
+
+</td><td>
+
+creates a new Giraffe table
+
+
+</td></tr>
+<tr><td>
+
+tableOptions
+
+
+</td><td>
+
+[TableOptions](./influxdb-client-giraffe.tableoptions.md)
+
+
+</td><td>
+
+_(Optional)_ tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect.
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Table
 

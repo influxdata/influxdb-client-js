@@ -6,7 +6,7 @@
 
 Creates FluxScriptInvocationAPI with the supplied InfluxDB instance and a particular script identifier.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(influxDB: InfluxDB, options?: ExecutionOptions);
@@ -14,8 +14,52 @@ constructor(influxDB: InfluxDB, options?: ExecutionOptions);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  influxDB | [InfluxDB](./influxdb-client.influxdb.md) | an instance that knows how to communicate with InfluxDB server |
-|  options | [ExecutionOptions](./influxdb-client-apis.executionoptions.md) | <i>(Optional)</i> script execution options |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+influxDB
+
+
+</td><td>
+
+[InfluxDB](./influxdb-client.influxdb.md)
+
+
+</td><td>
+
+an instance that knows how to communicate with InfluxDB server
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ExecutionOptions](./influxdb-client-apis.executionoptions.md)
+
+
+</td><td>
+
+_(Optional)_ script execution options
+
+
+</td></tr>
+</tbody></table>

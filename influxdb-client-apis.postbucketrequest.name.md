@@ -6,7 +6,7 @@
 
 The name of the bucket.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

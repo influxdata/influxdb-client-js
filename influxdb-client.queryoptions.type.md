@@ -6,7 +6,7 @@
 
 Type of the query, default is "flux"
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: 'flux';

@@ -4,7 +4,7 @@
 
 ## RemoteConnection.remoteOrgID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remoteOrgID: string;

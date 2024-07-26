@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.yAxisLabel property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yAxisLabel: string;

@@ -6,7 +6,7 @@
 
 ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function chunksToLines(target: CommunicationObserver<string>, chunkCombiner?: ChunkCombiner): CommunicationObserver<Uint8Array>;
@@ -14,12 +14,56 @@ declare function chunksToLines(target: CommunicationObserver<string>, chunkCombi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
-|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | <i>(Optional)</i> chunk combiner |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+target
+
+
+</td><td>
+
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
+
+
+</td><td>
+
+target to emmit CSV lines to
+
+
+</td></tr>
+<tr><td>
+
+chunkCombiner
+
+
+</td><td>
+
+[ChunkCombiner](./influxdb-client.chunkcombiner.md)
+
+
+</td><td>
+
+_(Optional)_ chunk combiner
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;Uint8Array&gt;
 

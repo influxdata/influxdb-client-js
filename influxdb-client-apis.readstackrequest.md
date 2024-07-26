@@ -4,7 +4,7 @@
 
 ## ReadStackRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ReadStackRequest 
@@ -12,7 +12,44 @@ interface ReadStackRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [stack\_id](./influxdb-client-apis.readstackrequest.stack_id.md) |  | string | The identifier of the stack. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[stack\_id](./influxdb-client-apis.readstackrequest.stack_id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The identifier of the stack.
+
+
+</td></tr>
+</tbody></table>

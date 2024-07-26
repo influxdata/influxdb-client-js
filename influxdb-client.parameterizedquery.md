@@ -6,7 +6,7 @@
 
 Represents a parameterized query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ParameterizedQuery 
@@ -14,7 +14,26 @@ interface ParameterizedQuery
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [toString()](./influxdb-client.parameterizedquery.tostring.md) | Returns flux query with sanitized parameters. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toString()](./influxdb-client.parameterizedquery.tostring.md)
+
+
+</td><td>
+
+Returns flux query with sanitized parameters.
+
+
+</td></tr>
+</tbody></table>

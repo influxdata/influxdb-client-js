@@ -4,7 +4,7 @@
 
 ## CheckViewProperties.checkID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 checkID: string;

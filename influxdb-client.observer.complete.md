@@ -4,7 +4,7 @@
 
 ## Observer.complete property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 complete: ObserverComplete;

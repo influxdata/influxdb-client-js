@@ -6,7 +6,7 @@
 
 Authorizations API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class AuthorizationsAPI 
@@ -14,17 +14,124 @@ declare class AuthorizationsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.authorizationsapi._constructor_.md) |  | Creates AuthorizationsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.authorizationsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates AuthorizationsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.deleteauthorizationsid.md) |  | Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteAuthorizationsID) |
-|  [getAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizations.md) |  | List authorizations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizations) |
-|  [getAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizationsid.md) |  | Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizationsID) |
-|  [patchAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.patchauthorizationsid.md) |  | Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchAuthorizationsID) |
-|  [postAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.postauthorizations.md) |  | Create an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostAuthorizations) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.deleteauthorizationsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteAuthorizationsID)
+
+
+</td></tr>
+<tr><td>
+
+[getAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List authorizations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizations](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizations)
+
+
+</td></tr>
+<tr><td>
+
+[getAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.getauthorizationsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizationsID)
+
+
+</td></tr>
+<tr><td>
+
+[patchAuthorizationsID(request, requestOptions)](./influxdb-client-apis.authorizationsapi.patchauthorizationsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update an authorization to be active or inactive. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchAuthorizationsID)
+
+
+</td></tr>
+<tr><td>
+
+[postAuthorizations(request, requestOptions)](./influxdb-client-apis.authorizationsapi.postauthorizations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostAuthorizations](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostAuthorizations)
+
+
+</td></tr>
+</tbody></table>

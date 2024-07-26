@@ -4,7 +4,7 @@
 
 ## GetAuthorizationsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetAuthorizationsIDRequest 
@@ -12,7 +12,44 @@ interface GetAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [authID](./influxdb-client-apis.getauthorizationsidrequest.authid.md) |  | string | The ID of the authorization to get. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[authID](./influxdb-client-apis.getauthorizationsidrequest.authid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the authorization to get.
+
+
+</td></tr>
+</tbody></table>

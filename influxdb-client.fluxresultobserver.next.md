@@ -6,7 +6,7 @@
 
 Inform about a next record in a table.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 next(row: T, tableMeta: FluxTableMetaData): void | boolean;
@@ -14,12 +14,56 @@ next(row: T, tableMeta: FluxTableMetaData): void | boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  row | T | flux result |
-|  tableMeta | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | actual table metata for the row supplied |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+row
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+flux result
+
+
+</td></tr>
+<tr><td>
+
+tableMeta
+
+
+</td><td>
+
+[FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
+
+
+</td><td>
+
+actual table metata for the row supplied
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void \| boolean
 

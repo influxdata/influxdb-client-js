@@ -6,7 +6,7 @@
 
 Function parameters
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 params?: Property[];

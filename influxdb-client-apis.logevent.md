@@ -4,7 +4,7 @@
 
 ## LogEvent interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LogEvent 
@@ -12,9 +12,88 @@ interface LogEvent
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [message?](./influxdb-client-apis.logevent.message.md) | <code>readonly</code> | string | <i>(Optional)</i> A description of the event that occurred. |
-|  [runID?](./influxdb-client-apis.logevent.runid.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of the task run that generated the event. |
-|  [time?](./influxdb-client-apis.logevent.time.md) | <code>readonly</code> | string | <i>(Optional)</i> The time ([RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->) that the event occurred. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[message?](./influxdb-client-apis.logevent.message.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A description of the event that occurred.
+
+
+</td></tr>
+<tr><td>
+
+[runID?](./influxdb-client-apis.logevent.runid.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the task run that generated the event.
+
+
+</td></tr>
+<tr><td>
+
+[time?](./influxdb-client-apis.logevent.time.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The time ([RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->) that the event occurred.
+
+
+</td></tr>
+</tbody></table>

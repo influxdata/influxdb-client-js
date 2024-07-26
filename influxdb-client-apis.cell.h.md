@@ -4,7 +4,7 @@
 
 ## Cell.h property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 h?: number;

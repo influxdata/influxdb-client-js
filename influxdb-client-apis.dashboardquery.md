@@ -4,7 +4,7 @@
 
 ## DashboardQuery interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DashboardQuery 
@@ -12,10 +12,101 @@ interface DashboardQuery
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [builderConfig?](./influxdb-client-apis.dashboardquery.builderconfig.md) |  | [BuilderConfig](./influxdb-client-apis.builderconfig.md) | <i>(Optional)</i> |
-|  [editMode?](./influxdb-client-apis.dashboardquery.editmode.md) |  | [QueryEditMode](./influxdb-client-apis.queryeditmode.md) | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.dashboardquery.name.md) |  | string | <i>(Optional)</i> |
-|  [text?](./influxdb-client-apis.dashboardquery.text.md) |  | string | <i>(Optional)</i> The text of the Flux query. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[builderConfig?](./influxdb-client-apis.dashboardquery.builderconfig.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BuilderConfig](./influxdb-client-apis.builderconfig.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[editMode?](./influxdb-client-apis.dashboardquery.editmode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[QueryEditMode](./influxdb-client-apis.queryeditmode.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.dashboardquery.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[text?](./influxdb-client-apis.dashboardquery.text.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The text of the Flux query.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## DeleteLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteLabelsIDRequest 
@@ -12,7 +12,44 @@ interface DeleteLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletelabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelID](./influxdb-client-apis.deletelabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+</tbody></table>

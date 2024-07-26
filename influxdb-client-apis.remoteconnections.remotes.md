@@ -4,7 +4,7 @@
 
 ## RemoteConnections.remotes property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remotes?: RemoteConnection[];

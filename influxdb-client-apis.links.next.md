@@ -4,7 +4,7 @@
 
 ## Links.next property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 next?: Link;

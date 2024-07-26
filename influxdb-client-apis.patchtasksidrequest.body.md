@@ -6,7 +6,7 @@
 
 An object that contains updated task properties to apply.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: TaskUpdateRequest;

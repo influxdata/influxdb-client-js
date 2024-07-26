@@ -4,7 +4,7 @@
 
 ## ScraperTargetResponse type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ScraperTargetResponse = ScraperTargetRequest & {
@@ -20,5 +20,5 @@ type ScraperTargetResponse = ScraperTargetRequest & {
     };
 };
 ```
-<b>References:</b> [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
+**References:** [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
 

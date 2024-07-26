@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.xSuffix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xSuffix: string;

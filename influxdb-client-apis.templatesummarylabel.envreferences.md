@@ -4,7 +4,7 @@
 
 ## TemplateSummaryLabel.envReferences property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 envReferences?: TemplateEnvReferences;

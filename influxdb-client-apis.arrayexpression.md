@@ -6,7 +6,7 @@
 
 Used to create and directly specify the elements of an array object
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ArrayExpression 
@@ -14,8 +14,63 @@ interface ArrayExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [elements?](./influxdb-client-apis.arrayexpression.elements.md) |  | [Expression](./influxdb-client-apis.expression.md)<!-- -->\[\] | <i>(Optional)</i> Elements of the array |
-|  [type?](./influxdb-client-apis.arrayexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[elements?](./influxdb-client-apis.arrayexpression.elements.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Elements of the array
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.arrayexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

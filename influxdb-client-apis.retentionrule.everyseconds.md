@@ -6,7 +6,7 @@
 
 The duration in seconds for how long data will be kept in the database. The default duration is 2592000 (30 days). 0 represents infinite retention.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 everySeconds: number;

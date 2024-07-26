@@ -6,7 +6,7 @@
 
 Radix for formatting axis values.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 base?: '' | '2' | '10';

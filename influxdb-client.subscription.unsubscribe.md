@@ -4,12 +4,12 @@
 
 ## Subscription.unsubscribe() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unsubscribe(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

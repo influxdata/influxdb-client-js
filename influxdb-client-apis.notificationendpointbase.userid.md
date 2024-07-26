@@ -4,7 +4,7 @@
 
 ## NotificationEndpointBase.userID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 userID?: string;

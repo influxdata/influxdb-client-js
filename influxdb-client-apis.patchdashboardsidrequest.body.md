@@ -6,7 +6,7 @@
 
 Patching of a dashboard
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: {

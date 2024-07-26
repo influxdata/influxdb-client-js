@@ -4,7 +4,7 @@
 
 ## Checks.checks property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 checks?: Check[];

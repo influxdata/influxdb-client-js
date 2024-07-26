@@ -6,7 +6,7 @@
 
 A user identifier. Returns only dashboards where this user has the `owner` role.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 owner?: string;

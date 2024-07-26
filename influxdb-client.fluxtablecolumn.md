@@ -6,7 +6,7 @@
 
 FluxTableColumn describes [flux table](http://bit.ly/flux-spec#table) column.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxTableColumn 
@@ -14,12 +14,139 @@ interface FluxTableColumn
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dataType](./influxdb-client.fluxtablecolumn.datatype.md) |  | [ColumnType](./influxdb-client.columntype.md) | The data type of column (e.g., "string", "long", "dateTime:RFC3339"). |
-|  [defaultValue](./influxdb-client.fluxtablecolumn.defaultvalue.md) |  | string | Default value to be used for rows whose string value is an empty string. |
-|  [get](./influxdb-client.fluxtablecolumn.get.md) |  | (row: string\[\]) =&gt; any | Get returns a JavaScript object of this column in the supplied result row, using default deserializers. |
-|  [group](./influxdb-client.fluxtablecolumn.group.md) |  | boolean | Boolean flag indicating if the column is a part of the table's group key. |
-|  [index](./influxdb-client.fluxtablecolumn.index.md) |  | number | Index of this column in a row array. |
-|  [label](./influxdb-client.fluxtablecolumn.label.md) |  | string | Label (e.g., "\_start", "\_stop", "\_time"). |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dataType](./influxdb-client.fluxtablecolumn.datatype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ColumnType](./influxdb-client.columntype.md)
+
+
+</td><td>
+
+The data type of column (e.g., "string", "long", "dateTime:RFC3339").
+
+
+</td></tr>
+<tr><td>
+
+[defaultValue](./influxdb-client.fluxtablecolumn.defaultvalue.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Default value to be used for rows whose string value is an empty string.
+
+
+</td></tr>
+<tr><td>
+
+[get](./influxdb-client.fluxtablecolumn.get.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(row: string\[\]) =&gt; any
+
+
+</td><td>
+
+Get returns a JavaScript object of this column in the supplied result row, using default deserializers.
+
+
+</td></tr>
+<tr><td>
+
+[group](./influxdb-client.fluxtablecolumn.group.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+Boolean flag indicating if the column is a part of the table's group key.
+
+
+</td></tr>
+<tr><td>
+
+[index](./influxdb-client.fluxtablecolumn.index.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Index of this column in a row array.
+
+
+</td></tr>
+<tr><td>
+
+[label](./influxdb-client.fluxtablecolumn.label.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Label (e.g., "\_start", "\_stop", "\_time").
+
+
+</td></tr>
+</tbody></table>

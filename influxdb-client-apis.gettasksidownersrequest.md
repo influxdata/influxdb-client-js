@@ -4,7 +4,7 @@
 
 ## GetTasksIDOwnersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTasksIDOwnersRequest 
@@ -12,7 +12,44 @@ interface GetTasksIDOwnersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidownersrequest.taskid.md) |  | string | The ID of the task to retrieve owners for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[taskID](./influxdb-client-apis.gettasksidownersrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to retrieve owners for.
+
+
+</td></tr>
+</tbody></table>

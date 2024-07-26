@@ -14,7 +14,7 @@ The name or ID of the organization executing the query.
 
 - Requires either `org` or `orgID`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

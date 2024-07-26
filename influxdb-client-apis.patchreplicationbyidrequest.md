@@ -4,7 +4,7 @@
 
 ## PatchReplicationByIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchReplicationByIDRequest 
@@ -12,9 +12,80 @@ interface PatchReplicationByIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchreplicationbyidrequest.body.md) |  | [ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md) | entity body |
-|  [replicationID](./influxdb-client-apis.patchreplicationbyidrequest.replicationid.md) |  | string |  |
-|  [validate?](./influxdb-client-apis.patchreplicationbyidrequest.validate.md) |  | any | <i>(Optional)</i> If true, validate the updated information, but don't save it. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchreplicationbyidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[replicationID](./influxdb-client-apis.patchreplicationbyidrequest.replicationid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[validate?](./influxdb-client-apis.patchreplicationbyidrequest.validate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ If true, validate the updated information, but don't save it.
+
+
+</td></tr>
+</tbody></table>

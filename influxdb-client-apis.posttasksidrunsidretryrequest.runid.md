@@ -8,7 +8,7 @@ A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run
 
 To find a task run ID, use the {@<!-- -->link \#operation/GetTasksIDRuns \| `GET /api/v2/tasks/{taskID}/runs` endpoint } to list task runs.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 runID: string;

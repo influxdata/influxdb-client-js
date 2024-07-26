@@ -4,7 +4,7 @@
 
 ## BandViewProperties.note property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 note: string;

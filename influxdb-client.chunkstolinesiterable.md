@@ -6,7 +6,7 @@
 
 ChunksToLinesIterable is a transformation that accepts an iterable of Uint8Array instances and returns iterable of lines.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function chunksToLinesIterable(source: AsyncIterable<Uint8Array>, chunkCombiner?: ChunkCombiner): AsyncIterableIterator<string>;
@@ -14,12 +14,56 @@ declare function chunksToLinesIterable(source: AsyncIterable<Uint8Array>, chunkC
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  source | AsyncIterable&lt;Uint8Array&gt; | iterable of transport buffers |
-|  chunkCombiner | [ChunkCombiner](./influxdb-client.chunkcombiner.md) | <i>(Optional)</i> chunk combiner |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+source
+
+
+</td><td>
+
+AsyncIterable&lt;Uint8Array&gt;
+
+
+</td><td>
+
+iterable of transport buffers
+
+
+</td></tr>
+<tr><td>
+
+chunkCombiner
+
+
+</td><td>
+
+[ChunkCombiner](./influxdb-client.chunkcombiner.md)
+
+
+</td><td>
+
+_(Optional)_ chunk combiner
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 AsyncIterableIterator&lt;string&gt;
 

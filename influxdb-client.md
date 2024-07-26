@@ -6,112 +6,1013 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [AbortError](./influxdb-client.aborterror.md) | AbortError indicates that the communication with the server was aborted |
-|  [HttpError](./influxdb-client.httperror.md) | A general HTTP error. |
-|  [IllegalArgumentError](./influxdb-client.illegalargumenterror.md) | IllegalArgumentError is thrown when illegal argument is supplied. |
-|  [InfluxDB](./influxdb-client.influxdb.md) | InfluxDB entry point that configures communication with InfluxDB server and provide APIs to write and query data. |
-|  [LineSplitter](./influxdb-client.linesplitter.md) | Optimized tokenizer of a single CSV line. |
-|  [Point](./influxdb-client.point.md) | Point defines values of a single measurement. |
-|  [RequestTimedOutError](./influxdb-client.requesttimedouterror.md) | RequestTimedOutError indicates request timeout in the communication with the server |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AbortError](./influxdb-client.aborterror.md)
+
+
+</td><td>
+
+AbortError indicates that the communication with the server was aborted
+
+
+</td></tr>
+<tr><td>
+
+[HttpError](./influxdb-client.httperror.md)
+
+
+</td><td>
+
+A general HTTP error.
+
+
+</td></tr>
+<tr><td>
+
+[IllegalArgumentError](./influxdb-client.illegalargumenterror.md)
+
+
+</td><td>
+
+IllegalArgumentError is thrown when illegal argument is supplied.
+
+
+</td></tr>
+<tr><td>
+
+[InfluxDB](./influxdb-client.influxdb.md)
+
+
+</td><td>
+
+InfluxDB entry point that configures communication with InfluxDB server and provide APIs to write and query data.
+
+
+</td></tr>
+<tr><td>
+
+[LineSplitter](./influxdb-client.linesplitter.md)
+
+
+</td><td>
+
+Optimized tokenizer of a single CSV line.
+
+
+</td></tr>
+<tr><td>
+
+[Point](./influxdb-client.point.md)
+
+
+</td><td>
+
+Point defines values of a single measurement.
+
+
+</td></tr>
+<tr><td>
+
+[RequestTimedOutError](./influxdb-client.requesttimedouterror.md)
+
+
+</td><td>
+
+RequestTimedOutError indicates request timeout in the communication with the server
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md) | Tests the error in order to know if an HTTP call can be retried. |
-|  [chunksToLines(target, chunkCombiner)](./influxdb-client.chunkstolines.md) | ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines. |
-|  [chunksToLinesIterable(source, chunkCombiner)](./influxdb-client.chunkstolinesiterable.md) | ChunksToLinesIterable is a transformation that accepts an iterable of Uint8Array instances and returns iterable of lines. |
-|  [convertTimeToNanos(value)](./influxdb-client.converttimetonanos.md) | convertTimeToNanos converts Point's timestamp to a string. |
-|  [createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md) | Creates a flux table column from a partial FluxTableColumn. |
-|  [createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md) | Created FluxTableMetaData from the columns supplied. |
-|  [createTextDecoderCombiner()](./influxdb-client.createtextdecodercombiner.md) | Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arrays into strings. |
-|  [flux(strings, values)](./influxdb-client.flux.md) | Flux is a tagged template that sanitizes supplied parameters to avoid injection attacks in flux. |
-|  [fluxBool(value)](./influxdb-client.fluxbool.md) | Creates flux boolean literal. |
-|  [fluxDateTime(value)](./influxdb-client.fluxdatetime.md) | Creates flux date-time literal. |
-|  [fluxDuration(value)](./influxdb-client.fluxduration.md) | Creates flux date-time literal. |
-|  [fluxExpression(value)](./influxdb-client.fluxexpression.md) | Assumes that the supplied value is flux expression or literal that does not need sanitizing. |
-|  [fluxFloat(value)](./influxdb-client.fluxfloat.md) | Creates a flux float literal. |
-|  [fluxInteger(value)](./influxdb-client.fluxinteger.md) | Creates a flux integer literal. |
-|  [fluxRegExp(value)](./influxdb-client.fluxregexp.md) | Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/latest/data-types/basic/regexp/\#regular-expression-syntax for details. |
-|  [fluxString(value)](./influxdb-client.fluxstring.md) | Creates a flux string literal. |
-|  [getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md) | Gets retry delay from the supplied error, possibly using random number up to retryJitter. |
-|  [isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md) | isStatusCodeRetriable checks whether the supplied HTTP status code is retriable. |
-|  [linesToRowsIterable(source)](./influxdb-client.linestorowsiterable.md) | LinesToRowsIterable is a transformation that accepts an iterable of flux annotated CSV lines and returns an iterable of rows (row values and table metadata). |
-|  [linesToTables(consumer)](./influxdb-client.linestotables.md) | LinesToTables creates a transformation that accepts (flux) annotated CSV lines and emits rows together with table metadata. |
-|  [newFluxTableColumn()](./influxdb-client.newfluxtablecolumn.md) | Creates a new flux table column. |
-|  [sanitizeFloat(value)](./influxdb-client.sanitizefloat.md) | Sanitizes float value to avoid injections. |
-|  [sanitizeInteger(value)](./influxdb-client.sanitizeinteger.md) | Sanitizes integer value to avoid injections. |
-|  [serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md) | serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
-|  [serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md) | serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null. |
-|  [serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md) | serializeDateTimeAsString changes type serializers to return string values for <code>dateTime:RFC3339</code> query result data type. Empty value is converted to null. |
-|  [setLogger(logger)](./influxdb-client.setlogger.md) | Sets custom logger. |
-|  [stringToLines(source, target)](./influxdb-client.stringtolines.md) | StringToLines is a transformation that emmits strings for each CSV line in the supplied source string. |
-|  [toFluxValue(value)](./influxdb-client.tofluxvalue.md) | Escapes content of the supplied parameter so that it can be safely embedded into flux query. |
-|  [useProcessHrtime(use)](./influxdb-client.useprocesshrtime.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[canRetryHttpCall(error)](./influxdb-client.canretryhttpcall.md)
+
+
+</td><td>
+
+Tests the error in order to know if an HTTP call can be retried.
+
+
+</td></tr>
+<tr><td>
+
+[chunksToLines(target, chunkCombiner)](./influxdb-client.chunkstolines.md)
+
+
+</td><td>
+
+ChunksToLines is a transformation that accepts Uint8Array instances and emmits strings representing CSV lines.
+
+
+</td></tr>
+<tr><td>
+
+[chunksToLinesIterable(source, chunkCombiner)](./influxdb-client.chunkstolinesiterable.md)
+
+
+</td><td>
+
+ChunksToLinesIterable is a transformation that accepts an iterable of Uint8Array instances and returns iterable of lines.
+
+
+</td></tr>
+<tr><td>
+
+[convertTimeToNanos(value)](./influxdb-client.converttimetonanos.md)
+
+
+</td><td>
+
+convertTimeToNanos converts Point's timestamp to a string.
+
+
+</td></tr>
+<tr><td>
+
+[createFluxTableColumn(object)](./influxdb-client.createfluxtablecolumn.md)
+
+
+</td><td>
+
+Creates a flux table column from a partial FluxTableColumn.
+
+
+</td></tr>
+<tr><td>
+
+[createFluxTableMetaData(columns)](./influxdb-client.createfluxtablemetadata.md)
+
+
+</td><td>
+
+Created FluxTableMetaData from the columns supplied.
+
+
+</td></tr>
+<tr><td>
+
+[createTextDecoderCombiner()](./influxdb-client.createtextdecodercombiner.md)
+
+
+</td><td>
+
+Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arrays into strings.
+
+
+</td></tr>
+<tr><td>
+
+[flux(strings, values)](./influxdb-client.flux.md)
+
+
+</td><td>
+
+Flux is a tagged template that sanitizes supplied parameters to avoid injection attacks in flux.
+
+
+</td></tr>
+<tr><td>
+
+[fluxBool(value)](./influxdb-client.fluxbool.md)
+
+
+</td><td>
+
+Creates flux boolean literal.
+
+
+</td></tr>
+<tr><td>
+
+[fluxDateTime(value)](./influxdb-client.fluxdatetime.md)
+
+
+</td><td>
+
+Creates flux date-time literal.
+
+
+</td></tr>
+<tr><td>
+
+[fluxDuration(value)](./influxdb-client.fluxduration.md)
+
+
+</td><td>
+
+Creates flux date-time literal.
+
+
+</td></tr>
+<tr><td>
+
+[fluxExpression(value)](./influxdb-client.fluxexpression.md)
+
+
+</td><td>
+
+Assumes that the supplied value is flux expression or literal that does not need sanitizing.
+
+
+</td></tr>
+<tr><td>
+
+[fluxFloat(value)](./influxdb-client.fluxfloat.md)
+
+
+</td><td>
+
+Creates a flux float literal.
+
+
+</td></tr>
+<tr><td>
+
+[fluxInteger(value)](./influxdb-client.fluxinteger.md)
+
+
+</td><td>
+
+Creates a flux integer literal.
+
+
+</td></tr>
+<tr><td>
+
+[fluxRegExp(value)](./influxdb-client.fluxregexp.md)
+
+
+</td><td>
+
+Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/latest/data-types/basic/regexp/\#regular-expression-syntax for details.
+
+
+</td></tr>
+<tr><td>
+
+[fluxString(value)](./influxdb-client.fluxstring.md)
+
+
+</td><td>
+
+Creates a flux string literal.
+
+
+</td></tr>
+<tr><td>
+
+[getRetryDelay(error, retryJitter)](./influxdb-client.getretrydelay.md)
+
+
+</td><td>
+
+Gets retry delay from the supplied error, possibly using random number up to retryJitter.
+
+
+</td></tr>
+<tr><td>
+
+[isStatusCodeRetriable(statusCode)](./influxdb-client.isstatuscoderetriable.md)
+
+
+</td><td>
+
+isStatusCodeRetriable checks whether the supplied HTTP status code is retriable.
+
+
+</td></tr>
+<tr><td>
+
+[linesToRowsIterable(source)](./influxdb-client.linestorowsiterable.md)
+
+
+</td><td>
+
+LinesToRowsIterable is a transformation that accepts an iterable of flux annotated CSV lines and returns an iterable of rows (row values and table metadata).
+
+
+</td></tr>
+<tr><td>
+
+[linesToTables(consumer)](./influxdb-client.linestotables.md)
+
+
+</td><td>
+
+LinesToTables creates a transformation that accepts (flux) annotated CSV lines and emits rows together with table metadata.
+
+
+</td></tr>
+<tr><td>
+
+[newFluxTableColumn()](./influxdb-client.newfluxtablecolumn.md)
+
+
+</td><td>
+
+Creates a new flux table column.
+
+
+</td></tr>
+<tr><td>
+
+[sanitizeFloat(value)](./influxdb-client.sanitizefloat.md)
+
+
+</td><td>
+
+Sanitizes float value to avoid injections.
+
+
+</td></tr>
+<tr><td>
+
+[sanitizeInteger(value)](./influxdb-client.sanitizeinteger.md)
+
+
+</td><td>
+
+Sanitizes integer value to avoid injections.
+
+
+</td></tr>
+<tr><td>
+
+[serializeDateTimeAsDate()](./influxdb-client.serializedatetimeasdate.md)
+
+
+</td><td>
+
+serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
+
+
+</td></tr>
+<tr><td>
+
+[serializeDateTimeAsNumber()](./influxdb-client.serializedatetimeasnumber.md)
+
+
+</td><td>
+
+serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
+
+
+</td></tr>
+<tr><td>
+
+[serializeDateTimeAsString()](./influxdb-client.serializedatetimeasstring.md)
+
+
+</td><td>
+
+serializeDateTimeAsString changes type serializers to return string values for `dateTime:RFC3339` query result data type. Empty value is converted to null.
+
+
+</td></tr>
+<tr><td>
+
+[setLogger(logger)](./influxdb-client.setlogger.md)
+
+
+</td><td>
+
+Sets custom logger.
+
+
+</td></tr>
+<tr><td>
+
+[stringToLines(source, target)](./influxdb-client.stringtolines.md)
+
+
+</td><td>
+
+StringToLines is a transformation that emmits strings for each CSV line in the supplied source string.
+
+
+</td></tr>
+<tr><td>
+
+[toFluxValue(value)](./influxdb-client.tofluxvalue.md)
+
+
+</td><td>
+
+Escapes content of the supplied parameter so that it can be safely embedded into flux query.
+
+
+</td></tr>
+<tr><td>
+
+[useProcessHrtime(use)](./influxdb-client.useprocesshrtime.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) | AnnotatedCSVResponse provides various ways of how to process data from an annotated CSV response stream, which is returned as a result of a flux script execution. |
-|  [Cancellable](./influxdb-client.cancellable.md) | Allows to cancel a running execution. |
-|  [ChunkCombiner](./influxdb-client.chunkcombiner.md) | ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that allows to process text data on the fly. The implementation can be optimized for the target platform (node vs browser). |
-|  [ClientOptions](./influxdb-client.clientoptions.md) | Options used by [InfluxDB](./influxdb-client.influxdb.md) . |
-|  [CommunicationObserver](./influxdb-client.communicationobserver.md) | Observes communication with the server. |
-|  [ConnectionOptions](./influxdb-client.connectionoptions.md) | Option for the communication with InfluxDB server. |
-|  [FluxParameterLike](./influxdb-client.fluxparameterlike.md) | A flux parameter can print its (sanitized) flux value. |
-|  [FluxResultObserver](./influxdb-client.fluxresultobserver.md) | Observes results of a flux query. |
-|  [FluxTableColumn](./influxdb-client.fluxtablecolumn.md) | FluxTableColumn describes [flux table](http://bit.ly/flux-spec#table) column. |
-|  [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) | Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->. |
-|  [Logger](./influxdb-client.logger.md) | Logging interface. |
-|  [Observable](./influxdb-client.observable.md) | An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->. |
-|  [Observer](./influxdb-client.observer.md) | Observer mimics Observer from ECMAScript TC39 Observable proposal |
-|  [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | Represents a parameterized query. |
-|  [PointSettings](./influxdb-client.pointsettings.md) | Settings that control the way of how a [Point](./influxdb-client.point.md) is serialized to a protocol line. |
-|  [QueryApi](./influxdb-client.queryapi.md) | Query InfluxDB. Provides methods that notify about result lines of the executed query. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery) |
-|  [QueryOptions](./influxdb-client.queryoptions.md) | QueryOptions contains QueryApi configuration options. |
-|  [RetriableDecision](./influxdb-client.retriabledecision.md) | Interface for errors to inform that an associated operation can be retried. |
-|  [RetryDelayStrategy](./influxdb-client.retrydelaystrategy.md) | Strategy for calculating retry delays. |
-|  [RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md) | Options that configure strategy for retrying failed requests. |
-|  [Row](./influxdb-client.row.md) | Wraps values and associated metadata of a query result row |
-|  [SendOptions](./influxdb-client.sendoptions.md) | Options for sending a request message. |
-|  [Subscribable](./influxdb-client.subscribable.md) |  |
-|  [Subscription](./influxdb-client.subscription.md) | Subscription mimics Subscription from ECMAScript TC39 Observable proposal |
-|  [Transport](./influxdb-client.transport.md) | Simpified platform-neutral transport layer for communication with InfluxDB. |
-|  [WriteApi](./influxdb-client.writeapi.md) | Asynchronous API that writes time-series data into InfluxDB. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use <code>flush</code> to send the buffered data to InfluxDB immediately. |
-|  [WriteOptions](./influxdb-client.writeoptions.md) | Options used by [WriteApi](./influxdb-client.writeapi.md) . |
-|  [WriteRetryOptions](./influxdb-client.writeretryoptions.md) | Options that configure strategy for retrying failed InfluxDB write operations. |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
+
+
+</td><td>
+
+AnnotatedCSVResponse provides various ways of how to process data from an annotated CSV response stream, which is returned as a result of a flux script execution.
+
+
+</td></tr>
+<tr><td>
+
+[Cancellable](./influxdb-client.cancellable.md)
+
+
+</td><td>
+
+Allows to cancel a running execution.
+
+
+</td></tr>
+<tr><td>
+
+[ChunkCombiner](./influxdb-client.chunkcombiner.md)
+
+
+</td><td>
+
+ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that allows to process text data on the fly. The implementation can be optimized for the target platform (node vs browser).
+
+
+</td></tr>
+<tr><td>
+
+[ClientOptions](./influxdb-client.clientoptions.md)
+
+
+</td><td>
+
+Options used by [InfluxDB](./influxdb-client.influxdb.md) .
+
+
+</td></tr>
+<tr><td>
+
+[CommunicationObserver](./influxdb-client.communicationobserver.md)
+
+
+</td><td>
+
+Observes communication with the server.
+
+
+</td></tr>
+<tr><td>
+
+[ConnectionOptions](./influxdb-client.connectionoptions.md)
+
+
+</td><td>
+
+Option for the communication with InfluxDB server.
+
+
+</td></tr>
+<tr><td>
+
+[FluxParameterLike](./influxdb-client.fluxparameterlike.md)
+
+
+</td><td>
+
+A flux parameter can print its (sanitized) flux value.
+
+
+</td></tr>
+<tr><td>
+
+[FluxResultObserver](./influxdb-client.fluxresultobserver.md)
+
+
+</td><td>
+
+Observes results of a flux query.
+
+
+</td></tr>
+<tr><td>
+
+[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
+
+
+</td><td>
+
+FluxTableColumn describes [flux table](http://bit.ly/flux-spec#table) column.
+
+
+</td></tr>
+<tr><td>
+
+[FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
+
+
+</td><td>
+
+Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[Logger](./influxdb-client.logger.md)
+
+
+</td><td>
+
+Logging interface.
+
+
+</td></tr>
+<tr><td>
+
+[Observable](./influxdb-client.observable.md)
+
+
+</td><td>
+
+An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[Observer](./influxdb-client.observer.md)
+
+
+</td><td>
+
+Observer mimics Observer from ECMAScript TC39 Observable proposal
+
+
+</td></tr>
+<tr><td>
+
+[ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+Represents a parameterized query.
+
+
+</td></tr>
+<tr><td>
+
+[PointSettings](./influxdb-client.pointsettings.md)
+
+
+</td><td>
+
+Settings that control the way of how a [Point](./influxdb-client.point.md) is serialized to a protocol line.
+
+
+</td></tr>
+<tr><td>
+
+[QueryApi](./influxdb-client.queryapi.md)
+
+
+</td><td>
+
+Query InfluxDB. Provides methods that notify about result lines of the executed query. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery)
+
+
+</td></tr>
+<tr><td>
+
+[QueryOptions](./influxdb-client.queryoptions.md)
+
+
+</td><td>
+
+QueryOptions contains QueryApi configuration options.
+
+
+</td></tr>
+<tr><td>
+
+[RetriableDecision](./influxdb-client.retriabledecision.md)
+
+
+</td><td>
+
+Interface for errors to inform that an associated operation can be retried.
+
+
+</td></tr>
+<tr><td>
+
+[RetryDelayStrategy](./influxdb-client.retrydelaystrategy.md)
+
+
+</td><td>
+
+Strategy for calculating retry delays.
+
+
+</td></tr>
+<tr><td>
+
+[RetryDelayStrategyOptions](./influxdb-client.retrydelaystrategyoptions.md)
+
+
+</td><td>
+
+Options that configure strategy for retrying failed requests.
+
+
+</td></tr>
+<tr><td>
+
+[Row](./influxdb-client.row.md)
+
+
+</td><td>
+
+Wraps values and associated metadata of a query result row
+
+
+</td></tr>
+<tr><td>
+
+[SendOptions](./influxdb-client.sendoptions.md)
+
+
+</td><td>
+
+Options for sending a request message.
+
+
+</td></tr>
+<tr><td>
+
+[Subscribable](./influxdb-client.subscribable.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Subscription](./influxdb-client.subscription.md)
+
+
+</td><td>
+
+Subscription mimics Subscription from ECMAScript TC39 Observable proposal
+
+
+</td></tr>
+<tr><td>
+
+[Transport](./influxdb-client.transport.md)
+
+
+</td><td>
+
+Simpified platform-neutral transport layer for communication with InfluxDB.
+
+
+</td></tr>
+<tr><td>
+
+[WriteApi](./influxdb-client.writeapi.md)
+
+
+</td><td>
+
+Asynchronous API that writes time-series data into InfluxDB. This API always buffers points/lines to create batches under the hood to optimize data transfer to InfluxDB server, use `flush` to send the buffered data to InfluxDB immediately.
+
+
+</td></tr>
+<tr><td>
+
+[WriteOptions](./influxdb-client.writeoptions.md)
+
+
+</td><td>
+
+Options used by [WriteApi](./influxdb-client.writeapi.md) .
+
+
+</td></tr>
+<tr><td>
+
+[WriteRetryOptions](./influxdb-client.writeretryoptions.md)
+
+
+</td><td>
+
+Options that configure strategy for retrying failed InfluxDB write operations.
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [consoleLogger](./influxdb-client.consolelogger.md) | Logger that logs to console.out |
-|  [currentTime](./influxdb-client.currenttime.md) | Exposes functions that creates strings that represent a timestamp that can be used in the line protocol. Micro and nano timestamps are emulated depending on the js platform in use. |
-|  [dateToProtocolTimestamp](./influxdb-client.datetoprotocoltimestamp.md) | dateToProtocolTimestamp provides converters for JavaScript Date to InfluxDB Write Protocol Timestamp. Keys are supported precisions. |
-|  [DEFAULT\_ConnectionOptions](./influxdb-client.default_connectionoptions.md) | default connection options |
-|  [DEFAULT\_RetryDelayStrategyOptions](./influxdb-client.default_retrydelaystrategyoptions.md) | default RetryDelayStrategyOptions |
-|  [DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md) | default writeOptions |
-|  [escape\_2](./influxdb-client.escape_2.md) | Provides functions escape specific parts in InfluxDB line protocol. |
-|  [FLUX\_VALUE](./influxdb-client.flux_value.md) | Property that offers a function that returns flux-sanitized value of an object. |
-|  [Log](./influxdb-client.log.md) |  |
-|  [symbolObservable](./influxdb-client.symbolobservable.md) | Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for interop |
-|  [typeSerializers](./influxdb-client.typeserializers.md) | A dictionary of serializers of particular types returned by a flux query. See [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types) |
-|  [UNKNOWN\_COLUMN](./influxdb-client.unknown_column.md) |  |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[consoleLogger](./influxdb-client.consolelogger.md)
+
+
+</td><td>
+
+Logger that logs to console.out
+
+
+</td></tr>
+<tr><td>
+
+[currentTime](./influxdb-client.currenttime.md)
+
+
+</td><td>
+
+Exposes functions that creates strings that represent a timestamp that can be used in the line protocol. Micro and nano timestamps are emulated depending on the js platform in use.
+
+
+</td></tr>
+<tr><td>
+
+[dateToProtocolTimestamp](./influxdb-client.datetoprotocoltimestamp.md)
+
+
+</td><td>
+
+dateToProtocolTimestamp provides converters for JavaScript Date to InfluxDB Write Protocol Timestamp. Keys are supported precisions.
+
+
+</td></tr>
+<tr><td>
+
+[DEFAULT\_ConnectionOptions](./influxdb-client.default_connectionoptions.md)
+
+
+</td><td>
+
+default connection options
+
+
+</td></tr>
+<tr><td>
+
+[DEFAULT\_RetryDelayStrategyOptions](./influxdb-client.default_retrydelaystrategyoptions.md)
+
+
+</td><td>
+
+default RetryDelayStrategyOptions
+
+
+</td></tr>
+<tr><td>
+
+[DEFAULT\_WriteOptions](./influxdb-client.default_writeoptions.md)
+
+
+</td><td>
+
+default writeOptions
+
+
+</td></tr>
+<tr><td>
+
+[escape\_2](./influxdb-client.escape_2.md)
+
+
+</td><td>
+
+Provides functions escape specific parts in InfluxDB line protocol.
+
+
+</td></tr>
+<tr><td>
+
+[FLUX\_VALUE](./influxdb-client.flux_value.md)
+
+
+</td><td>
+
+Property that offers a function that returns flux-sanitized value of an object.
+
+
+</td></tr>
+<tr><td>
+
+[Log](./influxdb-client.log.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[symbolObservable](./influxdb-client.symbolobservable.md)
+
+
+</td><td>
+
+Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for interop
+
+
+</td></tr>
+<tr><td>
+
+[typeSerializers](./influxdb-client.typeserializers.md)
+
+
+</td><td>
+
+A dictionary of serializers of particular types returned by a flux query. See [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types)
+
+
+</td></tr>
+<tr><td>
+
+[UNKNOWN\_COLUMN](./influxdb-client.unknown_column.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [APIExecutor](./influxdb-client.apiexecutor.md) | APIExecutor executes the API and passes its response to the supplied consumer |
-|  [ColumnType](./influxdb-client.columntype.md) | Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types) |
-|  [HttpHeaders](./influxdb-client.httpheaders.md) | Type of HTTP headers. |
-|  [IterableResultExecutor](./influxdb-client.iterableresultexecutor.md) | A factory that returns async iterables. |
-|  [ObserverComplete](./influxdb-client.observercomplete.md) | Type of [Observer.complete](./influxdb-client.observer.complete.md) |
-|  [ObserverError](./influxdb-client.observererror.md) | Type of [Observer.error](./influxdb-client.observer.error.md) |
-|  [ObserverNext](./influxdb-client.observernext.md) | Type of [Observer.next](./influxdb-client.observer.next.md) |
-|  [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | Informs about a start of response processing. |
-|  [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | Timestamp precision used in write operations. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite) |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[APIExecutor](./influxdb-client.apiexecutor.md)
+
+
+</td><td>
+
+APIExecutor executes the API and passes its response to the supplied consumer
+
+
+</td></tr>
+<tr><td>
+
+[ColumnType](./influxdb-client.columntype.md)
+
+
+</td><td>
+
+Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types)
+
+
+</td></tr>
+<tr><td>
+
+[HttpHeaders](./influxdb-client.httpheaders.md)
+
+
+</td><td>
+
+Type of HTTP headers.
+
+
+</td></tr>
+<tr><td>
+
+[IterableResultExecutor](./influxdb-client.iterableresultexecutor.md)
+
+
+</td><td>
+
+A factory that returns async iterables.
+
+
+</td></tr>
+<tr><td>
+
+[ObserverComplete](./influxdb-client.observercomplete.md)
+
+
+</td><td>
+
+Type of [Observer.complete](./influxdb-client.observer.complete.md)
+
+
+</td></tr>
+<tr><td>
+
+[ObserverError](./influxdb-client.observererror.md)
+
+
+</td><td>
+
+Type of [Observer.error](./influxdb-client.observer.error.md)
+
+
+</td></tr>
+<tr><td>
+
+[ObserverNext](./influxdb-client.observernext.md)
+
+
+</td><td>
+
+Type of [Observer.next](./influxdb-client.observer.next.md)
+
+
+</td></tr>
+<tr><td>
+
+[ResponseStartedFn](./influxdb-client.responsestartedfn.md)
+
+
+</td><td>
+
+Informs about a start of response processing.
+
+
+</td></tr>
+<tr><td>
+
+[WritePrecisionType](./influxdb-client.writeprecisiontype.md)
+
+
+</td><td>
+
+Timestamp precision used in write operations. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite)
+
+
+</td></tr>
+</tbody></table>

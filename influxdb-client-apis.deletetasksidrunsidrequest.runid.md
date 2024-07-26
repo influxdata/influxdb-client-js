@@ -6,7 +6,7 @@
 
 The ID of the task run to cancel.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 runID: string;

@@ -4,7 +4,7 @@
 
 ## Cell interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Cell 
@@ -12,13 +12,158 @@ interface Cell
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [h?](./influxdb-client-apis.cell.h.md) |  | number | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.cell.id.md) |  | string | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.cell.links.md) |  | { self?: string; view?: string; } | <i>(Optional)</i> |
-|  [viewID?](./influxdb-client-apis.cell.viewid.md) |  | string | <i>(Optional)</i> The reference to a view from the views API. |
-|  [w?](./influxdb-client-apis.cell.w.md) |  | number | <i>(Optional)</i> |
-|  [x?](./influxdb-client-apis.cell.x.md) |  | number | <i>(Optional)</i> |
-|  [y?](./influxdb-client-apis.cell.y.md) |  | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[h?](./influxdb-client-apis.cell.h.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.cell.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.cell.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ self?: string; view?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[viewID?](./influxdb-client-apis.cell.viewid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The reference to a view from the views API.
+
+
+</td></tr>
+<tr><td>
+
+[w?](./influxdb-client-apis.cell.w.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[x?](./influxdb-client-apis.cell.x.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[y?](./influxdb-client-apis.cell.y.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

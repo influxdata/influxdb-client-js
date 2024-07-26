@@ -6,7 +6,7 @@
 
 Specifies the organization ID of the scraper target.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

@@ -4,7 +4,7 @@
 
 ## CheckViewProperties.check property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 check?: Check;

@@ -6,7 +6,7 @@
 
 An optional description of the notification rule.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

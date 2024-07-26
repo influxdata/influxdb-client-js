@@ -6,7 +6,7 @@
 
 A list of label names. Only returns scripts that have all the specified labels. To retrieve a script, each name you pass in `labelNames` must exactly match the label for a script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 labelNames?: any;

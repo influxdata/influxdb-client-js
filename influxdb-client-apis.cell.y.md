@@ -4,7 +4,7 @@
 
 ## Cell.y property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 y?: number;

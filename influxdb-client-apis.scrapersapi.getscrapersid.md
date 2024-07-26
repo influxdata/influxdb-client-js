@@ -6,7 +6,7 @@
 
 Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getScrapersID(request: GetScrapersIDRequest, requestOptions?: RequestOptions): Promise<ScraperTargetResponse>;
@@ -14,12 +14,56 @@ getScrapersID(request: GetScrapersIDRequest, requestOptions?: RequestOptions): P
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->&gt;
 

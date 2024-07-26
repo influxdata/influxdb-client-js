@@ -4,7 +4,7 @@
 
 ## IndexExpression.index property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 index?: Expression;

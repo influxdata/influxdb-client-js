@@ -4,7 +4,7 @@
 
 ## PostLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostLabelsRequest 
@@ -12,7 +12,44 @@ interface PostLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postlabelsrequest.body.md) |  | [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) | The label to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md)
+
+
+</td><td>
+
+The label to create.
+
+
+</td></tr>
+</tbody></table>

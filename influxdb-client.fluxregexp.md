@@ -6,7 +6,7 @@
 
 Creates flux regexp literal out of a regular expression. See https://docs.influxdata.com/flux/latest/data-types/basic/regexp/\#regular-expression-syntax for details.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function fluxRegExp(value: any): FluxParameterLike;
@@ -14,11 +14,38 @@ declare function fluxRegExp(value: any): FluxParameterLike;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | any |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 

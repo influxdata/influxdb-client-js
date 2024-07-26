@@ -6,10 +6,10 @@
 
 Updates to rules to expire or retain data. No rules means no updates.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type PatchRetentionRules = PatchRetentionRule[];
 ```
-<b>References:</b> [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md)
+**References:** [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md)
 

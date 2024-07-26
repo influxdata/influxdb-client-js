@@ -6,7 +6,7 @@
 
 Duration values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 values?: Duration[];

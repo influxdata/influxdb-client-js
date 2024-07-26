@@ -6,7 +6,7 @@
 
 Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org: string;

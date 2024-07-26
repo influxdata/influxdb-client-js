@@ -4,7 +4,7 @@
 
 ## GetDebugPprofThreadCreateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDebugPprofThreadCreateRequest 
@@ -12,8 +12,67 @@ interface GetDebugPprofThreadCreateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [debug?](./influxdb-client-apis.getdebugpprofthreadcreaterequest.debug.md) |  | number | <p><i>(Optional)</i> - <code>0</code>: (Default) Return the report as a gzip-compressed protocol buffer. - <code>1</code>: Return a response body with the report formatted as human-readable text. The report contains comments that translate addresses to function names and line numbers for debugging.</p><p><code>debug=1</code> is mutually exclusive with the <code>seconds</code> query parameter.</p> |
-|  [seconds?](./influxdb-client-apis.getdebugpprofthreadcreaterequest.seconds.md) |  | string | <p><i>(Optional)</i> Number of seconds to collect statistics.</p><p><code>seconds</code> is mutually exclusive with <code>debug=1</code>.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[debug?](./influxdb-client-apis.getdebugpprofthreadcreaterequest.debug.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ - `0`<!-- -->: (Default) Return the report as a gzip-compressed protocol buffer. - `1`<!-- -->: Return a response body with the report formatted as human-readable text. The report contains comments that translate addresses to function names and line numbers for debugging.
+
+`debug=1` is mutually exclusive with the `seconds` query parameter.
+
+
+</td></tr>
+<tr><td>
+
+[seconds?](./influxdb-client-apis.getdebugpprofthreadcreaterequest.seconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Number of seconds to collect statistics.
+
+`seconds` is mutually exclusive with `debug=1`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

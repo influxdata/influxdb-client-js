@@ -6,7 +6,7 @@
 
 Script description. A description of the script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description: string;

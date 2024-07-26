@@ -6,7 +6,7 @@
 
 The notification endpoint ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 endpointID: string;

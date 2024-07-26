@@ -4,7 +4,7 @@
 
 ## GetDashboardsIDCellsIDViewRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDashboardsIDCellsIDViewRequest 
@@ -12,8 +12,63 @@ interface GetDashboardsIDCellsIDViewRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [cellID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.cellid.md) |  | string | The cell ID. |
-|  [dashboardID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.dashboardid.md) |  | string | The dashboard ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cellID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.cellid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The cell ID.
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.getdashboardsidcellsidviewrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The dashboard ID.
+
+
+</td></tr>
+</tbody></table>

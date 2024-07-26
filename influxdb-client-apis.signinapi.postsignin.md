@@ -6,7 +6,7 @@
 
 Create a user session. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSignin](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSignin)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postSignin(request: PostSigninRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ postSignin(request: PostSigninRequest, requestOptions?: RequestOptions): Promise
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostSigninRequest](./influxdb-client-apis.postsigninrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostSigninRequest](./influxdb-client-apis.postsigninrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

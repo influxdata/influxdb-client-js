@@ -6,7 +6,7 @@
 
 Gets columns by name
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn;
@@ -14,12 +14,56 @@ column(label: string, errorOnMissingColumn?: boolean): FluxTableColumn;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  label | string | column label |
-|  errorOnMissingColumn | boolean | <i>(Optional)</i> throw error on missing column (by default), return UNKNOWN\_COLUMN when false |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+label
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+column label
+
+
+</td></tr>
+<tr><td>
+
+errorOnMissingColumn
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ throw error on missing column (by default), return UNKNOWN\_COLUMN when false
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 

@@ -6,7 +6,7 @@
 
 Sets maximum table length, QUERY\_MAX\_TABLE\_LENGTH when undefined.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxTableLength?: number;

@@ -6,7 +6,7 @@
 
 The time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) used for the run's `now` option. Default is the server \_now\_ time.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scheduledFor?: string;

@@ -4,7 +4,7 @@
 
 ## TemplateEnvReferences type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type TemplateEnvReferences = Array<{

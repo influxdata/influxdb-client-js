@@ -6,7 +6,7 @@
 
 The time ([RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->) that the event occurred.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly time?: string;

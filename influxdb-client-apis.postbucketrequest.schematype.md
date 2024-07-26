@@ -14,7 +14,7 @@ Schema Type. Use `explicit` to enforce column names, tags, fields, and data type
 
 - Doesn't support `schemaType`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 schemaType?: SchemaType;

@@ -6,7 +6,7 @@
 
 The name of the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

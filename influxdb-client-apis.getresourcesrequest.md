@@ -4,7 +4,7 @@
 
 ## GetResourcesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetResourcesRequest 

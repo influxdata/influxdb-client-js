@@ -4,7 +4,7 @@
 
 ## SMTPNotificationRuleBase.to property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 to: string;

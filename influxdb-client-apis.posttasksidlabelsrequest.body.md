@@ -6,7 +6,7 @@
 
 An object that contains a \_`labelID`<!-- -->\_ to add to the task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: LabelMapping;

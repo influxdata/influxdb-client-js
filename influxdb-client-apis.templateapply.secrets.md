@@ -39,7 +39,7 @@ InfluxDB stores the key-value pairs as secrets that you can access with `secrets
 
 - [How to pass secrets when installing a template](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/use/#pass-secrets-when-installing-a-template)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 secrets?: any;

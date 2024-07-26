@@ -6,7 +6,7 @@
 
 The user ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 userID: string;

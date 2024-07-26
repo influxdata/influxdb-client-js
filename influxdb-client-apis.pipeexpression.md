@@ -6,7 +6,7 @@
 
 Call expression with pipe argument
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PipeExpression 
@@ -14,9 +14,82 @@ interface PipeExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [argument?](./influxdb-client-apis.pipeexpression.argument.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [call?](./influxdb-client-apis.pipeexpression.call.md) |  | [CallExpression](./influxdb-client-apis.callexpression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.pipeexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[argument?](./influxdb-client-apis.pipeexpression.argument.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[call?](./influxdb-client-apis.pipeexpression.call.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[CallExpression](./influxdb-client-apis.callexpression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.pipeexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

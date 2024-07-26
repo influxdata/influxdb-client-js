@@ -4,10 +4,10 @@
 
 ## NotificationRule type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type NotificationRule = NotificationRuleDiscriminator;
 ```
-<b>References:</b> [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
+**References:** [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
 

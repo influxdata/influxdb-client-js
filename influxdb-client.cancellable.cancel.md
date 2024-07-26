@@ -6,12 +6,12 @@
 
 Cancels execution.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cancel(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

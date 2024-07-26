@@ -4,7 +4,7 @@
 
 ## PostBucketRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostBucketRequest 
@@ -12,12 +12,147 @@ interface PostBucketRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.postbucketrequest.description.md) |  | string | <i>(Optional)</i> A description of the bucket. |
-|  [name](./influxdb-client-apis.postbucketrequest.name.md) |  | string | The name of the bucket. |
-|  [orgID](./influxdb-client-apis.postbucketrequest.orgid.md) |  | string | Organization ID. The ID of the organization. |
-|  [retentionRules?](./influxdb-client-apis.postbucketrequest.retentionrules.md) |  | [RetentionRules](./influxdb-client-apis.retentionrules.md) | <i>(Optional)</i> |
-|  [rp?](./influxdb-client-apis.postbucketrequest.rp.md) |  | string | <i>(Optional)</i> Retention policy is an InfluxDB 1.x concept that represents the duration of time that each data point in the retention policy persists. Use <code>rp</code> for compatibility with InfluxDB 1.x. The InfluxDB 2.x and Cloud equivalent is [retention period](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#retention-period)<!-- -->. |
-|  [schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md) |  | [SchemaType](./influxdb-client-apis.schematype.md) | <p><i>(Optional)</i> Schema Type. Use <code>explicit</code> to enforce column names, tags, fields, and data types for your data.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Default is <code>implicit</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Doesn't support <code>schemaType</code>.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.postbucketrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A description of the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.postbucketrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The name of the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.postbucketrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Organization ID. The ID of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[retentionRules?](./influxdb-client-apis.postbucketrequest.retentionrules.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RetentionRules](./influxdb-client-apis.retentionrules.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[rp?](./influxdb-client-apis.postbucketrequest.rp.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Retention policy is an InfluxDB 1.x concept that represents the duration of time that each data point in the retention policy persists. Use `rp` for compatibility with InfluxDB 1.x. The InfluxDB 2.x and Cloud equivalent is [retention period](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#retention-period)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[schemaType?](./influxdb-client-apis.postbucketrequest.schematype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SchemaType](./influxdb-client-apis.schematype.md)
+
+
+</td><td>
+
+_(Optional)_ Schema Type. Use `explicit` to enforce column names, tags, fields, and data types for your data.
+
+\#\#\#\# InfluxDB Cloud
+
+- Default is `implicit`<!-- -->.
+
+\#\#\#\# InfluxDB OSS
+
+- Doesn't support `schemaType`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

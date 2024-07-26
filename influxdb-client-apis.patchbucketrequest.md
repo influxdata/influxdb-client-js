@@ -6,7 +6,7 @@
 
 An object that contains updated bucket properties to apply.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchBucketRequest 
@@ -14,9 +14,82 @@ interface PatchBucketRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchbucketrequest.description.md) |  | string | <i>(Optional)</i> A description of the bucket. |
-|  [name?](./influxdb-client-apis.patchbucketrequest.name.md) |  | string | <i>(Optional)</i> The name of the bucket. |
-|  [retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md) |  | [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.patchbucketrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A description of the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.patchbucketrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[retentionRules?](./influxdb-client-apis.patchbucketrequest.retentionrules.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

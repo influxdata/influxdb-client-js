@@ -6,7 +6,7 @@
 
 The Flux query script to be analyzed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 query: string;

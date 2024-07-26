@@ -6,7 +6,7 @@
 
 Represents the rule conditions that collectively evaluate to either true or false
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LogicalExpression 
@@ -14,10 +14,101 @@ interface LogicalExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [left?](./influxdb-client-apis.logicalexpression.left.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [operator?](./influxdb-client-apis.logicalexpression.operator.md) |  | string | <i>(Optional)</i> |
-|  [right?](./influxdb-client-apis.logicalexpression.right.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.logicalexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[left?](./influxdb-client-apis.logicalexpression.left.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[operator?](./influxdb-client-apis.logicalexpression.operator.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[right?](./influxdb-client-apis.logicalexpression.right.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.logicalexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

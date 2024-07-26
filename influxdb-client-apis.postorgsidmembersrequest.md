@@ -4,7 +4,7 @@
 
 ## PostOrgsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostOrgsIDMembersRequest 
@@ -12,8 +12,63 @@ interface PostOrgsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | The user to add to the organization. |
-|  [orgID](./influxdb-client-apis.postorgsidmembersrequest.orgid.md) |  | string | The ID of the organization. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postorgsidmembersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+The user to add to the organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.postorgsidmembersrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization.
+
+
+</td></tr>
+</tbody></table>

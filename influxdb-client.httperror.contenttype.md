@@ -4,8 +4,8 @@
 
 ## HttpError.contentType property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-readonly contentType?: string | null | undefined;
+readonly contentType?: string | undefined | null;
 ```

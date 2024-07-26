@@ -6,7 +6,7 @@
 
 Remotes API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class RemotesAPI 
@@ -14,17 +14,124 @@ declare class RemotesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.remotesapi._constructor_.md) |  | Creates RemotesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.remotesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates RemotesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.deleteremoteconnectionbyid.md) |  | Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteRemoteConnectionByID) |
-|  [getRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnectionbyid.md) |  | Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnectionByID) |
-|  [getRemoteConnections(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnections.md) |  | List all remote connections. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnections) |
-|  [patchRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.patchremoteconnectionbyid.md) |  | Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchRemoteConnectionByID) |
-|  [postRemoteConnection(request, requestOptions)](./influxdb-client-apis.remotesapi.postremoteconnection.md) |  | Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRemoteConnection) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.deleteremoteconnectionbyid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteRemoteConnectionByID)
+
+
+</td></tr>
+<tr><td>
+
+[getRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnectionbyid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnectionByID)
+
+
+</td></tr>
+<tr><td>
+
+[getRemoteConnections(request, requestOptions)](./influxdb-client-apis.remotesapi.getremoteconnections.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all remote connections. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnections)
+
+
+</td></tr>
+<tr><td>
+
+[patchRemoteConnectionByID(request, requestOptions)](./influxdb-client-apis.remotesapi.patchremoteconnectionbyid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchRemoteConnectionByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchRemoteConnectionByID)
+
+
+</td></tr>
+<tr><td>
+
+[postRemoteConnection(request, requestOptions)](./influxdb-client-apis.remotesapi.postremoteconnection.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Register a new remote connection. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRemoteConnection](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRemoteConnection)
+
+
+</td></tr>
+</tbody></table>

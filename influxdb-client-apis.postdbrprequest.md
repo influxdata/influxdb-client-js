@@ -4,7 +4,7 @@
 
 ## PostDBRPRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostDBRPRequest 
@@ -12,7 +12,44 @@ interface PostDBRPRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdbrprequest.body.md) |  | [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) | The database retention policy mapping to add |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postdbrprequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DBRPCreate](./influxdb-client-apis.dbrpcreate.md)
+
+
+</td><td>
+
+The database retention policy mapping to add
+
+
+</td></tr>
+</tbody></table>

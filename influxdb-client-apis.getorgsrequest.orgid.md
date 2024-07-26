@@ -6,7 +6,7 @@
 
 An organization ID. Only returns the organization with this ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

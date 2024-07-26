@@ -6,7 +6,7 @@
 
 Add an owner to a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDOwners)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postTelegrafsIDOwners(request: PostTelegrafsIDOwnersRequest, requestOptions?: RequestOptions): Promise<ResourceOwner>;
@@ -14,12 +14,56 @@ postTelegrafsIDOwners(request: PostTelegrafsIDOwnersRequest, requestOptions?: Re
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostTelegrafsIDOwnersRequest](./influxdb-client-apis.posttelegrafsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostTelegrafsIDOwnersRequest](./influxdb-client-apis.posttelegrafsidownersrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ResourceOwner](./influxdb-client-apis.resourceowner.md)<!-- -->&gt;
 

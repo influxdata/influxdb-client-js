@@ -6,7 +6,7 @@
 
 Type is how the color is used.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'min' | 'max' | 'threshold' | 'scale' | 'text' | 'background';

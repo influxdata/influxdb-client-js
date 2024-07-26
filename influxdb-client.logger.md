@@ -6,7 +6,7 @@
 
 Logging interface.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Logger 
@@ -14,8 +14,33 @@ interface Logger
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [error(message, err)](./influxdb-client.logger.error.md) |  |
-|  [warn(message, err)](./influxdb-client.logger.warn.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[error(message, err)](./influxdb-client.logger.error.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[warn(message, err)](./influxdb-client.logger.warn.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

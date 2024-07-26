@@ -4,7 +4,7 @@
 
 ## PatchTasksIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchTasksIDRequest 
@@ -12,8 +12,63 @@ interface PatchTasksIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchtasksidrequest.body.md) |  | [TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md) | An object that contains updated task properties to apply. |
-|  [taskID](./influxdb-client-apis.patchtasksidrequest.taskid.md) |  | string | The ID of the task to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchtasksidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md)
+
+
+</td><td>
+
+An object that contains updated task properties to apply.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.patchtasksidrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to update.
+
+
+</td></tr>
+</tbody></table>

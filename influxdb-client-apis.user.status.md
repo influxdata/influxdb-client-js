@@ -6,7 +6,7 @@
 
 If inactive the user is inactive.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

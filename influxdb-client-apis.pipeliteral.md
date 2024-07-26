@@ -6,7 +6,7 @@
 
 Represents a specialized literal value, indicating the left hand value of a pipe expression
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PipeLiteral 
@@ -14,7 +14,44 @@ interface PipeLiteral
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.pipeliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type?](./influxdb-client-apis.pipeliteral.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## TelegrafRequest.config property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 config?: string;

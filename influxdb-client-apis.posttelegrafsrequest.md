@@ -4,7 +4,7 @@
 
 ## PostTelegrafsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTelegrafsRequest 
@@ -12,7 +12,44 @@ interface PostTelegrafsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsrequest.body.md) |  | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttelegrafsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md)
+
+
+</td><td>
+
+Telegraf configuration to create
+
+
+</td></tr>
+</tbody></table>

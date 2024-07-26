@@ -4,7 +4,7 @@
 
 ## GetTelegrafsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTelegrafsIDMembersRequest 
@@ -12,7 +12,44 @@ interface GetTelegrafsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.gettelegrafsidmembersrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[telegrafID](./influxdb-client-apis.gettelegrafsidmembersrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 List users. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getUsers(request?: GetUsersRequest, requestOptions?: RequestOptions): Promise<Users>;
@@ -14,12 +14,56 @@ getUsers(request?: GetUsersRequest, requestOptions?: RequestOptions): Promise<Us
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetUsersRequest](./influxdb-client-apis.getusersrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetUsersRequest](./influxdb-client-apis.getusersrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Users](./influxdb-client-apis.users.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## InfluxDB.transport property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly transport: Transport;

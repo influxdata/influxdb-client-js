@@ -6,7 +6,7 @@
 
 When specified, message body larger than the treshold is gzipped
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 gzipThreshold?: number;

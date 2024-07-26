@@ -4,7 +4,7 @@
 
 ## PostBucketRequest.retentionRules property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retentionRules?: RetentionRules;

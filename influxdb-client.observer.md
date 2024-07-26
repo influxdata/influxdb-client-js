@@ -6,7 +6,7 @@
 
 Observer mimics Observer from ECMAScript TC39 Observable proposal
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Observer<T> 
@@ -14,9 +14,76 @@ interface Observer<T>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [complete](./influxdb-client.observer.complete.md) |  | [ObserverComplete](./influxdb-client.observercomplete.md) |  |
-|  [error](./influxdb-client.observer.error.md) |  | [ObserverError](./influxdb-client.observererror.md) |  |
-|  [next](./influxdb-client.observer.next.md) |  | [ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt; |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[complete](./influxdb-client.observer.complete.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ObserverComplete](./influxdb-client.observercomplete.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[error](./influxdb-client.observer.error.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ObserverError](./influxdb-client.observererror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[next](./influxdb-client.observer.next.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ObserverNext](./influxdb-client.observernext.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

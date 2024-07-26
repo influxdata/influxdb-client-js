@@ -4,7 +4,7 @@
 
 ## SecretKeys.secrets property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 secrets?: string[];

@@ -6,12 +6,12 @@
 
 Implementation should reset its state, this is mandatory to call upon success.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 success(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

@@ -6,7 +6,7 @@
 
 The name or ID of the bucket to delete data from. If you pass both `bucket` and `bucketID`<!-- -->, `bucketID` takes precedence.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucket?: string;

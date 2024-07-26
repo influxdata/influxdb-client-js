@@ -6,7 +6,7 @@
 
 ExecutionOptions contains execution options for a flux script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ExecutionOptions 
@@ -14,8 +14,63 @@ interface ExecutionOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [gzip?](./influxdb-client-apis.executionoptions.gzip.md) |  | boolean | <i>(Optional)</i> Requests gzip encoded response. |
-|  [headers?](./influxdb-client-apis.executionoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every query request. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[gzip?](./influxdb-client-apis.executionoptions.gzip.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Requests gzip encoded response.
+
+
+</td></tr>
+<tr><td>
+
+[headers?](./influxdb-client-apis.executionoptions.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+_(Optional)_ HTTP headers that will be sent with every query request.
+
+
+</td></tr>
+</tbody></table>

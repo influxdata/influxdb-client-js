@@ -6,7 +6,7 @@
 
 Reuse returned array between consecutive calls.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get reuse(): boolean;

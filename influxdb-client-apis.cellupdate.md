@@ -4,7 +4,7 @@
 
 ## CellUpdate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CellUpdate 
@@ -12,10 +12,101 @@ interface CellUpdate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [h?](./influxdb-client-apis.cellupdate.h.md) |  | number | <i>(Optional)</i> |
-|  [w?](./influxdb-client-apis.cellupdate.w.md) |  | number | <i>(Optional)</i> |
-|  [x?](./influxdb-client-apis.cellupdate.x.md) |  | number | <i>(Optional)</i> |
-|  [y?](./influxdb-client-apis.cellupdate.y.md) |  | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[h?](./influxdb-client-apis.cellupdate.h.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[w?](./influxdb-client-apis.cellupdate.w.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[x?](./influxdb-client-apis.cellupdate.x.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[y?](./influxdb-client-apis.cellupdate.y.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

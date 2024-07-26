@@ -6,7 +6,7 @@
 
 Requests gzip encoded response.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 gzip?: boolean;

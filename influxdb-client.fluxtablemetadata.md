@@ -6,7 +6,7 @@
 
 Represents metadata of a [flux table](http://bit.ly/flux-spec#table)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxTableMetaData 
@@ -14,15 +14,92 @@ interface FluxTableMetaData
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [columns](./influxdb-client.fluxtablemetadata.columns.md) |  | Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt; | Table columns. |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[columns](./influxdb-client.fluxtablemetadata.columns.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[FluxTableColumn](./influxdb-client.fluxtablecolumn.md)<!-- -->&gt;
+
+
+</td><td>
+
+Table columns.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [column(label, errorOnMissingColumn)](./influxdb-client.fluxtablemetadata.column.md) | Gets columns by name |
-|  [get(row, column)](./influxdb-client.fluxtablemetadata.get.md) | Gets column values out of the supplied row. |
-|  [toObject(row)](./influxdb-client.fluxtablemetadata.toobject.md) | Creates an object out of the supplied row with the help of column descriptors. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[column(label, errorOnMissingColumn)](./influxdb-client.fluxtablemetadata.column.md)
+
+
+</td><td>
+
+Gets columns by name
+
+
+</td></tr>
+<tr><td>
+
+[get(row, column)](./influxdb-client.fluxtablemetadata.get.md)
+
+
+</td><td>
+
+Gets column values out of the supplied row.
+
+
+</td></tr>
+<tr><td>
+
+[toObject(row)](./influxdb-client.fluxtablemetadata.toobject.md)
+
+
+</td><td>
+
+Creates an object out of the supplied row with the help of column descriptors.
+
+
+</td></tr>
+</tbody></table>

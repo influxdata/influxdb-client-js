@@ -6,7 +6,7 @@
 
 Label (e.g., "\_start", "\_stop", "\_time").
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 label: string;

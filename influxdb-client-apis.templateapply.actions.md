@@ -10,7 +10,7 @@ You can use the following actions to prevent creating or updating resources:
 
 - A `skipKind` action skips template resources of a specified `kind`<!-- -->. - A `skipResource` action skips template resources with a specified `metadata.name` and `kind`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 actions?: Array<{

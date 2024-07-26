@@ -8,7 +8,7 @@ The maximum number of [tasks](https://docs.influxdata.com/influxdb/v2.3/referenc
 
 To reduce the payload size, combine \_`type=basic`<!-- -->\_ and \_`limit`<!-- -->\_ (see \_Request samples\_). For more information about the `basic` response, see the \_`type`<!-- -->\_ parameter.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: number;

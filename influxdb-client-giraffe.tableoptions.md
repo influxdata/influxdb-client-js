@@ -6,7 +6,7 @@
 
 Contains parameters that optimize/drive creation of the query result Table.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TableOptions 
@@ -14,11 +14,120 @@ interface TableOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [accept?](./influxdb-client-giraffe.tableoptions.accept.md) |  | [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) \| [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)<!-- -->\[\] | <i>(Optional)</i> Accept allows to accept/reject specific rows or terminate processing. |
-|  [columns?](./influxdb-client-giraffe.tableoptions.columns.md) |  | string\[\] | <i>(Optional)</i> column keys to collect in the table, undefined means all columns |
-|  [computeFluxGroupKeyUnion?](./influxdb-client-giraffe.tableoptions.computefluxgroupkeyunion.md) |  | boolean | <i>(Optional)</i> compute also fluxGroupKeyUnion |
-|  [computeResultColumnNames?](./influxdb-client-giraffe.tableoptions.computeresultcolumnnames.md) |  | boolean | <i>(Optional)</i> compute also resultColumnNames |
-|  [maxTableLength?](./influxdb-client-giraffe.tableoptions.maxtablelength.md) |  | number | <i>(Optional)</i> Sets maximum table length, QUERY\_MAX\_TABLE\_LENGTH when undefined. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[accept?](./influxdb-client-giraffe.tableoptions.accept.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) \| [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Accept allows to accept/reject specific rows or terminate processing.
+
+
+</td></tr>
+<tr><td>
+
+[columns?](./influxdb-client-giraffe.tableoptions.columns.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ column keys to collect in the table, undefined means all columns
+
+
+</td></tr>
+<tr><td>
+
+[computeFluxGroupKeyUnion?](./influxdb-client-giraffe.tableoptions.computefluxgroupkeyunion.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ compute also fluxGroupKeyUnion
+
+
+</td></tr>
+<tr><td>
+
+[computeResultColumnNames?](./influxdb-client-giraffe.tableoptions.computeresultcolumnnames.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ compute also resultColumnNames
+
+
+</td></tr>
+<tr><td>
+
+[maxTableLength?](./influxdb-client-giraffe.tableoptions.maxtablelength.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Sets maximum table length, QUERY\_MAX\_TABLE\_LENGTH when undefined.
+
+
+</td></tr>
+</tbody></table>

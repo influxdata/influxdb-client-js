@@ -4,7 +4,7 @@
 
 ## Authorizations.authorizations property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 authorizations?: Authorization[];

@@ -4,7 +4,7 @@
 
 ## Property.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: NodeType;

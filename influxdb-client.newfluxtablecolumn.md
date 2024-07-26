@@ -6,12 +6,12 @@
 
 Creates a new flux table column.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function newFluxTableColumn(): FluxTableColumn;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [FluxTableColumn](./influxdb-client.fluxtablecolumn.md)
 

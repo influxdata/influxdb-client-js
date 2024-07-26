@@ -6,7 +6,7 @@
 
 Elements of the dictionary
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 elements?: DictItem[];

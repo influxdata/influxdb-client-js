@@ -4,7 +4,7 @@
 
 ## GetScrapersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetScrapersRequest 
@@ -12,10 +12,101 @@ interface GetScrapersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.getscrapersrequest.id.md) |  | any | <i>(Optional)</i> List of scraper target IDs to return. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
-|  [name?](./influxdb-client-apis.getscrapersrequest.name.md) |  | string | <i>(Optional)</i> Specifies the name of the scraper target. |
-|  [org?](./influxdb-client-apis.getscrapersrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name of the scraper target. |
-|  [orgID?](./influxdb-client-apis.getscrapersrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID of the scraper target. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.getscrapersrequest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.getscrapersrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the name of the scraper target.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getscrapersrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization name of the scraper target.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getscrapersrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization ID of the scraper target.
+
+
+</td></tr>
+</tbody></table>

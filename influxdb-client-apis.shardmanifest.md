@@ -4,7 +4,7 @@
 
 ## ShardManifest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ShardManifest 
@@ -12,8 +12,59 @@ interface ShardManifest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id](./influxdb-client-apis.shardmanifest.id.md) |  | number |  |
-|  [shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md) |  | [ShardOwners](./influxdb-client-apis.shardowners.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id](./influxdb-client-apis.shardmanifest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shardOwners](./influxdb-client-apis.shardmanifest.shardowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ShardOwners](./influxdb-client-apis.shardowners.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

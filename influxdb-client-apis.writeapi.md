@@ -6,7 +6,7 @@
 
 Write API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class WriteAPI 
@@ -14,13 +14,68 @@ declare class WriteAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.writeapi._constructor_.md) |  | Creates WriteAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.writeapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates WriteAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md) |  | Write data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostWrite) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postWrite(request, requestOptions)](./influxdb-client-apis.writeapi.postwrite.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Write data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostWrite)
+
+
+</td></tr>
+</tbody></table>

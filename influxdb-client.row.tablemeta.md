@@ -4,7 +4,7 @@
 
 ## Row.tableMeta property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tableMeta: FluxTableMetaData;

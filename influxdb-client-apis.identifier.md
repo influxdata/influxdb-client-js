@@ -6,7 +6,7 @@
 
 A valid Flux identifier
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Identifier 
@@ -14,8 +14,63 @@ interface Identifier
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name?](./influxdb-client-apis.identifier.name.md) |  | string | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.identifier.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name?](./influxdb-client-apis.identifier.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.identifier.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

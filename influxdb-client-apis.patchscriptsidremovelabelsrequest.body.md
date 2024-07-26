@@ -6,7 +6,7 @@
 
 The labels to remove from the script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: {

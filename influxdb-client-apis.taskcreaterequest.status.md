@@ -4,7 +4,7 @@
 
 ## TaskCreateRequest.status property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: TaskStatusType;

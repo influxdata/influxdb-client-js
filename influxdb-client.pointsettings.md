@@ -6,7 +6,7 @@
 
 Settings that control the way of how a [Point](./influxdb-client.point.md) is serialized to a protocol line.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PointSettings 
@@ -14,8 +14,63 @@ interface PointSettings
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [convertTime?](./influxdb-client.pointsettings.converttime.md) |  | (value: string \| number \| Date \| undefined) =&gt; string \| undefined | <i>(Optional)</i> convertTime serializes Point's timestamp to a line protocol value |
-|  [defaultTags?](./influxdb-client.pointsettings.defaulttags.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> default tags to add to every point |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[convertTime?](./influxdb-client.pointsettings.converttime.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(value: string \| number \| Date \| undefined) =&gt; string \| undefined
+
+
+</td><td>
+
+_(Optional)_ convertTime serializes Point's timestamp to a line protocol value
+
+
+</td></tr>
+<tr><td>
+
+[defaultTags?](./influxdb-client.pointsettings.defaulttags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+_(Optional)_ default tags to add to every point
+
+
+</td></tr>
+</tbody></table>

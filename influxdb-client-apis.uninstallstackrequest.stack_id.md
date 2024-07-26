@@ -6,7 +6,7 @@
 
 The identifier of the stack.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 stack_id: string;

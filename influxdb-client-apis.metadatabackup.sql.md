@@ -4,7 +4,7 @@
 
 ## MetadataBackup.sql property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sql: string;

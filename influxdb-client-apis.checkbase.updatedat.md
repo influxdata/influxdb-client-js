@@ -4,7 +4,7 @@
 
 ## CheckBase.updatedAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly updatedAt?: string;

@@ -4,7 +4,7 @@
 
 ## ScriptInvocationParams interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ScriptInvocationParams 
@@ -12,7 +12,44 @@ interface ScriptInvocationParams
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [params?](./influxdb-client-apis.scriptinvocationparams.params.md) |  | any | <i>(Optional)</i> The script parameters. <code>params</code> contains key-value pairs that map values to the \*\*params.keys\*\* in a script. When you invoke a script with <code>params</code>, InfluxDB passes the values as invocation parameters to the script. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[params?](./influxdb-client-apis.scriptinvocationparams.params.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ The script parameters. `params` contains key-value pairs that map values to the \*\*params.keys\*\* in a script. When you invoke a script with `params`<!-- -->, InfluxDB passes the values as invocation parameters to the script.
+
+
+</td></tr>
+</tbody></table>

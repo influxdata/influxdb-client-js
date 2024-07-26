@@ -4,7 +4,7 @@
 
 ## BucketMetadataManifest.organizationName property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 organizationName: string;

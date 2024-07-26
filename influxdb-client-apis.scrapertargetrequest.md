@@ -4,7 +4,7 @@
 
 ## ScraperTargetRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ScraperTargetRequest 
@@ -12,12 +12,139 @@ interface ScraperTargetRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowInsecure?](./influxdb-client-apis.scrapertargetrequest.allowinsecure.md) |  | boolean | <i>(Optional)</i> Skip TLS verification on endpoint. |
-|  [bucketID?](./influxdb-client-apis.scrapertargetrequest.bucketid.md) |  | string | <i>(Optional)</i> The ID of the bucket to write to. |
-|  [name?](./influxdb-client-apis.scrapertargetrequest.name.md) |  | string | <i>(Optional)</i> The name of the scraper target. |
-|  [orgID?](./influxdb-client-apis.scrapertargetrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID. |
-|  [type?](./influxdb-client-apis.scrapertargetrequest.type.md) |  | 'prometheus' | <i>(Optional)</i> The type of the metrics to be parsed. |
-|  [url?](./influxdb-client-apis.scrapertargetrequest.url.md) |  | string | <i>(Optional)</i> The URL of the metrics endpoint. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowInsecure?](./influxdb-client-apis.scrapertargetrequest.allowinsecure.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Skip TLS verification on endpoint.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID?](./influxdb-client-apis.scrapertargetrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the bucket to write to.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.scrapertargetrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the scraper target.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.scrapertargetrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The organization ID.
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.scrapertargetrequest.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'prometheus'
+
+
+</td><td>
+
+_(Optional)_ The type of the metrics to be parsed.
+
+
+</td></tr>
+<tr><td>
+
+[url?](./influxdb-client-apis.scrapertargetrequest.url.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The URL of the metrics endpoint.
+
+
+</td></tr>
+</tbody></table>

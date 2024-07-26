@@ -6,7 +6,7 @@
 
 A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: any;

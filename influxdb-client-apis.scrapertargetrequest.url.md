@@ -6,7 +6,7 @@
 
 The URL of the metrics endpoint.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url?: string;

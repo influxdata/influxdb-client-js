@@ -4,7 +4,7 @@
 
 ## PostDashboardsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostDashboardsIDMembersRequest 
@@ -12,8 +12,63 @@ interface PostDashboardsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [dashboardID](./influxdb-client-apis.postdashboardsidmembersrequest.dashboardid.md) |  | string | The dashboard ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postdashboardsidmembersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+User to add as member
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.postdashboardsidmembersrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The dashboard ID.
+
+
+</td></tr>
+</tbody></table>

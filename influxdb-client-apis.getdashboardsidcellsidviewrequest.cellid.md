@@ -6,7 +6,7 @@
 
 The cell ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cellID: string;

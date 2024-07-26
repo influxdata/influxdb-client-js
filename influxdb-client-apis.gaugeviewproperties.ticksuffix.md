@@ -4,7 +4,7 @@
 
 ## GaugeViewProperties.tickSuffix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tickSuffix: string;

@@ -4,7 +4,7 @@
 
 ## GetOrgsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetOrgsRequest 
@@ -12,12 +12,139 @@ interface GetOrgsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [descending?](./influxdb-client-apis.getorgsrequest.descending.md) |  | any | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getorgsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [offset?](./influxdb-client-apis.getorgsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
-|  [org?](./influxdb-client-apis.getorgsrequest.org.md) |  | string | <i>(Optional)</i> An organization name. Only returns organizations with this name. |
-|  [orgID?](./influxdb-client-apis.getorgsrequest.orgid.md) |  | string | <i>(Optional)</i> An organization ID. Only returns the organization with this ID. |
-|  [userID?](./influxdb-client-apis.getorgsrequest.userid.md) |  | string | <i>(Optional)</i> A user ID. Only returns organizations where this user is a member or owner. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[descending?](./influxdb-client-apis.getorgsrequest.descending.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getorgsrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getorgsrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getorgsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An organization name. Only returns organizations with this name.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getorgsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An organization ID. Only returns the organization with this ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID?](./influxdb-client-apis.getorgsrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A user ID. Only returns organizations where this user is a member or owner.
+
+
+</td></tr>
+</tbody></table>

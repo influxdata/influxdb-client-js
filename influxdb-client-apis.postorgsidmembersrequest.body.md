@@ -6,7 +6,7 @@
 
 The user to add to the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.legendOrientationThreshold property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 legendOrientationThreshold?: number;

@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.timeFormat property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 timeFormat?: string;

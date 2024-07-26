@@ -4,7 +4,7 @@
 
 ## RemoteConnection.allowInsecureTLS property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 allowInsecureTLS: boolean;

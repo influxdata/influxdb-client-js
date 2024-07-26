@@ -4,7 +4,7 @@
 
 ## RestoredBucketMappings interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RestoredBucketMappings 
@@ -12,9 +12,78 @@ interface RestoredBucketMappings
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id](./influxdb-client-apis.restoredbucketmappings.id.md) |  | string | New ID of the restored bucket |
-|  [name](./influxdb-client-apis.restoredbucketmappings.name.md) |  | string |  |
-|  [shardMappings](./influxdb-client-apis.restoredbucketmappings.shardmappings.md) |  | [BucketShardMappings](./influxdb-client-apis.bucketshardmappings.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id](./influxdb-client-apis.restoredbucketmappings.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+New ID of the restored bucket
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.restoredbucketmappings.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shardMappings](./influxdb-client-apis.restoredbucketmappings.shardmappings.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BucketShardMappings](./influxdb-client-apis.bucketshardmappings.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

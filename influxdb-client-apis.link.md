@@ -6,7 +6,7 @@
 
 URI of resource.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Link = string;

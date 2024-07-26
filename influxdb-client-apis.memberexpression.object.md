@@ -4,7 +4,7 @@
 
 ## MemberExpression.object property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 object?: Expression;

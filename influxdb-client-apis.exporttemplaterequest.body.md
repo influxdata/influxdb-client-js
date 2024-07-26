@@ -6,7 +6,7 @@
 
 Export resources as an InfluxDB template.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: TemplateExportByID | TemplateExportByName;

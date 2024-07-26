@@ -6,7 +6,7 @@
 
 Instructs to use the following default tags when writing points. Not applicable for writing records/lines.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 useDefaultTags(tags: {
@@ -16,11 +16,40 @@ useDefaultTags(tags: {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  tags | { \[key: string\]: string; } | default tags |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+tags
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+default tags
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [WriteApi](./influxdb-client.writeapi.md)
 

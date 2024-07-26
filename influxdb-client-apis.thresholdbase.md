@@ -4,7 +4,7 @@
 
 ## ThresholdBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ThresholdBase 
@@ -12,8 +12,63 @@ interface ThresholdBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allValues?](./influxdb-client-apis.thresholdbase.allvalues.md) |  | boolean | <i>(Optional)</i> If true, only alert if all values meet threshold. |
-|  [level?](./influxdb-client-apis.thresholdbase.level.md) |  | [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allValues?](./influxdb-client-apis.thresholdbase.allvalues.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ If true, only alert if all values meet threshold.
+
+
+</td></tr>
+<tr><td>
+
+[level?](./influxdb-client-apis.thresholdbase.level.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

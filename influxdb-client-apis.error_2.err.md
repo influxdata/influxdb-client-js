@@ -6,7 +6,7 @@
 
 Stack of errors that occurred during processing of the request. Useful for debugging.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly err?: string;

@@ -4,7 +4,7 @@
 
 ## HTTPNotificationEndpoint type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type HTTPNotificationEndpoint = NotificationEndpointBase & {
@@ -18,5 +18,5 @@ type HTTPNotificationEndpoint = NotificationEndpointBase & {
     headers?: any;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+**References:** [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
 

@@ -6,7 +6,7 @@
 
 Script name. The name must be unique within the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

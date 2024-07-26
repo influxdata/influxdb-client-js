@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `RequestTimedOutError` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor();

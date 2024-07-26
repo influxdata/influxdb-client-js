@@ -6,7 +6,7 @@
 
 If true, search results get automatically regroupped so that lon,lat and value are treated as columns
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 detectCoordinateFields: boolean;

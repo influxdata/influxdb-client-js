@@ -6,7 +6,7 @@
 
 Create a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postScripts(request: PostScriptsRequest, requestOptions?: RequestOptions): Promise<Script>;
@@ -14,12 +14,56 @@ postScripts(request: PostScriptsRequest, requestOptions?: RequestOptions): Promi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Script](./influxdb-client-apis.script.md)<!-- -->&gt;
 

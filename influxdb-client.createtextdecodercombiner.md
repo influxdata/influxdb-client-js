@@ -6,12 +6,12 @@
 
 Creates a chunk combiner instance that uses UTF-8 TextDecoder to decode Uint8Arrays into strings.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function createTextDecoderCombiner(): ChunkCombiner;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [ChunkCombiner](./influxdb-client.chunkcombiner.md)
 

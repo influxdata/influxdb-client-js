@@ -4,7 +4,7 @@
 
 ## SMTPNotificationRuleBase.subjectTemplate property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 subjectTemplate: string;

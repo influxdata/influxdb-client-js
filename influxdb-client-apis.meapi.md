@@ -6,7 +6,7 @@
 
 Me API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class MeAPI 
@@ -14,14 +14,82 @@ declare class MeAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.meapi._constructor_.md) |  | Creates MeAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.meapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates MeAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getMe(request, requestOptions)](./influxdb-client-apis.meapi.getme.md) |  | Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetMe) |
-|  [putMePassword(request, requestOptions)](./influxdb-client-apis.meapi.putmepassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutMePassword) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getMe(request, requestOptions)](./influxdb-client-apis.meapi.getme.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetMe](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetMe)
+
+
+</td></tr>
+<tr><td>
+
+[putMePassword(request, requestOptions)](./influxdb-client-apis.meapi.putmepassword.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutMePassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutMePassword)
+
+
+</td></tr>
+</tbody></table>

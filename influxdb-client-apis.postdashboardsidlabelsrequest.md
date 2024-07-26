@@ -4,7 +4,7 @@
 
 ## PostDashboardsIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostDashboardsIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostDashboardsIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [dashboardID](./influxdb-client-apis.postdashboardsidlabelsrequest.dashboardid.md) |  | string | The dashboard ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postdashboardsidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+Label to add
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.postdashboardsidlabelsrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The dashboard ID.
+
+
+</td></tr>
+</tbody></table>

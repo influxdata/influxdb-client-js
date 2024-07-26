@@ -4,7 +4,7 @@
 
 ## SingleStatViewProperties.staticLegend property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 staticLegend?: StaticLegend;

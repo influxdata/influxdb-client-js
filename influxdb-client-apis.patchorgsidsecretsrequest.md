@@ -4,7 +4,7 @@
 
 ## PatchOrgsIDSecretsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchOrgsIDSecretsRequest 
@@ -12,8 +12,63 @@ interface PatchOrgsIDSecretsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchorgsidsecretsrequest.body.md) |  | [Secrets](./influxdb-client-apis.secrets.md) | Secret key value pairs to update/add |
-|  [orgID](./influxdb-client-apis.patchorgsidsecretsrequest.orgid.md) |  | string | The organization ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchorgsidsecretsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Secrets](./influxdb-client-apis.secrets.md)
+
+
+</td><td>
+
+Secret key value pairs to update/add
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.patchorgsidsecretsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The organization ID.
+
+
+</td></tr>
+</tbody></table>

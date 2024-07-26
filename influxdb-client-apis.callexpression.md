@@ -6,7 +6,7 @@
 
 Represents a function call
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CallExpression 
@@ -14,9 +14,82 @@ interface CallExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [arguments?](./influxdb-client-apis.callexpression.arguments.md) |  | [Expression](./influxdb-client-apis.expression.md)<!-- -->\[\] | <i>(Optional)</i> Function arguments |
-|  [callee?](./influxdb-client-apis.callexpression.callee.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.callexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[arguments?](./influxdb-client-apis.callexpression.arguments.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Function arguments
+
+
+</td></tr>
+<tr><td>
+
+[callee?](./influxdb-client-apis.callexpression.callee.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.callexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

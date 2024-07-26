@@ -6,7 +6,7 @@
 
 Restore API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class RestoreAPI 
@@ -14,17 +14,124 @@ declare class RestoreAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.restoreapi._constructor_.md) |  | Creates RestoreAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.restoreapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates RestoreAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [postRestoreBucketID(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketid.md) |  | Overwrite storage metadata for a bucket with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreBucketID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketID) |
-|  [postRestoreBucketMetadata(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketmetadata.md) |  | Create a new bucket pre-seeded with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreBucketMetadata](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketMetadata) |
-|  [postRestoreKV(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorekv.md) |  | Overwrite the embedded KV store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreKV](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreKV) |
-|  [postRestoreShardId(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestoreshardid.md) |  | Restore a TSM snapshot into a shard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreShardId](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreShardId) |
-|  [postRestoreSQL(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestoresql.md) |  | Overwrite the embedded SQL store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreSQL](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreSQL) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postRestoreBucketID(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Overwrite storage metadata for a bucket with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreBucketID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketID)
+
+
+</td></tr>
+<tr><td>
+
+[postRestoreBucketMetadata(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorebucketmetadata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a new bucket pre-seeded with shard info from a backup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreBucketMetadata](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreBucketMetadata)
+
+
+</td></tr>
+<tr><td>
+
+[postRestoreKV(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestorekv.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Overwrite the embedded KV store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreKV](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreKV)
+
+
+</td></tr>
+<tr><td>
+
+[postRestoreShardId(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestoreshardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Restore a TSM snapshot into a shard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreShardId](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreShardId)
+
+
+</td></tr>
+<tr><td>
+
+[postRestoreSQL(request, requestOptions)](./influxdb-client-apis.restoreapi.postrestoresql.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Overwrite the embedded SQL store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreSQL](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreSQL)
+
+
+</td></tr>
+</tbody></table>

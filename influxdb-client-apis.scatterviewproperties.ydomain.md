@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.yDomain property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yDomain: number[];

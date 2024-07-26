@@ -4,7 +4,7 @@
 
 ## SingleStatViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SingleStatViewProperties 
@@ -12,18 +12,235 @@ interface SingleStatViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [colors](./influxdb-client-apis.singlestatviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.singlestatviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
-|  [note](./influxdb-client-apis.singlestatviewproperties.note.md) |  | string |  |
-|  [prefix](./influxdb-client-apis.singlestatviewproperties.prefix.md) |  | string |  |
-|  [queries](./influxdb-client-apis.singlestatviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.singlestatviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.singlestatviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [staticLegend?](./influxdb-client-apis.singlestatviewproperties.staticlegend.md) |  | [StaticLegend](./influxdb-client-apis.staticlegend.md) | <i>(Optional)</i> |
-|  [suffix](./influxdb-client-apis.singlestatviewproperties.suffix.md) |  | string |  |
-|  [tickPrefix](./influxdb-client-apis.singlestatviewproperties.tickprefix.md) |  | string |  |
-|  [tickSuffix](./influxdb-client-apis.singlestatviewproperties.ticksuffix.md) |  | string |  |
-|  [type](./influxdb-client-apis.singlestatviewproperties.type.md) |  | 'single-stat' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[colors](./influxdb-client-apis.singlestatviewproperties.colors.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\]
+
+
+</td><td>
+
+Colors define color encoding of data into a visualization
+
+
+</td></tr>
+<tr><td>
+
+[decimalPlaces](./influxdb-client-apis.singlestatviewproperties.decimalplaces.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DecimalPlaces](./influxdb-client-apis.decimalplaces.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[note](./influxdb-client-apis.singlestatviewproperties.note.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[prefix](./influxdb-client-apis.singlestatviewproperties.prefix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[queries](./influxdb-client-apis.singlestatviewproperties.queries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.singlestatviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[showNoteWhenEmpty](./influxdb-client-apis.singlestatviewproperties.shownotewhenempty.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, will display note when empty
+
+
+</td></tr>
+<tr><td>
+
+[staticLegend?](./influxdb-client-apis.singlestatviewproperties.staticlegend.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[StaticLegend](./influxdb-client-apis.staticlegend.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[suffix](./influxdb-client-apis.singlestatviewproperties.suffix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tickPrefix](./influxdb-client-apis.singlestatviewproperties.tickprefix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[tickSuffix](./influxdb-client-apis.singlestatviewproperties.ticksuffix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.singlestatviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'single-stat'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## GetOrgsRequest.descending property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 descending?: any;

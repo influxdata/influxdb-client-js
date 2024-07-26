@@ -4,7 +4,7 @@
 
 ## GetScrapersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetScrapersIDRequest 
@@ -12,7 +12,44 @@ interface GetScrapersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scraperTargetID](./influxdb-client-apis.getscrapersidrequest.scrapertargetid.md) |  | string | The identifier of the scraper target. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scraperTargetID](./influxdb-client-apis.getscrapersidrequest.scrapertargetid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The identifier of the scraper target.
+
+
+</td></tr>
+</tbody></table>

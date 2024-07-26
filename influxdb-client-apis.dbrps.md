@@ -4,7 +4,7 @@
 
 ## DBRPs interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DBRPs 
@@ -12,7 +12,44 @@ interface DBRPs
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [content?](./influxdb-client-apis.dbrps.content.md) |  | [DBRP](./influxdb-client-apis.dbrp.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[content?](./influxdb-client-apis.dbrps.content.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DBRP](./influxdb-client-apis.dbrp.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

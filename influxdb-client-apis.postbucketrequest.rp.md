@@ -6,7 +6,7 @@
 
 Retention policy is an InfluxDB 1.x concept that represents the duration of time that each data point in the retention policy persists. Use `rp` for compatibility with InfluxDB 1.x. The InfluxDB 2.x and Cloud equivalent is [retention period](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#retention-period)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rp?: string;

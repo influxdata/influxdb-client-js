@@ -6,7 +6,7 @@
 
 Telegraf API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class TelegrafAPI 
@@ -14,13 +14,68 @@ declare class TelegrafAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.telegrafapi._constructor_.md) |  | Creates TelegrafAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.telegrafapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates TelegrafAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getTelegrafPlugins(request, requestOptions)](./influxdb-client-apis.telegrafapi.gettelegrafplugins.md) |  | List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafPlugins) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getTelegrafPlugins(request, requestOptions)](./influxdb-client-apis.telegrafapi.gettelegrafplugins.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all Telegraf plugins. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafPlugins](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafPlugins)
+
+
+</td></tr>
+</tbody></table>

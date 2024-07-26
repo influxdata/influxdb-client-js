@@ -4,7 +4,7 @@
 
 ## Replication.currentQueueSizeBytes property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 currentQueueSizeBytes: number;

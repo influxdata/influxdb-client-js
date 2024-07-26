@@ -4,7 +4,7 @@
 
 ## ThresholdCheck type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ThresholdCheck = CheckBase & {
@@ -19,5 +19,5 @@ type ThresholdCheck = CheckBase & {
     statusMessageTemplate?: string;
 };
 ```
-<b>References:</b> [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [Threshold](./influxdb-client-apis.threshold.md)
+**References:** [CheckBase](./influxdb-client-apis.checkbase.md)<!-- -->, [Threshold](./influxdb-client-apis.threshold.md)
 

@@ -6,7 +6,7 @@
 
 default connection options
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 DEFAULT_ConnectionOptions: Partial<ConnectionOptions>

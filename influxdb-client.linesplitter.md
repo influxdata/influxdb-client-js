@@ -6,7 +6,7 @@
 
 Optimized tokenizer of a single CSV line.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class LineSplitter 
@@ -14,16 +14,130 @@ declare class LineSplitter
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [lastSplitLength](./influxdb-client.linesplitter.lastsplitlength.md) |  | number | last length of elements in |
-|  [reuse](./influxdb-client.linesplitter.reuse.md) |  | boolean | Reuse returned array between consecutive calls. |
-|  [reusedValues](./influxdb-client.linesplitter.reusedvalues.md) |  | string\[\] | returned value when reused |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[lastSplitLength](./influxdb-client.linesplitter.lastsplitlength.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+last length of elements in
+
+
+</td></tr>
+<tr><td>
+
+[reuse](./influxdb-client.linesplitter.reuse.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+Reuse returned array between consecutive calls.
+
+
+</td></tr>
+<tr><td>
+
+[reusedValues](./influxdb-client.linesplitter.reusedvalues.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+returned value when reused
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [splitLine(line)](./influxdb-client.linesplitter.splitline.md) |  | Splits the supplied line to elements that are separated by comma with values possibly escaped within double quotes ("value") |
-|  [withReuse()](./influxdb-client.linesplitter.withreuse.md) |  | Sets the reuse flag and returns this. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[splitLine(line)](./influxdb-client.linesplitter.splitline.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Splits the supplied line to elements that are separated by comma with values possibly escaped within double quotes ("value")
+
+
+</td></tr>
+<tr><td>
+
+[withReuse()](./influxdb-client.linesplitter.withreuse.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets the reuse flag and returns this.
+
+
+</td></tr>
+</tbody></table>

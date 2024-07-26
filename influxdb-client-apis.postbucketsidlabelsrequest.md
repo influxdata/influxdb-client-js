@@ -4,7 +4,7 @@
 
 ## PostBucketsIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostBucketsIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostBucketsIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | An object that contains a \_<code>labelID</code>\_ to add to the bucket. |
-|  [bucketID](./influxdb-client-apis.postbucketsidlabelsrequest.bucketid.md) |  | string | Bucket ID. The ID of the bucket to label. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postbucketsidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+An object that contains a \_`labelID`<!-- -->\_ to add to the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID](./influxdb-client-apis.postbucketsidlabelsrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Bucket ID. The ID of the bucket to label.
+
+
+</td></tr>
+</tbody></table>

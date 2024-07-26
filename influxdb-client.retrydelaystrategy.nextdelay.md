@@ -6,7 +6,7 @@
 
 Returns delay for a next retry
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 nextDelay(error?: Error, failedAttempts?: number): number;
@@ -14,12 +14,56 @@ nextDelay(error?: Error, failedAttempts?: number): number;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  error | Error | <i>(Optional)</i> reason for retrying |
-|  failedAttempts | number | <i>(Optional)</i> a count of already failed attempts, 1 being the first |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+error
+
+
+</td><td>
+
+Error
+
+
+</td><td>
+
+_(Optional)_ reason for retrying
+
+
+</td></tr>
+<tr><td>
+
+failedAttempts
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ a count of already failed attempts, 1 being the first
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 number
 

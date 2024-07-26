@@ -6,7 +6,7 @@
 
 The data type of column (e.g., "string", "long", "dateTime:RFC3339").
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dataType: ColumnType;

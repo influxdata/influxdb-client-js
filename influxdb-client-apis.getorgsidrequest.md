@@ -4,7 +4,7 @@
 
 ## GetOrgsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetOrgsIDRequest 
@@ -12,7 +12,44 @@ interface GetOrgsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.getorgsidrequest.orgid.md) |  | string | The ID of the organization to retrieve. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID](./influxdb-client-apis.getorgsidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization to retrieve.
+
+
+</td></tr>
+</tbody></table>

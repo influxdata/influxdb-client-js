@@ -4,7 +4,7 @@
 
 ## DeleteBucketsIDOwnersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteBucketsIDOwnersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteBucketsIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidownersidrequest.bucketid.md) |  | string | The bucket ID. |
-|  [userID](./influxdb-client-apis.deletebucketsidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.deletebucketsidownersidrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The bucket ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletebucketsidownersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the owner to remove.
+
+
+</td></tr>
+</tbody></table>

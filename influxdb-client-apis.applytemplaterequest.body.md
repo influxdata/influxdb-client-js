@@ -6,7 +6,7 @@
 
 Parameters for applying templates.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: TemplateApply;

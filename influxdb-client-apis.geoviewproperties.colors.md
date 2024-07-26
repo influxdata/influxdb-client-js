@@ -6,7 +6,7 @@
 
 Colors define color encoding of data into a visualization
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 colors?: DashboardColor[];

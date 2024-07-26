@@ -6,7 +6,7 @@
 
 Update the 'cron' option in the flux script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cron?: string;

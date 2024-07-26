@@ -6,7 +6,7 @@
 
 Assumes that the supplied value is flux expression or literal that does not need sanitizing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function fluxExpression(value: any): FluxParameterLike;
@@ -14,11 +14,40 @@ declare function fluxExpression(value: any): FluxParameterLike;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | any | any value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+any value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 

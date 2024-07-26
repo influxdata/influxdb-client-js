@@ -4,7 +4,7 @@
 
 ## PostTasksIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTasksIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostTasksIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | An object that contains a \_<code>labelID</code>\_ to add to the task. |
-|  [taskID](./influxdb-client-apis.posttasksidlabelsrequest.taskid.md) |  | string | The ID of the task to label. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttasksidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+An object that contains a \_`labelID`<!-- -->\_ to add to the task.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.posttasksidlabelsrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to label.
+
+
+</td></tr>
+</tbody></table>

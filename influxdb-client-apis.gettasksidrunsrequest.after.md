@@ -6,7 +6,7 @@
 
 A task run ID. Only returns runs created after this run.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 after?: string;

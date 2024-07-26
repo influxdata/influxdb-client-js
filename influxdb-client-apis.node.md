@@ -4,10 +4,10 @@
 
 ## Node type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Node = Expression | Block;
 ```
-<b>References:</b> [Expression](./influxdb-client-apis.expression.md)<!-- -->, [Block](./influxdb-client-apis.block.md)
+**References:** [Expression](./influxdb-client-apis.expression.md)<!-- -->, [Block](./influxdb-client-apis.block.md)
 

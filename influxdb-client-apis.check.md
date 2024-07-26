@@ -4,10 +4,10 @@
 
 ## Check type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Check = CheckDiscriminator;
 ```
-<b>References:</b> [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
+**References:** [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
 

@@ -10,7 +10,7 @@ The format for timestamps in results. Default is [\`RFC3339\` date/time format](
 
 \| Format \| Value \| \|:\-\-\-\-\-\-\-\-\-\-\-\-\|:\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\| \| `RFC3339` \| `"2006-01-02T15:04:05Z07:00"` \| \| `RFC3339Nano` \| `"2006-01-02T15:04:05.999999999Z07:00"` \|
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dateTimeFormat?: 'RFC3339' | 'RFC3339Nano';

@@ -4,10 +4,10 @@
 
 ## Cells type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Cells = Cell[];
 ```
-<b>References:</b> [Cell](./influxdb-client-apis.cell.md)
+**References:** [Cell](./influxdb-client-apis.cell.md)
 

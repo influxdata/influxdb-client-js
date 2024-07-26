@@ -6,7 +6,7 @@
 
 Creates a cold observable of the lines returned by the given query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lines(query: string | ParameterizedQuery): Observable<string>;
@@ -14,11 +14,40 @@ lines(query: string | ParameterizedQuery): Observable<string>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Observable](./influxdb-client.observable.md)<!-- -->&lt;string&gt;
 

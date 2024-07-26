@@ -6,7 +6,7 @@
 
 Create a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateStack)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 createStack(request: CreateStackRequest, requestOptions?: RequestOptions): Promise<Stack>;
@@ -14,12 +14,56 @@ createStack(request: CreateStackRequest, requestOptions?: RequestOptions): Promi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [CreateStackRequest](./influxdb-client-apis.createstackrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[CreateStackRequest](./influxdb-client-apis.createstackrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
 

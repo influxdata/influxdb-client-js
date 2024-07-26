@@ -14,7 +14,7 @@ The organization to delete data from. If you pass both `orgID` and `org`<!-- -->
 
 - Requires either `org` or `orgID`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

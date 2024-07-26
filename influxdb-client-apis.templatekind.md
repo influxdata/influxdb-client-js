@@ -4,7 +4,7 @@
 
 ## TemplateKind type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type TemplateKind = 'Bucket' | 'Check' | 'CheckDeadman' | 'CheckThreshold' | 'Dashboard' | 'Label' | 'NotificationEndpoint' | 'NotificationEndpointHTTP' | 'NotificationEndpointPagerDuty' | 'NotificationEndpointSlack' | 'NotificationRule' | 'Task' | 'Telegraf' | 'Variable';

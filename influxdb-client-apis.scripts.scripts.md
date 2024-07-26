@@ -4,7 +4,7 @@
 
 ## Scripts.scripts property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scripts?: Script[];

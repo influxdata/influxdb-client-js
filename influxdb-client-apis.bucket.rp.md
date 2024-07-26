@@ -4,7 +4,7 @@
 
 ## Bucket.rp property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rp?: string;

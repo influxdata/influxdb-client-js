@@ -6,7 +6,7 @@
 
 The data value mapped to this color.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: number;

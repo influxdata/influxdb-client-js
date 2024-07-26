@@ -4,7 +4,7 @@
 
 ## PostBucketsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostBucketsRequest 
@@ -12,7 +12,44 @@ interface PostBucketsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsrequest.body.md) |  | [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) | Bucket to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postbucketsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PostBucketRequest](./influxdb-client-apis.postbucketrequest.md)
+
+
+</td><td>
+
+Bucket to create
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 maximum delay when retrying write (milliseconds)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxRetryDelay: number;

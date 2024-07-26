@@ -4,7 +4,7 @@
 
 ## PostSetupRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostSetupRequest 
@@ -12,7 +12,44 @@ interface PostSetupRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postsetuprequest.body.md) |  | [OnboardingRequest](./influxdb-client-apis.onboardingrequest.md) | Source to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postsetuprequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[OnboardingRequest](./influxdb-client-apis.onboardingrequest.md)
+
+
+</td><td>
+
+Source to create
+
+
+</td></tr>
+</tbody></table>

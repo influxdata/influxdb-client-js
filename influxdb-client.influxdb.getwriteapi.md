@@ -6,7 +6,7 @@
 
 Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getWriteApi(org: string, bucket: string, precision?: WritePrecisionType, writeOptions?: Partial<WriteOptions>): WriteApi;
@@ -14,14 +14,88 @@ getWriteApi(org: string, bucket: string, precision?: WritePrecisionType, writeOp
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  org | string | Specifies the destination organization for writes. Takes either the ID or Name interchangeably. |
-|  bucket | string | The destination bucket for writes. |
-|  precision | [WritePrecisionType](./influxdb-client.writeprecisiontype.md) | <i>(Optional)</i> Timestamp precision for line items. |
-|  writeOptions | Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt; | <i>(Optional)</i> Custom write options. |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+org
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Specifies the destination organization for writes. Takes either the ID or Name interchangeably.
+
+
+</td></tr>
+<tr><td>
+
+bucket
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The destination bucket for writes.
+
+
+</td></tr>
+<tr><td>
+
+precision
+
+
+</td><td>
+
+[WritePrecisionType](./influxdb-client.writeprecisiontype.md)
+
+
+</td><td>
+
+_(Optional)_ Timestamp precision for line items.
+
+
+</td></tr>
+<tr><td>
+
+writeOptions
+
+
+</td><td>
+
+Partial&lt;[WriteOptions](./influxdb-client.writeoptions.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_ Custom write options.
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [WriteApi](./influxdb-client.writeapi.md)
 

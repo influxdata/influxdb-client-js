@@ -6,7 +6,7 @@
 
 Number of seconds to collect profile data. Default is `30` seconds.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 seconds?: string;

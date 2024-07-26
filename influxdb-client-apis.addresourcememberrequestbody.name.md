@@ -6,7 +6,7 @@
 
 The name of the user to add to the resource.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

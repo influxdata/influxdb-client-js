@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteOrgsIDRequest 
@@ -12,7 +12,44 @@ interface DeleteOrgsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidrequest.orgid.md) |  | string | The ID of the organization to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID](./influxdb-client-apis.deleteorgsidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization to delete.
+
+
+</td></tr>
+</tbody></table>

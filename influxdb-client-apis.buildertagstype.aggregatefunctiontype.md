@@ -4,7 +4,7 @@
 
 ## BuilderTagsType.aggregateFunctionType property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 aggregateFunctionType?: BuilderAggregateFunctionType;

@@ -6,7 +6,7 @@
 
 List all sources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSources)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getSources(request?: GetSourcesRequest, requestOptions?: RequestOptions): Promise<Sources>;
@@ -14,12 +14,56 @@ getSources(request?: GetSourcesRequest, requestOptions?: RequestOptions): Promis
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Sources](./influxdb-client-apis.sources.md)<!-- -->&gt;
 

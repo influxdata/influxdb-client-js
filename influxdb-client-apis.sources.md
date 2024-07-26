@@ -4,7 +4,7 @@
 
 ## Sources interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Sources 
@@ -12,8 +12,63 @@ interface Sources
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.sources.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [sources?](./influxdb-client-apis.sources.sources.md) |  | [Source](./influxdb-client-apis.source.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.sources.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ self?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[sources?](./influxdb-client-apis.sources.sources.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Source](./influxdb-client-apis.source.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

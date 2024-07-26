@@ -6,7 +6,7 @@
 
 max count of retries after the first write fails
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxRetries: number;

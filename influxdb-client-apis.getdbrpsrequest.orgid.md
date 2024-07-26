@@ -6,7 +6,7 @@
 
 Specifies the organization ID to filter on
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

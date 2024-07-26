@@ -6,7 +6,7 @@
 
 Exposes functions that creates strings that represent a timestamp that can be used in the line protocol. Micro and nano timestamps are emulated depending on the js platform in use.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 currentTime: {

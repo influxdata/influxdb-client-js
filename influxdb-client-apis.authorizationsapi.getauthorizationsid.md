@@ -6,7 +6,7 @@
 
 Retrieve an authorization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetAuthorizationsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetAuthorizationsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getAuthorizationsID(request: GetAuthorizationsIDRequest, requestOptions?: RequestOptions): Promise<Authorization>;
@@ -14,12 +14,56 @@ getAuthorizationsID(request: GetAuthorizationsIDRequest, requestOptions?: Reques
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Authorization](./influxdb-client-apis.authorization.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## GetDashboardsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDashboardsRequest 
@@ -12,14 +12,177 @@ interface GetDashboardsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [descending?](./influxdb-client-apis.getdashboardsrequest.descending.md) |  | any | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.getdashboardsrequest.id.md) |  | any | <i>(Optional)</i> A list of dashboard identifiers. Returns only the listed dashboards. If both <code>id</code> and <code>owner</code> are specified, only <code>id</code> is used. |
-|  [limit?](./influxdb-client-apis.getdashboardsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [offset?](./influxdb-client-apis.getdashboardsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
-|  [org?](./influxdb-client-apis.getdashboardsrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
-|  [orgID?](./influxdb-client-apis.getdashboardsrequest.orgid.md) |  | string | <i>(Optional)</i> The identifier of the organization. |
-|  [owner?](./influxdb-client-apis.getdashboardsrequest.owner.md) |  | string | <i>(Optional)</i> A user identifier. Returns only dashboards where this user has the <code>owner</code> role. |
-|  [sortBy?](./influxdb-client-apis.getdashboardsrequest.sortby.md) |  | string | <i>(Optional)</i> The column to sort by. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[descending?](./influxdb-client-apis.getdashboardsrequest.descending.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.getdashboardsrequest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used.
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getdashboardsrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getdashboardsrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getdashboardsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getdashboardsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The identifier of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[owner?](./influxdb-client-apis.getdashboardsrequest.owner.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A user identifier. Returns only dashboards where this user has the `owner` role.
+
+
+</td></tr>
+<tr><td>
+
+[sortBy?](./influxdb-client-apis.getdashboardsrequest.sortby.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The column to sort by.
+
+
+</td></tr>
+</tbody></table>

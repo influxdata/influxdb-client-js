@@ -4,7 +4,7 @@
 
 ## DeleteTelegrafsIDMembersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteTelegrafsIDMembersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteTelegrafsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [telegrafID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
-|  [userID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.userid.md) |  | string | The ID of the member to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[telegrafID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletetelegrafsidmembersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the member to remove.
+
+
+</td></tr>
+</tbody></table>

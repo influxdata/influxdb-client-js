@@ -4,7 +4,7 @@
 
 ## Links.self property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 self: Link;

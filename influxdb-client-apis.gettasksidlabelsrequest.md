@@ -4,7 +4,7 @@
 
 ## GetTasksIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTasksIDLabelsRequest 
@@ -12,7 +12,44 @@ interface GetTasksIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [taskID](./influxdb-client-apis.gettasksidlabelsrequest.taskid.md) |  | string | The ID of the task to retrieve labels for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[taskID](./influxdb-client-apis.gettasksidlabelsrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to retrieve labels for.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## DeleteReplicationByIDRequest.replicationID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 replicationID: string;

@@ -6,7 +6,7 @@
 
 Gets column values out of the supplied row.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 get(row: string[], column: string): any;
@@ -14,12 +14,56 @@ get(row: string[], column: string): any;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  row | string\[\] | a row with data for each column |
-|  column | string | column name |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+row
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+a row with data for each column
+
+
+</td></tr>
+<tr><td>
+
+column
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+column name
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 any
 

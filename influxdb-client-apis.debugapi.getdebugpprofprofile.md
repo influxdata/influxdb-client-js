@@ -6,7 +6,7 @@
 
 Retrieve the CPU runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofProfile](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofProfile)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDebugPprofProfile(request?: GetDebugPprofProfileRequest, requestOptions?: RequestOptions): Promise<string>;
@@ -14,12 +14,56 @@ getDebugPprofProfile(request?: GetDebugPprofProfileRequest, requestOptions?: Req
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;string&gt;
 

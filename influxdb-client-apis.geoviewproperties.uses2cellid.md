@@ -6,7 +6,7 @@
 
 If true, S2 column is used to calculate lat/lon
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 useS2CellID?: boolean;

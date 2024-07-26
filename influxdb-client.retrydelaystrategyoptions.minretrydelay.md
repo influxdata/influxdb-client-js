@@ -6,7 +6,7 @@
 
 minimum delay when retrying write (milliseconds)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 minRetryDelay: number;

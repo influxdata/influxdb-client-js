@@ -6,7 +6,7 @@
 
 Type of AST node
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type NodeType = string;

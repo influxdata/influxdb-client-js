@@ -4,7 +4,7 @@
 
 ## DeleteDashboardsIDCellsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteDashboardsIDCellsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteDashboardsIDCellsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [cellID](./influxdb-client-apis.deletedashboardsidcellsidrequest.cellid.md) |  | string | The ID of the cell to delete. |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidcellsidrequest.dashboardid.md) |  | string | The ID of the dashboard to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cellID](./influxdb-client-apis.deletedashboardsidcellsidrequest.cellid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the cell to delete.
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.deletedashboardsidcellsidrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the dashboard to delete.
+
+
+</td></tr>
+</tbody></table>

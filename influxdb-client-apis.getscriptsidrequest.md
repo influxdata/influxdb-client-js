@@ -4,7 +4,7 @@
 
 ## GetScriptsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetScriptsIDRequest 
@@ -12,7 +12,44 @@ interface GetScriptsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md) |  | string | A script ID. Specifies the script to retrieve. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scriptID](./influxdb-client-apis.getscriptsidrequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A script ID. Specifies the script to retrieve.
+
+
+</td></tr>
+</tbody></table>

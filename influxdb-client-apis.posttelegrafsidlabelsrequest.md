@@ -4,7 +4,7 @@
 
 ## PostTelegrafsIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTelegrafsIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostTelegrafsIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [telegrafID](./influxdb-client-apis.posttelegrafsidlabelsrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttelegrafsidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+Label to add
+
+
+</td></tr>
+<tr><td>
+
+[telegrafID](./influxdb-client-apis.posttelegrafsidlabelsrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+</tbody></table>

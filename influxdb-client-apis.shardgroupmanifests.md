@@ -4,10 +4,10 @@
 
 ## ShardGroupManifests type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ShardGroupManifests = ShardGroupManifest[];
 ```
-<b>References:</b> [ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md)
+**References:** [ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md)
 

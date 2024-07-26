@@ -6,7 +6,7 @@
 
 HTTP headers that will be sent with every write request
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: {

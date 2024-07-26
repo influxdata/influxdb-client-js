@@ -4,7 +4,7 @@
 
 ## SMTPNotificationRuleBase.bodyTemplate property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bodyTemplate?: string;

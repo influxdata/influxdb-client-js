@@ -6,7 +6,7 @@
 
 Notification endpoint to create
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: PostNotificationEndpoint;

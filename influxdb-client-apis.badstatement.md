@@ -6,7 +6,7 @@
 
 A placeholder for statements for which no correct statement nodes can be created
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BadStatement 
@@ -14,8 +14,63 @@ interface BadStatement
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [text?](./influxdb-client-apis.badstatement.text.md) |  | string | <i>(Optional)</i> Raw source text |
-|  [type?](./influxdb-client-apis.badstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[text?](./influxdb-client-apis.badstatement.text.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Raw source text
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.badstatement.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

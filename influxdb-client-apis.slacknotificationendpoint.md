@@ -4,7 +4,7 @@
 
 ## SlackNotificationEndpoint type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type SlackNotificationEndpoint = NotificationEndpointBase & {
@@ -12,5 +12,5 @@ type SlackNotificationEndpoint = NotificationEndpointBase & {
     token?: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+**References:** [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
 

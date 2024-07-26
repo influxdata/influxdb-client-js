@@ -4,10 +4,10 @@
 
 ## BucketMetadataManifests type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type BucketMetadataManifests = BucketMetadataManifest[];
 ```
-<b>References:</b> [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md)
+**References:** [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md)
 

@@ -4,7 +4,7 @@
 
 ## TelegrafPlugins.plugins property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 plugins?: TelegrafPlugin[];

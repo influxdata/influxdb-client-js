@@ -4,7 +4,7 @@
 
 ## Source.insecureSkipVerify property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 insecureSkipVerify?: boolean;

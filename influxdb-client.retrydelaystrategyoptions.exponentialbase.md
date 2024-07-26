@@ -6,7 +6,7 @@
 
 base for the exponential retry delay
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 exponentialBase: number;

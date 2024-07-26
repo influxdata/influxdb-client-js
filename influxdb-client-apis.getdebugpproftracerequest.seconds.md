@@ -6,7 +6,7 @@
 
 Number of seconds to collect profile data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 seconds?: string;

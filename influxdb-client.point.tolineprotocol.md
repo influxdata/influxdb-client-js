@@ -6,7 +6,7 @@
 
 Creates an InfluxDB protocol line out of this instance.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toLineProtocol(settings?: Partial<PointSettings>): string | undefined;
@@ -14,11 +14,40 @@ toLineProtocol(settings?: Partial<PointSettings>): string | undefined;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  settings | Partial&lt;[PointSettings](./influxdb-client.pointsettings.md)<!-- -->&gt; | <i>(Optional)</i> settings control serialization of a point timestamp and can also add default tags, nanosecond timestamp precision is used when no <code>settings</code> or no <code>settings.convertTime</code> is supplied. |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+settings
+
+
+</td><td>
+
+Partial&lt;[PointSettings](./influxdb-client.pointsettings.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_ settings control serialization of a point timestamp and can also add default tags, nanosecond timestamp precision is used when no `settings` or no `settings.convertTime` is supplied.
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string \| undefined
 

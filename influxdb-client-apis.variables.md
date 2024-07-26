@@ -4,7 +4,7 @@
 
 ## Variables interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Variables 
@@ -12,7 +12,44 @@ interface Variables
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [variables?](./influxdb-client-apis.variables.variables.md) |  | [Variable](./influxdb-client-apis.variable.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[variables?](./influxdb-client-apis.variables.variables.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Variable](./influxdb-client-apis.variable.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

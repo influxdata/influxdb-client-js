@@ -6,7 +6,7 @@
 
 Only return notification rules that "would match" statuses which contain the tag key value pairs provided.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tag?: string;

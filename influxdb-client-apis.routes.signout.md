@@ -4,7 +4,7 @@
 
 ## Routes.signout property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 signout?: string;

@@ -6,7 +6,7 @@
 
 Represents accessing a property of an object
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface MemberExpression 
@@ -14,9 +14,82 @@ interface MemberExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [object?](./influxdb-client-apis.memberexpression.object.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [property?](./influxdb-client-apis.memberexpression.property.md) |  | [PropertyKey](./influxdb-client-apis.propertykey_2.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[object?](./influxdb-client-apis.memberexpression.object.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[property?](./influxdb-client-apis.memberexpression.property.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PropertyKey](./influxdb-client-apis.propertykey_2.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.memberexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

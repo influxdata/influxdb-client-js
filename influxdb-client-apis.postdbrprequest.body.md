@@ -6,7 +6,7 @@
 
 The database retention policy mapping to add
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: DBRPCreate;

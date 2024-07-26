@@ -6,7 +6,7 @@
 
 Retrieve a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDBRPsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDBRPsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise<DBRPGet>;
@@ -14,12 +14,56 @@ getDBRPsID(request: GetDBRPsIDRequest, requestOptions?: RequestOptions): Promise
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
 

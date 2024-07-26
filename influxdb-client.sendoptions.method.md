@@ -6,7 +6,7 @@
 
 HTTP method (POST, PUT, GET, PATCH ...)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 method: string;

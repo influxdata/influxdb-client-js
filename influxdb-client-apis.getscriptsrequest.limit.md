@@ -6,7 +6,7 @@
 
 The maximum number of scripts to return. Default is `100`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: number;

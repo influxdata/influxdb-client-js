@@ -6,7 +6,7 @@
 
 returned value when reused
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 reusedValues: string[];

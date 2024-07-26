@@ -6,7 +6,7 @@
 
 The ID of the task to get logs for.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

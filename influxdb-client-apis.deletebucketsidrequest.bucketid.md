@@ -6,7 +6,7 @@
 
 Bucket ID. The ID of the bucket to delete.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

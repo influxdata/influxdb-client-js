@@ -6,7 +6,7 @@
 
 Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofMutex)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDebugPprofMutex(request?: GetDebugPprofMutexRequest, requestOptions?: RequestOptions): Promise<string>;
@@ -14,12 +14,56 @@ getDebugPprofMutex(request?: GetDebugPprofMutexRequest, requestOptions?: Request
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;string&gt;
 

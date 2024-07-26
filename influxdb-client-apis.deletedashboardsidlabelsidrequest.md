@@ -4,7 +4,7 @@
 
 ## DeleteDashboardsIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteDashboardsIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteDashboardsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.dashboardid.md) |  | string | The dashboard ID. |
-|  [labelID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dashboardID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The dashboard ID.
+
+
+</td></tr>
+<tr><td>
+
+[labelID](./influxdb-client-apis.deletedashboardsidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+</tbody></table>

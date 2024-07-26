@@ -4,7 +4,7 @@
 
 ## ApplyTemplateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ApplyTemplateRequest 
@@ -12,7 +12,44 @@ interface ApplyTemplateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.applytemplaterequest.body.md) |  | [TemplateApply](./influxdb-client-apis.templateapply.md) | Parameters for applying templates. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.applytemplaterequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TemplateApply](./influxdb-client-apis.templateapply.md)
+
+
+</td><td>
+
+Parameters for applying templates.
+
+
+</td></tr>
+</tbody></table>

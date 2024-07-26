@@ -6,7 +6,7 @@
 
 The ID of creator used to create this notification rule.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly ownerID?: string;

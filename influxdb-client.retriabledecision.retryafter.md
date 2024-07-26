@@ -6,12 +6,12 @@
 
 Get the delay in milliseconds to retry the action.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retryAfter(): number;
 ```
-<b>Returns:</b>
+**Returns:**
 
 number
 

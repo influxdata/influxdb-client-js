@@ -6,7 +6,7 @@
 
 Database info serialized as protobuf.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: string;

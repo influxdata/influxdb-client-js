@@ -4,7 +4,7 @@
 
 ## IndexExpression.array property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 array?: Expression;

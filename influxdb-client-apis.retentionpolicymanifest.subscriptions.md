@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest.subscriptions property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 subscriptions: SubscriptionManifests;

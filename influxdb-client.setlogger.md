@@ -6,7 +6,7 @@
 
 Sets custom logger.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function setLogger(logger: Logger): Logger;
@@ -14,11 +14,40 @@ declare function setLogger(logger: Logger): Logger;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  logger | [Logger](./influxdb-client.logger.md) | logger to use |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+logger
+
+
+</td><td>
+
+[Logger](./influxdb-client.logger.md)
+
+
+</td><td>
+
+logger to use
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Logger](./influxdb-client.logger.md)
 

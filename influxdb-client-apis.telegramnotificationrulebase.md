@@ -4,7 +4,7 @@
 
 ## TelegramNotificationRuleBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TelegramNotificationRuleBase 
@@ -12,10 +12,101 @@ interface TelegramNotificationRuleBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [disableWebPagePreview?](./influxdb-client-apis.telegramnotificationrulebase.disablewebpagepreview.md) |  | boolean | <i>(Optional)</i> Disables preview of web links in the sent messages when "true". Defaults to "false". |
-|  [messageTemplate](./influxdb-client-apis.telegramnotificationrulebase.messagetemplate.md) |  | string | The message template as a flux interpolated string. |
-|  [parseMode?](./influxdb-client-apis.telegramnotificationrulebase.parsemode.md) |  | 'MarkdownV2' \| 'HTML' \| 'Markdown' | <i>(Optional)</i> Parse mode of the message text per https://core.telegram.org/bots/api\#formatting-options. Defaults to "MarkdownV2". |
-|  [type](./influxdb-client-apis.telegramnotificationrulebase.type.md) |  | 'telegram' | The discriminator between other types of notification rules is "telegram". |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[disableWebPagePreview?](./influxdb-client-apis.telegramnotificationrulebase.disablewebpagepreview.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Disables preview of web links in the sent messages when "true". Defaults to "false".
+
+
+</td></tr>
+<tr><td>
+
+[messageTemplate](./influxdb-client-apis.telegramnotificationrulebase.messagetemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The message template as a flux interpolated string.
+
+
+</td></tr>
+<tr><td>
+
+[parseMode?](./influxdb-client-apis.telegramnotificationrulebase.parsemode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'MarkdownV2' \| 'HTML' \| 'Markdown'
+
+
+</td><td>
+
+_(Optional)_ Parse mode of the message text per https://core.telegram.org/bots/api\#formatting-options. Defaults to "MarkdownV2".
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.telegramnotificationrulebase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'telegram'
+
+
+</td><td>
+
+The discriminator between other types of notification rules is "telegram".
+
+
+</td></tr>
+</tbody></table>

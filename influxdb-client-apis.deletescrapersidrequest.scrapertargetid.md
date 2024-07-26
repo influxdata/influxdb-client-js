@@ -6,7 +6,7 @@
 
 The identifier of the scraper target.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scraperTargetID: string;

@@ -6,7 +6,7 @@
 
 Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetPing)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getPing(request?: GetPingRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ getPing(request?: GetPingRequest, requestOptions?: RequestOptions): Promise<void
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetPingRequest](./influxdb-client-apis.getpingrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetPingRequest](./influxdb-client-apis.getpingrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

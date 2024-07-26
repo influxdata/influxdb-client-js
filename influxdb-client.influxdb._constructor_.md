@@ -6,7 +6,7 @@
 
 Creates influxdb client options from an options object or url.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(options: ClientOptions | string);
@@ -14,7 +14,36 @@ constructor(options: ClientOptions | string);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  options | [ClientOptions](./influxdb-client.clientoptions.md) \| string | client options |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+options
+
+
+</td><td>
+
+[ClientOptions](./influxdb-client.clientoptions.md) \| string
+
+
+</td><td>
+
+client options
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Duration.magnitude property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 magnitude?: number;

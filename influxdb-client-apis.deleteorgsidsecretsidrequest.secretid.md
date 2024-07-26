@@ -6,7 +6,7 @@
 
 The secret ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 secretID: string;

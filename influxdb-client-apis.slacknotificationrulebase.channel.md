@@ -4,7 +4,7 @@
 
 ## SlackNotificationRuleBase.channel property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 channel?: string;

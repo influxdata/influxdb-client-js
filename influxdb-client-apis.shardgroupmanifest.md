@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ShardGroupManifest 
@@ -12,12 +12,131 @@ interface ShardGroupManifest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [deletedAt?](./influxdb-client-apis.shardgroupmanifest.deletedat.md) |  | string | <i>(Optional)</i> |
-|  [endTime](./influxdb-client-apis.shardgroupmanifest.endtime.md) |  | string |  |
-|  [id](./influxdb-client-apis.shardgroupmanifest.id.md) |  | number |  |
-|  [shards](./influxdb-client-apis.shardgroupmanifest.shards.md) |  | [ShardManifests](./influxdb-client-apis.shardmanifests.md) |  |
-|  [startTime](./influxdb-client-apis.shardgroupmanifest.starttime.md) |  | string |  |
-|  [truncatedAt?](./influxdb-client-apis.shardgroupmanifest.truncatedat.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deletedAt?](./influxdb-client-apis.shardgroupmanifest.deletedat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[endTime](./influxdb-client-apis.shardgroupmanifest.endtime.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[id](./influxdb-client-apis.shardgroupmanifest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shards](./influxdb-client-apis.shardgroupmanifest.shards.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ShardManifests](./influxdb-client-apis.shardmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[startTime](./influxdb-client-apis.shardgroupmanifest.starttime.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[truncatedAt?](./influxdb-client-apis.shardgroupmanifest.truncatedat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

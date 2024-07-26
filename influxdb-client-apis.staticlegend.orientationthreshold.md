@@ -4,7 +4,7 @@
 
 ## StaticLegend.orientationThreshold property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orientationThreshold?: number;

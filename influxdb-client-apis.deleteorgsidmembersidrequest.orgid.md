@@ -6,7 +6,7 @@
 
 The ID of the organization to remove a user from.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

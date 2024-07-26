@@ -4,7 +4,7 @@
 
 ## GetSourcesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetSourcesIDRequest 
@@ -12,7 +12,44 @@ interface GetSourcesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [sourceID](./influxdb-client-apis.getsourcesidrequest.sourceid.md) |  | string | The source ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[sourceID](./influxdb-client-apis.getsourcesidrequest.sourceid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The source ID.
+
+
+</td></tr>
+</tbody></table>

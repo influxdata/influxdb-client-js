@@ -4,7 +4,7 @@
 
 ## StatusRule.count property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 count?: number;

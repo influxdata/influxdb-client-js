@@ -6,7 +6,7 @@
 
 convertTime serializes Point's timestamp to a line protocol value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 convertTime?: (value: string | number | Date | undefined) => string | undefined;

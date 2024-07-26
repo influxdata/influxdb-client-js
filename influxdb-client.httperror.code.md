@@ -6,7 +6,7 @@
 
 application error code, when available
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 code: string | undefined;

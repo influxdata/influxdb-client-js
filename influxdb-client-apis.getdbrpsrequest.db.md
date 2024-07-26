@@ -6,7 +6,7 @@
 
 Specifies the database to filter on
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 db?: string;

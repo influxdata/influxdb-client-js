@@ -4,7 +4,7 @@
 
 ## MetadataBackup.buckets property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 buckets: BucketMetadataManifests;

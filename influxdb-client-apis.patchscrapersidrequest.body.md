@@ -6,7 +6,7 @@
 
 Scraper target update to apply
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: ScraperTargetRequest;

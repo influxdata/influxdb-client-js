@@ -6,7 +6,7 @@
 
 The ID of the task to retrieve owners for.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

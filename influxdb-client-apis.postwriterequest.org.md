@@ -14,7 +14,7 @@ The destination organization for writes. InfluxDB writes all points in the batch
 
 - Requires either `org` or `orgID`<!-- -->. - InfluxDB writes all points in the batch to this organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org: string;

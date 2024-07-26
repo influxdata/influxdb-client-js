@@ -4,7 +4,7 @@
 
 ## StatusRule.previousLevel property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 previousLevel?: RuleStatusLevel;

@@ -6,7 +6,7 @@
 
 The notification rule ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ruleID: string;

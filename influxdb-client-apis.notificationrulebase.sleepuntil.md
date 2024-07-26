@@ -4,7 +4,7 @@
 
 ## NotificationRuleBase.sleepUntil property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sleepUntil?: string;

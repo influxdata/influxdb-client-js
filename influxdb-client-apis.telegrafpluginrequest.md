@@ -4,7 +4,7 @@
 
 ## TelegrafPluginRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TelegrafPluginRequest 
@@ -12,12 +12,139 @@ interface TelegrafPluginRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [config?](./influxdb-client-apis.telegrafpluginrequest.config.md) |  | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.telegrafpluginrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [metadata?](./influxdb-client-apis.telegrafpluginrequest.metadata.md) |  | { buckets?: string\[\]; } | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.telegrafpluginrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.telegrafpluginrequest.orgid.md) |  | string | <i>(Optional)</i> |
-|  [plugins?](./influxdb-client-apis.telegrafpluginrequest.plugins.md) |  | Array&lt;{ type?: string; name?: string; alias?: string; description?: string; config?: string; }&gt; | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[config?](./influxdb-client-apis.telegrafpluginrequest.config.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.telegrafpluginrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[metadata?](./influxdb-client-apis.telegrafpluginrequest.metadata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ buckets?: string\[\]; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.telegrafpluginrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.telegrafpluginrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[plugins?](./influxdb-client-apis.telegrafpluginrequest.plugins.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;{ type?: string; name?: string; alias?: string; description?: string; config?: string; }&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

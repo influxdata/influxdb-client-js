@@ -4,7 +4,7 @@
 
 ## GetReplicationsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetReplicationsRequest 
@@ -12,10 +12,101 @@ interface GetReplicationsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [localBucketID?](./influxdb-client-apis.getreplicationsrequest.localbucketid.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.getreplicationsrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getreplicationsrequest.orgid.md) |  | string | The organization ID. |
-|  [remoteID?](./influxdb-client-apis.getreplicationsrequest.remoteid.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[localBucketID?](./influxdb-client-apis.getreplicationsrequest.localbucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.getreplicationsrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.getreplicationsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The organization ID.
+
+
+</td></tr>
+<tr><td>
+
+[remoteID?](./influxdb-client-apis.getreplicationsrequest.remoteid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

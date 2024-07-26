@@ -4,7 +4,7 @@
 
 ## PostTasksIDRunsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTasksIDRunsRequest 
@@ -12,8 +12,61 @@ interface PostTasksIDRunsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidrunsrequest.body.md) |  | [RunManually](./influxdb-client-apis.runmanually.md) | entity body |
-|  [taskID](./influxdb-client-apis.posttasksidrunsrequest.taskid.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttasksidrunsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RunManually](./influxdb-client-apis.runmanually.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.posttasksidrunsrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

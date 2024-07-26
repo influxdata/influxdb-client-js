@@ -4,7 +4,7 @@
 
 ## PostOrgsIDOwnersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostOrgsIDOwnersRequest 
@@ -12,8 +12,63 @@ interface PostOrgsIDOwnersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | The user to add as an owner of the organization. |
-|  [orgID](./influxdb-client-apis.postorgsidownersrequest.orgid.md) |  | string | The ID of the organization that you want to add an owner for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postorgsidownersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+The user to add as an owner of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.postorgsidownersrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization that you want to add an owner for.
+
+
+</td></tr>
+</tbody></table>

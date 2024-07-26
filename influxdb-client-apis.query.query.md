@@ -6,7 +6,7 @@
 
 The query script to execute.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 query: string;

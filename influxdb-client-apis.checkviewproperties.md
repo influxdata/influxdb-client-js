@@ -4,7 +4,7 @@
 
 ## CheckViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CheckViewProperties 
@@ -12,17 +12,226 @@ interface CheckViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [adaptiveZoomHide?](./influxdb-client-apis.checkviewproperties.adaptivezoomhide.md) |  | boolean | <i>(Optional)</i> |
-|  [check?](./influxdb-client-apis.checkviewproperties.check.md) |  | [Check](./influxdb-client-apis.check.md) | <i>(Optional)</i> |
-|  [checkID](./influxdb-client-apis.checkviewproperties.checkid.md) |  | string |  |
-|  [colors](./influxdb-client-apis.checkviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [legendColorizeRows?](./influxdb-client-apis.checkviewproperties.legendcolorizerows.md) |  | boolean | <i>(Optional)</i> |
-|  [legendHide?](./influxdb-client-apis.checkviewproperties.legendhide.md) |  | boolean | <i>(Optional)</i> |
-|  [legendOpacity?](./influxdb-client-apis.checkviewproperties.legendopacity.md) |  | number | <i>(Optional)</i> |
-|  [legendOrientationThreshold?](./influxdb-client-apis.checkviewproperties.legendorientationthreshold.md) |  | number | <i>(Optional)</i> |
-|  [queries](./influxdb-client-apis.checkviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.checkviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [type](./influxdb-client-apis.checkviewproperties.type.md) |  | 'check' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[adaptiveZoomHide?](./influxdb-client-apis.checkviewproperties.adaptivezoomhide.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[check?](./influxdb-client-apis.checkviewproperties.check.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Check](./influxdb-client-apis.check.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[checkID](./influxdb-client-apis.checkviewproperties.checkid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[colors](./influxdb-client-apis.checkviewproperties.colors.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\]
+
+
+</td><td>
+
+Colors define color encoding of data into a visualization
+
+
+</td></tr>
+<tr><td>
+
+[legendColorizeRows?](./influxdb-client-apis.checkviewproperties.legendcolorizerows.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[legendHide?](./influxdb-client-apis.checkviewproperties.legendhide.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[legendOpacity?](./influxdb-client-apis.checkviewproperties.legendopacity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[legendOrientationThreshold?](./influxdb-client-apis.checkviewproperties.legendorientationthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[queries](./influxdb-client-apis.checkviewproperties.queries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.checkviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.checkviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'check'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

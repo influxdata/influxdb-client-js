@@ -4,7 +4,7 @@
 
 ## RestoredBucketMappings.shardMappings property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardMappings: BucketShardMappings;

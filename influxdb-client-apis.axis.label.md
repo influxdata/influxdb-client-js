@@ -6,7 +6,7 @@
 
 Description of the axis.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 label?: string;

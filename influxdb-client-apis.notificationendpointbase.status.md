@@ -6,7 +6,7 @@
 
 The status of the endpoint.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

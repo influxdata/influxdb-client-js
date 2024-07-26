@@ -4,7 +4,7 @@
 
 ## GetLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetLabelsRequest 
@@ -12,7 +12,44 @@ interface GetLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID?](./influxdb-client-apis.getlabelsrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID?](./influxdb-client-apis.getlabelsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The organization ID.
+
+
+</td></tr>
+</tbody></table>

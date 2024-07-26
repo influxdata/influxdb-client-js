@@ -4,7 +4,7 @@
 
 ## PostQueryAnalyzeRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostQueryAnalyzeRequest 
@@ -12,7 +12,44 @@ interface PostQueryAnalyzeRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryanalyzerequest.body.md) |  | [Query](./influxdb-client-apis.query.md) | Flux query to analyze |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postqueryanalyzerequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Query](./influxdb-client-apis.query.md)
+
+
+</td><td>
+
+Flux query to analyze
+
+
+</td></tr>
+</tbody></table>

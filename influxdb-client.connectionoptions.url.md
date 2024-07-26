@@ -6,7 +6,7 @@
 
 base URL
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 url: string;

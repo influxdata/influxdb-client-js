@@ -4,7 +4,7 @@
 
 ## Observer.next property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 next: ObserverNext<T>;

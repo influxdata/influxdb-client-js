@@ -6,7 +6,7 @@
 
 If true, validate the replication, but don't save it.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 validate?: any;

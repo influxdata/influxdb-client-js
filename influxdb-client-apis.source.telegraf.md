@@ -4,7 +4,7 @@
 
 ## Source.telegraf property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 telegraf?: string;

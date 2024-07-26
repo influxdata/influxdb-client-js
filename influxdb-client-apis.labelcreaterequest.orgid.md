@@ -4,7 +4,7 @@
 
 ## LabelCreateRequest.orgID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

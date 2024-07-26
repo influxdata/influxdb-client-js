@@ -6,7 +6,7 @@
 
 WriteFailed is called to inform about write errors.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempt: number, expires: number): Promise<void> | void;
@@ -14,15 +14,104 @@ writeFailed(this: WriteApi, error: Error, lines: Array<string>, attempt: number,
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API that failed |
-|  error | Error | write error |
-|  lines | Array&lt;string&gt; | failed lines |
-|  attempt | number | count of already failed attempts to write the lines (1 ... maxRetries+1) |
-|  expires | number | expiration time for the lines to be retried in millis since epoch |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[WriteApi](./influxdb-client.writeapi.md)
+
+
+</td><td>
+
+the instance of the API that failed
+
+
+</td></tr>
+<tr><td>
+
+error
+
+
+</td><td>
+
+Error
+
+
+</td><td>
+
+write error
+
+
+</td></tr>
+<tr><td>
+
+lines
+
+
+</td><td>
+
+Array&lt;string&gt;
+
+
+</td><td>
+
+failed lines
+
+
+</td></tr>
+<tr><td>
+
+attempt
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+count of already failed attempts to write the lines (1 ... maxRetries+1)
+
+
+</td></tr>
+<tr><td>
+
+expires
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+expiration time for the lines to be retried in millis since epoch
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt; \| void
 

@@ -4,7 +4,7 @@
 
 ## GetSourcesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetSourcesRequest 
@@ -12,7 +12,44 @@ interface GetSourcesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [org?](./influxdb-client-apis.getsourcesrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[org?](./influxdb-client-apis.getsourcesrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## LatLonColumns.lat property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lat: LatLonColumn;

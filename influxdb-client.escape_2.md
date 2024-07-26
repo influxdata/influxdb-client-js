@@ -6,7 +6,7 @@
 
 Provides functions escape specific parts in InfluxDB line protocol.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 escape: {

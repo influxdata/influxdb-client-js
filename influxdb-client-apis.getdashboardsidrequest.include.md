@@ -6,7 +6,7 @@
 
 If `properties`<!-- -->, includes the cell view properties in the response.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 include?: string;

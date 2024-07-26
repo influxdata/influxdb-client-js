@@ -6,7 +6,7 @@
 
 Notification rule to create
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: PostNotificationRule;

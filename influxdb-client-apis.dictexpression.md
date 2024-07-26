@@ -6,7 +6,7 @@
 
 Used to create and directly specify the elements of a dictionary
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DictExpression 
@@ -14,8 +14,63 @@ interface DictExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [elements?](./influxdb-client-apis.dictexpression.elements.md) |  | [DictItem](./influxdb-client-apis.dictitem.md)<!-- -->\[\] | <i>(Optional)</i> Elements of the dictionary |
-|  [type?](./influxdb-client-apis.dictexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[elements?](./influxdb-client-apis.dictexpression.elements.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DictItem](./influxdb-client-apis.dictitem.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Elements of the dictionary
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.dictexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

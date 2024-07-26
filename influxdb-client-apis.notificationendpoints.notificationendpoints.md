@@ -4,7 +4,7 @@
 
 ## NotificationEndpoints.notificationEndpoints property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 notificationEndpoints?: NotificationEndpoint[];

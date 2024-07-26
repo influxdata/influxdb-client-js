@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest.endTime property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 endTime: string;

@@ -4,7 +4,7 @@
 
 ## RunManually interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RunManually 
@@ -12,7 +12,44 @@ interface RunManually
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scheduledFor?](./influxdb-client-apis.runmanually.scheduledfor.md) |  | string | <i>(Optional)</i> The time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) used for the run's <code>now</code> option. Default is the server \_now\_ time. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scheduledFor?](./influxdb-client-apis.runmanually.scheduledfor.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) used for the run's `now` option. Default is the server \_now\_ time.
+
+
+</td></tr>
+</tbody></table>

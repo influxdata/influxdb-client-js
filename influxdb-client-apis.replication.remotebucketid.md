@@ -4,7 +4,7 @@
 
 ## Replication.remoteBucketID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remoteBucketID?: string;

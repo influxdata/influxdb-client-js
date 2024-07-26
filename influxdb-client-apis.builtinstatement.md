@@ -6,7 +6,7 @@
 
 Declares a builtin identifier and its type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BuiltinStatement 
@@ -14,8 +14,63 @@ interface BuiltinStatement
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.builtinstatement.id.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.builtinstatement.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.builtinstatement.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Identifier](./influxdb-client-apis.identifier.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.builtinstatement.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

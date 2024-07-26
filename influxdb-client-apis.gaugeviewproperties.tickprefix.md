@@ -4,7 +4,7 @@
 
 ## GaugeViewProperties.tickPrefix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tickPrefix: string;

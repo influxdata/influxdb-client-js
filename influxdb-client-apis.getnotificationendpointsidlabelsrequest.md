@@ -4,7 +4,7 @@
 
 ## GetNotificationEndpointsIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetNotificationEndpointsIDLabelsRequest 
@@ -12,7 +12,44 @@ interface GetNotificationEndpointsIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [endpointID](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.endpointid.md) |  | string | The notification endpoint ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[endpointID](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.endpointid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification endpoint ID.
+
+
+</td></tr>
+</tbody></table>

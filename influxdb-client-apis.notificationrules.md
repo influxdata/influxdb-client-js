@@ -4,7 +4,7 @@
 
 ## NotificationRules interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface NotificationRules 
@@ -12,8 +12,63 @@ interface NotificationRules
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.notificationrules.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
-|  [notificationRules?](./influxdb-client-apis.notificationrules.notificationrules.md) |  | [NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.notificationrules.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[notificationRules?](./influxdb-client-apis.notificationrules.notificationrules.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

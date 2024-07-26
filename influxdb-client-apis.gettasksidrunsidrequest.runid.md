@@ -6,7 +6,7 @@
 
 The ID of the run to retrieve.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 runID: string;

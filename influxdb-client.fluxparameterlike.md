@@ -6,7 +6,7 @@
 
 A flux parameter can print its (sanitized) flux value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxParameterLike 
@@ -14,7 +14,24 @@ interface FluxParameterLike
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [\[FLUX\_VALUE\]()](./influxdb-client.fluxparameterlike._flux_value_.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[\[FLUX\_VALUE\]()](./influxdb-client.fluxparameterlike._flux_value_.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

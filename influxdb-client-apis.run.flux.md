@@ -6,7 +6,7 @@
 
 Flux used for the task
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly flux?: string;

@@ -6,7 +6,7 @@
 
 Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchScrapersID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchScrapersID(request: PatchScrapersIDRequest, requestOptions?: RequestOptions): Promise<ScraperTargetResponse>;
@@ -14,12 +14,56 @@ patchScrapersID(request: PatchScrapersIDRequest, requestOptions?: RequestOptions
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## PatchBucketRequest.retentionRules property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retentionRules?: PatchRetentionRules;

@@ -4,7 +4,7 @@
 
 ## PostOrgsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostOrgsRequest 
@@ -12,7 +12,44 @@ interface PostOrgsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postorgsrequest.body.md) |  | [PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md) | The organization to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postorgsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md)
+
+
+</td><td>
+
+The organization to create.
+
+
+</td></tr>
+</tbody></table>

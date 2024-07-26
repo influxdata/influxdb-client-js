@@ -6,7 +6,7 @@
 
 Retrieve a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getBucketsID(request: GetBucketsIDRequest, requestOptions?: RequestOptions): Promise<Bucket>;
@@ -14,12 +14,56 @@ getBucketsID(request: GetBucketsIDRequest, requestOptions?: RequestOptions): Pro
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetBucketsIDRequest](./influxdb-client-apis.getbucketsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetBucketsIDRequest](./influxdb-client-apis.getbucketsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Bucket](./influxdb-client-apis.bucket.md)<!-- -->&gt;
 

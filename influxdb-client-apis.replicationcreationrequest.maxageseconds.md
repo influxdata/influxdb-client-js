@@ -4,7 +4,7 @@
 
 ## ReplicationCreationRequest.maxAgeSeconds property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxAgeSeconds: number;

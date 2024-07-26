@@ -6,7 +6,7 @@
 
 Indicates whether decimal point setting should be enforced
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 isEnforced?: boolean;

@@ -4,7 +4,7 @@
 
 ## GetBucketsIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetBucketsIDLabelsRequest 
@@ -12,7 +12,44 @@ interface GetBucketsIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidlabelsrequest.bucketid.md) |  | string | The ID of the bucket to retrieve labels for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.getbucketsidlabelsrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the bucket to retrieve labels for.
+
+
+</td></tr>
+</tbody></table>

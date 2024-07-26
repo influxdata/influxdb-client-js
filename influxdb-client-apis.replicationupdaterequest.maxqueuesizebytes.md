@@ -4,7 +4,7 @@
 
 ## ReplicationUpdateRequest.maxQueueSizeBytes property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxQueueSizeBytes?: number;

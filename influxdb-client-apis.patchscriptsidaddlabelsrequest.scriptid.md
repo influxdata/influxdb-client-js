@@ -6,7 +6,7 @@
 
 The script ID. Specifies the script to add labels to.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scriptID: string;

@@ -6,7 +6,7 @@
 
 Add a member to an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostOrgsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostOrgsIDMembers)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postOrgsIDMembers(request: PostOrgsIDMembersRequest, requestOptions?: RequestOptions): Promise<ResourceMember>;
@@ -14,12 +14,56 @@ postOrgsIDMembers(request: PostOrgsIDMembersRequest, requestOptions?: RequestOpt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ResourceMember](./influxdb-client-apis.resourcemember.md)<!-- -->&gt;
 

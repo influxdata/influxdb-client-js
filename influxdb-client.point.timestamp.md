@@ -10,7 +10,7 @@ Beware that the current time in nanoseconds can't precisely fit into a JS number
 
 Note that InfluxDB requires the timestamp to fit into int64 data type.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 timestamp(value: Date | number | string | undefined): Point;
@@ -18,11 +18,40 @@ timestamp(value: Date | number | string | undefined): Point;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | Date \| number \| string \| undefined | point time |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+Date \| number \| string \| undefined
+
+
+</td><td>
+
+point time
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Point](./influxdb-client.point.md)
 

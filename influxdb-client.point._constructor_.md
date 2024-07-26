@@ -6,7 +6,7 @@
 
 Create a new Point with specified a measurement name.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(measurementName?: string);
@@ -14,7 +14,36 @@ constructor(measurementName?: string);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  measurementName | string | <i>(Optional)</i> the measurement name |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+measurementName
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ the measurement name
+
+
+</td></tr>
+</tbody></table>

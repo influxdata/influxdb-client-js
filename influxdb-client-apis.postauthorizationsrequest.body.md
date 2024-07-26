@@ -6,7 +6,7 @@
 
 The authorization to create.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AuthorizationPostRequest;

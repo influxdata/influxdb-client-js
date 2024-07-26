@@ -6,7 +6,7 @@
 
 Templates API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class TemplatesAPI 
@@ -14,14 +14,82 @@ declare class TemplatesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.templatesapi._constructor_.md) |  | Creates TemplatesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.templatesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates TemplatesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [applyTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.applytemplate.md) |  | Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ApplyTemplate) |
-|  [exportTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.exporttemplate.md) |  | Export a new template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ExportTemplate) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[applyTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.applytemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ApplyTemplate)
+
+
+</td></tr>
+<tr><td>
+
+[exportTemplate(request, requestOptions)](./influxdb-client-apis.templatesapi.exporttemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Export a new template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ExportTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ExportTemplate)
+
+
+</td></tr>
+</tbody></table>

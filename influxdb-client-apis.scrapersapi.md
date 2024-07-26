@@ -6,7 +6,7 @@
 
 Scrapers API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ScrapersAPI 
@@ -14,26 +14,250 @@ declare class ScrapersAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.scrapersapi._constructor_.md) |  | Creates ScrapersAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.scrapersapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ScrapersAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersid.md) |  | Delete a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersID) |
-|  [deleteScrapersIDLabelsID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidlabelsid.md) |  | Delete a label from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDLabelsID) |
-|  [deleteScrapersIDMembersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidmembersid.md) |  | Remove a member from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDMembersID) |
-|  [deleteScrapersIDOwnersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidownersid.md) |  | Remove an owner from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDOwnersID) |
-|  [getScrapers(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapers.md) |  | List all scraper targets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapers) |
-|  [getScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersid.md) |  | Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersID) |
-|  [getScrapersIDLabels(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidlabels.md) |  | List all labels for a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDLabels) |
-|  [getScrapersIDMembers(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidmembers.md) |  | List all users with member privileges for a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDMembers) |
-|  [getScrapersIDOwners(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidowners.md) |  | List all owners of a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDOwners) |
-|  [patchScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.patchscrapersid.md) |  | Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchScrapersID) |
-|  [postScrapers(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapers.md) |  | Create a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapers) |
-|  [postScrapersIDLabels(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidlabels.md) |  | Add a label to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDLabels) |
-|  [postScrapersIDMembers(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidmembers.md) |  | Add a member to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDMembers) |
-|  [postScrapersIDOwners(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidowners.md) |  | Add an owner to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDOwners) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteScrapersIDLabelsID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteScrapersIDMembersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidmembersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove a member from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDMembersID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteScrapersIDOwnersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.deletescrapersidownersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove an owner from a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteScrapersIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteScrapersIDOwnersID)
+
+
+</td></tr>
+<tr><td>
+
+[getScrapers(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all scraper targets. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapers)
+
+
+</td></tr>
+<tr><td>
+
+[getScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersID)
+
+
+</td></tr>
+<tr><td>
+
+[getScrapersIDLabels(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getScrapersIDMembers(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all users with member privileges for a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[getScrapersIDOwners(request, requestOptions)](./influxdb-client-apis.scrapersapi.getscrapersidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all owners of a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetScrapersIDOwners)
+
+
+</td></tr>
+<tr><td>
+
+[patchScrapersID(request, requestOptions)](./influxdb-client-apis.scrapersapi.patchscrapersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchScrapersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchScrapersID)
+
+
+</td></tr>
+<tr><td>
+
+[postScrapers(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapers)
+
+
+</td></tr>
+<tr><td>
+
+[postScrapersIDLabels(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[postScrapersIDMembers(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a member to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[postScrapersIDOwners(request, requestOptions)](./influxdb-client-apis.scrapersapi.postscrapersidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add an owner to a scraper target. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostScrapersIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostScrapersIDOwners)
+
+
+</td></tr>
+</tbody></table>

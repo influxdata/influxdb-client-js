@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.legendHide property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 legendHide?: boolean;

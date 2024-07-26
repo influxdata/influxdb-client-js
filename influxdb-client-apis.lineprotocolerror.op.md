@@ -6,7 +6,7 @@
 
 Describes the logical code operation when the error occurred. Useful for debugging.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly op?: string;

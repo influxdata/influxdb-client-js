@@ -4,7 +4,7 @@
 
 ## PostScrapersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostScrapersRequest 
@@ -12,7 +12,44 @@ interface PostScrapersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersrequest.body.md) |  | [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) | Scraper target to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postscrapersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)
+
+
+</td><td>
+
+Scraper target to create
+
+
+</td></tr>
+</tbody></table>

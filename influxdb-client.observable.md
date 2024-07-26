@@ -6,7 +6,7 @@
 
 An observable that aligns with the [TC39 observable proposal](https://github.com/tc39/proposal-observable) and can be consumed by other observable libraries like [rx js](https://github.com/ReactiveX/rxjs) or [zen-observable](https://github.com/zenparsing/zen-observable)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Observable<T> 
@@ -14,10 +14,51 @@ interface Observable<T>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [\[Symbol.observable\]()](./influxdb-client.observable._symbol.observable_.md) |  |
-|  [subscribe()](./influxdb-client.observable.subscribe.md) |  |
-|  [subscribe(observer)](./influxdb-client.observable.subscribe_1.md) |  |
-|  [subscribe(next, error, complete)](./influxdb-client.observable.subscribe_2.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[\[Symbol.observable\]()](./influxdb-client.observable._symbol.observable_.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[subscribe()](./influxdb-client.observable.subscribe.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[subscribe(observer)](./influxdb-client.observable.subscribe_1.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[subscribe(next, error, complete)](./influxdb-client.observable.subscribe_2.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

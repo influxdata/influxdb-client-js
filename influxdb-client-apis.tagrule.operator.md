@@ -4,7 +4,7 @@
 
 ## TagRule.operator property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 operator?: 'equal' | 'notequal' | 'equalregex' | 'notequalregex';

@@ -4,7 +4,7 @@
 
 ## SlackNotificationRuleBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SlackNotificationRuleBase 
@@ -12,9 +12,78 @@ interface SlackNotificationRuleBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [channel?](./influxdb-client-apis.slacknotificationrulebase.channel.md) |  | string | <i>(Optional)</i> |
-|  [messageTemplate](./influxdb-client-apis.slacknotificationrulebase.messagetemplate.md) |  | string |  |
-|  [type](./influxdb-client-apis.slacknotificationrulebase.type.md) |  | 'slack' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[channel?](./influxdb-client-apis.slacknotificationrulebase.channel.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[messageTemplate](./influxdb-client-apis.slacknotificationrulebase.messagetemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.slacknotificationrulebase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'slack'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

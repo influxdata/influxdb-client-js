@@ -4,7 +4,7 @@
 
 ## LinePlusSingleStatProperties.hoverDimension property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 hoverDimension?: 'auto' | 'x' | 'y' | 'xy';

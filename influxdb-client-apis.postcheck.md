@@ -4,10 +4,10 @@
 
 ## PostCheck type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type PostCheck = CheckDiscriminator;
 ```
-<b>References:</b> [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
+**References:** [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
 

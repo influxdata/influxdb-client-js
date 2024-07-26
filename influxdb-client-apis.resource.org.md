@@ -6,7 +6,7 @@
 
 Optional: The name of the organization with `orgID`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

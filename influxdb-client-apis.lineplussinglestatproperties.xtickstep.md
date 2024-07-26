@@ -4,7 +4,7 @@
 
 ## LinePlusSingleStatProperties.xTickStep property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xTickStep?: number;

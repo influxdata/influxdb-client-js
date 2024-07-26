@@ -4,7 +4,7 @@
 
 ## TagRule interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TagRule 
@@ -12,9 +12,82 @@ interface TagRule
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [key?](./influxdb-client-apis.tagrule.key.md) |  | string | <i>(Optional)</i> |
-|  [operator?](./influxdb-client-apis.tagrule.operator.md) |  | 'equal' \| 'notequal' \| 'equalregex' \| 'notequalregex' | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.tagrule.value.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[key?](./influxdb-client-apis.tagrule.key.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[operator?](./influxdb-client-apis.tagrule.operator.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'equal' \| 'notequal' \| 'equalregex' \| 'notequalregex'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[value?](./influxdb-client-apis.tagrule.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

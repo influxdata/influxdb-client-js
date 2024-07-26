@@ -4,7 +4,7 @@
 
 ## Source.sharedSecret property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sharedSecret?: string;

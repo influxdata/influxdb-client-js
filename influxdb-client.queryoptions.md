@@ -6,7 +6,7 @@
 
 QueryOptions contains QueryApi configuration options.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface QueryOptions 
@@ -14,11 +14,120 @@ interface QueryOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [gzip?](./influxdb-client.queryoptions.gzip.md) |  | boolean | <i>(Optional)</i> Requests gzip encoded response. |
-|  [headers?](./influxdb-client.queryoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> HTTP headers that will be sent with every query request. |
-|  [now?](./influxdb-client.queryoptions.now.md) |  | () =&gt; string | <i>(Optional)</i> Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned, for example <code>new Date().toISOString()</code>. |
-|  [org](./influxdb-client.queryoptions.org.md) |  | string | Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. |
-|  [type?](./influxdb-client.queryoptions.type.md) |  | 'flux' | <i>(Optional)</i> Type of the query, default is "flux" |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[gzip?](./influxdb-client.queryoptions.gzip.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Requests gzip encoded response.
+
+
+</td></tr>
+<tr><td>
+
+[headers?](./influxdb-client.queryoptions.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+_(Optional)_ HTTP headers that will be sent with every query request.
+
+
+</td></tr>
+<tr><td>
+
+[now?](./influxdb-client.queryoptions.now.md)
+
+
+</td><td>
+
+
+</td><td>
+
+() =&gt; string
+
+
+</td><td>
+
+_(Optional)_ Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned, for example `new Date().toISOString()`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[org](./influxdb-client.queryoptions.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably.
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client.queryoptions.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'flux'
+
+
+</td><td>
+
+_(Optional)_ Type of the query, default is "flux"
+
+
+</td></tr>
+</tbody></table>

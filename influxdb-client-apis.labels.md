@@ -4,10 +4,10 @@
 
 ## Labels type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Labels = Label[];
 ```
-<b>References:</b> [Label](./influxdb-client-apis.label.md)
+**References:** [Label](./influxdb-client-apis.label.md)
 

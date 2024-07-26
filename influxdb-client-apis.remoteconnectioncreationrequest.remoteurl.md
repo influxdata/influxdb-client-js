@@ -4,7 +4,7 @@
 
 ## RemoteConnectionCreationRequest.remoteURL property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remoteURL: string;

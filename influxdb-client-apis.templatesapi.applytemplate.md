@@ -6,7 +6,7 @@
 
 Apply or dry-run a template. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ApplyTemplate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ApplyTemplate)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 applyTemplate(request: ApplyTemplateRequest, requestOptions?: RequestOptions): Promise<TemplateSummary>;
@@ -14,12 +14,56 @@ applyTemplate(request: ApplyTemplateRequest, requestOptions?: RequestOptions): P
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[TemplateSummary](./influxdb-client-apis.templatesummary.md)<!-- -->&gt;
 

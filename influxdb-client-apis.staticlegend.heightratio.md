@@ -4,7 +4,7 @@
 
 ## StaticLegend.heightRatio property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 heightRatio?: number;

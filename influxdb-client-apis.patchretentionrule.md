@@ -4,7 +4,7 @@
 
 ## PatchRetentionRule interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchRetentionRule 
@@ -12,9 +12,94 @@ interface PatchRetentionRule
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [everySeconds](./influxdb-client-apis.patchretentionrule.everyseconds.md) |  | number | The number of seconds to keep data. Default duration is <code>2592000</code> (30 days). <code>0</code> represents infinite retention. |
-|  [shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md) |  | number | <p><i>(Optional)</i> The [shard group duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#shard)<!-- -->. The number of seconds that each shard group covers.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>shardGroupDurationsSeconds</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.</p><p>\#\#\#\# Related guides</p><p>- InfluxDB [shards and shard groups](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/)</p> |
-|  [type?](./influxdb-client-apis.patchretentionrule.type.md) |  | 'expire' | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[everySeconds](./influxdb-client-apis.patchretentionrule.everyseconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The number of seconds to keep data. Default duration is `2592000` (30 days). `0` represents infinite retention.
+
+
+</td></tr>
+<tr><td>
+
+[shardGroupDurationSeconds?](./influxdb-client-apis.patchretentionrule.shardgroupdurationseconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The [shard group duration](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#shard)<!-- -->. The number of seconds that each shard group covers.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `shardGroupDurationsSeconds`<!-- -->.
+
+\#\#\#\# InfluxDB OSS
+
+- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.
+
+\#\#\#\# Related guides
+
+- InfluxDB [shards and shard groups](https://docs.influxdata.com/influxdb/v2.3/reference/internals/shards/)
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.patchretentionrule.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'expire'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

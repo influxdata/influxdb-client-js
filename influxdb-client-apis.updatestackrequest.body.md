@@ -6,7 +6,7 @@
 
 The stack to update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: {

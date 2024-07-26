@@ -4,7 +4,7 @@
 
 ## BandViewProperties.yTickStart property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yTickStart?: number;

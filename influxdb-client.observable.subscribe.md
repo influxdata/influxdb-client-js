@@ -4,12 +4,12 @@
 
 ## Observable.subscribe() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 subscribe(): Subscription;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [Subscription](./influxdb-client.subscription.md)
 

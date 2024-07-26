@@ -4,7 +4,7 @@
 
 ## Logs interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Logs 
@@ -12,7 +12,46 @@ interface Logs
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [events?](./influxdb-client-apis.logs.events.md) | <code>readonly</code> | [LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[events?](./influxdb-client-apis.logs.events.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[LogEvent](./influxdb-client-apis.logevent.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

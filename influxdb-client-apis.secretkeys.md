@@ -4,7 +4,7 @@
 
 ## SecretKeys interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SecretKeys 
@@ -12,7 +12,44 @@ interface SecretKeys
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [secrets?](./influxdb-client-apis.secretkeys.secrets.md) |  | string\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[secrets?](./influxdb-client-apis.secretkeys.secrets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

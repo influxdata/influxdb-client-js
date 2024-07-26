@@ -6,31 +6,170 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [acceptMaxTableLength(max)](./influxdb-client-giraffe.acceptmaxtablelength.md) | Creates an accept function that stops processing if the table reaches the specified max rows. |
-|  [createCollector(resolve, reject, tableFactory, tableOptions)](./influxdb-client-giraffe.createcollector.md) | Creates influxdb-client-js's FluxResultObserver that collects row results to a Table instance |
-|  [csvToFromFluxResult(csv, tableFactory, tableOptions)](./influxdb-client-giraffe.csvtofromfluxresult.md) | Transforms annotated CSV query response to Giraffe's FromFluxResult. |
-|  [csvToTable(csv, tableFactory, tableOptions)](./influxdb-client-giraffe.csvtotable.md) | Transforms annotated CSV query response to Giraffe's Table. |
-|  [queryToFromFluxResult(queryApi, query, tableFactory, tableOptions)](./influxdb-client-giraffe.querytofromfluxresult.md) | Executes a flux query and iterrativelly collects results into a Giraffe's FromFluxResult. |
-|  [queryToTable(queryApi, query, tableFactory, tableOptions)](./influxdb-client-giraffe.querytotable.md) | Executes a flux query and collects results into a Giraffe's Table. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[acceptMaxTableLength(max)](./influxdb-client-giraffe.acceptmaxtablelength.md)
+
+
+</td><td>
+
+Creates an accept function that stops processing if the table reaches the specified max rows.
+
+
+</td></tr>
+<tr><td>
+
+[createCollector(resolve, reject, tableFactory, tableOptions)](./influxdb-client-giraffe.createcollector.md)
+
+
+</td><td>
+
+Creates influxdb-client-js's FluxResultObserver that collects row results to a Table instance
+
+
+</td></tr>
+<tr><td>
+
+[csvToFromFluxResult(csv, tableFactory, tableOptions)](./influxdb-client-giraffe.csvtofromfluxresult.md)
+
+
+</td><td>
+
+Transforms annotated CSV query response to Giraffe's FromFluxResult.
+
+
+</td></tr>
+<tr><td>
+
+[csvToTable(csv, tableFactory, tableOptions)](./influxdb-client-giraffe.csvtotable.md)
+
+
+</td><td>
+
+Transforms annotated CSV query response to Giraffe's Table.
+
+
+</td></tr>
+<tr><td>
+
+[queryToFromFluxResult(queryApi, query, tableFactory, tableOptions)](./influxdb-client-giraffe.querytofromfluxresult.md)
+
+
+</td><td>
+
+Executes a flux query and iterrativelly collects results into a Giraffe's FromFluxResult.
+
+
+</td></tr>
+<tr><td>
+
+[queryToTable(queryApi, query, tableFactory, tableOptions)](./influxdb-client-giraffe.querytotable.md)
+
+
+</td><td>
+
+Executes a flux query and collects results into a Giraffe's Table.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [TableOptions](./influxdb-client-giraffe.tableoptions.md) | Contains parameters that optimize/drive creation of the query result Table. |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[TableOptions](./influxdb-client-giraffe.tableoptions.md)
+
+
+</td><td>
+
+Contains parameters that optimize/drive creation of the query result Table.
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [QUERY\_MAX\_TABLE\_LENGTH](./influxdb-client-giraffe.query_max_table_length.md) | QUERY\_MAX\_TABLE\_LENGTH is a default max table length, it can be overriden in TableOptions. |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[QUERY\_MAX\_TABLE\_LENGTH](./influxdb-client-giraffe.query_max_table_length.md)
+
+
+</td><td>
+
+QUERY\_MAX\_TABLE\_LENGTH is a default max table length, it can be overriden in TableOptions.
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md) | AcceptRowFunction allows to accept/reject specific rows or terminate processing. |
-|  [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | A type of a function that creates a new giraffe table of a specified length |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AcceptRowFunction](./influxdb-client-giraffe.acceptrowfunction.md)
+
+
+</td><td>
+
+AcceptRowFunction allows to accept/reject specific rows or terminate processing.
+
+
+</td></tr>
+<tr><td>
+
+[GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md)
+
+
+</td><td>
+
+A type of a function that creates a new giraffe table of a specified length
+
+
+</td></tr>
+</tbody></table>

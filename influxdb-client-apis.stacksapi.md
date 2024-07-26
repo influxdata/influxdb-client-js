@@ -6,7 +6,7 @@
 
 Stacks API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class StacksAPI 
@@ -14,18 +14,138 @@ declare class StacksAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.stacksapi._constructor_.md) |  | Creates StacksAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.stacksapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates StacksAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [createStack(request, requestOptions)](./influxdb-client-apis.stacksapi.createstack.md) |  | Create a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateStack) |
-|  [deleteStack(request, requestOptions)](./influxdb-client-apis.stacksapi.deletestack.md) |  | Delete a stack and associated resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteStack) |
-|  [listStacks(request, requestOptions)](./influxdb-client-apis.stacksapi.liststacks.md) |  | List installed stacks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ListStacks) |
-|  [readStack(request, requestOptions)](./influxdb-client-apis.stacksapi.readstack.md) |  | Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ReadStack) |
-|  [uninstallStack(request, requestOptions)](./influxdb-client-apis.stacksapi.uninstallstack.md) |  | Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UninstallStack) |
-|  [updateStack(request, requestOptions)](./influxdb-client-apis.stacksapi.updatestack.md) |  | Update a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UpdateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UpdateStack) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createStack(request, requestOptions)](./influxdb-client-apis.stacksapi.createstack.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateStack)
+
+
+</td></tr>
+<tr><td>
+
+[deleteStack(request, requestOptions)](./influxdb-client-apis.stacksapi.deletestack.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a stack and associated resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteStack)
+
+
+</td></tr>
+<tr><td>
+
+[listStacks(request, requestOptions)](./influxdb-client-apis.stacksapi.liststacks.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List installed stacks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ListStacks)
+
+
+</td></tr>
+<tr><td>
+
+[readStack(request, requestOptions)](./influxdb-client-apis.stacksapi.readstack.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ReadStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ReadStack)
+
+
+</td></tr>
+<tr><td>
+
+[uninstallStack(request, requestOptions)](./influxdb-client-apis.stacksapi.uninstallstack.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UninstallStack)
+
+
+</td></tr>
+<tr><td>
+
+[updateStack(request, requestOptions)](./influxdb-client-apis.stacksapi.updatestack.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UpdateStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UpdateStack)
+
+
+</td></tr>
+</tbody></table>

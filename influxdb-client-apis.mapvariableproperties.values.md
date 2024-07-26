@@ -4,7 +4,7 @@
 
 ## MapVariableProperties.values property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 values?: any;

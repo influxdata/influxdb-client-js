@@ -4,7 +4,7 @@
 
 ## DictItem.val property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 val?: Expression;

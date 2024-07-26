@@ -6,7 +6,7 @@
 
 The hex number of the color
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 hex: string;

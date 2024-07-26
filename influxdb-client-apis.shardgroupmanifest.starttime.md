@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest.startTime property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 startTime: string;

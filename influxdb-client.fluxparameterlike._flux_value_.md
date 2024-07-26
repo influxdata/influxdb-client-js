@@ -4,12 +4,12 @@
 
 ## FluxParameterLike.\[FLUX\_VALUE\]() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 [FLUX_VALUE](): string;
 ```
-<b>Returns:</b>
+**Returns:**
 
 string
 

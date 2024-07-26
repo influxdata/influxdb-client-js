@@ -4,7 +4,7 @@
 
 ## PutNotificationRulesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutNotificationRulesIDRequest 
@@ -12,8 +12,63 @@ interface PutNotificationRulesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putnotificationrulesidrequest.body.md) |  | [NotificationRule](./influxdb-client-apis.notificationrule.md) | Notification rule update to apply |
-|  [ruleID](./influxdb-client-apis.putnotificationrulesidrequest.ruleid.md) |  | string | The notification rule ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.putnotificationrulesidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NotificationRule](./influxdb-client-apis.notificationrule.md)
+
+
+</td><td>
+
+Notification rule update to apply
+
+
+</td></tr>
+<tr><td>
+
+[ruleID](./influxdb-client-apis.putnotificationrulesidrequest.ruleid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification rule ID.
+
+
+</td></tr>
+</tbody></table>

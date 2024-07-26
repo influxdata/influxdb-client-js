@@ -6,7 +6,7 @@
 
 Setups a callback that resumes reading of next data, it is called whenever [FluxResultObserver.next()](./influxdb-client.fluxresultobserver.next.md) returns `false`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 useResume?: (resume: () => void) => void;

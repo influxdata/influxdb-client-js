@@ -6,7 +6,7 @@
 
 the maximum size of retry-buffer (in lines)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxBufferLines: number;

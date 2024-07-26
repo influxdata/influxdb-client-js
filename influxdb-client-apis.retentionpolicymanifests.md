@@ -4,10 +4,10 @@
 
 ## RetentionPolicyManifests type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type RetentionPolicyManifests = RetentionPolicyManifest[];
 ```
-<b>References:</b> [RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md)
+**References:** [RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md)
 

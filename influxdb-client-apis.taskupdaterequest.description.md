@@ -6,7 +6,7 @@
 
 Update the description of the task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

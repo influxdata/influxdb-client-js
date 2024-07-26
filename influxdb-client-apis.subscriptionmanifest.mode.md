@@ -4,7 +4,7 @@
 
 ## SubscriptionManifest.mode property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mode: string;

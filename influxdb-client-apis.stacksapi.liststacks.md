@@ -6,7 +6,7 @@
 
 List installed stacks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/ListStacks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/ListStacks)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 listStacks(request: ListStacksRequest, requestOptions?: RequestOptions): Promise<{
@@ -16,12 +16,56 @@ listStacks(request: ListStacksRequest, requestOptions?: RequestOptions): Promise
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [ListStacksRequest](./influxdb-client-apis.liststacksrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[ListStacksRequest](./influxdb-client-apis.liststacksrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;{ stacks?: [Stack](./influxdb-client-apis.stack.md)<!-- -->\[\]; }&gt;
 

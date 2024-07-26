@@ -6,7 +6,7 @@
 
 The extents of the axis in the form \[lower, upper\]. Clients determine whether bounds are inclusive or exclusive of their limits.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bounds?: string[];

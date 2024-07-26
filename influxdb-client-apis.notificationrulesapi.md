@@ -6,7 +6,7 @@
 
 NotificationRules API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class NotificationRulesAPI 
@@ -14,22 +14,194 @@ declare class NotificationRulesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.notificationrulesapi._constructor_.md) |  | Creates NotificationRulesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.notificationrulesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates NotificationRulesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [createNotificationRule(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.createnotificationrule.md) |  | Add a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateNotificationRule](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationRule) |
-|  [deleteNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.deletenotificationrulesid.md) |  | Delete a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesID) |
-|  [deleteNotificationRulesIDLabelsID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.deletenotificationrulesidlabelsid.md) |  | Delete label from a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationRulesIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesIDLabelsID) |
-|  [getNotificationRules(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrules.md) |  | List all notification rules. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRules](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRules) |
-|  [getNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesid.md) |  | Retrieve a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesID) |
-|  [getNotificationRulesIDLabels(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesidlabels.md) |  | List all labels for a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDLabels) |
-|  [getNotificationRulesIDQuery(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesidquery.md) |  | Retrieve a notification rule query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDQuery) |
-|  [patchNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.patchnotificationrulesid.md) |  | Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchNotificationRulesID) |
-|  [postNotificationRuleIDLabels(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.postnotificationruleidlabels.md) |  | Add a label to a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostNotificationRuleIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostNotificationRuleIDLabels) |
-|  [putNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.putnotificationrulesid.md) |  | Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationRulesID) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createNotificationRule(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.createnotificationrule.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateNotificationRule](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationRule)
+
+
+</td></tr>
+<tr><td>
+
+[deleteNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.deletenotificationrulesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteNotificationRulesIDLabelsID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.deletenotificationrulesidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete label from a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationRulesIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationRulesIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationRules(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrules.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all notification rules. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRules](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRules)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesID)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationRulesIDLabels(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationRulesIDQuery(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.getnotificationrulesidquery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a notification rule query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationRulesIDQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationRulesIDQuery)
+
+
+</td></tr>
+<tr><td>
+
+[patchNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.patchnotificationrulesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchNotificationRulesID)
+
+
+</td></tr>
+<tr><td>
+
+[postNotificationRuleIDLabels(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.postnotificationruleidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostNotificationRuleIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostNotificationRuleIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[putNotificationRulesID(request, requestOptions)](./influxdb-client-apis.notificationrulesapi.putnotificationrulesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationRulesID)
+
+
+</td></tr>
+</tbody></table>

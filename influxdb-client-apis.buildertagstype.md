@@ -4,7 +4,7 @@
 
 ## BuilderTagsType interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BuilderTagsType 
@@ -12,9 +12,82 @@ interface BuilderTagsType
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [aggregateFunctionType?](./influxdb-client-apis.buildertagstype.aggregatefunctiontype.md) |  | [BuilderAggregateFunctionType](./influxdb-client-apis.builderaggregatefunctiontype.md) | <i>(Optional)</i> |
-|  [key?](./influxdb-client-apis.buildertagstype.key.md) |  | string | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.buildertagstype.values.md) |  | string\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[aggregateFunctionType?](./influxdb-client-apis.buildertagstype.aggregatefunctiontype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BuilderAggregateFunctionType](./influxdb-client-apis.builderaggregatefunctiontype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[key?](./influxdb-client-apis.buildertagstype.key.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[values?](./influxdb-client-apis.buildertagstype.values.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

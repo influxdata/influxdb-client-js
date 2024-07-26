@@ -6,7 +6,7 @@
 
 URI pointers for additional paged results.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Links 
@@ -14,9 +14,80 @@ interface Links
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [next?](./influxdb-client-apis.links.next.md) |  | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
-|  [prev?](./influxdb-client-apis.links.prev.md) |  | [Link](./influxdb-client-apis.link.md) | <i>(Optional)</i> |
-|  [self](./influxdb-client-apis.links.self.md) |  | [Link](./influxdb-client-apis.link.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[next?](./influxdb-client-apis.links.next.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Link](./influxdb-client-apis.link.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[prev?](./influxdb-client-apis.links.prev.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Link](./influxdb-client-apis.link.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[self](./influxdb-client-apis.links.self.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Link](./influxdb-client-apis.link.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

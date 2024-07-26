@@ -6,7 +6,7 @@
 
 Object type to define lat/lon columns
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LatLonColumns 
@@ -14,8 +14,59 @@ interface LatLonColumns
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [lat](./influxdb-client-apis.latloncolumns.lat.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
-|  [lon](./influxdb-client-apis.latloncolumns.lon.md) |  | [LatLonColumn](./influxdb-client-apis.latloncolumn.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[lat](./influxdb-client-apis.latloncolumns.lat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LatLonColumn](./influxdb-client-apis.latloncolumn.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[lon](./influxdb-client-apis.latloncolumns.lon.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LatLonColumn](./influxdb-client-apis.latloncolumn.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

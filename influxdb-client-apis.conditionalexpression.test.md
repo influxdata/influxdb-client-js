@@ -4,7 +4,7 @@
 
 ## ConditionalExpression.test property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 test?: Expression;

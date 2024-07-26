@@ -4,7 +4,7 @@
 
 ## BandViewProperties.lowerColumn property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lowerColumn?: string;

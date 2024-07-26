@@ -6,7 +6,7 @@
 
 List all dashboards. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboards](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboards)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDashboards(request?: GetDashboardsRequest, requestOptions?: RequestOptions): Promise<Dashboards>;
@@ -14,12 +14,56 @@ getDashboards(request?: GetDashboardsRequest, requestOptions?: RequestOptions): 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Dashboards](./influxdb-client-apis.dashboards.md)<!-- -->&gt;
 

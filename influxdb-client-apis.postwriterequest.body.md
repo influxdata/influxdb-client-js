@@ -14,7 +14,7 @@ To send compressed data, do the following:
 
 - [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: string;

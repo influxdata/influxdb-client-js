@@ -4,7 +4,7 @@
 
 ## StaticLegend.colorizeRows property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 colorizeRows?: boolean;

@@ -4,7 +4,7 @@
 
 ## ReturnStatement.argument property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 argument?: Expression;

@@ -4,10 +4,10 @@
 
 ## GeoViewLayer type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type GeoViewLayer = GeoCircleViewLayer | GeoHeatMapViewLayer | GeoPointMapViewLayer | GeoTrackMapViewLayer;
 ```
-<b>References:</b> [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md)<!-- -->, [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md)<!-- -->, [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md)<!-- -->, [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md)
+**References:** [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md)<!-- -->, [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md)<!-- -->, [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md)<!-- -->, [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md)
 

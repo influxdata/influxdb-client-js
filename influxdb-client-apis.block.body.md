@@ -6,7 +6,7 @@
 
 Block body
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body?: Statement[];

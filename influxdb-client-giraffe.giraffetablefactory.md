@@ -6,7 +6,7 @@
 
 A type of a function that creates a new giraffe table of a specified length
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type GiraffeTableFactory = (length: number) => Table;

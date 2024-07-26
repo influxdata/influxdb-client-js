@@ -4,7 +4,7 @@
 
 ## DeleteBucketsIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteBucketsIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteBucketsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidlabelsidrequest.bucketid.md) |  | string | The bucket ID. |
-|  [labelID](./influxdb-client-apis.deletebucketsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.deletebucketsidlabelsidrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The bucket ID.
+
+
+</td></tr>
+<tr><td>
+
+[labelID](./influxdb-client-apis.deletebucketsidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+</tbody></table>

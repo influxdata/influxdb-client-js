@@ -4,7 +4,7 @@
 
 ## GetQuerySuggestionsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetQuerySuggestionsRequest 

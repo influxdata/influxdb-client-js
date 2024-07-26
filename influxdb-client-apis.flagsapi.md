@@ -6,7 +6,7 @@
 
 Flags API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class FlagsAPI 
@@ -14,13 +14,68 @@ declare class FlagsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.flagsapi._constructor_.md) |  | Creates FlagsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.flagsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates FlagsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getFlags(request, requestOptions)](./influxdb-client-apis.flagsapi.getflags.md) |  | Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetFlags) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getFlags(request, requestOptions)](./influxdb-client-apis.flagsapi.getflags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return the feature flags for the currently authenticated user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetFlags](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetFlags)
+
+
+</td></tr>
+</tbody></table>

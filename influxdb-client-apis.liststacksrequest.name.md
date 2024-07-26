@@ -10,7 +10,7 @@ Repeatable. To filter for more than one stack name, repeat this parameter with e
 
 - `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&name=project-stack-0&name=project-stack-1`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

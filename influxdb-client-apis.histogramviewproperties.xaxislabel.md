@@ -4,7 +4,7 @@
 
 ## HistogramViewProperties.xAxisLabel property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xAxisLabel: string;

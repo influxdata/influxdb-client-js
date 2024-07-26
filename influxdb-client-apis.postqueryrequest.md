@@ -4,7 +4,7 @@
 
 ## PostQueryRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostQueryRequest 
@@ -12,9 +12,98 @@ interface PostQueryRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryrequest.body.md) |  | [Query](./influxdb-client-apis.query.md) | Flux query or specification to execute |
-|  [org?](./influxdb-client-apis.postqueryrequest.org.md) |  | string | <p><i>(Optional)</i> The name or ID of the organization executing the query.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>org</code> or <code>orgID</code>. - Queries the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>.</p> |
-|  [orgID?](./influxdb-client-apis.postqueryrequest.orgid.md) |  | string | <p><i>(Optional)</i> The ID of the organization executing the query.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>org</code> or <code>orgID</code>. - Queries the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postqueryrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Query](./influxdb-client-apis.query.md)
+
+
+</td><td>
+
+Flux query or specification to execute
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.postqueryrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name or ID of the organization executing the query.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Queries the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.postqueryrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the organization executing the query.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Queries the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

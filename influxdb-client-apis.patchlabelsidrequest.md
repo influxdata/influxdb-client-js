@@ -4,7 +4,7 @@
 
 ## PatchLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchLabelsIDRequest 
@@ -12,8 +12,63 @@ interface PatchLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchlabelsidrequest.body.md) |  | [LabelUpdate](./influxdb-client-apis.labelupdate.md) | A label update. |
-|  [labelID](./influxdb-client-apis.patchlabelsidrequest.labelid.md) |  | string | The ID of the label to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchlabelsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelUpdate](./influxdb-client-apis.labelupdate.md)
+
+
+</td><td>
+
+A label update.
+
+
+</td></tr>
+<tr><td>
+
+[labelID](./influxdb-client-apis.patchlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to update.
+
+
+</td></tr>
+</tbody></table>

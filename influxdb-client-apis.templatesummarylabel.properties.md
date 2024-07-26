@@ -4,7 +4,7 @@
 
 ## TemplateSummaryLabel.properties property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 properties?: {

@@ -4,7 +4,7 @@
 
 ## Buckets.buckets property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 buckets?: Bucket[];

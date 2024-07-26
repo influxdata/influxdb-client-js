@@ -6,7 +6,7 @@
 
 Users API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class UsersAPI 
@@ -14,18 +14,138 @@ declare class UsersAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.usersapi._constructor_.md) |  | Creates UsersAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.usersapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates UsersAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.deleteusersid.md) |  | Delete a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteUsersID) |
-|  [getUsers(request, requestOptions)](./influxdb-client-apis.usersapi.getusers.md) |  | List users. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers) |
-|  [getUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.getusersid.md) |  | Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsersID) |
-|  [patchUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.patchusersid.md) |  | Update a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchUsersID) |
-|  [postUsers(request, requestOptions)](./influxdb-client-apis.usersapi.postusers.md) |  | Create a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsers) |
-|  [postUsersIDPassword(request, requestOptions)](./influxdb-client-apis.usersapi.postusersidpassword.md) |  | Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsersIDPassword) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.deleteusersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteUsersID)
+
+
+</td></tr>
+<tr><td>
+
+[getUsers(request, requestOptions)](./influxdb-client-apis.usersapi.getusers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List users. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsers)
+
+
+</td></tr>
+<tr><td>
+
+[getUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.getusersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetUsersID)
+
+
+</td></tr>
+<tr><td>
+
+[patchUsersID(request, requestOptions)](./influxdb-client-apis.usersapi.patchusersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchUsersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchUsersID)
+
+
+</td></tr>
+<tr><td>
+
+[postUsers(request, requestOptions)](./influxdb-client-apis.usersapi.postusers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a user. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsers)
+
+
+</td></tr>
+<tr><td>
+
+[postUsersIDPassword(request, requestOptions)](./influxdb-client-apis.usersapi.postusersidpassword.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a password. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostUsersIDPassword](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostUsersIDPassword)
+
+
+</td></tr>
+</tbody></table>

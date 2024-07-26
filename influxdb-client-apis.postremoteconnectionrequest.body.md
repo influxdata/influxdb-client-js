@@ -6,7 +6,7 @@
 
 entity body
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: RemoteConnectionCreationRequest;

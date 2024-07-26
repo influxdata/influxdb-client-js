@@ -6,12 +6,12 @@
 
 CollectLines collects all result lines in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of lines is copied to memory.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 collectLines(): Promise<Array<string>>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;Array&lt;string&gt;&gt;
 

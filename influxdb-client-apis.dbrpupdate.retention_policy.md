@@ -6,7 +6,7 @@
 
 InfluxDB v1 retention policy
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retention_policy?: string;

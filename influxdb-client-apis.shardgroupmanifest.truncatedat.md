@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest.truncatedAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 truncatedAt?: string;

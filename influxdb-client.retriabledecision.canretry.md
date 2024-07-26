@@ -6,12 +6,12 @@
 
 Informs whether this can be retried.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 canRetry(): boolean;
 ```
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.symbolColumns property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 symbolColumns: string[];

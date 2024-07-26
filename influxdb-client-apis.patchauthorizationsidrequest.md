@@ -4,7 +4,7 @@
 
 ## PatchAuthorizationsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchAuthorizationsIDRequest 
@@ -12,8 +12,63 @@ interface PatchAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [authID](./influxdb-client-apis.patchauthorizationsidrequest.authid.md) |  | string | The ID of the authorization to update. |
-|  [body](./influxdb-client-apis.patchauthorizationsidrequest.body.md) |  | [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md) | Authorization to update |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[authID](./influxdb-client-apis.patchauthorizationsidrequest.authid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the authorization to update.
+
+
+</td></tr>
+<tr><td>
+
+[body](./influxdb-client-apis.patchauthorizationsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)
+
+
+</td><td>
+
+Authorization to update
+
+
+</td></tr>
+</tbody></table>

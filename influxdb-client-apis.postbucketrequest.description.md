@@ -6,7 +6,7 @@
 
 A description of the bucket.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

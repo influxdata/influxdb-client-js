@@ -4,7 +4,7 @@
 
 ## AddResourceMemberRequestBody interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface AddResourceMemberRequestBody 
@@ -12,8 +12,63 @@ interface AddResourceMemberRequestBody
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id](./influxdb-client-apis.addresourcememberrequestbody.id.md) |  | string | The ID of the user to add to the resource. |
-|  [name?](./influxdb-client-apis.addresourcememberrequestbody.name.md) |  | string | <i>(Optional)</i> The name of the user to add to the resource. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id](./influxdb-client-apis.addresourcememberrequestbody.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the user to add to the resource.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.addresourcememberrequestbody.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the user to add to the resource.
+
+
+</td></tr>
+</tbody></table>

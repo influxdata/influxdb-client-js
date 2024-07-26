@@ -6,20 +6,136 @@
 
 Constructs a new instance of the `HttpError` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-constructor(statusCode: number, statusMessage: string | undefined, body?: string | undefined, retryAfter?: string | undefined | null, contentType?: string | null | undefined, message?: string);
+constructor(statusCode: number, statusMessage: string | undefined, body?: string | undefined, retryAfter?: string | undefined | null, contentType?: string | undefined | null, message?: string, headers?: HttpHeaders | undefined);
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  statusCode | number |  |
-|  statusMessage | string \| undefined |  |
-|  body | string \| undefined | <i>(Optional)</i> |
-|  retryAfter | string \| undefined \| null | <i>(Optional)</i> |
-|  contentType | string \| null \| undefined | <i>(Optional)</i> |
-|  message | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+statusCode
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+statusMessage
+
+
+</td><td>
+
+string \| undefined
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+body
+
+
+</td><td>
+
+string \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+retryAfter
+
+
+</td><td>
+
+string \| undefined \| null
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+contentType
+
+
+</td><td>
+
+string \| undefined \| null
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+message
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+headers
+
+
+</td><td>
+
+[HttpHeaders](./influxdb-client.httpheaders.md) \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

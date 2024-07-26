@@ -4,7 +4,7 @@
 
 ## RangeThreshold type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type RangeThreshold = ThresholdBase & {
@@ -14,5 +14,5 @@ type RangeThreshold = ThresholdBase & {
     within: boolean;
 };
 ```
-<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
+**References:** [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
 

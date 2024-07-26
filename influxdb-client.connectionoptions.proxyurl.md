@@ -6,7 +6,7 @@
 
 Full HTTP web proxy URL including schema, for example http://your-proxy:8080.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 proxyUrl?: string;

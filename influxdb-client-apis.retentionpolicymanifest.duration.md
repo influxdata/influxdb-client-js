@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest.duration property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 duration: number;

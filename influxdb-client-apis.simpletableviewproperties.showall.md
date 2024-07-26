@@ -4,7 +4,7 @@
 
 ## SimpleTableViewProperties.showAll property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 showAll: boolean;

@@ -4,7 +4,7 @@
 
 ## CreateDashboardRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateDashboardRequest 
@@ -12,9 +12,82 @@ interface CreateDashboardRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.createdashboardrequest.description.md) |  | string | <i>(Optional)</i> The user-facing description of the dashboard. |
-|  [name](./influxdb-client-apis.createdashboardrequest.name.md) |  | string | The user-facing name of the dashboard. |
-|  [orgID](./influxdb-client-apis.createdashboardrequest.orgid.md) |  | string | The ID of the organization that owns the dashboard. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.createdashboardrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The user-facing description of the dashboard.
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.createdashboardrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The user-facing name of the dashboard.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.createdashboardrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization that owns the dashboard.
+
+
+</td></tr>
+</tbody></table>

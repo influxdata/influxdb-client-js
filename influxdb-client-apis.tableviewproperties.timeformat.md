@@ -6,7 +6,7 @@
 
 timeFormat describes the display format for time values according to moment.js date formatting
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 timeFormat: string;

@@ -6,7 +6,7 @@
 
 Retrieve a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getNotificationEndpointsID(request: GetNotificationEndpointsIDRequest, requestOptions?: RequestOptions): Promise<NotificationEndpoint>;
@@ -14,12 +14,56 @@ getNotificationEndpointsID(request: GetNotificationEndpointsIDRequest, requestOp
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetNotificationEndpointsIDRequest](./influxdb-client-apis.getnotificationendpointsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetNotificationEndpointsIDRequest](./influxdb-client-apis.getnotificationendpointsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->&gt;
 

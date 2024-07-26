@@ -4,7 +4,7 @@
 
 ## ScriptUpdateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ScriptUpdateRequest 
@@ -12,9 +12,82 @@ interface ScriptUpdateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.scriptupdaterequest.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.scriptupdaterequest.name.md) |  | string | <i>(Optional)</i> |
-|  [script?](./influxdb-client-apis.scriptupdaterequest.script.md) |  | string | <i>(Optional)</i> script is script to be executed |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.scriptupdaterequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.scriptupdaterequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[script?](./influxdb-client-apis.scriptupdaterequest.script.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ script is script to be executed
+
+
+</td></tr>
+</tbody></table>

@@ -4,10 +4,10 @@
 
 ## CellsWithViewProperties type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type CellsWithViewProperties = CellWithViewProperties[];
 ```
-<b>References:</b> [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)
+**References:** [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)
 

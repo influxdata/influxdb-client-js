@@ -6,7 +6,7 @@
 
 Label prefix for formatting axis values.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 prefix?: string;

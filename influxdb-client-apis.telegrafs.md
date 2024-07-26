@@ -4,7 +4,7 @@
 
 ## Telegrafs interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Telegrafs 
@@ -12,7 +12,44 @@ interface Telegrafs
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [configurations?](./influxdb-client-apis.telegrafs.configurations.md) |  | [Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[configurations?](./influxdb-client-apis.telegrafs.configurations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

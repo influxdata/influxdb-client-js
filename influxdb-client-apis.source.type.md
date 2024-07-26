@@ -4,7 +4,7 @@
 
 ## Source.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: 'v1' | 'v2' | 'self';

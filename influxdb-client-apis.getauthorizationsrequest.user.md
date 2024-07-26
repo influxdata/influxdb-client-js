@@ -6,7 +6,7 @@
 
 A user name. Only returns authorizations scoped to this user.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 user?: string;

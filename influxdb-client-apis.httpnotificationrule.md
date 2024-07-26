@@ -4,10 +4,10 @@
 
 ## HTTPNotificationRule type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type HTTPNotificationRule = NotificationRuleBase & HTTPNotificationRuleBase;
 ```
-<b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [HTTPNotificationRuleBase](./influxdb-client-apis.httpnotificationrulebase.md)
+**References:** [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [HTTPNotificationRuleBase](./influxdb-client-apis.httpnotificationrulebase.md)
 

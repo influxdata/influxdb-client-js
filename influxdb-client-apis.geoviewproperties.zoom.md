@@ -6,7 +6,7 @@
 
 Zoom level used for initial display of the map
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 zoom: number;

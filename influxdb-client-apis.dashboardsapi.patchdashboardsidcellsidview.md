@@ -6,7 +6,7 @@
 
 Update the view for a cell. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchDashboardsIDCellsIDView](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchDashboardsIDCellsIDView)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchDashboardsIDCellsIDView(request: PatchDashboardsIDCellsIDViewRequest, requestOptions?: RequestOptions): Promise<View>;
@@ -14,12 +14,56 @@ patchDashboardsIDCellsIDView(request: PatchDashboardsIDCellsIDViewRequest, reque
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[View](./influxdb-client-apis.view.md)<!-- -->&gt;
 

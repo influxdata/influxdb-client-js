@@ -6,7 +6,7 @@
 
 An optional description of the notification endpoint.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

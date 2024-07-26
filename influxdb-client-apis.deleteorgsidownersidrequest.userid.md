@@ -6,7 +6,7 @@
 
 The ID of the user to remove.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 userID: string;

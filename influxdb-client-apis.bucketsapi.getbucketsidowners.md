@@ -6,7 +6,7 @@
 
 List all owners of a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBucketsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBucketsIDOwners)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getBucketsIDOwners(request: GetBucketsIDOwnersRequest, requestOptions?: RequestOptions): Promise<ResourceOwners>;
@@ -14,12 +14,56 @@ getBucketsIDOwners(request: GetBucketsIDOwnersRequest, requestOptions?: RequestO
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetBucketsIDOwnersRequest](./influxdb-client-apis.getbucketsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetBucketsIDOwnersRequest](./influxdb-client-apis.getbucketsidownersrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
 

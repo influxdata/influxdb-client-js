@@ -6,7 +6,7 @@
 
 compute also resultColumnNames
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 computeResultColumnNames?: boolean;

@@ -4,7 +4,7 @@
 
 ## GetDebugPprofProfileRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDebugPprofProfileRequest 
@@ -12,7 +12,44 @@ interface GetDebugPprofProfileRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [seconds?](./influxdb-client-apis.getdebugpprofprofilerequest.seconds.md) |  | string | <i>(Optional)</i> Number of seconds to collect profile data. Default is <code>30</code> seconds. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[seconds?](./influxdb-client-apis.getdebugpprofprofilerequest.seconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Number of seconds to collect profile data. Default is `30` seconds.
+
+
+</td></tr>
+</tbody></table>

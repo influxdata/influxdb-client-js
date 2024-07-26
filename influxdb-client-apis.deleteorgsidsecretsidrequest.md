@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDSecretsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteOrgsIDSecretsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteOrgsIDSecretsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidsecretsidrequest.orgid.md) |  | string | The organization ID. |
-|  [secretID](./influxdb-client-apis.deleteorgsidsecretsidrequest.secretid.md) |  | string | The secret ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID](./influxdb-client-apis.deleteorgsidsecretsidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The organization ID.
+
+
+</td></tr>
+<tr><td>
+
+[secretID](./influxdb-client-apis.deleteorgsidsecretsidrequest.secretid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The secret ID.
+
+
+</td></tr>
+</tbody></table>

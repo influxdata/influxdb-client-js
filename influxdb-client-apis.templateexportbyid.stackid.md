@@ -4,7 +4,7 @@
 
 ## TemplateExportByID.stackID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 stackID?: string;

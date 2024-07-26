@@ -6,7 +6,7 @@
 
 FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ .
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class FluxScriptInvocationAPI 
@@ -14,13 +14,68 @@ declare class FluxScriptInvocationAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB, options)](./influxdb-client-apis.fluxscriptinvocationapi._constructor_.md) |  | Creates FluxScriptInvocationAPI with the supplied InfluxDB instance and a particular script identifier. |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB, options)](./influxdb-client-apis.fluxscriptinvocationapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates FluxScriptInvocationAPI with the supplied InfluxDB instance and a particular script identifier.
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [invoke(scriptID, params)](./influxdb-client-apis.fluxscriptinvocationapi.invoke.md) |  | Invoke returns a parsed response data stream that executes the supplied script when asked for data. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[invoke(scriptID, params)](./influxdb-client-apis.fluxscriptinvocationapi.invoke.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Invoke returns a parsed response data stream that executes the supplied script when asked for data.
+
+
+</td></tr>
+</tbody></table>

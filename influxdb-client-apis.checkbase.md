@@ -4,7 +4,7 @@
 
 ## CheckBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CheckBase 
@@ -12,21 +12,322 @@ interface CheckBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [createdAt?](./influxdb-client-apis.checkbase.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.checkbase.description.md) |  | string | <i>(Optional)</i> An optional description of the check. |
-|  [id?](./influxdb-client-apis.checkbase.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.checkbase.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
-|  [lastRunError?](./influxdb-client-apis.checkbase.lastrunerror.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [lastRunStatus?](./influxdb-client-apis.checkbase.lastrunstatus.md) | <code>readonly</code> | 'failed' \| 'success' \| 'canceled' | <i>(Optional)</i> |
-|  [latestCompleted?](./influxdb-client-apis.checkbase.latestcompleted.md) | <code>readonly</code> | string | <i>(Optional)</i> A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) of the latest scheduled and completed run. |
-|  [links?](./influxdb-client-apis.checkbase.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.checkbase.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.checkbase.orgid.md) |  | string | The ID of the organization that owns this check. |
-|  [ownerID?](./influxdb-client-apis.checkbase.ownerid.md) | <code>readonly</code> | string | <i>(Optional)</i> The ID of creator used to create this check. |
-|  [query](./influxdb-client-apis.checkbase.query.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
-|  [status?](./influxdb-client-apis.checkbase.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
-|  [taskID?](./influxdb-client-apis.checkbase.taskid.md) |  | string | <i>(Optional)</i> The ID of the task associated with this check. |
-|  [updatedAt?](./influxdb-client-apis.checkbase.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createdAt?](./influxdb-client-apis.checkbase.createdat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.checkbase.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An optional description of the check.
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.checkbase.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[labels?](./influxdb-client-apis.checkbase.labels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Labels](./influxdb-client-apis.labels.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[lastRunError?](./influxdb-client-apis.checkbase.lastrunerror.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[lastRunStatus?](./influxdb-client-apis.checkbase.lastrunstatus.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+'failed' \| 'success' \| 'canceled'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[latestCompleted?](./influxdb-client-apis.checkbase.latestcompleted.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) of the latest scheduled and completed run.
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.checkbase.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; query?: [Link](./influxdb-client-apis.link.md)<!-- -->; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.checkbase.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.checkbase.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization that owns this check.
+
+
+</td></tr>
+<tr><td>
+
+[ownerID?](./influxdb-client-apis.checkbase.ownerid.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of creator used to create this check.
+
+
+</td></tr>
+<tr><td>
+
+[query](./influxdb-client-apis.checkbase.query.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.checkbase.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TaskStatusType](./influxdb-client-apis.taskstatustype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[taskID?](./influxdb-client-apis.checkbase.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the task associated with this check.
+
+
+</td></tr>
+<tr><td>
+
+[updatedAt?](./influxdb-client-apis.checkbase.updatedat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

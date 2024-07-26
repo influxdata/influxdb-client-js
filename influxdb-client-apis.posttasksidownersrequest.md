@@ -4,7 +4,7 @@
 
 ## PostTasksIDOwnersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTasksIDOwnersRequest 
@@ -12,8 +12,63 @@ interface PostTasksIDOwnersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidownersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | A user to add as an owner of the task. |
-|  [taskID](./influxdb-client-apis.posttasksidownersrequest.taskid.md) |  | string | The task ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttasksidownersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+A user to add as an owner of the task.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.posttasksidownersrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The task ID.
+
+
+</td></tr>
+</tbody></table>

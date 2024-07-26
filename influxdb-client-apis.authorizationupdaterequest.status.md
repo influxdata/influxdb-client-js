@@ -6,7 +6,7 @@
 
 Status of the token. If `inactive`<!-- -->, requests using the token will be rejected.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

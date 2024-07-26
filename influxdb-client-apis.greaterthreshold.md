@@ -4,7 +4,7 @@
 
 ## GreaterThreshold type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type GreaterThreshold = ThresholdBase & {
@@ -12,5 +12,5 @@ type GreaterThreshold = ThresholdBase & {
     value: number;
 };
 ```
-<b>References:</b> [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
+**References:** [ThresholdBase](./influxdb-client-apis.thresholdbase.md)
 

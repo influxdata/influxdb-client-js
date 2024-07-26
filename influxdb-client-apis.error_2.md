@@ -4,7 +4,7 @@
 
 ## Error\_2 interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Error 
@@ -12,10 +12,109 @@ interface Error
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [code](./influxdb-client-apis.error_2.code.md) | <code>readonly</code> | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' \| 'request too large' \| 'unsupported media type' | code is the machine-readable error code. |
-|  [err?](./influxdb-client-apis.error_2.err.md) | <code>readonly</code> | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
-|  [message?](./influxdb-client-apis.error_2.message.md) | <code>readonly</code> | string | <i>(Optional)</i> Human-readable message. |
-|  [op?](./influxdb-client-apis.error_2.op.md) | <code>readonly</code> | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[code](./influxdb-client-apis.error_2.code.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'unprocessable entity' \| 'empty value' \| 'unavailable' \| 'forbidden' \| 'too many requests' \| 'unauthorized' \| 'method not allowed' \| 'request too large' \| 'unsupported media type'
+
+
+</td><td>
+
+code is the machine-readable error code.
+
+
+</td></tr>
+<tr><td>
+
+[err?](./influxdb-client-apis.error_2.err.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Stack of errors that occurred during processing of the request. Useful for debugging.
+
+
+</td></tr>
+<tr><td>
+
+[message?](./influxdb-client-apis.error_2.message.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Human-readable message.
+
+
+</td></tr>
+<tr><td>
+
+[op?](./influxdb-client-apis.error_2.op.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Describes the logical code operation when the error occurred. Useful for debugging.
+
+
+</td></tr>
+</tbody></table>

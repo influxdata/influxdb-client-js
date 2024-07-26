@@ -6,7 +6,7 @@
 
 InfluxDB entry point that configures communication with InfluxDB server and provide APIs to write and query data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class InfluxDB 
@@ -14,21 +14,145 @@ declare class InfluxDB
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(options)](./influxdb-client.influxdb._constructor_.md) |  | Creates influxdb client options from an options object or url. |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(options)](./influxdb-client.influxdb._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates influxdb client options from an options object or url.
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md) | <code>readonly</code> | (executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->, iterableResultExecutor: [IterableResultExecutor](./influxdb-client.iterableresultexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md) |  |
-|  [transport](./influxdb-client.influxdb.transport.md) | <code>readonly</code> | [Transport](./influxdb-client.transport.md) |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[processCSVResponse](./influxdb-client.influxdb.processcsvresponse.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+(executor: [APIExecutor](./influxdb-client.apiexecutor.md)<!-- -->, iterableResultExecutor: [IterableResultExecutor](./influxdb-client.iterableresultexecutor.md)<!-- -->) =&gt; [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[transport](./influxdb-client.influxdb.transport.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[Transport](./influxdb-client.transport.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getQueryApi(org)](./influxdb-client.influxdb.getqueryapi.md) |  | Creates QueryApi for the supplied organization . |
-|  [getWriteApi(org, bucket, precision, writeOptions)](./influxdb-client.influxdb.getwriteapi.md) |  | Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getQueryApi(org)](./influxdb-client.influxdb.getqueryapi.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates QueryApi for the supplied organization .
+
+
+</td></tr>
+<tr><td>
+
+[getWriteApi(org, bucket, precision, writeOptions)](./influxdb-client.influxdb.getwriteapi.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed in order to flush the remaining data and close already scheduled retry executions.
+
+
+</td></tr>
+</tbody></table>

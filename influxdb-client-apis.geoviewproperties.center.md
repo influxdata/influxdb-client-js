@@ -6,7 +6,7 @@
 
 Coordinates of the center of the map
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 center: {

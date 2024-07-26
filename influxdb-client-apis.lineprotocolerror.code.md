@@ -6,7 +6,7 @@
 
 Code is the machine-readable error code.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly code: 'internal error' | 'not found' | 'conflict' | 'invalid' | 'empty value' | 'unavailable';

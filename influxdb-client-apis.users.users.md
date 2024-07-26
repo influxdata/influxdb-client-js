@@ -4,7 +4,7 @@
 
 ## Users.users property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 users?: UserResponse[];

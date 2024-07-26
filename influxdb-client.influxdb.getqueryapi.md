@@ -6,7 +6,7 @@
 
 Creates QueryApi for the supplied organization .
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getQueryApi(org: string | QueryOptions): QueryApi;
@@ -14,11 +14,40 @@ getQueryApi(org: string | QueryOptions): QueryApi;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  org | string \| [QueryOptions](./influxdb-client.queryoptions.md) | organization or query options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+org
+
+
+</td><td>
+
+string \| [QueryOptions](./influxdb-client.queryoptions.md)
+
+
+</td><td>
+
+organization or query options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [QueryApi](./influxdb-client.queryapi.md)
 

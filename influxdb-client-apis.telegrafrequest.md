@@ -4,7 +4,7 @@
 
 ## TelegrafRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TelegrafRequest 
@@ -12,11 +12,120 @@ interface TelegrafRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [config?](./influxdb-client-apis.telegrafrequest.config.md) |  | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.telegrafrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [metadata?](./influxdb-client-apis.telegrafrequest.metadata.md) |  | { buckets?: string\[\]; } | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.telegrafrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.telegrafrequest.orgid.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[config?](./influxdb-client-apis.telegrafrequest.config.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.telegrafrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[metadata?](./influxdb-client-apis.telegrafrequest.metadata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ buckets?: string\[\]; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.telegrafrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.telegrafrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

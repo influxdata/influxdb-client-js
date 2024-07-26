@@ -4,7 +4,7 @@
 
 ## RemoteConnectionUpdateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RemoteConnectionUpdateRequest 
@@ -12,12 +12,139 @@ interface RemoteConnectionUpdateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowInsecureTLS?](./influxdb-client-apis.remoteconnectionupdaterequest.allowinsecuretls.md) |  | boolean | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.remoteconnectionupdaterequest.description.md) |  | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.remoteconnectionupdaterequest.name.md) |  | string | <i>(Optional)</i> |
-|  [remoteAPIToken?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteapitoken.md) |  | string | <i>(Optional)</i> |
-|  [remoteOrgID?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteorgid.md) |  | string | <i>(Optional)</i> |
-|  [remoteURL?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteurl.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowInsecureTLS?](./influxdb-client-apis.remoteconnectionupdaterequest.allowinsecuretls.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.remoteconnectionupdaterequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.remoteconnectionupdaterequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[remoteAPIToken?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteapitoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[remoteOrgID?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteorgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[remoteURL?](./influxdb-client-apis.remoteconnectionupdaterequest.remoteurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 The ID of the organization that you want to add an owner for.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

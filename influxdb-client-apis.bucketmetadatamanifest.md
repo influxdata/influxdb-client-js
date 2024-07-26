@@ -4,7 +4,7 @@
 
 ## BucketMetadataManifest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface BucketMetadataManifest 
@@ -12,13 +12,146 @@ interface BucketMetadataManifest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.bucketmetadatamanifest.bucketid.md) |  | string |  |
-|  [bucketName](./influxdb-client-apis.bucketmetadatamanifest.bucketname.md) |  | string |  |
-|  [defaultRetentionPolicy](./influxdb-client-apis.bucketmetadatamanifest.defaultretentionpolicy.md) |  | string |  |
-|  [description?](./influxdb-client-apis.bucketmetadatamanifest.description.md) |  | string | <i>(Optional)</i> |
-|  [organizationID](./influxdb-client-apis.bucketmetadatamanifest.organizationid.md) |  | string |  |
-|  [organizationName](./influxdb-client-apis.bucketmetadatamanifest.organizationname.md) |  | string |  |
-|  [retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md) |  | [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.bucketmetadatamanifest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[bucketName](./influxdb-client-apis.bucketmetadatamanifest.bucketname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[defaultRetentionPolicy](./influxdb-client-apis.bucketmetadatamanifest.defaultretentionpolicy.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.bucketmetadatamanifest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[organizationID](./influxdb-client-apis.bucketmetadatamanifest.organizationid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[organizationName](./influxdb-client-apis.bucketmetadatamanifest.organizationname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[retentionPolicies](./influxdb-client-apis.bucketmetadatamanifest.retentionpolicies.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

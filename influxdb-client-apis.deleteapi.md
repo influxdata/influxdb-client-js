@@ -6,7 +6,7 @@
 
 Delete API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class DeleteAPI 
@@ -14,13 +14,68 @@ declare class DeleteAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.deleteapi._constructor_.md) |  | Creates DeleteAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.deleteapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates DeleteAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [postDelete(request, requestOptions)](./influxdb-client-apis.deleteapi.postdelete.md) |  | Delete data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[postDelete(request, requestOptions)](./influxdb-client-apis.deleteapi.postdelete.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete)
+
+
+</td></tr>
+</tbody></table>

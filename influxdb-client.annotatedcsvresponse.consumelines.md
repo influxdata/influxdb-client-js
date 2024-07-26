@@ -6,7 +6,7 @@
 
 ConsumesLines consumes result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 consumeLines(consumer: CommunicationObserver<string>): void;
@@ -14,11 +14,40 @@ consumeLines(consumer: CommunicationObserver<string>): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+consumer
+
+
+</td><td>
+
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
+
+
+</td><td>
+
+csv result lines and error consumer
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

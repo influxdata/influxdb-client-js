@@ -4,7 +4,7 @@
 
 ## HealthCheck.checks property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 checks?: HealthCheck[];

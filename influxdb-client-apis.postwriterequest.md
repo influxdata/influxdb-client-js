@@ -4,7 +4,7 @@
 
 ## PostWriteRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostWriteRequest 
@@ -12,11 +12,144 @@ interface PostWriteRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postwriterequest.body.md) |  | string | <p>Data in line protocol format.</p><p>To send compressed data, do the following:</p><p>1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the <code>Content-Encoding: gzip</code> header.</p><p>\#\#\#\# Related guides</p><p>- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/)<!-- -->.</p> |
-|  [bucket](./influxdb-client-apis.postwriterequest.bucket.md) |  | string | The destination bucket for writes. InfluxDB writes all points in the batch to this bucket. |
-|  [org](./influxdb-client-apis.postwriterequest.org.md) |  | string | <p>The destination organization for writes. InfluxDB writes all points in the batch to this organization. If you pass both <code>orgID</code> and <code>org</code>, they must both be valid.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't require <code>org</code> or <code>orgID</code>. - Writes to the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>. - InfluxDB writes all points in the batch to this organization.</p> |
-|  [orgID?](./influxdb-client-apis.postwriterequest.orgid.md) |  | string | <p><i>(Optional)</i> The ID of the destination organization for writes. If you pass both <code>orgID</code> and <code>org</code>, they must both be valid.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't require <code>org</code> or <code>orgID</code>. - Writes to the bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Requires either <code>org</code> or <code>orgID</code>. - InfluxDB writes all points in the batch to this organization.</p> |
-|  [precision?](./influxdb-client-apis.postwriterequest.precision.md) |  | any | <i>(Optional)</i> The precision for unix timestamps in the line protocol batch. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postwriterequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Data in line protocol format.
+
+To send compressed data, do the following:
+
+1. Use [GZIP](https://www.gzip.org/) to compress the line protocol data. 2. In your request, send the compressed data and the `Content-Encoding: gzip` header.
+
+\#\#\#\# Related guides
+
+- [Best practices for optimizing writes](https://docs.influxdata.com/influxdb/v2.3/write-data/best-practices/optimize-writes/)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[bucket](./influxdb-client-apis.postwriterequest.bucket.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The destination bucket for writes. InfluxDB writes all points in the batch to this bucket.
+
+
+</td></tr>
+<tr><td>
+
+[org](./influxdb-client-apis.postwriterequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The destination organization for writes. InfluxDB writes all points in the batch to this organization. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Writes to the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->. - InfluxDB writes all points in the batch to this organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.postwriterequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the destination organization for writes. If you pass both `orgID` and `org`<!-- -->, they must both be valid.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require `org` or `orgID`<!-- -->. - Writes to the bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Requires either `org` or `orgID`<!-- -->. - InfluxDB writes all points in the batch to this organization.
+
+
+</td></tr>
+<tr><td>
+
+[precision?](./influxdb-client-apis.postwriterequest.precision.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ The precision for unix timestamps in the line protocol batch.
+
+
+</td></tr>
+</tbody></table>

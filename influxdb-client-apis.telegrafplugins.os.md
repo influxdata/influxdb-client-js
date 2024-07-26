@@ -4,7 +4,7 @@
 
 ## TelegrafPlugins.os property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 os?: string;

@@ -4,7 +4,7 @@
 
 ## HeatmapViewProperties.xDomain property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xDomain: number[];

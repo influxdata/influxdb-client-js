@@ -6,7 +6,7 @@
 
 Update the 'every' option in the flux script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 every?: string;

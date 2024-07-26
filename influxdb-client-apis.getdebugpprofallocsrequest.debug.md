@@ -8,7 +8,7 @@
 
 `debug=1` is mutually exclusive with the `seconds` query parameter.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 debug?: number;

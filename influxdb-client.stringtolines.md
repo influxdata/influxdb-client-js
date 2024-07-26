@@ -6,7 +6,7 @@
 
 StringToLines is a transformation that emmits strings for each CSV line in the supplied source string.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function stringToLines(source: string, target: CommunicationObserver<string>): void;
@@ -14,12 +14,56 @@ declare function stringToLines(source: string, target: CommunicationObserver<str
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  source | string | source string |
-|  target | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | target to emmit CSV lines to |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+source
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+source string
+
+
+</td></tr>
+<tr><td>
+
+target
+
+
+</td><td>
+
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
+
+
+</td><td>
+
+target to emmit CSV lines to
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

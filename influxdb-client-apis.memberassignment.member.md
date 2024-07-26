@@ -4,7 +4,7 @@
 
 ## MemberAssignment.member property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 member?: MemberExpression;

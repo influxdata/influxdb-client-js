@@ -6,7 +6,7 @@
 
 The ID of the authorization to get.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 authID: string;

@@ -6,7 +6,7 @@
 
 Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 after?: string;

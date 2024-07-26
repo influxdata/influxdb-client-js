@@ -4,7 +4,7 @@
 
 ## DeleteScriptsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteScriptsIDRequest 
@@ -12,7 +12,44 @@ interface DeleteScriptsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [scriptID](./influxdb-client-apis.deletescriptsidrequest.scriptid.md) |  | string | A script ID. Specifies the script to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scriptID](./influxdb-client-apis.deletescriptsidrequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A script ID. Specifies the script to delete.
+
+
+</td></tr>
+</tbody></table>

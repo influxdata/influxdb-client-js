@@ -6,7 +6,7 @@
 
 Combines response chunks to create a single response object.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly chunkCombiner: ChunkCombiner;

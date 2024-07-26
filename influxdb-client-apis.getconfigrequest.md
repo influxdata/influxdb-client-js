@@ -4,7 +4,7 @@
 
 ## GetConfigRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetConfigRequest 

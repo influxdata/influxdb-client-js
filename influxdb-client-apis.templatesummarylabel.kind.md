@@ -4,7 +4,7 @@
 
 ## TemplateSummaryLabel.kind property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 kind?: TemplateKind;

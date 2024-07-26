@@ -4,7 +4,7 @@
 
 ## XYViewProperties.xTotalTicks property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xTotalTicks?: number;

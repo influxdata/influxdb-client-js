@@ -6,7 +6,7 @@
 
 Labels API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class LabelsAPI 
@@ -14,17 +14,124 @@ declare class LabelsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.labelsapi._constructor_.md) |  | Creates LabelsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.labelsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates LabelsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.deletelabelsid.md) |  | Delete a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteLabelsID) |
-|  [getLabels(request, requestOptions)](./influxdb-client-apis.labelsapi.getlabels.md) |  | List all labels. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetLabels) |
-|  [getLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.getlabelsid.md) |  | Retrieve a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetLabelsID) |
-|  [patchLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.patchlabelsid.md) |  | Update a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchLabelsID) |
-|  [postLabels(request, requestOptions)](./influxdb-client-apis.labelsapi.postlabels.md) |  | Create a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostLabels) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.deletelabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[getLabels(request, requestOptions)](./influxdb-client-apis.labelsapi.getlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.getlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[patchLabelsID(request, requestOptions)](./influxdb-client-apis.labelsapi.patchlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[postLabels(request, requestOptions)](./influxdb-client-apis.labelsapi.postlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a label. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostLabels)
+
+
+</td></tr>
+</tbody></table>

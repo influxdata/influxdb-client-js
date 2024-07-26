@@ -6,7 +6,7 @@
 
 The offset for pagination. Specifies the number of records to skip in the result.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 offset?: number;

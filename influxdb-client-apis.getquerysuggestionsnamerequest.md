@@ -4,7 +4,7 @@
 
 ## GetQuerySuggestionsNameRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetQuerySuggestionsNameRequest 
@@ -12,7 +12,44 @@ interface GetQuerySuggestionsNameRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md) |  | string | A Flux Function name. Only returns functions with this name. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name](./influxdb-client-apis.getquerysuggestionsnamerequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A Flux Function name. Only returns functions with this name.
+
+
+</td></tr>
+</tbody></table>

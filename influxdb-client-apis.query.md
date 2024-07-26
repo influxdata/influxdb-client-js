@@ -6,7 +6,7 @@
 
 Query InfluxDB with the Flux language
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Query 
@@ -14,23 +14,158 @@ interface Query
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dialect?](./influxdb-client-apis.query.dialect.md) |  | [Dialect](./influxdb-client-apis.dialect.md) | <i>(Optional)</i> |
-|  [extern?](./influxdb-client-apis.query.extern.md) |  | [File](./influxdb-client-apis.file.md) | <i>(Optional)</i> |
-|  [now?](./influxdb-client-apis.query.now.md) |  | string | <i>(Optional)</i> Specifies the time that should be reported as <code>now</code> in the query. Default is the server <code>now</code> time. |
-|  [params?](./influxdb-client-apis.query.params.md) |  | any | <p><i>(Optional)</i> Key-value pairs passed as parameters during query execution.</p><p>To use parameters in your query, pass a \_<code>query</code>\_ with <code>params</code> references (in dot notation)--for example:</p>
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dialect?](./influxdb-client-apis.query.dialect.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Dialect](./influxdb-client-apis.dialect.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[extern?](./influxdb-client-apis.query.extern.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[File](./influxdb-client-apis.file_2.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[now?](./influxdb-client-apis.query.now.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the time that should be reported as `now` in the query. Default is the server `now` time.
+
+
+</td></tr>
+<tr><td>
+
+[params?](./influxdb-client-apis.query.params.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ Key-value pairs passed as parameters during query execution.
+
+To use parameters in your query, pass a \_`query`<!-- -->\_ with `params` references (in dot notation)--for example:
+
 ```json
   query: "from(bucket: params.mybucket) |> range(start: params.rangeStart) |> limit(n:1)"
 ```
-<p>and pass \_<code>params</code>\_ with the key-value pairs--for example:</p>
+and pass \_`params`<!-- -->\_ with the key-value pairs--for example:
+
 ```json
   params: {
     "mybucket": "environment",
     "rangeStart": "-30d"
   }
 ```
-<p>During query execution, InfluxDB passes \_<code>params</code>\_ to your script and substitutes the values.</p><p>\#\#\#\# Limitations</p><p>- If you use \_<code>params</code>\_, you can't use \_<code>extern</code>\_.</p> |
-|  [query](./influxdb-client-apis.query.query.md) |  | string | The query script to execute. |
-|  [type?](./influxdb-client-apis.query.type.md) |  | 'flux' | <i>(Optional)</i> The type of query. Must be "flux". |
+During query execution, InfluxDB passes \_`params`<!-- -->\_ to your script and substitutes the values.
 
+\#\#\#\# Limitations
+
+- If you use \_`params`<!-- -->\_, you can't use \_`extern`<!-- -->\_.
+
+
+</td></tr>
+<tr><td>
+
+[query](./influxdb-client-apis.query.query.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The query script to execute.
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.query.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'flux'
+
+
+</td><td>
+
+_(Optional)_ The type of query. Must be "flux".
+
+
+</td></tr>
+</tbody></table>

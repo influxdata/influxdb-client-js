@@ -4,7 +4,7 @@
 
 ## Routes.telegrafs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 telegrafs?: string;

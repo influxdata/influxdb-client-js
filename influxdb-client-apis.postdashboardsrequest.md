@@ -4,7 +4,7 @@
 
 ## PostDashboardsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostDashboardsRequest 
@@ -12,7 +12,44 @@ interface PostDashboardsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postdashboardsrequest.body.md) |  | [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) | Dashboard to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postdashboardsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md)
+
+
+</td><td>
+
+Dashboard to create
+
+
+</td></tr>
+</tbody></table>

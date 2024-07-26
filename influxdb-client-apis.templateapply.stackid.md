@@ -14,7 +14,7 @@ To find a stack ID, use the InfluxDB  to list stacks.
 
 - [Stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/) - [View stacks](https://docs.influxdata.com/influxdb/v2.3/influxdb-templates/stacks/view/)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 stackID?: string;

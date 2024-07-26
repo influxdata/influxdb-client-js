@@ -6,7 +6,7 @@
 
 The user-facing description of the dashboard.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

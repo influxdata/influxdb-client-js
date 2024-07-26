@@ -4,7 +4,7 @@
 
 ## GetHealthRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetHealthRequest 

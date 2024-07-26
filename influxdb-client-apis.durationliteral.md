@@ -6,7 +6,7 @@
 
 Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DurationLiteral 
@@ -14,8 +14,63 @@ interface DurationLiteral
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.durationliteral.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.durationliteral.values.md) |  | [Duration](./influxdb-client-apis.duration.md)<!-- -->\[\] | <i>(Optional)</i> Duration values |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type?](./influxdb-client-apis.durationliteral.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[values?](./influxdb-client-apis.durationliteral.values.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Duration](./influxdb-client-apis.duration.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Duration values
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## LinePlusSingleStatProperties.suffix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 suffix: string;

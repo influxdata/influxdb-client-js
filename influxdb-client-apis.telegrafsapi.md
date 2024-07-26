@@ -6,7 +6,7 @@
 
 Telegrafs API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class TelegrafsAPI 
@@ -14,26 +14,250 @@ declare class TelegrafsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.telegrafsapi._constructor_.md) |  | Creates TelegrafsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.telegrafsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates TelegrafsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsid.md) |  | Delete a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsID) |
-|  [deleteTelegrafsIDLabelsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidlabelsid.md) |  | Delete a label from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDLabelsID) |
-|  [deleteTelegrafsIDMembersID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidmembersid.md) |  | Remove a member from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDMembersID) |
-|  [deleteTelegrafsIDOwnersID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidownersid.md) |  | Remove an owner from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDOwnersID) |
-|  [getTelegrafs(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafs.md) |  | List all Telegraf configurations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafs) |
-|  [getTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsid.md) |  | Retrieve a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsID) |
-|  [getTelegrafsIDLabels(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidlabels.md) |  | List all labels for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDLabels) |
-|  [getTelegrafsIDMembers(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidmembers.md) |  | List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDMembers) |
-|  [getTelegrafsIDOwners(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidowners.md) |  | List all owners of a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDOwners) |
-|  [postTelegrafs(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafs.md) |  | Create a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafs) |
-|  [postTelegrafsIDLabels(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidlabels.md) |  | Add a label to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDLabels) |
-|  [postTelegrafsIDMembers(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidmembers.md) |  | Add a member to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDMembers) |
-|  [postTelegrafsIDOwners(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidowners.md) |  | Add an owner to a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDOwners) |
-|  [putTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.puttelegrafsid.md) |  | Update a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutTelegrafsID) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteTelegrafsIDLabelsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteTelegrafsIDMembersID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidmembersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove a member from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDMembersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDMembersID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteTelegrafsIDOwnersID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.deletetelegrafsidownersid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove an owner from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDOwnersID)
+
+
+</td></tr>
+<tr><td>
+
+[getTelegrafs(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all Telegraf configurations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafs)
+
+
+</td></tr>
+<tr><td>
+
+[getTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsID)
+
+
+</td></tr>
+<tr><td>
+
+[getTelegrafsIDLabels(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getTelegrafsIDMembers(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[getTelegrafsIDOwners(request, requestOptions)](./influxdb-client-apis.telegrafsapi.gettelegrafsidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all owners of a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDOwners)
+
+
+</td></tr>
+<tr><td>
+
+[postTelegrafs(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafs)
+
+
+</td></tr>
+<tr><td>
+
+[postTelegrafsIDLabels(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[postTelegrafsIDMembers(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidmembers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a member to a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDMembers)
+
+
+</td></tr>
+<tr><td>
+
+[postTelegrafsIDOwners(request, requestOptions)](./influxdb-client-apis.telegrafsapi.posttelegrafsidowners.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add an owner to a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostTelegrafsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostTelegrafsIDOwners)
+
+
+</td></tr>
+<tr><td>
+
+[putTelegrafsID(request, requestOptions)](./influxdb-client-apis.telegrafsapi.puttelegrafsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutTelegrafsID)
+
+
+</td></tr>
+</tbody></table>

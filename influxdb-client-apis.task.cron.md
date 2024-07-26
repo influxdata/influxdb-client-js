@@ -6,7 +6,7 @@
 
 A [Cron expression](https://en.wikipedia.org/wiki/Cron#Overview) that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cron?: string;

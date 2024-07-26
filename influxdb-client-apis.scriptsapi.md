@@ -6,7 +6,7 @@
 
 Scripts API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ScriptsAPI 
@@ -14,20 +14,166 @@ declare class ScriptsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.scriptsapi._constructor_.md) |  | Creates ScriptsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.scriptsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ScriptsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.deletescriptsid.md) |  | Delete a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/DeleteScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/DeleteScriptsID) |
-|  [getScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscripts.md) |  | List scripts. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts) |
-|  [getScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscriptsid.md) |  | Retrieve a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScriptsID) |
-|  [patchScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsid.md) |  | Update a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsID) |
-|  [patchScriptsIDAddLabels(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsidaddlabels.md) |  | Add labels to a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsIDAddLabels](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsIDAddLabels) |
-|  [patchScriptsIDRemoveLabels(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsidremovelabels.md) |  | Remove labels from a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsIDRemoveLabels](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsIDRemoveLabels) |
-|  [postScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscripts.md) |  | Create a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts) |
-|  [postScriptsIDInvoke(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscriptsidinvoke.md) |  | Invoke a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScriptsIDInvoke](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.deletescriptsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/DeleteScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/DeleteScriptsID)
+
+
+</td></tr>
+<tr><td>
+
+[getScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscripts.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List scripts. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts)
+
+
+</td></tr>
+<tr><td>
+
+[getScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.getscriptsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScriptsID)
+
+
+</td></tr>
+<tr><td>
+
+[patchScriptsID(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsID](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsID)
+
+
+</td></tr>
+<tr><td>
+
+[patchScriptsIDAddLabels(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsidaddlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add labels to a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsIDAddLabels](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsIDAddLabels)
+
+
+</td></tr>
+<tr><td>
+
+[patchScriptsIDRemoveLabels(request, requestOptions)](./influxdb-client-apis.scriptsapi.patchscriptsidremovelabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Remove labels from a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PatchScriptsIDRemoveLabels](https://docs.influxdata.com/influxdb/cloud/api/#operation/PatchScriptsIDRemoveLabels)
+
+
+</td></tr>
+<tr><td>
+
+[postScripts(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscripts.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScripts)
+
+
+</td></tr>
+<tr><td>
+
+[postScriptsIDInvoke(request, requestOptions)](./influxdb-client-apis.scriptsapi.postscriptsidinvoke.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Invoke a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScriptsIDInvoke](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke)
+
+
+</td></tr>
+</tbody></table>

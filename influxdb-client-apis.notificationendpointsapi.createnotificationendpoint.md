@@ -6,7 +6,7 @@
 
 Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationEndpoint)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 createNotificationEndpoint(request: CreateNotificationEndpointRequest, requestOptions?: RequestOptions): Promise<NotificationEndpoint>;
@@ -14,12 +14,56 @@ createNotificationEndpoint(request: CreateNotificationEndpointRequest, requestOp
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)<!-- -->&gt;
 

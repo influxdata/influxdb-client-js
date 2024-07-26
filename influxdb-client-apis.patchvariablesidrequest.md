@@ -4,7 +4,7 @@
 
 ## PatchVariablesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchVariablesIDRequest 
@@ -12,8 +12,63 @@ interface PatchVariablesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchvariablesidrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable update to apply |
-|  [variableID](./influxdb-client-apis.patchvariablesidrequest.variableid.md) |  | string | The variable ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchvariablesidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Variable](./influxdb-client-apis.variable.md)
+
+
+</td><td>
+
+Variable update to apply
+
+
+</td></tr>
+<tr><td>
+
+[variableID](./influxdb-client-apis.patchvariablesidrequest.variableid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The variable ID.
+
+
+</td></tr>
+</tbody></table>

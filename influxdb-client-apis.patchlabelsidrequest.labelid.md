@@ -6,7 +6,7 @@
 
 The ID of the label to update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 labelID: string;

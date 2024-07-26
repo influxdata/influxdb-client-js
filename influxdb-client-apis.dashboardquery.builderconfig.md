@@ -4,7 +4,7 @@
 
 ## DashboardQuery.builderConfig property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 builderConfig?: BuilderConfig;

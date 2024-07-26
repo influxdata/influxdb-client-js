@@ -4,7 +4,7 @@
 
 ## GetUsersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetUsersRequest 
@@ -12,11 +12,120 @@ interface GetUsersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after?](./influxdb-client-apis.getusersrequest.after.md) |  | string | <i>(Optional)</i> Resource ID to seek from. Results are not inclusive of this ID. Use <code>after</code> instead of <code>offset</code>. |
-|  [id?](./influxdb-client-apis.getusersrequest.id.md) |  | string | <i>(Optional)</i> |
-|  [limit?](./influxdb-client-apis.getusersrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [name?](./influxdb-client-apis.getusersrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [offset?](./influxdb-client-apis.getusersrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after?](./influxdb-client-apis.getusersrequest.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.getusersrequest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getusersrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.getusersrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getusersrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+</tbody></table>

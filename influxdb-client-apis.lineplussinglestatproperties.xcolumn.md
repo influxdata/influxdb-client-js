@@ -4,7 +4,7 @@
 
 ## LinePlusSingleStatProperties.xColumn property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xColumn?: string;

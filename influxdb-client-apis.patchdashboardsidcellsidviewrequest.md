@@ -4,7 +4,7 @@
 
 ## PatchDashboardsIDCellsIDViewRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchDashboardsIDCellsIDViewRequest 
@@ -12,9 +12,82 @@ interface PatchDashboardsIDCellsIDViewRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md) |  | [View](./influxdb-client-apis.view.md) | entity body |
-|  [cellID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.cellid.md) |  | string | The ID of the cell to update. |
-|  [dashboardID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[View](./influxdb-client-apis.view.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[cellID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.cellid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the cell to update.
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the dashboard to update.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## ExportTemplateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ExportTemplateRequest 
@@ -12,7 +12,44 @@ interface ExportTemplateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.exporttemplaterequest.body.md) |  | [TemplateExportByID](./influxdb-client-apis.templateexportbyid.md) \| [TemplateExportByName](./influxdb-client-apis.templateexportbyname.md) | Export resources as an InfluxDB template. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.exporttemplaterequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TemplateExportByID](./influxdb-client-apis.templateexportbyid.md) \| [TemplateExportByName](./influxdb-client-apis.templateexportbyname.md)
+
+
+</td><td>
+
+Export resources as an InfluxDB template.
+
+
+</td></tr>
+</tbody></table>

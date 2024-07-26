@@ -6,7 +6,7 @@
 
 Allows to cancel a running execution.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Cancellable 
@@ -14,8 +14,35 @@ interface Cancellable
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [cancel()](./influxdb-client.cancellable.cancel.md) | Cancels execution. |
-|  [isCancelled()](./influxdb-client.cancellable.iscancelled.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cancel()](./influxdb-client.cancellable.cancel.md)
+
+
+</td><td>
+
+Cancels execution.
+
+
+</td></tr>
+<tr><td>
+
+[isCancelled()](./influxdb-client.cancellable.iscancelled.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

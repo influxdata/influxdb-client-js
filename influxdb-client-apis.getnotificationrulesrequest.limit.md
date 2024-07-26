@@ -6,7 +6,7 @@
 
 Limits the number of records returned. Default is `20`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: number;

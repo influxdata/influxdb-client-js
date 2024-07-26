@@ -4,7 +4,7 @@
 
 ## User interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface User 
@@ -12,10 +12,101 @@ interface User
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.user.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.user.name.md) |  | string |  |
-|  [oauthID?](./influxdb-client-apis.user.oauthid.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.user.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the user is inactive. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.user.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.user.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[oauthID?](./influxdb-client-apis.user.oauthid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.user.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_ If inactive the user is inactive.
+
+
+</td></tr>
+</tbody></table>

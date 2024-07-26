@@ -6,12 +6,12 @@
 
 Rows creates a cold observable of the CSV response rows.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rows(): Observable<Row>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [Observable](./influxdb-client.observable.md)<!-- -->&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
 

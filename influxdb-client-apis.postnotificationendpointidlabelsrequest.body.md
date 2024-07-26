@@ -6,7 +6,7 @@
 
 Label to add
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: LabelMapping;

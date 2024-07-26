@@ -6,7 +6,7 @@
 
 Creates influxdb-client-js's FluxResultObserver that collects row results to a Table instance
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function createCollector(resolve: (value: FromFluxResult) => void, reject: (reason?: any) => void, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): FluxResultObserver<string[]>;
@@ -14,14 +14,86 @@ declare function createCollector(resolve: (value: FromFluxResult) => void, rejec
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  resolve | (value: FromFluxResult) =&gt; void | called when the Table is collected |
-|  reject | (reason?: any) =&gt; void | called upon error |
-|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) |  |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+resolve
+
+
+</td><td>
+
+(value: FromFluxResult) =&gt; void
+
+
+</td><td>
+
+called when the Table is collected
+
+
+</td></tr>
+<tr><td>
+
+reject
+
+
+</td><td>
+
+(reason?: any) =&gt; void
+
+
+</td><td>
+
+called upon error
+
+
+</td></tr>
+<tr><td>
+
+tableFactory
+
+
+</td><td>
+
+[GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+tableOptions
+
+
+</td><td>
+
+[TableOptions](./influxdb-client-giraffe.tableoptions.md)
+
+
+</td><td>
+
+_(Optional)_ tableOptions allow to filter or even stop the processing of rows, or restrict the columns to collect
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt;
 

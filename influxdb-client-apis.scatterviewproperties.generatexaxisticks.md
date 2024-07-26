@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.generateXAxisTicks property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 generateXAxisTicks?: string[];

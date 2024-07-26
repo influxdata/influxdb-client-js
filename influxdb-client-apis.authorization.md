@@ -4,7 +4,7 @@
 
 ## Authorization type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Authorization = AuthorizationUpdateRequest & {
@@ -23,5 +23,5 @@ type Authorization = AuthorizationUpdateRequest & {
     };
 };
 ```
-<b>References:</b> [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
+**References:** [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)<!-- -->, [Permission](./influxdb-client-apis.permission.md)<!-- -->, [Link](./influxdb-client-apis.link.md)
 

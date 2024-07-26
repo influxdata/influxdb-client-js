@@ -8,7 +8,7 @@ Number of seconds to collect statistics.
 
 `seconds` is mutually exclusive with `debug=1`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 seconds?: string;

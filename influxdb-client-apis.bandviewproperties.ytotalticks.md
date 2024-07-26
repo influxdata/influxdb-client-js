@@ -4,7 +4,7 @@
 
 ## BandViewProperties.yTotalTicks property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yTotalTicks?: number;

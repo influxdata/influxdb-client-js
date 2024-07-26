@@ -4,7 +4,7 @@
 
 ## HTTPNotificationRuleBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface HTTPNotificationRuleBase 
@@ -12,8 +12,61 @@ interface HTTPNotificationRuleBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type](./influxdb-client-apis.httpnotificationrulebase.type.md) |  | 'http' |  |
-|  [url?](./influxdb-client-apis.httpnotificationrulebase.url.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type](./influxdb-client-apis.httpnotificationrulebase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'http'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[url?](./influxdb-client-apis.httpnotificationrulebase.url.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

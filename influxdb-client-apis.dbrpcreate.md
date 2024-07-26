@@ -4,7 +4,7 @@
 
 ## DBRPCreate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DBRPCreate 
@@ -12,12 +12,139 @@ interface DBRPCreate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.dbrpcreate.bucketid.md) |  | string | The ID of the bucket used as the target for the translation. |
-|  [database](./influxdb-client-apis.dbrpcreate.database.md) |  | string | InfluxDB v1 database |
-|  [default?](./influxdb-client-apis.dbrpcreate.default.md) |  | boolean | <i>(Optional)</i> Mapping represents the default retention policy for the database specified. |
-|  [org?](./influxdb-client-apis.dbrpcreate.org.md) |  | string | <i>(Optional)</i> The name of the organization that owns this mapping. |
-|  [orgID?](./influxdb-client-apis.dbrpcreate.orgid.md) |  | string | <i>(Optional)</i> The ID of the organization. |
-|  [retention\_policy](./influxdb-client-apis.dbrpcreate.retention_policy.md) |  | string | InfluxDB v1 retention policy |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.dbrpcreate.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the bucket used as the target for the translation.
+
+
+</td></tr>
+<tr><td>
+
+[database](./influxdb-client-apis.dbrpcreate.database.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+InfluxDB v1 database
+
+
+</td></tr>
+<tr><td>
+
+[default?](./influxdb-client-apis.dbrpcreate.default.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Mapping represents the default retention policy for the database specified.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.dbrpcreate.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization that owns this mapping.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.dbrpcreate.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[retention\_policy](./influxdb-client-apis.dbrpcreate.retention_policy.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+InfluxDB v1 retention policy
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Permission.action property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 action: 'read' | 'write';

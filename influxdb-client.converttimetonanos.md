@@ -6,7 +6,7 @@
 
 convertTimeToNanos converts Point's timestamp to a string.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function convertTimeToNanos(value: string | number | Date | undefined): string | undefined;
@@ -14,11 +14,40 @@ declare function convertTimeToNanos(value: string | number | Date | undefined): 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | string \| number \| Date \| undefined | supported timestamp value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+string \| number \| Date \| undefined
+
+
+</td><td>
+
+supported timestamp value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string \| undefined
 

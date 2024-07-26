@@ -6,7 +6,7 @@
 
 HTTP headers that will be sent with every query request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: {

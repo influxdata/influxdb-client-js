@@ -4,7 +4,7 @@
 
 ## DeleteBucketsIDMembersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteBucketsIDMembersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteBucketsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.deletebucketsidmembersidrequest.bucketid.md) |  | string | The ID of the bucket to remove a user from. |
-|  [userID](./influxdb-client-apis.deletebucketsidmembersidrequest.userid.md) |  | string | The ID of the user to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.deletebucketsidmembersidrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the bucket to remove a user from.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletebucketsidmembersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the user to remove.
+
+
+</td></tr>
+</tbody></table>

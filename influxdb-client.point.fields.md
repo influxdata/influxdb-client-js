@@ -6,7 +6,7 @@
 
 escaped field values
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 fields: {

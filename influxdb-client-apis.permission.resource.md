@@ -4,7 +4,7 @@
 
 ## Permission.resource property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 resource: Resource;

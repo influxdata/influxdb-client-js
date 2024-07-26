@@ -4,7 +4,7 @@
 
 ## HttpError.statusMessage property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly statusMessage: string | undefined;

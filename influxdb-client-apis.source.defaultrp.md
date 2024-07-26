@@ -4,7 +4,7 @@
 
 ## Source.defaultRP property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaultRP?: string;

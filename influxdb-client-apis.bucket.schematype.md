@@ -4,7 +4,7 @@
 
 ## Bucket.schemaType property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 schemaType?: SchemaType;

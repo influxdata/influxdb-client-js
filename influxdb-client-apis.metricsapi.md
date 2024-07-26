@@ -6,7 +6,7 @@
 
 Metrics API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class MetricsAPI 
@@ -14,13 +14,68 @@ declare class MetricsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.metricsapi._constructor_.md) |  | Creates MetricsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.metricsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates MetricsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md) |  | Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetMetrics) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getMetrics(request, requestOptions)](./influxdb-client-apis.metricsapi.getmetrics.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve workload performance metrics. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetMetrics](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetMetrics)
+
+
+</td></tr>
+</tbody></table>

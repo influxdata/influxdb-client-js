@@ -6,7 +6,7 @@
 
 The name of the scraper target.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

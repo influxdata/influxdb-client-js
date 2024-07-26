@@ -6,7 +6,7 @@
 
 column keys to collect in the table, undefined means all columns
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 columns?: string[];

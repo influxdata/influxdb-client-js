@@ -4,7 +4,7 @@
 
 ## PagerDutyNotificationEndpoint type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
@@ -12,5 +12,5 @@ type PagerDutyNotificationEndpoint = NotificationEndpointBase & {
     routingKey: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+**References:** [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
 

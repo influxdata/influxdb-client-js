@@ -6,7 +6,7 @@
 
 The separator used between cells. Default is a comma (`,`<!-- -->).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 delimiter?: string;

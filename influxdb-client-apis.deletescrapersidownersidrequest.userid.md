@@ -6,7 +6,7 @@
 
 The ID of owner to remove.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 userID: string;

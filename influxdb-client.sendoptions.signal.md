@@ -6,7 +6,7 @@
 
 Abort signal
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 signal?: AbortSignal;

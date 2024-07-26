@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.yLabelColumnSeparator property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yLabelColumnSeparator?: string;

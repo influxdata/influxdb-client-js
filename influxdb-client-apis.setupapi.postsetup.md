@@ -6,7 +6,7 @@
 
 Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSetup)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postSetup(request: PostSetupRequest, requestOptions?: RequestOptions): Promise<OnboardingResponse>;
@@ -14,12 +14,56 @@ postSetup(request: PostSetupRequest, requestOptions?: RequestOptions): Promise<O
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostSetupRequest](./influxdb-client-apis.postsetuprequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostSetupRequest](./influxdb-client-apis.postsetuprequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[OnboardingResponse](./influxdb-client-apis.onboardingresponse.md)<!-- -->&gt;
 

@@ -6,12 +6,12 @@
 
 Lines creates a cold observable of the CSV response lines.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lines(): Observable<string>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [Observable](./influxdb-client.observable.md)<!-- -->&lt;string&gt;
 

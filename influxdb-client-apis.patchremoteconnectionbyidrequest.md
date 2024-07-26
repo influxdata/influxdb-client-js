@@ -4,7 +4,7 @@
 
 ## PatchRemoteConnectionByIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchRemoteConnectionByIDRequest 
@@ -12,8 +12,61 @@ interface PatchRemoteConnectionByIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchremoteconnectionbyidrequest.body.md) |  | [RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md) | entity body |
-|  [remoteID](./influxdb-client-apis.patchremoteconnectionbyidrequest.remoteid.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchremoteconnectionbyidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[remoteID](./influxdb-client-apis.patchremoteconnectionbyidrequest.remoteid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

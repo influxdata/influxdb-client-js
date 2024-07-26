@@ -4,7 +4,7 @@
 
 ## PostQueryAstRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostQueryAstRequest 
@@ -12,7 +12,44 @@ interface PostQueryAstRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postqueryastrequest.body.md) |  | [LanguageRequest](./influxdb-client-apis.languagerequest.md) | The Flux query to analyze. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postqueryastrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LanguageRequest](./influxdb-client-apis.languagerequest.md)
+
+
+</td><td>
+
+The Flux query to analyze.
+
+
+</td></tr>
+</tbody></table>

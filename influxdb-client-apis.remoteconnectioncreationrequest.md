@@ -4,7 +4,7 @@
 
 ## RemoteConnectionCreationRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RemoteConnectionCreationRequest 
@@ -12,13 +12,146 @@ interface RemoteConnectionCreationRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowInsecureTLS](./influxdb-client-apis.remoteconnectioncreationrequest.allowinsecuretls.md) |  | boolean |  |
-|  [description?](./influxdb-client-apis.remoteconnectioncreationrequest.description.md) |  | string | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.remoteconnectioncreationrequest.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.remoteconnectioncreationrequest.orgid.md) |  | string |  |
-|  [remoteAPIToken](./influxdb-client-apis.remoteconnectioncreationrequest.remoteapitoken.md) |  | string |  |
-|  [remoteOrgID](./influxdb-client-apis.remoteconnectioncreationrequest.remoteorgid.md) |  | string |  |
-|  [remoteURL](./influxdb-client-apis.remoteconnectioncreationrequest.remoteurl.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowInsecureTLS](./influxdb-client-apis.remoteconnectioncreationrequest.allowinsecuretls.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.remoteconnectioncreationrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.remoteconnectioncreationrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.remoteconnectioncreationrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteAPIToken](./influxdb-client-apis.remoteconnectioncreationrequest.remoteapitoken.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteOrgID](./influxdb-client-apis.remoteconnectioncreationrequest.remoteorgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteURL](./influxdb-client-apis.remoteconnectioncreationrequest.remoteurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

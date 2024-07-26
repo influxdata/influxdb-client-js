@@ -6,560 +6,5163 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [AuthorizationsAPI](./influxdb-client-apis.authorizationsapi.md) | Authorizations API |
-|  [BackupAPI](./influxdb-client-apis.backupapi.md) | Backup API |
-|  [BucketsAPI](./influxdb-client-apis.bucketsapi.md) | Buckets API |
-|  [ChecksAPI](./influxdb-client-apis.checksapi.md) | Checks API |
-|  [ConfigAPI](./influxdb-client-apis.configapi.md) | Config API |
-|  [DashboardsAPI](./influxdb-client-apis.dashboardsapi.md) | Dashboards API |
-|  [DbrpsAPI](./influxdb-client-apis.dbrpsapi.md) | Dbrps API |
-|  [DebugAPI](./influxdb-client-apis.debugapi.md) | Debug API |
-|  [DeleteAPI](./influxdb-client-apis.deleteapi.md) | Delete API |
-|  [FlagsAPI](./influxdb-client-apis.flagsapi.md) | Flags API |
-|  [FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md) | FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ . |
-|  [HealthAPI](./influxdb-client-apis.healthapi.md) | Health API |
-|  [LabelsAPI](./influxdb-client-apis.labelsapi.md) | Labels API |
-|  [MeAPI](./influxdb-client-apis.meapi.md) | Me API |
-|  [MetricsAPI](./influxdb-client-apis.metricsapi.md) | Metrics API |
-|  [NotificationEndpointsAPI](./influxdb-client-apis.notificationendpointsapi.md) | NotificationEndpoints API |
-|  [NotificationRulesAPI](./influxdb-client-apis.notificationrulesapi.md) | NotificationRules API |
-|  [OrgsAPI](./influxdb-client-apis.orgsapi.md) | Orgs API |
-|  [PingAPI](./influxdb-client-apis.pingapi.md) | Ping API |
-|  [QueryAPI](./influxdb-client-apis.queryapi.md) | Query API |
-|  [ReadyAPI](./influxdb-client-apis.readyapi.md) | Ready API |
-|  [RemotesAPI](./influxdb-client-apis.remotesapi.md) | Remotes API |
-|  [ReplicationsAPI](./influxdb-client-apis.replicationsapi.md) | Replications API |
-|  [ResourcesAPI](./influxdb-client-apis.resourcesapi.md) | Resources API |
-|  [RestoreAPI](./influxdb-client-apis.restoreapi.md) | Restore API |
-|  [RootAPI](./influxdb-client-apis.rootapi.md) | Root API |
-|  [ScrapersAPI](./influxdb-client-apis.scrapersapi.md) | Scrapers API |
-|  [ScriptsAPI](./influxdb-client-apis.scriptsapi.md) | Scripts API |
-|  [SetupAPI](./influxdb-client-apis.setupapi.md) | Setup API |
-|  [SigninAPI](./influxdb-client-apis.signinapi.md) | Signin API |
-|  [SignoutAPI](./influxdb-client-apis.signoutapi.md) | Signout API |
-|  [SourcesAPI](./influxdb-client-apis.sourcesapi.md) | Sources API |
-|  [StacksAPI](./influxdb-client-apis.stacksapi.md) | Stacks API |
-|  [TasksAPI](./influxdb-client-apis.tasksapi.md) | Tasks API |
-|  [TelegrafAPI](./influxdb-client-apis.telegrafapi.md) | Telegraf API |
-|  [TelegrafsAPI](./influxdb-client-apis.telegrafsapi.md) | Telegrafs API |
-|  [TemplatesAPI](./influxdb-client-apis.templatesapi.md) | Templates API |
-|  [UsersAPI](./influxdb-client-apis.usersapi.md) | Users API |
-|  [VariablesAPI](./influxdb-client-apis.variablesapi.md) | Variables API |
-|  [WriteAPI](./influxdb-client-apis.writeapi.md) | Write API |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AuthorizationsAPI](./influxdb-client-apis.authorizationsapi.md)
+
+
+</td><td>
+
+Authorizations API
+
+
+</td></tr>
+<tr><td>
+
+[BackupAPI](./influxdb-client-apis.backupapi.md)
+
+
+</td><td>
+
+Backup API
+
+
+</td></tr>
+<tr><td>
+
+[BucketsAPI](./influxdb-client-apis.bucketsapi.md)
+
+
+</td><td>
+
+Buckets API
+
+
+</td></tr>
+<tr><td>
+
+[ChecksAPI](./influxdb-client-apis.checksapi.md)
+
+
+</td><td>
+
+Checks API
+
+
+</td></tr>
+<tr><td>
+
+[ConfigAPI](./influxdb-client-apis.configapi.md)
+
+
+</td><td>
+
+Config API
+
+
+</td></tr>
+<tr><td>
+
+[DashboardsAPI](./influxdb-client-apis.dashboardsapi.md)
+
+
+</td><td>
+
+Dashboards API
+
+
+</td></tr>
+<tr><td>
+
+[DbrpsAPI](./influxdb-client-apis.dbrpsapi.md)
+
+
+</td><td>
+
+Dbrps API
+
+
+</td></tr>
+<tr><td>
+
+[DebugAPI](./influxdb-client-apis.debugapi.md)
+
+
+</td><td>
+
+Debug API
+
+
+</td></tr>
+<tr><td>
+
+[DeleteAPI](./influxdb-client-apis.deleteapi.md)
+
+
+</td><td>
+
+Delete API
+
+
+</td></tr>
+<tr><td>
+
+[FlagsAPI](./influxdb-client-apis.flagsapi.md)
+
+
+</td><td>
+
+Flags API
+
+
+</td></tr>
+<tr><td>
+
+[FluxScriptInvocationAPI](./influxdb-client-apis.fluxscriptinvocationapi.md)
+
+
+</td><td>
+
+FluxScriptInvocationAPI executes flux 'API invokable script' and parses the result CSV annotated data. See https://docs.influxdata.com/influxdb/cloud/api-guide/api-invokable-scripts/ .
+
+
+</td></tr>
+<tr><td>
+
+[HealthAPI](./influxdb-client-apis.healthapi.md)
+
+
+</td><td>
+
+Health API
+
+
+</td></tr>
+<tr><td>
+
+[LabelsAPI](./influxdb-client-apis.labelsapi.md)
+
+
+</td><td>
+
+Labels API
+
+
+</td></tr>
+<tr><td>
+
+[MeAPI](./influxdb-client-apis.meapi.md)
+
+
+</td><td>
+
+Me API
+
+
+</td></tr>
+<tr><td>
+
+[MetricsAPI](./influxdb-client-apis.metricsapi.md)
+
+
+</td><td>
+
+Metrics API
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpointsAPI](./influxdb-client-apis.notificationendpointsapi.md)
+
+
+</td><td>
+
+NotificationEndpoints API
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRulesAPI](./influxdb-client-apis.notificationrulesapi.md)
+
+
+</td><td>
+
+NotificationRules API
+
+
+</td></tr>
+<tr><td>
+
+[OrgsAPI](./influxdb-client-apis.orgsapi.md)
+
+
+</td><td>
+
+Orgs API
+
+
+</td></tr>
+<tr><td>
+
+[PingAPI](./influxdb-client-apis.pingapi.md)
+
+
+</td><td>
+
+Ping API
+
+
+</td></tr>
+<tr><td>
+
+[QueryAPI](./influxdb-client-apis.queryapi.md)
+
+
+</td><td>
+
+Query API
+
+
+</td></tr>
+<tr><td>
+
+[ReadyAPI](./influxdb-client-apis.readyapi.md)
+
+
+</td><td>
+
+Ready API
+
+
+</td></tr>
+<tr><td>
+
+[RemotesAPI](./influxdb-client-apis.remotesapi.md)
+
+
+</td><td>
+
+Remotes API
+
+
+</td></tr>
+<tr><td>
+
+[ReplicationsAPI](./influxdb-client-apis.replicationsapi.md)
+
+
+</td><td>
+
+Replications API
+
+
+</td></tr>
+<tr><td>
+
+[ResourcesAPI](./influxdb-client-apis.resourcesapi.md)
+
+
+</td><td>
+
+Resources API
+
+
+</td></tr>
+<tr><td>
+
+[RestoreAPI](./influxdb-client-apis.restoreapi.md)
+
+
+</td><td>
+
+Restore API
+
+
+</td></tr>
+<tr><td>
+
+[RootAPI](./influxdb-client-apis.rootapi.md)
+
+
+</td><td>
+
+Root API
+
+
+</td></tr>
+<tr><td>
+
+[ScrapersAPI](./influxdb-client-apis.scrapersapi.md)
+
+
+</td><td>
+
+Scrapers API
+
+
+</td></tr>
+<tr><td>
+
+[ScriptsAPI](./influxdb-client-apis.scriptsapi.md)
+
+
+</td><td>
+
+Scripts API
+
+
+</td></tr>
+<tr><td>
+
+[SetupAPI](./influxdb-client-apis.setupapi.md)
+
+
+</td><td>
+
+Setup API
+
+
+</td></tr>
+<tr><td>
+
+[SigninAPI](./influxdb-client-apis.signinapi.md)
+
+
+</td><td>
+
+Signin API
+
+
+</td></tr>
+<tr><td>
+
+[SignoutAPI](./influxdb-client-apis.signoutapi.md)
+
+
+</td><td>
+
+Signout API
+
+
+</td></tr>
+<tr><td>
+
+[SourcesAPI](./influxdb-client-apis.sourcesapi.md)
+
+
+</td><td>
+
+Sources API
+
+
+</td></tr>
+<tr><td>
+
+[StacksAPI](./influxdb-client-apis.stacksapi.md)
+
+
+</td><td>
+
+Stacks API
+
+
+</td></tr>
+<tr><td>
+
+[TasksAPI](./influxdb-client-apis.tasksapi.md)
+
+
+</td><td>
+
+Tasks API
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafAPI](./influxdb-client-apis.telegrafapi.md)
+
+
+</td><td>
+
+Telegraf API
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafsAPI](./influxdb-client-apis.telegrafsapi.md)
+
+
+</td><td>
+
+Telegrafs API
+
+
+</td></tr>
+<tr><td>
+
+[TemplatesAPI](./influxdb-client-apis.templatesapi.md)
+
+
+</td><td>
+
+Templates API
+
+
+</td></tr>
+<tr><td>
+
+[UsersAPI](./influxdb-client-apis.usersapi.md)
+
+
+</td><td>
+
+Users API
+
+
+</td></tr>
+<tr><td>
+
+[VariablesAPI](./influxdb-client-apis.variablesapi.md)
+
+
+</td><td>
+
+Variables API
+
+
+</td></tr>
+<tr><td>
+
+[WriteAPI](./influxdb-client-apis.writeapi.md)
+
+
+</td><td>
+
+Write API
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) |  |
-|  [AnalyzeQueryResponse](./influxdb-client-apis.analyzequeryresponse.md) |  |
-|  [ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md) |  |
-|  [ArrayExpression](./influxdb-client-apis.arrayexpression.md) | Used to create and directly specify the elements of an array object |
-|  [ASTResponse](./influxdb-client-apis.astresponse.md) | Contains the AST for the supplied Flux query |
-|  [Authorizations](./influxdb-client-apis.authorizations.md) |  |
-|  [AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md) |  |
-|  [Axes](./influxdb-client-apis.axes.md) | The viewport for a View's visualizations |
-|  [Axis](./influxdb-client-apis.axis.md) | Axis used in a visualization. |
-|  [BadStatement](./influxdb-client-apis.badstatement.md) | A placeholder for statements for which no correct statement nodes can be created |
-|  [BandViewProperties](./influxdb-client-apis.bandviewproperties.md) |  |
-|  [BinaryExpression](./influxdb-client-apis.binaryexpression.md) | uses binary operators to act on two operands in an expression |
-|  [Block](./influxdb-client-apis.block.md) | A set of statements |
-|  [BooleanLiteral](./influxdb-client-apis.booleanliteral.md) | Represents boolean values |
-|  [Bucket](./influxdb-client-apis.bucket.md) |  |
-|  [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md) |  |
-|  [Buckets](./influxdb-client-apis.buckets.md) |  |
-|  [BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md) |  |
-|  [BuilderConfig](./influxdb-client-apis.builderconfig.md) |  |
-|  [BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md) |  |
-|  [BuilderTagsType](./influxdb-client-apis.buildertagstype.md) |  |
-|  [BuiltinStatement](./influxdb-client-apis.builtinstatement.md) | Declares a builtin identifier and its type |
-|  [CallExpression](./influxdb-client-apis.callexpression.md) | Represents a function call |
-|  [Cell](./influxdb-client-apis.cell.md) |  |
-|  [CellUpdate](./influxdb-client-apis.cellupdate.md) |  |
-|  [CheckBase](./influxdb-client-apis.checkbase.md) |  |
-|  [CheckPatch](./influxdb-client-apis.checkpatch.md) |  |
-|  [Checks](./influxdb-client-apis.checks.md) |  |
-|  [CheckViewProperties](./influxdb-client-apis.checkviewproperties.md) |  |
-|  [ConditionalExpression](./influxdb-client-apis.conditionalexpression.md) | Selects one of two expressions, <code>Alternate</code> or <code>Consequent</code>, depending on a third boolean expression, <code>Test</code> |
-|  [Config](./influxdb-client-apis.config.md) |  |
-|  [ConstantVariableProperties](./influxdb-client-apis.constantvariableproperties.md) |  |
-|  [CreateCell](./influxdb-client-apis.createcell.md) |  |
-|  [CreateCheckRequest](./influxdb-client-apis.createcheckrequest.md) |  |
-|  [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md) |  |
-|  [CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md) |  |
-|  [CreateNotificationRuleRequest](./influxdb-client-apis.createnotificationrulerequest.md) |  |
-|  [CreateStackRequest](./influxdb-client-apis.createstackrequest.md) |  |
-|  [DashboardColor](./influxdb-client-apis.dashboardcolor.md) | Defines an encoding of data value into color space. |
-|  [DashboardQuery](./influxdb-client-apis.dashboardquery.md) |  |
-|  [Dashboards](./influxdb-client-apis.dashboards.md) |  |
-|  [DateTimeLiteral](./influxdb-client-apis.datetimeliteral.md) | Represents an instant in time with nanosecond precision in [RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->. |
-|  [DBRP](./influxdb-client-apis.dbrp.md) |  |
-|  [DBRPCreate](./influxdb-client-apis.dbrpcreate.md) |  |
-|  [DBRPGet](./influxdb-client-apis.dbrpget.md) |  |
-|  [DBRPs](./influxdb-client-apis.dbrps.md) |  |
-|  [DBRPUpdate](./influxdb-client-apis.dbrpupdate.md) |  |
-|  [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) | Indicates whether decimal places should be enforced, and how many digits it should show. |
-|  [DeleteAuthorizationsIDRequest](./influxdb-client-apis.deleteauthorizationsidrequest.md) |  |
-|  [DeleteBucketsIDLabelsIDRequest](./influxdb-client-apis.deletebucketsidlabelsidrequest.md) |  |
-|  [DeleteBucketsIDMembersIDRequest](./influxdb-client-apis.deletebucketsidmembersidrequest.md) |  |
-|  [DeleteBucketsIDOwnersIDRequest](./influxdb-client-apis.deletebucketsidownersidrequest.md) |  |
-|  [DeleteBucketsIDRequest](./influxdb-client-apis.deletebucketsidrequest.md) |  |
-|  [DeleteChecksIDLabelsIDRequest](./influxdb-client-apis.deletechecksidlabelsidrequest.md) |  |
-|  [DeleteChecksIDRequest](./influxdb-client-apis.deletechecksidrequest.md) |  |
-|  [DeleteDashboardsIDCellsIDRequest](./influxdb-client-apis.deletedashboardsidcellsidrequest.md) |  |
-|  [DeleteDashboardsIDLabelsIDRequest](./influxdb-client-apis.deletedashboardsidlabelsidrequest.md) |  |
-|  [DeleteDashboardsIDMembersIDRequest](./influxdb-client-apis.deletedashboardsidmembersidrequest.md) |  |
-|  [DeleteDashboardsIDOwnersIDRequest](./influxdb-client-apis.deletedashboardsidownersidrequest.md) |  |
-|  [DeleteDashboardsIDRequest](./influxdb-client-apis.deletedashboardsidrequest.md) |  |
-|  [DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md) |  |
-|  [DeleteLabelsIDRequest](./influxdb-client-apis.deletelabelsidrequest.md) |  |
-|  [DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md) |  |
-|  [DeleteNotificationEndpointsIDRequest](./influxdb-client-apis.deletenotificationendpointsidrequest.md) |  |
-|  [DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md) |  |
-|  [DeleteNotificationRulesIDRequest](./influxdb-client-apis.deletenotificationrulesidrequest.md) |  |
-|  [DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md) |  |
-|  [DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md) |  |
-|  [DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md) |  |
-|  [DeleteOrgsIDSecretsIDRequest](./influxdb-client-apis.deleteorgsidsecretsidrequest.md) |  |
-|  [DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md) | The delete predicate request. |
-|  [DeleteRemoteConnectionByIDRequest](./influxdb-client-apis.deleteremoteconnectionbyidrequest.md) |  |
-|  [DeleteReplicationByIDRequest](./influxdb-client-apis.deletereplicationbyidrequest.md) |  |
-|  [DeleteScrapersIDLabelsIDRequest](./influxdb-client-apis.deletescrapersidlabelsidrequest.md) |  |
-|  [DeleteScrapersIDMembersIDRequest](./influxdb-client-apis.deletescrapersidmembersidrequest.md) |  |
-|  [DeleteScrapersIDOwnersIDRequest](./influxdb-client-apis.deletescrapersidownersidrequest.md) |  |
-|  [DeleteScrapersIDRequest](./influxdb-client-apis.deletescrapersidrequest.md) |  |
-|  [DeleteScriptsIDRequest](./influxdb-client-apis.deletescriptsidrequest.md) |  |
-|  [DeleteSourcesIDRequest](./influxdb-client-apis.deletesourcesidrequest.md) |  |
-|  [DeleteStackRequest](./influxdb-client-apis.deletestackrequest.md) |  |
-|  [DeleteTasksIDLabelsIDRequest](./influxdb-client-apis.deletetasksidlabelsidrequest.md) |  |
-|  [DeleteTasksIDMembersIDRequest](./influxdb-client-apis.deletetasksidmembersidrequest.md) |  |
-|  [DeleteTasksIDOwnersIDRequest](./influxdb-client-apis.deletetasksidownersidrequest.md) |  |
-|  [DeleteTasksIDRequest](./influxdb-client-apis.deletetasksidrequest.md) |  |
-|  [DeleteTasksIDRunsIDRequest](./influxdb-client-apis.deletetasksidrunsidrequest.md) |  |
-|  [DeleteTelegrafsIDLabelsIDRequest](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.md) |  |
-|  [DeleteTelegrafsIDMembersIDRequest](./influxdb-client-apis.deletetelegrafsidmembersidrequest.md) |  |
-|  [DeleteTelegrafsIDOwnersIDRequest](./influxdb-client-apis.deletetelegrafsidownersidrequest.md) |  |
-|  [DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md) |  |
-|  [DeleteUsersIDRequest](./influxdb-client-apis.deleteusersidrequest.md) |  |
-|  [DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md) |  |
-|  [DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md) |  |
-|  [Dialect](./influxdb-client-apis.dialect.md) | <p>Options for tabular data output. Default output is [annotated CSV](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#csv-response-format) with headers.</p><p>For more information about tabular data \*\*dialect\*\*, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions)<!-- -->.</p> |
-|  [DictExpression](./influxdb-client-apis.dictexpression.md) | Used to create and directly specify the elements of a dictionary |
-|  [DictItem](./influxdb-client-apis.dictitem.md) | A key-value pair in a dictionary. |
-|  [Duration](./influxdb-client-apis.duration.md) | A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed. |
-|  [DurationLiteral](./influxdb-client-apis.durationliteral.md) | Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration |
-|  [Error\_2](./influxdb-client-apis.error_2.md) |  |
-|  [ExecutionOptions](./influxdb-client-apis.executionoptions.md) | ExecutionOptions contains execution options for a flux script. |
-|  [ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md) |  |
-|  [ExpressionStatement](./influxdb-client-apis.expressionstatement.md) | May consist of an expression that doesn't return a value and is executed solely for its side-effects |
-|  [File](./influxdb-client-apis.file.md) | Represents a source from a single file |
-|  [FloatLiteral](./influxdb-client-apis.floatliteral.md) | Represents floating point numbers according to the double representations defined by the IEEE-754-1985 |
-|  [FluxResponse](./influxdb-client-apis.fluxresponse.md) | Rendered flux that backs the check or notification. |
-|  [FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md) |  |
-|  [FluxSuggestions](./influxdb-client-apis.fluxsuggestions.md) |  |
-|  [FunctionExpression](./influxdb-client-apis.functionexpression.md) | Function expression |
-|  [GaugeViewProperties](./influxdb-client-apis.gaugeviewproperties.md) |  |
-|  [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md) |  |
-|  [GeoViewProperties](./influxdb-client-apis.geoviewproperties.md) |  |
-|  [GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md) |  |
-|  [GetAuthorizationsRequest](./influxdb-client-apis.getauthorizationsrequest.md) |  |
-|  [GetBackupKVRequest](./influxdb-client-apis.getbackupkvrequest.md) |  |
-|  [GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md) |  |
-|  [GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md) |  |
-|  [GetBucketsIDLabelsRequest](./influxdb-client-apis.getbucketsidlabelsrequest.md) |  |
-|  [GetBucketsIDMembersRequest](./influxdb-client-apis.getbucketsidmembersrequest.md) |  |
-|  [GetBucketsIDOwnersRequest](./influxdb-client-apis.getbucketsidownersrequest.md) |  |
-|  [GetBucketsIDRequest](./influxdb-client-apis.getbucketsidrequest.md) |  |
-|  [GetBucketsRequest](./influxdb-client-apis.getbucketsrequest.md) |  |
-|  [GetChecksIDLabelsRequest](./influxdb-client-apis.getchecksidlabelsrequest.md) |  |
-|  [GetChecksIDQueryRequest](./influxdb-client-apis.getchecksidqueryrequest.md) |  |
-|  [GetChecksIDRequest](./influxdb-client-apis.getchecksidrequest.md) |  |
-|  [GetChecksRequest](./influxdb-client-apis.getchecksrequest.md) |  |
-|  [GetConfigRequest](./influxdb-client-apis.getconfigrequest.md) |  |
-|  [GetDashboardsIDCellsIDViewRequest](./influxdb-client-apis.getdashboardsidcellsidviewrequest.md) |  |
-|  [GetDashboardsIDLabelsRequest](./influxdb-client-apis.getdashboardsidlabelsrequest.md) |  |
-|  [GetDashboardsIDMembersRequest](./influxdb-client-apis.getdashboardsidmembersrequest.md) |  |
-|  [GetDashboardsIDOwnersRequest](./influxdb-client-apis.getdashboardsidownersrequest.md) |  |
-|  [GetDashboardsIDRequest](./influxdb-client-apis.getdashboardsidrequest.md) |  |
-|  [GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md) |  |
-|  [GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md) |  |
-|  [GetDBRPsRequest](./influxdb-client-apis.getdbrpsrequest.md) |  |
-|  [GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md) |  |
-|  [GetDebugPprofAllProfilesRequest](./influxdb-client-apis.getdebugpprofallprofilesrequest.md) |  |
-|  [GetDebugPprofBlockRequest](./influxdb-client-apis.getdebugpprofblockrequest.md) |  |
-|  [GetDebugPprofCmdlineRequest](./influxdb-client-apis.getdebugpprofcmdlinerequest.md) |  |
-|  [GetDebugPprofGoroutineRequest](./influxdb-client-apis.getdebugpprofgoroutinerequest.md) |  |
-|  [GetDebugPprofHeapRequest](./influxdb-client-apis.getdebugpprofheaprequest.md) |  |
-|  [GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md) |  |
-|  [GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md) |  |
-|  [GetDebugPprofThreadCreateRequest](./influxdb-client-apis.getdebugpprofthreadcreaterequest.md) |  |
-|  [GetDebugPprofTraceRequest](./influxdb-client-apis.getdebugpproftracerequest.md) |  |
-|  [GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md) |  |
-|  [GetHealthRequest](./influxdb-client-apis.gethealthrequest.md) |  |
-|  [GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md) |  |
-|  [GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md) |  |
-|  [GetMeRequest](./influxdb-client-apis.getmerequest.md) |  |
-|  [GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md) |  |
-|  [GetNotificationEndpointsIDLabelsRequest](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.md) |  |
-|  [GetNotificationEndpointsIDRequest](./influxdb-client-apis.getnotificationendpointsidrequest.md) |  |
-|  [GetNotificationEndpointsRequest](./influxdb-client-apis.getnotificationendpointsrequest.md) |  |
-|  [GetNotificationRulesIDLabelsRequest](./influxdb-client-apis.getnotificationrulesidlabelsrequest.md) |  |
-|  [GetNotificationRulesIDQueryRequest](./influxdb-client-apis.getnotificationrulesidqueryrequest.md) |  |
-|  [GetNotificationRulesIDRequest](./influxdb-client-apis.getnotificationrulesidrequest.md) |  |
-|  [GetNotificationRulesRequest](./influxdb-client-apis.getnotificationrulesrequest.md) |  |
-|  [GetOrgsIDMembersRequest](./influxdb-client-apis.getorgsidmembersrequest.md) |  |
-|  [GetOrgsIDOwnersRequest](./influxdb-client-apis.getorgsidownersrequest.md) |  |
-|  [GetOrgsIDRequest](./influxdb-client-apis.getorgsidrequest.md) |  |
-|  [GetOrgsIDSecretsRequest](./influxdb-client-apis.getorgsidsecretsrequest.md) |  |
-|  [GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md) |  |
-|  [GetPingRequest](./influxdb-client-apis.getpingrequest.md) |  |
-|  [GetQuerySuggestionsNameRequest](./influxdb-client-apis.getquerysuggestionsnamerequest.md) |  |
-|  [GetQuerySuggestionsRequest](./influxdb-client-apis.getquerysuggestionsrequest.md) |  |
-|  [GetReadyRequest](./influxdb-client-apis.getreadyrequest.md) |  |
-|  [GetRemoteConnectionByIDRequest](./influxdb-client-apis.getremoteconnectionbyidrequest.md) |  |
-|  [GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md) |  |
-|  [GetReplicationByIDRequest](./influxdb-client-apis.getreplicationbyidrequest.md) |  |
-|  [GetReplicationsRequest](./influxdb-client-apis.getreplicationsrequest.md) |  |
-|  [GetResourcesRequest](./influxdb-client-apis.getresourcesrequest.md) |  |
-|  [GetRoutesRequest](./influxdb-client-apis.getroutesrequest.md) |  |
-|  [GetScrapersIDLabelsRequest](./influxdb-client-apis.getscrapersidlabelsrequest.md) |  |
-|  [GetScrapersIDMembersRequest](./influxdb-client-apis.getscrapersidmembersrequest.md) |  |
-|  [GetScrapersIDOwnersRequest](./influxdb-client-apis.getscrapersidownersrequest.md) |  |
-|  [GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md) |  |
-|  [GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md) |  |
-|  [GetScriptsIDRequest](./influxdb-client-apis.getscriptsidrequest.md) |  |
-|  [GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md) |  |
-|  [GetSetupRequest](./influxdb-client-apis.getsetuprequest.md) |  |
-|  [GetSourcesIDBucketsRequest](./influxdb-client-apis.getsourcesidbucketsrequest.md) |  |
-|  [GetSourcesIDHealthRequest](./influxdb-client-apis.getsourcesidhealthrequest.md) |  |
-|  [GetSourcesIDRequest](./influxdb-client-apis.getsourcesidrequest.md) |  |
-|  [GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md) |  |
-|  [GetTasksIDLabelsRequest](./influxdb-client-apis.gettasksidlabelsrequest.md) |  |
-|  [GetTasksIDLogsRequest](./influxdb-client-apis.gettasksidlogsrequest.md) |  |
-|  [GetTasksIDMembersRequest](./influxdb-client-apis.gettasksidmembersrequest.md) |  |
-|  [GetTasksIDOwnersRequest](./influxdb-client-apis.gettasksidownersrequest.md) |  |
-|  [GetTasksIDRequest](./influxdb-client-apis.gettasksidrequest.md) |  |
-|  [GetTasksIDRunsIDLogsRequest](./influxdb-client-apis.gettasksidrunsidlogsrequest.md) |  |
-|  [GetTasksIDRunsIDRequest](./influxdb-client-apis.gettasksidrunsidrequest.md) |  |
-|  [GetTasksIDRunsRequest](./influxdb-client-apis.gettasksidrunsrequest.md) |  |
-|  [GetTasksRequest](./influxdb-client-apis.gettasksrequest.md) |  |
-|  [GetTelegrafPluginsRequest](./influxdb-client-apis.gettelegrafpluginsrequest.md) |  |
-|  [GetTelegrafsIDLabelsRequest](./influxdb-client-apis.gettelegrafsidlabelsrequest.md) |  |
-|  [GetTelegrafsIDMembersRequest](./influxdb-client-apis.gettelegrafsidmembersrequest.md) |  |
-|  [GetTelegrafsIDOwnersRequest](./influxdb-client-apis.gettelegrafsidownersrequest.md) |  |
-|  [GetTelegrafsIDRequest](./influxdb-client-apis.gettelegrafsidrequest.md) |  |
-|  [GetTelegrafsRequest](./influxdb-client-apis.gettelegrafsrequest.md) |  |
-|  [GetUsersIDRequest](./influxdb-client-apis.getusersidrequest.md) |  |
-|  [GetUsersRequest](./influxdb-client-apis.getusersrequest.md) |  |
-|  [GetVariablesIDLabelsRequest](./influxdb-client-apis.getvariablesidlabelsrequest.md) |  |
-|  [GetVariablesIDRequest](./influxdb-client-apis.getvariablesidrequest.md) |  |
-|  [GetVariablesRequest](./influxdb-client-apis.getvariablesrequest.md) |  |
-|  [HealthCheck](./influxdb-client-apis.healthcheck.md) |  |
-|  [HeatmapViewProperties](./influxdb-client-apis.heatmapviewproperties.md) |  |
-|  [HistogramViewProperties](./influxdb-client-apis.histogramviewproperties.md) |  |
-|  [HTTPNotificationRuleBase](./influxdb-client-apis.httpnotificationrulebase.md) |  |
-|  [Identifier](./influxdb-client-apis.identifier.md) | A valid Flux identifier |
-|  [ImportDeclaration](./influxdb-client-apis.importdeclaration.md) | Declares a package import |
-|  [IndexExpression](./influxdb-client-apis.indexexpression.md) | Represents indexing into an array |
-|  [IntegerLiteral](./influxdb-client-apis.integerliteral.md) | Represents integer numbers |
-|  [IsOnboarding](./influxdb-client-apis.isonboarding.md) |  |
-|  [Label](./influxdb-client-apis.label.md) |  |
-|  [LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md) |  |
-|  [LabelMapping](./influxdb-client-apis.labelmapping.md) |  |
-|  [LabelResponse](./influxdb-client-apis.labelresponse.md) |  |
-|  [LabelsResponse](./influxdb-client-apis.labelsresponse.md) |  |
-|  [LabelUpdate](./influxdb-client-apis.labelupdate.md) |  |
-|  [LanguageRequest](./influxdb-client-apis.languagerequest.md) | Flux query to be analyzed. |
-|  [LatLonColumn](./influxdb-client-apis.latloncolumn.md) | Object type for key and column definitions |
-|  [LatLonColumns](./influxdb-client-apis.latloncolumns.md) | Object type to define lat/lon columns |
-|  [LinePlusSingleStatProperties](./influxdb-client-apis.lineplussinglestatproperties.md) |  |
-|  [LineProtocolError](./influxdb-client-apis.lineprotocolerror.md) |  |
-|  [LineProtocolLengthError](./influxdb-client-apis.lineprotocollengtherror.md) |  |
-|  [Links](./influxdb-client-apis.links.md) | URI pointers for additional paged results. |
-|  [ListStacksRequest](./influxdb-client-apis.liststacksrequest.md) |  |
-|  [LogEvent](./influxdb-client-apis.logevent.md) |  |
-|  [LogicalExpression](./influxdb-client-apis.logicalexpression.md) | Represents the rule conditions that collectively evaluate to either true or false |
-|  [Logs](./influxdb-client-apis.logs.md) |  |
-|  [MapVariableProperties](./influxdb-client-apis.mapvariableproperties.md) |  |
-|  [MarkdownViewProperties](./influxdb-client-apis.markdownviewproperties.md) |  |
-|  [MemberAssignment](./influxdb-client-apis.memberassignment.md) | Object property assignment |
-|  [MemberExpression](./influxdb-client-apis.memberexpression.md) | Represents accessing a property of an object |
-|  [MetadataBackup](./influxdb-client-apis.metadatabackup.md) |  |
-|  [MosaicViewProperties](./influxdb-client-apis.mosaicviewproperties.md) |  |
-|  [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md) |  |
-|  [NotificationEndpoints](./influxdb-client-apis.notificationendpoints.md) |  |
-|  [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) |  |
-|  [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md) |  |
-|  [NotificationRules](./influxdb-client-apis.notificationrules.md) |  |
-|  [NotificationRuleUpdate](./influxdb-client-apis.notificationruleupdate.md) |  |
-|  [ObjectExpression](./influxdb-client-apis.objectexpression.md) | Allows the declaration of an anonymous object within a declaration |
-|  [OnboardingRequest](./influxdb-client-apis.onboardingrequest.md) |  |
-|  [OnboardingResponse](./influxdb-client-apis.onboardingresponse.md) |  |
-|  [OptionStatement](./influxdb-client-apis.optionstatement.md) | A single variable declaration |
-|  [Organization](./influxdb-client-apis.organization.md) |  |
-|  [Organizations](./influxdb-client-apis.organizations.md) |  |
-|  [Package](./influxdb-client-apis.package.md) | Represents a complete package source tree. |
-|  [PackageClause](./influxdb-client-apis.packageclause.md) | Defines a package identifier |
-|  [PagerDutyNotificationRuleBase](./influxdb-client-apis.pagerdutynotificationrulebase.md) |  |
-|  [ParenExpression](./influxdb-client-apis.parenexpression.md) | Represents an expression wrapped in parenthesis |
-|  [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) |  |
-|  [PatchAuthorizationsIDRequest](./influxdb-client-apis.patchauthorizationsidrequest.md) |  |
-|  [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | An object that contains updated bucket properties to apply. |
-|  [PatchBucketsIDRequest](./influxdb-client-apis.patchbucketsidrequest.md) |  |
-|  [PatchChecksIDRequest](./influxdb-client-apis.patchchecksidrequest.md) |  |
-|  [PatchDashboardsIDCellsIDRequest](./influxdb-client-apis.patchdashboardsidcellsidrequest.md) |  |
-|  [PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md) |  |
-|  [PatchDashboardsIDRequest](./influxdb-client-apis.patchdashboardsidrequest.md) |  |
-|  [PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md) |  |
-|  [PatchLabelsIDRequest](./influxdb-client-apis.patchlabelsidrequest.md) |  |
-|  [PatchNotificationEndpointsIDRequest](./influxdb-client-apis.patchnotificationendpointsidrequest.md) |  |
-|  [PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md) |  |
-|  [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) | An object that contains updated organization properties to apply. |
-|  [PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md) |  |
-|  [PatchOrgsIDSecretsRequest](./influxdb-client-apis.patchorgsidsecretsrequest.md) |  |
-|  [PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md) |  |
-|  [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) |  |
-|  [PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md) |  |
-|  [PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md) |  |
-|  [PatchScriptsIDAddLabelsRequest](./influxdb-client-apis.patchscriptsidaddlabelsrequest.md) |  |
-|  [PatchScriptsIDRemoveLabelsRequest](./influxdb-client-apis.patchscriptsidremovelabelsrequest.md) |  |
-|  [PatchScriptsIDRequest](./influxdb-client-apis.patchscriptsidrequest.md) |  |
-|  [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) |  |
-|  [PatchTasksIDRequest](./influxdb-client-apis.patchtasksidrequest.md) |  |
-|  [PatchUsersIDRequest](./influxdb-client-apis.patchusersidrequest.md) |  |
-|  [PatchVariablesIDRequest](./influxdb-client-apis.patchvariablesidrequest.md) |  |
-|  [Permission](./influxdb-client-apis.permission.md) |  |
-|  [PipeExpression](./influxdb-client-apis.pipeexpression.md) | Call expression with pipe argument |
-|  [PipeLiteral](./influxdb-client-apis.pipeliteral.md) | Represents a specialized literal value, indicating the left hand value of a pipe expression |
-|  [PostAuthorizationsRequest](./influxdb-client-apis.postauthorizationsrequest.md) |  |
-|  [PostBucketRequest](./influxdb-client-apis.postbucketrequest.md) |  |
-|  [PostBucketsIDLabelsRequest](./influxdb-client-apis.postbucketsidlabelsrequest.md) |  |
-|  [PostBucketsIDMembersRequest](./influxdb-client-apis.postbucketsidmembersrequest.md) |  |
-|  [PostBucketsIDOwnersRequest](./influxdb-client-apis.postbucketsidownersrequest.md) |  |
-|  [PostBucketsRequest](./influxdb-client-apis.postbucketsrequest.md) |  |
-|  [PostChecksIDLabelsRequest](./influxdb-client-apis.postchecksidlabelsrequest.md) |  |
-|  [PostDashboardsIDCellsRequest](./influxdb-client-apis.postdashboardsidcellsrequest.md) |  |
-|  [PostDashboardsIDLabelsRequest](./influxdb-client-apis.postdashboardsidlabelsrequest.md) |  |
-|  [PostDashboardsIDMembersRequest](./influxdb-client-apis.postdashboardsidmembersrequest.md) |  |
-|  [PostDashboardsIDOwnersRequest](./influxdb-client-apis.postdashboardsidownersrequest.md) |  |
-|  [PostDashboardsRequest](./influxdb-client-apis.postdashboardsrequest.md) |  |
-|  [PostDBRPRequest](./influxdb-client-apis.postdbrprequest.md) |  |
-|  [PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md) |  |
-|  [PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md) |  |
-|  [PostNotificationEndpointIDLabelsRequest](./influxdb-client-apis.postnotificationendpointidlabelsrequest.md) |  |
-|  [PostNotificationRuleIDLabelsRequest](./influxdb-client-apis.postnotificationruleidlabelsrequest.md) |  |
-|  [PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md) |  |
-|  [PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md) |  |
-|  [PostOrgsIDOwnersRequest](./influxdb-client-apis.postorgsidownersrequest.md) |  |
-|  [PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md) |  |
-|  [PostOrgsRequest](./influxdb-client-apis.postorgsrequest.md) |  |
-|  [PostQueryAnalyzeRequest](./influxdb-client-apis.postqueryanalyzerequest.md) |  |
-|  [PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md) |  |
-|  [PostQueryRequest](./influxdb-client-apis.postqueryrequest.md) |  |
-|  [PostRemoteConnectionRequest](./influxdb-client-apis.postremoteconnectionrequest.md) |  |
-|  [PostReplicationRequest](./influxdb-client-apis.postreplicationrequest.md) |  |
-|  [PostRestoreBucketIDRequest](./influxdb-client-apis.postrestorebucketidrequest.md) |  |
-|  [PostRestoreBucketMetadataRequest](./influxdb-client-apis.postrestorebucketmetadatarequest.md) |  |
-|  [PostRestoreKVRequest](./influxdb-client-apis.postrestorekvrequest.md) |  |
-|  [PostRestoreShardIdRequest](./influxdb-client-apis.postrestoreshardidrequest.md) |  |
-|  [PostRestoreSQLRequest](./influxdb-client-apis.postrestoresqlrequest.md) |  |
-|  [PostScrapersIDLabelsRequest](./influxdb-client-apis.postscrapersidlabelsrequest.md) |  |
-|  [PostScrapersIDMembersRequest](./influxdb-client-apis.postscrapersidmembersrequest.md) |  |
-|  [PostScrapersIDOwnersRequest](./influxdb-client-apis.postscrapersidownersrequest.md) |  |
-|  [PostScrapersRequest](./influxdb-client-apis.postscrapersrequest.md) |  |
-|  [PostScriptsIDInvokeRequest](./influxdb-client-apis.postscriptsidinvokerequest.md) |  |
-|  [PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md) |  |
-|  [PostSetupRequest](./influxdb-client-apis.postsetuprequest.md) |  |
-|  [PostSigninRequest](./influxdb-client-apis.postsigninrequest.md) |  |
-|  [PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md) |  |
-|  [PostSourcesRequest](./influxdb-client-apis.postsourcesrequest.md) |  |
-|  [PostTasksIDLabelsRequest](./influxdb-client-apis.posttasksidlabelsrequest.md) |  |
-|  [PostTasksIDMembersRequest](./influxdb-client-apis.posttasksidmembersrequest.md) |  |
-|  [PostTasksIDOwnersRequest](./influxdb-client-apis.posttasksidownersrequest.md) |  |
-|  [PostTasksIDRunsIDRetryRequest](./influxdb-client-apis.posttasksidrunsidretryrequest.md) |  |
-|  [PostTasksIDRunsRequest](./influxdb-client-apis.posttasksidrunsrequest.md) |  |
-|  [PostTasksRequest](./influxdb-client-apis.posttasksrequest.md) |  |
-|  [PostTelegrafsIDLabelsRequest](./influxdb-client-apis.posttelegrafsidlabelsrequest.md) |  |
-|  [PostTelegrafsIDMembersRequest](./influxdb-client-apis.posttelegrafsidmembersrequest.md) |  |
-|  [PostTelegrafsIDOwnersRequest](./influxdb-client-apis.posttelegrafsidownersrequest.md) |  |
-|  [PostTelegrafsRequest](./influxdb-client-apis.posttelegrafsrequest.md) |  |
-|  [PostUsersIDPasswordRequest](./influxdb-client-apis.postusersidpasswordrequest.md) |  |
-|  [PostUsersRequest](./influxdb-client-apis.postusersrequest.md) |  |
-|  [PostValidateReplicationByIDRequest](./influxdb-client-apis.postvalidatereplicationbyidrequest.md) |  |
-|  [PostVariablesIDLabelsRequest](./influxdb-client-apis.postvariablesidlabelsrequest.md) |  |
-|  [PostVariablesRequest](./influxdb-client-apis.postvariablesrequest.md) |  |
-|  [PostWriteRequest](./influxdb-client-apis.postwriterequest.md) |  |
-|  [Property](./influxdb-client-apis.property.md) | The value associated with a key |
-|  [PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md) |  |
-|  [PutDashboardsIDCellsRequest](./influxdb-client-apis.putdashboardsidcellsrequest.md) |  |
-|  [PutMePasswordRequest](./influxdb-client-apis.putmepasswordrequest.md) |  |
-|  [PutNotificationEndpointsIDRequest](./influxdb-client-apis.putnotificationendpointsidrequest.md) |  |
-|  [PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md) |  |
-|  [PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md) |  |
-|  [PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md) |  |
-|  [Query](./influxdb-client-apis.query.md) | Query InfluxDB with the Flux language |
-|  [QueryVariableProperties](./influxdb-client-apis.queryvariableproperties.md) |  |
-|  [ReadStackRequest](./influxdb-client-apis.readstackrequest.md) |  |
-|  [Ready](./influxdb-client-apis.ready.md) |  |
-|  [RegexpLiteral](./influxdb-client-apis.regexpliteral.md) | Expressions begin and end with <code>/</code> and are regular expressions with syntax accepted by RE2 |
-|  [RemoteConnection](./influxdb-client-apis.remoteconnection.md) |  |
-|  [RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md) |  |
-|  [RemoteConnections](./influxdb-client-apis.remoteconnections.md) |  |
-|  [RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md) |  |
-|  [RenamableField](./influxdb-client-apis.renamablefield.md) | Describes a field that can be renamed and made visible or invisible. |
-|  [Replication](./influxdb-client-apis.replication.md) |  |
-|  [ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md) |  |
-|  [Replications](./influxdb-client-apis.replications.md) |  |
-|  [ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md) |  |
-|  [RequestOptions](./influxdb-client-apis.requestoptions.md) |  |
-|  [Resource](./influxdb-client-apis.resource.md) |  |
-|  [ResourceMembers](./influxdb-client-apis.resourcemembers.md) |  |
-|  [ResourceOwners](./influxdb-client-apis.resourceowners.md) |  |
-|  [RestoredBucketMappings](./influxdb-client-apis.restoredbucketmappings.md) |  |
-|  [RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md) |  |
-|  [RetentionRule](./influxdb-client-apis.retentionrule.md) |  |
-|  [ReturnStatement](./influxdb-client-apis.returnstatement.md) | Defines an expression to return |
-|  [Routes](./influxdb-client-apis.routes.md) |  |
-|  [Run](./influxdb-client-apis.run.md) |  |
-|  [RunManually](./influxdb-client-apis.runmanually.md) |  |
-|  [Runs](./influxdb-client-apis.runs.md) |  |
-|  [ScatterViewProperties](./influxdb-client-apis.scatterviewproperties.md) |  |
-|  [ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md) |  |
-|  [ScraperTargetResponses](./influxdb-client-apis.scrapertargetresponses.md) |  |
-|  [Script](./influxdb-client-apis.script.md) |  |
-|  [ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md) |  |
-|  [ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md) |  |
-|  [Scripts](./influxdb-client-apis.scripts.md) |  |
-|  [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) |  |
-|  [SecretKeys](./influxdb-client-apis.secretkeys.md) |  |
-|  [ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md) |  |
-|  [ShardManifest](./influxdb-client-apis.shardmanifest.md) |  |
-|  [ShardOwner](./influxdb-client-apis.shardowner.md) |  |
-|  [SimpleTableViewProperties](./influxdb-client-apis.simpletableviewproperties.md) |  |
-|  [SingleStatViewProperties](./influxdb-client-apis.singlestatviewproperties.md) |  |
-|  [SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md) |  |
-|  [SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md) |  |
-|  [Source](./influxdb-client-apis.source.md) |  |
-|  [Sources](./influxdb-client-apis.sources.md) |  |
-|  [Stack](./influxdb-client-apis.stack.md) |  |
-|  [StaticLegend](./influxdb-client-apis.staticlegend.md) | StaticLegend represents the options specific to the static legend |
-|  [StatusRule](./influxdb-client-apis.statusrule.md) |  |
-|  [StringLiteral](./influxdb-client-apis.stringliteral.md) | Expressions begin and end with double quote marks |
-|  [SubscriptionManifest](./influxdb-client-apis.subscriptionmanifest.md) |  |
-|  [TableViewProperties](./influxdb-client-apis.tableviewproperties.md) |  |
-|  [TagRule](./influxdb-client-apis.tagrule.md) |  |
-|  [Task](./influxdb-client-apis.task.md) |  |
-|  [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) |  |
-|  [Tasks](./influxdb-client-apis.tasks.md) |  |
-|  [TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md) |  |
-|  [TelegrafPlugin](./influxdb-client-apis.telegrafplugin.md) |  |
-|  [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) |  |
-|  [TelegrafPlugins](./influxdb-client-apis.telegrafplugins.md) |  |
-|  [TelegrafRequest](./influxdb-client-apis.telegrafrequest.md) |  |
-|  [Telegrafs](./influxdb-client-apis.telegrafs.md) |  |
-|  [TelegramNotificationRuleBase](./influxdb-client-apis.telegramnotificationrulebase.md) |  |
-|  [TemplateApply](./influxdb-client-apis.templateapply.md) |  |
-|  [TemplateChart](./influxdb-client-apis.templatechart.md) |  |
-|  [TemplateExportByID](./influxdb-client-apis.templateexportbyid.md) |  |
-|  [TemplateExportByName](./influxdb-client-apis.templateexportbyname.md) |  |
-|  [TemplateSummary](./influxdb-client-apis.templatesummary.md) |  |
-|  [TemplateSummaryLabel](./influxdb-client-apis.templatesummarylabel.md) |  |
-|  [TestStatement](./influxdb-client-apis.teststatement.md) | Declares a Flux test case |
-|  [ThresholdBase](./influxdb-client-apis.thresholdbase.md) |  |
-|  [UnaryExpression](./influxdb-client-apis.unaryexpression.md) | Uses operators to act on a single operand in an expression |
-|  [UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md) |  |
-|  [UnsignedIntegerLiteral](./influxdb-client-apis.unsignedintegerliteral.md) | Represents integer numbers |
-|  [UpdateStackRequest](./influxdb-client-apis.updatestackrequest.md) |  |
-|  [User](./influxdb-client-apis.user.md) |  |
-|  [UserResponse](./influxdb-client-apis.userresponse.md) |  |
-|  [Users](./influxdb-client-apis.users.md) |  |
-|  [Variable](./influxdb-client-apis.variable.md) |  |
-|  [VariableAssignment](./influxdb-client-apis.variableassignment.md) | Represents the declaration of a variable |
-|  [Variables](./influxdb-client-apis.variables.md) |  |
-|  [View](./influxdb-client-apis.view.md) |  |
-|  [XYViewProperties](./influxdb-client-apis.xyviewproperties.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[AnalyzeQueryResponse](./influxdb-client-apis.analyzequeryresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ApplyTemplateRequest](./influxdb-client-apis.applytemplaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ArrayExpression](./influxdb-client-apis.arrayexpression.md)
+
+
+</td><td>
+
+Used to create and directly specify the elements of an array object
+
+
+</td></tr>
+<tr><td>
+
+[ASTResponse](./influxdb-client-apis.astresponse.md)
+
+
+</td><td>
+
+Contains the AST for the supplied Flux query
+
+
+</td></tr>
+<tr><td>
+
+[Authorizations](./influxdb-client-apis.authorizations.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[AuthorizationUpdateRequest](./influxdb-client-apis.authorizationupdaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Axes](./influxdb-client-apis.axes.md)
+
+
+</td><td>
+
+The viewport for a View's visualizations
+
+
+</td></tr>
+<tr><td>
+
+[Axis](./influxdb-client-apis.axis.md)
+
+
+</td><td>
+
+Axis used in a visualization.
+
+
+</td></tr>
+<tr><td>
+
+[BadStatement](./influxdb-client-apis.badstatement.md)
+
+
+</td><td>
+
+A placeholder for statements for which no correct statement nodes can be created
+
+
+</td></tr>
+<tr><td>
+
+[BandViewProperties](./influxdb-client-apis.bandviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BinaryExpression](./influxdb-client-apis.binaryexpression.md)
+
+
+</td><td>
+
+uses binary operators to act on two operands in an expression
+
+
+</td></tr>
+<tr><td>
+
+[Block](./influxdb-client-apis.block.md)
+
+
+</td><td>
+
+A set of statements
+
+
+</td></tr>
+<tr><td>
+
+[BooleanLiteral](./influxdb-client-apis.booleanliteral.md)
+
+
+</td><td>
+
+Represents boolean values
+
+
+</td></tr>
+<tr><td>
+
+[Bucket](./influxdb-client-apis.bucket.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Buckets](./influxdb-client-apis.buckets.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BuilderConfig](./influxdb-client-apis.builderconfig.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BuilderFunctionsType](./influxdb-client-apis.builderfunctionstype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BuilderTagsType](./influxdb-client-apis.buildertagstype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BuiltinStatement](./influxdb-client-apis.builtinstatement.md)
+
+
+</td><td>
+
+Declares a builtin identifier and its type
+
+
+</td></tr>
+<tr><td>
+
+[CallExpression](./influxdb-client-apis.callexpression.md)
+
+
+</td><td>
+
+Represents a function call
+
+
+</td></tr>
+<tr><td>
+
+[Cell](./influxdb-client-apis.cell.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CellUpdate](./influxdb-client-apis.cellupdate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CheckBase](./influxdb-client-apis.checkbase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CheckPatch](./influxdb-client-apis.checkpatch.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Checks](./influxdb-client-apis.checks.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CheckViewProperties](./influxdb-client-apis.checkviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ConditionalExpression](./influxdb-client-apis.conditionalexpression.md)
+
+
+</td><td>
+
+Selects one of two expressions, `Alternate` or `Consequent`<!-- -->, depending on a third boolean expression, `Test`
+
+
+</td></tr>
+<tr><td>
+
+[Config](./influxdb-client-apis.config.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ConstantVariableProperties](./influxdb-client-apis.constantvariableproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateCell](./influxdb-client-apis.createcell.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateCheckRequest](./influxdb-client-apis.createcheckrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateNotificationEndpointRequest](./influxdb-client-apis.createnotificationendpointrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateNotificationRuleRequest](./influxdb-client-apis.createnotificationrulerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CreateStackRequest](./influxdb-client-apis.createstackrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DashboardColor](./influxdb-client-apis.dashboardcolor.md)
+
+
+</td><td>
+
+Defines an encoding of data value into color space.
+
+
+</td></tr>
+<tr><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Dashboards](./influxdb-client-apis.dashboards.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DateTimeLiteral](./influxdb-client-apis.datetimeliteral.md)
+
+
+</td><td>
+
+Represents an instant in time with nanosecond precision in [RFC3339Nano date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339nano-timestamp)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[DBRP](./influxdb-client-apis.dbrp.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DBRPCreate](./influxdb-client-apis.dbrpcreate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DBRPGet](./influxdb-client-apis.dbrpget.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DBRPs](./influxdb-client-apis.dbrps.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DBRPUpdate](./influxdb-client-apis.dbrpupdate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DecimalPlaces](./influxdb-client-apis.decimalplaces.md)
+
+
+</td><td>
+
+Indicates whether decimal places should be enforced, and how many digits it should show.
+
+
+</td></tr>
+<tr><td>
+
+[DeleteAuthorizationsIDRequest](./influxdb-client-apis.deleteauthorizationsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteBucketsIDLabelsIDRequest](./influxdb-client-apis.deletebucketsidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteBucketsIDMembersIDRequest](./influxdb-client-apis.deletebucketsidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteBucketsIDOwnersIDRequest](./influxdb-client-apis.deletebucketsidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteBucketsIDRequest](./influxdb-client-apis.deletebucketsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteChecksIDLabelsIDRequest](./influxdb-client-apis.deletechecksidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteChecksIDRequest](./influxdb-client-apis.deletechecksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDashboardsIDCellsIDRequest](./influxdb-client-apis.deletedashboardsidcellsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDashboardsIDLabelsIDRequest](./influxdb-client-apis.deletedashboardsidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDashboardsIDMembersIDRequest](./influxdb-client-apis.deletedashboardsidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDashboardsIDOwnersIDRequest](./influxdb-client-apis.deletedashboardsidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDashboardsIDRequest](./influxdb-client-apis.deletedashboardsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteLabelsIDRequest](./influxdb-client-apis.deletelabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteNotificationEndpointsIDLabelsIDRequest](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteNotificationEndpointsIDRequest](./influxdb-client-apis.deletenotificationendpointsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteNotificationRulesIDLabelsIDRequest](./influxdb-client-apis.deletenotificationrulesidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteNotificationRulesIDRequest](./influxdb-client-apis.deletenotificationrulesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteOrgsIDMembersIDRequest](./influxdb-client-apis.deleteorgsidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteOrgsIDOwnersIDRequest](./influxdb-client-apis.deleteorgsidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteOrgsIDRequest](./influxdb-client-apis.deleteorgsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteOrgsIDSecretsIDRequest](./influxdb-client-apis.deleteorgsidsecretsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeletePredicateRequest](./influxdb-client-apis.deletepredicaterequest.md)
+
+
+</td><td>
+
+The delete predicate request.
+
+
+</td></tr>
+<tr><td>
+
+[DeleteRemoteConnectionByIDRequest](./influxdb-client-apis.deleteremoteconnectionbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteReplicationByIDRequest](./influxdb-client-apis.deletereplicationbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteScrapersIDLabelsIDRequest](./influxdb-client-apis.deletescrapersidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteScrapersIDMembersIDRequest](./influxdb-client-apis.deletescrapersidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteScrapersIDOwnersIDRequest](./influxdb-client-apis.deletescrapersidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteScrapersIDRequest](./influxdb-client-apis.deletescrapersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteScriptsIDRequest](./influxdb-client-apis.deletescriptsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteSourcesIDRequest](./influxdb-client-apis.deletesourcesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteStackRequest](./influxdb-client-apis.deletestackrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTasksIDLabelsIDRequest](./influxdb-client-apis.deletetasksidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTasksIDMembersIDRequest](./influxdb-client-apis.deletetasksidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTasksIDOwnersIDRequest](./influxdb-client-apis.deletetasksidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTasksIDRequest](./influxdb-client-apis.deletetasksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTasksIDRunsIDRequest](./influxdb-client-apis.deletetasksidrunsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTelegrafsIDLabelsIDRequest](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTelegrafsIDMembersIDRequest](./influxdb-client-apis.deletetelegrafsidmembersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTelegrafsIDOwnersIDRequest](./influxdb-client-apis.deletetelegrafsidownersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteUsersIDRequest](./influxdb-client-apis.deleteusersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteVariablesIDLabelsIDRequest](./influxdb-client-apis.deletevariablesidlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeleteVariablesIDRequest](./influxdb-client-apis.deletevariablesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Dialect](./influxdb-client-apis.dialect.md)
+
+
+</td><td>
+
+Options for tabular data output. Default output is [annotated CSV](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#csv-response-format) with headers.
+
+For more information about tabular data \*\*dialect\*\*, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[DictExpression](./influxdb-client-apis.dictexpression.md)
+
+
+</td><td>
+
+Used to create and directly specify the elements of a dictionary
+
+
+</td></tr>
+<tr><td>
+
+[DictItem](./influxdb-client-apis.dictitem.md)
+
+
+</td><td>
+
+A key-value pair in a dictionary.
+
+
+</td></tr>
+<tr><td>
+
+[Duration](./influxdb-client-apis.duration.md)
+
+
+</td><td>
+
+A pair consisting of length of time and the unit of time measured. It is the atomic unit from which all duration literals are composed.
+
+
+</td></tr>
+<tr><td>
+
+[DurationLiteral](./influxdb-client-apis.durationliteral.md)
+
+
+</td><td>
+
+Represents the elapsed time between two instants as an int64 nanosecond count with syntax of golang's time.Duration
+
+
+</td></tr>
+<tr><td>
+
+[Error\_2](./influxdb-client-apis.error_2.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ExecutionOptions](./influxdb-client-apis.executionoptions.md)
+
+
+</td><td>
+
+ExecutionOptions contains execution options for a flux script.
+
+
+</td></tr>
+<tr><td>
+
+[ExportTemplateRequest](./influxdb-client-apis.exporttemplaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ExpressionStatement](./influxdb-client-apis.expressionstatement.md)
+
+
+</td><td>
+
+May consist of an expression that doesn't return a value and is executed solely for its side-effects
+
+
+</td></tr>
+<tr><td>
+
+[File\_2](./influxdb-client-apis.file_2.md)
+
+
+</td><td>
+
+Represents a source from a single file
+
+
+</td></tr>
+<tr><td>
+
+[FloatLiteral](./influxdb-client-apis.floatliteral.md)
+
+
+</td><td>
+
+Represents floating point numbers according to the double representations defined by the IEEE-754-1985
+
+
+</td></tr>
+<tr><td>
+
+[FluxResponse](./influxdb-client-apis.fluxresponse.md)
+
+
+</td><td>
+
+Rendered flux that backs the check or notification.
+
+
+</td></tr>
+<tr><td>
+
+[FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[FluxSuggestions](./influxdb-client-apis.fluxsuggestions.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[FunctionExpression](./influxdb-client-apis.functionexpression.md)
+
+
+</td><td>
+
+Function expression
+
+
+</td></tr>
+<tr><td>
+
+[GaugeViewProperties](./influxdb-client-apis.gaugeviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoViewProperties](./influxdb-client-apis.geoviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetAuthorizationsIDRequest](./influxdb-client-apis.getauthorizationsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetAuthorizationsRequest](./influxdb-client-apis.getauthorizationsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBackupKVRequest](./influxdb-client-apis.getbackupkvrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBackupMetadataRequest](./influxdb-client-apis.getbackupmetadatarequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBucketsIDLabelsRequest](./influxdb-client-apis.getbucketsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBucketsIDMembersRequest](./influxdb-client-apis.getbucketsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBucketsIDOwnersRequest](./influxdb-client-apis.getbucketsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBucketsIDRequest](./influxdb-client-apis.getbucketsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetBucketsRequest](./influxdb-client-apis.getbucketsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetChecksIDLabelsRequest](./influxdb-client-apis.getchecksidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetChecksIDQueryRequest](./influxdb-client-apis.getchecksidqueryrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetChecksIDRequest](./influxdb-client-apis.getchecksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetChecksRequest](./influxdb-client-apis.getchecksrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetConfigRequest](./influxdb-client-apis.getconfigrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsIDCellsIDViewRequest](./influxdb-client-apis.getdashboardsidcellsidviewrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsIDLabelsRequest](./influxdb-client-apis.getdashboardsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsIDMembersRequest](./influxdb-client-apis.getdashboardsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsIDOwnersRequest](./influxdb-client-apis.getdashboardsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsIDRequest](./influxdb-client-apis.getdashboardsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDashboardsRequest](./influxdb-client-apis.getdashboardsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDBRPsIDRequest](./influxdb-client-apis.getdbrpsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDBRPsRequest](./influxdb-client-apis.getdbrpsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofAllProfilesRequest](./influxdb-client-apis.getdebugpprofallprofilesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofBlockRequest](./influxdb-client-apis.getdebugpprofblockrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofCmdlineRequest](./influxdb-client-apis.getdebugpprofcmdlinerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofGoroutineRequest](./influxdb-client-apis.getdebugpprofgoroutinerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofHeapRequest](./influxdb-client-apis.getdebugpprofheaprequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofMutexRequest](./influxdb-client-apis.getdebugpprofmutexrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofProfileRequest](./influxdb-client-apis.getdebugpprofprofilerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofThreadCreateRequest](./influxdb-client-apis.getdebugpprofthreadcreaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetDebugPprofTraceRequest](./influxdb-client-apis.getdebugpproftracerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetFlagsRequest](./influxdb-client-apis.getflagsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetHealthRequest](./influxdb-client-apis.gethealthrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetLabelsIDRequest](./influxdb-client-apis.getlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetLabelsRequest](./influxdb-client-apis.getlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetMeRequest](./influxdb-client-apis.getmerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetMetricsRequest](./influxdb-client-apis.getmetricsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationEndpointsIDLabelsRequest](./influxdb-client-apis.getnotificationendpointsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationEndpointsIDRequest](./influxdb-client-apis.getnotificationendpointsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationEndpointsRequest](./influxdb-client-apis.getnotificationendpointsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationRulesIDLabelsRequest](./influxdb-client-apis.getnotificationrulesidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationRulesIDQueryRequest](./influxdb-client-apis.getnotificationrulesidqueryrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationRulesIDRequest](./influxdb-client-apis.getnotificationrulesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetNotificationRulesRequest](./influxdb-client-apis.getnotificationrulesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetOrgsIDMembersRequest](./influxdb-client-apis.getorgsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetOrgsIDOwnersRequest](./influxdb-client-apis.getorgsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetOrgsIDRequest](./influxdb-client-apis.getorgsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetOrgsIDSecretsRequest](./influxdb-client-apis.getorgsidsecretsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetPingRequest](./influxdb-client-apis.getpingrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetQuerySuggestionsNameRequest](./influxdb-client-apis.getquerysuggestionsnamerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetQuerySuggestionsRequest](./influxdb-client-apis.getquerysuggestionsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetReadyRequest](./influxdb-client-apis.getreadyrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetRemoteConnectionByIDRequest](./influxdb-client-apis.getremoteconnectionbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetReplicationByIDRequest](./influxdb-client-apis.getreplicationbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetReplicationsRequest](./influxdb-client-apis.getreplicationsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetResourcesRequest](./influxdb-client-apis.getresourcesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetRoutesRequest](./influxdb-client-apis.getroutesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScrapersIDLabelsRequest](./influxdb-client-apis.getscrapersidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScrapersIDMembersRequest](./influxdb-client-apis.getscrapersidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScrapersIDOwnersRequest](./influxdb-client-apis.getscrapersidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScrapersIDRequest](./influxdb-client-apis.getscrapersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScrapersRequest](./influxdb-client-apis.getscrapersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScriptsIDRequest](./influxdb-client-apis.getscriptsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetSetupRequest](./influxdb-client-apis.getsetuprequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetSourcesIDBucketsRequest](./influxdb-client-apis.getsourcesidbucketsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetSourcesIDHealthRequest](./influxdb-client-apis.getsourcesidhealthrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetSourcesIDRequest](./influxdb-client-apis.getsourcesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetSourcesRequest](./influxdb-client-apis.getsourcesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDLabelsRequest](./influxdb-client-apis.gettasksidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDLogsRequest](./influxdb-client-apis.gettasksidlogsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDMembersRequest](./influxdb-client-apis.gettasksidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDOwnersRequest](./influxdb-client-apis.gettasksidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDRequest](./influxdb-client-apis.gettasksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDRunsIDLogsRequest](./influxdb-client-apis.gettasksidrunsidlogsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDRunsIDRequest](./influxdb-client-apis.gettasksidrunsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksIDRunsRequest](./influxdb-client-apis.gettasksidrunsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTasksRequest](./influxdb-client-apis.gettasksrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafPluginsRequest](./influxdb-client-apis.gettelegrafpluginsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafsIDLabelsRequest](./influxdb-client-apis.gettelegrafsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafsIDMembersRequest](./influxdb-client-apis.gettelegrafsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafsIDOwnersRequest](./influxdb-client-apis.gettelegrafsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafsIDRequest](./influxdb-client-apis.gettelegrafsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetTelegrafsRequest](./influxdb-client-apis.gettelegrafsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetUsersIDRequest](./influxdb-client-apis.getusersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetUsersRequest](./influxdb-client-apis.getusersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetVariablesIDLabelsRequest](./influxdb-client-apis.getvariablesidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetVariablesIDRequest](./influxdb-client-apis.getvariablesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GetVariablesRequest](./influxdb-client-apis.getvariablesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HealthCheck](./influxdb-client-apis.healthcheck.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HeatmapViewProperties](./influxdb-client-apis.heatmapviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HistogramViewProperties](./influxdb-client-apis.histogramviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HTTPNotificationRuleBase](./influxdb-client-apis.httpnotificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Identifier](./influxdb-client-apis.identifier.md)
+
+
+</td><td>
+
+A valid Flux identifier
+
+
+</td></tr>
+<tr><td>
+
+[ImportDeclaration](./influxdb-client-apis.importdeclaration.md)
+
+
+</td><td>
+
+Declares a package import
+
+
+</td></tr>
+<tr><td>
+
+[IndexExpression](./influxdb-client-apis.indexexpression.md)
+
+
+</td><td>
+
+Represents indexing into an array
+
+
+</td></tr>
+<tr><td>
+
+[IntegerLiteral](./influxdb-client-apis.integerliteral.md)
+
+
+</td><td>
+
+Represents integer numbers
+
+
+</td></tr>
+<tr><td>
+
+[IsOnboarding](./influxdb-client-apis.isonboarding.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Label](./influxdb-client-apis.label.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LabelCreateRequest](./influxdb-client-apis.labelcreaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LabelResponse](./influxdb-client-apis.labelresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LabelsResponse](./influxdb-client-apis.labelsresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LabelUpdate](./influxdb-client-apis.labelupdate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LanguageRequest](./influxdb-client-apis.languagerequest.md)
+
+
+</td><td>
+
+Flux query to be analyzed.
+
+
+</td></tr>
+<tr><td>
+
+[LatLonColumn](./influxdb-client-apis.latloncolumn.md)
+
+
+</td><td>
+
+Object type for key and column definitions
+
+
+</td></tr>
+<tr><td>
+
+[LatLonColumns](./influxdb-client-apis.latloncolumns.md)
+
+
+</td><td>
+
+Object type to define lat/lon columns
+
+
+</td></tr>
+<tr><td>
+
+[LinePlusSingleStatProperties](./influxdb-client-apis.lineplussinglestatproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LineProtocolError](./influxdb-client-apis.lineprotocolerror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LineProtocolLengthError](./influxdb-client-apis.lineprotocollengtherror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+URI pointers for additional paged results.
+
+
+</td></tr>
+<tr><td>
+
+[ListStacksRequest](./influxdb-client-apis.liststacksrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LogEvent](./influxdb-client-apis.logevent.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LogicalExpression](./influxdb-client-apis.logicalexpression.md)
+
+
+</td><td>
+
+Represents the rule conditions that collectively evaluate to either true or false
+
+
+</td></tr>
+<tr><td>
+
+[Logs](./influxdb-client-apis.logs.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[MapVariableProperties](./influxdb-client-apis.mapvariableproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[MarkdownViewProperties](./influxdb-client-apis.markdownviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[MemberAssignment](./influxdb-client-apis.memberassignment.md)
+
+
+</td><td>
+
+Object property assignment
+
+
+</td></tr>
+<tr><td>
+
+[MemberExpression](./influxdb-client-apis.memberexpression.md)
+
+
+</td><td>
+
+Represents accessing a property of an object
+
+
+</td></tr>
+<tr><td>
+
+[MetadataBackup](./influxdb-client-apis.metadatabackup.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[MosaicViewProperties](./influxdb-client-apis.mosaicviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpoints](./influxdb-client-apis.notificationendpoints.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRules](./influxdb-client-apis.notificationrules.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRuleUpdate](./influxdb-client-apis.notificationruleupdate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ObjectExpression](./influxdb-client-apis.objectexpression.md)
+
+
+</td><td>
+
+Allows the declaration of an anonymous object within a declaration
+
+
+</td></tr>
+<tr><td>
+
+[OnboardingRequest](./influxdb-client-apis.onboardingrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[OnboardingResponse](./influxdb-client-apis.onboardingresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[OptionStatement](./influxdb-client-apis.optionstatement.md)
+
+
+</td><td>
+
+A single variable declaration
+
+
+</td></tr>
+<tr><td>
+
+[Organization](./influxdb-client-apis.organization.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Organizations](./influxdb-client-apis.organizations.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Package](./influxdb-client-apis.package.md)
+
+
+</td><td>
+
+Represents a complete package source tree.
+
+
+</td></tr>
+<tr><td>
+
+[PackageClause](./influxdb-client-apis.packageclause.md)
+
+
+</td><td>
+
+Defines a package identifier
+
+
+</td></tr>
+<tr><td>
+
+[PagerDutyNotificationRuleBase](./influxdb-client-apis.pagerdutynotificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ParenExpression](./influxdb-client-apis.parenexpression.md)
+
+
+</td><td>
+
+Represents an expression wrapped in parenthesis
+
+
+</td></tr>
+<tr><td>
+
+[PasswordResetBody](./influxdb-client-apis.passwordresetbody.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchAuthorizationsIDRequest](./influxdb-client-apis.patchauthorizationsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md)
+
+
+</td><td>
+
+An object that contains updated bucket properties to apply.
+
+
+</td></tr>
+<tr><td>
+
+[PatchBucketsIDRequest](./influxdb-client-apis.patchbucketsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchChecksIDRequest](./influxdb-client-apis.patchchecksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchDashboardsIDCellsIDRequest](./influxdb-client-apis.patchdashboardsidcellsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchDashboardsIDCellsIDViewRequest](./influxdb-client-apis.patchdashboardsidcellsidviewrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchDashboardsIDRequest](./influxdb-client-apis.patchdashboardsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchLabelsIDRequest](./influxdb-client-apis.patchlabelsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchNotificationEndpointsIDRequest](./influxdb-client-apis.patchnotificationendpointsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchNotificationRulesIDRequest](./influxdb-client-apis.patchnotificationrulesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md)
+
+
+</td><td>
+
+An object that contains updated organization properties to apply.
+
+
+</td></tr>
+<tr><td>
+
+[PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchOrgsIDSecretsRequest](./influxdb-client-apis.patchorgsidsecretsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchRemoteConnectionByIDRequest](./influxdb-client-apis.patchremoteconnectionbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchRetentionRule](./influxdb-client-apis.patchretentionrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchScrapersIDRequest](./influxdb-client-apis.patchscrapersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchScriptsIDAddLabelsRequest](./influxdb-client-apis.patchscriptsidaddlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchScriptsIDRemoveLabelsRequest](./influxdb-client-apis.patchscriptsidremovelabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchScriptsIDRequest](./influxdb-client-apis.patchscriptsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchTasksIDRequest](./influxdb-client-apis.patchtasksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchUsersIDRequest](./influxdb-client-apis.patchusersidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchVariablesIDRequest](./influxdb-client-apis.patchvariablesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Permission](./influxdb-client-apis.permission.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PipeExpression](./influxdb-client-apis.pipeexpression.md)
+
+
+</td><td>
+
+Call expression with pipe argument
+
+
+</td></tr>
+<tr><td>
+
+[PipeLiteral](./influxdb-client-apis.pipeliteral.md)
+
+
+</td><td>
+
+Represents a specialized literal value, indicating the left hand value of a pipe expression
+
+
+</td></tr>
+<tr><td>
+
+[PostAuthorizationsRequest](./influxdb-client-apis.postauthorizationsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostBucketRequest](./influxdb-client-apis.postbucketrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostBucketsIDLabelsRequest](./influxdb-client-apis.postbucketsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostBucketsIDMembersRequest](./influxdb-client-apis.postbucketsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostBucketsIDOwnersRequest](./influxdb-client-apis.postbucketsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostBucketsRequest](./influxdb-client-apis.postbucketsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostChecksIDLabelsRequest](./influxdb-client-apis.postchecksidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDashboardsIDCellsRequest](./influxdb-client-apis.postdashboardsidcellsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDashboardsIDLabelsRequest](./influxdb-client-apis.postdashboardsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDashboardsIDMembersRequest](./influxdb-client-apis.postdashboardsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDashboardsIDOwnersRequest](./influxdb-client-apis.postdashboardsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDashboardsRequest](./influxdb-client-apis.postdashboardsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDBRPRequest](./influxdb-client-apis.postdbrprequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostLabelsRequest](./influxdb-client-apis.postlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostNotificationEndpointIDLabelsRequest](./influxdb-client-apis.postnotificationendpointidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostNotificationRuleIDLabelsRequest](./influxdb-client-apis.postnotificationruleidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostOrganizationRequest](./influxdb-client-apis.postorganizationrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostOrgsIDMembersRequest](./influxdb-client-apis.postorgsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostOrgsIDOwnersRequest](./influxdb-client-apis.postorgsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostOrgsRequest](./influxdb-client-apis.postorgsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostQueryAnalyzeRequest](./influxdb-client-apis.postqueryanalyzerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostQueryRequest](./influxdb-client-apis.postqueryrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRemoteConnectionRequest](./influxdb-client-apis.postremoteconnectionrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostReplicationRequest](./influxdb-client-apis.postreplicationrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRestoreBucketIDRequest](./influxdb-client-apis.postrestorebucketidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRestoreBucketMetadataRequest](./influxdb-client-apis.postrestorebucketmetadatarequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRestoreKVRequest](./influxdb-client-apis.postrestorekvrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRestoreShardIdRequest](./influxdb-client-apis.postrestoreshardidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostRestoreSQLRequest](./influxdb-client-apis.postrestoresqlrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScrapersIDLabelsRequest](./influxdb-client-apis.postscrapersidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScrapersIDMembersRequest](./influxdb-client-apis.postscrapersidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScrapersIDOwnersRequest](./influxdb-client-apis.postscrapersidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScrapersRequest](./influxdb-client-apis.postscrapersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScriptsIDInvokeRequest](./influxdb-client-apis.postscriptsidinvokerequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostScriptsRequest](./influxdb-client-apis.postscriptsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostSetupRequest](./influxdb-client-apis.postsetuprequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostSigninRequest](./influxdb-client-apis.postsigninrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostSignoutRequest](./influxdb-client-apis.postsignoutrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostSourcesRequest](./influxdb-client-apis.postsourcesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksIDLabelsRequest](./influxdb-client-apis.posttasksidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksIDMembersRequest](./influxdb-client-apis.posttasksidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksIDOwnersRequest](./influxdb-client-apis.posttasksidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksIDRunsIDRetryRequest](./influxdb-client-apis.posttasksidrunsidretryrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksIDRunsRequest](./influxdb-client-apis.posttasksidrunsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTasksRequest](./influxdb-client-apis.posttasksrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTelegrafsIDLabelsRequest](./influxdb-client-apis.posttelegrafsidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTelegrafsIDMembersRequest](./influxdb-client-apis.posttelegrafsidmembersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTelegrafsIDOwnersRequest](./influxdb-client-apis.posttelegrafsidownersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostTelegrafsRequest](./influxdb-client-apis.posttelegrafsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostUsersIDPasswordRequest](./influxdb-client-apis.postusersidpasswordrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostUsersRequest](./influxdb-client-apis.postusersrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostValidateReplicationByIDRequest](./influxdb-client-apis.postvalidatereplicationbyidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostVariablesIDLabelsRequest](./influxdb-client-apis.postvariablesidlabelsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostVariablesRequest](./influxdb-client-apis.postvariablesrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostWriteRequest](./influxdb-client-apis.postwriterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Property](./influxdb-client-apis.property.md)
+
+
+</td><td>
+
+The value associated with a key
+
+
+</td></tr>
+<tr><td>
+
+[PutChecksIDRequest](./influxdb-client-apis.putchecksidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutDashboardsIDCellsRequest](./influxdb-client-apis.putdashboardsidcellsrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutMePasswordRequest](./influxdb-client-apis.putmepasswordrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutNotificationEndpointsIDRequest](./influxdb-client-apis.putnotificationendpointsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PutVariablesIDRequest](./influxdb-client-apis.putvariablesidrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Query](./influxdb-client-apis.query.md)
+
+
+</td><td>
+
+Query InfluxDB with the Flux language
+
+
+</td></tr>
+<tr><td>
+
+[QueryVariableProperties](./influxdb-client-apis.queryvariableproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ReadStackRequest](./influxdb-client-apis.readstackrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Ready](./influxdb-client-apis.ready.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RegexpLiteral](./influxdb-client-apis.regexpliteral.md)
+
+
+</td><td>
+
+Expressions begin and end with `/` and are regular expressions with syntax accepted by RE2
+
+
+</td></tr>
+<tr><td>
+
+[RemoteConnection](./influxdb-client-apis.remoteconnection.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RemoteConnections](./influxdb-client-apis.remoteconnections.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RemoteConnectionUpdateRequest](./influxdb-client-apis.remoteconnectionupdaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RenamableField](./influxdb-client-apis.renamablefield.md)
+
+
+</td><td>
+
+Describes a field that can be renamed and made visible or invisible.
+
+
+</td></tr>
+<tr><td>
+
+[Replication](./influxdb-client-apis.replication.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Replications](./influxdb-client-apis.replications.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ReplicationUpdateRequest](./influxdb-client-apis.replicationupdaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Resource](./influxdb-client-apis.resource.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ResourceMembers](./influxdb-client-apis.resourcemembers.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ResourceOwners](./influxdb-client-apis.resourceowners.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RestoredBucketMappings](./influxdb-client-apis.restoredbucketmappings.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RetentionPolicyManifest](./influxdb-client-apis.retentionpolicymanifest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RetentionRule](./influxdb-client-apis.retentionrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ReturnStatement](./influxdb-client-apis.returnstatement.md)
+
+
+</td><td>
+
+Defines an expression to return
+
+
+</td></tr>
+<tr><td>
+
+[Routes](./influxdb-client-apis.routes.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Run](./influxdb-client-apis.run.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RunManually](./influxdb-client-apis.runmanually.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Runs](./influxdb-client-apis.runs.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScatterViewProperties](./influxdb-client-apis.scatterviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScraperTargetRequest](./influxdb-client-apis.scrapertargetrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScraperTargetResponses](./influxdb-client-apis.scrapertargetresponses.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Script](./influxdb-client-apis.script.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScriptCreateRequest](./influxdb-client-apis.scriptcreaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScriptInvocationParams](./influxdb-client-apis.scriptinvocationparams.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Scripts](./influxdb-client-apis.scripts.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SecretKeys](./influxdb-client-apis.secretkeys.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardGroupManifest](./influxdb-client-apis.shardgroupmanifest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardManifest](./influxdb-client-apis.shardmanifest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardOwner](./influxdb-client-apis.shardowner.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SimpleTableViewProperties](./influxdb-client-apis.simpletableviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SingleStatViewProperties](./influxdb-client-apis.singlestatviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SlackNotificationRuleBase](./influxdb-client-apis.slacknotificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Source](./influxdb-client-apis.source.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Sources](./influxdb-client-apis.sources.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Stack](./influxdb-client-apis.stack.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[StaticLegend](./influxdb-client-apis.staticlegend.md)
+
+
+</td><td>
+
+StaticLegend represents the options specific to the static legend
+
+
+</td></tr>
+<tr><td>
+
+[StatusRule](./influxdb-client-apis.statusrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[StringLiteral](./influxdb-client-apis.stringliteral.md)
+
+
+</td><td>
+
+Expressions begin and end with double quote marks
+
+
+</td></tr>
+<tr><td>
+
+[SubscriptionManifest](./influxdb-client-apis.subscriptionmanifest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TableViewProperties](./influxdb-client-apis.tableviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TagRule](./influxdb-client-apis.tagrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Task](./influxdb-client-apis.task.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Tasks](./influxdb-client-apis.tasks.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TaskUpdateRequest](./influxdb-client-apis.taskupdaterequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafPlugin](./influxdb-client-apis.telegrafplugin.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafPlugins](./influxdb-client-apis.telegrafplugins.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegrafRequest](./influxdb-client-apis.telegrafrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Telegrafs](./influxdb-client-apis.telegrafs.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegramNotificationRuleBase](./influxdb-client-apis.telegramnotificationrulebase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateApply](./influxdb-client-apis.templateapply.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateChart](./influxdb-client-apis.templatechart.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateExportByID](./influxdb-client-apis.templateexportbyid.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateExportByName](./influxdb-client-apis.templateexportbyname.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateSummary](./influxdb-client-apis.templatesummary.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateSummaryLabel](./influxdb-client-apis.templatesummarylabel.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TestStatement](./influxdb-client-apis.teststatement.md)
+
+
+</td><td>
+
+Declares a Flux test case
+
+
+</td></tr>
+<tr><td>
+
+[ThresholdBase](./influxdb-client-apis.thresholdbase.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[UnaryExpression](./influxdb-client-apis.unaryexpression.md)
+
+
+</td><td>
+
+Uses operators to act on a single operand in an expression
+
+
+</td></tr>
+<tr><td>
+
+[UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[UnsignedIntegerLiteral](./influxdb-client-apis.unsignedintegerliteral.md)
+
+
+</td><td>
+
+Represents integer numbers
+
+
+</td></tr>
+<tr><td>
+
+[UpdateStackRequest](./influxdb-client-apis.updatestackrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[User](./influxdb-client-apis.user.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[UserResponse](./influxdb-client-apis.userresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Users](./influxdb-client-apis.users.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Variable](./influxdb-client-apis.variable.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[VariableAssignment](./influxdb-client-apis.variableassignment.md)
+
+
+</td><td>
+
+Represents the declaration of a variable
+
+
+</td></tr>
+<tr><td>
+
+[Variables](./influxdb-client-apis.variables.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[View](./influxdb-client-apis.view.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYViewProperties](./influxdb-client-apis.xyviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Authorization](./influxdb-client-apis.authorization.md) |  |
-|  [AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md) |  |
-|  [AxisScale](./influxdb-client-apis.axisscale.md) | Scale is the axis formatting scale. Supported: "log", "linear" |
-|  [BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md) |  |
-|  [BucketShardMappings](./influxdb-client-apis.bucketshardmappings.md) |  |
-|  [BuilderAggregateFunctionType](./influxdb-client-apis.builderaggregatefunctiontype.md) |  |
-|  [Cells](./influxdb-client-apis.cells.md) |  |
-|  [CellsWithViewProperties](./influxdb-client-apis.cellswithviewproperties.md) |  |
-|  [CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md) |  |
-|  [Check](./influxdb-client-apis.check.md) |  |
-|  [CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md) |  |
-|  [CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md) | The state to record if check matches a criteria. |
-|  [ColorMapping](./influxdb-client-apis.colormapping.md) | A color mapping is an object that maps time series data to a UI color scheme to allow the UI to render graphs consistent colors across reloads. |
-|  [CustomCheck](./influxdb-client-apis.customcheck.md) |  |
-|  [Dashboard](./influxdb-client-apis.dashboard.md) |  |
-|  [DashboardWithViewProperties](./influxdb-client-apis.dashboardwithviewproperties.md) |  |
-|  [DeadmanCheck](./influxdb-client-apis.deadmancheck.md) |  |
-|  [Expression](./influxdb-client-apis.expression.md) |  |
-|  [Flags](./influxdb-client-apis.flags.md) |  |
-|  [GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md) |  |
-|  [GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md) |  |
-|  [GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md) |  |
-|  [GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md) |  |
-|  [GeoViewLayer](./influxdb-client-apis.geoviewlayer.md) |  |
-|  [GreaterThreshold](./influxdb-client-apis.greaterthreshold.md) |  |
-|  [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md) |  |
-|  [HTTPNotificationRule](./influxdb-client-apis.httpnotificationrule.md) |  |
-|  [Labels](./influxdb-client-apis.labels.md) |  |
-|  [LesserThreshold](./influxdb-client-apis.lesserthreshold.md) |  |
-|  [Link](./influxdb-client-apis.link.md) | URI of resource. |
-|  [Node](./influxdb-client-apis.node.md) |  |
-|  [NodeType](./influxdb-client-apis.nodetype.md) | Type of AST node |
-|  [NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md) |  |
-|  [NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md) |  |
-|  [NotificationEndpointType](./influxdb-client-apis.notificationendpointtype.md) |  |
-|  [NotificationRule](./influxdb-client-apis.notificationrule.md) |  |
-|  [NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md) |  |
-|  [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md) |  |
-|  [PagerDutyNotificationRule](./influxdb-client-apis.pagerdutynotificationrule.md) |  |
-|  [PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md) | Updates to rules to expire or retain data. No rules means no updates. |
-|  [PostCheck](./influxdb-client-apis.postcheck.md) |  |
-|  [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) |  |
-|  [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) |  |
-|  [PropertyKey\_2](./influxdb-client-apis.propertykey_2.md) |  |
-|  [QueryEditMode](./influxdb-client-apis.queryeditmode.md) |  |
-|  [RangeThreshold](./influxdb-client-apis.rangethreshold.md) |  |
-|  [ResourceMember](./influxdb-client-apis.resourcemember.md) |  |
-|  [ResourceOwner](./influxdb-client-apis.resourceowner.md) |  |
-|  [RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md) |  |
-|  [RetentionRules](./influxdb-client-apis.retentionrules.md) | <p>Retention rules to expire or retain data. \#\#\#\# InfluxDB Cloud</p><p>- <code>retentionRules</code> is required.</p><p>\#\#\#\# InfluxDB OSS</p><p>- <code>retentionRules</code> isn't required.</p> |
-|  [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | The state to record if check matches a criteria. |
-|  [SchemaType](./influxdb-client-apis.schematype.md) |  |
-|  [ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md) |  |
-|  [ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md) | The response body contains the results of the executed script. The response is user-defined and dynamic. |
-|  [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) |  |
-|  [SecretKeysResponse](./influxdb-client-apis.secretkeysresponse.md) |  |
-|  [Secrets](./influxdb-client-apis.secrets.md) |  |
-|  [ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md) |  |
-|  [ShardManifests](./influxdb-client-apis.shardmanifests.md) |  |
-|  [ShardOwners](./influxdb-client-apis.shardowners.md) |  |
-|  [SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md) |  |
-|  [SlackNotificationRule](./influxdb-client-apis.slacknotificationrule.md) |  |
-|  [SMTPNotificationRule](./influxdb-client-apis.smtpnotificationrule.md) |  |
-|  [Statement](./influxdb-client-apis.statement.md) |  |
-|  [SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md) |  |
-|  [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <code>inactive</code> cancels scheduled runs and prevents manual runs of the task. |
-|  [Telegraf](./influxdb-client-apis.telegraf.md) |  |
-|  [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md) |  |
-|  [TelegramNotificationRule](./influxdb-client-apis.telegramnotificationrule.md) |  |
-|  [Template](./influxdb-client-apis.template.md) |  |
-|  [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) |  |
-|  [TemplateKind](./influxdb-client-apis.templatekind.md) |  |
-|  [Threshold](./influxdb-client-apis.threshold.md) |  |
-|  [ThresholdCheck](./influxdb-client-apis.thresholdcheck.md) |  |
-|  [VariableProperties](./influxdb-client-apis.variableproperties.md) |  |
-|  [ViewProperties](./influxdb-client-apis.viewproperties.md) |  |
-|  [XYGeom](./influxdb-client-apis.xygeom.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Authorization](./influxdb-client-apis.authorization.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[AuthorizationPostRequest](./influxdb-client-apis.authorizationpostrequest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[AxisScale](./influxdb-client-apis.axisscale.md)
+
+
+</td><td>
+
+Scale is the axis formatting scale. Supported: "log", "linear"
+
+
+</td></tr>
+<tr><td>
+
+[BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BucketShardMappings](./influxdb-client-apis.bucketshardmappings.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[BuilderAggregateFunctionType](./influxdb-client-apis.builderaggregatefunctiontype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Cells](./influxdb-client-apis.cells.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CellsWithViewProperties](./influxdb-client-apis.cellswithviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CellWithViewProperties](./influxdb-client-apis.cellwithviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Check](./influxdb-client-apis.check.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CheckDiscriminator](./influxdb-client-apis.checkdiscriminator.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[CheckStatusLevel](./influxdb-client-apis.checkstatuslevel.md)
+
+
+</td><td>
+
+The state to record if check matches a criteria.
+
+
+</td></tr>
+<tr><td>
+
+[ColorMapping](./influxdb-client-apis.colormapping.md)
+
+
+</td><td>
+
+A color mapping is an object that maps time series data to a UI color scheme to allow the UI to render graphs consistent colors across reloads.
+
+
+</td></tr>
+<tr><td>
+
+[CustomCheck](./influxdb-client-apis.customcheck.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Dashboard](./influxdb-client-apis.dashboard.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DashboardWithViewProperties](./influxdb-client-apis.dashboardwithviewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[DeadmanCheck](./influxdb-client-apis.deadmancheck.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Flags](./influxdb-client-apis.flags.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoCircleViewLayer](./influxdb-client-apis.geocircleviewlayer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoHeatMapViewLayer](./influxdb-client-apis.geoheatmapviewlayer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoPointMapViewLayer](./influxdb-client-apis.geopointmapviewlayer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoTrackMapViewLayer](./influxdb-client-apis.geotrackmapviewlayer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GeoViewLayer](./influxdb-client-apis.geoviewlayer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[GreaterThreshold](./influxdb-client-apis.greaterthreshold.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[HTTPNotificationRule](./influxdb-client-apis.httpnotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Labels](./influxdb-client-apis.labels.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[LesserThreshold](./influxdb-client-apis.lesserthreshold.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Link](./influxdb-client-apis.link.md)
+
+
+</td><td>
+
+URI of resource.
+
+
+</td></tr>
+<tr><td>
+
+[Node](./influxdb-client-apis.node.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+Type of AST node
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpoint](./influxdb-client-apis.notificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpointDiscriminator](./influxdb-client-apis.notificationendpointdiscriminator.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationEndpointType](./influxdb-client-apis.notificationendpointtype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRule](./influxdb-client-apis.notificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[NotificationRuleDiscriminator](./influxdb-client-apis.notificationrulediscriminator.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PagerDutyNotificationRule](./influxdb-client-apis.pagerdutynotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PatchRetentionRules](./influxdb-client-apis.patchretentionrules.md)
+
+
+</td><td>
+
+Updates to rules to expire or retain data. No rules means no updates.
+
+
+</td></tr>
+<tr><td>
+
+[PostCheck](./influxdb-client-apis.postcheck.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PostNotificationRule](./influxdb-client-apis.postnotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PropertyKey\_2](./influxdb-client-apis.propertykey_2.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[QueryEditMode](./influxdb-client-apis.queryeditmode.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RangeThreshold](./influxdb-client-apis.rangethreshold.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ResourceMember](./influxdb-client-apis.resourcemember.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ResourceOwner](./influxdb-client-apis.resourceowner.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RetentionPolicyManifests](./influxdb-client-apis.retentionpolicymanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[RetentionRules](./influxdb-client-apis.retentionrules.md)
+
+
+</td><td>
+
+Retention rules to expire or retain data. \#\#\#\# InfluxDB Cloud
+
+- `retentionRules` is required.
+
+\#\#\#\# InfluxDB OSS
+
+- `retentionRules` isn't required.
+
+
+</td></tr>
+<tr><td>
+
+[RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md)
+
+
+</td><td>
+
+The state to record if check matches a criteria.
+
+
+</td></tr>
+<tr><td>
+
+[SchemaType](./influxdb-client-apis.schematype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScraperTargetResponse](./influxdb-client-apis.scrapertargetresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md)
+
+
+</td><td>
+
+The response body contains the results of the executed script. The response is user-defined and dynamic.
+
+
+</td></tr>
+<tr><td>
+
+[ScriptLanguage](./influxdb-client-apis.scriptlanguage.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SecretKeysResponse](./influxdb-client-apis.secretkeysresponse.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Secrets](./influxdb-client-apis.secrets.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardManifests](./influxdb-client-apis.shardmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ShardOwners](./influxdb-client-apis.shardowners.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SlackNotificationRule](./influxdb-client-apis.slacknotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SMTPNotificationRule](./influxdb-client-apis.smtpnotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Statement](./influxdb-client-apis.statement.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TaskStatusType](./influxdb-client-apis.taskstatustype.md)
+
+
+</td><td>
+
+`inactive` cancels scheduled runs and prevents manual runs of the task.
+
+
+</td></tr>
+<tr><td>
+
+[Telegraf](./influxdb-client-apis.telegraf.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TelegramNotificationRule](./influxdb-client-apis.telegramnotificationrule.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Template](./influxdb-client-apis.template.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TemplateKind](./influxdb-client-apis.templatekind.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Threshold](./influxdb-client-apis.threshold.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ThresholdCheck](./influxdb-client-apis.thresholdcheck.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[VariableProperties](./influxdb-client-apis.variableproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ViewProperties](./influxdb-client-apis.viewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[XYGeom](./influxdb-client-apis.xygeom.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

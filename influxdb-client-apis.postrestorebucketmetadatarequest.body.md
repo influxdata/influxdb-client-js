@@ -6,7 +6,7 @@
 
 Metadata manifest for a bucket.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: BucketMetadataManifest;

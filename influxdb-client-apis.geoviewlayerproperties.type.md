@@ -4,7 +4,7 @@
 
 ## GeoViewLayerProperties.type property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'heatmap' | 'circleMap' | 'pointMap' | 'trackMap';

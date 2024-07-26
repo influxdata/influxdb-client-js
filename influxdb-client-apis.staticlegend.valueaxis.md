@@ -4,7 +4,7 @@
 
 ## StaticLegend.valueAxis property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 valueAxis?: string;

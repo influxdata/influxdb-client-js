@@ -4,7 +4,7 @@
 
 ## Runs interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Runs 
@@ -12,8 +12,63 @@ interface Runs
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.runs.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
-|  [runs?](./influxdb-client-apis.runs.runs.md) |  | [Run](./influxdb-client-apis.run.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.runs.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[runs?](./influxdb-client-apis.runs.runs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Run](./influxdb-client-apis.run.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

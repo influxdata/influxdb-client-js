@@ -12,10 +12,10 @@ Retention rules to expire or retain data. \#\#\#\# InfluxDB Cloud
 
 - `retentionRules` isn't required.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type RetentionRules = RetentionRule[];
 ```
-<b>References:</b> [RetentionRule](./influxdb-client-apis.retentionrule.md)
+**References:** [RetentionRule](./influxdb-client-apis.retentionrule.md)
 

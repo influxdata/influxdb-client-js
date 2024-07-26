@@ -4,7 +4,7 @@
 
 ## GetTelegrafPluginsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetTelegrafPluginsRequest 
@@ -12,7 +12,44 @@ interface GetTelegrafPluginsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.gettelegrafpluginsrequest.type.md) |  | string | <i>(Optional)</i> The type of plugin desired. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type?](./influxdb-client-apis.gettelegrafpluginsrequest.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The type of plugin desired.
+
+
+</td></tr>
+</tbody></table>

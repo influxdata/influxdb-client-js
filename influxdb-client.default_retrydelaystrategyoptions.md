@@ -6,7 +6,7 @@
 
 default RetryDelayStrategyOptions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 DEFAULT_RetryDelayStrategyOptions: {

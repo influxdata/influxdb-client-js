@@ -6,7 +6,7 @@
 
 Adds a tag. The caller has to ensure that both name and value are not empty and do not end with backslash.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tag(name: string, value: string): Point;
@@ -14,12 +14,56 @@ tag(name: string, value: string): Point;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string | tag name |
-|  value | string | tag value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+tag name
+
+
+</td></tr>
+<tr><td>
+
+value
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+tag value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Point](./influxdb-client.point.md)
 

@@ -6,7 +6,7 @@
 
 Flux query to be analyzed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LanguageRequest 
@@ -14,7 +14,44 @@ interface LanguageRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [query](./influxdb-client-apis.languagerequest.query.md) |  | string | The Flux query script to be analyzed. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[query](./influxdb-client-apis.languagerequest.query.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Flux query script to be analyzed.
+
+
+</td></tr>
+</tbody></table>

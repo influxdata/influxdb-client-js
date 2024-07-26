@@ -6,7 +6,7 @@
 
 Timestamp precision used in write operations. See [https://docs.influxdata.com/influxdb/latest/api/\#operation/PostWrite](https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type WritePrecisionType = 'ns' | 'us' | 'ms' | 's';

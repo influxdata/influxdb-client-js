@@ -6,7 +6,7 @@
 
 Executes the query and receives table metadata and rows through the supplied consumer.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queryRows(query: string | ParameterizedQuery, consumer: FluxResultObserver<string[]>): void;
@@ -14,12 +14,56 @@ queryRows(query: string | ParameterizedQuery, consumer: FluxResultObserver<strin
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
-|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; | result rows and error consumer |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+<tr><td>
+
+consumer
+
+
+</td><td>
+
+[FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt;
+
+
+</td><td>
+
+result rows and error consumer
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

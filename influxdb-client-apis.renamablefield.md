@@ -6,7 +6,7 @@
 
 Describes a field that can be renamed and made visible or invisible.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RenamableField 
@@ -14,9 +14,84 @@ interface RenamableField
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [displayName?](./influxdb-client-apis.renamablefield.displayname.md) |  | string | <i>(Optional)</i> The name that a field is renamed to by the user. |
-|  [internalName?](./influxdb-client-apis.renamablefield.internalname.md) | <code>readonly</code> | string | <i>(Optional)</i> The calculated name of a field. |
-|  [visible?](./influxdb-client-apis.renamablefield.visible.md) |  | boolean | <i>(Optional)</i> Indicates whether this field should be visible on the table. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[displayName?](./influxdb-client-apis.renamablefield.displayname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name that a field is renamed to by the user.
+
+
+</td></tr>
+<tr><td>
+
+[internalName?](./influxdb-client-apis.renamablefield.internalname.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The calculated name of a field.
+
+
+</td></tr>
+<tr><td>
+
+[visible?](./influxdb-client-apis.renamablefield.visible.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates whether this field should be visible on the table.
+
+
+</td></tr>
+</tbody></table>

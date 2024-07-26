@@ -6,7 +6,7 @@
 
 A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) type (`basic` or `system`<!-- -->). Default is `system`<!-- -->. Specifies the level of detail for tasks in the response. The default (`system`<!-- -->) response contains all the metadata properties for tasks. To reduce the response size, pass `basic` to omit some task properties (`flux`<!-- -->, `createdAt`<!-- -->, `updatedAt`<!-- -->).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: string;

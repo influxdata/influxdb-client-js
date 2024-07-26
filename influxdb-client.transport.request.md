@@ -6,7 +6,7 @@
 
 Sends data to the server and receives decoded result. The type of the result depends on response's content-type (deserialized json, text).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 request(path: string, requestBody: any, options: SendOptions, responseStarted?: ResponseStartedFn): Promise<any>;
@@ -14,14 +14,88 @@ request(path: string, requestBody: any, options: SendOptions, responseStarted?: 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  path | string | HTTP request path |
-|  requestBody | any | request body |
-|  options | [SendOptions](./influxdb-client.sendoptions.md) | send options |
-|  responseStarted | [ResponseStartedFn](./influxdb-client.responsestartedfn.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+path
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+HTTP request path
+
+
+</td></tr>
+<tr><td>
+
+requestBody
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+request body
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[SendOptions](./influxdb-client.sendoptions.md)
+
+
+</td><td>
+
+send options
+
+
+</td></tr>
+<tr><td>
+
+responseStarted
+
+
+</td><td>
+
+[ResponseStartedFn](./influxdb-client.responsestartedfn.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;any&gt;
 

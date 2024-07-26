@@ -4,7 +4,7 @@
 
 ## BucketMetadataManifest.retentionPolicies property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retentionPolicies: RetentionPolicyManifests;

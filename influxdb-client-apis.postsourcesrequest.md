@@ -4,7 +4,7 @@
 
 ## PostSourcesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostSourcesRequest 
@@ -12,7 +12,44 @@ interface PostSourcesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postsourcesrequest.body.md) |  | [Source](./influxdb-client-apis.source.md) | Source to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postsourcesrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Source](./influxdb-client-apis.source.md)
+
+
+</td><td>
+
+Source to create
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## TemplateExportByName.resources property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 resources?: Array<{

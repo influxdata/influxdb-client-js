@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.fillColumns property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 fillColumns: string[];

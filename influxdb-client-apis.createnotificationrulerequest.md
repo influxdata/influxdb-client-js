@@ -4,7 +4,7 @@
 
 ## CreateNotificationRuleRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateNotificationRuleRequest 
@@ -12,7 +12,44 @@ interface CreateNotificationRuleRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationrulerequest.body.md) |  | [PostNotificationRule](./influxdb-client-apis.postnotificationrule.md) | Notification rule to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.createnotificationrulerequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PostNotificationRule](./influxdb-client-apis.postnotificationrule.md)
+
+
+</td><td>
+
+Notification rule to create
+
+
+</td></tr>
+</tbody></table>

@@ -8,7 +8,7 @@ A list of template objects to apply. A template object has a `contents` property
 
 Use the `templates` parameter to apply multiple template objects. If you use `templates`<!-- -->, you can't use the `template` parameter.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 templates?: Array<{

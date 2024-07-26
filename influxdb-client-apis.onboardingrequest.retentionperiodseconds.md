@@ -4,7 +4,7 @@
 
 ## OnboardingRequest.retentionPeriodSeconds property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retentionPeriodSeconds?: number;

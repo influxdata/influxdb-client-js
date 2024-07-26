@@ -4,7 +4,7 @@
 
 ## TelegramNotificationEndpoint type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type TelegramNotificationEndpoint = NotificationEndpointBase & {
@@ -12,5 +12,5 @@ type TelegramNotificationEndpoint = NotificationEndpointBase & {
     channel: string;
 };
 ```
-<b>References:</b> [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
+**References:** [NotificationEndpointBase](./influxdb-client-apis.notificationendpointbase.md)
 

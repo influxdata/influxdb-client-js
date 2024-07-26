@@ -6,7 +6,7 @@
 
 Retrieve Flux query suggestions. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetQuerySuggestions](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetQuerySuggestions)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getQuerySuggestions(request?: GetQuerySuggestionsRequest, requestOptions?: RequestOptions): Promise<FluxSuggestions>;
@@ -14,12 +14,56 @@ getQuerySuggestions(request?: GetQuerySuggestionsRequest, requestOptions?: Reque
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetQuerySuggestionsRequest](./influxdb-client-apis.getquerysuggestionsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetQuerySuggestionsRequest](./influxdb-client-apis.getquerysuggestionsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[FluxSuggestions](./influxdb-client-apis.fluxsuggestions.md)<!-- -->&gt;
 

@@ -6,7 +6,7 @@
 
 A script ID. Specifies the script to execute.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scriptID: string;

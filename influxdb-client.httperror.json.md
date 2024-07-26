@@ -6,7 +6,7 @@
 
 json error response
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 json: any;

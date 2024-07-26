@@ -4,7 +4,7 @@
 
 ## PostScrapersIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostScrapersIDMembersRequest 
@@ -12,8 +12,63 @@ interface PostScrapersIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | User to add as member |
-|  [scraperTargetID](./influxdb-client-apis.postscrapersidmembersrequest.scrapertargetid.md) |  | string | The scraper target ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postscrapersidmembersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+User to add as member
+
+
+</td></tr>
+<tr><td>
+
+[scraperTargetID](./influxdb-client-apis.postscrapersidmembersrequest.scrapertargetid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The scraper target ID.
+
+
+</td></tr>
+</tbody></table>

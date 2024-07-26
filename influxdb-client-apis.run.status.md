@@ -4,7 +4,7 @@
 
 ## Run.status property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly status?: 'scheduled' | 'started' | 'failed' | 'success' | 'canceled';

@@ -6,7 +6,7 @@
 
 The ID of the task to delete the label from.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

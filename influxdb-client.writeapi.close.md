@@ -6,12 +6,12 @@
 
 Flushes this writer and cancels retries of write operations that failed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 close(): Promise<void>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;void&gt;
 

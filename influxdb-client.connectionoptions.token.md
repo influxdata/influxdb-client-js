@@ -6,7 +6,7 @@
 
 authentication token
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 token?: string;

@@ -6,7 +6,7 @@
 
 Remove an owner from a bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteBucketsIDOwnersID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteBucketsIDOwnersID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deleteBucketsIDOwnersID(request: DeleteBucketsIDOwnersIDRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ deleteBucketsIDOwnersID(request: DeleteBucketsIDOwnersIDRequest, requestOptions?
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [DeleteBucketsIDOwnersIDRequest](./influxdb-client-apis.deletebucketsidownersidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[DeleteBucketsIDOwnersIDRequest](./influxdb-client-apis.deletebucketsidownersidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

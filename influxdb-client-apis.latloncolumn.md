@@ -6,7 +6,7 @@
 
 Object type for key and column definitions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LatLonColumn 
@@ -14,8 +14,63 @@ interface LatLonColumn
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [column](./influxdb-client-apis.latloncolumn.column.md) |  | string | Column to look up Lat/Lon |
-|  [key](./influxdb-client-apis.latloncolumn.key.md) |  | string | Key to determine whether the column is tag/field |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[column](./influxdb-client-apis.latloncolumn.column.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Column to look up Lat/Lon
+
+
+</td></tr>
+<tr><td>
+
+[key](./influxdb-client-apis.latloncolumn.key.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Key to determine whether the column is tag/field
+
+
+</td></tr>
+</tbody></table>

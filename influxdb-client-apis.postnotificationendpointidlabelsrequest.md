@@ -4,7 +4,7 @@
 
 ## PostNotificationEndpointIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostNotificationEndpointIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostNotificationEndpointIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [endpointID](./influxdb-client-apis.postnotificationendpointidlabelsrequest.endpointid.md) |  | string | The notification endpoint ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postnotificationendpointidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+Label to add
+
+
+</td></tr>
+<tr><td>
+
+[endpointID](./influxdb-client-apis.postnotificationendpointidlabelsrequest.endpointid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification endpoint ID.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## VariableAssignment.init property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 init?: Expression;

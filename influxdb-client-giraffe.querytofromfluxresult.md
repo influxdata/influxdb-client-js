@@ -6,7 +6,7 @@
 
 Executes a flux query and iterrativelly collects results into a Giraffe's FromFluxResult.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function queryToFromFluxResult(queryApi: QueryApi, query: string | ParameterizedQuery, tableFactory: GiraffeTableFactory, tableOptions?: TableOptions): Promise<FromFluxResult>;
@@ -14,14 +14,88 @@ declare function queryToFromFluxResult(queryApi: QueryApi, query: string | Param
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  queryApi | [QueryApi](./influxdb-client.queryapi.md) | InfluxDB client's QueryApi instance |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query to execute |
-|  tableFactory | [GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md) | creates a new Giraffe table |
-|  tableOptions | [TableOptions](./influxdb-client-giraffe.tableoptions.md) | <i>(Optional)</i> tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+queryApi
+
+
+</td><td>
+
+[QueryApi](./influxdb-client.queryapi.md)
+
+
+</td><td>
+
+InfluxDB client's QueryApi instance
+
+
+</td></tr>
+<tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query to execute
+
+
+</td></tr>
+<tr><td>
+
+tableFactory
+
+
+</td><td>
+
+[GiraffeTableFactory](./influxdb-client-giraffe.giraffetablefactory.md)
+
+
+</td><td>
+
+creates a new Giraffe table
+
+
+</td></tr>
+<tr><td>
+
+tableOptions
+
+
+</td><td>
+
+[TableOptions](./influxdb-client-giraffe.tableoptions.md)
+
+
+</td><td>
+
+_(Optional)_ tableOptions allows to filter or even stop the processing of rows, specify maximum rows or restrict the columns to collect
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;FromFluxResult&gt;
 

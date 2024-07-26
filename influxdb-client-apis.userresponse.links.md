@@ -4,7 +4,7 @@
 
 ## UserResponse.links property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly links?: {

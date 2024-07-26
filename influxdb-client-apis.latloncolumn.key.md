@@ -6,7 +6,7 @@
 
 Key to determine whether the column is tag/field
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 key: string;

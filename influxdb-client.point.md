@@ -6,7 +6,7 @@
 
 Point defines values of a single measurement.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class Point 
@@ -14,28 +14,240 @@ declare class Point
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(measurementName)](./influxdb-client.point._constructor_.md) |  | Create a new Point with specified a measurement name. |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(measurementName)](./influxdb-client.point._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a new Point with specified a measurement name.
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [fields](./influxdb-client.point.fields.md) |  | { \[key: string\]: string; } | escaped field values |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fields](./influxdb-client.point.fields.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+escaped field values
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [booleanField(name, value)](./influxdb-client.point.booleanfield.md) |  | Adds a boolean field. |
-|  [floatField(name, value)](./influxdb-client.point.floatfield.md) |  | Adds a number field. |
-|  [intField(name, value)](./influxdb-client.point.intfield.md) |  | Adds an integer field. |
-|  [measurement(name)](./influxdb-client.point.measurement.md) |  | Sets point's measurement. |
-|  [stringField(name, value)](./influxdb-client.point.stringfield.md) |  | Adds a string field. |
-|  [tag(name, value)](./influxdb-client.point.tag.md) |  | Adds a tag. The caller has to ensure that both name and value are not empty and do not end with backslash. |
-|  [timestamp(value)](./influxdb-client.point.timestamp.md) |  | <p>Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string or an undefined value. An undefined value instructs to assign a local timestamp using the client's clock. An empty string can be used to let the server assign the timestamp. A number value represents time as a count of time units since epoch, the exact time unit then depends on the [precision](./influxdb-client.influxdb.getwriteapi.md) of the API that writes the point.</p><p>Beware that the current time in nanoseconds can't precisely fit into a JS number, which can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as a (base-10) string. An application can also use ES2020 BigInt to represent nanoseconds, BigInt's <code>toString()</code> returns the required high-precision string.</p><p>Note that InfluxDB requires the timestamp to fit into int64 data type.</p> |
-|  [toLineProtocol(settings)](./influxdb-client.point.tolineprotocol.md) |  | Creates an InfluxDB protocol line out of this instance. |
-|  [toString()](./influxdb-client.point.tostring.md) |  |  |
-|  [uintField(name, value)](./influxdb-client.point.uintfield.md) |  | Adds an unsigned integer field. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[booleanField(name, value)](./influxdb-client.point.booleanfield.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a boolean field.
+
+
+</td></tr>
+<tr><td>
+
+[floatField(name, value)](./influxdb-client.point.floatfield.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a number field.
+
+
+</td></tr>
+<tr><td>
+
+[intField(name, value)](./influxdb-client.point.intfield.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds an integer field.
+
+
+</td></tr>
+<tr><td>
+
+[measurement(name)](./influxdb-client.point.measurement.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets point's measurement.
+
+
+</td></tr>
+<tr><td>
+
+[stringField(name, value)](./influxdb-client.point.stringfield.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a string field.
+
+
+</td></tr>
+<tr><td>
+
+[tag(name, value)](./influxdb-client.point.tag.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a tag. The caller has to ensure that both name and value are not empty and do not end with backslash.
+
+
+</td></tr>
+<tr><td>
+
+[timestamp(value)](./influxdb-client.point.timestamp.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string or an undefined value. An undefined value instructs to assign a local timestamp using the client's clock. An empty string can be used to let the server assign the timestamp. A number value represents time as a count of time units since epoch, the exact time unit then depends on the [precision](./influxdb-client.influxdb.getwriteapi.md) of the API that writes the point.
+
+Beware that the current time in nanoseconds can't precisely fit into a JS number, which can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as a (base-10) string. An application can also use ES2020 BigInt to represent nanoseconds, BigInt's `toString()` returns the required high-precision string.
+
+Note that InfluxDB requires the timestamp to fit into int64 data type.
+
+
+</td></tr>
+<tr><td>
+
+[toLineProtocol(settings)](./influxdb-client.point.tolineprotocol.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates an InfluxDB protocol line out of this instance.
+
+
+</td></tr>
+<tr><td>
+
+[toString()](./influxdb-client.point.tostring.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[uintField(name, value)](./influxdb-client.point.uintfield.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds an unsigned integer field.
+
+
+</td></tr>
+</tbody></table>

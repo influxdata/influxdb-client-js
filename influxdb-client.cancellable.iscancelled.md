@@ -4,12 +4,12 @@
 
 ## Cancellable.isCancelled() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 isCancelled(): boolean;
 ```
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

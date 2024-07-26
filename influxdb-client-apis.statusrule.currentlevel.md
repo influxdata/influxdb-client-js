@@ -4,7 +4,7 @@
 
 ## StatusRule.currentLevel property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 currentLevel?: RuleStatusLevel;

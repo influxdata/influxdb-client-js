@@ -6,7 +6,7 @@
 
 Delete data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDelete](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDelete)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postDelete(request: PostDeleteRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ postDelete(request: PostDeleteRequest, requestOptions?: RequestOptions): Promise
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostDeleteRequest](./influxdb-client-apis.postdeleterequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

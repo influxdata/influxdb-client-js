@@ -4,7 +4,7 @@
 
 ## FluxSuggestions interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxSuggestions 
@@ -12,7 +12,44 @@ interface FluxSuggestions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [funcs?](./influxdb-client-apis.fluxsuggestions.funcs.md) |  | [FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[funcs?](./influxdb-client-apis.fluxsuggestions.funcs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FluxSuggestion](./influxdb-client-apis.fluxsuggestion.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

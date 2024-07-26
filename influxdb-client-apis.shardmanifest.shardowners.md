@@ -4,7 +4,7 @@
 
 ## ShardManifest.shardOwners property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardOwners: ShardOwners;

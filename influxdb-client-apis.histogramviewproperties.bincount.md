@@ -4,7 +4,7 @@
 
 ## HistogramViewProperties.binCount property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 binCount: number;

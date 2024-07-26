@@ -4,7 +4,7 @@
 
 ## LabelMapping interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LabelMapping 
@@ -12,7 +12,44 @@ interface LabelMapping
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelID?](./influxdb-client-apis.labelmapping.labelid.md) |  | string | <i>(Optional)</i> Label ID. The ID of the label to attach. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelID?](./influxdb-client-apis.labelmapping.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Label ID. The ID of the label to attach.
+
+
+</td></tr>
+</tbody></table>

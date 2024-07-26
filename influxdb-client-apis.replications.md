@@ -4,7 +4,7 @@
 
 ## Replications interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Replications 
@@ -12,7 +12,44 @@ interface Replications
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [replications?](./influxdb-client-apis.replications.replications.md) |  | [Replication](./influxdb-client-apis.replication.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[replications?](./influxdb-client-apis.replications.replications.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Replication](./influxdb-client-apis.replication.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

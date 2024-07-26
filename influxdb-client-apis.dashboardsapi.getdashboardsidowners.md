@@ -6,7 +6,7 @@
 
 List all dashboard owners. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboardsIDOwners](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboardsIDOwners)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDashboardsIDOwners(request: GetDashboardsIDOwnersRequest, requestOptions?: RequestOptions): Promise<ResourceOwners>;
@@ -14,12 +14,56 @@ getDashboardsIDOwners(request: GetDashboardsIDOwnersRequest, requestOptions?: Re
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDashboardsIDOwnersRequest](./influxdb-client-apis.getdashboardsidownersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDashboardsIDOwnersRequest](./influxdb-client-apis.getdashboardsidownersrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ResourceOwners](./influxdb-client-apis.resourceowners.md)<!-- -->&gt;
 

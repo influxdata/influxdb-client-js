@@ -4,7 +4,7 @@
 
 ## QueryVariableProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface QueryVariableProperties 
@@ -12,8 +12,63 @@ interface QueryVariableProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.queryvariableproperties.type.md) |  | 'query' | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.queryvariableproperties.values.md) |  | { query?: string; language?: string; } | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type?](./influxdb-client-apis.queryvariableproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'query'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[values?](./influxdb-client-apis.queryvariableproperties.values.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ query?: string; language?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

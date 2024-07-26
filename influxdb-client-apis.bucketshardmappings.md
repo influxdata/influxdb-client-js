@@ -4,10 +4,10 @@
 
 ## BucketShardMappings type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type BucketShardMappings = BucketShardMapping[];
 ```
-<b>References:</b> [BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md)
+**References:** [BucketShardMapping](./influxdb-client-apis.bucketshardmapping.md)
 

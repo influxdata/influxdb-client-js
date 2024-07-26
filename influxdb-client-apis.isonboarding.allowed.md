@@ -6,7 +6,7 @@
 
 If `true`<!-- -->, the InfluxDB instance hasn't had initial setup; `false` otherwise.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 allowed?: boolean;

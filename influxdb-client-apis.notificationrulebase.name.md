@@ -6,7 +6,7 @@
 
 Human-readable name describing the notification rule.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

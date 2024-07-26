@@ -6,7 +6,7 @@
 
 The ID of the task run that generated the event.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly runID?: string;

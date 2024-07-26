@@ -4,7 +4,7 @@
 
 ## ASTResponse.ast property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ast?: Package;

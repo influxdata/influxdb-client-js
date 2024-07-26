@@ -4,7 +4,7 @@
 
 ## PatchScriptsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchScriptsIDRequest 
@@ -12,8 +12,63 @@ interface PatchScriptsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidrequest.body.md) |  | [ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md) | The script update to apply. |
-|  [scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md) |  | string | A script ID. Specifies the script to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchscriptsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScriptUpdateRequest](./influxdb-client-apis.scriptupdaterequest.md)
+
+
+</td><td>
+
+The script update to apply.
+
+
+</td></tr>
+<tr><td>
+
+[scriptID](./influxdb-client-apis.patchscriptsidrequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A script ID. Specifies the script to update.
+
+
+</td></tr>
+</tbody></table>

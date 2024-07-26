@@ -4,7 +4,7 @@
 
 ## PatchSourcesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchSourcesIDRequest 
@@ -12,8 +12,63 @@ interface PatchSourcesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchsourcesidrequest.body.md) |  | [Source](./influxdb-client-apis.source.md) | Source update |
-|  [sourceID](./influxdb-client-apis.patchsourcesidrequest.sourceid.md) |  | string | The source ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchsourcesidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Source](./influxdb-client-apis.source.md)
+
+
+</td><td>
+
+Source update
+
+
+</td></tr>
+<tr><td>
+
+[sourceID](./influxdb-client-apis.patchsourcesidrequest.sourceid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The source ID.
+
+
+</td></tr>
+</tbody></table>

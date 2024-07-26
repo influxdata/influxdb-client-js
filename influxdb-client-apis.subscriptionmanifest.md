@@ -4,7 +4,7 @@
 
 ## SubscriptionManifest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SubscriptionManifest 
@@ -12,9 +12,76 @@ interface SubscriptionManifest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [destinations](./influxdb-client-apis.subscriptionmanifest.destinations.md) |  | string\[\] |  |
-|  [mode](./influxdb-client-apis.subscriptionmanifest.mode.md) |  | string |  |
-|  [name](./influxdb-client-apis.subscriptionmanifest.name.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[destinations](./influxdb-client-apis.subscriptionmanifest.destinations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[mode](./influxdb-client-apis.subscriptionmanifest.mode.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.subscriptionmanifest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

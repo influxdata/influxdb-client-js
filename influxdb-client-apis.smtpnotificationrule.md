@@ -4,10 +4,10 @@
 
 ## SMTPNotificationRule type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type SMTPNotificationRule = NotificationRuleBase & SMTPNotificationRuleBase;
 ```
-<b>References:</b> [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md)
+**References:** [NotificationRuleBase](./influxdb-client-apis.notificationrulebase.md)<!-- -->, [SMTPNotificationRuleBase](./influxdb-client-apis.smtpnotificationrulebase.md)
 

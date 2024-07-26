@@ -8,7 +8,7 @@ Options for tabular data output. Default output is [annotated CSV](https://docs.
 
 For more information about tabular data \*\*dialect\*\*, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-metadata-20151217/#dialect-descriptions)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Dialect 
@@ -16,11 +16,130 @@ interface Dialect
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [annotations?](./influxdb-client-apis.dialect.annotations.md) |  | Array&lt;'group' \| 'datatype' \| 'default'&gt; | <p><i>(Optional)</i> Annotation rows to include in the results. An \_annotation\_ is metadata associated with an object (column) in the data model.</p><p>\#\#\#\# Related guides</p><p>- See [Annotated CSV annotations](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#annotations) for examples and more information.</p><p>For more information about \*\*annotations\*\* in tabular data, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns)<!-- -->.</p> |
-|  [commentPrefix?](./influxdb-client-apis.dialect.commentprefix.md) |  | string | <i>(Optional)</i> The character prefixed to comment strings. Default is a number sign (<code>#</code>). |
-|  [dateTimeFormat?](./influxdb-client-apis.dialect.datetimeformat.md) |  | 'RFC3339' \| 'RFC3339Nano' | <p><i>(Optional)</i> The format for timestamps in results. Default is [\`RFC3339\` date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->. To include nanoseconds in timestamps, use <code>RFC3339Nano</code>.</p><p>\#\#\#\# Example formatted date/time values</p><p>\| Format \| Value \| \|:\-\-\-\-\-\-\-\-\-\-\-\-\|:\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\| \| <code>RFC3339</code> \| <code>&quot;2006-01-02T15:04:05Z07:00&quot;</code> \| \| <code>RFC3339Nano</code> \| <code>&quot;2006-01-02T15:04:05.999999999Z07:00&quot;</code> \|</p> |
-|  [delimiter?](./influxdb-client-apis.dialect.delimiter.md) |  | string | <i>(Optional)</i> The separator used between cells. Default is a comma (<code>,</code>). |
-|  [header?](./influxdb-client-apis.dialect.header.md) |  | boolean | <i>(Optional)</i> If true, the results contain a header row. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[annotations?](./influxdb-client-apis.dialect.annotations.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;'group' \| 'datatype' \| 'default'&gt;
+
+
+</td><td>
+
+_(Optional)_ Annotation rows to include in the results. An \_annotation\_ is metadata associated with an object (column) in the data model.
+
+\#\#\#\# Related guides
+
+- See [Annotated CSV annotations](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/annotated-csv/#annotations) for examples and more information.
+
+For more information about \*\*annotations\*\* in tabular data, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[commentPrefix?](./influxdb-client-apis.dialect.commentprefix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The character prefixed to comment strings. Default is a number sign (`#`<!-- -->).
+
+
+</td></tr>
+<tr><td>
+
+[dateTimeFormat?](./influxdb-client-apis.dialect.datetimeformat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'RFC3339' \| 'RFC3339Nano'
+
+
+</td><td>
+
+_(Optional)_ The format for timestamps in results. Default is [\`RFC3339\` date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->. To include nanoseconds in timestamps, use `RFC3339Nano`<!-- -->.
+
+\#\#\#\# Example formatted date/time values
+
+\| Format \| Value \| \|:\-\-\-\-\-\-\-\-\-\-\-\-\|:\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\| \| `RFC3339` \| `"2006-01-02T15:04:05Z07:00"` \| \| `RFC3339Nano` \| `"2006-01-02T15:04:05.999999999Z07:00"` \|
+
+
+</td></tr>
+<tr><td>
+
+[delimiter?](./influxdb-client-apis.dialect.delimiter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The separator used between cells. Default is a comma (`,`<!-- -->).
+
+
+</td></tr>
+<tr><td>
+
+[header?](./influxdb-client-apis.dialect.header.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ If true, the results contain a header row.
+
+
+</td></tr>
+</tbody></table>

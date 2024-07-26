@@ -4,7 +4,7 @@
 
 ## OnboardingResponse interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface OnboardingResponse 
@@ -12,10 +12,101 @@ interface OnboardingResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [auth?](./influxdb-client-apis.onboardingresponse.auth.md) |  | [Authorization](./influxdb-client-apis.authorization.md) | <i>(Optional)</i> |
-|  [bucket?](./influxdb-client-apis.onboardingresponse.bucket.md) |  | [Bucket](./influxdb-client-apis.bucket.md) | <i>(Optional)</i> |
-|  [org?](./influxdb-client-apis.onboardingresponse.org.md) |  | [Organization](./influxdb-client-apis.organization.md) | <i>(Optional)</i> |
-|  [user?](./influxdb-client-apis.onboardingresponse.user.md) |  | [UserResponse](./influxdb-client-apis.userresponse.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[auth?](./influxdb-client-apis.onboardingresponse.auth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Authorization](./influxdb-client-apis.authorization.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[bucket?](./influxdb-client-apis.onboardingresponse.bucket.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Bucket](./influxdb-client-apis.bucket.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.onboardingresponse.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Organization](./influxdb-client-apis.organization.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[user?](./influxdb-client-apis.onboardingresponse.user.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[UserResponse](./influxdb-client-apis.userresponse.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

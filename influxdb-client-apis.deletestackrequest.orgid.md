@@ -6,7 +6,7 @@
 
 The identifier of the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

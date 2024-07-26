@@ -4,7 +4,7 @@
 
 ## GetRemoteConnectionsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetRemoteConnectionsRequest 
@@ -12,9 +12,82 @@ interface GetRemoteConnectionsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name?](./influxdb-client-apis.getremoteconnectionsrequest.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID](./influxdb-client-apis.getremoteconnectionsrequest.orgid.md) |  | string | The organization ID. |
-|  [remoteURL?](./influxdb-client-apis.getremoteconnectionsrequest.remoteurl.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name?](./influxdb-client-apis.getremoteconnectionsrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.getremoteconnectionsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The organization ID.
+
+
+</td></tr>
+<tr><td>
+
+[remoteURL?](./influxdb-client-apis.getremoteconnectionsrequest.remoteurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

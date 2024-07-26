@@ -4,7 +4,7 @@
 
 ## BuilderConfig.functions property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 functions?: BuilderFunctionsType[];

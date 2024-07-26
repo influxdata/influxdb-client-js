@@ -4,7 +4,7 @@
 
 ## LabelUpdate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LabelUpdate 
@@ -12,8 +12,63 @@ interface LabelUpdate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name?](./influxdb-client-apis.labelupdate.name.md) |  | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.labelupdate.properties.md) |  | any | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name?](./influxdb-client-apis.labelupdate.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[properties?](./influxdb-client-apis.labelupdate.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

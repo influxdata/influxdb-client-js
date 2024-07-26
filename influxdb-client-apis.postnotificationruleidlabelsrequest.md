@@ -4,7 +4,7 @@
 
 ## PostNotificationRuleIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostNotificationRuleIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostNotificationRuleIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [ruleID](./influxdb-client-apis.postnotificationruleidlabelsrequest.ruleid.md) |  | string | The notification rule ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postnotificationruleidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+Label to add
+
+
+</td></tr>
+<tr><td>
+
+[ruleID](./influxdb-client-apis.postnotificationruleidlabelsrequest.ruleid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification rule ID.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 Response returns an AnnotatedCSVResponse instance that executes the query when asked for data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 response(query: string | ParameterizedQuery): AnnotatedCSVResponse;
@@ -14,11 +14,40 @@ response(query: string | ParameterizedQuery): AnnotatedCSVResponse;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
 

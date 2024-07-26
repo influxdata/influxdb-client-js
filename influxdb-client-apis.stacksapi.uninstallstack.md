@@ -6,7 +6,7 @@
 
 Uninstall a stack. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/UninstallStack](https://docs.influxdata.com/influxdb/v2.4/api/#operation/UninstallStack)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 uninstallStack(request: UninstallStackRequest, requestOptions?: RequestOptions): Promise<Stack>;
@@ -14,12 +14,56 @@ uninstallStack(request: UninstallStackRequest, requestOptions?: RequestOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[UninstallStackRequest](./influxdb-client-apis.uninstallstackrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Stack](./influxdb-client-apis.stack.md)<!-- -->&gt;
 

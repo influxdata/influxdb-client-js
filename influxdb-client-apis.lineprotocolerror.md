@@ -4,7 +4,7 @@
 
 ## LineProtocolError interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LineProtocolError 
@@ -12,11 +12,130 @@ interface LineProtocolError
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [code](./influxdb-client-apis.lineprotocolerror.code.md) | <code>readonly</code> | 'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'empty value' \| 'unavailable' | Code is the machine-readable error code. |
-|  [err?](./influxdb-client-apis.lineprotocolerror.err.md) | <code>readonly</code> | string | <i>(Optional)</i> Stack of errors that occurred during processing of the request. Useful for debugging. |
-|  [line?](./influxdb-client-apis.lineprotocolerror.line.md) | <code>readonly</code> | number | <i>(Optional)</i> First line in the request body that contains malformed data. |
-|  [message?](./influxdb-client-apis.lineprotocolerror.message.md) | <code>readonly</code> | string | <i>(Optional)</i> Human-readable message. |
-|  [op?](./influxdb-client-apis.lineprotocolerror.op.md) | <code>readonly</code> | string | <i>(Optional)</i> Describes the logical code operation when the error occurred. Useful for debugging. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[code](./influxdb-client-apis.lineprotocolerror.code.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+'internal error' \| 'not found' \| 'conflict' \| 'invalid' \| 'empty value' \| 'unavailable'
+
+
+</td><td>
+
+Code is the machine-readable error code.
+
+
+</td></tr>
+<tr><td>
+
+[err?](./influxdb-client-apis.lineprotocolerror.err.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Stack of errors that occurred during processing of the request. Useful for debugging.
+
+
+</td></tr>
+<tr><td>
+
+[line?](./influxdb-client-apis.lineprotocolerror.line.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ First line in the request body that contains malformed data.
+
+
+</td></tr>
+<tr><td>
+
+[message?](./influxdb-client-apis.lineprotocolerror.message.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Human-readable message.
+
+
+</td></tr>
+<tr><td>
+
+[op?](./influxdb-client-apis.lineprotocolerror.op.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Describes the logical code operation when the error occurred. Useful for debugging.
+
+
+</td></tr>
+</tbody></table>

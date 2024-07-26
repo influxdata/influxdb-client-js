@@ -14,7 +14,7 @@ Organization ID. The organization ID.
 
 - Accepts either `org` or `orgID`<!-- -->. - InfluxDB creates the bucket within this organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

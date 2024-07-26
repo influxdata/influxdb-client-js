@@ -6,7 +6,7 @@
 
 The description of the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

@@ -6,7 +6,7 @@
 
 If inactive the organization is inactive.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

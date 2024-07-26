@@ -6,7 +6,7 @@
 
 The ID of the organization that owns the resource. In a `permission`<!-- -->, applies the permission to all resources of `type` owned by this organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

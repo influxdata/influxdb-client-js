@@ -4,7 +4,7 @@
 
 ## OnboardingRequest.org property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org: string;

@@ -6,7 +6,7 @@
 
 Scraper target to create
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: ScraperTargetRequest;

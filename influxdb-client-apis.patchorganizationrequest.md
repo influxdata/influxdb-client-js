@@ -6,7 +6,7 @@
 
 An object that contains updated organization properties to apply.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchOrganizationRequest 
@@ -14,8 +14,63 @@ interface PatchOrganizationRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.patchorganizationrequest.description.md) |  | string | <i>(Optional)</i> The description of the organization. |
-|  [name?](./influxdb-client-apis.patchorganizationrequest.name.md) |  | string | <i>(Optional)</i> The name of the organization. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.patchorganizationrequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The description of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.patchorganizationrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization.
+
+
+</td></tr>
+</tbody></table>

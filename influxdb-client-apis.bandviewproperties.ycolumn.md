@@ -4,7 +4,7 @@
 
 ## BandViewProperties.yColumn property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yColumn?: string;

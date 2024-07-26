@@ -4,7 +4,7 @@
 
 ## TemplateSummaryLabel.templateMetaName property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 templateMetaName?: string;

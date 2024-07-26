@@ -6,7 +6,7 @@
 
 The ID of the cell to delete.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cellID: string;

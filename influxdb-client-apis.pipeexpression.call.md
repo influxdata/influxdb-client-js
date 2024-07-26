@@ -4,7 +4,7 @@
 
 ## PipeExpression.call property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 call?: CallExpression;

@@ -4,7 +4,7 @@
 
 ## Routes.dashboards property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dashboards?: string;

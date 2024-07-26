@@ -4,7 +4,7 @@
 
 ## TableViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TableViewProperties 
@@ -12,16 +12,203 @@ interface TableViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [colors](./influxdb-client-apis.tableviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | Colors define color encoding of data into a visualization |
-|  [decimalPlaces](./influxdb-client-apis.tableviewproperties.decimalplaces.md) |  | [DecimalPlaces](./influxdb-client-apis.decimalplaces.md) |  |
-|  [fieldOptions](./influxdb-client-apis.tableviewproperties.fieldoptions.md) |  | [RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->\[\] | fieldOptions represent the fields retrieved by the query with customization options |
-|  [note](./influxdb-client-apis.tableviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.tableviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.tableviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.tableviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [tableOptions](./influxdb-client-apis.tableviewproperties.tableoptions.md) |  | { verticalTimeAxis?: boolean; sortBy?: [RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->; wrapping?: 'truncate' \| 'wrap' \| 'single-line'; fixFirstColumn?: boolean; } |  |
-|  [timeFormat](./influxdb-client-apis.tableviewproperties.timeformat.md) |  | string | timeFormat describes the display format for time values according to moment.js date formatting |
-|  [type](./influxdb-client-apis.tableviewproperties.type.md) |  | 'table' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[colors](./influxdb-client-apis.tableviewproperties.colors.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\]
+
+
+</td><td>
+
+Colors define color encoding of data into a visualization
+
+
+</td></tr>
+<tr><td>
+
+[decimalPlaces](./influxdb-client-apis.tableviewproperties.decimalplaces.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DecimalPlaces](./influxdb-client-apis.decimalplaces.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[fieldOptions](./influxdb-client-apis.tableviewproperties.fieldoptions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->\[\]
+
+
+</td><td>
+
+fieldOptions represent the fields retrieved by the query with customization options
+
+
+</td></tr>
+<tr><td>
+
+[note](./influxdb-client-apis.tableviewproperties.note.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[queries](./influxdb-client-apis.tableviewproperties.queries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.tableviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[showNoteWhenEmpty](./influxdb-client-apis.tableviewproperties.shownotewhenempty.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, will display note when empty
+
+
+</td></tr>
+<tr><td>
+
+[tableOptions](./influxdb-client-apis.tableviewproperties.tableoptions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ verticalTimeAxis?: boolean; sortBy?: [RenamableField](./influxdb-client-apis.renamablefield.md)<!-- -->; wrapping?: 'truncate' \| 'wrap' \| 'single-line'; fixFirstColumn?: boolean; }
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[timeFormat](./influxdb-client-apis.tableviewproperties.timeformat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+timeFormat describes the display format for time values according to moment.js date formatting
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.tableviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'table'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

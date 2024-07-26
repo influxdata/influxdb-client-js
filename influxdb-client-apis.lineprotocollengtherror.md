@@ -4,7 +4,7 @@
 
 ## LineProtocolLengthError interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LineProtocolLengthError 
@@ -12,8 +12,67 @@ interface LineProtocolLengthError
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [code](./influxdb-client-apis.lineprotocollengtherror.code.md) | <code>readonly</code> | 'invalid' | Code is the machine-readable error code. |
-|  [message](./influxdb-client-apis.lineprotocollengtherror.message.md) | <code>readonly</code> | string | Human-readable message. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[code](./influxdb-client-apis.lineprotocollengtherror.code.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+'invalid'
+
+
+</td><td>
+
+Code is the machine-readable error code.
+
+
+</td></tr>
+<tr><td>
+
+[message](./influxdb-client-apis.lineprotocollengtherror.message.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Human-readable message.
+
+
+</td></tr>
+</tbody></table>

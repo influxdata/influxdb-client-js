@@ -4,7 +4,7 @@
 
 ## InfluxDB.processCSVResponse property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly processCSVResponse: (executor: APIExecutor, iterableResultExecutor: IterableResultExecutor) => AnnotatedCSVResponse;

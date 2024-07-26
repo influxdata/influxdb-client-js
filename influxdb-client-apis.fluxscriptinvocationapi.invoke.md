@@ -6,7 +6,7 @@
 
 Invoke returns a parsed response data stream that executes the supplied script when asked for data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse;
@@ -14,12 +14,56 @@ invoke(scriptID: string, params?: Record<string, any>): AnnotatedCSVResponse;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  scriptID | string | script identifier |
-|  params | Record&lt;string, any&gt; | <i>(Optional)</i> script parameters |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+scriptID
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+script identifier
+
+
+</td></tr>
+<tr><td>
+
+params
+
+
+</td><td>
+
+Record&lt;string, any&gt;
+
+
+</td><td>
+
+_(Optional)_ script parameters
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [AnnotatedCSVResponse](./influxdb-client.annotatedcsvresponse.md)
 

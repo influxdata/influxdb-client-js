@@ -6,7 +6,7 @@
 
 The type of plugin desired.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: string;

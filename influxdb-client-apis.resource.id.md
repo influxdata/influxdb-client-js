@@ -6,7 +6,7 @@
 
 The ID of a specific resource. In a `permission`<!-- -->, applies the permission to only the resource with this ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: string;

@@ -4,7 +4,7 @@
 
 ## GetReplicationByIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetReplicationByIDRequest 
@@ -12,7 +12,42 @@ interface GetReplicationByIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [replicationID](./influxdb-client-apis.getreplicationbyidrequest.replicationid.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[replicationID](./influxdb-client-apis.getreplicationbyidrequest.replicationid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

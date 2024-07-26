@@ -4,7 +4,7 @@
 
 ## BandViewProperties.mainColumn property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mainColumn?: string;

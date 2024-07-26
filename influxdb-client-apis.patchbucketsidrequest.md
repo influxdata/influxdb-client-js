@@ -4,7 +4,7 @@
 
 ## PatchBucketsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchBucketsIDRequest 
@@ -12,8 +12,63 @@ interface PatchBucketsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchbucketsidrequest.body.md) |  | [PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md) | The bucket update to apply. |
-|  [bucketID](./influxdb-client-apis.patchbucketsidrequest.bucketid.md) |  | string | The bucket ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchbucketsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PatchBucketRequest](./influxdb-client-apis.patchbucketrequest.md)
+
+
+</td><td>
+
+The bucket update to apply.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID](./influxdb-client-apis.patchbucketsidrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The bucket ID.
+
+
+</td></tr>
+</tbody></table>

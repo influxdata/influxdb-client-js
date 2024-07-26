@@ -4,7 +4,7 @@
 
 ## RequestOptions interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RequestOptions 
@@ -12,8 +12,63 @@ interface RequestOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [headers?](./influxdb-client-apis.requestoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> HTTP request headers |
-|  [responseStarted?](./influxdb-client-apis.requestoptions.responsestarted.md) |  | (headers: [Headers](./influxdb-client.httpheaders.md)<!-- -->, statusCode?: number) =&gt; void | <i>(Optional)</i> Informs about a start of response processing. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[headers?](./influxdb-client-apis.requestoptions.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+_(Optional)_ HTTP request headers
+
+
+</td></tr>
+<tr><td>
+
+[responseStarted?](./influxdb-client-apis.requestoptions.responsestarted.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(headers: [Headers](./influxdb-client.httpheaders.md)<!-- -->, statusCode?: number) =&gt; void
+
+
+</td><td>
+
+_(Optional)_ Informs about a start of response processing.
+
+
+</td></tr>
+</tbody></table>

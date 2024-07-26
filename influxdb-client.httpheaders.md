@@ -6,7 +6,7 @@
 
 Type of HTTP headers.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type HttpHeaders = {

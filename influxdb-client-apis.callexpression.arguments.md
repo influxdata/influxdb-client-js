@@ -6,7 +6,7 @@
 
 Function arguments
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 arguments?: Expression[];

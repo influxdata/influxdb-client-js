@@ -6,7 +6,7 @@
 
 Delete a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deleteTelegrafsID(request: DeleteTelegrafsIDRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ deleteTelegrafsID(request: DeleteTelegrafsIDRequest, requestOptions?: RequestOpt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[DeleteTelegrafsIDRequest](./influxdb-client-apis.deletetelegrafsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

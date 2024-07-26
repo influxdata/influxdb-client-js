@@ -4,7 +4,7 @@
 
 ## XYViewProperties.xTickStart property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xTickStart?: number;

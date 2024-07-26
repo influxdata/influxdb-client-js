@@ -4,7 +4,7 @@
 
 ## Log variable
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 Log: Logger

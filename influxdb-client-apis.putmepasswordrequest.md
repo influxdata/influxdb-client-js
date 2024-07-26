@@ -4,7 +4,7 @@
 
 ## PutMePasswordRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutMePasswordRequest 
@@ -12,8 +12,63 @@ interface PutMePasswordRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [auth?](./influxdb-client-apis.putmepasswordrequest.auth.md) |  | { user: string; password: string; } | <i>(Optional)</i> |
-|  [body](./influxdb-client-apis.putmepasswordrequest.body.md) |  | [PasswordResetBody](./influxdb-client-apis.passwordresetbody.md) | The new password. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[auth?](./influxdb-client-apis.putmepasswordrequest.auth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ user: string; password: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[body](./influxdb-client-apis.putmepasswordrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PasswordResetBody](./influxdb-client-apis.passwordresetbody.md)
+
+
+</td><td>
+
+The new password.
+
+
+</td></tr>
+</tbody></table>

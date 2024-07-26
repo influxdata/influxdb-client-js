@@ -6,7 +6,7 @@
 
 Delete secrets from an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostOrgsIDSecrets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostOrgsIDSecrets)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postOrgsIDSecrets(request: PostOrgsIDSecretsRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ postOrgsIDSecrets(request: PostOrgsIDSecretsRequest, requestOptions?: RequestOpt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostOrgsIDSecretsRequest](./influxdb-client-apis.postorgsidsecretsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

@@ -6,7 +6,7 @@
 
 Label suffix for formatting axis values.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 suffix?: string;

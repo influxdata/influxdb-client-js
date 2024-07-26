@@ -6,7 +6,7 @@
 
 Creates TelegrafAPI
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(influxDB: InfluxDB);
@@ -14,7 +14,36 @@ constructor(influxDB: InfluxDB);
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  influxDB | [InfluxDB](./influxdb-client.influxdb.md) | an instance that knows how to communicate with InfluxDB server |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+influxDB
+
+
+</td><td>
+
+[InfluxDB](./influxdb-client.influxdb.md)
+
+
+</td><td>
+
+an instance that knows how to communicate with InfluxDB server
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## PutVariablesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutVariablesIDRequest 
@@ -12,8 +12,63 @@ interface PutVariablesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putvariablesidrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable to replace |
-|  [variableID](./influxdb-client-apis.putvariablesidrequest.variableid.md) |  | string | The variable ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.putvariablesidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Variable](./influxdb-client-apis.variable.md)
+
+
+</td><td>
+
+Variable to replace
+
+
+</td></tr>
+<tr><td>
+
+[variableID](./influxdb-client-apis.putvariablesidrequest.variableid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The variable ID.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Routes.flags property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flags?: string;

@@ -6,7 +6,7 @@
 
 Data chunk received, can be called multiple times.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 next(data: T): void | boolean;
@@ -14,11 +14,40 @@ next(data: T): void | boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  data | T | data |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+data
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+data
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void \| boolean
 

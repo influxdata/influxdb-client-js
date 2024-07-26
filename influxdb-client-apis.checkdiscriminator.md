@@ -4,7 +4,7 @@
 
 ## CheckDiscriminator type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type CheckDiscriminator = (DeadmanCheck & {
@@ -15,5 +15,5 @@ type CheckDiscriminator = (DeadmanCheck & {
     type: string;
 });
 ```
-<b>References:</b> [DeadmanCheck](./influxdb-client-apis.deadmancheck.md)<!-- -->, [ThresholdCheck](./influxdb-client-apis.thresholdcheck.md)<!-- -->, [CustomCheck](./influxdb-client-apis.customcheck.md)
+**References:** [DeadmanCheck](./influxdb-client-apis.deadmancheck.md)<!-- -->, [ThresholdCheck](./influxdb-client-apis.thresholdcheck.md)<!-- -->, [CustomCheck](./influxdb-client-apis.customcheck.md)
 

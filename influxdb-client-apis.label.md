@@ -4,7 +4,7 @@
 
 ## Label interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Label 
@@ -12,10 +12,105 @@ interface Label
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.label.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.label.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.label.orgid.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.label.properties.md) |  | any | <i>(Optional)</i> Key-value pairs associated with this label. To remove a property, send an update with an empty value (<code>&quot;&quot;</code>) for the key. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.label.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.label.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.label.orgid.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[properties?](./influxdb-client-apis.label.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ Key-value pairs associated with this label. To remove a property, send an update with an empty value (`""`<!-- -->) for the key.
+
+
+</td></tr>
+</tbody></table>

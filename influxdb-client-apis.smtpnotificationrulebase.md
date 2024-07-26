@@ -4,7 +4,7 @@
 
 ## SMTPNotificationRuleBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SMTPNotificationRuleBase 
@@ -12,10 +12,95 @@ interface SMTPNotificationRuleBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bodyTemplate?](./influxdb-client-apis.smtpnotificationrulebase.bodytemplate.md) |  | string | <i>(Optional)</i> |
-|  [subjectTemplate](./influxdb-client-apis.smtpnotificationrulebase.subjecttemplate.md) |  | string |  |
-|  [to](./influxdb-client-apis.smtpnotificationrulebase.to.md) |  | string |  |
-|  [type](./influxdb-client-apis.smtpnotificationrulebase.type.md) |  | 'smtp' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bodyTemplate?](./influxdb-client-apis.smtpnotificationrulebase.bodytemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[subjectTemplate](./influxdb-client-apis.smtpnotificationrulebase.subjecttemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[to](./influxdb-client-apis.smtpnotificationrulebase.to.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.smtpnotificationrulebase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'smtp'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

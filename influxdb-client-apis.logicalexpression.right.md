@@ -4,7 +4,7 @@
 
 ## LogicalExpression.right property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 right?: Expression;

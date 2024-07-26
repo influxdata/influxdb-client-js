@@ -6,7 +6,7 @@
 
 Update the 'offset' option in the flux script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 offset?: string;

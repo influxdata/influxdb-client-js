@@ -4,7 +4,7 @@
 
 ## GetDBRPsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDBRPsRequest 
@@ -12,13 +12,158 @@ interface GetDBRPsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID?](./influxdb-client-apis.getdbrpsrequest.bucketid.md) |  | string | <i>(Optional)</i> Specifies the bucket ID to filter on |
-|  [db?](./influxdb-client-apis.getdbrpsrequest.db.md) |  | string | <i>(Optional)</i> Specifies the database to filter on |
-|  [default?](./influxdb-client-apis.getdbrpsrequest.default.md) |  | any | <i>(Optional)</i> Specifies filtering on default |
-|  [id?](./influxdb-client-apis.getdbrpsrequest.id.md) |  | string | <i>(Optional)</i> Specifies the mapping ID to filter on |
-|  [org?](./influxdb-client-apis.getdbrpsrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name to filter on |
-|  [orgID?](./influxdb-client-apis.getdbrpsrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID to filter on |
-|  [rp?](./influxdb-client-apis.getdbrpsrequest.rp.md) |  | string | <i>(Optional)</i> Specifies the retention policy to filter on |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID?](./influxdb-client-apis.getdbrpsrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the bucket ID to filter on
+
+
+</td></tr>
+<tr><td>
+
+[db?](./influxdb-client-apis.getdbrpsrequest.db.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the database to filter on
+
+
+</td></tr>
+<tr><td>
+
+[default?](./influxdb-client-apis.getdbrpsrequest.default.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ Specifies filtering on default
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.getdbrpsrequest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the mapping ID to filter on
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getdbrpsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization name to filter on
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getdbrpsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization ID to filter on
+
+
+</td></tr>
+<tr><td>
+
+[rp?](./influxdb-client-apis.getdbrpsrequest.rp.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the retention policy to filter on
+
+
+</td></tr>
+</tbody></table>

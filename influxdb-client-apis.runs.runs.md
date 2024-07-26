@@ -4,7 +4,7 @@
 
 ## Runs.runs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 runs?: Run[];

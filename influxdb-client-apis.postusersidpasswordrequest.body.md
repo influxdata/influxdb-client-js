@@ -6,7 +6,7 @@
 
 New password
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: PasswordResetBody;

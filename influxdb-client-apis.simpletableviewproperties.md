@@ -4,7 +4,7 @@
 
 ## SimpleTableViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SimpleTableViewProperties 
@@ -12,12 +12,129 @@ interface SimpleTableViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [note](./influxdb-client-apis.simpletableviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.simpletableviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [shape](./influxdb-client-apis.simpletableviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [showAll](./influxdb-client-apis.simpletableviewproperties.showall.md) |  | boolean |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.simpletableviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [type](./influxdb-client-apis.simpletableviewproperties.type.md) |  | 'simple-table' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[note](./influxdb-client-apis.simpletableviewproperties.note.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[queries](./influxdb-client-apis.simpletableviewproperties.queries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.simpletableviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[showAll](./influxdb-client-apis.simpletableviewproperties.showall.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[showNoteWhenEmpty](./influxdb-client-apis.simpletableviewproperties.shownotewhenempty.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, will display note when empty
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.simpletableviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'simple-table'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

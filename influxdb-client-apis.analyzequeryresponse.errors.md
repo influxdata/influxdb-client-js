@@ -4,7 +4,7 @@
 
 ## AnalyzeQueryResponse.errors property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 errors?: Array<{

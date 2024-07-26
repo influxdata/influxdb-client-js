@@ -6,7 +6,7 @@
 
 Boolean flag indicating if the column is a part of the table's group key.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 group: boolean;

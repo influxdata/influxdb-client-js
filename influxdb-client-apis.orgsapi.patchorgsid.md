@@ -6,7 +6,7 @@
 
 Update an organization. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchOrgsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchOrgsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchOrgsID(request: PatchOrgsIDRequest, requestOptions?: RequestOptions): Promise<Organization>;
@@ -14,12 +14,56 @@ patchOrgsID(request: PatchOrgsIDRequest, requestOptions?: RequestOptions): Promi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchOrgsIDRequest](./influxdb-client-apis.patchorgsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Organization](./influxdb-client-apis.organization.md)<!-- -->&gt;
 

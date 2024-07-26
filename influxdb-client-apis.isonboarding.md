@@ -4,7 +4,7 @@
 
 ## IsOnboarding interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface IsOnboarding 
@@ -12,7 +12,44 @@ interface IsOnboarding
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowed?](./influxdb-client-apis.isonboarding.allowed.md) |  | boolean | <i>(Optional)</i> If <code>true</code>, the InfluxDB instance hasn't had initial setup; <code>false</code> otherwise. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowed?](./influxdb-client-apis.isonboarding.allowed.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ If `true`<!-- -->, the InfluxDB instance hasn't had initial setup; `false` otherwise.
+
+
+</td></tr>
+</tbody></table>

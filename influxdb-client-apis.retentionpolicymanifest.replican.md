@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest.replicaN property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 replicaN: number;

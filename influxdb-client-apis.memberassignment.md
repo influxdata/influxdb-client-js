@@ -6,7 +6,7 @@
 
 Object property assignment
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface MemberAssignment 
@@ -14,9 +14,82 @@ interface MemberAssignment
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [init?](./influxdb-client-apis.memberassignment.init.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
-|  [member?](./influxdb-client-apis.memberassignment.member.md) |  | [MemberExpression](./influxdb-client-apis.memberexpression.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.memberassignment.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[init?](./influxdb-client-apis.memberassignment.init.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[member?](./influxdb-client-apis.memberassignment.member.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[MemberExpression](./influxdb-client-apis.memberexpression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.memberassignment.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

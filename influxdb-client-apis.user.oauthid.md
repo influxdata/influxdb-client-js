@@ -4,7 +4,7 @@
 
 ## User.oauthID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 oauthID?: string;

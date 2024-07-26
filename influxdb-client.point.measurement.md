@@ -6,7 +6,7 @@
 
 Sets point's measurement.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 measurement(name: string): Point;
@@ -14,11 +14,40 @@ measurement(name: string): Point;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string | measurement name |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+measurement name
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Point](./influxdb-client.point.md)
 

@@ -6,7 +6,7 @@
 
 The script to execute.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 script: string;

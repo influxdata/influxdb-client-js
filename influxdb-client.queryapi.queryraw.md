@@ -6,7 +6,7 @@
 
 QueryRaw executes a query and returns the full response as a string. Use with caution, a possibly huge stream is copied to memory.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queryRaw(query: string | ParameterizedQuery): Promise<string>;
@@ -14,11 +14,40 @@ queryRaw(query: string | ParameterizedQuery): Promise<string>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;string&gt;
 

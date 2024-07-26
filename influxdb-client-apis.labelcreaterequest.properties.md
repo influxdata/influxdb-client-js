@@ -8,7 +8,7 @@ Key-value pairs associated with this label.
 
 To remove a property, send an update with an empty value (`""`<!-- -->) for the key.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 properties?: any;

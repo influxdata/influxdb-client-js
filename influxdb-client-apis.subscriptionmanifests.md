@@ -4,10 +4,10 @@
 
 ## SubscriptionManifests type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type SubscriptionManifests = SubscriptionManifest[];
 ```
-<b>References:</b> [SubscriptionManifest](./influxdb-client-apis.subscriptionmanifest.md)
+**References:** [SubscriptionManifest](./influxdb-client-apis.subscriptionmanifest.md)
 

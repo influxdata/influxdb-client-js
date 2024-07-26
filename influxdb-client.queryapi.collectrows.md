@@ -6,7 +6,7 @@
 
 CollectRows executes the query and collects all the results in the returned Promise. This method is suitable to collect simple results. Use with caution, a possibly huge stream of results is copied to memory.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 collectRows<T>(query: string | ParameterizedQuery, rowMapper?: (values: string[], tableMeta: FluxTableMetaData) => T | undefined): Promise<Array<T>>;
@@ -14,12 +14,56 @@ collectRows<T>(query: string | ParameterizedQuery, rowMapper?: (values: string[]
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
-|  rowMapper | (values: string\[\], tableMeta: [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)<!-- -->) =&gt; T \| undefined | <i>(Optional)</i> maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, <code>row =&gt; tableMeta.toObject(row.values)</code> is used. |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+<tr><td>
+
+rowMapper
+
+
+</td><td>
+
+(values: string\[\], tableMeta: [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)<!-- -->) =&gt; T \| undefined
+
+
+</td><td>
+
+_(Optional)_ maps the supplied row to an item that is then collected, undefined return values are not collected. If no rowMapper is supplied, `row => tableMeta.toObject(row.values)` is used.
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;Array&lt;T&gt;&gt;
 

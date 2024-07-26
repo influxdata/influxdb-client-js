@@ -6,7 +6,7 @@
 
 The ID of the task associated with this check.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID?: string;

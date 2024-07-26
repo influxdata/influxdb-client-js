@@ -4,7 +4,7 @@
 
 ## UnaryExpression.operator property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 operator?: string;

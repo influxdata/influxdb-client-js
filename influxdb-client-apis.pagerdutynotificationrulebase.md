@@ -4,7 +4,7 @@
 
 ## PagerDutyNotificationRuleBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PagerDutyNotificationRuleBase 
@@ -12,8 +12,59 @@ interface PagerDutyNotificationRuleBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [messageTemplate](./influxdb-client-apis.pagerdutynotificationrulebase.messagetemplate.md) |  | string |  |
-|  [type](./influxdb-client-apis.pagerdutynotificationrulebase.type.md) |  | 'pagerduty' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[messageTemplate](./influxdb-client-apis.pagerdutynotificationrulebase.messagetemplate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.pagerdutynotificationrulebase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'pagerduty'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

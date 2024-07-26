@@ -4,7 +4,7 @@
 
 ## NotificationEndpointType type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type NotificationEndpointType = 'slack' | 'pagerduty' | 'http' | 'telegram';

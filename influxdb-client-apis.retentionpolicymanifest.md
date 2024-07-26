@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RetentionPolicyManifest 
@@ -12,12 +12,127 @@ interface RetentionPolicyManifest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [duration](./influxdb-client-apis.retentionpolicymanifest.duration.md) |  | number |  |
-|  [name](./influxdb-client-apis.retentionpolicymanifest.name.md) |  | string |  |
-|  [replicaN](./influxdb-client-apis.retentionpolicymanifest.replican.md) |  | number |  |
-|  [shardGroupDuration](./influxdb-client-apis.retentionpolicymanifest.shardgroupduration.md) |  | number |  |
-|  [shardGroups](./influxdb-client-apis.retentionpolicymanifest.shardgroups.md) |  | [ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md) |  |
-|  [subscriptions](./influxdb-client-apis.retentionpolicymanifest.subscriptions.md) |  | [SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[duration](./influxdb-client-apis.retentionpolicymanifest.duration.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.retentionpolicymanifest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[replicaN](./influxdb-client-apis.retentionpolicymanifest.replican.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shardGroupDuration](./influxdb-client-apis.retentionpolicymanifest.shardgroupduration.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shardGroups](./influxdb-client-apis.retentionpolicymanifest.shardgroups.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ShardGroupManifests](./influxdb-client-apis.shardgroupmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[subscriptions](./influxdb-client-apis.retentionpolicymanifest.subscriptions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SubscriptionManifests](./influxdb-client-apis.subscriptionmanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

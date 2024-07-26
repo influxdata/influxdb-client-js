@@ -4,7 +4,7 @@
 
 ## GetScriptsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetScriptsRequest 
@@ -12,11 +12,120 @@ interface GetScriptsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelContains?](./influxdb-client-apis.getscriptsrequest.labelcontains.md) |  | string | <i>(Optional)</i> A part of the label name. Returns scripts that have a label that contains the specified phrase. |
-|  [labelNames?](./influxdb-client-apis.getscriptsrequest.labelnames.md) |  | any | <i>(Optional)</i> A list of label names. Only returns scripts that have all the specified labels. To retrieve a script, each name you pass in <code>labelNames</code> must exactly match the label for a script. |
-|  [limit?](./influxdb-client-apis.getscriptsrequest.limit.md) |  | number | <i>(Optional)</i> The maximum number of scripts to return. Default is <code>100</code>. |
-|  [name?](./influxdb-client-apis.getscriptsrequest.name.md) |  | string | <i>(Optional)</i> The name of the script. |
-|  [offset?](./influxdb-client-apis.getscriptsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. Specifies the number of records to skip in the result. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelContains?](./influxdb-client-apis.getscriptsrequest.labelcontains.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A part of the label name. Returns scripts that have a label that contains the specified phrase.
+
+
+</td></tr>
+<tr><td>
+
+[labelNames?](./influxdb-client-apis.getscriptsrequest.labelnames.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ A list of label names. Only returns scripts that have all the specified labels. To retrieve a script, each name you pass in `labelNames` must exactly match the label for a script.
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getscriptsrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The maximum number of scripts to return. Default is `100`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.getscriptsrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the script.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getscriptsrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. Specifies the number of records to skip in the result.
+
+
+</td></tr>
+</tbody></table>

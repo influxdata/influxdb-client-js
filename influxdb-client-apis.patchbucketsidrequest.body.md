@@ -6,7 +6,7 @@
 
 The bucket update to apply.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: PatchBucketRequest;

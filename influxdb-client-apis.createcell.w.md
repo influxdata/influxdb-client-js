@@ -4,7 +4,7 @@
 
 ## CreateCell.w property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 w?: number;

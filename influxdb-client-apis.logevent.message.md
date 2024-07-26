@@ -6,7 +6,7 @@
 
 A description of the event that occurred.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly message?: string;

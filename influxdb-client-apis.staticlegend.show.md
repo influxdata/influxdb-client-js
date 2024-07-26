@@ -4,7 +4,7 @@
 
 ## StaticLegend.show property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 show?: boolean;

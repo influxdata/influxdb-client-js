@@ -6,7 +6,7 @@
 
 The source ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sourceID: string;

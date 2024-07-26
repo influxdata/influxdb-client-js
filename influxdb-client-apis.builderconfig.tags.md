@@ -4,7 +4,7 @@
 
 ## BuilderConfig.tags property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tags?: BuilderTagsType[];

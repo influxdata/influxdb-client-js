@@ -6,7 +6,7 @@
 
 Creates a flux float literal.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function fluxFloat(value: any): FluxParameterLike;
@@ -14,11 +14,38 @@ declare function fluxFloat(value: any): FluxParameterLike;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | any |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FluxParameterLike](./influxdb-client.fluxparameterlike.md)
 

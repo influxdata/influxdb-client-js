@@ -4,7 +4,7 @@
 
 ## Script.id property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly id?: string;

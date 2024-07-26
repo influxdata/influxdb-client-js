@@ -4,7 +4,7 @@
 
 ## Permission interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Permission 
@@ -12,8 +12,59 @@ interface Permission
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [action](./influxdb-client-apis.permission.action.md) |  | 'read' \| 'write' |  |
-|  [resource](./influxdb-client-apis.permission.resource.md) |  | [Resource](./influxdb-client-apis.resource.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[action](./influxdb-client-apis.permission.action.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'read' \| 'write'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[resource](./influxdb-client-apis.permission.resource.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Resource](./influxdb-client-apis.resource.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

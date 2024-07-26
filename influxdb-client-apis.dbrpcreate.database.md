@@ -6,7 +6,7 @@
 
 InfluxDB v1 database
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 database: string;

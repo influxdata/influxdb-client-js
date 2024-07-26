@@ -6,7 +6,7 @@
 
 List of tag rules the notification rule attempts to match.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tagRules?: TagRule[];

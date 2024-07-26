@@ -6,7 +6,7 @@
 
 The time ([RFC3339Nano date/time format](https://go.dev/src/time/format.go)<!-- -->) the run finished executing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly finishedAt?: string;

@@ -6,7 +6,7 @@
 
 Only show checks that belong to a specific organization ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

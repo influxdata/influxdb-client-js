@@ -4,7 +4,7 @@
 
 ## Stack.createdAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly createdAt?: string;

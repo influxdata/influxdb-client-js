@@ -4,7 +4,7 @@
 
 ## DeleteVariablesIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteVariablesIDRequest 
@@ -12,7 +12,44 @@ interface DeleteVariablesIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [variableID](./influxdb-client-apis.deletevariablesidrequest.variableid.md) |  | string | The variable ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[variableID](./influxdb-client-apis.deletevariablesidrequest.variableid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The variable ID.
+
+
+</td></tr>
+</tbody></table>

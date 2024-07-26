@@ -4,7 +4,7 @@
 
 ## Users interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Users 
@@ -12,8 +12,63 @@ interface Users
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.users.links.md) |  | { self?: string; } | <i>(Optional)</i> |
-|  [users?](./influxdb-client-apis.users.users.md) |  | [UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.users.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ self?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[users?](./influxdb-client-apis.users.users.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[UserResponse](./influxdb-client-apis.userresponse.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

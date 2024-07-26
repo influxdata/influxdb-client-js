@@ -4,7 +4,7 @@
 
 ## Stack.events property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 events?: Array<{

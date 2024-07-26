@@ -6,7 +6,7 @@
 
 List all notification endpoints. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpoints](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpoints)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getNotificationEndpoints(request: GetNotificationEndpointsRequest, requestOptions?: RequestOptions): Promise<NotificationEndpoints>;
@@ -14,12 +14,56 @@ getNotificationEndpoints(request: GetNotificationEndpointsRequest, requestOption
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetNotificationEndpointsRequest](./influxdb-client-apis.getnotificationendpointsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetNotificationEndpointsRequest](./influxdb-client-apis.getnotificationendpointsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[NotificationEndpoints](./influxdb-client-apis.notificationendpoints.md)<!-- -->&gt;
 

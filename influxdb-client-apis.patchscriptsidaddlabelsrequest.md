@@ -4,7 +4,7 @@
 
 ## PatchScriptsIDAddLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchScriptsIDAddLabelsRequest 
@@ -12,8 +12,63 @@ interface PatchScriptsIDAddLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidaddlabelsrequest.body.md) |  | { labels?: string\[\]; } | The labels to add to the script. |
-|  [scriptID](./influxdb-client-apis.patchscriptsidaddlabelsrequest.scriptid.md) |  | string | The script ID. Specifies the script to add labels to. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchscriptsidaddlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ labels?: string\[\]; }
+
+
+</td><td>
+
+The labels to add to the script.
+
+
+</td></tr>
+<tr><td>
+
+[scriptID](./influxdb-client-apis.patchscriptsidaddlabelsrequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The script ID. Specifies the script to add labels to.
+
+
+</td></tr>
+</tbody></table>

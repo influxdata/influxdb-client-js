@@ -6,7 +6,7 @@
 
 Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofAllocs)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDebugPprofAllocs(request?: GetDebugPprofAllocsRequest, requestOptions?: RequestOptions): Promise<string>;
@@ -14,12 +14,56 @@ getDebugPprofAllocs(request?: GetDebugPprofAllocsRequest, requestOptions?: Reque
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDebugPprofAllocsRequest](./influxdb-client-apis.getdebugpprofallocsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;string&gt;
 

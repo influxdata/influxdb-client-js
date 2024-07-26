@@ -6,7 +6,7 @@
 
 The number of digits after decimal to display
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 digits?: number;

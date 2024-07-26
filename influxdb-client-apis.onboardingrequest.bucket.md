@@ -4,7 +4,7 @@
 
 ## OnboardingRequest.bucket property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucket: string;

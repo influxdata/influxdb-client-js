@@ -4,7 +4,7 @@
 
 ## Replications.replications property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 replications?: Replication[];

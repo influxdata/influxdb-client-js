@@ -4,7 +4,7 @@
 
 ## SecretKeysResponse type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type SecretKeysResponse = SecretKeys & {
@@ -14,5 +14,5 @@ type SecretKeysResponse = SecretKeys & {
     };
 };
 ```
-<b>References:</b> [SecretKeys](./influxdb-client-apis.secretkeys.md)
+**References:** [SecretKeys](./influxdb-client-apis.secretkeys.md)
 

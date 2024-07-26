@@ -4,7 +4,7 @@
 
 ## PostTasksIDRunsIDRetryRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTasksIDRunsIDRetryRequest 
@@ -12,9 +12,84 @@ interface PostTasksIDRunsIDRetryRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksidrunsidretryrequest.body.md) |  | any | entity body |
-|  [runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md) |  | string | <p>A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run ID. Specifies the task run to retry.</p><p>To find a task run ID, use the {@<!-- -->link \#operation/GetTasksIDRuns \| <code>GET /api/v2/tasks/{taskID}/runs</code> endpoint } to list task runs.</p> |
-|  [taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md) |  | string | A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Specifies the task to retry. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttasksidrunsidretryrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[runID](./influxdb-client-apis.posttasksidrunsidretryrequest.runid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) run ID. Specifies the task run to retry.
+
+To find a task run ID, use the {@<!-- -->link \#operation/GetTasksIDRuns \| `GET /api/v2/tasks/{taskID}/runs` endpoint } to list task runs.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.posttasksidrunsidretryrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Specifies the task to retry.
+
+
+</td></tr>
+</tbody></table>

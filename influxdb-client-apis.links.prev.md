@@ -4,7 +4,7 @@
 
 ## Links.prev property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 prev?: Link;

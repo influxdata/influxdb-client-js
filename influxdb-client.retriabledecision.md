@@ -6,7 +6,7 @@
 
 Interface for errors to inform that an associated operation can be retried.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RetriableDecision 
@@ -14,8 +14,37 @@ interface RetriableDecision
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [canRetry()](./influxdb-client.retriabledecision.canretry.md) | Informs whether this can be retried. |
-|  [retryAfter()](./influxdb-client.retriabledecision.retryafter.md) | Get the delay in milliseconds to retry the action. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[canRetry()](./influxdb-client.retriabledecision.canretry.md)
+
+
+</td><td>
+
+Informs whether this can be retried.
+
+
+</td></tr>
+<tr><td>
+
+[retryAfter()](./influxdb-client.retriabledecision.retryafter.md)
+
+
+</td><td>
+
+Get the delay in milliseconds to retry the action.
+
+
+</td></tr>
+</tbody></table>

@@ -6,25 +6,89 @@
 
 RequestTimedOutError indicates request timeout in the communication with the server
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class RequestTimedOutError extends Error implements RetriableDecision 
 ```
-<b>Extends:</b> Error
+**Extends:** Error
 
-<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
+**Implements:** [RetriableDecision](./influxdb-client.retriabledecision.md)
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)()](./influxdb-client.requesttimedouterror._constructor_.md) |  | Constructs a new instance of the <code>RequestTimedOutError</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)()](./influxdb-client.requesttimedouterror._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `RequestTimedOutError` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [canRetry()](./influxdb-client.requesttimedouterror.canretry.md) |  |  |
-|  [retryAfter()](./influxdb-client.requesttimedouterror.retryafter.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[canRetry()](./influxdb-client.requesttimedouterror.canretry.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[retryAfter()](./influxdb-client.requesttimedouterror.retryafter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

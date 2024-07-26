@@ -4,7 +4,7 @@
 
 ## PutDashboardsIDCellsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutDashboardsIDCellsRequest 
@@ -12,8 +12,63 @@ interface PutDashboardsIDCellsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md) |  | [Cells](./influxdb-client-apis.cells.md) | entity body |
-|  [dashboardID](./influxdb-client-apis.putdashboardsidcellsrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.putdashboardsidcellsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Cells](./influxdb-client-apis.cells.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[dashboardID](./influxdb-client-apis.putdashboardsidcellsrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the dashboard to update.
+
+
+</td></tr>
+</tbody></table>

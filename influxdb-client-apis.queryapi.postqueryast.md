@@ -6,7 +6,7 @@
 
 Generate a query Abstract Syntax Tree (AST). See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAst](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAst)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postQueryAst(request: PostQueryAstRequest, requestOptions?: RequestOptions): Promise<ASTResponse>;
@@ -14,12 +14,56 @@ postQueryAst(request: PostQueryAstRequest, requestOptions?: RequestOptions): Pro
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostQueryAstRequest](./influxdb-client-apis.postqueryastrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ASTResponse](./influxdb-client-apis.astresponse.md)<!-- -->&gt;
 

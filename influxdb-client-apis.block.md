@@ -6,7 +6,7 @@
 
 A set of statements
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Block 
@@ -14,8 +14,63 @@ interface Block
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body?](./influxdb-client-apis.block.body.md) |  | [Statement](./influxdb-client-apis.statement.md)<!-- -->\[\] | <i>(Optional)</i> Block body |
-|  [type?](./influxdb-client-apis.block.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body?](./influxdb-client-apis.block.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Statement](./influxdb-client-apis.statement.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Block body
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.block.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

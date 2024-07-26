@@ -6,12 +6,12 @@
 
 IterateLines returns iterable of CSV response lines suitable for `for-await` loop consumption.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 iterateLines(): AsyncIterable<string>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 AsyncIterable&lt;string&gt;
 

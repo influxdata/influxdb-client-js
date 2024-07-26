@@ -4,10 +4,10 @@
 
 ## ShardOwners type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ShardOwners = ShardOwner[];
 ```
-<b>References:</b> [ShardOwner](./influxdb-client-apis.shardowner.md)
+**References:** [ShardOwner](./influxdb-client-apis.shardowner.md)
 

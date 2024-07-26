@@ -6,7 +6,7 @@
 
 A [duration](https://docs.influxdata.com/flux/v0.x/spec/lexical-elements/#duration-literals) to delay execution of the task after the scheduled time has elapsed. `0` removes the offset.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 offset?: string;

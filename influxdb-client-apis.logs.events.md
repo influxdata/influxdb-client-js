@@ -4,7 +4,7 @@
 
 ## Logs.events property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly events?: LogEvent[];

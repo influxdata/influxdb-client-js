@@ -4,7 +4,7 @@
 
 ## Ready.up property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 up?: string;

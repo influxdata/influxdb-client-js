@@ -4,7 +4,7 @@
 
 ## UpdateStackRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface UpdateStackRequest 
@@ -12,8 +12,63 @@ interface UpdateStackRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.updatestackrequest.body.md) |  | { name?: string; description?: string; templateURLs?: string\[\]; additionalResources?: Array&lt;{ resourceID: string; kind: string; templateMetaName?: string; }&gt;; } | The stack to update. |
-|  [stack\_id](./influxdb-client-apis.updatestackrequest.stack_id.md) |  | string | The identifier of the stack. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.updatestackrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ name?: string; description?: string; templateURLs?: string\[\]; additionalResources?: Array&lt;{ resourceID: string; kind: string; templateMetaName?: string; }&gt;; }
+
+
+</td><td>
+
+The stack to update.
+
+
+</td></tr>
+<tr><td>
+
+[stack\_id](./influxdb-client-apis.updatestackrequest.stack_id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The identifier of the stack.
+
+
+</td></tr>
+</tbody></table>

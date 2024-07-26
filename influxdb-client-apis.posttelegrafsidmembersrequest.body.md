@@ -6,7 +6,7 @@
 
 User to add as member
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

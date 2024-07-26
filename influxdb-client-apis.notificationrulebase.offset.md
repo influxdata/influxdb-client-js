@@ -6,7 +6,7 @@
 
 Duration to delay after the schedule, before executing check.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 offset?: string;

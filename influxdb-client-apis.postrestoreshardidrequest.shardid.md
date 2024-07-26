@@ -6,7 +6,7 @@
 
 The shard ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardID: string;

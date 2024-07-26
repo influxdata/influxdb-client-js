@@ -6,7 +6,7 @@
 
 The ID of the organization to update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

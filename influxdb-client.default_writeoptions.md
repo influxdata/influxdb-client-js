@@ -6,7 +6,7 @@
 
 default writeOptions
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 DEFAULT_WriteOptions: WriteOptions

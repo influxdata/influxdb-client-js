@@ -6,7 +6,7 @@
 
 Debug API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class DebugAPI 
@@ -14,22 +14,194 @@ declare class DebugAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.debugapi._constructor_.md) |  | Creates DebugAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.debugapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates DebugAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getDebugPprofAllocs(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofallocs.md) |  | Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofAllocs) |
-|  [getDebugPprofAllProfiles(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofallprofiles.md) |  | Retrieve all runtime profiles. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofAllProfiles](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofAllProfiles) |
-|  [getDebugPprofBlock(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofblock.md) |  | Retrieve the block runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofBlock](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofBlock) |
-|  [getDebugPprofCmdline(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofcmdline.md) |  | Retrieve the command line invocation. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofCmdline](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofCmdline) |
-|  [getDebugPprofGoroutine(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofgoroutine.md) |  | Retrieve the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofGoroutine) |
-|  [getDebugPprofHeap(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofheap.md) |  | Retrieve the heap runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofHeap](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofHeap) |
-|  [getDebugPprofMutex(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofmutex.md) |  | Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofMutex) |
-|  [getDebugPprofProfile(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofprofile.md) |  | Retrieve the CPU runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofProfile](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofProfile) |
-|  [getDebugPprofThreadCreate(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofthreadcreate.md) |  | Retrieve the threadcreate runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofThreadCreate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofThreadCreate) |
-|  [getDebugPprofTrace(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpproftrace.md) |  | Retrieve the runtime execution trace. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofTrace](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofTrace) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getDebugPprofAllocs(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofallocs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the memory allocations runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofAllocs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofAllocs)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofAllProfiles(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofallprofiles.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve all runtime profiles. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofAllProfiles](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofAllProfiles)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofBlock(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofblock.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the block runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofBlock](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofBlock)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofCmdline(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofcmdline.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the command line invocation. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofCmdline](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofCmdline)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofGoroutine(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofgoroutine.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the goroutines runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofGoroutine](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofGoroutine)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofHeap(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofheap.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the heap runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofHeap](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofHeap)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofMutex(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofmutex.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the mutual exclusion (mutex) runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofMutex](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofMutex)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofProfile(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofprofile.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the CPU runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofProfile](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofProfile)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofThreadCreate(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpprofthreadcreate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the threadcreate runtime profile. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofThreadCreate](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofThreadCreate)
+
+
+</td></tr>
+<tr><td>
+
+[getDebugPprofTrace(request, requestOptions)](./influxdb-client-apis.debugapi.getdebugpproftrace.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the runtime execution trace. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDebugPprofTrace](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDebugPprofTrace)
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## GetBucketsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetBucketsRequest 
@@ -12,13 +12,174 @@ interface GetBucketsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [after?](./influxdb-client-apis.getbucketsrequest.after.md) |  | string | <i>(Optional)</i> Resource ID to seek from. Results are not inclusive of this ID. Use <code>after</code> instead of <code>offset</code>. |
-|  [id?](./influxdb-client-apis.getbucketsrequest.id.md) |  | string | <i>(Optional)</i> Bucket ID. Only returns the bucket with this ID. |
-|  [limit?](./influxdb-client-apis.getbucketsrequest.limit.md) |  | number | <i>(Optional)</i> Limits the number of records returned. Default is <code>20</code>. |
-|  [name?](./influxdb-client-apis.getbucketsrequest.name.md) |  | string | <i>(Optional)</i> Bucket name. Only returns buckets with this specific name. |
-|  [offset?](./influxdb-client-apis.getbucketsrequest.offset.md) |  | number | <i>(Optional)</i> The offset for pagination. The number of records to skip. |
-|  [org?](./influxdb-client-apis.getbucketsrequest.org.md) |  | string | <p><i>(Optional)</i> Organization name. The name of the organization.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>org</code> or <code>orgID</code>. - Creates a bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Accepts either <code>org</code> or <code>orgID</code>. - InfluxDB creates the bucket within this organization.</p> |
-|  [orgID?](./influxdb-client-apis.getbucketsrequest.orgid.md) |  | string | <p><i>(Optional)</i> Organization ID. The organization ID.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't use <code>org</code> or <code>orgID</code>. - Creates a bucket in the organization associated with the authorization (API token).</p><p>\#\#\#\# InfluxDB OSS</p><p>- Accepts either <code>org</code> or <code>orgID</code>. - InfluxDB creates the bucket within this organization.</p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[after?](./influxdb-client-apis.getbucketsrequest.after.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Resource ID to seek from. Results are not inclusive of this ID. Use `after` instead of `offset`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.getbucketsrequest.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Bucket ID. Only returns the bucket with this ID.
+
+
+</td></tr>
+<tr><td>
+
+[limit?](./influxdb-client-apis.getbucketsrequest.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Limits the number of records returned. Default is `20`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.getbucketsrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Bucket name. Only returns buckets with this specific name.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.getbucketsrequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The offset for pagination. The number of records to skip.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getbucketsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Organization name. The name of the organization.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Creates a bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Accepts either `org` or `orgID`<!-- -->. - InfluxDB creates the bucket within this organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getbucketsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Organization ID. The organization ID.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't use `org` or `orgID`<!-- -->. - Creates a bucket in the organization associated with the authorization (API token).
+
+\#\#\#\# InfluxDB OSS
+
+- Accepts either `org` or `orgID`<!-- -->. - InfluxDB creates the bucket within this organization.
+
+
+</td></tr>
+</tbody></table>

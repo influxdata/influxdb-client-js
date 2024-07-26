@@ -4,7 +4,7 @@
 
 ## FluxResponse.flux property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flux?: string;

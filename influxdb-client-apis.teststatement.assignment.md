@@ -4,7 +4,7 @@
 
 ## TestStatement.assignment property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 assignment?: VariableAssignment;

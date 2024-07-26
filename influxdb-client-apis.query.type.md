@@ -6,7 +6,7 @@
 
 The type of query. Must be "flux".
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: 'flux';

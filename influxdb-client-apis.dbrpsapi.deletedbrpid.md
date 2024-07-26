@@ -6,7 +6,7 @@
 
 Delete a database retention policy. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteDBRPID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteDBRPID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deleteDBRPID(request: DeleteDBRPIDRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ deleteDBRPID(request: DeleteDBRPIDRequest, requestOptions?: RequestOptions): Pro
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[DeleteDBRPIDRequest](./influxdb-client-apis.deletedbrpidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

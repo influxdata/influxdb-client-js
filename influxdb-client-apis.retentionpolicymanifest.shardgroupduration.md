@@ -4,7 +4,7 @@
 
 ## RetentionPolicyManifest.shardGroupDuration property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shardGroupDuration: number;

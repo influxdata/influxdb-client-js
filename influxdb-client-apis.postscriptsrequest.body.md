@@ -6,7 +6,7 @@
 
 The script to create.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: ScriptCreateRequest;

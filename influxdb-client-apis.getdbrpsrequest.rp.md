@@ -6,7 +6,7 @@
 
 Specifies the retention policy to filter on
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 rp?: string;

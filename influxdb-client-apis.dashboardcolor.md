@@ -6,7 +6,7 @@
 
 Defines an encoding of data value into color space.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DashboardColor 
@@ -14,11 +14,120 @@ interface DashboardColor
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [hex](./influxdb-client-apis.dashboardcolor.hex.md) |  | string | The hex number of the color |
-|  [id](./influxdb-client-apis.dashboardcolor.id.md) |  | string | The unique ID of the view color. |
-|  [name](./influxdb-client-apis.dashboardcolor.name.md) |  | string | The user-facing name of the hex color. |
-|  [type](./influxdb-client-apis.dashboardcolor.type.md) |  | 'min' \| 'max' \| 'threshold' \| 'scale' \| 'text' \| 'background' | Type is how the color is used. |
-|  [value](./influxdb-client-apis.dashboardcolor.value.md) |  | number | The data value mapped to this color. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[hex](./influxdb-client-apis.dashboardcolor.hex.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The hex number of the color
+
+
+</td></tr>
+<tr><td>
+
+[id](./influxdb-client-apis.dashboardcolor.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The unique ID of the view color.
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.dashboardcolor.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The user-facing name of the hex color.
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.dashboardcolor.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'min' \| 'max' \| 'threshold' \| 'scale' \| 'text' \| 'background'
+
+
+</td><td>
+
+Type is how the color is used.
+
+
+</td></tr>
+<tr><td>
+
+[value](./influxdb-client-apis.dashboardcolor.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The data value mapped to this color.
+
+
+</td></tr>
+</tbody></table>

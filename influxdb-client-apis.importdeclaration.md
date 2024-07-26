@@ -6,7 +6,7 @@
 
 Declares a package import
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ImportDeclaration 
@@ -14,9 +14,82 @@ interface ImportDeclaration
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [as?](./influxdb-client-apis.importdeclaration.as.md) |  | [Identifier](./influxdb-client-apis.identifier.md) | <i>(Optional)</i> |
-|  [path?](./influxdb-client-apis.importdeclaration.path.md) |  | [StringLiteral](./influxdb-client-apis.stringliteral.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.importdeclaration.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[as?](./influxdb-client-apis.importdeclaration.as.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Identifier](./influxdb-client-apis.identifier.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[path?](./influxdb-client-apis.importdeclaration.path.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[StringLiteral](./influxdb-client-apis.stringliteral.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.importdeclaration.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

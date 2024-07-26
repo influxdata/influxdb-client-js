@@ -6,7 +6,7 @@
 
 A new notification endpoint to replace the existing endpoint with
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: NotificationEndpoint;

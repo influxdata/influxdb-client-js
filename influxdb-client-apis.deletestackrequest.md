@@ -4,7 +4,7 @@
 
 ## DeleteStackRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteStackRequest 
@@ -12,8 +12,63 @@ interface DeleteStackRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deletestackrequest.orgid.md) |  | string | The identifier of the organization. |
-|  [stack\_id](./influxdb-client-apis.deletestackrequest.stack_id.md) |  | string | The identifier of the stack. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID](./influxdb-client-apis.deletestackrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The identifier of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[stack\_id](./influxdb-client-apis.deletestackrequest.stack_id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The identifier of the stack.
+
+
+</td></tr>
+</tbody></table>

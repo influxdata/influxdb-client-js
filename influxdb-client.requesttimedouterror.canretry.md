@@ -4,12 +4,12 @@
 
 ## RequestTimedOutError.canRetry() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 canRetry(): boolean;
 ```
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

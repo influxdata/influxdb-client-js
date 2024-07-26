@@ -6,7 +6,7 @@
 
 Variables API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class VariablesAPI 
@@ -14,21 +14,180 @@ declare class VariablesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.variablesapi._constructor_.md) |  | Creates VariablesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.variablesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates VariablesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.deletevariablesid.md) |  | Delete a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesID) |
-|  [deleteVariablesIDLabelsID(request, requestOptions)](./influxdb-client-apis.variablesapi.deletevariablesidlabelsid.md) |  | Delete a label from a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteVariablesIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesIDLabelsID) |
-|  [getVariables(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariables.md) |  | List all variables. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariables](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariables) |
-|  [getVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariablesid.md) |  | Retrieve a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesID) |
-|  [getVariablesIDLabels(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariablesidlabels.md) |  | List all labels for a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesIDLabels) |
-|  [patchVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.patchvariablesid.md) |  | Update a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchVariablesID) |
-|  [postVariables(request, requestOptions)](./influxdb-client-apis.variablesapi.postvariables.md) |  | Create a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostVariables](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariables) |
-|  [postVariablesIDLabels(request, requestOptions)](./influxdb-client-apis.variablesapi.postvariablesidlabels.md) |  | Add a label to a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariablesIDLabels) |
-|  [putVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.putvariablesid.md) |  | Replace a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutVariablesID) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.deletevariablesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteVariablesIDLabelsID(request, requestOptions)](./influxdb-client-apis.variablesapi.deletevariablesidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label from a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteVariablesIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteVariablesIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[getVariables(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariables.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all variables. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariables](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariables)
+
+
+</td></tr>
+<tr><td>
+
+[getVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariablesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesID)
+
+
+</td></tr>
+<tr><td>
+
+[getVariablesIDLabels(request, requestOptions)](./influxdb-client-apis.variablesapi.getvariablesidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetVariablesIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[patchVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.patchvariablesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchVariablesID)
+
+
+</td></tr>
+<tr><td>
+
+[postVariables(request, requestOptions)](./influxdb-client-apis.variablesapi.postvariables.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostVariables](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariables)
+
+
+</td></tr>
+<tr><td>
+
+[postVariablesIDLabels(request, requestOptions)](./influxdb-client-apis.variablesapi.postvariablesidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostVariablesIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostVariablesIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[putVariablesID(request, requestOptions)](./influxdb-client-apis.variablesapi.putvariablesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Replace a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutVariablesID)
+
+
+</td></tr>
+</tbody></table>

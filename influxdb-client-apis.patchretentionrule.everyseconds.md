@@ -6,7 +6,7 @@
 
 The number of seconds to keep data. Default duration is `2592000` (30 days). `0` represents infinite retention.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 everySeconds: number;

@@ -4,7 +4,7 @@
 
 ## Config interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Config 
@@ -12,7 +12,44 @@ interface Config
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [config?](./influxdb-client-apis.config.config.md) |  | any | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[config?](./influxdb-client-apis.config.config.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

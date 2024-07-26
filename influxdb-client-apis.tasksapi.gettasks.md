@@ -6,7 +6,7 @@
 
 List tasks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasks)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTasks(request?: GetTasksRequest, requestOptions?: RequestOptions): Promise<Tasks>;
@@ -14,12 +14,56 @@ getTasks(request?: GetTasksRequest, requestOptions?: RequestOptions): Promise<Ta
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetTasksRequest](./influxdb-client-apis.gettasksrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetTasksRequest](./influxdb-client-apis.gettasksrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Tasks](./influxdb-client-apis.tasks.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## ListStacksRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ListStacksRequest 
@@ -12,9 +12,94 @@ interface ListStacksRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [name?](./influxdb-client-apis.liststacksrequest.name.md) |  | string | <p><i>(Optional)</i> The stack name. Finds stack <code>events</code> with this name and returns the stacks.</p><p>Repeatable. To filter for more than one stack name, repeat this parameter with each name--for example:</p><p>- <code>http://localhost:8086/api/v2/stacks?&amp;orgID=INFLUX_ORG_ID&amp;name=project-stack-0&amp;name=project-stack-1</code></p> |
-|  [orgID](./influxdb-client-apis.liststacksrequest.orgid.md) |  | string | <p>The ID of the organization that owns the stacks. Only returns stacks owned by this organization.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Doesn't require this parameter; InfluxDB only returns resources allowed by the API token.</p> |
-|  [stackID?](./influxdb-client-apis.liststacksrequest.stackid.md) |  | string | <p><i>(Optional)</i> The stack ID. Only returns stacks with this ID.</p><p>Repeatable. To filter for more than one stack ID, repeat this parameter with each ID--for example:</p><p>- <code>http://localhost:8086/api/v2/stacks?&amp;orgID=INFLUX_ORG_ID&amp;stackID=09bd87cd33be3000&amp;stackID=09bef35081fe3000</code></p> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[name?](./influxdb-client-apis.liststacksrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The stack name. Finds stack `events` with this name and returns the stacks.
+
+Repeatable. To filter for more than one stack name, repeat this parameter with each name--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&name=project-stack-0&name=project-stack-1`
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.liststacksrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization that owns the stacks. Only returns stacks owned by this organization.
+
+\#\#\#\# InfluxDB Cloud
+
+- Doesn't require this parameter; InfluxDB only returns resources allowed by the API token.
+
+
+</td></tr>
+<tr><td>
+
+[stackID?](./influxdb-client-apis.liststacksrequest.stackid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The stack ID. Only returns stacks with this ID.
+
+Repeatable. To filter for more than one stack ID, repeat this parameter with each ID--for example:
+
+- `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&stackID=09bd87cd33be3000&stackID=09bef35081fe3000`
+
+
+</td></tr>
+</tbody></table>

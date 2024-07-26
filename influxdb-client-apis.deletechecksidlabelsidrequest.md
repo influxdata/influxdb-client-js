@@ -4,7 +4,7 @@
 
 ## DeleteChecksIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteChecksIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteChecksIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [checkID](./influxdb-client-apis.deletechecksidlabelsidrequest.checkid.md) |  | string | The check ID. |
-|  [labelID](./influxdb-client-apis.deletechecksidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[checkID](./influxdb-client-apis.deletechecksidlabelsidrequest.checkid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The check ID.
+
+
+</td></tr>
+<tr><td>
+
+[labelID](./influxdb-client-apis.deletechecksidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+</tbody></table>

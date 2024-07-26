@@ -14,7 +14,7 @@ The ID of the destination organization for writes. If you pass both `orgID` and 
 
 - Requires either `org` or `orgID`<!-- -->. - InfluxDB writes all points in the batch to this organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

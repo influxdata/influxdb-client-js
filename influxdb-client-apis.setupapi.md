@@ -6,7 +6,7 @@
 
 Setup API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class SetupAPI 
@@ -14,14 +14,82 @@ declare class SetupAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.setupapi._constructor_.md) |  | Creates SetupAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.setupapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates SetupAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getSetup(request, requestOptions)](./influxdb-client-apis.setupapi.getsetup.md) |  | Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSetup) |
-|  [postSetup(request, requestOptions)](./influxdb-client-apis.setupapi.postsetup.md) |  | Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSetup) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getSetup(request, requestOptions)](./influxdb-client-apis.setupapi.getsetup.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Check if database has default user, org, bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSetup)
+
+
+</td></tr>
+<tr><td>
+
+[postSetup(request, requestOptions)](./influxdb-client-apis.setupapi.postsetup.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Set up initial user, org and bucket. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSetup](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSetup)
+
+
+</td></tr>
+</tbody></table>

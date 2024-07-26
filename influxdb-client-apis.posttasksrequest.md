@@ -4,7 +4,7 @@
 
 ## PostTasksRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostTasksRequest 
@@ -12,7 +12,44 @@ interface PostTasksRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.posttasksrequest.body.md) |  | [TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md) | The task to create. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.posttasksrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TaskCreateRequest](./influxdb-client-apis.taskcreaterequest.md)
+
+
+</td><td>
+
+The task to create.
+
+
+</td></tr>
+</tbody></table>

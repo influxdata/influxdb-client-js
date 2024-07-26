@@ -6,7 +6,7 @@
 
 Adds a boolean field.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 booleanField(name: string, value: boolean | any): Point;
@@ -14,12 +14,54 @@ booleanField(name: string, value: boolean | any): Point;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string |  |
-|  value | boolean \| any | field value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+value
+
+
+</td><td>
+
+boolean \| any
+
+
+</td><td>
+
+field value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Point](./influxdb-client.point.md)
 

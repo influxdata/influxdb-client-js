@@ -4,12 +4,12 @@
 
 ## AbortError.retryAfter() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 retryAfter(): number;
 ```
-<b>Returns:</b>
+**Returns:**
 
 number
 

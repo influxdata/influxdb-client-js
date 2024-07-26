@@ -6,7 +6,7 @@
 
 Update a variable. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchVariablesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchVariablesID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchVariablesID(request: PatchVariablesIDRequest, requestOptions?: RequestOptions): Promise<Variable>;
@@ -14,12 +14,56 @@ patchVariablesID(request: PatchVariablesIDRequest, requestOptions?: RequestOptio
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchVariablesIDRequest](./influxdb-client-apis.patchvariablesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchVariablesIDRequest](./influxdb-client-apis.patchvariablesidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Variable](./influxdb-client-apis.variable.md)<!-- -->&gt;
 

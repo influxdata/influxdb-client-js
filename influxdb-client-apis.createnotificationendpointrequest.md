@@ -4,7 +4,7 @@
 
 ## CreateNotificationEndpointRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateNotificationEndpointRequest 
@@ -12,7 +12,44 @@ interface CreateNotificationEndpointRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createnotificationendpointrequest.body.md) |  | [PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md) | Notification endpoint to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.createnotificationendpointrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PostNotificationEndpoint](./influxdb-client-apis.postnotificationendpoint.md)
+
+
+</td><td>
+
+Notification endpoint to create
+
+
+</td></tr>
+</tbody></table>

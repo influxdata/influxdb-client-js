@@ -6,7 +6,7 @@
 
 Secret key value pairs to update/add
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: Secrets;

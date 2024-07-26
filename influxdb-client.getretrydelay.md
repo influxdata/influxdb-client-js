@@ -6,7 +6,7 @@
 
 Gets retry delay from the supplied error, possibly using random number up to retryJitter.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function getRetryDelay(error?: Error, retryJitter?: number): number;
@@ -14,12 +14,56 @@ declare function getRetryDelay(error?: Error, retryJitter?: number): number;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  error | Error | <i>(Optional)</i> |
-|  retryJitter | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+error
+
+
+</td><td>
+
+Error
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+retryJitter
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 number
 

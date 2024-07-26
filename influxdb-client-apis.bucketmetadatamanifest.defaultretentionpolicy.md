@@ -4,7 +4,7 @@
 
 ## BucketMetadataManifest.defaultRetentionPolicy property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaultRetentionPolicy: string;

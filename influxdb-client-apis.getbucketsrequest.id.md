@@ -6,7 +6,7 @@
 
 Bucket ID. Only returns the bucket with this ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: string;

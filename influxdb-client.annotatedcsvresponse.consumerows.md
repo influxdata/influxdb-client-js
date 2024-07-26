@@ -6,7 +6,7 @@
 
 ConsumeRows consumes result rows through the supplied consumer.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 consumeRows(consumer: FluxResultObserver<string[]>): void;
@@ -14,11 +14,40 @@ consumeRows(consumer: FluxResultObserver<string[]>): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; | csv result lines and error consumer |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+consumer
+
+
+</td><td>
+
+[FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt;
+
+
+</td><td>
+
+csv result lines and error consumer
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

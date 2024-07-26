@@ -6,7 +6,7 @@
 
 The Flux script that the task runs.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flux?: string;

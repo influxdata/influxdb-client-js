@@ -4,7 +4,7 @@
 
 ## GetDBRPsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDBRPsIDRequest 
@@ -12,9 +12,82 @@ interface GetDBRPsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dbrpID](./influxdb-client-apis.getdbrpsidrequest.dbrpid.md) |  | string | The database retention policy mapping ID |
-|  [org?](./influxdb-client-apis.getdbrpsidrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name of the mapping |
-|  [orgID?](./influxdb-client-apis.getdbrpsidrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dbrpID](./influxdb-client-apis.getdbrpsidrequest.dbrpid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The database retention policy mapping ID
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.getdbrpsidrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization name of the mapping
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getdbrpsidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization ID of the mapping
+
+
+</td></tr>
+</tbody></table>

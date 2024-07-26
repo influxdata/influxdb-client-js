@@ -6,7 +6,7 @@
 
 ChunkCombiner is a simplified platform-neutral manipulation of Uint8arrays that allows to process text data on the fly. The implementation can be optimized for the target platform (node vs browser).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ChunkCombiner 
@@ -14,9 +14,48 @@ interface ChunkCombiner
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [concat(first, second)](./influxdb-client.chunkcombiner.concat.md) | Concatenates first and second chunk. |
-|  [copy(chunk, start, end)](./influxdb-client.chunkcombiner.copy.md) | Creates a new chunk from the supplied chunk. |
-|  [toUtf8String(chunk, start, end)](./influxdb-client.chunkcombiner.toutf8string.md) | Converts chunk into a string. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[concat(first, second)](./influxdb-client.chunkcombiner.concat.md)
+
+
+</td><td>
+
+Concatenates first and second chunk.
+
+
+</td></tr>
+<tr><td>
+
+[copy(chunk, start, end)](./influxdb-client.chunkcombiner.copy.md)
+
+
+</td><td>
+
+Creates a new chunk from the supplied chunk.
+
+
+</td></tr>
+<tr><td>
+
+[toUtf8String(chunk, start, end)](./influxdb-client.chunkcombiner.toutf8string.md)
+
+
+</td><td>
+
+Converts chunk into a string.
+
+
+</td></tr>
+</tbody></table>

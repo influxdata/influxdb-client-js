@@ -6,7 +6,7 @@
 
 The user-facing name of the hex color.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

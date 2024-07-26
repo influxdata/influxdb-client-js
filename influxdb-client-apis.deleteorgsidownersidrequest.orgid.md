@@ -6,7 +6,7 @@
 
 The ID of the organization to remove an owner from.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

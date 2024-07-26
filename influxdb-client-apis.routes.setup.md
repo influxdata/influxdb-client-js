@@ -4,7 +4,7 @@
 
 ## Routes.setup property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setup?: string;

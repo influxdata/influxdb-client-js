@@ -4,7 +4,7 @@
 
 ## NotificationRules.notificationRules property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 notificationRules?: NotificationRule[];

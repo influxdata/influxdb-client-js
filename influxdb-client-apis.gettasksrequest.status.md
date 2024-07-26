@@ -6,7 +6,7 @@
 
 A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) status. Only returns tasks that have the specified status (`active` or `inactive`<!-- -->).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: string;

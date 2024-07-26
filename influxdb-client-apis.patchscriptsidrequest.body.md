@@ -6,7 +6,7 @@
 
 The script update to apply.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: ScriptUpdateRequest;

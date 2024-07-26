@@ -4,7 +4,7 @@
 
 ## MapVariableProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface MapVariableProperties 
@@ -12,8 +12,63 @@ interface MapVariableProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [type?](./influxdb-client-apis.mapvariableproperties.type.md) |  | 'map' | <i>(Optional)</i> |
-|  [values?](./influxdb-client-apis.mapvariableproperties.values.md) |  | any | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[type?](./influxdb-client-apis.mapvariableproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'map'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[values?](./influxdb-client-apis.mapvariableproperties.values.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

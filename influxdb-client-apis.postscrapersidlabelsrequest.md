@@ -4,7 +4,7 @@
 
 ## PostScrapersIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostScrapersIDLabelsRequest 
@@ -12,8 +12,63 @@ interface PostScrapersIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postscrapersidlabelsrequest.body.md) |  | [LabelMapping](./influxdb-client-apis.labelmapping.md) | Label to add |
-|  [scraperTargetID](./influxdb-client-apis.postscrapersidlabelsrequest.scrapertargetid.md) |  | string | The scraper target ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postscrapersidlabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LabelMapping](./influxdb-client-apis.labelmapping.md)
+
+
+</td><td>
+
+Label to add
+
+
+</td></tr>
+<tr><td>
+
+[scraperTargetID](./influxdb-client-apis.postscrapersidlabelsrequest.scrapertargetid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The scraper target ID.
+
+
+</td></tr>
+</tbody></table>

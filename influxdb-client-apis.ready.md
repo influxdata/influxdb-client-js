@@ -4,7 +4,7 @@
 
 ## Ready interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Ready 
@@ -12,9 +12,82 @@ interface Ready
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [started?](./influxdb-client-apis.ready.started.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.ready.status.md) |  | 'ready' | <i>(Optional)</i> |
-|  [up?](./influxdb-client-apis.ready.up.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[started?](./influxdb-client-apis.ready.started.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.ready.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'ready'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[up?](./influxdb-client-apis.ready.up.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

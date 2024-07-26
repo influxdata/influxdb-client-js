@@ -6,7 +6,7 @@
 
 The variable ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 variableID: string;

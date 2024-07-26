@@ -6,7 +6,7 @@
 
 TSM snapshot.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: string;

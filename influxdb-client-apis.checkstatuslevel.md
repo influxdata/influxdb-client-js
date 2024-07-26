@@ -6,7 +6,7 @@
 
 The state to record if check matches a criteria.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type CheckStatusLevel = 'UNKNOWN' | 'OK' | 'INFO' | 'CRIT' | 'WARN';

@@ -4,7 +4,7 @@
 
 ## MarkdownViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface MarkdownViewProperties 
@@ -12,9 +12,76 @@ interface MarkdownViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [note](./influxdb-client-apis.markdownviewproperties.note.md) |  | string |  |
-|  [shape](./influxdb-client-apis.markdownviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [type](./influxdb-client-apis.markdownviewproperties.type.md) |  | 'markdown' |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[note](./influxdb-client-apis.markdownviewproperties.note.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.markdownviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.markdownviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'markdown'
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

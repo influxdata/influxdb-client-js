@@ -6,7 +6,7 @@
 
 The ID of the authorization to update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 authID: string;

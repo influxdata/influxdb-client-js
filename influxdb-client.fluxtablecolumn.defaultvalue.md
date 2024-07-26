@@ -6,7 +6,7 @@
 
 Default value to be used for rows whose string value is an empty string.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaultValue: string;

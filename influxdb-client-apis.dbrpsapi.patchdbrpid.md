@@ -6,7 +6,7 @@
 
 Update a database retention policy mapping. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchDBRPID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchDBRPID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promise<DBRPGet>;
@@ -14,12 +14,56 @@ patchDBRPID(request: PatchDBRPIDRequest, requestOptions?: RequestOptions): Promi
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchDBRPIDRequest](./influxdb-client-apis.patchdbrpidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[DBRPGet](./influxdb-client-apis.dbrpget.md)<!-- -->&gt;
 

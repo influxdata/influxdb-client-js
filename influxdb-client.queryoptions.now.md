@@ -6,7 +6,7 @@
 
 Specifies the time that should be reported as "now" in the query. RFC3339 value must be returned, for example `new Date().toISOString()`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 now?: () => string;

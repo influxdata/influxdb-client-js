@@ -10,7 +10,7 @@ The ID of the organization that owns the stacks. Only returns stacks owned by th
 
 - Doesn't require this parameter; InfluxDB only returns resources allowed by the API token.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

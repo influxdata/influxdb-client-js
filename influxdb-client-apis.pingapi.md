@@ -6,7 +6,7 @@
 
 Ping API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class PingAPI 
@@ -14,13 +14,68 @@ declare class PingAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.pingapi._constructor_.md) |  | Creates PingAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.pingapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates PingAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getPing(request, requestOptions)](./influxdb-client-apis.pingapi.getping.md) |  | Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetPing) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getPing(request, requestOptions)](./influxdb-client-apis.pingapi.getping.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Get the status and version of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetPing](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetPing)
+
+
+</td></tr>
+</tbody></table>

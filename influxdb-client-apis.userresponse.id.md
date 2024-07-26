@@ -6,7 +6,7 @@
 
 The ID of the user.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly id?: string;

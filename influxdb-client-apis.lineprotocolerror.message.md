@@ -6,7 +6,7 @@
 
 Human-readable message.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly message?: string;

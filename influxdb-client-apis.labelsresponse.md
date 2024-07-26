@@ -4,7 +4,7 @@
 
 ## LabelsResponse interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface LabelsResponse 
@@ -12,8 +12,63 @@ interface LabelsResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labels?](./influxdb-client-apis.labelsresponse.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.labelsresponse.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labels?](./influxdb-client-apis.labelsresponse.labels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Labels](./influxdb-client-apis.labels.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.labelsresponse.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

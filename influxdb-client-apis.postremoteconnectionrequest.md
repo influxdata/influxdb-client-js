@@ -4,7 +4,7 @@
 
 ## PostRemoteConnectionRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostRemoteConnectionRequest 
@@ -12,7 +12,44 @@ interface PostRemoteConnectionRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postremoteconnectionrequest.body.md) |  | [RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md) | entity body |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postremoteconnectionrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RemoteConnectionCreationRequest](./influxdb-client-apis.remoteconnectioncreationrequest.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+</tbody></table>

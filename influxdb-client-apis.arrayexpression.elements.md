@@ -6,7 +6,7 @@
 
 Elements of the array
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 elements?: Expression[];

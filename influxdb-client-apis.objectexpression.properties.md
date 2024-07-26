@@ -6,7 +6,7 @@
 
 Object properties
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 properties?: Property[];

@@ -4,7 +4,7 @@
 
 ## TemplateSummary.diff property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 diff?: {

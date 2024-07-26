@@ -6,12 +6,12 @@
 
 Signalizes completition.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 complete(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

@@ -4,7 +4,7 @@
 
 ## ExpressionStatement.expression property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 expression?: Expression;

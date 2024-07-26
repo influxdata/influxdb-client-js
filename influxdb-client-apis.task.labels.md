@@ -4,7 +4,7 @@
 
 ## Task.labels property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 labels?: Labels;

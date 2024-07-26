@@ -6,7 +6,7 @@
 
 Type of query result column, see [https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/\#data-types](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/#data-types)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ColumnType = 'boolean' | 'unsignedLong' | 'long' | 'double' | 'string' | 'base64Binary' | 'dateTime:RFC3339' | 'duration' | string;

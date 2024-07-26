@@ -4,7 +4,7 @@
 
 ## DeleteOrgsIDMembersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteOrgsIDMembersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteOrgsIDMembersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgID](./influxdb-client-apis.deleteorgsidmembersidrequest.orgid.md) |  | string | The ID of the organization to remove a user from. |
-|  [userID](./influxdb-client-apis.deleteorgsidmembersidrequest.userid.md) |  | string | The ID of the user to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgID](./influxdb-client-apis.deleteorgsidmembersidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization to remove a user from.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deleteorgsidmembersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the user to remove.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 A part of the label name. Returns scripts that have a label that contains the specified phrase.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 labelContains?: string;

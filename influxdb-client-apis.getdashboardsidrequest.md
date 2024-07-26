@@ -4,7 +4,7 @@
 
 ## GetDashboardsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetDashboardsIDRequest 
@@ -12,8 +12,63 @@ interface GetDashboardsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.getdashboardsidrequest.dashboardid.md) |  | string | The ID of the dashboard to update. |
-|  [include?](./influxdb-client-apis.getdashboardsidrequest.include.md) |  | string | <i>(Optional)</i> If <code>properties</code>, includes the cell view properties in the response. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dashboardID](./influxdb-client-apis.getdashboardsidrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the dashboard to update.
+
+
+</td></tr>
+<tr><td>
+
+[include?](./influxdb-client-apis.getdashboardsidrequest.include.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ If `properties`<!-- -->, includes the cell view properties in the response.
+
+
+</td></tr>
+</tbody></table>

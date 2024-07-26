@@ -6,7 +6,7 @@
 
 The ID of the dashboard to update.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dashboardID: string;

@@ -6,7 +6,7 @@
 
 Allows the declaration of an anonymous object within a declaration
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ObjectExpression 
@@ -14,8 +14,63 @@ interface ObjectExpression
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [properties?](./influxdb-client-apis.objectexpression.properties.md) |  | [Property](./influxdb-client-apis.property.md)<!-- -->\[\] | <i>(Optional)</i> Object properties |
-|  [type?](./influxdb-client-apis.objectexpression.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[properties?](./influxdb-client-apis.objectexpression.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Property](./influxdb-client-apis.property.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Object properties
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.objectexpression.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

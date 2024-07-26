@@ -4,7 +4,7 @@
 
 ## Routes.external property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 external?: {

@@ -4,7 +4,7 @@
 
 ## TemplateChart interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TemplateChart 
@@ -12,11 +12,120 @@ interface TemplateChart
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [height?](./influxdb-client-apis.templatechart.height.md) |  | number | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.templatechart.properties.md) |  | [ViewProperties](./influxdb-client-apis.viewproperties.md) | <i>(Optional)</i> |
-|  [width?](./influxdb-client-apis.templatechart.width.md) |  | number | <i>(Optional)</i> |
-|  [xPos?](./influxdb-client-apis.templatechart.xpos.md) |  | number | <i>(Optional)</i> |
-|  [yPos?](./influxdb-client-apis.templatechart.ypos.md) |  | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[height?](./influxdb-client-apis.templatechart.height.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[properties?](./influxdb-client-apis.templatechart.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ViewProperties](./influxdb-client-apis.viewproperties.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[width?](./influxdb-client-apis.templatechart.width.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[xPos?](./influxdb-client-apis.templatechart.xpos.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[yPos?](./influxdb-client-apis.templatechart.ypos.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

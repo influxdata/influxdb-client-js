@@ -6,7 +6,7 @@
 
 The bucket ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

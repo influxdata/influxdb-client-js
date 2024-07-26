@@ -6,7 +6,7 @@
 
 WriteSuccess is informed about successfully written lines.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writeSuccess(this: WriteApi, lines: Array<string>): void;
@@ -14,12 +14,56 @@ writeSuccess(this: WriteApi, lines: Array<string>): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [WriteApi](./influxdb-client.writeapi.md) | the instance of the API in use |
-|  lines | Array&lt;string&gt; | written lines |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[WriteApi](./influxdb-client.writeapi.md)
+
+
+</td><td>
+
+the instance of the API in use
+
+
+</td></tr>
+<tr><td>
+
+lines
+
+
+</td><td>
+
+Array&lt;string&gt;
+
+
+</td><td>
+
+written lines
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

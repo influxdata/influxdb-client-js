@@ -6,7 +6,7 @@
 
 New ID of the restored bucket
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id: string;

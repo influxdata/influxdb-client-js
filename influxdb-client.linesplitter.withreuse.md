@@ -6,12 +6,12 @@
 
 Sets the reuse flag and returns this.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 withReuse(): LineSplitter;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [LineSplitter](./influxdb-client.linesplitter.md)
 

@@ -6,7 +6,7 @@
 
 The column to sort by.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sortBy?: string;

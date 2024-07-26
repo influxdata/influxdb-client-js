@@ -6,7 +6,7 @@
 
 The type of the metrics to be parsed.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type?: 'prometheus';

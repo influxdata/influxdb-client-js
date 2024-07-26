@@ -6,7 +6,7 @@
 
 The name that a field is renamed to by the user.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 displayName?: string;

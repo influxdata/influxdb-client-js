@@ -6,7 +6,7 @@
 
 The list of label names associated with the script.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 labels?: string[];

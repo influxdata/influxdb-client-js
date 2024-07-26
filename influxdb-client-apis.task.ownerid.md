@@ -8,7 +8,7 @@ A [user](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#user) ID.
 
 To find a user ID, you can use the  to list users.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ownerID?: string;

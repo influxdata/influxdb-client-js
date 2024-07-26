@@ -6,7 +6,7 @@
 
 Invoke a script. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/PostScriptsIDInvoke](https://docs.influxdata.com/influxdb/cloud/api/#operation/PostScriptsIDInvoke)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postScriptsIDInvoke(request: PostScriptsIDInvokeRequest, requestOptions?: RequestOptions): Promise<ScriptHTTPResponseData>;
@@ -14,12 +14,56 @@ postScriptsIDInvoke(request: PostScriptsIDInvokeRequest, requestOptions?: Reques
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostScriptsIDInvokeRequest](./influxdb-client-apis.postscriptsidinvokerequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostScriptsIDInvokeRequest](./influxdb-client-apis.postscriptsidinvokerequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ScriptHTTPResponseData](./influxdb-client-apis.scripthttpresponsedata.md)<!-- -->&gt;
 

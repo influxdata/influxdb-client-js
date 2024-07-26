@@ -6,7 +6,7 @@
 
 User to add as owner
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

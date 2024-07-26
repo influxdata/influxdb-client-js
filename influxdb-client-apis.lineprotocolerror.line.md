@@ -6,7 +6,7 @@
 
 First line in the request body that contains malformed data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly line?: number;

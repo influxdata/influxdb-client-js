@@ -4,7 +4,7 @@
 
 ## PatchUsersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchUsersIDRequest 
@@ -12,8 +12,63 @@ interface PatchUsersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchusersidrequest.body.md) |  | [User](./influxdb-client-apis.user.md) | User update to apply |
-|  [userID](./influxdb-client-apis.patchusersidrequest.userid.md) |  | string | The ID of the user to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchusersidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[User](./influxdb-client-apis.user.md)
+
+
+</td><td>
+
+User update to apply
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.patchusersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the user to update.
+
+
+</td></tr>
+</tbody></table>

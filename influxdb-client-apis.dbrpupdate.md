@@ -4,7 +4,7 @@
 
 ## DBRPUpdate interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DBRPUpdate 
@@ -12,8 +12,63 @@ interface DBRPUpdate
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [default?](./influxdb-client-apis.dbrpupdate.default.md) |  | boolean | <i>(Optional)</i> |
-|  [retention\_policy?](./influxdb-client-apis.dbrpupdate.retention_policy.md) |  | string | <i>(Optional)</i> InfluxDB v1 retention policy |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[default?](./influxdb-client-apis.dbrpupdate.default.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[retention\_policy?](./influxdb-client-apis.dbrpupdate.retention_policy.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ InfluxDB v1 retention policy
+
+
+</td></tr>
+</tbody></table>

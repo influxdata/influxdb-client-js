@@ -4,7 +4,7 @@
 
 ## OnboardingRequest.password property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 password?: string;

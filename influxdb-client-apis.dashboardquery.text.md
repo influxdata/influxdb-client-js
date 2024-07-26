@@ -6,7 +6,7 @@
 
 The text of the Flux query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 text?: string;

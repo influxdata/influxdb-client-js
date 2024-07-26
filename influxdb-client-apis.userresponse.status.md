@@ -6,7 +6,7 @@
 
 The status of a user. An inactive user won't have access to resources.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

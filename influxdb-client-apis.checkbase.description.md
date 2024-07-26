@@ -6,7 +6,7 @@
 
 An optional description of the check.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 description?: string;

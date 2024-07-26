@@ -6,7 +6,7 @@
 
 Skip TLS verification on endpoint.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 allowInsecure?: boolean;

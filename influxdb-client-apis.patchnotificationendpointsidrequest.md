@@ -4,7 +4,7 @@
 
 ## PatchNotificationEndpointsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchNotificationEndpointsIDRequest 
@@ -12,8 +12,63 @@ interface PatchNotificationEndpointsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md) |  | [NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md) | Check update to apply |
-|  [endpointID](./influxdb-client-apis.patchnotificationendpointsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchnotificationendpointsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NotificationEndpointUpdate](./influxdb-client-apis.notificationendpointupdate.md)
+
+
+</td><td>
+
+Check update to apply
+
+
+</td></tr>
+<tr><td>
+
+[endpointID](./influxdb-client-apis.patchnotificationendpointsidrequest.endpointid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification endpoint ID.
+
+
+</td></tr>
+</tbody></table>

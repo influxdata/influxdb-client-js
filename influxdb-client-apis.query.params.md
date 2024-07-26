@@ -25,7 +25,7 @@ During query execution, InfluxDB passes \_`params`<!-- -->\_ to your script and 
 
 - If you use \_`params`<!-- -->\_, you can't use \_`extern`<!-- -->\_.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 params?: any;

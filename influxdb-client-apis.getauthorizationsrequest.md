@@ -4,7 +4,7 @@
 
 ## GetAuthorizationsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetAuthorizationsRequest 
@@ -12,10 +12,101 @@ interface GetAuthorizationsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [org?](./influxdb-client-apis.getauthorizationsrequest.org.md) |  | string | <i>(Optional)</i> An organization name. Only returns authorizations that belong to this organization. |
-|  [orgID?](./influxdb-client-apis.getauthorizationsrequest.orgid.md) |  | string | <i>(Optional)</i> An organization ID. Only returns authorizations that belong to this organization. |
-|  [user?](./influxdb-client-apis.getauthorizationsrequest.user.md) |  | string | <i>(Optional)</i> A user name. Only returns authorizations scoped to this user. |
-|  [userID?](./influxdb-client-apis.getauthorizationsrequest.userid.md) |  | string | <i>(Optional)</i> A user ID. Only returns authorizations scoped to this user. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[org?](./influxdb-client-apis.getauthorizationsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An organization name. Only returns authorizations that belong to this organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getauthorizationsrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An organization ID. Only returns authorizations that belong to this organization.
+
+
+</td></tr>
+<tr><td>
+
+[user?](./influxdb-client-apis.getauthorizationsrequest.user.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A user name. Only returns authorizations scoped to this user.
+
+
+</td></tr>
+<tr><td>
+
+[userID?](./influxdb-client-apis.getauthorizationsrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A user ID. Only returns authorizations scoped to this user.
+
+
+</td></tr>
+</tbody></table>

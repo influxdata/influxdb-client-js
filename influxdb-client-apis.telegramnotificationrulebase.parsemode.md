@@ -6,7 +6,7 @@
 
 Parse mode of the message text per https://core.telegram.org/bots/api\#formatting-options. Defaults to "MarkdownV2".
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 parseMode?: 'MarkdownV2' | 'HTML' | 'Markdown';

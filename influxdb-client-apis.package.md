@@ -6,7 +6,7 @@
 
 Represents a complete package source tree.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Package 
@@ -14,10 +14,101 @@ interface Package
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [files?](./influxdb-client-apis.package.files.md) |  | [File](./influxdb-client-apis.file.md)<!-- -->\[\] | <i>(Optional)</i> Package files |
-|  [package?](./influxdb-client-apis.package.package.md) |  | string | <i>(Optional)</i> Package name |
-|  [path?](./influxdb-client-apis.package.path.md) |  | string | <i>(Optional)</i> Package import path |
-|  [type?](./influxdb-client-apis.package.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[files?](./influxdb-client-apis.package.files.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[File](./influxdb-client-apis.file_2.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Package files
+
+
+</td></tr>
+<tr><td>
+
+[package?](./influxdb-client-apis.package.package.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Package name
+
+
+</td></tr>
+<tr><td>
+
+[path?](./influxdb-client-apis.package.path.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Package import path
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.package.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

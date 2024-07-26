@@ -6,7 +6,7 @@
 
 Health API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class HealthAPI 
@@ -14,13 +14,68 @@ declare class HealthAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.healthapi._constructor_.md) |  | Creates HealthAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.healthapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates HealthAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getHealth(request, requestOptions)](./influxdb-client-apis.healthapi.gethealth.md) |  | Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetHealth) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getHealth(request, requestOptions)](./influxdb-client-apis.healthapi.gethealth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve the health of the instance. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetHealth](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetHealth)
+
+
+</td></tr>
+</tbody></table>

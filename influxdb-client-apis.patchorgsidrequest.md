@@ -4,7 +4,7 @@
 
 ## PatchOrgsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchOrgsIDRequest 
@@ -12,8 +12,63 @@ interface PatchOrgsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchorgsidrequest.body.md) |  | [PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md) | The organization update to apply. |
-|  [orgID](./influxdb-client-apis.patchorgsidrequest.orgid.md) |  | string | The ID of the organization to update. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchorgsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PatchOrganizationRequest](./influxdb-client-apis.patchorganizationrequest.md)
+
+
+</td><td>
+
+The organization update to apply.
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.patchorgsidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the organization to update.
+
+
+</td></tr>
+</tbody></table>

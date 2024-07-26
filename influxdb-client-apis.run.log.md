@@ -6,7 +6,7 @@
 
 An array of logs associated with the run.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly log?: LogEvent[];

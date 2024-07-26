@@ -4,7 +4,7 @@
 
 ## DBRPGet interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DBRPGet 
@@ -12,7 +12,44 @@ interface DBRPGet
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [content?](./influxdb-client-apis.dbrpget.content.md) |  | [DBRP](./influxdb-client-apis.dbrp.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[content?](./influxdb-client-apis.dbrpget.content.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DBRP](./influxdb-client-apis.dbrp.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

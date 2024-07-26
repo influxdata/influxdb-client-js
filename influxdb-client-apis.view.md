@@ -4,7 +4,7 @@
 
 ## View interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface View 
@@ -12,10 +12,101 @@ interface View
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.view.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.view.links.md) | <code>readonly</code> | { self?: string; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.view.name.md) |  | string |  |
-|  [properties](./influxdb-client-apis.view.properties.md) |  | [ViewProperties](./influxdb-client-apis.viewproperties.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.view.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.view.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.view.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[properties](./influxdb-client-apis.view.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ViewProperties](./influxdb-client-apis.viewproperties.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

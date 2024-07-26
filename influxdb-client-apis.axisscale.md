@@ -6,7 +6,7 @@
 
 Scale is the axis formatting scale. Supported: "log", "linear"
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type AxisScale = 'log' | 'linear';

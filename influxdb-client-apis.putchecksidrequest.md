@@ -4,7 +4,7 @@
 
 ## PutChecksIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutChecksIDRequest 
@@ -12,8 +12,63 @@ interface PutChecksIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.putchecksidrequest.body.md) |  | [Check](./influxdb-client-apis.check.md) | Check update to apply |
-|  [checkID](./influxdb-client-apis.putchecksidrequest.checkid.md) |  | string | The check ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.putchecksidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Check](./influxdb-client-apis.check.md)
+
+
+</td><td>
+
+Check update to apply
+
+
+</td></tr>
+<tr><td>
+
+[checkID](./influxdb-client-apis.putchecksidrequest.checkid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The check ID.
+
+
+</td></tr>
+</tbody></table>

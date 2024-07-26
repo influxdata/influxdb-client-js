@@ -4,7 +4,7 @@
 
 ## Organization interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Organization 
@@ -12,13 +12,164 @@ interface Organization
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [createdAt?](./influxdb-client-apis.organization.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.organization.description.md) |  | string | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.organization.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.organization.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; secrets?: [Link](./influxdb-client-apis.link.md)<!-- -->; buckets?: [Link](./influxdb-client-apis.link.md)<!-- -->; tasks?: [Link](./influxdb-client-apis.link.md)<!-- -->; dashboards?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.organization.name.md) |  | string |  |
-|  [status?](./influxdb-client-apis.organization.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> If inactive the organization is inactive. |
-|  [updatedAt?](./influxdb-client-apis.organization.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createdAt?](./influxdb-client-apis.organization.createdat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.organization.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.organization.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.organization.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; secrets?: [Link](./influxdb-client-apis.link.md)<!-- -->; buckets?: [Link](./influxdb-client-apis.link.md)<!-- -->; tasks?: [Link](./influxdb-client-apis.link.md)<!-- -->; dashboards?: [Link](./influxdb-client-apis.link.md)<!-- -->; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.organization.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.organization.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_ If inactive the organization is inactive.
+
+
+</td></tr>
+<tr><td>
+
+[updatedAt?](./influxdb-client-apis.organization.updatedat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

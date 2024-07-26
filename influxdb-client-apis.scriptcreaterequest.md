@@ -4,7 +4,7 @@
 
 ## ScriptCreateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ScriptCreateRequest 
@@ -12,10 +12,99 @@ interface ScriptCreateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description](./influxdb-client-apis.scriptcreaterequest.description.md) |  | string | Script description. A description of the script. |
-|  [language](./influxdb-client-apis.scriptcreaterequest.language.md) |  | [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) |  |
-|  [name](./influxdb-client-apis.scriptcreaterequest.name.md) |  | string | Script name. The name must be unique within the organization. |
-|  [script](./influxdb-client-apis.scriptcreaterequest.script.md) |  | string | The script to execute. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description](./influxdb-client-apis.scriptcreaterequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Script description. A description of the script.
+
+
+</td></tr>
+<tr><td>
+
+[language](./influxdb-client-apis.scriptcreaterequest.language.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScriptLanguage](./influxdb-client-apis.scriptlanguage.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.scriptcreaterequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Script name. The name must be unique within the organization.
+
+
+</td></tr>
+<tr><td>
+
+[script](./influxdb-client-apis.scriptcreaterequest.script.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The script to execute.
+
+
+</td></tr>
+</tbody></table>

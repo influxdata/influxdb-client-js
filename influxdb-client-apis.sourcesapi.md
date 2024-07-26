@@ -6,7 +6,7 @@
 
 Sources API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class SourcesAPI 
@@ -14,19 +14,152 @@ declare class SourcesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.sourcesapi._constructor_.md) |  | Creates SourcesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.sourcesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates SourcesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [deleteSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.deletesourcesid.md) |  | Delete a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteSourcesID) |
-|  [getSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsources.md) |  | List all sources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSources) |
-|  [getSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesid.md) |  | Retrieve a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesID) |
-|  [getSourcesIDBuckets(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidbuckets.md) |  | Get buckets in a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesIDBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesIDBuckets) |
-|  [getSourcesIDHealth(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidhealth.md) |  | Get the health of a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesIDHealth](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesIDHealth) |
-|  [patchSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.patchsourcesid.md) |  | Update a Source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchSourcesID) |
-|  [postSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.postsources.md) |  | Create a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSources) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[deleteSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.deletesourcesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteSourcesID)
+
+
+</td></tr>
+<tr><td>
+
+[getSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsources.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all sources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSources)
+
+
+</td></tr>
+<tr><td>
+
+[getSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesID)
+
+
+</td></tr>
+<tr><td>
+
+[getSourcesIDBuckets(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidbuckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Get buckets in a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesIDBuckets](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesIDBuckets)
+
+
+</td></tr>
+<tr><td>
+
+[getSourcesIDHealth(request, requestOptions)](./influxdb-client-apis.sourcesapi.getsourcesidhealth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Get the health of a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetSourcesIDHealth](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetSourcesIDHealth)
+
+
+</td></tr>
+<tr><td>
+
+[patchSourcesID(request, requestOptions)](./influxdb-client-apis.sourcesapi.patchsourcesid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a Source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchSourcesID)
+
+
+</td></tr>
+<tr><td>
+
+[postSources(request, requestOptions)](./influxdb-client-apis.sourcesapi.postsources.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Create a source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostSources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostSources)
+
+
+</td></tr>
+</tbody></table>

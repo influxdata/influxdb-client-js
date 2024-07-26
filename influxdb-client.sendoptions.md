@@ -6,7 +6,7 @@
 
 Options for sending a request message.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface SendOptions 
@@ -14,10 +14,101 @@ interface SendOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [gzipThreshold?](./influxdb-client.sendoptions.gzipthreshold.md) |  | number | <i>(Optional)</i> When specified, message body larger than the treshold is gzipped |
-|  [headers?](./influxdb-client.sendoptions.headers.md) |  | { \[key: string\]: string; } | <i>(Optional)</i> Request HTTP headers. |
-|  [method](./influxdb-client.sendoptions.method.md) |  | string | HTTP method (POST, PUT, GET, PATCH ...) |
-|  [signal?](./influxdb-client.sendoptions.signal.md) |  | AbortSignal | <i>(Optional)</i> Abort signal |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[gzipThreshold?](./influxdb-client.sendoptions.gzipthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ When specified, message body larger than the treshold is gzipped
+
+
+</td></tr>
+<tr><td>
+
+[headers?](./influxdb-client.sendoptions.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: string; }
+
+
+</td><td>
+
+_(Optional)_ Request HTTP headers.
+
+
+</td></tr>
+<tr><td>
+
+[method](./influxdb-client.sendoptions.method.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+HTTP method (POST, PUT, GET, PATCH ...)
+
+
+</td></tr>
+<tr><td>
+
+[signal?](./influxdb-client.sendoptions.signal.md)
+
+
+</td><td>
+
+
+</td><td>
+
+AbortSignal
+
+
+</td><td>
+
+_(Optional)_ Abort signal
+
+
+</td></tr>
+</tbody></table>

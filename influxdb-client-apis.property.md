@@ -6,7 +6,7 @@
 
 The value associated with a key
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Property 
@@ -14,9 +14,82 @@ interface Property
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [key?](./influxdb-client-apis.property.key.md) |  | [PropertyKey](./influxdb-client-apis.propertykey_2.md) | <i>(Optional)</i> |
-|  [type?](./influxdb-client-apis.property.type.md) |  | [NodeType](./influxdb-client-apis.nodetype.md) | <i>(Optional)</i> |
-|  [value?](./influxdb-client-apis.property.value.md) |  | [Expression](./influxdb-client-apis.expression.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[key?](./influxdb-client-apis.property.key.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PropertyKey](./influxdb-client-apis.propertykey_2.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.property.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NodeType](./influxdb-client-apis.nodetype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[value?](./influxdb-client-apis.property.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Expression](./influxdb-client-apis.expression.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

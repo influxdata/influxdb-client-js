@@ -4,7 +4,7 @@
 
 ## Organizations.orgs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgs?: Organization[];

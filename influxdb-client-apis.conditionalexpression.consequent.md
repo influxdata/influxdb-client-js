@@ -4,7 +4,7 @@
 
 ## ConditionalExpression.consequent property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 consequent?: Expression;

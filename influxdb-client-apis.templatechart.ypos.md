@@ -4,7 +4,7 @@
 
 ## TemplateChart.yPos property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 yPos?: number;

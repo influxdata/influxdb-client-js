@@ -6,7 +6,7 @@
 
 The calculated name of a field.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly internalName?: string;

@@ -4,7 +4,7 @@
 
 ## GeoViewProperties.latLonColumns property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 latLonColumns?: LatLonColumns;

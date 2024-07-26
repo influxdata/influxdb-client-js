@@ -6,7 +6,7 @@
 
 isStatusCodeRetriable checks whether the supplied HTTP status code is retriable.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function isStatusCodeRetriable(statusCode: number): boolean;
@@ -14,11 +14,38 @@ declare function isStatusCodeRetriable(statusCode: number): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  statusCode | number |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+statusCode
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 boolean
 

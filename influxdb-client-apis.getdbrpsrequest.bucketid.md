@@ -6,7 +6,7 @@
 
 Specifies the bucket ID to filter on
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID?: string;

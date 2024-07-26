@@ -6,7 +6,7 @@
 
 Strategy for calculating retry delays.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RetryDelayStrategy 
@@ -14,8 +14,37 @@ interface RetryDelayStrategy
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [nextDelay(error, failedAttempts)](./influxdb-client.retrydelaystrategy.nextdelay.md) | Returns delay for a next retry |
-|  [success()](./influxdb-client.retrydelaystrategy.success.md) | Implementation should reset its state, this is mandatory to call upon success. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[nextDelay(error, failedAttempts)](./influxdb-client.retrydelaystrategy.nextdelay.md)
+
+
+</td><td>
+
+Returns delay for a next retry
+
+
+</td></tr>
+<tr><td>
+
+[success()](./influxdb-client.retrydelaystrategy.success.md)
+
+
+</td><td>
+
+Implementation should reset its state, this is mandatory to call upon success.
+
+
+</td></tr>
+</tbody></table>

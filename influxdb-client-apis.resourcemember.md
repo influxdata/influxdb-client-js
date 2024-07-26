@@ -4,12 +4,12 @@
 
 ## ResourceMember type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ResourceMember = UserResponse & {
     role?: 'member';
 };
 ```
-<b>References:</b> [UserResponse](./influxdb-client-apis.userresponse.md)
+**References:** [UserResponse](./influxdb-client-apis.userresponse.md)
 

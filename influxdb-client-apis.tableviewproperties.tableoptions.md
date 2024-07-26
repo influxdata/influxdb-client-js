@@ -4,7 +4,7 @@
 
 ## TableViewProperties.tableOptions property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tableOptions: {

@@ -6,7 +6,7 @@
 
 Define map type - regular, satellite etc.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 mapStyle?: string;

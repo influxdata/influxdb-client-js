@@ -4,7 +4,7 @@
 
 ## TemplateChart.height property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 height?: number;

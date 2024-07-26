@@ -4,7 +4,7 @@
 
 ## StatusRule interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface StatusRule 
@@ -12,10 +12,101 @@ interface StatusRule
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [count?](./influxdb-client-apis.statusrule.count.md) |  | number | <i>(Optional)</i> |
-|  [currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
-|  [period?](./influxdb-client-apis.statusrule.period.md) |  | string | <i>(Optional)</i> |
-|  [previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md) |  | [RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[count?](./influxdb-client-apis.statusrule.count.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[currentLevel?](./influxdb-client-apis.statusrule.currentlevel.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[period?](./influxdb-client-apis.statusrule.period.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[previousLevel?](./influxdb-client-apis.statusrule.previouslevel.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RuleStatusLevel](./influxdb-client-apis.rulestatuslevel.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

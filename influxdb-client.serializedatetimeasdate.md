@@ -6,12 +6,12 @@
 
 serializeDateTimeAsDate changes type serializers to return JavaScript Date instances for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function serializeDateTimeAsDate(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

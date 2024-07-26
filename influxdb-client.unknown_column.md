@@ -4,7 +4,7 @@
 
 ## UNKNOWN\_COLUMN variable
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 UNKNOWN_COLUMN: FluxTableColumn

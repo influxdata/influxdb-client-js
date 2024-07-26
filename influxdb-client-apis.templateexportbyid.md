@@ -4,7 +4,7 @@
 
 ## TemplateExportByID interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TemplateExportByID 
@@ -12,9 +12,82 @@ interface TemplateExportByID
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [orgIDs?](./influxdb-client-apis.templateexportbyid.orgids.md) |  | Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt; | <i>(Optional)</i> |
-|  [resources?](./influxdb-client-apis.templateexportbyid.resources.md) |  | Array&lt;{ id: string; kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name?: string; }&gt; | <i>(Optional)</i> |
-|  [stackID?](./influxdb-client-apis.templateexportbyid.stackid.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[orgIDs?](./influxdb-client-apis.templateexportbyid.orgids.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;{ orgID?: string; resourceFilters?: { byLabel?: string\[\]; byResourceKind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->\[\]; }; }&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[resources?](./influxdb-client-apis.templateexportbyid.resources.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;{ id: string; kind: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; name?: string; }&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[stackID?](./influxdb-client-apis.templateexportbyid.stackid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

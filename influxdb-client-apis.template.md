@@ -4,7 +4,7 @@
 
 ## Template type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Template = Array<{
@@ -16,5 +16,5 @@ type Template = Array<{
     spec?: any;
 }>;
 ```
-<b>References:</b> [TemplateKind](./influxdb-client-apis.templatekind.md)
+**References:** [TemplateKind](./influxdb-client-apis.templatekind.md)
 

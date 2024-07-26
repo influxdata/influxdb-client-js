@@ -4,7 +4,7 @@
 
 ## TemplateChart.xPos property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 xPos?: number;

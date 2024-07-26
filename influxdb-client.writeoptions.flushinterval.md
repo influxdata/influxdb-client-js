@@ -6,7 +6,7 @@
 
 delay between data flushes in milliseconds, at most `batch size` records are sent during flush
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flushInterval: number;

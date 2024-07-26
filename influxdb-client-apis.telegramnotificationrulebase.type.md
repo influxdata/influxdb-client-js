@@ -6,7 +6,7 @@
 
 The discriminator between other types of notification rules is "telegram".
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type: 'telegram';

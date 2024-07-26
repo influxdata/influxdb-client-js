@@ -6,7 +6,7 @@
 
 The user to add as an owner of the organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

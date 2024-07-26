@@ -6,7 +6,7 @@
 
 Update a Telegraf configuration. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutTelegrafsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutTelegrafsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 putTelegrafsID(request: PutTelegrafsIDRequest, requestOptions?: RequestOptions): Promise<Telegraf>;
@@ -14,12 +14,56 @@ putTelegrafsID(request: PutTelegrafsIDRequest, requestOptions?: RequestOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PutTelegrafsIDRequest](./influxdb-client-apis.puttelegrafsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Telegraf](./influxdb-client-apis.telegraf.md)<!-- -->&gt;
 

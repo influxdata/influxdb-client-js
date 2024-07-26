@@ -6,7 +6,7 @@
 
 Update a replication. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchReplicationByID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchReplicationByID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchReplicationByID(request: PatchReplicationByIDRequest, requestOptions?: RequestOptions): Promise<Replication>;
@@ -14,12 +14,56 @@ patchReplicationByID(request: PatchReplicationByIDRequest, requestOptions?: Requ
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchReplicationByIDRequest](./influxdb-client-apis.patchreplicationbyidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Replication](./influxdb-client-apis.replication.md)<!-- -->&gt;
 

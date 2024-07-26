@@ -4,7 +4,7 @@
 
 ## Replication.latestResponseCode property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 latestResponseCode?: number;

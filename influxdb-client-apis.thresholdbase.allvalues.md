@@ -6,7 +6,7 @@
 
 If true, only alert if all values meet threshold.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 allValues?: boolean;

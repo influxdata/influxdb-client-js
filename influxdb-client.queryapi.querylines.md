@@ -6,7 +6,7 @@
 
 Executes the query and receives result lines (including empty and annotation lines) through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queryLines(query: string | ParameterizedQuery, consumer: CommunicationObserver<string>): void;
@@ -14,12 +14,56 @@ queryLines(query: string | ParameterizedQuery, consumer: CommunicationObserver<s
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  query | string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md) | query |
-|  consumer | [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt; | csv result lines and error consumer |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+query
+
+
+</td><td>
+
+string \| [ParameterizedQuery](./influxdb-client.parameterizedquery.md)
+
+
+</td><td>
+
+query
+
+
+</td></tr>
+<tr><td>
+
+consumer
+
+
+</td><td>
+
+[CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
+
+
+</td><td>
+
+csv result lines and error consumer
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

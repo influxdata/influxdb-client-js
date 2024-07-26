@@ -6,7 +6,7 @@
 
 Cell that will be added
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: CreateCell;

@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.legendOpacity property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 legendOpacity?: number;

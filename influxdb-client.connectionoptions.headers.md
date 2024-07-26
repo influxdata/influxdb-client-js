@@ -6,7 +6,7 @@
 
 Default HTTP headers to send with every request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: Record<string, string>;

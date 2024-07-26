@@ -6,36 +6,251 @@
 
 A general HTTP error.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class HttpError extends Error implements RetriableDecision 
 ```
-<b>Extends:</b> Error
+**Extends:** Error
 
-<b>Implements:</b> [RetriableDecision](./influxdb-client.retriabledecision.md)
+**Implements:** [RetriableDecision](./influxdb-client.retriabledecision.md)
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(statusCode, statusMessage, body, retryAfter, contentType, message)](./influxdb-client.httperror._constructor_.md) |  | Constructs a new instance of the <code>HttpError</code> class |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(statusCode, statusMessage, body, retryAfter, contentType, message, headers)](./influxdb-client.httperror._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Constructs a new instance of the `HttpError` class
+
+
+</td></tr>
+</tbody></table>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body?](./influxdb-client.httperror.body.md) | <code>readonly</code> | string \| undefined | <i>(Optional)</i> |
-|  [code](./influxdb-client.httperror.code.md) |  | string \| undefined | application error code, when available |
-|  [contentType?](./influxdb-client.httperror.contenttype.md) | <code>readonly</code> | string \| null \| undefined | <i>(Optional)</i> |
-|  [json](./influxdb-client.httperror.json.md) |  | any | json error response |
-|  [statusCode](./influxdb-client.httperror.statuscode.md) | <code>readonly</code> | number |  |
-|  [statusMessage](./influxdb-client.httperror.statusmessage.md) | <code>readonly</code> | string \| undefined |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body?](./influxdb-client.httperror.body.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[code](./influxdb-client.httperror.code.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string \| undefined
+
+
+</td><td>
+
+application error code, when available
+
+
+</td></tr>
+<tr><td>
+
+[contentType?](./influxdb-client.httperror.contenttype.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string \| undefined \| null
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[headers?](./influxdb-client.httperror.headers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[HttpHeaders](./influxdb-client.httpheaders.md) \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[json](./influxdb-client.httperror.json.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+json error response
+
+
+</td></tr>
+<tr><td>
+
+[statusCode](./influxdb-client.httperror.statuscode.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[statusMessage](./influxdb-client.httperror.statusmessage.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string \| undefined
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [canRetry()](./influxdb-client.httperror.canretry.md) |  |  |
-|  [retryAfter()](./influxdb-client.httperror.retryafter.md) |  |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[canRetry()](./influxdb-client.httperror.canretry.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[retryAfter()](./influxdb-client.httperror.retryafter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

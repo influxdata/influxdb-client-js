@@ -6,7 +6,7 @@
 
 Don't notify me more than <limit> times every <limitEvery> seconds. If set, limitEvery cannot be empty.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: number;

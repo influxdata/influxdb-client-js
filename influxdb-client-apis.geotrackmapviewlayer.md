@@ -4,10 +4,10 @@
 
 ## GeoTrackMapViewLayer type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type GeoTrackMapViewLayer = GeoViewLayerProperties & any;
 ```
-<b>References:</b> [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)
+**References:** [GeoViewLayerProperties](./influxdb-client-apis.geoviewlayerproperties.md)
 

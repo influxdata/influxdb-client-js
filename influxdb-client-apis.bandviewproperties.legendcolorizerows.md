@@ -4,7 +4,7 @@
 
 ## BandViewProperties.legendColorizeRows property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 legendColorizeRows?: boolean;

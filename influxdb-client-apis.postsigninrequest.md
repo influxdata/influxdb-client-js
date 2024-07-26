@@ -4,7 +4,7 @@
 
 ## PostSigninRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostSigninRequest 
@@ -12,7 +12,44 @@ interface PostSigninRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [auth?](./influxdb-client-apis.postsigninrequest.auth.md) |  | { user: string; password: string; } | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[auth?](./influxdb-client-apis.postsigninrequest.auth.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ user: string; password: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

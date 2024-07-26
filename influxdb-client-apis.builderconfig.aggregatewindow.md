@@ -4,7 +4,7 @@
 
 ## BuilderConfig.aggregateWindow property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 aggregateWindow?: {

@@ -4,7 +4,7 @@
 
 ## Observer.error property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 error: ObserverError;

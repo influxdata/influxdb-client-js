@@ -6,7 +6,7 @@
 
 Optional: A name for the resource. Not all resource types have a name field.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

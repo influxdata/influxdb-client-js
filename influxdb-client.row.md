@@ -6,7 +6,7 @@
 
 Wraps values and associated metadata of a query result row
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Row 
@@ -14,8 +14,59 @@ interface Row
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [tableMeta](./influxdb-client.row.tablemeta.md) |  | [FluxTableMetaData](./influxdb-client.fluxtablemetadata.md) |  |
-|  [values](./influxdb-client.row.values.md) |  | string\[\] |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[tableMeta](./influxdb-client.row.tablemeta.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FluxTableMetaData](./influxdb-client.fluxtablemetadata.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[values](./influxdb-client.row.values.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 The interval ([duration literal](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->) at which the task runs. `every` also determines when the task first runs, depending on the specified time.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 every?: string;

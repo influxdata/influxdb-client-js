@@ -4,7 +4,7 @@
 
 ## GetBackupShardIdRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetBackupShardIdRequest 
@@ -12,8 +12,63 @@ interface GetBackupShardIdRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [shardID](./influxdb-client-apis.getbackupshardidrequest.shardid.md) |  | number | The shard ID. |
-|  [since?](./influxdb-client-apis.getbackupshardidrequest.since.md) |  | string | <i>(Optional)</i> The earliest time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) to include in the snapshot. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[shardID](./influxdb-client-apis.getbackupshardidrequest.shardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The shard ID.
+
+
+</td></tr>
+<tr><td>
+
+[since?](./influxdb-client-apis.getbackupshardidrequest.since.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The earliest time [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp) to include in the snapshot.
+
+
+</td></tr>
+</tbody></table>

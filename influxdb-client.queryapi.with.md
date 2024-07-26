@@ -6,7 +6,7 @@
 
 Returns a new query API with extra options applied.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 with(options: Partial<QueryOptions>): QueryApi;
@@ -14,11 +14,40 @@ with(options: Partial<QueryOptions>): QueryApi;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  options | Partial&lt;[QueryOptions](./influxdb-client.queryoptions.md)<!-- -->&gt; | query options to use |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+options
+
+
+</td><td>
+
+Partial&lt;[QueryOptions](./influxdb-client.queryoptions.md)<!-- -->&gt;
+
+
+</td><td>
+
+query options to use
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [QueryApi](./influxdb-client.queryapi.md)
 

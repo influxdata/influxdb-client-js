@@ -4,7 +4,7 @@
 
 ## TemplateSummary.summary property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 summary?: {

@@ -6,7 +6,7 @@
 
 The delete predicate request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeletePredicateRequest 
@@ -14,9 +14,82 @@ interface DeletePredicateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md) |  | string | <i>(Optional)</i> An expression in [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->. |
-|  [start](./influxdb-client-apis.deletepredicaterequest.start.md) |  | string | A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The earliest time to delete from. |
-|  [stop](./influxdb-client-apis.deletepredicaterequest.stop.md) |  | string | A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The latest time to delete from. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[predicate?](./influxdb-client-apis.deletepredicaterequest.predicate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An expression in [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[start](./influxdb-client-apis.deletepredicaterequest.start.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The earliest time to delete from.
+
+
+</td></tr>
+<tr><td>
+
+[stop](./influxdb-client-apis.deletepredicaterequest.stop.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A timestamp ([RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#rfc3339-timestamp)<!-- -->). The latest time to delete from.
+
+
+</td></tr>
+</tbody></table>

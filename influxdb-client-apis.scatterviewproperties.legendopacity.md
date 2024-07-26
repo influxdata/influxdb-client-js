@@ -4,7 +4,7 @@
 
 ## ScatterViewProperties.legendOpacity property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 legendOpacity?: number;

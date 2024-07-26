@@ -6,7 +6,7 @@
 
 Download snapshot of all TSM data in a shard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetBackupShardId](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetBackupShardId)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getBackupShardId(request: GetBackupShardIdRequest, requestOptions?: RequestOptions): Promise<string>;
@@ -14,12 +14,56 @@ getBackupShardId(request: GetBackupShardIdRequest, requestOptions?: RequestOptio
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetBackupShardIdRequest](./influxdb-client-apis.getbackupshardidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;string&gt;
 

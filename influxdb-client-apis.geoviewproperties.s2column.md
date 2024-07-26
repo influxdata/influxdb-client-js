@@ -6,7 +6,7 @@
 
 String to define the column
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 s2Column?: string;

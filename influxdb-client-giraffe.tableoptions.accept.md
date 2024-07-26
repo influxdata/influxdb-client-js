@@ -6,7 +6,7 @@
 
 Accept allows to accept/reject specific rows or terminate processing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 accept?: AcceptRowFunction | AcceptRowFunction[];

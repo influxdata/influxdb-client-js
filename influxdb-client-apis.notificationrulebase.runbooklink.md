@@ -4,7 +4,7 @@
 
 ## NotificationRuleBase.runbookLink property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 runbookLink?: string;

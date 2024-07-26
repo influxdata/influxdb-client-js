@@ -4,7 +4,7 @@
 
 ## GetRemoteConnectionByIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetRemoteConnectionByIDRequest 
@@ -12,7 +12,42 @@ interface GetRemoteConnectionByIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [remoteID](./influxdb-client-apis.getremoteconnectionbyidrequest.remoteid.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[remoteID](./influxdb-client-apis.getremoteconnectionbyidrequest.remoteid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

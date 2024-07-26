@@ -4,7 +4,7 @@
 
 ## GetPingRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetPingRequest 

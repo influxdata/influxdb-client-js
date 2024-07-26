@@ -6,7 +6,7 @@
 
 specifies custom transport
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 transport?: Transport;

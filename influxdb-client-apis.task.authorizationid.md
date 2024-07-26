@@ -8,7 +8,7 @@ An authorization ID. Specifies the authorization used when the task communicates
 
 To find an authorization ID, you can use the  to list authorizations.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 authorizationID?: string;

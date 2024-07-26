@@ -6,7 +6,7 @@
 
 Specifies the mapping ID to filter on
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: string;

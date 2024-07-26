@@ -6,7 +6,7 @@
 
 compute also fluxGroupKeyUnion
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 computeFluxGroupKeyUnion?: boolean;

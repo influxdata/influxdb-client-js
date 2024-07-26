@@ -4,7 +4,7 @@
 
 ## GetUsersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetUsersIDRequest 
@@ -12,7 +12,44 @@ interface GetUsersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [userID](./influxdb-client-apis.getusersidrequest.userid.md) |  | string | The user ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[userID](./influxdb-client-apis.getusersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The user ID.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## HeatmapViewProperties.ySuffix property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ySuffix: string;

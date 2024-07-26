@@ -6,7 +6,7 @@
 
 Bucket name. Only returns buckets with this specific name.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

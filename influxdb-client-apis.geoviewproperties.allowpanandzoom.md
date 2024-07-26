@@ -6,7 +6,7 @@
 
 If true, map zoom and pan controls are enabled on the dashboard view
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 allowPanAndZoom: boolean;

@@ -4,7 +4,7 @@
 
 ## AuthorizationUpdateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface AuthorizationUpdateRequest 
@@ -12,8 +12,63 @@ interface AuthorizationUpdateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description?](./influxdb-client-apis.authorizationupdaterequest.description.md) |  | string | <i>(Optional)</i> A description of the token. |
-|  [status?](./influxdb-client-apis.authorizationupdaterequest.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> Status of the token. If <code>inactive</code>, requests using the token will be rejected. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description?](./influxdb-client-apis.authorizationupdaterequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A description of the token.
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.authorizationupdaterequest.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_ Status of the token. If `inactive`<!-- -->, requests using the token will be rejected.
+
+
+</td></tr>
+</tbody></table>

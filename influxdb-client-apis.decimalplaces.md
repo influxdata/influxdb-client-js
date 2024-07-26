@@ -6,7 +6,7 @@
 
 Indicates whether decimal places should be enforced, and how many digits it should show.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DecimalPlaces 
@@ -14,8 +14,63 @@ interface DecimalPlaces
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [digits?](./influxdb-client-apis.decimalplaces.digits.md) |  | number | <i>(Optional)</i> The number of digits after decimal to display |
-|  [isEnforced?](./influxdb-client-apis.decimalplaces.isenforced.md) |  | boolean | <i>(Optional)</i> Indicates whether decimal point setting should be enforced |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[digits?](./influxdb-client-apis.decimalplaces.digits.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The number of digits after decimal to display
+
+
+</td></tr>
+<tr><td>
+
+[isEnforced?](./influxdb-client-apis.decimalplaces.isenforced.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Indicates whether decimal point setting should be enforced
+
+
+</td></tr>
+</tbody></table>

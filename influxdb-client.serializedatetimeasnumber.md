@@ -6,12 +6,12 @@
 
 serializeDateTimeAsNumber changes type serializers to return milliseconds since epoch for 'dateTime:RFC3339' query result data type. Empty value is converted to null.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function serializeDateTimeAsNumber(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

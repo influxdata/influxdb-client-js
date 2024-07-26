@@ -4,7 +4,7 @@
 
 ## Query.extern property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 extern?: File;

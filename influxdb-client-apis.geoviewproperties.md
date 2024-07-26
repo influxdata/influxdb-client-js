@@ -4,7 +4,7 @@
 
 ## GeoViewProperties interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GeoViewProperties 
@@ -12,21 +12,302 @@ interface GeoViewProperties
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowPanAndZoom](./influxdb-client-apis.geoviewproperties.allowpanandzoom.md) |  | boolean | If true, map zoom and pan controls are enabled on the dashboard view |
-|  [center](./influxdb-client-apis.geoviewproperties.center.md) |  | { lat: number; lon: number; } | Coordinates of the center of the map |
-|  [colors?](./influxdb-client-apis.geoviewproperties.colors.md) |  | [DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\] | <i>(Optional)</i> Colors define color encoding of data into a visualization |
-|  [detectCoordinateFields](./influxdb-client-apis.geoviewproperties.detectcoordinatefields.md) |  | boolean | If true, search results get automatically regroupped so that lon,lat and value are treated as columns |
-|  [latLonColumns?](./influxdb-client-apis.geoviewproperties.latloncolumns.md) |  | [LatLonColumns](./influxdb-client-apis.latloncolumns.md) | <i>(Optional)</i> |
-|  [layers](./influxdb-client-apis.geoviewproperties.layers.md) |  | [GeoViewLayer](./influxdb-client-apis.geoviewlayer.md)<!-- -->\[\] | List of individual layers shown in the map |
-|  [mapStyle?](./influxdb-client-apis.geoviewproperties.mapstyle.md) |  | string | <i>(Optional)</i> Define map type - regular, satellite etc. |
-|  [note](./influxdb-client-apis.geoviewproperties.note.md) |  | string |  |
-|  [queries](./influxdb-client-apis.geoviewproperties.queries.md) |  | [DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\] |  |
-|  [s2Column?](./influxdb-client-apis.geoviewproperties.s2column.md) |  | string | <i>(Optional)</i> String to define the column |
-|  [shape](./influxdb-client-apis.geoviewproperties.shape.md) |  | 'chronograf-v2' |  |
-|  [showNoteWhenEmpty](./influxdb-client-apis.geoviewproperties.shownotewhenempty.md) |  | boolean | If true, will display note when empty |
-|  [type](./influxdb-client-apis.geoviewproperties.type.md) |  | 'geo' |  |
-|  [useS2CellID?](./influxdb-client-apis.geoviewproperties.uses2cellid.md) |  | boolean | <i>(Optional)</i> If true, S2 column is used to calculate lat/lon |
-|  [zoom](./influxdb-client-apis.geoviewproperties.zoom.md) |  | number | Zoom level used for initial display of the map |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowPanAndZoom](./influxdb-client-apis.geoviewproperties.allowpanandzoom.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, map zoom and pan controls are enabled on the dashboard view
+
+
+</td></tr>
+<tr><td>
+
+[center](./influxdb-client-apis.geoviewproperties.center.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ lat: number; lon: number; }
+
+
+</td><td>
+
+Coordinates of the center of the map
+
+
+</td></tr>
+<tr><td>
+
+[colors?](./influxdb-client-apis.geoviewproperties.colors.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardColor](./influxdb-client-apis.dashboardcolor.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Colors define color encoding of data into a visualization
+
+
+</td></tr>
+<tr><td>
+
+[detectCoordinateFields](./influxdb-client-apis.geoviewproperties.detectcoordinatefields.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, search results get automatically regroupped so that lon,lat and value are treated as columns
+
+
+</td></tr>
+<tr><td>
+
+[latLonColumns?](./influxdb-client-apis.geoviewproperties.latloncolumns.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LatLonColumns](./influxdb-client-apis.latloncolumns.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[layers](./influxdb-client-apis.geoviewproperties.layers.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[GeoViewLayer](./influxdb-client-apis.geoviewlayer.md)<!-- -->\[\]
+
+
+</td><td>
+
+List of individual layers shown in the map
+
+
+</td></tr>
+<tr><td>
+
+[mapStyle?](./influxdb-client-apis.geoviewproperties.mapstyle.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Define map type - regular, satellite etc.
+
+
+</td></tr>
+<tr><td>
+
+[note](./influxdb-client-apis.geoviewproperties.note.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[queries](./influxdb-client-apis.geoviewproperties.queries.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DashboardQuery](./influxdb-client-apis.dashboardquery.md)<!-- -->\[\]
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[s2Column?](./influxdb-client-apis.geoviewproperties.s2column.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ String to define the column
+
+
+</td></tr>
+<tr><td>
+
+[shape](./influxdb-client-apis.geoviewproperties.shape.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'chronograf-v2'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[showNoteWhenEmpty](./influxdb-client-apis.geoviewproperties.shownotewhenempty.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+If true, will display note when empty
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.geoviewproperties.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'geo'
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[useS2CellID?](./influxdb-client-apis.geoviewproperties.uses2cellid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ If true, S2 column is used to calculate lat/lon
+
+
+</td></tr>
+<tr><td>
+
+[zoom](./influxdb-client-apis.geoviewproperties.zoom.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Zoom level used for initial display of the map
+
+
+</td></tr>
+</tbody></table>

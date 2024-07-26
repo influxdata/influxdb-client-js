@@ -4,7 +4,7 @@
 
 ## PostReplicationRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostReplicationRequest 
@@ -12,8 +12,63 @@ interface PostReplicationRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postreplicationrequest.body.md) |  | [ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md) | entity body |
-|  [validate?](./influxdb-client-apis.postreplicationrequest.validate.md) |  | any | <i>(Optional)</i> If true, validate the replication, but don't save it. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postreplicationrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ReplicationCreationRequest](./influxdb-client-apis.replicationcreationrequest.md)
+
+
+</td><td>
+
+entity body
+
+
+</td></tr>
+<tr><td>
+
+[validate?](./influxdb-client-apis.postreplicationrequest.validate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+_(Optional)_ If true, validate the replication, but don't save it.
+
+
+</td></tr>
+</tbody></table>

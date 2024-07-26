@@ -8,7 +8,7 @@ Organization ID. InfluxDB applies templates to this organization. The organizati
 
 To find your organization, see how to [view organizations](https://docs.influxdata.com/influxdb/v2.3/organizations/view-orgs/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID?: string;

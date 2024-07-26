@@ -4,7 +4,7 @@
 
 ## RetentionRule interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RetentionRule 
@@ -12,9 +12,90 @@ interface RetentionRule
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md) |  | number | The duration in seconds for how long data will be kept in the database. The default duration is 2592000 (30 days). 0 represents infinite retention. |
-|  [shardGroupDurationSeconds?](./influxdb-client-apis.retentionrule.shardgroupdurationseconds.md) |  | number | <p><i>(Optional)</i> The shard group duration. The duration or interval (in seconds) that each shard group covers.</p><p>\#\#\#\# InfluxDB Cloud</p><p>- Does not use <code>shardGroupDurationsSeconds</code>.</p><p>\#\#\#\# InfluxDB OSS</p><p>- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.</p> |
-|  [type?](./influxdb-client-apis.retentionrule.type.md) |  | 'expire' | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[everySeconds](./influxdb-client-apis.retentionrule.everyseconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The duration in seconds for how long data will be kept in the database. The default duration is 2592000 (30 days). 0 represents infinite retention.
+
+
+</td></tr>
+<tr><td>
+
+[shardGroupDurationSeconds?](./influxdb-client-apis.retentionrule.shardgroupdurationseconds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The shard group duration. The duration or interval (in seconds) that each shard group covers.
+
+\#\#\#\# InfluxDB Cloud
+
+- Does not use `shardGroupDurationsSeconds`<!-- -->.
+
+\#\#\#\# InfluxDB OSS
+
+- Default value depends on the [bucket retention period](https://docs.influxdata.com/influxdb/v2.3/v2.3/reference/internals/shards/#shard-group-duration)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[type?](./influxdb-client-apis.retentionrule.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'expire'
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

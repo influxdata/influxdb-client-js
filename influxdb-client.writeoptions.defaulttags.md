@@ -6,7 +6,7 @@
 
 default tags, unescaped
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 defaultTags?: Record<string, string>;

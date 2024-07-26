@@ -4,7 +4,7 @@
 
 ## BucketMetadataManifest.bucketID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

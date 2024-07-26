@@ -6,12 +6,12 @@
 
 serializeDateTimeAsString changes type serializers to return string values for `dateTime:RFC3339` query result data type. Empty value is converted to null.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function serializeDateTimeAsString(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

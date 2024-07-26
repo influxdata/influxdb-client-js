@@ -6,7 +6,7 @@
 
 Source update
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: Source;

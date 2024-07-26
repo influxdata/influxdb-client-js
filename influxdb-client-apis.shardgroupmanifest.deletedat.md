@@ -4,7 +4,7 @@
 
 ## ShardGroupManifest.deletedAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deletedAt?: string;

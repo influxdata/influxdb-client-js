@@ -4,7 +4,7 @@
 
 ## Sources.sources property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sources?: Source[];

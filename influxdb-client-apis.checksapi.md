@@ -6,7 +6,7 @@
 
 Checks API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ChecksAPI 
@@ -14,22 +14,194 @@ declare class ChecksAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.checksapi._constructor_.md) |  | Creates ChecksAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.checksapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ChecksAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [createCheck(request, requestOptions)](./influxdb-client-apis.checksapi.createcheck.md) |  | Add new check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateCheck](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateCheck) |
-|  [deleteChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.deletechecksid.md) |  | Delete a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksID) |
-|  [deleteChecksIDLabelsID(request, requestOptions)](./influxdb-client-apis.checksapi.deletechecksidlabelsid.md) |  | Delete label from a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteChecksIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksIDLabelsID) |
-|  [getChecks(request, requestOptions)](./influxdb-client-apis.checksapi.getchecks.md) |  | List all checks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecks) |
-|  [getChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksid.md) |  | Retrieve a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksID) |
-|  [getChecksIDLabels(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksidlabels.md) |  | List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDLabels) |
-|  [getChecksIDQuery(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksidquery.md) |  | Retrieve a check query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksIDQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDQuery) |
-|  [patchChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.patchchecksid.md) |  | Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchChecksID) |
-|  [postChecksIDLabels(request, requestOptions)](./influxdb-client-apis.checksapi.postchecksidlabels.md) |  | Add a label to a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostChecksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostChecksIDLabels) |
-|  [putChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.putchecksid.md) |  | Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutChecksID) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createCheck(request, requestOptions)](./influxdb-client-apis.checksapi.createcheck.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add new check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateCheck](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateCheck)
+
+
+</td></tr>
+<tr><td>
+
+[deleteChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.deletechecksid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteChecksIDLabelsID(request, requestOptions)](./influxdb-client-apis.checksapi.deletechecksidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete label from a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteChecksIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteChecksIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[getChecks(request, requestOptions)](./influxdb-client-apis.checksapi.getchecks.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all checks. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecks](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecks)
+
+
+</td></tr>
+<tr><td>
+
+[getChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksID)
+
+
+</td></tr>
+<tr><td>
+
+[getChecksIDLabels(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[getChecksIDQuery(request, requestOptions)](./influxdb-client-apis.checksapi.getchecksidquery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a check query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetChecksIDQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetChecksIDQuery)
+
+
+</td></tr>
+<tr><td>
+
+[patchChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.patchchecksid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchChecksID)
+
+
+</td></tr>
+<tr><td>
+
+[postChecksIDLabels(request, requestOptions)](./influxdb-client-apis.checksapi.postchecksidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostChecksIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostChecksIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[putChecksID(request, requestOptions)](./influxdb-client-apis.checksapi.putchecksid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a check. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutChecksID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutChecksID)
+
+
+</td></tr>
+</tbody></table>

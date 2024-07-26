@@ -4,7 +4,7 @@
 
 ## Variable.createdAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 createdAt?: string;

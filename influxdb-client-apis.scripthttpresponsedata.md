@@ -6,7 +6,7 @@
 
 The response body contains the results of the executed script. The response is user-defined and dynamic.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ScriptHTTPResponseData = string;

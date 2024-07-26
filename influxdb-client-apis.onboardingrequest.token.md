@@ -6,7 +6,7 @@
 
 Authentication token to set on the initial user. If not specified, the server will generate a token.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 token?: string;

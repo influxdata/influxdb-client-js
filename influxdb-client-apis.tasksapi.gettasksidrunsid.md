@@ -6,7 +6,7 @@
 
 Retrieve a run for a task. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTasksIDRunsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTasksIDRunsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTasksIDRunsID(request: GetTasksIDRunsIDRequest, requestOptions?: RequestOptions): Promise<Run>;
@@ -14,12 +14,56 @@ getTasksIDRunsID(request: GetTasksIDRunsIDRequest, requestOptions?: RequestOptio
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetTasksIDRunsIDRequest](./influxdb-client-apis.gettasksidrunsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetTasksIDRunsIDRequest](./influxdb-client-apis.gettasksidrunsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Run](./influxdb-client-apis.run.md)<!-- -->&gt;
 

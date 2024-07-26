@@ -6,7 +6,7 @@
 
 Overwrite the embedded SQL store on the server with a backed-up snapshot. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostRestoreSQL](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostRestoreSQL)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postRestoreSQL(request: PostRestoreSQLRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ postRestoreSQL(request: PostRestoreSQLRequest, requestOptions?: RequestOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostRestoreSQLRequest](./influxdb-client-apis.postrestoresqlrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostRestoreSQLRequest](./influxdb-client-apis.postrestoresqlrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

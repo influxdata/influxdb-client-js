@@ -4,7 +4,7 @@
 
 ## CreateCheckRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateCheckRequest 
@@ -12,7 +12,44 @@ interface CreateCheckRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.createcheckrequest.body.md) |  | [PostCheck](./influxdb-client-apis.postcheck.md) | Check to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.createcheckrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[PostCheck](./influxdb-client-apis.postcheck.md)
+
+
+</td><td>
+
+Check to create
+
+
+</td></tr>
+</tbody></table>

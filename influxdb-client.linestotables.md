@@ -6,7 +6,7 @@
 
 LinesToTables creates a transformation that accepts (flux) annotated CSV lines and emits rows together with table metadata.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function linesToTables(consumer: FluxResultObserver<string[]>): CommunicationObserver<string>;
@@ -14,11 +14,38 @@ declare function linesToTables(consumer: FluxResultObserver<string[]>): Communic
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  consumer | [FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt; |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+consumer
+
+
+</td><td>
+
+[FluxResultObserver](./influxdb-client.fluxresultobserver.md)<!-- -->&lt;string\[\]&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [CommunicationObserver](./influxdb-client.communicationobserver.md)<!-- -->&lt;string&gt;
 

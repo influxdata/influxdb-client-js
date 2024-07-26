@@ -4,7 +4,7 @@
 
 ## PutTelegrafsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PutTelegrafsIDRequest 
@@ -12,8 +12,63 @@ interface PutTelegrafsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.puttelegrafsidrequest.body.md) |  | [TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md) | Telegraf configuration update to apply |
-|  [telegrafID](./influxdb-client-apis.puttelegrafsidrequest.telegrafid.md) |  | string | The Telegraf config ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.puttelegrafsidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TelegrafPluginRequest](./influxdb-client-apis.telegrafpluginrequest.md)
+
+
+</td><td>
+
+Telegraf configuration update to apply
+
+
+</td></tr>
+<tr><td>
+
+[telegrafID](./influxdb-client-apis.puttelegrafsidrequest.telegrafid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The Telegraf config ID.
+
+
+</td></tr>
+</tbody></table>

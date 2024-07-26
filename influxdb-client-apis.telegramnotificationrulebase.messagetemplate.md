@@ -6,7 +6,7 @@
 
 The message template as a flux interpolated string.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 messageTemplate: string;

@@ -6,7 +6,7 @@
 
 Update a Source. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchSourcesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchSourcesID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 patchSourcesID(request: PatchSourcesIDRequest, requestOptions?: RequestOptions): Promise<Source>;
@@ -14,12 +14,56 @@ patchSourcesID(request: PatchSourcesIDRequest, requestOptions?: RequestOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PatchSourcesIDRequest](./influxdb-client-apis.patchsourcesidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Source](./influxdb-client-apis.source.md)<!-- -->&gt;
 

@@ -4,7 +4,7 @@
 
 ## XYViewProperties.shadeBelow property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shadeBelow?: boolean;

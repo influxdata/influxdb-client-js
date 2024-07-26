@@ -6,7 +6,7 @@
 
 Update a notification rule. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutNotificationRulesID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationRulesID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 putNotificationRulesID(request: PutNotificationRulesIDRequest, requestOptions?: RequestOptions): Promise<NotificationRule>;
@@ -14,12 +14,56 @@ putNotificationRulesID(request: PutNotificationRulesIDRequest, requestOptions?: 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PutNotificationRulesIDRequest](./influxdb-client-apis.putnotificationrulesidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[NotificationRule](./influxdb-client-apis.notificationrule.md)<!-- -->&gt;
 

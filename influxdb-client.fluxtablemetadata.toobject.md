@@ -6,7 +6,7 @@
 
 Creates an object out of the supplied row with the help of column descriptors.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toObject(row: string[]): {
@@ -16,11 +16,40 @@ toObject(row: string[]): {
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  row | string\[\] | a row with data for each column |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+row
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+a row with data for each column
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 { \[key: string\]: any; }
 

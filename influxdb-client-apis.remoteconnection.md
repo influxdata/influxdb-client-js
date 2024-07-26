@@ -4,7 +4,7 @@
 
 ## RemoteConnection interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RemoteConnection 
@@ -12,13 +12,146 @@ interface RemoteConnection
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [allowInsecureTLS](./influxdb-client-apis.remoteconnection.allowinsecuretls.md) |  | boolean |  |
-|  [description?](./influxdb-client-apis.remoteconnection.description.md) |  | string | <i>(Optional)</i> |
-|  [id](./influxdb-client-apis.remoteconnection.id.md) |  | string |  |
-|  [name](./influxdb-client-apis.remoteconnection.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.remoteconnection.orgid.md) |  | string |  |
-|  [remoteOrgID](./influxdb-client-apis.remoteconnection.remoteorgid.md) |  | string |  |
-|  [remoteURL](./influxdb-client-apis.remoteconnection.remoteurl.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allowInsecureTLS](./influxdb-client-apis.remoteconnection.allowinsecuretls.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.remoteconnection.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id](./influxdb-client-apis.remoteconnection.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.remoteconnection.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.remoteconnection.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteOrgID](./influxdb-client-apis.remoteconnection.remoteorgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[remoteURL](./influxdb-client-apis.remoteconnection.remoteurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

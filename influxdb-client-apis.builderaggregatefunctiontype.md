@@ -4,7 +4,7 @@
 
 ## BuilderAggregateFunctionType type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type BuilderAggregateFunctionType = 'filter' | 'group';

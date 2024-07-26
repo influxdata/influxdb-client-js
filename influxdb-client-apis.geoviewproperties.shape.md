@@ -4,7 +4,7 @@
 
 ## GeoViewProperties.shape property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 shape: 'chronograf-v2';

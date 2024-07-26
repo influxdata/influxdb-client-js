@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteTasksIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteTasksIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [labelID](./influxdb-client-apis.deletetasksidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
-|  [taskID](./influxdb-client-apis.deletetasksidlabelsidrequest.taskid.md) |  | string | The ID of the task to delete the label from. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[labelID](./influxdb-client-apis.deletetasksidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.deletetasksidlabelsidrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to delete the label from.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 Delete a label from a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteTelegrafsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteTelegrafsIDLabelsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 deleteTelegrafsIDLabelsID(request: DeleteTelegrafsIDLabelsIDRequest, requestOptions?: RequestOptions): Promise<void>;
@@ -14,12 +14,56 @@ deleteTelegrafsIDLabelsID(request: DeleteTelegrafsIDLabelsIDRequest, requestOpti
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [DeleteTelegrafsIDLabelsIDRequest](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[DeleteTelegrafsIDLabelsIDRequest](./influxdb-client-apis.deletetelegrafsidlabelsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;void&gt;
 

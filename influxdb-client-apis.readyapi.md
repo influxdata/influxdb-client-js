@@ -6,7 +6,7 @@
 
 Ready API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ReadyAPI 
@@ -14,13 +14,68 @@ declare class ReadyAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.readyapi._constructor_.md) |  | Creates ReadyAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.readyapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ReadyAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md) |  | Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetReady) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getReady(request, requestOptions)](./influxdb-client-apis.readyapi.getready.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Get the readiness of an instance at startup. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetReady](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetReady)
+
+
+</td></tr>
+</tbody></table>

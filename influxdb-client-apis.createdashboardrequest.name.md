@@ -6,7 +6,7 @@
 
 The user-facing name of the dashboard.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name: string;

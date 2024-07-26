@@ -4,7 +4,7 @@
 
 ## Checks interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Checks 
@@ -12,8 +12,63 @@ interface Checks
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [checks?](./influxdb-client-apis.checks.checks.md) |  | [Check](./influxdb-client-apis.check.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.checks.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[checks?](./influxdb-client-apis.checks.checks.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Check](./influxdb-client-apis.check.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.checks.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

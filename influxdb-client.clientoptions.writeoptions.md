@@ -6,7 +6,7 @@
 
 supplies and overrides default writing options
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writeOptions?: Partial<WriteOptions>;

@@ -4,7 +4,7 @@
 
 ## Subscribable.subscribe() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 subscribe(observer: Partial<Observer<T>>): Subscription;
@@ -12,11 +12,38 @@ subscribe(observer: Partial<Observer<T>>): Subscription;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  observer | Partial&lt;[Observer](./influxdb-client.observer.md)<!-- -->&lt;T&gt;&gt; |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+observer
+
+
+</td><td>
+
+Partial&lt;[Observer](./influxdb-client.observer.md)<!-- -->&lt;T&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [Subscription](./influxdb-client.subscription.md)
 

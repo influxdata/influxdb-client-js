@@ -4,7 +4,7 @@
 
 ## Organizations interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Organizations 
@@ -12,8 +12,63 @@ interface Organizations
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [links?](./influxdb-client-apis.organizations.links.md) |  | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
-|  [orgs?](./influxdb-client-apis.organizations.orgs.md) |  | [Organization](./influxdb-client-apis.organization.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[links?](./influxdb-client-apis.organizations.links.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgs?](./influxdb-client-apis.organizations.orgs.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Organization](./influxdb-client-apis.organization.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

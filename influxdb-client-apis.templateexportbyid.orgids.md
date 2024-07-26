@@ -4,7 +4,7 @@
 
 ## TemplateExportByID.orgIDs property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgIDs?: Array<{

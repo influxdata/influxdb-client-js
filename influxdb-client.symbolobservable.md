@@ -6,7 +6,7 @@
 
 Symbol.observable or a string "<!-- -->@<!-- -->@<!-- -->observable". Used for interop
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 symbolObservable: typeof Symbol.observable | "@@observable"

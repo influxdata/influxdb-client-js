@@ -6,7 +6,7 @@
 
 Resources API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class ResourcesAPI 
@@ -14,13 +14,68 @@ declare class ResourcesAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.resourcesapi._constructor_.md) |  | Creates ResourcesAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.resourcesapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates ResourcesAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md) |  | List all known resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetResources) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getResources(request, requestOptions)](./influxdb-client-apis.resourcesapi.getresources.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all known resources. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetResources](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetResources)
+
+
+</td></tr>
+</tbody></table>

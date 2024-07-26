@@ -4,7 +4,7 @@
 
 ## Source.languages property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly languages?: Array<'flux' | 'influxql'>;

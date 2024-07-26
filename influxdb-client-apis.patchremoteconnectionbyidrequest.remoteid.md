@@ -4,7 +4,7 @@
 
 ## PatchRemoteConnectionByIDRequest.remoteID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remoteID: string;

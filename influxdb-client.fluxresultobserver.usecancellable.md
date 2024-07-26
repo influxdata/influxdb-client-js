@@ -6,7 +6,7 @@
 
 Setups cancellable that can abort flux result processing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 useCancellable?: (cancellable: Cancellable) => void;

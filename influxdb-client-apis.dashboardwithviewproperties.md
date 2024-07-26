@@ -4,7 +4,7 @@
 
 ## DashboardWithViewProperties type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type DashboardWithViewProperties = CreateDashboardRequest & {
@@ -25,5 +25,5 @@ type DashboardWithViewProperties = CreateDashboardRequest & {
     labels?: Labels;
 };
 ```
-<b>References:</b> [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [CellsWithViewProperties](./influxdb-client-apis.cellswithviewproperties.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
+**References:** [CreateDashboardRequest](./influxdb-client-apis.createdashboardrequest.md)<!-- -->, [Link](./influxdb-client-apis.link.md)<!-- -->, [CellsWithViewProperties](./influxdb-client-apis.cellswithviewproperties.md)<!-- -->, [Labels](./influxdb-client-apis.labels.md)
 

@@ -4,7 +4,7 @@
 
 ## Stack interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Stack 
@@ -12,10 +12,103 @@ interface Stack
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [createdAt?](./influxdb-client-apis.stack.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [events?](./influxdb-client-apis.stack.events.md) |  | Array&lt;{ eventType?: string; name?: string; description?: string; sources?: string\[\]; resources?: Array&lt;{ apiVersion?: string; resourceID?: string; kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; templateMetaName?: string; associations?: Array&lt;{ kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; metaName?: string; }&gt;; links?: { self?: string; }; }&gt;; urls?: string\[\]; readonly updatedAt?: string; }&gt; | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.stack.id.md) |  | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.stack.orgid.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createdAt?](./influxdb-client-apis.stack.createdat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[events?](./influxdb-client-apis.stack.events.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;{ eventType?: string; name?: string; description?: string; sources?: string\[\]; resources?: Array&lt;{ apiVersion?: string; resourceID?: string; kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; templateMetaName?: string; associations?: Array&lt;{ kind?: [TemplateKind](./influxdb-client-apis.templatekind.md)<!-- -->; metaName?: string; }&gt;; links?: { self?: string; }; }&gt;; urls?: string\[\]; readonly updatedAt?: string; }&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.stack.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.stack.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

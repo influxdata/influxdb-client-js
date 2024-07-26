@@ -4,7 +4,7 @@
 
 ## DeleteTasksIDRunsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteTasksIDRunsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteTasksIDRunsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md) |  | string | The ID of the task run to cancel. |
-|  [taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md) |  | string | The ID of the task to cancel. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[runID](./influxdb-client-apis.deletetasksidrunsidrequest.runid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task run to cancel.
+
+
+</td></tr>
+<tr><td>
+
+[taskID](./influxdb-client-apis.deletetasksidrunsidrequest.taskid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the task to cancel.
+
+
+</td></tr>
+</tbody></table>

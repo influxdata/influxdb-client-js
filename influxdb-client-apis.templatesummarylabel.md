@@ -4,7 +4,7 @@
 
 ## TemplateSummaryLabel interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TemplateSummaryLabel 
@@ -12,13 +12,158 @@ interface TemplateSummaryLabel
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [envReferences?](./influxdb-client-apis.templatesummarylabel.envreferences.md) |  | [TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md) | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.templatesummarylabel.id.md) |  | string | <i>(Optional)</i> |
-|  [kind?](./influxdb-client-apis.templatesummarylabel.kind.md) |  | [TemplateKind](./influxdb-client-apis.templatekind.md) | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.templatesummarylabel.name.md) |  | string | <i>(Optional)</i> |
-|  [orgID?](./influxdb-client-apis.templatesummarylabel.orgid.md) |  | string | <i>(Optional)</i> |
-|  [properties?](./influxdb-client-apis.templatesummarylabel.properties.md) |  | { color?: string; description?: string; } | <i>(Optional)</i> |
-|  [templateMetaName?](./influxdb-client-apis.templatesummarylabel.templatemetaname.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[envReferences?](./influxdb-client-apis.templatesummarylabel.envreferences.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TemplateEnvReferences](./influxdb-client-apis.templateenvreferences.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.templatesummarylabel.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[kind?](./influxdb-client-apis.templatesummarylabel.kind.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TemplateKind](./influxdb-client-apis.templatekind.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.templatesummarylabel.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.templatesummarylabel.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[properties?](./influxdb-client-apis.templatesummarylabel.properties.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ color?: string; description?: string; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[templateMetaName?](./influxdb-client-apis.templatesummarylabel.templatemetaname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## PostVariablesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostVariablesRequest 
@@ -12,7 +12,44 @@ interface PostVariablesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postvariablesrequest.body.md) |  | [Variable](./influxdb-client-apis.variable.md) | Variable to create |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postvariablesrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Variable](./influxdb-client-apis.variable.md)
+
+
+</td><td>
+
+Variable to create
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 The precision for unix timestamps in the line protocol batch.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 precision?: any;

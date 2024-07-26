@@ -6,7 +6,7 @@
 
 The task ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

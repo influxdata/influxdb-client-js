@@ -6,7 +6,7 @@
 
 max size of a batch in bytes
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 maxBatchBytes: number;

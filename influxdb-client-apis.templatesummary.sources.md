@@ -4,7 +4,7 @@
 
 ## TemplateSummary.sources property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sources?: string[];

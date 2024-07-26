@@ -4,7 +4,7 @@
 
 ## CreateCell interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface CreateCell 
@@ -12,12 +12,139 @@ interface CreateCell
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [h?](./influxdb-client-apis.createcell.h.md) |  | number | <i>(Optional)</i> |
-|  [name?](./influxdb-client-apis.createcell.name.md) |  | string | <i>(Optional)</i> |
-|  [usingView?](./influxdb-client-apis.createcell.usingview.md) |  | string | <i>(Optional)</i> Makes a copy of the provided view. |
-|  [w?](./influxdb-client-apis.createcell.w.md) |  | number | <i>(Optional)</i> |
-|  [x?](./influxdb-client-apis.createcell.x.md) |  | number | <i>(Optional)</i> |
-|  [y?](./influxdb-client-apis.createcell.y.md) |  | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[h?](./influxdb-client-apis.createcell.h.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.createcell.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[usingView?](./influxdb-client-apis.createcell.usingview.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Makes a copy of the provided view.
+
+
+</td></tr>
+<tr><td>
+
+[w?](./influxdb-client-apis.createcell.w.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[x?](./influxdb-client-apis.createcell.x.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[y?](./influxdb-client-apis.createcell.y.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

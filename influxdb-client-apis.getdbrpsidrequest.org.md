@@ -6,7 +6,7 @@
 
 Specifies the organization name of the mapping
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

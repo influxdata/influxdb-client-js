@@ -6,7 +6,7 @@
 
 Request HTTP headers.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 headers?: {

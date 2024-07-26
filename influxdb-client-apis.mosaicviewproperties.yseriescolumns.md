@@ -4,7 +4,7 @@
 
 ## MosaicViewProperties.ySeriesColumns property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 ySeriesColumns: string[];

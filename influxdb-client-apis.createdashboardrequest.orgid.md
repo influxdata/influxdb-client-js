@@ -6,7 +6,7 @@
 
 The ID of the organization that owns the dashboard.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

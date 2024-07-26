@@ -4,7 +4,7 @@
 
 ## NotificationEndpointDiscriminator type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
@@ -17,5 +17,5 @@ type NotificationEndpointDiscriminator = (SlackNotificationEndpoint & {
     type: string;
 });
 ```
-<b>References:</b> [SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md)<!-- -->, [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md)<!-- -->, [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md)<!-- -->, [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md)
+**References:** [SlackNotificationEndpoint](./influxdb-client-apis.slacknotificationendpoint.md)<!-- -->, [PagerDutyNotificationEndpoint](./influxdb-client-apis.pagerdutynotificationendpoint.md)<!-- -->, [HTTPNotificationEndpoint](./influxdb-client-apis.httpnotificationendpoint.md)<!-- -->, [TelegramNotificationEndpoint](./influxdb-client-apis.telegramnotificationendpoint.md)
 

@@ -6,7 +6,7 @@
 
 Converts chunk into a string.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toUtf8String(chunk: Uint8Array, start: number, end: number): string;
@@ -14,13 +14,72 @@ toUtf8String(chunk: Uint8Array, start: number, end: number): string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  chunk | Uint8Array | chunk |
-|  start | number | start index |
-|  end | number | end index |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+chunk
+
+
+</td><td>
+
+Uint8Array
+
+
+</td><td>
+
+chunk
+
+
+</td></tr>
+<tr><td>
+
+start
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+start index
+
+
+</td></tr>
+<tr><td>
+
+end
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+end index
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 string
 

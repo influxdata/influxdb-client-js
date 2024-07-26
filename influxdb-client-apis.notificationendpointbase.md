@@ -4,7 +4,7 @@
 
 ## NotificationEndpointBase interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface NotificationEndpointBase 
@@ -12,17 +12,236 @@ interface NotificationEndpointBase
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [createdAt?](./influxdb-client-apis.notificationendpointbase.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.notificationendpointbase.description.md) |  | string | <i>(Optional)</i> An optional description of the notification endpoint. |
-|  [id?](./influxdb-client-apis.notificationendpointbase.id.md) |  | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.notificationendpointbase.labels.md) |  | [Labels](./influxdb-client-apis.labels.md) | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.notificationendpointbase.links.md) | <code>readonly</code> | { self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; } | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.notificationendpointbase.name.md) |  | string |  |
-|  [orgID?](./influxdb-client-apis.notificationendpointbase.orgid.md) |  | string | <i>(Optional)</i> |
-|  [status?](./influxdb-client-apis.notificationendpointbase.status.md) |  | 'active' \| 'inactive' | <i>(Optional)</i> The status of the endpoint. |
-|  [type](./influxdb-client-apis.notificationendpointbase.type.md) |  | [NotificationEndpointType](./influxdb-client-apis.notificationendpointtype.md) |  |
-|  [updatedAt?](./influxdb-client-apis.notificationendpointbase.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [userID?](./influxdb-client-apis.notificationendpointbase.userid.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createdAt?](./influxdb-client-apis.notificationendpointbase.createdat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.notificationendpointbase.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ An optional description of the notification endpoint.
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.notificationendpointbase.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[labels?](./influxdb-client-apis.notificationendpointbase.labels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Labels](./influxdb-client-apis.labels.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.notificationendpointbase.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+{ self?: [Link](./influxdb-client-apis.link.md)<!-- -->; labels?: [Link](./influxdb-client-apis.link.md)<!-- -->; members?: [Link](./influxdb-client-apis.link.md)<!-- -->; owners?: [Link](./influxdb-client-apis.link.md)<!-- -->; }
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.notificationendpointbase.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.notificationendpointbase.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.notificationendpointbase.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'active' \| 'inactive'
+
+
+</td><td>
+
+_(Optional)_ The status of the endpoint.
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.notificationendpointbase.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[NotificationEndpointType](./influxdb-client-apis.notificationendpointtype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[updatedAt?](./influxdb-client-apis.notificationendpointbase.updatedat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[userID?](./influxdb-client-apis.notificationendpointbase.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

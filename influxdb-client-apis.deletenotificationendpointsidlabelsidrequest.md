@@ -4,7 +4,7 @@
 
 ## DeleteNotificationEndpointsIDLabelsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteNotificationEndpointsIDLabelsIDRequest 
@@ -12,8 +12,63 @@ interface DeleteNotificationEndpointsIDLabelsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [endpointID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.endpointid.md) |  | string | The notification endpoint ID. |
-|  [labelID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.labelid.md) |  | string | The ID of the label to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[endpointID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.endpointid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The notification endpoint ID.
+
+
+</td></tr>
+<tr><td>
+
+[labelID](./influxdb-client-apis.deletenotificationendpointsidlabelsidrequest.labelid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the label to delete.
+
+
+</td></tr>
+</tbody></table>

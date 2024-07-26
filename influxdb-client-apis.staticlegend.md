@@ -6,7 +6,7 @@
 
 StaticLegend represents the options specific to the static legend
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface StaticLegend 
@@ -14,13 +14,158 @@ interface StaticLegend
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [colorizeRows?](./influxdb-client-apis.staticlegend.colorizerows.md) |  | boolean | <i>(Optional)</i> |
-|  [heightRatio?](./influxdb-client-apis.staticlegend.heightratio.md) |  | number | <i>(Optional)</i> |
-|  [opacity?](./influxdb-client-apis.staticlegend.opacity.md) |  | number | <i>(Optional)</i> |
-|  [orientationThreshold?](./influxdb-client-apis.staticlegend.orientationthreshold.md) |  | number | <i>(Optional)</i> |
-|  [show?](./influxdb-client-apis.staticlegend.show.md) |  | boolean | <i>(Optional)</i> |
-|  [valueAxis?](./influxdb-client-apis.staticlegend.valueaxis.md) |  | string | <i>(Optional)</i> |
-|  [widthRatio?](./influxdb-client-apis.staticlegend.widthratio.md) |  | number | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[colorizeRows?](./influxdb-client-apis.staticlegend.colorizerows.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[heightRatio?](./influxdb-client-apis.staticlegend.heightratio.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[opacity?](./influxdb-client-apis.staticlegend.opacity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[orientationThreshold?](./influxdb-client-apis.staticlegend.orientationthreshold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[show?](./influxdb-client-apis.staticlegend.show.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[valueAxis?](./influxdb-client-apis.staticlegend.valueaxis.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[widthRatio?](./influxdb-client-apis.staticlegend.widthratio.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

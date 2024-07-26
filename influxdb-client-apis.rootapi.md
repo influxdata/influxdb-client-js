@@ -6,7 +6,7 @@
 
 Root API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class RootAPI 
@@ -14,13 +14,68 @@ declare class RootAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.rootapi._constructor_.md) |  | Creates RootAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.rootapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates RootAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md) |  | List all top level routes. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRoutes) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getRoutes(request, requestOptions)](./influxdb-client-apis.rootapi.getroutes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all top level routes. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRoutes](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRoutes)
+
+
+</td></tr>
+</tbody></table>

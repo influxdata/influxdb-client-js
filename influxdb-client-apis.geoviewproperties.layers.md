@@ -6,7 +6,7 @@
 
 List of individual layers shown in the map
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 layers: GeoViewLayer[];

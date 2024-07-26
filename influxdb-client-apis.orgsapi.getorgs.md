@@ -6,7 +6,7 @@
 
 List organizations. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetOrgs](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetOrgs)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getOrgs(request?: GetOrgsRequest, requestOptions?: RequestOptions): Promise<Organizations>;
@@ -14,12 +14,56 @@ getOrgs(request?: GetOrgsRequest, requestOptions?: RequestOptions): Promise<Orga
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetOrgsRequest](./influxdb-client-apis.getorgsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Organizations](./influxdb-client-apis.organizations.md)<!-- -->&gt;
 

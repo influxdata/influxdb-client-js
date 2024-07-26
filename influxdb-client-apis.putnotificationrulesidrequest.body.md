@@ -6,7 +6,7 @@
 
 Notification rule update to apply
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: NotificationRule;

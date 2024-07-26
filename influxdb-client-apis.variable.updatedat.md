@@ -4,7 +4,7 @@
 
 ## Variable.updatedAt property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 updatedAt?: string;

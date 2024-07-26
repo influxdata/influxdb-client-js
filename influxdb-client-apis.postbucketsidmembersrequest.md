@@ -4,7 +4,7 @@
 
 ## PostBucketsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostBucketsIDMembersRequest 
@@ -12,8 +12,63 @@ interface PostBucketsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postbucketsidmembersrequest.body.md) |  | [AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md) | A user to add as a member to the bucket. |
-|  [bucketID](./influxdb-client-apis.postbucketsidmembersrequest.bucketid.md) |  | string | The ID of the bucket to retrieve users for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postbucketsidmembersrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AddResourceMemberRequestBody](./influxdb-client-apis.addresourcememberrequestbody.md)
+
+
+</td><td>
+
+A user to add as a member to the bucket.
+
+
+</td></tr>
+<tr><td>
+
+[bucketID](./influxdb-client-apis.postbucketsidmembersrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the bucket to retrieve users for.
+
+
+</td></tr>
+</tbody></table>

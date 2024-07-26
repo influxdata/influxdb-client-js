@@ -6,7 +6,7 @@
 
 Contains the AST for the supplied Flux query
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ASTResponse 
@@ -14,7 +14,44 @@ interface ASTResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [ast?](./influxdb-client-apis.astresponse.ast.md) |  | [Package](./influxdb-client-apis.package.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ast?](./influxdb-client-apis.astresponse.ast.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Package](./influxdb-client-apis.package.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Buckets interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Buckets 
@@ -12,8 +12,65 @@ interface Buckets
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [buckets?](./influxdb-client-apis.buckets.buckets.md) |  | [Bucket](./influxdb-client-apis.bucket.md)<!-- -->\[\] | <i>(Optional)</i> |
-|  [links?](./influxdb-client-apis.buckets.links.md) | <code>readonly</code> | [Links](./influxdb-client-apis.links.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[buckets?](./influxdb-client-apis.buckets.buckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Bucket](./influxdb-client-apis.bucket.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[links?](./influxdb-client-apis.buckets.links.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[Links](./influxdb-client-apis.links.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

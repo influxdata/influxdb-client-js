@@ -6,7 +6,7 @@
 
 Type of [Observer.error](./influxdb-client.observer.error.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type ObserverError = (e: any) => void;

@@ -6,7 +6,7 @@
 
 Indicates whether this field should be visible on the table.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 visible?: boolean;

@@ -4,7 +4,7 @@
 
 ## GetSourcesIDBucketsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetSourcesIDBucketsRequest 
@@ -12,8 +12,63 @@ interface GetSourcesIDBucketsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [org?](./influxdb-client-apis.getsourcesidbucketsrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
-|  [sourceID](./influxdb-client-apis.getsourcesidbucketsrequest.sourceid.md) |  | string | The source ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[org?](./influxdb-client-apis.getsourcesidbucketsrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[sourceID](./influxdb-client-apis.getsourcesidbucketsrequest.sourceid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The source ID.
+
+
+</td></tr>
+</tbody></table>

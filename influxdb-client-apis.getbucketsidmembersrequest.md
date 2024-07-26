@@ -4,7 +4,7 @@
 
 ## GetBucketsIDMembersRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetBucketsIDMembersRequest 
@@ -12,7 +12,44 @@ interface GetBucketsIDMembersRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md) |  | string | The ID of the bucket to retrieve users for. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bucketID](./influxdb-client-apis.getbucketsidmembersrequest.bucketid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the bucket to retrieve users for.
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## Secrets type
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type Secrets = any;

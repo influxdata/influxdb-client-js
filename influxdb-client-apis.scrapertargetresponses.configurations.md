@@ -4,7 +4,7 @@
 
 ## ScraperTargetResponses.configurations property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 configurations?: ScraperTargetResponse[];

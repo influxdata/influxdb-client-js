@@ -6,7 +6,7 @@
 
 List all users with member privileges for a Telegraf config. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetTelegrafsIDMembers](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetTelegrafsIDMembers)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getTelegrafsIDMembers(request: GetTelegrafsIDMembersRequest, requestOptions?: RequestOptions): Promise<ResourceMembers>;
@@ -14,12 +14,56 @@ getTelegrafsIDMembers(request: GetTelegrafsIDMembersRequest, requestOptions?: Re
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetTelegrafsIDMembersRequest](./influxdb-client-apis.gettelegrafsidmembersrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetTelegrafsIDMembersRequest](./influxdb-client-apis.gettelegrafsidmembersrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[ResourceMembers](./influxdb-client-apis.resourcemembers.md)<!-- -->&gt;
 

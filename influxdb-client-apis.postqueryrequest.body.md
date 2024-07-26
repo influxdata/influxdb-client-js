@@ -6,7 +6,7 @@
 
 Flux query or specification to execute
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: Query;

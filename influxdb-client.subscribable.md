@@ -4,7 +4,7 @@
 
 ## Subscribable interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Subscribable<T> 
@@ -12,7 +12,24 @@ interface Subscribable<T>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [subscribe(observer)](./influxdb-client.subscribable.subscribe.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[subscribe(observer)](./influxdb-client.subscribable.subscribe.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

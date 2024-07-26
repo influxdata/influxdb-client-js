@@ -6,7 +6,7 @@
 
 Subscription mimics Subscription from ECMAScript TC39 Observable proposal
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Subscription 
@@ -14,13 +14,68 @@ interface Subscription
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [closed](./influxdb-client.subscription.closed.md) | <code>readonly</code> | boolean |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[closed](./influxdb-client.subscription.closed.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [unsubscribe()](./influxdb-client.subscription.unsubscribe.md) |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[unsubscribe()](./influxdb-client.subscription.unsubscribe.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

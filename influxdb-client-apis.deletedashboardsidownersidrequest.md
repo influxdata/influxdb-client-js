@@ -4,7 +4,7 @@
 
 ## DeleteDashboardsIDOwnersIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteDashboardsIDOwnersIDRequest 
@@ -12,8 +12,63 @@ interface DeleteDashboardsIDOwnersIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [dashboardID](./influxdb-client-apis.deletedashboardsidownersidrequest.dashboardid.md) |  | string | The dashboard ID. |
-|  [userID](./influxdb-client-apis.deletedashboardsidownersidrequest.userid.md) |  | string | The ID of the owner to remove. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[dashboardID](./influxdb-client-apis.deletedashboardsidownersidrequest.dashboardid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The dashboard ID.
+
+
+</td></tr>
+<tr><td>
+
+[userID](./influxdb-client-apis.deletedashboardsidownersidrequest.userid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the owner to remove.
+
+
+</td></tr>
+</tbody></table>

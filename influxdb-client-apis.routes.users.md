@@ -4,7 +4,7 @@
 
 ## Routes.users property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 users?: string;

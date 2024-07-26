@@ -4,7 +4,7 @@
 
 ## BucketShardMapping.oldId property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 oldId: number;

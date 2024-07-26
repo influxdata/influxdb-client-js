@@ -4,7 +4,7 @@
 
 ## Routes.me property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 me?: string;

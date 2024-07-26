@@ -4,7 +4,7 @@
 
 ## Axes.y property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 y: Axis;

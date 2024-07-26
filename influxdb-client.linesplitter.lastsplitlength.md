@@ -6,7 +6,7 @@
 
 last length of elements in
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lastSplitLength: number;

@@ -4,7 +4,7 @@
 
 ## PatchScriptsIDRemoveLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchScriptsIDRemoveLabelsRequest 
@@ -12,8 +12,63 @@ interface PatchScriptsIDRemoveLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchscriptsidremovelabelsrequest.body.md) |  | { labels?: string\[\]; } | The labels to remove from the script. |
-|  [scriptID](./influxdb-client-apis.patchscriptsidremovelabelsrequest.scriptid.md) |  | string | A script ID. Specifies the script to remove labels from. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchscriptsidremovelabelsrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ labels?: string\[\]; }
+
+
+</td><td>
+
+The labels to remove from the script.
+
+
+</td></tr>
+<tr><td>
+
+[scriptID](./influxdb-client-apis.patchscriptsidremovelabelsrequest.scriptid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A script ID. Specifies the script to remove labels from.
+
+
+</td></tr>
+</tbody></table>

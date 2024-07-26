@@ -6,7 +6,7 @@
 
 The ID of the bucket to retrieve.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

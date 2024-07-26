@@ -4,7 +4,7 @@
 
 ## AnalyzeQueryResponse interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface AnalyzeQueryResponse 
@@ -12,7 +12,44 @@ interface AnalyzeQueryResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [errors?](./influxdb-client-apis.analyzequeryresponse.errors.md) |  | Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt; | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[errors?](./influxdb-client-apis.analyzequeryresponse.errors.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;{ line?: number; column?: number; character?: number; message?: string; }&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

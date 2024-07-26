@@ -4,7 +4,7 @@
 
 ## PatchDBRPIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PatchDBRPIDRequest 
@@ -12,10 +12,101 @@ interface PatchDBRPIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.patchdbrpidrequest.body.md) |  | [DBRPUpdate](./influxdb-client-apis.dbrpupdate.md) | Database retention policy update to apply |
-|  [dbrpID](./influxdb-client-apis.patchdbrpidrequest.dbrpid.md) |  | string | The database retention policy mapping. |
-|  [org?](./influxdb-client-apis.patchdbrpidrequest.org.md) |  | string | <i>(Optional)</i> Specifies the organization name of the mapping |
-|  [orgID?](./influxdb-client-apis.patchdbrpidrequest.orgid.md) |  | string | <i>(Optional)</i> Specifies the organization ID of the mapping |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.patchdbrpidrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DBRPUpdate](./influxdb-client-apis.dbrpupdate.md)
+
+
+</td><td>
+
+Database retention policy update to apply
+
+
+</td></tr>
+<tr><td>
+
+[dbrpID](./influxdb-client-apis.patchdbrpidrequest.dbrpid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The database retention policy mapping.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.patchdbrpidrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization name of the mapping
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.patchdbrpidrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Specifies the organization ID of the mapping
+
+
+</td></tr>
+</tbody></table>

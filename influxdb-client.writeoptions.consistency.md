@@ -6,7 +6,7 @@
 
 InfluxDB Enterprise write consistency as explained in https://docs.influxdata.com/enterprise\_influxdb/v1.9/concepts/clustering/\#write-consistency
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 consistency?: 'any' | 'one' | 'quorum' | 'all';

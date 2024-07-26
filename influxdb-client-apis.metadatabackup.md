@@ -4,7 +4,7 @@
 
 ## MetadataBackup interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface MetadataBackup 
@@ -12,9 +12,76 @@ interface MetadataBackup
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [buckets](./influxdb-client-apis.metadatabackup.buckets.md) |  | [BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md) |  |
-|  [kv](./influxdb-client-apis.metadatabackup.kv.md) |  | string |  |
-|  [sql](./influxdb-client-apis.metadatabackup.sql.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[buckets](./influxdb-client-apis.metadatabackup.buckets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BucketMetadataManifests](./influxdb-client-apis.bucketmetadatamanifests.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[kv](./influxdb-client-apis.metadatabackup.kv.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[sql](./influxdb-client-apis.metadatabackup.sql.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

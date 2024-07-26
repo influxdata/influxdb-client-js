@@ -6,7 +6,7 @@
 
 A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) name. Only returns tasks with the specified name. Different tasks may have the same name.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 name?: string;

@@ -6,12 +6,12 @@
 
 Returns flux query with sanitized parameters.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toString(): string;
 ```
-<b>Returns:</b>
+**Returns:**
 
 string
 

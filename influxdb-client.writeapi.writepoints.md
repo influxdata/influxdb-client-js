@@ -6,7 +6,7 @@
 
 Write points.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writePoints(points: ArrayLike<Point>): void;
@@ -14,11 +14,40 @@ writePoints(points: ArrayLike<Point>): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  points | ArrayLike&lt;[Point](./influxdb-client.point.md)<!-- -->&gt; | points to write |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+points
+
+
+</td><td>
+
+ArrayLike&lt;[Point](./influxdb-client.point.md)<!-- -->&gt;
+
+
+</td><td>
+
+points to write
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

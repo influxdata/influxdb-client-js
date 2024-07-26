@@ -6,7 +6,7 @@
 
 The reference to a view from the views API.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 viewID?: string;

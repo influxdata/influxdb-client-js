@@ -4,7 +4,7 @@
 
 ## Source.username property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 username?: string;

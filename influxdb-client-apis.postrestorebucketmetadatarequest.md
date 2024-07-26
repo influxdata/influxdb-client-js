@@ -4,7 +4,7 @@
 
 ## PostRestoreBucketMetadataRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostRestoreBucketMetadataRequest 
@@ -12,7 +12,44 @@ interface PostRestoreBucketMetadataRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorebucketmetadatarequest.body.md) |  | [BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md) | Metadata manifest for a bucket. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postrestorebucketmetadatarequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[BucketMetadataManifest](./influxdb-client-apis.bucketmetadatamanifest.md)
+
+
+</td><td>
+
+Metadata manifest for a bucket.
+
+
+</td></tr>
+</tbody></table>

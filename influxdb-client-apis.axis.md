@@ -6,7 +6,7 @@
 
 Axis used in a visualization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Axis 
@@ -14,12 +14,139 @@ interface Axis
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [base?](./influxdb-client-apis.axis.base.md) |  | '' \| '2' \| '10' | <i>(Optional)</i> Radix for formatting axis values. |
-|  [bounds?](./influxdb-client-apis.axis.bounds.md) |  | string\[\] | <i>(Optional)</i> The extents of the axis in the form \[lower, upper\]. Clients determine whether bounds are inclusive or exclusive of their limits. |
-|  [label?](./influxdb-client-apis.axis.label.md) |  | string | <i>(Optional)</i> Description of the axis. |
-|  [prefix?](./influxdb-client-apis.axis.prefix.md) |  | string | <i>(Optional)</i> Label prefix for formatting axis values. |
-|  [scale?](./influxdb-client-apis.axis.scale.md) |  | [AxisScale](./influxdb-client-apis.axisscale.md) | <i>(Optional)</i> |
-|  [suffix?](./influxdb-client-apis.axis.suffix.md) |  | string | <i>(Optional)</i> Label suffix for formatting axis values. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[base?](./influxdb-client-apis.axis.base.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'' \| '2' \| '10'
+
+
+</td><td>
+
+_(Optional)_ Radix for formatting axis values.
+
+
+</td></tr>
+<tr><td>
+
+[bounds?](./influxdb-client-apis.axis.bounds.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ The extents of the axis in the form \[lower, upper\]. Clients determine whether bounds are inclusive or exclusive of their limits.
+
+
+</td></tr>
+<tr><td>
+
+[label?](./influxdb-client-apis.axis.label.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Description of the axis.
+
+
+</td></tr>
+<tr><td>
+
+[prefix?](./influxdb-client-apis.axis.prefix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Label prefix for formatting axis values.
+
+
+</td></tr>
+<tr><td>
+
+[scale?](./influxdb-client-apis.axis.scale.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AxisScale](./influxdb-client-apis.axisscale.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[suffix?](./influxdb-client-apis.axis.suffix.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Label suffix for formatting axis values.
+
+
+</td></tr>
+</tbody></table>

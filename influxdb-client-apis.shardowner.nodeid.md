@@ -6,7 +6,7 @@
 
 The ID of the node that owns the shard.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 nodeID: number;

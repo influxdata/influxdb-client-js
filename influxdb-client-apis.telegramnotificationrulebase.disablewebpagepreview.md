@@ -6,7 +6,7 @@
 
 Disables preview of web links in the sent messages when "true". Defaults to "false".
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 disableWebPagePreview?: boolean;

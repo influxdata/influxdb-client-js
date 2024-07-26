@@ -6,7 +6,7 @@
 
 Query API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class QueryAPI 
@@ -14,17 +14,124 @@ declare class QueryAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.queryapi._constructor_.md) |  | Creates QueryAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.queryapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates QueryAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [getQuerySuggestions(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestions.md) |  | Retrieve Flux query suggestions. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetQuerySuggestions](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetQuerySuggestions) |
-|  [getQuerySuggestionsName(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestionsname.md) |  | Retrieve a query suggestion for a branching suggestion. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetQuerySuggestionsName](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetQuerySuggestionsName) |
-|  [postQuery(request, requestOptions)](./influxdb-client-apis.queryapi.postquery.md) |  | Query data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQuery) |
-|  [postQueryAnalyze(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryanalyze.md) |  | Analyze a Flux query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAnalyze) |
-|  [postQueryAst(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryast.md) |  | Generate a query Abstract Syntax Tree (AST). See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAst](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAst) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[getQuerySuggestions(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve Flux query suggestions. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetQuerySuggestions](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetQuerySuggestions)
+
+
+</td></tr>
+<tr><td>
+
+[getQuerySuggestionsName(request, requestOptions)](./influxdb-client-apis.queryapi.getquerysuggestionsname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a query suggestion for a branching suggestion. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetQuerySuggestionsName](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetQuerySuggestionsName)
+
+
+</td></tr>
+<tr><td>
+
+[postQuery(request, requestOptions)](./influxdb-client-apis.queryapi.postquery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Query data. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQuery](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQuery)
+
+
+</td></tr>
+<tr><td>
+
+[postQueryAnalyze(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryanalyze.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Analyze a Flux query. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAnalyze](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAnalyze)
+
+
+</td></tr>
+<tr><td>
+
+[postQueryAst(request, requestOptions)](./influxdb-client-apis.queryapi.postqueryast.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Generate a query Abstract Syntax Tree (AST). See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostQueryAst](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostQueryAst)
+
+
+</td></tr>
+</tbody></table>

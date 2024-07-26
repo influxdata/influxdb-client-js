@@ -6,7 +6,7 @@
 
 A user to add as an owner of the task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

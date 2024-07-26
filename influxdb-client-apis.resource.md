@@ -4,7 +4,7 @@
 
 ## Resource interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Resource 
@@ -12,11 +12,120 @@ interface Resource
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [id?](./influxdb-client-apis.resource.id.md) |  | string | <i>(Optional)</i> The ID of a specific resource. In a <code>permission</code>, applies the permission to only the resource with this ID. |
-|  [name?](./influxdb-client-apis.resource.name.md) |  | string | <i>(Optional)</i> Optional: A name for the resource. Not all resource types have a name field. |
-|  [org?](./influxdb-client-apis.resource.org.md) |  | string | <i>(Optional)</i> Optional: The name of the organization with <code>orgID</code>. |
-|  [orgID?](./influxdb-client-apis.resource.orgid.md) |  | string | <i>(Optional)</i> The ID of the organization that owns the resource. In a <code>permission</code>, applies the permission to all resources of <code>type</code> owned by this organization. |
-|  [type](./influxdb-client-apis.resource.type.md) |  | 'authorizations' \| 'buckets' \| 'dashboards' \| 'orgs' \| 'sources' \| 'tasks' \| 'telegrafs' \| 'users' \| 'variables' \| 'scrapers' \| 'secrets' \| 'labels' \| 'views' \| 'documents' \| 'notificationRules' \| 'notificationEndpoints' \| 'checks' \| 'dbrp' \| 'notebooks' \| 'annotations' \| 'remotes' \| 'replications' \| 'instance' \| 'flows' \| 'functions' | The type of resource. In a <code>permission</code>, applies the permission to all resources of this type. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[id?](./influxdb-client-apis.resource.id.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of a specific resource. In a `permission`<!-- -->, applies the permission to only the resource with this ID.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.resource.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Optional: A name for the resource. Not all resource types have a name field.
+
+
+</td></tr>
+<tr><td>
+
+[org?](./influxdb-client-apis.resource.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Optional: The name of the organization with `orgID`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.resource.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the organization that owns the resource. In a `permission`<!-- -->, applies the permission to all resources of `type` owned by this organization.
+
+
+</td></tr>
+<tr><td>
+
+[type](./influxdb-client-apis.resource.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'authorizations' \| 'buckets' \| 'dashboards' \| 'orgs' \| 'sources' \| 'tasks' \| 'telegrafs' \| 'users' \| 'variables' \| 'scrapers' \| 'secrets' \| 'labels' \| 'views' \| 'documents' \| 'notificationRules' \| 'notificationEndpoints' \| 'checks' \| 'dbrp' \| 'notebooks' \| 'annotations' \| 'remotes' \| 'replications' \| 'instance' \| 'flows' \| 'functions'
+
+
+</td><td>
+
+The type of resource. In a `permission`<!-- -->, applies the permission to all resources of this type.
+
+
+</td></tr>
+</tbody></table>

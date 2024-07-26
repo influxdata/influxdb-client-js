@@ -6,7 +6,7 @@
 
 Package name
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 package?: string;

@@ -4,7 +4,7 @@
 
 ## ShardOwner interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface ShardOwner 
@@ -12,7 +12,44 @@ interface ShardOwner
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [nodeID](./influxdb-client-apis.shardowner.nodeid.md) |  | number | The ID of the node that owns the shard. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[nodeID](./influxdb-client-apis.shardowner.nodeid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The ID of the node that owns the shard.
+
+
+</td></tr>
+</tbody></table>

@@ -10,7 +10,7 @@ Repeatable. To filter for more than one stack ID, repeat this parameter with eac
 
 - `http://localhost:8086/api/v2/stacks?&orgID=INFLUX_ORG_ID&stackID=09bd87cd33be3000&stackID=09bef35081fe3000`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 stackID?: string;

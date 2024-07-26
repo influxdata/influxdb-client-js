@@ -6,7 +6,7 @@
 
 List scripts. See [https://docs.influxdata.com/influxdb/cloud/api/\#operation/GetScripts](https://docs.influxdata.com/influxdb/cloud/api/#operation/GetScripts)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getScripts(request?: GetScriptsRequest, requestOptions?: RequestOptions): Promise<Scripts>;
@@ -14,12 +14,56 @@ getScripts(request?: GetScriptsRequest, requestOptions?: RequestOptions): Promis
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md) | <i>(Optional)</i> request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetScriptsRequest](./influxdb-client-apis.getscriptsrequest.md)
+
+
+</td><td>
+
+_(Optional)_ request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Scripts](./influxdb-client-apis.scripts.md)<!-- -->&gt;
 

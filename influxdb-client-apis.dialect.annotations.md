@@ -12,7 +12,7 @@ Annotation rows to include in the results. An \_annotation\_ is metadata associa
 
 For more information about \*\*annotations\*\* in tabular data, see [W3 metadata vocabulary for tabular data](https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/#columns)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 annotations?: Array<'group' | 'datatype' | 'default'>;

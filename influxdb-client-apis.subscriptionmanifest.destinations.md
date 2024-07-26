@@ -4,7 +4,7 @@
 
 ## SubscriptionManifest.destinations property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 destinations: string[];

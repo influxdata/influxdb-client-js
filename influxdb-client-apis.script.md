@@ -4,7 +4,7 @@
 
 ## Script interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface Script 
@@ -12,16 +12,217 @@ interface Script
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [createdAt?](./influxdb-client-apis.script.createdat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [description?](./influxdb-client-apis.script.description.md) |  | string | <i>(Optional)</i> |
-|  [id?](./influxdb-client-apis.script.id.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [labels?](./influxdb-client-apis.script.labels.md) |  | string\[\] | <i>(Optional)</i> The list of label names associated with the script. |
-|  [language?](./influxdb-client-apis.script.language.md) |  | [ScriptLanguage](./influxdb-client-apis.scriptlanguage.md) | <i>(Optional)</i> |
-|  [name](./influxdb-client-apis.script.name.md) |  | string |  |
-|  [orgID](./influxdb-client-apis.script.orgid.md) |  | string |  |
-|  [script](./influxdb-client-apis.script.script.md) |  | string | The script to execute. |
-|  [updatedAt?](./influxdb-client-apis.script.updatedat.md) | <code>readonly</code> | string | <i>(Optional)</i> |
-|  [url?](./influxdb-client-apis.script.url.md) |  | string | <i>(Optional)</i> The invocation endpoint address. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createdAt?](./influxdb-client-apis.script.createdat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.script.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[id?](./influxdb-client-apis.script.id.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[labels?](./influxdb-client-apis.script.labels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ The list of label names associated with the script.
+
+
+</td></tr>
+<tr><td>
+
+[language?](./influxdb-client-apis.script.language.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[ScriptLanguage](./influxdb-client-apis.scriptlanguage.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[name](./influxdb-client-apis.script.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[orgID](./influxdb-client-apis.script.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[script](./influxdb-client-apis.script.script.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The script to execute.
+
+
+</td></tr>
+<tr><td>
+
+[updatedAt?](./influxdb-client-apis.script.updatedat.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[url?](./influxdb-client-apis.script.url.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The invocation endpoint address.
+
+
+</td></tr>
+</tbody></table>

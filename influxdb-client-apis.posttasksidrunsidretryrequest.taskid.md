@@ -6,7 +6,7 @@
 
 A [task](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#task) ID. Specifies the task to retry.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID: string;

@@ -4,7 +4,7 @@
 
 ## GetVariablesIDLabelsRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetVariablesIDLabelsRequest 
@@ -12,7 +12,44 @@ interface GetVariablesIDLabelsRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [variableID](./influxdb-client-apis.getvariablesidlabelsrequest.variableid.md) |  | string | The variable ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[variableID](./influxdb-client-apis.getvariablesidlabelsrequest.variableid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The variable ID.
+
+
+</td></tr>
+</tbody></table>

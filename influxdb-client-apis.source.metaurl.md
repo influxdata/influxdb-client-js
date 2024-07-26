@@ -4,7 +4,7 @@
 
 ## Source.metaUrl property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 metaUrl?: string;

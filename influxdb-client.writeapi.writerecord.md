@@ -6,7 +6,7 @@
 
 Write a line of [Line Protocol](https://bit.ly/2QL99fu)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 writeRecord(record: string): void;
@@ -14,11 +14,40 @@ writeRecord(record: string): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  record | string | line of InfluxDB Line Protocol |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+record
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+line of InfluxDB Line Protocol
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

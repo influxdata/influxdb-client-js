@@ -6,7 +6,7 @@
 
 The database retention policy mapping ID
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dbrpID: string;

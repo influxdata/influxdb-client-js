@@ -6,7 +6,7 @@
 
 Rendered flux that backs the check or notification.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface FluxResponse 
@@ -14,7 +14,44 @@ interface FluxResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [flux?](./influxdb-client-apis.fluxresponse.flux.md) |  | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[flux?](./influxdb-client-apis.fluxresponse.flux.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

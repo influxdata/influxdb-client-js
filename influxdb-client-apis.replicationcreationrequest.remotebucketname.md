@@ -4,7 +4,7 @@
 
 ## ReplicationCreationRequest.remoteBucketName property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 remoteBucketName?: string;

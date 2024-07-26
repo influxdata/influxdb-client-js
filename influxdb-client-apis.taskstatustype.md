@@ -6,7 +6,7 @@
 
 `inactive` cancels scheduled runs and prevents manual runs of the task.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type TaskStatusType = 'active' | 'inactive';

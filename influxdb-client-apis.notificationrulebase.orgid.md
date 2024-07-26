@@ -6,7 +6,7 @@
 
 The ID of the organization that owns this notification rule.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 orgID: string;

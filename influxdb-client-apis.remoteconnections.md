@@ -4,7 +4,7 @@
 
 ## RemoteConnections interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface RemoteConnections 
@@ -12,7 +12,44 @@ interface RemoteConnections
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [remotes?](./influxdb-client-apis.remoteconnections.remotes.md) |  | [RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\] | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[remotes?](./influxdb-client-apis.remoteconnections.remotes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[RemoteConnection](./influxdb-client-apis.remoteconnection.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

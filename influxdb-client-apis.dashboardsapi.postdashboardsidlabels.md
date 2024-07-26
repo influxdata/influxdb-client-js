@@ -6,7 +6,7 @@
 
 Add a label to a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostDashboardsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostDashboardsIDLabels)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 postDashboardsIDLabels(request: PostDashboardsIDLabelsRequest, requestOptions?: RequestOptions): Promise<LabelResponse>;
@@ -14,12 +14,56 @@ postDashboardsIDLabels(request: PostDashboardsIDLabelsRequest, requestOptions?: 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [PostDashboardsIDLabelsRequest](./influxdb-client-apis.postdashboardsidlabelsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[PostDashboardsIDLabelsRequest](./influxdb-client-apis.postdashboardsidlabelsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[LabelResponse](./influxdb-client-apis.labelresponse.md)<!-- -->&gt;
 

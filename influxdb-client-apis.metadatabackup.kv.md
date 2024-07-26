@@ -4,7 +4,7 @@
 
 ## MetadataBackup.kv property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 kv: string;

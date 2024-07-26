@@ -6,7 +6,7 @@
 
 Specifies the time that should be reported as `now` in the query. Default is the server `now` time.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 now?: string;

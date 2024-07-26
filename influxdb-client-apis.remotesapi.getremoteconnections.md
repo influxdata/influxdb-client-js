@@ -6,7 +6,7 @@
 
 List all remote connections. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetRemoteConnections](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetRemoteConnections)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getRemoteConnections(request: GetRemoteConnectionsRequest, requestOptions?: RequestOptions): Promise<RemoteConnections>;
@@ -14,12 +14,56 @@ getRemoteConnections(request: GetRemoteConnectionsRequest, requestOptions?: Requ
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetRemoteConnectionsRequest](./influxdb-client-apis.getremoteconnectionsrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[RemoteConnections](./influxdb-client-apis.remoteconnections.md)<!-- -->&gt;
 

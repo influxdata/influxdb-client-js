@@ -6,7 +6,7 @@
 
 The ID of the task associated with this notification rule.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 taskID?: string;

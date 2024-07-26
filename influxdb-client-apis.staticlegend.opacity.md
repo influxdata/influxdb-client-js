@@ -4,7 +4,7 @@
 
 ## StaticLegend.opacity property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 opacity?: number;

@@ -4,7 +4,7 @@
 
 ## CheckBase.lastRunStatus property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly lastRunStatus?: 'failed' | 'success' | 'canceled';

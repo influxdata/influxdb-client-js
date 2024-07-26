@@ -6,7 +6,7 @@
 
 The ID of the bucket to retrieve users for.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bucketID: string;

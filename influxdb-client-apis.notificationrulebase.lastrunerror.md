@@ -4,7 +4,7 @@
 
 ## NotificationRuleBase.lastRunError property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly lastRunError?: string;

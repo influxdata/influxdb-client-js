@@ -4,7 +4,7 @@
 
 ## ConditionalExpression.alternate property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 alternate?: Expression;

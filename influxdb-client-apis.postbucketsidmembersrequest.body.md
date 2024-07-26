@@ -6,7 +6,7 @@
 
 A user to add as a member to the bucket.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: AddResourceMemberRequestBody;

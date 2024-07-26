@@ -6,7 +6,7 @@
 
 The notification repetition interval.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 every?: string;

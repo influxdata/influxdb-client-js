@@ -6,7 +6,7 @@
 
 NotificationEndpoints API
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare class NotificationEndpointsAPI 
@@ -14,21 +14,180 @@ declare class NotificationEndpointsAPI
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(influxDB)](./influxdb-client-apis.notificationendpointsapi._constructor_.md) |  | Creates NotificationEndpointsAPI |
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(influxDB)](./influxdb-client-apis.notificationendpointsapi._constructor_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates NotificationEndpointsAPI
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [createNotificationEndpoint(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.createnotificationendpoint.md) |  | Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationEndpoint) |
-|  [deleteNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.deletenotificationendpointsid.md) |  | Delete a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationEndpointsID) |
-|  [deleteNotificationEndpointsIDLabelsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.deletenotificationendpointsidlabelsid.md) |  | Delete a label from a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationEndpointsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationEndpointsIDLabelsID) |
-|  [getNotificationEndpoints(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpoints.md) |  | List all notification endpoints. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpoints](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpoints) |
-|  [getNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpointsid.md) |  | Retrieve a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsID) |
-|  [getNotificationEndpointsIDLabels(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpointsidlabels.md) |  | List all labels for a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsIDLabels) |
-|  [patchNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.patchnotificationendpointsid.md) |  | Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchNotificationEndpointsID) |
-|  [postNotificationEndpointIDLabels(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.postnotificationendpointidlabels.md) |  | Add a label to a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostNotificationEndpointIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostNotificationEndpointIDLabels) |
-|  [putNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.putnotificationendpointsid.md) |  | Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationEndpointsID) |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createNotificationEndpoint(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.createnotificationendpoint.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/CreateNotificationEndpoint](https://docs.influxdata.com/influxdb/v2.4/api/#operation/CreateNotificationEndpoint)
+
+
+</td></tr>
+<tr><td>
+
+[deleteNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.deletenotificationendpointsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationEndpointsID)
+
+
+</td></tr>
+<tr><td>
+
+[deleteNotificationEndpointsIDLabelsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.deletenotificationendpointsidlabelsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Delete a label from a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/DeleteNotificationEndpointsIDLabelsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/DeleteNotificationEndpointsIDLabelsID)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationEndpoints(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpoints.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all notification endpoints. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpoints](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpoints)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpointsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Retrieve a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsID)
+
+
+</td></tr>
+<tr><td>
+
+[getNotificationEndpointsIDLabels(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.getnotificationendpointsidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+List all labels for a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetNotificationEndpointsIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetNotificationEndpointsIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[patchNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.patchnotificationendpointsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PatchNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PatchNotificationEndpointsID)
+
+
+</td></tr>
+<tr><td>
+
+[postNotificationEndpointIDLabels(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.postnotificationendpointidlabels.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Add a label to a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PostNotificationEndpointIDLabels](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PostNotificationEndpointIDLabels)
+
+
+</td></tr>
+<tr><td>
+
+[putNotificationEndpointsID(request, requestOptions)](./influxdb-client-apis.notificationendpointsapi.putnotificationendpointsid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Update a notification endpoint. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/PutNotificationEndpointsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/PutNotificationEndpointsID)
+
+
+</td></tr>
+</tbody></table>

@@ -4,7 +4,7 @@
 
 ## BuiltinStatement.id property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 id?: Identifier;

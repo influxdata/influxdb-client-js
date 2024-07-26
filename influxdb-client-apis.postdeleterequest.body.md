@@ -12,7 +12,7 @@ To select points to delete within the specified time range, pass a \*delete pred
 
 - [Delete data](https://docs.influxdata.com/influxdb/v2.3/write-data/delete-data/)<!-- -->. - Learn how to use [delete predicate syntax](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/delete-predicate/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 body: DeletePredicateRequest;

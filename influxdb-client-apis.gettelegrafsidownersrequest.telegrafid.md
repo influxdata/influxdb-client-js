@@ -6,7 +6,7 @@
 
 The Telegraf configuration ID.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 telegrafID: string;

@@ -6,7 +6,7 @@
 
 Retrieve a dashboard. See [https://docs.influxdata.com/influxdb/v2.4/api/\#operation/GetDashboardsID](https://docs.influxdata.com/influxdb/v2.4/api/#operation/GetDashboardsID)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getDashboardsID(request: GetDashboardsIDRequest, requestOptions?: RequestOptions): Promise<Dashboard | DashboardWithViewProperties>;
@@ -14,12 +14,56 @@ getDashboardsID(request: GetDashboardsIDRequest, requestOptions?: RequestOptions
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  request | [GetDashboardsIDRequest](./influxdb-client-apis.getdashboardsidrequest.md) | request parameters and body (if supported) |
-|  requestOptions | [RequestOptions](./influxdb-client-apis.requestoptions.md) | <i>(Optional)</i> optional transport options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+request
+
+
+</td><td>
+
+[GetDashboardsIDRequest](./influxdb-client-apis.getdashboardsidrequest.md)
+
+
+</td><td>
+
+request parameters and body (if supported)
+
+
+</td></tr>
+<tr><td>
+
+requestOptions
+
+
+</td><td>
+
+[RequestOptions](./influxdb-client-apis.requestoptions.md)
+
+
+</td><td>
+
+_(Optional)_ optional transport options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Promise&lt;[Dashboard](./influxdb-client-apis.dashboard.md) \| [DashboardWithViewProperties](./influxdb-client-apis.dashboardwithviewproperties.md)<!-- -->&gt;
 

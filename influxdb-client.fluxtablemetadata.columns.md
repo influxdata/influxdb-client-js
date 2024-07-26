@@ -6,7 +6,7 @@
 
 Table columns.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 columns: Array<FluxTableColumn>;

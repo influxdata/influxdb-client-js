@@ -4,7 +4,7 @@
 
 ## BandViewProperties.geom property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 geom: XYGeom;

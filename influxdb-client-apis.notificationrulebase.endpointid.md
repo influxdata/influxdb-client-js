@@ -4,7 +4,7 @@
 
 ## NotificationRuleBase.endpointID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 endpointID: string;

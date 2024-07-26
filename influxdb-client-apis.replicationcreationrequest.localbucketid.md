@@ -4,7 +4,7 @@
 
 ## ReplicationCreationRequest.localBucketID property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 localBucketID: string;

@@ -6,7 +6,7 @@
 
 An [organization](https://docs.influxdata.com/influxdb/v2.3/reference/glossary/#organization) name. Only returns tasks owned by the specified organization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 org?: string;

@@ -6,7 +6,7 @@
 
 List of status rules the notification rule attempts to match.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 statusRules: StatusRule[];

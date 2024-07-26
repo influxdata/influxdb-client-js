@@ -4,7 +4,7 @@
 
 ## TaskUpdateRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface TaskUpdateRequest 
@@ -12,13 +12,158 @@ interface TaskUpdateRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [cron?](./influxdb-client-apis.taskupdaterequest.cron.md) |  | string | <i>(Optional)</i> Update the 'cron' option in the flux script. |
-|  [description?](./influxdb-client-apis.taskupdaterequest.description.md) |  | string | <i>(Optional)</i> Update the description of the task. |
-|  [every?](./influxdb-client-apis.taskupdaterequest.every.md) |  | string | <i>(Optional)</i> Update the 'every' option in the flux script. |
-|  [flux?](./influxdb-client-apis.taskupdaterequest.flux.md) |  | string | <i>(Optional)</i> The Flux script that the task runs. |
-|  [name?](./influxdb-client-apis.taskupdaterequest.name.md) |  | string | <i>(Optional)</i> Update the 'name' option in the flux script. |
-|  [offset?](./influxdb-client-apis.taskupdaterequest.offset.md) |  | string | <i>(Optional)</i> Update the 'offset' option in the flux script. |
-|  [status?](./influxdb-client-apis.taskupdaterequest.status.md) |  | [TaskStatusType](./influxdb-client-apis.taskstatustype.md) | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[cron?](./influxdb-client-apis.taskupdaterequest.cron.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Update the 'cron' option in the flux script.
+
+
+</td></tr>
+<tr><td>
+
+[description?](./influxdb-client-apis.taskupdaterequest.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Update the description of the task.
+
+
+</td></tr>
+<tr><td>
+
+[every?](./influxdb-client-apis.taskupdaterequest.every.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Update the 'every' option in the flux script.
+
+
+</td></tr>
+<tr><td>
+
+[flux?](./influxdb-client-apis.taskupdaterequest.flux.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The Flux script that the task runs.
+
+
+</td></tr>
+<tr><td>
+
+[name?](./influxdb-client-apis.taskupdaterequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Update the 'name' option in the flux script.
+
+
+</td></tr>
+<tr><td>
+
+[offset?](./influxdb-client-apis.taskupdaterequest.offset.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Update the 'offset' option in the flux script.
+
+
+</td></tr>
+<tr><td>
+
+[status?](./influxdb-client-apis.taskupdaterequest.status.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[TaskStatusType](./influxdb-client-apis.taskstatustype.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

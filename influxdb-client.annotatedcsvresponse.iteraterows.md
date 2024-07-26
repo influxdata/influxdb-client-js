@@ -6,12 +6,12 @@
 
 IterateRows returns iterable of response table rows suitable for `for-await` loop consumption.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 iterateRows(): AsyncIterable<Row>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 AsyncIterable&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
 

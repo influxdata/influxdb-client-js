@@ -6,7 +6,7 @@
 
 Sends requestBody and returns response chunks in an async iterable that can be easily consumed in an `for-await` loop.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 iterate(path: string, requestBody: any, options: SendOptions): AsyncIterableIterator<Uint8Array>;
@@ -14,13 +14,72 @@ iterate(path: string, requestBody: any, options: SendOptions): AsyncIterableIter
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  path | string | HTTP request path |
-|  requestBody | any | request body |
-|  options | [SendOptions](./influxdb-client.sendoptions.md) | send options |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+path
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+HTTP request path
+
+
+</td></tr>
+<tr><td>
+
+requestBody
+
+
+</td><td>
+
+any
+
+
+</td><td>
+
+request body
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[SendOptions](./influxdb-client.sendoptions.md)
+
+
+</td><td>
+
+send options
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 AsyncIterableIterator&lt;Uint8Array&gt;
 

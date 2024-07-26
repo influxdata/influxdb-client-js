@@ -6,7 +6,7 @@
 
 Makes a copy of the provided view.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 usingView?: string;

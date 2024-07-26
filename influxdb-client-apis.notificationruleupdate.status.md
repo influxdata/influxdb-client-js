@@ -4,7 +4,7 @@
 
 ## NotificationRuleUpdate.status property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 status?: 'active' | 'inactive';

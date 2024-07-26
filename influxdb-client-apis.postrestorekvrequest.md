@@ -4,7 +4,7 @@
 
 ## PostRestoreKVRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface PostRestoreKVRequest 
@@ -12,7 +12,44 @@ interface PostRestoreKVRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [body](./influxdb-client-apis.postrestorekvrequest.body.md) |  | string | Full KV snapshot. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[body](./influxdb-client-apis.postrestorekvrequest.body.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+Full KV snapshot.
+
+
+</td></tr>
+</tbody></table>

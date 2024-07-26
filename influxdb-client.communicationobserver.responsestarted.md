@@ -6,7 +6,7 @@
 
 Informs about a start of response processing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 responseStarted?: ResponseStartedFn;

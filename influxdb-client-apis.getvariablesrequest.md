@@ -4,7 +4,7 @@
 
 ## GetVariablesRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface GetVariablesRequest 
@@ -12,8 +12,63 @@ interface GetVariablesRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [org?](./influxdb-client-apis.getvariablesrequest.org.md) |  | string | <i>(Optional)</i> The name of the organization. |
-|  [orgID?](./influxdb-client-apis.getvariablesrequest.orgid.md) |  | string | <i>(Optional)</i> The organization ID. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[org?](./influxdb-client-apis.getvariablesrequest.org.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The name of the organization.
+
+
+</td></tr>
+<tr><td>
+
+[orgID?](./influxdb-client-apis.getvariablesrequest.orgid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The organization ID.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 LinesToRowsIterable is a transformation that accepts an iterable of flux annotated CSV lines and returns an iterable of rows (row values and table metadata).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 declare function linesToRowsIterable(source: AsyncIterable<string>): AsyncIterableIterator<Row>;
@@ -14,11 +14,38 @@ declare function linesToRowsIterable(source: AsyncIterable<string>): AsyncIterab
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  source | AsyncIterable&lt;string&gt; |  |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+source
+
+
+</td><td>
+
+AsyncIterable&lt;string&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 AsyncIterableIterator&lt;[Row](./influxdb-client.row.md)<!-- -->&gt;
 

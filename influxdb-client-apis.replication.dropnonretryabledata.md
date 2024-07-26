@@ -4,7 +4,7 @@
 
 ## Replication.dropNonRetryableData property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dropNonRetryableData?: boolean;

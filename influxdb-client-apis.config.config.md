@@ -4,7 +4,7 @@
 
 ## Config.config property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 config?: any;

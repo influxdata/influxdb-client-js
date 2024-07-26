@@ -4,7 +4,7 @@
 
 ## DeleteAuthorizationsIDRequest interface
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 interface DeleteAuthorizationsIDRequest 
@@ -12,7 +12,44 @@ interface DeleteAuthorizationsIDRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [authID](./influxdb-client-apis.deleteauthorizationsidrequest.authid.md) |  | string | The ID of the authorization to delete. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[authID](./influxdb-client-apis.deleteauthorizationsidrequest.authid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the authorization to delete.
+
+
+</td></tr>
+</tbody></table>
