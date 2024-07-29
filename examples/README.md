@@ -30,6 +30,8 @@ This directory contains javascript and typescript examples for node.js, browser,
     Shows how to configure the client to follow HTTP redirects.
   - [delete.ts](./delete.ts)
     Shows how to delete data from a bucket.
+  - [httpErrorHandled.mjs](./httpErrorHandled.mjs)
+    Shows handling HTTP Error response. 
 - Browser examples
   - Change `token, org, bucket, username, password` variables in [./env_browser.mjs](env_browser.mjs) to match your InfluxDB instance
   - Run `npm run browser`
