@@ -8,6 +8,7 @@
 
 1. [#1005](https://github.com/influxdata/influxdb-client-js/pull/1005): Token stored as a private class property.
 2. [#1019](https://github.com/influxdata/influxdb-client-js/pull/1019): Propagates headers from HTTP response when an error is returned from the server.
+3. [#1020](https://github.com/influxdata/influxdb-client-js/pull/1020): Adds example of working with `HttpError` response.
 
 ### CI
 
