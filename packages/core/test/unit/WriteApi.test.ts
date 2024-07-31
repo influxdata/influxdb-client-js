@@ -680,6 +680,37 @@ describe('WriteApi', () => {
       expect(logs.warn).deep.equals([])
       expect(authorization).equals(`Token customToken`)
     })
+    it('handles HTTP Header in error', async () => {
+      useSubject({})
+      nock(clientOptions.url)
+        .post(WRITE_PATH_NS)
+        .reply(function (_uri, _requestBody) {
+          return [
+            429,
+            '{ "message": "see status code" }',
+            {
+              'retry-after': '60',
+              'trace-id': '123456789ABCDEF',
+              'content-type': 'application/json',
+            },
+          ]
+        })
+        .persist()
+      try {
+        subject.writePoint(new Point('test').floatField('value', 1))
+        await subject.close()
+      } catch (e: any) {
+        expect(logs.error).has.length(1)
+        expect(logs.warn).has.length(1)
+        expect(e instanceof HttpError).to.be.true
+        expect(e._retryAfter).to.equal(60)
+        expect(Object.getOwnPropertyNames(e.headers)).to.have.length(3)
+        expect(e.headers['retry-after']).to.equal('60')
+        expect(e.headers['trace-id']).to.equal('123456789ABCDEF')
+        expect(e.headers['content-type']).to.equal('application/json')
+        expect(JSON.parse(e.body).message).to.equal('see status code')
+      }
+    })
     it('sends consistency param when specified', async () => {
       useSubject({
         consistency: 'quorum',

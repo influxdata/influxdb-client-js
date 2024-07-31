@@ -9,8 +9,8 @@
     "esr": "esr"
   },
   "dependencies": {
-    "@influxdata/influxdb-client": "*",
-    "@influxdata/influxdb-client-apis": "*"
+    "@influxdata/influxdb-client": "link:../packages/core",
+    "@influxdata/influxdb-client-apis": "link:../packages/apis"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
