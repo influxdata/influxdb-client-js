@@ -236,8 +236,9 @@ export default class WriteApiImpl implements WriteApi {
             reject(error)
           },
           complete(): void {
+            // InfluxDB v3 returns 201 for partial success
             // older implementations of transport do not report status code
-            if (responseStatusCode == 204 || responseStatusCode == undefined) {
+            if (responseStatusCode == 204 || responseStatusCode == 201 || responseStatusCode == undefined) {
               self.writeOptions.writeSuccess.call(self, lines)
               self.retryStrategy.success()
               resolve()

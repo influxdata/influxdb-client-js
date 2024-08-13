@@ -1,5 +1,9 @@
 ## 1.35.0 [unreleased]
 
+### Bug Fixes
+
+1. [#1044](https://github.com/influxdata/influxdb-client-js/pull/1044): Allow 201 status code in a write response.
+
 ## 1.34.0 [2024-07-26]
 
 ### Breaking Changes
