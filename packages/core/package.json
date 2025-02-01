@@ -70,7 +70,7 @@
     "follow-redirects": "^1.14.7",
     "mocha": "^11.0.1",
     "mocha-junit-reporter": "^2.0.2",
-    "nock": "^13.2.8",
+    "nock": "^14.0.0",
     "nyc": "^17.0.0",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
