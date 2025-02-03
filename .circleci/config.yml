@@ -32,7 +32,7 @@ jobs:
           command: |
             yarn build
             yarn test:ci
-            yarn apidoc:ci
+            yarn typedoc
       # Upload results
       - store_test_results:
           path: ./reports

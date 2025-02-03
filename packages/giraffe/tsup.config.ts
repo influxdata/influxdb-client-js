@@ -17,7 +17,7 @@ export default defineConfig({
   dts: true,
   minify,
   target: ['es2018'],
-  platform: 'browser',
+  platform: 'node',
   splitting: false,
   esbuildOptions(options, {format}) {
     options.outdir = undefined

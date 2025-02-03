@@ -3,7 +3,7 @@
  * to a format that is used by {@link https://github.com/influxdata/giraffe | Giraffe } to visualize the data.
  *
  * @remarks
- * The main goal of this package is to provide an efficient {@link @influxdata/influxdb-client-giraffe#queryToTable}
+ * The main goal of this package is to provide an efficient {@link @influxdata/influxdb-client-giraffe!queryToTable}
  * function that executes a Flux query against InfluxDB (v2) and returns a Table that is then directly suitable
  * as a data input of various Giraffe visualizations.
  *

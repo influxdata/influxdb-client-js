@@ -4,7 +4,7 @@ import {
   Transport,
   SendOptions,
   Headers,
-} from '@influxdata/influxdb-client'
+} from '../../core/src'
 
 // used only in browser builds
 declare function btoa(plain: string): string

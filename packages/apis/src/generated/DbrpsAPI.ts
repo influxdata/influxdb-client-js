@@ -1,4 +1,4 @@
-import {InfluxDB} from '@influxdata/influxdb-client'
+import {InfluxDB} from '../../../core/src'
 import {APIBase, RequestOptions} from '../APIBase'
 import {DBRP, DBRPCreate, DBRPGet, DBRPUpdate, DBRPs} from './types'
 
