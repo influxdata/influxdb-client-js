@@ -3,7 +3,6 @@
   "version": "1.35.0",
   "description": "InfluxDB 2.x client",
   "scripts": {
-    "apidoc:extract": "api-extractor run",
     "build": "yarn run clean && yarn tsup --config ./tsup.config.browser.ts && yarn tsup",
     "clean": "rimraf dist build coverage .nyc_output doc *.lcov reports",
     "coverage": "nyc mocha --require ts-node/register 'test/**/*.test.ts' --exit",
@@ -54,7 +53,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.31.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^10.0.0",
     "@types/sinon": "^17.0.2",

@@ -2,7 +2,7 @@
  * The `@influxdata/influxdb-client` package provides optimized APIs that write or query InfluxDB v2.
  *
  * @remarks
- * The entry point of this package is the {@link @influxdata/influxdb-client#InfluxDB } class. It is
+ * The entry point of this package is the {@link @influxdata/influxdb-client!InfluxDB } class. It is
  * initialized with options that tells how to communicate with InfluxDB. The simple usage pattern is:
  *
  * ```
@@ -13,14 +13,14 @@
  * })
  * ```
  *
- * The influxDB object let you create two essential API instances, {@link @influxdata/influxdb-client#InfluxDB.getWriteApi }
- * and {@link @influxdata/influxdb-client#InfluxDB.getQueryApi }. The {@link @influxdata/influxdb-client#WriteApi}
+ * The influxDB object let you create two essential API instances, {@link @influxdata/influxdb-client!InfluxDB.getWriteApi }
+ * and {@link @influxdata/influxdb-client!InfluxDB.getQueryApi }. The {@link @influxdata/influxdb-client!WriteApi}
  * asynchronously writes measurement points on background, in batches to optimize network traffic, and with retries
- * upon failures. The {@link @influxdata/influxdb-client#QueryApi} let you execute a flux query against InfluxDB
+ * upon failures. The {@link @influxdata/influxdb-client!QueryApi} let you execute a flux query against InfluxDB
  * and offers several ways to stream query results.
  *
  * The influxDB object is also used to create more specialized InfluxDB management API instances in
- * {@link @influxdata/influxdb-client-apis# | @influxdata/influxdb-client-apis} .
+ * {@link @influxdata/influxdb-client-apis! | @influxdata/influxdb-client-apis} .
  *
  * See also {@link https://github.com/influxdata/influxdb-client-js/tree/master/examples | examples} to know more.
  *
