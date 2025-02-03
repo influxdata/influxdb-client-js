@@ -1,5 +1,9 @@
 ## 1.36.0 [unreleased]
 
+### Features:
+
+1.[1110](https://github.com/influxdata/influxdb-client-js/pull/1110) Change the document library to Typedoc 
+
 ## 1.35.0 [2024-08-15]
 
 ### Bug Fixes
