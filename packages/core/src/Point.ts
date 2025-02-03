@@ -60,7 +60,7 @@ export class Point {
   /**
    * Adds a boolean field.
    *
-   * @param field - field name
+   * @param name - field name
    * @param value - field value
    * @returns this
    */

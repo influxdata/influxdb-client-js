@@ -1,4 +1,4 @@
-import {ParameterizedQuery, QueryApi} from '@influxdata/influxdb-client'
+import {ParameterizedQuery, QueryApi} from '../../core/src'
 import {Table, FromFluxResult} from '@influxdata/giraffe'
 import {createCollector, GiraffeTableFactory, TableOptions} from './csvToTable'
 

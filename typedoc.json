@@ -8,9 +8,15 @@
     "json",
     "jsx"
   ],
+  "entryPointStrategy": "packages",
   "entryPoints": [
-    "./packages/**/*.ts"
+    "packages/apis/",
+    "packages/core/",
+    "packages/giraffe/"
   ],
+  "packageOptions": {
+    "entryPoints": ["src/index.ts"]
+  },
   "cleanOutputDir": true,
   "validation": {
     "notExported": false,
