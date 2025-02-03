@@ -2,7 +2,7 @@
 
 ### Features:
 
-1.[1110](https://github.com/influxdata/influxdb-client-js/pull/1110) Change the document library to Typedoc 
+1.[1110](https://github.com/influxdata/influxdb-client-js/pull/1110) Change the document library to Typedocc 
 
 ## 1.35.0 [2024-08-15]
 
