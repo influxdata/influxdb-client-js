@@ -11,7 +11,7 @@
   },
   "scripts": {
     "typedoc": "typedoc --skipErrorChecking",
-    "typedoc:gh-pages": "yarn typedoc && gh-pages -d ./docs -m 'docs: updates documentation [skip CI]'",
+    "typedoc:gh-pages": "yarn typedoc && gh-pages -d ./docs -m 'docs: updates documentation [skip CI]' --dotfiles",
     "preinstall": "node ./scripts/require-yarn.js",
     "clean": "rimraf temp docs && yarn workspaces run clean",
     "build": "yarn workspaces run build",
