@@ -1,8 +1,4 @@
-import {
-  InfluxDB,
-  Transport,
-  AnnotatedCSVResponse,
-} from '@influxdata/influxdb-client'
+import {InfluxDB, Transport, AnnotatedCSVResponse} from '../../../core/src'
 
 /** ExecutionOptions contains execution options for a flux script. */
 export interface ExecutionOptions {

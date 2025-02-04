@@ -3,7 +3,7 @@ import {queryToTable, queryToFromFluxResult} from '../../src'
 // @influxdata/influxdb-client uses node transport in tests (tests run in node), therefore nock is used to mock HTTP
 import nock from 'nock'
 import {Readable} from 'stream'
-import {InfluxDB} from '@influxdata/influxdb-client'
+import {InfluxDB} from '../../../core/src'
 import {newTable} from './newTable'
 const url = 'http://test'
 const queryApi = new InfluxDB({url}).getQueryApi('whatever')

@@ -28,7 +28,7 @@
  * ```
  
  * Generated APIs that write or query InfluxDB are also herein, but it is recommended to use
- * {@link @influxdata/influxdb-client#WriteApi} and {@link @influxdata/influxdb-client#QueryApi}
+ * {@link @influxdata/influxdb-client!WriteApi} and {@link @influxdata/influxdb-client!QueryApi}
  * from `@influxdata/influxdb-client`, they are much easier to use and offer specialized features
  * (write failover, line protocol serialization, flux results parsing, ...).
  *
