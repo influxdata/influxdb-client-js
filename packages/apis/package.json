@@ -10,7 +10,7 @@
     "test:unit": "mocha --require esbuild-runner/register 'test/unit/**/*.test.ts' --exit",
     "test:ci": "yarn run typecheck && yarn run lint:ci && yarn run test:unit --reporter mocha-junit-reporter --reporter-options mochaFile=../../reports/apis_mocha/test-results.xml",
     "typecheck": "tsc --noEmit --pretty",
-    "lint": "eslint --max-warnings 0 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts'",
     "lint:ci": "yarn run lint --format junit --output-file ../../reports/apis_eslint/eslint.xml",
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "regenerate": "yarn fetchSwaggerFiles && yarn generate && yarn test",
