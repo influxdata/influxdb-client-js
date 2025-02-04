@@ -1,6 +1,6 @@
 {
   "private": true,
-  "description": "InfluxDB 2.x client",
+  "description": "InfluxDB 2.x clienta",
   "workspaces": {
     "packages": [
       "packages/core",
