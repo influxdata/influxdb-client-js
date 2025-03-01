@@ -788,9 +788,9 @@
     "@rushstack/node-core-library" "5.11.0"
 
 "@microsoft/api-extractor@^7.31.0":
-  version "7.50.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.50.0.tgz#e9fa4ecdb4fbb3327cb199fc5f87b79eae6b3f13"
-  integrity sha512-Ds/PHTiVzuENQsmXrJKkSdfgNkr/SDG/2rDef0AWl3BchAnXdO7gXaYsAkNx4gWiC4OngNA3fQfd3+BcQxP1DQ==
+  version "7.51.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.51.1.tgz#fdedb120c0905de4d3c71572a1af6c5d69019c08"
+  integrity sha512-VoFvIeYXme8QctXDkixy1KIn750kZaFy2snAEOB3nhDFfbBcJNEcvBrpCIQIV09MqI4g9egKUkg+/12WMRC77w==
   dependencies:
     "@microsoft/api-extractor-model" "7.30.3"
     "@microsoft/tsdoc" "~0.15.1"
@@ -804,7 +804,7 @@
     resolve "~1.22.1"
     semver "~7.5.4"
     source-map "~0.6.1"
-    typescript "5.7.2"
+    typescript "5.7.3"
 
 "@microsoft/tsdoc-config@0.17.1", "@microsoft/tsdoc-config@~0.17.1":
   version "0.17.1"
@@ -6494,10 +6494,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@5.7.2, "typescript@>=3 < 6", typescript@^5.1.3:
-  version "5.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.2.tgz#3169cf8c4c8a828cde53ba9ecb3d2b1d5dd67be6"
-  integrity sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==
+typescript@5.7.3, "typescript@>=3 < 6", typescript@^5.1.3:
+  version "5.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.3.tgz#919b44a7dbb8583a9b856d162be24a54bf80073e"
+  integrity sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==
 
 uglify-js@^3.1.4:
   version "3.17.4"
