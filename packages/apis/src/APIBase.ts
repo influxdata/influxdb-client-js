@@ -1,10 +1,5 @@
 // this is effectively a clone of
-import {
-  InfluxDB,
-  Transport,
-  SendOptions,
-  Headers,
-} from '@influxdata/influxdb-client'
+import {InfluxDB, Transport, SendOptions, Headers} from '../../core/src'
 
 // used only in browser builds
 declare function btoa(plain: string): string
