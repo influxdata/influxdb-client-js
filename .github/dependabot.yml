@@ -5,4 +5,6 @@ updates:
     schedule:
       interval: 'monthly'
       day: 'sunday'
+    commit-message:
+      prefix: "chore(deps): "
     open-pull-requests-limit: 10
