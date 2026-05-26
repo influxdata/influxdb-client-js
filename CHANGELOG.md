@@ -1,8 +1,12 @@
 ## 1.36.0 [unreleased]
 
+### CI
+
+1. [#1186](https://github.com/influxdata/influxdb-client-js/pull/1186): Set up auto merge dependabot workflow.
+
 ### Features:
 
-1.[1111](https://github.com/influxdata/influxdb-client-js/pull/1111) Change the document library to Typedocc 
+1. [1111](https://github.com/influxdata/influxdb-client-js/pull/1111) Change the document library to Typedocc 
 
 ## 1.35.0 [2024-08-15]
 
