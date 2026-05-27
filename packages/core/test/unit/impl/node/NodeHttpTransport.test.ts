@@ -550,7 +550,7 @@ describe('NodeHttpTransport', () => {
         server = http.createServer()
         server.listen(() => {
           const addr = server.address() as AddressInfo
-          url = `http://${addr.address}:${addr.port}`
+          url = `http://localhost:${addr.port}`
           resolve()
         })
       })
@@ -684,13 +684,14 @@ describe('NodeHttpTransport', () => {
         spy
       )
       // wait for useResume being called
-      await waitForCondition(() => resume, 'resume callback is set')
+      await waitForCondition(() => resume, 'resume callback is set', 1000)
       expect(spy.next.callCount).equals(2)
       expect(resume).is.not.null
       if (resume) resume()
       await waitForCondition(
         () => spy.complete.callCount === 1,
-        'response is fully read'
+        'response is fully read',
+        1000
       )
       expect(spy.next.callCount).is.greaterThan(2)
     })
