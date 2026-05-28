@@ -3,7 +3,7 @@
 ### CI
 
 1. [#1186](https://github.com/influxdata/influxdb-client-js/pull/1186): Set up auto merge dependabot workflow.
-1. [#1200](https://github.com/influxdata/influxdb-client-js/pull/1200): Upgrade Node.js versions supported to 22, 24, 26.
+1. [#1200](https://github.com/influxdata/influxdb-client-js/pull/1200): Upgrade supported Node.js versions to 22, 24, 26
 
 ### Features:
 
