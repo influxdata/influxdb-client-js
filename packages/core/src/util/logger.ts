@@ -11,11 +11,9 @@ export interface Logger {
  */
 export const consoleLogger: Logger = {
   error(message, error) {
-    // eslint-disable-next-line no-console
     console.error('ERROR: ' + message, error ? error : '')
   },
   warn(message, error) {
-    // eslint-disable-next-line no-console
     console.warn('WARN: ' + message, error ? error : '')
   },
 }

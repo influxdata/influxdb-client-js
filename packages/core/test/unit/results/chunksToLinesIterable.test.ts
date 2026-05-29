@@ -41,7 +41,7 @@ describe('chunksToLinesIterable', () => {
             )) {
               lines.push(line)
             }
-          } catch (e) {
+          } catch (_e) {
             failed = true
           }
           expect(test.lines).deep.equal(lines)

@@ -79,7 +79,6 @@ describe('WriteApi', () => {
       logs = collectLogging.replace()
     })
     afterEach(async () => {
-      // eslint-disable-next-line no-console
       await subject.close().catch(console.error)
       collectLogging.after()
     })

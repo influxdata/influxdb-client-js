@@ -142,7 +142,7 @@ export default class FetchTransport implements Transport {
   }
   private async throwOnErrorResponse(response: Response): Promise<void> {
     if (response.status >= 300) {
-      let text = ''
+      let text
       try {
         text = await response.text()
         if (!text) {

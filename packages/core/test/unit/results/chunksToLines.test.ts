@@ -37,7 +37,6 @@ describe('chunksToLines', () => {
           failed = true
           subject.error(new Error())
         } else {
-          // eslint-disable-next-line no-undef
           subject.next(Buffer.from(chunk, 'utf8'))
           if (failed) {
             subject.error(new Error())
