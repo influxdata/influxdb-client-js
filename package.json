@@ -42,6 +42,9 @@
     "lerna": "^9.0.7",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
-    "typedoc": "^0.28.19"
+    "typedoc": "^0.28.19",
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "globals": "^17.6.0"
   }
 }
