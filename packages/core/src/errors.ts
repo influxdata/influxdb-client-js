@@ -81,7 +81,7 @@ export class HttpError extends Error implements RetriableDecision {
           this.json = JSON.parse(body)
           this.message = this.json.message
           this.code = this.json.code
-        } catch (e) {
+        } catch (_e) {
           // silently ignore, body string is still available
         }
       }

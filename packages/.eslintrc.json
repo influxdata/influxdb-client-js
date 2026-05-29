@@ -1,9 +1,0 @@
-{
-  "env": {
-    "node": true
-  },
-  "rules": {
-    "no-console": "warn"
-  },
-  "ignorePatterns": ["dist/*.js"]
-}

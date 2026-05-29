@@ -13,6 +13,8 @@
     "@influxdata/influxdb-client-apis": "link:../packages/apis"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
     "@types/express": "^4.17.2",
     "@types/express-http-proxy": "^1.5.12",
     "@types/node": "^16",
@@ -21,6 +23,7 @@
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
     "follow-redirects": "^1.14.3",
+    "globals": "^17.6.0",
     "open": "^7.0.0",
     "response-time": "^2.3.2",
     "rxjs": "^6.5.5",

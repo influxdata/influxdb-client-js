@@ -1047,7 +1047,7 @@ describe('NodeHttpTransport', () => {
     ;(
       [
         [{yes: true}, {yes: true}, 'application/json'],
-        // eslint-disable-next-line no-undef
+
         ['abcd', Buffer.from('abcd'), 'application/binary'],
       ] as Array<Array<any>>
     ).forEach((pair) => {
@@ -1184,6 +1184,7 @@ describe('NodeHttpTransport', () => {
       const data = await new NodeHttpTransport({
         ...transportOptions,
         transportOptions: {
+          // eslint-disable-next-line @typescript-eslint/no-require-imports
           'follow-redirects': require('follow-redirects'),
         },
         timeout: 10000,

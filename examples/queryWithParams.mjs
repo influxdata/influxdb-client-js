@@ -24,6 +24,6 @@ try {
     )
   }
   console.log('\nFinished SUCCESS')
-} catch (e) {
+} catch (_e) {
   console.log('\nFinished ERROR')
 }
