@@ -16,7 +16,7 @@ try {
   await writeApi.close()
 } catch (e) {
   if (e.statusCode !== 400) {
-    throw new Error(`Expected HTTP 400 but received ${e.statusCode}`)
+    throw new Error(`Expected HTTP 400 but received ${e.statusCode}`, { cause: e })
   }
   console.log()
   console.log('Handle HTTP Error')

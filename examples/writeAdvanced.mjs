@@ -81,7 +81,7 @@ async function importData() {
       try {
         // write the data to InfluxDB server, wait for it
         await writeApi.flush()
-      } catch (e) {
+      } catch (_e) {
         console.error()
       }
     }
