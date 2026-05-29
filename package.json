@@ -36,15 +36,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
     "@microsoft/api-documenter": "^7.19.12",
     "@types/node": "^25",
+    "eslint": "^10.4.0",
     "gh-pages": "^6.0.0",
+    "globals": "^17.6.0",
     "lerna": "^9.0.7",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
-    "typedoc": "^0.28.19",
-    "@eslint/eslintrc": "^3.3.5",
-    "@eslint/js": "^10.0.1",
-    "globals": "^17.6.0"
+    "typedoc": "^0.28.19"
   }
 }
