@@ -21,7 +21,7 @@ jobs:
     parameters:
       image:
         type: string
-        default: &default-image 'cimg/node:18.20'
+        default: &default-image 'cimg/node:22.22'
     docker:
       - image: << parameters.image >>
     steps:
@@ -87,19 +87,19 @@ workflows:
   build:
     jobs:
       - tests:
-          name: 'tests-node-18'
+          name: 'tests-node-22'
           filters:
             branches:
               ignore: gh-pages
       - tests:
-          name: 'tests-node-20'
-          image: 'cimg/node:20.16'
+          name: 'tests-node-24'
+          image: 'cimg/node:24.15'
           filters:
             branches:
               ignore: gh-pages
       - tests:
-          name: 'tests-node-21'
-          image: 'cimg/node:21.4'
+          name: 'tests-node-26'
+          image: 'cimg/node:26.2'
           filters:
             branches:
               ignore: gh-pages
@@ -109,7 +109,7 @@ workflows:
               ignore: gh-pages
       - deploy-preview:
           requires:
-            - tests-node-18
+            - tests-node-22
             - coverage
           filters:
             branches:
