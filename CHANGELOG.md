@@ -2,7 +2,7 @@
 
 ### Documentation
 
-1. [#1208](https://github.com/influxdata/influxdb-client-js/pull/1208): Update documentation to recommend Node.js v22 for development.
+1. [#1208](https://github.com/influxdata/influxdb-client-js/pull/1208): Update documentation to require Node.js v22+ for development.
 
 ### CI
 
