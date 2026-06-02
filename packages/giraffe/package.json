@@ -45,10 +45,11 @@
   "devDependencies": {
     "@influxdata/giraffe": "*",
     "@influxdata/influxdb-client": "^1.35.0",
+    "@sinonjs/fake-timers": "^15.4.0",
     "@types/chai": "^4.2.5",
     "@types/mocha": "^10.0.0",
     "@types/react": "^16.9.55",
-    "@types/sinon": "^17.0.2",
+    "@types/sinon": "^21.0.1",
     "@typescript-eslint/eslint-plugin": "^8.60.0",
     "@typescript-eslint/parser": "^8.60.0",
     "chai": "^6.2.2",
@@ -66,7 +67,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^5.0.1",
-    "sinon": "^21.0.0",
+    "sinon": "^22.0.0",
     "ts-node": "^10.9.1",
     "tsup": "^8.0.2",
     "typescript": "^5.1.3"
