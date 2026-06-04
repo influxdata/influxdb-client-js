@@ -1,5 +1,9 @@
 ## 1.36.0 [unreleased]
 
+### Documentation
+
+1. [#1208](https://github.com/influxdata/influxdb-client-js/pull/1208): Update documentation to require Node.js v22+ for development.
+
 ### CI
 
 1. [#1186](https://github.com/influxdata/influxdb-client-js/pull/1186): Set up auto merge dependabot workflow.
