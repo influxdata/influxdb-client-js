@@ -925,15 +925,15 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@microsoft/api-documenter@^7.19.12":
-  version "7.30.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.30.5.tgz#db3943da0f13d4fe6a69b0dcd5eb7d71f12c8890"
-  integrity sha512-Ui+QDj54dMGvAfVJ3D4wmIW3sfsvgXohPvlnMqIrZPGM3dVBjqnC3g/8oG4Mue+Kui/JwRom5YpZgTnVjcKNdg==
+  version "7.30.7"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-documenter/-/api-documenter-7.30.7.tgz#f845f759858673741e906177b1acbab075a4de88"
+  integrity sha512-z4G2sH/XEOpNAICnczckl39Jx8PsQp7g59FuNch3lRJ5ZjNjswh7s/aRq/ZI0NpwPqwSy5JDWg8kTsfSKU1M0Q==
   dependencies:
     "@microsoft/api-extractor-model" "7.33.8"
     "@microsoft/tsdoc" "~0.16.0"
     "@rushstack/node-core-library" "5.23.1"
     "@rushstack/terminal" "0.24.0"
-    "@rushstack/ts-command-line" "5.3.9"
+    "@rushstack/ts-command-line" "5.3.10"
     js-yaml "~4.1.0"
     resolve "~1.22.1"
 
@@ -1546,10 +1546,10 @@
     "@rushstack/problem-matcher" "0.2.1"
     supports-color "~8.1.1"
 
-"@rushstack/ts-command-line@5.3.9":
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-5.3.9.tgz#781ddfce9ce652b6c7e0de53af06ffc7671bd506"
-  integrity sha512-GIHqU+sRGQ3LGWAZu1O+9Yh++qwtyNIIGuNbcWHJjBTm2qRez0cwINUHZ+pQLR8UuzZDcMajrDaNbUYoaL/XtQ==
+"@rushstack/ts-command-line@5.3.10":
+  version "5.3.10"
+  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-5.3.10.tgz#b65bba744b4b8c6ee6a96460cd5d6111557fe253"
+  integrity sha512-fwI076HYknC0IrMXdY6UmjDv+PH7NHhNJX3/pY2UblSE5XrXgndXZPiOe/6ZtuFpn6DvVDVNhtkIzQ+Qu/MhVQ==
   dependencies:
     "@rushstack/terminal" "0.24.0"
     "@types/argparse" "1.0.38"
