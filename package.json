@@ -47,7 +47,7 @@
     "eslint-plugin-tsdoc": "^0.5.2",
     "gh-pages": "^6.0.0",
     "globals": "^17.6.0",
-    "lerna": "^9.0.7",
+    "lerna": "^10.0.1",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
     "typedoc": "^0.28.19"
