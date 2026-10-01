@@ -969,17 +969,22 @@
     "@microsoft/tsdoc-config" "~0.18.1"
     "@rushstack/node-core-library" "5.24.0"
 
-"@microsoft/tsdoc-config@0.18.1", "@microsoft/tsdoc-config@~0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.18.1.tgz#7c560bce62abb5f9681e4d231b9ac35553b7e86b"
-  integrity sha512-9brPoVdfN9k9g0dcWkFeA7IH9bbcttzDJlXvkf8b2OBzd5MueR1V2wkKBL0abn0otvmkHJC6aapBOTJDDeMCZg==
+"@microsoft/tsdoc-config@0.18.2", "@microsoft/tsdoc-config@~0.18.1":
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.18.2.tgz#34c8076e60ed0aad7d93f81c5465bf3ac24bc290"
+  integrity sha512-4ymuLTQ9lFwJXK15f41iPcNHflymjk02Ltq5f5wo3fA02O1nHIGSc1TIZwzTSQZep+jXHM644jobt4Q8O3vtqg==
   dependencies:
-    "@microsoft/tsdoc" "0.16.0"
+    "@microsoft/tsdoc" "0.17.0"
     ajv "~8.18.0"
     jju "~1.4.0"
     resolve "~1.22.2"
 
-"@microsoft/tsdoc@0.16.0", "@microsoft/tsdoc@~0.16.0":
+"@microsoft/tsdoc@0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.17.0.tgz#61b4a63f48b583a3d60d1793184a1a2cd9d1175e"
+  integrity sha512-p68VexhnH7ojf3U27RdryUDqnKJgKaWUbCL96vJR7N0mqDuhKG5OIECk3sCPPdynxjk+yoVhRkScqtv5KQjzsw==
+
+"@microsoft/tsdoc@~0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.16.0.tgz#2249090633e04063176863a050c8f0808d2b6d2b"
   integrity sha512-xgAyonlVVS+q7Vc7qLW0UrJU7rSFcETRWsqdXZtjzRU8dF+6CkozTK4V4y1LwOX7j8r/vHphjDeMeGI4tNGeGA==
@@ -3149,12 +3154,12 @@ eslint-plugin-prettier@^5.0.0, eslint-plugin-prettier@^5.5.6:
     synckit "^0.11.13"
 
 eslint-plugin-tsdoc@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-tsdoc/-/eslint-plugin-tsdoc-0.5.2.tgz#5143210e77fffdf0df095f4090d7dd3f6494a4a2"
-  integrity sha512-BlvqjWZdBJDIPO/YU3zcPCF23CvjYT3gyu63yo6b609NNV3D1b6zceAREy2xnweuBoDpZcLNuPyAUq9cvx6bbQ==
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-tsdoc/-/eslint-plugin-tsdoc-0.5.3.tgz#9e3308b0b959bc0df7d8653cf836c01efb5d72b2"
+  integrity sha512-WVG/kTgaJuTaAyHqTFmJ6W6rD6vV5UTHjw9ipMPA0fcmHLbJSLPvnY645p0N5bidRGTkboNEYrkOufnhC6RYXw==
   dependencies:
-    "@microsoft/tsdoc" "0.16.0"
-    "@microsoft/tsdoc-config" "0.18.1"
+    "@microsoft/tsdoc" "0.17.0"
+    "@microsoft/tsdoc-config" "0.18.2"
     "@typescript-eslint/utils" "~8.56.0"
 
 eslint-scope@^9.1.2:
