@@ -32,6 +32,8 @@ This directory contains javascript and typescript examples for node.js, browser,
     Shows how to delete data from a bucket.
   - [httpErrorHandled.mjs](./httpErrorHandled.mjs)
     Shows handling HTTP Error response. 
+  - [tls.mjs](./tls.mjs)
+    Shows how to configure TLS and mutual TLS (mTLS) connections.
 - Browser examples
   - Change `token, org, bucket, username, password` variables in [./env_browser.mjs](env_browser.mjs) to match your InfluxDB instance
   - Run `npm run browser`
