@@ -1,5 +1,21 @@
 import {expect} from 'chai'
-import {InfluxDB, ClientOptions, Transport} from '../../src'
+import {ClientOptions, InfluxDB, Transport} from '../../src'
+import {
+  clientCert,
+  clientKey,
+  clientP12,
+  otherServerCert,
+  otherServerKey,
+  otherServerP12,
+  p12Password,
+  serverCert,
+  serverKey,
+  serverP12,
+  startHttpsServer,
+  stopHttpsServer,
+} from '../util'
+import https from 'https'
+import fs from 'fs'
 
 describe('InfluxDB', () => {
   describe('constructor', () => {
@@ -114,5 +130,264 @@ describe('InfluxDB', () => {
         .property('options')
         .to.deep.equals({org: 'my-org'})
     })
+  })
+  describe('test tls', () => {
+    interface TlsTestCase {
+      name: string
+      server: {
+        cert?: string
+        key?: string
+        pfx?: string
+        passphrase?: string
+      }
+      client: {
+        ca?: string
+      }
+      isSuccess: boolean
+    }
+
+    const tests: TlsTestCase[] = [
+      {
+        name: 'client with correct server certificate',
+        server: {
+          cert: serverCert,
+          key: serverKey,
+        },
+        client: {
+          ca: serverCert,
+        },
+        isSuccess: true,
+      },
+      {
+        name: 'client with correct server certificate (.p12)',
+        server: {
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: serverCert,
+        },
+        isSuccess: true,
+      },
+      {
+        name: 'client with incorrect server certificate',
+        server: {
+          cert: serverCert,
+          key: serverKey,
+        },
+        client: {
+          ca: otherServerCert,
+        },
+        isSuccess: false,
+      },
+      {
+        name: 'client with incorrect server certificate (.p12)',
+        server: {
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: otherServerCert,
+        },
+        isSuccess: false,
+      },
+    ]
+
+    async function verifyTlsRequest(
+      port: number,
+      caPath?: string,
+      shouldSucceed = true
+    ): Promise<void> {
+      const transportOptions: Record<string, any> = {}
+      if (caPath) {
+        transportOptions.ca = fs.readFileSync(caPath)
+      }
+
+      const influxDB = new InfluxDB({
+        url: `https://localhost:${port}`,
+        timeout: 10000,
+        transportOptions,
+      })
+
+      const sendRequest = () =>
+        influxDB.transport.request('/', '', {
+          method: 'GET',
+          headers: {'content-type': 'application/json'},
+        })
+
+      if (shouldSucceed) {
+        const data = await sendRequest()
+        expect(data?.toString()).equals('Success')
+      } else {
+        try {
+          await sendRequest()
+          expect.fail('exception shall be thrown')
+        } catch (e: any) {
+          expect(e).to.be.an('error')
+          expect(e.message).to.include('certificate')
+        }
+      }
+    }
+
+    for (const test of tests) {
+      it(`tls - ${test.name}`, async () => {
+        let server: https.Server | undefined
+        try {
+          const serverOptions: https.ServerOptions = {
+            ...(test.server.cert && {cert: fs.readFileSync(test.server.cert)}),
+            ...(test.server.key && {key: fs.readFileSync(test.server.key)}),
+            ...(test.server.pfx && {pfx: fs.readFileSync(test.server.pfx)}),
+            ...(test.server.passphrase && {
+              passphrase: test.server.passphrase,
+            }),
+          }
+          const runningServer = await startHttpsServer(serverOptions)
+          server = runningServer.server
+
+          await verifyTlsRequest(
+            runningServer.port,
+            test.client.ca,
+            test.isSuccess
+          )
+        } finally {
+          await stopHttpsServer(server)
+        }
+      })
+    }
+  })
+  describe('test mtls', () => {
+    interface MtlsTestCase {
+      name: string
+      server: {
+        ca: string
+        cert?: string
+        key?: string
+        pfx?: string
+        passphrase?: string
+      }
+      client: {
+        ca: string
+        cert?: string
+        key?: string
+        pfx?: string
+        passphrase?: string
+      }
+      isSuccess: boolean
+    }
+
+    const tests: MtlsTestCase[] = [
+      {
+        name: 'client and server with correct certificates',
+        server: {
+          ca: clientCert,
+          cert: serverCert,
+          key: serverKey,
+        },
+        client: {
+          ca: serverCert,
+          cert: clientCert,
+          key: clientKey,
+        },
+        isSuccess: true,
+      },
+      {
+        name: 'client and server with correct certificates (.p12)',
+        server: {
+          ca: clientCert,
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: serverCert,
+          pfx: clientP12,
+          passphrase: p12Password,
+        },
+        isSuccess: true,
+      },
+      {
+        name: 'client send incorrect certificate',
+        server: {
+          ca: clientCert,
+          cert: serverCert,
+          key: serverKey,
+        },
+        client: {
+          ca: serverCert,
+          cert: otherServerCert,
+          key: otherServerKey,
+        },
+        isSuccess: false,
+      },
+      {
+        name: 'client send incorrect certificate (.p12)',
+        server: {
+          ca: clientCert,
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: serverCert,
+          pfx: otherServerP12,
+          passphrase: p12Password,
+        },
+        isSuccess: false,
+      },
+    ]
+    for (const test of tests) {
+      it(`mtls - ${test.name}`, async () => {
+        let server: https.Server | undefined
+        try {
+          const runningServer = await startHttpsServer({
+            ca: fs.readFileSync(test.server.ca),
+            ...(test.server.cert && {cert: fs.readFileSync(test.server.cert)}),
+            ...(test.server.key && {key: fs.readFileSync(test.server.key)}),
+            ...(test.server.pfx && {pfx: fs.readFileSync(test.server.pfx)}),
+            ...(test.server.passphrase && {
+              passphrase: test.server.passphrase,
+            }),
+            rejectUnauthorized: true,
+            requestCert: true,
+          })
+          server = runningServer.server
+
+          const influxDB = new InfluxDB({
+            url: `https://localhost:${runningServer.port}`,
+            timeout: 10000,
+            transportOptions: {
+              ca: fs.readFileSync(test.client.ca),
+              ...(test.client.cert && {
+                cert: fs.readFileSync(test.client.cert),
+              }),
+              ...(test.client.key && {key: fs.readFileSync(test.client.key)}),
+              ...(test.client.pfx && {pfx: fs.readFileSync(test.client.pfx)}),
+              ...(test.client.passphrase && {
+                passphrase: test.client.passphrase,
+              }),
+            },
+          })
+
+          if (test.isSuccess) {
+            const data = await influxDB.transport.request('/', '', {
+              method: 'GET',
+              headers: {'content-type': 'application/json'},
+            })
+            expect(data?.toString()).equals('Success')
+          } else {
+            try {
+              await influxDB.transport.request('/', '', {
+                method: 'GET',
+                headers: {'content-type': 'application/json'},
+              })
+              expect.fail('exception shall be thrown')
+            } catch (e: any) {
+              expect(e).to.be.an('error')
+              expect(e.code).equals('ECONNRESET')
+            }
+          }
+        } finally {
+          await stopHttpsServer(server)
+        }
+      })
+    }
   })
 })
