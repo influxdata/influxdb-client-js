@@ -111,9 +111,11 @@ export const serverP12 = path.join(certsDir, 'influxdb.p12')
 export const otherServerCert = path.join(certsDir, 'other-server.crt')
 export const otherServerKey = path.join(certsDir, 'other-server.key')
 export const otherServerP12 = path.join(certsDir, 'other-server.p12')
+export const otherServerPem = path.join(certsDir, 'other-server.pem')
 
 export const clientCert = path.join(certsDir, 'client.crt')
 export const clientKey = path.join(certsDir, 'client.key')
 export const clientP12 = path.join(certsDir, 'client.p12')
+export const clientPem = path.join(certsDir, 'client.pem')
 
 export const p12Password = 'changeit'

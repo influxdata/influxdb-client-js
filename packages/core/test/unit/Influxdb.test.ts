@@ -4,9 +4,11 @@ import {
   clientCert,
   clientKey,
   clientP12,
+  clientPem,
   otherServerCert,
   otherServerKey,
   otherServerP12,
+  otherServerPem,
   p12Password,
   serverCert,
   serverKey,
@@ -305,6 +307,21 @@ describe('InfluxDB', () => {
         isSuccess: true,
       },
       {
+        name: 'client and server with correct certificates (.pem)',
+        server: {
+          ca: clientCert,
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: serverCert,
+          cert: clientPem,
+          key: clientPem,
+          passphrase: p12Password,
+        },
+        isSuccess: true,
+      },
+      {
         name: 'client send incorrect certificate',
         server: {
           ca: clientCert,
@@ -328,6 +345,21 @@ describe('InfluxDB', () => {
         client: {
           ca: serverCert,
           pfx: otherServerP12,
+          passphrase: p12Password,
+        },
+        isSuccess: false,
+      },
+      {
+        name: 'client send incorrect certificate (.pem)',
+        server: {
+          ca: clientCert,
+          pfx: serverP12,
+          passphrase: p12Password,
+        },
+        client: {
+          ca: serverCert,
+          cert: otherServerPem,
+          key: otherServerPem,
           passphrase: p12Password,
         },
         isSuccess: false,
