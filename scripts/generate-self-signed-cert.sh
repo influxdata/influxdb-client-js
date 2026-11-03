@@ -37,6 +37,8 @@ for SERVER_NAME in "$INFLUXDB_SERVER_NAME" "$OTHER_SERVER_NAME"; do
     -subj "/CN=localhost/O=Development/C=US" \
     -addext "subjectAltName = DNS:localhost,IP:127.0.0.1"
 
+  cat "$CERTS_DIR/${SERVER_NAME}.crt" "$CERTS_DIR/${SERVER_NAME}.key" > "$CERTS_DIR/${SERVER_NAME}.pem"
+
   openssl pkcs12 -export -in "$CERTS_DIR/${SERVER_NAME}.crt" -inkey "$CERTS_DIR/${SERVER_NAME}.key" \
     -out "$CERTS_DIR/${SERVER_NAME}.p12" -name "myalias" -password "pass:$PKCS12_PASSWORD"
 done
@@ -46,5 +48,8 @@ echo "### Generate client key..."
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 | openssl pkcs8 -topk8 -nocrypt -out "$CERTS_DIR/client.key"
 openssl req -new -x509 -key "$CERTS_DIR/client.key" -out "$CERTS_DIR/client.crt" -days 3650 \
   -subj "/CN=test-client/O=Development/C=US"
+
+cat "$CERTS_DIR/client.crt" "$CERTS_DIR/client.key" > "$CERTS_DIR/client.pem"
+
 openssl pkcs12 -export -in "$CERTS_DIR/client.crt" -inkey "$CERTS_DIR/client.key" \
   -out "$CERTS_DIR/client.p12" -name "myalias" -password "pass:$PKCS12_PASSWORD"
